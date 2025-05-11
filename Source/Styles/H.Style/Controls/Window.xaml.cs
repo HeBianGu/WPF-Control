@@ -1,5 +1,12 @@
-﻿using H.Services.Common.MainWindow;
-using System.Windows.Media;
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
+
+using H.Services.Common.MainWindow;
 
 namespace H.Styles.Controls;
 
@@ -44,7 +51,6 @@ public class WindowSetting : Settable<WindowSetting>
         }
     }
 
-
     private double _opacity;
     [DefaultValue(0.3)]
     [Display(Name = "图片透明度")]
@@ -57,7 +63,6 @@ public class WindowSetting : Settable<WindowSetting>
             RaisePropertyChanged();
         }
     }
-
 
     private Stretch _stretch;
     [DefaultValue(Stretch.UniformToFill)]
@@ -98,7 +103,6 @@ public class WindowSetting : Settable<WindowSetting>
         }
     }
 }
-
 
 [Display(Name = "主窗口设置", GroupName = SettingGroupNames.GroupControl, Description = "设置主窗口设置参数")]
 public class MainWindowOption : IocOptionInstance<MainWindowOption>

@@ -1,4 +1,10 @@
-﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
 
 using System.ComponentModel;
 using System.Windows;
@@ -31,7 +37,6 @@ public static partial class Cattach
     {
         obj.SetValue(AttachControlTemplateProperty, value);
     }
-
 
     public static readonly DependencyProperty AttachTemplateProperty = DependencyProperty.RegisterAttached(
         "AttachTemplate", typeof(DataTemplate), typeof(Cattach), new FrameworkPropertyMetadata(default(DataTemplate), FrameworkPropertyMetadataOptions.BindsTwoWayByDefault));
@@ -68,7 +73,6 @@ public static partial class Cattach
         Brush o = (Brush)e.OldValue;
     }
 
-
     public static Brush GetAttachBackground(DependencyObject obj)
     {
         return (Brush)obj.GetValue(AttachBackgroundProperty);
@@ -90,7 +94,6 @@ public static partial class Cattach
 
         Brush o = (Brush)e.OldValue;
     }
-
 
     public static Brush GetAttachBorderBrush(DependencyObject obj)
     {
@@ -136,7 +139,6 @@ public static partial class Cattach
         double o = (double)e.OldValue;
     }
 
-
     public static Thickness GetAttachBorderThickness(DependencyObject obj)
     {
         return (Thickness)obj.GetValue(AttachBorderThicknessProperty);
@@ -159,7 +161,6 @@ public static partial class Cattach
         Thickness o = (Thickness)e.OldValue;
     }
 
-
     public static HorizontalAlignment GetAttachHorizontalAlignment(DependencyObject obj)
     {
         return (HorizontalAlignment)obj.GetValue(AttachHorizontalAlignmentProperty);
@@ -169,7 +170,6 @@ public static partial class Cattach
     {
         obj.SetValue(AttachHorizontalAlignmentProperty, value);
     }
-
 
     public static readonly DependencyProperty AttachHorizontalAlignmentProperty =
         DependencyProperty.RegisterAttached("AttachHorizontalAlignment", typeof(HorizontalAlignment), typeof(Cattach), new FrameworkPropertyMetadata(default(HorizontalAlignment), FrameworkPropertyMetadataOptions.Inherits, OnAttachHorizontalAlignmentChanged));
@@ -221,7 +221,6 @@ public static partial class Cattach
         VerticalAlignment o = (VerticalAlignment)e.OldValue;
     }
 
-
     public static Thickness GetAttachMargin(DependencyObject obj)
     {
         return (Thickness)obj.GetValue(AttachMarginProperty);
@@ -267,7 +266,6 @@ public static partial class Cattach
         double o = (double)e.OldValue;
     }
 
-
     public static Dock GetAttachDock(DependencyObject obj)
     {
         return (Dock)obj.GetValue(AttachDockProperty);
@@ -277,7 +275,6 @@ public static partial class Cattach
     {
         obj.SetValue(AttachDockProperty, value);
     }
-
 
     public static readonly DependencyProperty AttachDockProperty =
         DependencyProperty.RegisterAttached("AttachDock", typeof(Dock), typeof(Cattach), new PropertyMetadata(default(Dock), OnAttachDockChanged));

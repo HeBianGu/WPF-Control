@@ -1,4 +1,12 @@
-﻿global using System.Diagnostics;
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
+
+global using System.Diagnostics;
 namespace H.Controls.Diagram.Presenters.OpenCV.NodeDatas.Feature;
 
 [Display(Name = "AKAZE", GroupName = "特征提取", Order = 0)]

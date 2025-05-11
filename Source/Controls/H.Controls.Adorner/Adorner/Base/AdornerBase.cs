@@ -1,7 +1,10 @@
-﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
-
-using System.Windows;
-using System.Windows.Media;
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
 
 namespace H.Controls.Adorner.Adorner.Base;
 
@@ -22,7 +25,6 @@ public abstract class AdornerBase : System.Windows.Documents.Adorner
         obj.SetValue(PenProperty, value);
     }
 
-
     public static readonly DependencyProperty PenProperty =
         DependencyProperty.RegisterAttached("Pen", typeof(Pen), typeof(AdornerBase), new PropertyMetadata(new Pen(Brushes.DeepSkyBlue, 1), OnPenChanged));
 
@@ -35,7 +37,6 @@ public abstract class AdornerBase : System.Windows.Documents.Adorner
         Pen o = (Pen)e.OldValue;
     }
 
-
     public static Brush GetFill(DependencyObject obj)
     {
         return (Brush)obj.GetValue(FillProperty);
@@ -45,7 +46,6 @@ public abstract class AdornerBase : System.Windows.Documents.Adorner
     {
         obj.SetValue(FillProperty, value);
     }
-
 
     public static readonly DependencyProperty FillProperty =
         DependencyProperty.RegisterAttached("Fill", typeof(Brush), typeof(AdornerBase), new PropertyMetadata(default(Brush), OnFillChanged));
@@ -58,8 +58,5 @@ public abstract class AdornerBase : System.Windows.Documents.Adorner
 
         Brush o = (Brush)e.OldValue;
     }
-
-
-
 
 }

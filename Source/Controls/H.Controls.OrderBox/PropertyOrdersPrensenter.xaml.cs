@@ -1,16 +1,10 @@
-﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
-
-
-using H.Services.Common;
-using H.Mvvm;
-using System;
-using System.Collections;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Reflection;
-using System.Text.Json.Serialization;
-using System.Xml.Serialization;
-using H.Mvvm.ViewModels.Base;
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
 
 namespace H.Controls.OrderBox
 {
@@ -32,7 +26,7 @@ namespace H.Controls.OrderBox
 
         private ObservableCollection<PropertyInfo> _properties = new ObservableCollection<PropertyInfo>();
         [System.Text.Json.Serialization.JsonIgnore]
-        
+
         [System.Xml.Serialization.XmlIgnore]
         public ObservableCollection<PropertyInfo> Properties
         {
@@ -57,7 +51,7 @@ namespace H.Controls.OrderBox
 
         private PropertyOrderPrensenter _selectedItem;
         [System.Text.Json.Serialization.JsonIgnore]
-        
+
         [System.Xml.Serialization.XmlIgnore]
         public PropertyOrderPrensenter SelectedItem
         {
@@ -68,7 +62,6 @@ namespace H.Controls.OrderBox
                 RaisePropertyChanged();
             }
         }
-
 
         private int _selectedIndex;
         public int SelectedIndex
@@ -81,7 +74,7 @@ namespace H.Controls.OrderBox
             }
         }
         [System.Text.Json.Serialization.JsonIgnore]
-        
+
         [System.Xml.Serialization.XmlIgnore]
         public RelayCommand AddCommand => new RelayCommand(l =>
         {
@@ -94,7 +87,7 @@ namespace H.Controls.OrderBox
         });
 
         [System.Text.Json.Serialization.JsonIgnore]
-        
+
         [System.Xml.Serialization.XmlIgnore]
         public RelayCommand ClearSelectionCommand => new RelayCommand(l =>
         {
@@ -116,7 +109,7 @@ namespace H.Controls.OrderBox
         }
 
         [System.Text.Json.Serialization.JsonIgnore]
-        
+
         [System.Xml.Serialization.XmlIgnore]
         public IMetaSettingService MetaSettingService => new TextJsonMetaSettingService();
 

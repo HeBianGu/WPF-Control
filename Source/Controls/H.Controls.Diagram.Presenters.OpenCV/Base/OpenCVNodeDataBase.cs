@@ -1,12 +1,12 @@
-﻿using H.Controls.Diagram.Presenter.DiagramDatas.Base;
-using H.Services.Common;
-using OpenCvSharp;
-using System.Net.Mail;
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
+
 using System.Text.Json.Serialization;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Threading;
 using System.Xml.Serialization;
 
 namespace H.Controls.Diagram.Presenters.OpenCV.Base;
@@ -75,8 +75,6 @@ public abstract class OpenCVNodeDataBase : OpenCVStyleNodeDataBase, IOpenCVNodeD
         }
     }
 
-
-
     //private Mat _preMat;
     //protected Mat PreviourMat => this._preMat;
     //private string _srcFilePath;
@@ -120,8 +118,6 @@ public abstract class OpenCVNodeDataBase : OpenCVStyleNodeDataBase, IOpenCVNodeD
         return result;
     }
     protected abstract FlowableResult<Mat> Invoke(ISrcImageNodeData srcImageNodeData, IOpenCVNodeData from, IFlowableDiagramData diagram);
-
-
 
     protected void UpdateMatToView(Mat mat)
     {

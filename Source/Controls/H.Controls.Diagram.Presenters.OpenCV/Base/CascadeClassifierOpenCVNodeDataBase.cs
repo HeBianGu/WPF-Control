@@ -1,4 +1,12 @@
-﻿using Point = OpenCvSharp.Point;
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
+
+using Point = OpenCvSharp.Point;
 using Rect = OpenCvSharp.Rect;
 using Size = OpenCvSharp.Size;
 
@@ -15,7 +23,7 @@ public abstract class CascadeClassifierOpenCVNodeDataBase : OpenCVNodeDataBase, 
     }
     private double _scaleFactor = 1.1;
     [DefaultValue(1.1)]
-    [Display(Name = "缩放比例", GroupName = "数据",Description = "图像缩放比例(1.01-1.5)，用于多尺度检测")]
+    [Display(Name = "缩放比例", GroupName = "数据", Description = "图像缩放比例(1.01-1.5)，用于多尺度检测")]
     public double ScaleFactor
     {
         get { return _scaleFactor; }

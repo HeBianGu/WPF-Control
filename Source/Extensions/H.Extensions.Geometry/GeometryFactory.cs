@@ -1,4 +1,10 @@
-﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
 
 using System.Windows;
 using System.Windows.Media;
@@ -93,6 +99,5 @@ public static class GeometryFactory
     public static System.Windows.Media.Geometry Wave => Create("M0,10 C25,30 75,-10 100,10 L100,60 C75,30 25,80 0,50 Z");
     public static System.Windows.Media.Geometry Parallelogram => Create("M15,0 100,0 85,60 0,60 Z");
     public static System.Windows.Media.Geometry Diamond => Create("M0,30 50,0 100,30 50,60 Z");
-
 
 }

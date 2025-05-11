@@ -1,4 +1,12 @@
-﻿namespace H.Controls.Diagram.Presenters.OpenCV.NodeDatas.Basic;
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
+
+namespace H.Controls.Diagram.Presenters.OpenCV.NodeDatas.Basic;
 
 [Display(Name = "无缝融合背景", GroupName = "基础函数", Description = "将一幅图像中的指定目标复制后粘贴到另一幅图像中，并自然的融合", Order = 80)]
 public class SeamlessCloneBackground : BasicOpenCVNodeDataBase

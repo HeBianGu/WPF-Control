@@ -1,4 +1,11 @@
-﻿using System.ComponentModel;
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
+
 using System.Windows;
 using System.Windows.Controls;
 
@@ -16,7 +23,6 @@ namespace H.Windows.Main
             get { return (double)GetValue(CaptionHeightProperty); }
             set { SetValue(CaptionHeightProperty, value); }
         }
-
 
         public static readonly DependencyProperty CaptionHeightProperty =
             DependencyProperty.Register("CaptionHeight", typeof(double), typeof(MainWindow), new FrameworkPropertyMetadata(45.0, (d, e) =>
@@ -37,13 +43,11 @@ namespace H.Windows.Main
 
             }));
 
-
         public ControlTemplate CaptionTempate
         {
             get { return (ControlTemplate)GetValue(CaptionTempateProperty); }
             set { SetValue(CaptionTempateProperty, value); }
         }
-
 
         public static readonly DependencyProperty CaptionTempateProperty =
             DependencyProperty.Register("CaptionTempate", typeof(ControlTemplate), typeof(MainWindow), new FrameworkPropertyMetadata(default(ControlTemplate), (d, e) =>
@@ -64,14 +68,11 @@ namespace H.Windows.Main
 
             }));
 
-
-
         public ControlTemplate SideTemplate
         {
             get { return (ControlTemplate)GetValue(SideTemplateProperty); }
             set { SetValue(SideTemplateProperty, value); }
         }
-
 
         public static readonly DependencyProperty SideTemplateProperty =
             DependencyProperty.Register("SideTemplate", typeof(ControlTemplate), typeof(MainWindow), new FrameworkPropertyMetadata(default(ControlTemplate), (d, e) =>

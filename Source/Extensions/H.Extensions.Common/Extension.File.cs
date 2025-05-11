@@ -1,10 +1,16 @@
-﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
+
 using System.IO;
 using System.Security.Cryptography;
 using System.Windows.Media;
 
 namespace H.Extensions.Common;
-
 
 public static partial class FileExtension
 {
@@ -42,7 +48,6 @@ public static partial class FileExtension
         return files;
     }
 
-
     public static bool IsVedio(this string filePath)
     {
         if (string.IsNullOrEmpty(filePath))
@@ -70,7 +75,6 @@ public static partial class FileExtension
         return extensions.Select(x => $" *.{x};").Aggregate((x, y) => x + y);
     }
 }
-
 
 public static partial class FileExtension
 {
@@ -126,7 +130,6 @@ public static partial class FileExtension
         }
         return size;
     }
-
 
     //public void CopyDirectory()
     //{
@@ -207,7 +210,7 @@ public class DirectoryEx
         {
             files = Directory.GetFiles(sourceFolder);
         }
-        catch (UnauthorizedAccessException ex)
+        catch (UnauthorizedAccessException)
         {
             //IocLog.Instance?.Error(ex);
             logAction?.Invoke($"{sourceFolder}\r\nAccess Denied\r\n");
@@ -402,7 +405,6 @@ public class FileEx
         return isMinus ? "-" + result : result;
     }
 }
-
 
 //public static class IODialogExtension
 //{

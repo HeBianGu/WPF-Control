@@ -1,8 +1,14 @@
-﻿global using H.Themes.FontSizes;
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
+
 global using System.ComponentModel;
 global using System.Windows;
-using H.Themes.FontSizes;
-using H.Themes.Layouts;
+using H.Themes;
 
 namespace H.Presenters.Design.Presenter;
 
@@ -62,7 +68,6 @@ public class TextBlockPresenter : CommandsDesignPresenterBase, ITextData
             RaisePropertyChanged();
         }
     }
-
 
     private FontStyle _fontStyle;
     [Display(Name = "字体样式", GroupName = "样式")]

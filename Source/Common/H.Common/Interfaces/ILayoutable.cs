@@ -1,4 +1,12 @@
-﻿namespace H.Common.Interfaces;
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
+
+namespace H.Common.Interfaces;
 
 /// <summary>
 /// 定义布局相关的属性和方法。
@@ -59,7 +67,6 @@ public interface ILayoutable
     /// 获取或设置最小宽度。
     /// </summary>
     double MinWidth { get; set; }
-
 
     /// <summary>
     /// 获取或设置最小宽度。

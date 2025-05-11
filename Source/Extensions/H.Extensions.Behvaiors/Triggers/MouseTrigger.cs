@@ -1,8 +1,12 @@
-﻿// Copyright ? 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
-using Microsoft.Xaml.Behaviors;
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
+
 using Microsoft.Xaml.Behaviors.Input;
-using System.Windows;
-using System.Windows.Input;
 namespace H.Extensions.Behvaiors.Triggers;
 
 /// <summary>
@@ -24,7 +28,6 @@ public class MouseTrigger : EventTriggerBase<UIElement>
     {
         return "Loaded";
     }
-
 
     public MouseButton MouseButton
     {
@@ -51,7 +54,6 @@ public class MouseTrigger : EventTriggerBase<UIElement>
             }
 
         }));
-
 
     public MouseTriggerMode Mode
     {
@@ -105,7 +107,6 @@ public class MouseTrigger : EventTriggerBase<UIElement>
 
         }));
 
-
     public bool Handled
     {
         get { return (bool)GetValue(HandledProperty); }
@@ -132,7 +133,6 @@ public class MouseTrigger : EventTriggerBase<UIElement>
 
         }));
 
-
     public bool UseHandle
     {
         get { return (bool)GetValue(UseHandleProperty); }
@@ -158,7 +158,6 @@ public class MouseTrigger : EventTriggerBase<UIElement>
             }
 
         }));
-
 
     protected override void OnEvent(EventArgs eventArgs)
     {
@@ -213,7 +212,6 @@ public class MouseTrigger : EventTriggerBase<UIElement>
         base.OnDetaching();
     }
 }
-
 
 public enum MouseTriggerMode
 {

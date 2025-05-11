@@ -1,4 +1,12 @@
-﻿global using H.Mvvm.Commands;
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
+
+global using H.Mvvm.Commands;
 global using System.ComponentModel;
 global using System.Text.Json.Serialization;
 
@@ -45,14 +53,14 @@ public abstract class Bindable : BindableBase
 
     private object _targetElement;
     protected T GetTargetElement<T>() where T : UIElement => (T)this._targetElement;
-
-    private bool _isLoaded;
-    protected bool IsLoaded => this._isLoaded;
+    /// <summary>
+    /// 加载事件处理方法。
+    /// </summary>
+    /// <param name="obj">事件参数。</param>
     protected virtual void Loaded(object obj)
     {
         if (obj is RoutedEventArgs args)
             this._targetElement = args.Source;
-        this._isLoaded = true;
     }
 
     /// <summary>

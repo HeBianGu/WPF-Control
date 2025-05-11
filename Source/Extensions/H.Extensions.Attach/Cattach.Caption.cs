@@ -1,4 +1,10 @@
-﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
 
 using System.ComponentModel;
 using System.Windows;
@@ -20,7 +26,6 @@ public static partial class Cattach
         obj.SetValue(CaptionCornerRadiusProperty, value);
     }
 
-
     public static readonly DependencyProperty CaptionCornerRadiusProperty =
         DependencyProperty.RegisterAttached("CaptionCornerRadius", typeof(CornerRadius), typeof(Cattach), new FrameworkPropertyMetadata(default(CornerRadius), FrameworkPropertyMetadataOptions.Inherits, OnCaptionCornerRadiusChanged));
 
@@ -33,7 +38,6 @@ public static partial class Cattach
         CornerRadius o = (CornerRadius)e.OldValue;
     }
 
-
     public static Brush GetCaptionBackground(DependencyObject obj)
     {
         return (Brush)obj.GetValue(CaptionBackgroundProperty);
@@ -43,7 +47,6 @@ public static partial class Cattach
     {
         obj.SetValue(CaptionBackgroundProperty, value);
     }
-
 
     public static readonly DependencyProperty CaptionBackgroundProperty =
         DependencyProperty.RegisterAttached("CaptionBackground", typeof(Brush), typeof(Cattach), new FrameworkPropertyMetadata(default(Brush), FrameworkPropertyMetadataOptions.Inherits, OnCaptionBackgroundChanged));
@@ -57,7 +60,6 @@ public static partial class Cattach
         Brush o = (Brush)e.OldValue;
     }
 
-
     public static Brush GetCaptionForeground(DependencyObject obj)
     {
         return (Brush)obj.GetValue(CaptionForegroundProperty);
@@ -67,7 +69,6 @@ public static partial class Cattach
     {
         obj.SetValue(CaptionForegroundProperty, value);
     }
-
 
     public static readonly DependencyProperty CaptionForegroundProperty =
         DependencyProperty.RegisterAttached("CaptionForeground", typeof(Brush), typeof(Cattach), new FrameworkPropertyMetadata(default(Brush), FrameworkPropertyMetadataOptions.Inherits, OnCaptionForegroundChanged));
@@ -81,7 +82,6 @@ public static partial class Cattach
         Brush o = (Brush)e.OldValue;
     }
 
-
     public static Brush GetCaptionBorderBrush(DependencyObject obj)
     {
         return (Brush)obj.GetValue(CaptionBorderBrushProperty);
@@ -91,7 +91,6 @@ public static partial class Cattach
     {
         obj.SetValue(CaptionBorderBrushProperty, value);
     }
-
 
     public static readonly DependencyProperty CaptionBorderBrushProperty =
         DependencyProperty.RegisterAttached("CaptionBorderBrush", typeof(Brush), typeof(Cattach), new FrameworkPropertyMetadata(default(Brush), FrameworkPropertyMetadataOptions.Inherits, OnCaptionBorderBrushChanged));
@@ -116,7 +115,6 @@ public static partial class Cattach
         obj.SetValue(CaptionHeightProperty, value);
     }
 
-
     public static readonly DependencyProperty CaptionHeightProperty =
         DependencyProperty.RegisterAttached("CaptionHeight", typeof(double), typeof(Cattach), new FrameworkPropertyMetadata(default(double), FrameworkPropertyMetadataOptions.Inherits, OnCaptionHeightChanged));
 
@@ -129,7 +127,6 @@ public static partial class Cattach
         double o = (double)e.OldValue;
     }
 
-
     public static Thickness GetCaptionBorderThickness(DependencyObject obj)
     {
         return (Thickness)obj.GetValue(CaptionBorderThicknessProperty);
@@ -139,7 +136,6 @@ public static partial class Cattach
     {
         obj.SetValue(CaptionBorderThicknessProperty, value);
     }
-
 
     public static readonly DependencyProperty CaptionBorderThicknessProperty =
         DependencyProperty.RegisterAttached("CaptionBorderThickness", typeof(Thickness), typeof(Cattach), new FrameworkPropertyMetadata(default(Thickness), FrameworkPropertyMetadataOptions.Inherits, OnCaptionBorderThicknessChanged));
@@ -153,7 +149,6 @@ public static partial class Cattach
         Thickness o = (Thickness)e.OldValue;
     }
 
-
     public static HorizontalAlignment GetCaptionHorizontalAlignment(DependencyObject obj)
     {
         return (HorizontalAlignment)obj.GetValue(CaptionHorizontalAlignmentProperty);
@@ -163,7 +158,6 @@ public static partial class Cattach
     {
         obj.SetValue(CaptionHorizontalAlignmentProperty, value);
     }
-
 
     public static readonly DependencyProperty CaptionHorizontalAlignmentProperty =
         DependencyProperty.RegisterAttached("CaptionHorizontalAlignment", typeof(HorizontalAlignment), typeof(Cattach), new PropertyMetadata(default(HorizontalAlignment), OnCaptionHorizontalAlignmentChanged));
@@ -177,7 +171,6 @@ public static partial class Cattach
         HorizontalAlignment o = (HorizontalAlignment)e.OldValue;
     }
 
-
     public static VerticalAlignment GetCaptionVerticalAlignment(DependencyObject obj)
     {
         return (VerticalAlignment)obj.GetValue(CaptionVerticalAlignmentProperty);
@@ -187,7 +180,6 @@ public static partial class Cattach
     {
         obj.SetValue(CaptionVerticalAlignmentProperty, value);
     }
-
 
     public static readonly DependencyProperty CaptionVerticalAlignmentProperty =
         DependencyProperty.RegisterAttached("CaptionVerticalAlignment", typeof(VerticalAlignment), typeof(Cattach), new PropertyMetadata(default(VerticalAlignment), OnCaptionVerticalAlignmentChanged));
@@ -201,7 +193,6 @@ public static partial class Cattach
         VerticalAlignment o = (VerticalAlignment)e.OldValue;
     }
 
-
     public static Thickness GetCaptionMargin(DependencyObject obj)
     {
         return (Thickness)obj.GetValue(CaptionMarginProperty);
@@ -211,7 +202,6 @@ public static partial class Cattach
     {
         obj.SetValue(CaptionMarginProperty, value);
     }
-
 
     public static readonly DependencyProperty CaptionMarginProperty =
         DependencyProperty.RegisterAttached("CaptionMargin", typeof(Thickness), typeof(Cattach), new PropertyMetadata(default(Thickness), OnCaptionMarginChanged));
@@ -225,7 +215,6 @@ public static partial class Cattach
         Thickness o = (Thickness)e.OldValue;
     }
 
-
     public static double GetCaptionFontSize(DependencyObject obj)
     {
         return (double)obj.GetValue(CaptionFontSizeProperty);
@@ -235,7 +224,6 @@ public static partial class Cattach
     {
         obj.SetValue(CaptionFontSizeProperty, value);
     }
-
 
     public static readonly DependencyProperty CaptionFontSizeProperty =
         DependencyProperty.RegisterAttached("CaptionFontSize", typeof(double), typeof(Cattach), new PropertyMetadata(15.0, OnCaptionFontSizeChanged));
@@ -249,7 +237,6 @@ public static partial class Cattach
         double o = (double)e.OldValue;
     }
 
-
     public static ControlTemplate GetCaptionLeftTemplate(DependencyObject obj)
     {
         return obj.GetValue(CaptionLeftTemplateProperty) as ControlTemplate;
@@ -259,7 +246,6 @@ public static partial class Cattach
     {
         obj.SetValue(CaptionLeftTemplateProperty, value);
     }
-
 
     public static readonly DependencyProperty CaptionLeftTemplateProperty =
         DependencyProperty.RegisterAttached("CaptionLeftTemplate", typeof(ControlTemplate), typeof(Cattach), new PropertyMetadata(default(ControlTemplate), OnCaptionLeftTemplateChanged));
@@ -273,7 +259,6 @@ public static partial class Cattach
         ControlTemplate o = e.OldValue as ControlTemplate;
     }
 
-
     public static ControlTemplate GetCaptionRightTemplate(DependencyObject obj)
     {
         return obj.GetValue(CaptionRightTemplateProperty) as ControlTemplate;
@@ -283,7 +268,6 @@ public static partial class Cattach
     {
         obj.SetValue(CaptionRightTemplateProperty, value);
     }
-
 
     public static readonly DependencyProperty CaptionRightTemplateProperty =
         DependencyProperty.RegisterAttached("CaptionRightTemplate", typeof(ControlTemplate), typeof(Cattach), new PropertyMetadata(default(ControlTemplate), OnCaptionRightTemplateChanged));
@@ -297,7 +281,6 @@ public static partial class Cattach
         ControlTemplate o = e.OldValue as ControlTemplate;
     }
 
-
     public static ControlTemplate GetCaptionCenterTemplate(DependencyObject obj)
     {
         return (ControlTemplate)obj.GetValue(CaptionCenterTemplateProperty);
@@ -307,7 +290,6 @@ public static partial class Cattach
     {
         obj.SetValue(CaptionCenterTemplateProperty, value);
     }
-
 
     public static readonly DependencyProperty CaptionCenterTemplateProperty =
         DependencyProperty.RegisterAttached("CaptionCenterTemplate", typeof(ControlTemplate), typeof(Cattach), new PropertyMetadata(default(ControlTemplate), OnCaptionCenterTemplateChanged));

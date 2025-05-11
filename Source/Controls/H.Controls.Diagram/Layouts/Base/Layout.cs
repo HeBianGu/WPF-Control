@@ -1,9 +1,12 @@
-﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
+
 using H.Mvvm.ViewModels.Base;
-using System.Collections.Generic;
-using System.Linq;
-using System.Windows;
-using System.Windows.Controls;
 using System.Xml.Serialization;
 
 namespace H.Controls.Diagram.Layouts.Base;
@@ -110,7 +113,6 @@ public abstract class Layout : BindableBase, ILayout
 
             Node.SetPosition(port, new Point(height_top_span * (i + 1) - port.DesiredSize.Width / 2, 0));
 
-
             //  Do ：设置范围
             Point port_point = new Point(point.X - node.DesiredSize.Width / 2.0 + height_top_span * (i + 1), point.Y - node.DesiredSize.Height / 2.0 + port.DesiredSize.Height / 2);
 
@@ -201,7 +203,6 @@ public abstract class Layout : BindableBase, ILayout
             from = new Point(point.X + (thickness.Left - thickness.Right) / 2, point.Y + (thickness.Top - thickness.Bottom) / 2);
         }
 
-
         //if (this.IsLinkCrossBound == true)
         //{
         //    //  Do ：设置End点交点 
@@ -226,7 +227,6 @@ public abstract class Layout : BindableBase, ILayout
         LinkLayer.SetStart(link, from);
         link.Update();
         //}
-
 
         //Debug.WriteLine(link.ToString());
     }

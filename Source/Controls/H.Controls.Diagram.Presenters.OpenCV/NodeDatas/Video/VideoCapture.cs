@@ -1,9 +1,10 @@
-﻿using H.Controls.Diagram.Flowables;
-using H.Services.Common;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Threading;
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
 
 namespace H.Controls.Diagram.Presenters.OpenCV.NodeDatas.Video;
 public interface IVideoFlowable
@@ -45,7 +46,6 @@ public class VideoCapture : VideoCaptureSrcNodeDataBase, ISrcFilePathableStartNo
             RaisePropertyChanged();
         }
     }
-
 
     private int _endFrame = int.MaxValue;
     [DefaultValue(int.MaxValue)]
@@ -110,7 +110,7 @@ public class VideoCapture : VideoCaptureSrcNodeDataBase, ISrcFilePathableStartNo
                           continue;
                       if (index % this.SpanFrame != 0)
                           continue;
-                      this.Message = $"{index}/{capture.FrameCount}[{Math.Round(index * 100.0 / capture.FrameCount, 1) }%]";
+                      this.Message = $"{index}/{capture.FrameCount}[{Math.Round(index * 100.0 / capture.FrameCount, 1)}%]";
                       var r = await this.InvokeFrameMatAsync(previors, diagram, frameMat);
                       if (r == null)
                           return this.Error("用户取消");

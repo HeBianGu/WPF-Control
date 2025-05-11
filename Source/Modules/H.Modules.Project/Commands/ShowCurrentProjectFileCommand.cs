@@ -1,6 +1,12 @@
-﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
+
 global using System.Diagnostics;
-using H.Services.Project;
 namespace H.Modules.Project.Commands;
 
 [Icon("\xE8E5")]
@@ -12,8 +18,8 @@ public class ShowCurrentProjectFileCommand : ShowProjectCommandBase
         IProjectItem current = IocProject.Instance.Current;
         if (current == null)
             return;
-    
-        string p = System.IO.Path.Combine(current.Path?? ProjectOptions.Instance.DefaultProjectFolder, current.Title + ProjectOptions.Instance.Extenstion);
+
+        string p = System.IO.Path.Combine(current.Path ?? ProjectOptions.Instance.DefaultProjectFolder, current.Title + ProjectOptions.Instance.Extenstion);
         Process.Start(new ProcessStartInfo("notepad", p) { UseShellExecute = true });
     }
 }

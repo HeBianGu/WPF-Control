@@ -1,9 +1,13 @@
-﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
 
-
-using H.Themes.Layouts;
+using H.Themes;
 using System.Windows;
-
 
 namespace H.Controls.Diagram.Presenters.Workflow.NodeDatas;
 
@@ -42,7 +46,7 @@ public abstract class LaneNodeDataBase : WorkflowNodeBase
 
     private CornerRadius _cornerRadius = new CornerRadius(2);
     /// <summary> 说明  </summary>
-    public CornerRadius CornerRadius
+    public new CornerRadius CornerRadius
     {
         get { return _cornerRadius; }
         set

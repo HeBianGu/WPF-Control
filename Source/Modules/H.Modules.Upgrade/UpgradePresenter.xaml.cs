@@ -1,7 +1,10 @@
-﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
-
-
-
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
 
 using H.Common.Attributes;
 using H.Mvvm.Commands;
@@ -53,7 +56,6 @@ internal class UpgradePresenter : BindableBase
         }
     }
 
-
     private bool _isDownLoading;
     /// <summary> 说明  </summary>
     public bool IsDownLoading
@@ -65,7 +67,6 @@ internal class UpgradePresenter : BindableBase
             RaisePropertyChanged();
         }
     }
-
 
     public RelayCommand DownLoadCommand => new RelayCommand(async x =>
     {
@@ -151,7 +152,6 @@ internal class UpgradePresenter : BindableBase
         return savefilePath;
     }
 
-
     public bool ShowSetup(string savePath, out string message)
     {
         message = null;
@@ -212,7 +212,6 @@ internal class DownloadService
         Myrq.UserAgent = "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; .NET CLR 1.0.3705;)";
         //Myrq.Headers.Add("Token", Token);
         HttpWebResponse myrp = (HttpWebResponse)Myrq.GetResponse();
-
 
         long totalBytes = myrp.ContentLength;
         total = (int)totalBytes;

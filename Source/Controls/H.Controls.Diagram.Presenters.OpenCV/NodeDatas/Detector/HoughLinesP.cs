@@ -1,11 +1,18 @@
-﻿namespace H.Controls.Diagram.Presenters.OpenCV.NodeDatas.Detector;
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
 
+namespace H.Controls.Diagram.Presenters.OpenCV.NodeDatas.Detector;
 
 //需要检测实际图像中的有限长度线段
 //处理时间要求较高
 //需要过滤短小的噪声线段
 //大多数实际应用场景
-[Display(Name = "直线概率检测", GroupName = "基础检测", Order = 2,Description = "检测有限长度的线段(x1,y1,x2,y2坐标)")]
+[Display(Name = "直线概率检测", GroupName = "基础检测", Order = 2, Description = "检测有限长度的线段(x1,y1,x2,y2坐标)")]
 public class HoughLinesP : HoughLinesPBase
 {
     private double _rho = 1.0;
@@ -110,7 +117,6 @@ public abstract class HoughLinesPBase : DetectorOpenCVNodeDataBase
         }
     }
 
-
     public IEnumerable<LineSegmentPoint> GetTargetLines(IEnumerable<LineSegmentPoint> lines)
     {
         if (this.TargetAngle > 0)
@@ -139,7 +145,6 @@ public abstract class HoughLinesPBase : DetectorOpenCVNodeDataBase
 
     //        if (line.IsAngleNear(angle, 15))
     //            yield return line;
-
 
     //        //// 水平线检测 (角度接近0或180度)
     //        //if (Math.Abs(angle) < 5 || Math.Abs(angle) > 165)
@@ -185,7 +190,6 @@ public abstract class HoughLinesPBase : DetectorOpenCVNodeDataBase
     //        if (angle.IsAngleNear(0.0f, 15.0f))
     //            yield return line;
 
-
     //        //// 水平线检测 (角度接近0或180度)
     //        //if (Math.Abs(angle) < 5 || Math.Abs(angle) > 165)
     //        //{
@@ -209,7 +213,6 @@ public abstract class HoughLinesPBase : DetectorOpenCVNodeDataBase
     //    //}
     //}
 }
-
 
 public static class LineSegmentPointExtension
 {

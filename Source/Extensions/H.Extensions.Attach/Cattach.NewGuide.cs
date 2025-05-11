@@ -1,4 +1,10 @@
-﻿//// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
 
 //using System;
 //using System.Windows;
@@ -22,7 +28,6 @@
 //            obj.SetValue(UseNewGuideProperty, value);
 //        }
 
-
 //        public static readonly DependencyProperty UseNewGuideProperty =
 //            DependencyProperty.RegisterAttached("UseNewGuide", typeof(bool), typeof(Cattach), new PropertyMetadata(false, OnUseNewGuideChanged));
 
@@ -33,7 +38,6 @@
 //            bool o = (bool)e.OldValue;
 //        }
 
-
 //        public static object GetNewGuideTitle(DependencyObject obj)
 //        {
 //            return obj.GetValue(NewGuideTitleProperty);
@@ -43,7 +47,6 @@
 //        {
 //            obj.SetValue(NewGuideTitleProperty, value);
 //        }
-
 
 //        public static readonly DependencyProperty NewGuideTitleProperty =
 //            DependencyProperty.RegisterAttached("NewGuideTitle", typeof(object), typeof(Cattach), new PropertyMetadata(null, OnNewGuideTitleChanged));
@@ -57,7 +60,6 @@
 //            object o = e.OldValue;
 //        }
 
-
 //        public static string GetNewGuideParentTitle(DependencyObject obj)
 //        {
 //            return (string)obj.GetValue(NewGuideParentTitleProperty);
@@ -67,7 +69,6 @@
 //        {
 //            obj.SetValue(NewGuideParentTitleProperty, value);
 //        }
-
 
 //        public static readonly DependencyProperty NewGuideParentTitleProperty =
 //            DependencyProperty.RegisterAttached("NewGuideParentTitle", typeof(string), typeof(Cattach), new PropertyMetadata(null, OnNewGuideParentTitleChanged));
@@ -81,7 +82,6 @@
 //            string o = (string)e.OldValue;
 //        }
 
-
 //        public static object GetNewGuideData(DependencyObject obj)
 //        {
 //            return obj.GetValue(NewGuideDataProperty);
@@ -91,7 +91,6 @@
 //        {
 //            obj.SetValue(NewGuideDataProperty, value);
 //        }
-
 
 //        public static readonly DependencyProperty NewGuideDataProperty =
 //            DependencyProperty.RegisterAttached("NewGuideData", typeof(object), typeof(Cattach), new PropertyMetadata(null, OnNewGuideDataChanged));
@@ -105,7 +104,6 @@
 //            object o = e.OldValue;
 //        }
 
-
 //        public static DataTemplate GetNewGuideDataTemplate(DependencyObject obj)
 //        {
 //            return (DataTemplate)obj.GetValue(NewGuideDataTemplateProperty);
@@ -115,7 +113,6 @@
 //        {
 //            obj.SetValue(NewGuideDataTemplateProperty, value);
 //        }
-
 
 //        public static readonly DependencyProperty NewGuideDataTemplateProperty =
 //            DependencyProperty.RegisterAttached("NewGuideDataTemplate", typeof(DataTemplate), typeof(Cattach), new PropertyMetadata(null, OnNewGuideDataTemplateChanged));
@@ -128,7 +125,6 @@
 
 //            DataTemplate o = (DataTemplate)e.OldValue;
 //        }
-
 
 //        public static bool GetIsNewGuide(DependencyObject obj)
 //        {

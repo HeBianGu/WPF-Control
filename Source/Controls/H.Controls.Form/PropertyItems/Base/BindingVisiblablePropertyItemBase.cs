@@ -1,4 +1,10 @@
-﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
 
 namespace H.Controls.Form.PropertyItems.Base;
 
@@ -10,11 +16,9 @@ public interface IRefreshOnValueChanged
 public abstract class BindingVisiblablePropertyItemBase : ObjectPropertyItemBase, IBindingVisibleable, IRefreshOnValueChanged
 {
     private readonly MethodInfo _methodInfo;
-    private readonly PropertyInfo _propertyInfo;
     protected BindingVisiblablePropertyItemBase(PropertyInfo property, object obj) : base(property, obj)
     {
         this._methodInfo = this.CreateMethodInfo();
-        this._propertyInfo = this.CreatePropertyInfo();
     }
 
     protected virtual MethodInfo CreateMethodInfo()
@@ -25,30 +29,10 @@ public abstract class BindingVisiblablePropertyItemBase : ObjectPropertyItemBase
         MethodInfo method = this.Obj.GetType().GetMethod(attribute.MethodName);
         return method == null ? null : method;
     }
-    protected virtual PropertyInfo CreatePropertyInfo()
-    {
-        BindingVisibleablePropertyNameAttribute attribute = this.PropertyInfo.GetCustomAttribute<BindingVisibleablePropertyNameAttribute>();
-        if (attribute?.PropertyName == null)
-            return null;
-        PropertyInfo propertyInfo = this.Obj.GetType().GetProperty(attribute.PropertyName);
-        return propertyInfo == null ? null : propertyInfo;
-    }
 
     public virtual bool GetVisible()
     {
-        if (this._methodInfo != null)
-        {
-            var v = this._methodInfo?.Invoke(this.Obj, null);
-            if (v is bool b && b == false)
-                return false;
-        }
-        if (this._propertyInfo != null)
-        {
-            var v = this._propertyInfo?.GetValue(this.Obj);
-            if (v is bool b && b == false)
-                return false;
-        }
-        return true;
+        return this._methodInfo?.Invoke(this.Obj, null) is not bool l || l != false;
     }
 
     #region - IRefreshOnValueChanged -

@@ -1,7 +1,12 @@
-﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
 
 using System.Collections;
-using System.Collections.ObjectModel;
 using System.Xml.Serialization;
 
 namespace H.Presenters.Design.Base;
@@ -37,7 +42,6 @@ public abstract class DataGridPresenterBase : CloneableDesignPresenterBase
         }
     }
 
-
     private Brush _gridBackground;
     [Display(Name = "表格背景色", GroupName = "样式")]
     public Brush GridBackground
@@ -50,7 +54,6 @@ public abstract class DataGridPresenterBase : CloneableDesignPresenterBase
         }
     }
 
-
     private Brush _gridHeaderBackground;
     [Display(Name = "列头背景色", GroupName = "样式")]
     public Brush GridHeaderBackground
@@ -62,7 +65,6 @@ public abstract class DataGridPresenterBase : CloneableDesignPresenterBase
             RaisePropertyChanged();
         }
     }
-
 
     private Brush _gridHeaderForeground;
     [Display(Name = "列头文本色", GroupName = "样式")]
@@ -100,7 +102,6 @@ public abstract class DataGridPresenterBase : CloneableDesignPresenterBase
         }
     }
 
-
     private Brush _verticalGridLinesBrush;
     [Display(Name = "垂直分割线色", GroupName = "样式")]
     public Brush VerticalGridLinesBrush
@@ -113,7 +114,6 @@ public abstract class DataGridPresenterBase : CloneableDesignPresenterBase
         }
     }
 
-
     private Brush _horizontalGridLinesBrush;
     [Display(Name = "水平分割线色", GroupName = "样式")]
     public Brush HorizontalGridLinesBrush
@@ -125,7 +125,6 @@ public abstract class DataGridPresenterBase : CloneableDesignPresenterBase
             RaisePropertyChanged();
         }
     }
-
 
     private HorizontalAlignment _columnHorizontalContentAlignment;
     [Display(Name = "列头水平停靠", GroupName = "常用,样式")]
@@ -174,7 +173,6 @@ public abstract class DataGridPresenterBase : CloneableDesignPresenterBase
             RaisePropertyChanged();
         }
     }
-
 
     private IEnumerable _itemsSource;
     [System.Text.Json.Serialization.JsonIgnore]

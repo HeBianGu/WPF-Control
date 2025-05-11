@@ -1,13 +1,13 @@
-﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
 
 global using H.Controls.Form.Provider;
-global using H.Extensions.Common;
 global using System.Collections;
-global using System.ComponentModel;
-global using System.ComponentModel.DataAnnotations;
-global using System.Windows.Controls;
-global using System.Windows.Data;
-global using System.Windows.Input;
 global using System.Windows.Threading;
 
 namespace H.Controls.Form;
@@ -1103,32 +1103,6 @@ public partial class Form
             }
             control.RefreshItemsFilter();
         }));
-
-    public GroupStyle BindingGroupStyle
-    {
-        get { return (GroupStyle)GetValue(BindingGroupStyleProperty); }
-        set { SetValue(BindingGroupStyleProperty, value); }
-    }
-
-    public static readonly DependencyProperty BindingGroupStyleProperty =
-        DependencyProperty.Register("BindingGroupStyle", typeof(GroupStyle), typeof(Form), new FrameworkPropertyMetadata(default(GroupStyle), (d, e) =>
-        {
-            Form control = d as Form;
-
-            if (control == null) return;
-
-            if (e.OldValue is GroupStyle o)
-            {
-                control.GroupStyle.Remove(o);
-            }
-
-            if (e.NewValue is GroupStyle n)
-            {
-                control.GroupStyle.Add(n);
-            }
-
-        }));
-
 }
 
 public class StaticForm : Form

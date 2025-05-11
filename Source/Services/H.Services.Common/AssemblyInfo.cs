@@ -1,41 +1,16 @@
-global using System.Windows.Markup;
-global using System.Windows;
-global using System.Collections.Generic;
-global using System.Linq;
-global using System.Threading.Tasks;
-global using System.Text;
-global using System.Windows.Controls;
-global using System.Windows.Data;
-global using System.Windows.Documents;
-global using System.Windows.Input;
-global using System.Windows.Media;
-global using System.Windows.Media.Imaging;
-global using System.Windows.Navigation;
-global using System.Windows.Shapes;
-global using System.Collections.ObjectModel;
-global using System.ComponentModel.DataAnnotations;
-global using System.ComponentModel;
-global using System.IO;
-global using System.Windows.Controls.Primitives;
-global using H.Services.Common;
-global using H.Services.Common.About;
-global using H.Services.Common.Crypt;
-global using H.Services.Common.DataBase;
-global using H.Services.Common.Excel;
-global using H.Services.Common.Feedback;
-global using H.Services.Common.Guide;
-global using H.Services.Common.MainWindow;
-global using H.Services.Common.Schedule;
-global using H.Services.Common.Serialize.Meta;
-global using H.Services.Common.SplashScreen;
-global using H.Services.Common.Theme;
-global using H.Services.Common.Upgrade;
-global using H.Iocable;
-global using H.Common;
-global using H.Common.Attributes;
+// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
+
 global using H.Common.Interfaces;
-global using H.Common.Interfaces.Where;
-global using H.Common.Transitionable;
+global using H.Iocable;
+global using System.Collections.Generic;
+global using System.Windows;
+global using System.Windows.Markup;
 
 [assembly: ThemeInfo(
     ResourceDictionaryLocation.None, //where theme specific resource dictionaries are located
@@ -45,7 +20,6 @@ global using H.Common.Transitionable;
                                               //(used if a resource is not found in the page,
                                               // app, or any theme specific resource dictionaries)
 )]
-
 
 [assembly: XmlnsDefinition("QQ:908293466", "H.Services.Common")]
 [assembly: XmlnsDefinition("QQ:908293466", "H.Services.Common.About")]

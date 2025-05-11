@@ -1,4 +1,10 @@
-﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
 
 using Microsoft.Win32;
 using System.Collections;
@@ -292,7 +298,6 @@ public static partial class Cattach
         //}
         //tbox.Focus();
 
-
         SaveFileDialog saveFileDialog = new SaveFileDialog();
         saveFileDialog.Filter = "文本文件(*.txt)|*.txt|所有文件|*.*";
         saveFileDialog.FileName = "设置默认文件名";
@@ -441,6 +446,7 @@ public static partial class Cattach
         obj.SetValue(IsOpenProperty, value);
     }
 
+    [Obsolete]
     public static readonly DependencyProperty IsOpenProperty =
         DependencyProperty.RegisterAttached("IsOpen", typeof(bool), typeof(Cattach), new PropertyMetadata(true, OnIsOpenChanged));
     [Obsolete]
@@ -451,6 +457,7 @@ public static partial class Cattach
         bool o = (bool)e.OldValue;
     }
 
+    [Obsolete]
     static Cattach()
     {
         //ClearTextCommand
@@ -502,7 +509,6 @@ public static partial class Cattach
     public static readonly DependencyProperty BuzyTextProperty =
         DependencyProperty.RegisterAttached("BuzyText", typeof(string), typeof(Cattach), new FrameworkPropertyMetadata("请等待"));
 
-
     public static Geometry GetPath(DependencyObject obj)
     {
         return (Geometry)obj.GetValue(PathProperty);
@@ -515,7 +521,6 @@ public static partial class Cattach
 
     public static readonly DependencyProperty PathProperty =
         DependencyProperty.RegisterAttached("Path", typeof(Geometry), typeof(Cattach), new FrameworkPropertyMetadata(default(Geometry)));
-
 
 }
 
@@ -671,10 +676,6 @@ public static partial class Cattach
 
     }
 
-
-
-
-
     //#region - 历史记录相关 -
 
     ///// <summary>
@@ -742,7 +743,6 @@ public static partial class Cattach
     //    metaSettingService.Serilize(metaSetting, "default");
     //}
 
-
     ///// <summary>
     ///// 历史数据
     ///// </summary>
@@ -794,7 +794,6 @@ public static partial class Cattach
 
     //}
 
-
     ///// <summary>
     ///// 验证数据的正则表达式 默认不等于空
     ///// </summary>
@@ -815,7 +814,6 @@ public static partial class Cattach
     //{
 
     //}
-
 
     ///// <summary>
     ///// 选中历史数据改变
@@ -874,7 +872,6 @@ public static partial class Cattach
         string o = (string)e.OldValue;
     }
 
-
     [Obsolete]
     public static readonly DependencyProperty EnumTypeSourceProperty = DependencyProperty.RegisterAttached(
         "EnumTypeSource", typeof(Type), typeof(Cattach), new FrameworkPropertyMetadata(default(Type), FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, OnEnumTypeSourceChanged));
@@ -905,7 +902,6 @@ public static partial class Cattach
                 items.ItemsSource = enumVlues;
                 return;
             }
-
 
             Array tempArray = Array.CreateInstance(actualEnumType, enumVlues.Length + 1);
 

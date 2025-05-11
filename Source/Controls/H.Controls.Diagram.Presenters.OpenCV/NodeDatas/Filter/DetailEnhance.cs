@@ -1,4 +1,12 @@
-﻿namespace H.Controls.Diagram.Presenters.OpenCV.NodeDatas.Filter;
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
+
+namespace H.Controls.Diagram.Presenters.OpenCV.NodeDatas.Filter;
 [Display(Name = "细节增强", GroupName = "细节增强是一种图像处理技术，旨在突出图像中的细节部分（如纹理、边缘、微小特征等），使图像看起来更加清晰和丰富", Order = 20)]
 public class DetailEnhance : FilterOpenCVNodeDataBase
 {

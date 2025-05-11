@@ -1,7 +1,12 @@
-﻿using H.Controls.Diagram.Flowables;
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
+
 using H.Controls.Diagram.Presenters.OpenCV.NodeDatas.Video;
-using System.Threading.Tasks;
-using System.Windows.Threading;
 
 namespace H.Controls.Diagram.Presenters.OpenCV.Base;
 
@@ -57,8 +62,6 @@ public abstract class VideoCaptureSrcNodeDataBase : SrcImageNodeDataBase, IVideo
         await Task.Delay(1000);
         return r;
     }
-
-
 
     public async Task<IFlowableResult> InvokeVideoFlowable(IFlowableDiagramData diagram, Func<Task<IFlowableResult>> action)
     {

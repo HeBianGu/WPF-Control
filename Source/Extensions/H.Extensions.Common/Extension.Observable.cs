@@ -1,4 +1,12 @@
-﻿using System.Collections;
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
+
+using System.Collections;
 using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Threading;
@@ -22,7 +30,6 @@ public static class ObservableExtension
         foreach (TSource sortedItem in sortedList)
             source.Add(sortedItem);
     }
-
 
     public static void OrderByDesc<TSource, TKey>(this Collection<TSource> source, Func<TSource, TKey> keySelector)
     {
@@ -156,7 +163,6 @@ public static class ObservableExtension
         collection.Insert(index, t);
     }
 
-
     public static T GetNext<T>(this ObservableCollection<T> collection, T item, bool circulation = true)
     {
         if (collection == null)
@@ -168,7 +174,6 @@ public static class ObservableExtension
             return circulation ? collection[0] : default;
         return collection[index + 1];
     }
-
 
     public static T GetProvious<T>(this ObservableCollection<T> collection, T item, bool circulation = true)
     {

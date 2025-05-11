@@ -1,4 +1,10 @@
-﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
 
 using System.Collections;
 using System.Windows;
@@ -10,7 +16,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
 namespace H.Extensions.Common;
-
 
 public static class ElementExtention
 {
@@ -191,7 +196,6 @@ public static class ElementExtention
         return null;
     }
 
-
     public static IEnumerable<T> GetElements<T>(this DependencyObject element) where T : FrameworkElement
     {
         T correctlyTyped = element as T;
@@ -257,7 +261,6 @@ public static class ElementExtention
         yield return obj;
     }
 
-
     public static IEnumerable<DependencyObject> PrintLogicalTree(this DependencyObject obj)
     {
         foreach (object v in LogicalTreeHelper.GetChildren(obj))
@@ -265,7 +268,6 @@ public static class ElementExtention
             if (v is DependencyObject)
             {
                 IEnumerable<DependencyObject> from = (v as DependencyObject).PrintLogicalTree();
-
 
                 foreach (DependencyObject item in from)
                 {
@@ -276,7 +278,6 @@ public static class ElementExtention
 
         yield return obj;
     }
-
 
     public static IEnumerable<T> FindAllVisualChild<T>(this DependencyObject obj, Predicate<T> match) where T : DependencyObject
     {
@@ -298,7 +299,6 @@ public static class ElementExtention
             }
         }
     }
-
 
     public static IEnumerable<DependencyObject> Ancestors(this DependencyObject dependencyObject)
     {
@@ -393,7 +393,6 @@ public static class ElementExtention
         return targetBitmap;
     }
 
-
     public static IEnumerable<Adorner> GetAdorners(this UIElement element, Predicate<Adorner> predicate = null)
     {
         AdornerLayer layer = AdornerLayer.GetAdornerLayer(element);
@@ -431,7 +430,6 @@ public static class ElementExtention
         }
         return true;
     }
-
 
     public static T HitTest<T>(this UIElement element, Point point, Predicate<T> predicate = null) where T : DependencyObject
     {

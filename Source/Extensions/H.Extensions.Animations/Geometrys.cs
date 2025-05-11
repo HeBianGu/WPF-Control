@@ -1,4 +1,12 @@
-﻿global using H.Common.Transitionable;
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
+
+global using H.Common.Transitionable;
 global using H.Mvvm.ViewModels.Base;
 global using System.Windows;
 
@@ -13,16 +21,6 @@ public abstract class TransitionableBase<V> : BindableBase, ITransitionable
     public TimeSpan CloseDuration { get; set; } = TimeSpan.FromMilliseconds(100);
     public V From { get; set; }
     public V To { get; set; }
-
-    /// <summary>
-    /// 控制动画的速度变化，使其更自然:表示动画总时间的 30% 用于加速（从慢到快）
-    /// </summary>
-    public double AccelerationRatio { get; set; } = 0.3;
-    /// <summary>
-    /// 控制动画的速度变化，使其更自然:表示动画总时间的 50% 用于减速（从快到慢）
-    /// </summary>
-    public double DecelerationRatio { get; set; } = 0.5;
-
     public abstract Task Close(DependencyObject visual);
     public abstract Task Show(DependencyObject visual);
 }

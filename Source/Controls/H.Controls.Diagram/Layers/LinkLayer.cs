@@ -1,9 +1,12 @@
-﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
+
 global using H.Controls.Diagram.Layers.Base;
-using System;
-using System.Collections.Generic;
-using System.Windows;
-using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 
@@ -36,7 +39,6 @@ public class LinkLayer : Layer
         }
     }
 
-
     /// <summary>
     /// 说明
     /// </summary>
@@ -60,7 +62,6 @@ public class LinkLayer : Layer
             //link.Update();
         }
     }
-
 
     protected override Size MeasureOverride(Size constraint)
     {
@@ -151,6 +152,5 @@ public class LinkLayer : Layer
 
         _storyboard.Begin();
     }
-
 
 }

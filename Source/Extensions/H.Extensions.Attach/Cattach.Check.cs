@@ -1,4 +1,10 @@
-﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
 
 using System.Windows;
 using System.Windows.Media;
@@ -18,7 +24,6 @@ public static partial class Cattach
         obj.SetValue(IsCheckedProperty, value);
     }
 
-
     public static readonly DependencyProperty IsCheckedProperty =
         DependencyProperty.RegisterAttached("IsChecked", typeof(bool?), typeof(Cattach), new PropertyMetadata(default(bool?), OnIsCheckedChanged));
 
@@ -31,7 +36,6 @@ public static partial class Cattach
         bool? o = (bool?)e.OldValue;
     }
 
-
     public static string GetCheckedGeometry(DependencyObject obj)
     {
         return (string)obj.GetValue(CheckedGeometryProperty);
@@ -41,7 +45,6 @@ public static partial class Cattach
     {
         obj.SetValue(CheckedGeometryProperty, value);
     }
-
 
     public static readonly DependencyProperty CheckedGeometryProperty =
         DependencyProperty.RegisterAttached("CheckedGeometry", typeof(string), typeof(Cattach), new PropertyMetadata(default(string), OnCheckedGeometryChanged));
@@ -55,7 +58,6 @@ public static partial class Cattach
         string o = (string)e.OldValue;
     }
 
-
     public static string GetUnCheckedGeometry(DependencyObject obj)
     {
         return (string)obj.GetValue(UnCheckedGeometryProperty);
@@ -65,7 +67,6 @@ public static partial class Cattach
     {
         obj.SetValue(UnCheckedGeometryProperty, value);
     }
-
 
     public static readonly DependencyProperty UnCheckedGeometryProperty =
         DependencyProperty.RegisterAttached("UnCheckedGeometry", typeof(string), typeof(Cattach), new PropertyMetadata(default(string), OnUnCheckedGeometryChanged));
@@ -78,7 +79,6 @@ public static partial class Cattach
 
         string o = (string)e.OldValue;
     }
-
 
     public static object GetCheckedContent(DependencyObject obj)
     {
@@ -102,7 +102,6 @@ public static partial class Cattach
         object o = (object)e.OldValue;
     }
 
-
     public static object GetUnCheckedContent(DependencyObject obj)
     {
         return (object)obj.GetValue(UnCheckedContentProperty);
@@ -125,7 +124,6 @@ public static partial class Cattach
         object o = (object)e.OldValue;
     }
 
-
     public static string GetCheckedText(DependencyObject obj)
     {
         return (string)obj.GetValue(CheckedTextProperty);
@@ -135,7 +133,6 @@ public static partial class Cattach
     {
         obj.SetValue(CheckedTextProperty, value);
     }
-
 
     public static readonly DependencyProperty CheckedTextProperty =
         DependencyProperty.RegisterAttached("CheckedText", typeof(string), typeof(Cattach), new PropertyMetadata(default(string), OnCheckedTextChanged));
@@ -149,7 +146,6 @@ public static partial class Cattach
         string o = (string)e.OldValue;
     }
 
-
     public static string GetUncheckedText(DependencyObject obj)
     {
         return (string)obj.GetValue(UncheckedTextProperty);
@@ -159,7 +155,6 @@ public static partial class Cattach
     {
         obj.SetValue(UncheckedTextProperty, value);
     }
-
 
     public static readonly DependencyProperty UncheckedTextProperty =
         DependencyProperty.RegisterAttached("UncheckedText", typeof(string), typeof(Cattach), new PropertyMetadata(default(string), OnUncheckedTextChanged));
@@ -183,7 +178,6 @@ public static partial class Cattach
         obj.SetValue(CheckedForegroundProperty, value);
     }
 
-
     public static readonly DependencyProperty CheckedForegroundProperty =
         DependencyProperty.RegisterAttached("CheckedForeground", typeof(Brush), typeof(Cattach), new PropertyMetadata(default(Brush), OnCheckedForegroundChanged));
 
@@ -206,7 +200,6 @@ public static partial class Cattach
         obj.SetValue(UncheckForegroundProperty, value);
     }
 
-
     public static readonly DependencyProperty UncheckForegroundProperty =
         DependencyProperty.RegisterAttached("UncheckForeground", typeof(Brush), typeof(Cattach), new PropertyMetadata(default(Brush), OnUncheckForegroundChanged));
 
@@ -228,7 +221,6 @@ public static partial class Cattach
         obj.SetValue(CheckedBackgroundProperty, value);
     }
 
-
     public static readonly DependencyProperty CheckedBackgroundProperty =
         DependencyProperty.RegisterAttached("CheckedBackground", typeof(Brush), typeof(Cattach), new PropertyMetadata(default(Brush), OnCheckedBackgroundChanged));
 
@@ -241,7 +233,6 @@ public static partial class Cattach
         Brush o = (Brush)e.OldValue;
     }
 
-
     public static Brush GetUncheckedBackground(DependencyObject obj)
     {
         return (Brush)obj.GetValue(UncheckedBackgroundProperty);
@@ -251,7 +242,6 @@ public static partial class Cattach
     {
         obj.SetValue(UncheckedBackgroundProperty, value);
     }
-
 
     public static readonly DependencyProperty UncheckedBackgroundProperty =
         DependencyProperty.RegisterAttached("UncheckedBackground", typeof(Brush), typeof(Cattach), new PropertyMetadata(default(Brush), OnUncheckedBackgroundChanged));
@@ -275,7 +265,6 @@ public static partial class Cattach
         obj.SetValue(CheckedBorderBrushProperty, value);
     }
 
-
     public static readonly DependencyProperty CheckedBorderBrushProperty =
         DependencyProperty.RegisterAttached("CheckedBorderBrush", typeof(Brush), typeof(Cattach), new PropertyMetadata(default(Brush), OnCheckedBorderBrushChanged));
 
@@ -288,7 +277,6 @@ public static partial class Cattach
         Brush o = (Brush)e.OldValue;
     }
 
-
     public static Brush GetUnCheckedBorderBrush(DependencyObject obj)
     {
         return (Brush)obj.GetValue(UnCheckedBorderBrushProperty);
@@ -298,7 +286,6 @@ public static partial class Cattach
     {
         obj.SetValue(UnCheckedBorderBrushProperty, value);
     }
-
 
     public static readonly DependencyProperty UnCheckedBorderBrushProperty =
         DependencyProperty.RegisterAttached("UnCheckedBorderBrush", typeof(Brush), typeof(Cattach), new PropertyMetadata(default(Brush), OnUnCheckedBorderBrushChanged));
@@ -322,7 +309,6 @@ public static partial class Cattach
         obj.SetValue(CheckedBorderThicknessProperty, value);
     }
 
-
     public static readonly DependencyProperty CheckedBorderThicknessProperty =
         DependencyProperty.RegisterAttached("CheckedBorderThickness", typeof(Thickness), typeof(Cattach), new PropertyMetadata(default(Thickness), OnCheckedBorderThicknessChanged));
 
@@ -335,7 +321,6 @@ public static partial class Cattach
         Thickness o = (Thickness)e.OldValue;
     }
 
-
     public static Thickness GetUnCheckedBorderThickness(DependencyObject obj)
     {
         return (Thickness)obj.GetValue(UnCheckedBorderThicknessProperty);
@@ -345,7 +330,6 @@ public static partial class Cattach
     {
         obj.SetValue(UnCheckedBorderThicknessProperty, value);
     }
-
 
     public static readonly DependencyProperty UnCheckedBorderThicknessProperty =
         DependencyProperty.RegisterAttached("UnCheckedBorderThickness", typeof(Thickness), typeof(Cattach), new PropertyMetadata(default(Thickness), OnUnCheckedBorderThicknessChanged));
@@ -369,7 +353,6 @@ public static partial class Cattach
         obj.SetValue(CheckedOpacityProperty, value);
     }
 
-
     public static readonly DependencyProperty CheckedOpacityProperty =
         DependencyProperty.RegisterAttached("CheckedOpacity", typeof(double), typeof(Cattach), new PropertyMetadata(1.0, OnCheckedOpacityChanged));
 
@@ -382,7 +365,6 @@ public static partial class Cattach
         double o = (double)e.OldValue;
     }
 
-
     public static double GetUncheckedOpacity(DependencyObject obj)
     {
         return (double)obj.GetValue(UncheckedOpacityProperty);
@@ -392,7 +374,6 @@ public static partial class Cattach
     {
         obj.SetValue(UncheckedOpacityProperty, value);
     }
-
 
     public static readonly DependencyProperty UncheckedOpacityProperty =
         DependencyProperty.RegisterAttached("UncheckedOpacity", typeof(double), typeof(Cattach), new PropertyMetadata(1.0, OnUncheckedOpacityChanged));

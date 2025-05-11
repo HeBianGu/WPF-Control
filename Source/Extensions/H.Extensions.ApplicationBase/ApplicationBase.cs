@@ -1,4 +1,12 @@
-﻿using H.Common.Interfaces;
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
+
+using H.Common.Interfaces;
 using H.Extensions.AppPath;
 using H.Extensions.Attach;
 using H.Services.AppPath;
@@ -26,7 +34,6 @@ public abstract partial class ApplicationBase : Application, IConfigureableAppli
         AppPaths.Register(this.CreateAppPathServce());
         this.InitExcetion();
         this.InitServiceCollection();
-        this.ShutdownMode = ShutdownMode.OnMainWindowClose;
     }
 
     protected void InitServiceCollection()

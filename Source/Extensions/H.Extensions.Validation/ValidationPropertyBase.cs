@@ -1,7 +1,12 @@
-﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
 
 using H.Mvvm.ViewModels.Base;
-using System.ComponentModel.DataAnnotations;
 
 namespace H.Extensions.Validation;
 
@@ -9,7 +14,6 @@ namespace H.Extensions.Validation;
 public class ValidationPropertyBase : Bindable
 {
     #region - 属性 -
-
 
     private string _name;
     /// <summary> 实体字段名称  </summary>
@@ -22,7 +26,6 @@ public class ValidationPropertyBase : Bindable
             RaisePropertyChanged("Name");
         }
     }
-
 
     private string _displayName;
     /// <summary> 说明  </summary>
@@ -48,7 +51,6 @@ public class ValidationPropertyBase : Bindable
         }
     }
 
-
     private string _message;
     /// <summary> 验证消息  </summary>
     public string Message
@@ -62,4 +64,5 @@ public class ValidationPropertyBase : Bindable
     }
 
     #endregion
+
 }

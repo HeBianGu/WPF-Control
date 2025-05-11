@@ -1,4 +1,10 @@
-﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
 
 using System.Windows;
 using System.Windows.Media;
@@ -43,7 +49,6 @@ public static partial class Cattach
 
     }
 
-
     public static double GetIconOpacity(DependencyObject obj)
     {
         return (double)obj.GetValue(IconOpacityProperty);
@@ -53,7 +58,6 @@ public static partial class Cattach
     {
         obj.SetValue(IconOpacityProperty, value);
     }
-
 
     public static readonly DependencyProperty IconOpacityProperty =
         DependencyProperty.RegisterAttached("IconOpacity", typeof(double), typeof(Cattach), new PropertyMetadata(1.0, OnIconOpacityChanged));
@@ -79,7 +83,6 @@ public static partial class Cattach
     {
         obj.SetValue(IconProperty, value);
     }
-
 
     public static readonly DependencyProperty IconSizeProperty = DependencyProperty.RegisterAttached(
         "IconSize", typeof(double), typeof(Cattach), new FrameworkPropertyMetadata(12D));
@@ -107,7 +110,6 @@ public static partial class Cattach
         obj.SetValue(IconMarginProperty, value);
     }
 
-
     public static Brush GetIconForeground(DependencyObject obj)
     {
         return (Brush)obj.GetValue(IconForegroundProperty);
@@ -117,7 +119,6 @@ public static partial class Cattach
     {
         obj.SetValue(IconForegroundProperty, value);
     }
-
 
     public static readonly DependencyProperty IconForegroundProperty =
         DependencyProperty.RegisterAttached("IconForeground", typeof(Brush), typeof(Cattach), new PropertyMetadata(default(Brush), OnIconForegroundChanged));

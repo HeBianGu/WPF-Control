@@ -1,4 +1,10 @@
-﻿using H.Controls.Form;
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
 
 namespace H.Controls.Diagram.Presenters.OpenCV.Base;
 [Icon(FontIcons.Photo)]
@@ -16,7 +22,6 @@ public abstract class DetectorOpenCVNodeDataBase : OpenCVNodeDataBase, IDetector
         }
     }
 
-
     private int _outPutThickness = 3;
     [DefaultValue(3)]
     [Display(Name = "绘制线条粗细", GroupName = "输出样式")]
@@ -30,7 +35,7 @@ public abstract class DetectorOpenCVNodeDataBase : OpenCVNodeDataBase, IDetector
         }
     }
 
-    private Color _outputColor= Colors.Chartreuse;
+    private Color _outputColor = Colors.Chartreuse;
     [Display(Name = "绘制颜色", GroupName = "输出样式")]
     public Color OutputColor
     {

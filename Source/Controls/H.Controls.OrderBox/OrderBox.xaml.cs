@@ -1,12 +1,12 @@
-﻿global using H.Common.Interfaces.Where;
-using H.Services.Common;
-using System;
-using System.Collections;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Input;
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
+
+global using H.Common.Interfaces.Where;
 
 namespace H.Controls.OrderBox
 {
@@ -86,7 +86,6 @@ namespace H.Controls.OrderBox
             if (checkItem == null)
                 return;
 
-
             if (e.AddedItems.Count == 1 && this.Items[0] == e.AddedItems[0] && checkItem.IsMouseOver)
             {
                 _flag = true;
@@ -117,7 +116,6 @@ namespace H.Controls.OrderBox
             this.OnOrderChanged();
         }
 
-
         public IOrderWhereable Order
         {
             get { return (IOrderWhereable)GetValue(OrderProperty); }
@@ -143,7 +141,6 @@ namespace H.Controls.OrderBox
 
             }));
 
-
         public static readonly RoutedEvent OrderChangedRoutedEvent =
             EventManager.RegisterRoutedEvent("OrderChanged", RoutingStrategy.Bubble, typeof(EventHandler<RoutedEventArgs>), typeof(OrderBox));
 
@@ -152,7 +149,6 @@ namespace H.Controls.OrderBox
             add { this.AddHandler(OrderChangedRoutedEvent, value); }
             remove { this.RemoveHandler(OrderChangedRoutedEvent, value); }
         }
-
 
         public void OnOrderChanged()
         {

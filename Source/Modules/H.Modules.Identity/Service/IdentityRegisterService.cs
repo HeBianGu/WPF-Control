@@ -1,10 +1,14 @@
-﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
-using H.Services.Common;
-using Microsoft.Extensions.Options;
-using System;
-using System.Text.RegularExpressions;
-using H.Extensions.DataBase;
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
+
 using H.Services.Operation;
+using Microsoft.Extensions.Options;
+using System.Text.RegularExpressions;
 
 namespace H.Modules.Identity
 {
@@ -64,7 +68,6 @@ namespace H.Modules.Identity
             _repository.Insert(user, true);
             Ioc<IOperationService>.Instance?.Log<hi_dd_user>("用户注册", $"{user.Account}");
             return true;
-
 
         }
 

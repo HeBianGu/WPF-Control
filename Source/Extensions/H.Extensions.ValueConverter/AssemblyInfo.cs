@@ -1,38 +1,27 @@
-global using System.Windows.Markup;
-global using System.Windows;
+// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
+
+global using H.Extensions.Common;
+global using H.Mvvm.Commands;
+global using System;
 global using System.Collections.Generic;
+global using System.ComponentModel;
+global using System.ComponentModel.DataAnnotations;
+global using System.IO;
 global using System.Linq;
-global using System.Threading.Tasks;
 global using System.Text;
+global using System.Windows;
 global using System.Windows.Controls;
 global using System.Windows.Data;
-global using System.Windows.Documents;
 global using System.Windows.Input;
+global using System.Windows.Markup;
 global using System.Windows.Media;
 global using System.Windows.Media.Imaging;
-global using System.Windows.Navigation;
-global using System.Windows.Shapes;
-global using System.Collections.ObjectModel;
-global using System.ComponentModel.DataAnnotations;
-global using System.ComponentModel;
-global using System.IO;
-global using System.Windows.Controls.Primitives;
-global using H.Extensions.ValueConverter;
-global using H.Extensions.ValueConverter.Bools;
-global using H.Extensions.ValueConverter.Brushs;
-global using H.Extensions.ValueConverter.Doubles;
-global using H.Extensions.ValueConverter.Files;
-global using H.Extensions.ValueConverter.IEnumerables;
-global using H.Extensions.ValueConverter.Images;
-global using H.Extensions.ValueConverter.Ints;
-global using H.Extensions.ValueConverter.ItemsControls;
-global using H.Extensions.ValueConverter.Types;
-global using H.Extensions.ValueConverter.Visiblilitys;
-global using H.Mvvm.Commands;
-global using H.Mvvm.ViewModels;
-global using H.Mvvm.ViewModels.Tree;
-global using H.Extensions.Common;
-global using System;
 
 [assembly: ThemeInfo(
     ResourceDictionaryLocation.None, //where theme specific resource dictionaries are located

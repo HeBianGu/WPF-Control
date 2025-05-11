@@ -1,18 +1,22 @@
-﻿using H.Controls.Form.PropertyItem.Attribute.SourcePropertyItem;
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
+
+using H.Controls.Form.PropertyItem.Attribute.SourcePropertyItem;
 using H.Controls.Form.PropertyItem.ComboBoxPropertyItems;
 using H.Extensions.Setting;
-using H.Services.AppPath;
 using H.Services.Setting;
 using H.Styles.Bootstrap.StyleResources;
-using H.Themes.Colors;
+using H.Styles.StyleResources;
 using H.Themes.Extensions;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
-using System.Windows.Media;
-using System.Windows.Media.Media3D;
 using System.Xml.Serialization;
-using H.Styles.StyleResources;
 
 namespace H.Modules.Style;
 

@@ -1,4 +1,10 @@
-﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
 
 using System.ComponentModel;
 using System.Windows;
@@ -18,7 +24,6 @@ public static partial class Cattach
     {
         obj.SetValue(UseSearchProperty, value);
     }
-
 
     public static readonly DependencyProperty UseSearchProperty =
         DependencyProperty.RegisterAttached("UseSearch", typeof(bool), typeof(Cattach), new FrameworkPropertyMetadata(false, OnUseSearchChanged));
@@ -43,7 +48,6 @@ public static partial class Cattach
         obj.SetValue(SearchWidthProperty, value);
     }
 
-
     public static readonly DependencyProperty SearchWidthProperty =
         DependencyProperty.RegisterAttached("SearchWidth", typeof(double), typeof(Cattach), new FrameworkPropertyMetadata(default(double), OnSearchWidthChanged));
 
@@ -56,7 +60,6 @@ public static partial class Cattach
         //double o = e.OldValue as double;
     }
 
-
     public static Dock GetSearchDock(DependencyObject obj)
     {
         return (Dock)obj.GetValue(SearchDockProperty);
@@ -66,7 +69,6 @@ public static partial class Cattach
     {
         obj.SetValue(SearchDockProperty, value);
     }
-
 
     public static readonly DependencyProperty SearchDockProperty =
         DependencyProperty.RegisterAttached("SearchDock", typeof(Dock), typeof(Cattach), new FrameworkPropertyMetadata(Dock.Right, OnSearchDockChanged));
@@ -80,7 +82,6 @@ public static partial class Cattach
         Dock o = (Dock)e.OldValue;
     }
 
-
     public static bool GetSearchUseHistory(DependencyObject obj)
     {
         return (bool)obj.GetValue(SearchUseHistoryProperty);
@@ -90,7 +91,6 @@ public static partial class Cattach
     {
         obj.SetValue(SearchUseHistoryProperty, value);
     }
-
 
     public static readonly DependencyProperty SearchUseHistoryProperty =
         DependencyProperty.RegisterAttached("SearchUseHistory", typeof(bool), typeof(Cattach), new FrameworkPropertyMetadata(false, OnSearchUseHistoryChanged));
@@ -104,7 +104,6 @@ public static partial class Cattach
         bool o = (bool)e.OldValue;
     }
 
-
     public static double GetSearchHeight(DependencyObject obj)
     {
         return (double)obj.GetValue(SearchHeightProperty);
@@ -114,7 +113,6 @@ public static partial class Cattach
     {
         obj.SetValue(SearchHeightProperty, value);
     }
-
 
     public static readonly DependencyProperty SearchHeightProperty =
         DependencyProperty.RegisterAttached("SearchHeight", typeof(double), typeof(Cattach), new PropertyMetadata(default(double), OnSearchHeightChanged));
@@ -128,7 +126,6 @@ public static partial class Cattach
         double o = (double)e.OldValue;
     }
 
-
     public static VerticalAlignment GetSearchVerticalAlignment(DependencyObject obj)
     {
         return (VerticalAlignment)obj.GetValue(SearchVerticalAlignmentProperty);
@@ -138,7 +135,6 @@ public static partial class Cattach
     {
         obj.SetValue(SearchVerticalAlignmentProperty, value);
     }
-
 
     public static readonly DependencyProperty SearchVerticalAlignmentProperty =
         DependencyProperty.RegisterAttached("SearchVerticalAlignment", typeof(VerticalAlignment), typeof(Cattach), new PropertyMetadata(default(VerticalAlignment), OnSearchVerticalAlignmentChanged));
@@ -152,7 +148,6 @@ public static partial class Cattach
         VerticalAlignment o = (VerticalAlignment)e.OldValue;
     }
 
-
     public static HorizontalAlignment GetSearchHorizontalAlignment(DependencyObject obj)
     {
         return (HorizontalAlignment)obj.GetValue(SearchHorizontalAlignmentProperty);
@@ -162,7 +157,6 @@ public static partial class Cattach
     {
         obj.SetValue(SearchHorizontalAlignmentProperty, value);
     }
-
 
     public static readonly DependencyProperty SearchHorizontalAlignmentProperty =
         DependencyProperty.RegisterAttached("SearchHorizontalAlignment", typeof(HorizontalAlignment), typeof(Cattach), new PropertyMetadata(default(HorizontalAlignment), OnSearchHorizontalAlignmentChanged));
@@ -176,7 +170,6 @@ public static partial class Cattach
         HorizontalAlignment o = (HorizontalAlignment)e.OldValue;
     }
 
-
     public static Thickness GetSearchMargin(DependencyObject obj)
     {
         return (Thickness)obj.GetValue(SearchMarginProperty);
@@ -186,7 +179,6 @@ public static partial class Cattach
     {
         obj.SetValue(SearchMarginProperty, value);
     }
-
 
     public static readonly DependencyProperty SearchMarginProperty =
         DependencyProperty.RegisterAttached("SearchMargin", typeof(Thickness), typeof(Cattach), new PropertyMetadata(default(Thickness), OnSearchMarginChanged));
@@ -200,7 +192,6 @@ public static partial class Cattach
         Thickness o = (Thickness)e.OldValue;
     }
 
-
     public static string GetSearchText(DependencyObject obj)
     {
         return (string)obj.GetValue(SearchTextProperty);
@@ -210,7 +201,6 @@ public static partial class Cattach
     {
         obj.SetValue(SearchTextProperty, value);
     }
-
 
     public static readonly DependencyProperty SearchTextProperty =
         DependencyProperty.RegisterAttached("SearchText", typeof(string), typeof(Cattach), new PropertyMetadata(default(string), OnSearchTextChanged));
@@ -223,6 +213,5 @@ public static partial class Cattach
 
         string o = (string)e.OldValue;
     }
-
 
 }

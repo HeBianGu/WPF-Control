@@ -1,19 +1,19 @@
-﻿using H.Presenters.Common;
-using H.Services.Common;
-using H.Mvvm;
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
+
+using H.Mvvm.Commands;
+using H.Mvvm.ViewModels.Base;
+using H.Presenters.Common;
+using H.Services.Message;
 using Quartz;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text.Json.Serialization;
-using System.Threading.Tasks;
-using System.Xml.Serialization;
-using H.Mvvm.ViewModels.Base;
-using H.Mvvm.Commands;
-using H.Services.Message;
 
 namespace H.Controls.ScheduleBox
 {
@@ -90,7 +90,6 @@ namespace H.Controls.ScheduleBox
                 this.Triggers.Add(trigger);
         });
 
-
         public RelayCommand DeleteTriggerCommand => new RelayCommand(l =>
         {
             if (l is IScheduleTrigger scheduleTrigger)
@@ -99,12 +98,11 @@ namespace H.Controls.ScheduleBox
             }
         });
         [System.Text.Json.Serialization.JsonIgnore]
-        
+
         [System.Xml.Serialization.XmlIgnore]
         [Browsable(true)]
         [Display(Name = "任务分组")]
         public override string GroupName { get => base.GroupName; set => base.GroupName = value; }
-
 
         private DateTime? _nextFireTime;
         public DateTime? NextFireTime
@@ -116,7 +114,6 @@ namespace H.Controls.ScheduleBox
                 RaisePropertyChanged();
             }
         }
-
 
         private bool _isRunning;
         public bool IsRunning

@@ -1,0 +1,7 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:H.Themes"
+                    xmlns:system="clr-namespace:System;assembly=mscorlib">
+    <FontFamily x:Key="{ComponentResourceKey ResourceId=S.System.FontFamily, TypeInTargetAssembly={x:Type local:SystemKeys}}">微软雅黑</FontFamily>
+    <FontFamily x:Key="{ComponentResourceKey ResourceId=S.System.FontFamily.Icon, TypeInTargetAssembly={x:Type local:SystemKeys}}">Segoe MDL2 Assets</FontFamily>
+</ResourceDictionary>

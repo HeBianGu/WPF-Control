@@ -1,15 +1,18 @@
-﻿using H.Presenters.Common;
-using H.Services.Common;
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
+
+using H.Presenters.Common;
 using H.Services.Message;
 using Quartz;
 using Quartz.Impl;
-using System;
 using System.Collections.ObjectModel;
-using System.Linq;
 using System.Reflection;
 using System.Runtime.CompilerServices;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -73,7 +76,6 @@ namespace H.Controls.ScheduleBox
                 };
                 this.CommandBindings.Add(binding);
             }
-
 
             {
                 CommandBinding binding = new CommandBinding(ScheduleCommands.Edit);
@@ -140,9 +142,7 @@ namespace H.Controls.ScheduleBox
 
             }));
 
-
         public ObservableCollection<IScheduleJob> JobsSource { get; } = new ObservableCollection<IScheduleJob>();
-
 
         IScheduler _scheduler;
         public async void Start()
@@ -159,12 +159,10 @@ namespace H.Controls.ScheduleBox
             await _scheduler.Start();
         }
 
-
         public void Stop()
         {
             _scheduler?.Shutdown();
         }
-
 
         //private void RefreshData()
         //{
@@ -223,7 +221,6 @@ namespace H.Controls.ScheduleBox
             return Task.CompletedTask;
         }
 
-
         public void AddMessage(string message, [CallerMemberName] string methodName = null)
         {
             this.Dispatcher.Invoke(() =>
@@ -231,7 +228,6 @@ namespace H.Controls.ScheduleBox
                 this.Messages.Add($"[{DateTimeOffset.Now}] [{methodName}] - {message}");
             });
         }
-
 
         public Task JobDeleted(JobKey jobKey, CancellationToken cancellationToken = default)
         {

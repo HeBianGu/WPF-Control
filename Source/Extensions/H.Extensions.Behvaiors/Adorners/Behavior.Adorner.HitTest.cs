@@ -1,11 +1,13 @@
-﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
-
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
 
 #if NET
 #endif 
-using System.Windows;
-using System.Windows.Documents;
-
 namespace H.Extensions.Behvaiors.Adorners;
 
 public abstract class HitTestAdornerBehavior : AdornerBehaviorBase
@@ -20,7 +22,6 @@ public abstract class HitTestAdornerBehavior : AdornerBehaviorBase
         obj.SetValue(HitTestAdornerTypeProperty, value);
     }
 
-
     public static readonly DependencyProperty HitTestAdornerTypeProperty =
         DependencyProperty.RegisterAttached("HitTestAdornerType", typeof(Type), typeof(HitTestAdornerBehavior), new PropertyMetadata(default(Type), OnHitTestAdornerTypeChanged));
 
@@ -32,7 +33,6 @@ public abstract class HitTestAdornerBehavior : AdornerBehaviorBase
 
         Type o = (Type)e.OldValue;
     }
-
 
     protected UIElement _preVisualHitElement = null;
     //protected UIElement _visualHit = null;
@@ -46,7 +46,6 @@ public abstract class HitTestAdornerBehavior : AdornerBehaviorBase
     {
         obj.SetValue(IsHitTestProperty, value);
     }
-
 
     public static readonly DependencyProperty IsHitTestProperty =
         DependencyProperty.RegisterAttached("IsHitTest", typeof(bool), typeof(HitTestAdornerBehavior), new PropertyMetadata(default(bool), OnIsHitTestChanged));
@@ -90,7 +89,6 @@ public abstract class HitTestAdornerBehavior : AdornerBehaviorBase
 
     //    return HitTestFilterBehavior.Continue;
     //}
-
 
     protected virtual void AddAdorner(UIElement elment)
     {
@@ -136,6 +134,4 @@ public abstract class HitTestAdornerBehavior : AdornerBehaviorBase
         Clear();
     }
 }
-
-
 

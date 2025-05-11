@@ -1,8 +1,10 @@
-﻿//using System;
-//using System.IO;
-//using System.Security.Cryptography;
-//using System.Text;
-//using System.Text.RegularExpressions;
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
 
 //namespace EncryptHelper
 //{
@@ -10,7 +12,6 @@
 //    {
 //        //DES用于加密内容较多的敏感信息
 //        //AES用于加密内容较少强度较高的信息
-
 
 //        /// <summary>
 //        /// Aes加密

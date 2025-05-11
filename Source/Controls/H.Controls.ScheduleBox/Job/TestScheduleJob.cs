@@ -1,8 +1,14 @@
-﻿using Quartz;
-using System;
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
+
+using Quartz;
 using System.ComponentModel.DataAnnotations;
 using System.Diagnostics;
-using System.Threading;
 
 namespace H.Controls.ScheduleBox
 {
@@ -26,7 +32,6 @@ namespace H.Controls.ScheduleBox
             //Debug.WriteLine($"【任务执行】：{DateTime.Now}");
             //Debug.WriteLine($"【触发时间】：{context.ScheduledFireTimeUtc?.LocalDateTime}");
             //Debug.WriteLine($"【下次触发时间】：{context.NextFireTimeUtc?.LocalDateTime}");
-
 
             //IocSchedule.Instance.OnLogMessaged($"【任务执行】：{DateTime.Now}");
             //IocSchedule.Instance.OnLogMessaged($"【触发时间】：{context.ScheduledFireTimeUtc?.LocalDateTime}");

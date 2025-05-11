@@ -1,4 +1,12 @@
-﻿namespace H.Controls.Diagram.Presenters.OpenCV.NodeDatas.Video;
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
+
+namespace H.Controls.Diagram.Presenters.OpenCV.NodeDatas.Video;
 [Display(Name = "前景提取", GroupName = "视频操作", Order = 0)]
 public class MOG : OpenCVNodeDataBase, IVideoFlowable
 {
@@ -16,8 +24,6 @@ public class MOG : OpenCVNodeDataBase, IVideoFlowable
         _mog.Dispose();
     }
 
-
-
     private int _history = 200;
     [Display(Name = "历史帧数", GroupName = "数据", Description = "设置高斯混合模型的历史帧数")]
     public int History
@@ -29,7 +35,6 @@ public class MOG : OpenCVNodeDataBase, IVideoFlowable
             RaisePropertyChanged();
         }
     }
-
 
     private int _nMixtures = 5;
     [Display(Name = "成分数量", GroupName = "数据", Description = "设置高斯混合模型中混合成分的数量")]
@@ -43,7 +48,6 @@ public class MOG : OpenCVNodeDataBase, IVideoFlowable
         }
     }
 
-
     private double _backgroundRatio = 0.7;
     [Display(Name = "背景比例", GroupName = "数据", Description = "设置背景建模过程中前景和背景的比例")]
     public double BackgroundRatio
@@ -55,7 +59,6 @@ public class MOG : OpenCVNodeDataBase, IVideoFlowable
             RaisePropertyChanged();
         }
     }
-
 
     private double _noiseSigma = 0;
     [Display(Name = "噪声水平", GroupName = "数据", Description = "它决定了在背景建模过程中如何处理图像中的噪声")]
@@ -92,7 +95,6 @@ public class MOG : OpenCVNodeDataBase, IVideoFlowable
             RaisePropertyChanged();
         }
     }
-
 
     protected override FlowableResult<Mat> Invoke(ISrcImageNodeData srcImageNodeData, IOpenCVNodeData from, IFlowableDiagramData diagram)
     {

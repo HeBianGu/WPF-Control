@@ -1,4 +1,11 @@
-﻿
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
+
 namespace H.Controls.Diagram.Presenters.OpenCV.NodeDatas.Basic;
 [Display(Name = "图像拼接", GroupName = "基础函数", Description = "将多张重叠的图像拼接成一张更大、更完整的图像", Order = 71)]
 public class Stitching : BasicOpenCVNodeDataBase

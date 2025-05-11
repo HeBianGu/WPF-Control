@@ -1,4 +1,11 @@
-﻿
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
+
 using H.ApplicationBases.Identify;
 using H.DataBases.Share;
 using H.DataBases.Sqlite;
@@ -6,7 +13,6 @@ using H.Extensions.DataBase;
 using H.Modules.Identity;
 using H.Modules.Login;
 using H.Modules.Operation;
-using H.Services.Common.About;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace System
@@ -42,7 +48,6 @@ namespace System
             services.AddIdentityLoginService();
             services.AddIdentityRegisterService(opt.GetConfigOptions<Action<IIdentifyOptions>>());
         }
-
 
         public static void UseIdentifyDefaultOptions(this IApplicationBuilder app, Action<IDefaultIndentifyOptions> options = null)
         {

@@ -1,11 +1,11 @@
-﻿
-using H.Mvvm;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Windows;
-using System.Windows.Controls;
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
+
 using H.Common.Interfaces;
 
 namespace H.Controls.FilterBox
@@ -39,13 +39,11 @@ namespace H.Controls.FilterBox
             this.OnFilterChanged();
         }
 
-
         public string DisplayName
         {
             get { return (string)GetValue(DisplayNameProperty); }
             set { SetValue(DisplayNameProperty, value); }
         }
-
 
         public static readonly DependencyProperty DisplayNameProperty =
             DependencyProperty.Register("DisplayName", typeof(string), typeof(TextFilterBox), new FrameworkPropertyMetadata(default(string), (d, e) =>
@@ -65,13 +63,11 @@ namespace H.Controls.FilterBox
                 }
             }));
 
-
         public bool UseSearchable
         {
             get { return (bool)GetValue(UseSearchableProperty); }
             set { SetValue(UseSearchableProperty, value); }
         }
-
 
         public static readonly DependencyProperty UseSearchableProperty =
             DependencyProperty.Register("UseSearchable", typeof(bool), typeof(TextFilterBox), new FrameworkPropertyMetadata(default(bool), (d, e) =>
@@ -98,7 +94,6 @@ namespace H.Controls.FilterBox
             set { SetValue(PropertyNamesProperty, value); }
         }
 
-
         public static readonly DependencyProperty PropertyNamesProperty =
             DependencyProperty.Register("PropertyNames", typeof(string), typeof(TextFilterBox), new FrameworkPropertyMetadata(default(string), (d, e) =>
             {
@@ -117,13 +112,11 @@ namespace H.Controls.FilterBox
                 }
             }));
 
-
         public StringComparison StringComparison
         {
             get { return (StringComparison)GetValue(StringComparisonProperty); }
             set { SetValue(StringComparisonProperty, value); }
         }
-
 
         public static readonly DependencyProperty StringComparisonProperty =
             DependencyProperty.Register("StringComparison", typeof(StringComparison), typeof(TextFilterBox), new FrameworkPropertyMetadata(StringComparison.OrdinalIgnoreCase, (d, e) =>
@@ -144,14 +137,11 @@ namespace H.Controls.FilterBox
 
             }));
 
-
-
         public IFilterable Filter
         {
             get { return (IFilterable)GetValue(FilterProperty); }
             private set { SetValue(FilterProperty, value); }
         }
-
 
         public static readonly DependencyProperty FilterProperty =
             DependencyProperty.Register("Filter", typeof(IFilterable), typeof(TextFilterBox), new FrameworkPropertyMetadata(default(IFilterable), (d, e) =>
@@ -171,7 +161,6 @@ namespace H.Controls.FilterBox
                 }
 
             }));
-
 
         public static readonly RoutedEvent FilterChangedRoutedEvent =
             EventManager.RegisterRoutedEvent("FilterChanged", RoutingStrategy.Bubble, typeof(EventHandler<RoutedEventArgs>), typeof(TextFilterBox));

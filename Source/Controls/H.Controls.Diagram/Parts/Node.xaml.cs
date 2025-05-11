@@ -1,11 +1,12 @@
-﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
+
 global using H.Controls.Diagram.Parts;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Media;
 
 namespace H.Controls.Diagram.Parts;
 
@@ -23,8 +24,6 @@ public partial class Node : FlowablePart, INode
     {
         DefaultStyleKeyProperty.OverrideMetadata(typeof(Node), new FrameworkPropertyMetadata(typeof(Node)));
     }
-
-
 
     public string Id => this.GetContent<INodeData>().ID;
 
@@ -46,13 +45,11 @@ public partial class Node : FlowablePart, INode
 
     }
 
-
     public Point Location
     {
         get { return (Point)GetValue(LocationProperty); }
         set { SetValue(LocationProperty, value); }
     }
-
 
     public static readonly DependencyProperty LocationProperty =
         DependencyProperty.Register("Location", typeof(Point), typeof(Node), new FrameworkPropertyMetadata(default(Point)));
@@ -77,8 +74,6 @@ public partial class Node : FlowablePart, INode
     {
 
     }
-
-
 
     protected virtual bool GetVisiblity()
     {
@@ -146,7 +141,6 @@ public partial class Node : FlowablePart, INode
     {
         return $"{this.GetType().Name} - {this.Id}:{NodeLayer.GetPosition(this)}";
     }
-
 
     public List<Node> GetToNodes(Func<Node, bool> filter = null)
     {
@@ -343,7 +337,6 @@ public partial class Node
         System.Diagnostics.Debug.WriteLine("Node.ArrangeOverride：" + span.ToString());
 #endif 
         return finalSize;
-
 
     }
 

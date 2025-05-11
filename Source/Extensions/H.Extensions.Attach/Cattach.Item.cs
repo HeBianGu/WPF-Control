@@ -1,4 +1,10 @@
-﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
 
 using System.ComponentModel;
 using System.Windows;
@@ -31,7 +37,6 @@ public static partial class Cattach
         CornerRadius o = (CornerRadius)e.OldValue;
     }
 
-
     public static Brush GetItemBackground(DependencyObject obj)
     {
         return (Brush)obj.GetValue(ItemBackgroundProperty);
@@ -54,7 +59,6 @@ public static partial class Cattach
         Brush o = (Brush)e.OldValue;
     }
 
-
     public static Brush GetItemForeground(DependencyObject obj)
     {
         return (Brush)obj.GetValue(ItemForegroundProperty);
@@ -76,7 +80,6 @@ public static partial class Cattach
 
         Brush o = (Brush)e.OldValue;
     }
-
 
     public static Brush GetItemBorderBrush(DependencyObject obj)
     {
@@ -122,7 +125,6 @@ public static partial class Cattach
         double o = (double)e.OldValue;
     }
 
-
     public static Thickness GetItemBorderThickness(DependencyObject obj)
     {
         return (Thickness)obj.GetValue(ItemBorderThicknessProperty);
@@ -132,7 +134,6 @@ public static partial class Cattach
     {
         obj.SetValue(ItemBorderThicknessProperty, value);
     }
-
 
     public static readonly DependencyProperty ItemBorderThicknessProperty =
         DependencyProperty.RegisterAttached("ItemBorderThickness", typeof(Thickness), typeof(Cattach), new FrameworkPropertyMetadata(default(Thickness), FrameworkPropertyMetadataOptions.Inherits, OnItemBorderThicknessChanged));
@@ -146,7 +147,6 @@ public static partial class Cattach
         Thickness o = (Thickness)e.OldValue;
     }
 
-
     public static HorizontalAlignment GetItemHorizontalAlignment(DependencyObject obj)
     {
         return (HorizontalAlignment)obj.GetValue(ItemHorizontalAlignmentProperty);
@@ -156,7 +156,6 @@ public static partial class Cattach
     {
         obj.SetValue(ItemHorizontalAlignmentProperty, value);
     }
-
 
     public static readonly DependencyProperty ItemHorizontalAlignmentProperty =
         DependencyProperty.RegisterAttached("ItemHorizontalAlignment", typeof(HorizontalAlignment), typeof(Cattach), new PropertyMetadata(default(HorizontalAlignment), OnItemHorizontalAlignmentChanged));
@@ -170,7 +169,6 @@ public static partial class Cattach
         HorizontalAlignment o = (HorizontalAlignment)e.OldValue;
     }
 
-
     public static VerticalAlignment GetItemVerticalAlignment(DependencyObject obj)
     {
         return (VerticalAlignment)obj.GetValue(ItemVerticalAlignmentProperty);
@@ -180,7 +178,6 @@ public static partial class Cattach
     {
         obj.SetValue(ItemVerticalAlignmentProperty, value);
     }
-
 
     public static readonly DependencyProperty ItemVerticalAlignmentProperty =
         DependencyProperty.RegisterAttached("ItemVerticalAlignment", typeof(VerticalAlignment), typeof(Cattach), new PropertyMetadata(default(VerticalAlignment), OnItemVerticalAlignmentChanged));
@@ -194,8 +191,6 @@ public static partial class Cattach
         VerticalAlignment o = (VerticalAlignment)e.OldValue;
     }
 
-
-
     [TypeConverter(typeof(LengthConverter))]
     public static double GetItemMinHeight(DependencyObject obj)
     {
@@ -206,7 +201,6 @@ public static partial class Cattach
     {
         obj.SetValue(ItemMinHeightProperty, value);
     }
-
 
     public static readonly DependencyProperty ItemMinHeightProperty =
         DependencyProperty.RegisterAttached("ItemMinHeight", typeof(double), typeof(Cattach), new PropertyMetadata(default(double), OnItemMinHeightChanged));
@@ -220,7 +214,6 @@ public static partial class Cattach
         double o = (double)e.OldValue;
     }
 
-
     [TypeConverter(typeof(LengthConverter))]
     public static double GetItemMinWidth(DependencyObject obj)
     {
@@ -231,7 +224,6 @@ public static partial class Cattach
     {
         obj.SetValue(ItemMinWidthProperty, value);
     }
-
 
     public static readonly DependencyProperty ItemMinWidthProperty =
         DependencyProperty.RegisterAttached("ItemMinWidth", typeof(double), typeof(Cattach), new PropertyMetadata(default(double), OnItemMinWidthChanged));
@@ -245,7 +237,6 @@ public static partial class Cattach
         double o = (double)e.OldValue;
     }
 
-
     public static Thickness GetItemMargin(DependencyObject obj)
     {
         return (Thickness)obj.GetValue(ItemMarginProperty);
@@ -255,7 +246,6 @@ public static partial class Cattach
     {
         obj.SetValue(ItemMarginProperty, value);
     }
-
 
     public static readonly DependencyProperty ItemMarginProperty =
         DependencyProperty.RegisterAttached("ItemMargin", typeof(Thickness), typeof(Cattach), new PropertyMetadata(default(Thickness), OnItemMarginChanged));
@@ -269,7 +259,6 @@ public static partial class Cattach
         Thickness o = (Thickness)e.OldValue;
     }
 
-
     public static Thickness GetItemPadding(DependencyObject obj)
     {
         return (Thickness)obj.GetValue(ItemPaddingProperty);
@@ -279,7 +268,6 @@ public static partial class Cattach
     {
         obj.SetValue(ItemPaddingProperty, value);
     }
-
 
     public static readonly DependencyProperty ItemPaddingProperty =
         DependencyProperty.RegisterAttached("ItemPadding", typeof(Thickness), typeof(Cattach), new PropertyMetadata(default(Thickness), OnItemPaddingChanged));
@@ -293,7 +281,6 @@ public static partial class Cattach
         Thickness o = (Thickness)e.OldValue;
     }
 
-
     public static HorizontalAlignment GetItemHorizontalContentAlignment(DependencyObject obj)
     {
         return (HorizontalAlignment)obj.GetValue(ItemHorizontalContentAlignmentProperty);
@@ -303,7 +290,6 @@ public static partial class Cattach
     {
         obj.SetValue(ItemHorizontalContentAlignmentProperty, value);
     }
-
 
     public static readonly DependencyProperty ItemHorizontalContentAlignmentProperty =
         DependencyProperty.RegisterAttached("ItemHorizontalContentAlignment", typeof(HorizontalAlignment), typeof(Cattach), new PropertyMetadata(default(HorizontalAlignment), OnItemHorizontalContentAlignmentChanged));
@@ -317,7 +303,6 @@ public static partial class Cattach
         HorizontalAlignment o = (HorizontalAlignment)e.OldValue;
     }
 
-
     public static VerticalAlignment GetItemVerticalContentAlignment(DependencyObject obj)
     {
         return (VerticalAlignment)obj.GetValue(ItemVerticalContentAlignmentProperty);
@@ -327,7 +312,6 @@ public static partial class Cattach
     {
         obj.SetValue(ItemVerticalContentAlignmentProperty, value);
     }
-
 
     public static readonly DependencyProperty ItemVerticalContentAlignmentProperty =
         DependencyProperty.RegisterAttached("ItemVerticalContentAlignment", typeof(VerticalAlignment), typeof(Cattach), new PropertyMetadata(default(VerticalAlignment), OnItemVerticalContentAlignmentChanged));
@@ -350,7 +334,6 @@ public static partial class Cattach
     {
         obj.SetValue(ItemOverTemplateProperty, value);
     }
-
 
     public static readonly DependencyProperty ItemOverTemplateProperty =
         DependencyProperty.RegisterAttached("ItemOverTemplate", typeof(ControlTemplate), typeof(Cattach), new PropertyMetadata(default(ControlTemplate), OnItemOverTemplateChanged));
@@ -375,7 +358,6 @@ public static partial class Cattach
         obj.SetValue(ItemsContianerWidthProperty, value);
     }
 
-
     public static readonly DependencyProperty ItemsContianerWidthProperty =
         DependencyProperty.RegisterAttached("ItemsContianerWidth", typeof(double), typeof(Cattach), new PropertyMetadata(default(double), OnItemsContianerWidthChanged));
 
@@ -388,7 +370,6 @@ public static partial class Cattach
         double o = (double)e.OldValue;
     }
 
-
     public static DataTemplate GetSelectedItemTemplate(DependencyObject obj)
     {
         return (DataTemplate)obj.GetValue(SelectedItemTemplateProperty);
@@ -398,7 +379,6 @@ public static partial class Cattach
     {
         obj.SetValue(SelectedItemTemplateProperty, value);
     }
-
 
     public static readonly DependencyProperty SelectedItemTemplateProperty =
         DependencyProperty.RegisterAttached("SelectedItemTemplate", typeof(DataTemplate), typeof(Cattach), new PropertyMetadata(default(DataTemplate), OnSelectedItemTemplateChanged));

@@ -1,4 +1,12 @@
-﻿global using H.Controls.Diagram.Datas;
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
+
+global using H.Controls.Diagram.Datas;
 global using H.Controls.Diagram.Parts;
 global using H.Controls.Diagram.Presenter.LinkDatas;
 global using H.Controls.Diagram.Presenter.PortDatas;
@@ -34,7 +42,7 @@ public class DiamondNodeData : WorkflowNodeBase
     {
         return new FlowablePortData<BoolResult>(this.ID, PortType.Both);
     }
- 
+
     protected override IEnumerable<IPortData> CreatePortDatas()
     {
         return base.CreatePortDatas();

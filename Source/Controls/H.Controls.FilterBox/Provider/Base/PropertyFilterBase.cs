@@ -1,18 +1,11 @@
-﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
 
-
-
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Reflection;
-using System.Xml.Serialization;
-using System.Text.Json.Serialization;
-using H.Mvvm.ViewModels.Base;
 using EnumConverter = System.ComponentModel.EnumConverter;
 
 namespace H.Controls.FilterBox
@@ -26,7 +19,7 @@ namespace H.Controls.FilterBox
 
         private ObservableCollection<T> _source = new ObservableCollection<T>();
         [System.Text.Json.Serialization.JsonIgnore]
-        
+
         [System.Xml.Serialization.XmlIgnore]
         public ObservableCollection<T> Source
         {
@@ -40,7 +33,7 @@ namespace H.Controls.FilterBox
 
         private ObservableCollection<T> _selectedSource = new ObservableCollection<T>();
         [System.Text.Json.Serialization.JsonIgnore]
-        
+
         [System.Xml.Serialization.XmlIgnore]
         public ObservableCollection<T> SelectedSource
         {
@@ -64,7 +57,6 @@ namespace H.Controls.FilterBox
                 RaisePropertyChanged();
             }
         }
-
 
         public PropertyFilterBase(PropertyInfo propertyInfo)
         {
@@ -108,7 +100,6 @@ namespace H.Controls.FilterBox
                 RaisePropertyChanged();
             }
         }
-
 
         private string _displayName;
         [System.Text.Json.Serialization.JsonIgnore]
@@ -173,12 +164,10 @@ namespace H.Controls.FilterBox
             if (command == "Sumit")
             {
 
-
             }
             //  Do：取消
             else if (command == "Cancel")
             {
-
 
             }
         }

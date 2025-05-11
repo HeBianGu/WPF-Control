@@ -1,20 +1,24 @@
-﻿using H.Common.Interfaces;
-using H.Controls.Form;
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
+
+using H.Common.Interfaces;
 using H.Controls.Form.PropertyItem.Attribute.SourcePropertyItem;
 using H.Controls.Form.PropertyItem.ComboBoxPropertyItems;
 using H.Extensions.Setting;
 using H.Mvvm.Commands;
 using H.Services.AppPath;
-using H.Services.Common;
 using H.Services.Setting;
+using H.Themes;
 using H.Themes.Backgrounds;
 using H.Themes.Colors;
 using H.Themes.Extensions;
-using H.Themes.Systems;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
 using System.Reflection;
 using System.Text.Json.Serialization;
 using System.Windows;
@@ -27,7 +31,7 @@ public class ThemeOptions : IocOptionInstance<ThemeOptions>, ILoginedSplashLoada
 {
     public ThemeOptions()
     {
-        this.ColorResources.Add(new DarkColorResource()); 
+        this.ColorResources.Add(new DarkColorResource());
         this.ColorResources.Add(new LightColorResource());
         this.ColorResources.Add(new DefaultColorResource());
         this.FontFamilys = Fonts.SystemFontFamilies.ToList();
@@ -74,7 +78,6 @@ public class ThemeOptions : IocOptionInstance<ThemeOptions>, ILoginedSplashLoada
         }
     }
 
-
     private IColorResource _colorResource;
     [JsonIgnore]
     [XmlIgnore]
@@ -90,12 +93,10 @@ public class ThemeOptions : IocOptionInstance<ThemeOptions>, ILoginedSplashLoada
         }
     }
 
-
     [JsonIgnore]
     [XmlIgnore]
     [Browsable(false)]
     public List<IColorResource> ColorResources { get; } = new List<IColorResource>();
-
 
     private IBackgroundResource _backgroundResource;
     [JsonIgnore]
@@ -116,7 +117,6 @@ public class ThemeOptions : IocOptionInstance<ThemeOptions>, ILoginedSplashLoada
     [XmlIgnore]
     [Browsable(false)]
     public List<IBackgroundResource> BackgroundResources { get; } = new List<IBackgroundResource>();
-
 
     private FontFamily _fontFamily;
     [PropertyNameSourcePropertyItem(typeof(ComboBoxPropertyItem), nameof(FontFamilys))]
@@ -150,7 +150,6 @@ public class ThemeOptions : IocOptionInstance<ThemeOptions>, ILoginedSplashLoada
     [XmlIgnore]
     [Browsable(false)]
     public List<FontFamily> FontFamilys { get; } = new List<FontFamily>();
-
 
     [JsonIgnore]
     [XmlIgnore]
@@ -209,7 +208,6 @@ public class ThemeOptions : IocOptionInstance<ThemeOptions>, ILoginedSplashLoada
         this.RefreshTheme();
     }
 
-
     [Browsable(false)]
     public int BackgroundResourceSelectedIndex { get; set; }
     public void OnBackgroundResourceValueChanged(PropertyInfo property, IBackgroundResource o, IBackgroundResource n)
@@ -257,7 +255,7 @@ public class ThemeOptions : IocOptionInstance<ThemeOptions>, ILoginedSplashLoada
             }
             if (this.BackgroundResource != null)
                 this.BackgroundResourceSelectedIndex = this.BackgroundResources.IndexOf(this.BackgroundResource);
-            
+
         }
 
         if (this.ColorResourceSelectedIndex < 0 || this.ColorResourceSelectedIndex >= this.ColorResources.Count)
@@ -292,7 +290,6 @@ public class ThemeOptions : IocOptionInstance<ThemeOptions>, ILoginedSplashLoada
             return;
         this.BackgroundResource.Resource.RefreshResourceDictionary(); ;
     }
-
 
     private void ChangeColorTheme()
     {

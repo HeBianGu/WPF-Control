@@ -1,12 +1,12 @@
-﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
 
 using H.Mvvm.ViewModels.Base;
-using System;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Media;
 using System.Xml.Serialization;
 
 namespace H.Controls.Diagram.LinkDrawers;
@@ -68,7 +68,6 @@ public abstract class LinkDrawer : BindableBase, ILinkDrawer
         }
     }
 
-
     private double _arrowLength = 5.0;
     [Display(Name = "箭头长度", GroupName = "基础信息", Order = 0)]
     public double ArrowLength
@@ -122,7 +121,6 @@ public abstract class LinkDrawer : BindableBase, ILinkDrawer
 
     //}
 
-
     public Tuple<Point, Point> GetArrowPoints(Point from, Point to, double len = 10, double angle = 20, bool isTail = false)
     {
         Vector vector = from - to;
@@ -162,7 +160,7 @@ public abstract class LinkDrawer : BindableBase, ILinkDrawer
 
     protected Geometry GetArrowGeometry(Geometry geo, Point start, Point end)
     {
-  
+
         var tuple = this.GetArrowPoints(start, end);
         Geometry arrowGeo = this.GetPolyLineGeometry(true, true, end, tuple.Item1, tuple.Item2);
         PathGeometry pathGeometry = PathGeometry.CreateFromGeometry(arrowGeo);
@@ -170,7 +168,6 @@ public abstract class LinkDrawer : BindableBase, ILinkDrawer
         pathGeometry.Freeze();
         return pathGeometry;
     }
-
 
     //protected Geometry DrawPolyLine(params Point[] points)
     //{
@@ -218,7 +215,6 @@ public abstract class LinkDrawer : BindableBase, ILinkDrawer
     //    }
     //    return to;
     //}
-
 
     /// <summary> 矩形和线段求交点 </summary>
     protected Vector? Intersects(Rect rect, Point start, Point end)

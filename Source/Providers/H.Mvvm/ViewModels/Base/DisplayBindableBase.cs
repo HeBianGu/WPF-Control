@@ -1,4 +1,12 @@
-﻿namespace H.Mvvm.ViewModels.Base;
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
+
+namespace H.Mvvm.ViewModels.Base;
 
 /// <summary>
 /// 提供显示相关功能的可绑定基类。
@@ -30,13 +38,13 @@ public abstract class DisplayBindableBase : CommandsBindableBase, IDable, IDispl
         LoadDefault();
     }
 
-    ///// <summary>
-    ///// 获取或设置一个值，指示对象是否已加载。
-    ///// </summary>
-    //[Browsable(false)]
-    //[System.Text.Json.Serialization.JsonIgnore]
-    //[System.Xml.Serialization.XmlIgnore]
-    //public bool IsLoaded { get; set; }
+    /// <summary>
+    /// 获取或设置一个值，指示对象是否已加载。
+    /// </summary>
+    [Browsable(false)]
+    [System.Text.Json.Serialization.JsonIgnore]
+    [System.Xml.Serialization.XmlIgnore]
+    public bool IsLoaded { get; set; }
 
     /// <summary>
     /// 当对象加载完成时调用。
@@ -45,7 +53,7 @@ public abstract class DisplayBindableBase : CommandsBindableBase, IDable, IDispl
     protected override void Loaded(object obj)
     {
         base.Loaded(obj);
-        //this.IsLoaded = true;
+        this.IsLoaded = true;
     }
 
     private string _id;

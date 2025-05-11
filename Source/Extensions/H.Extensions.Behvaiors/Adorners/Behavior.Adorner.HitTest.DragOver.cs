@@ -1,11 +1,13 @@
-﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
-
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
 
 #if NET
 #endif
-using System.Windows;
-using System.Windows.Documents;
-
 namespace H.Extensions.Behvaiors.Adorners;
 
 public class DragOverHitTestAdornerBehavior : HitTestAdornerBehavior
@@ -15,7 +17,6 @@ public class DragOverHitTestAdornerBehavior : HitTestAdornerBehavior
         get { return (Type)GetValue(AdornerDropErrorTypeProperty); }
         set { SetValue(AdornerDropErrorTypeProperty, value); }
     }
-
 
     public static readonly DependencyProperty AdornerDropErrorTypeProperty =
         DependencyProperty.Register("AdornerDropErrorType", typeof(Type), typeof(DragOverHitTestAdornerBehavior), new FrameworkPropertyMetadata(default(Type), (d, e) =>
@@ -44,7 +45,6 @@ public class DragOverHitTestAdornerBehavior : HitTestAdornerBehavior
         //AssociatedObject.DragLeave += AssociatedObject_DragLeave;
     }
 
-
     public static bool GetIsPreviewing(DependencyObject obj)
     {
         return (bool)obj.GetValue(IsPreviewingProperty);
@@ -54,7 +54,6 @@ public class DragOverHitTestAdornerBehavior : HitTestAdornerBehavior
     {
         obj.SetValue(IsPreviewingProperty, value);
     }
-
 
     public static readonly DependencyProperty IsPreviewingProperty =
         DependencyProperty.RegisterAttached("IsPreviewing", typeof(bool), typeof(DragOverHitTestAdornerBehavior), new PropertyMetadata(default(bool), OnIsPreviewingChanged));
@@ -67,7 +66,6 @@ public class DragOverHitTestAdornerBehavior : HitTestAdornerBehavior
 
         bool o = (bool)e.OldValue;
     }
-
 
     private void AssociatedObject_DragLeave(object sender, DragEventArgs e)
     {
@@ -184,6 +182,4 @@ public class DragOverHitTestAdornerBehavior : HitTestAdornerBehavior
         return adorner;
     }
 }
-
-
 

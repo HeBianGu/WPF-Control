@@ -1,32 +1,32 @@
-﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
-
-
-using System.Collections.ObjectModel;
-using System.Runtime.CompilerServices;
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
 
 #if NET
 #endif
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Input;
-
 namespace H.Extensions.Behvaiors.Adorners;
 
 public class SelectedHitTestAdornerBehavior : HitTestAdornerBehavior
 {
     public ObservableCollection<object> Parameters { get; } = new ObservableCollection<object>();
 
+    [Obsolete]
     public UIElement SelectedElement
     {
         get { return (UIElement)GetValue(SelectedElementProperty); }
         set { SetValue(SelectedElementProperty, value); }
     }
 
+    [Obsolete]
     public static readonly DependencyProperty SelectedElementProperty =
         DependencyProperty.Register("SelectedElement", typeof(UIElement), typeof(SelectedHitTestAdornerBehavior), new FrameworkPropertyMetadata(default(UIElement), FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, (d, e) =>
         {
             SelectedHitTestAdornerBehavior control = d as SelectedHitTestAdornerBehavior;
-            if (control == null) 
+            if (control == null)
                 return;
             if (e.OldValue is UIElement o)
             {
@@ -48,9 +48,8 @@ public class SelectedHitTestAdornerBehavior : HitTestAdornerBehavior
 
     protected virtual void OnSelectdElementChanged()
     {
-      
-    }
 
+    }
 
     public static bool GetIsSelected(DependencyObject obj)
     {
@@ -120,6 +119,8 @@ public class SelectedHitTestAdornerBehavior : HitTestAdornerBehavior
             RoutingStrategy.Bubble,
             typeof(RoutedEventHandler),
             typeof(SelectedHitTestAdornerBehavior));
+
+    [Obsolete]
     public static void AddSelectedChangedHandler(DependencyObject d, RoutedEventHandler handler)
     {
         if (d is UIElement uiElement)
@@ -128,6 +129,7 @@ public class SelectedHitTestAdornerBehavior : HitTestAdornerBehavior
         }
     }
 
+    [Obsolete]
     public static void RemoveSelectedChangedHandler(DependencyObject d, RoutedEventHandler handler)
     {
         if (d is UIElement uiElement)
@@ -136,12 +138,11 @@ public class SelectedHitTestAdornerBehavior : HitTestAdornerBehavior
         }
     }
 
+    [Obsolete]
     public void OnSelectedChanged()
     {
-        RoutedEventArgs args = new RoutedEventArgs(SelectedChanged,this.AssociatedObject);
+        RoutedEventArgs args = new RoutedEventArgs(SelectedChanged, this.AssociatedObject);
         this.AssociatedObject.RaiseEvent(args);
     }
 }
-
-
 

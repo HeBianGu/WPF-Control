@@ -1,4 +1,10 @@
-﻿using H.Controls.Diagram.Presenter.DiagramDatas.Base;
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
 
 namespace H.Controls.Diagram.Presenters.OpenCV.NodeDatas.Detector;
 [Display(Name = "Blob检测", GroupName = "基础检测", Description = "用于检测图像中具有相似属性（如颜色、纹理或亮度）的连通区域", Order = 20)]

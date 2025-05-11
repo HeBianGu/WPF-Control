@@ -1,4 +1,10 @@
-﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
 
 using System.ComponentModel;
 using System.Windows;
@@ -114,7 +120,6 @@ public static partial class Cattach
         obj.SetValue(TitleMinWidthProperty, value);
     }
 
-
     public static readonly DependencyProperty TitleMinWidthProperty =
         DependencyProperty.RegisterAttached("TitleMinWidth", typeof(double), typeof(Cattach), new PropertyMetadata(default(double), OnTitleMinWidthChanged));
 
@@ -126,7 +131,6 @@ public static partial class Cattach
 
         double o = (double)e.OldValue;
     }
-
 
     public static readonly DependencyProperty TitleHeightProperty = DependencyProperty.RegisterAttached(
         "TitleHeight", typeof(double), typeof(Cattach), new FrameworkPropertyMetadata(default(double), FrameworkPropertyMetadataOptions.Inherits, OnTitleHeightChanged));
@@ -147,7 +151,6 @@ public static partial class Cattach
 
     }
 
-
     public static readonly DependencyProperty TitleProperty = DependencyProperty.RegisterAttached(
         "Title", typeof(object), typeof(Cattach), new FrameworkPropertyMetadata(default(object), FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, OnTitleChanged));
 
@@ -165,7 +168,6 @@ public static partial class Cattach
     {
 
     }
-
 
     public static readonly DependencyProperty TitleTemplateProperty = DependencyProperty.RegisterAttached(
         "TitleTemplate", typeof(DataTemplate), typeof(Cattach), new FrameworkPropertyMetadata(default(DataTemplate), FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, OnTitleTemplateChanged));
@@ -277,7 +279,6 @@ public static partial class Cattach
         CornerRadius o = (CornerRadius)e.OldValue;
     }
 
-
     public static double GetTitleFontSize(DependencyObject obj)
     {
         return (double)obj.GetValue(TitleFontSizeProperty);
@@ -287,7 +288,6 @@ public static partial class Cattach
     {
         obj.SetValue(TitleFontSizeProperty, value);
     }
-
 
     public static readonly DependencyProperty TitleFontSizeProperty =
         DependencyProperty.RegisterAttached("TitleFontSize", typeof(double), typeof(Cattach), new PropertyMetadata(0.0, OnTitleFontSizeChanged));

@@ -1,4 +1,10 @@
-﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
 
 using H.Controls.Adorner.Adorner.ControlTemplateAdorners;
 using System.Windows;
@@ -23,7 +29,6 @@ public class WorkflowNodeAdorner : ControlTemplateAdorner
         return WorkflowNodeAdorner.GetTemplate(this.AdornedElement);
     }
 
-
     public static new ControlTemplate GetTemplate(DependencyObject obj)
     {
         return (ControlTemplate)obj.GetValue(TemplateProperty);
@@ -33,7 +38,6 @@ public class WorkflowNodeAdorner : ControlTemplateAdorner
     {
         obj.SetValue(TemplateProperty, value);
     }
-
 
     public static new readonly DependencyProperty TemplateProperty =
         DependencyProperty.RegisterAttached("Template", typeof(ControlTemplate), typeof(WorkflowNodeAdorner), new PropertyMetadata(default(ControlTemplate), OnTemplateChanged));
@@ -46,8 +50,6 @@ public class WorkflowNodeAdorner : ControlTemplateAdorner
 
         ControlTemplate o = (ControlTemplate)e.OldValue;
     }
-
-
 
     //protected override ControlTemplate CreateTemplate()
     //{

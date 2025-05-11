@@ -1,15 +1,13 @@
-﻿using H.Extensions.Tree;
-using H.Mvvm;
-using System;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Input;
-using System.Windows.Threading;
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
+
 using H.Common.Interfaces.Where;
-using H.Mvvm.ViewModels;
-using H.Mvvm.ViewModels.Tree;
-using H.Mvvm.Commands;
-using H.Extensions.Common;
+using System.Windows.Threading;
 
 namespace H.Controls.FavoriteBox
 {
@@ -67,7 +65,6 @@ namespace H.Controls.FavoriteBox
                 control.RefreshData();
             }));
 
-
         public void RefreshData()
         {
             this.DelayInvoke(() => this.ItemsSource = new FavoriteTree().GetTreeNodes());
@@ -105,7 +102,6 @@ namespace H.Controls.FavoriteBox
                 }
 
             }));
-
 
         public static readonly RoutedEvent FilterChangedRoutedEvent =
             EventManager.RegisterRoutedEvent("FilterChanged", RoutingStrategy.Bubble, typeof(EventHandler<RoutedEventArgs>), typeof(FavoriteFilterBox));

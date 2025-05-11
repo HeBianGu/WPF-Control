@@ -1,7 +1,12 @@
-﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
 
 namespace H.Controls.Diagram.Bevaviors;
-
 
 //public class NodeAdorner : BorderAdorner
 //{
@@ -25,7 +30,6 @@ namespace H.Controls.Diagram.Bevaviors;
 //        visualCollection.Add(right);
 //        visualCollection.Add(top);
 //        visualCollection.Add(bottom);
-
 
 //        left.Measure(new Size(double.PositiveInfinity, double.PositiveInfinity));
 //        right.Measure(new Size(double.PositiveInfinity, double.PositiveInfinity));
@@ -65,7 +69,6 @@ namespace H.Controls.Diagram.Bevaviors;
 //        bottom.Arrange(new Rect(rect.Width / 2 - bottom.DesiredSize.Height / 2, rect.Bottom, bottom.DesiredSize.Width, bottom.DesiredSize.Height));
 
 //        dc.DrawRectangle(this.Fill, new Pen(this.Stroke, this.StrokeThickness), rect);
-
 
 //        ////  Do ：四个角
 //        //{

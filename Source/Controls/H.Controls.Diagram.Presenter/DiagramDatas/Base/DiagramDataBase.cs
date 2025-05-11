@@ -1,17 +1,25 @@
-﻿global using H.Controls.Diagram.Layouts;
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
+
+global using H.Common.Attributes;
+global using H.Controls.Diagram.GraphSource;
+global using H.Controls.Diagram.Layouts;
 global using H.Controls.Diagram.Layouts.Base;
 global using H.Controls.Diagram.LinkDrawers;
 global using H.Controls.Diagram.Presenter.NodeDatas.Card;
-global using System.Windows.Input;
-global using H.Common.Attributes;
-global using H.Controls.Diagram.GraphSource;
 global using H.Controls.Form.PropertyItem.Attribute.SourcePropertyItem;
 global using H.Controls.Form.PropertyItem.ComboBoxPropertyItems;
 global using H.Extensions.FontIcon;
 global using H.Mvvm.Commands;
 global using H.Services.Message;
-global using System.Text.Json.Serialization;
 global using H.Services.Message.Dialog;
+global using System.Text.Json.Serialization;
+global using System.Windows.Input;
 namespace H.Controls.Diagram.Presenter.DiagramDatas.Base;
 
 public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
@@ -80,7 +88,6 @@ public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
             RaisePropertyChanged();
         }
     }
-
 
     private ILinkDrawer _linkDrawer = new BrokenLinkDrawer();
     [System.Text.Json.Serialization.JsonIgnore]
@@ -164,7 +171,6 @@ public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
         }
     }
 
-
     private string _message;
     public string Message
     {
@@ -175,7 +181,6 @@ public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
             RaisePropertyChanged();
         }
     }
-
 
     [Icon(FontIcons.EditMirrored)]
     [Display(Name = "编辑面板", GroupName = "操作", Order = 0, Description = "点击此功能，编辑面板信息")]
@@ -238,8 +243,6 @@ public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
             item.AligmentLayout();
         }
     }, x => this.DataSource.Nodes.Count > 0);
-
-
 
     public RelayCommand ItemsChangedCommand => new RelayCommand(e =>
     {

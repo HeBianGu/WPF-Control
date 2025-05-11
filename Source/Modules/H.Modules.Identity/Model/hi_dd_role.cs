@@ -1,9 +1,13 @@
-﻿using H.Extensions.DataBase;
-using System.Collections.Generic;
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
+
 using System.Collections.ObjectModel;
-using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Xml.Serialization;
 
 namespace H.Modules.Identity
 {
@@ -30,7 +34,6 @@ namespace H.Modules.Identity
             }
         }
 
-
         private string _code;
         [Display(Name = "角色编码")]
         [Column("role_code", Order = 2)]
@@ -45,14 +48,14 @@ namespace H.Modules.Identity
         }
 
         [System.Text.Json.Serialization.JsonIgnore]
-        
+
         [System.Xml.Serialization.XmlIgnore]
         [Display(Name = "权限列表")]
         //[PropertyItemType(Type = typeof(MultiSelectRepositoryPropertyItem))] 
         public virtual ICollection<hi_dd_author> Authors { get; set; } = new ObservableCollection<hi_dd_author>();
 
         [System.Text.Json.Serialization.JsonIgnore]
-        
+
         [System.Xml.Serialization.XmlIgnore]
         [Display(Name = "用户列表")]
         //[PropertyItemType(Type = typeof(MultiSelectRepositoryPropertyItem))]

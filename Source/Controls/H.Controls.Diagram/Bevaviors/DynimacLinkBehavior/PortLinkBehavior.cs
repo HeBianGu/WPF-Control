@@ -1,11 +1,12 @@
-﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
-
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
 
 using Microsoft.Xaml.Behaviors;
-using System;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Input;
 using System.Windows.Threading;
 
 namespace H.Controls.Diagram.Bevaviors.DynimacLinkBehavior;
@@ -14,6 +15,7 @@ public class PortLinkBehavior : Behavior<Port>
 {
     private Diagram diagram;
 
+    [Obsolete]
     protected override void OnAttached()
     {
         if (this.AssociatedObject.Content is IPortData port)
@@ -27,6 +29,7 @@ public class PortLinkBehavior : Behavior<Port>
         this.AssociatedObject.MouseLeave += AssociatedObject_MouseLeave;
     }
 
+    [Obsolete]
     protected override void OnDetaching()
     {
         this.AssociatedObject.MouseLeftButtonDown -= AssociatedObject_MouseLeftButtonDown;
@@ -102,6 +105,7 @@ public class PortLinkBehavior : Behavior<Port>
         //System.Diagnostics.Debug.WriteLine("AssociatedObject_MouseEnter");
     }
 
+    [Obsolete]
     private void AssociatedObject_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
     {
         if (diagram._dynamicLink.Visibility != Visibility.Visible) return;
@@ -146,7 +150,6 @@ public class PortLinkBehavior : Behavior<Port>
                 diagram._dynamicLink.ToPort.Dock = Math.Abs(v.X) > Math.Abs(v.Y) ? v.X > 0 ? Dock.Left : Dock.Right : v.Y > 0 ? Dock.Top : Dock.Bottom;
             });
         }
-
 
         diagram._dynamicLink.Update();
 #if DEBUG

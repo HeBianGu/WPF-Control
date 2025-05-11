@@ -1,4 +1,12 @@
-﻿using H.Extensions.Setting;
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
+
+using H.Extensions.Setting;
 using H.Services.Setting;
 
 namespace H.Modules.Guide;
@@ -103,7 +111,6 @@ public class GuideOptions : IocOptionInstance<GuideOptions>, IGuideOptions
         //this.Stroke = Application.Current.FindResource(BrushKeys.Orange) as Brush;
     }
 
-
     private Brush _stroke = Brushes.Orange;
     [Display(Name = "线条颜色")]
     public Brush Stroke
@@ -116,7 +123,6 @@ public class GuideOptions : IocOptionInstance<GuideOptions>, IGuideOptions
         }
     }
 
-
     private double _strokeThickness = 1;
     [Display(Name = "线条厚度")]
     public double StrokeThickness
@@ -128,7 +134,6 @@ public class GuideOptions : IocOptionInstance<GuideOptions>, IGuideOptions
             RaisePropertyChanged();
         }
     }
-
 
     private DoubleCollection _strokeDashArray = new DoubleCollection(new double[] { 1.0, 1.0 });
     [Display(Name = "线条虚线")]

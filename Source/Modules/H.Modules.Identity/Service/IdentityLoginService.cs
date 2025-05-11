@@ -1,13 +1,13 @@
-﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
 
-
-using H.Services.Common;
-using Microsoft.Extensions.Options;
-using System;
-using System.Linq;
-using H.Extensions.DataBase;
-using H.Services.Operation;
 using H.Mvvm.ViewModels.Base;
+using H.Services.Operation;
 
 namespace H.Modules.Identity
 {

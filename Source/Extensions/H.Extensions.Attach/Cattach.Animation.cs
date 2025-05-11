@@ -1,4 +1,10 @@
-﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
 
 using System.Windows;
 using System.Windows.Controls;
@@ -20,7 +26,6 @@ public static partial class Cattach
         obj.SetValue(FromDoubleProperty, value);
     }
 
-
     public static readonly DependencyProperty FromDoubleProperty =
         DependencyProperty.RegisterAttached("FromDouble", typeof(double), typeof(Cattach), new PropertyMetadata(default(double), OnFromDoubleChanged));
 
@@ -33,7 +38,6 @@ public static partial class Cattach
         double o = (double)e.OldValue;
     }
 
-
     public static double GetToDouble(DependencyObject obj)
     {
         return (double)obj.GetValue(ToDoubleProperty);
@@ -43,7 +47,6 @@ public static partial class Cattach
     {
         obj.SetValue(ToDoubleProperty, value);
     }
-
 
     public static readonly DependencyProperty ToDoubleProperty =
         DependencyProperty.RegisterAttached("ToDouble", typeof(double), typeof(Cattach), new PropertyMetadata(default(double), OnToDoubleChanged));
@@ -56,10 +59,6 @@ public static partial class Cattach
 
         double o = (double)e.OldValue;
     }
-
-
-
-
 
     public static Color GetToBackgroundColor(DependencyObject obj)
     {
@@ -112,7 +111,6 @@ public static partial class Cattach
         //Storyboard.SetTarget(storyboard, control);
         //Storyboard.SetTargetProperty(control, new PropertyPath(FrameworkElement.OpacityProperty));
 
-
         var storyboard = new Storyboard();
         var opacityAnimation = new DoubleAnimationUsingKeyFrames
         {
@@ -129,6 +127,5 @@ public static partial class Cattach
         Storyboard.SetTargetProperty(opacityAnimation, new PropertyPath(UIElement.OpacityProperty));
         storyboard.Begin(control);
     }
-
 
 }

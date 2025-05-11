@@ -1,26 +1,14 @@
-﻿using H.ApplicationBases.Default;
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
+
+using H.ApplicationBases.Default;
 using H.ApplicationBases.Modules;
 using H.ApplicationBases.Themes;
-using H.Extensions.FontIcon;
-using H.Modules.About;
-using H.Modules.Help.Contact;
-using H.Modules.Help.ReleaseVersions;
-using H.Modules.Help.Support;
-using H.Modules.Help.Website;
-using H.Modules.Theme;
-using H.Services.Common.About;
-using H.Styles;
-using H.Themes.Colors.Accent;
-using H.Themes.Colors.Blue;
-using H.Themes.Colors.Copper;
-using H.Themes.Colors.Gray;
-using H.Themes.Colors.Industrial;
-using H.Themes.Colors.Mineral;
-using H.Themes.Colors.Platform;
-using H.Themes.Colors.Purple;
-using H.Themes.Colors.Solid;
-using H.Themes.Colors.Technology;
-using H.Themes.Colors.Web;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace System

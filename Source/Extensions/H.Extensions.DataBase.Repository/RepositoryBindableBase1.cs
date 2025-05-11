@@ -1,22 +1,24 @@
-﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
+
+global using H.Mvvm.Commands;
+global using H.Mvvm.ViewModels;
+global using H.Services.Common.Excel;
+global using H.Services.Message;
+global using H.Services.Message.Dialog;
 global using Microsoft.Win32;
 global using System.ComponentModel;
 global using System.ComponentModel.DataAnnotations;
 global using System.Diagnostics;
 global using System.Windows.Threading;
-global using H.Extensions.DataBase;
-global using H.Services.Common.Excel;
-global using H.Mvvm.Commands;
-global using H.Mvvm.ViewModels;
-global using H.Services.Message;
-global using H.Services.Message.Dialog;
-using H.Services.Message;
-using H.Services.Operation;
-using H.Services.Common.Excel;
-using H.Services.Common;
 using H.Extensions.Common;
 using H.Extensions.ObservableSource;
-
+using H.Services.Common;
 
 namespace H.Extensions.DataBase.Repository
 {
@@ -33,7 +35,7 @@ namespace H.Extensions.DataBase.Repository
             base.Loaded(obj);
             await Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Input, new Action(async () =>
             {
-                if(IocMessage.Dialog==null)
+                if (IocMessage.Dialog == null)
                 {
                     this.RefreshData();
                     return;
@@ -43,7 +45,6 @@ namespace H.Extensions.DataBase.Repository
                     this.RefreshData();
                     return true;
                 }, x => x.DialogButton = DialogButton.None);
-
 
             }));
 
@@ -98,7 +99,6 @@ namespace H.Extensions.DataBase.Repository
             }
         }
 
-
         public IStringRepository<TEntity> Repository => DbIoc.GetService<IStringRepository<TEntity>>();
         //public IStringRepository<TEntity> Repository => ServiceRegistry.Instance.GetAllAssignableFrom<IStringRepository<TEntity>>()?.FirstOrDefault();
         private IObservableSource<TViewModel> _collection = new ObservableSource<TViewModel>();
@@ -125,7 +125,7 @@ namespace H.Extensions.DataBase.Repository
 
         [Display(Name = "编辑", GroupName = "操作")]
         [Browsable(false)]
-        public IDisplayCommand EditTransactionCommand => new DisplayCommand(async x =>
+        public IDisplayCommand EditTransactionCommand => new DisplayCommand(x =>
         {
             //if (e is TEntity project)
             //{
@@ -177,7 +177,6 @@ namespace H.Extensions.DataBase.Repository
 
             await this.Export(saveFileDialog.FileName);
 
-
         }, l => this.Collection != null && this.Collection.Count > 0);
 
         [Display(Name = "下一个", GroupName = "操作")]
@@ -197,7 +196,6 @@ namespace H.Extensions.DataBase.Repository
         {
             this.Previous();
         }, x => this.Collection.Count > 0);
-
 
         public virtual void Previous()
         {
@@ -254,7 +252,6 @@ namespace H.Extensions.DataBase.Repository
                 this.Collection.Source.Foreach(K => K.IsSelected = true);
             }
         }, l => this.Collection != null && this.Collection.Count > 0);
-
 
         [Display(Name = "全选当前过滤器", GroupName = "操作")]
         public IDisplayCommand CheckedAllFilterSourceCommand => new DisplayCommand(l =>
@@ -503,7 +500,6 @@ namespace H.Extensions.DataBase.Repository
             }
             return r;
         }
-
 
         protected virtual void OnCollectionChanged(object obj)
         {

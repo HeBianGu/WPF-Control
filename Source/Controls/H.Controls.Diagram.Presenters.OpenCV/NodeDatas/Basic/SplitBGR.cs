@@ -1,4 +1,12 @@
-﻿namespace H.Controls.Diagram.Presenters.OpenCV.NodeDatas.Basic;
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
+
+namespace H.Controls.Diagram.Presenters.OpenCV.NodeDatas.Basic;
 [Display(Name = "通道分割", GroupName = "基础函数", Description = "分割BGR通道,它将彩色图像分解为不同的颜色通道或特征通道，为后续处理提供更精细的数据表示。以下是通道分割的详细作用分析", Order = 30)]
 public class SplitBGR : BasicOpenCVNodeDataBase
 {

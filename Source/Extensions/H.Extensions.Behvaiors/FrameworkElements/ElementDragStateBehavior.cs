@@ -1,8 +1,10 @@
-﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
-
-using Microsoft.Xaml.Behaviors;
-using System.Windows;
-using System.Windows.Input;
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
 
 namespace H.Extensions.Behvaiors.FrameworkElements;
 
@@ -73,7 +75,6 @@ public class ElementDragStateBehavior : Behavior<FrameworkElement>
 
     }
 }
-
 
 ///// <summary> 动画帧 闪烁效果</summary>
 //public class FlashBehavior : Behavior<FrameworkElement>
@@ -177,7 +178,6 @@ public class ElementDragStateBehavior : Behavior<FrameworkElement>
 //        AssociatedObject.Loaded -= AssociatedObject_Loaded;
 //    }
 
-
 //    public RepeatBehavior RepeatBehavior
 //    {
 //        get { return (RepeatBehavior)GetValue(RepeatBehaviorProperty); }
@@ -195,7 +195,6 @@ public class ElementDragStateBehavior : Behavior<FrameworkElement>
 //            //RepeatBehavior config = e.NewValue as RepeatBehavior;
 
 //        }));
-
 
 //    public bool IsUseAll
 //    {
@@ -229,7 +228,6 @@ public class ElementDragStateBehavior : Behavior<FrameworkElement>
 //            //double config = e.NewValue as double;
 
 //        }));
-
 
 //    public bool IsAnimation
 //    {
@@ -283,7 +281,6 @@ public class ElementDragStateBehavior : Behavior<FrameworkElement>
 //        }));
 
 //}
-
 
 //public class MouseDownCancelBehavior : Behavior<FrameworkElement>
 //{

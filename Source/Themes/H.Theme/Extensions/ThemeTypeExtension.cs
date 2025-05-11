@@ -1,6 +1,10 @@
-﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
-
-using System.Windows;
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
 
 namespace H.Themes.Extensions;
 
@@ -16,7 +20,6 @@ public static class ThemeTypeExtension
     private static string GetFormat(string arg1) => string.Format(Format1, arg1);
     private static Uri GetUri(string arg1) => new Uri(GetFormat(arg1));
     private static ResourceDictionary GetResource(string arg1) => new ResourceDictionary() { Source = GetUri(arg1) };
-
 
     private static string GetFormat(string arg1, string arg2) => string.Format(Format2, arg1, arg2);
     private static Uri GetUri(string arg1, string arg2) => new Uri(GetFormat(arg1, arg2));
@@ -40,7 +43,6 @@ public static class ThemeTypeExtension
     {
         return resource.IsTypeResource("Layouts");
     }
-
 
     public static void ChangeFontSizeThemeType(this FontSizeThemeType n)
     {

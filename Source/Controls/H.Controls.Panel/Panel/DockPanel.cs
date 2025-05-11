@@ -1,9 +1,11 @@
-﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
 
-
-using H.Mvvm;
-using System;
-using System.Linq;
 using System.Windows;
 using System.Windows.Input;
 
@@ -47,7 +49,6 @@ namespace H.Controls.Panel
             }
         }
 
-
         public DockType Dock
         {
             get { return (DockType)GetValue(DockProperty); }
@@ -65,7 +66,6 @@ namespace H.Controls.Panel
                 //Dock config = e.NewValue as Dock;
                 control.InvalidateArrange();
             }));
-
 
         public bool IsFull
         {
@@ -86,7 +86,6 @@ namespace H.Controls.Panel
                  control.InvalidateArrange();
              }));
 
-
         public double SmallSize
         {
             get { return (double)GetValue(SmallSizeProperty); }
@@ -106,8 +105,6 @@ namespace H.Controls.Panel
                 control.InvalidateArrange();
 
             }));
-
-
 
         protected override Size ArrangeOverride(Size finalSize)
         {
@@ -445,8 +442,6 @@ namespace H.Controls.Panel
             return base.ArrangeOverride(finalSize);
         }
 
-
-
         //  Do ：用于设置整个容器的大小
         protected override Size MeasureOverride(Size availableSize)
         {
@@ -458,6 +453,5 @@ namespace H.Controls.Panel
     {
         Left, Right, Bottom, Top, LeftAndRight, TopAndBottom
     }
-
 
 }

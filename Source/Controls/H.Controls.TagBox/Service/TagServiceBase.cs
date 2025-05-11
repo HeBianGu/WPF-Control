@@ -1,4 +1,11 @@
-﻿
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
+
 namespace H.Controls.TagBox
 {
     public abstract class TagServiceBase<T> : BindableBase, ITagService<T>, ITagService where T : ITag, new()
@@ -32,7 +39,6 @@ namespace H.Controls.TagBox
         }
 
         private string[] ToArray(string name) => name?.Split(TagOptions.Instance.SplitChars.ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
-
 
         bool ITagService.ContainTag(string name, ITag tag) => this.ContainTag(name, (T)tag);
 
@@ -82,7 +88,6 @@ namespace H.Controls.TagBox
         {
             this.CollectionChanged?.Invoke(this, EventArgs.Empty);
         }
-
 
         public IEnumerable<T> ToTags(string name)
         {

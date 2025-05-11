@@ -1,10 +1,10 @@
-﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
-
-
-using System;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Input;
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
 
 namespace H.Controls.Diagram.Parts.Base;
 
@@ -79,7 +79,6 @@ public abstract class Part : ContentPresenter
         set { SetValue(IsSelectedProperty, value); }
     }
 
-
     public static readonly DependencyProperty IsSelectedProperty =
         DependencyProperty.Register("IsSelected", typeof(bool), typeof(Part), new PropertyMetadata(default(bool), (d, e) =>
          {
@@ -89,8 +88,6 @@ public abstract class Part : ContentPresenter
              control.OnSelectionChanged();
          }));
 
-
-
     public static readonly RoutedEvent SelectionChangedRoutedEvent =
         EventManager.RegisterRoutedEvent("SelectionChanged", RoutingStrategy.Bubble, typeof(EventHandler<RoutedEventArgs>), typeof(Part));
 
@@ -99,8 +96,6 @@ public abstract class Part : ContentPresenter
         add { this.AddHandler(SelectionChangedRoutedEvent, value); }
         remove { this.RemoveHandler(SelectionChangedRoutedEvent, value); }
     }
-
-
 
     protected void OnSelectionChanged()
     {
@@ -144,9 +139,6 @@ public abstract class Part : ContentPresenter
 
     }
 
-
-
-
     /// <summary>
     /// 是否拖入
     /// </summary>
@@ -167,7 +159,6 @@ public abstract class Part : ContentPresenter
     {
 
     }
-
 
     /// <summary>
     /// 设置是否放入有效区域并且验证可以放下的效果
@@ -196,7 +187,6 @@ public abstract class Part : ContentPresenter
         set { SetValue(HasErrorProperty, value); }
     }
 
-
     public static readonly DependencyProperty HasErrorProperty =
         DependencyProperty.Register("HasError", typeof(bool), typeof(Part), new FrameworkPropertyMetadata(default(bool), (d, e) =>
         {
@@ -216,12 +206,10 @@ public abstract class Part : ContentPresenter
 
         }));
 
-
     public T GetContent<T>()
     {
         return this.CheckAccess() ? (T)this.Content : this.Dispatcher.Invoke(() => (T)this.Content);
     }
-
 
     public virtual Part GetPrevious()
     {

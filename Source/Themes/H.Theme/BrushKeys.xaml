@@ -6,53 +6,53 @@
     <SolidColorBrush x:Key="{ComponentResourceKey ResourceId=S.Brush.Accent,
                                                   TypeInTargetAssembly={x:Type local:BrushKeys}}"
                      po:Freeze="True"
-                     Color="{DynamicResource {x:Static lc:ColorKeys.Accent}}" />
+                     Color="{DynamicResource {x:Static local:ColorKeys.Accent}}" />
     <!--  Background  -->
     <SolidColorBrush x:Key="{ComponentResourceKey ResourceId=S.Brush.CaptionBackground,
                                                   TypeInTargetAssembly={x:Type local:BrushKeys}}"
                      po:Freeze="True"
-                     Color="{DynamicResource {x:Static lc:ColorKeys.CaptionBackground}}" />
+                     Color="{DynamicResource {x:Static local:ColorKeys.CaptionBackground}}" />
     <!--<SolidColorBrush x:Key="{ComponentResourceKey ResourceId=S.Brush.TextBackground,
                                                   TypeInTargetAssembly={x:Type local:BrushKeys}}"
-                     Color="{DynamicResource {x:Static lc:ColorKeys.Background}}" />-->
+                     Color="{DynamicResource {x:Static local:ColorKeys.Background}}" />-->
 
     <SolidColorBrush x:Key="{ComponentResourceKey ResourceId=S.Brush.RowIndex.BackGround,
                                                   TypeInTargetAssembly={x:Type local:BrushKeys}}"
                      po:Freeze="True"
-                     Color="{DynamicResource {x:Static lc:ColorKeys.AlternatingRowBackground}}" />
+                     Color="{DynamicResource {x:Static local:ColorKeys.AlternatingRowBackground}}" />
 
     <!--  Foreground  -->
     <SolidColorBrush x:Key="{ComponentResourceKey ResourceId=S.Brush.CaptionForeground,
                                                   TypeInTargetAssembly={x:Type local:BrushKeys}}"
                      po:Freeze="True"
-                     Color="{DynamicResource {x:Static lc:ColorKeys.CaptionForeground}}" />
+                     Color="{DynamicResource {x:Static local:ColorKeys.CaptionForeground}}" />
     <SolidColorBrush x:Key="{ComponentResourceKey ResourceId=S.Brush.TextForeground.Title,
                                                   TypeInTargetAssembly={x:Type local:BrushKeys}}"
-                     Color="{DynamicResource {x:Static lc:ColorKeys.ForegroundTitle}}" />
+                     Color="{DynamicResource {x:Static local:ColorKeys.ForegroundTitle}}" />
     <SolidColorBrush x:Key="{ComponentResourceKey ResourceId=S.Brush.TextForeground,
                                                   TypeInTargetAssembly={x:Type local:BrushKeys}}"
                      po:Freeze="True"
-                     Color="{DynamicResource {x:Static lc:ColorKeys.Foreground}}" />
+                     Color="{DynamicResource {x:Static local:ColorKeys.Foreground}}" />
     <SolidColorBrush x:Key="{ComponentResourceKey ResourceId=S.Brush.TextForeground.Select,
                                                   TypeInTargetAssembly={x:Type local:BrushKeys}}"
-                     Color="{DynamicResource {x:Static lc:ColorKeys.ForegroundSelect}}" />
+                     Color="{DynamicResource {x:Static local:ColorKeys.ForegroundSelect}}" />
 
     <SolidColorBrush x:Key="{ComponentResourceKey ResourceId=S.Brush.TextMouseOver,
                                                   TypeInTargetAssembly={x:Type local:BrushKeys}}"
                      po:Freeze="True"
-                     Color="{DynamicResource {x:Static lc:ColorKeys.MouseOver}}" />
+                     Color="{DynamicResource {x:Static local:ColorKeys.MouseOver}}" />
     <SolidColorBrush x:Key="{ComponentResourceKey ResourceId=S.Brush.TextSelected,
                                                   TypeInTargetAssembly={x:Type local:BrushKeys}}"
                      po:Freeze="True"
-                     Color="{DynamicResource {x:Static lc:ColorKeys.Selected}}" />
+                     Color="{DynamicResource {x:Static local:ColorKeys.Selected}}" />
     <SolidColorBrush x:Key="{ComponentResourceKey ResourceId=S.Brush.TextForeground.Assist,
                                                   TypeInTargetAssembly={x:Type local:BrushKeys}}"
                      po:Freeze="True"
-                     Color="{DynamicResource {x:Static lc:ColorKeys.ForegroundAssist}}" />
+                     Color="{DynamicResource {x:Static local:ColorKeys.ForegroundAssist}}" />
     <SolidColorBrush x:Key="{ComponentResourceKey ResourceId=S.Brush.TextForeground.Link,
                                                   TypeInTargetAssembly={x:Type local:BrushKeys}}"
                      po:Freeze="True"
-                     Color="{DynamicResource {x:Static lc:ColorKeys.ForegroundLink}}" />
+                     Color="{DynamicResource {x:Static local:ColorKeys.ForegroundLink}}" />
 
     <!--  Foreground  White  -->
     <!--<SolidColorBrush x:Key="{ComponentResourceKey ResourceId=S.Brush.TextForeground.White, TypeInTargetAssembly={x:Type local:BrushKeys}}">#fafafa</SolidColorBrush>-->
@@ -71,183 +71,183 @@
     <SolidColorBrush x:Key="{ComponentResourceKey ResourceId=S.Brush.TextBorderBrush,
                                                   TypeInTargetAssembly={x:Type local:BrushKeys}}"
                      po:Freeze="True"
-                     Color="{DynamicResource {x:Static lc:ColorKeys.BorderBrush}}" />
+                     Color="{DynamicResource {x:Static local:ColorKeys.BorderBrush}}" />
     <SolidColorBrush x:Key="{ComponentResourceKey ResourceId=S.Brush.TextBorderBrush.Title,
                                                   TypeInTargetAssembly={x:Type local:BrushKeys}}"
                      po:Freeze="True"
-                     Color="{DynamicResource {x:Static lc:ColorKeys.BorderBrushTitle}}" />
+                     Color="{DynamicResource {x:Static local:ColorKeys.BorderBrushTitle}}" />
     <SolidColorBrush x:Key="{ComponentResourceKey ResourceId=S.Brush.TextBorderBrush.Assist,
                                                   TypeInTargetAssembly={x:Type local:BrushKeys}}"
                      po:Freeze="True"
-                     Color="{DynamicResource {x:Static lc:ColorKeys.BorderBrushAssist}}" />
+                     Color="{DynamicResource {x:Static local:ColorKeys.BorderBrushAssist}}" />
 
     <SolidColorBrush x:Key="{ComponentResourceKey ResourceId=S.Brush.Dark.10,
                                                   TypeInTargetAssembly={x:Type local:BrushKeys}}"
                      po:Freeze="True"
-                     Color="{DynamicResource {x:Static lc:ColorKeys.Dark10}}" />
+                     Color="{DynamicResource {x:Static local:ColorKeys.Dark10}}" />
     <SolidColorBrush x:Key="{ComponentResourceKey ResourceId=S.Brush.Dark.9.5,
                                                   TypeInTargetAssembly={x:Type local:BrushKeys}}"
                      po:Freeze="True"
-                     Color="{DynamicResource {x:Static lc:ColorKeys.Dark9_5}}" />
+                     Color="{DynamicResource {x:Static local:ColorKeys.Dark9_5}}" />
     <SolidColorBrush x:Key="{ComponentResourceKey ResourceId=S.Brush.Dark.9,
                                                   TypeInTargetAssembly={x:Type local:BrushKeys}}"
                      po:Freeze="True"
-                     Color="{DynamicResource {x:Static lc:ColorKeys.Dark9}}" />
+                     Color="{DynamicResource {x:Static local:ColorKeys.Dark9}}" />
     <SolidColorBrush x:Key="{ComponentResourceKey ResourceId=S.Brush.Dark.8.5,
                                                   TypeInTargetAssembly={x:Type local:BrushKeys}}"
                      po:Freeze="True"
-                     Color="{DynamicResource {x:Static lc:ColorKeys.Dark8_5}}" />
+                     Color="{DynamicResource {x:Static local:ColorKeys.Dark8_5}}" />
     <SolidColorBrush x:Key="{ComponentResourceKey ResourceId=S.Brush.Dark.8,
                                                   TypeInTargetAssembly={x:Type local:BrushKeys}}"
                      po:Freeze="True"
-                     Color="{DynamicResource {x:Static lc:ColorKeys.Dark8}}" />
+                     Color="{DynamicResource {x:Static local:ColorKeys.Dark8}}" />
     <SolidColorBrush x:Key="{ComponentResourceKey ResourceId=S.Brush.Dark.7.5,
                                                   TypeInTargetAssembly={x:Type local:BrushKeys}}"
                      po:Freeze="True"
-                     Color="{DynamicResource {x:Static lc:ColorKeys.Dark7_5}}" />
+                     Color="{DynamicResource {x:Static local:ColorKeys.Dark7_5}}" />
     <SolidColorBrush x:Key="{ComponentResourceKey ResourceId=S.Brush.Dark.7,
                                                   TypeInTargetAssembly={x:Type local:BrushKeys}}"
                      po:Freeze="True"
-                     Color="{DynamicResource {x:Static lc:ColorKeys.Dark7}}" />
+                     Color="{DynamicResource {x:Static local:ColorKeys.Dark7}}" />
     <SolidColorBrush x:Key="{ComponentResourceKey ResourceId=S.Brush.Dark.6.5,
                                                   TypeInTargetAssembly={x:Type local:BrushKeys}}"
                      po:Freeze="True"
-                     Color="{DynamicResource {x:Static lc:ColorKeys.Dark6_5}}" />
+                     Color="{DynamicResource {x:Static local:ColorKeys.Dark6_5}}" />
     <SolidColorBrush x:Key="{ComponentResourceKey ResourceId=S.Brush.Dark.6,
                                                   TypeInTargetAssembly={x:Type local:BrushKeys}}"
                      po:Freeze="True"
-                     Color="{DynamicResource {x:Static lc:ColorKeys.Dark6}}" />
+                     Color="{DynamicResource {x:Static local:ColorKeys.Dark6}}" />
     <SolidColorBrush x:Key="{ComponentResourceKey ResourceId=S.Brush.Dark.5.5,
                                                   TypeInTargetAssembly={x:Type local:BrushKeys}}"
                      po:Freeze="True"
-                     Color="{DynamicResource {x:Static lc:ColorKeys.Dark5_5}}" />
+                     Color="{DynamicResource {x:Static local:ColorKeys.Dark5_5}}" />
     <SolidColorBrush x:Key="{ComponentResourceKey ResourceId=S.Brush.Dark.5,
                                                   TypeInTargetAssembly={x:Type local:BrushKeys}}"
                      po:Freeze="True"
-                     Color="{DynamicResource {x:Static lc:ColorKeys.Dark5}}" />
+                     Color="{DynamicResource {x:Static local:ColorKeys.Dark5}}" />
     <SolidColorBrush x:Key="{ComponentResourceKey ResourceId=S.Brush.Dark.4.5,
                                                   TypeInTargetAssembly={x:Type local:BrushKeys}}"
                      po:Freeze="True"
-                     Color="{DynamicResource {x:Static lc:ColorKeys.Dark4_5}}" />
+                     Color="{DynamicResource {x:Static local:ColorKeys.Dark4_5}}" />
     <SolidColorBrush x:Key="{ComponentResourceKey ResourceId=S.Brush.Dark.4,
                                                   TypeInTargetAssembly={x:Type local:BrushKeys}}"
                      po:Freeze="True"
-                     Color="{DynamicResource {x:Static lc:ColorKeys.Dark4}}" />
+                     Color="{DynamicResource {x:Static local:ColorKeys.Dark4}}" />
     <SolidColorBrush x:Key="{ComponentResourceKey ResourceId=S.Brush.Dark.3.5,
                                                   TypeInTargetAssembly={x:Type local:BrushKeys}}"
                      po:Freeze="True"
-                     Color="{DynamicResource {x:Static lc:ColorKeys.Dark3_5}}" />
+                     Color="{DynamicResource {x:Static local:ColorKeys.Dark3_5}}" />
     <SolidColorBrush x:Key="{ComponentResourceKey ResourceId=S.Brush.Dark.3,
                                                   TypeInTargetAssembly={x:Type local:BrushKeys}}"
                      po:Freeze="True"
-                     Color="{DynamicResource {x:Static lc:ColorKeys.Dark3}}" />
+                     Color="{DynamicResource {x:Static local:ColorKeys.Dark3}}" />
     <SolidColorBrush x:Key="{ComponentResourceKey ResourceId=S.Brush.Dark.2.5,
                                                   TypeInTargetAssembly={x:Type local:BrushKeys}}"
                      po:Freeze="True"
-                     Color="{DynamicResource {x:Static lc:ColorKeys.Dark2_5}}" />
+                     Color="{DynamicResource {x:Static local:ColorKeys.Dark2_5}}" />
     <SolidColorBrush x:Key="{ComponentResourceKey ResourceId=S.Brush.Dark.2,
                                                   TypeInTargetAssembly={x:Type local:BrushKeys}}"
                      po:Freeze="True"
-                     Color="{DynamicResource {x:Static lc:ColorKeys.Dark2}}" />
+                     Color="{DynamicResource {x:Static local:ColorKeys.Dark2}}" />
     <SolidColorBrush x:Key="{ComponentResourceKey ResourceId=S.Brush.Dark.1.5,
                                                   TypeInTargetAssembly={x:Type local:BrushKeys}}"
                      po:Freeze="True"
-                     Color="{DynamicResource {x:Static lc:ColorKeys.Dark1_5}}" />
+                     Color="{DynamicResource {x:Static local:ColorKeys.Dark1_5}}" />
     <SolidColorBrush x:Key="{ComponentResourceKey ResourceId=S.Brush.Dark.1,
                                                   TypeInTargetAssembly={x:Type local:BrushKeys}}"
                      po:Freeze="True"
-                     Color="{DynamicResource {x:Static lc:ColorKeys.Dark1}}" />
+                     Color="{DynamicResource {x:Static local:ColorKeys.Dark1}}" />
     <SolidColorBrush x:Key="{ComponentResourceKey ResourceId=S.Brush.Dark.0.9,
                                                   TypeInTargetAssembly={x:Type local:BrushKeys}}"
                      po:Freeze="True"
-                     Color="{DynamicResource {x:Static lc:ColorKeys.Dark0_9}}" />
+                     Color="{DynamicResource {x:Static local:ColorKeys.Dark0_9}}" />
     <SolidColorBrush x:Key="{ComponentResourceKey ResourceId=S.Brush.Dark.0.8,
                                                   TypeInTargetAssembly={x:Type local:BrushKeys}}"
                      po:Freeze="True"
-                     Color="{DynamicResource {x:Static lc:ColorKeys.Dark0_8}}" />
+                     Color="{DynamicResource {x:Static local:ColorKeys.Dark0_8}}" />
     <SolidColorBrush x:Key="{ComponentResourceKey ResourceId=S.Brush.Dark.0.7,
                                                   TypeInTargetAssembly={x:Type local:BrushKeys}}"
                      po:Freeze="True"
-                     Color="{DynamicResource {x:Static lc:ColorKeys.Dark0_7}}" />
+                     Color="{DynamicResource {x:Static local:ColorKeys.Dark0_7}}" />
     <SolidColorBrush x:Key="{ComponentResourceKey ResourceId=S.Brush.Dark.0.6,
                                                   TypeInTargetAssembly={x:Type local:BrushKeys}}"
                      po:Freeze="True"
-                     Color="{DynamicResource {x:Static lc:ColorKeys.Dark0_6}}" />
+                     Color="{DynamicResource {x:Static local:ColorKeys.Dark0_6}}" />
     <SolidColorBrush x:Key="{ComponentResourceKey ResourceId=S.Brush.Dark.0.5,
                                                   TypeInTargetAssembly={x:Type local:BrushKeys}}"
                      po:Freeze="True"
-                     Color="{DynamicResource {x:Static lc:ColorKeys.Dark0_5}}" />
+                     Color="{DynamicResource {x:Static local:ColorKeys.Dark0_5}}" />
     <SolidColorBrush x:Key="{ComponentResourceKey ResourceId=S.Brush.Dark.0.4,
                                                   TypeInTargetAssembly={x:Type local:BrushKeys}}"
                      po:Freeze="True"
-                     Color="{DynamicResource {x:Static lc:ColorKeys.Dark0_4}}" />
+                     Color="{DynamicResource {x:Static local:ColorKeys.Dark0_4}}" />
     <SolidColorBrush x:Key="{ComponentResourceKey ResourceId=S.Brush.Dark.0.3,
                                                   TypeInTargetAssembly={x:Type local:BrushKeys}}"
                      po:Freeze="True"
-                     Color="{DynamicResource {x:Static lc:ColorKeys.Dark0_3}}" />
+                     Color="{DynamicResource {x:Static local:ColorKeys.Dark0_3}}" />
     <SolidColorBrush x:Key="{ComponentResourceKey ResourceId=S.Brush.Dark.0.2,
                                                   TypeInTargetAssembly={x:Type local:BrushKeys}}"
                      po:Freeze="True"
-                     Color="{DynamicResource {x:Static lc:ColorKeys.Dark0_2}}" />
+                     Color="{DynamicResource {x:Static local:ColorKeys.Dark0_2}}" />
     <SolidColorBrush x:Key="{ComponentResourceKey ResourceId=S.Brush.Dark.0.1,
                                                   TypeInTargetAssembly={x:Type local:BrushKeys}}"
                      po:Freeze="True"
-                     Color="{DynamicResource {x:Static lc:ColorKeys.Dark0_1}}" />
+                     Color="{DynamicResource {x:Static local:ColorKeys.Dark0_1}}" />
     <SolidColorBrush x:Key="{ComponentResourceKey ResourceId=S.Brush.Dark.0,
                                                   TypeInTargetAssembly={x:Type local:BrushKeys}}"
                      po:Freeze="True"
-                     Color="{DynamicResource {x:Static lc:ColorKeys.Dark0}}" />
+                     Color="{DynamicResource {x:Static local:ColorKeys.Dark0}}" />
 
 
     <!--  SolidColorBrush  -->
     <SolidColorBrush x:Key="{ComponentResourceKey ResourceId=S.Brush.LightGray,
                                                   TypeInTargetAssembly={x:Type local:BrushKeys}}"
                      po:Freeze="True"
-                     Color="{DynamicResource {x:Static lc:ColorKeys.LightGray}}" />
+                     Color="{DynamicResource {x:Static local:ColorKeys.LightGray}}" />
     <SolidColorBrush x:Key="{ComponentResourceKey ResourceId=S.Brush.Gray,
                                                   TypeInTargetAssembly={x:Type local:BrushKeys}}"
                      po:Freeze="True"
-                     Color="{DynamicResource {x:Static lc:ColorKeys.Gray}}" />
+                     Color="{DynamicResource {x:Static local:ColorKeys.Gray}}" />
     <SolidColorBrush x:Key="{ComponentResourceKey ResourceId=S.Brush.Black,
                                                   TypeInTargetAssembly={x:Type local:BrushKeys}}"
                      po:Freeze="True"
-                     Color="{DynamicResource {x:Static lc:ColorKeys.Black}}" />
+                     Color="{DynamicResource {x:Static local:ColorKeys.Black}}" />
     <SolidColorBrush x:Key="{ComponentResourceKey ResourceId=S.Brush.Orange,
                                                   TypeInTargetAssembly={x:Type local:BrushKeys}}"
                      po:Freeze="True"
-                     Color="{DynamicResource {x:Static lc:ColorKeys.Orange}}" />
+                     Color="{DynamicResource {x:Static local:ColorKeys.Orange}}" />
     <SolidColorBrush x:Key="{ComponentResourceKey ResourceId=S.Brush.Red,
                                                   TypeInTargetAssembly={x:Type local:BrushKeys}}"
                      po:Freeze="True"
-                     Color="{DynamicResource {x:Static lc:ColorKeys.Red}}" />
+                     Color="{DynamicResource {x:Static local:ColorKeys.Red}}" />
     <SolidColorBrush x:Key="{ComponentResourceKey ResourceId=S.Brush.Green,
                                                   TypeInTargetAssembly={x:Type local:BrushKeys}}"
                      po:Freeze="True"
-                     Color="{DynamicResource {x:Static lc:ColorKeys.Green}}" />
+                     Color="{DynamicResource {x:Static local:ColorKeys.Green}}" />
     <SolidColorBrush x:Key="{ComponentResourceKey ResourceId=S.Brush.Yellow,
                                                   TypeInTargetAssembly={x:Type local:BrushKeys}}"
                      po:Freeze="True"
-                     Color="{DynamicResource {x:Static lc:ColorKeys.Yellow}}" />
+                     Color="{DynamicResource {x:Static local:ColorKeys.Yellow}}" />
     <SolidColorBrush x:Key="{ComponentResourceKey ResourceId=S.Brush.Purple,
                                                   TypeInTargetAssembly={x:Type local:BrushKeys}}"
                      po:Freeze="True"
-                     Color="{DynamicResource {x:Static lc:ColorKeys.Purple}}" />
+                     Color="{DynamicResource {x:Static local:ColorKeys.Purple}}" />
     <SolidColorBrush x:Key="{ComponentResourceKey ResourceId=S.Brush.Brown,
                                                   TypeInTargetAssembly={x:Type local:BrushKeys}}"
                      po:Freeze="True"
-                     Color="{DynamicResource {x:Static lc:ColorKeys.Brown}}" />
+                     Color="{DynamicResource {x:Static local:ColorKeys.Brown}}" />
     <SolidColorBrush x:Key="{ComponentResourceKey ResourceId=S.Brush.Blue,
                                                   TypeInTargetAssembly={x:Type local:BrushKeys}}"
                      po:Freeze="True"
-                     Color="{DynamicResource {x:Static lc:ColorKeys.Blue}}" />
+                     Color="{DynamicResource {x:Static local:ColorKeys.Blue}}" />
     <SolidColorBrush x:Key="{ComponentResourceKey ResourceId=S.Brush.LightBlue,
                                                   TypeInTargetAssembly={x:Type local:BrushKeys}}"
                      po:Freeze="True"
-                     Color="{DynamicResource {x:Static lc:ColorKeys.LightBlue}}" />
+                     Color="{DynamicResource {x:Static local:ColorKeys.LightBlue}}" />
     <SolidColorBrush x:Key="{ComponentResourceKey ResourceId=S.Brush.Pink,
                                                   TypeInTargetAssembly={x:Type local:BrushKeys}}"
                      po:Freeze="True"
-                     Color="{DynamicResource {x:Static lc:ColorKeys.Pink}}" />
+                     Color="{DynamicResource {x:Static local:ColorKeys.Pink}}" />
     <SolidColorBrush x:Key="{ComponentResourceKey ResourceId=S.Brush.White, TypeInTargetAssembly={x:Type local:BrushKeys}}">#FFFFFF</SolidColorBrush>
 
     <!--  System  -->

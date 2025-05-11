@@ -1,11 +1,10 @@
-﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
-using H.Extensions.TypeConverter;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Windows;
-using System.Windows.Controls;
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
 
 namespace H.Controls.Diagram.Layouts;
 
@@ -24,7 +23,6 @@ public class TreeLayout : Layout
             this.Diagram?.RefreshLayout();
         }
     }
-
 
     private HorizontalAlignment _alignment = HorizontalAlignment.Center;
     public HorizontalAlignment Alignment
@@ -151,7 +149,6 @@ public class TreeLayout : Layout
     {
         //this.DesiredSize
     }
-
 
     protected virtual void TranformAll(IEnumerable<TreeNode> roots)
     {

@@ -1,9 +1,12 @@
-﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
-
-
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
 
 // Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
-
 
 using H.Common.Attributes;
 using H.Common.Commands;
@@ -29,7 +32,6 @@ public class ShowContactCommand : DisplayMarkupCommandBase
         return base.CanExecute(parameter) && Ioc.Exist<IContactService>();
     }
 }
-
 
 [Icon(FontIcons.Home)]
 [Display(Name = "访问Github", Description = "通过此方式联系到开发者")]
@@ -86,7 +88,6 @@ public class ShowPodcastContactCommand : ShowContactCommand
     }
 }
 
-
 [Icon(FontIcons.StatusCircleQuestionMark)]
 [Display(Name = "提出问题", Description = "通过此方式向开源项目提出问题")]
 public class ShowGitHubIssueContactCommand : ShowContactCommand
@@ -97,5 +98,4 @@ public class ShowGitHubIssueContactCommand : ShowContactCommand
         return Task.CompletedTask;
     }
 }
-
 

@@ -1,4 +1,10 @@
-﻿// CopyRightTemplate © 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
 
 using System.Windows;
 using System.Windows.Controls;
@@ -16,7 +22,6 @@ public static partial class Cattach
     {
         obj.SetValue(BottomTemplateProperty, value);
     }
-
 
     public static readonly DependencyProperty BottomTemplateProperty =
         DependencyProperty.RegisterAttached("BottomTemplate", typeof(ControlTemplate), typeof(Cattach), new PropertyMetadata(default(ControlTemplate), OnBottomTemplateChanged));
@@ -40,7 +45,6 @@ public static partial class Cattach
         obj.SetValue(TopTemplateProperty, value);
     }
 
-
     public static readonly DependencyProperty TopTemplateProperty =
         DependencyProperty.RegisterAttached("TopTemplate", typeof(ControlTemplate), typeof(Cattach), new PropertyMetadata(default(ControlTemplate), OnTopTemplateChanged));
 
@@ -62,7 +66,6 @@ public static partial class Cattach
     {
         obj.SetValue(LeftTemplateProperty, value);
     }
-
 
     public static readonly DependencyProperty LeftTemplateProperty =
         DependencyProperty.RegisterAttached("LeftTemplate", typeof(ControlTemplate), typeof(Cattach), new PropertyMetadata(default(ControlTemplate), OnLeftTemplateChanged));
@@ -86,7 +89,6 @@ public static partial class Cattach
         obj.SetValue(RightTemplateProperty, value);
     }
 
-
     public static readonly DependencyProperty RightTemplateProperty =
         DependencyProperty.RegisterAttached("RightTemplate", typeof(ControlTemplate), typeof(Cattach), new PropertyMetadata(default(ControlTemplate), OnRightTemplateChanged));
 
@@ -99,7 +101,6 @@ public static partial class Cattach
         ControlTemplate o = (ControlTemplate)e.OldValue;
     }
 
-
     public static ControlTemplate GetCenterTemplate(DependencyObject obj)
     {
         return (ControlTemplate)obj.GetValue(CenterTemplateProperty);
@@ -109,7 +110,6 @@ public static partial class Cattach
     {
         obj.SetValue(CenterTemplateProperty, value);
     }
-
 
     public static readonly DependencyProperty CenterTemplateProperty =
         DependencyProperty.RegisterAttached("CenterTemplate", typeof(ControlTemplate), typeof(Cattach), new PropertyMetadata(default(ControlTemplate), OnCenterTemplateChanged));

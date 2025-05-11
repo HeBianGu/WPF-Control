@@ -1,20 +1,22 @@
-﻿global using H.Services.Message;
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
+
+global using H.Services.Message;
 using H.Services.Message.IODialog;
-using Microsoft.Win32;
 using PdfiumViewer;
 using PdfiumViewer.Core;
 using PdfiumViewer.Enums;
-using System;
 using System.Diagnostics;
 using System.IO;
-using System.Linq;
 using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
-using System.Windows.Input;
 
 namespace H.Controls.PDF
 {
@@ -71,8 +73,6 @@ namespace H.Controls.PDF
                 };
                 this.CommandBindings.Add(binding);
             }
-
-
 
             {
                 CommandBinding binding = new CommandBinding(PDFBoxCommands.SaveAsImages);
@@ -147,8 +147,6 @@ namespace H.Controls.PDF
                 };
                 this.CommandBindings.Add(binding);
             }
-
-
 
             {
                 CommandBinding binding = new CommandBinding(PDFBoxCommands.FitToHeight);
@@ -493,7 +491,6 @@ namespace H.Controls.PDF
             this.UseHighlightAllMatches = _searchManager.HighlightAllMatches;
         }
 
-
         private PdfSearchManager SearchManager { get; set; }
 
         public PdfBookmarkCollection Bookmarks
@@ -528,7 +525,6 @@ namespace H.Controls.PDF
             set { SetValue(SearchMatchItemNoProperty, value); }
         }
 
-
         public static readonly DependencyProperty SearchMatchItemNoProperty =
             DependencyProperty.Register("SearchMatchItemNo", typeof(int), typeof(PDFBox), new FrameworkPropertyMetadata(default(int), (d, e) =>
             {
@@ -548,13 +544,11 @@ namespace H.Controls.PDF
 
             }));
 
-
         public int SearchMatchesCount
         {
             get { return (int)GetValue(SearchMatchesCountProperty); }
             set { SetValue(SearchMatchesCountProperty, value); }
         }
-
 
         public static readonly DependencyProperty SearchMatchesCountProperty =
             DependencyProperty.Register("SearchMatchesCount", typeof(int), typeof(PDFBox), new FrameworkPropertyMetadata(default(int), (d, e) =>
@@ -575,13 +569,11 @@ namespace H.Controls.PDF
 
             }));
 
-
         public bool IsSearchOpen
         {
             get { return (bool)GetValue(IsSearchOpenProperty); }
             set { SetValue(IsSearchOpenProperty, value); }
         }
-
 
         public static readonly DependencyProperty IsSearchOpenProperty =
             DependencyProperty.Register("IsSearchOpen", typeof(bool), typeof(PDFBox), new FrameworkPropertyMetadata(default(bool), (d, e) =>
@@ -602,13 +594,11 @@ namespace H.Controls.PDF
 
             }));
 
-
         public bool ShowBookmarks
         {
             get { return (bool)GetValue(ShowBookmarksProperty); }
             set { SetValue(ShowBookmarksProperty, value); }
         }
-
 
         public static readonly DependencyProperty ShowBookmarksProperty =
             DependencyProperty.Register("ShowBookmarks", typeof(bool), typeof(PDFBox), new FrameworkPropertyMetadata(default(bool), (d, e) =>
@@ -629,13 +619,11 @@ namespace H.Controls.PDF
 
             }));
 
-
         public int PageIndex
         {
             get { return (int)GetValue(PageIndexProperty); }
             set { SetValue(PageIndexProperty, value); }
         }
-
 
         public static readonly DependencyProperty PageIndexProperty =
             DependencyProperty.Register("PageIndex", typeof(int), typeof(PDFBox), new FrameworkPropertyMetadata(default(int), (d, e) =>
@@ -684,13 +672,11 @@ namespace H.Controls.PDF
                 }
             }));
 
-
         public double ZoomPercent
         {
             get { return (double)GetValue(ZoomPercentProperty); }
             set { SetValue(ZoomPercentProperty, value); }
         }
-
 
         public static readonly DependencyProperty ZoomPercentProperty =
             DependencyProperty.Register("ZoomPercent", typeof(double), typeof(PDFBox), new FrameworkPropertyMetadata(default(double), (d, e) =>
@@ -710,13 +696,11 @@ namespace H.Controls.PDF
                 }
             }));
 
-
         public FlowDirection IsRtl
         {
             get => _renderer?.IsRightToLeft == true ? FlowDirection.RightToLeft : FlowDirection.LeftToRight;
             set => _renderer.IsRightToLeft = value == FlowDirection.RightToLeft ? true : false;
         }
-
 
         bool _isrefreshBookMark = false;
         public PdfBookmark SelectedBookIndex
@@ -724,7 +708,6 @@ namespace H.Controls.PDF
             get { return (PdfBookmark)GetValue(SelectedBookIndexProperty); }
             set { SetValue(SelectedBookIndexProperty, value); }
         }
-
 
         public static readonly DependencyProperty SelectedBookIndexProperty =
             DependencyProperty.Register("SelectedBookIndex", typeof(PdfBookmark), typeof(PDFBox), new FrameworkPropertyMetadata(default(PdfBookmark), (d, e) =>
@@ -748,13 +731,11 @@ namespace H.Controls.PDF
                 control._isrefreshBookMark = false;
             }));
 
-
         public bool UseMatchCase
         {
             get { return (bool)GetValue(UseMatchCaseProperty); }
             set { SetValue(UseMatchCaseProperty, value); }
         }
-
 
         public static readonly DependencyProperty UseMatchCaseProperty =
             DependencyProperty.Register("UseMatchCase", typeof(bool), typeof(PDFBox), new FrameworkPropertyMetadata(default(bool), (d, e) =>
@@ -775,13 +756,11 @@ namespace H.Controls.PDF
 
             }));
 
-
         public bool UseWholeWordOnly
         {
             get { return (bool)GetValue(UseWholeWordOnlyProperty); }
             set { SetValue(UseWholeWordOnlyProperty, value); }
         }
-
 
         public static readonly DependencyProperty UseWholeWordOnlyProperty =
             DependencyProperty.Register("UseWholeWordOnly", typeof(bool), typeof(PDFBox), new FrameworkPropertyMetadata(default(bool), (d, e) =>
@@ -801,7 +780,6 @@ namespace H.Controls.PDF
                 }
 
             }));
-
 
         public bool UseHighlightAllMatches
         {
@@ -829,13 +807,11 @@ namespace H.Controls.PDF
 
             }));
 
-
         public string SearchTerm
         {
             get { return (string)GetValue(SearchTermProperty); }
             set { SetValue(SearchTermProperty, value); }
         }
-
 
         public static readonly DependencyProperty SearchTermProperty =
             DependencyProperty.Register("SearchTerm", typeof(string), typeof(PDFBox), new FrameworkPropertyMetadata(default(string), (d, e) =>

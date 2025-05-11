@@ -1,4 +1,10 @@
-﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
 
 using System.Collections;
 using System.Windows;
@@ -19,7 +25,6 @@ public static class ItemsControlService
         obj.SetValue(InnerSourceProperty, value);
     }
 
-
     public static readonly DependencyProperty InnerSourceProperty =
         DependencyProperty.RegisterAttached("InnerSource", typeof(IEnumerable), typeof(ItemsControlService), new PropertyMetadata(default(IEnumerable), OnInnerSourceChanged));
 
@@ -34,7 +39,6 @@ public static class ItemsControlService
         RefreshInnerSource(control);
     }
 
-
     public static object GetTools(DependencyObject obj)
     {
         return obj.GetValue(ToolsProperty);
@@ -44,7 +48,6 @@ public static class ItemsControlService
     {
         obj.SetValue(ToolsProperty, value);
     }
-
 
     public static readonly DependencyProperty ToolsProperty =
         DependencyProperty.RegisterAttached("Tools", typeof(object), typeof(ItemsControlService), new PropertyMetadata(default(object), OnToolsChanged));
@@ -60,7 +63,6 @@ public static class ItemsControlService
         RefreshInnerSource(control);
     }
 
-
     public static ControlTemplate GetHomeTool(DependencyObject obj)
     {
         return obj.GetValue(HomeToolProperty) as ControlTemplate;
@@ -70,7 +72,6 @@ public static class ItemsControlService
     {
         obj.SetValue(HomeToolProperty, value);
     }
-
 
     public static readonly DependencyProperty HomeToolProperty =
         DependencyProperty.RegisterAttached("HomeTool", typeof(ControlTemplate), typeof(ItemsControlService), new PropertyMetadata(null, OnHomeToolChanged));
@@ -83,7 +84,6 @@ public static class ItemsControlService
         RefreshInnerSource(control);
     }
 
-
     public static ControlTemplate GetEndTool(DependencyObject obj)
     {
         return obj.GetValue(EndToolProperty) as ControlTemplate;
@@ -93,7 +93,6 @@ public static class ItemsControlService
     {
         obj.SetValue(EndToolProperty, value);
     }
-
 
     public static readonly DependencyProperty EndToolProperty =
         DependencyProperty.RegisterAttached("EndTool", typeof(ControlTemplate), typeof(ItemsControlService), new PropertyMetadata(null, OnEndToolChanged));
@@ -135,7 +134,6 @@ public static class ItemsControlService
 
         control.ItemsSource = compositeCollection;
     }
-
 
     public static IList GetSelectedItems(DependencyObject obj)
     {

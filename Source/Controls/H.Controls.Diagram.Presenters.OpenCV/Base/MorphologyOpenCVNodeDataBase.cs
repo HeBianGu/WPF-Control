@@ -1,4 +1,12 @@
-﻿using System.Windows.Threading;
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
+
+using System.Windows.Threading;
 
 namespace H.Controls.Diagram.Presenters.OpenCV.Base;
 
@@ -25,7 +33,7 @@ public abstract class MorphologyOpenCVNodeDataBase : OpenCVNodeDataBase, IMorpho
 
     private int _iterations = 1;
     [DefaultValue(1)]
-    [Display(Name = "迭代次数", GroupName = "数据",Description = "形态学操作的迭代次数。表示操作将重复执行的次数")]
+    [Display(Name = "迭代次数", GroupName = "数据", Description = "形态学操作的迭代次数。表示操作将重复执行的次数")]
     public int Iterations
     {
         get { return _iterations; }
@@ -38,7 +46,7 @@ public abstract class MorphologyOpenCVNodeDataBase : OpenCVNodeDataBase, IMorpho
 
     private BorderTypes _borderTypes = BorderTypes.Constant;
     [DefaultValue(BorderTypes.Constant)]
-    [Display(Name = "界处理方式", GroupName = "数据",Description = "该参数用于指定在形态学操作过程中如何处理图像边界")]
+    [Display(Name = "界处理方式", GroupName = "数据", Description = "该参数用于指定在形态学操作过程中如何处理图像边界")]
     public BorderTypes BorderType
     {
         get { return _borderTypes; }
@@ -51,7 +59,7 @@ public abstract class MorphologyOpenCVNodeDataBase : OpenCVNodeDataBase, IMorpho
 
     private bool _useKernel = true;
     [DefaultValue(3)]
-    [Display(Name = "使用内核", GroupName = "数据",Description = "用于控制是否在形态学操作中使用内核")]
+    [Display(Name = "使用内核", GroupName = "数据", Description = "用于控制是否在形态学操作中使用内核")]
     public bool UseKernel
     {
         get { return _useKernel; }
@@ -63,7 +71,7 @@ public abstract class MorphologyOpenCVNodeDataBase : OpenCVNodeDataBase, IMorpho
     }
 
     private Int32Collection _kernelValues = new Int32Collection(new int[] { 0, 1, 0, 1, 1, 1, 0, 1, 0 });
-    [Display(Name = "内核参数", GroupName = "数据",Description = "允许用户自定义内核的形状和大小，从而影响形态学操作的结果")]
+    [Display(Name = "内核参数", GroupName = "数据", Description = "允许用户自定义内核的形状和大小，从而影响形态学操作的结果")]
     public Int32Collection KernelValues
     {
         get { return _kernelValues; }
@@ -76,7 +84,7 @@ public abstract class MorphologyOpenCVNodeDataBase : OpenCVNodeDataBase, IMorpho
 
     private int _kernelRows = 3;
     [DefaultValue(3)]
-    [Display(Name = "内核行数", GroupName = "数据",Description = "定义了形态学操作内核的行数")]
+    [Display(Name = "内核行数", GroupName = "数据", Description = "定义了形态学操作内核的行数")]
     public int KernelRows
     {
         get { return _kernelRows; }
@@ -101,7 +109,6 @@ public abstract class MorphologyOpenCVNodeDataBase : OpenCVNodeDataBase, IMorpho
     }
 
     protected abstract MorphTypes GetMorphType();
-
 
     protected override FlowableResult<Mat> Invoke(ISrcImageNodeData srcImageNodeData, IOpenCVNodeData from, IFlowableDiagramData diagram)
     {

@@ -1,15 +1,14 @@
-﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
-
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
 
 using Microsoft.Xaml.Behaviors;
-using System;
-using System.Collections;
-using System.Collections.ObjectModel;
 using System.Collections.Specialized;
-using System.Linq;
 using System.Text;
-using System.Windows;
-using System.Windows.Controls;
 
 namespace H.Controls.FilterBox
 {
@@ -29,7 +28,6 @@ namespace H.Controls.FilterBox
             set { SetValue(ItemsSourceProperty, value); }
         }
 
-
         public static readonly DependencyProperty ItemsSourceProperty =
             DependencyProperty.Register("ItemsSource", typeof(IEnumerable), typeof(TextBlockFiltersCountBehavior), new FrameworkPropertyMetadata(default(IEnumerable), (d, e) =>
             {
@@ -43,13 +41,11 @@ namespace H.Controls.FilterBox
                 control.RefreshData();
             }));
 
-
         public string Header
         {
             get { return (string)GetValue(HeaderProperty); }
             set { SetValue(HeaderProperty, value); }
         }
-
 
         public static readonly DependencyProperty HeaderProperty =
             DependencyProperty.Register("Header", typeof(string), typeof(TextBlockFiltersCountBehavior), new FrameworkPropertyMetadata("合计：", (d, e) =>
@@ -70,13 +66,11 @@ namespace H.Controls.FilterBox
 
             }));
 
-
         public string Format
         {
             get { return (string)GetValue(FormatProperty); }
             set { SetValue(FormatProperty, value); }
         }
-
 
         public static readonly DependencyProperty FormatProperty =
             DependencyProperty.Register("Format", typeof(string), typeof(TextBlockFiltersCountBehavior), new FrameworkPropertyMetadata("[{0}] {1}", (d, e) =>
@@ -97,13 +91,11 @@ namespace H.Controls.FilterBox
 
             }));
 
-
         public ConditionOperate ConditionOperate
         {
             get { return (ConditionOperate)GetValue(ConditionOperateProperty); }
             set { SetValue(ConditionOperateProperty, value); }
         }
-
 
         public static readonly DependencyProperty ConditionOperateProperty =
             DependencyProperty.Register("ConditionOperate", typeof(ConditionOperate), typeof(TextBlockFiltersCountBehavior), new FrameworkPropertyMetadata(ConditionOperate.All, (d, e) =>
@@ -123,8 +115,6 @@ namespace H.Controls.FilterBox
                 }
 
             }));
-
-
 
         private void CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {

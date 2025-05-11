@@ -1,8 +1,12 @@
-﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
 
-using System;
 using System.Collections;
-using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -272,7 +276,6 @@ namespace H.Controls.Panel
         private Rect _rectOnDrag;
         #endregion
 
-
         private void OnMouseMove(object sender, MouseEventArgs e)
         {
             if (e.LeftButton == MouseButtonState.Pressed && this._draggedElement == null && !this.IsMouseCaptured)
@@ -400,7 +403,6 @@ namespace H.Controls.Panel
                 list.Items.Remove(dragged);
                 list.Items.Insert(newIndex, dragged);
             }
-
 
             //if (oldIndex > newIndex)
             //{

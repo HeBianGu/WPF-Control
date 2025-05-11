@@ -1,4 +1,10 @@
-﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
 
 using System.Windows;
 
@@ -16,7 +22,6 @@ public static partial class Cattach
         obj.SetValue(IsExceptSelfProperty, value);
     }
 
-
     public static readonly DependencyProperty IsExceptSelfProperty =
         DependencyProperty.RegisterAttached("IsExceptSelf", typeof(bool), typeof(Cattach), new PropertyMetadata(false, OnIsExceptSelfChanged));
 
@@ -29,7 +34,6 @@ public static partial class Cattach
         bool o = (bool)e.OldValue;
     }
 
-
     public static bool GetIsExcepChildren(DependencyObject obj)
     {
         return (bool)obj.GetValue(IsExcepChildrenProperty);
@@ -39,7 +43,6 @@ public static partial class Cattach
     {
         obj.SetValue(IsExcepChildrenProperty, value);
     }
-
 
     public static readonly DependencyProperty IsExcepChildrenProperty =
         DependencyProperty.RegisterAttached("IsExcepChildren", typeof(bool), typeof(Cattach), new PropertyMetadata(false, OnIsExcepChildrenChanged));
@@ -52,6 +55,5 @@ public static partial class Cattach
 
         bool o = (bool)e.OldValue;
     }
-
 
 }

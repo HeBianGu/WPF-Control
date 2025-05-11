@@ -1,4 +1,12 @@
-﻿namespace H.Extensions.Unit
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
+
+namespace H.Extensions.Unit
 {
     public static class Prefixes
     {
@@ -76,7 +84,6 @@
         public static double Yocto(this int v) { return v * 1.0e-24; }
         public static double Ronto(this int v) { return v * 1.0e-27; }
         public static double Quecto(this int v) { return v * 1.0e-30; }
-
 
         public static double Quetta(this double v) { return v * 1.0e30; }
         public static double Ronna(this double v) { return v * 1.0e27; }

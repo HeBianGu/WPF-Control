@@ -1,4 +1,12 @@
-﻿global using H.Services.Message;
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
+
+global using H.Services.Message;
 global using H.Services.Message.Dialog;
 global using System.Windows.Controls.Primitives;
 
@@ -28,7 +36,6 @@ namespace H.Controls.FilterBox
             };
         }
 
-
         public DataTemplate SelectedDataTemplate
         {
             get { return (DataTemplate)GetValue(SelectedDataTemplateProperty); }
@@ -55,7 +62,6 @@ namespace H.Controls.FilterBox
 
             }));
 
-
         public string ID { get; set; }
 
         public override void OnApplyTemplate()
@@ -78,13 +84,11 @@ namespace H.Controls.FilterBox
             };
         }
 
-
         public string DisplayName
         {
             get { return (string)GetValue(DisplayNameProperty); }
             set { SetValue(DisplayNameProperty, value); }
         }
-
 
         public static readonly DependencyProperty DisplayNameProperty =
             DependencyProperty.Register("DisplayName", typeof(string), typeof(PropertyFilterBox), new FrameworkPropertyMetadata(default(string), (d, e) =>
@@ -154,13 +158,11 @@ namespace H.Controls.FilterBox
 
             }));
 
-
         public string PropertyNames
         {
             get { return (string)GetValue(PropertyNamesProperty); }
             set { SetValue(PropertyNamesProperty, value); }
         }
-
 
         public static readonly DependencyProperty PropertyNamesProperty =
             DependencyProperty.Register("PropertyNames", typeof(string), typeof(PropertyFilterBox), new FrameworkPropertyMetadata(default(string), (d, e) =>
@@ -180,7 +182,6 @@ namespace H.Controls.FilterBox
                 }
                 control.RefreshType(control.Type);
             }));
-
 
         public static readonly RoutedEvent SelectedChangedRoutedEvent =
             EventManager.RegisterRoutedEvent("SelectedChanged", RoutingStrategy.Bubble, typeof(EventHandler<RoutedEventArgs>), typeof(PropertyFilterBox));
@@ -263,7 +264,6 @@ namespace H.Controls.FilterBox
             this.RaiseEvent(args);
         }
     }
-
 
     public class PropertyFilterBoxFilter : IDisplayFilter
     {

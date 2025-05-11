@@ -115,7 +115,7 @@
                 </Style>
             </Setter.Value>
         </Setter>
-        <Setter Property="BindingGroupStyle">
+        <!--<Setter Property="BindingGroupStyle">
             <Setter.Value>
                 <GroupStyle>
                     <GroupStyle.ContainerStyle>
@@ -145,7 +145,7 @@
                     </GroupStyle.ContainerStyle>
                 </GroupStyle>
             </Setter.Value>
-        </Setter>
+        </Setter>-->
         <!--<Setter Property="GroupStyle">
             <Setter.Value>
                 <GroupStyle>

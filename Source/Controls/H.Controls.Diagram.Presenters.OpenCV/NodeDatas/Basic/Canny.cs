@@ -1,11 +1,19 @@
-﻿namespace H.Controls.Diagram.Presenters.OpenCV.NodeDatas.Basic;
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
+
+namespace H.Controls.Diagram.Presenters.OpenCV.NodeDatas.Basic;
 [Display(Name = "边缘检测", GroupName = "基础函数", Description = "查找图片边缘，图片>灰度>二值化>边缘检测", Order = 10)]
 public class Canny : BasicOpenCVNodeDataBase
 {
     private double _threshold1;
     [DefaultValue(50.0)]
-    [Range(50.0,100.0)]
-    [Display(Name = "低阈值", GroupName = "数据",Description = "用于边缘连接的最小梯度值,低于此值的像素不会被考虑为边缘")]
+    [Range(50.0, 100.0)]
+    [Display(Name = "低阈值", GroupName = "数据", Description = "用于边缘连接的最小梯度值,低于此值的像素不会被考虑为边缘")]
     public double Threshold1
     {
         get { return _threshold1; }
@@ -19,7 +27,7 @@ public class Canny : BasicOpenCVNodeDataBase
     private double _threshold2;
     [DefaultValue(200.0)]
     [Range(150.0, 200.0)]
-    [Display(Name = "高阈值", GroupName = "数据",Description = "确定强边缘的最小梯度值,高于此值的像素被确定为强边缘,通常设置为 threshold1 的 2-3 倍")]
+    [Display(Name = "高阈值", GroupName = "数据", Description = "确定强边缘的最小梯度值,高于此值的像素被确定为强边缘,通常设置为 threshold1 的 2-3 倍")]
     public double Threshold2
     {
         get { return _threshold2; }

@@ -1,13 +1,19 @@
-﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
 
-global using System.ComponentModel.DataAnnotations;
-global using H.Extensions.NewtonsoftJson;
-global using System.Windows.Markup;
-global using System.ComponentModel;
-global using H.Mvvm.ViewModels.Base;
-global using H.Mvvm.Commands;
 global using H.Extensions.Common;
+global using H.Extensions.NewtonsoftJson;
+global using H.Mvvm.Commands;
+global using H.Mvvm.ViewModels.Base;
 global using H.Services.Common.Serialize.Meta;
+global using System.ComponentModel;
+global using System.ComponentModel.DataAnnotations;
+global using System.Windows.Markup;
 using EnumConverter = System.ComponentModel.EnumConverter;
 
 namespace H.Controls.FilterBox
@@ -52,7 +58,6 @@ namespace H.Controls.FilterBox
                 RaisePropertyChanged();
             }
         }
-
 
         [System.Text.Json.Serialization.JsonIgnore]
         [System.Xml.Serialization.XmlIgnore]
@@ -103,7 +108,7 @@ namespace H.Controls.FilterBox
         }
 
         [System.Text.Json.Serialization.JsonIgnore]
-        
+
         [System.Xml.Serialization.XmlIgnore]
         public IMetaSettingService MetaSettingService => new NewtonsoftJsonMetaSettingService();
 

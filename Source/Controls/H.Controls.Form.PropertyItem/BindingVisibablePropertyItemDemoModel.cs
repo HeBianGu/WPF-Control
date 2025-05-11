@@ -1,6 +1,11 @@
-﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
-using H.Controls.Form.Attributes;
-using H.Controls.Form.PropertyItem.Attribute.SourcePropertyItem;
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
+
 using H.Controls.Form.PropertyItem.ComboBoxPropertyItems;
 using System.ComponentModel.DataAnnotations;
 using System.Windows;
@@ -30,7 +35,6 @@ namespace H.Controls.Form.PropertyItem
         [BindingVisiblableMethodName(nameof(GetBindingBothVisible))]
         [Display(Name = "都选择Center时启用", Description = "演示应用PropertyItemAttribute自定义显示样式")]
         public string BindingBoth { get; set; } = "都选择Center时启用";
-
 
         public bool GetBindingVerticalAlignmentVisible()
         {

@@ -1,17 +1,22 @@
-﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
+
+global using H.Common.Interfaces;
 global using H.Controls.Diagram.Layers;
 global using H.Controls.Diagram.Layouts.Base;
 global using H.Controls.Diagram.LinkDrawers;
-global using H.Common;
+global using H.Extensions.Common;
 global using System.ComponentModel;
 global using System.ComponentModel.DataAnnotations;
 global using System.Windows;
 global using System.Windows.Controls;
 global using System.Windows.Input;
 global using System.Windows.Media;
-global using H.Common.Interfaces;
-global using H.Extensions.Common;
-using H.Controls.Diagram.Parts.Base;
 
 namespace H.Controls.Diagram;
 
@@ -31,8 +36,6 @@ public interface IDiagram
     void ZoomToFit(double scale);
     void ZoomToFit(double scale, params Part[] parts);
 }
-
-
 
 [TemplatePart(Name = "NodeLayer", Type = typeof(NodeLayer))]
 [TemplatePart(Name = "LinkLayer", Type = typeof(LinkLayer))]
@@ -160,7 +163,6 @@ public partial class Diagram : ContentControl, IDiagram
                 k.CanExecute = this.Nodes.Count > 0;
             };
             this.CommandBindings.Add(binding);
-
 
             {
                 KeyBinding keyBinding = new KeyBinding(DiagramCommands.Next, new KeyGesture(Key.Tab));
@@ -360,7 +362,6 @@ public partial class Diagram : ContentControl, IDiagram
         set { SetValue(LayoutProperty, value); }
     }
 
-
     public static readonly DependencyProperty LayoutProperty =
         DependencyProperty.Register("Layout", typeof(ILayout), typeof(Diagram), new FrameworkPropertyMetadata(default(ILayout), FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, (d, e) =>
         {
@@ -392,7 +393,6 @@ public partial class Diagram : ContentControl, IDiagram
         set { SetValue(SelectedPartProperty, value); }
     }
 
-
     public static readonly DependencyProperty SelectedPartProperty =
         DependencyProperty.Register("SelectedPart", typeof(Part), typeof(Diagram), new FrameworkPropertyMetadata(default(Part), FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, (d, e) =>
         {
@@ -417,7 +417,6 @@ public partial class Diagram : ContentControl, IDiagram
         set { SetValue(SelectedNodeProperty, value); }
     }
 
-
     public static readonly DependencyProperty SelectedNodeProperty =
         DependencyProperty.Register("SelectedNode", typeof(Node), typeof(Diagram), new PropertyMetadata(default(Node), (d, e) =>
         {
@@ -430,7 +429,6 @@ public partial class Diagram : ContentControl, IDiagram
                 return;
             control.InvokeMessage("选中节点 - " + config.GetContent<ITextable>()?.Text);
         }));
-
 
     [Browsable(false)]
     public DataTemplate LinkTemplate { get; set; }
@@ -729,7 +727,6 @@ public partial class Diagram
         set { SetValue(MessageProperty, value); }
     }
 
-
     public static readonly DependencyProperty MessageProperty =
         DependencyProperty.Register("Message", typeof(string), typeof(Diagram), new FrameworkPropertyMetadata(default(string)));
 
@@ -742,7 +739,6 @@ public partial class Diagram
         get { return (ILinkDrawer)GetValue(LinkDrawerProperty); }
         set { SetValue(LinkDrawerProperty, value); }
     }
-
 
     public static readonly DependencyProperty LinkDrawerProperty =
         DependencyProperty.Register("LinkDrawer", typeof(ILinkDrawer), typeof(Diagram), new PropertyMetadata(default(ILinkDrawer), (d, e) =>

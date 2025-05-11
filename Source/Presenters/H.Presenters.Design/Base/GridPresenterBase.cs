@@ -1,8 +1,15 @@
-﻿global using H.Controls.Adorner.Draggable;
-global using H.Themes.Layouts;
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
+
+global using H.Controls.Adorner.Draggable;
 global using System.Windows.Controls;
 using H.Common.Interfaces;
-using H.Themes.Layouts;
+using H.Themes;
 
 namespace H.Presenters.Design.Base;
 
@@ -30,7 +37,6 @@ public abstract class GridPresenterBase : PanelPresenterBase
         }
     }
 
-
     private double _lineThickness = 1;
     [Display(Name = "网线粗细", GroupName = "常用,样式")]
     public double LineThickness
@@ -54,7 +60,6 @@ public abstract class GridPresenterBase : PanelPresenterBase
             RaisePropertyChanged();
         }
     }
-
 
     public override void DragEnter(UIElement element, DragEventArgs e)
     {

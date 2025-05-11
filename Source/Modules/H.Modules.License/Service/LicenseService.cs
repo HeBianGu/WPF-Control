@@ -1,17 +1,21 @@
-﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
 
 using H.Extensions.Encryption;
 using H.Extensions.Setting;
-using H.Services.Common;
-using System;
+using H.Services.AppPath;
+using H.Services.Serializable;
+using H.Services.Setting;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.IO;
 using System.Reflection;
 using System.Windows.Markup;
-using H.Services.Serializable;
-using H.Services.Setting;
-using H.Services.AppPath;
 
 namespace H.Modules.License
 {
@@ -27,7 +31,6 @@ namespace H.Modules.License
         {
             return AppPaths.Instance.License;
         }
-
 
         public override bool Save(out string message)
         {

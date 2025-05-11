@@ -1,11 +1,13 @@
-﻿using H.Common.Interfaces;
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
+
+using H.Common.Interfaces;
 using H.Presenters.Common;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Windows;
 
 namespace H.Modules.Messages.Dialog
 {
@@ -56,7 +58,7 @@ namespace H.Modules.Messages.Dialog
                 x.HorizontalContentAlignment = HorizontalAlignment.Stretch;
                 x.HorizontalAlignment = HorizontalAlignment.Center;
                 x.VerticalAlignment = VerticalAlignment.Center;
-                x.Width = 400;
+                x.MinWidth = 400;
                 build?.Invoke(x);
             });
         }

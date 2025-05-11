@@ -1,4 +1,10 @@
-﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
 
 using System.ComponentModel;
 using System.Globalization;
@@ -21,7 +27,6 @@ public static partial class Cattach
         obj.SetValue(UseGuideProperty, value);
     }
 
-
     public static readonly DependencyProperty UseGuideProperty =
         DependencyProperty.RegisterAttached("UseGuide", typeof(bool), typeof(Cattach), new PropertyMetadata(false, OnUseGuideChanged));
 
@@ -42,7 +47,6 @@ public static partial class Cattach
         obj.SetValue(GuideTitleProperty, value);
     }
 
-
     public static readonly DependencyProperty GuideTitleProperty =
         DependencyProperty.RegisterAttached("GuideTitle", typeof(object), typeof(Cattach), new PropertyMetadata(null, OnGuideTitleChanged));
 
@@ -55,7 +59,6 @@ public static partial class Cattach
         object o = e.OldValue;
     }
 
-
     public static string GetGuideParentTitle(DependencyObject obj)
     {
         return (string)obj.GetValue(GuideParentTitleProperty);
@@ -65,7 +68,6 @@ public static partial class Cattach
     {
         obj.SetValue(GuideParentTitleProperty, value);
     }
-
 
     public static readonly DependencyProperty GuideParentTitleProperty =
         DependencyProperty.RegisterAttached("GuideParentTitle", typeof(string), typeof(Cattach), new PropertyMetadata(null, OnGuideParentTitleChanged));
@@ -79,7 +81,6 @@ public static partial class Cattach
         string o = (string)e.OldValue;
     }
 
-
     public static object GetGuideData(DependencyObject obj)
     {
         return obj.GetValue(GuideDataProperty);
@@ -89,7 +90,6 @@ public static partial class Cattach
     {
         obj.SetValue(GuideDataProperty, value);
     }
-
 
     public static readonly DependencyProperty GuideDataProperty =
         DependencyProperty.RegisterAttached("GuideData", typeof(object), typeof(Cattach), new PropertyMetadata(null, OnGuideDataChanged));
@@ -147,7 +147,6 @@ public static partial class Cattach
         bool o = (bool)e.OldValue;
     }
 
-
     public static bool GetGuideUseClick(DependencyObject obj)
     {
         return (bool)obj.GetValue(GuideUseClickProperty);
@@ -157,7 +156,6 @@ public static partial class Cattach
     {
         obj.SetValue(GuideUseClickProperty, value);
     }
-
 
     public static readonly DependencyProperty GuideUseClickProperty =
         DependencyProperty.RegisterAttached("GuideUseClick", typeof(bool), typeof(Cattach), new PropertyMetadata(false, OnGuideUseClickChanged));
@@ -170,8 +168,6 @@ public static partial class Cattach
 
         bool o = (bool)e.OldValue;
     }
-
-
 
     public static bool GetIsGuideAdonerElement(DependencyObject obj)
     {
@@ -194,7 +190,6 @@ public static partial class Cattach
 
         bool o = (bool)e.OldValue;
     }
-
 
     public static string GetGuideIcon(DependencyObject obj)
     {

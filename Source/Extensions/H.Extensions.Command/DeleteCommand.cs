@@ -1,12 +1,13 @@
-﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
 
 global using H.Services.Message;
 global using System.Collections;
-global using System.Windows;
-global using H.Services.Message.Dialog;
-global using H.Extensions.Common;
-using H.Services.Message;
-using H.Extensions.Common;
 
 namespace H.Extensions.Command;
 
@@ -14,7 +15,6 @@ namespace H.Extensions.Command;
 [Display(Name = "删除", Description = "从列表中删除当前项目")]
 public class DeleteCommand : DisplayMarkupCommandBase
 {
-    public bool UseDeleteOnOne { get; set; } = true;
     public override async Task ExecuteAsync(object parameter)
     {
         await IocMessage.Dialog.ShowDeleteDialog(x =>
@@ -33,7 +33,6 @@ public class DeleteCommand : DisplayMarkupCommandBase
         await base.ExecuteAsync(parameter);
     }
 
-
     public override bool CanExecute(object parameter)
     {
         if (this.GetTargetElement(parameter) is FrameworkElement element)
@@ -41,16 +40,7 @@ public class DeleteCommand : DisplayMarkupCommandBase
             if (element.DataContext == null)
                 return false;
             ItemsControl items = element.GetParent<ItemsControl>();
-            if (items == null)
-                return false;
-            if (!this.UseDeleteOnOne)
-            {
-                if (items.ItemsSource is IList list)
-                    return list.Count > 1;
-                else
-                    return items.Items.Count > 1;
-            }
-            return true;
+            return items != null;
         }
         return false;
     }

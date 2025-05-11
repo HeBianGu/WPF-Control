@@ -1,15 +1,13 @@
-﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
-
-
-
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
 
 using H.Services.AppPath;
-using H.Services.Common;
 using H.Services.Serializable;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
 
 namespace H.Modules.Identity
 {
@@ -25,7 +23,6 @@ namespace H.Modules.Identity
         }
 
         public IUser User { get; private set; }
-
 
         public bool Login(string name, string password, out string message)
         {

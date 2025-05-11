@@ -1,20 +1,14 @@
-﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
 
-using H.Extensions.Common;
-using H.Mvvm.Commands;
 using System.Collections;
-using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
 using System.Globalization;
-using System.IO;
 using System.Reflection;
-using System.Text;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
 
 namespace H.Extensions.ValueConverter;
 
@@ -43,7 +37,6 @@ public static partial class Converter
         return sb.ToString();
     }
 
-
     public static string TimespanToString(this TimeSpan t)
     {
         StringBuilder sb = new StringBuilder();
@@ -57,7 +50,6 @@ public static partial class Converter
             sb.Append($"{t.Seconds.ToString().PadLeft(2, '0')}");
         return sb.ToString();
     }
-
 
     #endregion
 
@@ -77,7 +69,6 @@ public static partial class Converter
 
     public static IValueConverter GetMathAddition => new ConverterBase<double, double, double>((x, y) => x + y);
     public static IValueConverter GetMathMultiplication => new ConverterBase<double, double, double>((x, y) => x * y);
-
 
     #endregion
 
@@ -423,7 +414,6 @@ public static partial class Converter
     //    return Application.Current.FindResource(BrushKeys.Green) as Brush;
     //});
 
-
     //public static ConverterBase<string, Color> GetStateColor => new ConverterBase<string, Color>(x =>
     //{
     //    if (x.Contains("不") || x.Contains("失败") || x.Contains("错误") || x.Contains("断开") || x.Contains("否") || x.Contains("停止"))
@@ -434,7 +424,6 @@ public static partial class Converter
     public static IValueConverter GetColorToSolidColorBrush => new ConverterBase<Color, SolidColorBrush>(x => new SolidColorBrush(x), x => x.Color);
 
     public static IValueConverter GetSolidColorBrushToColor => new ConverterBase<SolidColorBrush, Color>(x => x.Color, x => new SolidColorBrush(x));
-
 
     #endregion
 

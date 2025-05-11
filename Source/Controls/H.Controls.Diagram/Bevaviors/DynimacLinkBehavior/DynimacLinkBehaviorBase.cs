@@ -1,12 +1,12 @@
-﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
-
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
 
 using Microsoft.Xaml.Behaviors;
-using System;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Threading;
 
 namespace H.Controls.Diagram.Bevaviors.DynimacLinkBehavior;
@@ -42,7 +42,6 @@ public abstract class DynimacLinkBehaviorBase<T> : Behavior<Diagram> where T : F
         //        AssociatedObject.RemoveHandler(UIElement.MouseRightButtonUpEvent,
         //new MouseButtonEventHandler(Diagram_PreviewMouseUp));
     }
-
 
     private void Diagram_PreviewMouseDown(object sender, MouseButtonEventArgs e)
     {
@@ -136,7 +135,6 @@ public abstract class DynimacLinkBehaviorBase<T> : Behavior<Diagram> where T : F
         System.Diagnostics.Debug.WriteLine("Diagram_PreviewMouseUp：" + span.ToString());
 #endif 
     }
-
 
     protected abstract void ClearDynamic();
 

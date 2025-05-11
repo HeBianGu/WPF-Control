@@ -1,9 +1,10 @@
-﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
-
-using H.Controls.Diagram.Parts.Base;
-using System;
-using System.Windows;
-using System.Windows.Controls;
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
 
 namespace H.Controls.Diagram.Datas;
 
@@ -26,7 +27,6 @@ public class DefaultPortData : IPortData
     public string NodeID { get; set; }
 
     public string Name { get; set; }
-
 
     public Dock Dock { get; set; }
 

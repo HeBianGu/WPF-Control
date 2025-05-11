@@ -1,8 +1,16 @@
-﻿global using System.Collections;
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
+
+global using H.Extensions.Common;
+global using System.Collections;
 global using System.Windows;
 global using System.Windows.Controls;
 global using System.Windows.Media;
-global using H.Extensions.Common;
 
 namespace H.Controls.NavigationBox
 {
@@ -28,7 +36,7 @@ namespace H.Controls.NavigationBox
             this._navigation.SelectionChanged += (l, k) =>
             {
                 int index = Math.Min(this._navigation.SelectedIndex, this.Items.Count - 1);
-                if (index < 0) 
+                if (index < 0)
                     return;
                 //this.ScrollIntoView(this.Items[index]);
                 UIElement element = this.Items[index] as UIElement;
@@ -67,7 +75,7 @@ namespace H.Controls.NavigationBox
         public void ScrollTo(UIElement element)
         {
             ScrollViewer scrollViewer = element.GetParent<ScrollViewer>();
-            if (scrollViewer == null) 
+            if (scrollViewer == null)
                 return;
             double currentScrollPosition = scrollViewer.VerticalOffset;
             Point point = new Point(0, currentScrollPosition);
@@ -80,7 +88,6 @@ namespace H.Controls.NavigationBox
             get { return (Point)GetValue(HitTestPointProperty); }
             set { SetValue(HitTestPointProperty, value); }
         }
-
 
         public static readonly DependencyProperty HitTestPointProperty =
             DependencyProperty.Register("HitTestPoint", typeof(Point), typeof(NavigationBox), new FrameworkPropertyMetadata(new Point(10, 10), FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, (d, e) =>
@@ -139,7 +146,6 @@ namespace H.Controls.NavigationBox
             set { SetValue(NavigationDataTemplateProperty, value); }
         }
 
-
         public static readonly DependencyProperty NavigationDataTemplateProperty =
             DependencyProperty.Register("NavigationDataTemplate", typeof(DataTemplate), typeof(NavigationBox), new PropertyMetadata(default(DataTemplate), (d, e) =>
             {
@@ -151,13 +157,11 @@ namespace H.Controls.NavigationBox
 
             }));
 
-
         public DataTemplate ContainDataTemplate
         {
             get { return (DataTemplate)GetValue(ContainDataTemplateProperty); }
             set { SetValue(ContainDataTemplateProperty, value); }
         }
-
 
         public static readonly DependencyProperty ContainDataTemplateProperty =
             DependencyProperty.Register("ContainDataTemplate", typeof(DataTemplate), typeof(NavigationBox), new PropertyMetadata(default(DataTemplate), (d, e) =>
@@ -170,13 +174,11 @@ namespace H.Controls.NavigationBox
 
             }));
 
-
         public IEnumerable NavigationSource
         {
             get { return (IEnumerable)GetValue(NavigationSourceProperty); }
             set { SetValue(NavigationSourceProperty, value); }
         }
-
 
         public static readonly DependencyProperty NavigationSourceProperty =
             DependencyProperty.Register("NavigationSource", typeof(IEnumerable), typeof(NavigationBox), new PropertyMetadata(default(IEnumerable), (d, e) =>
@@ -185,18 +187,15 @@ namespace H.Controls.NavigationBox
 
                 if (control == null) return;
 
-
                 IEnumerable config = e.NewValue as IEnumerable;
 
             }));
-
 
         public Style NavigationStyle
         {
             get { return (Style)GetValue(NavigationStyleProperty); }
             set { SetValue(NavigationStyleProperty, value); }
         }
-
 
         public static readonly DependencyProperty NavigationStyleProperty =
             DependencyProperty.Register("NavigationStyle", typeof(Style), typeof(NavigationBox), new FrameworkPropertyMetadata(default(Style), FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, (d, e) =>

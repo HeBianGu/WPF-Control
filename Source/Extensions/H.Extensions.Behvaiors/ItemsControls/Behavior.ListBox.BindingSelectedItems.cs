@@ -1,7 +1,12 @@
-﻿using Microsoft.Xaml.Behaviors;
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
+
 using System.Collections;
-using System.Windows;
-using System.Windows.Controls;
 
 namespace H.Extensions.Behvaiors.ItemsControls;
 
@@ -13,7 +18,6 @@ public class ListBoxBindingSelectedItemsBehavior : Behavior<ListBox>
         get { return (IList)GetValue(SelectedItemsProperty); }
         set { SetValue(SelectedItemsProperty, value); }
     }
-
 
     public static readonly DependencyProperty SelectedItemsProperty =
         DependencyProperty.Register("SelectedItems", typeof(IList), typeof(ListBoxBindingSelectedItemsBehavior), new FrameworkPropertyMetadata(default(IList), (d, e) =>
@@ -39,7 +43,6 @@ public class ListBoxBindingSelectedItemsBehavior : Behavior<ListBox>
         }
         this.AssociatedObject.SelectionChanged += AssociatedObject_SelectionChanged;
     }
-
 
     protected override void OnAttached()
     {

@@ -1,4 +1,10 @@
-﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
 
 using System.IO;
 using System.Windows.Media;
@@ -29,7 +35,7 @@ public class ImageEx
 
     public Tuple<int, int> GetImagePixel()
     {
-        if (!File.Exists(this.FullPath)|| this.FullPath.IsImage()==false)
+        if (!File.Exists(this.FullPath) || this.FullPath.IsImage() == false)
             return null;
         BitmapImage bmp = new BitmapImage(new Uri(this.FullPath, UriKind.RelativeOrAbsolute));
         if (bmp == null)

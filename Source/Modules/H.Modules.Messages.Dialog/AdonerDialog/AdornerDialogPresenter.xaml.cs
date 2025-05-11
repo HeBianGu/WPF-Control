@@ -1,17 +1,22 @@
-﻿global using H.Controls.Adorner;
-global using H.Mvvm;
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
+
+global using H.Common.Attributes;
+global using H.Common.Transitionable;
+global using H.Controls.Adorner.Adorner;
+global using H.Mvvm.ViewModels.Base;
+global using H.Services.Message.Dialog;
 global using System;
 global using System.Linq;
 global using System.Threading;
 global using System.Threading.Tasks;
 global using System.Windows;
 global using System.Windows.Documents;
-global using System.Windows.Controls;
-global using H.Mvvm.ViewModels.Base;
-global using H.Controls.Adorner.Adorner;
-global using H.Common.Transitionable;
-global using H.Services.Message.Dialog;
-global using H.Common.Attributes;
 
 namespace H.Modules.Messages.Dialog
 {
@@ -25,17 +30,7 @@ namespace H.Modules.Messages.Dialog
             this.VerticalContentAlignment = VerticalAlignment.Center;
             this.Padding = new Thickness(10, 6, 10, 6);
         }
-        private string _title= "提示";
-        public string Title
-        {
-            get { return _title; }
-            set
-            {
-                _title = value;
-                RaisePropertyChanged();
-            }
-        }
-
+        public string Title { get; set; } = "提示";
         public object Presenter { get; set; }
 
         private ManualResetEvent _waitHandle = new ManualResetEvent(false);

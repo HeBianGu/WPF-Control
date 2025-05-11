@@ -1,15 +1,18 @@
-﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
-using H.Services.Common;
-using H.Mvvm;
-using System;
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
+
+using H.Common.Attributes;
+using H.Mvvm.Commands;
+using H.Mvvm.ViewModels.Base;
+using H.Services.Setting;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Reflection;
-using System.Xml.Serialization;
-using H.Mvvm.ViewModels.Base;
-using H.Mvvm.Commands;
-using H.Services.Setting;
-using H.Common.Attributes;
 
 namespace H.Modules.License
 {
@@ -93,7 +96,6 @@ namespace H.Modules.License
             }
         }
 
-
         private DateTime _time;
         [Browsable(false)]
         [Display(Name = "截止日期")]
@@ -106,7 +108,6 @@ namespace H.Modules.License
                 RaisePropertyChanged();
             }
         }
-
 
         private string _message;
         [System.Text.Json.Serialization.JsonIgnore]
@@ -144,7 +145,6 @@ namespace H.Modules.License
                 RaisePropertyChanged();
             }
         }
-
 
         public RelayCommand RegisterCommand => new RelayCommand(e =>
         {
