@@ -16,7 +16,7 @@ global using System.ComponentModel.DataAnnotations;
 namespace H.Components.Modbus.Presenters;
 
 [Display(Name = "Modbus寄存器管理")]
-internal class ModbusDataViewPresenter : DisplayBindableBase
+public class ModbusDataViewPresenter : DisplayBindableBase
 {
     public ModbusDataViewPresenter()
     {
