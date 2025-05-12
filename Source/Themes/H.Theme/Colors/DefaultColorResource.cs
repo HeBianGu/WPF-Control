@@ -16,7 +16,7 @@ public class DefaultColorResource : ColorResourceBase
     }
     public override ResourceDictionary Resource => new ResourceDictionary()
     {
-        Source = new Uri("pack://application:,,,/H.Theme;component/Colors/Default.xaml")
+        Source = new Uri("pack://application:,,,/H.Theme;component/ColorKeys.xaml")
     };
     public override string ToString()
     {
