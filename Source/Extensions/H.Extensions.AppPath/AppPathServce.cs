@@ -153,7 +153,8 @@ public class AppPathServce : Lazy<AppPathServce>, IAppPathServce
     /// <summary>
     /// 资源目录
     /// </summary>
-    public virtual string Assets => Path.Combine(AppDomain.CurrentDomain.BaseDirectory, nameof(Assets));
+    //public virtual string Assets => Path.Combine(AppDomain.CurrentDomain.BaseDirectory, nameof(Assets));
+    public virtual string Assets => nameof(Assets);
 
     /// <summary>
     /// 用户模板目录
