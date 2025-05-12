@@ -15,6 +15,7 @@
 // Licensed under the MIT License (the "License")
 global using System.Text.Json.Serialization;
 global using System.Windows;
+using H.Components.Modbus.Presenters;
 
 namespace H.Components.Modbus;
 
@@ -33,8 +34,8 @@ public class ModbusDataService : DisplayBindableBase, IModbusDataService
         }
     }
 
-    private ModbusDatas _collection = new ModbusDatas();
-    public ModbusDatas Collection
+    private ModbusTcpDatas _collection = new ModbusTcpDatas();
+    public ModbusTcpDatas Collection
     {
         get { return _collection; }
         set
@@ -127,13 +128,13 @@ public class ModbusDataService : DisplayBindableBase, IModbusDataService
     public bool CanStart() => this.State == ModbusDataState.Stopped;
     public bool CanStop() => this.State == ModbusDataState.Running;
 
-    public void Add(IModbusDataItem item)
+    public void Add(IModbusTcpDataItem item)
     {
         this.Collection.Add(item);
         this.InvalidateMasters();
     }
 
-    public void Delete(IModbusDataItem item)
+    public void Delete(IModbusTcpDataItem item)
     {
         this.Collection.Remove(item);
         this.InvalidateMasters();

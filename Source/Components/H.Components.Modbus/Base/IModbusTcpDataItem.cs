@@ -5,15 +5,20 @@
 // QQ:908293466 Group:971261058 
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
-
 using H.Components.Modbus.Presenters;
+
 namespace H.Components.Modbus.Base;
 
-public interface ITcpClientMaster
+public interface IModbusTcpDataItem
 {
-    List<IModbusTcpDataItem> ModbusDatas { get; set; }
+    string Ip { get; set; }
+    int Port { get; set; }
+    byte SlaveAddress { get; set; }
+    ushort StartAddress { get; set; }
+    ushort NumberOfPoints { get; set; }
+    string Message { get; set; }
     MasterState State { get; set; }
-    void Dispose();
-    void Read();
+    DateTime? UpdateTime { get; set; }
+
 }
 

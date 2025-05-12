@@ -19,7 +19,7 @@ using System.ComponentModel;
 
 namespace H.Components.Modbus.Presenters;
 
-public class ModbusDataItemBase : BindableBase, IModbusDataItem
+public class ModbusTcpDataItemBase : BindableBase, IModbusTcpDataItem
 {
     private string _name = "新建地址";
     [DefaultValue("新建地址")]
@@ -124,9 +124,25 @@ public class ModbusDataItemBase : BindableBase, IModbusDataItem
         }
     }
 
+    private DateTime? _updateTime;
+    [Browsable(false)]
+    [Display(Name = "更新时间", GroupName = "数据", Description = "读取位置")]
+    public DateTime? UpdateTime
+    {
+        get { return _updateTime; }
+        set
+        {
+            _updateTime = value;
+            RaisePropertyChanged();
+        }
+    }
+
+
+
+
 }
 
-public class ModbusDataItem<T> : ModbusDataItemBase
+public class ModbusTcpDataItem<T> : ModbusTcpDataItemBase
 {
     private T _value;
     [Display(Name = "读取结果", GroupName = "数据", Description = "读取位置")]

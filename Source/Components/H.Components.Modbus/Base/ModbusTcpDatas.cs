@@ -5,12 +5,13 @@
 // QQ:908293466 Group:971261058 
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
+
+using System.Collections.ObjectModel;
+
 namespace H.Components.Modbus.Base;
 
-public enum ModbusDataState
+public class ModbusTcpDatas : ObservableCollection<IModbusTcpDataItem>
 {
-    Stopped,
-    Running,
-    Canceling
+
 }
 

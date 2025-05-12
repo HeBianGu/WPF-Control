@@ -8,6 +8,7 @@
 global using H.Services.Logger;
 global using NModbus;
 global using System.Net.Sockets;
+using H.Components.Modbus.Presenters;
 
 namespace H.Components.Modbus.Base;
 
@@ -15,7 +16,7 @@ public class TcpClientMaster : BindableBase, ITcpClientMaster, IDisposable
 {
     private readonly string _ip;
     private readonly int _port;
-    public TcpClientMaster(string ip, int port, List<IModbusDataItem> modbusDatas)
+    public TcpClientMaster(string ip, int port, List<IModbusTcpDataItem> modbusDatas)
     {
         this._ip = ip;
         this._port = port;
@@ -23,7 +24,7 @@ public class TcpClientMaster : BindableBase, ITcpClientMaster, IDisposable
     }
     private IModbusMaster _master;
     private TcpClient _client;
-    public List<IModbusDataItem> ModbusDatas { get; set; } = new List<IModbusDataItem>();
+    public List<IModbusTcpDataItem> ModbusDatas { get; set; } = new List<IModbusTcpDataItem>();
     private MasterState _state;
     public MasterState State
     {
@@ -70,14 +71,15 @@ public class TcpClientMaster : BindableBase, ITcpClientMaster, IDisposable
                 this.State = MasterState.Unconnet;
             return;
         }
-        foreach (var item in this.ModbusDatas.OfType<IUnshortModbusDataItem>())
+        this.State = MasterState.Connected;
+        foreach (var item in this.ModbusDatas.OfType<IUnshortModbusTcpDataItem>())
         {
             try
             {
-
                 ushort[] registers = _master.ReadHoldingRegisters(item.SlaveAddress, item.StartAddress, item.NumberOfPoints);
                 ushort value = registers[0];
                 item.Value = value;
+                item.UpdateTime = DateTime.Now;
                 System.Diagnostics.Debug.WriteLine($"{item.Ip}:{value}");
             }
             catch (Exception ex)

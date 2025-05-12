@@ -5,15 +5,15 @@
 // QQ:908293466 Group:971261058 
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
+namespace H.Components.Modbus.Presenters;
 
-using H.Components.Modbus.Presenters;
-namespace H.Components.Modbus.Base;
-
-public interface ITcpClientMaster
+public enum MasterState
 {
-    List<IModbusTcpDataItem> ModbusDatas { get; set; }
-    MasterState State { get; set; }
-    void Dispose();
-    void Read();
+    Stopped,
+    Waitting,
+    Connected,
+    Unconnet,
+    ReadError,
+    Connectting
 }
 

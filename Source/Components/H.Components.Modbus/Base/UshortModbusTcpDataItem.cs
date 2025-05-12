@@ -17,7 +17,7 @@ using H.Components.Modbus.Presenters;
 
 namespace H.Components.Modbus.Base;
 
-public class UshortModbusDataItem : ModbusDataItem<ushort>, IUnshortModbusDataItem
+public class UshortModbusTcpDataItem : ModbusTcpDataItem<ushort>, IUnshortModbusTcpDataItem
 {
 
 }

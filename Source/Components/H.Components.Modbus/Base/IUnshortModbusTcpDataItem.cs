@@ -7,13 +7,8 @@
 // Licensed under the MIT License (the "License")
 namespace H.Components.Modbus.Base;
 
-public enum MasterState
+public interface IUnshortModbusTcpDataItem : IModbusTcpDataItem
 {
-    Stopped,
-    Waitting,
-    Connected,
-    Unconnet,
-    ReadError,
-    Connectting
+    ushort Value { get; set; }
 }
 

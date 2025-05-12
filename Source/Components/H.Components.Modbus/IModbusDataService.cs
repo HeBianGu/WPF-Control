@@ -6,19 +6,21 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
+using H.Components.Modbus.Presenters;
+
 namespace H.Components.Modbus;
 
 public interface IModbusDataService
 {
-    ModbusDatas Collection { get; set; }
+    ModbusTcpDatas Collection { get; set; }
     List<ITcpClientMaster> Masters { get; set; }
     ModbusDataState State { get; set; }
-    void Add(IModbusDataItem item);
+    void Add(IModbusTcpDataItem item);
     bool CanStart();
     bool CanStop();
     void Clear();
     List<ITcpClientMaster> CreateTcpClientMasters();
-    void Delete(IModbusDataItem item);
+    void Delete(IModbusTcpDataItem item);
     List<ITcpClientMaster> GetMasters();
     void InvalidateMasters();
     Task Start();

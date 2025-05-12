@@ -20,8 +20,8 @@ public class SerializableModbusDataService : ModbusDataService, ISerializableMod
     {
         try
         {
-            var datas = this._serializerService.Load<ModbusDatas>(this.GetFilePath());
-            this.Collection = datas ?? new ModbusDatas();
+            var datas = this._serializerService.Load<ModbusTcpDatas>(this.GetFilePath());
+            this.Collection = datas ?? new ModbusTcpDatas();
             message = null;
             return true;
         }

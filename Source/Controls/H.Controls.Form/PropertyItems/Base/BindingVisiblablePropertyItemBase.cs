@@ -16,9 +16,11 @@ public interface IRefreshOnValueChanged
 public abstract class BindingVisiblablePropertyItemBase : ObjectPropertyItemBase, IBindingVisibleable, IRefreshOnValueChanged
 {
     private readonly MethodInfo _methodInfo;
+    private readonly PropertyInfo _propertyInfo;
     protected BindingVisiblablePropertyItemBase(PropertyInfo property, object obj) : base(property, obj)
     {
         this._methodInfo = this.CreateMethodInfo();
+        this._propertyInfo = this.CreatePropertyInfo();
     }
 
     protected virtual MethodInfo CreateMethodInfo()
@@ -30,9 +32,24 @@ public abstract class BindingVisiblablePropertyItemBase : ObjectPropertyItemBase
         return method == null ? null : method;
     }
 
+    protected virtual PropertyInfo CreatePropertyInfo()
+    {
+        BindingVisibleablePropertyNameAttribute attribute = this.PropertyInfo.GetCustomAttribute<BindingVisibleablePropertyNameAttribute>();
+        if (attribute?.PropertyName == null)
+            return null;
+        var method = this.Obj.GetType().GetProperty(attribute.PropertyName);
+        return method == null ? null : method;
+    }
+
     public virtual bool GetVisible()
     {
-        return this._methodInfo?.Invoke(this.Obj, null) is not bool l || l != false;
+        var mr = this._methodInfo?.Invoke(this.Obj, null);
+        if (mr is bool mb && mb == false)
+            return false;
+        var pr = this._propertyInfo?.GetValue(this.Obj);
+        if (pr is bool pb && pb == false)
+            return false;
+        return true;
     }
 
     #region - IRefreshOnValueChanged -

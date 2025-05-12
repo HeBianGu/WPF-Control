@@ -196,20 +196,6 @@
            BasedOn="{StaticResource S.Control.Base}"
            TargetType="{x:Type ComboBoxItem}">
         <Setter Property="SnapsToDevicePixels" Value="true" />
-        <!--<Setter Property="OverridesDefaultStyle" Value="true" />-->
-        <!--<Setter Property="Padding" Value="{Binding RelativeSource={RelativeSource AncestorType=ItemsControl}, Path=(Cattach.ItemPadding)}" />-->
-        <!--<Setter Property="Background">
-            <Setter.Value>
-                <SolidColorBrush Color="Transparent" />
-            </Setter.Value>
-        </Setter>
-        <Setter Property="BorderBrush">
-            <Setter.Value>
-                <SolidColorBrush Color="Transparent" />
-            </Setter.Value>
-        </Setter>-->
-        <!--<Setter Property="BorderThickness" Value="0" />-->
-        <!--<Setter Property="VerticalContentAlignment" Value="Center" />-->
         <Setter Property="Height" Value="{Binding RelativeSource={RelativeSource AncestorType=ComboBox}, Path=(Cattach.ItemHeight)}" />
         <Setter Property="MinHeight" Value="{DynamicResource {x:Static LayoutKeys.ItemHeight}}" />
         <Setter Property="HorizontalContentAlignment" Value="{Binding RelativeSource={RelativeSource AncestorType=ComboBox}, Path=(Cattach.ItemHorizontalContentAlignment)}" />

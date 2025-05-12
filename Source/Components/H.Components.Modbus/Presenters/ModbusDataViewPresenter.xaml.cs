@@ -33,8 +33,8 @@ public class ModbusDataViewPresenter : DisplayBindableBase
         }
     }
 
-    private IModbusDataItem _selectedItem;
-    public IModbusDataItem SelectedItem
+    private IModbusTcpDataItem _selectedItem;
+    public IModbusTcpDataItem SelectedItem
     {
         get { return _selectedItem; }
         set
@@ -46,7 +46,7 @@ public class ModbusDataViewPresenter : DisplayBindableBase
 
     public RelayCommand AddCommand => new RelayCommand(async x =>
     {
-        UshortModbusDataItem item = new UshortModbusDataItem();
+        UshortModbusTcpDataItem item = new UshortModbusTcpDataItem();
         var r = await IocMessage.Form.ShowEdit(item, x => x.Title = "添加Modbus地址");
         if (r != true)
             return;
@@ -55,7 +55,7 @@ public class ModbusDataViewPresenter : DisplayBindableBase
 
     public RelayCommand DeleteCommand => new RelayCommand(async x =>
     {
-        if (x is IModbusDataItem item)
+        if (x is IModbusTcpDataItem item)
         {
             await IocMessage.Dialog.ShowDeleteDialog(l =>
             {
@@ -66,7 +66,7 @@ public class ModbusDataViewPresenter : DisplayBindableBase
 
     public RelayCommand EditCommand => new RelayCommand(async x =>
     {
-        if (x is IModbusDataItem item)
+        if (x is IModbusTcpDataItem item)
             await IocMessage.Form.ShowEdit(item, x => x.Title = "编辑");
     }, x => this.DataService.CanStart());
 
@@ -76,7 +76,7 @@ public class ModbusDataViewPresenter : DisplayBindableBase
         {
             this.DataService.Clear();
         });
-    }, x => this.DataService.Collection.Count > 0);
+    }, x => this.DataService.Collection.Count > 0 && this.DataService.CanStart());
 
     public RelayCommand StartCommand => new RelayCommand(async x =>
     {

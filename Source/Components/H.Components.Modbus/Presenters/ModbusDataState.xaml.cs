@@ -5,17 +5,12 @@
 // QQ:908293466 Group:971261058 
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
-namespace H.Components.Modbus.Base;
+namespace H.Components.Modbus.Presenters;
 
-public interface IModbusDataItem
+public enum ModbusDataState
 {
-    string Ip { get; set; }
-    int Port { get; set; }
-    byte SlaveAddress { get; set; }
-    ushort StartAddress { get; set; }
-    ushort NumberOfPoints { get; set; }
-    string Message { get; set; }
-    MasterState State { get; set; }
-
+    Stopped,
+    Running,
+    Canceling
 }
 
