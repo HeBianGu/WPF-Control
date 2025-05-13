@@ -12,9 +12,11 @@ global using H.Mvvm.ViewModels.Base;
 global using H.Services.Message;
 global using H.Services.Message.Dialog;
 global using System.ComponentModel.DataAnnotations;
+using H.Common.Attributes;
 
 namespace H.Components.Modbus.Presenters;
 
+[Icon("\xE963")]
 [Display(Name = "Modbus寄存器管理")]
 public class ModbusDataViewPresenter : DisplayBindableBase
 {

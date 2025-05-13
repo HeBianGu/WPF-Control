@@ -4,6 +4,7 @@
     <DataTemplate DataType="{x:Type local:ComboBoxPropertyItem}">
         <ComboBox Margin="0,0,0,1"
                   Cattach.ItemHeight="Auto"
+                  Cattach.UseGuide="False"
                   ItemsSource="{Binding Collection}"
                   SelectedItem="{Binding Value}" />
     </DataTemplate>

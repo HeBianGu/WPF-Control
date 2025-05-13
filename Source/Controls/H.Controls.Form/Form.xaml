@@ -92,7 +92,10 @@
                     <Setter Property="ContentTemplate">
                         <Setter.Value>
                             <DataTemplate>
-                                <Grid ToolTip="{Binding Description}">
+                                <Grid Cattach.GuideData="{Binding Description}"
+                                      Cattach.GuideTitle="{Binding Name}"
+                                      Cattach.UseGuide="True"
+                                      ToolTip="{Binding Description}">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="Auto" />
                                         <ColumnDefinition Width="Auto" />

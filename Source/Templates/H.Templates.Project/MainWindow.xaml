@@ -23,7 +23,8 @@
                                TargetType="MenuItem" />
                     </Menu.Resources>
                     <MenuItem Background="Transparent"
-                              Header="文件">
+                              Header="文件"
+                              ToolTip="项目文件管理:新增、修改、选择、删除和最近的项目等">
                         <MenuItem Command="{ShowNewProjectCommand}" />
                         <MenuItem Command="{ShowProjectsCommand}" />
                         <MenuItem Command="{ShowEditProjectCommand}" />
@@ -47,7 +48,8 @@
                                   CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"
                                   Header="退出" />
                     </MenuItem>
-                    <MenuItem Header="帮助">
+                    <MenuItem Header="帮助"
+                              ToolTip="新手向导、技术支持、关于、反馈、官网、联系方式和开发文档等">
                         <MenuItem Command="{ShowGuideCommand}" />
                         <MenuItem Command="{ShowNewGuideCommand}" />
                         <MenuItem Command="{ShowGuideTreeCommand}" />

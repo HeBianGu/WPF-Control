@@ -6,8 +6,8 @@
                     xmlns:p="clr-namespace:H.Components.Modbus.Presenters">
     <DataTemplate DataType="{x:Type p:ModbusTcpDataItemBase}">
         <DockPanel>
-            <ContentPresenter Content="{Binding State}"/>
-            <TextBlock Margin="5 0">
+            <ContentPresenter Content="{Binding State}" />
+            <TextBlock Margin="5,0">
                 <Run Text="{Binding Name}" />
                 <Run Text="-" />
                 <Run Text="{Binding Value}" />

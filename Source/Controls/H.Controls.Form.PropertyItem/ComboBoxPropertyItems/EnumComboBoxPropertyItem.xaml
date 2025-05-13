@@ -3,6 +3,7 @@
                     xmlns:local="clr-namespace:H.Controls.Form.PropertyItem.ComboBoxPropertyItems">
     <DataTemplate DataType="{x:Type local:EnumComboBoxPropertyItem}">
         <ComboBox Margin="0,0,0,1"
+                  Cattach.UseGuide="False"
                   ItemsSource="{Binding Collection}"
                   SelectedItem="{Binding Value}" />
     </DataTemplate>

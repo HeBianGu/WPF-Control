@@ -24,7 +24,8 @@
                         <Style BasedOn="{StaticResource {x:Static MenuItemKeys.BindCommand}}"
                                TargetType="MenuItem" />
                     </Menu.Resources>
-                    <MenuItem Header="帮助">
+                    <MenuItem Header="帮助"
+                              ToolTip="新手向导、技术支持、关于、反馈、官网、联系方式和开发文档等">
                         <MenuItem Command="{ShowGuideCommand}" />
                         <MenuItem Command="{ShowNewGuideCommand}" />
                         <MenuItem Command="{ShowGuideTreeCommand}" />
