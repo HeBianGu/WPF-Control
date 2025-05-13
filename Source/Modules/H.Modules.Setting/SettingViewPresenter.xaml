@@ -87,9 +87,34 @@
                                             </ControlTemplate>
                                         </h:Cattach.CaptionRightTemplate>
                                         <h:Form Margin="2,0,0,0"
+                                                ExceptPropertyNames="{Binding ExceptPropertyNames}"
                                                 ScrollViewer.VerticalScrollBarVisibility="Disabled"
                                                 SelectObject="{Binding}"
-                                                TitleWidth="{Binding Source={x:Static local:SettingViewOptions.Instance}, Path=TitleWidth}" />
+                                                TitleWidth="{Binding Source={x:Static local:SettingViewOptions.Instance}, Path=FormOption.TitleWidth}"
+                                                UseArray="{Binding Source={x:Static local:SettingViewOptions.Instance}, Path=FormOption.UseArray}"
+                                                UseAsync="False"
+                                                UseBoolen="{Binding Source={x:Static local:SettingViewOptions.Instance}, Path=FormOption.UseBoolen}"
+                                                UseClass="{Binding Source={x:Static local:SettingViewOptions.Instance}, Path=FormOption.UseClass}"
+                                                UseCommand="{Binding Source={x:Static local:SettingViewOptions.Instance}, Path=FormOption.UseCommand}"
+                                                UseCommandOnly="{Binding Source={x:Static local:SettingViewOptions.Instance}, Path=FormOption.UseCommandOnly}"
+                                                UseDateTime="{Binding Source={x:Static local:SettingViewOptions.Instance}, Path=FormOption.UseDateTime}"
+                                                UseDeclaredOnly="{Binding Source={x:Static local:SettingViewOptions.Instance}, Path=FormOption.UseDeclaredOnly}"
+                                                UseDisplayOnly="{Binding Source={x:Static local:SettingViewOptions.Instance}, Path=FormOption.UseDisplayOnly}"
+                                                UseEnum="{Binding Source={x:Static local:SettingViewOptions.Instance}, Path=FormOption.UseEnum}"
+                                                UseEnumerator="{Binding Source={x:Static local:SettingViewOptions.Instance}, Path=FormOption.UseEnumerator}"
+                                                UseGroup="{Binding Source={x:Static local:SettingViewOptions.Instance}, Path=FormOption.UseGroup}"
+                                                UseGroupNames="{Binding Source={x:Static local:SettingViewOptions.Instance}, Path=FormOption.UseGroupNames}"
+                                                UseInterface="{Binding Source={x:Static local:SettingViewOptions.Instance}, Path=FormOption.UseInterface}"
+                                                UseNull="{Binding Source={x:Static local:SettingViewOptions.Instance}, Path=FormOption.UseNull}"
+                                                UseOrder="{Binding Source={x:Static local:SettingViewOptions.Instance}, Path=FormOption.UseOrder}"
+                                                UseOrderByName="{Binding Source={x:Static local:SettingViewOptions.Instance}, Path=FormOption.UseOrderByName}"
+                                                UseOrderByType="{Binding Source={x:Static local:SettingViewOptions.Instance}, Path=FormOption.UseOrderByType}"
+                                                UsePresenter="{Binding Source={x:Static local:SettingViewOptions.Instance}, Path=FormOption.UsePresenter}"
+                                                UsePrimitive="{Binding Source={x:Static local:SettingViewOptions.Instance}, Path=FormOption.UsePrimitive}"
+                                                UsePropertyView="{Binding Source={x:Static local:SettingViewOptions.Instance}, Path=FormOption.UsePropertyView}"
+                                                UseString="{Binding Source={x:Static local:SettingViewOptions.Instance}, Path=FormOption.UseString}"
+                                                UseTypeConverter="{Binding Source={x:Static local:SettingViewOptions.Instance}, Path=FormOption.UseTypeConverter}"
+                                                UseTypeConverterOnly="{Binding Source={x:Static local:SettingViewOptions.Instance}, Path=FormOption.UseTypeConverterOnly}" />
                                     </GroupBox>
                                 </DataTemplate>
                             </h:NavigationBox.ItemTemplate>

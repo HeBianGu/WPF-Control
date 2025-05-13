@@ -6,8 +6,11 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
+using H.Controls.Form;
 using H.Extensions.Setting;
+using H.Services.Message.Form;
 using System.ComponentModel;
+using System.Text.Json.Serialization;
 
 namespace H.Modules.Setting;
 
@@ -116,4 +119,16 @@ internal class SettingViewOptions : IocOptionInstance<SettingViewOptions>, ISett
         }
     }
 
+    private IFormOption _formOption = new FormPresenter() { UseCommand = false };
+    [Browsable(false)]
+    [JsonIgnore]
+    public IFormOption FormOption
+    {
+        get { return _formOption; }
+        internal set
+        {
+            _formOption = value;
+            RaisePropertyChanged();
+        }
+    }
 }

@@ -5,7 +5,7 @@
     <DataTemplate DataType="{x:Type local:CommandPropertyItem}">
         <Button Margin="0,0,0,1"
                 Command="{Binding Value}"
-                Content="{Binding Name}"
+                Content="{Binding Name}" HorizontalAlignment="Left"
                 IsEnabled="{Binding ReadOnly, Converter={x:Static h:Converter.GetTrueToFalse}}">
             <Button.ToolTip>
                 <ToolTip>

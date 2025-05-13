@@ -6,6 +6,8 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
+using H.Services.Message.Form;
+
 namespace H.Modules.Setting;
 
 public interface ISettingViewOptions
@@ -17,4 +19,5 @@ public interface ISettingViewOptions
     double NavigationiTitleWidth { get; set; }
     double TitleWidth { get; set; }
     double Width { get; set; }
+    IFormOption FormOption { get; }
 }

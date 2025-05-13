@@ -13,7 +13,7 @@ public class CommandPropertyItem : ObjectPropertyItem<ICommand>
     public CommandPropertyItem(PropertyInfo property, object obj) : base(property, obj)
     {
         ReadOnlyAttribute readyOnly = property.GetCustomAttribute<ReadOnlyAttribute>();
-        this.ReadOnly = readyOnly == null || readyOnly.IsReadOnly == false ? true : false;
+        this.ReadOnly = readyOnly?.IsReadOnly == true;
         //CommandAttribute command = property.GetCustomAttribute<CommandAttribute>();
         //this.Icon = command?.Icon;
         //HotKeyAttribute hotkey = property.GetCustomAttribute<HotKeyAttribute>();
