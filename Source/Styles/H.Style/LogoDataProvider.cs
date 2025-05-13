@@ -15,7 +15,7 @@ public class LogoDataProvider
         get
         {
             ImageSourceConverter converter = new ImageSourceConverter();
-            string path = "pack://application:,,,/H.Style;component/Logo.ico";
+            string path = "pack://application:,,,/H.Style;component/Assets/Logo.ico";
             return converter.ConvertFromString(path) as ImageSource;
         }
     }
