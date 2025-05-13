@@ -65,8 +65,17 @@
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
                         <DataGridTextColumn Width="Auto"
+                                            MinWidth="120"
                                             Binding="{Binding UpdateTime}"
                                             Header="更新时间" />
+                        <DataGridTemplateColumn Width="*"
+                                                Header="值">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <ContentPresenter Content="{Binding Value}" />
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
                         <DataGridTemplateColumn Width="*"
                                                 Header="信息">
                             <DataGridTemplateColumn.CellTemplate>
@@ -74,14 +83,6 @@
                                     <TextBlock Text="{Binding Message}"
                                                TextWrapping="Wrap"
                                                ToolTip="{Binding Message}" />
-                                </DataTemplate>
-                            </DataGridTemplateColumn.CellTemplate>
-                        </DataGridTemplateColumn>
-                        <DataGridTemplateColumn Width="*"
-                                                Header="值">
-                            <DataGridTemplateColumn.CellTemplate>
-                                <DataTemplate>
-                                    <ContentPresenter Content="{Binding Value}" />
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
