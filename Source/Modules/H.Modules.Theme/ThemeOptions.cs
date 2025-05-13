@@ -17,6 +17,8 @@ using H.Themes;
 using H.Themes.Backgrounds;
 using H.Themes.Colors;
 using H.Themes.Extensions;
+using H.Themes.FontSizes;
+using H.Themes.Layouts;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Reflection;

@@ -6,6 +6,9 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
+using H.Themes.FontSizes;
+using H.Themes.Layouts;
+
 namespace H.Themes.Extensions;
 
 public static class ThemeTypeExtension
@@ -46,13 +49,13 @@ public static class ThemeTypeExtension
 
     public static void ChangeFontSizeThemeType(this FontSizeThemeType n)
     {
-        ResourceDictionary resource = n.GetFontSizeResource();
+        ResourceDictionary resource = n == FontSizeThemeType.Default ? GetResource("FontSizeKeys") : n.GetFontSizeResource();
         resource.ChangeResourceDictionary(x => x.IsFontSizesResource());
     }
 
     public static void ChangeLayoutThemeType(this LayoutThemeType n)
     {
-        ResourceDictionary resource = n.GetLayoutResource();
+        ResourceDictionary resource = n == LayoutThemeType.Default ? GetResource("LayoutKeys") : n.GetLayoutResource();
         resource.ChangeResourceDictionary(x => x.IsLayoutsResource());
     }
 

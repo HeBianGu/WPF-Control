@@ -50,8 +50,8 @@
 
 
     <!--  Color  -->
-    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.LightGray, TypeInTargetAssembly={x:Type local:ColorKeys}}">#2c2c2c</Color>
-    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Gray, TypeInTargetAssembly={x:Type local:ColorKeys}}">#000000</Color>
+    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.LightGray, TypeInTargetAssembly={x:Type local:ColorKeys}}">LightGray</Color>
+    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Gray, TypeInTargetAssembly={x:Type local:ColorKeys}}">Gray</Color>
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Black, TypeInTargetAssembly={x:Type local:ColorKeys}}">#374857</Color>
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Orange, TypeInTargetAssembly={x:Type local:ColorKeys}}">#E6A23C</Color>
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Red, TypeInTargetAssembly={x:Type local:ColorKeys}}">#FFdc000c</Color>

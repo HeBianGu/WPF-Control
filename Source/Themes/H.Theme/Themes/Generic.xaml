@@ -7,5 +7,9 @@
         <ResourceDictionary Source="pack://application:,,,/H.Theme;component/ColorKeys.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Theme;component/SystemKeys.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Theme;component/Backgrounds/Default.xaml" />
+
+        <ResourceDictionary Source="pack://application:,,,/H.Theme;component/Colors/ColorThemeType.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Theme;component/FontSizes/FontSizeThemeType.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Theme;component/Layouts/LayoutThemeType.xaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

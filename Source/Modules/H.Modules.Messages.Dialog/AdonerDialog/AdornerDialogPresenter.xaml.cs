@@ -30,7 +30,17 @@ namespace H.Modules.Messages.Dialog
             this.VerticalContentAlignment = VerticalAlignment.Center;
             this.Padding = new Thickness(10, 6, 10, 6);
         }
-        public string Title { get; set; } = "提示";
+        private string _title = "提示";
+        public string Title
+        {
+            get { return _title; }
+            set
+            {
+                _title = value;
+                RaisePropertyChanged();
+            }
+        }
+
         public object Presenter { get; set; }
 
         private ManualResetEvent _waitHandle = new ManualResetEvent(false);

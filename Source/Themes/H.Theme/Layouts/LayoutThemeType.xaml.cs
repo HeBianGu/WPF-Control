@@ -6,13 +6,13 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
-namespace H.Themes.Extensions;
-public enum FontSizeThemeType
+namespace H.Themes.Layouts;
+public enum LayoutThemeType
 {
     [Display(Name = "常规")]
     Default = 0,
-    [Display(Name = "大")]
+    [Display(Name = "宽松")]
     Large,
-    [Display(Name = "小")]
+    [Display(Name = "紧凑")]
     Small
 }

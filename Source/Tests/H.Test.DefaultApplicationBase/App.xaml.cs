@@ -1,6 +1,6 @@
 ﻿using H.ApplicationBases.Default;
 using H.Extensions.ApplicationBase;
-using H.Themes.Extensions;
+using H.Themes.FontSizes;
 using Microsoft.Extensions.DependencyInjection;
 using System.Configuration;
 using System.Data;

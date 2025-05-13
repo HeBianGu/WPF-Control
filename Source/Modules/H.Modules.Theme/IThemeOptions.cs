@@ -7,7 +7,8 @@
 // Licensed under the MIT License (the "License")
 
 using H.Themes.Backgrounds;
-using H.Themes.Extensions;
+using H.Themes.FontSizes;
+using H.Themes.Layouts;
 using System.Windows.Media;
 
 namespace H.Modules.Theme;

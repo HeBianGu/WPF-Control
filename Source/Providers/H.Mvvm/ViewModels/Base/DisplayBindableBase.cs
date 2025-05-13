@@ -179,8 +179,8 @@ public abstract class DisplayBindableBase : CommandsBindableBase, IDable, IDispl
     /// <summary>
     /// 获取加载默认值的命令。
     /// </summary>
-    [System.Text.Json.Serialization.JsonIgnore]
-    [System.Xml.Serialization.XmlIgnore]
+    [JsonIgnore]
+    [XmlIgnore]
     [Display(Name = "恢复默认")]
     public virtual RelayCommand LoadDefaultCommand => new RelayCommand(x =>
     {

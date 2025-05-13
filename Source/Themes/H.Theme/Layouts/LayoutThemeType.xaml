@@ -1,0 +1,22 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:l="clr-namespace:H.Themes.Layouts"
+                    xmlns:local="clr-namespace:H.Themes">
+    <DataTemplate DataType="{x:Type l:LayoutThemeType}">
+        <TextBlock x:Name="tb_name" />
+        <DataTemplate.Triggers>
+            <DataTrigger Binding="{Binding}"
+                         Value="Default">
+                <Setter TargetName="tb_name" Property="Text" Value="常规（推荐）" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding}"
+                         Value="Large">
+                <Setter TargetName="tb_name" Property="Text" Value="宽松" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding}"
+                         Value="Small">
+                <Setter TargetName="tb_name" Property="Text" Value="紧凑" />
+            </DataTrigger>
+        </DataTemplate.Triggers>
+    </DataTemplate>
+</ResourceDictionary>
