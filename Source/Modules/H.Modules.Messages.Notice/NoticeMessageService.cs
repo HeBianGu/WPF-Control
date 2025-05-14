@@ -19,23 +19,28 @@ namespace H.Modules.Messages.Notice
 
         private void CheckValid()
         {
-            UIElement child = Application.Current.MainWindow.Content as UIElement;
-            AdornerLayer layer = AdornerLayer.GetAdornerLayer(child);
-            System.Collections.Generic.IEnumerable<PresenterAdorner> adorners = layer.GetAdorners(child)?.OfType<PresenterAdorner>().Where(x => x.Presenter == this._noticeBox);
-            //if (adorners == null || adorners.Count() == 0)
-            //{
-            //    PresenterAdorner adorner = new PresenterAdorner(child, this._noticeBox);
-            //    layer.Add(adorner);
-            //}
-            if (adorners != null)
+            Application.Current.Dispatcher.Invoke(() =>
             {
-                foreach (var item in adorners)
+                UIElement child = Application.Current.MainWindow.Content as UIElement;
+                AdornerLayer layer = AdornerLayer.GetAdornerLayer(child);
+                if (layer == null)
+                    return;
+                System.Collections.Generic.IEnumerable<PresenterAdorner> adorners = layer.GetAdorners(child)?.OfType<PresenterAdorner>().Where(x => x.Presenter == this._noticeBox);
+                //if (adorners == null || adorners.Count() == 0)
+                //{
+                //    PresenterAdorner adorner = new PresenterAdorner(child, this._noticeBox);
+                //    layer.Add(adorner);
+                //}
+                if (adorners != null)
                 {
-                    layer.Remove(item);
+                    foreach (var item in adorners)
+                    {
+                        layer.Remove(item);
+                    }
                 }
-            }
-            PresenterAdorner adorner = new PresenterAdorner(child, this._noticeBox);
-            layer.Add(adorner);
+                PresenterAdorner adorner = new PresenterAdorner(child, this._noticeBox);
+                layer.Add(adorner);
+            });
         }
 
         public async void ShowInfo(string message)
