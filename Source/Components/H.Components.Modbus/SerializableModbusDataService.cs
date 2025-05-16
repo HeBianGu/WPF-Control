@@ -5,6 +5,7 @@
 // QQ:908293466 Group:971261058 
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
+using H.Extensions.Common;
 using H.Extensions.NewtonsoftJson;
 using H.Services.AppPath;
 using H.Services.Serializable;
@@ -45,6 +46,7 @@ public class SerializableModbusDataService : ModbusDataService, ISerializableMod
     {
         try
         {
+            this.Stop().Wait();
             this._serializerService.Save(this.GetFilePath(), this.Collection);
             message = null;
             return true;
