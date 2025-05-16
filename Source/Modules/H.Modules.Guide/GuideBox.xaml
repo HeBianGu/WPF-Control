@@ -94,7 +94,7 @@
                                     <DataTemplate DataType="{x:Type sys:String}">
                                         <TextBlock Width="{Binding Source={x:Static local:GuideOptions.Instance}, Path=TextMaxWidth}"
                                                    Foreground="White"
-                                                   Opacity="0.6"
+                                                   Opacity="0.8"
                                                    Text="{Binding}"
                                                    TextWrapping="Wrap" />
                                     </DataTemplate>
