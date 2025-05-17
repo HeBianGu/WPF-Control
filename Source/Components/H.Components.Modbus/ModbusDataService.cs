@@ -114,7 +114,7 @@ public class ModbusDataService : DisplayBindableBase, IModbusDataService
 
     public async Task Stop()
     {
-        if (_cancellationTokenSource != null)
+        if (_cancellationTokenSource != null && !_cancellationTokenSource.IsCancellationRequested)
         {
             this.State = ModbusDataState.Canceling;
             _taskCompletionSource = new TaskCompletionSource<bool>();
