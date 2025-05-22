@@ -6,13 +6,17 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
-namespace H.Extensions.MarkupExtension;
+using System.Windows.Markup;
 
-public class GetInstanceExtension : System.Windows.Markup.MarkupExtension
+namespace H.MarkupExtension;
+
+[MarkupExtensionReturnType(typeof(string))]
+public class SpecialFolderExtension : System.Windows.Markup.MarkupExtension
 {
-    public Type Type { get; set; }
+    public Environment.SpecialFolder SpecialFolder { get; set; }
+
     public override object ProvideValue(IServiceProvider serviceProvider)
     {
-        return Activator.CreateInstance(this.Type);
+        return Environment.GetFolderPath(this.SpecialFolder);
     }
 }

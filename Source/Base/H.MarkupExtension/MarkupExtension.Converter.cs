@@ -8,7 +8,7 @@
 
 using System.ComponentModel;
 
-namespace H.Extensions.MarkupExtension;
+namespace H.MarkupExtension;
 
 /// <summary>
 /// TypeConverter需继承TypeConverter

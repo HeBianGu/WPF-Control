@@ -8,7 +8,7 @@
 
 using System.Windows.Markup;
 
-namespace H.Extensions.MarkupExtension;
+namespace H.MarkupExtension;
 
 public class StaticPropertyExtension : StaticExtension
 {

@@ -8,15 +8,17 @@
 
 using System.Windows.Markup;
 
-namespace H.Extensions.MarkupExtension;
+namespace H.MarkupExtension;
 
-[MarkupExtensionReturnType(typeof(string))]
-public class SpecialFolderExtension : System.Windows.Markup.MarkupExtension
+[MarkupExtensionReturnType(typeof(DateTime))]
+public class GetDateTimeExtension : GetValueExtensionBase
 {
-    public Environment.SpecialFolder SpecialFolder { get; set; }
-
     public override object ProvideValue(IServiceProvider serviceProvider)
     {
-        return Environment.GetFolderPath(this.SpecialFolder);
+        if (DateTime.TryParse(this.Value, out DateTime result))
+        {
+            return result;
+        }
+        return DateTime.MinValue;
     }
 }

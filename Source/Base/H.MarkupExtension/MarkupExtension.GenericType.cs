@@ -8,7 +8,7 @@
 
 using System.Windows.Markup;
 
-namespace H.Extensions.MarkupExtension;
+namespace H.MarkupExtension;
 
 [MarkupExtensionReturnType(typeof(Type))]
 public class GenericTypeExtension : System.Windows.Markup.MarkupExtension

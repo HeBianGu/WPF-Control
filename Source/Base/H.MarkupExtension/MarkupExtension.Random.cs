@@ -9,7 +9,7 @@
 using System.Windows;
 using System.Windows.Markup;
 
-namespace H.Extensions.MarkupExtension;
+namespace H.MarkupExtension;
 
 public abstract class RandomExtension<T> : System.Windows.Markup.MarkupExtension
 {

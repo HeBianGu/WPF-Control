@@ -9,7 +9,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.Reflection;
 
-namespace H.Extensions.MarkupExtension;
+namespace H.MarkupExtension;
 
 public class GetEnumSourceExtension : System.Windows.Markup.MarkupExtension
 {

@@ -6,20 +6,13 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
-using System.Windows;
-using System.Windows.Markup;
+namespace H.MarkupExtension;
 
-namespace H.Extensions.MarkupExtension;
-
-[MarkupExtensionReturnType(typeof(Visibility))]
-public class GetVisibilityExtension : GetValueExtensionBase
+public class GetInstanceExtension : System.Windows.Markup.MarkupExtension
 {
+    public Type Type { get; set; }
     public override object ProvideValue(IServiceProvider serviceProvider)
     {
-        if (Enum.TryParse<Visibility>(this.Value, out Visibility result))
-        {
-            return result;
-        }
-        return Visibility.Visible;
+        return Activator.CreateInstance(this.Type);
     }
 }
