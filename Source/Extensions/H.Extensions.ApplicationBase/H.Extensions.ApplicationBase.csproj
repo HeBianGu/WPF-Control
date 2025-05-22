@@ -7,7 +7,7 @@
     <ProjectReference Include="..\..\Services\H.Services.Message\H.Services.Message.csproj" />
     <ProjectReference Include="..\..\Services\H.Services.Operation\H.Services.Operation.csproj" />
     <ProjectReference Include="..\..\Services\H.Services.Setting\H.Services.Setting.csproj" />
+    <ProjectReference Include="..\..\Styles\H.Attach\H.Attach.csproj" />
     <ProjectReference Include="..\H.Extensions.AppPath\H.Extensions.AppPath.csproj" />
-    <ProjectReference Include="..\H.Extensions.Attach\H.Extensions.Attach.csproj" />
   </ItemGroup>
 </Project>

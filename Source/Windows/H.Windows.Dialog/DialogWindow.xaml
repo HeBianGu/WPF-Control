@@ -96,25 +96,25 @@
                                                     HorizontalAlignment="Right"
                                                     Orientation="Horizontal">
                                             <FontIconButton x:Name="Btn_Minimize"
-                                                            Command="{h:MinimizeWindowCommand}"
+                                                            Command="{x:Static SystemCommands.MinimizeWindowCommand}"
                                                             CommandParameter="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}}"
                                                             Content="{x:Static FontIcons.ChromeMinimize}"
                                                             FontSize="10"
                                                             Style="{DynamicResource {x:Static h:WindowKeys.FontIconButton}}" />
                                             <FontIconButton x:Name="Btn_Maximize"
-                                                            Command="{h:MaximizeWindowCommand}"
+                                                            Command="{x:Static SystemCommands.MaximizeWindowCommand}"
                                                             CommandParameter="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}}"
                                                             Content="{x:Static FontIcons.ChromeMaximize}"
                                                             FontSize="10"
                                                             Style="{DynamicResource {x:Static h:WindowKeys.FontIconButton}}" />
                                             <FontIconButton x:Name="Btn_Restore"
-                                                            Command="{h:RestoreWindowCommand}"
+                                                            Command="{x:Static SystemCommands.RestoreWindowCommand}"
                                                             CommandParameter="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}}"
                                                             Content="{x:Static FontIcons.ChromeRestore}"
                                                             FontSize="10"
                                                             Style="{DynamicResource {x:Static h:WindowKeys.FontIconButton}}" />
                                             <FontIconButton x:Name="Btn_Close"
-                                                            Command="{h:CloseWindowCommand}"
+                                                            Command="{x:Static SystemCommands.CloseWindowCommand}"
                                                             CommandParameter="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}}"
                                                             Content="{x:Static FontIcons.ChromeClose}"
                                                             FontSize="10"
@@ -131,7 +131,7 @@
                                                       VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
                                 </AdornerDecorator>
 
-                                <Border Grid.RowSpan="3"
+                                <!--<Border Grid.RowSpan="3"
                                         IsHitTestVisible="False"
                                         Opacity="{Binding Source={x:Static h:WindowSetting.Instance}, Path=Opacity}"
                                         Visibility="{Binding Source={x:Static h:WindowSetting.Instance}, Path=UseBackImage, Converter={x:Static Converter.GetTrueToVisible}}">
@@ -139,7 +139,7 @@
                                         <ImageBrush ImageSource="{Binding Source={x:Static h:WindowSetting.Instance}, Path=BackImagePath}"
                                                     Stretch="{Binding Source={x:Static h:WindowSetting.Instance}, Path=Stretch}" />
                                     </Border.Background>
-                                </Border>
+                                </Border>-->
                                 <Control Grid.Row="2"
                                          Template="{TemplateBinding BottomTemplate}" />
                                 <ResizeGrip x:Name="WindowResizeGrip"
@@ -185,7 +185,7 @@
                     <Button Width="100"
                             Margin="0,0,0,10"
                             HorizontalAlignment="Center"
-                            Command="{h:SumitWindowCommand}"
+                            Command="{local:SumitWindowCommand}"
                             CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"
                             Content="确定" />
                 </ControlTemplate>
@@ -207,7 +207,7 @@
                     <Button Width="100"
                             Margin="0,0,0,10"
                             HorizontalAlignment="Center"
-                            Command="{h:SumitWindowCommand}"
+                            Command="{local:SumitWindowCommand}"
                             CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"
                             Content="确定"
                             IsDefault="True" />
@@ -224,7 +224,7 @@
                     <Button Width="100"
                             Margin="0,0,0,10"
                             HorizontalAlignment="Center"
-                            Command="{h:CloseWindowCommand}"
+                            Command="{x:Static SystemCommands.CloseWindowCommand}"
                             CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"
                             Content="取消"
                             IsCancel="True" />
@@ -243,14 +243,14 @@
                         <Button Width="100"
                                 Margin="6,0,6,10"
                                 HorizontalAlignment="Center"
-                                Command="{h:SumitWindowCommand}"
+                                Command="{local:SumitWindowCommand}"
                                 CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"
                                 Content="确定"
                                 IsDefault="True" />
                         <Button Width="100"
                                 Margin="6,0,6,10"
                                 HorizontalAlignment="Center"
-                                Command="{h:CloseWindowCommand}"
+                                Command="{x:Static SystemCommands.CloseWindowCommand}"
                                 CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"
                                 Content="取消"
                                 IsCancel="True" />

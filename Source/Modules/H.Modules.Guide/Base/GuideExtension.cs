@@ -7,7 +7,7 @@
 // Licensed under the MIT License (the "License")
 
 global using H.Extensions.Common;
-using H.Extensions.Attach;
+using H.Attach;
 
 namespace H.Modules.Guide.Base;
 

@@ -6,10 +6,9 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
-namespace H.Windows.Main
-{
-    public interface IMainWindow
-    {
+namespace H.Windows.Main;
 
-    }
+public interface IMainWindow
+{
+
 }

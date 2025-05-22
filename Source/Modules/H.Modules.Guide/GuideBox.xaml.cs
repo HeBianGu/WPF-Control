@@ -7,7 +7,7 @@
 // Licensed under the MIT License (the "License")
 
 global using H.Extensions.StoryBoard;
-using H.Extensions.Attach;
+using H.Attach;
 using H.Modules.Guide.Base;
 using System.Windows.Shapes;
 using System.Windows.Threading;

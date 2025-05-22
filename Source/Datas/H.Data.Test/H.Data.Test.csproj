@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <ItemGroup>
-    <ProjectReference Include="..\..\Extensions\H.Extensions.Attach\H.Extensions.Attach.csproj" />
+    <ProjectReference Include="..\..\Styles\H.Attach\H.Attach.csproj" />
     <ProjectReference Include="..\..\Providers\H.Mvvm\H.Mvvm.csproj" />
   </ItemGroup>
 </Project>

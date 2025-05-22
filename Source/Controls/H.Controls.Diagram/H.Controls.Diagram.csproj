@@ -6,6 +6,7 @@
     <ProjectReference Include="..\..\Extensions\H.Extensions.Common\H.Extensions.Common.csproj" />
     <ProjectReference Include="..\..\Extensions\H.Extensions.Geometry\H.Extensions.Geometry.csproj" />
     <ProjectReference Include="..\..\Extensions\H.Extensions.TypeConverter\H.Extensions.TypeConverter.csproj" />
+    <ProjectReference Include="..\..\Extensions\H.Extensions.ValueConverter\H.Extensions.ValueConverter.csproj" />
     <ProjectReference Include="..\..\Providers\H.Mvvm\H.Mvvm.csproj" />
     <ProjectReference Include="..\H.Controls.Adorner\H.Controls.Adorner.csproj" />
   </ItemGroup>

@@ -200,7 +200,7 @@
         </Setter>
     </Style>
 
-    <Style x:Key="{ComponentResourceKey ResourceId=S.TextBox.Delete,
+    <!--<Style x:Key="{ComponentResourceKey ResourceId=S.TextBox.Delete,
                                         TypeInTargetAssembly={x:Type local:TextBoxKeys}}"
            BasedOn="{StaticResource {x:Static local:TextBoxKeys.Attach}}"
            TargetType="{x:Type TextBox}">
@@ -214,7 +214,7 @@
                         Content="删除" />
             </Setter.Value>
         </Setter>
-    </Style>
+    </Style>-->
     <Style BasedOn="{StaticResource {x:Static local:TextBoxKeys.Default}}"
            TargetType="TextBox" />
 </ResourceDictionary>

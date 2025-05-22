@@ -31,7 +31,6 @@
                                                   Content="{Binding Model, RelativeSource={RelativeSource TemplatedParent}}"
                                                   ContentTemplate="{Binding DocumentHeaderTemplate, Mode=OneWay, RelativeSource={RelativeSource AncestorType={x:Type local:DockingManager}, Mode=FindAncestor}}"
                                                   ContentTemplateSelector="{Binding DocumentHeaderTemplateSelector, Mode=OneWay, RelativeSource={RelativeSource AncestorType={x:Type local:DockingManager}, Mode=FindAncestor}}" />
-
                                 <FontIconButton x:Name="DocumentCloseButton"
                                                 Grid.Column="2"
                                                 VerticalAlignment="{TemplateBinding VerticalContentAlignment}"

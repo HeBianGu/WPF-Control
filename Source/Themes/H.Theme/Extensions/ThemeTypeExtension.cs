@@ -87,17 +87,21 @@ public static class ThemeTypeExtension
 
     public static ResourceDictionary GetLayoutResource(this LayoutThemeType type)
     {
+        if (type == LayoutThemeType.Default)
+            return GetResource("LayoutKeys");
         return GetResource("Layouts", type.ToString());
     }
 
     public static ResourceDictionary GetFontSizeResource(this FontSizeThemeType type)
     {
+        if (type == FontSizeThemeType.Default)
+            return GetResource("FontSizeKeys");
         return GetResource("FontSizes", type.ToString());
     }
 
     public static ResourceDictionary GetSystemsResource()
     {
-        return GetResource("Systems", "Default");
+        return GetResource("SystemKeys");
     }
 
     public static void RefreshBrushResourceDictionary()

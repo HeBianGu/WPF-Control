@@ -156,7 +156,7 @@
                                     <StackPanel IsItemsHost="True"
                                                 KeyboardNavigation.DirectionalNavigation="Contained" />
                                 </ScrollViewer>
-                                <Border Grid.RowSpan="3"
+                                <!--<Border Grid.RowSpan="3"
                                         IsHitTestVisible="False"
                                         Opacity="{Binding Source={x:Static local:WindowSetting.Instance}, Path=Opacity}"
                                         Visibility="{Binding Source={x:Static local:WindowSetting.Instance}, Path=UseBackImage, Converter={x:Static Converter.GetTrueToVisible}}">
@@ -164,7 +164,7 @@
                                         <ImageBrush ImageSource="{Binding Source={x:Static local:WindowSetting.Instance}, Path=BackImagePath}"
                                                     Stretch="{Binding Source={x:Static local:WindowSetting.Instance}, Path=Stretch}" />
                                     </Border.Background>
-                                </Border>
+                                </Border>-->
                             </Grid>
                         </Popup>
                     </Grid>

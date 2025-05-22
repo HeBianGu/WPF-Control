@@ -1,6 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
   <ItemGroup>
-    <ProjectReference Include="..\..\Extensions\H.Extensions.Attach\H.Extensions.Attach.csproj" />
+    <ProjectReference Include="..\..\Services\H.Services.Message\H.Services.Message.csproj" />
+    <ProjectReference Include="..\..\Styles\H.Attach\H.Attach.csproj" />
     <ProjectReference Include="..\..\Extensions\H.Extensions.Behvaiors\H.Extensions.Behvaiors.csproj" />
     <ProjectReference Include="..\..\Extensions\H.Extensions.Common\H.Extensions.Common.csproj" />
     <ProjectReference Include="..\..\Extensions\H.Extensions.FontIcon\H.Extensions.FontIcon.csproj" />

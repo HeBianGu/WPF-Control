@@ -1,5 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
   <ItemGroup>
+    <ProjectReference Include="..\..\Extensions\H.Extensions.FontIcon\H.Extensions.FontIcon.csproj" />
     <ProjectReference Include="..\..\Extensions\H.Extensions.TextJsonable\H.Extensions.TextJsonable.csproj" />
     <ProjectReference Include="..\..\Extensions\H.Extensions.ValueConverter\H.Extensions.ValueConverter.csproj" />
     <ProjectReference Include="..\..\Services\H.Services.Common\H.Services.Common.csproj" />

@@ -171,8 +171,6 @@
                                             <ScrollBar x:Name="PART_VerticalScrollBar"
                                                        Grid.Row="1"
                                                        Grid.Column="2"
-                                                       Width="{Binding Source={x:Static local:ScrollViewerSetting.Instance}, Path=Width}"
-                                                       MinWidth="{Binding Source={x:Static local:ScrollViewerSetting.Instance}, Path=Width}"
                                                        Maximum="{TemplateBinding ScrollableHeight}"
                                                        Orientation="Vertical"
                                                        ViewportSize="{TemplateBinding ViewportHeight}"
@@ -188,8 +186,6 @@
 
                                                 <ScrollBar x:Name="PART_HorizontalScrollBar"
                                                            Grid.Column="1"
-                                                           Height="{Binding Source={x:Static local:ScrollViewerSetting.Instance}, Path=Width}"
-                                                           MinHeight="{Binding Source={x:Static local:ScrollViewerSetting.Instance}, Path=Width}"
                                                            Maximum="{TemplateBinding ScrollableWidth}"
                                                            Orientation="Horizontal"
                                                            ViewportSize="{TemplateBinding ViewportWidth}"

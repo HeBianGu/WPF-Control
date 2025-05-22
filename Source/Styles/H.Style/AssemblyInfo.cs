@@ -6,11 +6,6 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
-global using H.Common.Attributes;
-global using H.Common.Transitionable;
-global using H.Iocable;
-global using H.Services.Message.Dialog;
-global using H.Services.Setting;
 global using H.Styles.Controls;
 global using System.Collections.Generic;
 global using System.Linq;
@@ -31,17 +26,14 @@ global using System.Windows.Media;
 )]
 
 [assembly: XmlnsDefinition("QQ:908293466", "H.Styles")]
-[assembly: XmlnsDefinition("QQ:908293466", "H.Styles.Commands")]
 [assembly: XmlnsDefinition("QQ:908293466", "H.Styles.Controls")]
 [assembly: XmlnsPrefix("QQ:908293466", "h")]
 
 [assembly: XmlnsDefinition("https://github.com/HeBianGu", "H.Styles")]
-[assembly: XmlnsDefinition("https://github.com/HeBianGu", "H.Styles.Commands")]
 [assembly: XmlnsDefinition("https://github.com/HeBianGu", "H.Styles.Controls")]
 [assembly: XmlnsPrefix("https://github.com/HeBianGu", "h")]
 
 [assembly: XmlnsDefinition("http://schemas.microsoft.com/winfx/2006/xaml/presentation", "H.Styles")]
-[assembly: XmlnsDefinition("http://schemas.microsoft.com/winfx/2006/xaml/presentation", "H.Styles.Commands")]
 [assembly: XmlnsDefinition("http://schemas.microsoft.com/winfx/2006/xaml/presentation", "H.Styles.Controls")]
 [assembly: XmlnsPrefix("http://schemas.microsoft.com/winfx/2006/xaml/presentation", "h")]
 

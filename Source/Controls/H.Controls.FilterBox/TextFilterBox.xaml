@@ -4,7 +4,7 @@
     xmlns:Behaviors="http://schemas.microsoft.com/xaml/behaviors"
     xmlns:h="https://github.com/HeBianGu"
     xmlns:local="clr-namespace:H.Controls.FilterBox">
-    <Style BasedOn="{StaticResource {x:Static h:TextBoxKeys.Delete}}" TargetType="{x:Type local:TextFilterBox}">
+    <Style BasedOn="{StaticResource {x:Static h:TextBoxKeys.Attach}}" TargetType="{x:Type local:TextFilterBox}">
         <Setter Property="Cattach.Title" Value="搜索" />
         <Setter Property="Cattach.Watermark" Value="输入搜索条件" />
     </Style>

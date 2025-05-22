@@ -6,6 +6,8 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
+using System.Xml.Serialization;
+
 namespace H.Extensions.Behvaiors.TextBoxs;
 
 [Obsolete("输入中文有输入法是会自动LostFocus，需要再测试一下")]

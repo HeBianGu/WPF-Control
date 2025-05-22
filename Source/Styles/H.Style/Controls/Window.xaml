@@ -1,7 +1,6 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:lc="clr-namespace:H.Styles.Controls"
-                    xmlns:lcd="clr-namespace:H.Styles.Commands"
                     xmlns:local="clr-namespace:H.Styles">
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/H.Style;component/Share.xaml" />
@@ -36,6 +35,7 @@
         <Setter Property="Foreground" Value="{DynamicResource {x:Static BrushKeys.CaptionForeground}}" />
     </Style>
 
+    <lc:GetNullToCollapsedConverter x:Key="GetNullToCollapsedConverter" />
     <Style x:Key="{ComponentResourceKey ResourceId=S.Window.Default,
                                         TypeInTargetAssembly={x:Type lc:WindowKeys}}"
            TargetType="{x:Type Window}">
@@ -99,13 +99,12 @@
                                                     Content="{TemplateBinding Icon}"
                                                     IsTabStop="False"
                                                     Style="{x:Null}"
-                                                    Visibility="{Binding Icon, RelativeSource={RelativeSource Mode=TemplatedParent}, Converter={x:Static Converter.GetNullToCollapsed}}"
+                                                    Visibility="{Binding Icon, RelativeSource={RelativeSource Mode=TemplatedParent}, Converter={StaticResource GetNullToCollapsedConverter}}"
                                                     WindowChrome.IsHitTestVisibleInChrome="True">
                                                 <Button.Template>
                                                     <ControlTemplate TargetType="{x:Type Button}">
                                                         <Image Source="{TemplateBinding Content}" />
                                                     </ControlTemplate>
-
                                                 </Button.Template>
                                             </Button>
                                             <TextBlock Margin="5,0"
@@ -117,22 +116,22 @@
                                                     HorizontalAlignment="Right"
                                                     Orientation="Horizontal">
                                             <lc:FontIconButton x:Name="Btn_Minimize"
-                                                               Command="{lcd:MinimizeWindowCommand}"
+                                                               Command="{x:Static SystemCommands.MinimizeWindowCommand}"
                                                                CommandParameter="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}}"
                                                                FontSize="10"
                                                                Style="{DynamicResource {x:Static lc:WindowKeys.FontIconButton}}" />
                                             <lc:FontIconButton x:Name="Btn_Maximize"
-                                                               Command="{lcd:MaximizeWindowCommand}"
+                                                               Command="{x:Static SystemCommands.MaximizeWindowCommand}"
                                                                CommandParameter="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}}"
                                                                FontSize="10"
                                                                Style="{DynamicResource {x:Static lc:WindowKeys.FontIconButton}}" />
                                             <lc:FontIconButton x:Name="Btn_Restore"
-                                                               Command="{lcd:RestoreWindowCommand}"
+                                                               Command="{x:Static SystemCommands.RestoreWindowCommand}"
                                                                CommandParameter="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}}"
                                                                FontSize="10"
                                                                Style="{DynamicResource {x:Static lc:WindowKeys.FontIconButton}}" />
                                             <lc:FontIconButton x:Name="Btn_Close"
-                                                               Command="{lcd:CloseAfterSaveWindowCommand}"
+                                                               Command="{x:Static SystemCommands.CloseWindowCommand}"
                                                                CommandParameter="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}}"
                                                                FontSize="10"
                                                                Style="{DynamicResource {x:Static lc:WindowKeys.FontIconButton}}" />
@@ -144,7 +143,7 @@
                                     <ContentPresenter />
                                 </AdornerDecorator>
 
-                                <Border Grid.RowSpan="3"
+                                <!--<Border Grid.RowSpan="3"
                                         IsHitTestVisible="False"
                                         Opacity="{Binding Source={x:Static lc:WindowSetting.Instance}, Path=Opacity}"
                                         Visibility="{Binding Source={x:Static lc:WindowSetting.Instance}, Path=UseBackImage, Converter={x:Static Converter.GetTrueToVisible}}">
@@ -152,7 +151,7 @@
                                         <ImageBrush ImageSource="{Binding Source={x:Static lc:WindowSetting.Instance}, Path=BackImagePath}"
                                                     Stretch="{Binding Source={x:Static lc:WindowSetting.Instance}, Path=Stretch}" />
                                     </Border.Background>
-                                </Border>
+                                </Border>-->
 
                                 <ResizeGrip x:Name="WindowResizeGrip"
                                             Grid.Row="1"

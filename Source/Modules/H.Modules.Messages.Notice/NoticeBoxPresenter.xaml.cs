@@ -7,6 +7,7 @@
 // Licensed under the MIT License (the "License")
 
 using H.Mvvm.ViewModels.Base;
+using H.Services.Message.Notice;
 using System.Collections.ObjectModel;
 
 namespace H.Modules.Messages.Notice

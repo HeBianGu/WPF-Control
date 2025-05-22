@@ -6,8 +6,9 @@
     <ProjectReference Include="..\..\Extensions\H.Extensions.DataBase\H.Extensions.DataBase.csproj" />
     <ProjectReference Include="..\..\Extensions\H.Extensions.Setting\H.Extensions.Setting.csproj" />
     <ProjectReference Include="..\..\Styles\H.Style\H.Style.csproj" />
+    <ProjectReference Include="..\..\Windows\H.Windows.Dialog\H.Windows.Dialog.csproj" />
   </ItemGroup>
-  <ItemGroup Condition="'$(TargetFramework)' == 'net7.0-windows'">
+  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore">
       <Version>7.0.8</Version>
     </PackageReference>
@@ -19,98 +20,6 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.EntityFrameworkCore.Proxies" Version="7.0.8" />
-
-  </ItemGroup>
-  
-  <ItemGroup Condition="'$(TargetFramework)' == 'net6.0-windows'">
-    <PackageReference Include="Microsoft.EntityFrameworkCore">
-      <Version>6.0.9</Version>
-    </PackageReference>
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite">
-      <Version>6.0.9</Version>
-    </PackageReference>
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.9">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Proxies" Version="6.0.9" />
-
-  </ItemGroup>
-
-  <ItemGroup Condition="'$(TargetFramework)' == 'net5.0-windows'">
-    <PackageReference Include="Microsoft.EntityFrameworkCore">
-      <Version>5.0.17</Version>
-    </PackageReference>
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite">
-      <Version>5.0.17</Version>
-    </PackageReference>
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.17">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Proxies" Version="5.0.17" />
-
-  </ItemGroup>
-
-  <ItemGroup Condition="'$(TargetFramework)' == 'netcoreapp3.1'">
-    <PackageReference Include="Microsoft.EntityFrameworkCore">
-      <Version>5.0.17</Version>
-    </PackageReference>
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite">
-      <Version>5.0.17</Version>
-    </PackageReference>
-  </ItemGroup>
-
-  <ItemGroup Condition="'$(TargetFramework)' == 'net45'">
-    <PackageReference Include="EntityFramework" Version="6.4.4" />
-    <PackageReference Include="System.Data.SQLite.EF6.Migrations" Version="1.0.113" />
-  </ItemGroup>
-
-  <ItemGroup Condition="'$(TargetFramework)' == 'net451'">
-    <PackageReference Include="EntityFramework" Version="6.4.4" />
-    <PackageReference Include="System.Data.SQLite.EF6.Migrations" Version="1.0.113" />
-
-  </ItemGroup>
-
-  <ItemGroup Condition="'$(TargetFramework)' == 'net452'">
-    <PackageReference Include="EntityFramework" Version="6.4.4" />
-    <PackageReference Include="System.Data.SQLite.EF6.Migrations" Version="1.0.113" />
-
-  </ItemGroup>
-  <ItemGroup Condition="'$(TargetFramework)' == 'net46'">
-    <PackageReference Include="EntityFramework" Version="6.4.4" />
-    <PackageReference Include="System.Data.SQLite.EF6.Migrations" Version="1.0.113" />
-
-  </ItemGroup>
-  <ItemGroup Condition="'$(TargetFramework)' == 'net461'">
-    <PackageReference Include="EntityFramework" Version="6.4.4" />
-    <PackageReference Include="System.Data.SQLite.EF6.Migrations" Version="1.0.113" />
-
-  </ItemGroup>
-  <ItemGroup Condition="'$(TargetFramework)' == 'net462'">
-    <PackageReference Include="EntityFramework" Version="6.4.4" />
-    <PackageReference Include="System.Data.SQLite.EF6.Migrations" Version="1.0.113" />
-
-  </ItemGroup>
-  <ItemGroup Condition="'$(TargetFramework)' == 'net47'">
-    <PackageReference Include="EntityFramework" Version="6.4.4" />
-    <PackageReference Include="System.Data.SQLite.EF6.Migrations" Version="1.0.113" />
-
-  </ItemGroup>
-  <ItemGroup Condition="'$(TargetFramework)' == 'net471'">
-    <PackageReference Include="EntityFramework" Version="6.4.4" />
-    <PackageReference Include="System.Data.SQLite.EF6.Migrations" Version="1.0.113" />
-
-  </ItemGroup>
-  <ItemGroup Condition="'$(TargetFramework)' == 'net472'">
-    <PackageReference Include="EntityFramework" Version="6.4.4" />
-    <PackageReference Include="System.Data.SQLite.EF6.Migrations" Version="1.0.113" />
-
-  </ItemGroup>
-  <ItemGroup Condition="'$(TargetFramework)' == 'net48'">
-    <PackageReference Include="EntityFramework" Version="6.4.4" />
-    <PackageReference Include="System.Data.SQLite.EF6.Migrations" Version="1.0.113" />
-
   </ItemGroup>
   <Import Project="..\H.DataBases.Share\H.DataBases.Share.projitems" Label="Shared" />
 </Project>

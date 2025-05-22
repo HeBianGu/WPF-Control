@@ -8,7 +8,7 @@
 
 using H.Common.Attributes;
 using H.Common.Commands;
-using H.Extensions.Attach;
+using H.Attach;
 using H.Services.Common.Guide;
 
 namespace H.Modules.Guide.Commands;

@@ -7,7 +7,7 @@
 // Licensed under the MIT License (the "License")
 
 using H.Common.Attributes;
-using H.Extensions.Attach;
+using H.Attach;
 using System.Reflection;
 namespace H.Modules.Guide.Commands;
 

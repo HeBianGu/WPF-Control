@@ -52,13 +52,15 @@
         </Setter>
     </Style>
 
+    <local:GetFalseToHiddenConverter x:Key="GetFalseToHiddenConverter"/>
+
     <Style x:Key="{ComponentResourceKey ResourceId=S.ToggleButton.Tree,
                                         TypeInTargetAssembly={x:Type local:ToggleButtonKeys}}"
            TargetType="ToggleButton">
         <Setter Property="ClickMode" Value="Press" />
         <Setter Property="Focusable" Value="False" />
         <Setter Property="IsChecked" Value="{Binding RelativeSource={RelativeSource AncestorType=TreeViewItem}, Path=IsExpanded, Mode=TwoWay}" />
-        <Setter Property="Visibility" Value="{Binding RelativeSource={RelativeSource AncestorType=TreeViewItem}, Path=HasItems, Mode=OneWay, Converter={x:Static h:Converter.GetFalseToHidden}}" />
+        <Setter Property="Visibility" Value="{Binding RelativeSource={RelativeSource AncestorType=TreeViewItem}, Path=HasItems, Mode=OneWay, Converter={StaticResource GetFalseToHiddenConverter}}" />
         <Setter Property="Foreground" Value="{Binding RelativeSource={RelativeSource AncestorType=TreeViewItem}, Path=Foreground}" />
         <Setter Property="Template">
             <Setter.Value>

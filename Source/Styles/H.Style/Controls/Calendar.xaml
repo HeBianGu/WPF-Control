@@ -648,7 +648,7 @@
                                           BorderThickness="{TemplateBinding BorderThickness}"
                                           Style="{TemplateBinding CalendarItemStyle}" />
                         </StackPanel>
-                        <Border x:Name="bm"
+                        <!--<Border x:Name="bm"
                                 IsHitTestVisible="False"
                                 Opacity="{Binding Source={x:Static local:WindowSetting.Instance}, Path=Opacity}"
                                 Visibility="{Binding Source={x:Static local:WindowSetting.Instance}, Path=UseBackImage, Converter={x:Static Converter.GetTrueToVisible}}">
@@ -656,7 +656,7 @@
                                 <ImageBrush ImageSource="{Binding Source={x:Static local:WindowSetting.Instance}, Path=BackImagePath}"
                                             Stretch="{Binding Source={x:Static local:WindowSetting.Instance}, Path=Stretch}" />
                             </Border.Background>
-                        </Border>
+                        </Border>-->
                     </Grid>
                 </ControlTemplate>
             </Setter.Value>

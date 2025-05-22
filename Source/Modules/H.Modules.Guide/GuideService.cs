@@ -6,7 +6,7 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
-using H.Extensions.Attach;
+using H.Attach;
 using H.Modules.Guide.Base;
 using H.Services.Common.Guide;
 using Microsoft.Extensions.Options;

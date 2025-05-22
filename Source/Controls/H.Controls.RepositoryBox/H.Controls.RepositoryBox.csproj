@@ -3,7 +3,8 @@
     <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.77" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Extensions\H.Extensions.Attach\H.Extensions.Attach.csproj" />
+    <ProjectReference Include="..\..\Extensions\H.Extensions.ValueConverter\H.Extensions.ValueConverter.csproj" />
+    <ProjectReference Include="..\..\Styles\H.Attach\H.Attach.csproj" />
     <ProjectReference Include="..\..\Extensions\H.Extensions.Behvaiors\H.Extensions.Behvaiors.csproj" />
     <ProjectReference Include="..\..\Extensions\H.Extensions.DataBase.Repository\H.Extensions.DataBase.Repository.csproj" />
     <ProjectReference Include="..\..\Extensions\H.Extensions.StoryBoard\H.Extensions.StoryBoard.csproj" />

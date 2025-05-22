@@ -7,6 +7,7 @@
 // Licensed under the MIT License (the "License")
 
 using H.Mvvm.ViewModels.Base;
+using H.Services.Message.Snack;
 
 namespace H.Modules.Messages.Snack
 {

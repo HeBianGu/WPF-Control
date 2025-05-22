@@ -1,6 +1,7 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:h="https://github.com/HeBianGu"
+                    xmlns:lc="clr-namespace:H.Windows.Main.Commands"
                     xmlns:local="clr-namespace:H.Windows.Main">
 
     <Style TargetType="{x:Type local:MainWindow}">
@@ -126,25 +127,25 @@
                                                                     HorizontalAlignment="Right"
                                                                     Orientation="Horizontal">
                                                             <FontIconButton x:Name="Btn_Minimize"
-                                                                            Command="{MinimizeWindowCommand}"
+                                                                            Command="{lc:MinimizeWindowCommand}"
                                                                             CommandParameter="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}}"
                                                                             FontSize="10"
                                                                             Style="{DynamicResource {x:Static WindowKeys.FontIconButton}}"
                                                                             ToolTip="最小化" />
                                                             <FontIconButton x:Name="Btn_Maximize"
-                                                                            Command="{MaximizeWindowCommand}"
+                                                                            Command="{lc:MaximizeWindowCommand}"
                                                                             CommandParameter="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}}"
                                                                             FontSize="10"
                                                                             Style="{DynamicResource {x:Static WindowKeys.FontIconButton}}"
                                                                             ToolTip="最大化" />
                                                             <FontIconButton x:Name="Btn_Restore"
                                                                             Margin="2"
-                                                                            Command="{RestoreWindowCommand}"
+                                                                            Command="{lc:RestoreWindowCommand}"
                                                                             CommandParameter="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}}"
                                                                             FontSize="10"
                                                                             Style="{DynamicResource {x:Static WindowKeys.FontIconButton}}" />
                                                             <FontIconButton x:Name="Btn_Close"
-                                                                            Command="{CloseAfterSaveWindowCommand}"
+                                                                            Command="{lc:CloseAfterSaveWindowCommand}"
                                                                             CommandParameter="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}}"
                                                                             FontSize="10"
                                                                             Style="{DynamicResource {x:Static WindowKeys.FontIconButton}}" />
