@@ -9,6 +9,7 @@
 global using H.Extensions.Mvvm.Commands;
 global using H.Services.Message;
 global using System.ComponentModel.DataAnnotations;
+using H.Mvvm.Commands;
 
 namespace H.Presenters.Common;
 

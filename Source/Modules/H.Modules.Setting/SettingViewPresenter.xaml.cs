@@ -6,10 +6,10 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
-using H.Common.Interfaces;
-using H.Extensions.Common;
-using H.Extensions.Mvvm.ViewModels.Base;
-using System.Collections.ObjectModel;
+global using H.Common.Interfaces;
+global using H.Extensions.Common;
+global using H.Mvvm.ViewModels.Base;
+global using System.Collections.ObjectModel;
 
 namespace H.Modules.Setting;
 

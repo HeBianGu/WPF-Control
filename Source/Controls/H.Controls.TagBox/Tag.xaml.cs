@@ -12,6 +12,7 @@ global using System.ComponentModel;
 global using System.ComponentModel.DataAnnotations;
 global using System.Text.Json.Serialization;
 global using System.Windows.Media;
+global using H.Mvvm.ViewModels.Base;
 
 namespace H.Controls.TagBox
 {

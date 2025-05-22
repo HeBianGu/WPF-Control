@@ -26,6 +26,7 @@ using System.Text.Json.Serialization;
 using System.Windows;
 using System.Windows.Media;
 using System.Xml.Serialization;
+using H.Mvvm.Commands;
 
 namespace H.Modules.Theme;
 [Display(Name = "主题设置", GroupName = SettingGroupNames.GroupStyle, Description = "登录页面设置的信息")]

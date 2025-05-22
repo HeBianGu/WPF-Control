@@ -8,7 +8,7 @@
 
 using System.Windows.Input;
 
-namespace H.Extensions.Mvvm.Commands;
+namespace H.Mvvm.Commands;
 
 public class RelayCommand<T> : ICommand
 {

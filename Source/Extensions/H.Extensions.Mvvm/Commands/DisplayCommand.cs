@@ -7,7 +7,7 @@
 // Licensed under the MIT License (the "License")
 
 global using System.Text.Json.Serialization;
-global using H.Extensions.Mvvm.Commands;
+using H.Mvvm.Commands;
 
 namespace H.Extensions.Mvvm.Commands;
 

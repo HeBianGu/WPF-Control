@@ -5,7 +5,7 @@
     <!--<TargetFrameworks>net6.0-windows;net7.0-windows;</TargetFrameworks>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>-->
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <TargetFrameworks>net7.0-windows</TargetFrameworks>
+    <TargetFrameworks>net8.0-windows</TargetFrameworks>
     <ImplicitUsings>enable</ImplicitUsings>
     <LangVersion>10.0</LangVersion>
     <Version>1.0.5</Version>

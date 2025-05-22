@@ -12,6 +12,7 @@ global using H.Services.Message.Form;
 global using System.Collections.Generic;
 global using System.Collections.ObjectModel;
 global using System.Windows;
+using H.Extensions.Mvvm.ViewModels.Base;
 
 namespace H.Controls.Form;
 

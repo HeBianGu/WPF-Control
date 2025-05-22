@@ -6,8 +6,8 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
-using H.Extensions.Mvvm.ViewModels.Base;
-using H.Services.Operation;
+global using H.Mvvm.ViewModels.Base;
+global using H.Services.Operation;
 
 namespace H.Modules.Identity
 {

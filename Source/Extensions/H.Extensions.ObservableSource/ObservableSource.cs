@@ -7,7 +7,7 @@
 // Licensed under the MIT License (the "License")
 
 using H.Extensions.Common;
-using H.Extensions.Mvvm.ViewModels.Base;
+using H.Mvvm.ViewModels.Base;
 using System.Windows.Threading;
 
 namespace H.Extensions.ObservableSource;

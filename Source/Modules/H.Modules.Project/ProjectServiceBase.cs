@@ -9,11 +9,12 @@
 global using H.Services.Serializable;
 global using System.Collections;
 global using System.ComponentModel.DataAnnotations;
-using H.Common.Interfaces;
-using H.Extensions.Common;
-using H.Services.AppPath;
-using H.Services.Setting;
-using System.IO;
+global using H.Common.Interfaces;
+global using H.Extensions.Common;
+global using H.Mvvm.ViewModels.Base;
+global using H.Services.AppPath;
+global using H.Services.Setting;
+global using System.IO;
 
 namespace H.Modules.Project;
 

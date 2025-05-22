@@ -8,7 +8,7 @@
 
 using System.Windows.Input;
 
-namespace H.Extensions.Mvvm.Commands.Base;
+namespace H.Mvvm.Commands.Base;
 
 public abstract class CommandBase : ICommand
 {

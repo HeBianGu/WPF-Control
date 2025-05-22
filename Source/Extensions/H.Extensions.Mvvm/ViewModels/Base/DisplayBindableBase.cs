@@ -6,6 +6,8 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
+using H.Mvvm.Commands;
+
 namespace H.Extensions.Mvvm.ViewModels.Base;
 
 /// <summary>

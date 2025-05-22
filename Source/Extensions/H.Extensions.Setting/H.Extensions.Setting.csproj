@@ -7,5 +7,6 @@
     <ProjectReference Include="..\..\Services\H.Services.AppPath\H.Services.AppPath.csproj" />
     <ProjectReference Include="..\..\Services\H.Services.Serializable\H.Services.Serializable.csproj" />
     <ProjectReference Include="..\..\Services\H.Services.Setting\H.Services.Setting.csproj" />
+    <ProjectReference Include="..\H.Extensions.Mvvm\H.Extensions.Mvvm.csproj" />
   </ItemGroup>
 </Project>

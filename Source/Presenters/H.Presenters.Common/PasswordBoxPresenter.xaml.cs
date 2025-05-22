@@ -5,7 +5,6 @@
 // QQ:908293466 Group:971261058 
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
-
 global using H.Extensions.Mvvm.ViewModels.Base;
 
 namespace H.Presenters.Common;

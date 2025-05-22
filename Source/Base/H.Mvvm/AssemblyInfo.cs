@@ -18,17 +18,17 @@ using System.Windows;
                                               // app, or any theme specific resource dictionaries)
 )]
 
-[assembly: XmlnsDefinition("QQ:908293466", "H.Extensions.Mvvm")]
-[assembly: XmlnsDefinition("QQ:908293466", "H.Extensions.Mvvm.Commands")]
-[assembly: XmlnsDefinition("QQ:908293466", "H.Extensions.Mvvm.ViewModels")]
+[assembly: XmlnsDefinition("QQ:908293466", "H.Mvvm")]
+[assembly: XmlnsDefinition("QQ:908293466", "H.Mvvm.Commands")]
+[assembly: XmlnsDefinition("QQ:908293466", "H.Mvvm.ViewModels")]
 [assembly: XmlnsPrefix("QQ:908293466", "h")]
 
-[assembly: XmlnsDefinition("https://github.com/HeBianGu", "H.Extensions.Mvvm")]
-[assembly: XmlnsDefinition("https://github.com/HeBianGu", "H.Extensions.Mvvm.Commands")]
-[assembly: XmlnsDefinition("https://github.com/HeBianGu", "H.Extensions.Mvvm.ViewModels")]
+[assembly: XmlnsDefinition("https://github.com/HeBianGu", "H.Mvvm")]
+[assembly: XmlnsDefinition("https://github.com/HeBianGu", "H.Mvvm.Commands")]
+[assembly: XmlnsDefinition("https://github.com/HeBianGu", "H.Mvvm.ViewModels")]
 [assembly: XmlnsPrefix("https://github.com/HeBianGu", "h")]
 
-[assembly: XmlnsDefinition("http://schemas.microsoft.com/winfx/2006/xaml/presentation", "H.Extensions.Mvvm")]
-[assembly: XmlnsDefinition("http://schemas.microsoft.com/winfx/2006/xaml/presentation", "H.Extensions.Mvvm.Commands")]
-[assembly: XmlnsDefinition("http://schemas.microsoft.com/winfx/2006/xaml/presentation", "H.Extensions.Mvvm.ViewModels")]
+[assembly: XmlnsDefinition("http://schemas.microsoft.com/winfx/2006/xaml/presentation", "H.Mvvm")]
+[assembly: XmlnsDefinition("http://schemas.microsoft.com/winfx/2006/xaml/presentation", "H.Mvvm.Commands")]
+[assembly: XmlnsDefinition("http://schemas.microsoft.com/winfx/2006/xaml/presentation", "H.Mvvm.ViewModels")]
 [assembly: XmlnsPrefix("http://schemas.microsoft.com/winfx/2006/xaml/presentation", "h")]

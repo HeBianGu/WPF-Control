@@ -6,6 +6,7 @@
     <ProjectReference Include="..\..\Services\H.Services.Operation\H.Services.Operation.csproj" />
     <ProjectReference Include="..\H.Extensions.Common\H.Extensions.Common.csproj" />
     <ProjectReference Include="..\H.Extensions.DataBase\H.Extensions.DataBase.csproj" />
+    <ProjectReference Include="..\H.Extensions.Mvvm\H.Extensions.Mvvm.csproj" />
     <ProjectReference Include="..\H.Extensions.ObservableSource\H.Extensions.ObservableSource.csproj" />
   </ItemGroup>
 </Project>

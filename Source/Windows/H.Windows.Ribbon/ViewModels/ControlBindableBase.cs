@@ -2,6 +2,7 @@
 
 
 using H.Extensions.Mvvm.ViewModels.Base;
+using H.Mvvm.ViewModels.Base;
 using System;
 using System.Windows.Controls.Ribbon;
 using System.Windows.Input;

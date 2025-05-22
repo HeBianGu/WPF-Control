@@ -20,6 +20,7 @@ global using H.Services.Message;
 global using H.Services.Message.Dialog;
 global using System.Text.Json.Serialization;
 global using System.Windows.Input;
+global using H.Mvvm.Commands;
 namespace H.Controls.Diagram.Presenter.DiagramDatas.Base;
 
 public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData

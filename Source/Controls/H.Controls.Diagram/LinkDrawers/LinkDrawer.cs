@@ -7,6 +7,7 @@
 // Licensed under the MIT License (the "License")
 
 using H.Extensions.Mvvm.ViewModels.Base;
+using H.Mvvm.ViewModels.Base;
 using System.Xml.Serialization;
 
 namespace H.Controls.Diagram.LinkDrawers;

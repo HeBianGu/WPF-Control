@@ -7,6 +7,7 @@
 // Licensed under the MIT License (the "License")
 
 global using H.Controls.Diagram.Presenter.PortDatas;
+global using H.Mvvm.ViewModels.Base;
 namespace H.Controls.Diagram.Presenter.Provider;
 public class DiagramTheme : BindableBase
 {

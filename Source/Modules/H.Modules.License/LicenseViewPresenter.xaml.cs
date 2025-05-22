@@ -6,13 +6,13 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
-using H.Common.Attributes;
-using H.Extensions.Mvvm.Commands;
-using H.Extensions.Mvvm.ViewModels.Base;
-using H.Services.Setting;
-using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
-using System.Reflection;
+global using H.Common.Attributes;
+global using H.Mvvm.Commands;
+global using H.Mvvm.ViewModels.Base;
+global using H.Services.Setting;
+global using System.ComponentModel;
+global using System.ComponentModel.DataAnnotations;
+global using System.Reflection;
 
 namespace H.Modules.License
 {

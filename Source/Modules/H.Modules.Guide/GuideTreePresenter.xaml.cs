@@ -9,6 +9,7 @@
 using H.Common.Attributes;
 using H.Attach;
 using H.Modules.Guide.Base;
+using H.Mvvm.ViewModels.Base;
 namespace H.Modules.Guide;
 
 [Icon("\xEC92")]

@@ -6,12 +6,13 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
-global using System.Collections.ObjectModel;
-global using System.Windows.Input;
-global using H.Extensions.Mvvm.ViewModels.Base;
-global using System.Linq;
-global using System.ComponentModel;
 global using H.Extensions.Mvvm.Commands;
+global using H.Extensions.Mvvm.ViewModels.Base;
+global using System.Collections.ObjectModel;
+global using System.ComponentModel;
+global using System.Linq;
+global using System.Windows.Input;
+using H.Mvvm.ViewModels.Base;
 
 namespace H.Extensions.Mvvm.ViewModels.Base;
 

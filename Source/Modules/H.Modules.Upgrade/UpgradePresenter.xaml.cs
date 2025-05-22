@@ -6,16 +6,16 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
-using H.Common.Attributes;
-using H.Extensions.Mvvm.Commands;
-using H.Extensions.Mvvm.ViewModels.Base;
-using H.Services.Message;
-using H.Services.Message.Dialog;
-using H.Services.Setting;
-using System.ComponentModel.DataAnnotations;
-using System.Diagnostics;
-using System.IO;
-using System.Net;
+global using H.Common.Attributes;
+global using H.Mvvm.Commands;
+global using H.Mvvm.ViewModels.Base;
+global using H.Services.Message;
+global using H.Services.Message.Dialog;
+global using H.Services.Setting;
+global using System.ComponentModel.DataAnnotations;
+global using System.Diagnostics;
+global using System.IO;
+global using System.Net;
 
 namespace H.Modules.Upgrade;
 

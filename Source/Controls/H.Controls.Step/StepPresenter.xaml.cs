@@ -6,10 +6,10 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
-using H.Extensions.Mvvm.ViewModels.Base;
-using System.Collections.ObjectModel;
-using System.ComponentModel.DataAnnotations;
-using System.Windows.Controls;
+global using H.Extensions.Mvvm.ViewModels.Base;
+global using System.Collections.ObjectModel;
+global using System.ComponentModel.DataAnnotations;
+global using System.Windows.Controls;
 
 namespace H.Controls.Step
 {

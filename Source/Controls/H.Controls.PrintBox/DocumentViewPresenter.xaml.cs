@@ -6,6 +6,7 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
+using H.Mvvm.ViewModels.Base;
 using System.Windows.Documents;
 
 namespace H.Controls.PrintBox

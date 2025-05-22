@@ -13,6 +13,7 @@ global using System.Windows.Controls;
 global using System.Windows.Documents;
 global using System.Windows.Media;
 global using System.Xml.Serialization;
+using H.Mvvm.Commands;
 
 namespace H.Extensions.Mvvm.ViewModels.Base;
 

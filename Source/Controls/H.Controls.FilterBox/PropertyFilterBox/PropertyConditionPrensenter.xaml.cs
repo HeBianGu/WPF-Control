@@ -8,7 +8,7 @@
 
 global using H.Extensions.Common;
 global using H.Extensions.NewtonsoftJson;
-global using H.Extensions.Mvvm.Commands;
+global using H.Mvvm.Commands;
 global using H.Extensions.Mvvm.ViewModels.Base;
 global using H.Services.Common.Serialize.Meta;
 global using System.ComponentModel;

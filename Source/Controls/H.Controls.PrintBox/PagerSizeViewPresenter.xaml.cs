@@ -12,6 +12,7 @@ global using H.Services.Setting;
 global using System.Collections.ObjectModel;
 global using System.ComponentModel.DataAnnotations;
 global using System.Windows;
+using H.Mvvm.ViewModels.Base;
 
 namespace H.Controls.PrintBox
 {

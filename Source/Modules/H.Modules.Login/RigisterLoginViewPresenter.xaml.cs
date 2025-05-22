@@ -6,14 +6,15 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
-using H.Common.Attributes;
-using H.Extensions.FontIcon;
+global using H.Common.Attributes;
+global using H.Extensions.FontIcon;
+global using H.Mvvm.Commands;
+global using H.Services.Identity;
+global using H.Services.Mail;
+global using H.Services.Setting;
+global using Microsoft.Extensions.Options;
+global using System.ComponentModel.DataAnnotations;
 using H.Extensions.Mvvm.Commands;
-using H.Services.Identity;
-using H.Services.Mail;
-using H.Services.Setting;
-using Microsoft.Extensions.Options;
-using System.ComponentModel.DataAnnotations;
 
 namespace H.Modules.Login
 {

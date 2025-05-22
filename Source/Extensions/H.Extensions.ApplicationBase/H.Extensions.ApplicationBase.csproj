@@ -1,5 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <ItemGroup>
+    <ProjectReference Include="..\..\Base\H.Attach\H.Attach.csproj" />
     <ProjectReference Include="..\..\Providers\H.Iocable\H.Iocable.csproj" />
     <ProjectReference Include="..\..\Services\H.Services.Common\H.Services.Common.csproj" />
     <ProjectReference Include="..\..\Services\H.Services.Identity\H.Services.Identity.csproj" />
@@ -7,7 +8,6 @@
     <ProjectReference Include="..\..\Services\H.Services.Message\H.Services.Message.csproj" />
     <ProjectReference Include="..\..\Services\H.Services.Operation\H.Services.Operation.csproj" />
     <ProjectReference Include="..\..\Services\H.Services.Setting\H.Services.Setting.csproj" />
-    <ProjectReference Include="..\..\Styles\H.Attach\H.Attach.csproj" />
     <ProjectReference Include="..\H.Extensions.AppPath\H.Extensions.AppPath.csproj" />
   </ItemGroup>
 </Project>

@@ -6,7 +6,7 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
-using H.Extensions.ValueConverter;
+using H.ValueConverter;
 using System.Globalization;
 
 namespace H.Controls.TagBox

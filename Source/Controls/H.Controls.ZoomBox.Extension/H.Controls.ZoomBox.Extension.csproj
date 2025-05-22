@@ -1,6 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
   <ItemGroup>
     <ProjectReference Include="..\..\Extensions\H.Extensions.Behvaiors\H.Extensions.Behvaiors.csproj" />
+    <ProjectReference Include="..\..\Extensions\H.Extensions.Mvvm\H.Extensions.Mvvm.csproj" />
+    <ProjectReference Include="..\..\Services\H.Services.Message\H.Services.Message.csproj" />
     <ProjectReference Include="..\H.Controls.ZoomBox\H.Controls.ZoomBox.csproj" />
   </ItemGroup>
 </Project>

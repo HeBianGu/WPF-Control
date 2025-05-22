@@ -13,7 +13,7 @@ using System.Reflection;
 
 namespace H.Extensions.ValueConverter;
 
-public static partial class Converter
+public static partial class ConverterEx
 {
     #region - Image -
     public static IValueConverter GetImagePixelDisplay => new ConverterBase<string, string>(x =>

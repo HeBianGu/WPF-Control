@@ -6,7 +6,7 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
-global using H.Extensions.ValueConverter;
+global using H.ValueConverter;
 global using System;
 global using System.Globalization;
 

@@ -4,6 +4,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Base\H.Mvvm\H.Mvvm.csproj" />
+    <ProjectReference Include="..\..\Base\H.ValueConverter\H.ValueConverter.csproj" />
+    <ProjectReference Include="..\..\Extensions\H.Extensions.Mvvm\H.Extensions.Mvvm.csproj" />
     <ProjectReference Include="..\..\Styles\H.Style\H.Style.csproj" />
   </ItemGroup>
 </Project>

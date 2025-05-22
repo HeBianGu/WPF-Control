@@ -21,6 +21,7 @@ global using System.ComponentModel.DataAnnotations;
 global using System.Linq;
 global using System.Reflection;
 global using System.Windows.Markup;
+global using H.Mvvm.Commands;
 
 namespace H.Controls.OrderBox
 {

@@ -6,7 +6,7 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
-global using H.Extensions.Mvvm.Commands;
+global using H.Mvvm.Commands;
 using H.Common.Attributes;
 using H.Extensions.FontIcon;
 using System.ComponentModel.DataAnnotations;

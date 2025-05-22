@@ -4,7 +4,9 @@
     <PackageReference Include="OpenCvSharp4.WpfExtensions" Version="4.6.0.20220608" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Base\H.ValueConverter\H.ValueConverter.csproj" />
     <ProjectReference Include="..\..\Extensions\H.Extensions.Common\H.Extensions.Common.csproj" />
+    <ProjectReference Include="..\..\Extensions\H.Extensions.ValueConverter\H.Extensions.ValueConverter.csproj" />
     <ProjectReference Include="..\H.Controls.Diagram.Presenter\H.Controls.Diagram.Presenter.csproj" />
     <ProjectReference Include="..\H.Controls.Form.PropertyItem\H.Controls.Form.PropertyItem.csproj" />
   </ItemGroup>

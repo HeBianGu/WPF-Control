@@ -9,6 +9,7 @@
 global using H.Extensions.Mvvm.Commands;
 global using System.Collections;
 global using System.Collections.Specialized;
+global using H.Mvvm.Commands;
 
 namespace H.Controls.Form.PropertyItem.ObservableCollectionPropertyItems
 {

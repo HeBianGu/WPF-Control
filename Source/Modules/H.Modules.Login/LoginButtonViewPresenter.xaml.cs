@@ -6,11 +6,11 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
-using H.Common.Attributes;
-using H.Extensions.FontIcon;
-using H.Extensions.Mvvm.ViewModels.Base;
-using H.Services.Setting;
-using System.ComponentModel.DataAnnotations;
+global using H.Common.Attributes;
+global using H.Extensions.FontIcon;
+global using H.Mvvm.ViewModels.Base;
+global using H.Services.Setting;
+global using System.ComponentModel.DataAnnotations;
 
 namespace H.Modules.Login
 {

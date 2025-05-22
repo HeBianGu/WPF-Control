@@ -38,7 +38,7 @@
     <ProjectReference Include="..\..\Extensions\H.Extensions.BackgroundImage\H.Extensions.BackgroundImage.csproj" />
     <ProjectReference Include="..\..\Extensions\H.Extensions.FFMpeg\H.Extensions.FFMpeg.csproj" />
     <ProjectReference Include="..\..\Extensions\H.Extensions.Torrent\H.Extensions.Torrent.csproj" />
-    <ProjectReference Include="..\..\Extensions\H.Extensions.ValueConverter\H.Extensions.ValueConverter.csproj" />
+    <ProjectReference Include="..\..\Base\H.ValueConverter\H.ValueConverter.csproj" />
     <ProjectReference Include="..\..\Modules\H.Modules.Identity\H.Modules.Identity.csproj" />
     <ProjectReference Include="..\..\Modules\H.Modules.Login\H.Modules.Login.csproj" />
     <ProjectReference Include="..\..\Modules\H.Modules.Messages.Dialog\H.Modules.Messages.Dialog.csproj" />

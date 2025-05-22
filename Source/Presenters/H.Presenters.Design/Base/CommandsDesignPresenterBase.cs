@@ -7,6 +7,7 @@
 // Licensed under the MIT License (the "License")
 
 global using H.Extensions.Mvvm.Commands;
+using H.Mvvm.Commands;
 namespace H.Presenters.Design.Base;
 
 public class CommandsDesignPresenterBase : CloneableDesignPresenterBase

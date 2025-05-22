@@ -6,14 +6,14 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
-global using H.Extensions.Mvvm.Commands;
 global using System.ComponentModel;
 global using System.Text.Json.Serialization;
+using H.Mvvm.Commands;
 using System.Reflection;
 using System.Windows;
 using System.Xml.Serialization;
 
-namespace H.Extensions.Mvvm.ViewModels.Base;
+namespace H.Mvvm.ViewModels.Base;
 
 /// <summary>
 /// 可绑定的基类。

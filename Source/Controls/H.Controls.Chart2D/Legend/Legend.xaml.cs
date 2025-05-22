@@ -2,6 +2,7 @@
 
 
 using H.Extensions.Mvvm.ViewModels.Base;
+using H.Mvvm.ViewModels.Base;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
