@@ -7,7 +7,7 @@
 // Licensed under the MIT License (the "License")
 
 global using H.Extensions.Common;
-global using H.Mvvm.Commands;
+global using H.Extensions.Mvvm.Commands;
 global using System;
 global using System.Collections.Generic;
 global using System.ComponentModel;

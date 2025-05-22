@@ -7,7 +7,7 @@
 // Licensed under the MIT License (the "License")
 
 using H.Controls.Diagram.Presenter.DiagramDatas.Base;
-using H.Mvvm.ViewModels;
+using H.Extensions.Mvvm.ViewModels;
 
 namespace H.Controls.Diagram.Extension.AutoTest;
 

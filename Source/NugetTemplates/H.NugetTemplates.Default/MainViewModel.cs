@@ -1,4 +1,4 @@
-﻿using H.Mvvm.ViewModels.Base;
+﻿using H.Extensions.Mvvm.ViewModels.Base;
 
 namespace H.NugetTemplates.Default;
 

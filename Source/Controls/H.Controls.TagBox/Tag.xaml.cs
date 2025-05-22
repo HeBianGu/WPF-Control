@@ -7,7 +7,7 @@
 // Licensed under the MIT License (the "License")
 
 global using H.Extensions.Common;
-global using H.Mvvm.ViewModels.Base;
+global using H.Extensions.Mvvm.ViewModels.Base;
 global using System.ComponentModel;
 global using System.ComponentModel.DataAnnotations;
 global using System.Text.Json.Serialization;

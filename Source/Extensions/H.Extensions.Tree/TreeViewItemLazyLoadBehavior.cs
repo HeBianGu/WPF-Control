@@ -6,7 +6,7 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
-using H.Mvvm.ViewModels.Tree;
+using H.Extensions.Mvvm.ViewModels.Tree;
 using Microsoft.Xaml.Behaviors;
 using System.Windows;
 using System.Windows.Controls;

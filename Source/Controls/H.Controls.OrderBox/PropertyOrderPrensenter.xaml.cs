@@ -8,9 +8,9 @@
 
 global using H.Extensions.Common;
 global using H.Extensions.TextJsonable;
-global using H.Mvvm.Commands;
-global using H.Mvvm.ViewModels;
-global using H.Mvvm.ViewModels.Base;
+global using H.Extensions.Mvvm.Commands;
+global using H.Extensions.Mvvm.ViewModels;
+global using H.Extensions.Mvvm.ViewModels.Base;
 global using H.Services.Common.Serialize.Meta;
 global using System;
 global using System.Collections;

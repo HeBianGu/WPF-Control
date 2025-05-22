@@ -7,8 +7,8 @@
 // Licensed under the MIT License (the "License")
 
 using H.Extensions.Common;
-using H.Mvvm.Commands;
-using H.Mvvm.ViewModels.Base;
+using H.Extensions.Mvvm.Commands;
+using H.Extensions.Mvvm.ViewModels.Base;
 using H.Services.Common.Feedback;
 using H.Services.Message;
 using H.Services.Message.IODialog;

@@ -28,7 +28,7 @@ public partial class ProjectBox : ListBox
     public ProjectBox()
     {
         {
-            CommandBinding commandBinding = new CommandBinding(H.Mvvm.Commands.Commands.Delete);
+            CommandBinding commandBinding = new CommandBinding(H.Extensions.Mvvm.Commands.Commands.Delete);
             commandBinding.Executed += async (l, k) =>
             {
                 if (k.Parameter is IProjectItem project)
@@ -40,7 +40,7 @@ public partial class ProjectBox : ListBox
         }
 
         {
-            CommandBinding commandBinding = new CommandBinding(H.Mvvm.Commands.Commands.Edit);
+            CommandBinding commandBinding = new CommandBinding(H.Extensions.Mvvm.Commands.Commands.Edit);
             commandBinding.Executed += async (l, k) =>
             {
                 if (k.Parameter is IProjectItem project)
@@ -52,7 +52,7 @@ public partial class ProjectBox : ListBox
         }
 
         {
-            CommandBinding commandBinding = new CommandBinding(H.Mvvm.Commands.Commands.Open);
+            CommandBinding commandBinding = new CommandBinding(H.Extensions.Mvvm.Commands.Commands.Open);
             commandBinding.Executed += async (l, k) =>
             {
                 if (k.Parameter is IProjectItem project)
@@ -68,7 +68,7 @@ public partial class ProjectBox : ListBox
         }
 
         {
-            CommandBinding commandBinding = new CommandBinding(H.Mvvm.Commands.Commands.New);
+            CommandBinding commandBinding = new CommandBinding(H.Extensions.Mvvm.Commands.Commands.New);
             commandBinding.Executed += async (l, k) =>
             {
                 await IocProject.Instance.ShowNewProject();
@@ -77,7 +77,7 @@ public partial class ProjectBox : ListBox
         }
 
         {
-            CommandBinding commandBinding = new CommandBinding(H.Mvvm.Commands.Commands.Refresh);
+            CommandBinding commandBinding = new CommandBinding(H.Extensions.Mvvm.Commands.Commands.Refresh);
             commandBinding.Executed += (l, k) =>
             {
                 this.Refresh();

@@ -1,5 +1,5 @@
-﻿global using H.Mvvm;
-global using H.Mvvm.ViewModels.Base;
+﻿global using H.Extensions.Mvvm;
+global using H.Extensions.Mvvm.ViewModels.Base;
 global using System;
 global using System.Collections.Generic;
 global using System.Collections.ObjectModel;

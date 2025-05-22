@@ -8,7 +8,6 @@
     <ProjectReference Include="..\..\Extensions\H.Extensions.NewtonsoftJson\H.Extensions.NewtonsoftJson.csproj" />
     <ProjectReference Include="..\..\Extensions\H.Extensions.StoryBoard\H.Extensions.StoryBoard.csproj" />
     <ProjectReference Include="..\..\Extensions\H.Extensions.Validation\H.Extensions.Validation.csproj" />
-    <ProjectReference Include="..\..\Providers\H.Mvvm\H.Mvvm.csproj" />
     <ProjectReference Include="..\..\Services\H.Services.Common\H.Services.Common.csproj" />
     <ProjectReference Include="..\..\Services\H.Services.Message\H.Services.Message.csproj" />
     <ProjectReference Include="..\..\Services\H.Services.Serializable\H.Services.Serializable.csproj" />

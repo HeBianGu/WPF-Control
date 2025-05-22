@@ -2,7 +2,7 @@
 
 
 using H.Common;
-using H.Mvvm;
+using H.Extensions.Mvvm;
 using System;
 using System.Diagnostics;
 using System.Windows;

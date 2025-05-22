@@ -180,7 +180,7 @@ public interface IFlowableDiagram
 //    //    var b = await node.Start(this.FlowableMode, OnInvokingPart, OnInvokedPart);
 //    //    this.State = b == null ? DiagramFlowableState.Canceled : b == true ? DiagramFlowableState.Success : DiagramFlowableState.Error;
 //    //    this.Message = message;
-//    //    H.Mvvm.Commands.InvalidateRequerySuggested();
+//    //    H.Extensions.Mvvm.Commands.InvalidateRequerySuggested();
 //    //    if (!string.IsNullOrEmpty(message))
 //    //    {
 //    //        IocMessage.Notify?.ShowInfo(message);

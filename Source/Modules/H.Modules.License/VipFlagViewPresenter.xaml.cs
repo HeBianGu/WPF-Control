@@ -7,7 +7,7 @@
 // Licensed under the MIT License (the "License")
 
 using H.Common.Attributes;
-using H.Mvvm.ViewModels.Base;
+using H.Extensions.Mvvm.ViewModels.Base;
 
 namespace H.Modules.License
 {

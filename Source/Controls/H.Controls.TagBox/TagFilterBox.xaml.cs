@@ -7,7 +7,7 @@
 // Licensed under the MIT License (the "License")
 
 global using H.Common.Interfaces.Where;
-global using H.Mvvm.ViewModels;
+global using H.Extensions.Mvvm.ViewModels;
 global using System;
 global using System.Collections;
 global using System.Linq;

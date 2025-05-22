@@ -7,7 +7,7 @@
 // Licensed under the MIT License (the "License")
 
 using H.Iocable;
-using H.Mvvm.ViewModels.Base;
+using H.Extensions.Mvvm.ViewModels.Base;
 
 namespace H.Extensions.IocPresenter;
 

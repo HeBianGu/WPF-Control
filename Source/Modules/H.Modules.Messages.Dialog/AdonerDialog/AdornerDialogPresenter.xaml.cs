@@ -9,7 +9,7 @@
 global using H.Common.Attributes;
 global using H.Common.Transitionable;
 global using H.Controls.Adorner.Adorner;
-global using H.Mvvm.ViewModels.Base;
+global using H.Extensions.Mvvm.ViewModels.Base;
 global using H.Services.Message.Dialog;
 global using System;
 global using System.Linq;

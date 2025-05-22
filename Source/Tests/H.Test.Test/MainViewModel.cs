@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel;
 using H.Extensions.TypeLicense.LicenseProviders;
-using H.Mvvm.ViewModels.Base;
+using H.Extensions.Mvvm.ViewModels.Base;
 using H.Common.Interfaces.Where;
 
 namespace H.Test.Test

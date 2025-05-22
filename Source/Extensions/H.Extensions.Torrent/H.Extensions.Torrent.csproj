@@ -6,7 +6,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Providers\H.Iocable\H.Iocable.csproj" />
-    <ProjectReference Include="..\..\Providers\H.Mvvm\H.Mvvm.csproj" />
     <ProjectReference Include="..\H.Extensions.ValueConverter\H.Extensions.ValueConverter.csproj" />
   </ItemGroup>
 

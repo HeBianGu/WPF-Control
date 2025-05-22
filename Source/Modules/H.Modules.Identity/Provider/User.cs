@@ -7,7 +7,7 @@
 // Licensed under the MIT License (the "License")
 
 global using H.Controls.Form.Attributes;
-global using H.Mvvm.ViewModels;
+global using H.Extensions.Mvvm.ViewModels;
 global using System.ComponentModel;
 global using System.ComponentModel.DataAnnotations;
 

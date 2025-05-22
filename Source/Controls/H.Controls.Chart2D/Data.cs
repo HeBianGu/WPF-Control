@@ -1,7 +1,7 @@
 ﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 
-global using H.Mvvm.ViewModels.Base;
+global using H.Extensions.Mvvm.ViewModels.Base;
 global using System.Collections.ObjectModel;
 global using System.Windows.Media;
 

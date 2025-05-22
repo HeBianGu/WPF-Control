@@ -15,7 +15,7 @@ global using H.Controls.Diagram.Presenter.NodeDatas.Card;
 global using H.Controls.Form.PropertyItem.Attribute.SourcePropertyItem;
 global using H.Controls.Form.PropertyItem.ComboBoxPropertyItems;
 global using H.Extensions.FontIcon;
-global using H.Mvvm.Commands;
+global using H.Extensions.Mvvm.Commands;
 global using H.Services.Message;
 global using H.Services.Message.Dialog;
 global using System.Text.Json.Serialization;

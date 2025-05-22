@@ -7,7 +7,7 @@
 // Licensed under the MIT License (the "License")
 
 global using H.Common.Interfaces;
-global using H.Mvvm.ViewModels.Base;
+global using H.Extensions.Mvvm.ViewModels.Base;
 global using H.Services.Serializable;
 global using System.IO;
 global using System.Reflection;

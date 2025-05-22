@@ -7,8 +7,8 @@
 // Licensed under the MIT License (the "License")
 global using H.Components.Modbus.Base;
 global using H.Iocable;
-global using H.Mvvm.Commands;
-global using H.Mvvm.ViewModels.Base;
+global using H.Extensions.Mvvm.Commands;
+global using H.Extensions.Mvvm.ViewModels.Base;
 global using H.Services.Message;
 global using H.Services.Message.Dialog;
 global using System.ComponentModel.DataAnnotations;

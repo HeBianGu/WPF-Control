@@ -6,7 +6,7 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
-global using H.Mvvm.ViewModels;
+global using H.Extensions.Mvvm.ViewModels;
 
 namespace H.Controls.Diagram.Presenters.OpenCV.Base;
 internal interface IBasicOpenCVNodeData : INodeData, IDisplayBindable

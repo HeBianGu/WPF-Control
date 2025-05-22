@@ -1,4 +1,4 @@
-﻿global using H.Mvvm.ViewModels.Base;
+﻿global using H.Extensions.Mvvm.ViewModels.Base;
 using H.Controls.Adorner.Adorner;
 using H.Controls.Form;
 using H.Extensions.Behvaiors.Adorners;

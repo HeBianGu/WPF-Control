@@ -1,4 +1,4 @@
-﻿global using H.Mvvm.ViewModels.Base;
+﻿global using H.Extensions.Mvvm.ViewModels.Base;
 global using H.Services.Setting;
 
 namespace H.App.FileManager

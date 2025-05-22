@@ -8,9 +8,9 @@
 
 global using H.Extensions.Common;
 global using H.Extensions.Tree;
-global using H.Mvvm.Commands;
-global using H.Mvvm.ViewModels;
-global using H.Mvvm.ViewModels.Tree;
+global using H.Extensions.Mvvm.Commands;
+global using H.Extensions.Mvvm.ViewModels;
+global using H.Extensions.Mvvm.ViewModels.Tree;
 global using System.Collections.Generic;
 global using System.Linq;
 global using System.Windows;

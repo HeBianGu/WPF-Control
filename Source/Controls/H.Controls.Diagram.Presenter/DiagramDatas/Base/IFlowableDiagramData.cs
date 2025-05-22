@@ -27,7 +27,7 @@ public static class FlowableDiagramDataExtension
         data.State = b.ToDiagramFlowableState();
         var message = b == null ? "用户取消" : b == true ? "运行成功" : "运行失败";
         IocMessage.ShowSnackInfo(message);
-        H.Mvvm.Commands.Commands.InvalidateRequerySuggested();
+        H.Extensions.Mvvm.Commands.Commands.InvalidateRequerySuggested();
         data.Message = message;
         return b;
     }

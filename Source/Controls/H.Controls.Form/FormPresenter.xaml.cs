@@ -7,7 +7,7 @@
 // Licensed under the MIT License (the "License")
 
 global using H.Common.Attributes;
-global using H.Mvvm.ViewModels.Base;
+global using H.Extensions.Mvvm.ViewModels.Base;
 global using H.Services.Message.Form;
 global using System.Collections.Generic;
 global using System.Collections.ObjectModel;

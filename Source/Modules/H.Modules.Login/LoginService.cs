@@ -7,7 +7,7 @@
 // Licensed under the MIT License (the "License")
 
 using H.Modules.Login.Base;
-using H.Mvvm.ViewModels.Base;
+using H.Extensions.Mvvm.ViewModels.Base;
 using H.Services.Identity;
 using H.Services.Identity.User;
 

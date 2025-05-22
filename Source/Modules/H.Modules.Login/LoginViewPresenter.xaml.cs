@@ -8,8 +8,8 @@
 
 using H.Common.Attributes;
 using H.Extensions.FontIcon;
-using H.Mvvm.Commands;
-using H.Mvvm.ViewModels.Base;
+using H.Extensions.Mvvm.Commands;
+using H.Extensions.Mvvm.ViewModels.Base;
 using H.Services.Identity;
 using H.Services.Message.Dialog;
 using H.Services.Setting;

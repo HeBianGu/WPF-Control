@@ -6,7 +6,7 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
-global using H.Mvvm.ViewModels.Tree;
+global using H.Extensions.Mvvm.ViewModels.Tree;
 
 namespace H.Controls.Diagram.Presenter.DiagramDatas.Base;
 

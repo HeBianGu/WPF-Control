@@ -8,7 +8,7 @@
 
 using H.Common.Interfaces;
 using H.Extensions.Common;
-using H.Mvvm.ViewModels.Base;
+using H.Extensions.Mvvm.ViewModels.Base;
 using System.Collections.ObjectModel;
 
 namespace H.Modules.Setting;

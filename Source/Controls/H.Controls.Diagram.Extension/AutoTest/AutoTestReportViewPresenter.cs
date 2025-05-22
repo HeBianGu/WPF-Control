@@ -8,7 +8,7 @@
 
 using H.Controls.Chart2D;
 using H.Extensions.Common;
-using H.Mvvm.ViewModels.Base;
+using H.Extensions.Mvvm.ViewModels.Base;
 using System.ComponentModel;
 using System.Xml.Serialization;
 

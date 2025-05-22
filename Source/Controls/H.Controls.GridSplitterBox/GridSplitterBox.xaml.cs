@@ -7,7 +7,7 @@
 // Licensed under the MIT License (the "License")
 
 using H.Extensions.TextJsonable;
-using H.Mvvm.Commands;
+using H.Extensions.Mvvm.Commands;
 using H.Services.Common.Serialize.Meta;
 using System.Windows;
 using System.Windows.Controls;

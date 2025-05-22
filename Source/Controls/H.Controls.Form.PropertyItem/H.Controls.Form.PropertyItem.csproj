@@ -3,7 +3,6 @@
     <ProjectReference Include="..\..\Styles\H.Attach\H.Attach.csproj" />
     <ProjectReference Include="..\..\Extensions\H.Extensions.DataBase\H.Extensions.DataBase.csproj" />
     <ProjectReference Include="..\..\Services\H.Services.Common\H.Services.Common.csproj" />
-    <ProjectReference Include="..\..\Providers\H.Mvvm\H.Mvvm.csproj" />
     <ProjectReference Include="..\..\Styles\H.Style\H.Style.csproj" />
     <ProjectReference Include="..\H.Controls.Form\H.Controls.Form.csproj" />
   </ItemGroup>

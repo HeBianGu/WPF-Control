@@ -8,7 +8,7 @@
 
 using H.Common.Attributes;
 using H.Extensions.FontIcon;
-using H.Mvvm.ViewModels.Base;
+using H.Extensions.Mvvm.ViewModels.Base;
 using H.Services.Setting;
 using System.ComponentModel.DataAnnotations;
 

@@ -1,5 +1,5 @@
 ﻿using H.Data.Test;
-using H.Mvvm.ViewModels.Base;
+using H.Extensions.Mvvm.ViewModels.Base;
 using HeBianGu.Systems.Logger;
 using System;
 using System.ComponentModel.DataAnnotations;

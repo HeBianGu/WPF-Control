@@ -1,8 +1,8 @@
 ﻿using H.Common.Attributes;
 using H.Extensions.Setting;
 using H.Iocable;
-using H.Mvvm;
-using H.Mvvm.ViewModels.Base;
+using H.Extensions.Mvvm;
+using H.Extensions.Mvvm.ViewModels.Base;
 using H.Services.Common;
 using H.Services.Setting;
 using Microsoft.Extensions.DependencyInjection;

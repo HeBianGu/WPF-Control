@@ -6,7 +6,7 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
-global using H.Mvvm.Commands;
+global using H.Extensions.Mvvm.Commands;
 namespace H.Presenters.Design.Base;
 
 public class CommandsDesignPresenterBase : CloneableDesignPresenterBase

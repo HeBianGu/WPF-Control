@@ -6,8 +6,8 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
-using H.Mvvm.Commands;
-using H.Mvvm.ViewModels.Base;
+using H.Extensions.Mvvm.Commands;
+using H.Extensions.Mvvm.ViewModels.Base;
 using H.Presenters.Common;
 using H.Services.Message;
 using Quartz;

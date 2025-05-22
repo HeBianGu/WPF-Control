@@ -7,8 +7,8 @@
 // Licensed under the MIT License (the "License")
 
 using H.Common.Attributes;
-using H.Mvvm.Commands;
-using H.Mvvm.ViewModels.Base;
+using H.Extensions.Mvvm.Commands;
+using H.Extensions.Mvvm.ViewModels.Base;
 using H.Services.Setting;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;

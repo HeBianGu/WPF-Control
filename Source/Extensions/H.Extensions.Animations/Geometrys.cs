@@ -7,7 +7,7 @@
 // Licensed under the MIT License (the "License")
 
 global using H.Common.Transitionable;
-global using H.Mvvm.ViewModels.Base;
+global using H.Extensions.Mvvm.ViewModels.Base;
 global using System.Windows;
 
 namespace H.Extensions.Animations;

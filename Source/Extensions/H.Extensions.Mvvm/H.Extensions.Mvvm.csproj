@@ -1,0 +1,6 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <ItemGroup>
+    <ProjectReference Include="..\..\Base\H.Mvvm\H.Mvvm.csproj" />
+    <ProjectReference Include="..\..\Common\H.Common\H.Common.csproj" />
+  </ItemGroup>
+</Project>
