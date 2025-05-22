@@ -6,17 +6,20 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
-global using H.ValueConverter;
-global using System.Globalization;
+using System.Globalization;
 
-namespace H.Extensions.ValueConverter.Files;
+namespace H.ValueConverter.Ints;
 
-public class GetFilePathSizeToDisplayConverter : MarkupValueConverterBase
+/// <summary> 分割字符串取第一个值 </summary>
+public class GetStringSplitIndexConverter : MarkupValueConverterBase
 {
+    public int Index { get; set; } = 0;
     public override object Convert(object value, Type targetType, object parameter, CultureInfo culture)
     {
         if (value == null)
             return null;
-        return value.ToString().ToFileEx().GetFileSizeToDisplay();
+        if (parameter == null)
+            return value.ToString().Split(' ')[this.Index];
+        return value.ToString().Split(parameter.ToString().ToCharArray())[this.Index];
     }
 }

@@ -6,17 +6,17 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
-global using H.ValueConverter;
-global using System.Globalization;
+using System.Globalization;
 
-namespace H.Extensions.ValueConverter.Files;
+namespace H.ValueConverter.Doubles;
 
-public class GetFilePathSizeToDisplayConverter : MarkupValueConverterBase
+/// <summary> 百分比转换为角度值 </summary>
+public class GetPercentToAngleConverter : MarkupValueConverterBase
 {
     public override object Convert(object value, Type targetType, object parameter, CultureInfo culture)
     {
-        if (value == null)
-            return null;
-        return value.ToString().ToFileEx().GetFileSizeToDisplay();
+        double percent = double.Parse(value.ToString());
+        if (percent >= 1) return 360.0D;
+        return percent * 360;
     }
 }

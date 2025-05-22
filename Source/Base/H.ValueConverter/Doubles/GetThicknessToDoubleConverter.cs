@@ -6,17 +6,15 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
-global using H.ValueConverter;
-global using System.Globalization;
+using System.Globalization;
 
-namespace H.Extensions.ValueConverter.Files;
+namespace H.ValueConverter.Doubles;
 
-public class GetFilePathSizeToDisplayConverter : MarkupValueConverterBase
+public class GetThicknessToDoubleConverter : MarkupValueConverterBase
 {
     public override object Convert(object value, Type targetType, object parameter, CultureInfo culture)
     {
-        if (value == null)
-            return null;
-        return value.ToString().ToFileEx().GetFileSizeToDisplay();
+        Thickness thickness = (Thickness)value;
+        return thickness.Left;
     }
 }

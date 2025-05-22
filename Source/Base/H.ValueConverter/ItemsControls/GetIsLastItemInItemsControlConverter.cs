@@ -6,17 +6,19 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
-global using H.ValueConverter;
-global using System.Globalization;
+using System.Globalization;
 
-namespace H.Extensions.ValueConverter.Files;
+namespace H.ValueConverter.ItemsControls;
 
-public class GetFilePathSizeToDisplayConverter : MarkupValueConverterBase
+public class GetIsLastItemInItemsControlConverter : MarkupValueConverterBase
 {
     public override object Convert(object value, Type targetType, object parameter, CultureInfo culture)
     {
-        if (value == null)
-            return null;
-        return value.ToString().ToFileEx().GetFileSizeToDisplay();
+        DependencyObject item = (DependencyObject)value;
+        ItemsControl ic = ItemsControl.ItemsControlFromItemContainer(item);
+        if (ic == null)
+            return false;
+        return ic.ItemContainerGenerator.IndexFromContainer(item)
+                == ic.Items.Count - 1;
     }
 }

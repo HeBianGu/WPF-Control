@@ -6,17 +6,18 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
-global using H.ValueConverter;
-global using System.Globalization;
+using System.Globalization;
 
-namespace H.Extensions.ValueConverter.Files;
+namespace H.ValueConverter.Bools;
 
-public class GetFilePathSizeToDisplayConverter : MarkupValueConverterBase
+public class GetBoolToValueConverter : MarkupValueConverterBase
 {
+    public object TrueValue { get; set; }
+    public object FalseValue { get; set; }
     public override object Convert(object value, Type targetType, object parameter, CultureInfo culture)
     {
-        if (value == null)
-            return null;
-        return value.ToString().ToFileEx().GetFileSizeToDisplay();
+        if (value is bool b)
+            return b ? this.TrueValue : this.FalseValue;
+        return this.DefaultValue;
     }
 }

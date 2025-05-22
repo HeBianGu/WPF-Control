@@ -6,17 +6,19 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
-global using H.ValueConverter;
-global using System.Globalization;
+using System.Globalization;
 
-namespace H.Extensions.ValueConverter.Files;
+namespace H.ValueConverter.Ints;
 
-public class GetFilePathSizeToDisplayConverter : MarkupValueConverterBase
+/// <summary> 替换字符串 </summary>
+public class GetStringReplaceConverter : MarkupValueConverterBase
 {
     public override object Convert(object value, Type targetType, object parameter, CultureInfo culture)
     {
         if (value == null)
             return null;
-        return value.ToString().ToFileEx().GetFileSizeToDisplay();
+        if (parameter == null)
+            return value;
+        return value.ToString().Replace(value.ToString().Split(' ')[0], value.ToString().Split(' ')[1]);
     }
 }
