@@ -23,6 +23,60 @@ public class WindowKeys
 
 }
 
+
+public abstract class WindowCommandBaseExtension : MarkupExtension
+{
+    public event EventHandler CanExecuteChanged;
+
+    public bool CanExecute(object parameter)
+    {
+        return parameter is Window;
+    }
+
+    public abstract void Execute(object parameter);
+
+    public override object ProvideValue(IServiceProvider serviceProvider)
+    {
+        return this;
+    }
+}
+
+public class CloseWindowCommandExtension : WindowCommandBaseExtension, ICommand
+{
+    public override void Execute(object parameter)
+    {
+        if (parameter is Window window)
+            SystemCommands.CloseWindow(window);
+    }
+}
+
+public class MaximizeWindowCommandExtension : WindowCommandBaseExtension, ICommand
+{
+    public override void Execute(object parameter)
+    {
+        if (parameter is Window window)
+            SystemCommands.MaximizeWindow(window);
+    }
+}
+
+public class RestoreWindowCommandExtension : WindowCommandBaseExtension, ICommand
+{
+    public override void Execute(object parameter)
+    {
+        if (parameter is Window window)
+            SystemCommands.RestoreWindow(window);
+    }
+}
+
+public class MinimizeWindowCommandExtension : WindowCommandBaseExtension, ICommand
+{
+    public override void Execute(object parameter)
+    {
+        if (parameter is Window window)
+            SystemCommands.MinimizeWindow(window);
+    }
+}
+
 public class GetNullToCollapsedConverter : IValueConverter
 {
     public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
