@@ -1,6 +1,6 @@
 ﻿using H.Extensions.Color;
-using H.Extensions.Mvvm.Commands;
-using H.Extensions.Mvvm.ViewModels.Base;
+using H.Mvvm.Commands;
+using H.Mvvm.ViewModels.Base;
 using H.Themes;
 using System.Collections.ObjectModel;
 using System.Windows.Media;

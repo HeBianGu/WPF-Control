@@ -3,7 +3,6 @@ using H.Controls.TagBox;
 using H.Extensions.ApplicationBase;
 using H.Extensions.TypeLicense.LicenseProviders;
 using H.Styles;
-using H.Styles;
 using Microsoft.Extensions.DependencyInjection;
 using System.Collections.Generic;
 using System.ComponentModel;

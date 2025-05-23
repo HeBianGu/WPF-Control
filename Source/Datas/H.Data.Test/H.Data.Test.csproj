@@ -1,5 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <ItemGroup>
     <ProjectReference Include="..\..\Base\H.Attach\H.Attach.csproj" />
+    <ProjectReference Include="..\..\Extensions\H.Extensions.Mvvm\H.Extensions.Mvvm.csproj" />
   </ItemGroup>
 </Project>

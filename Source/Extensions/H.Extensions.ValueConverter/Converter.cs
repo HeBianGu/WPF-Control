@@ -11,7 +11,7 @@ using System.Collections;
 using System.Globalization;
 using System.Reflection;
 
-namespace H.Extensions.ValueConverter;
+namespace H.ValueConverter;
 
 public static partial class ConverterEx
 {

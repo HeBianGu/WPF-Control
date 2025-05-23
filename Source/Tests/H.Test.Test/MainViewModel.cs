@@ -10,6 +10,7 @@ using System.ComponentModel;
 using H.Extensions.TypeLicense.LicenseProviders;
 using H.Extensions.Mvvm.ViewModels.Base;
 using H.Common.Interfaces.Where;
+using H.Mvvm.ViewModels.Base;
 
 namespace H.Test.Test
 {

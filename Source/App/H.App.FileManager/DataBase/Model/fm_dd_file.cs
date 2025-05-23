@@ -1,6 +1,6 @@
 ﻿global using H.Extensions.Behvaiors;
 global using H.Extensions.TypeConverter;
-global using H.Extensions.ValueConverter;
+global using H.ValueConverter;
 global using H.Services.Common;
 global using Microsoft.EntityFrameworkCore;
 global using Microsoft.EntityFrameworkCore.Design;
@@ -9,7 +9,7 @@ global using System.ComponentModel;
 global using System.ComponentModel.DataAnnotations;
 global using H.Extensions.DataBase;
 global using H.Extensions.Behvaiors.DataGrids;
-global using H.Extensions.ValueConverter.Files;
+global using H.ValueConverter.Files;
 
 namespace H.App.FileManager
 {

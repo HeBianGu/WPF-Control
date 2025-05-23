@@ -1,15 +1,19 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+﻿using H.Mvvm.ViewModels.Base;
 
 namespace H.Test.Mvvm
 {
-    public class User : ObservableObject
+    public class User : Bindable
     {
-        private string name;
-
+        private string _name;
         public string Name
         {
-            get => name;
-            set => SetProperty(ref name, value);
+            get { return _name; }
+            set
+            {
+                _name = value;
+                RaisePropertyChanged();
+            }
         }
+
     }
 }

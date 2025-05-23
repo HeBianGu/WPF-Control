@@ -9,7 +9,7 @@
 using System.Drawing;
 using System.Runtime.InteropServices;
 
-namespace H.Extensions.ValueConverter.Images;
+namespace H.ValueConverter.Images;
 
 /// <summary> 获取文件关联图标 </summary>
 public static class IconHelper

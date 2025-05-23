@@ -2,7 +2,6 @@
 using H.Modules.Setting;
 using H.Services.Setting;
 using H.Styles;
-using H.Styles;
 using H.Styles.Controls;
 using Microsoft.Extensions.DependencyInjection;
 using System.Collections.Generic;
@@ -34,8 +33,8 @@ namespace H.Test.Controls
 
         protected override void Configure(IApplicationBuilder app)
         {
-            app.UseWindowSetting();
-            app.UseScrollViewerSetting();
+            //app.UseWindowSetting();
+            //app.UseScrollViewerSetting();
             app.UseStyleOptions();
         }
 

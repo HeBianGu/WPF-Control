@@ -1,5 +1,6 @@
 ﻿using H.Controls.Diagram.Presenter.DiagramDatas.Base;
 using H.Extensions.Mvvm.ViewModels.Base;
+using H.Mvvm.ViewModels.Base;
 using System;
 using System.Collections.Generic;
 using System.Linq;

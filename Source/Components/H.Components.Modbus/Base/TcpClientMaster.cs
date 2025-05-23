@@ -9,6 +9,7 @@ global using H.Services.Logger;
 global using NModbus;
 global using System.Net.Sockets;
 using H.Components.Modbus.Presenters;
+using H.Mvvm.ViewModels.Base;
 
 namespace H.Components.Modbus.Base;
 

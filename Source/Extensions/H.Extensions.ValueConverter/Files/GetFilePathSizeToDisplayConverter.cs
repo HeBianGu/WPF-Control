@@ -9,7 +9,7 @@
 global using H.ValueConverter;
 global using System.Globalization;
 
-namespace H.Extensions.ValueConverter.Files;
+namespace H.ValueConverter.Files;
 
 public class GetFilePathSizeToDisplayConverter : MarkupValueConverterBase
 {

@@ -9,7 +9,7 @@
 using System.Drawing;
 using System.Globalization;
 
-namespace H.Extensions.ValueConverter.Images;
+namespace H.ValueConverter.Images;
 
 [ValueConversion(typeof(Icon), typeof(ImageSource))]
 public class GetIconToImageSourceConverter : MarkupValueConverterBase

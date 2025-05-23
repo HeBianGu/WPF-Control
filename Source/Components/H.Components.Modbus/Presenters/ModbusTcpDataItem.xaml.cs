@@ -7,6 +7,7 @@
 // Licensed under the MIT License (the "License")
 
 using H.Extensions.Validation.Attributes;
+using H.Mvvm.ViewModels.Base;
 using System.ComponentModel;
 
 namespace H.Components.Modbus.Presenters;

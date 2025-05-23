@@ -13,6 +13,7 @@ global using H.Services.Message;
 global using H.Services.Message.Dialog;
 global using System.ComponentModel.DataAnnotations;
 using H.Common.Attributes;
+using H.Mvvm.Commands;
 
 namespace H.Components.Modbus.Presenters;
 

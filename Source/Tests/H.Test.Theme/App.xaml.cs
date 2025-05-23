@@ -93,10 +93,10 @@ namespace H.Test.Theme
                 x.IconFontFamilys.Add(IconFontFamilys.LocationSegoeFluentIcons);
             });
 
-            app.UseWindowSetting(x =>
-            {
-                x.BackImagePath = "pack://application:,,,/H.Extensions.BackgroundImage;component/b13.png";
-            });
+            //app.UseWindowSetting(x =>
+            //{
+            //    x.BackImagePath = "pack://application:,,,/H.Extensions.BackgroundImage;component/b13.png";
+            //});
         }
     }
 }

@@ -6,8 +6,8 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
-using H.Extensions.Mvvm.ViewModels.Tree;
-using System.Windows.Markup;
+global using H.Extensions.Mvvm.ViewModels.Tree;
+global using System.Windows.Markup;
 
 namespace H.Extensions.Tree;
 

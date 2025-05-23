@@ -24,6 +24,7 @@ using H.Common.Interfaces;
 using H.Services.Common.DataBase;
 using System.IO;
 using H.Services.AppPath;
+using H.Mvvm.Commands;
 
 namespace H.DataBases.Share
 {

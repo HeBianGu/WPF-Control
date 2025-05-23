@@ -8,10 +8,11 @@
 
 using H.Services.Common.MainWindow;
 using H.Services.Setting;
+using H.Windows.Main;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 
-namespace H.Windows.Main;
+namespace System;
 
 public static partial class Extension
 {

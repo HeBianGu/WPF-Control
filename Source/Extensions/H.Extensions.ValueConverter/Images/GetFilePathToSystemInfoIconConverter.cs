@@ -8,7 +8,7 @@
 
 using System.Globalization;
 
-namespace H.Extensions.ValueConverter.Images;
+namespace H.ValueConverter.Images;
 
 public class GetFilePathToSystemInfoIconConverter : MarkupValueConverterBase
 {
