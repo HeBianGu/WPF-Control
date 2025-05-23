@@ -1,12 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
-  <ItemGroup>
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.1" />
-  </ItemGroup>
-
   <ItemGroup>
     <ProjectReference Include="..\..\Providers\H.Iocable\H.Iocable.csproj" />
     <ProjectReference Include="..\..\Base\H.ValueConverter\H.ValueConverter.csproj" />
   </ItemGroup>
-
 </Project>
