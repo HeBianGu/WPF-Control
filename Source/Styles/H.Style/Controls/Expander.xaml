@@ -216,11 +216,12 @@
                                 <local:FontIconToggleButton Grid.Column="2"
                                                             Cattach.GuideTitle="显示/隐藏页面"
                                                             Cattach.UseGuide="False"
-                                                            CheckedGlyph="&#xE018;"
+                                                            CheckedGlyph="&#xE019;"
+                                                            FontSize="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(Cattach.IconSize)}"
                                                             Foreground="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(Cattach.CaptionForeground)}"
                                                             IsChecked="{Binding IsExpanded, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
                                                             Style="{DynamicResource {x:Static local:FontIconToggleButtonKeys.Switch}}"
-                                                            UncheckedGlyph="&#xE019;" />
+                                                            UncheckedGlyph="&#xE018;" />
                                 <ContentPresenter Grid.Column="0"
                                                   Margin="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(Cattach.CaptionMargin)}"
                                                   VerticalAlignment="Center"
