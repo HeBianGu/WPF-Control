@@ -117,30 +117,30 @@
                                                     HorizontalAlignment="Right"
                                                     Orientation="Horizontal">
                                             <lc:FontIconButton x:Name="Btn_Minimize"
-                                                               Content="&#xE921;"
                                                                Command="{lc:MinimizeWindowCommand}"
                                                                CommandParameter="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}}"
+                                                               Content="&#xE921;"
                                                                FontSize="10"
                                                                Style="{DynamicResource {x:Static lc:WindowKeys.FontIconButton}}" />
                                             <lc:FontIconButton x:Name="Btn_Maximize"
                                                                Command="{lc:MaximizeWindowCommand}"
-                                                               CommandTarget="{Binding RelativeSource={RelativeSource AncestorType={x:Type Window}}}"
                                                                CommandParameter="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}}"
-                                                               FontSize="10"
+                                                               CommandTarget="{Binding RelativeSource={RelativeSource AncestorType={x:Type Window}}}"
                                                                Content="&#xE922;"
+                                                               FontSize="10"
                                                                Style="{DynamicResource {x:Static lc:WindowKeys.FontIconButton}}" />
                                             <lc:FontIconButton x:Name="Btn_Restore"
-                                                               Content="&#xE923;"
                                                                Command="{lc:RestoreWindowCommand}"
-                                                               CommandTarget="{Binding RelativeSource={RelativeSource AncestorType=Window}}"
                                                                CommandParameter="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}}"
+                                                               CommandTarget="{Binding RelativeSource={RelativeSource AncestorType=Window}}"
+                                                               Content="&#xE923;"
                                                                FontSize="10"
                                                                Style="{DynamicResource {x:Static lc:WindowKeys.FontIconButton}}" />
                                             <lc:FontIconButton x:Name="Btn_Close"
                                                                Command="{lc:CloseWindowCommand}"
                                                                CommandParameter="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}}"
+                                                               Content="&#xE8BB;"
                                                                FontSize="10"
-                                                               Content="&#xE8BB;" 
                                                                Style="{DynamicResource {x:Static lc:WindowKeys.FontIconButton}}" />
                                         </StackPanel>
                                     </Grid>

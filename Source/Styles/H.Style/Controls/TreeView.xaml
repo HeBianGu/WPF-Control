@@ -52,7 +52,7 @@
         </Setter>
     </Style>
 
-    <local:GetFalseToHiddenConverter x:Key="GetFalseToHiddenConverter"/>
+    <local:GetFalseToHiddenConverter x:Key="GetFalseToHiddenConverter" />
 
     <Style x:Key="{ComponentResourceKey ResourceId=S.ToggleButton.Tree,
                                         TypeInTargetAssembly={x:Type local:ToggleButtonKeys}}"
