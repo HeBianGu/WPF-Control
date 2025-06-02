@@ -15,3 +15,4 @@ public interface IFlowableNodeData : INodeData, IMessageable, IFlowablePartData
     Task<bool?> Start(IFlowableDiagramData diagramData, IFlowableLinkData from = null);
 }
 
+
