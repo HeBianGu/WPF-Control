@@ -15,14 +15,14 @@ public interface IFilePathable
     string SrcFilePath { get; set; }
 }
 
-public interface IImageNodeData
+public interface IImageSrcNodeData
 {
     ImageSource ImageSource { get; set; }
 }
 
-public abstract class ImageNodeDataBase : FlowableNodeData, IImageNodeData
+public abstract class ImageSrcNodeDataBase : FlowableNodeData, IImageSrcNodeData
 {
-    public ImageNodeDataBase()
+    public ImageSrcNodeDataBase()
     {
         this.ImageSource = this.CreateImageSource();
     }
@@ -116,7 +116,7 @@ public abstract class ImageNodeDataBase : FlowableNodeData, IImageNodeData
     protected abstract ImageSource CreateImageSource();
 }
 
-public class ImageNodeData : ImageNodeDataBase
+public class ImageSrcNodeData : ImageSrcNodeDataBase
 {
     protected override ImageSource CreateImageSource()
     {
