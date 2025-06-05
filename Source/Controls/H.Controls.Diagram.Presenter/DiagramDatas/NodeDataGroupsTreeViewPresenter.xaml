@@ -18,7 +18,8 @@
                         <FontIconTextBlock Margin="5,0"
                                            HorizontalAlignment="Right"
                                            Text="{Binding Icon}" />
-                        <TextBlock Margin="20,0,2,0"
+                        <TextBlock MaxWidth="100"
+                                   Margin="20,0,2,0"
                                    DockPanel.Dock="Right"
                                    FontSize="{DynamicResource {x:Static FontSizeKeys.Header7}}"
                                    Opacity="0.6"

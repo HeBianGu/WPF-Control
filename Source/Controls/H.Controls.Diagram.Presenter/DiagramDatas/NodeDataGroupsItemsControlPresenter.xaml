@@ -27,8 +27,7 @@
                             <ItemsControl ItemsSource="{Binding NodeDatas}">
                                 <ItemsControl.ItemsPanel>
                                     <ItemsPanelTemplate>
-                                        <UniformGrid HorizontalAlignment="Center"
-                                                     Columns="1" />
+                                        <WrapPanel HorizontalAlignment="Center" />
                                     </ItemsPanelTemplate>
                                 </ItemsControl.ItemsPanel>
                             </ItemsControl>
