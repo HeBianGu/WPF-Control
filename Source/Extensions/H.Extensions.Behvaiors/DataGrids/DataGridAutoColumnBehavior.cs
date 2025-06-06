@@ -159,7 +159,7 @@ public class DataGridAutoColumnBehavior : Behavior<DataGrid>
         }
         if (this.Type == null)
             return;
-        PropertyInfo[] ps = this.Type.GetProperties();
+        PropertyInfo[] ps = this.Type.GetProperties().OrderBy(x => x.GetCustomAttribute<DisplayAttribute>()?.GetOrder() ?? int.MaxValue).ToArray();
         foreach (PropertyInfo p in ps)
         {
             BrowsableAttribute browsable = p.GetCustomAttribute<BrowsableAttribute>();
