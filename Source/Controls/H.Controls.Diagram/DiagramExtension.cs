@@ -22,11 +22,11 @@ public static class NodeExtension
             foreach (Node node in x)
             {
                 node.AligmentLayout();
-                List<Node> fromNodes = node.GetFromNodes();
+                List<Node> fromNodes = node.GetToNodes();
                 action.Invoke(fromNodes);
             }
         };
-        IEnumerable<Node> ns = nodes.Where(x => x.LinksOutOf.Count == 0);
+        IEnumerable<Node> ns = nodes.Where(x => x.LinksInto.Count == 0);
         action.Invoke(ns);
     }
 
@@ -129,7 +129,8 @@ public static class DiagramExtension
 {
     public static void AligmentNodes(this Diagram diagram)
     {
-        diagram.Nodes.Aligment();
+        var starts = diagram.Nodes.Where(x => x.LinksInto.Count == 0);
+        starts.Aligment();
     }
 
     public static void LinkNode(this Diagram diagram, Node from, Node to, Dock dock = Dock.Bottom)
@@ -156,6 +157,44 @@ public static class DiagramExtension
             return;
         Link link = fromPort.ParentNode.CreateLinkTo(to, fromPort, toPort);
         diagram.AddLink(link);
+    }
+
+    public static void LinkPort(this Diagram diagram, Port fromPort, Port toPort)
+    {
+        if (fromPort == null && toPort != null)
+            return;
+        if (fromPort != null && toPort == null)
+            return;
+        var to = toPort.ParentNode;
+        Link link = fromPort.ParentNode.CreateLinkTo(to, fromPort, toPort);
+        diagram.AddLink(link);
+    }
+
+    public static void RemoveLink(this Diagram diagram, Link link)
+    {
+        diagram.LinkLayer.Children.Remove(link);
+        diagram?.OnItemsChanged();
+    }
+
+    public static void InsertLinkNode(this Diagram diagram, Link link, Node node)
+    {
+        var fromPort = link.FromPort;
+        var toPort = link.ToPort;
+        if (fromPort == null)
+            return;
+        if (toPort == null)
+            return;
+        var outputPorts = node.GetPorts(x => x.PortType.HasFlag(PortType.OutPut));
+        var nodeFromPort = outputPorts.Where(x => x.Dock == fromPort.Dock.GetRevert()).FirstOrDefault();
+        if (nodeFromPort == null)
+            nodeFromPort = outputPorts.FirstOrDefault();
+        if (nodeFromPort == null)
+            return;
+        diagram.RemoveLink(link);
+        diagram.AddNode(node);
+        diagram.LinkNode(fromPort, node);
+        diagram.LinkPort(nodeFromPort, toPort);
+        diagram.AligmentNodes();
     }
 
     public static void ZoomToFit(this IDiagram diagram, params Part[] parts)
