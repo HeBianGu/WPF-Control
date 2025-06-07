@@ -7,12 +7,14 @@
     <DataTemplate DataType="{x:Type ln:TextLinkData}">
         <Border x:Name="boder"
                 HorizontalAlignment="Center"
-                VerticalAlignment="Center">
+                VerticalAlignment="Center"
+                AllowDrop="True">
             <TextBox x:Name="txt"
                      MinWidth="30"
                      Margin="10,6"
                      HorizontalAlignment="Center"
                      VerticalAlignment="Center"
+                     AllowDrop="True"
                      Background="{Binding Background}"
                      BorderThickness="0"
                      FontFamily="{Binding FontFamily}"

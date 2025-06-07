@@ -166,6 +166,12 @@
                                      Value="False">
                             <Setter Property="StrokeDashArray" Value="5 5" />
                         </DataTrigger>
+
+                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=lp:Link}, Path=(lbd:LinkDropNodeDataBevaior.CanInsertNode)}"
+                                     Value="True">
+                            <Setter Property="Stroke" Value="{DynamicResource {x:Static h:BrushKeys.Orange}}" />
+                            <Setter Property="Fill" Value="{DynamicResource {x:Static h:BrushKeys.Orange}}" />
+                        </DataTrigger>
                     </Style.Triggers>
                 </Style>
             </Setter.Value>
@@ -225,6 +231,10 @@
             <DataTrigger Binding="{Binding State}"
                          Value="Error">
                 <Setter Property="ToolTip" Value="{Binding Message}" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=Self}, Path=(lbd:LinkDropNodeDataBevaior.CanInsertNode)}"
+                         Value="True">
+                <Setter Property="ToolTip" Value="插入节点" />
             </DataTrigger>
         </Style.Triggers>
     </Style>

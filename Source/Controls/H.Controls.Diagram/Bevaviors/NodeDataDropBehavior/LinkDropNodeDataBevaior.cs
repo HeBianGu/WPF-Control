@@ -12,63 +12,63 @@ public class LinkDropNodeDataBevaior : DropNodeDataBehaviorBase<Link>
 {
     protected override void OnAttached()
     {
-        base.OnAttached();
-        this.AssociatedObject.DragEnter += this.AssociatedObject_DragEnter;
-        this.AssociatedObject.DragLeave += this.AssociatedObject_DragLeave;
+        this.AssociatedObject.PreviewDragEnter += this.AssociatedObject_DragEnter;
+        this.AssociatedObject.PreviewDragLeave += this.AssociatedObject_DragLeave;
+        this.AssociatedObject.PreviewDrop += this.AssociatedObject_PreviewDrop;
+        this.AssociatedObject.PreviewDragOver += this.AssociatedObject_PreviewDragOver;
     }
-
 
     protected override void OnDetaching()
     {
-        base.OnDetaching();
-        this.AssociatedObject.DragEnter -= this.AssociatedObject_DragEnter;
-        this.AssociatedObject.DragLeave -= this.AssociatedObject_DragLeave;
+        this.AssociatedObject.PreviewDragEnter -= this.AssociatedObject_DragEnter;
+        this.AssociatedObject.PreviewDragLeave -= this.AssociatedObject_DragLeave;
+        this.AssociatedObject.PreviewDrop -= this.AssociatedObject_PreviewDrop;
+        this.AssociatedObject.PreviewDragOver -= this.AssociatedObject_PreviewDragOver;
+
     }
 
-    protected override void OnDrop(DragEventArgs e)
+    private void AssociatedObject_PreviewDragOver(object sender, DragEventArgs e)
     {
-        //base.OnDrop(e);
-        e.Handled = true;
-        this.SetPreviewOpacity(1.0);
-        this._cacheNode = null;
+        e.Effects = DragDropEffects.All;
+    }
 
+    private void AssociatedObject_PreviewDrop(object sender, DragEventArgs e)
+    {
+        this.OnDrop(e);
+    }
+
+    public static bool GetCanInsertNode(DependencyObject obj)
+    {
+        return (bool)obj.GetValue(CanInsertNodeProperty);
+    }
+
+    public static void SetCanInsertNode(DependencyObject obj, bool value)
+    {
+        obj.SetValue(CanInsertNodeProperty, value);
+    }
+
+    public static readonly DependencyProperty CanInsertNodeProperty =
+        DependencyProperty.RegisterAttached("CanInsertNode", typeof(bool), typeof(LinkDropNodeDataBevaior), new PropertyMetadata(default(bool), OnCanInsertNodeChanged));
+
+    static public void OnCanInsertNodeChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+    {
+        DependencyObject control = d as DependencyObject;
+
+        bool n = (bool)e.NewValue;
+
+        bool o = (bool)e.OldValue;
     }
 
     private void AssociatedObject_DragLeave(object sender, DragEventArgs e)
     {
-        this.Cancel();
+        LinkDropNodeDataBevaior.SetCanInsertNode(this.AssociatedObject, false);
     }
 
     private void AssociatedObject_DragEnter(object sender, DragEventArgs e)
     {
-        this.Sumit(e);
-        this.SetPreviewOpacity(0.2);
+        LinkDropNodeDataBevaior.SetCanInsertNode(this.AssociatedObject, true);
     }
 
-    private void SetPreviewOpacity(double opacity = 0.2)
-    {
-        if (this._cacheNode == null)
-            return;
-        this._cacheNode.Opacity = opacity;
-        foreach (var item in this._cacheNode.GetParts())
-        {
-            item.Opacity = opacity;
-        }
-    }
-
-    void Cancel()
-    {
-        var diagram = this.AssociatedObject.GetDiagram();
-        if (diagram == null)
-            return;
-        if (this._cacheNode == null)
-            return;
-        diagram.RemoveNode(this._cacheNode);
-        diagram.AddLink(this.AssociatedObject);
-        diagram.AligmentNodes();
-    }
-
-    private Node _cacheNode;
     protected override void OnDropNodeData(INodeData nodeData, Point offset, Point location)
     {
         Node node = this.CreateNodeByData(nodeData);
@@ -80,7 +80,6 @@ public class LinkDropNodeDataBevaior : DropNodeDataBehaviorBase<Link>
         if (diagram == null)
             return;
         diagram.InsertLinkNode(link, node);
-        this._cacheNode = node;
     }
 
 

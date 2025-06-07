@@ -71,7 +71,7 @@ public static class DiagramExtension
         if (toPort == null)
             return;
         var outputPorts = node.GetPorts(x => x.PortType.HasFlag(PortType.OutPut));
-        var nodeFromPort = outputPorts.Where(x => x.Dock == fromPort.Dock.GetRevert()).FirstOrDefault();
+        var nodeFromPort = outputPorts.Where(x => x.Dock == fromPort.Dock).FirstOrDefault();
         if (nodeFromPort == null)
             nodeFromPort = outputPorts.FirstOrDefault();
         if (nodeFromPort == null)
