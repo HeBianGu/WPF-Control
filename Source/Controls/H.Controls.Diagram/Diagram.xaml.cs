@@ -433,14 +433,7 @@ public partial class Diagram : ContentControl, IDiagram
     [Browsable(false)]
     public DataTemplate LinkTemplate { get; set; }
 
-    public bool UseAutoAddLinkOnEnd
-    {
-        get { return (bool)GetValue(UseAutoAddLinkOnEndProperty); }
-        set { SetValue(UseAutoAddLinkOnEndProperty, value); }
-    }
 
-    public static readonly DependencyProperty UseAutoAddLinkOnEndProperty =
-        DependencyProperty.Register("UseAutoAddLinkOnEnd", typeof(bool), typeof(Diagram), new FrameworkPropertyMetadata(true));
     #endregion
 
     #region - 事件 -
@@ -669,8 +662,9 @@ public partial class Diagram : ContentControl, IDiagram
 
     public void AddNode(params Node[] nodes)
     {
-        Dock dock = Dock.Bottom;
-        List<Node> endNode = this.Nodes.Where(x => x.GetPorts(x => x.PortType == PortType.OutPut && x.Dock == dock && x.GetLinksOutOf().Count() == 0).Count > 0).ToList();
+        //Dock dock = Dock.Bottom;
+        //List<Node> endNode = this.Nodes.Where(x => x.GetPorts(x => x.PortType == PortType.OutPut && x.Dock == dock && x.GetLinksOutOf().Count() == 0).Count > 0).ToList();
+       
         foreach (Node node in nodes)
         {
             //this.NodesSource.Add(node);
@@ -683,14 +677,13 @@ public partial class Diagram : ContentControl, IDiagram
         this.OnItemsChanged();
         this.OnAddNoded(nodes);
 
-        if (this.UseAutoAddLinkOnEnd && endNode.Count == 1 && nodes.Length == 1)
-        {
-
-            Node firstFrom = endNode.First();
-            Node firstTo = nodes.First();
-            this.LinkNodes(firstFrom, firstTo, dock);
-            this.AligmentNodes();
-        }
+        //if (this.UseAutoAddLinkOnEnd && endNode.Count == 1 && nodes.Length == 1)
+        //{
+        //    Node firstFrom = endNode.First();
+        //    Node firstTo = nodes.First();
+        //    this.LinkNode(firstFrom, firstTo, dock);
+        //    this.AligmentNodes();
+        //}
     }
 
     public void RemoveNode(params Node[] nodes)

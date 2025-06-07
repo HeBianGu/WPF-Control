@@ -2,7 +2,6 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:h="https://github.com/HeBianGu"
                     xmlns:ld="clr-namespace:H.Controls.Diagram.Datas"
-                    xmlns:lf="clr-namespace:H.Controls.Diagram.Flowables"
                     xmlns:local="clr-namespace:H.Controls.Diagram"
                     xmlns:lp="clr-namespace:H.Controls.Diagram.Parts"
                     xmlns:lpb="clr-namespace:H.Controls.Diagram.Parts.Base"
@@ -84,7 +83,6 @@
                     <Setter Property="StrokeStartLineCap" Value="{Binding StrokeStartLineCap}" />
                     <Setter Property="StrokeEndLineCap" Value="{Binding StrokeEndLineCap}" />
                     <Setter Property="StrokeLineJoin" Value="{Binding StrokeLineJoin}" />
-
                     <Style.Triggers>
                         <!--<DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType={x:Type lp:Link}}, Path=IsMouseOver}" Value="True">
                             <Setter Property="Opacity" Value="1" />
@@ -163,7 +161,7 @@
                             <Setter Property="Opacity" Value="0.5" />
                         </DataTrigger>
 
-                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=lp:Link}, Path=Content, Converter={x:Static h:Converter.GetIsAssignableFrom}, ConverterParameter={x:Type lf:IFlowable}}"
+                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=lp:Link}, Path=Content, Converter={x:Static h:Converter.GetIsAssignableFrom}, ConverterParameter={x:Type local:IFlowable}}"
                                      Value="False">
                             <Setter Property="StrokeDashArray" Value="5 5" />
                         </DataTrigger>

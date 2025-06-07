@@ -2,9 +2,9 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:h="https://github.com/HeBianGu"
                     xmlns:lb="clr-namespace:H.Controls.Diagram.Bevaviors"
+                    xmlns:lbd="clr-namespace:H.Controls.Diagram.Bevaviors.NodeDataDropBehavior"
                     xmlns:lbl="clr-namespace:H.Controls.Diagram.Bevaviors.DynimacLinkBehavior"
                     xmlns:ld="clr-namespace:H.Controls.Diagram.Datas"
-                    xmlns:lf="clr-namespace:H.Controls.Diagram.Flowables"
                     xmlns:local="clr-namespace:H.Controls.Diagram"
                     xmlns:lp="clr-namespace:H.Controls.Diagram.Parts"
                     xmlns:lpb="clr-namespace:H.Controls.Diagram.Parts.Base"
@@ -80,10 +80,12 @@
             <Setter.Value>
                 <h:Behaviors>
                     <lbl:PortLinkBehavior />
+                    <lbd:PortDropNodeDataBevaior />
                 </h:Behaviors>
             </Setter.Value>
         </Setter>
         <Setter Property="ToolTip" Value="{Binding Description}" />
+        <Setter Property="AllowDrop" Value="True" />
         <Style.Triggers>
             <!--<Trigger Property="IsMouseOver" Value="True">
             -->

@@ -114,7 +114,7 @@ public abstract class AddNodeCommand : AddNodeCommandBase
     {
         if (!this.IsCreateLink)
             return;
-        diagram.LinkNodes(from, to, this.Dock);
+        diagram.LinkNode(from, to, this.Dock);
     }
 }
 

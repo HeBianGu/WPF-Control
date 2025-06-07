@@ -202,7 +202,6 @@
         </Style.Triggers>
     </Style>
 
-
     <Style x:Key="{ComponentResourceKey ResourceId=S.Path.Port.State,
                                         TypeInTargetAssembly={x:Type local:DiagramKeys}}"
            TargetType="Path">

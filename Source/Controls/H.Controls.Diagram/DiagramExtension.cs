@@ -7,7 +7,8 @@
 // Licensed under the MIT License (the "License")
 
 global using H.Controls.Diagram.Datas;
-global using H.Controls.Diagram.Flowables;
+using H.Controls.Diagram.Parts;
+using System.Windows.Controls;
 
 namespace H.Controls.Diagram;
 
@@ -131,7 +132,7 @@ public static class DiagramExtension
         diagram.Nodes.Aligment();
     }
 
-    public static void LinkNodes(this Diagram diagram, Node from, Node to, Dock dock = Dock.Bottom)
+    public static void LinkNode(this Diagram diagram, Node from, Node to, Dock dock = Dock.Bottom)
     {
         Port fromPort = from.GetPorts(x => x.Dock == dock && x.PortType.HasFlag(PortType.OutPut)).FirstOrDefault();
         Port toPort = to.GetPorts(x => x.Dock == dock.GetRevert() && x.PortType.HasFlag(PortType.Input)).FirstOrDefault();
@@ -144,8 +145,32 @@ public static class DiagramExtension
         diagram.AddLink(link);
     }
 
+    public static void LinkNode(this Diagram diagram, Port fromPort, Node to)
+    {
+        if (fromPort == null)
+            return;
+        Port toPort = to.GetPorts(x => x.Dock == fromPort.Dock.GetRevert() && x.PortType.HasFlag(PortType.Input)).FirstOrDefault();
+        if (fromPort == null && toPort != null)
+            return;
+        if (fromPort != null && toPort == null)
+            return;
+        Link link = fromPort.ParentNode.CreateLinkTo(to, fromPort, toPort);
+        diagram.AddLink(link);
+    }
+
     public static void ZoomToFit(this IDiagram diagram, params Part[] parts)
     {
         diagram.ZoomToFit(1.8, parts);
+    }
+
+    public static void LinkOnEnd(this Diagram diagram, Node node, Dock dock = Dock.Bottom)
+    {
+        List<Node> endNodes = diagram.Nodes.Where(x => x != node && x.GetPorts(x => x.PortType == PortType.OutPut && x.Dock == dock && x.GetLinksOutOf().Count() == 0).Count > 0).ToList();
+        if (endNodes.Count == 1)
+        {
+            Node firstFrom = endNodes.First();
+            diagram.LinkNode(firstFrom, node, dock);
+            diagram.AligmentNodes();
+        }
     }
 }

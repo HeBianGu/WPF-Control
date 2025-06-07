@@ -6,6 +6,7 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
+
 namespace H.Controls.Diagram.Parts;
 
 public partial class Port : FlowablePart
@@ -17,6 +18,10 @@ public partial class Port : FlowablePart
         DefaultStyleKeyProperty.OverrideMetadata(typeof(Port), new FrameworkPropertyMetadata(typeof(Port)));
     }
 
+    public Port()
+    {
+        this.AllowDrop = true;
+    }
     public string Id => this.GetContent<IPortData>().ID;
 
     public static Port Create(Node parent)
@@ -45,7 +50,6 @@ public partial class Port : FlowablePart
         }));
 
     public Node ParentNode { get; set; }
-
     public PortType PortType { get; set; }
 
     public override void Delete()
@@ -135,4 +139,9 @@ public partial class Port : FlowablePart
     }
 
     public IPortData Data => this.GetContent<IPortData>();
+
+    protected override void OnDrop(DragEventArgs e)
+    {
+        base.OnDrop(e);
+    }
 }

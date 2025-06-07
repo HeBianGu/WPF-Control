@@ -7,7 +7,6 @@
 // Licensed under the MIT License (the "License")
 
 global using H.Common;
-global using H.Controls.Diagram.Flowables;
 global using H.Controls.Diagram.Parts;
 using H.Controls.Diagram.Presenter.Extensions;
 
