@@ -1,6 +1,7 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:h="https://github.com/HeBianGu"
+                    xmlns:lbd="clr-namespace:H.Controls.Diagram.Bevaviors.NodeDataDropBehavior"
                     xmlns:ld="clr-namespace:H.Controls.Diagram.Datas"
                     xmlns:local="clr-namespace:H.Controls.Diagram"
                     xmlns:lp="clr-namespace:H.Controls.Diagram.Parts"
@@ -208,6 +209,14 @@
             </Setter.Value>
         </Setter>-->
         <Setter Property="ToolTip" Value="{Binding Description}" />
+        <Setter Property="AllowDrop" Value="True" />
+        <Setter Property="h:BehvaiorAttach.Behaviors">
+            <Setter.Value>
+                <h:Behaviors>
+                    <lbd:LinkDropNodeDataBevaior />
+                </h:Behaviors>
+            </Setter.Value>
+        </Setter>
         <Style.Triggers>
             <DataTrigger Binding="{Binding State}"
                          Value="Success">
