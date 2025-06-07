@@ -238,14 +238,14 @@
                 <DataTrigger.Value>
                     <h:PortType>OutPut</h:PortType>
                 </DataTrigger.Value>
-                <Setter Property="Fill" Value="{DynamicResource {x:Static h:BrushKeys.LightBlue}}" />
+                <!--<Setter Property="Fill" Value="{DynamicResource {x:Static h:BrushKeys.LightBlue}}" />-->
             </DataTrigger>
 
             <DataTrigger Binding="{Binding PortType}">
                 <DataTrigger.Value>
                     <h:PortType>Input</h:PortType>
                 </DataTrigger.Value>
-                <Setter Property="Fill" Value="{DynamicResource {x:Static h:BrushKeys.Yellow}}" />
+                <!--<Setter Property="Fill" Value="{DynamicResource {x:Static h:BrushKeys.Yellow}}" />-->
             </DataTrigger>
             <DataTrigger Binding="{Binding State}"
                          Value="Success">

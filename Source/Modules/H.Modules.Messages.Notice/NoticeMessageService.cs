@@ -48,10 +48,11 @@ namespace H.Modules.Messages.Notice
             this.CheckValid();
             InfoMessagePresenter presenter = new InfoMessagePresenter() { Message = message };
             this._noticeBox.Collection.Add(presenter);
-            await Task.Run(() =>
-            {
-                Thread.Sleep(3000);
-            });
+            //await Task.Run(() =>
+            //{
+            //    Thread.Sleep(3000);
+            //});
+            await Task.Delay(3000);
             this._noticeBox.Collection.Remove(presenter);
         }
 
@@ -107,10 +108,11 @@ namespace H.Modules.Messages.Notice
             this.CheckValid();
             SuccessMessagePresenter presenter = new SuccessMessagePresenter() { Message = message };
             this._noticeBox.Collection.Add(presenter);
-            await Task.Run(() =>
-             {
-                 Thread.Sleep(3000);
-             });
+            //await Task.Run(() =>
+            // {
+            //     Thread.Sleep(3000);
+            // });
+            await Task.Delay(3000);
             this._noticeBox.Collection.Remove(presenter);
         }
 

@@ -103,7 +103,7 @@
                             <Setter Property="Stroke" Value="{DynamicResource {x:Static h:BrushKeys.Foreground}}" />
                             <!--<Setter Property="StrokeThickness" Value="3" />-->
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Fill}"
+                        <DataTrigger Binding="{Binding Stroke}"
                                      Value="{x:Null}">
                             <Setter Property="Fill" Value="{DynamicResource {x:Static h:BrushKeys.Foreground}}" />
                             <!--<Setter Property="StrokeThickness" Value="3" />-->
@@ -169,8 +169,8 @@
 
                         <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=lp:Link}, Path=(lbd:LinkDropNodeDataBevaior.CanInsertNode)}"
                                      Value="True">
-                            <Setter Property="Stroke" Value="{DynamicResource {x:Static h:BrushKeys.Orange}}" />
-                            <Setter Property="Fill" Value="{DynamicResource {x:Static h:BrushKeys.Orange}}" />
+                            <Setter Property="Stroke" Value="{DynamicResource {x:Static h:BrushKeys.Accent}}" />
+                            <Setter Property="Fill" Value="{DynamicResource {x:Static h:BrushKeys.Accent}}" />
                         </DataTrigger>
                     </Style.Triggers>
                 </Style>
@@ -231,10 +231,6 @@
             <DataTrigger Binding="{Binding State}"
                          Value="Error">
                 <Setter Property="ToolTip" Value="{Binding Message}" />
-            </DataTrigger>
-            <DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=Self}, Path=(lbd:LinkDropNodeDataBevaior.CanInsertNode)}"
-                         Value="True">
-                <Setter Property="ToolTip" Value="插入节点" />
             </DataTrigger>
         </Style.Triggers>
     </Style>
