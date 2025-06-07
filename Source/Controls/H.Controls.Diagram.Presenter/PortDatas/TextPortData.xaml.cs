@@ -171,6 +171,35 @@ public class TextPortData : PortData, ITextPortData
         }
     }
 
+
+    private double _width = 10;
+    [DefaultValue(10)]
+    [Display(Name = "宽度", GroupName = "样式")]
+    public double Width
+    {
+        get { return _width; }
+        set
+        {
+            _width = value;
+            RaisePropertyChanged();
+        }
+    }
+
+    private double _height = 10;
+    [DefaultValue(10)]
+    [Display(Name = "高", GroupName = "样式")]
+    public double Height
+    {
+        get { return _width; }
+        set
+        {
+            _width = value;
+            RaisePropertyChanged();
+        }
+    }
+
+
+
     protected virtual Geometry GetGeometry()
     {
         return GeometryFactory.Circle;

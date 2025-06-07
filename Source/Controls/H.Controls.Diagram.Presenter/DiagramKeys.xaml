@@ -206,8 +206,8 @@
     <Style x:Key="{ComponentResourceKey ResourceId=S.Path.Port.State,
                                         TypeInTargetAssembly={x:Type local:DiagramKeys}}"
            TargetType="Path">
-        <Setter Property="Width" Value="10" />
-        <Setter Property="Height" Value="10" />
+        <Setter Property="Width" Value="{Binding Width}" />
+        <Setter Property="Height" Value="{Binding Height}" />
         <!--<Setter Property="Margin" Value="5" />-->
         <Setter Property="StrokeThickness" Value="{Binding StrokeThickness}" />
         <Setter Property="Fill" Value="{Binding Fill}" />

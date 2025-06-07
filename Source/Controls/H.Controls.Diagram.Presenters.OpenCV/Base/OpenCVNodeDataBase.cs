@@ -8,6 +8,7 @@
 
 using System.Text.Json.Serialization;
 using System.Xml.Serialization;
+using H.Controls.Diagram.Presenter.Extensions;
 
 namespace H.Controls.Diagram.Presenters.OpenCV.Base;
 public abstract class OpenCVNodeDataBase : OpenCVStyleNodeDataBase, IOpenCVNodeData

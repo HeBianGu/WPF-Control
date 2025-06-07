@@ -7,6 +7,7 @@
 // Licensed under the MIT License (the "License")
 
 using System.Windows.Controls;
+using H.Controls.Diagram.Presenter.Extensions;
 
 namespace H.Controls.Diagram.Presenters.OpenCV.NodeDatas.Image;
 [Display(Name = "判断图片像素大小", GroupName = "判断条件", Description = "设置像素阈值，根据阈值执行不同路径逻辑", Order = 20)]

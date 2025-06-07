@@ -7,6 +7,7 @@
 // Licensed under the MIT License (the "License")
 
 global using H.Controls.Diagram.Datas;
+using H.Controls.Diagram.Presenter.Extensions;
 namespace H.Controls.Diagram.Presenter.DiagramDatas.Base;
 public abstract class FlowableDiagramDataBase : ZoomableDiagramDataBase, IFlowableDiagramData
 {
@@ -34,7 +35,7 @@ public abstract class FlowableDiagramDataBase : ZoomableDiagramDataBase, IFlowab
         }
     }
 
-    private DiagramFlowableZoomMode _flowableZoomMode = DiagramFlowableZoomMode.Rect;
+    private DiagramFlowableZoomMode _flowableZoomMode = DiagramFlowableZoomMode.None;
     [Display(Name = "自动缩放", GroupName = "数据", Description = "执行时节点自动缩放")]
     public DiagramFlowableZoomMode FlowableZoomMode
     {
@@ -60,6 +61,8 @@ public abstract class FlowableDiagramDataBase : ZoomableDiagramDataBase, IFlowab
     public virtual void OnInvokingPart(IPartData part)
     {
         var diagram = this.GetTargetElement<Diagram>();
+        if (diagram == null)
+            return;
         if (this.FlowableZoomMode == DiagramFlowableZoomMode.Rect)
         {
             diagram.Dispatcher.Invoke(() =>

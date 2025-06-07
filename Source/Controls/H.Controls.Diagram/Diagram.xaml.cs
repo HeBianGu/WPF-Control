@@ -669,7 +669,8 @@ public partial class Diagram : ContentControl, IDiagram
 
     public void AddNode(params Node[] nodes)
     {
-        List<Node> endNode = this.Nodes.Where(x => x.GetPorts(x => x.PortType == PortType.OutPut && x.GetLinksOutOf().Count() == 0).Count > 0).ToList();
+        Dock dock = Dock.Bottom;
+        List<Node> endNode = this.Nodes.Where(x => x.GetPorts(x => x.PortType == PortType.OutPut && x.Dock == dock && x.GetLinksOutOf().Count() == 0).Count > 0).ToList();
         foreach (Node node in nodes)
         {
             //this.NodesSource.Add(node);
@@ -684,9 +685,10 @@ public partial class Diagram : ContentControl, IDiagram
 
         if (this.UseAutoAddLinkOnEnd && endNode.Count == 1 && nodes.Length == 1)
         {
+
             Node firstFrom = endNode.First();
             Node firstTo = nodes.First();
-            this.LinkNodes(firstFrom, firstTo);
+            this.LinkNodes(firstFrom, firstTo, dock);
             this.AligmentNodes();
         }
     }

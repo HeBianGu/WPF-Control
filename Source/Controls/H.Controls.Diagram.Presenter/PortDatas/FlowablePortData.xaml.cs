@@ -9,6 +9,7 @@
 global using H.Common;
 global using H.Controls.Diagram.Flowables;
 global using H.Controls.Diagram.Parts;
+using H.Controls.Diagram.Presenter.Extensions;
 
 namespace H.Controls.Diagram.Presenter.PortDatas;
 

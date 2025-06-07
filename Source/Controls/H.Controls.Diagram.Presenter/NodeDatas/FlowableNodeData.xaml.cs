@@ -7,10 +7,11 @@
 // Licensed under the MIT License (the "License")
 
 global using H.Controls.Diagram.Presenter.DiagramDatas.Base;
+using H.Controls.Diagram.Presenter.Extensions;
 
 namespace H.Controls.Diagram.Presenter.NodeDatas;
 
-public class FlowableNodeData : TextNodeData, IFlowableNodeData
+public class FlowableNodeData : DiagramableNodeDataBase, IFlowableNodeData
 {
     private FlowableState _state = FlowableState.Ready;
     [Browsable(false)]
@@ -225,14 +226,14 @@ public class FlowableNodeData : TextNodeData, IFlowableNodeData
 
     }
 
-    protected T GetFromNodeData<T>(IFlowableDiagramData diagramData, IFlowableLinkData from = null) where T : INodeData
+    protected T GetFromNodeData<T>(IDiagramData diagramData, IFlowableLinkData from = null) where T : INodeData
     {
         if (from == null)
             return default;
         return (T)from.GetFromNodeData(diagramData);
     }
 
-    protected T GetStartFromNodeData<T>(IFlowableDiagramData diagramData) where T : INodeData
+    protected T GetStartFromNodeData<T>(IDiagramData diagramData) where T : INodeData
     {
         return diagramData.GetStartNodeDatas().OfType<T>().FirstOrDefault();
     }
