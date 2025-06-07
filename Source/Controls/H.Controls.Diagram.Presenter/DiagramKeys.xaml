@@ -80,20 +80,6 @@
                          Value="Running">
                 <Setter Property="BorderBrush" Value="{DynamicResource {x:Static h:BrushKeys.Accent}}" />
                 <Setter Property="TextBlock.Foreground" Value="{DynamicResource {x:Static h:BrushKeys.Accent}}" />
-                <DataTrigger.EnterActions>
-                    <BeginStoryboard x:Name="start">
-                        <Storyboard AutoReverse="True"
-                                    RepeatBehavior="Forever"
-                                    Storyboard.TargetProperty="Opacity">
-                            <DoubleAnimation From="0.2"
-                                             To="1"
-                                             Duration="00:00:00.5" />
-                        </Storyboard>
-                    </BeginStoryboard>
-                </DataTrigger.EnterActions>
-                <DataTrigger.ExitActions>
-                    <RemoveStoryboard BeginStoryboardName="start" />
-                </DataTrigger.ExitActions>
             </DataTrigger>
 
             <DataTrigger Binding="{Binding State}"
@@ -113,6 +99,43 @@
                 <Setter Property="Opacity" Value="0.5" />
             </DataTrigger>
 
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="{DynamicResource {x:Static h:BrushKeys.MouseOver}}" />
+                <!--<Setter Property="BorderBrush" Value="{DynamicResource {x:Static h:BrushKeys.Accent}}" />-->
+            </Trigger>
+            <DataTrigger Binding="{Binding IsSelected}"
+                         Value="True">
+                <Setter Property="Background" Value="{DynamicResource {x:Static h:BrushKeys.Selected}}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource {x:Static h:BrushKeys.Accent}}" />
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="{ComponentResourceKey ResourceId=S.Border.State.StateBorderAnimation,
+                                        TypeInTargetAssembly={x:Type local:DiagramKeys}}"
+           BasedOn="{StaticResource {x:Static local:DiagramKeys.StateBorder}}"
+           TargetType="Border">
+
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding State}"
+                         Value="Running">
+                <Setter Property="BorderBrush" Value="{DynamicResource {x:Static h:BrushKeys.Accent}}" />
+                <Setter Property="TextBlock.Foreground" Value="{DynamicResource {x:Static h:BrushKeys.Accent}}" />
+                <DataTrigger.EnterActions>
+                    <BeginStoryboard x:Name="start">
+                        <Storyboard AutoReverse="True"
+                                    RepeatBehavior="Forever"
+                                    Storyboard.TargetProperty="Opacity">
+                            <DoubleAnimation From="0.2"
+                                             To="1"
+                                             Duration="00:00:00.5" />
+                        </Storyboard>
+                    </BeginStoryboard>
+                </DataTrigger.EnterActions>
+                <DataTrigger.ExitActions>
+                    <RemoveStoryboard BeginStoryboardName="start" />
+                </DataTrigger.ExitActions>
+            </DataTrigger>
             <Trigger Property="IsMouseOver" Value="True">
                 <Setter Property="Background" Value="{DynamicResource {x:Static h:BrushKeys.MouseOver}}" />
                 <Setter Property="Effect" Value="{DynamicResource {x:Static h:DiagramEffectKey.MouseOver}}" />

@@ -10,7 +10,7 @@
     </ResourceDictionary.MergedDictionaries>
 
     <DataTemplate DataType="{x:Type b:OpenCVStyleNodeDataBase}">
-        <Border Style="{DynamicResource {x:Static h:DiagramKeys.StateBorder}}">
+        <Border Style="{DynamicResource {x:Static h:DiagramKeys.StateBorderAnimation}}">
             <Grid>
                 <TextBox Style="{DynamicResource {x:Static h:DiagramKeys.EditTextBox}}" />
                 <Border Width="{Binding FlagLength}"
@@ -36,7 +36,7 @@
     </DataTemplate>
 
     <DataTemplate DataType="{x:Type b:OpenCVImageNodeDataBase}">
-        <Border Style="{DynamicResource {x:Static h:DiagramKeys.StateBorder}}">
+        <Border Style="{DynamicResource {x:Static h:DiagramKeys.StateBorderAnimation}}">
             <Grid>
                 <Image Width="40"
                        Height="40"
@@ -49,7 +49,7 @@
     </DataTemplate>
 
     <DataTemplate DataType="{x:Type b:VideoCaptureSrcNodeDataBase}">
-        <Border Style="{DynamicResource {x:Static h:DiagramKeys.StateBorder}}">
+        <Border Style="{DynamicResource {x:Static h:DiagramKeys.StateBorderAnimation}}">
             <Grid>
                 <Image Width="40"
                        Height="40"
@@ -67,7 +67,7 @@
         </Border>
     </DataTemplate>
     <DataTemplate DataType="{x:Type b:MatchDetectorOpenCVNodeDataBase}">
-        <Border Style="{DynamicResource {x:Static h:DiagramKeys.StateBorder}}">
+        <Border Style="{DynamicResource {x:Static h:DiagramKeys.StateBorderAnimation}}">
             <Grid>
                 <Image Width="40"
                        Height="40"

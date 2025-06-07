@@ -8,7 +8,7 @@
         <Border Background="Transparent"
                 BorderBrush="{x:Null}"
                 BorderThickness="0"
-                Style="{DynamicResource {x:Static local:DiagramKeys.StateBorder}}">
+                Style="{DynamicResource {x:Static local:DiagramKeys.StateBorderAnimation}}">
             <Grid>
                 <Path Style="{DynamicResource {x:Static local:DiagramKeys.StateNodePath}}" />
                 <TextBox Style="{DynamicResource {x:Static local:DiagramKeys.EditTextBox}}" />
