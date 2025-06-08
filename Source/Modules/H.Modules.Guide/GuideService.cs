@@ -71,6 +71,8 @@ public class GuideService : IGuideService
           {
               UIElement child = GetAdornerElement(_adonerElment);
               AdornerLayer layer = AdornerLayer.GetAdornerLayer(child);
+              if (layer == null)
+                  return false;
               System.Collections.Generic.IEnumerable<GuideBoxAdorner> adorners = layer.GetAdorners(child)?.OfType<GuideBoxAdorner>();
               return adorners == null || adorners.Count() == 0;
           });

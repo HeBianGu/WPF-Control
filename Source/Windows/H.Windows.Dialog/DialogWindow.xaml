@@ -95,31 +95,23 @@
                                                     Margin="0"
                                                     HorizontalAlignment="Right"
                                                     Orientation="Horizontal">
-                                            <FontIconButton x:Name="Btn_Minimize"
-                                                            Command="{x:Static SystemCommands.MinimizeWindowCommand}"
+                                            <FontIconButton Command="{MinimizeWindowCommand}"
                                                             CommandParameter="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}}"
                                                             Content="{x:Static FontIcons.ChromeMinimize}"
-                                                            FontSize="10"
-                                                            Style="{DynamicResource {x:Static h:WindowKeys.FontIconButton}}" />
-                                            <FontIconButton x:Name="Btn_Maximize"
-                                                            Command="{x:Static SystemCommands.MaximizeWindowCommand}"
+                                                            Style="{DynamicResource {x:Static h:WindowKeys.MinimizeButton}}" />
+                                            <FontIconButton Command="{MaximizeWindowCommand}"
                                                             CommandParameter="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}}"
                                                             Content="{x:Static FontIcons.ChromeMaximize}"
-                                                            FontSize="10"
-                                                            Style="{DynamicResource {x:Static h:WindowKeys.FontIconButton}}" />
-                                            <FontIconButton x:Name="Btn_Restore"
-                                                            Command="{x:Static SystemCommands.RestoreWindowCommand}"
+                                                            Style="{DynamicResource {x:Static h:WindowKeys.MaximizeButton}}" />
+                                            <FontIconButton Command="{RestoreWindowCommand}"
                                                             CommandParameter="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}}"
                                                             Content="{x:Static FontIcons.ChromeRestore}"
-                                                            FontSize="10"
-                                                            Style="{DynamicResource {x:Static h:WindowKeys.FontIconButton}}" />
-                                            <FontIconButton x:Name="Btn_Close"
-                                                            Command="{x:Static SystemCommands.CloseWindowCommand}"
+                                                            Style="{DynamicResource {x:Static h:WindowKeys.RestoreButton}}" />
+                                            <FontIconButton Command="{CloseWindowCommand}"
                                                             CommandParameter="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}}"
                                                             Content="{x:Static FontIcons.ChromeClose}"
-                                                            FontSize="10"
                                                             IsCancel="True"
-                                                            Style="{DynamicResource {x:Static h:WindowKeys.FontIconButton}}" />
+                                                            Style="{DynamicResource {x:Static h:WindowKeys.CloseButton}}" />
                                         </StackPanel>
                                     </Grid>
                                 </Border>
@@ -158,20 +150,20 @@
                             <Setter TargetName="WindowResizeGrip" Property="Visibility" Value="Visible" />
                         </Trigger>
                         <Trigger Property="WindowState" Value="Maximized">
-                            <Setter TargetName="Btn_Maximize" Property="Visibility" Value="Collapsed" />
-                            <Setter TargetName="Btn_Restore" Property="Visibility" Value="Visible" />
+                            <!--<Setter TargetName="Btn_Maximize" Property="Visibility" Value="Collapsed" />
+                            <Setter TargetName="Btn_Restore" Property="Visibility" Value="Visible" />-->
                             <Setter TargetName="PART_Border" Property="Padding" Value="7" />
 
                         </Trigger>
-                        <Trigger Property="WindowState" Value="Normal">
+                        <!--<Trigger Property="WindowState" Value="Normal">
                             <Setter TargetName="Btn_Maximize" Property="Visibility" Value="Visible" />
                             <Setter TargetName="Btn_Restore" Property="Visibility" Value="Collapsed" />
-                        </Trigger>
-                        <Trigger Property="ResizeMode" Value="NoResize">
+                        </Trigger>-->
+                        <!--<Trigger Property="ResizeMode" Value="NoResize">
                             <Setter TargetName="Btn_Minimize" Property="Visibility" Value="Collapsed" />
                             <Setter TargetName="Btn_Maximize" Property="Visibility" Value="Collapsed" />
                             <Setter TargetName="Btn_Restore" Property="Visibility" Value="Collapsed" />
-                        </Trigger>
+                        </Trigger>-->
                         <Trigger Property="IsActive" Value="False">
                             <Setter TargetName="grid" Property="Opacity" Value="0.5" />
                         </Trigger>

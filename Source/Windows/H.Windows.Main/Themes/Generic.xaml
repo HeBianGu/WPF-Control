@@ -3,5 +3,6 @@
                     xmlns:local="clr-namespace:H.Windows.Main">
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/H.Windows.Main;component/MainWindow.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Windows.Main;component/TransparencyMainWindow.xaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

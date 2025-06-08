@@ -3,64 +3,38 @@
                     xmlns:h="https://github.com/HeBianGu"
                     xmlns:lc="clr-namespace:H.Windows.Main.Commands"
                     xmlns:local="clr-namespace:H.Windows.Main">
-
-    <Style x:Key="S.MainWindow.Base"
-           TargetType="{x:Type local:MainWindow}">
-        <Setter Property="WindowStyle" Value="None" />
-        <Setter Property="Foreground" Value="{DynamicResource {x:Static BrushKeys.Foreground}}" />
-        <Setter Property="Icon" Value="{h:Logo}" />
-        <Setter Property="FontSize" Value="{DynamicResource {x:Static h:FontSizeKeys.Default}}" />
-        <Setter Property="FontFamily" Value="{DynamicResource {x:Static SystemKeys.FontFamily}}" />
-        <Setter Property="ResizeMode" Value="CanResizeWithGrip" />
-        <Setter Property="BorderThickness" Value="0" />
-        <Setter Property="Cattach.CaptionBackground">
-            <Setter.Value>
-                <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.CaptionBackground}}" />
-            </Setter.Value>
-        </Setter>
-        <Setter Property="Cattach.CaptionForeground">
-            <Setter.Value>
-                <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.CaptionForeground}}" />
-            </Setter.Value>
-        </Setter>
-        <Setter Property="Cattach.CaptionMargin" Value="5 0" />
-        <Setter Property="Cattach.TitleFontSize" Value="{DynamicResource {x:Static FontSizeKeys.Header4}}" />
-        <Setter Property="Cattach.TitleForeground" Value="{Binding RelativeSource={RelativeSource Mode=Self}, Path=(Cattach.CaptionForeground)}" />
-        <Setter Property="Cattach.TitleMargin" Value="0 5" />
-        <Setter Property="Background" Value="{DynamicResource {x:Static BrushKeys.Background}}" />
-        <Setter Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.BorderBrush}}" />
-        <Setter Property="BorderThickness" Value="1" />
-        <Setter Property="Cattach.CornerRadius" Value="2" />
-        <!--<Setter Property="WindowStartupLocation" Value="CenterScreen" />-->
-        <Setter Property="SnapsToDevicePixels" Value="true" />
-        <Setter Property="CaptionHeight" Value="{DynamicResource {x:Static h:LayoutKeys.WindowCaptionHeight}}" />
-    </Style>
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/H.Windows.Main;component/MainWindow.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+    <DropShadowEffect x:Key="S.DropShadowEffect.Default"
+                      BlurRadius="8"
+                      Direction="270"
+                      Opacity=".42"
+                      RenderingBias="Performance"
+                      ShadowDepth="1.5"
+                      Color="#000000" />
 
     <Style BasedOn="{StaticResource S.MainWindow.Base}"
-           TargetType="{x:Type local:MainWindow}">
-        <Setter Property="h:GridSplitterBox.MenuMaxWidth" Value="200" />
-        <Setter Property="h:GridSplitterBox.MenuMinWidth" Value="50" />
-        <Setter Property="h:GridSplitterBox.IsExpanded" Value="False" />
-        <Setter Property="h:GridSplitterBox.Mode" Value="Extend" />
-        <Setter Property="h:GridSplitterBox.GridSpliteWidth" Value="2" />
-        <Setter Property="WindowChrome.WindowChrome">
-            <Setter.Value>
-                <WindowChrome CaptionHeight="{Binding RelativeSource={RelativeSource AncestorType=local:MainWindow}, Path=CaptionHeight}"
-                              GlassFrameThickness="0"
-                              NonClientFrameEdges="None"
-                              ResizeBorderThickness="8"
-                              UseAeroCaptionButtons="False" />
-            </Setter.Value>
-        </Setter>
+           TargetType="{x:Type local:TransparencyMainWindow}">
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="{x:Type local:MainWindow}">
+                <ControlTemplate TargetType="{x:Type local:TransparencyMainWindow}">
                     <Grid x:Name="grid">
                         <Border x:Name="PART_Border"
-                                Background="{TemplateBinding BorderBrush}">
+                                Effect="{StaticResource S.DropShadowEffect.Default}">
+                            <Border.Style>
+                                <Style TargetType="Border">
+                                    <Setter Property="Margin" Value="8" />
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=Window}, Path=WindowState}"
+                                                     Value="Maximized">
+                                            <Setter Property="Margin" Value="0" />
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Border.Style>
                             <AdornerDecorator>
-                                <Border Margin="1"
-                                        Background="{TemplateBinding Background}"
+                                <Border Background="{TemplateBinding Background}"
                                         BorderBrush="{TemplateBinding BorderBrush}"
                                         BorderThickness="{TemplateBinding BorderThickness}"
                                         Cattach.IsGuideAdonerElement="True"
@@ -163,6 +137,7 @@
                                 </Border>
                             </AdornerDecorator>
                         </Border>
+
                         <Border IsHitTestVisible="False"
                                 Opacity="{Binding Source={x:Static h:WindowSetting.Instance}, Path=Opacity}"
                                 Visibility="{Binding Source={x:Static h:WindowSetting.Instance}, Path=UseBackImage, Converter={x:Static Converter.GetTrueToVisible}}">
@@ -177,29 +152,10 @@
                             <Setter TargetName="WindowResizeGrip" Property="Visibility" Value="Visible" />
                         </Trigger>
                         <Trigger Property="WindowState" Value="Maximized">
-                            <!--<Setter TargetName="Btn_Maximize" Property="Visibility" Value="Collapsed" />
-                            <Setter TargetName="Btn_Restore" Property="Visibility" Value="Visible" />-->
                             <Setter TargetName="PART_Border" Property="Padding" Value="7" />
                         </Trigger>
-                        <!--<Trigger Property="WindowState" Value="Normal">
-                        -->
-                        <!--<Setter TargetName="Btn_Maximize" Property="Visibility" Value="Visible" />-->
-                        <!--<Setter TargetName="Btn_Restore" Property="Visibility" Value="Collapsed" />-->
-                        <!--
-                        </Trigger>-->
-                        <!--<Trigger Property="ResizeMode" Value="NoResize">
-                            <Setter TargetName="Btn_Minimize" Property="Visibility" Value="Collapsed" />
-                            <Setter TargetName="Btn_Maximize" Property="Visibility" Value="Collapsed" />
-                            <Setter TargetName="Btn_Restore" Property="Visibility" Value="Collapsed" />
-                        </Trigger>-->
                         <Trigger Property="IsActive" Value="False">
                             <Setter TargetName="grid" Property="Opacity" Value="0.5" />
-                        </Trigger>
-                        <Trigger Property="SideTemplate" Value="{x:Null}">
-                            <Setter TargetName="gsb" Property="MenuWidth" Value="0" />
-                            <Setter TargetName="gsb" Property="MenuMinWidth" Value="0" />
-                            <Setter TargetName="gsb" Property="UseToggle" Value="False" />
-                            <Setter TargetName="gsb" Property="GridSpliteWidth" Value="0" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

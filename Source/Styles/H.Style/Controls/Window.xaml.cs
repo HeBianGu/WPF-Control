@@ -18,6 +18,10 @@ public class WindowKeys
     [Obsolete("用FontIconButton替换")]
     public static ComponentResourceKey Button => new ComponentResourceKey(typeof(WindowKeys), "S.Window.Button");
     public static ComponentResourceKey FontIconButton => new ComponentResourceKey(typeof(WindowKeys), "S.Window.FontIconButton");
+    public static ComponentResourceKey MaximizeButton => new ComponentResourceKey(typeof(WindowKeys), "S.Window.FontIconButton.Maximize");
+    public static ComponentResourceKey MinimizeButton => new ComponentResourceKey(typeof(WindowKeys), "S.Window.FontIconButton.Minimize");
+    public static ComponentResourceKey RestoreButton => new ComponentResourceKey(typeof(WindowKeys), "S.Window.FontIconButton.Restore");
+    public static ComponentResourceKey CloseButton => new ComponentResourceKey(typeof(WindowKeys), "S.Window.FontIconButton.Close");
 
     public static ComponentResourceKey WindowChrome => new ComponentResourceKey(typeof(WindowKeys), "S.Window.WindowChrome");
 
