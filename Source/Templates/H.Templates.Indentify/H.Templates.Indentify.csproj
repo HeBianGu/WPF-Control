@@ -1,0 +1,27 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <ApplicationIcon>logo.ico</ApplicationIcon>
+    <GeneratePackageOnBuild>False</GeneratePackageOnBuild>
+    <Product>H文件管理器</Product>
+    <Description>电脑文件管理器：包括对文件的收藏、评分、打标签和按工程管理，支持多种预览方式（表格，缩率图，预览图等），对图片、视频支持预览，放大，缩小，对视频支持播放、截图、全屏播放、放大、缩小，定位到截图时间位置等，自定义收藏夹、标签夹</Description>
+    <AssemblyVersion>1.0.0</AssemblyVersion>
+    <FileVersion>1.0.0</FileVersion>
+    <Copyright>Copyright © HeBianGu 2024-2024</Copyright>
+    <Authors></Authors>
+    <PackageProjectUrl>https://github.com/HeBianGu</PackageProjectUrl>
+    <Title>H文件管理器</Title>
+    <Version>1.0.0</Version>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Include="logo.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\ApplicationBases\H.ApplicationBases.Default\H.ApplicationBases.Default.csproj" />
+    <ProjectReference Include="..\..\ApplicationBases\H.ApplicationBases.Identify\H.ApplicationBases.Identify.csproj" />
+    <ProjectReference Include="..\..\Datas\H.Data.Test\H.Data.Test.csproj" />
+    <ProjectReference Include="..\..\Windows\H.Windows.Main\H.Windows.Main.csproj" />
+  </ItemGroup>
+</Project>
