@@ -156,9 +156,11 @@
                     <DockPanel>
                         <DockPanel DockPanel.Dock="Top"
                                    LastChildFill="False">
-                            <Control DockPanel.Dock="Left"
+                            <Control VerticalAlignment="Stretch"
+                                     DockPanel.Dock="Left"
                                      Template="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(Cattach.CaptionLeftTemplate)}" />
-                            <Control DockPanel.Dock="Right"
+                            <Control VerticalAlignment="Stretch"
+                                     DockPanel.Dock="Right"
                                      Template="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(Cattach.CaptionRightTemplate)}" />
                         </DockPanel>
                         <Control DockPanel.Dock="Bottom"

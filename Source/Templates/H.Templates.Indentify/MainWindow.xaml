@@ -16,7 +16,7 @@
     </Window.DataContext>
     <h:MainWindow.CaptionTempate>
         <ControlTemplate>
-            <DockPanel HorizontalAlignment="Right"
+            <DockPanel HorizontalAlignment="Left"
                        LastChildFill="False"
                        WindowChrome.IsHitTestVisibleInChrome="True">
                 <Menu>
@@ -24,6 +24,14 @@
                         <Style BasedOn="{StaticResource {x:Static MenuItemKeys.BindCommand}}"
                                TargetType="MenuItem" />
                     </Menu.Resources>
+                    <MenuItem Header="身份认证"
+                              ToolTip="用户管理、角色管理、权限管理、操作日志等">
+                        <MenuItem Command="{ShowUserViewCommand}" />
+                        <MenuItem Command="{ShowRoleViewCommand}" />
+                        <MenuItem Command="{ShowAuthorityViewCommand}" />
+                        <Separator />
+                        <MenuItem Command="{ShowOperationViewCommand}" />
+                    </MenuItem>
                     <MenuItem Header="帮助"
                               ToolTip="新手向导、技术支持、关于、反馈、官网、联系方式和开发文档等">
                         <MenuItem Command="{ShowGuideCommand}" />
