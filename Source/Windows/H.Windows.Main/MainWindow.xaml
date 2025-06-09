@@ -6,7 +6,7 @@
 
     <Style x:Key="S.MainWindow.Base"
            TargetType="{x:Type local:MainWindow}">
-        <Setter Property="WindowStyle" Value="None" />
+        <Setter Property="WindowStyle" Value="SingleBorderWindow" />
         <Setter Property="Foreground" Value="{DynamicResource {x:Static BrushKeys.Foreground}}" />
         <Setter Property="Icon" Value="{h:Logo}" />
         <Setter Property="FontSize" Value="{DynamicResource {x:Static h:FontSizeKeys.Default}}" />
