@@ -111,11 +111,10 @@
         </Style.Triggers>
     </Style>
 
-    <Style x:Key="{ComponentResourceKey ResourceId=S.Border.State.StateBorderAnimation,
+    <Style x:Key="{ComponentResourceKey ResourceId=S.Border.State.Animation,
                                         TypeInTargetAssembly={x:Type local:DiagramKeys}}"
            BasedOn="{StaticResource {x:Static local:DiagramKeys.StateBorder}}"
            TargetType="Border">
-
         <Style.Triggers>
             <DataTrigger Binding="{Binding State}"
                          Value="Running">

@@ -13,6 +13,7 @@ using H.Controls.Diagram.Presenter.Extensions;
 namespace H.Controls.Diagram.Presenters.OpenCV.Base;
 public abstract class OpenCVNodeDataBase : OpenCVStyleNodeDataBase, IOpenCVNodeData
 {
+ 
     ~OpenCVNodeDataBase()
     {
         this.Mat?.Dispose();
@@ -75,6 +76,13 @@ public abstract class OpenCVNodeDataBase : OpenCVStyleNodeDataBase, IOpenCVNodeD
             RaisePropertyChanged();
         }
     }
+
+    //public override void LoadDefault()
+    //{
+    //    base.LoadDefault();
+    //    this.Width = 240;
+    //    this.Height = 80;
+    //}
 
     //private Mat _preMat;
     //protected Mat PreviourMat => this._preMat;
