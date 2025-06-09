@@ -103,4 +103,16 @@ public class MainWindow : Window, IMainWindow, IAdornerDialogElement
     {
         return this._adornerBorder ?? this.Content as UIElement;
     }
+
+    //protected override void OnStateChanged(EventArgs e)
+    //{
+    //    base.OnStateChanged(e);
+    //    if (this.WindowState == WindowState.Maximized)
+    //    {
+    //        this.Top = 0;
+    //        this.Left = 0;
+    //        this.Width = SystemParameters.WorkArea.Width;
+    //        this.Height = SystemParameters.WorkArea.Height;
+    //    }
+    //}
 }
