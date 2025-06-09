@@ -6,6 +6,9 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
+using H.ValueConverter;
+using System.Globalization;
+using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace H.Windows.Main;
@@ -16,6 +19,7 @@ public class TransparencyMainWindow : MainWindow
     {
         DefaultStyleKeyProperty.OverrideMetadata(typeof(TransparencyMainWindow), new FrameworkPropertyMetadata(typeof(TransparencyMainWindow)));
     }
+
     public TransparencyMainWindow()
     {
         this.AllowsTransparency = true;
