@@ -14,7 +14,7 @@
                       ShadowDepth="1.5"
                       Color="#000000" />
 
-    <Style BasedOn="{StaticResource S.MainWindow.Base}"
+    <Style BasedOn="{StaticResource {x:Static local:MainWindowKeys.Default}}"
            TargetType="{x:Type local:TransparencyMainWindow}">
         <Setter Property="Template">
             <Setter.Value>

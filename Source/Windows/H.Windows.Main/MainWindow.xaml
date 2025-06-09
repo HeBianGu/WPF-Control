@@ -36,7 +36,8 @@
         <Setter Property="CaptionHeight" Value="{DynamicResource {x:Static h:LayoutKeys.WindowCaptionHeight}}" />
     </Style>
 
-    <Style BasedOn="{StaticResource S.MainWindow.Base}"
+    <Style x:Key="{ComponentResourceKey ResourceId=S.MainWindow.Default,
+                                        TypeInTargetAssembly={x:Type local:MainWindowKeys}}" BasedOn="{StaticResource S.MainWindow.Base}"
            TargetType="{x:Type local:MainWindow}">
         <Setter Property="h:GridSplitterBox.MenuMaxWidth" Value="200" />
         <Setter Property="h:GridSplitterBox.MenuMinWidth" Value="50" />
@@ -206,4 +207,7 @@
             </Setter.Value>
         </Setter>
     </Style>
+
+    <Style BasedOn="{StaticResource {x:Static local:MainWindowKeys.Default}}"
+           TargetType="{x:Type local:MainWindow}" />
 </ResourceDictionary>

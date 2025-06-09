@@ -101,3 +101,8 @@ public class MainWindow : Window, IMainWindow
     //    this._boderOver.Visibility = Visibility.Collapsed;
     //}
 }
+
+public class MainWindowKeys
+{
+    public static ComponentResourceKey Default => new ComponentResourceKey(typeof(MainWindowKeys), "S.MainWindow.Default");
+}
