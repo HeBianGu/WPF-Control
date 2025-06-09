@@ -22,7 +22,7 @@
                     <Grid x:Name="grid">
                         <Border x:Name="PART_Border"
                                 Effect="{StaticResource S.DropShadowEffect.Default}">
-                            <Border.Style>
+                            <!--<Border.Style>
                                 <Style TargetType="Border">
                                     <Setter Property="Margin" Value="8" />
                                     <Style.Triggers>
@@ -32,7 +32,7 @@
                                         </DataTrigger>
                                     </Style.Triggers>
                                 </Style>
-                            </Border.Style>
+                            </Border.Style>-->
                             <AdornerDecorator>
                                 <Border Background="{TemplateBinding Background}"
                                         BorderBrush="{TemplateBinding BorderBrush}"

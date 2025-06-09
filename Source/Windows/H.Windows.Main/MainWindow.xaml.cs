@@ -10,11 +10,19 @@ using System.Windows.Controls;
 
 namespace H.Windows.Main;
 
-public class MainWindow : Window, IMainWindow
+[TemplatePart(Name = "PART_AdornerBorder")]
+public class MainWindow : Window, IMainWindow, IAdornerDialogElement
 {
     static MainWindow()
     {
         DefaultStyleKeyProperty.OverrideMetadata(typeof(MainWindow), new FrameworkPropertyMetadata(typeof(MainWindow)));
+    }
+
+    private UIElement _adornerBorder;
+    public override void OnApplyTemplate()
+    {
+        base.OnApplyTemplate();
+        _adornerBorder = this.Template.FindName("PART_AdornerBorder", this) as UIElement;
     }
 
     public double CaptionHeight
@@ -91,18 +99,8 @@ public class MainWindow : Window, IMainWindow
             }
         }));
 
-    //public void ShowOver()
-    //{
-    //    this._boderOver.Visibility = Visibility.Visible;
-    //}
-
-    //public void CloseOver()
-    //{
-    //    this._boderOver.Visibility = Visibility.Collapsed;
-    //}
-}
-
-public class MainWindowKeys
-{
-    public static ComponentResourceKey Default => new ComponentResourceKey(typeof(MainWindowKeys), "S.MainWindow.Default");
+    public UIElement GetElement()
+    {
+        return this._adornerBorder ?? this.Content as UIElement;
+    }
 }

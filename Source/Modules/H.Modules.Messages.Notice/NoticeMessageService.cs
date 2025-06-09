@@ -21,7 +21,7 @@ namespace H.Modules.Messages.Notice
         {
             Application.Current.Dispatcher.Invoke(() =>
             {
-                UIElement child = Application.Current.MainWindow.Content as UIElement;
+                UIElement child = PresenterAdorner.GetAdonerElement();
                 AdornerLayer layer = AdornerLayer.GetAdornerLayer(child);
                 if (layer == null)
                     return;

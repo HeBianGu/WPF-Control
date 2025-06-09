@@ -17,8 +17,7 @@ namespace H.Modules.Messages.Dialog
     {
         public override void Execute(object parameter)
         {
-            Window window = Application.Current.MainWindow;
-            UIElement child = window.Content as UIElement;
+            UIElement child = PresenterAdorner.GetAdonerElement();
             AdornerLayer layer = AdornerLayer.GetAdornerLayer(child);
             AdornerDialogPresenter contentDialog = new AdornerDialogPresenter(parameter);
             PresenterAdorner adorner = new PresenterAdorner(child, contentDialog);

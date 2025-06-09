@@ -21,8 +21,7 @@ namespace H.Modules.Messages.Snack
         {
             return Application.Current.Dispatcher.Invoke(() =>
               {
-                  UIElement child = Application.Current.MainWindow?.Content as UIElement;
-
+                  UIElement child = PresenterAdorner.GetAdonerElement();
                   if (child == null)
                       return false;
                   AdornerLayer layer = AdornerLayer.GetAdornerLayer(child);

@@ -106,7 +106,8 @@
     </Window.DataContext>
     <h:MainWindow.CaptionTempate>
         <ControlTemplate>
-            <DockPanel HorizontalAlignment="Right"
+            <DockPanel HorizontalAlignment="Right" 
+                       WindowChrome.IsHitTestVisibleInChrome="True"
                        LastChildFill="False">
                 <FontIconButton Command="{ShowSettingCommand}"
                                 Style="{DynamicResource {x:Static FontIconButtonKeys.Command}}" />

@@ -24,7 +24,7 @@
             </FontIconTextBlock>
             <TextBlock Margin="5,0"
                        VerticalAlignment="Center">
-                <Hyperlink x:Name="hl"
+                <Hyperlink x:Name="hl" Foreground="{Binding RelativeSource={RelativeSource AncestorType=TextBlock},Path=Foreground}"
                            Command="{lc:ShowCurrentUserCommand}">
                     <TextBlock Text="{Binding Source={Ioc Type={x:Type ILoginService}}, Path=User.Name, FallbackValue=登录}" />
                 </Hyperlink>

@@ -17,6 +17,7 @@ global using System.Threading;
 global using System.Threading.Tasks;
 global using System.Windows;
 global using System.Windows.Documents;
+using H.Common.Interfaces;
 
 namespace H.Modules.Messages.Dialog
 {
@@ -44,10 +45,9 @@ namespace H.Modules.Messages.Dialog
         public object Presenter { get; set; }
 
         private ManualResetEvent _waitHandle = new ManualResetEvent(false);
-        public async Task<bool?> ShowDialog(Window owner = null)
+        public async Task<bool?> ShowDialog(UIElement owner = null)
         {
-            Window window = owner ?? Application.Current.MainWindow;
-            UIElement child = window.Content as UIElement;
+            UIElement child = PresenterAdorner.GetAdonerElement(owner);
             AdornerLayer layer = AdornerLayer.GetAdornerLayer(child);
             PresenterAdorner adorner = new PresenterAdorner(child, this);
             layer.Add(adorner);
@@ -59,6 +59,7 @@ namespace H.Modules.Messages.Dialog
                 return this.DialogResult;
             });
         }
+
         #region - IDialogWindow -
         protected virtual async Task TransactionShow(PresenterAdorner presenterAdorner)
         {
@@ -109,7 +110,7 @@ namespace H.Modules.Messages.Dialog
         {
             Application.Current.Dispatcher.Invoke(async () =>
             {
-                UIElement child = Application.Current.MainWindow.Content as UIElement;
+                UIElement child = PresenterAdorner.GetAdonerElement();
                 AdornerLayer layer = AdornerLayer.GetAdornerLayer(child);
                 System.Collections.Generic.IEnumerable<PresenterAdorner> adorners = layer.GetAdorners(child)?.OfType<PresenterAdorner>().Where(x => x.Presenter == this);
                 if (adorners == null)

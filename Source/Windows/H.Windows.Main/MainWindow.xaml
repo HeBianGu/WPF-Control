@@ -60,7 +60,7 @@
                         <Border x:Name="PART_Border"
                                 Background="{TemplateBinding BorderBrush}">
                             <AdornerDecorator>
-                                <Border Margin="1"
+                                <Border Margin="1" x:Name="PART_AdornerBorder"
                                         Background="{TemplateBinding Background}"
                                         BorderBrush="{TemplateBinding BorderBrush}"
                                         BorderThickness="{TemplateBinding BorderThickness}"

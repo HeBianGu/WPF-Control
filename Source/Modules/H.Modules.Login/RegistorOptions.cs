@@ -74,7 +74,7 @@ namespace H.Modules.Login
         }
 
         private string _image;
-        [DefaultValue("pack://application:,,,/H.Style;component/Logo.ico")]
+        [DefaultValue("pack://application:,,,/H.Style;component/Assets/Logo.ico")]
         [Display(Name = "左侧图片")]
         public string Image
         {

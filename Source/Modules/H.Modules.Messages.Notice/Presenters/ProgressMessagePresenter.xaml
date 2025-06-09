@@ -6,7 +6,7 @@
     <DataTemplate DataType="{x:Type local:ProgressMessagePresenter}">
         <Grid Width="350"
               Height="60"
-              Margin="0,0,5,5"
+              Margin="1"
               ToolTip="{Binding Message}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="50" />
@@ -51,7 +51,8 @@
             <FontIconButton Grid.Column="2"
                             HorizontalAlignment="Right"
                             VerticalAlignment="Center"
-                            Content="{x:Static FontIcons.Cancel}">
+                            Content="{x:Static FontIcons.Cancel}"
+                            WindowChrome.IsHitTestVisibleInChrome="True">
                 <b:Interaction.Behaviors>
                     <h:ButtonRemoveItemBehavior />
                 </b:Interaction.Behaviors>

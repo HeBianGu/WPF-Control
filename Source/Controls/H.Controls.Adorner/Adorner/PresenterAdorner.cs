@@ -6,6 +6,7 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
+using H.Common.Interfaces;
 using H.Controls.Adorner.Adorner.Base;
 
 namespace H.Controls.Adorner.Adorner;
@@ -31,5 +32,18 @@ public class PresenterAdorner : VisualCollectionAdornerBase
     {
         this._contentPresenter.Arrange(new Rect(this.AdornedElement.RenderSize));
         return base.ArrangeOverride(finalSize);
+    }
+
+    public static UIElement GetAdonerElement(UIElement element = null)
+    {
+        if (element == null)
+        {
+            if (Application.Current.MainWindow is IAdornerDialogElement adorner)
+                return adorner.GetElement();
+            return Application.Current.MainWindow.Content as UIElement;
+        }
+        if (element is IAdornerDialogElement dialogElement)
+            return dialogElement.GetElement();
+        return element;
     }
 }
