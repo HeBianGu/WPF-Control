@@ -29,4 +29,6 @@ public abstract class DiagramableNodeDataBase : TextNodeData, IDiagramableNodeDa
     protected IEnumerable<INodeData> AllFromNodeDatas => this.GetAllFromNodeDatas();
 
     protected IEnumerable<INodeData> FromNodeDatas => this.GetFromNodeDatas();
+
+    protected IEnumerable<INodeData> ToNodeDatas => this.GetToNodeDatas();
 }

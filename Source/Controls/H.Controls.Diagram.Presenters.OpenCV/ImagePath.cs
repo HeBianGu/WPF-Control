@@ -58,7 +58,7 @@ public static class ImagePath
     public const string Pentagon = "Data/Image/pentagon.png";
 }
 
-public class GetOpenCVImagesExtension : MarkupExtension
+public class GetOpenCVImagesExtension : System.Windows.Markup.MarkupExtension
 {
     public override object ProvideValue(IServiceProvider serviceProvider)
     {

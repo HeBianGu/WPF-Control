@@ -1,41 +1,104 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:b="clr-namespace:H.Controls.Diagram.Presenters.OpenCV.Base"
+                    xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
                     xmlns:dt="clr-namespace:H.Controls.Diagram.Presenters.OpenCV.NodeDatas.Detector"
                     xmlns:h="https://github.com/HeBianGu"
+                    xmlns:lb="clr-namespace:H.Controls.Diagram.Presenters.OpenCV.Base"
                     xmlns:local="clr-namespace:H.Controls.Diagram.Presenters.OpenCV">
 
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/H.Controls.Diagram.Presenters.OpenCV;component/OpenCV.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Controls.Diagram.Presenters.OpenCV;component/NodeDatas/If/OpenCVPropertyConditionPrensenter.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <DataTemplate DataType="{x:Type b:OpenCVStyleNodeDataBase}">
-        <Border Style="{DynamicResource {x:Static h:DiagramKeys.StateBorderAnimation}}">
-            <Grid>
-                <TextBox Style="{DynamicResource {x:Static h:DiagramKeys.EditTextBox}}" />
-                <Border Width="{Binding FlagLength}"
-                        Margin="-1"
-                        HorizontalAlignment="Left"
-                        Background="{Binding RelativeSource={RelativeSource AncestorType=Border}, Path=(TextBlock.Foreground)}"
-                        BorderThickness="0"
-                        CornerRadius="{Binding CornerRadius, Converter={x:Static h:Converter.GetDoubleToCornerRadiusLeft}}"
-                        Visibility="{Binding UseLeft, Converter={x:Static h:Converter.GetTrueToVisible}}" />
-                <Border Width="{Binding FlagLength}"
-                        Margin="-1"
-                        HorizontalAlignment="Right"
-                        Background="{Binding RelativeSource={RelativeSource AncestorType=Border}, Path=(TextBlock.Foreground)}"
-                        CornerRadius="{Binding CornerRadius, Converter={x:Static h:Converter.GetDoubleToCornerRadiusRigth}}"
-                        Visibility="{Binding UseRight, Converter={x:Static h:Converter.GetTrueToVisible}}" />
-                <FontIconTextBlock Margin="5,0"
-                                   HorizontalAlignment="Right"
-                                   VerticalAlignment="Center"
-                                   Text="{Binding Icon}"
-                                   ToolTip="{Binding Description}" />
-            </Grid>
+    <DataTemplate DataType="{x:Type lb:OpenCVStyleNodeDataBase}">
+        <Border Margin="3"
+                Background="White"
+                TextBlock.Foreground="Black">
+            <Border.Style>
+                <Style BasedOn="{StaticResource {x:Static h:DiagramKeys.StateBorder}}"
+                       TargetType="Border">
+                    <!--<Style.Triggers>
+                     <Trigger Property="IsMouseOver" Value="True">
+                         <Setter Property="BorderBrush" Value="{DynamicResource {x:Static h:BrushKeys.Selected}}" />
+                         <Setter Property="BorderThickness" Value="2" />
+                         <Setter Property="Background" Value="{DynamicResource {x:Static h:BrushKeys.MouseOver}}" />
+
+                     </Trigger>
+                     <DataTrigger Binding="{Binding IsSelected}"
+                                  Value="True">
+                         <Setter Property="BorderBrush" Value="{DynamicResource {x:Static h:BrushKeys.Accent}}" />
+                         <Setter Property="BorderThickness" Value="2" />
+                         <Setter Property="Background" Value="{DynamicResource {x:Static h:BrushKeys.MouseOver}}" />
+
+                     </DataTrigger>
+                 </Style.Triggers>-->
+                </Style>
+            </Border.Style>
+            <b:Interaction.Triggers>
+                <b:EventTrigger EventName="Loaded">
+                    <b:InvokeCommandAction Command="{Binding LoadedCommand}"
+                                           CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Diagram}, Path=DataContext}" />
+                </b:EventTrigger>
+            </b:Interaction.Triggers>
+            <DockPanel>
+                <Grid>
+                    <Border Width="30"
+                            Margin="-1"
+                            HorizontalAlignment="Left"
+                            Background="{Binding RelativeSource={RelativeSource AncestorType=Border}, Path=BorderBrush}"
+                            BorderThickness="0"
+                            CornerRadius="{Binding CornerRadius, Converter={x:Static h:Converter.GetDoubleToCornerRadiusLeft}}">
+                        <Border.Style>
+                            <Style TargetType="Border">
+                                <Setter Property="Visibility" Value="Hidden" />
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding State}"
+                                                 Value="Running">
+                                        <Setter Property="Visibility" Value="Visible" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding State}"
+                                                 Value="Success">
+                                        <Setter Property="Visibility" Value="Visible" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding State}"
+                                                 Value="Error">
+                                        <Setter Property="Visibility" Value="Visible" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Border.Style>
+                    </Border>
+                    <FontIconTextBlock x:Name="icon"
+                                       Margin="0,0"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center"
+                                       Text="{Binding Icon}"
+                                       ToolTip="{Binding Description}" />
+                </Grid>
+                <TextBlock HorizontalAlignment="Center"
+                           VerticalAlignment="Center"
+                           Text="{Binding Text}"
+                           TextTrimming="CharacterEllipsis" />
+            </DockPanel>
         </Border>
+        <DataTemplate.Triggers>
+            <DataTrigger Binding="{Binding State}"
+                         Value="Running">
+                <Setter TargetName="icon" Property="Foreground" Value="White" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding State}"
+                         Value="Success">
+                <Setter TargetName="icon" Property="Foreground" Value="White" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding State}"
+                         Value="Error">
+                <Setter TargetName="icon" Property="Foreground" Value="White" />
+            </DataTrigger>
+        </DataTemplate.Triggers>
     </DataTemplate>
 
-    <DataTemplate DataType="{x:Type b:OpenCVImageNodeDataBase}">
+    <!--<DataTemplate DataType="{x:Type b:OpenCVImageNodeDataBase}">
         <Border Style="{DynamicResource {x:Static h:DiagramKeys.StateBorderAnimation}}">
             <Grid>
                 <Image Width="40"
@@ -46,9 +109,9 @@
                 <TextBox Style="{DynamicResource {x:Static h:DiagramKeys.EditTextBox}}" />
             </Grid>
         </Border>
-    </DataTemplate>
+    </DataTemplate>-->
 
-    <DataTemplate DataType="{x:Type b:VideoCaptureSrcNodeDataBase}">
+    <!--<DataTemplate DataType="{x:Type b:VideoCaptureSrcNodeDataBase}">
         <Border Style="{DynamicResource {x:Static h:DiagramKeys.StateBorderAnimation}}">
             <Grid>
                 <Image Width="40"
@@ -78,5 +141,5 @@
                 <TextBox Style="{DynamicResource {x:Static h:DiagramKeys.EditTextBox}}" />
             </Grid>
         </Border>
-    </DataTemplate>
+    </DataTemplate>-->
 </ResourceDictionary>

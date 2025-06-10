@@ -272,22 +272,29 @@ public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
         this.OnMouseDoubleClick(e);
     });
 
-    protected virtual void OnMouseDoubleClick(object e)
+    protected virtual async void OnMouseDoubleClick(object e)
     {
         if (e is MouseButtonEventArgs args && args.OriginalSource is FrameworkElement framework)
         {
             if (framework?.DataContext == null)
                 return;
-            {
-                IocMessage.Form?.ShowTabEdit(framework?.DataContext, x =>
-                {
 
-                }, null, x =>
-                {
-                    //x.UseGroupNames = "数据";
-                    x.UseCommand = false;
-                    //x.TabNames = new ObservableCollection<string>();
-                });
+            if (framework?.DataContext is IShowPropertyView showPropertyView)
+            {
+                var propertyPresenter = showPropertyView.GetPropertyPresenter();
+                await IocMessage.ShowDialog(propertyPresenter);
+            }
+            else
+            {
+                await IocMessage.Form?.ShowTabEdit(framework?.DataContext, x =>
+                 {
+
+                 }, null, x =>
+                 {
+                     //x.UseGroupNames = "数据";
+                     x.UseCommand = true;
+                     //x.TabNames = new ObservableCollection<string>();
+                 });
             }
         }
     }
@@ -407,4 +414,10 @@ public class Datas
 {
     public List<INodeData> NodeDatas { get; set; } = new List<INodeData>();
     public List<ILinkData> LinkDatas { get; set; } = new List<ILinkData>();
+}
+
+
+public interface IShowPropertyView
+{
+    object GetPropertyPresenter();
 }

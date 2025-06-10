@@ -17,7 +17,7 @@ public static class DiagramDataExtension
         return diagramData.NodeDatas.Where(x =>
         {
             var finds = x.GetFromNodeDatas(diagramData);
-            if (x is IPortableNodeData portable && portable.PortDatas.Count(x => x.PortType == PortType.Input) > 0)
+            if (x is IPortableNodeData portable && portable.PortDatas.Count(x => x.PortType == PortType.OutPut) == 0)
                 return false;
             return finds == null || finds.Count() == 0;
         });

@@ -6,9 +6,56 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
+using H.Extensions.Mvvm.Commands;
+
 namespace H.Controls.FilterBox
 {
-    public class PropertyConditionsPrensenter : DisplayBindableBase, IConditionable, IMetaSetting
+    public abstract class PropertyConditionsPrensenterBase: DisplayBindableBase
+    {
+      
+    }
+
+    public abstract class PropertyConditionsPrensenter<T> : PropertyConditionsPrensenterBase where T : IPropertyConditionPrensenter
+    {
+        private ObservableCollection<T> _propertyConfidtions = new ObservableCollection<T>();
+        public ObservableCollection<T> PropertyConfidtions
+        {
+            get { return _propertyConfidtions; }
+            set
+            {
+                _propertyConfidtions = value;
+                RaisePropertyChanged();
+            }
+        }
+
+
+        private T _selectedItem;
+        [System.Text.Json.Serialization.JsonIgnore]
+        [System.Xml.Serialization.XmlIgnore]
+        public T SelectedItem
+        {
+            get { return _selectedItem; }
+            set
+            {
+                _selectedItem = value;
+                RaisePropertyChanged();
+            }
+        }
+
+        [System.Text.Json.Serialization.JsonIgnore]
+        [System.Xml.Serialization.XmlIgnore]
+        public RelayCommand AddCommand => new RelayCommand(l =>
+        {
+            var item = this.Create();
+            this.PropertyConfidtions.Add(item);
+            if (this.SelectedItem == null)
+                this.SelectedItem = item;
+        });
+
+        protected abstract T Create();
+    }
+
+    public class PropertyConditionsPrensenter : PropertyConditionsPrensenter<PropertyConditionPrensenter>, IConditionable, IMetaSetting
     {
         public PropertyConditionsPrensenter()
         {
@@ -26,7 +73,6 @@ namespace H.Controls.FilterBox
 
         private ObservableCollection<PropertyInfo> _properties = new ObservableCollection<PropertyInfo>();
         [System.Text.Json.Serialization.JsonIgnore]
-
         [System.Xml.Serialization.XmlIgnore]
         public ObservableCollection<PropertyInfo> Properties
         {
@@ -34,31 +80,6 @@ namespace H.Controls.FilterBox
             set
             {
                 _properties = value;
-                RaisePropertyChanged();
-            }
-        }
-
-        private ObservableCollection<PropertyConditionPrensenter> _propertyConfidtions = new ObservableCollection<PropertyConditionPrensenter>();
-        public ObservableCollection<PropertyConditionPrensenter> PropertyConfidtions
-        {
-            get { return _propertyConfidtions; }
-            set
-            {
-                _propertyConfidtions = value;
-                RaisePropertyChanged();
-            }
-        }
-
-        private PropertyConditionPrensenter _selectedItem;
-        [System.Text.Json.Serialization.JsonIgnore]
-
-        [System.Xml.Serialization.XmlIgnore]
-        public PropertyConditionPrensenter SelectedItem
-        {
-            get { return _selectedItem; }
-            set
-            {
-                _selectedItem = value;
                 RaisePropertyChanged();
             }
         }
@@ -74,21 +95,15 @@ namespace H.Controls.FilterBox
             }
         }
 
-        [System.Text.Json.Serialization.JsonIgnore]
-
-        [System.Xml.Serialization.XmlIgnore]
-        public RelayCommand AddCommand => new RelayCommand(l =>
+        protected override PropertyConditionPrensenter Create()
         {
-            PropertyConditionPrensenter item = new PropertyConditionPrensenter() { ID = DateTime.Now.ToString("yyyyMMddHHmmssfff") };
-            item.Properties = this.Properties;
-            item.Load();
-            this.PropertyConfidtions.Add(item);
-            if (this.SelectedItem == null)
-                this.SelectedItem = item;
-        });
+          var result= new PropertyConditionPrensenter() { ID = DateTime.Now.ToString("yyyyMMddHHmmssfff") };
+            result.Properties = this.Properties;
+            result.Load();
+            return result;
+        }
 
         [System.Text.Json.Serialization.JsonIgnore]
-
         [System.Xml.Serialization.XmlIgnore]
         public RelayCommand ClearSelectionCommand => new RelayCommand(l =>
         {

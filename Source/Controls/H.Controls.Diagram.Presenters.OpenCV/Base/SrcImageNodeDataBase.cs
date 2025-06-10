@@ -37,15 +37,15 @@ public abstract class SrcImageNodeDataBase : OpenCVNodeDataBase, ISrcImageNodeDa
         }
     }
 
-    protected override IEnumerable<IPortData> CreatePortDatas()
-    {
-        {
-            IPortData port = CreatePortData();
-            port.Dock = Dock.Bottom;
-            port.PortType = PortType.OutPut;
-            yield return port;
-        }
-    }
+    //protected override IEnumerable<IPortData> CreatePortDatas()
+    //{
+    //    {
+    //        IPortData port = CreatePortData();
+    //        port.Dock = Dock.Bottom;
+    //        port.PortType = PortType.OutPut;
+    //        yield return port;
+    //    }
+    //}
 
     protected override async Task<IFlowableResult> BeforeInvokeAsync(IFlowableLinkData previors, IFlowableDiagramData diagram)
     {

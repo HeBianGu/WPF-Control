@@ -24,5 +24,10 @@ public static class DiagramableNodeDataExtension
     {
         return nodeData.GetAllFromNodeDatas().OfType<T>();
     }
+
+    public static IEnumerable<INodeData> GetToNodeDatas(this IDiagramableNodeData nodeData)
+    {
+        return nodeData.GetToNodeDatas(nodeData.DiagramData);
+    }
 }
 

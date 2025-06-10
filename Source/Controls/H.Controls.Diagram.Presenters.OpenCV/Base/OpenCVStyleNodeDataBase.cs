@@ -7,6 +7,8 @@
 // Licensed under the MIT License (the "License")
 
 global using H.Controls.Diagram.Presenter.NodeDatas;
+using H.Controls.Diagram.Presenter.LinkDatas;
+using H.Controls.Diagram.Presenter.PortDatas;
 using System.Windows.Controls;
 
 namespace H.Controls.Diagram.Presenters.OpenCV.Base;
@@ -55,9 +57,38 @@ public abstract class OpenCVStyleNodeDataBase : FlowableNodeData
     public override void LoadDefault()
     {
         base.LoadDefault();
-        this.Width = 180;
-        this.Height = 60;
+        this.Width = 120;
+        this.Height = 35;
+        this.CornerRadius = 2.0;
+        this.Fill = Brushes.White;
     }
+
+    protected override void InitPortDatas()
+    {
+        List<IPortData> ds = this.CreatePortDatas().ToList();
+        //foreach (IPortData item in ds)
+        //{
+        //    item.BuildTextData();
+        //}
+        this._defaultPortDatas = ds.ToList();
+        this.PortDatas = ds.ToList();
+    }
+
+    //protected override IEnumerable<IPortData> CreatePortDatas()
+    //{
+    //    {
+    //        IPortData port = CreatePortData();
+    //        port.Dock = Dock.Top;
+    //        port.PortType = PortType.Input;
+    //        yield return port;
+    //    }
+    //    {
+    //        IPortData port = CreatePortData();
+    //        port.Dock = Dock.Bottom;
+    //        port.PortType = PortType.OutPut;
+    //        yield return port;
+    //    }
+    //}
 
     protected override IEnumerable<IPortData> CreatePortDatas()
     {
@@ -72,6 +103,43 @@ public abstract class OpenCVStyleNodeDataBase : FlowableNodeData
             port.Dock = Dock.Bottom;
             port.PortType = PortType.OutPut;
             yield return port;
+        }
+
+        {
+            IPortData port = CreatePortData();
+            port.Dock = Dock.Left;
+            port.PortType = PortType.Input;
+            yield return port;
+        }
+        {
+            IPortData port = CreatePortData();
+            port.Dock = Dock.Right;
+            port.PortType = PortType.OutPut;
+            yield return port;
+        }
+    }
+
+    public override IFlowablePortData CreatePortData()
+    {
+        return new OpenCVFlowablePortData(this.ID, PortType.Both) { Width = 6, Height = 6 };
+    }
+
+    public class OpenCVFlowablePortData : FlowablePortData
+    {
+        public OpenCVFlowablePortData(string nodeID, PortType portType) : base(nodeID, portType)
+        {
+            this.Fill = Brushes.White;
+        }
+        public override ILinkData CreateLinkData()
+        {
+            return new FlowableLinkData()
+            {
+                FromNodeID = this.NodeID,
+                FromPortID = this.ID,
+                Text = this.Text ?? this.Name ?? this.Description,
+                Stroke = Brushes.Orange,
+
+            };
         }
     }
 }

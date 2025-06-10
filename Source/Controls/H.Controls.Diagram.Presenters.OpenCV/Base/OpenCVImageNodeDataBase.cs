@@ -16,12 +16,12 @@ public interface IOpenCVImageNodeData : INodeData, IOrderable
 
 }
 
+[Icon(FontIcons.Photo2)]
 public abstract class OpenCVImageNodeDataBase : SrcImageNodeDataBase, IOpenCVImageNodeData
 {
     public OpenCVImageNodeDataBase()
     {
         this.UseStart = true;
-        this.Icon = "\xe843";
         this.SrcFilePath = this.GetImagePath().ToDataPath();
     }
 

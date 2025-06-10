@@ -7,10 +7,12 @@
 // Licensed under the MIT License (the "License")
 
 using System.Text.Json.Serialization;
+using System.Windows;
 using System.Xml.Serialization;
 using H.Controls.Diagram.Presenter.Extensions;
 
 namespace H.Controls.Diagram.Presenters.OpenCV.Base;
+
 public abstract class OpenCVNodeDataBase : OpenCVStyleNodeDataBase, IOpenCVNodeData
 {
  
