@@ -37,7 +37,8 @@
     </Style>
 
     <Style x:Key="{ComponentResourceKey ResourceId=S.MainWindow.Default,
-                                        TypeInTargetAssembly={x:Type local:MainWindowKeys}}" BasedOn="{StaticResource S.MainWindow.Base}"
+                                        TypeInTargetAssembly={x:Type local:MainWindowKeys}}"
+           BasedOn="{StaticResource S.MainWindow.Base}"
            TargetType="{x:Type local:MainWindow}">
         <Setter Property="h:GridSplitterBox.MenuMaxWidth" Value="200" />
         <Setter Property="h:GridSplitterBox.MenuMinWidth" Value="50" />
@@ -60,7 +61,8 @@
                         <Border x:Name="PART_Border"
                                 Background="{TemplateBinding BorderBrush}">
                             <AdornerDecorator>
-                                <Border Margin="1" x:Name="PART_AdornerBorder"
+                                <Border x:Name="PART_AdornerBorder"
+                                        Margin="1"
                                         Background="{TemplateBinding Background}"
                                         BorderBrush="{TemplateBinding BorderBrush}"
                                         BorderThickness="{TemplateBinding BorderThickness}"

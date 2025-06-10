@@ -34,7 +34,8 @@
                                 </Style>
                             </Border.Style>
                             <AdornerDecorator>
-                                <Border Background="{TemplateBinding Background}"
+                                <Border x:Name="PART_AdornerBorder"
+                                        Background="{TemplateBinding Background}"
                                         BorderBrush="{TemplateBinding BorderBrush}"
                                         BorderThickness="{TemplateBinding BorderThickness}"
                                         Cattach.IsGuideAdonerElement="True"
