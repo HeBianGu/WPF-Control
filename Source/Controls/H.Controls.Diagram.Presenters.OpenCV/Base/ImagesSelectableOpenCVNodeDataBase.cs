@@ -6,6 +6,7 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
+using System.Linq;
 using System.Text.Json.Serialization;
 using H.Controls.Form.PropertyItem.Attribute.SourcePropertyItem;
 using H.Controls.Form.PropertyItem.ComboBoxPropertyItems;
@@ -29,11 +30,11 @@ public abstract class ImagesSelectableOpenCVNodeDataBase : OpenCVNodeDataBase
 
     [JsonIgnore]
     [Browsable(false)]
-    public IEnumerable<INodeData> SrcImageNodeDatas
+    public IEnumerable<ISrcImageNodeData> SrcImageNodeDatas
     {
         get
         {
-            return this.AllFromNodeDatas;
+            return this.AllFromNodeDatas.OfType<ISrcImageNodeData>();
         }
     }
 
