@@ -75,6 +75,7 @@ public class PortDropNodeDataBevaior : DropNodeDataBehaviorBase<Port>
         if (this.AssociatedObject.PortType == PortType.Input)
         {
             e.Effects = DragDropEffects.None;
+            this.AssociatedObject.AllowDrop = false;
         }
     }
 
@@ -91,7 +92,7 @@ public class PortDropNodeDataBevaior : DropNodeDataBehaviorBase<Port>
             return;
         diagram.AddNode(node);
         diagram.LinkNode(fromPort, node);
-        diagram.AligmentNodes();
+        node.AligmentLayout();
         this._cacheNode = node;
     }
 

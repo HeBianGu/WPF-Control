@@ -10,7 +10,24 @@ namespace H.Controls.Diagram;
 
 public static class NodeExtension
 {
-    public static void Aligment(this IEnumerable<Node> nodes)
+    public static void AligmentToNodesWithStartNode(this IEnumerable<Node> nodes)
+    {
+        //Action<IEnumerable<Node>> action = null;
+        //action = x =>
+        //{
+        //    foreach (Node node in x)
+        //    {
+        //        node.AligmentLayout();
+        //        List<Node> fromNodes = node.GetToNodes();
+        //        action.Invoke(fromNodes);
+        //    }
+        //};
+        IEnumerable<Node> ns = nodes.Where(x => x.LinksInto.Count == 0);
+        ns.AligmentToNodes();
+        //action.Invoke(ns);
+    }
+
+    public static void AligmentToNodes(this IEnumerable<Node> nodes)
     {
         Action<IEnumerable<Node>> action = null;
         action = x =>
@@ -22,8 +39,12 @@ public static class NodeExtension
                 action.Invoke(fromNodes);
             }
         };
-        IEnumerable<Node> ns = nodes.Where(x => x.LinksInto.Count == 0);
-        action.Invoke(ns);
+        action.Invoke(nodes);
+    }
+
+    public static void AligmentToNodes(this Node node)
+    {
+        AligmentToNodes(new List<Node>() { node });
     }
 
     public static Part SelectPreivewPart(this Part part)

@@ -152,6 +152,20 @@ public partial class Node : FlowablePart, INode
         return this.LinksInto.Select(k => k.FromNode).Where(filter ?? new Func<Node, bool>(l => true))?.ToList();
     }
 
+    public IEnumerable<Node> GetAllToNodes()
+    {
+        List<Node> toNodes = this.GetToNodes();
+        foreach (Node item in toNodes)
+        {
+            yield return item;
+            IEnumerable<Node> parts = item.GetAllToNodes();
+            foreach (Node part in parts)
+            {
+                yield return part;
+            }
+        }
+    }
+
     public IEnumerable<Part> GetAllParts(Func<Part, bool> filter = null)
     {
         yield return this;
@@ -216,56 +230,30 @@ public partial class Node : FlowablePart, INode
     {
         foreach (Link link in this.LinksInto)
         {
-            double spanHeight = ((link.FromNode.ActualHeight + this.ActualHeight) / 2) + 60;
-            double spanWidth = ((link.FromNode.ActualWidth + this.ActualWidth) / 2) + 60;
+            double spanHeight = ((link.FromNode.ActualHeight + this.ActualHeight) / 2) + 50;
+            double spanWidth = ((link.FromNode.ActualWidth + this.ActualWidth) / 2) + 50;
             double x = link.FromNode.Location.X;
             double y = link.FromNode.Location.Y;
 
+
             if (link.ToPort == null)
                 continue;
-            {
-                if (link.ToPort.Dock == Dock.Left)
-                {
-                    x = link.FromNode.Location.X + spanWidth;
-                }
-
-                if (link.ToPort.Dock == Dock.Right)
-                {
-                    x = link.FromNode.Location.X - spanWidth;
-                }
-
-                if (link.ToPort.Dock == Dock.Top)
-                {
-                    y = link.FromNode.Location.Y + spanHeight;
-                }
-
-                if (link.ToPort.Dock == Dock.Bottom)
-                {
-                    y = link.FromNode.Location.Y - spanHeight;
-                }
-            }
-
-            {
-                if (link.FromPort.Dock == Dock.Left)
-                {
-                    x = link.FromNode.Location.X - spanWidth;
-                }
-
-                if (link.FromPort.Dock == Dock.Right)
-                {
-                    x = link.FromNode.Location.X + spanWidth;
-                }
-
-                if (link.FromPort.Dock == Dock.Top)
-                {
-                    y = link.FromNode.Location.Y - spanHeight;
-                }
-
-                if (link.FromPort.Dock == Dock.Bottom)
-                {
-                    y = link.FromNode.Location.Y + spanHeight;
-                }
-            }
+            if (link.ToPort.Dock == Dock.Left)
+                x = link.FromNode.Location.X + spanWidth;
+            if (link.ToPort.Dock == Dock.Right)
+                x = link.FromNode.Location.X - spanWidth;
+            if (link.ToPort.Dock == Dock.Top)
+                y = link.FromNode.Location.Y + spanHeight;
+            if (link.ToPort.Dock == Dock.Bottom)
+                y = link.FromNode.Location.Y - spanHeight;
+            if (link.FromPort.Dock == Dock.Left)
+                x = link.FromNode.Location.X - spanWidth;
+            if (link.FromPort.Dock == Dock.Right)
+                x = link.FromNode.Location.X + spanWidth;
+            if (link.FromPort.Dock == Dock.Top)
+                y = link.FromNode.Location.Y - spanHeight;
+            if (link.FromPort.Dock == Dock.Bottom)
+                y = link.FromNode.Location.Y + spanHeight;
 
             if (link.ToPort.Dock == link.FromPort.Dock)
             {

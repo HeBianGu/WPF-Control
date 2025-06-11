@@ -12,27 +12,24 @@
     </ResourceDictionary.MergedDictionaries>
 
     <DataTemplate DataType="{x:Type lb:OpenCVStyleNodeDataBase}">
-        <Border Margin="3"
-                Background="White"
+        <Border Margin="2"
+                BorderThickness="2"
                 TextBlock.Foreground="Black">
             <Border.Style>
                 <Style BasedOn="{StaticResource {x:Static h:DiagramKeys.StateBorder}}"
                        TargetType="Border">
-                    <!--<Style.Triggers>
-                     <Trigger Property="IsMouseOver" Value="True">
-                         <Setter Property="BorderBrush" Value="{DynamicResource {x:Static h:BrushKeys.Selected}}" />
-                         <Setter Property="BorderThickness" Value="2" />
-                         <Setter Property="Background" Value="{DynamicResource {x:Static h:BrushKeys.MouseOver}}" />
-
-                     </Trigger>
-                     <DataTrigger Binding="{Binding IsSelected}"
-                                  Value="True">
-                         <Setter Property="BorderBrush" Value="{DynamicResource {x:Static h:BrushKeys.Accent}}" />
-                         <Setter Property="BorderThickness" Value="2" />
-                         <Setter Property="Background" Value="{DynamicResource {x:Static h:BrushKeys.MouseOver}}" />
-
-                     </DataTrigger>
-                 </Style.Triggers>-->
+                    <Setter Property="Background" Value="White" />
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="BorderBrush" Value="{DynamicResource {x:Static h:BrushKeys.Foreground}}" />
+                            <Setter Property="Background" Value="{DynamicResource {x:Static h:BrushKeys.LightGray}}" />
+                        </Trigger>
+                        <DataTrigger Binding="{Binding IsSelected}"
+                                     Value="True">
+                            <Setter Property="BorderBrush" Value="{DynamicResource {x:Static h:BrushKeys.Accent}}" />
+                            <Setter Property="Background" Value="{DynamicResource {x:Static h:BrushKeys.LightGray}}" />
+                        </DataTrigger>
+                    </Style.Triggers>
                 </Style>
             </Border.Style>
             <b:Interaction.Triggers>

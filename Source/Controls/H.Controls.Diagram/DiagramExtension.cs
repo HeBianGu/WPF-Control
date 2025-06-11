@@ -16,7 +16,7 @@ public static class DiagramExtension
     public static void AligmentNodes(this Diagram diagram)
     {
         var starts = diagram.Nodes.Where(x => x.LinksInto.Count == 0);
-        starts.Aligment();
+        starts.AligmentToNodes();
     }
 
     public static void LinkNode(this Diagram diagram, Node from, Node to, Dock dock = Dock.Bottom)
@@ -70,17 +70,33 @@ public static class DiagramExtension
             return;
         if (toPort == null)
             return;
+     
         var outputPorts = node.GetPorts(x => x.PortType.HasFlag(PortType.OutPut));
         var nodeFromPort = outputPorts.Where(x => x.Dock == fromPort.Dock).FirstOrDefault();
         if (nodeFromPort == null)
             nodeFromPort = outputPorts.FirstOrDefault();
         if (nodeFromPort == null)
             return;
+
+        var inputPorts = node.GetPorts(x => x.PortType.HasFlag(PortType.Input));
+        var nodeToPort = inputPorts.Where(x => x.Dock == toPort.Dock).FirstOrDefault();
+        if (nodeToPort == null)
+            nodeToPort = inputPorts.FirstOrDefault();
+        if (nodeToPort == null)
+            return;
         diagram.RemoveLink(link);
         diagram.AddNode(node);
-        diagram.LinkNode(fromPort, node);
+        //diagram.LinkNode(fromPort, node);
+        diagram.LinkPort(fromPort, nodeToPort);
         diagram.LinkPort(nodeFromPort, toPort);
-        diagram.AligmentNodes();
+        NodeLayer.SetPosition(node, link.ToNode.Location);
+        //node.GetToNodes().AligmentToNodes();
+        var tonodes = node.GetAllToNodes().ToList();
+        Vector offset = NodeLayer.GetPosition(node) - NodeLayer.GetPosition(link.FromNode);
+        foreach (var tonode in tonodes)
+        {
+            NodeLayer.SetPosition(tonode, NodeLayer.GetPosition(tonode) + offset);
+        }
     }
 
     public static void ZoomToFit(this IDiagram diagram, params Part[] parts)

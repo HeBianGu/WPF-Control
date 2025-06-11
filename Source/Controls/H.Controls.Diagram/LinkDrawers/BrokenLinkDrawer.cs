@@ -6,6 +6,8 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
+using System;
+
 namespace H.Controls.Diagram.LinkDrawers;
 
 /// <summary>
@@ -185,9 +187,23 @@ public class BrokenLinkDrawer : LinkDrawer
 
     private Point GetCenter(List<Point> points)
     {
+        // 直线
+        if (points.TrueForAll(p => p.X == points[0].X))
+        {
+            return new Point(points[0].X, (points.Min(x => x.Y) + points.Max(x => x.Y)) / 2);
+        }
+        // 直线
+        if (points.TrueForAll(p => p.Y == points[0].Y))
+        {
+            return new Point((points.Min(x => x.X) + points.Max(x => x.X)) / 2, points[0].Y);
+        }
+
         if (points.Count > 2)
             return new Point(points[2].X / 2 + points[1].X / 2, points[2].Y / 2 + points[1].Y / 2);
         return points.Count > 1 ? points[1] : points[0];
+
+        //  ToDo：获取最长的线作为文本显示位置
+
         //if (points.Count > 5)
         //{
         //    points = points.Take(points.Count - 5).ToList();

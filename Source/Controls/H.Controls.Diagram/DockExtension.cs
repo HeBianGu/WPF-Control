@@ -6,6 +6,8 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
+using H.Controls.Diagram.Parts;
+
 namespace H.Controls.Diagram;
 
 public static class DockExtension
@@ -23,6 +25,23 @@ public static class DockExtension
         if (dock == Dock.Left) return new Thickness(offset, 0, 0, 0);
         if (dock == Dock.Right) return new Thickness(0, 0, offset, 0);
         return dock == Dock.Top ? new Thickness(0, offset, 0, 0) : new Thickness(0, 0, 0, offset);
+    }
+
+    public static Vector GetNormalOffset(this Dock dock)
+    {
+        if (dock == Dock.Left)
+            return new Vector(1, 0);
+        if (dock == Dock.Right)
+            return new Vector(-1, 0);
+        if (dock == Dock.Top)
+            return new Vector(0, 1);
+        return new Vector(0, -1);
+    }
+
+    public static Vector GetOffset(this Dock dock, double spanwidth, double spanheight)
+    {
+        var nv = dock.GetNormalOffset();
+        return new Vector(nv.X * spanwidth, nv.Y * spanheight);
     }
 
     public static string GetIcon(this IPortData portData)

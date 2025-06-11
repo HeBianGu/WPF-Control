@@ -239,10 +239,11 @@ public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
     [Display(Name = "对齐节点", GroupName = "操作", Order = 5)]
     public virtual DisplayCommand AlignmentCommand => new DisplayCommand(e =>
     {
-        foreach (Node item in this.DataSource.Nodes)
-        {
-            item.AligmentLayout();
-        }
+        //foreach (Node item in this.DataSource.Nodes)
+        //{
+        //    item.AligmentLayout();
+        //}
+        this.DataSource.Nodes.AligmentToNodesWithStartNode();
     }, x => this.DataSource.Nodes.Count > 0);
 
     public RelayCommand ItemsChangedCommand => new RelayCommand(e =>
