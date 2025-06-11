@@ -18,6 +18,8 @@ public interface IDiagramableNodeData : INodeData
 public abstract class DiagramableNodeDataBase : TextNodeData, IDiagramableNodeData
 {
     private IDiagramData _diagramData;
+    [JsonIgnore]
+    [Browsable(false)]
     public IDiagramData DiagramData => this._diagramData;
     protected override void Loaded(object obj)
     {
@@ -25,10 +27,13 @@ public abstract class DiagramableNodeDataBase : TextNodeData, IDiagramableNodeDa
         if (obj is IDiagramData diagramData)
             _diagramData = diagramData;
     }
-
-    protected IEnumerable<INodeData> AllFromNodeDatas => this.GetAllFromNodeDatas();
-
-    protected IEnumerable<INodeData> FromNodeDatas => this.GetFromNodeDatas();
-
-    protected IEnumerable<INodeData> ToNodeDatas => this.GetToNodeDatas();
+    [JsonIgnore]
+    [Browsable(false)]
+    public IEnumerable<INodeData> AllFromNodeDatas => this.GetAllFromNodeDatas();
+    [JsonIgnore]
+    [Browsable(false)]
+    public IEnumerable<INodeData> FromNodeDatas => this.GetFromNodeDatas();
+    [JsonIgnore]
+    [Browsable(false)]
+    public IEnumerable<INodeData> ToNodeDatas => this.GetToNodeDatas();
 }

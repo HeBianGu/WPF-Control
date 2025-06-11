@@ -35,13 +35,12 @@ namespace H.Controls.FilterBox
         }
 
         [System.Text.Json.Serialization.JsonIgnore]
-
         [System.Xml.Serialization.XmlIgnore]
         public RelayCommand SelectionChangedCommand => new RelayCommand(l =>
         {
             if (l is SelectionChangedEventArgs arg)
             {
-                if (arg.AddedItems[0] is PropertyInfo info)
+                if (arg.AddedItems.Count > 0 && arg.AddedItems[0] is PropertyInfo info)
                     this.Filter = FilterFactory.Create(info, null) as IPropertyFilter;
 
             }

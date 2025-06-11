@@ -7,12 +7,14 @@
 // Licensed under the MIT License (the "License")
 
 using H.Extensions.Mvvm.Commands;
+using System.Text.Json.Serialization;
+using System.Xml.Serialization;
 
 namespace H.Controls.FilterBox
 {
-    public abstract class PropertyConditionsPrensenterBase: DisplayBindableBase
+    public abstract class PropertyConditionsPrensenterBase : DisplayBindableBase
     {
-      
+
     }
 
     public abstract class PropertyConditionsPrensenter<T> : PropertyConditionsPrensenterBase where T : IPropertyConditionPrensenter
@@ -30,8 +32,8 @@ namespace H.Controls.FilterBox
 
 
         private T _selectedItem;
-        [System.Text.Json.Serialization.JsonIgnore]
-        [System.Xml.Serialization.XmlIgnore]
+        [JsonIgnore]
+        [XmlIgnore]
         public T SelectedItem
         {
             get { return _selectedItem; }
@@ -42,8 +44,8 @@ namespace H.Controls.FilterBox
             }
         }
 
-        [System.Text.Json.Serialization.JsonIgnore]
-        [System.Xml.Serialization.XmlIgnore]
+        [JsonIgnore]
+        [XmlIgnore]
         public RelayCommand AddCommand => new RelayCommand(l =>
         {
             var item = this.Create();
@@ -72,8 +74,8 @@ namespace H.Controls.FilterBox
         }
 
         private ObservableCollection<PropertyInfo> _properties = new ObservableCollection<PropertyInfo>();
-        [System.Text.Json.Serialization.JsonIgnore]
-        [System.Xml.Serialization.XmlIgnore]
+        [JsonIgnore]
+        [XmlIgnore]
         public ObservableCollection<PropertyInfo> Properties
         {
             get { return _properties; }
@@ -97,14 +99,14 @@ namespace H.Controls.FilterBox
 
         protected override PropertyConditionPrensenter Create()
         {
-          var result= new PropertyConditionPrensenter() { ID = DateTime.Now.ToString("yyyyMMddHHmmssfff") };
+            var result = new PropertyConditionPrensenter() { ID = DateTime.Now.ToString("yyyyMMddHHmmssfff") };
             result.Properties = this.Properties;
             result.Load();
             return result;
         }
 
-        [System.Text.Json.Serialization.JsonIgnore]
-        [System.Xml.Serialization.XmlIgnore]
+        [JsonIgnore]
+        [XmlIgnore]
         public RelayCommand ClearSelectionCommand => new RelayCommand(l =>
         {
             this.SelectedItem = null;
@@ -131,9 +133,9 @@ namespace H.Controls.FilterBox
             return true;
         }
 
-        [System.Text.Json.Serialization.JsonIgnore]
+        [JsonIgnore]
 
-        [System.Xml.Serialization.XmlIgnore]
+        [XmlIgnore]
         public IMetaSettingService MetaSettingService => new NewtonsoftJsonMetaSettingService();
 
         private bool _loaded = false;

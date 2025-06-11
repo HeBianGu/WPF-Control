@@ -8,7 +8,7 @@
 
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/H.Controls.Diagram.Presenters.OpenCV;component/OpenCV.xaml" />
-        <ResourceDictionary Source="pack://application:,,,/H.Controls.Diagram.Presenters.OpenCV;component/NodeDatas/If/OpenCVPropertyConditionPrensenter.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Controls.Diagram.Presenters.OpenCV;component/NodeDatas/If/OpenCVPropertyConditionsPrensenter.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
     <DataTemplate DataType="{x:Type lb:OpenCVStyleNodeDataBase}">

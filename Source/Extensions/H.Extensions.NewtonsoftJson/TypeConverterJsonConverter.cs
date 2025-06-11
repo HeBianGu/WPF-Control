@@ -8,6 +8,8 @@
 
 using Newtonsoft.Json;
 using System.ComponentModel;
+using System.Windows;
+using System.Windows.Threading;
 
 namespace H.Extensions.NewtonsoftJson;
 
@@ -89,6 +91,14 @@ public class TypeConverterJsonConverter : JsonConverter
         TypeConverter converter = CreateTypeConverter(value.GetType());
         if (converter == null)
             writer.WriteValue(value);
+        if (value is DispatcherObject dispatcherObject)
+        {
+            dispatcherObject.Dispatcher.Invoke(() =>
+            {
+                writer.WriteValue(converter.ConvertToInvariantString(value));
+            });
+            return;
+        }
         writer.WriteValue(converter.ConvertToInvariantString(value));
     }
 

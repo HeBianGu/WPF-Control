@@ -12,23 +12,8 @@ using H.Controls.Form.PropertyItem.ComboBoxPropertyItems;
 
 namespace H.Controls.Diagram.Presenters.OpenCV.Base;
 
-public abstract class ImagesOpenCVNodeDataBase : OpenCVNodeDataBase
+public abstract class ImagesSelectableOpenCVNodeDataBase : OpenCVNodeDataBase
 {
-    //[ReadOnly(true)]
-    //[Display(Name = "图像源区域", GroupName = "图像源")]
-    //public Int32Rect? SrcRect
-    //{
-    //    get
-    //    {
-    //        var image = this.SrcImage;
-    //        if (image == null)
-    //            return null;
-    //        image.GetImageSize(out int width, out int height);
-    //        return new Int32Rect(0, 0, width, height);
-    //    }
-    //}
-
-
     private ISrcImageNodeData _selectedSrcImageNodeData;
     [PropertyNameSourcePropertyItem(typeof(ComboBoxPropertyItem), nameof(SrcImageNodeDatas))]
     [Display(Name = "输入源", GroupName = "基本参数")]

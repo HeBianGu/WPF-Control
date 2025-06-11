@@ -20,7 +20,6 @@ namespace H.Controls.FilterBox
 
         private ObservableCollection<T> _source = new ObservableCollection<T>();
         [System.Text.Json.Serialization.JsonIgnore]
-
         [System.Xml.Serialization.XmlIgnore]
         public ObservableCollection<T> Source
         {
@@ -34,7 +33,6 @@ namespace H.Controls.FilterBox
 
         private ObservableCollection<T> _selectedSource = new ObservableCollection<T>();
         [System.Text.Json.Serialization.JsonIgnore]
-
         [System.Xml.Serialization.XmlIgnore]
         public ObservableCollection<T> SelectedSource
         {
@@ -62,11 +60,8 @@ namespace H.Controls.FilterBox
         public PropertyFilterBase(PropertyInfo propertyInfo)
         {
             this.PropertyInfo = propertyInfo;
-
             this.PropertyName = propertyInfo.Name;
-
             string display = propertyInfo.GetCustomAttribute<DisplayAttribute>()?.Name;
-
             this.DisplayName = display ?? propertyInfo.Name;
         }
 
@@ -88,8 +83,6 @@ namespace H.Controls.FilterBox
 
             this.Source = finds.Distinct().ToObservable();
         }
-
-        #region - 属性 -
 
         private string _propertyName;
         public string PropertyName
@@ -148,32 +141,6 @@ namespace H.Controls.FilterBox
                 RaisePropertyChanged("IsSelected");
             }
         }
-
-        #endregion
-
-        #region - 命令 -
-
-        #endregion
-
-        #region - 方法 -
-
-        protected override void RelayMethod(object obj)
-        {
-            string command = obj.ToString();
-
-            //  Do：应用
-            if (command == "Sumit")
-            {
-
-            }
-            //  Do：取消
-            else if (command == "Cancel")
-            {
-
-            }
-        }
-
-        #endregion
 
         public abstract bool IsMatch(object obj);
 

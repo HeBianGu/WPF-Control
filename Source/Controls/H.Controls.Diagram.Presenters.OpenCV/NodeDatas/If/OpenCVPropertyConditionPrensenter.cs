@@ -8,25 +8,28 @@
 
 using System.Collections.ObjectModel;
 using System.Reflection;
+using System.Text.Json.Serialization;
 using H.Controls.FilterBox;
 
 namespace H.Controls.Diagram.Presenters.OpenCV.NodeDatas.Image;
 
 public class OpenCVPropertyConditionPrensenter : PropertyConditionPrensenter
 {
-    private ObservableCollection<INodeData> _inputNodeDatas = new ObservableCollection<INodeData>();
-    public ObservableCollection<INodeData> InputNodeDatas
+    private int _selectedInputIndex;
+    public int SelectedInputIndex
     {
-        get { return _inputNodeDatas; }
+        get { return _selectedInputIndex; }
         set
         {
-            _inputNodeDatas = value;
+            _selectedInputIndex = value;
             RaisePropertyChanged();
-            this.SelectedInputNodeData = value?.FirstOrDefault();
         }
     }
 
+
     private INodeData _selectedInputNodeData;
+    [JsonIgnore]
+    [Browsable(false)]
     public INodeData SelectedInputNodeData
     {
         get { return _selectedInputNodeData; }
@@ -34,26 +37,36 @@ public class OpenCVPropertyConditionPrensenter : PropertyConditionPrensenter
         {
             _selectedInputNodeData = value;
             RaisePropertyChanged();
-            this.Conditions.Clear();
-            this.Properties = value.GetType().GetProperties(BindingFlags.Public | BindingFlags.Instance)
-                .Where(x => x.PropertyType.IsPrimitive ||x.PropertyType == typeof(string) || x.PropertyType == typeof(DateTime))
-                .Where(x => x.GetCustomAttribute<DisplayAttribute>()?.GroupName.Contains("数据") == true).ToObservable();
         }
     }
 
-    private ObservableCollection<INodeData> _outPutNodeDatas = new ObservableCollection<INodeData>();
-    public ObservableCollection<INodeData> OutNodeDatas
+    public void UpdateProperties(INodeData value)
     {
-        get { return _outPutNodeDatas; }
+        if (value == null)
+        {
+            this.Properties.Clear();
+            return;
+        }
+
+        this.Properties = value.GetType().GetProperties(BindingFlags.Public | BindingFlags.Instance)
+               .Where(x => x.PropertyType.IsPrimitive || x.PropertyType == typeof(string) || x.PropertyType == typeof(DateTime))
+               .Where(x => x.GetCustomAttribute<DisplayAttribute>()?.GroupName.Contains("数据") == true).ToObservable();
+    }
+
+    private int _selectedOutputIndex;
+    public int SelectedOutputIndex
+    {
+        get { return _selectedOutputIndex; }
         set
         {
-            _outPutNodeDatas = value;
+            _selectedOutputIndex = value;
             RaisePropertyChanged();
-            this.SelectedOutputNodeData = value?.FirstOrDefault();
         }
     }
 
     private INodeData _selectedOutputNodeData;
+    [Browsable(false)]
+    [JsonIgnore]
     public INodeData SelectedOutputNodeData
     {
         get { return _selectedOutputNodeData; }
