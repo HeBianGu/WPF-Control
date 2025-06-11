@@ -132,19 +132,19 @@ public abstract class FlowableDiagramDataBase : ZoomableDiagramDataBase, IFlowab
 
     public virtual async Task<bool?> Start()
     {
-        var start = this.GetStartNodeData();
+        var start = await this.GetStartNodeData();
         if (start == null)
             return false;
         var r = await this.InvokeState(() => start.Start(this));
         return r;
     }
 
-    protected virtual IFlowableNodeData GetStartNodeData()
+    protected virtual async Task<IFlowableNodeData> GetStartNodeData()
     {
-        var start = this.TryGetStartNodeData<IFlowableNodeData>(out string message);
+        var start = await this.TryGetStartNodeData<IFlowableNodeData>();
         if (start == null)
         {
-            this.Message = message;
+            this.Message = "未运行";
             IocMessage.ShowNotifyInfo(this.Message);
             return null;
         }

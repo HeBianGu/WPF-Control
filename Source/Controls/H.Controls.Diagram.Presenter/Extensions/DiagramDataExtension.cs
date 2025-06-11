@@ -6,6 +6,9 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
+using H.Controls.Diagram.Presenter.DiagramDatas.Base;
+using H.Presenters.Common;
+
 namespace H.Controls.Diagram.Presenter.Extensions;
 
 
@@ -23,21 +26,30 @@ public static class DiagramDataExtension
         });
     }
 
-    public static T TryGetStartNodeData<T>(this IDiagramData diagramData, out string message) where T : INodeData
+    public static async Task<T> TryGetStartNodeData<T>(this IDiagramData diagramData) where T : INodeData
     {
         var starts = diagramData.GetStartNodeDatas().OfType<T>();
         if (starts == null || starts.Count() == 0)
         {
-            message = "未找到起始节点";
+            await IocMessage.ShowDialogMessage("未找到起始节点");
             return default;
         }
 
         if (starts.Count() > 1)
         {
-            message = "存在多个起始节点";
-            return default;
+            var r = await IocMessage.Dialog.ShowListBox<T>(x =>
+            {
+                x.ItemsSource = starts.ToList();
+                //x.DisplayMemberPath = "Name";
+                x.UseDelete = false;
+            }, null, x => x.Title = "存在多个起始节点，请选择一个执行");
+            if (r == null)
+            {
+                await IocMessage.ShowDialogMessage("存在多个起始节点");
+                return default;
+            }
+            return r;
         }
-        message = null;
         return starts.First();
     }
 
