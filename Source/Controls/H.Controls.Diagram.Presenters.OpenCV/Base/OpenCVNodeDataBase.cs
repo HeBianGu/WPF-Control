@@ -15,7 +15,13 @@ namespace H.Controls.Diagram.Presenters.OpenCV.Base;
 
 public abstract class OpenCVNodeDataBase : OpenCVStyleNodeDataBase, IOpenCVNodeData
 {
- 
+    protected OpenCVNodeDataBase()
+    {
+        this.UseReview = false;
+        this.PreviewMillisecondsDelay = 0;
+        this.InvokeMillisecondsDelay = 0;
+    }
+
     ~OpenCVNodeDataBase()
     {
         this.Mat?.Dispose();
@@ -79,41 +85,6 @@ public abstract class OpenCVNodeDataBase : OpenCVStyleNodeDataBase, IOpenCVNodeD
         }
     }
 
-    //public override void LoadDefault()
-    //{
-    //    base.LoadDefault();
-    //    this.Width = 240;
-    //    this.Height = 80;
-    //}
-
-    //private Mat _preMat;
-    //protected Mat PreviourMat => this._preMat;
-    //private string _srcFilePath;
-    //protected string SrcFilePath => this._srcFilePath;
-
-    //public override async Task<IFlowableResult> InvokeAsync(IFlowableLinkData previors, IFlowableDiagramData diagram)
-    //{
-    //    return await Task.Run((async () =>
-    //    {
-    //        var fromData = this.GetFromNodeData<IOpenCVNodeData>(diagram, previors);
-    //        if (fromData == null)
-    //            return this.Invoke(previors, diagram);
-    //        this.SrcMat = fromData.SrcMat;
-    //        //this._srcFilePath = fromData.SrcFilePath;
-    //        this.SrcFilePath = fromData.SrcFilePath;
-    //        this._preMat = fromData.Mat;
-    //        if (this._preMat == null || this._preMat.Empty())
-    //            return this.Error("传入图像数据为空");
-    //        if (this.UseReview)
-    //        {
-    //            this.Mat = this._preMat;
-    //            this.UpdateMatToView();
-    //            await Task.Delay(this.PreviewMillisecondsDelay);
-    //        }
-
-    //        return this.Invoke(previors, diagram);
-    //    }));
-    //}
     public override IFlowableResult Invoke(IFlowableLinkData previors, IFlowableDiagramData diagram)
     {
         var srcData = diagram.GetStartNodeDatas().OfType<ISrcImageNodeData>().FirstOrDefault();

@@ -12,7 +12,7 @@
                        LastChildFill="False">
                 <Button HorizontalAlignment="Left"
                         Command="{Binding AddCommand}"
-                        Content="添加过滤器" />
+                        Content="添加分支" />
             </DockPanel>
             <ListBox MinWidth="200"
                      Padding="1"
@@ -42,7 +42,8 @@
             <Border Margin="1,0"
                     BorderBrush="{DynamicResource {x:Static h:BrushKeys.BorderBrush}}"
                     BorderThickness="1">
-                <DockPanel MinWidth="600">
+                <DockPanel MinWidth="600"
+                           Margin="1">
                     <UniformGrid Margin="0,0"
                                  DockPanel.Dock="Top"
                                  Rows="1">
@@ -70,14 +71,14 @@
                         <BulletDecorator>
                             <BulletDecorator.Bullet>
                                 <TextBlock Width="80"
-                                           Text=" 输入条件" />
+                                           Text=" 输入节点" />
                             </BulletDecorator.Bullet>
                             <ComboBox Height="Auto"
                                       MinWidth="300"
                                       Cattach.ItemHeight="Auto"
                                       Cattach.ItemHorizontalContentAlignment="Left"
                                       ItemsSource="{Binding ConditionsNodeData.AllFromNodeDatas}"
-                                      SelectedIndex="{Binding SelectedItem.SelectedInputIndex,Mode=OneWayToSource}"
+                                      SelectedIndex="{Binding SelectedItem.SelectedInputIndex, Mode=TwoWay}"
                                       SelectedItem="{Binding SelectedItem.SelectedInputNodeData}">
                                 <b:Interaction.Triggers>
                                     <b:EventTrigger EventName="SelectionChanged">
@@ -90,14 +91,14 @@
                         <BulletDecorator>
                             <BulletDecorator.Bullet>
                                 <TextBlock Width="80"
-                                           Text=" 执行模块" />
+                                           Text=" 目标节点" />
                             </BulletDecorator.Bullet>
                             <ComboBox Height="Auto"
                                       MinWidth="300"
                                       Cattach.ItemHeight="Auto"
                                       Cattach.ItemHorizontalContentAlignment="Left"
                                       ItemsSource="{Binding ConditionsNodeData.ToNodeDatas}"
-                                      SelectedIndex="{Binding SelectedItem.SelectedOutputIndex,Mode=OneWayToSource}"
+                                      SelectedIndex="{Binding SelectedItem.SelectedOutputIndex, Mode=TwoWay}"
                                       SelectedItem="{Binding SelectedItem.SelectedOutputNodeData}" />
                         </BulletDecorator>
                     </UniformGrid>

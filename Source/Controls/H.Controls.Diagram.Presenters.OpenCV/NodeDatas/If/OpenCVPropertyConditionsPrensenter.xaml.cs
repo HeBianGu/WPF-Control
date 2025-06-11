@@ -16,10 +16,10 @@ using H.Mvvm.Commands;
 
 namespace H.Controls.Diagram.Presenters.OpenCV.NodeDatas.Image;
 
+[Display(Name = "条件分支参数设置")]
 public class OpenCVPropertyConditionsPrensenter : PropertyConditionsPrensenter<OpenCVPropertyConditionPrensenter>
 {
     private ConditionsNodeData _conditionsNodeData;
-    [JsonIgnore]
     public ConditionsNodeData ConditionsNodeData
     {
         get { return _conditionsNodeData; }
@@ -35,7 +35,6 @@ public class OpenCVPropertyConditionsPrensenter : PropertyConditionsPrensenter<O
         return new OpenCVPropertyConditionPrensenter() { ID = DateTime.Now.ToString("yyyyMMddHHmmssfff") };
     }
 
-
     public RelayCommand SelectionInputChangedCommand => new RelayCommand(x =>
     {
         if (x is SelectionChangedEventArgs args && args.OriginalSource is ComboBox combo && combo.IsMouseCaptured && this.SelectedItem != null)
@@ -44,28 +43,6 @@ public class OpenCVPropertyConditionsPrensenter : PropertyConditionsPrensenter<O
             this.SelectedItem.UpdateProperties(this.SelectedItem.SelectedInputNodeData);
         }
     });
-
-    [OnSerializing]
-    protected void OnSerializingMethod(StreamingContext context)
-    {
-
-    }
-
-
-    [OnDeserialized]
-    protected void OnDeserializedMethod(StreamingContext context)
-    {
-        //foreach (OpenCVPropertyConditionPrensenter item in this.PropertyConfidtions)
-        //{
-        //    item.SelectedInputNodeData = this.ConditionsNodeData.AllFromNodeDatas.ElementAtOrDefault(item.SelectedInputIndex);
-        //    item.SelectedOutputNodeData = this.ConditionsNodeData.ToNodeDatas.ElementAtOrDefault(item.SelectedOutputIndex);
-        //    foreach (IPropertyConfidtion confidtion in item.Conditions)
-        //    {
-        //        PropertyInfo propertyInfo = item.Properties.FirstOrDefault(x => x.Name == confidtion.Filter.PropertyName);
-        //        confidtion.Filter.PropertyInfo = propertyInfo;
-        //    }
-        //}
-    }
 
     public void LoadData(ConditionsNodeData conditionsNodeData)
     {
@@ -81,6 +58,7 @@ public class OpenCVPropertyConditionsPrensenter : PropertyConditionsPrensenter<O
                 confidtion.Filter.PropertyInfo = propertyInfo;
             }
         }
+        this.SelectedItem = this.PropertyConfidtions?.FirstOrDefault();
     }
 }
 

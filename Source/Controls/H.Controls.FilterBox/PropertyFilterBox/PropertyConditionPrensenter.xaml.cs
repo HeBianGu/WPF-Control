@@ -18,7 +18,7 @@ using EnumConverter = System.ComponentModel.EnumConverter;
 
 namespace H.Controls.FilterBox
 {
-    public interface IPropertyConditionPrensenter
+    public interface IPropertyConditionPrensenter : IConditionable
     {
         ConditionOperate ConditionOperate { get; set; }
         ObservableCollection<IPropertyConfidtion> Conditions { get; set; }
@@ -26,7 +26,7 @@ namespace H.Controls.FilterBox
 
     [ContentProperty(nameof(Conditions))]
     [Display(Name = "设置条件")]
-    public class PropertyConditionPrensenter : DisplayBindableBase, IConditionable, IMetaSetting, IPropertyConditionPrensenter
+    public class PropertyConditionPrensenter : DisplayBindableBase, IMetaSetting, IPropertyConditionPrensenter
     {
         //public PropertyConditionPrensenter()
         //{
@@ -70,9 +70,9 @@ namespace H.Controls.FilterBox
         public RelayCommand AddConditionCommand => new RelayCommand(async l =>
         {
             PropertyInfo first = this.Properties.FirstOrDefault();
-            if(this.Properties.Count==0)
+            if (this.Properties.Count == 0)
             {
-               await IocMessage.ShowDialog("不存在属性");
+                await IocMessage.ShowDialog("不存在属性");
                 return;
             }
             PropertyConfidtion confidtion = new PropertyConfidtion(first);
@@ -107,7 +107,7 @@ namespace H.Controls.FilterBox
             }
         }
 
-        public bool IsMatch(object obj)
+        public virtual bool IsMatch(object obj)
         {
             if (this.ConditionOperate == ConditionOperate.All)
                 return this.Conditions.All(x => x.IsMatch(obj));

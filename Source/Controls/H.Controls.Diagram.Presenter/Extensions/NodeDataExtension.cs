@@ -53,6 +53,11 @@ public static class NodeDataExtension
         return Enumerable.Empty<IPortData>();
     }
 
+    public static IEnumerable<IPortData> GetToNodePortData(this INodeData node, INodeData toNode, IDiagramData diagramData)
+    {
+        return node.GetToLinkDatas(diagramData).Where(x => x.ToNodeID == toNode.ID).Select(x => x.GetFromPortData(diagramData));
+    }
+
     public static IEnumerable<ILinkData> GetLinks(this INodeData nodeData, IDiagramData diagramData)
     {
         return nodeData.GetFromLinkDatas(diagramData).Concat(nodeData.GetToLinkDatas(diagramData));

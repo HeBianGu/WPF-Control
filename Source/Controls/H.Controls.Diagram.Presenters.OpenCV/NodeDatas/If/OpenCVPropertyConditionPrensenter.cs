@@ -13,7 +13,18 @@ using H.Controls.FilterBox;
 
 namespace H.Controls.Diagram.Presenters.OpenCV.NodeDatas.Image;
 
-public class OpenCVPropertyConditionPrensenter : PropertyConditionPrensenter
+public interface IOpenCVPropertyConditionPrensenter : IPropertyConditionPrensenter
+{
+    int SelectedInputIndex { get; set; }
+    INodeData SelectedInputNodeData { get; set; }
+    int SelectedOutputIndex { get; set; }
+    INodeData SelectedOutputNodeData { get; set; }
+
+    bool IsMatchInputNode();
+    void UpdateProperties(INodeData value);
+}
+
+public class OpenCVPropertyConditionPrensenter : PropertyConditionPrensenter, IOpenCVPropertyConditionPrensenter
 {
     private int _selectedInputIndex;
     public int SelectedInputIndex
@@ -77,6 +88,10 @@ public class OpenCVPropertyConditionPrensenter : PropertyConditionPrensenter
         }
     }
 
+    public bool IsMatchInputNode()
+    {
+        return base.IsMatch(this.SelectedInputNodeData);
+    }
 
 }
 
