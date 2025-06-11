@@ -62,10 +62,15 @@ public class ConditionsNodeData : IfConditionNodeDataBase, IShowPropertyView, IO
 
     public void OnDiagramDeserialized()
     {
+        if (this._conditionsPrensenter == null)
+        {
+            this._conditionsPrensenter = new OpenCVPropertyConditionsPrensenter();
+            this._conditionsPrensenter.LoadData(this);
+        }
         _conditionsPrensenter.LoadData(this);
     }
 
-    protected override IEnumerable<IFlowablePortData> GetFlowablePortDatas(IFlowableDiagramData diagramData)
+    protected override IEnumerable<Tuple<IFlowablePortData, Predicate<IFlowableLinkData>>> GetFlowablePortDatas(IFlowableDiagramData diagramData)
     {
         if (this._conditionsPrensenter == null)
             yield break;
@@ -73,9 +78,11 @@ public class ConditionsNodeData : IfConditionNodeDataBase, IShowPropertyView, IO
         var toNodeDatas = matches.Select(x => x.SelectedOutputNodeData).Where(x => x != null);
         foreach (var toNodeData in toNodeDatas)
         {
-            foreach (var item in this.GetToNodePortData(toNodeData, diagramData).OfType<IFlowablePortData>())
+            foreach (IFlowablePortData item in this.GetToNodePortData(toNodeData, diagramData).OfType<IFlowablePortData>())
             {
-                yield return item;
+                System.Diagnostics.Debug.WriteLine(item.NodeID);
+                var predicate = new Predicate<IFlowableLinkData>(x => x.ToNodeID == toNodeData.ID);
+                yield return new Tuple<IFlowablePortData, Predicate<IFlowableLinkData>>(item, predicate);
             }
         }
     }

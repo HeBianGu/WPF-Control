@@ -41,6 +41,7 @@ public static class DiagramDataExtension
             {
                 x.ItemsSource = starts.ToList();
                 //x.DisplayMemberPath = "Name";
+                x.SelectedItem = starts.FirstOrDefault();
                 x.UseDelete = false;
             }, null, x => x.Title = "存在多个起始节点，请选择一个执行");
             if (r == null)

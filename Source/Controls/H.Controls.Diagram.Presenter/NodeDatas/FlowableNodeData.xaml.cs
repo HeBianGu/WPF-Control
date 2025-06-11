@@ -249,19 +249,20 @@ public class FlowableNodeData : DiagramableNodeDataBase, IFlowableNodeData
             if (nresult.State == FlowableResultState.Error)
                 return false;
         }
-        foreach (var portData in this.GetFlowablePortDatas(diagramData))
+        var toports = this.GetFlowablePortDatas(diagramData).ToList();
+        foreach (var portData in toports)
         {
-            var lr = await portData.Start(diagramData);
+            var lr = await portData.Item1.Start(diagramData, portData.Item2);
             if (lr != true)
                 return lr;
         }
         return true;
     }
 
-    protected virtual IEnumerable<IFlowablePortData> GetFlowablePortDatas(IFlowableDiagramData diagramData)
+    protected virtual IEnumerable<Tuple<IFlowablePortData, Predicate<IFlowableLinkData>>> GetFlowablePortDatas(IFlowableDiagramData diagramData)
     {
         var toLinks = this.GetToLinkDatas(diagramData).OfType<IFlowableLinkData>();
-        return toLinks.Select(x => x.GetFromPortData(diagramData)).OfType<IFlowablePortData>();
+        return toLinks.Select(x => x.GetFromPortData(diagramData)).Distinct().OfType<IFlowablePortData>().Select(x => new Tuple<IFlowablePortData, Predicate<IFlowableLinkData>>(x, null));
     }
 
 }

@@ -213,7 +213,7 @@ public class FlowablePortData : TextPortData, IFlowablePortData
         return true;
     }
 
-    public async Task<bool?> Start(IFlowableDiagramData diagramData)
+    public async Task<bool?> Start(IFlowableDiagramData diagramData, Predicate<IFlowableLinkData> predicate = null)
     {
         if (this.State == FlowableState.Canceling)
             return null;
@@ -228,7 +228,7 @@ public class FlowablePortData : TextPortData, IFlowablePortData
                     return false;
             }
         }
-        var LinkDatas = this.GetToLinkDatas(diagramData).OfType<IFlowableLinkData>();
+        var LinkDatas = this.GetToLinkDatas(diagramData).OfType<IFlowableLinkData>().Where(x => predicate?.Invoke(x) != false);
         foreach (var linkData in LinkDatas)
         {
             var lr = await linkData.Start(diagramData);

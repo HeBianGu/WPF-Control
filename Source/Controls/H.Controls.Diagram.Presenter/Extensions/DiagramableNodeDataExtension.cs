@@ -17,7 +17,7 @@ public static class DiagramableNodeDataExtension
 
     public static IEnumerable<INodeData> GetAllFromNodeDatas(this IDiagramableNodeData nodeData)
     {
-        return nodeData.GetAllFromNodeDatas(nodeData.DiagramData);
+        return nodeData.GetAllFromNodeDatas(nodeData.DiagramData).Distinct();
     }
 
     public static IEnumerable<T> GetAllFromNodeDatas<T>(this IDiagramableNodeData nodeData)

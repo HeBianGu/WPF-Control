@@ -90,7 +90,14 @@ public class OpenCVPropertyConditionPrensenter : PropertyConditionPrensenter, IO
 
     public bool IsMatchInputNode()
     {
-        return base.IsMatch(this.SelectedInputNodeData);
+        return this.IsMatch(this.SelectedInputNodeData);
+    }
+
+    public override bool IsMatch(object obj)
+    {
+        if (this.Conditions.Count == 0)
+            return false;
+        return base.IsMatch(obj);
     }
 
 }

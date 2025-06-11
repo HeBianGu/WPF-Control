@@ -52,18 +52,18 @@ public class PixelThresholdIfCondition : IfConditionNodeDataBase
         }
     }
 
-    protected override IEnumerable<IFlowablePortData> GetFlowablePortDatas(IFlowableDiagramData diagramData)
+    protected override IEnumerable<Tuple<IFlowablePortData, Predicate<IFlowableLinkData>>> GetFlowablePortDatas(IFlowableDiagramData diagramData)
     {
         var srcImageNodeData = diagramData.GetStartNodeDatas().OfType<ISrcImageNodeData>().FirstOrDefault();
         var ports = base.GetFlowablePortDatas(diagramData);
         bool r = srcImageNodeData.Mat.Width > this.Pixel || srcImageNodeData.Mat.Height > this.Pixel;
         if (r)
         {
-            return ports.Where(p => p.Name == "像素大于");
+            return ports.Where(p => p.Item1.Name == "像素大于");
         }
         else
         {
-            return ports.Where(p => p.Name == "像素小于");
+            return ports.Where(p => p.Item1.Name == "像素小于");
         }
     }
 
