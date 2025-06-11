@@ -32,6 +32,8 @@ public abstract class GraphSource<NodeDataType, LinkDataType> : IGraphSource, ID
             if (nodes != null)
                 foreach (NodeDataType unit in nodes)
                 {
+                    if (unit == null)
+                        continue;
                     Node n = this.ConvertToNode(unit);
                     this.Nodes.Add(n);
                 }

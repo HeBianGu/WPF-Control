@@ -6,26 +6,25 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
+using H.Controls.Diagram.Presenter.DiagramDatas.Base;
 using H.Controls.Diagram.Presenter.Extensions;
 
 namespace H.Controls.Diagram.Presenter.NodeDatas.Base;
 
 public interface IDiagramableNodeData : INodeData
 {
-    IDiagramData DiagramData { get; }
+    IDiagramData DiagramData { get; set; }
 }
 
 public abstract class DiagramableNodeDataBase : TextNodeData, IDiagramableNodeData
 {
-    private IDiagramData _diagramData;
-    [JsonIgnore]
     [Browsable(false)]
-    public IDiagramData DiagramData => this._diagramData;
+    public IDiagramData DiagramData { get; set; }
     protected override void Loaded(object obj)
     {
         base.Loaded(obj);
         if (obj is IDiagramData diagramData)
-            _diagramData = diagramData;
+            this.DiagramData = diagramData;
     }
     [JsonIgnore]
     [Browsable(false)]

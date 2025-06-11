@@ -44,8 +44,9 @@ public class NewtonsoftJsonOptions : IocOptionInstance<NewtonsoftJsonOptions>, I
                 new TypeConverterJsonConverter(),
                 new EnumConverter(),
                 new DateTimeConverter(),
-                new JsonableJsonConverter() }//这部分序列化是会逻辑有问题用FilterBox测试
-
+                new JsonableJsonConverter() },//这部分序列化是会逻辑有问题用FilterBox测试
+            //使用对象引用
+            PreserveReferencesHandling = PreserveReferencesHandling.Objects
         };
         return setting;
     }

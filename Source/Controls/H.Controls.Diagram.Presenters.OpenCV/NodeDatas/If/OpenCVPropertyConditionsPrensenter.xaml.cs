@@ -9,6 +9,7 @@
 using System.Reflection;
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
+using System.Windows.Controls;
 using H.Controls.Diagram.Presenter.Extensions;
 using H.Controls.FilterBox;
 using H.Mvvm.Commands;
@@ -37,9 +38,10 @@ public class OpenCVPropertyConditionsPrensenter : PropertyConditionsPrensenter<O
 
     public RelayCommand SelectionInputChangedCommand => new RelayCommand(x =>
     {
-        if (x is INodeData nodeData && this.SelectedItem != null)
+        if (x is SelectionChangedEventArgs args && args.OriginalSource is ComboBox combo && combo.IsMouseCaptured && this.SelectedItem != null)
         {
-            this.SelectedItem.UpdateProperties(nodeData);
+            this.SelectedItem.Conditions.Clear();
+            this.SelectedItem.UpdateProperties(this.SelectedItem.SelectedInputNodeData);
         }
     });
 

@@ -177,6 +177,7 @@ public abstract class FlowableDiagramDataBase : ZoomableDiagramDataBase, IFlowab
         this.GotoState(x => FlowableState.Wait);
     }
 
+    [JsonIgnore]
     public IEnumerable<IFlowableNodeData> FlowableNodeDatas => this.DataSource.GetNodeDatas().OfType<IFlowableNodeData>();
 
     protected override IDiagramDataSource CreateDataSource()

@@ -91,7 +91,7 @@ public class TypeConverterJsonConverter : JsonConverter
         TypeConverter converter = CreateTypeConverter(value.GetType());
         if (converter == null)
             writer.WriteValue(value);
-        if (value is DispatcherObject dispatcherObject)
+        if (value is DispatcherObject dispatcherObject && dispatcherObject.Dispatcher != null)
         {
             dispatcherObject.Dispatcher.Invoke(() =>
             {
