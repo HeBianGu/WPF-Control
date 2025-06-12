@@ -8,7 +8,7 @@
 
 namespace H.Controls.Diagram.Presenter.NodeDatas.Base;
 
-public abstract class NodeData : NodeDataBase, INodeData, ITemplate, ILinkDataCreator, IPortDataCreator
+public abstract class NodeData : NodeDataBase, ITemplate, ILinkDataCreator, IPortDataCreator
 {
     public NodeData()
     {
@@ -103,20 +103,6 @@ public abstract class NodeData : NodeDataBase, INodeData, ITemplate, ILinkDataCr
     {
         IocMessage.Form?.ShowView(this);
     });
-
-    private Point _location;
-    [Display(Name = "位置坐标", GroupName = "样式")]
-    public Point Location
-    {
-        get { return _location; }
-        set
-        {
-            if (_location == value)
-                return;
-            _location = value;
-            RaisePropertyChanged();
-        }
-    }
 
     private bool _isTemplate = true;
     [DefaultValue(true)]

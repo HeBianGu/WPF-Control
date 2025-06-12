@@ -13,7 +13,7 @@ using System.Windows.Controls;
 
 namespace H.Controls.Diagram.Presenters.OpenCV.Base;
 
-public abstract class OpenCVStyleNodeDataBase : FlowableNodeData
+public abstract class OpenCVStyleNodeDataBase : SelectableFromNodeDataBase
 {
     private double _flagLength;
     [DefaultValue(10)]

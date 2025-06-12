@@ -9,7 +9,7 @@
 namespace H.Controls.Diagram.Presenter.NodeDatas.Base;
 
 [Icon("\xF0E3")]
-public abstract class NodeDataBase : DisplayBindableBase, ICloneable
+public abstract class NodeDataBase : DisplayBindableBase, ICloneable, INodeData
 {
     public NodeDataBase()
     {
@@ -25,5 +25,19 @@ public abstract class NodeDataBase : DisplayBindableBase, ICloneable
             p.SetValue(result, p.GetValue(this));
         }
         return result;
+    }
+
+    private Point _location;
+    [Display(Name = "位置坐标", GroupName = "样式")]
+    public Point Location
+    {
+        get { return _location; }
+        set
+        {
+            if (_location == value)
+                return;
+            _location = value;
+            RaisePropertyChanged();
+        }
     }
 }

@@ -15,28 +15,8 @@ namespace H.Controls.Diagram.Presenters.OpenCV.Base;
 
 public abstract class ImagesSelectableOpenCVNodeDataBase : OpenCVNodeDataBase
 {
-    private ISrcImageNodeData _selectedSrcImageNodeData;
-    [PropertyNameSourcePropertyItem(typeof(ComboBoxPropertyItem), nameof(SrcImageNodeDatas))]
-    [Display(Name = "输入源", GroupName = "基本参数")]
-    public ISrcImageNodeData SelectedSrcImageNodeData
-    {
-        get { return _selectedSrcImageNodeData; }
-        set
-        {
-            _selectedSrcImageNodeData = value;
-            RaisePropertyChanged();
-        }
-    }
 
-    [JsonIgnore]
-    [Browsable(false)]
-    public IEnumerable<ISrcImageNodeData> SrcImageNodeDatas
-    {
-        get
-        {
-            return this.AllFromNodeDatas.OfType<ISrcImageNodeData>();
-        }
-    }
+
 
 
 }

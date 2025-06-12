@@ -27,37 +27,17 @@ namespace H.Controls.Form.PropertyItem.Base
         }
         protected virtual IEnumerable<T> CreateSource()
         {
-            //{
-            //    BindingGetSelectSourceMethodAttribute attr = this.PropertyInfo.GetCustomAttribute<BindingGetSelectSourceMethodAttribute>();
-            //    if (attr != null)
-            //    {
-            //        MethodInfo p = this.Obj.GetType().GetMethod(attr.MethodName);
-            //        return p.Invoke(this.Obj, null) as IEnumerable<T>;
-            //    }
-            //}
-
-            //{
-            //    BindingGetSelectSourcePropertyAttribute attr = this.PropertyInfo.GetCustomAttribute<BindingGetSelectSourcePropertyAttribute>();
-            //    if (attr != null)
-            //    {
-            //        PropertyInfo p = this.Obj.GetType().GetProperty(attr.PropertyName);
-            //        return p.GetValue(this.Obj) as IEnumerable<T>;
-            //    }
-            //}
-
+            SourcePropertyItemBaseAttribute attr = this.PropertyInfo.GetCustomAttribute<SourcePropertyItemBaseAttribute>();
+            if (attr == null)
             {
-                SourcePropertyItemBaseAttribute attr = this.PropertyInfo.GetCustomAttribute<SourcePropertyItemBaseAttribute>();
-                if (attr == null)
-                {
-                    Trace.Assert(false, "没有定义数据源");
-                    yield break;
-                }
-                System.Collections.IEnumerable result = attr.GetSource(this.PropertyInfo, this.Obj);
-                foreach (object item in result)
-                {
-                    if (item is T t)
-                        yield return t;
-                }
+                Trace.Assert(false, "没有定义数据源");
+                yield break;
+            }
+            IEnumerable result = attr.GetSource(this.PropertyInfo, this.Obj);
+            foreach (object item in result)
+            {
+                if (item is T t)
+                    yield return t;
             }
         }
 
