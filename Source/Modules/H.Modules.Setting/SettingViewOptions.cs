@@ -50,7 +50,7 @@ internal class SettingViewOptions : IocOptionInstance<SettingViewOptions>, ISett
         get { return _navigationTitleWidth; }
         set
         {
-            _titleWidth = value;
+            _navigationTitleWidth = value;
         }
     }
 

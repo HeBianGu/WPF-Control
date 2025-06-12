@@ -18,11 +18,6 @@ public abstract class ObjectPropertyItemBase : DisplayBindableBase, IPropertyIte
     public Visibility Visibility { get; set; }
     public Action<object> ValueChanged { get; set; }
     public string Unit { get; set; }
-    //public int Vip { get; set; }
-    //~ObjectPropertyItem()
-    //{
-    //    ValueChanged = null; 
-    //}
 
     public ObjectPropertyItemBase(PropertyInfo property, object obj)
     {

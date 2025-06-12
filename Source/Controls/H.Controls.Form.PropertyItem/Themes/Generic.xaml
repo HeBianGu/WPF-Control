@@ -22,5 +22,6 @@
         <ResourceDictionary Source="pack://application:,,,/H.Controls.Form.PropertyItem;component/PropertyItems/ColorPropertyItem.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Controls.Form.PropertyItem;component/PropertyItems/ComboboxRepositoryPropertyItem.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Controls.Form.PropertyItem;component/TextPropertyItems/HyperlinkPropertyItem.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Controls.Form.PropertyItem;component/TextPropertyItems/UnitTextPropertyItem.xaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

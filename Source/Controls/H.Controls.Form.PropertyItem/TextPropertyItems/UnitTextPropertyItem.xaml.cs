@@ -6,19 +6,11 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
-#if NETFRAMEWORK
-using System.Data.Entity;
-#endif
+namespace H.Controls.Form.PropertyItem.TextPropertyItems;
 
-#if NETCOREAPP
-#endif
-using H.DataBases.Share;
-using H.Services.Setting;
-using System.ComponentModel.DataAnnotations;
-
-namespace H.DataBases.Sqlite
+public class UnitTextPropertyItem : TextPropertyItem
 {
-    public class SqliteSettable : SqliteSettableBase<SqliteSettable>, ISqliteSettable, IDbSettable
+    public UnitTextPropertyItem(PropertyInfo property, object obj) : base(property, obj)
     {
 
     }

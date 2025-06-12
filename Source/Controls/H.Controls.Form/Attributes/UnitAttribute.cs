@@ -9,7 +9,7 @@
 namespace H.Controls.Form.Attributes;
 
 [AttributeUsage(AttributeTargets.Property, Inherited = true, AllowMultiple = false)]
-public class UnitAttribute : Attribute
+public class UnitAttribute : System.Attribute
 {
     public UnitAttribute(string unit)
     {

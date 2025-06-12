@@ -1,0 +1,26 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:h="https://github.com/HeBianGu"
+                    xmlns:local="clr-namespace:H.Controls.Form.PropertyItem"
+                    xmlns:lt="clr-namespace:H.Controls.Form.PropertyItem.TextPropertyItems">
+    <DataTemplate DataType="{x:Type lt:UnitTextPropertyItem}">
+        <TextBox Height="Auto"
+                 MinHeight="{DynamicResource {x:Static h:LayoutKeys.ItemHeight}}"
+                 Margin="0,0,0,1"
+                 VerticalContentAlignment="Center"
+                 Cattach.UseGuide="False"
+                 IsReadOnly="{Binding ReadOnly}"
+                 Style="{DynamicResource {x:Static TextBoxKeys.Attach}}"
+                 Text="{Binding Value, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                 TextWrapping="{Binding TextWrapping}"
+                 ToolTip="{Binding Message}">
+            <Cattach.Attach>
+                <TextBlock Margin="5,0"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"
+                           Foreground="{Binding RelativeSource={RelativeSource AncestorType=TextBlock},Path=Foreground}"
+                           Text="{Binding Unit}" />
+            </Cattach.Attach>
+        </TextBox>
+    </DataTemplate>
+</ResourceDictionary>

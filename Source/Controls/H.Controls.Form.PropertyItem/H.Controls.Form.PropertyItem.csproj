@@ -6,4 +6,9 @@
     <ProjectReference Include="..\..\Styles\H.Style\H.Style.csproj" />
     <ProjectReference Include="..\H.Controls.Form\H.Controls.Form.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <Page Update="TextPropertyItems\UnitTextPropertyItem.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
 </Project>

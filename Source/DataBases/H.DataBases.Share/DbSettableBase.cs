@@ -25,9 +25,11 @@ using H.Services.Common.DataBase;
 using System.IO;
 using H.Services.AppPath;
 using H.Mvvm.Commands;
+using H.Services.Setting;
 
 namespace H.DataBases.Share
 {
+    [Display(Name = "数据库配置", GroupName = SettingGroupNames.GroupData)]
     public abstract class DbSettableBase<T> : LazySettableInstance<T>, IDbSettable where T : new()
     {
         public abstract string GetConnect();

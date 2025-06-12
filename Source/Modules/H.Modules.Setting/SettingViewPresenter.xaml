@@ -89,7 +89,7 @@
                                                 ExceptPropertyNames="{Binding ExceptPropertyNames}"
                                                 ScrollViewer.VerticalScrollBarVisibility="Disabled"
                                                 SelectObject="{Binding}"
-                                                TitleWidth="{Binding Source={x:Static local:SettingViewOptions.Instance}, Path=FormOption.TitleWidth}"
+                                                TitleWidth="{Binding Source={x:Static local:SettingViewOptions.Instance}, Path=TitleWidth}"
                                                 UseArray="{Binding Source={x:Static local:SettingViewOptions.Instance}, Path=FormOption.UseArray}"
                                                 UseAsync="False"
                                                 UseBoolen="{Binding Source={x:Static local:SettingViewOptions.Instance}, Path=FormOption.UseBoolen}"
