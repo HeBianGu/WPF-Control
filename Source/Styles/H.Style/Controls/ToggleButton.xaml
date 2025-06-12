@@ -189,12 +189,25 @@
                                         TypeInTargetAssembly={x:Type local:ToggleButtonKeys}}"
            BasedOn="{StaticResource {x:Static local:ToggleButtonKeys.Geometry}}"
            TargetType="ToggleButton">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ToggleButton}">
+                    <Border Background="Transparent">
+                        <Path Style="{StaticResource S.Path.Icon}" />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
         <Style.Triggers>
             <Trigger Property="IsChecked" Value="True">
                 <Setter Property="Content" Value="{Binding RelativeSource={RelativeSource Mode=Self}, Path=(Cattach.CheckedGeometry)}" />
+                <Setter Property="Foreground" Value="{Binding RelativeSource={RelativeSource Mode=Self}, Path=(Cattach.CheckedForeground)}" />
+                <Setter Property="BorderBrush" Value="{Binding RelativeSource={RelativeSource Mode=Self}, Path=(Cattach.CheckedBorderBrush)}" />
             </Trigger>
             <Trigger Property="IsChecked" Value="False">
                 <Setter Property="Content" Value="{Binding RelativeSource={RelativeSource Mode=Self}, Path=(Cattach.UnCheckedGeometry)}" />
+                <Setter Property="Foreground" Value="{Binding RelativeSource={RelativeSource Mode=Self}, Path=(Cattach.UncheckForeground)}" />
+                <Setter Property="BorderBrush" Value="{Binding RelativeSource={RelativeSource Mode=Self}, Path=(Cattach.UnCheckedBorderBrush)}" />
             </Trigger>
         </Style.Triggers>
     </Style>

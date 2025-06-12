@@ -105,10 +105,10 @@
            TargetType="{x:Type Path}">
         <!--<Setter Property="Margin" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=Padding}" />-->
         <Setter Property="Data" Value="{Binding RelativeSource={RelativeSource AncestorType=ContentControl}, Path=Content}" />
-        <Setter Property="Stroke" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=Foreground}" />
+        <Setter Property="Stroke" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=BorderBrush}" />
         <Setter Property="Fill" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=Foreground}" />
-        <Setter Property="Height" Value="{DynamicResource {x:Static LayoutKeys.IconHeight1}}" />
-        <Setter Property="Width" Value="{DynamicResource {x:Static LayoutKeys.IconHeight1}}" />
+        <Setter Property="Height" Value="{DynamicResource {x:Static LayoutKeys.IconHeight}}" />
+        <Setter Property="Width" Value="{DynamicResource {x:Static LayoutKeys.IconHeight}}" />
         <Setter Property="Stretch" Value="Uniform" />
     </Style>
 

@@ -19,7 +19,7 @@ public static class LayoutKeys
 
     public static ComponentResourceKey Margin => new ComponentResourceKey(typeof(LayoutKeys), "S.Layout.Margin");
 
-    public static ComponentResourceKey IconHeight1 => new ComponentResourceKey(typeof(LayoutKeys), "S.Layout.IconHeight");
+    public static ComponentResourceKey IconHeight => new ComponentResourceKey(typeof(LayoutKeys), "S.Layout.IconHeight");
 
 }
 
