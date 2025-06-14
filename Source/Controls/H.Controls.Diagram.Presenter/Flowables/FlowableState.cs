@@ -18,5 +18,6 @@ public enum FlowableState
     Canceling,
     Canceled,
     Stopped,
-    Pause
+    Pause,
+    Break
 }

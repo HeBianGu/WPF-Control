@@ -10,6 +10,7 @@ using System.Text.Json.Serialization;
 using System.Windows;
 using System.Xml.Serialization;
 using H.Controls.Diagram.Presenter.Extensions;
+using H.Controls.Diagram.Presenter.NodeDatas.Base;
 
 namespace H.Controls.Diagram.Presenters.OpenCV.Base;
 
@@ -61,7 +62,7 @@ public abstract class OpenCVNodeDataBase : OpenCVStyleNodeDataBase, IOpenCVNodeD
 
     private int _previewMillisecondsDelay = 1500;
     [DefaultValue(1500)]
-    [Display(Name = "预览延迟", GroupName = "流程", Description = "设置生成图像后预览等待时间")]
+    [Display(Name = "预览延迟", GroupName = "流程控制", Description = "设置生成图像后预览等待时间")]
     public int PreviewMillisecondsDelay
     {
         get { return _previewMillisecondsDelay; }
@@ -74,7 +75,7 @@ public abstract class OpenCVNodeDataBase : OpenCVStyleNodeDataBase, IOpenCVNodeD
 
     private int _invokeMillisecondsDelay = 500;
     [DefaultValue(500)]
-    [Display(Name = "执行延迟", GroupName = "流程", Description = "执行完成后等待时间")]
+    [Display(Name = "执行延迟", GroupName = "流程控制", Description = "执行完成后等待时间")]
     public int InvokeMillisecondsDelay
     {
         get { return _invokeMillisecondsDelay; }
@@ -137,6 +138,13 @@ public abstract class OpenCVNodeDataBase : OpenCVStyleNodeDataBase, IOpenCVNodeD
     protected virtual FlowableResult<Mat> OK(Mat mat, string message = "运行成功")
     {
         this.Message = message;
+        return new FlowableResult<Mat>(mat, message) { State = FlowableResultState.OK };
+    }
+
+    protected virtual FlowableResult<Mat> OK(Mat mat, IResultPresenter resultPresenter, string message = "运行成功")
+    {
+        this.Message = message;
+        this.ResultPresenter = resultPresenter;
         return new FlowableResult<Mat>(mat, message) { State = FlowableResultState.OK };
     }
 

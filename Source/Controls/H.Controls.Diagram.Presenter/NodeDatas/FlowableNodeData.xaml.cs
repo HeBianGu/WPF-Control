@@ -12,57 +12,6 @@ using System.Windows.Media.Animation;
 
 namespace H.Controls.Diagram.Presenter.NodeDatas;
 
-
-
-public abstract class SelectableFromNodeDataBase : FlowableNodeData
-{
-    public class SelectAllNodeData : NodeDataBase
-    {
-        public override string ToString()
-        {
-            return "全部";
-        }
-    }
-
-    private INodeData _selectedFromNodeData;
-    [MethodNameSourcePropertyItem(typeof(ComboBoxPropertyItem), nameof(GetSelectableFromNodeDatas))]
-    [Display(Name = "输入源", GroupName = "基本参数")]
-    public INodeData SelectedFromNodeData
-    {
-        get { return _selectedFromNodeData; }
-        set
-        {
-            _selectedFromNodeData = value;
-            RaisePropertyChanged();
-        }
-    }
-
-    private SelectAllNodeData _selectAll = new SelectAllNodeData();
-    public IEnumerable<INodeData> GetSelectableFromNodeDatas()
-    {
-        yield return _selectAll;
-        foreach (var item in this.FromNodeDatas)
-        {
-            yield return item;
-        }
-    }
-
-    protected override bool CanInvoke(IFlowableLinkData previors, IFlowableDiagramData diagram)
-    {
-        if (this.SelectedFromNodeData is SelectAllNodeData)
-            return true;
-        var from = previors.GetFromNodeData(diagram);
-        if (from == this.SelectedFromNodeData)
-            return true;
-        return false;
-    }
-
-    protected virtual async Task<IFlowableResult> BeforeInvokeAsync(IFlowableLinkData previors, IFlowableDiagramData current)
-    {
-        return await Task.FromResult(this.OK());
-    }
-}
-
 public class FlowableNodeData : DiagramableNodeDataBase, IFlowableNodeData
 {
     private FlowableState _state = FlowableState.Ready;
@@ -235,8 +184,13 @@ public class FlowableNodeData : DiagramableNodeDataBase, IFlowableNodeData
 
     public virtual async Task<IFlowableResult> TryInvokeAsync(IFlowableLinkData previors, IFlowableDiagramData diagram)
     {
-        if (this.CanInvoke(previors, diagram))
-            return null;
+        if (!this.CanInvoke(previors, diagram))
+        {
+            this.State = FlowableState.Break;
+            this.Message = "不满足执行条件阻止流程";
+            return FlowableResult.Break;
+        }
+
         try
         {
             this.Clear();
@@ -306,6 +260,10 @@ public class FlowableNodeData : DiagramableNodeDataBase, IFlowableNodeData
         using (new PartDataInvokable(this, diagramData.OnInvokingPart, diagramData.OnInvokedPart))
         {
             nresult = await this.TryInvokeAsync(from, diagramData) as FlowableResult;
+            if (nresult == null)
+                return null;
+            if (nresult.State == FlowableResultState.Break)
+                return true;
             if (nresult.State == FlowableResultState.Error)
                 return false;
         }

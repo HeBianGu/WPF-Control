@@ -6,17 +6,18 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
-using System.Linq;
-using System.Text.Json.Serialization;
-using H.Controls.Form.PropertyItem.Attribute.SourcePropertyItem;
-using H.Controls.Form.PropertyItem.ComboBoxPropertyItems;
+namespace H.Controls.Diagram.ResultPresenter.ResultPresenters;
 
-namespace H.Controls.Diagram.Presenters.OpenCV.Base;
-
-public abstract class ImagesSelectableOpenCVNodeDataBase : OpenCVNodeDataBase
+public abstract class DataGridResultPresenterBase : ResultPresenterBase
 {
-
-
-
-
+    private Type _type;
+    public Type Type
+    {
+        get { return _type; }
+        set
+        {
+            _type = value;
+            RaisePropertyChanged();
+        }
+    }
 }

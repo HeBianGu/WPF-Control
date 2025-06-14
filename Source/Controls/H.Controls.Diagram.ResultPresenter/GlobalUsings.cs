@@ -6,16 +6,12 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
-namespace H.Controls.Diagram.Presenter.Flowables;
+global using H.Extensions.Common;
+global using System;
+global using System.Collections.Generic;
+global using System.Collections.ObjectModel;
+global using System.ComponentModel.DataAnnotations;
+global using System.Linq;
+global using System.Windows;
+global using System.Windows.Controls;
 
-public enum DiagramFlowableState
-{
-    None = 0,
-    Running,
-    Success,
-    Error,
-    Stopped,
-    Canceling,
-    Canceled,
-    Break
-}

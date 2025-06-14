@@ -6,9 +6,11 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
+using H.Controls.Diagram.Presenter.NodeDatas.Base;
+
 namespace H.Controls.Diagram.Presenters.OpenCV.Base;
 
-public interface IOpenCVNodeData : IFlowableNodeData
+public interface IOpenCVNodeData : IFlowableNodeData, IResultPresenterNodeData
 {
     Mat Mat { get; }
 }
