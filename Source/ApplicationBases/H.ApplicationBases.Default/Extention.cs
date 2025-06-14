@@ -26,7 +26,6 @@ namespace System
             services.AddDefaultMessages();
             services.AddDefaultModuleServices(opt.GetConfigOptions<Action<IDefaultModuleOptions>>());
             services.AddDefaultThemeServices(opt.GetConfigOptions<Action<IDefaultThemeOptions>>());
-
             services.AddLog4net();
         }
 
