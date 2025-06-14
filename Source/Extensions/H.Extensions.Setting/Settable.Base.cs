@@ -76,9 +76,14 @@ public abstract class SettableBase : DisplayBindableBase, ISettable, ILoadable, 
     {
         if (!File.Exists(path))
             return;
-        object load = this.GetSerializerService()?.Load(path, this.GetType());
+        ISettable load = this.GetSerializerService()?.Load(path, this.GetType()) as ISettable;
         if (load == null)
             return;
+        this.Load(load);
+    }
+
+    public virtual void Load(ISettable settable)
+    {
         PropertyInfo[] ps = this.GetType().GetProperties();
         foreach (PropertyInfo p in ps)
         {
@@ -86,7 +91,7 @@ public abstract class SettableBase : DisplayBindableBase, ISettable, ILoadable, 
                 continue;
             if (p.CanRead && p.CanWrite)
             {
-                object v = p.GetValue(load);
+                object v = p.GetValue(settable);
                 p.SetValue(this, v);
             }
         }

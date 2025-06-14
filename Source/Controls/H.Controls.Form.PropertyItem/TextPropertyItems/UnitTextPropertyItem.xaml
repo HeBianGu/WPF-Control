@@ -18,7 +18,7 @@
                 <TextBlock Margin="5,0"
                            HorizontalAlignment="Center"
                            VerticalAlignment="Center"
-                           Foreground="{Binding RelativeSource={RelativeSource AncestorType=TextBlock},Path=Foreground}"
+                           Foreground="{Binding RelativeSource={RelativeSource AncestorType=TextBox}, Path=Foreground}"
                            Text="{Binding Unit}" />
             </Cattach.Attach>
         </TextBox>
