@@ -6,7 +6,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Extensions\H.Extensions.Common\H.Extensions.Common.csproj" />
     <ProjectReference Include="..\..\Extensions\H.Extensions.ValueConverter\H.Extensions.ValueConverter.csproj" />
-    <ProjectReference Include="..\H.Controls.Diagram.Presenter\H.Controls.Diagram.Presenter.csproj" />
+    <ProjectReference Include="..\H.Controls.Diagram.ResultPresenter\H.Controls.Diagram.ResultPresenter.csproj" />
     <ProjectReference Include="..\H.Controls.FilterBox\H.Controls.FilterBox.csproj" />
     <ProjectReference Include="..\H.Controls.Form.PropertyItem\H.Controls.Form.PropertyItem.csproj" />
   </ItemGroup>

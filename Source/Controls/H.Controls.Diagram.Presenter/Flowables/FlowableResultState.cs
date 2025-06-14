@@ -11,6 +11,6 @@ namespace H.Controls.Diagram.Presenter.Flowables;
 public enum FlowableResultState
 {
     OK = 0,
-    //Warn,
-    Error
+    Error,
+    Break
 }

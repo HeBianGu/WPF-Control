@@ -10,6 +10,8 @@ global using H.Controls.Form.PropertyItem.TextPropertyItems;
 global using OpenCvSharp.Dnn;
 global using System.Collections.Generic;
 global using System.IO;
+using H.Controls.Diagram.ResultPresenter.ResultPresenters;
+using System;
 
 namespace H.Controls.Diagram.Presenters.OpenCV.NodeDatas.Yolovs;
 
@@ -186,6 +188,7 @@ public class Yolov3 : YolovOpenCVNodeDataBase
         //去除重叠和低置信度的目标框
         CvDnn.NMSBoxes(boxes, confidences, this.Threshold, this.NmsThreshold, out int[] indices);
 
+        List<Tuple<string, Point>> centers = new List<Tuple<string, Point>>();
         foreach (int i in indices)
         {
             //画出目标方框并标注置信度和分类标签
@@ -202,11 +205,14 @@ public class Yolov3 : YolovOpenCVNodeDataBase
             //标签字符大小
             Size textSize = Cv2.GetTextSize(label, HersheyFonts.HersheyTriplex, 0.5, 1, out int baseline);
             //画标签背景框
-            Cv2.Rectangle(org, new Rect(new Point(x1, box.Y - box.Height / 2 - textSize.Height - baseline),
-                new Size(textSize.Width, textSize.Height + baseline)), this.OutputColor.ToScalar(), Cv2.FILLED);
+            var rect = new Rect(new Point(x1, box.Y - box.Height / 2 - textSize.Height - baseline),
+                new Size(textSize.Width, textSize.Height + baseline));
+            Cv2.Rectangle(org, rect, this.OutputColor.ToScalar(), Cv2.FILLED);
             Cv2.PutText(org, label, new Point(x1, box.Y - box.Height / 2 - baseline), HersheyFonts.HersheyTriplex, 0.5, this.OutputLabelColor.ToScalar());
+
+            centers.Add(Tuple.Create(label, new Point(box.X, box.Y)));
         }
-        return this.OK(org);
+        return this.OK(org, centers.ToDataGridResultPresenter(x => x.Item2.ToString(), x => x.Item1));
     }
 }
 

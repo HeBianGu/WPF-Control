@@ -161,7 +161,7 @@ public abstract class FlowableDiagramDataBase : ZoomableDiagramDataBase, IFlowab
         this.State = DiagramFlowableState.Canceling;
         this.GotoState(x =>
         {
-            if (x.State == FlowableState.Running || x.State == FlowableState.Wait || x.State == FlowableState.Ready)
+            if (x.State == FlowableState.Running || x.State == FlowableState.Wait || x.State == FlowableState.Ready || x.State == FlowableState.Break)
                 return FlowableState.Canceling;
             return null;
         });

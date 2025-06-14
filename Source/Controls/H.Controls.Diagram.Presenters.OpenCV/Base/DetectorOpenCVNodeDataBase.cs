@@ -8,7 +8,7 @@
 
 namespace H.Controls.Diagram.Presenters.OpenCV.Base;
 [Icon(FontIcons.Photo)]
-public abstract class DetectorOpenCVNodeDataBase : ImagesSelectableOpenCVNodeDataBase, IDetectorOpenCVNodeData
+public abstract class DetectorOpenCVNodeDataBase : OpenCVNodeDataBase, IDetectorOpenCVNodeData
 {
     private PreviewType _detectorPreviewType = PreviewType.Src;
     [Display(Name = "输出预览类型", GroupName = "输出样式", Description = "设置从原图输出匹配结果还是上一结果中输出")]

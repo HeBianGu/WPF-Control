@@ -9,7 +9,7 @@
 namespace H.Controls.Diagram.Presenters.OpenCV.Base;
 
 [Icon(FontIcons.Favicon2)]
-public abstract class YolovOpenCVNodeDataBase : ImagesSelectableOpenCVNodeDataBase, IYolovOpenCVNodeData
+public abstract class YolovOpenCVNodeDataBase : OpenCVNodeDataBase, IYolovOpenCVNodeData
 {
     private int _outPutThickness = 3;
     [DefaultValue(3)]

@@ -8,6 +8,7 @@
 
 global using H.Controls.Diagram.Presenter.NodeDatas;
 using H.Controls.Diagram.Presenter.LinkDatas;
+using H.Controls.Diagram.Presenter.NodeDatas.Base;
 using H.Controls.Diagram.Presenter.PortDatas;
 using System.Windows.Controls;
 

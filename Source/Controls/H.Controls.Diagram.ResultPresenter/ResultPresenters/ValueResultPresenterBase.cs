@@ -6,16 +6,9 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
-namespace H.Controls.Diagram.Presenter.Flowables;
+namespace H.Controls.Diagram.ResultPresenter.ResultPresenters;
 
-public enum DiagramFlowableState
+public abstract class ValueResultPresenterBase : ResultPresenterBase
 {
-    None = 0,
-    Running,
-    Success,
-    Error,
-    Stopped,
-    Canceling,
-    Canceled,
-    Break
+
 }

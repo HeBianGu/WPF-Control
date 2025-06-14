@@ -268,6 +268,7 @@ public static class FlowableExtension
             return DiagramFlowableState.Canceled;
         return value == true ? DiagramFlowableState.Success : DiagramFlowableState.Error;
     }
+
     public static FlowableState ToFlowableState(this bool? value)
     {
         if (value == null)
