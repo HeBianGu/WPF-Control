@@ -316,4 +316,8 @@ public static class ColorKeys
     /// 透明色
     /// </summary>
     public static ComponentResourceKey Tranparent => new ComponentResourceKey(typeof(ColorKeys), "S.Color.Tranparent");
+
+
+    public static ComponentResourceKey MenuBackground => new ComponentResourceKey(typeof(ColorKeys), "S.Color.Menu.Background");
+    public static ComponentResourceKey MenuForeground => new ComponentResourceKey(typeof(ColorKeys), "S.Color.Menu.Foreground");
 }

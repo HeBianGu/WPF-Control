@@ -62,4 +62,8 @@
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Blue, TypeInTargetAssembly={x:Type local:ColorKeys}}">DarkBlue</Color>
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.LightBlue, TypeInTargetAssembly={x:Type local:ColorKeys}}">LightSkyBlue</Color>
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Pink, TypeInTargetAssembly={x:Type local:ColorKeys}}">DeepPink</Color>
+
+    <!--  Menu  -->
+    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Menu.Background, TypeInTargetAssembly={x:Type local:ColorKeys}}">#1e293b</Color>
+    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Menu.Foreground, TypeInTargetAssembly={x:Type local:ColorKeys}}">#f8fafc</Color>
 </ResourceDictionary>

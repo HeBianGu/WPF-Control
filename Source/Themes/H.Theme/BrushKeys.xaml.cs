@@ -139,4 +139,8 @@ public static class BrushKeys
 
     public static ComponentResourceKey Tile => new ComponentResourceKey(typeof(BrushKeys), "S.Brush.Tile");
     public static ComponentResourceKey Tile25 => new ComponentResourceKey(typeof(BrushKeys), "S.Brush.Tile.25");
+
+
+    public static ComponentResourceKey MenuBackground => new ComponentResourceKey(typeof(BrushKeys), "S.Brush.Menu.Background");
+    public static ComponentResourceKey MenuForeground => new ComponentResourceKey(typeof(BrushKeys), "S.Brush.Menu.Foreground");
 }

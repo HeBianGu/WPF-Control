@@ -250,6 +250,17 @@
                      Color="{DynamicResource {x:Static local:ColorKeys.Pink}}" />
     <SolidColorBrush x:Key="{ComponentResourceKey ResourceId=S.Brush.White, TypeInTargetAssembly={x:Type local:BrushKeys}}">#FFFFFF</SolidColorBrush>
 
+
+    <SolidColorBrush x:Key="{ComponentResourceKey ResourceId=S.Brush.Menu.Background,
+                                                  TypeInTargetAssembly={x:Type local:BrushKeys}}"
+                     po:Freeze="True"
+                     Color="{DynamicResource {x:Static local:ColorKeys.MenuBackground}}" />
+
+    <SolidColorBrush x:Key="{ComponentResourceKey ResourceId=S.Brush.Menu.Foreground,
+                                                  TypeInTargetAssembly={x:Type local:BrushKeys}}"
+                     po:Freeze="True"
+                     Color="{DynamicResource {x:Static local:ColorKeys.MenuForeground}}" />
+
     <!--  System  -->
     <!--<SolidColorBrush x:Key="{ComponentResourceKey ResourceId=S.Brush.Dialog.Cover, TypeInTargetAssembly={x:Type local:BrushKeys}}" Opacity="0.5" SolidColorBrush="#000000" />-->
 
