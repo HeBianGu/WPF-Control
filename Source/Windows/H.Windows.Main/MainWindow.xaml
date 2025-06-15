@@ -45,6 +45,14 @@
         <Setter Property="h:GridSplitterBox.IsExpanded" Value="False" />
         <Setter Property="h:GridSplitterBox.Mode" Value="Extend" />
         <Setter Property="h:GridSplitterBox.GridSpliteWidth" Value="2" />
+        <Setter Property="h:GridSplitterBox.ToggleStyle">
+            <Setter.Value>
+                <Style BasedOn="{StaticResource {x:Static h:GridSplitterBox.ToggleKey}}"
+                       TargetType="FontIconToggleButton">
+                    <Setter Property="Grid.ColumnSpan" Value="1" />
+                </Style>
+            </Setter.Value>
+        </Setter>
         <Setter Property="WindowChrome.WindowChrome">
             <Setter.Value>
                 <WindowChrome CaptionHeight="{Binding RelativeSource={RelativeSource AncestorType=local:MainWindow}, Path=CaptionHeight}"
@@ -76,16 +84,11 @@
                                                            MenuMaxWidth="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(h:GridSplitterBox.MenuMaxWidth)}"
                                                            MenuMinWidth="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(h:GridSplitterBox.MenuMinWidth)}"
                                                            Mode="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(h:GridSplitterBox.Mode)}"
+                                                           ToggleStyle="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(h:GridSplitterBox.ToggleStyle)}"
                                                            ToggleVerticalAlignment="Bottom">
                                             <h:GridSplitterBox.MenuContent>
                                                 <Control Template="{TemplateBinding SideTemplate}" />
                                             </h:GridSplitterBox.MenuContent>
-                                            <h:GridSplitterBox.ToggleStyle>
-                                                <Style BasedOn="{StaticResource {x:Static h:GridSplitterBox.ToggleKey}}"
-                                                       TargetType="FontIconToggleButton">
-                                                    <Setter Property="Grid.ColumnSpan" Value="1" />
-                                                </Style>
-                                            </h:GridSplitterBox.ToggleStyle>
                                             <Grid>
                                                 <Grid.RowDefinitions>
                                                     <RowDefinition Height="{Binding RelativeSource={RelativeSource AncestorType=local:MainWindow}, Path=CaptionHeight}" />

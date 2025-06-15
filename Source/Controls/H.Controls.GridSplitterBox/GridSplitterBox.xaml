@@ -5,7 +5,7 @@
 
     <Style x:Key="{ComponentResourceKey ResourceId=S.GridSplitterBox.Toggle,
                                         TypeInTargetAssembly={x:Type local:GridSplitterBox}}"
-           BasedOn="{StaticResource {x:Static FontIconToggleButtonKeys.Default}}"
+           BasedOn="{StaticResource {x:Static FontIconToggleButtonKeys.Switch}}"
            TargetType="FontIconToggleButton">
         <Setter Property="Padding" Value="8" />
         <Setter Property="Margin" Value="5" />

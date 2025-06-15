@@ -14,7 +14,9 @@
                       ShadowDepth="1.5"
                       Color="#000000" />
 
-    <Style BasedOn="{StaticResource {x:Static local:MainWindowKeys.Default}}"
+    <Style x:Key="{ComponentResourceKey ResourceId=S.TransparencyMainWindow.Default,
+                                        TypeInTargetAssembly={x:Type local:TransparencyMainWindowKeys}}"
+           BasedOn="{StaticResource {x:Static local:MainWindowKeys.Default}}"
            TargetType="{x:Type local:TransparencyMainWindow}">
         <Setter Property="Template">
             <Setter.Value>
@@ -48,16 +50,11 @@
                                                            MenuMaxWidth="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(h:GridSplitterBox.MenuMaxWidth)}"
                                                            MenuMinWidth="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(h:GridSplitterBox.MenuMinWidth)}"
                                                            Mode="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(h:GridSplitterBox.Mode)}"
+                                                           ToggleStyle="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(h:GridSplitterBox.ToggleStyle)}"
                                                            ToggleVerticalAlignment="Bottom">
                                             <h:GridSplitterBox.MenuContent>
                                                 <Control Template="{TemplateBinding SideTemplate}" />
                                             </h:GridSplitterBox.MenuContent>
-                                            <h:GridSplitterBox.ToggleStyle>
-                                                <Style BasedOn="{StaticResource {x:Static h:GridSplitterBox.ToggleKey}}"
-                                                       TargetType="FontIconToggleButton">
-                                                    <Setter Property="Grid.ColumnSpan" Value="1" />
-                                                </Style>
-                                            </h:GridSplitterBox.ToggleStyle>
                                             <Grid>
                                                 <Grid.RowDefinitions>
                                                     <RowDefinition Height="{Binding RelativeSource={RelativeSource AncestorType=local:MainWindow}, Path=CaptionHeight}" />
@@ -76,7 +73,8 @@
                                                         </Grid.ColumnDefinitions>
                                                         <StackPanel Margin="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(Cattach.TitleMargin)}"
                                                                     VerticalAlignment="Center"
-                                                                    Orientation="Horizontal">
+                                                                    Orientation="Horizontal"
+                                                                    Visibility="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(Cattach.UseTitle), Converter={x:Static Converter.GetTrueToVisible}}">
                                                             <Button MinWidth="{x:Static SystemParameters.SmallIconWidth}"
                                                                     MinHeight="{x:Static SystemParameters.SmallIconHeight}"
                                                                     Margin="0,0,5,0"
@@ -164,4 +162,7 @@
             </Setter.Value>
         </Setter>
     </Style>
+
+    <Style BasedOn="{StaticResource {x:Static local:TransparencyMainWindowKeys.Default}}"
+           TargetType="{x:Type local:TransparencyMainWindow}" />
 </ResourceDictionary>

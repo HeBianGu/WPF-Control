@@ -20,6 +20,7 @@ public class TransparencyMainWindow : MainWindow
         DefaultStyleKeyProperty.OverrideMetadata(typeof(TransparencyMainWindow), new FrameworkPropertyMetadata(typeof(TransparencyMainWindow)));
     }
 
+
     public TransparencyMainWindow()
     {
         this.AllowsTransparency = true;

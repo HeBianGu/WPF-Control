@@ -68,6 +68,31 @@ public static partial class Cattach
 
     }
 
+
+    public static bool GetUseTitle(DependencyObject obj)
+    {
+        return (bool)obj.GetValue(UseTitleProperty);
+    }
+
+    public static void SetUseTitle(DependencyObject obj, bool value)
+    {
+        obj.SetValue(UseTitleProperty, value);
+    }
+
+    /// <summary> 应用窗体关闭和显示 </summary>
+    public static readonly DependencyProperty UseTitleProperty =
+        DependencyProperty.RegisterAttached("UseTitle", typeof(bool), typeof(Cattach), new PropertyMetadata(true, OnUseTitleChanged));
+
+    static public void OnUseTitleChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+    {
+        DependencyObject control = d as DependencyObject;
+
+        bool n = (bool)e.NewValue;
+
+        bool o = (bool)e.OldValue;
+    }
+
+
     public static int GetBackgroundColumn(DependencyObject obj)
     {
         return (int)obj.GetValue(BackgroundColumnProperty);
