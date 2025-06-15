@@ -93,16 +93,17 @@
                                         TypeInTargetAssembly={x:Type local:ButtonKeys}}"
            BasedOn="{StaticResource {x:Static local:ButtonKeys.Default}}"
            TargetType="Button">
-        <Setter Property="Background">
-            <Setter.Value>
-                <SolidColorBrush Opacity="0.8"
-                                 Color="{DynamicResource {x:Static ColorKeys.Accent}}" />
-            </Setter.Value>
-        </Setter>
+        <Setter Property="Background" Value="{DynamicResource {x:Static BrushKeys.Accent}}" />
         <Setter Property="Foreground" Value="{DynamicResource {x:Static BrushKeys.White}}" />
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="true">
-                <Setter Property="Background" Value="{DynamicResource {x:Static BrushKeys.Accent}}" />
+
+                <Setter Property="Background">
+                    <Setter.Value>
+                        <SolidColorBrush Opacity="0.9"
+                                         Color="{DynamicResource {x:Static ColorKeys.Accent}}" />
+                    </Setter.Value>
+                </Setter>
                 <Setter Property="Foreground" Value="{DynamicResource {x:Static BrushKeys.White}}" />
             </Trigger>
         </Style.Triggers>
@@ -112,16 +113,16 @@
                                         TypeInTargetAssembly={x:Type local:ButtonKeys}}"
            BasedOn="{StaticResource {x:Static local:ButtonKeys.Accent}}"
            TargetType="Button">
-        <Setter Property="Background">
-            <Setter.Value>
-                <SolidColorBrush Opacity="0.8"
-                                 Color="{DynamicResource {x:Static ColorKeys.Green}}" />
-            </Setter.Value>
-        </Setter>
+        <Setter Property="Background" Value="{DynamicResource {x:Static BrushKeys.Green}}" />
         <Setter Property="Foreground" Value="{DynamicResource {x:Static BrushKeys.White}}" />
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="true">
-                <Setter Property="Background" Value="{DynamicResource {x:Static BrushKeys.Green}}" />
+                <Setter Property="Background">
+                    <Setter.Value>
+                        <SolidColorBrush Opacity="0.9"
+                                         Color="{DynamicResource {x:Static ColorKeys.Green}}" />
+                    </Setter.Value>
+                </Setter>
             </Trigger>
         </Style.Triggers>
     </Style>
@@ -130,16 +131,17 @@
                                         TypeInTargetAssembly={x:Type local:ButtonKeys}}"
            BasedOn="{StaticResource {x:Static local:ButtonKeys.Accent}}"
            TargetType="Button">
-        <Setter Property="Background">
-            <Setter.Value>
-                <SolidColorBrush Opacity="0.8"
-                                 Color="{DynamicResource {x:Static ColorKeys.Red}}" />
-            </Setter.Value>
-        </Setter>
+        <Setter Property="Background" Value="{DynamicResource {x:Static BrushKeys.Red}}" />
         <Setter Property="Foreground" Value="{DynamicResource {x:Static BrushKeys.White}}" />
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="true">
-                <Setter Property="Background" Value="{DynamicResource {x:Static BrushKeys.Red}}" />
+
+                <Setter Property="Background">
+                    <Setter.Value>
+                        <SolidColorBrush Opacity="0.8"
+                                 Color="{DynamicResource {x:Static ColorKeys.Red}}" />
+                    </Setter.Value>
+                </Setter>
             </Trigger>
         </Style.Triggers>
     </Style>
