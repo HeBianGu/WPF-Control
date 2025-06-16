@@ -48,6 +48,11 @@ public abstract class Part : ContentPresenter
         this.CommandBindings.Add(binding);
 
         this.MouseLeftButtonDown += Part_MouseLeftButtonDown;
+        this.Loaded += (l, k) =>
+             {
+                 this._diagram = null;
+             };
+
     }
 
     private void Part_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
