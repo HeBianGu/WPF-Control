@@ -17,5 +17,6 @@
         <ResourceDictionary Source="pack://application:,,,/H.Presenters.Common;component/DataGridPresenter.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Presenters.Common;component/TreeViewPresenter.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Presenters.Common;component/CommandsPresenter.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Presenters.Common;component/CommandsBindablePresenter.xaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>
