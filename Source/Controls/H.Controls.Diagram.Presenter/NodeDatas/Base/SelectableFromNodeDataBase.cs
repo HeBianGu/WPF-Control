@@ -22,7 +22,7 @@ public abstract class SelectableFromNodeDataBase : ResultPresenterNodeDataBase
 
     private INodeData _selectedFromNodeData;
     [MethodNameSourcePropertyItem(typeof(ComboBoxPropertyItem), nameof(GetSelectableFromNodeDatas))]
-    [Display(Name = "输入源", GroupName = "流程控制")]
+    [Display(Name = "输入设置", GroupName = "流程控制")]
     public INodeData SelectedFromNodeData
     {
         get { return _selectedFromNodeData; }
@@ -57,3 +57,4 @@ public abstract class SelectableFromNodeDataBase : ResultPresenterNodeDataBase
         return false;
     }
 }
+

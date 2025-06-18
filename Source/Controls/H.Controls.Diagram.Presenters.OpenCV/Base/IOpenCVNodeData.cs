@@ -10,7 +10,7 @@ using H.Controls.Diagram.Presenter.NodeDatas.Base;
 
 namespace H.Controls.Diagram.Presenters.OpenCV.Base;
 
-public interface IOpenCVNodeData : IFlowableNodeData, IResultPresenterNodeData
+public interface IOpenCVNodeData : IFlowableNodeData, IResultPresenterNodeData, IResultImageSourceNodeData
 {
     Mat Mat { get; }
 }

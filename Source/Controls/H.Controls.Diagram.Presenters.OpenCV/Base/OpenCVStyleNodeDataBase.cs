@@ -7,6 +7,7 @@
 // Licensed under the MIT License (the "License")
 
 global using H.Controls.Diagram.Presenter.NodeDatas;
+using H.Controls.Diagram.Presenter.Extensions;
 using H.Controls.Diagram.Presenter.LinkDatas;
 using H.Controls.Diagram.Presenter.NodeDatas.Base;
 using H.Controls.Diagram.Presenter.PortDatas;
@@ -14,7 +15,7 @@ using System.Windows.Controls;
 
 namespace H.Controls.Diagram.Presenters.OpenCV.Base;
 
-public abstract class OpenCVStyleNodeDataBase : SelectableFromNodeDataBase
+public abstract class OpenCVStyleNodeDataBase : ResultImageSourceNodeDataBase
 {
     private double _flagLength;
     [DefaultValue(10)]

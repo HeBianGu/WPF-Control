@@ -49,7 +49,7 @@ public class SVM : OpenCVNodeDataBase
             }
             this.Mat?.Dispose();
             this.Mat = pointsPlot;
-            UpdateMatToView();
+            UpdateResultImageSource();
             Thread.Sleep(1000);
         }
 

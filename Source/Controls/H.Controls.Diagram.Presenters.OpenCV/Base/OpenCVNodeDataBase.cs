@@ -13,12 +13,10 @@ using H.Controls.Diagram.Presenter.Extensions;
 using H.Controls.Diagram.Presenter.NodeDatas.Base;
 
 namespace H.Controls.Diagram.Presenters.OpenCV.Base;
-
 public abstract class OpenCVNodeDataBase : OpenCVStyleNodeDataBase, IOpenCVNodeData
 {
     protected OpenCVNodeDataBase()
     {
-        this.UseReview = false;
         this.PreviewMillisecondsDelay = 0;
         this.InvokeMillisecondsDelay = 0;
     }
@@ -32,33 +30,6 @@ public abstract class OpenCVNodeDataBase : OpenCVStyleNodeDataBase, IOpenCVNodeD
     [XmlIgnore]
     public Mat Mat { get; set; }
 
-    private bool _useReview = true;
-    [JsonIgnore]
-    [Browsable(false)]
-    [XmlIgnore]
-    public bool UseReview
-    {
-        get { return _useReview; }
-        set
-        {
-            _useReview = value;
-            RaisePropertyChanged();
-        }
-    }
-
-    private ImageSource _imageSource;
-    [JsonIgnore]
-    [Browsable(false)]
-    [XmlIgnore]
-    public ImageSource ImageSource
-    {
-        get { return _imageSource; }
-        set
-        {
-            _imageSource = value;
-            RaisePropertyChanged();
-        }
-    }
 
     private int _previewMillisecondsDelay = 1500;
     [DefaultValue(1500)]
@@ -93,46 +64,46 @@ public abstract class OpenCVNodeDataBase : OpenCVStyleNodeDataBase, IOpenCVNodeD
         var result = this.Invoke(srcData, fromData ?? srcData, diagram);
         this.Mat?.Dispose();
         this.Mat = result.Value;
-        if (this.UseReview)
+        if (this.UseResultImageSource)
         {
-            this.UpdateMatToView();
+            this.UpdateResultImageSource();
             Thread.Sleep(this.PreviewMillisecondsDelay);
         }
         return result;
     }
     protected abstract FlowableResult<Mat> Invoke(ISrcImageNodeData srcImageNodeData, IOpenCVNodeData from, IFlowableDiagramData diagram);
 
-    protected void UpdateMatToView(Mat mat)
+    protected void UpdateResultImageSource(Mat mat)
     {
         if (this.Mat != mat)
             this.Mat?.Dispose();
         this.Mat = mat;
-        if (this.ImageSource == null)
+        if (this.ResultImageSource == null)
         {
             System.Windows.Application.Current.Dispatcher.Invoke(() =>
             {
-                this.ImageSource = mat.Empty() ? null : mat?.ToWriteableBitmap();
+                this.ResultImageSource = mat.Empty() ? null : mat?.ToWriteableBitmap();
             });
         }
         else
         {
-            if (this.ImageSource.CheckAccess())
+            if (this.ResultImageSource.CheckAccess())
             {
-                this.ImageSource = mat?.ToWriteableBitmap();
+                this.ResultImageSource = mat?.ToWriteableBitmap();
             }
             else
             {
                 System.Windows.Application.Current.Dispatcher.Invoke(() =>
                 {
-                    this.ImageSource = mat.Empty() ? null : mat?.ToWriteableBitmap();
+                    this.ResultImageSource = mat.Empty() ? null : mat?.ToWriteableBitmap();
                 });
             }
         }
     }
 
-    protected void UpdateMatToView()
+    protected void UpdateResultImageSource()
     {
-        this.UpdateMatToView(this.Mat);
+        this.UpdateResultImageSource(this.Mat);
     }
 
     protected virtual FlowableResult<Mat> OK(Mat mat, string message = "运行成功")

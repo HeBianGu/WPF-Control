@@ -7,6 +7,7 @@
 // Licensed under the MIT License (the "License")
 
 global using H.Controls.Diagram.Datas;
+using System.Collections.ObjectModel;
 using System.Windows.Controls;
 
 namespace H.Controls.Diagram.Presenters.OpenCV.Base;
@@ -14,6 +15,7 @@ namespace H.Controls.Diagram.Presenters.OpenCV.Base;
 public interface ISrcImageNodeData : IOpenCVNodeData
 {
     string SrcFilePath { get; set; }
+    ObservableCollection<string> SrcFilePaths { get; set; }
 }
 
 public abstract class SrcImageNodeDataBase : OpenCVNodeDataBase, ISrcImageNodeData, IFilePathable
@@ -33,6 +35,17 @@ public abstract class SrcImageNodeDataBase : OpenCVNodeDataBase, ISrcImageNodeDa
         set
         {
             _srcFilePath = value;
+            RaisePropertyChanged();
+        }
+    }
+
+    private ObservableCollection<string> _srcFilePaths = new ObservableCollection<string>();
+    public ObservableCollection<string> SrcFilePaths
+    {
+        get { return _srcFilePaths; }
+        set
+        {
+            _srcFilePaths = value;
             RaisePropertyChanged();
         }
     }

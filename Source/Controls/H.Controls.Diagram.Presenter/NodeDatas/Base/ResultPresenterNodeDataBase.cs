@@ -18,7 +18,7 @@ public interface IResultPresenterNodeData
     IResultPresenter ResultPresenter { get; }
 }
 
-public abstract class ResultPresenterNodeDataBase : FlowableNodeData, IResultPresenterNodeData
+public abstract class ResultPresenterNodeDataBase : PropertyResultNodeDataBase, IResultPresenterNodeData
 {
     private IResultPresenter _resultPresenter;
     [JsonIgnore]

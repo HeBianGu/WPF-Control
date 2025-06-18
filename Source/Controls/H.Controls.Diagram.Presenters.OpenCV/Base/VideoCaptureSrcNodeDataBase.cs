@@ -52,7 +52,7 @@ public abstract class VideoCaptureSrcNodeDataBase : SrcImageNodeDataBase, IVideo
         this.Mat?.Dispose();
         this.Mat = frameMat;
         //this.SrcMat = this.Mat;
-        UpdateMatToView();
+        UpdateResultImageSource();
         invoked.Invoke(this);
         var tos = this.GetToNodeDatas(diagram).OfType<IFlowableNodeData>();
         var to = tos.FirstOrDefault();

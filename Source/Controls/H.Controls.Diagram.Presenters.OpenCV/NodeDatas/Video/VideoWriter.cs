@@ -95,7 +95,7 @@ public class VideoWriter : SrcImageNodeDataBase
                 Cv2.Resize(canny, dst, this.FrameSize, 0, 0, InterpolationFlags.Linear);
                 this.Mat?.Dispose();
                 this.Mat = dst;
-                UpdateMatToView();
+                UpdateResultImageSource();
                 // Write mat to VideoWriter
                 writer.Write(dst);
             }
