@@ -170,5 +170,12 @@
                          Text="123456" />
             </Button.CommandParameter>
         </Button>
+
+        <Button Command="{h:ShowCommand DialogButton=None}"
+                Content="CommandsPresenter-自定义按钮解决方案">
+            <Button.CommandParameter>
+                <TestCommandsPresenter Presenter="{GetStudent}" />
+            </Button.CommandParameter>
+        </Button>
     </UniformGrid>
 </Window>

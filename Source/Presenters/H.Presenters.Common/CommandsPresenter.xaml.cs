@@ -8,19 +8,34 @@
 
 namespace H.Presenters.Common;
 
-public class CommandsPresenter : CommandsBindableBase
+
+public class TestCommandsPresenter : CommandsPresenterBase
+{
+    [Display(Name = "确定", GroupName = "操作")]
+    public DisplayCommand SumitCommand => new DisplayCommand(x =>
+    {
+
+    });
+
+    [Display(Name = "取消", GroupName = "操作")]
+    public DisplayCommand CancelCommand => new DisplayCommand(x =>
+    {
+
+    });
+}
+
+public class CommandsPresenter : CommandsPresenterBase
 {
     public CommandsPresenter(object presenter)
     {
         this.Presenter = presenter;
     }
-    public object Presenter { get; set; }
 }
 
 [Icon("\xEDE3")]
 public class CommandsPresenterBase : CommandsBindableBase
 {
-
+    public object Presenter { get; set; }
 }
 
 public class CommandsPresenter<T> : CommandsPresenterBase
@@ -29,7 +44,6 @@ public class CommandsPresenter<T> : CommandsPresenterBase
     {
         this.Presenter = presenter;
     }
-    public T Presenter { get; set; }
 }
 
 public class DialogCommandsPresenter<T> : CommandsPresenter<T>
