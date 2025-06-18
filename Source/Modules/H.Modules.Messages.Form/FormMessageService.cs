@@ -27,40 +27,13 @@ namespace H.Modules.Messages.Form
 
         public async Task<bool?> ShowTabEdit<T>(T value, Action<IDialog> action = null, Predicate<T> match = null, Action<IFormOption> option = null, Window owner = null)
         {
-            IEnumerable<string> GetGroups()
-            {
-                foreach (var p in TypeDescriptor.GetProperties(value).OfType<PropertyDescriptor>())
-                {
-                    if (p.Attributes.OfType<BrowsableAttribute>().Any(x => x.Browsable == false))
-                        continue;
-                    foreach (var d in p.Attributes.OfType<DisplayAttribute>())
-                    {
-                        if (d.GroupName == null)
-                            continue;
-                        var names = d.GroupName.Split(",".ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
-                        foreach (var n in names)
-                        {
-                            yield return n;
-                        }
-                    }
-                }
-            }
 
             Action<IFormOption> toption = x =>
             {
                 option?.Invoke(x);
                 if (x is TabFormPresenter tab)
                 {
-                    var gs = tab.UseGroupNames?.Split(",".ToCharArray(), StringSplitOptions.RemoveEmptyEntries).Order(x.GroupOrderComparer);
-                    if (gs == null || gs.Count() == 0)
-                    {
-                        var names = GetGroups().Distinct();
-                        tab.TabNames = names.ToObservable();
-                    }
-                    else
-                    {
-                        tab.TabNames = gs.ToObservable();
-                    }
+                    tab.UpdateTabNames();
                 }
             };
             return await this.ShowEdit<T, TabFormPresenter>(value, action, match, toption, owner);

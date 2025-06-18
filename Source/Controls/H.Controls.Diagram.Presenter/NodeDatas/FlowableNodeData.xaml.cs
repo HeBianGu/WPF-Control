@@ -12,7 +12,7 @@ using System.Windows.Media.Animation;
 
 namespace H.Controls.Diagram.Presenter.NodeDatas;
 
-public class FlowableNodeData : DiagramableNodeDataBase, IFlowableNodeData
+public class FlowableNodeData : ShowPropertyViewNodeDataBase, IFlowableNodeData
 {
     private FlowableState _state = FlowableState.Ready;
     [Browsable(false)]

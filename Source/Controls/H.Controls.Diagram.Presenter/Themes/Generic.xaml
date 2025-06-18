@@ -2,7 +2,6 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
                     xmlns:h="https://github.com/HeBianGu"
-                    xmlns:lb="clr-namespace:H.Controls.Diagram.Presenter.Behaviors"
                     xmlns:ld="clr-namespace:H.Controls.Diagram.Presenter.DiagramDatas"
                     xmlns:ldb="clr-namespace:H.Controls.Diagram.Presenter.DiagramDatas.Base"
                     xmlns:local="clr-namespace:H.Controls.Diagram.Presenter"
@@ -28,5 +27,6 @@
         <ResourceDictionary Source="pack://application:,,,/H.Controls.Diagram.Presenter;component/DiagramDatas/NodeDataGroupsContextMenuPresenter.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Controls.Diagram.Presenter;component/DiagramDatas/NodeDataGroupsItemsControlPresenter.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Controls.Diagram.Presenter;component/DiagramDatas/NodeDataGroupsTreeViewPresenter.xaml" />
+        <!--<ResourceDictionary Source="pack://application:,,,/H.Controls.Diagram.Presenter;component/CommandsPropertyPresenter.xaml" />-->
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

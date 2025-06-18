@@ -73,7 +73,7 @@
                                       ContentTemplate="{Binding PresenterTemplate}" />
                 </Grid>
                 <StackPanel Grid.Row="2"
-                            MinHeight="20"
+                            MinHeight="0"
                             HorizontalAlignment="Center"
                             Orientation="Horizontal">
                     <Button x:Name="btn_sumit"

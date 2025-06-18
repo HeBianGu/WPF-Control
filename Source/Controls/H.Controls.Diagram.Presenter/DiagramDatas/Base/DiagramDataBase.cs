@@ -280,10 +280,10 @@ public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
             if (framework?.DataContext == null)
                 return;
 
-            if (framework?.DataContext is IShowPropertyView showPropertyView)
+            if (framework?.DataContext is IDiagramShowPropertyView showPropertyView)
             {
                 var propertyPresenter = showPropertyView.GetPropertyPresenter();
-                await IocMessage.ShowDialog(propertyPresenter);
+                await IocMessage.ShowDialog(propertyPresenter, x => x.DialogButton = DialogButton.None);
             }
             else
             {
@@ -424,10 +424,4 @@ public class Datas
 {
     public List<INodeData> NodeDatas { get; set; } = new List<INodeData>();
     public List<ILinkData> LinkDatas { get; set; } = new List<ILinkData>();
-}
-
-
-public interface IShowPropertyView
-{
-    object GetPropertyPresenter();
 }

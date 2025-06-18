@@ -10,7 +10,15 @@ using H.Controls.Diagram.Presenter.Extensions;
 
 namespace H.Controls.Diagram.Presenter.NodeDatas.Base;
 
-public abstract class SelectableFromNodeDataBase : ResultPresenterNodeDataBase
+public interface ISelectableFromNodeData
+{
+    INodeData SelectedFromNodeData { get; set; }
+
+    IEnumerable<INodeData> GetSelectedFromNodeDatas();
+
+}
+
+public abstract class SelectableFromNodeDataBase : ResultPresenterNodeDataBase, ISelectableFromNodeData
 {
     public class SelectAllNodeData : NodeDataBase
     {
@@ -55,6 +63,19 @@ public abstract class SelectableFromNodeDataBase : ResultPresenterNodeDataBase
         if (from == this.SelectedFromNodeData)
             return true;
         return false;
+    }
+
+    public IEnumerable<INodeData> GetSelectedFromNodeDatas()
+    {
+        if (this.SelectedFromNodeData is SelectAllNodeData || this.SelectedFromNodeData == null)
+        {
+            foreach (var item in this.FromNodeDatas)
+            {
+                yield return item;
+            }
+            yield break;
+        }
+        yield return this.SelectedFromNodeData;
     }
 }
 

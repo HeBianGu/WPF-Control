@@ -9,8 +9,14 @@
 using System.Text.Json.Serialization;
 using System.Windows;
 using System.Xml.Serialization;
+using H.Controls.Diagram.Presenter;
 using H.Controls.Diagram.Presenter.Extensions;
 using H.Controls.Diagram.Presenter.NodeDatas.Base;
+using H.Controls.Diagram.Presenters.OpenCV.NodeDatas.Image;
+using H.Controls.Diagram.Presenters.OpenCV.NodeDatas.Other;
+using H.Extensions.Mvvm.Commands;
+using H.Mvvm.Commands;
+using H.Mvvm.ViewModels.Base;
 
 namespace H.Controls.Diagram.Presenters.OpenCV.Base;
 public abstract class OpenCVNodeDataBase : OpenCVStyleNodeDataBase, IOpenCVNodeData
@@ -124,4 +130,27 @@ public abstract class OpenCVNodeDataBase : OpenCVStyleNodeDataBase, IOpenCVNodeD
         this.Message = message;
         return new FlowableResult<Mat>(mat, message) { State = FlowableResultState.Error };
     }
+
+    public override object GetPropertyPresenter()
+    {
+        return new InvokeCommandsPropertyPresenter(this);
+    }
 }
+
+
+public class InvokeCommandsPropertyPresenter : CommandsPropertyPresenter
+{
+    public InvokeCommandsPropertyPresenter(IDiagramableNodeData nodeData) : base(nodeData)
+    {
+    }
+
+    [Icon(FontIcons.Delete)]
+    [Display(Name = "执行", GroupName = "操作")]
+    public DisplayCommand InvokeCommand => new DisplayCommand(async x =>
+    {
+        var srcs = this.NodeData.GetSelectedFromNodeDatas(this.NodeData.DiagramData).OfType<ISrcImageNodeData>();
+        if (this.NodeData.DiagramData is IFlowableDiagramData flowableDiagramData)
+            await flowableDiagramData.Start();
+    });
+}
+

@@ -41,6 +41,25 @@ public static class NodeDataExtension
         }
     }
 
+    public static IEnumerable<INodeData> GetSelectedFromNodeDatas(this INodeData node, IDiagramData diagramData)
+    {
+        IEnumerable<INodeData> froms = null;
+        if (node is ISelectableFromNodeData selectableFromNodeData)
+            froms = selectableFromNodeData.GetSelectedFromNodeDatas();
+        else
+            froms = node.GetFromNodeDatas(diagramData);
+
+        foreach (var from in froms)
+        {
+            yield return from;
+            var finds = from.GetSelectedFromNodeDatas(diagramData);
+            foreach (var find in finds)
+            {
+                yield return find;
+            }
+        }
+    }
+
     public static IEnumerable<INodeData> GetToNodeDatas(this INodeData node, IDiagramData diagramData)
     {
         return node.GetToLinkDatas(diagramData).Select(x => x.GetToNodeData(diagramData));

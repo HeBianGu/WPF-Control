@@ -17,7 +17,7 @@ using H.Controls.Form.PropertyItem.ComboBoxPropertyItems;
 namespace H.Controls.Diagram.Presenters.OpenCV.NodeDatas.Image;
 
 [Display(Name = "条件分支", GroupName = "判断条件", Description = "设置像素阈值，根据阈值执行不同路径逻辑", Order = 20)]
-public class ConditionsNodeData : IfConditionNodeDataBase, IShowPropertyView, IOnDiagramDeserialized
+public class ConditionsNodeData : IfConditionNodeDataBase, IOnDiagramDeserialized
 {
     private ISrcImageNodeData _selectedSrcImageNodeData;
     [JsonIgnore]
@@ -45,7 +45,7 @@ public class ConditionsNodeData : IfConditionNodeDataBase, IShowPropertyView, IO
         }
     }
 
-    public object GetPropertyPresenter()
+    public override object GetPropertyPresenter()
     {
         if (this._conditionsPrensenter == null)
         {
