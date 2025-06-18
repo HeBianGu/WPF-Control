@@ -18,7 +18,7 @@ public interface ISrcImageNodeData : IOpenCVNodeData
     ObservableCollection<string> SrcFilePaths { get; set; }
 }
 
-public abstract class SrcImageNodeDataBase : OpenCVNodeDataBase, ISrcImageNodeData, IFilePathable
+public abstract class SrcImageNodeDataBase : OpenCVNodeDataBase, ISrcImageNodeData
 {
     protected SrcImageNodeDataBase()
     {

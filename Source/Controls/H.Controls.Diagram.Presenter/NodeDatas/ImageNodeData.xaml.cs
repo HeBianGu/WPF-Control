@@ -10,10 +10,10 @@ using System.Windows.Media.Imaging;
 
 namespace H.Controls.Diagram.Presenter.NodeDatas;
 
-public interface IFilePathable
-{
-    string SrcFilePath { get; set; }
-}
+//public interface IFilePathable
+//{
+//    string SrcFilePath { get; set; }
+//}
 
 public interface IImageSrcNodeData
 {
