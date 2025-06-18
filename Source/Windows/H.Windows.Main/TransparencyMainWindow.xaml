@@ -22,8 +22,7 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type local:TransparencyMainWindow}">
                     <Grid x:Name="grid">
-                        <Border x:Name="PART_Border"
-                                Effect="{StaticResource S.DropShadowEffect.Default}">
+                        <Border x:Name="PART_Border">
                             <Border.Style>
                                 <Style TargetType="Border">
                                     <Setter Property="Margin" Value="8" />
@@ -35,106 +34,112 @@
                                     </Style.Triggers>
                                 </Style>
                             </Border.Style>
-                            <AdornerDecorator>
-                                <Border x:Name="PART_AdornerBorder"
-                                        Background="{TemplateBinding Background}"
-                                        BorderBrush="{TemplateBinding BorderBrush}"
-                                        BorderThickness="{TemplateBinding BorderThickness}"
-                                        Cattach.IsGuideAdonerElement="True"
-                                        CornerRadius="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(Cattach.CornerRadius)}">
-                                    <Grid Margin="{TemplateBinding Padding}">
-                                        <h:GridSplitterBox x:Name="gsb"
-                                                           BorderThickness="0"
-                                                           GridSpliteWidth="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(h:GridSplitterBox.GridSpliteWidth)}"
-                                                           IsExpanded="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(h:GridSplitterBox.IsExpanded)}"
-                                                           MenuMaxWidth="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(h:GridSplitterBox.MenuMaxWidth)}"
-                                                           MenuMinWidth="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(h:GridSplitterBox.MenuMinWidth)}"
-                                                           Mode="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(h:GridSplitterBox.Mode)}"
-                                                           ToggleStyle="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(h:GridSplitterBox.ToggleStyle)}"
-                                                           ToggleVerticalAlignment="Bottom">
-                                            <h:GridSplitterBox.MenuContent>
-                                                <Control Template="{TemplateBinding SideTemplate}" />
-                                            </h:GridSplitterBox.MenuContent>
-                                            <Grid>
-                                                <Grid.RowDefinitions>
-                                                    <RowDefinition Height="{Binding RelativeSource={RelativeSource AncestorType=local:MainWindow}, Path=CaptionHeight}" />
-                                                    <RowDefinition />
-                                                </Grid.RowDefinitions>
-                                                <Border Grid.Row="0"
-                                                        Background="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(Cattach.CaptionBackground)}"
-                                                        CornerRadius="2 2 0 0"
-                                                        TextBlock.Foreground="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(Cattach.CaptionForeground)}"
-                                                        TextElement.Foreground="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(Cattach.CaptionForeground)}">
-                                                    <Grid Margin="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(Cattach.CaptionMargin)}">
-                                                        <Grid.ColumnDefinitions>
-                                                            <ColumnDefinition Width="Auto" />
-                                                            <ColumnDefinition Width="*" />
-                                                            <ColumnDefinition Width="Auto" />
-                                                        </Grid.ColumnDefinitions>
-                                                        <StackPanel Margin="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(Cattach.TitleMargin)}"
-                                                                    VerticalAlignment="Center"
-                                                                    Orientation="Horizontal"
-                                                                    Visibility="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(Cattach.UseTitle), Converter={x:Static Converter.GetTrueToVisible}}">
-                                                            <Button MinWidth="{x:Static SystemParameters.SmallIconWidth}"
-                                                                    MinHeight="{x:Static SystemParameters.SmallIconHeight}"
-                                                                    Margin="0,0,5,0"
-                                                                    VerticalAlignment="Center"
-                                                                    Command="{x:Static SystemCommands.ShowSystemMenuCommand}"
-                                                                    Content="{TemplateBinding Icon}"
-                                                                    IsTabStop="False"
-                                                                    Style="{x:Null}"
-                                                                    Visibility="{Binding Icon, RelativeSource={RelativeSource Mode=TemplatedParent}, Converter={x:Static Converter.GetNullToCollapsed}}"
-                                                                    WindowChrome.IsHitTestVisibleInChrome="True">
-                                                                <Button.Template>
-                                                                    <ControlTemplate TargetType="{x:Type Button}">
-                                                                        <Image Source="{TemplateBinding Content}" />
-                                                                    </ControlTemplate>
-                                                                </Button.Template>
-                                                            </Button>
-                                                            <TextBlock Margin="5,0"
-                                                                       VerticalAlignment="Center"
-                                                                       FontSize="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(Cattach.TitleFontSize)}"
-                                                                       Foreground="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(Cattach.TitleForeground)}"
-                                                                       Text="{TemplateBinding Title}" />
-                                                        </StackPanel>
-                                                        <Control Grid.Column="1"
-                                                                 Foreground="{TemplateBinding Foreground}"
-                                                                 Template="{TemplateBinding CaptionTempate}" />
+                            <Grid>
+                                <Border Margin="1" Background="Black"
+                                        Effect="{StaticResource S.DropShadowEffect.Default}" />
+                                <Border>
+                                    <AdornerDecorator>
+                                        <Border x:Name="PART_AdornerBorder"
+                                                Background="{TemplateBinding Background}"
+                                                BorderBrush="{TemplateBinding BorderBrush}"
+                                                BorderThickness="{TemplateBinding BorderThickness}"
+                                                Cattach.IsGuideAdonerElement="True"
+                                                CornerRadius="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(Cattach.CornerRadius)}">
+                                            <Grid Margin="{TemplateBinding Padding}">
+                                                <h:GridSplitterBox x:Name="gsb"
+                                                                   BorderThickness="0"
+                                                                   GridSpliteWidth="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(h:GridSplitterBox.GridSpliteWidth)}"
+                                                                   IsExpanded="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(h:GridSplitterBox.IsExpanded)}"
+                                                                   MenuMaxWidth="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(h:GridSplitterBox.MenuMaxWidth)}"
+                                                                   MenuMinWidth="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(h:GridSplitterBox.MenuMinWidth)}"
+                                                                   Mode="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(h:GridSplitterBox.Mode)}"
+                                                                   ToggleStyle="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(h:GridSplitterBox.ToggleStyle)}"
+                                                                   ToggleVerticalAlignment="Bottom">
+                                                    <h:GridSplitterBox.MenuContent>
+                                                        <Control Template="{TemplateBinding SideTemplate}" />
+                                                    </h:GridSplitterBox.MenuContent>
+                                                    <Grid>
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="{Binding RelativeSource={RelativeSource AncestorType=local:MainWindow}, Path=CaptionHeight}" />
+                                                            <RowDefinition />
+                                                        </Grid.RowDefinitions>
+                                                        <Border Grid.Row="0"
+                                                                Background="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(Cattach.CaptionBackground)}"
+                                                                CornerRadius="2 2 0 0"
+                                                                TextBlock.Foreground="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(Cattach.CaptionForeground)}"
+                                                                TextElement.Foreground="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(Cattach.CaptionForeground)}">
+                                                            <Grid Margin="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(Cattach.CaptionMargin)}">
+                                                                <Grid.ColumnDefinitions>
+                                                                    <ColumnDefinition Width="Auto" />
+                                                                    <ColumnDefinition Width="*" />
+                                                                    <ColumnDefinition Width="Auto" />
+                                                                </Grid.ColumnDefinitions>
+                                                                <StackPanel Margin="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(Cattach.TitleMargin)}"
+                                                                            VerticalAlignment="Center"
+                                                                            Orientation="Horizontal"
+                                                                            Visibility="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(Cattach.UseTitle), Converter={x:Static Converter.GetTrueToVisible}}">
+                                                                    <Button MinWidth="{x:Static SystemParameters.SmallIconWidth}"
+                                                                            MinHeight="{x:Static SystemParameters.SmallIconHeight}"
+                                                                            Margin="0,0,5,0"
+                                                                            VerticalAlignment="Center"
+                                                                            Command="{x:Static SystemCommands.ShowSystemMenuCommand}"
+                                                                            Content="{TemplateBinding Icon}"
+                                                                            IsTabStop="False"
+                                                                            Style="{x:Null}"
+                                                                            Visibility="{Binding Icon, RelativeSource={RelativeSource Mode=TemplatedParent}, Converter={x:Static Converter.GetNullToCollapsed}}"
+                                                                            WindowChrome.IsHitTestVisibleInChrome="True">
+                                                                        <Button.Template>
+                                                                            <ControlTemplate TargetType="{x:Type Button}">
+                                                                                <Image Source="{TemplateBinding Content}" />
+                                                                            </ControlTemplate>
+                                                                        </Button.Template>
+                                                                    </Button>
+                                                                    <TextBlock Margin="5,0"
+                                                                               VerticalAlignment="Center"
+                                                                               FontSize="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(Cattach.TitleFontSize)}"
+                                                                               Foreground="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(Cattach.TitleForeground)}"
+                                                                               Text="{TemplateBinding Title}" />
+                                                                </StackPanel>
+                                                                <Control Grid.Column="1"
+                                                                         Foreground="{TemplateBinding Foreground}"
+                                                                         Template="{TemplateBinding CaptionTempate}" />
 
-                                                        <StackPanel Grid.Column="2"
+                                                                <StackPanel Grid.Column="2"
+                                                                            HorizontalAlignment="Right"
+                                                                            Orientation="Horizontal">
+                                                                    <FontIconButton Command="{lc:MinimizeWindowCommand}"
+                                                                                    CommandParameter="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}}"
+                                                                                    Style="{DynamicResource {x:Static WindowKeys.MinimizeButton}}" />
+                                                                    <FontIconButton Command="{lc:MaximizeWindowCommand}"
+                                                                                    CommandParameter="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}}"
+                                                                                    Style="{DynamicResource {x:Static WindowKeys.MaximizeButton}}" />
+                                                                    <FontIconButton Command="{lc:RestoreWindowCommand}"
+                                                                                    CommandParameter="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}}"
+                                                                                    Style="{DynamicResource {x:Static WindowKeys.RestoreButton}}" />
+                                                                    <FontIconButton Command="{lc:CloseAfterSaveWindowCommand}"
+                                                                                    CommandParameter="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}}"
+                                                                                    Style="{DynamicResource {x:Static WindowKeys.CloseButton}}" />
+                                                                </StackPanel>
+                                                            </Grid>
+                                                        </Border>
+                                                        <!--<AdornerDecorator Grid.Row="1">-->
+                                                        <ContentPresenter Grid.Row="1" />
+                                                        <!--</AdornerDecorator>-->
+                                                        <ResizeGrip x:Name="WindowResizeGrip"
+                                                                    Grid.Row="1"
+                                                                    Grid.Column="1"
                                                                     HorizontalAlignment="Right"
-                                                                    Orientation="Horizontal">
-                                                            <FontIconButton Command="{lc:MinimizeWindowCommand}"
-                                                                            CommandParameter="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}}"
-                                                                            Style="{DynamicResource {x:Static WindowKeys.MinimizeButton}}" />
-                                                            <FontIconButton Command="{lc:MaximizeWindowCommand}"
-                                                                            CommandParameter="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}}"
-                                                                            Style="{DynamicResource {x:Static WindowKeys.MaximizeButton}}" />
-                                                            <FontIconButton Command="{lc:RestoreWindowCommand}"
-                                                                            CommandParameter="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}}"
-                                                                            Style="{DynamicResource {x:Static WindowKeys.RestoreButton}}" />
-                                                            <FontIconButton Command="{lc:CloseAfterSaveWindowCommand}"
-                                                                            CommandParameter="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}}"
-                                                                            Style="{DynamicResource {x:Static WindowKeys.CloseButton}}" />
-                                                        </StackPanel>
+                                                                    VerticalAlignment="Bottom"
+                                                                    IsTabStop="false"
+                                                                    Visibility="Collapsed"
+                                                                    WindowChrome.ResizeGripDirection="BottomRight" />
                                                     </Grid>
-                                                </Border>
-                                                <!--<AdornerDecorator Grid.Row="1">-->
-                                                <ContentPresenter Grid.Row="1" />
-                                                <!--</AdornerDecorator>-->
-                                                <ResizeGrip x:Name="WindowResizeGrip"
-                                                            Grid.Row="1"
-                                                            Grid.Column="1"
-                                                            HorizontalAlignment="Right"
-                                                            VerticalAlignment="Bottom"
-                                                            IsTabStop="false"
-                                                            Visibility="Collapsed"
-                                                            WindowChrome.ResizeGripDirection="BottomRight" />
+                                                </h:GridSplitterBox>
                                             </Grid>
-                                        </h:GridSplitterBox>
-                                    </Grid>
+                                        </Border>
+                                    </AdornerDecorator>
                                 </Border>
-                            </AdornerDecorator>
+                            </Grid>
                         </Border>
 
                         <Border IsHitTestVisible="False"
