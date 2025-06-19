@@ -15,8 +15,9 @@
                     <Grid>
                         <Rectangle Width="{TemplateBinding Width}"
                                    Height="{TemplateBinding Height}"
-                                   Fill="{DynamicResource {x:Static h:BrushKeys.ForegroundWhite}}"
-                                   Stroke="{DynamicResource {x:Static h:BrushKeys.Foreground}}" />
+                                   Fill="{DynamicResource {x:Static h:BrushKeys.Foreground}}"
+                                   StrokeThickness="2"
+                                   Stroke="{DynamicResource {x:Static h:BrushKeys.Accent}}" />
                     </Grid>
                 </ControlTemplate>
             </Setter.Value>

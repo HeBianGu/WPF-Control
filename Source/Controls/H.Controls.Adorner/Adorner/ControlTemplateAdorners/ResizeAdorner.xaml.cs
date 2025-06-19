@@ -39,6 +39,8 @@ public class ResizeAdorner : ControlTemplateAdorner
                         return;
                     this.DragMoveHorizontal(e.HorizontalChange);
                     this.DragMoveVertical(e.VerticalChange);
+                    //  Do ：触发附加事件
+                    ResizeAdorner.RaiseResizedEvent(element);
                 };
 
         }
@@ -130,14 +132,21 @@ public class ResizeAdorner : ControlTemplateAdorner
                 break;
         }
         e.Handled = true;
+
+        //  Do ：触发附加事件
+        ResizeAdorner.RaiseResizedEvent(element);
     }
 
     protected virtual void SetLeft(double change)
     {
+        if (Canvas.GetLeft(this.AdornedElement) == double.NaN)
+            Canvas.SetLeft(this.AdornedElement, 0);
         Canvas.SetLeft(this.AdornedElement, Math.Max(Canvas.GetLeft(this.AdornedElement) + change, 0));
     }
     protected virtual void SetTop(double change)
     {
+        if (Canvas.GetTop(this.AdornedElement) == double.NaN)
+            Canvas.SetTop(this.AdornedElement, 0);
         Canvas.SetTop(this.AdornedElement, Math.Max(Canvas.GetTop(this.AdornedElement) + change, 0));
     }
 
@@ -196,6 +205,7 @@ public class ResizeAdorner : ControlTemplateAdorner
             fElement.Width = fElement.RenderSize.Width;
         if (double.IsNaN(fElement.Height))
             fElement.Height = fElement.RenderSize.Height;
+
     }
 
     protected override Size MeasureOverride(Size constraint)
@@ -210,4 +220,32 @@ public class ResizeAdorner : ControlTemplateAdorner
         this._contentControl.Arrange(new Rect(new Point(0, 0), this.AdornedElement.DesiredSize));
         return finalSize;
     }
+
+    public static readonly RoutedEvent ResizedEvent =
+        EventManager.RegisterRoutedEvent(
+            "Resized",
+            RoutingStrategy.Bubble,
+            typeof(RoutedEventHandler),
+            typeof(ResizeAdorner));
+
+    public static void AddResizedHandler(DependencyObject d, RoutedEventHandler handler)
+    {
+        if (d is UIElement uiElement)
+        {
+            uiElement.AddHandler(ResizedEvent, handler);
+        }
+    }
+
+    public static void RemoveResizedHandler(DependencyObject d, RoutedEventHandler handler)
+    {
+        if (d is UIElement uiElement)
+        {
+            uiElement.RemoveHandler(ResizedEvent, handler);
+        }
+    }
+    public static void RaiseResizedEvent(UIElement source)
+    {
+        source.RaiseEvent(new RoutedEventArgs(ResizedEvent, source));
+    }
+
 }
