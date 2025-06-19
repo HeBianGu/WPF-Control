@@ -8,16 +8,16 @@
            TargetType="{x:Type Thumb}">
         <Setter Property="Height" Value="10" />
         <Setter Property="Width" Value="10" />
-        <Setter Property="Margin" Value="-5" />
+        <Setter Property="Margin" Value="-3" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Thumb}">
                     <Grid>
                         <Rectangle Width="{TemplateBinding Width}"
                                    Height="{TemplateBinding Height}"
-                                   Fill="{DynamicResource {x:Static h:BrushKeys.Foreground}}"
-                                   StrokeThickness="2"
-                                   Stroke="{DynamicResource {x:Static h:BrushKeys.Accent}}" />
+                                   Fill="White"
+                                   Stroke="{DynamicResource {x:Static h:BrushKeys.Accent}}"
+                                   StrokeThickness="2" />
                     </Grid>
                 </ControlTemplate>
             </Setter.Value>

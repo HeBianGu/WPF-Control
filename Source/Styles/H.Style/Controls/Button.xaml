@@ -139,7 +139,7 @@
                 <Setter Property="Background">
                     <Setter.Value>
                         <SolidColorBrush Opacity="0.8"
-                                 Color="{DynamicResource {x:Static ColorKeys.Red}}" />
+                                         Color="{DynamicResource {x:Static ColorKeys.Red}}" />
                     </Setter.Value>
                 </Setter>
             </Trigger>

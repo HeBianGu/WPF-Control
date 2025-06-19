@@ -29,8 +29,14 @@ public class ResizeAdorner : ControlTemplateAdorner
             this._contentControl.Template = this.CreateDefaultTemplate();
 
         this._contentControl.ApplyTemplate();
+
+        var handleThumbStyle = ResizeAdorner.GetHanldeThumbStyle(adornedElement);
+        var moveThumbStyle = ResizeAdorner.GetMoveThumbStyle(adornedElement);
+
         {
             Thumb thumb = this._contentControl.Template.FindName("PART_Move", this._contentControl) as Thumb;
+            if (moveThumbStyle != null)
+                thumb.Style = moveThumbStyle;
             if (thumb != null)
                 thumb.DragDelta += (s, e) =>
                 {
@@ -42,54 +48,72 @@ public class ResizeAdorner : ControlTemplateAdorner
                     //  Do ：触发附加事件
                     ResizeAdorner.RaiseResizedEvent(element);
                 };
-
         }
+
 
         {
             Thumb thumb = this._contentControl.Template.FindName("PART_LeftTop", this._contentControl) as Thumb;
             if (thumb != null)
                 thumb.DragDelta += Thumb_DragDelta;
+            if (handleThumbStyle != null)
+                thumb.Style = handleThumbStyle;
         }
         {
             Thumb thumb = this._contentControl.Template.FindName("PART_LeftCenter", this._contentControl) as Thumb;
             if (thumb != null)
                 thumb.DragDelta += Thumb_DragDelta;
+            if (handleThumbStyle != null)
+                thumb.Style = handleThumbStyle;
         }
         {
             Thumb thumb = this._contentControl.Template.FindName("PART_LeftBottom", this._contentControl) as Thumb;
             if (thumb != null)
                 thumb.DragDelta += Thumb_DragDelta;
+            if (handleThumbStyle != null)
+                thumb.Style = handleThumbStyle;
         }
         {
             Thumb thumb = this._contentControl.Template.FindName("PART_RightTop", this._contentControl) as Thumb;
             if (thumb != null)
                 thumb.DragDelta += Thumb_DragDelta;
+            if (handleThumbStyle != null)
+                thumb.Style = handleThumbStyle;
         }
         {
             Thumb thumb = this._contentControl.Template.FindName("PART_RightCenter", this._contentControl) as Thumb;
             if (thumb != null)
                 thumb.DragDelta += Thumb_DragDelta;
+            if (handleThumbStyle != null)
+                thumb.Style = handleThumbStyle;
         }
         {
             Thumb thumb = this._contentControl.Template.FindName("PART_RightBottom", this._contentControl) as Thumb;
             if (thumb != null)
                 thumb.DragDelta += Thumb_DragDelta;
+            if (handleThumbStyle != null)
+                thumb.Style = handleThumbStyle;
         }
 
         {
             Thumb thumb = this._contentControl.Template.FindName("PART_RightTop", this._contentControl) as Thumb;
             if (thumb != null)
                 thumb.DragDelta += Thumb_DragDelta;
+            if (handleThumbStyle != null)
+                thumb.Style = handleThumbStyle;
         }
         {
             Thumb thumb = this._contentControl.Template.FindName("PART_CenterTop", this._contentControl) as Thumb;
             if (thumb != null)
                 thumb.DragDelta += Thumb_DragDelta;
+            if (handleThumbStyle != null)
+                thumb.Style = handleThumbStyle;
         }
         {
             Thumb thumb = this._contentControl.Template.FindName("PART_CenterBottom", this._contentControl) as Thumb;
             if (thumb != null)
                 thumb.DragDelta += Thumb_DragDelta;
+            if (handleThumbStyle != null)
+                thumb.Style = handleThumbStyle;
         }
     }
 
@@ -246,6 +270,54 @@ public class ResizeAdorner : ControlTemplateAdorner
     public static void RaiseResizedEvent(UIElement source)
     {
         source.RaiseEvent(new RoutedEventArgs(ResizedEvent, source));
+    }
+
+
+
+    public static Style GetHanldeThumbStyle(DependencyObject obj)
+    {
+        return (Style)obj.GetValue(HanldeThumbStyleProperty);
+    }
+
+    public static void SetHanldeThumbStyle(DependencyObject obj, Style value)
+    {
+        obj.SetValue(HanldeThumbStyleProperty, value);
+    }
+
+    /// <summary> 应用窗体关闭和显示 </summary>
+    public static readonly DependencyProperty HanldeThumbStyleProperty =
+        DependencyProperty.RegisterAttached("HanldeThumbStyle", typeof(Style), typeof(ResizeAdorner), new PropertyMetadata(default(Style), OnHanldeThumbStyleChanged));
+
+    static public void OnHanldeThumbStyleChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+    {
+        DependencyObject control = d as DependencyObject;
+
+        Style n = (Style)e.NewValue;
+
+        Style o = (Style)e.OldValue;
+    }
+
+    public static Style GetMoveThumbStyle(DependencyObject obj)
+    {
+        return (Style)obj.GetValue(MoveThumbStyleProperty);
+    }
+
+    public static void SetMoveThumbStyle(DependencyObject obj, Style value)
+    {
+        obj.SetValue(MoveThumbStyleProperty, value);
+    }
+
+    /// <summary> 应用窗体关闭和显示 </summary>
+    public static readonly DependencyProperty MoveThumbStyleProperty =
+        DependencyProperty.RegisterAttached("MoveThumbStyle", typeof(Style), typeof(ResizeAdorner), new PropertyMetadata(default(Style), OnMoveThumbStyleChanged));
+
+    static public void OnMoveThumbStyleChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+    {
+        DependencyObject control = d as DependencyObject;
+
+        Style n = (Style)e.NewValue;
+
+        Style o = (Style)e.OldValue;
     }
 
 }

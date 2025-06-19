@@ -35,7 +35,8 @@
                                 </Style>
                             </Border.Style>
                             <Grid>
-                                <Border Margin="1" Background="Black"
+                                <Border Margin="1"
+                                        Background="Black"
                                         Effect="{StaticResource S.DropShadowEffect.Default}" />
                                 <Border>
                                     <AdornerDecorator>

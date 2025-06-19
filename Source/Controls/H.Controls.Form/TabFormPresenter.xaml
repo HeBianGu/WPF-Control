@@ -19,8 +19,8 @@
                             BorderThickness="1">
                         <!--  UseCommand="{Binding RelativeSource={RelativeSource AncestorType=TabControl}, Path=DataContext.UseCommand}"  -->
                         <local:Form SelectObject="{Binding RelativeSource={RelativeSource AncestorType=TabControl}, Path=DataContext.SelectObject}"
+                                    UseClass="{Binding RelativeSource={RelativeSource AncestorType=TabControl}, Path=DataContext.UseClass}"
                                     UseGroupNames="{Binding}"
-                                    UseClass="{Binding RelativeSource={RelativeSource AncestorType=TabControl},Path=DataContext.UseClass}"
                                     UsePropertyView="{Binding RelativeSource={RelativeSource AncestorType=TabControl}, Path=DataContext.UsePropertyView}" />
                     </Border>
                 </DataTemplate>

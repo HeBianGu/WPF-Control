@@ -94,7 +94,7 @@
                 <Setter Property="TextBlock.Foreground" Value="{DynamicResource {x:Static h:BrushKeys.Red}}" />
             </DataTrigger>
             <DataTrigger Binding="{Binding State}"
-                        Value="Break">
+                         Value="Break">
                 <Setter Property="BorderBrush" Value="{DynamicResource {x:Static h:BrushKeys.Gray}}" />
                 <Setter Property="TextBlock.Foreground" Value="{DynamicResource {x:Static h:BrushKeys.Gray}}" />
             </DataTrigger>
