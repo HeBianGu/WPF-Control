@@ -1,6 +1,0 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
-  <ItemGroup>
-    <ProjectReference Include="..\H.Controls.Diagram.Presenter\H.Controls.Diagram.Presenter.csproj" />
-    <ProjectReference Include="..\..\Extensions\H.Extensions.Behvaiors\H.Extensions.Behvaiors.csproj" />
-  </ItemGroup>
-</Project>
