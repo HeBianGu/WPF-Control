@@ -25,7 +25,9 @@ public class TabFormPresenter : FormPresenter
 
     public void UpdateTabNames()
     {
-        var gs = this.UseGroupNames?.Split(",".ToCharArray(), StringSplitOptions.RemoveEmptyEntries).Order(this.GroupOrderComparer);
+        var gs = this.UseGroupNames?.Split(",".ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
+        if (this.GroupOrderComparer != null)
+            gs = gs.Order(this.GroupOrderComparer).ToArray();
         if (gs == null || gs.Count() == 0)
         {
             var names = GetGroups().Distinct();

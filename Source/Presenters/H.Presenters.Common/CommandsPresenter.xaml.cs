@@ -45,6 +45,8 @@ public class CommandsPresenter<T> : CommandsPresenterBase
     {
         this.Presenter = presenter;
     }
+
+    public new T Presenter { get; set; }
 }
 
 public class DialogCommandsPresenter<T> : CommandsPresenter<T>

@@ -20,6 +20,7 @@
                         <!--  UseCommand="{Binding RelativeSource={RelativeSource AncestorType=TabControl}, Path=DataContext.UseCommand}"  -->
                         <local:Form SelectObject="{Binding RelativeSource={RelativeSource AncestorType=TabControl}, Path=DataContext.SelectObject}"
                                     UseGroupNames="{Binding}"
+                                    UseClass="{Binding RelativeSource={RelativeSource AncestorType=TabControl},Path=DataContext.UseClass}"
                                     UsePropertyView="{Binding RelativeSource={RelativeSource AncestorType=TabControl}, Path=DataContext.UsePropertyView}" />
                     </Border>
                 </DataTemplate>
