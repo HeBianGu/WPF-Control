@@ -1,6 +1,7 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:h="https://github.com/HeBianGu"
+                    xmlns:lf="clr-namespace:H.Controls.Diagram.Presenter.Flowables"
                     xmlns:ln="clr-namespace:H.Controls.Diagram.Presenter.NodeDatas"
                     xmlns:local="clr-namespace:H.Controls.Diagram.Presenter"
                     xmlns:system="clr-namespace:System;assembly=System.Runtime">
@@ -80,6 +81,20 @@
                          Value="Running">
                 <Setter Property="BorderBrush" Value="{DynamicResource {x:Static h:BrushKeys.Accent}}" />
                 <Setter Property="TextBlock.Foreground" Value="{DynamicResource {x:Static h:BrushKeys.Accent}}" />
+                <DataTrigger.EnterActions>
+                    <BeginStoryboard x:Name="start">
+                        <Storyboard AutoReverse="True"
+                                    RepeatBehavior="Forever"
+                                    Storyboard.TargetProperty="Opacity">
+                            <DoubleAnimation From="0.2"
+                                             To="1"
+                                             Duration="00:00:00.5" />
+                        </Storyboard>
+                    </BeginStoryboard>
+                </DataTrigger.EnterActions>
+                <DataTrigger.ExitActions>
+                    <RemoveStoryboard BeginStoryboardName="start" />
+                </DataTrigger.ExitActions>
             </DataTrigger>
 
             <DataTrigger Binding="{Binding State}"
@@ -326,4 +341,18 @@
             </DataTrigger>
         </Style.Triggers>
     </Style>
+
+    <DataTemplate DataType="{x:Type lf:FlowableInvokeMode}">
+        <TextBlock x:Name="t" />
+        <DataTemplate.Triggers>
+            <DataTrigger Binding="{Binding}"
+                         Value="Serial">
+                <Setter TargetName="t" Property="Text" Value="串行（顺序依次执行）" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding}"
+                         Value="Parallel">
+                <Setter TargetName="t" Property="Text" Value="并行（多线程并列执行）" />
+            </DataTrigger>
+        </DataTemplate.Triggers>
+    </DataTemplate>
 </ResourceDictionary>

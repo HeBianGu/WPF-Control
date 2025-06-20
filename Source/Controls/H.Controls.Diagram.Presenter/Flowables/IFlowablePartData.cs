@@ -11,5 +11,4 @@ namespace H.Controls.Diagram.Presenter.Flowables;
 public interface IFlowablePartData : IPartData, IFlowable
 {
     FlowableState State { get; set; }
-    FlowableInvokeMode InvokeMode { get; set; }
 }

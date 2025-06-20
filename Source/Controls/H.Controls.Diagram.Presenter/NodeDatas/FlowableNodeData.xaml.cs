@@ -9,6 +9,7 @@
 global using H.Controls.Diagram.Presenter.DiagramDatas.Base;
 using H.Controls.Diagram.Presenter.Extensions;
 using H.Controls.Diagram.Presenter.LinkDatas;
+using H.Controls.Diagram.Presenter.PortDatas;
 using System.Windows.Media.Animation;
 
 namespace H.Controls.Diagram.Presenter.NodeDatas;
@@ -290,19 +291,24 @@ public class FlowableNodeData : ShowPropertyViewNodeDataBase, IFlowableNodeData
                 return false;
         }
         var toports = this.GetFlowablePortDatas(diagramData).ToList();
-        foreach (var portData in toports)
+        if (this.InvokeMode == FlowableInvokeMode.Serial)
         {
-            portData.Item1.InvokeMode = this.InvokeMode;
-            if (this.InvokeMode == FlowableInvokeMode.Serial)
+            foreach (var portData in toports)
             {
-                var lr = await portData.Item1.Start(diagramData, portData.Item2);
+                var lr = await portData.Item1.Start(diagramData, this, portData.Item2);
                 if (lr != true)
                     return lr;
             }
-            else
-                portData.Item1.Start(diagramData, portData.Item2);
+            return true;
         }
-        return true;
+        else
+        {
+            var tasks = toports.Select(x => x.Item1.Start(diagramData, this, x.Item2));
+            var all = await Task.WhenAll(tasks.ToArray());
+            return all.All(x => x != false);
+        }
+
+
     }
 
     protected virtual IEnumerable<Tuple<IFlowablePortData, Predicate<IFlowableLinkData>>> GetFlowablePortDatas(IFlowableDiagramData diagramData)
