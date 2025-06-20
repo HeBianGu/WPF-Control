@@ -46,7 +46,8 @@ public class NewtonsoftJsonOptions : IocOptionInstance<NewtonsoftJsonOptions>, I
                 new DateTimeConverter(),
                 new JsonableJsonConverter() },//这部分序列化是会逻辑有问题用FilterBox测试
             //使用对象引用
-            PreserveReferencesHandling = PreserveReferencesHandling.Objects
+            PreserveReferencesHandling = PreserveReferencesHandling.Objects,
+            ReferenceLoopHandling = ReferenceLoopHandling.Serialize
         };
         return setting;
     }

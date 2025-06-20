@@ -81,7 +81,7 @@
                          Value="Running">
                 <Setter Property="BorderBrush" Value="{DynamicResource {x:Static h:BrushKeys.Accent}}" />
                 <Setter Property="TextBlock.Foreground" Value="{DynamicResource {x:Static h:BrushKeys.Accent}}" />
-                <DataTrigger.EnterActions>
+                <!--<DataTrigger.EnterActions>
                     <BeginStoryboard x:Name="start">
                         <Storyboard AutoReverse="True"
                                     RepeatBehavior="Forever"
@@ -94,7 +94,7 @@
                 </DataTrigger.EnterActions>
                 <DataTrigger.ExitActions>
                     <RemoveStoryboard BeginStoryboardName="start" />
-                </DataTrigger.ExitActions>
+                </DataTrigger.ExitActions>-->
             </DataTrigger>
 
             <DataTrigger Binding="{Binding State}"

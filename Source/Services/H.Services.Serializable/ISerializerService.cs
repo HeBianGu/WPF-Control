@@ -6,6 +6,7 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
+using H.Services.Logger;
 using System.IO;
 
 namespace H.Services.Serializable;
@@ -31,9 +32,11 @@ public static class SerializerServiceExtensions
         {
             return service.DeserializeObject(txt, type);
         }
-        catch (Exception)
+        catch (Exception ex)
         {
             File.Delete(filePath);
+            IocLog.Instance?.Error(ex);
+            System.Diagnostics.Debug.WriteLine(ex);
             return null;
         }
 #endif
