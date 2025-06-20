@@ -7,6 +7,7 @@
 // Licensed under the MIT License (the "License")
 
 using H.Controls.Diagram.Presenter.Extensions;
+using H.Controls.Diagram.Presenter.PortDatas;
 
 namespace H.Controls.Diagram.Presenter.LinkDatas;
 
@@ -22,6 +23,18 @@ public class FlowableLinkData : TextLinkData, IFlowableLinkData
         {
             _state = value;
             RaisePropertyChanged("State");
+        }
+    }
+
+    private FlowableInvokeMode _invokeMode = FlowableInvokeMode.Serial;
+    [Display(Name = "流程执行方式", GroupName = "流程控制", Description = "设置流程执行后续节点方式，串行或者并行")]
+    public FlowableInvokeMode InvokeMode
+    {
+        get { return _invokeMode; }
+        set
+        {
+            _invokeMode = value;
+            RaisePropertyChanged();
         }
     }
 
@@ -203,9 +216,14 @@ public class FlowableLinkData : TextLinkData, IFlowableLinkData
                 return null;
             using (new PartDataInvokable(tPort, diagramData.OnInvokingPart, diagramData.OnInvokedPart))
             {
-                IFlowableResult rTo = await tPort?.TryInvokeAsync(this, diagramData);
-                if (rTo?.State == FlowableResultState.Error)
-                    return false;
+                if (this.InvokeMode == FlowableInvokeMode.Serial)
+                {
+                    IFlowableResult rTo = await tPort?.TryInvokeAsync(this, diagramData);
+                    if (rTo?.State == FlowableResultState.Error)
+                        return false;
+                }
+                else
+                    tPort?.TryInvokeAsync(this, diagramData);
             }
         }
         var tNodeData = this.GetToNodeData(diagramData) as IFlowableNodeData;

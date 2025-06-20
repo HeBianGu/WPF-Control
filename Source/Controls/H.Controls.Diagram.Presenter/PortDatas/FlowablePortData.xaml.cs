@@ -37,6 +37,18 @@ public class FlowablePortData : TextPortData, IFlowablePortData
         }
     }
 
+    private FlowableInvokeMode _invokeMode = FlowableInvokeMode.Serial;
+    [Display(Name = "流程执行方式", GroupName = "流程控制", Description = "设置流程执行后续节点方式，串行或者并行")]
+    public FlowableInvokeMode InvokeMode
+    {
+        get { return _invokeMode; }
+        set
+        {
+            _invokeMode = value;
+            RaisePropertyChanged();
+        }
+    }
+
     private TimeSpan _timeSpan;
     public TimeSpan TimeSpan
     {
@@ -213,7 +225,7 @@ public class FlowablePortData : TextPortData, IFlowablePortData
         return true;
     }
 
-    public async Task<bool?> Start(IFlowableDiagramData diagramData, Predicate<IFlowableLinkData> predicate = null)
+    public virtual async Task<bool?> Start(IFlowableDiagramData diagramData, Predicate<IFlowableLinkData> predicate = null)
     {
         if (this.State == FlowableState.Canceling)
             return null;
@@ -231,9 +243,14 @@ public class FlowablePortData : TextPortData, IFlowablePortData
         var LinkDatas = this.GetToLinkDatas(diagramData).OfType<IFlowableLinkData>().Where(x => predicate?.Invoke(x) != false);
         foreach (var linkData in LinkDatas)
         {
-            var lr = await linkData.Start(diagramData);
-            if (lr != true)
-                return lr;
+            if (this.InvokeMode == FlowableInvokeMode.Serial)
+            {
+                var lr = await linkData.Start(diagramData);
+                if (lr != true)
+                    return lr;
+            }
+            else
+                linkData.Start(diagramData);
         }
         return true;
     }

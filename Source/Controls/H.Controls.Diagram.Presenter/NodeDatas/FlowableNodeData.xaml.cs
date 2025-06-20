@@ -8,6 +8,7 @@
 
 global using H.Controls.Diagram.Presenter.DiagramDatas.Base;
 using H.Controls.Diagram.Presenter.Extensions;
+using H.Controls.Diagram.Presenter.LinkDatas;
 using System.Windows.Media.Animation;
 
 namespace H.Controls.Diagram.Presenter.NodeDatas;
@@ -23,6 +24,18 @@ public class FlowableNodeData : ShowPropertyViewNodeDataBase, IFlowableNodeData
         {
             _state = value;
             RaisePropertyChanged("State");
+        }
+    }
+
+    private FlowableInvokeMode _invokeMode = FlowableInvokeMode.Serial;
+    [Display(Name = "流程执行方式", GroupName = "流程控制", Description = "设置流程执行后续节点方式，串行或者并行")]
+    public FlowableInvokeMode InvokeMode
+    {
+        get { return _invokeMode; }
+        set
+        {
+            _invokeMode = value;
+            RaisePropertyChanged();
         }
     }
 
@@ -201,10 +214,19 @@ public class FlowableNodeData : ShowPropertyViewNodeDataBase, IFlowableNodeData
                 if (this.UseInfoLogger)
                     IocLog.Instance?.Info($"正在执行<{this.GetType().Name}>:{this.Text}");
                 IFlowableResult result = await InvokeAsync(previors, diagram);
-                if (this.UseInfoLogger)
-                    IocLog.Instance?.Info(result.State == FlowableResultState.Error ? $"运行错误<{this.GetType().Name}>:{this.Text} {result.Message}" : $"执行完成<{this.GetType().Name}>:{this.Text} {result.Message}");
-                this.State = result.ToState();
-                return result;
+                if (result.State == FlowableResultState.Break)
+                {
+                    this.State = FlowableState.Break;
+                    this.Message = "不满足执行条件阻止流程";
+                    return FlowableResult.Break;
+                }
+                else
+                {
+                    if (this.UseInfoLogger)
+                        IocLog.Instance?.Info(result.State == FlowableResultState.Error ? $"运行错误<{this.GetType().Name}>:{this.Text} {result.Message}" : $"执行完成<{this.GetType().Name}>:{this.Text} {result.Message}");
+                    this.State = result.ToState();
+                    return result;
+                }
             }
         }
         catch (Exception ex)
@@ -252,7 +274,7 @@ public class FlowableNodeData : ShowPropertyViewNodeDataBase, IFlowableNodeData
         return diagramData.GetStartNodeDatas().OfType<T>().FirstOrDefault();
     }
 
-    public async Task<bool?> Start(IFlowableDiagramData diagramData, IFlowableLinkData from = null)
+    public virtual async Task<bool?> Start(IFlowableDiagramData diagramData, IFlowableLinkData from = null)
     {
         if (this.State == FlowableState.Canceling)
             return null;
@@ -270,9 +292,15 @@ public class FlowableNodeData : ShowPropertyViewNodeDataBase, IFlowableNodeData
         var toports = this.GetFlowablePortDatas(diagramData).ToList();
         foreach (var portData in toports)
         {
-            var lr = await portData.Item1.Start(diagramData, portData.Item2);
-            if (lr != true)
-                return lr;
+            portData.Item1.InvokeMode = this.InvokeMode;
+            if (this.InvokeMode == FlowableInvokeMode.Serial)
+            {
+                var lr = await portData.Item1.Start(diagramData, portData.Item2);
+                if (lr != true)
+                    return lr;
+            }
+            else
+                portData.Item1.Start(diagramData, portData.Item2);
         }
         return true;
     }

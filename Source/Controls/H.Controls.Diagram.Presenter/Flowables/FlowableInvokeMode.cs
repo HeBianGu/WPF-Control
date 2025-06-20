@@ -8,8 +8,8 @@
 
 namespace H.Controls.Diagram.Presenter.Flowables;
 
-public interface IFlowablePartData : IPartData, IFlowable
+public enum FlowableInvokeMode
 {
-    FlowableState State { get; set; }
-    FlowableInvokeMode InvokeMode { get; set; }
+    Serial = 0,
+    Parallel
 }
