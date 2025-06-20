@@ -34,6 +34,10 @@ public abstract class ResultPresenterNodeDataBase : FlowableNodeData, IResultPre
         }
     }
 
+    public virtual IResultPresenter CreateResultPresenter()
+    {
+        return null;
+    }
 
     protected virtual IFlowableResult OK(IResultPresenter resultPresenter = null, string message = "运行成功")
     {
