@@ -28,7 +28,7 @@ public static class IocMessage
 
     public static async Task<bool?> ShowDialogMessage(string message, string title = "提示", DialogButton dialogButton = DialogButton.Sumit)
     {
-        if (Dialog == null)
+        if (Dialog == null || Application.Current.MainWindow.IsLoaded == false)
         {
             if (Window == null)
             {
@@ -48,6 +48,9 @@ public static class IocMessage
                 {
                     x.DialogButton = dialogButton;
                     x.Padding = new Thickness(40);
+                    x.MaxHeight = 800;
+                    //if (x is Window window)
+                    //    window.Topmost = true;
                     x.Title = title;
                 });
             }
