@@ -8,6 +8,7 @@
 
 global using H.Controls.Diagram.Datas;
 using H.Controls.Diagram.Presenter.Extensions;
+using System.Text.RegularExpressions;
 namespace H.Controls.Diagram.Presenter.DiagramDatas.Base;
 public abstract class FlowableDiagramDataBase : ZoomableDiagramDataBase, IFlowableDiagramData
 {
@@ -172,9 +173,9 @@ public abstract class FlowableDiagramDataBase : ZoomableDiagramDataBase, IFlowab
         this.GotoState(x => FlowableState.Ready);
     }
 
-    public virtual void Wait()
+    public virtual void Wait(Func<IFlowableNodeData, bool> match = null)
     {
-        this.GotoState(x => FlowableState.Wait);
+        this.GotoState(x => FlowableState.Wait, match);
     }
 
     [JsonIgnore]

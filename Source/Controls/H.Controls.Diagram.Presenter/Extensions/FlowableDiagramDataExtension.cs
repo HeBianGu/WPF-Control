@@ -29,9 +29,9 @@ public static class FlowableDiagramDataExtension
         flowableDiagramData.GotoState(x => FlowableState.Ready);
     }
 
-    public static void Wait(this IFlowableDiagramData flowableDiagramData)
+    public static void Wait(this IFlowableDiagramData flowableDiagramData, Func<IFlowableNodeData, bool> match = null)
     {
-        flowableDiagramData.GotoState(x => FlowableState.Wait);
+        flowableDiagramData.GotoState(x => FlowableState.Wait, match);
     }
 
     public static IEnumerable<IPartData> GetPartDatas(this INodeData nodeData, IDiagramData diagramData, Func<IPartData, bool> filter = null)
@@ -52,9 +52,9 @@ public static class FlowableDiagramDataExtension
         }
     }
 
-    public static void GotoState(this IFlowableDiagramData flowableDiagramData, Func<IFlowablePartData, FlowableState?> gotoState)
+    public static void GotoState(this IFlowableDiagramData flowableDiagramData, Func<IFlowablePartData, FlowableState?> gotoState, Func<IFlowableNodeData, bool> match = null)
     {
-        flowableDiagramData.NodeDatas.OfType<IFlowableNodeData>().GotoState(flowableDiagramData, gotoState);
+        flowableDiagramData.NodeDatas.OfType<IFlowableNodeData>().Where(x => match?.Invoke(x) != false).GotoState(flowableDiagramData, gotoState);
     }
 
     public static void GotoState(this IEnumerable<IFlowableNodeData> nodeDatas, IFlowableDiagramData flowableDiagramData, Func<IFlowablePartData, FlowableState?> gotoState)
