@@ -13,6 +13,7 @@ global using System.Collections.Generic;
 global using System.Collections.ObjectModel;
 global using System.Diagnostics;
 global using System.Linq;
+using H.Controls.Form.PropertyItem.Attribute;
 
 namespace H.Controls.Form.PropertyItem.Base
 {
@@ -24,6 +25,9 @@ namespace H.Controls.Form.PropertyItem.Base
             this.LoadValue();
             if (this.Value == null)
                 this.Value = this.Collection.FirstOrDefault();
+
+            this.DisplayMemberPath = property.GetCustomAttribute<DisplayMemberPathAttribute>()?.Path;
+            this.SelectedValuePath = property.GetCustomAttribute<SelectedValuePathAttribute>()?.Path;
         }
         protected virtual IEnumerable<T> CreateSource()
         {
@@ -51,6 +55,32 @@ namespace H.Controls.Form.PropertyItem.Base
                 RaisePropertyChanged();
             }
         }
+
+
+
+        private string _selectedValuePath;
+        public string SelectedValuePath
+        {
+            get { return _selectedValuePath; }
+            set
+            {
+                _selectedValuePath = value;
+                RaisePropertyChanged();
+            }
+        }
+
+
+        private string _displayMemberPath;
+        public string DisplayMemberPath
+        {
+            get { return _displayMemberPath; }
+            set
+            {
+                _displayMemberPath = value;
+                RaisePropertyChanged();
+            }
+        }
+
     }
 
     public class SelectSourcePropertyItem : SelectSourcePropertyItem<object>

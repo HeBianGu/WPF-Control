@@ -136,7 +136,13 @@ public static class PropertyInfoExtention
         if (editor?.Type != null)
         {
             if (typeof(IPropertyViewItem).IsAssignableFrom(editor.Type))
-                return Activator.CreateInstance(editor.Type, info, obj) as IPropertyViewItem;
+            {
+                var r = Activator.CreateInstance(editor.Type, info, obj) as IPropertyViewItem;
+                if (r is IHitTestPropertyViewItem hitTest)
+                    hitTest.IsHitTestVisible = false;
+                return r;
+            }
+
         }
 
         return TextPropertyItem.IsTypeConverter(info)

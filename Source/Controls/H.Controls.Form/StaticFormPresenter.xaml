@@ -27,6 +27,7 @@
                           UsePropertyNames="{Binding UsePropertyNames}"
                           UsePropertyView="{Binding UsePropertyView}"
                           UseString="{Binding UseString}"
+                          IsHitTestVisible="{Binding IsHitTestVisible}"
                           UseTypeConverter="{Binding UseTypeConverter}"
                           UseTypeConverterOnly="{Binding UseTypeConverterOnly}" />
     </DataTemplate>

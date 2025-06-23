@@ -160,9 +160,9 @@
                             <Setter TargetName="PART_Border" Property="Padding" Value="7" />
                             <Setter TargetName="PART_Border" Property="Margin" Value="{local:GetWindowMaximizedMargin}" />
                         </Trigger>
-                        <Trigger Property="IsActive" Value="False">
+                        <!--<Trigger Property="IsActive" Value="False">
                             <Setter TargetName="grid" Property="Opacity" Value="0.5" />
-                        </Trigger>
+                        </Trigger>-->
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>

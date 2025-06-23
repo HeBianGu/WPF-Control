@@ -22,3 +22,8 @@ public interface IPropertyViewItem : IPropertyItem
 {
 
 }
+
+public interface IHitTestPropertyViewItem: IPropertyViewItem
+{
+    bool IsHitTestVisible { get; set; }
+}

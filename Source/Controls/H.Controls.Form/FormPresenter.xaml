@@ -25,6 +25,7 @@
                     UseOrderByName="{Binding UseOrderByName}"
                     UseOrderByType="{Binding UseOrderByType}"
                     UsePresenter="{Binding UsePresenter}"
+                    IsHitTestVisible="{Binding IsHitTestVisible}"
                     UsePrimitive="{Binding UsePrimitive}"
                     UsePropertyView="{Binding UsePropertyView}"
                     UseString="{Binding UseString}"

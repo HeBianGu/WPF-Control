@@ -10,12 +10,14 @@ using H.Controls.Form.PropertyItem.Base;
 
 namespace H.Controls.Form.PropertyItem.ComboBoxPropertyItems
 {
-    public class ComboBoxPropertyItem : SelectSourcePropertyItem<object>
+    public class ComboBoxPropertyItem : SelectSourcePropertyItem<object>, IHitTestPropertyViewItem
     {
         public ComboBoxPropertyItem(PropertyInfo property, object obj) : base(property, obj)
         {
 
         }
+
+       
     }
 
 }

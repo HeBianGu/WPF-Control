@@ -6,15 +6,17 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
-using H.Controls.Form.PropertyItem.Base;
-
-namespace H.Controls.Form.PropertyItem.ComboBoxPropertyItems
+namespace H.Controls.Form.PropertyItem.Attribute
 {
-    public class PresenterComboBoxPropertyItem : SelectSourcePropertyItem<object>, IHitTestPropertyViewItem
+    [AttributeUsage(AttributeTargets.Property, Inherited = true, AllowMultiple = false)]
+    public class SelectedValuePathAttribute : System.Attribute
     {
-        public PresenterComboBoxPropertyItem(PropertyInfo property, object obj) : base(property, obj)
+        public SelectedValuePathAttribute(string path)
         {
-
+            this.Path = path;
         }
+        public string Path { get; }
     }
+
+    
 }

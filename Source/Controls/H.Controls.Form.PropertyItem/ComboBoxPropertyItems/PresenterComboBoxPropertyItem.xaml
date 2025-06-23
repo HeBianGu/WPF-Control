@@ -7,10 +7,11 @@
                       Margin="0,0,0,1"
                       Cattach.ItemHeight="Auto"
                       Cattach.UseGuide="False"
-                      DisplayMemberPath="Name"
+                      DisplayMemberPath="{Binding DisplayMemberPath}"
                       DockPanel.Dock="Top"
                       ItemsSource="{Binding Collection}"
-                      SelectedItem="{Binding Value}" />
+                      SelectedItem="{Binding Value}"
+                      SelectedValuePath="{Binding SelectedValuePath}" />
             <!--<local:Form Padding="0" SelectObject="{Binding Value}" />-->
             <ContentPresenter Content="{Binding Value}" />
         </DockPanel>

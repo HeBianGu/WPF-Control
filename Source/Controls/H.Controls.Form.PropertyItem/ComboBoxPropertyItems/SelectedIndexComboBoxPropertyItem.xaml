@@ -1,14 +1,15 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:H.Controls.Form.PropertyItem.ComboBoxPropertyItems">
-    <DataTemplate DataType="{x:Type local:ComboBoxPropertyItem}">
+    <DataTemplate DataType="{x:Type local:SelectedIndexComboBoxPropertyItem}">
         <ComboBox Height="Auto"
                   Margin="0,0,0,1"
                   Cattach.ItemHeight="Auto"
                   Cattach.UseGuide="False"
                   DisplayMemberPath="{Binding DisplayMemberPath}"
+                  IsHitTestVisible="{Binding IsHitTestVisible}"
                   ItemsSource="{Binding Collection}"
-                  SelectedItem="{Binding Value}"
+                  SelectedIndex="{Binding Value}"
                   SelectedValuePath="{Binding SelectedValuePath}" />
     </DataTemplate>
 </ResourceDictionary>

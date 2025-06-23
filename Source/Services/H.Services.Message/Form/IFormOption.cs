@@ -45,4 +45,6 @@ public interface IFormOption
     Thickness Padding { get; set; }
     HorizontalAlignment HorizontalAlignment { get; set; }
     VerticalAlignment VerticalAlignment { get; set; }
+    bool IsHitTestVisible { get; set; }
+
 }

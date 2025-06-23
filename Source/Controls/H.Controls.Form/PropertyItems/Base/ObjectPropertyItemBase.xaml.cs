@@ -19,6 +19,17 @@ public abstract class ObjectPropertyItemBase : DisplayBindableBase, IPropertyIte
     public Action<object> ValueChanged { get; set; }
     public string Unit { get; set; }
 
+    private bool _isHitTestVisible = true;
+    public bool IsHitTestVisible
+    {
+        get { return _isHitTestVisible; }
+        set
+        {
+            _isHitTestVisible = value;
+            RaisePropertyChanged();
+        }
+    }
+
     public ObjectPropertyItemBase(PropertyInfo property, object obj)
     {
         this.PropertyInfo = property;

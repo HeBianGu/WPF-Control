@@ -10,7 +10,8 @@
                     <DataTemplate>
                         <Expander Header="{Binding ., Converter={x:Static h:Converter.GetDiaplayName}}"
                                   IsExpanded="True">
-                            <local:Form SelectObject="{Binding}"
+                            <local:Form IsHitTestVisible="{Binding IsHitTestVisible}"
+                                        SelectObject="{Binding}"
                                         UseCommand="{Binding UseCommand}"
                                         UseGroupNames="{Binding UseGroupNames}"
                                         UsePropertyView="{Binding UsePropertyView}" />

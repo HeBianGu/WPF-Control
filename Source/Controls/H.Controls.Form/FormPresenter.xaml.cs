@@ -50,6 +50,17 @@ public class FormPresenter : DisplayBindableBase, IFormOption
         }
     }
 
+    private bool _isHitTestVisible = true;
+    public bool IsHitTestVisible
+    {
+        get { return _isHitTestVisible; }
+        set
+        {
+            _isHitTestVisible = value;
+            RaisePropertyChanged();
+        }
+    }
+
     public string ExceptPropertyNames { get; set; }
     public double MessageWidth { get; set; } = 15.0;
     public string Title { get; set; }
