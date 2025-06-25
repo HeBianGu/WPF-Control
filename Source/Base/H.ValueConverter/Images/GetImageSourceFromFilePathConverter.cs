@@ -13,6 +13,8 @@ namespace H.ValueConverter.Images;
 public class GetImageSourceFromFilePathConverter : MarkupValueConverterBase
 {
     public int DecodePixel { get; set; } = 100;
+
+    public string RelativeRoot { get; set; } = AppDomain.CurrentDomain.BaseDirectory;
     public override object Convert(object value, Type targetType, object parameter, CultureInfo culture)
     {
         if (value == null)
@@ -20,6 +22,11 @@ public class GetImageSourceFromFilePathConverter : MarkupValueConverterBase
         string str = value.ToString();
         if (string.IsNullOrEmpty(str))
             return null;
+
+        if (!Path.IsPathRooted(str))
+        {
+            str = Path.Combine(this.RelativeRoot, str);
+        }
         try
         {
             BitmapImage bitmap = new BitmapImage();

@@ -24,7 +24,7 @@ public interface IAppPathServce
     string Log { get; }
     string Module { get; }
     string Project { get; }
-
+    string Assets { get; }
     string DefaultProjects { get; }
     string RegistryPath { get; }
     string Setting { get; }
