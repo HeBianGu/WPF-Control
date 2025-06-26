@@ -3,7 +3,8 @@
                     xmlns:h="https://github.com/HeBianGu"
                     xmlns:local="clr-namespace:H.Controls.Form">
     <DataTemplate DataType="{x:Type local:StaticFormPresenter}">
-        <local:StaticForm SelectObject="{Binding SelectObject}"
+        <local:StaticForm IsHitTestVisible="{Binding IsHitTestVisible}"
+                          SelectObject="{Binding SelectObject}"
                           UseArray="{Binding UseArray}"
                           UseAsync="False"
                           UseBoolen="{Binding UseBoolen}"
@@ -27,7 +28,6 @@
                           UsePropertyNames="{Binding UsePropertyNames}"
                           UsePropertyView="{Binding UsePropertyView}"
                           UseString="{Binding UseString}"
-                          IsHitTestVisible="{Binding IsHitTestVisible}"
                           UseTypeConverter="{Binding UseTypeConverter}"
                           UseTypeConverterOnly="{Binding UseTypeConverterOnly}" />
     </DataTemplate>

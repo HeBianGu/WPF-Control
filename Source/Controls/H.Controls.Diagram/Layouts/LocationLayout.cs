@@ -8,7 +8,7 @@
 
 namespace H.Controls.Diagram.Layouts;
 
-[DisplayName("LocationLayout")]
+[DisplayName("坐标位置")]
 [TypeConverter(typeof(DisplayNameConverter))]
 public class LocationLayout : Layout
 {

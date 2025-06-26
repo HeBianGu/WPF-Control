@@ -342,17 +342,5 @@
         </Style.Triggers>
     </Style>
 
-    <DataTemplate DataType="{x:Type lf:FlowableInvokeMode}">
-        <TextBlock x:Name="t" />
-        <DataTemplate.Triggers>
-            <DataTrigger Binding="{Binding}"
-                         Value="Serial">
-                <Setter TargetName="t" Property="Text" Value="串行（顺序依次执行）" />
-            </DataTrigger>
-            <DataTrigger Binding="{Binding}"
-                         Value="Parallel">
-                <Setter TargetName="t" Property="Text" Value="并行（多线程并列执行）" />
-            </DataTrigger>
-        </DataTemplate.Triggers>
-    </DataTemplate>
+
 </ResourceDictionary>

@@ -1,0 +1,22 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:lf="clr-namespace:H.Controls.Diagram.Presenter.Flowables"
+                    xmlns:local="clr-namespace:H.Controls.Diagram.Presenter">
+    <DataTemplate DataType="{x:Type lf:DiagramFlowableZoomMode}">
+        <TextBlock x:Name="txt" />
+        <DataTemplate.Triggers>
+            <DataTrigger Binding="{Binding}"
+                         Value="None">
+                <Setter TargetName="txt" Property="Text" Value="无操作" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding}"
+                         Value="Rect">
+                <Setter TargetName="txt" Property="Text" Value="运行节点时缩放到节点范围" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding}"
+                         Value="Center">
+                <Setter TargetName="txt" Property="Text" Value="运行节点时定位到节点中心" />
+            </DataTrigger>
+        </DataTemplate.Triggers>
+    </DataTemplate>
+</ResourceDictionary>

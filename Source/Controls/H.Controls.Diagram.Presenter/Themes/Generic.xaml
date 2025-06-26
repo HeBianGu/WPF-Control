@@ -27,6 +27,9 @@
         <ResourceDictionary Source="pack://application:,,,/H.Controls.Diagram.Presenter;component/DiagramDatas/NodeDataGroupsContextMenuPresenter.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Controls.Diagram.Presenter;component/DiagramDatas/NodeDataGroupsItemsControlPresenter.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Controls.Diagram.Presenter;component/DiagramDatas/NodeDataGroupsTreeViewPresenter.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Controls.Diagram.Presenter;component/Flowables/DiagramFlowableZoomMode.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Controls.Diagram.Presenter;component/Flowables/FlowableInvokeMode.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Controls.Diagram.Presenter;component/Flowables/DiagramFlowableMode.xaml" />
         <!--<ResourceDictionary Source="pack://application:,,,/H.Controls.Diagram.Presenter;component/CommandsPropertyPresenter.xaml" />-->
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>
