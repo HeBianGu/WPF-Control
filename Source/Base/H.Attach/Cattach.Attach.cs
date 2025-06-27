@@ -15,7 +15,7 @@ namespace H.Attach;
 
 public static partial class Cattach
 {
-    public static readonly DependencyProperty AttachProperty = DependencyProperty.RegisterAttached("Attach", typeof(object), typeof(Cattach), new FrameworkPropertyMetadata(false, Attach));
+    public static readonly DependencyProperty AttachProperty = DependencyProperty.RegisterAttached("Attach", typeof(object), typeof(Cattach), new FrameworkPropertyMetadata(null, Attach));
     public static void SetAttach(DependencyObject dp, object value)
     {
         dp.SetValue(AttachProperty, value);
