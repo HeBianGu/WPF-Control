@@ -136,14 +136,21 @@ namespace H.Controls.ROIBox.State
             else if (this.HitHandleType == HitHandleType.TopRight)
             {
                 to.X = Math.Max(to.X, this._downRect.Left);
-                to.Y = Math.Min(to.Y, this._downRect.Top);
-                targetRect = new Rect(this._downRect.TopLeft, to);
+                to.Y = Math.Min(to.Y, this._downRect.Bottom);
+
+                var tl = new Point(this._downRect.Left, to.Y);
+                var br = new Point(to.X, this._downRect.Bottom);
+
+                targetRect = new Rect(tl, br);
             }
             else if (this.HitHandleType == HitHandleType.BottomLeft)
             {
-                to.X = Math.Min(to.X, this._downRect.Left);
+                to.X = Math.Min(to.X, this._downRect.Right);
                 to.Y = Math.Max(to.Y, this._downRect.Top);
-                targetRect = new Rect(this._downRect.TopLeft, to);
+
+                var tl = new Point(to.X, this._downRect.Top);
+                var br = new Point(this._downRect.Right, to.Y);
+                targetRect = new Rect(tl, br);
             }
             else if (this.HitHandleType == HitHandleType.Left)
             {
