@@ -44,6 +44,13 @@ namespace H.Controls.ROIBox
             {
                 this.Rect = Rect.Empty;
             }));
+            this.Loaded += this.ROIBox_Loaded;
+        }
+
+        private void ROIBox_Loaded(object sender, RoutedEventArgs e)
+        {
+            this.UpdateImage();
+            this.UpdateRect();
         }
 
         private void ROIBox_MouseLeave(object sender, System.Windows.Input.MouseEventArgs e)
@@ -66,6 +73,7 @@ namespace H.Controls.ROIBox
         private void ROIBox_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             _currentState?.MouseDown(sender, e);
+            e.Handled = true;
         }
 
         #region - VisualCollection -
@@ -110,6 +118,8 @@ namespace H.Controls.ROIBox
 
         private void UpdateImage()
         {
+            this.Width = this.ImageSource?.Width ?? 0;
+            this.Height = this.ImageSource?.Height ?? 0;
             this._imageDrawingVisual.ImageSource = this.ImageSource;
         }
 
@@ -175,6 +185,56 @@ namespace H.Controls.ROIBox
 
             }));
 
+        public Brush Stroke
+        {
+            get { return (Brush)GetValue(StrokeProperty); }
+            set { SetValue(StrokeProperty, value); }
+        }
+
+        public static readonly DependencyProperty StrokeProperty =
+            DependencyProperty.Register("Stroke", typeof(Brush), typeof(ROIBox), new FrameworkPropertyMetadata(Brushes.Chartreuse, (d, e) =>
+            {
+                ROIBox control = d as ROIBox;
+
+                if (control == null) return;
+
+                if (e.OldValue is Brush o)
+                {
+
+                }
+
+                if (e.NewValue is Brush n)
+                {
+
+                }
+
+            }));
+
+        public double StrokeThickness
+        {
+            get { return (double)GetValue(StrokeThicknessProperty); }
+            set { SetValue(StrokeThicknessProperty, value); }
+        }
+
+        public static readonly DependencyProperty StrokeThicknessProperty =
+            DependencyProperty.Register("StrokeThickness", typeof(double), typeof(ROIBox), new FrameworkPropertyMetadata(1.0, (d, e) =>
+            {
+                ROIBox control = d as ROIBox;
+
+                if (control == null) return;
+
+                if (e.OldValue is double o)
+                {
+
+                }
+
+                if (e.NewValue is double n)
+                {
+
+                }
+
+            }));
+
         public Brush Fill
         {
             get { return (Brush)GetValue(FillProperty); }
@@ -202,6 +262,8 @@ namespace H.Controls.ROIBox
 
         private void UpdateRect()
         {
+            this._rectDrawingVisual.Stroke = this.Stroke;
+            this._rectDrawingVisual.StrokeThickness = this.StrokeThickness;
             this._rectDrawingVisual.HandleLength = this.HandleLength;
             this._rectDrawingVisual.Fill = this.Fill;
             this._rectDrawingVisual.Rect = this.Rect;

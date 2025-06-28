@@ -9,7 +9,7 @@
 using System.Drawing;
 using System.Runtime.InteropServices;
 
-namespace H.ValueConverter.Images;
+namespace H.Extensions.ValueConverter.Images;
 
 /// <summary> 获取文件关联图标 </summary>
 public static class IconHelper
@@ -47,7 +47,7 @@ public static class IconHelper
     /// <summary> 获取系统图标 </summary>  
     public static Icon GetSystemInfoIcon(string p_Path)
     {
-        if (System.IO.Path.HasExtension(p_Path))
+        if (Path.HasExtension(p_Path))
         {
             try
             {

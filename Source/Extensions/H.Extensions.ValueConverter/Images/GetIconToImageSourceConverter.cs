@@ -7,9 +7,8 @@
 // Licensed under the MIT License (the "License")
 
 using System.Drawing;
-using System.Globalization;
 
-namespace H.ValueConverter.Images;
+namespace H.Extensions.ValueConverter.Images;
 
 [ValueConversion(typeof(Icon), typeof(ImageSource))]
 public class GetIconToImageSourceConverter : MarkupValueConverterBase
