@@ -5,8 +5,6 @@
 // QQ:908293466 Group:971261058 
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
-
-using H.Extensions.Common;
 using System.Windows.Media;
 
 namespace H.Controls.ROIBox.Drawings
@@ -43,7 +41,6 @@ namespace H.Controls.ROIBox.Drawings
                 control.Draw();
             }));
 
-
         public Brush Stroke
         {
             get { return (Brush)GetValue(StrokeProperty); }
@@ -68,7 +65,6 @@ namespace H.Controls.ROIBox.Drawings
                 }
 
             }));
-
 
         public double StrokeThickness
         {
@@ -95,7 +91,6 @@ namespace H.Controls.ROIBox.Drawings
 
             }));
 
-
         public Brush Fill
         {
             get { return (Brush)GetValue(FillProperty); }
@@ -120,7 +115,6 @@ namespace H.Controls.ROIBox.Drawings
                 }
 
             }));
-
 
         public double HandleLength
         {
@@ -147,7 +141,6 @@ namespace H.Controls.ROIBox.Drawings
 
             }));
 
-
         public void Draw()
         {
             using var dc = this.RenderOpen();
@@ -159,20 +152,25 @@ namespace H.Controls.ROIBox.Drawings
 
             var center = new Point(this.Rect.Left + this.Rect.Width / 2, this.Rect.Top + this.Rect.Height / 2);
 
-            dc.DrawHandle(this.Rect.TopLeft, this.Stroke, this.StrokeThickness);
-            dc.DrawHandle(this.Rect.BottomRight, this.Stroke, this.StrokeThickness, this.HandleLength);
-            dc.DrawHandle(this.Rect.TopRight, this.Stroke, this.StrokeThickness);
-            dc.DrawHandle(this.Rect.BottomLeft, this.Stroke, this.StrokeThickness, this.HandleLength);
+            dc.DrawLine(new Pen(this.Stroke, this.StrokeThickness / 2), new Point(0, center.Y), new Point(this._box.BoundingBox.Right, center.Y));
+            dc.DrawLine(new Pen(this.Stroke, this.StrokeThickness / 2), new Point(center.X, 0), new Point(center.X, this._box.BoundingBox.Bottom));
 
-            dc.DrawHandle(new Point(this.Rect.Left,center.Y), this.Stroke, this.StrokeThickness, this.HandleLength);
-            dc.DrawHandle(new Point(this.Rect.Right, center.Y), this.Stroke, this.StrokeThickness, this.HandleLength);
-            dc.DrawHandle(new Point(center.X, this.Rect.Top), this.Stroke, this.StrokeThickness, this.HandleLength);
-            dc.DrawHandle(new Point(center.X, this.Rect.Bottom), this.Stroke, this.StrokeThickness, this.HandleLength);
+            dc.DrawHandle(this.Rect.TopLeft, this.Stroke, this.StrokeThickness*2);
+            dc.DrawHandle(this.Rect.BottomRight, this.Stroke, this.StrokeThickness * 2, this.HandleLength);
+            dc.DrawHandle(this.Rect.TopRight, this.Stroke, this.StrokeThickness * 2);
+            dc.DrawHandle(this.Rect.BottomLeft, this.Stroke, this.StrokeThickness * 2, this.HandleLength);
 
-            dc.DrawLine(new Pen(this.Stroke, this.StrokeThickness/2), new Point(0, center.Y), new Point(this.Rect.Left, center.Y));
-            dc.DrawLine(new Pen(this.Stroke, this.StrokeThickness/2), new Point(this.Rect.Right, center.Y), new Point(this._box.BoundingBox.Right, center.Y));
-            dc.DrawLine(new Pen(this.Stroke, this.StrokeThickness / 2), new Point(center.X, 0), new Point(center.X, this.Rect.Top));
-            dc.DrawLine(new Pen(this.Stroke, this.StrokeThickness / 2), new Point(center.X, this.Rect.Bottom), new Point(center.X, this._box.BoundingBox.Bottom));
+            dc.DrawHandle(new Point(this.Rect.Left, center.Y), this.Stroke, this.StrokeThickness * 2, this.HandleLength);
+            dc.DrawHandle(new Point(this.Rect.Right, center.Y), this.Stroke, this.StrokeThickness * 2, this.HandleLength);
+            dc.DrawHandle(new Point(center.X, this.Rect.Top), this.Stroke, this.StrokeThickness * 2, this.HandleLength);
+            dc.DrawHandle(new Point(center.X, this.Rect.Bottom), this.Stroke, this.StrokeThickness * 2, this.HandleLength);
+
+            //dc.DrawLine(new Pen(this.Stroke, this.StrokeThickness / 2), new Point(0, center.Y), new Point(this.Rect.Left, center.Y));
+            //dc.DrawLine(new Pen(this.Stroke, this.StrokeThickness / 2), new Point(this.Rect.Right, center.Y), new Point(this._box.BoundingBox.Right, center.Y));
+            //dc.DrawLine(new Pen(this.Stroke, this.StrokeThickness / 2), new Point(center.X, 0), new Point(center.X, this.Rect.Top));
+            //dc.DrawLine(new Pen(this.Stroke, this.StrokeThickness / 2), new Point(center.X, this.Rect.Bottom), new Point(center.X, this._box.BoundingBox.Bottom));
+
+         
 
             FormattedText formattedText = new FormattedText(
                 $"{(int)this.Rect.Left},{(int)this.Rect.Top},{(int)this.Rect.Width},{(int)this.Rect.Height}",
@@ -180,7 +178,7 @@ namespace H.Controls.ROIBox.Drawings
                 FlowDirection.LeftToRight,
                 new Typeface("Microsoft YaHei"),
                 10,
-                Brushes.White, 
+                Brushes.White,
                 VisualTreeHelper.GetDpi(this).PixelsPerDip);
             dc.DrawText(formattedText, this.Rect.BottomLeft);
 

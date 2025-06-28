@@ -33,10 +33,42 @@ namespace H.Controls.ROIBox.State
 
         public void MouseMove(object sender, MouseEventArgs e)
         {
+            var p = e.GetPosition(sender as FrameworkElement);
+            var cursor = this.GetCursor(p);
+            this._box.Cursor = cursor;
+
             if (e.LeftButton != MouseButtonState.Pressed)
                 return;
-            var point = e.GetPosition(sender as FrameworkElement);
-            this.UpdateRect(point);
+            this.UpdateRect(p);
+        }
+
+        private Cursor GetCursor(Point p)
+        {
+            if (this.HitPoint(this._box.Rect.TopLeft, p))
+                return Cursors.SizeNWSE;
+
+            if (this.HitPoint(this._box.Rect.BottomRight, p))
+                return Cursors.SizeNWSE;
+
+            if (this.HitPoint(this._box.Rect.TopRight, p))
+                return Cursors.SizeNESW;
+
+            if (this.HitPoint(this._box.Rect.BottomLeft, p))
+                return Cursors.SizeNESW;
+            var center = new Point(this._box.Rect.Left + this._box.Rect.Width / 2, this._box.Rect.Top + this._box.Rect.Height / 2);
+
+            if (this.HitPoint(new Point(this._box.Rect.Left, center.Y), p))
+                return Cursors.SizeWE;
+            if (this.HitPoint(new Point(this._box.Rect.Right, center.Y), p))
+                return Cursors.SizeWE;
+
+            if (this.HitPoint(new Point(center.X, this._box.Rect.Top), p))
+                return Cursors.SizeNS;
+            if (this.HitPoint(new Point(center.X, this._box.Rect.Bottom), p))
+                return Cursors.SizeNS;
+            if (this._box.Rect.Contains(p))
+                return Cursors.SizeAll;
+            return Cursors.Cross;
         }
 
         public void MouseDown(object sender, MouseButtonEventArgs e)
@@ -94,8 +126,6 @@ namespace H.Controls.ROIBox.State
                 this.HitHandleType = HitHandleType.Bottom;
                 return;
             }
-
-
 
             if (this._downRect.Contains(p))
             {

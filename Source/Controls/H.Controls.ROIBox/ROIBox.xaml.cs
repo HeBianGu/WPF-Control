@@ -5,17 +5,9 @@
 // QQ:908293466 Group:971261058 
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
-
-global using H.Common.Interfaces.Where;
-global using System;
-global using System.Collections;
-global using System.Collections.ObjectModel;
-global using System.Linq;
 global using System.Windows;
-global using System.Windows.Controls;
 using H.Controls.ROIBox.Drawings;
 using H.Controls.ROIBox.State;
-using H.Extensions.Common;
 using System.Windows.Input;
 using System.Windows.Media;
 
@@ -116,7 +108,6 @@ namespace H.Controls.ROIBox
                 control.UpdateImage();
             }));
 
-
         private void UpdateImage()
         {
             this._imageDrawingVisual.ImageSource = this.ImageSource;
@@ -159,8 +150,6 @@ namespace H.Controls.ROIBox
                 control.UpdateRect();
             }));
 
-
-
         public double HandleLength
         {
             get { return (double)GetValue(HandleLengthProperty); }
@@ -185,7 +174,6 @@ namespace H.Controls.ROIBox
                 }
 
             }));
-
 
         public Brush Fill
         {
@@ -212,15 +200,12 @@ namespace H.Controls.ROIBox
 
             }));
 
-
-
         private void UpdateRect()
         {
             this._rectDrawingVisual.HandleLength = this.HandleLength;
             this._rectDrawingVisual.Fill = this.Fill;
             this._rectDrawingVisual.Rect = this.Rect;
         }
-
 
     }
 }
