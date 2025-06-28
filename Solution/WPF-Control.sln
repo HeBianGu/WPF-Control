@@ -420,19 +420,21 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H.Templates.Project", "..\S
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2 - Components", "2 - Components", "{B1FD8F3A-1ABB-4FC6-A1EB-6A0D8E4E15D9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H.Components.Modbus", "..\Source\Components\H.Components.Modbus\H.Components.Modbus.csproj", "{4DDE9AED-0AE6-4AC4-8EE8-7C449113E931}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H.Components.Modbus", "..\Source\Components\H.Components.Modbus\H.Components.Modbus.csproj", "{4DDE9AED-0AE6-4AC4-8EE8-7C449113E931}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "8 - Base", "8 - Base", "{300B99DC-DF0E-4BE2-AF6A-767F6A21F99B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H.Attach", "..\Source\Base\H.Attach\H.Attach.csproj", "{CB826B99-9545-4B87-BEAB-E6353A7373E2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H.Attach", "..\Source\Base\H.Attach\H.Attach.csproj", "{CB826B99-9545-4B87-BEAB-E6353A7373E2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H.ValueConverter", "..\Source\Base\H.ValueConverter\H.ValueConverter.csproj", "{9A9D36E8-5648-4527-8AB4-9B910CAA2504}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H.ValueConverter", "..\Source\Base\H.ValueConverter\H.ValueConverter.csproj", "{9A9D36E8-5648-4527-8AB4-9B910CAA2504}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H.MarkupExtension", "..\Source\Base\H.MarkupExtension\H.MarkupExtension.csproj", "{B86830A7-22BE-4791-A7CA-219B0BD953AF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H.MarkupExtension", "..\Source\Base\H.MarkupExtension\H.MarkupExtension.csproj", "{B86830A7-22BE-4791-A7CA-219B0BD953AF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H.Mvvm", "..\Source\Base\H.Mvvm\H.Mvvm.csproj", "{FAF3D682-61A8-48EA-BCE1-4E92A13E4421}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H.Mvvm", "..\Source\Base\H.Mvvm\H.Mvvm.csproj", "{FAF3D682-61A8-48EA-BCE1-4E92A13E4421}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H.Extensions.Mvvm", "..\Source\Extensions\H.Extensions.Mvvm\H.Extensions.Mvvm.csproj", "{767BCC73-A77C-4507-B9C7-5ADBF8D74E36}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H.Extensions.Mvvm", "..\Source\Extensions\H.Extensions.Mvvm\H.Extensions.Mvvm.csproj", "{767BCC73-A77C-4507-B9C7-5ADBF8D74E36}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H.Controls.ROIBox", "..\Source\Controls\H.Controls.ROIBox\H.Controls.ROIBox.csproj", "{17B09B6D-6E93-4E39-AA1B-E12A787EA0A2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -4146,6 +4148,26 @@ Global
 		{767BCC73-A77C-4507-B9C7-5ADBF8D74E36}.Release|x64.Build.0 = Release|Any CPU
 		{767BCC73-A77C-4507-B9C7-5ADBF8D74E36}.Release|x86.ActiveCfg = Release|Any CPU
 		{767BCC73-A77C-4507-B9C7-5ADBF8D74E36}.Release|x86.Build.0 = Release|Any CPU
+		{17B09B6D-6E93-4E39-AA1B-E12A787EA0A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{17B09B6D-6E93-4E39-AA1B-E12A787EA0A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{17B09B6D-6E93-4E39-AA1B-E12A787EA0A2}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{17B09B6D-6E93-4E39-AA1B-E12A787EA0A2}.Debug|ARM.Build.0 = Debug|Any CPU
+		{17B09B6D-6E93-4E39-AA1B-E12A787EA0A2}.Debug|ARM64.ActiveCfg = Debug|Any CPU
+		{17B09B6D-6E93-4E39-AA1B-E12A787EA0A2}.Debug|ARM64.Build.0 = Debug|Any CPU
+		{17B09B6D-6E93-4E39-AA1B-E12A787EA0A2}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{17B09B6D-6E93-4E39-AA1B-E12A787EA0A2}.Debug|x64.Build.0 = Debug|Any CPU
+		{17B09B6D-6E93-4E39-AA1B-E12A787EA0A2}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{17B09B6D-6E93-4E39-AA1B-E12A787EA0A2}.Debug|x86.Build.0 = Debug|Any CPU
+		{17B09B6D-6E93-4E39-AA1B-E12A787EA0A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{17B09B6D-6E93-4E39-AA1B-E12A787EA0A2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{17B09B6D-6E93-4E39-AA1B-E12A787EA0A2}.Release|ARM.ActiveCfg = Release|Any CPU
+		{17B09B6D-6E93-4E39-AA1B-E12A787EA0A2}.Release|ARM.Build.0 = Release|Any CPU
+		{17B09B6D-6E93-4E39-AA1B-E12A787EA0A2}.Release|ARM64.ActiveCfg = Release|Any CPU
+		{17B09B6D-6E93-4E39-AA1B-E12A787EA0A2}.Release|ARM64.Build.0 = Release|Any CPU
+		{17B09B6D-6E93-4E39-AA1B-E12A787EA0A2}.Release|x64.ActiveCfg = Release|Any CPU
+		{17B09B6D-6E93-4E39-AA1B-E12A787EA0A2}.Release|x64.Build.0 = Release|Any CPU
+		{17B09B6D-6E93-4E39-AA1B-E12A787EA0A2}.Release|x86.ActiveCfg = Release|Any CPU
+		{17B09B6D-6E93-4E39-AA1B-E12A787EA0A2}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -4339,6 +4361,7 @@ Global
 		{B86830A7-22BE-4791-A7CA-219B0BD953AF} = {300B99DC-DF0E-4BE2-AF6A-767F6A21F99B}
 		{FAF3D682-61A8-48EA-BCE1-4E92A13E4421} = {300B99DC-DF0E-4BE2-AF6A-767F6A21F99B}
 		{767BCC73-A77C-4507-B9C7-5ADBF8D74E36} = {09F8FD00-E76A-4D72-AAB4-7FA06DBE12D4}
+		{17B09B6D-6E93-4E39-AA1B-E12A787EA0A2} = {9E63ED70-6F96-4CB2-8B9D-EAEC77D0548E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DF825C3D-F4F4-4E62-BBFF-B42A5E81112F}

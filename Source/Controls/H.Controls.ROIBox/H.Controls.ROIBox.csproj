@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+  <ItemGroup>
+    <ProjectReference Include="..\..\Base\H.MarkupExtension\H.MarkupExtension.csproj" />
+    <ProjectReference Include="..\..\Extensions\H.Extensions.Behvaiors\H.Extensions.Behvaiors.csproj" />
+    <ProjectReference Include="..\..\Extensions\H.Extensions.FontIcon\H.Extensions.FontIcon.csproj" />
+    <ProjectReference Include="..\..\Extensions\H.Extensions.Geometry\H.Extensions.Geometry.csproj" />
+    <ProjectReference Include="..\..\Extensions\H.Extensions.NewtonsoftJson\H.Extensions.NewtonsoftJson.csproj" />
+    <ProjectReference Include="..\..\Extensions\H.Extensions.TypeConverter\H.Extensions.TypeConverter.csproj" />
+    <ProjectReference Include="..\..\Base\H.ValueConverter\H.ValueConverter.csproj" />
+    <ProjectReference Include="..\..\Extensions\H.Extensions.XmlSerialize\H.Extensions.XmlSerialize.csproj" />
+    <ProjectReference Include="..\..\Services\H.Services.Message\H.Services.Message.csproj" />
+    <ProjectReference Include="..\..\Styles\H.Style\H.Style.csproj" />
+    <ProjectReference Include="..\..\Themes\H.Theme\H.Theme.csproj" />
+  </ItemGroup>
+</Project>

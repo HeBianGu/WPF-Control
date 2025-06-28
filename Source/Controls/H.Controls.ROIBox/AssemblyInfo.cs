@@ -1,4 +1,4 @@
-﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Copyright (c) HeBianGu Authors. All Rights Reserved. 
 // Author: HeBianGu 
 // Github: https://github.com/HeBianGu/WPF-Control 
 // Document: https://hebiangu.github.io/WPF-Control-Docs  
@@ -6,7 +6,7 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
-using System.Windows;
+global using H.Services.Logger;
 using System.Windows.Markup;
 
 [assembly: ThemeInfo(
@@ -18,11 +18,11 @@ using System.Windows.Markup;
                                               // app, or any theme specific resource dictionaries)
 )]
 
-[assembly: XmlnsDefinition("QQ:908293466", "H.Controls.PagerBox")]
+[assembly: XmlnsDefinition("QQ:908293466", "H.Controls.ROIBox")]
 [assembly: XmlnsPrefix("QQ:908293466", "h")]
 
-[assembly: XmlnsDefinition("https://github.com/HeBianGu", "H.Controls.PagerBox")]
+[assembly: XmlnsDefinition("https://github.com/HeBianGu", "H.Controls.ROIBox")]
 [assembly: XmlnsPrefix("https://github.com/HeBianGu", "h")]
 
-[assembly: XmlnsDefinition("http://schemas.microsoft.com/winfx/2006/xaml/presentation", "H.Controls.PagerBox")]
+[assembly: XmlnsDefinition("http://schemas.microsoft.com/winfx/2006/xaml/presentation", "H.Controls.ROIBox")]
 [assembly: XmlnsPrefix("http://schemas.microsoft.com/winfx/2006/xaml/presentation", "h")]

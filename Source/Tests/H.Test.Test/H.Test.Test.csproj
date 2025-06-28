@@ -20,6 +20,7 @@
     <ProjectReference Include="..\..\Controls\H.Controls.PrintBox\H.Controls.PrintBox.csproj" />
     <ProjectReference Include="..\..\Controls\H.Controls.PropertyGrid\H.Controls.PropertyGrid.csproj" />
     <ProjectReference Include="..\..\Controls\H.Controls.QRCoderBox\H.Controls.QRCoderBox.csproj" />
+    <ProjectReference Include="..\..\Controls\H.Controls.ROIBox\H.Controls.ROIBox.csproj" />
     <ProjectReference Include="..\..\Controls\H.Controls.ScheduleBox\H.Controls.ScheduleBox.csproj" />
     <ProjectReference Include="..\..\Controls\H.Controls.Step\H.Controls.Step.csproj" />
     <ProjectReference Include="..\..\Controls\H.Controls.TagBox\H.Controls.TagBox.csproj" />
@@ -47,6 +48,5 @@
     <ProjectReference Include="..\..\Windows\H.Windows.Dock\H.Windows.Dock.csproj" />
     <ProjectReference Include="..\..\Windows\H.Windows.Main\H.Windows.Main.csproj" />
     <ProjectReference Include="..\..\Providers\H.Iocable\H.Iocable.csproj" />
-
   </ItemGroup>
 </Project>

@@ -48,6 +48,19 @@
     </h:MainWindow.CaptionTempate>
     <Grid>
         <TabControl TabStripPlacement="Left">
+            <TabItem Header="ROIBox">
+                <DockPanel>
+                    <Button Command="{x:Static ROIBoxCommands.ClearRect}"
+                            CommandTarget="{Binding ElementName=roibox}"
+                            Content="清除"
+                            DockPanel.Dock="Top" />
+                    <TextBlock DockPanel.Dock="Bottom"
+                               Text="{Binding ElementName=roibox, Path=Rect}" />
+                    <ROIBox x:Name="roibox"
+                            ImageSource="{Logo}"
+                            Rect="0 0 10 20" />
+                </DockPanel>
+            </TabItem>
             <TabItem Header="TreeLayoutBox">
                 <TabControl>
                     <TabItem Header="Default">
