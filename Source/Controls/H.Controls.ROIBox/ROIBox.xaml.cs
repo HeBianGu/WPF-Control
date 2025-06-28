@@ -121,6 +121,7 @@ namespace H.Controls.ROIBox
             this.Width = this.ImageSource?.Width ?? 0;
             this.Height = this.ImageSource?.Height ?? 0;
             this._imageDrawingVisual.ImageSource = this.ImageSource;
+            this._imageDrawingVisual.Draw();
         }
 
         public bool IsRectValid => !this.Rect.IsEmpty;
@@ -182,7 +183,7 @@ namespace H.Controls.ROIBox
                 {
 
                 }
-
+                control.UpdateRect();
             }));
 
         public Brush Stroke
@@ -207,7 +208,7 @@ namespace H.Controls.ROIBox
                 {
 
                 }
-
+                control.UpdateRect();
             }));
 
         public double StrokeThickness
@@ -232,7 +233,7 @@ namespace H.Controls.ROIBox
                 {
 
                 }
-
+                control.UpdateRect();
             }));
 
         public Brush Fill
@@ -257,7 +258,32 @@ namespace H.Controls.ROIBox
                 {
 
                 }
+                control.UpdateRect();
+            }));
 
+        public bool UseCross
+        {
+            get { return (bool)GetValue(UseCrossProperty); }
+            set { SetValue(UseCrossProperty, value); }
+        }
+
+        public static readonly DependencyProperty UseCrossProperty =
+            DependencyProperty.Register("UseCross", typeof(bool), typeof(ROIBox), new FrameworkPropertyMetadata(true, (d, e) =>
+            {
+                ROIBox control = d as ROIBox;
+
+                if (control == null) return;
+
+                if (e.OldValue is bool o)
+                {
+
+                }
+
+                if (e.NewValue is bool n)
+                {
+
+                }
+                control.UpdateRect();
             }));
 
         private void UpdateRect()
@@ -266,7 +292,8 @@ namespace H.Controls.ROIBox
             this._rectDrawingVisual.StrokeThickness = this.StrokeThickness;
             this._rectDrawingVisual.HandleLength = this.HandleLength;
             this._rectDrawingVisual.Fill = this.Fill;
-            this._rectDrawingVisual.Rect = this.Rect;
+            this._rectDrawingVisual.Rect = this.Rect; 
+            this._rectDrawingVisual.Draw();
         }
 
     }

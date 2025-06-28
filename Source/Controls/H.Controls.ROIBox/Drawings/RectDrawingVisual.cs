@@ -153,11 +153,21 @@ namespace H.Controls.ROIBox.Drawings
 
             var center = new Point(this.Rect.Left + this.Rect.Width / 2, this.Rect.Top + this.Rect.Height / 2);
 
-            DashStyle dashStyle = new DashStyle();
-            dashStyle.Dashes = new DoubleCollection(new double[] { this.StrokeThickness * 1, this.StrokeThickness * 1 });
-            var dashpen = new Pen(this.Stroke, this.StrokeThickness / 2) { DashStyle = dashStyle };
-            dc.DrawLine(dashpen, new Point(0, center.Y), new Point(this._box.BoundingBox.Right, center.Y));
-            dc.DrawLine(dashpen, new Point(center.X, 0), new Point(center.X, this._box.BoundingBox.Bottom));
+          
+
+            if (this._box.UseCross)
+            {
+                DashStyle dashStyle = new DashStyle();
+                dashStyle.Dashes = new DoubleCollection(new double[] { this.StrokeThickness * 1, this.StrokeThickness * 1 });
+                var dashpen = new Pen(this.Stroke, this.StrokeThickness / 2) { DashStyle = dashStyle };
+                //dc.DrawLine(dashpen, new Point(0, center.Y), new Point(this._box.BoundingBox.Right, center.Y));
+                //dc.DrawLine(dashpen, new Point(center.X, 0), new Point(center.X, this._box.BoundingBox.Bottom));
+                dc.DrawLine(dashpen, new Point(0, center.Y), new Point(this.Rect.Left, center.Y));
+                dc.DrawLine(dashpen, new Point(this.Rect.Right, center.Y), new Point(this._box.BoundingBox.Right, center.Y));
+                dc.DrawLine(dashpen, new Point(center.X, 0), new Point(center.X, this.Rect.Top));
+                dc.DrawLine(dashpen, new Point(center.X, this.Rect.Bottom), new Point(center.X, this._box.BoundingBox.Bottom));
+            }
+
 
             double hthickness = this.HandleLength / 3;
             dc.DrawHandle(this.Rect.TopLeft, this.Stroke, hthickness, this.HandleLength);
@@ -169,11 +179,6 @@ namespace H.Controls.ROIBox.Drawings
             dc.DrawHandle(new Point(this.Rect.Right, center.Y), this.Stroke, hthickness, this.HandleLength);
             dc.DrawHandle(new Point(center.X, this.Rect.Top), this.Stroke, hthickness, this.HandleLength);
             dc.DrawHandle(new Point(center.X, this.Rect.Bottom), this.Stroke, hthickness, this.HandleLength);
-
-            //dc.DrawLine(new Pen(this.Stroke, this.StrokeThickness / 2), new Point(0, center.Y), new Point(this.Rect.Left, center.Y));
-            //dc.DrawLine(new Pen(this.Stroke, this.StrokeThickness / 2), new Point(this.Rect.Right, center.Y), new Point(this._box.BoundingBox.Right, center.Y));
-            //dc.DrawLine(new Pen(this.Stroke, this.StrokeThickness / 2), new Point(center.X, 0), new Point(center.X, this.Rect.Top));
-            //dc.DrawLine(new Pen(this.Stroke, this.StrokeThickness / 2), new Point(center.X, this.Rect.Bottom), new Point(center.X, this._box.BoundingBox.Bottom));
 
             FormattedText formattedText = new FormattedText(
                 $"{(int)this.Rect.Left},{(int)this.Rect.Top},{(int)this.Rect.Width},{(int)this.Rect.Height}",
