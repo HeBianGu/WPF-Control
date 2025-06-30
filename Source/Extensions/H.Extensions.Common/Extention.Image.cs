@@ -15,6 +15,18 @@ namespace H.Extensions.Common;
 public static class ImageExtention
 {
     public static ImageEx ToImageEx(this string filePath) => new ImageEx(filePath);
+
+    public static void ToCompressImage(this string filePath, string destPath, int quality = 30)
+    {
+        var bitmap = new BitmapImage(new Uri(filePath));
+        var encoder = new JpegBitmapEncoder();
+        encoder.QualityLevel = quality;
+        encoder.Frames.Add(BitmapFrame.Create(bitmap));
+        using (var stream = new FileStream(destPath, FileMode.Create))
+        {
+            encoder.Save(stream);
+        }
+    }
 }
 
 public class ImageEx
