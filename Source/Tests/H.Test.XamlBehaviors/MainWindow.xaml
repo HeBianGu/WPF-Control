@@ -71,6 +71,28 @@
                     </DataGrid>
                 </DockPanel>
             </TabItem>
+
+            <TabItem Header="DataGridDropBehavior">
+                <DataGrid ItemsSource="{GetStudents}"
+                          Style="{DynamicResource {x:Static DataGridKeys.Default}}">
+                    <DataGrid.RowStyle>
+                        <Style BasedOn="{StaticResource {x:Static DataGridRowKeys.Default}}"
+                               TargetType="DataGridRow">
+                            <Setter Property="DraggableAdornerBehavior.IsUse" Value="True" />
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=Self}, Path=(DataGridDropBehavior.DragOver)}"
+                                             Value="True">
+                                    <Setter Property="Background" Value="{DynamicResource {x:Static BrushKeys.Accent}}" />
+                                    <!--<Setter Property="BorderThickness" Value="1" />-->
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </DataGrid.RowStyle>
+                    <b:Interaction.Behaviors>
+                        <DataGridDropBehavior />
+                    </b:Interaction.Behaviors>
+                </DataGrid>
+            </TabItem>
         </TabControl>
     </Grid>
 </Window>

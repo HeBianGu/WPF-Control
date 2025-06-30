@@ -6,6 +6,7 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
+using System.Collections.ObjectModel;
 using System.Windows.Markup;
 
 namespace H.Data.Test
@@ -16,7 +17,7 @@ namespace H.Data.Test
 
         public override object ProvideValue(IServiceProvider serviceProvider)
         {
-            return Enumerable.Range(0, this.Count).Select(x => new Student()).ToList();
+            return new ObservableCollection<Student>(Enumerable.Range(0, this.Count).Select(x => new Student()));
         }
     }
 }

@@ -13,6 +13,11 @@ public class DataGridKeys
     public static ComponentResourceKey Default => new ComponentResourceKey(typeof(DataGridKeys), "S.DataGrid.Default");
 }
 
+public class DataGridRowKeys
+{
+    public static ComponentResourceKey Default => new ComponentResourceKey(typeof(DataGridRowKeys), "S.DataGridRow.Default");
+}
+
 public class DataGridCheckBoxColumn : System.Windows.Controls.DataGridCheckBoxColumn
 {
     public DataGridCheckBoxColumn()

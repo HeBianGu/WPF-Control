@@ -115,6 +115,104 @@
         </Setter>
     </Style>
 
+    <Style x:Key="{ComponentResourceKey ResourceId=S.DataGridRow.Default,
+                                        TypeInTargetAssembly={x:Type local:DataGridRowKeys}}"
+           TargetType="{x:Type DataGridRow}">
+        <Setter Property="SnapsToDevicePixels" Value="true" />
+        <Setter Property="Validation.ErrorTemplate" Value="{x:Null}" />
+        <Setter Property="Cattach.ItemPadding" Value="{Binding RelativeSource={RelativeSource AncestorType=DataGrid}, Path=(Cattach.ItemPadding)}" />
+        <Setter Property="Cattach.ItemVerticalContentAlignment" Value="{Binding RelativeSource={RelativeSource AncestorType=DataGrid}, Path=(Cattach.ItemVerticalContentAlignment)}" />
+        <Setter Property="Cattach.ItemHorizontalContentAlignment" Value="{Binding RelativeSource={RelativeSource AncestorType=DataGrid}, Path=(Cattach.ItemHorizontalContentAlignment)}" />
+        <Setter Property="ValidationErrorTemplate">
+            <Setter.Value>
+                <ControlTemplate>
+                    <TextBlock Margin="2,0,0,0"
+                               VerticalAlignment="Center"
+                               Text="!">
+                        <TextBlock.Foreground>
+                            <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Red}}" />
+                        </TextBlock.Foreground>
+                    </TextBlock>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Background" Value="{x:Null}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type DataGridRow}">
+                    <Border SnapsToDevicePixels="True"
+                            Style="{StaticResource S.Border.TemplatedParent}">
+                        <SelectiveScrollingGrid>
+                            <SelectiveScrollingGrid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                            </SelectiveScrollingGrid.ColumnDefinitions>
+                            <SelectiveScrollingGrid.RowDefinitions>
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="Auto" />
+                            </SelectiveScrollingGrid.RowDefinitions>
+                            <DataGridCellsPresenter Grid.Column="1"
+                                                    ItemsPanel="{TemplateBinding ItemsPanel}"
+                                                    SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                            <DataGridDetailsPresenter Grid.Row="1"
+                                                      Grid.Column="1"
+                                                      SelectiveScrollingGrid.SelectiveScrollingOrientation="{Binding AreRowDetailsFrozen, ConverterParameter={x:Static SelectiveScrollingOrientation.Vertical}, Converter={x:Static DataGrid.RowDetailsScrollingConverter}, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}"
+                                                      Visibility="{TemplateBinding DetailsVisibility}" />
+                            <DataGridRowHeader Grid.RowSpan="2"
+                                               SelectiveScrollingGrid.SelectiveScrollingOrientation="Vertical"
+                                               Visibility="{Binding HeadersVisibility, ConverterParameter={x:Static DataGridHeadersVisibility.Row}, Converter={x:Static DataGrid.HeadersVisibilityConverter}, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}" />
+                        </SelectiveScrollingGrid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="ItemsControl.AlternationIndex" Value="1" />
+                </MultiTrigger.Conditions>
+                <Setter Property="Background" Value="{Binding RelativeSource={RelativeSource AncestorType=DataGrid}, Path=AlternatingRowBackground}" />
+            </MultiTrigger>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="IsMouseOver" Value="True" />
+                </MultiTrigger.Conditions>
+                <Setter Property="Background">
+                    <Setter.Value>
+                        <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.MouseOver}}" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.BorderBrushTitle}}" />
+            </MultiTrigger>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="Selector.IsSelectionActive" Value="False" />
+                    <Condition Property="IsSelected" Value="True" />
+                </MultiTrigger.Conditions>
+                <Setter Property="Background">
+                    <Setter.Value>
+                        <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Selected}}" />
+                    </Setter.Value>
+                </Setter>
+            </MultiTrigger>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="Selector.IsSelectionActive" Value="True" />
+                    <Condition Property="IsSelected" Value="True" />
+                </MultiTrigger.Conditions>
+                <Setter Property="Background">
+                    <Setter.Value>
+                        <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Selected}}" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static BrushKeys.ForegroundSelect}}" />
+            </MultiTrigger>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Opacity" Value="0.6" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
     <Style x:Key="{ComponentResourceKey ResourceId=S.DataGrid.Default,
                                         TypeInTargetAssembly={x:Type local:DataGridKeys}}"
            TargetType="{x:Type DataGrid}">
@@ -265,105 +363,7 @@
                 </Style>
             </Setter.Value>
         </Setter>
-        <Setter Property="RowStyle">
-            <Setter.Value>
-                <Style TargetType="{x:Type DataGridRow}">
-                    <Setter Property="SnapsToDevicePixels" Value="true" />
-                    <Setter Property="Validation.ErrorTemplate" Value="{x:Null}" />
-                    <Setter Property="Cattach.ItemPadding" Value="{Binding RelativeSource={RelativeSource AncestorType=DataGrid}, Path=(Cattach.ItemPadding)}" />
-                    <Setter Property="Cattach.ItemVerticalContentAlignment" Value="{Binding RelativeSource={RelativeSource AncestorType=DataGrid}, Path=(Cattach.ItemVerticalContentAlignment)}" />
-                    <Setter Property="Cattach.ItemHorizontalContentAlignment" Value="{Binding RelativeSource={RelativeSource AncestorType=DataGrid}, Path=(Cattach.ItemHorizontalContentAlignment)}" />
-                    <Setter Property="ValidationErrorTemplate">
-                        <Setter.Value>
-                            <ControlTemplate>
-                                <TextBlock Margin="2,0,0,0"
-                                           VerticalAlignment="Center"
-                                           Text="!">
-                                    <TextBlock.Foreground>
-                                        <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Red}}" />
-                                    </TextBlock.Foreground>
-                                </TextBlock>
-                            </ControlTemplate>
-                        </Setter.Value>
-                    </Setter>
-                    <Setter Property="Background" Value="{x:Null}" />
-                    <Setter Property="Template">
-                        <Setter.Value>
-                            <ControlTemplate TargetType="{x:Type DataGridRow}">
-                                <Border SnapsToDevicePixels="True"
-                                        Style="{StaticResource S.Border.TemplatedParent}">
-                                    <SelectiveScrollingGrid>
-                                        <SelectiveScrollingGrid.ColumnDefinitions>
-                                            <ColumnDefinition Width="Auto" />
-                                            <ColumnDefinition Width="*" />
-                                        </SelectiveScrollingGrid.ColumnDefinitions>
-                                        <SelectiveScrollingGrid.RowDefinitions>
-                                            <RowDefinition Height="*" />
-                                            <RowDefinition Height="Auto" />
-                                        </SelectiveScrollingGrid.RowDefinitions>
-                                        <DataGridCellsPresenter Grid.Column="1"
-                                                                ItemsPanel="{TemplateBinding ItemsPanel}"
-                                                                SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
-                                        <DataGridDetailsPresenter Grid.Row="1"
-                                                                  Grid.Column="1"
-                                                                  SelectiveScrollingGrid.SelectiveScrollingOrientation="{Binding AreRowDetailsFrozen, ConverterParameter={x:Static SelectiveScrollingOrientation.Vertical}, Converter={x:Static DataGrid.RowDetailsScrollingConverter}, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}"
-                                                                  Visibility="{TemplateBinding DetailsVisibility}" />
-                                        <DataGridRowHeader Grid.RowSpan="2"
-                                                           SelectiveScrollingGrid.SelectiveScrollingOrientation="Vertical"
-                                                           Visibility="{Binding HeadersVisibility, ConverterParameter={x:Static DataGridHeadersVisibility.Row}, Converter={x:Static DataGrid.HeadersVisibilityConverter}, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}" />
-                                    </SelectiveScrollingGrid>
-                                </Border>
-                            </ControlTemplate>
-                        </Setter.Value>
-                    </Setter>
-                    <Style.Triggers>
-                        <MultiTrigger>
-                            <MultiTrigger.Conditions>
-                                <Condition Property="ItemsControl.AlternationIndex" Value="1" />
-                            </MultiTrigger.Conditions>
-                            <Setter Property="Background" Value="{Binding RelativeSource={RelativeSource AncestorType=DataGrid}, Path=AlternatingRowBackground}" />
-                        </MultiTrigger>
-                        <MultiTrigger>
-                            <MultiTrigger.Conditions>
-                                <Condition Property="IsMouseOver" Value="True" />
-                            </MultiTrigger.Conditions>
-                            <Setter Property="Background">
-                                <Setter.Value>
-                                    <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.MouseOver}}" />
-                                </Setter.Value>
-                            </Setter>
-                            <Setter Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.BorderBrushTitle}}" />
-                        </MultiTrigger>
-                        <MultiTrigger>
-                            <MultiTrigger.Conditions>
-                                <Condition Property="Selector.IsSelectionActive" Value="False" />
-                                <Condition Property="IsSelected" Value="True" />
-                            </MultiTrigger.Conditions>
-                            <Setter Property="Background">
-                                <Setter.Value>
-                                    <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Selected}}" />
-                                </Setter.Value>
-                            </Setter>
-                        </MultiTrigger>
-                        <MultiTrigger>
-                            <MultiTrigger.Conditions>
-                                <Condition Property="Selector.IsSelectionActive" Value="True" />
-                                <Condition Property="IsSelected" Value="True" />
-                            </MultiTrigger.Conditions>
-                            <Setter Property="Background">
-                                <Setter.Value>
-                                    <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Selected}}" />
-                                </Setter.Value>
-                            </Setter>
-                            <Setter Property="Foreground" Value="{DynamicResource {x:Static BrushKeys.ForegroundSelect}}" />
-                        </MultiTrigger>
-                        <Trigger Property="IsEnabled" Value="False">
-                            <Setter Property="Opacity" Value="0.6" />
-                        </Trigger>
-                    </Style.Triggers>
-                </Style>
-            </Setter.Value>
-        </Setter>
+        <Setter Property="RowStyle" Value="{DynamicResource {x:Static local:DataGridRowKeys.Default}}" />
         <Setter Property="RowHeaderStyle">
             <Setter.Value>
                 <Style TargetType="{x:Type DataGridRowHeader}">

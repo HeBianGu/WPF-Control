@@ -12,7 +12,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Controls\H.Controls.Adorner\H.Controls.Adorner.csproj" />
     <ProjectReference Include="..\..\Datas\H.Data.Test\H.Data.Test.csproj" />
     <ProjectReference Include="..\..\Extensions\H.Extensions.Behvaiors\H.Extensions.Behvaiors.csproj" />
+    <ProjectReference Include="..\..\Styles\H.Style\H.Style.csproj" />
   </ItemGroup>
 </Project>
