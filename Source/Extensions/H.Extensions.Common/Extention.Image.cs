@@ -7,6 +7,8 @@
 // Licensed under the MIT License (the "License")
 
 using System.IO;
+using System.Runtime.CompilerServices;
+using System.Windows;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
@@ -26,6 +28,58 @@ public static class ImageExtention
         {
             encoder.Save(stream);
         }
+    }
+
+    public static void ToCroppedSetClipboard(this BitmapSource bitmapSource, Int32Rect cropArea)
+    {
+        var croppedBitmap = new CroppedBitmap(bitmapSource, cropArea);
+        Clipboard.SetImage(croppedBitmap);
+    }
+
+    public static string ToCroppedImageBase64String(this BitmapSource bitmapSource, Int32Rect cropArea)
+    {
+        return Convert.ToBase64String(bitmapSource.ToCroppedImage(cropArea));
+    }
+
+    public static byte[] ToCroppedImage(this BitmapSource bitmapSource, Int32Rect cropArea)
+    {
+        return bitmapSource.ToCroppedImageStream(cropArea).ToArray();
+    }
+
+    public static MemoryStream ToCroppedImageStream(this BitmapSource bitmapSource, Int32Rect cropArea)
+    {
+        var croppedBitmap = new CroppedBitmap(bitmapSource, cropArea);
+        var encoder = new JpegBitmapEncoder();
+        encoder.Frames.Add(BitmapFrame.Create(croppedBitmap));
+        using (var memoryStream = new MemoryStream())
+        {
+            encoder.Save(memoryStream);
+            return memoryStream;
+        }
+    }
+
+    public static ImageSource ToBase64ImageSource(this string base64String)
+    {
+        if (string.IsNullOrEmpty(base64String))
+            return null;
+        byte[] binaryData = Convert.FromBase64String(base64String);
+        var bitmapImage = new BitmapImage();
+        using (var memoryStream = new MemoryStream(binaryData))
+        {
+            bitmapImage.BeginInit();
+            bitmapImage.CacheOption = BitmapCacheOption.OnLoad;
+            bitmapImage.StreamSource = memoryStream;
+            bitmapImage.EndInit();
+        }
+        return bitmapImage;
+    }
+
+    public static ImageSource ToFilePathImageSource(this string filePath)
+    {
+        if (string.IsNullOrEmpty(filePath))
+            return null;
+        ImageSourceConverter converter = new ImageSourceConverter();
+        return converter.ConvertFromInvariantString(filePath) as ImageSource;
     }
 }
 
