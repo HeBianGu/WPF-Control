@@ -381,18 +381,6 @@ public static class ElementExtention
             obj.Dispatcher.Invoke(new Action(() => obj.SetValue(property, value)));
     }
 
-    public static BitmapSource GetImage(this UIElement element)
-    {
-        RenderTargetBitmap targetBitmap = new RenderTargetBitmap(
-                                     (int)element.RenderSize.Width,
-                                     (int)element.RenderSize.Height,
-                                     96d,
-                                     96d,
-                                     PixelFormats.Default);
-        targetBitmap.Render(element);
-        return targetBitmap;
-    }
-
     public static IEnumerable<Adorner> GetAdorners(this UIElement element, Predicate<Adorner> predicate = null)
     {
         AdornerLayer layer = AdornerLayer.GetAdornerLayer(element);

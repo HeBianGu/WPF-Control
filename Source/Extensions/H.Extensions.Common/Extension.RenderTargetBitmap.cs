@@ -6,12 +6,26 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
+using System.Windows.Media;
+using System.Windows;
 using System.Windows.Media.Imaging;
 
 namespace H.Extensions.Common;
 
 public static class RenderTargetBitmapExtensions
 {
+    public static BitmapSource GetImage(this UIElement element)
+    {
+        RenderTargetBitmap targetBitmap = new RenderTargetBitmap(
+                                     (int)element.RenderSize.Width,
+                                     (int)element.RenderSize.Height,
+                                     96d,
+                                     96d,
+                                     PixelFormats.Default);
+        targetBitmap.Render(element);
+        return targetBitmap;
+    }
+
     public static void SaveAsPng(this RenderTargetBitmap renderTargetBitmap, string filePath)
     {
         PngBitmapEncoder encoder = new PngBitmapEncoder();
