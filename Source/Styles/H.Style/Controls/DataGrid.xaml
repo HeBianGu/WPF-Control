@@ -324,7 +324,22 @@
                                                            Visibility="{TemplateBinding ComputedHorizontalScrollBarVisibility}"
                                                            Value="{Binding HorizontalOffset, Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}" />
                                             </Grid>
+
+                                            <TextBlock x:Name="t_message"
+                                                       Grid.Row="1"
+                                                       Grid.ColumnSpan="2"
+                                                       HorizontalAlignment="Center"
+                                                       VerticalAlignment="Center"
+                                                       Opacity="0.5"
+                                                       Text="暂无数据"
+                                                       Visibility="Collapsed" />
                                         </Grid>
+                                        <ControlTemplate.Triggers>
+                                            <DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=Items.Count}"
+                                                         Value="0">
+                                                <Setter TargetName="t_message" Property="Visibility" Value="Visible" />
+                                            </DataTrigger>
+                                        </ControlTemplate.Triggers>
                                     </ControlTemplate>
                                 </ScrollViewer.Template>
                                 <ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
