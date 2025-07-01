@@ -3,8 +3,5 @@
                     xmlns:Behaviors="http://schemas.microsoft.com/xaml/behaviors"
                     xmlns:h="https://github.com/HeBianGu"
                     xmlns:local="clr-namespace:H.Controls.ROIBox">
-    <Style TargetType="{x:Type local:ROIBox}">
-   
-     
-    </Style>
+    <Style TargetType="{x:Type local:ROIBox}" />
 </ResourceDictionary>
