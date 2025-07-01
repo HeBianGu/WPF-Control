@@ -328,6 +328,7 @@
                                             <TextBlock x:Name="t_message"
                                                        Grid.Row="1"
                                                        Grid.ColumnSpan="2"
+                                                       Margin="20"
                                                        HorizontalAlignment="Center"
                                                        VerticalAlignment="Center"
                                                        Opacity="0.5"
