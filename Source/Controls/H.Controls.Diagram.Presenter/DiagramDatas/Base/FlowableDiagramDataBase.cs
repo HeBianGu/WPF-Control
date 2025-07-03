@@ -159,6 +159,8 @@ public abstract class FlowableDiagramDataBase : ZoomableDiagramDataBase, IFlowab
 
     public virtual void Stop()
     {
+        if (!this.State.CanStop())
+            return;
         this.State = DiagramFlowableState.Canceling;
         this.GotoState(x =>
         {
