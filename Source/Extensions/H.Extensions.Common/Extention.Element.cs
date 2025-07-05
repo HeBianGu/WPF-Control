@@ -510,4 +510,17 @@ public static class ElementExtention
             return (T)items.ItemsSource;
         return default;
     }
+
+    public static T GetVisualRoot<T>(this DependencyObject child) where T : DependencyObject
+    {
+        while (true)
+        {
+            var parentObject = VisualTreeHelper.GetParent(child);
+            if (parentObject == null)
+            {
+                return child as T;
+            }
+            child = parentObject;
+        }
+    }
 }
