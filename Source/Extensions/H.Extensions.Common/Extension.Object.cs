@@ -480,4 +480,10 @@ public static class ObjectExtension
         var converter = TypeDescriptor.GetConverter(typeof(T));
         return (T)converter.ConvertFromInvariantString(str);
     }
+
+    public static IEnumerable<T> ToEnumerable<T>(this T t)
+    {
+        yield return t;
+    }
+
 }
