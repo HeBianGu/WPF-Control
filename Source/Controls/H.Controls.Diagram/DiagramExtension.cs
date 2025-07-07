@@ -97,6 +97,7 @@ public static class DiagramExtension
         {
             NodeLayer.SetPosition(tonode, NodeLayer.GetPosition(tonode) + offset);
         }
+        diagram.OnItemsChanged();
     }
 
     public static void ZoomToFit(this IDiagram diagram, params Part[] parts)
