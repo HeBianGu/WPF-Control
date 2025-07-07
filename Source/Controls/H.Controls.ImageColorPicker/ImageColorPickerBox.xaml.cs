@@ -43,8 +43,8 @@ namespace H.Controls.ImageColorPicker
 
         private void ROIBox_MouseLeave(object sender, System.Windows.Input.MouseEventArgs e)
         {
-            this._pickerDrawingVisual.Position = null;
-            this._pickerDrawingVisual.PreviewPosition = null;
+            this.PreviewColor = null;
+            this.PreviewPosition = null;
             this.UpdatePicker();
         }
 
@@ -54,8 +54,7 @@ namespace H.Controls.ImageColorPicker
             {
                 var p = e.GetPosition(this);
                 var color = this.GetPixelColor(bitmap, (int)p.X, (int)p.Y);
-                this._pickerDrawingVisual.PreviewPosition = p;
-                this._pickerDrawingVisual.PreviewColor = color;
+                this.PreviewPosition = p;
                 this.PreviewColor = color;
                 this.UpdatePicker();
             }
@@ -67,8 +66,9 @@ namespace H.Controls.ImageColorPicker
             {
                 var p = e.GetPosition(this);
                 var color = this.GetPixelColor(bitmap, (int)p.X, (int)p.Y);
-                this._pickerDrawingVisual.Position = p;
+                this.Position =new Point((int)p.X, (int)p.Y);
                 this.Color = color;
+                this.UpdatePicker();
             }
         }
 
@@ -137,6 +137,38 @@ namespace H.Controls.ImageColorPicker
             }));
 
 
+        public Point? Position
+        {
+            get { return (Point?)GetValue(PositionProperty); }
+            set { SetValue(PositionProperty, value); }
+        }
+
+        public static readonly DependencyProperty PositionProperty =
+            DependencyProperty.Register("Position", typeof(Point?), typeof(ImageColorPickerBox), new FrameworkPropertyMetadata(default(Point?), (d, e) =>
+            {
+                ImageColorPickerBox control = d as ImageColorPickerBox;
+
+                if (control == null) return;
+
+            }));
+
+
+        public Point? PreviewPosition
+        {
+            get { return (Point?)GetValue(PreviewPositionProperty); }
+            set { SetValue(PreviewPositionProperty, value); }
+        }
+
+        public static readonly DependencyProperty PreviewPositionProperty =
+            DependencyProperty.Register("PreviewPosition", typeof(Point?), typeof(ImageColorPickerBox), new FrameworkPropertyMetadata(default(Point?), (d, e) =>
+            {
+                ImageColorPickerBox control = d as ImageColorPickerBox;
+
+                if (control == null) return;
+            }));
+
+
+
         public Color? PreviewColor
         {
             get { return (Color?)GetValue(PreviewColorProperty); }
@@ -154,6 +186,9 @@ namespace H.Controls.ImageColorPicker
 
         private void UpdatePicker()
         {
+            this._pickerDrawingVisual.Position = this.Position;
+            this._pickerDrawingVisual.PreviewPosition = this.PreviewPosition;
+            this._pickerDrawingVisual.PreviewColor = this.PreviewColor;
             this._pickerDrawingVisual.Draw();
         }
 
