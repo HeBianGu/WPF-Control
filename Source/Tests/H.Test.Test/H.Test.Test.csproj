@@ -15,6 +15,7 @@
     <ProjectReference Include="..\..\Controls\H.Controls.FilterColumnDataGrid\H.Controls.FilterColumnDataGrid.csproj" />
     <ProjectReference Include="..\..\Controls\H.Controls.GridSplitterBox\H.Controls.GridSplitterBox.csproj" />
     <ProjectReference Include="..\..\Controls\H.Controls.HorseTextBlock\H.Controls.HorseTextBlock.csproj" />
+    <ProjectReference Include="..\..\Controls\H.Controls.ImageColorPicker\H.Controls.ImageColorPicker.csproj" />
     <ProjectReference Include="..\..\Controls\H.Controls.OrderBox\H.Controls.OrderBox.csproj" />
     <ProjectReference Include="..\..\Controls\H.Controls.PDF\H.Controls.PDF.csproj" />
     <ProjectReference Include="..\..\Controls\H.Controls.PrintBox\H.Controls.PrintBox.csproj" />

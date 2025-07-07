@@ -14,7 +14,7 @@ public interface IIOFolderDialogService
 
 public static class IOFolderDialogServiceExtension
 {
-    public static string ShowOpenFolder(this IIOFolderDialogService service, Action<string> sumitAction)
+    public static string ShowOpenFolderAction(this IIOFolderDialogService service, Action<string> sumitAction)
     {
         string s = service.ShowOpenFolder();
         if (s == null)

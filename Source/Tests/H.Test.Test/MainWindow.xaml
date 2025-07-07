@@ -48,6 +48,11 @@
     </h:MainWindow.CaptionTempate>
     <Grid>
         <TabControl TabStripPlacement="Left">
+            <TabItem Header="ImageColorPickerBox">
+                <DockPanel>
+                    <ImageColorPickerBox ImageSource="{Logo}" />
+                </DockPanel>
+            </TabItem>
             <TabItem Header="ROIBox">
                 <DockPanel>
                     <Button Command="{x:Static ROIBoxCommands.ClearRect}"
