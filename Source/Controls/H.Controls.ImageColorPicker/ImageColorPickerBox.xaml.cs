@@ -189,6 +189,7 @@ namespace H.Controls.ImageColorPicker
             this._pickerDrawingVisual.Position = this.Position;
             this._pickerDrawingVisual.PreviewPosition = this.PreviewPosition;
             this._pickerDrawingVisual.PreviewColor = this.PreviewColor;
+            this._pickerDrawingVisual.Length = Math.Sqrt(this.ImageSource.Width * this.ImageSource.Width + this.ImageSource.Height * this.ImageSource.Height) / 100.0;
             this._pickerDrawingVisual.Draw();
         }
 

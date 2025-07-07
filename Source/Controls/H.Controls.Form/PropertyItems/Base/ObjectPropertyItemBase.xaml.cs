@@ -56,6 +56,7 @@ public abstract class ObjectPropertyItemBase : DisplayBindableBase, IPropertyIte
         UnitAttribute unit = property.GetCustomAttribute<UnitAttribute>();
         if (unit != null)
             this.Unit = unit.Unit;
+        this.Icon = property.GetCustomAttribute<IconAttribute>()?.Icon;
     }
 
     /// <summary>

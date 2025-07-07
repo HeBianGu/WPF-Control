@@ -74,7 +74,10 @@ public partial class Diagram : ContentControl, IDiagram
                 foreach (Part item in parts)
                 {
                     if (item is Node || item is Link)
+                    {
                         item.Delete();
+                        this.OnItemsChanged();
+                    }
                 }
                 this.InvokeMessage((binding.Command as RoutedUICommand).Text);
             };

@@ -3,9 +3,11 @@
                     xmlns:local="clr-namespace:H.Controls.ImageColorPicker">
     <DataTemplate DataType="{x:Type local:ImageColorPickerPresenter}">
         <Grid>
-            <local:ImageColorPickerBox x:Name="p"
-                                       ImageSource="{Binding ImageSource}"
-                                       Color="{Binding Color, Mode=TwoWay}" />
+            <Viewbox>
+                <local:ImageColorPickerBox x:Name="p"
+                                           ImageSource="{Binding ImageSource}"
+                                           Color="{Binding Color, Mode=TwoWay}" />
+            </Viewbox>
             <Border Margin="2"
                     Padding="10,6"
                     HorizontalAlignment="Left"
@@ -22,7 +24,6 @@
                     <Run Text="{Binding ElementName=p, Path=Position}" />
                 </TextBlock>
             </Border>
-
         </Grid>
     </DataTemplate>
 </ResourceDictionary>

@@ -59,19 +59,19 @@ namespace H.Controls.ImageColorPicker.Drawings
 
             }));
 
-
+        public double Length { get; set; } = 6;
 
         public void Draw()
         {
             using var dc = this.RenderOpen();
 
             if (this.Position.HasValue)
-                dc.DrawHandle(this.Position.Value, Brushes.Chartreuse);
+                dc.DrawHandle(this.Position.Value, Brushes.Chartreuse, this.Length / 5, this.Length);
             if (this.PreviewPosition.HasValue)
             {
-                dc.DrawHandle(this.PreviewPosition.Value, Brushes.Chartreuse, 1, 2);
+                dc.DrawHandle(this.PreviewPosition.Value, Brushes.Chartreuse, this.Length / 5, this.Length);
                 if (this.PreviewColor != null)
-                    dc.DrawColorText(this.PreviewPosition.Value, this.PreviewColor.Value, this);
+                    dc.DrawColorText(this.PreviewPosition.Value, this.PreviewColor.Value, this, this.Length * 2);
             }
         }
     }
@@ -84,14 +84,14 @@ namespace H.Controls.ImageColorPicker.Drawings
             dc.DrawEllipse(null, new Pen(stroke, strokeThickness), point, len, len);
         }
 
-        public static void DrawColorText(this DrawingContext dc, Point point, Color color, Visual visual)
+        public static void DrawColorText(this DrawingContext dc, Point point, Color color, Visual visual, double fontSize = 10.0)
         {
             FormattedText formattedText = new FormattedText(
                                     $"{color}",
                                     System.Globalization.CultureInfo.CurrentCulture,
                                     FlowDirection.LeftToRight,
                                     new Typeface("Microsoft YaHei"),
-                                    10,
+                                    fontSize,
                                     Brushes.Chartreuse,
                                     VisualTreeHelper.GetDpi(visual).PixelsPerDip);
             dc.DrawText(formattedText, point + new Vector(10, 10));
