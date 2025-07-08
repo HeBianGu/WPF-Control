@@ -70,7 +70,7 @@ public static class DiagramExtension
             return;
         if (toPort == null)
             return;
-     
+
         var outputPorts = node.GetPorts(x => x.PortType.HasFlag(PortType.OutPut));
         var nodeFromPort = outputPorts.Where(x => x.Dock == fromPort.Dock).FirstOrDefault();
         if (nodeFromPort == null)
@@ -84,7 +84,6 @@ public static class DiagramExtension
             nodeToPort = inputPorts.FirstOrDefault();
         if (nodeToPort == null)
             return;
-        diagram.RemoveLink(link);
         diagram.AddNode(node);
         //diagram.LinkNode(fromPort, node);
         diagram.LinkPort(fromPort, nodeToPort);
@@ -97,6 +96,8 @@ public static class DiagramExtension
         {
             NodeLayer.SetPosition(tonode, NodeLayer.GetPosition(tonode) + offset);
         }
+        diagram.RemoveLink(link);
+        link.Delete();
         diagram.OnItemsChanged();
     }
 
