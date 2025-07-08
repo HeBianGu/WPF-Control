@@ -14,7 +14,7 @@
                 <TextBlock HorizontalAlignment="Center"
                            DockPanel.Dock="Bottom"
                            FontSize="{Binding Source={x:Static local:SplashScreenOptions.Instance}, Path=SubFontSize}"
-                           Opacity="0.5"
+                           Opacity="0.8"
                            Text="{Binding Source={x:Static local:SplashScreenOptions.Instance}, Path=Sub}" />
                 <TextBlock FontSize="{Binding Source={x:Static local:SplashScreenOptions.Instance}, Path=ProductFontSize}"
                            Text="{Binding Source={x:Static local:SplashScreenOptions.Instance}, Path=Product}" />

@@ -5,6 +5,6 @@
                     xmlns:system="clr-namespace:System;assembly=mscorlib">
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/H.Controls.ImageColorPicker;component/ImageColorPickerBox.xaml" />
-        <ResourceDictionary Source="pack://application:,,,/H.Controls.ImageColorPicker;component/ImageColorPickerPresenter.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Controls.ImageColorPicker;component/ImageColorPickerBoxPresenter.xaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

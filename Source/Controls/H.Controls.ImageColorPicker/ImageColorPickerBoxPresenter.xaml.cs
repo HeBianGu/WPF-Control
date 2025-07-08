@@ -10,7 +10,7 @@ using System.Windows.Media;
 
 namespace H.Controls.ImageColorPicker
 {
-    public class ImageColorPickerPresenter:BindableBase
+    public class ImageColorPickerBoxPresenter:BindableBase
     {
         private ImageSource _imageSource;
         public ImageSource ImageSource

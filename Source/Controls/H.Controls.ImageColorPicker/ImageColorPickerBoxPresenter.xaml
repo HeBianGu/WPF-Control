@@ -1,7 +1,7 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:H.Controls.ImageColorPicker">
-    <DataTemplate DataType="{x:Type local:ImageColorPickerPresenter}">
+    <DataTemplate DataType="{x:Type local:ImageColorPickerBoxPresenter}">
         <Grid>
             <Viewbox>
                 <local:ImageColorPickerBox x:Name="p"

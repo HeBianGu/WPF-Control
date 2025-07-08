@@ -199,7 +199,7 @@ namespace H.Controls.ImageColorPicker
                 return Colors.Transparent;
             byte[] pixel = new byte[4];
             bitmap.CopyPixels(new Int32Rect(x, y, 1, 1), pixel, 4, 0);
-            return System.Windows.Media.Color.FromArgb(pixel[3], pixel[2], pixel[1], pixel[0]);
+            return System.Windows.Media.Color.FromArgb(255, pixel[2], pixel[1], pixel[0]);
         }
     }
 }
