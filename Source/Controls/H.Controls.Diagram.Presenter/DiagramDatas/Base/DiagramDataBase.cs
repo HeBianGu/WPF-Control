@@ -21,6 +21,7 @@ global using H.Services.Message.Dialog;
 global using System.Text.Json.Serialization;
 global using System.Windows.Input;
 global using H.Mvvm.Commands;
+using H.Controls.Diagram.Presenter.NodeDatas.Base;
 namespace H.Controls.Diagram.Presenter.DiagramDatas.Base;
 
 public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
@@ -283,7 +284,14 @@ public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
             if (framework?.DataContext is IDiagramShowPropertyView showPropertyView)
             {
                 var propertyPresenter = showPropertyView.GetPropertyPresenter();
-                await IocMessage.ShowDialog(propertyPresenter, x => x.DialogButton = DialogButton.None);
+                await IocMessage.ShowDialog(propertyPresenter, x =>
+                {
+                    x.DialogButton = DialogButton.None;
+                    if (showPropertyView is ITitleable title && title.Title != null)
+                        x.Title = title.Title;
+                    if (showPropertyView is INameable nameable && nameable.Name != null)
+                        x.Title = nameable.Name;
+                });
             }
             else
             {
