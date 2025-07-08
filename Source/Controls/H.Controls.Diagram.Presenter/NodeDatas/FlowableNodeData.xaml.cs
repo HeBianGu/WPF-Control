@@ -267,7 +267,10 @@ public class FlowableNodeData : ShowPropertyViewNodeDataBase, IFlowableNodeData
     {
         if (from == null)
             return default;
-        return (T)from.GetFromNodeData(diagramData);
+
+        if (from.GetFromNodeData(diagramData) is T t)
+            return t;
+        return default(T);
     }
 
     protected T GetStartFromNodeData<T>(IDiagramData diagramData) where T : INodeData
