@@ -796,7 +796,7 @@ public class IEnumerableTypeConverterBase<T> : IValueConverter
 }
 
 
-public static class ObjectExtension
+internal static class ObjectExtension
 {
     /// <summary>
     /// 创建泛型集合的类型
@@ -817,70 +817,6 @@ public static class ObjectExtension
         return args?.First();
     }
 
-    public static object TryConvertFromString(this Type type, string txt, out string error)
-    {
-        try
-        {
-            error = null;
-            TypeConverterAttribute typeConvert = type.GetCustomAttribute<TypeConverterAttribute>();
-            if (typeConvert != null)
-            {
-                Type t = Type.GetType(typeConvert.ConverterTypeName);
-                ConstructorInfo constructor = t.GetConstructors().FirstOrDefault(l => l.GetParameters().Count() == 0);
-                if (constructor != null)
-                {
-                    TypeConverter instance = Activator.CreateInstance(t) as TypeConverter;
-                    return instance.ConvertFrom(null, System.Globalization.CultureInfo.CurrentUICulture, txt);
-                }
-            }
-            if (typeof(IConvertible).IsAssignableFrom(type))
-                return Convert.ChangeType(txt, type);
-
-            error = "未识别转换方法";
-            return null;
-        }
-        catch (Exception ex)
-        {
-            error = ex.Message;
-            return null;
-        }
-    }
-
-    public static string TryConvertToString(this object obj)
-    {
-        return obj.TryConvertToString(out string error);
-    }
-    public static string TryConvertToString(this object obj, out string error)
-    {
-        error = null;
-        if (obj == null)
-            return null;
-        Type type = obj.GetType();
-        TypeConverterAttribute typeConvert = type.GetCustomAttribute<TypeConverterAttribute>();
-        if (typeConvert != null)
-        {
-            Type t = Type.GetType(typeConvert.ConverterTypeName);
-            ConstructorInfo constructor = t.GetConstructors().FirstOrDefault(l => l.GetParameters().Count() == 0);
-            if (constructor != null)
-            {
-                TypeConverter instance = Activator.CreateInstance(t) as TypeConverter;
-                if (obj is DispatcherObject dispatcher && dispatcher.Dispatcher != null)
-                    return dispatcher.Dispatcher?.Invoke(() => instance.ConvertToString(null, System.Globalization.CultureInfo.CurrentUICulture, obj));
-                return instance.ConvertToString(null, System.Globalization.CultureInfo.CurrentUICulture, obj);
-            }
-        }
-
-        if (obj is IConvertible convertible)
-            return Convert.ChangeType(obj, typeof(string))?.ToString();
-        error = "未识别转换方法";
-        return null;
-    }
-
-    public static T TryChangeType<T>(this object obj)
-    {
-        bool r = obj.TryChangeType(out T result);
-        return result;
-    }
     public static bool TryChangeType<T>(this object obj, out T result)
     {
         if (obj is T)
@@ -921,17 +857,5 @@ public static class ObjectExtension
             return true;
         }
         return false;
-    }
-    public static string GetDisplayName(this Type type)
-    {
-        return type.GetCustomAttribute<DisplayAttribute>()?.Name ?? type.Name;
-    }
-
-    public static R GetAttributeValue<T, R>(this Type type, Func<T, R> func) where T : Attribute
-    {
-        var find = type.GetCustomAttribute<T>();
-        if (find == null)
-            return default;
-        return func.Invoke(find);
     }
 }
