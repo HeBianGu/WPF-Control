@@ -3,7 +3,7 @@
                     xmlns:h="https://github.com/HeBianGu"
                     xmlns:local="clr-namespace:H.Controls.Form.PropertyItem"
                     xmlns:lt="clr-namespace:H.Controls.Form.PropertyItem.TextPropertyItems">
-    <DataTemplate DataType="{x:Type lt:SliderTextPropertyItem}">
+    <DataTemplate DataType="{x:Type lt:SliderTextPropertyItemBase}">
         <Grid>
             <TextBox x:Name="tb"
                      Height="Auto"
@@ -35,6 +35,7 @@
                         <Slider Focusable="False"
                                 Maximum="{Binding Maximum}"
                                 Minimum="{Binding Minimum}"
+                                SmallChange="{Binding SmallChange}"
                                 Value="{Binding Value, Converter={lt:GetDoubleFromStringValueConverter}}" />
                     </DockPanel>
                 </Border>

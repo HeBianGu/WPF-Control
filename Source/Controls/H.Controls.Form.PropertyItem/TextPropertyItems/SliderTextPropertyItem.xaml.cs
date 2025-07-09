@@ -13,19 +13,26 @@ using System.Windows;
 
 namespace H.Controls.Form.PropertyItem.TextPropertyItems;
 
-public class SliderTextPropertyItem : TextPropertyItem
+public abstract class SliderTextPropertyItemBase : TextPropertyItem
+{
+    protected SliderTextPropertyItemBase(PropertyInfo property, object obj) : base(property, obj)
+    {
+    }
+}
+
+public class SliderTextPropertyItem<T> : SliderTextPropertyItemBase
 {
     public SliderTextPropertyItem(PropertyInfo property, object obj) : base(property, obj)
     {
         var range = property.GetCustomAttribute<RangeAttribute>();
         if (range == null)
             return;
-        this.Maximum = (double)range.Maximum;
-        this.Minimum = (double)range.Minimum;
+        this.Maximum = range.Maximum.TryChangeType<T>();
+        this.Minimum = range.Minimum.TryChangeType<T>();
     }
 
-    private double _Maximum = double.MaxValue;
-    public double Maximum
+    private T _Maximum;
+    public T Maximum
     {
         get { return _Maximum; }
         set
@@ -35,8 +42,8 @@ public class SliderTextPropertyItem : TextPropertyItem
         }
     }
 
-    private double _Minimum = double.MinValue;
-    public double Minimum
+    private T _Minimum;
+    public T Minimum
     {
         get { return _Minimum; }
         set
@@ -46,7 +53,65 @@ public class SliderTextPropertyItem : TextPropertyItem
         }
     }
 
+    private T _SmallChange;
+    public T SmallChange
+    {
+        get { return _SmallChange; }
+        set
+        {
+            _SmallChange = value;
+            RaisePropertyChanged();
+        }
+    }
 
+}
+
+public class DoubleSliderTextPropertyItem: SliderTextPropertyItem<double>
+{
+    public DoubleSliderTextPropertyItem(PropertyInfo property, object obj) : base(property, obj)
+    {
+       
+    }
+
+    public override void LoadDefault()
+    {
+        base.LoadDefault();
+        this.Maximum = double.MaxValue;
+        this.Minimum = double.MinValue;
+        this.SmallChange = (this.Maximum - this.Minimum) / 100.0;
+    }
+}
+
+public class FloatSliderTextPropertyItem : SliderTextPropertyItem<float>
+{
+    public FloatSliderTextPropertyItem(PropertyInfo property, object obj) : base(property, obj)
+    {
+
+    }
+
+    public override void LoadDefault()
+    {
+        base.LoadDefault();
+        this.Maximum = float.MaxValue;
+        this.Minimum = float.MinValue;
+        this.SmallChange = (this.Maximum - this.Minimum) / 100.0f;
+    }
+}
+
+public class Int32SliderTextPropertyItem : SliderTextPropertyItem<int>
+{
+    public Int32SliderTextPropertyItem(PropertyInfo property, object obj) : base(property, obj)
+    {
+
+    }
+
+    public override void LoadDefault()
+    {
+        base.LoadDefault();
+        this.Maximum = int.MaxValue;
+        this.Minimum = int.MinValue;
+        this.SmallChange = (int)((this.Maximum - this.Minimum) / 100.0);
+    }
 }
 
 public class GetDoubleFromStringValueConverter : MarkupValueConverterBase
