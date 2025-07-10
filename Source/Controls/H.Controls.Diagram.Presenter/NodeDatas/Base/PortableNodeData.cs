@@ -72,6 +72,20 @@ public abstract class PortableNodeData : NodeData, IPortableNodeData
     [OnSerializing]
     internal void OnSerializingMethod(StreamingContext context)
     {
+        this.OnSerializing(context);
+    }
+
+    protected virtual void OnSerializing(StreamingContext context)
+    {
+
+    }
+    [OnSerialized]
+    internal void OnSerializedMethod(StreamingContext context)
+    {
+        this.OnSerialized(context);
+    }
+    protected virtual void OnSerialized(StreamingContext context)
+    {
 
     }
 
@@ -79,6 +93,20 @@ public abstract class PortableNodeData : NodeData, IPortableNodeData
     internal void OnDeserializedMethod(StreamingContext context)
     {
         this.PortDatas = this.PortDatas.Except(this._defaultPortDatas).ToList();
+        this.OnDeserialized(context);
+    }
+    protected virtual void OnDeserialized(StreamingContext context)
+    {
+
+    }
+    [OnDeserializing]
+    internal void OnDeserializingMethod(StreamingContext context)
+    {
+        this.OnDeserializing(context);
+    }
+    protected virtual void OnDeserializing(StreamingContext context)
+    {
+
     }
     #endregion
 

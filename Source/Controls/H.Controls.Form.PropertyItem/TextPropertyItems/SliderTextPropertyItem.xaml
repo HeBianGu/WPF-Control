@@ -35,8 +35,9 @@
                         <Slider Focusable="False"
                                 Maximum="{Binding Maximum}"
                                 Minimum="{Binding Minimum}"
-                                SmallChange="{Binding SmallChange}"
-                                Value="{Binding Value, Converter={lt:GetDoubleFromStringValueConverter}}" />
+                                IsSnapToTickEnabled="True"
+                                TickFrequency="{Binding TickFrequency}"
+                                Value="{Binding Value, Converter={lt:GetValueFromStringValueConverter}}" />
                     </DockPanel>
                 </Border>
             </Popup>
