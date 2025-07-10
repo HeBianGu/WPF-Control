@@ -19,9 +19,9 @@
             <Popup Width="{Binding ElementName=tb, Path=ActualWidth, Mode=OneWay}"
                    IsOpen="{Binding ElementName=tb, Path=IsKeyboardFocused, Mode=OneWay}"
                    StaysOpen="True">
-                <Border Background="{DynamicResource {x:Static BrushKeys.Dark0_2}}"
-                        BorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrush}}"
-                        BorderThickness="1"
+                <Border Background="{DynamicResource {x:Static BrushKeys.Selected}}"
+                        BorderBrush="{DynamicResource {x:Static BrushKeys.ForegroundAssist}}"
+                        BorderThickness="1" Margin="0 0 0.5 0"
                         CornerRadius="{DynamicResource {x:Static LayoutKeys.CornerRadius}}">
                     <DockPanel>
                         <TextBlock Margin="5"
