@@ -5,7 +5,8 @@
                     xmlns:local="clr-namespace:H.Modules.Messages.Dialog">
     <DataTemplate DataType="{x:Type local:AdornerDialogPresenter}">
         <Grid HorizontalAlignment="Stretch"
-              VerticalAlignment="Stretch">
+              VerticalAlignment="Stretch"
+              WindowChrome.IsHitTestVisibleInChrome="True">
             <Grid.Background>
                 <SolidColorBrush Opacity="0.6"
                                  Color="Black" />
