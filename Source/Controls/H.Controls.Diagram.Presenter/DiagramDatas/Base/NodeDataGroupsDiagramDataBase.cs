@@ -38,5 +38,4 @@ public abstract class NodeDataGroupsDiagramDataBase : FlowableDiagramDataBase, I
     {
         return this.GetType().Assembly.GetInstances<INodeDataGroup>();
     }
-
 }

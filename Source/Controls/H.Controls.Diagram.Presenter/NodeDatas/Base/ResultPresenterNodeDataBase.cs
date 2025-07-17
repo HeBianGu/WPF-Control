@@ -39,20 +39,20 @@ public abstract class ResultPresenterNodeDataBase : FlowableNodeData, IResultPre
         return null;
     }
 
-    protected virtual IFlowableResult OK(IResultPresenter resultPresenter = null, string message = "运行成功")
-    {
-        return this.ToResult(resultPresenter, FlowableResultState.OK, message);
-    }
+    //protected virtual IFlowableResult OK(IResultPresenter resultPresenter = null, string message = "运行成功")
+    //{
+    //    return this.ToResult(resultPresenter, FlowableResultState.OK, message);
+    //}
 
-    protected virtual IFlowableResult Error(IResultPresenter resultPresenter = null, string message = "运行错误")
-    {
-        return this.ToResult(resultPresenter, FlowableResultState.Error, message);
-    }
+    //protected virtual IFlowableResult Error(IResultPresenter resultPresenter = null, string message = "运行错误")
+    //{
+    //    return this.ToResult(resultPresenter, FlowableResultState.Error, message);
+    //}
 
-    protected virtual IFlowableResult ToResult(IResultPresenter resultPresenter, FlowableResultState state, string message = "运行成功")
-    {
-        this.ResultPresenter = resultPresenter;
-        this.Message = message;
-        return new FlowableResult(message) { State = state };
-    }
+    //protected virtual IFlowableResult ToResult(IResultPresenter resultPresenter, FlowableResultState state, string message = "运行成功")
+    //{
+    //    this.ResultPresenter = resultPresenter;
+    //    this.Message = message;
+    //    return new FlowableResult(message) { State = state };
+    //}
 }
