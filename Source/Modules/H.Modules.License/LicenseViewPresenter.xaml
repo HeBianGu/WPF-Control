@@ -104,7 +104,7 @@
                         <BulletDecorator.Bullet>
                             <TextBlock Text="产品名称：" />
                         </BulletDecorator.Bullet>
-                        <TextBox IsReadOnly="False"
+                        <TextBox IsReadOnly="True"
                                  Style="{DynamicResource {x:Static h:TextBoxKeys.Attach}}"
                                  Text="{Binding Module}">
                             <Cattach.Attach>
