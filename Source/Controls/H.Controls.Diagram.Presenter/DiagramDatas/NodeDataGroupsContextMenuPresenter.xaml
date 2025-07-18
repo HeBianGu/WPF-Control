@@ -1,54 +1,101 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
+                    xmlns:componentmodel="clr-namespace:System.ComponentModel;assembly=WindowsBase"
                     xmlns:h="https://github.com/HeBianGu"
-                    xmlns:lb="clr-namespace:H.Controls.Diagram.Presenter.Behaviors"
                     xmlns:ld="clr-namespace:H.Controls.Diagram.Presenter.DiagramDatas"
                     xmlns:ldb="clr-namespace:H.Controls.Diagram.Presenter.DiagramDatas.Base"
                     xmlns:local="clr-namespace:H.Controls.Diagram.Presenter">
     <DataTemplate DataType="{x:Type ld:NodeDataGroupsContextMenuPresenter}">
-        <ItemsControl ItemsSource="{Binding NodeDataGroups}">
-            <ItemsControl.ItemTemplate>
-                <DataTemplate>
-                    <Border Background="Transparent">
-                        <b:Interaction.Behaviors>
-                            <MouseOverContextMenuBehavior />
-                        </b:Interaction.Behaviors>
-                        <Border.ContextMenu>
-                            <ContextMenu Placement="Right">
-                                <ContextMenu.Template>
-                                    <ControlTemplate>
-                                        <GroupBox Background="{DynamicResource {x:Static BrushKeys.Background}}"
-                                                  BorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrush}}"
-                                                  Header="{Binding Name}">
-                                            <Cattach.CaptionRightTemplate>
-                                                <ControlTemplate>
-                                                    <FontIconTextBlock Margin="5,0"
-                                                                       Text="{Binding RelativeSource={RelativeSource AncestorType=GroupBox}, Path=DataContext.Icon}" />
-                                                </ControlTemplate>
-                                            </Cattach.CaptionRightTemplate>
-                                            <ItemsControl ItemsSource="{Binding NodeDatas}">
-                                                <ItemsControl.ItemsPanel>
-                                                    <ItemsPanelTemplate>
-                                                        <UniformGrid Columns="2" />
-                                                    </ItemsPanelTemplate>
-                                                </ItemsControl.ItemsPanel>
-                                            </ItemsControl>
-                                        </GroupBox>
-                                    </ControlTemplate>
-                                </ContextMenu.Template>
-                            </ContextMenu>
-                        </Border.ContextMenu>
-                        <FontIconToggleButton Margin="0,5"
-                                              CheckedGlyph="&#xE725;"
-                                              FontSize="25"
-                                              IsChecked="{Binding RelativeSource={RelativeSource AncestorType=Border}, Path=ContextMenu.IsOpen}"
-                                              IsHitTestVisible="False"
-                                              ToolTip="{Binding Name}"
-                                              UncheckedGlyph="{Binding Icon}" />
-                    </Border>
-                </DataTemplate>
-            </ItemsControl.ItemTemplate>
-        </ItemsControl>
+        <ScrollViewer HorizontalScrollBarVisibility="Disabled"
+                      VerticalScrollBarVisibility="Hidden">
+            <ItemsControl ItemsSource="{Binding NodeDataGroups}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Border Background="Transparent">
+                            <b:Interaction.Behaviors>
+                                <MouseOverContextMenuBehavior />
+                            </b:Interaction.Behaviors>
+                            <Border.ContextMenu>
+                                <ContextMenu Placement="Right">
+                                    <ContextMenu.Template>
+                                        <ControlTemplate>
+                                            <Border Background="{DynamicResource {x:Static BrushKeys.Background}}"
+                                                    BorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrush}}"
+                                                    BorderThickness="1">
+                                                <!--<Cattach.CaptionRightTemplate>
+                                                    <ControlTemplate>
+                                                        <FontIconTextBlock Margin="5,0"
+                                                                           Text="{Binding RelativeSource={RelativeSource AncestorType=GroupBox}, Path=DataContext.Icon}" />
+                                                    </ControlTemplate>
+                                                </Cattach.CaptionRightTemplate>-->
+                                                <Border.Resources>
+                                                    <CollectionViewSource x:Key="GroupedNodeDatas"
+                                                                          Source="{Binding NodeDatas}">
+                                                        <CollectionViewSource.GroupDescriptions>
+                                                            <PropertyGroupDescription PropertyName="GroupName" />
+                                                        </CollectionViewSource.GroupDescriptions>
+                                                    </CollectionViewSource>
+                                                </Border.Resources>
+                                                <ItemsControl ItemsSource="{Binding Source={StaticResource GroupedNodeDatas}}">
+                                                    <ItemsControl.ItemsPanel>
+                                                        <ItemsPanelTemplate>
+                                                            <UniformGrid Columns="2" />
+                                                        </ItemsPanelTemplate>
+                                                    </ItemsControl.ItemsPanel>
+                                                    <ItemsControl.GroupStyle>
+                                                        <GroupStyle>
+                                                            <GroupStyle.ContainerStyle>
+                                                                <Style TargetType="{x:Type GroupItem}">
+                                                                    <Setter Property="Template">
+                                                                        <Setter.Value>
+                                                                            <ControlTemplate TargetType="{x:Type GroupItem}">
+                                                                                <GroupBox Header="{Binding}">
+                                                                                    <GroupBox.HeaderTemplate>
+                                                                                        <DataTemplate>
+                                                                                            <DockPanel>
+                                                                                                <FontIconTextBlock Margin="5,0"
+                                                                                                                   Text="{Binding RelativeSource={RelativeSource AncestorType=ItemsControl}, Path=DataContext.Icon}" />
+                                                                                                <TextBlock>
+                                                                                                    <Run Text="{Binding Name, Mode=OneWay}" />
+                                                                                                </TextBlock>
+                                                                                            </DockPanel>
+                                                                                        </DataTemplate>
+                                                                                    </GroupBox.HeaderTemplate>
+                                                                                    <Cattach.CaptionRightTemplate>
+                                                                                        <ControlTemplate>
+                                                                                            <TextBlock Margin="5,0"
+                                                                                                       VerticalAlignment="Center">
+                                                                                                <Run Text="[" /> <Run Text="{Binding Items.Count, Mode=OneWay}" /><Run Text=" ]" />
+                                                                                            </TextBlock>
+                                                                                        </ControlTemplate>
+                                                                                    </Cattach.CaptionRightTemplate>
+                                                                                    <ItemsPresenter />
+                                                                                </GroupBox>
+                                                                            </ControlTemplate>
+                                                                        </Setter.Value>
+                                                                    </Setter>
+                                                                </Style>
+                                                            </GroupStyle.ContainerStyle>
+                                                        </GroupStyle>
+                                                    </ItemsControl.GroupStyle>
+                                                </ItemsControl>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </ContextMenu.Template>
+                                </ContextMenu>
+                            </Border.ContextMenu>
+                            <FontIconToggleButton Margin="0,5"
+                                                  CheckedGlyph="&#xE725;"
+                                                  FontSize="25"
+                                                  IsChecked="{Binding RelativeSource={RelativeSource AncestorType=Border}, Path=ContextMenu.IsOpen}"
+                                                  IsHitTestVisible="False"
+                                                  ToolTip="{Binding Name}"
+                                                  UncheckedGlyph="{Binding Icon}" />
+                        </Border>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
     </DataTemplate>
 </ResourceDictionary>

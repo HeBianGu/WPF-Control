@@ -59,6 +59,8 @@ public static class ObservableExtension
     /// <summary> 转成 ObservableCollection 集合 </summary>
     public static ObservableCollection<T> ToObservable<T>(this IEnumerable<T> collection)
     {
+        if (collection == null)
+            return new ObservableCollection<T>();
         return new ObservableCollection<T>(collection);
 
     }
