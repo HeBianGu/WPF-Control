@@ -28,7 +28,7 @@ public static class IocMessage
 
     public static async Task<bool?> ShowDialogMessage(string message, string title = "提示", DialogButton dialogButton = DialogButton.Sumit)
     {
-        if (Dialog == null || Application.Current.MainWindow.IsLoaded == false)
+        if (Dialog == null || Application.Current.MainWindow == null || Application.Current.MainWindow.IsLoaded == false)
         {
             if (Window == null)
             {
