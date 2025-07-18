@@ -24,7 +24,7 @@ namespace H.Modules.License
         }
         public override async void Execute(object parameter)
         {
-            var option = LicenseProxy.Instance.IsVail(out string error);
+            var option = IocLicense.Instance.IsVail(out string error);
             if (option == null)
             {
                 var r = await IocMessage.Dialog.Show(error);

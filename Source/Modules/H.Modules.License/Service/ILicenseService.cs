@@ -16,7 +16,7 @@ namespace H.Modules.License
         string GetHostID();
     }
 
-    public class LicenseProxy : Ioc<ILicenseService>
+    public class IocLicense : Ioc<ILicenseService>
     {
     }
 }

@@ -37,7 +37,6 @@ namespace H.Modules.License
         private bool _useVailLicenceOnLoad = true;
         [Browsable(false)]
         [System.Text.Json.Serialization.JsonIgnore]
-
         [System.Xml.Serialization.XmlIgnore]
         [Display(Name = "启动时是否启用许可验证")]
         public bool UseVailLicenceOnLoad
@@ -52,7 +51,6 @@ namespace H.Modules.License
 
         private bool _useTrial = true;
         [System.Text.Json.Serialization.JsonIgnore]
-
         [System.Xml.Serialization.XmlIgnore]
         [Browsable(false)]
         [Display(Name = "启用试用")]

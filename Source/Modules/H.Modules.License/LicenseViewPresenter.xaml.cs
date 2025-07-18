@@ -27,9 +27,9 @@ namespace H.Modules.License
     {
         public LicenseViewPresenter()
         {
-            this.HostID = LicenseProxy.Instance?.GetHostID();
+            this.HostID = IocLicense.Instance?.GetHostID();
             this.Module = Assembly.GetEntryAssembly().GetName().Name;
-            LicenseOption option = LicenseProxy.Instance?.IsVail(this.Module, out string error);
+            LicenseOption option = IocLicense.Instance?.IsVail(this.Module, out string error);
             if (option != null)
             {
                 this.Time = option.EndTime;

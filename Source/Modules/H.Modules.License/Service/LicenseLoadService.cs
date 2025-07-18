@@ -27,12 +27,12 @@ namespace H.Modules.License
         public bool Load(out string message)
         {
             message = null;
-            if (LicenseProxy.Instance == null)
+            if (IocLicense.Instance == null)
                 return true;
             if (this._options.Value.UseVailLicenceOnLoad == false)
                 return true;
 
-            var option = LicenseProxy.Instance.IsVail(out string error);
+            var option = IocLicense.Instance.IsVail(out string error);
             if (option == null)
             {
                 return Application.Current.Dispatcher.Invoke(() =>
