@@ -42,6 +42,14 @@
                                              Value="True">
                                     <Setter Property="Foreground" Value="{DynamicResource {x:Static h:BrushKeys.Foreground}}" />
                                 </DataTrigger>
+                                <MultiDataTrigger>
+                                    <MultiDataTrigger.Conditions>
+                                        <Condition Binding="{Binding IsTrail}" Value="True" />
+                                        <Condition Binding="{Binding Time}" Value="{x:Static sys:DateTime.MinValue}" />
+                                    </MultiDataTrigger.Conditions>
+                                    <Setter Property="Foreground" Value="{DynamicResource {x:Static h:BrushKeys.Red}}" />
+                                    <Setter Property="Text" Value="试用许可已过期" />
+                                </MultiDataTrigger>
                             </Style.Triggers>
                         </Style>
                     </TextBlock.Style>

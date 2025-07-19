@@ -66,11 +66,11 @@ namespace H.Modules.License
         }
 
 
-        private DateTime _trialEndTime = DateTime.Now.AddDays(30);
+        private DateTime _trialEndTime = DateTime.Now.AddDays(3);
         [ReadOnly(true)]
         [Display(Name = "试用截止日期")]
         [TypeConverter(typeof(DateTimeEncriyptoConverter))]
-        [JsonConverter(typeof(EncriyptoDateTimeJsonConverter))]
+        //[JsonConverter(typeof(EncriyptoDateTimeJsonConverter))]
         public DateTime TrialEndTime
         {
             get { return _trialEndTime; }
