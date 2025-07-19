@@ -15,73 +15,62 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.IO;
 using System.Reflection;
+using System.Text.Json;
 using System.Windows.Markup;
+using H.Extensions.Encryption.String;
+using System.Text.Json.Serialization;
 
 namespace H.Modules.License
 {
+    public class EncriyptoDateTimeJsonConverter : JsonConverter<DateTime>
+    {
+        public override DateTime Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+        {
+            var encryptedTicks = reader.GetString();
+            var decryptedTicks = encryptedTicks.DecryptAES();
+            return new DateTime(long.Parse(decryptedTicks));
+        }
+
+        public override void Write(Utf8JsonWriter writer, DateTime value, JsonSerializerOptions options)
+        {
+            var str = value.Ticks.ToString().EncryptAES(); 
+            writer.WriteStringValue(str);
+        }
+    }
+
     [Display(Name = "许可设置", GroupName = SettingGroupNames.GroupAuthority, Description = "应用此功能设置许可验证方式")]
     public class LicenseService : Settable<LicenseService>, ILicenseService
     {
-        //public LicenseService()
-        //{
-        //    this.IsVisibleInSetting = false;
-        //}
+        public LicenseService()
+        {
+            this.UseTrial = LicenseOptions.Instance.UseTrial;
+        }
 
         protected override string GetDefaultFolder()
         {
             return AppPaths.Instance.License;
         }
 
-        public override bool Save(out string message)
-        {
-            var r = this.SaveSystemPath(out message);
-            if (!r) return false;
-            r = this.SaveBaseDirectory(out message);
-            return r;
-        }
 
-        bool SaveSystemPath(out string message)
+        private bool _UseTrial;
+        [ReadOnly(true)]
+        [Display(Name = "启用试用")]
+        public bool UseTrial
         {
-            return base.Save(out message);
-        }
-
-        bool SaveBaseDirectory(out string message)
-        {
-            message = null;
-            string path = this.GetBaseDirectoryPath();
-            this.GetSerializerService()?.Save(path, this);
-            return true;
-        }
-
-        string GetBaseDirectoryPath()
-        {
-            return System.IO.Path.Combine(AppPaths.Instance.Config, "Microsoft.Extensions.Xmlable.dll");
-            //return System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Microsoft.Extensions.Xmlable.dll");
-        }
-
-        public override bool IsInit()
-        {
-            return !File.Exists(this.GetDefaultPath()) && !File.Exists(this.GetBaseDirectoryPath());
-        }
-
-        public override bool Load(out string message)
-        {
-            if (File.Exists(this.GetDefaultPath()))
+            get { return _UseTrial; }
+            set
             {
-                base.Load(this.GetDefaultPath());
+                _UseTrial = value;
+                RaisePropertyChanged();
             }
-            else if (File.Exists(this.GetBaseDirectoryPath()))
-            {
-                base.Load(this.GetBaseDirectoryPath());
-            }
-
-            return this.Save(out message);
         }
+
 
         private DateTime _trialEndTime = DateTime.Now.AddDays(30);
         [ReadOnly(true)]
         [Display(Name = "试用截止日期")]
-        [ValueSerializer(typeof(DateTimeEncriyptoValueSerializer))]
+        [TypeConverter(typeof(DateTimeEncriyptoConverter))]
+        [JsonConverter(typeof(EncriyptoDateTimeJsonConverter))]
         public DateTime TrialEndTime
         {
             get { return _trialEndTime; }
@@ -92,11 +81,18 @@ namespace H.Modules.License
             }
         }
 
+
         public LicenseOption TryActive(string module, string lic, out string error)
         {
             LicenseOption result = this.IsVail(module, lic, out error);
-            if (result == null) return null;
-            //  Do ：验证成功，导入许可文件
+            if (result == null)
+                return null;
+            this.OnActiveLic(module, lic);
+            return result;
+        }
+
+        protected virtual void OnActiveLic(string module, string lic)
+        {
             string file = this.GetLicFile(module);
             string folder = Path.GetDirectoryName(file);
             if (!Directory.Exists(folder))
@@ -104,7 +100,6 @@ namespace H.Modules.License
                 Directory.CreateDirectory(folder);
             }
             File.WriteAllText(file, lic);
-            return result;
         }
 
         /// <summary>
@@ -112,7 +107,7 @@ namespace H.Modules.License
         /// </summary>
         /// <param name="error"></param>
         /// <returns></returns>
-        public LicenseOption IsVail(out string error)
+        public virtual LicenseOption IsVail(out string error)
         {
             string module = Assembly.GetEntryAssembly().GetName().Name;
             return this.IsVail(module, out error);
@@ -129,7 +124,7 @@ namespace H.Modules.License
             if (!File.Exists(file))
             {
                 error = "许可文件不存在";
-                if (LicenseOptions.Instance.UseTrial)
+                if (this.UseTrial)
                 {
                     if (this.TrialEndTime.Date < DateTime.Now.Date)
                     {
@@ -141,6 +136,7 @@ namespace H.Modules.License
                     licenseOption.HostID = this.GetHostID();
                     licenseOption.Module = module;
                     licenseOption.Level = -1;
+                    this.OnTrial();
                     return licenseOption;
                 }
 
@@ -148,6 +144,11 @@ namespace H.Modules.License
             }
             string lic = File.ReadAllText(file);
             return this.IsVail(module, lic, out error);
+        }
+
+        protected virtual void OnTrial()
+        {
+
         }
 
         /// <summary>

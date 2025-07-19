@@ -6,6 +6,7 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
+using H.Extensions.Encryption.String;
 using H.Services.Common.Crypt;
 using System.ComponentModel;
 using System.Globalization;
@@ -24,7 +25,8 @@ public class DateTimeEncriyptoConverter : System.ComponentModel.TypeConverter
 
             if (value is DateTime time)
             {
-                return IocCrypt.Instance?.Encrypt(time.Ticks.ToString());
+                return time.Ticks.ToString().EncryptAES();
+                //return IocCrypt.Instance?.Encrypt(time.Ticks.ToString());
             }
         }
         return base.ConvertTo(context, culture, value, destinationType);
@@ -36,7 +38,8 @@ public class DateTimeEncriyptoConverter : System.ComponentModel.TypeConverter
             return DateTime.MinValue;
         if (value is string str)
         {
-            string v = IocCrypt.Instance?.Decrypt(str);
+            string v = str.DecryptAES();
+            //string v = IocCrypt.Instance?.Decrypt(str);
             if (long.TryParse(v, out long result) == false)
                 return DateTime.MinValue;
             return new DateTime(result);
@@ -52,7 +55,8 @@ public class DateTimeEncriyptoValueSerializer : ValueSerializer
     {
         if (value is DateTime time)
         {
-            return IocCrypt.Instance.Encrypt(time.Ticks.ToString());
+            return time.Ticks.ToString().EncryptAES();
+            //return IocCrypt.Instance.Encrypt(time.Ticks.ToString());
         }
 
         return null;
@@ -72,8 +76,8 @@ public class DateTimeEncriyptoValueSerializer : ValueSerializer
     {
         if (value == null)
             return DateTime.MinValue;
-
-        string v = IocCrypt.Instance.Decrypt(value);
+        string v = value.DecryptAES();
+        //string v = IocCrypt.Instance.Decrypt(value);
         if (long.TryParse(v, out long result) == false)
             return DateTime.MinValue;
         return new DateTime(result);

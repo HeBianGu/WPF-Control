@@ -13,6 +13,7 @@ global using H.Services.Setting;
 global using System.ComponentModel;
 global using System.ComponentModel.DataAnnotations;
 global using System.Reflection;
+using H.Common.Interfaces;
 
 namespace H.Modules.License
 {
@@ -27,9 +28,9 @@ namespace H.Modules.License
     {
         public LicenseViewPresenter()
         {
-            this.HostID = IocLicense.Instance?.GetHostID();
+            this.HostID = this.LicenseService?.GetHostID();
             this.Module = Assembly.GetEntryAssembly().GetName().Name;
-            LicenseOption option = IocLicense.Instance?.IsVail(this.Module, out string error);
+            LicenseOption option = this.LicenseService?.IsVail(this.Module, out string error);
             if (option != null)
             {
                 this.Time = option.EndTime;
@@ -69,7 +70,6 @@ namespace H.Modules.License
 
         private string _lic;
         [System.Text.Json.Serialization.JsonIgnore]
-
         [System.Xml.Serialization.XmlIgnore]
         [Browsable(false)]
         [Display(Name = "注册码")]
@@ -111,7 +111,6 @@ namespace H.Modules.License
 
         private string _message;
         [System.Text.Json.Serialization.JsonIgnore]
-
         [System.Xml.Serialization.XmlIgnore]
         [Browsable(false)]
         public string Message
@@ -146,9 +145,11 @@ namespace H.Modules.License
             }
         }
 
+        protected virtual ILicenseService LicenseService => Ioc.GetService<ILicenseService>();
+
         public RelayCommand RegisterCommand => new RelayCommand(e =>
         {
-            ILicenseService _license = Ioc.GetService<ILicenseService>();
+            ILicenseService _license = LicenseService;
             if (_license == null)
             {
                 this.Message = "未找到许可服务接口<ILicenseService>";
@@ -156,7 +157,6 @@ namespace H.Modules.License
             }
 
             LicenseOption option = _license.TryActive(this.Module, this.Lic, out string error);
-
             if (option == null)
             {
                 this.Message = error;
@@ -169,6 +169,9 @@ namespace H.Modules.License
             this.Level = option.Level;
             Ioc<IVipFlagViewPresenter>.Instance?.Refresh();
             Ioc<ILicenseFlagViewPresenter>.Instance?.Refresh();
+            if(_license is ISaveable saveable)
+                saveable.Save(out string message);
+
         }, x => string.IsNullOrEmpty(this.Error));
 
         [System.Text.Json.Serialization.JsonIgnore]
@@ -199,7 +202,7 @@ namespace H.Modules.License
                     return this.Error;
                 }
 
-                ILicenseService _license = Ioc.GetService<ILicenseService>();
+                ILicenseService _license = this.LicenseService;
                 if (_license == null)
                 {
                     this.Error = "未找到许可服务接口<ILicenseService>";
