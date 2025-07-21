@@ -68,7 +68,7 @@ namespace H.Modules.License
             }
         }
 
-        private bool _UseModule;
+        private bool _UseModule = true;
         public bool UseModule
         {
             get { return _UseModule; }
