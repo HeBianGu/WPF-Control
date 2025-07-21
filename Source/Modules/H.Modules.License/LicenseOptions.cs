@@ -79,7 +79,6 @@ namespace H.Modules.License
 
         private string _filePath = AppPaths.Instance.License;
         [System.Text.Json.Serialization.JsonIgnore]
-
         [System.Xml.Serialization.XmlIgnore]
         [ReadOnly(true)]
         [Display(Name = "许可路径")]

@@ -32,7 +32,6 @@ namespace H.Modules.License
             return AppPaths.Instance.License;
         }
 
-
         private bool _UseTrial;
         [ReadOnly(true)]
         [Display(Name = "启用试用")]
@@ -154,7 +153,7 @@ namespace H.Modules.License
             return licenseOption;
         }
 
-        private string GetLicFile(string module)
+        protected virtual string GetLicFile(string module)
         {
             return System.IO.Path.Combine(LicenseOptions.Instance.FilePath, module, "license.lic");
         }
