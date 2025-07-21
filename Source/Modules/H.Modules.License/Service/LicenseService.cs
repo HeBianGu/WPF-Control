@@ -5,8 +5,6 @@
 // QQ:908293466 Group:971261058 
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
-
-using H.Extensions.Encryption;
 using H.Extensions.Setting;
 using H.Services.AppPath;
 using H.Services.Serializable;
@@ -52,7 +50,7 @@ namespace H.Modules.License
         private DateTime _trialEndTime = DateTime.Now.AddDays(30);
         [ReadOnly(true)]
         [Display(Name = "试用截止日期")]
-        [TypeConverter(typeof(DateTimeEncriyptoConverter))]
+        //[TypeConverter(typeof(DateTimeEncriyptoConverter))]
         //[JsonConverter(typeof(EncriyptoDateTimeJsonConverter))]
         public DateTime TrialEndTime
         {
