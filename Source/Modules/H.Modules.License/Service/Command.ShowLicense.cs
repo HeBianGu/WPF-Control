@@ -18,24 +18,37 @@ namespace H.Modules.License
     [Display(Name = "许可证书", Description = "显示产品许可注册页面")]
     public class ShowLicenseCommand : DisplayMarkupCommandBase
     {
+        public string Module { get; set; }
         public override bool CanExecute(object parameter)
         {
             return Ioc<ILicenseService>.Instance != null;
         }
+
+
         public override async void Execute(object parameter)
         {
-            var option = IocLicense.Instance.IsVail(out string error);
+            var option = IocLicense.Instance.IsVail(this.Module, out string error);
             if (option == null)
             {
                 var r = await IocMessage.Dialog.Show(error);
                 if (r != true)
                     return;
             }
-            await IocMessage.Dialog.Show(new LicenseViewPresenter(), x =>
+
+            var p = this.CreateLicenseViewPresenter();
+            await IocMessage.Dialog.Show(p, x =>
             {
-                x.Title = "许可";
+                x.Title = this.Name;
                 x.DialogButton = DialogButton.None;
             });
+        }
+
+        protected virtual ILicenseViewPresenter CreateLicenseViewPresenter()
+        {
+            var r = new LicenseViewPresenter();
+            if (!string.IsNullOrEmpty(this.Module))
+                r.Module = this.Module;
+            return r;
         }
     }
 }

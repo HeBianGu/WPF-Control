@@ -77,7 +77,7 @@
                   Visibility="{Binding IsTrail, Converter={x:Static h:Converter.GetTrueToVisible}}">
                 <TextBlock HorizontalAlignment="Left"
                            Foreground="{DynamicResource {x:Static h:BrushKeys.Red}}">
-                    <Run Text="试用许可，可试用30天,如需注册请联系客服获取注册码" />
+                    <Run Text="试用许可，如需注册请联系客服获取注册码" />
                 </TextBlock>
                 <Grid.Resources>
                     <Style TargetType="TextBlock">

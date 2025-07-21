@@ -23,7 +23,7 @@ namespace H.Modules.License
     }
 
     [Icon("\xE72E")]
-    [Display(Name = "许可证书", GroupName = SettingGroupNames.GroupAuthority, Description = "应用此功能进行产品许可注册")]
+    [Display(Name = "许可", GroupName = SettingGroupNames.GroupAuthority, Description = "应用此功能进行产品许可注册")]
     public class LicenseViewPresenter : DisplayBindableBase, ILicenseViewPresenter, IDataErrorInfo
     {
         public LicenseViewPresenter()
@@ -67,6 +67,18 @@ namespace H.Modules.License
                 RaisePropertyChanged();
             }
         }
+
+        private bool _UseModule;
+        public bool UseModule
+        {
+            get { return _UseModule; }
+            set
+            {
+                _UseModule = value;
+                RaisePropertyChanged();
+            }
+        }
+
 
         private string _lic;
         [System.Text.Json.Serialization.JsonIgnore]
@@ -169,7 +181,7 @@ namespace H.Modules.License
             this.Level = option.Level;
             Ioc<IVipFlagViewPresenter>.Instance?.Refresh();
             Ioc<ILicenseFlagViewPresenter>.Instance?.Refresh();
-            if(_license is ISaveable saveable)
+            if (_license is ISaveable saveable)
                 saveable.Save(out string message);
 
         }, x => string.IsNullOrEmpty(this.Error));
