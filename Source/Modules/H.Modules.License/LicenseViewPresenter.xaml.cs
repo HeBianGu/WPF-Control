@@ -80,18 +80,6 @@ namespace H.Modules.License
             }
         }
 
-        private bool _UseModule = true;
-        public bool UseModule
-        {
-            get { return _UseModule; }
-            set
-            {
-                _UseModule = value;
-                RaisePropertyChanged();
-            }
-        }
-
-
         private string _lic;
         [System.Text.Json.Serialization.JsonIgnore]
         [System.Xml.Serialization.XmlIgnore]

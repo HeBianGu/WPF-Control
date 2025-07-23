@@ -230,7 +230,7 @@ public partial class Node : FlowablePart, INode
     {
         foreach (Link link in this.LinksInto)
         {
-            double spanHeight = ((link.FromNode.ActualHeight + this.ActualHeight) / 2) + 50;
+            double spanHeight = ((link.FromNode.ActualHeight + this.ActualHeight) / 2) + 30;
             double spanWidth = ((link.FromNode.ActualWidth + this.ActualWidth) / 2) + 50;
             double x = link.FromNode.Location.X;
             double y = link.FromNode.Location.Y;

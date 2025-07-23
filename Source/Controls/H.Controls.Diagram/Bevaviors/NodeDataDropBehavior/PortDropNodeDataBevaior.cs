@@ -90,9 +90,24 @@ public class PortDropNodeDataBevaior : DropNodeDataBehaviorBase<Port>
         var diagram = this.AssociatedObject.GetDiagram();
         if (diagram == null)
             return;
+        var toNodes = fromPort.GetLinksOutOf().Select(x => x.ToNode).ToList();
         diagram.AddNode(node);
         diagram.LinkNode(fromPort, node);
         node.AligmentLayout();
+        if (toNodes.Count > 0)
+        {
+            if (fromPort.Dock == Dock.Right)
+            {
+                var y = toNodes.Select(x => x.Location.Y).Max();
+                node.Location = new Point(node.Location.X, y + node.DesiredSize.Height + 30);
+            }
+            if (fromPort.Dock == Dock.Bottom)
+            {
+                var x = toNodes.Select(x => x.Location.X).Max();
+                node.Location = new Point(x + node.DesiredSize.Width + 50, node.Location.Y);
+            }
+        }
+        diagram.RefreshLayout();
         this._cacheNode = node;
     }
 

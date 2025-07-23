@@ -73,6 +73,14 @@ public partial class Port : FlowablePart
         return this.ParentNode.LinksOutOf.Where(l => l.FromPort == this);
     }
 
+    public IEnumerable<Node> GetToNodes()
+    {
+        foreach (var item in this.GetLinksOutOf())
+        {
+           yield return item.ToNode;
+        }
+    }
+
     public IEnumerable<Link> GetConnectLinks()
     {
         return this.ParentNode.ConnectLinks.Where(l => l.ToPort == this || l.FromPort == this);
