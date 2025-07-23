@@ -15,27 +15,16 @@ using System.ComponentModel.DataAnnotations;
 namespace H.Modules.License
 {
     [Icon("\xE713")]
-    [Display(Name = "会员", Description = "显示会员页面")]
-    public class ShowVipCommand : DisplayMarkupCommandBase
+    [Display(Name = "许可和会员", Description = "显示会员页面")]
+    public class ShowVipCommand : ShowLicenseCommand
     {
-        public override bool CanExecute(object parameter)
+        protected override LicenseViewPresenter CreateLicenseViewPresenter()
         {
-            return Ioc<ILicenseService>.Instance != null;
-        }
-        public override async void Execute(object parameter)
-        {
-            var option = IocLicense.Instance.IsVail(out string error);
-            if (option == null)
-            {
-                var r = await IocMessage.Dialog.Show(error);
-                if (r != true)
-                    return;
-            }
-            await IocMessage.Dialog.Show(new LicenseViewPresenter() { UseVip = true }, x =>
-            {
-                x.Title = "许可和会员";
-                x.DialogButton = DialogButton.None;
-            });
+            var r = new LicenseViewPresenter();
+            if (!string.IsNullOrEmpty(this.Module))
+                r.Module = this.Module;
+            r.UseVip = true;
+            return r;
         }
     }
 }

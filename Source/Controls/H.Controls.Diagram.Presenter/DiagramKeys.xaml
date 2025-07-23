@@ -71,7 +71,7 @@
             </DataTrigger>
             <DataTrigger Binding="{Binding Stroke}"
                          Value="{x:Null}">
-                <Setter Property="BorderBrush" Value="{DynamicResource {x:Static h:BrushKeys.Foreground}}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource {x:Static h:BrushKeys.BorderBrush}}" />
             </DataTrigger>
             <DataTrigger Binding="{Binding Fill}"
                          Value="{x:Null}">
@@ -260,7 +260,7 @@
         <Style.Triggers>
             <DataTrigger Binding="{Binding Stroke}"
                          Value="{x:Null}">
-                <Setter Property="Stroke" Value="{DynamicResource {x:Static h:BrushKeys.Foreground}}" />
+                <Setter Property="Stroke" Value="{DynamicResource {x:Static h:BrushKeys.BorderBrush}}" />
             </DataTrigger>
             <DataTrigger Binding="{Binding Fill}"
                          Value="{x:Null}">
@@ -270,7 +270,7 @@
                          Value="True">
                 <!--<Setter Property="Opacity" Value="0.5" />-->
                 <Setter Property="Fill" Value="{DynamicResource {x:Static h:BrushKeys.ForegroundAssist}}" />
-                <Setter Property="Effect" Value="{DynamicResource {x:Static h:DiagramEffectKey.MouseOver}}" />
+                <!--<Setter Property="Effect" Value="{DynamicResource {x:Static h:DiagramEffectKey.MouseOver}}" />-->
             </DataTrigger>
             <!--<DataTrigger Binding="{Binding Text}"
                          Value="{x:Null}">

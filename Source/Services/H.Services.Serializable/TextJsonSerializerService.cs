@@ -43,12 +43,12 @@ public class TextJsonOptions
 }
 public class TextJsonSerializerService : IJsonSerializerService
 {
-    public object DeserializeObject(string txt, Type type)
+    public virtual object DeserializeObject(string txt, Type type)
     {
         return string.IsNullOrEmpty(txt) ? null : JsonSerializer.Deserialize(txt, type, this.GetOptions());
     }
 
-    public string SerializeObject<T>(T t)
+    public virtual string SerializeObject<T>(T t)
     {
         return JsonSerializer.Serialize(t, this.GetOptions());
     }

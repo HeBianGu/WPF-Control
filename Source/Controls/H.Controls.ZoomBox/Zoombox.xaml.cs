@@ -310,6 +310,7 @@ namespace H.Controls.ZoomBox
                 {
                     // create a viewbox and make it the logical child of the Zoombox
                     Viewbox viewbox = new Viewbox();
+                    RenderOptions.SetBitmapScalingMode(viewbox, RenderOptions.GetBitmapScalingMode(this));
                     this.AddLogicalChild(viewbox);
 
                     // now set the new parent to be the viewbox
