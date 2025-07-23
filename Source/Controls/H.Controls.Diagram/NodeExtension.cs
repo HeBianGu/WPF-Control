@@ -104,4 +104,22 @@ public static class NodeExtension
         }
         return link;
     }
+
+    public static bool IsStructEquatable(this Node from, Node to)
+    {
+        var fports = from.GetPorts().ToList();
+        var tports = to.GetPorts().ToList();
+        if (fports.Count != tports.Count)
+            return false;
+        for (int i = 0; i < fports.Count; i++)
+        {
+            var fport = fports[i];
+            var tport = tports[i];
+            if (fport.Dock != tport.Dock)
+                return false;
+            if (fport.PortType != tport.PortType)
+                return false;
+        }
+        return true;
+    }
 }

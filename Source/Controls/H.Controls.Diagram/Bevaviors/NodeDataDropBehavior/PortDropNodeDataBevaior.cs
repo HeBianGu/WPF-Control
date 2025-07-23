@@ -41,12 +41,14 @@ public class PortDropNodeDataBevaior : DropNodeDataBehaviorBase<Port>
     private void AssociatedObject_DragLeave(object sender, DragEventArgs e)
     {
         this.Cancel();
+        e.Handled = true;
     }
 
     private void AssociatedObject_DragEnter(object sender, DragEventArgs e)
     {
         this.Sumit(e);
         this.SetPreviewOpacity(0.2);
+        e.Handled = true;
     }
 
     private void SetPreviewOpacity(double opacity = 0.2)
@@ -77,6 +79,7 @@ public class PortDropNodeDataBevaior : DropNodeDataBehaviorBase<Port>
             e.Effects = DragDropEffects.None;
             this.AssociatedObject.AllowDrop = false;
         }
+        e.Handled = true;
     }
 
     private Node _cacheNode;

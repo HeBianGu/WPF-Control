@@ -116,4 +116,28 @@ public static class DiagramExtension
             diagram.AligmentNodes();
         }
     }
+
+
+    public static bool ReplaceNode(this Diagram diagram, Node from, Node to)
+    {
+        if (!from.IsStructEquatable(to))
+            return false;
+
+        var fports = from.GetPorts().ToList();
+        var tports = to.GetPorts().ToList();
+        for (int i = 0; i < fports.Count; i++)
+        {
+            var fport = fports[i];
+            var tport = tports[i];
+            foreach (var link in fport.GetLinkInto())
+            {
+                diagram.LinkPort(link.FromPort, tport);
+            }
+            foreach (var link in fport.GetLinksOutOf())
+            {
+                diagram.LinkPort(tport, link.ToPort);
+            }
+        }
+        return true;
+    }
 }

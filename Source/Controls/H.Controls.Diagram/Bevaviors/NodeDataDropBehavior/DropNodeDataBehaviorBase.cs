@@ -8,6 +8,7 @@
 
 using H.Controls.Adorner.Draggable;
 using Microsoft.Xaml.Behaviors;
+using System.Windows;
 
 namespace H.Controls.Diagram.Bevaviors.NodeDataDropBehavior;
 
@@ -36,16 +37,30 @@ public abstract class DropNodeDataBehaviorBase<T> : Behavior<T> where T : UIElem
 
     protected void Sumit(DragEventArgs e)
     {
-        IDraggableAdorner adorner = e.Data.GetData("DragGroup") as IDraggableAdorner;
+        var nodeData = this.GetDragNodeData(e);
+        IDraggableAdorner adorner = this.GetDraggableAdorner(e);
         if (adorner == null)
             return;
         Point offset = adorner.Offset;
         Point location = e.GetPosition(this.AssociatedObject);
+        this.OnDropNodeData(nodeData, offset, location);
+    }
+
+    private IDraggableAdorner GetDraggableAdorner(DragEventArgs e)
+    {
+        return e.Data.GetData("DragGroup") as IDraggableAdorner; ;
+    }
+
+    public INodeData GetDragNodeData(DragEventArgs e)
+    {
+        IDraggableAdorner adorner = this.GetDraggableAdorner(e);
+        if (adorner == null)
+            return null;
         ICloneable obj = adorner.GetData() as ICloneable;
         if (obj == null)
             throw new ArgumentException("没有实现ICloneable接口");
         INodeData nodeData = obj.Clone() as INodeData;
-        this.OnDropNodeData(nodeData, offset, location);
+        return nodeData;
     }
 
     protected abstract void OnDropNodeData(INodeData nodeData, Point offset, Point location);
