@@ -38,13 +38,13 @@
                                     <Setter Property="Foreground" Value="{DynamicResource {x:Static h:BrushKeys.Green}}" />
                                     <Setter Property="Text" Value="永久" />
                                 </DataTrigger>
-                                <DataTrigger Binding="{Binding IsTrail}"
+                                <DataTrigger Binding="{Binding UseTrail}"
                                              Value="True">
                                     <Setter Property="Foreground" Value="{DynamicResource {x:Static h:BrushKeys.Foreground}}" />
                                 </DataTrigger>
                                 <MultiDataTrigger>
                                     <MultiDataTrigger.Conditions>
-                                        <Condition Binding="{Binding IsTrail}" Value="True" />
+                                        <Condition Binding="{Binding UseTrail}" Value="True" />
                                         <Condition Binding="{Binding Time}" Value="{x:Static sys:DateTime.MinValue}" />
                                     </MultiDataTrigger.Conditions>
                                     <Setter Property="Foreground" Value="{DynamicResource {x:Static h:BrushKeys.Red}}" />
@@ -73,8 +73,7 @@
             </StackPanel>
 
             <Grid Margin="0,0,0,5"
-                  DockPanel.Dock="Bottom"
-                  Visibility="{Binding IsTrail, Converter={x:Static h:Converter.GetTrueToVisible}}">
+                  DockPanel.Dock="Bottom">
                 <TextBlock HorizontalAlignment="Left"
                            Foreground="{DynamicResource {x:Static h:BrushKeys.Red}}">
                     <Run Text="试用许可，可试用30天,如需注册请联系客服获取注册码" />
@@ -85,6 +84,23 @@
                         <Setter Property="RenderTransformOrigin" Value="0.5 0.5" />
                     </Style>
                 </Grid.Resources>
+                <Grid.Style>
+                    <Style TargetType="Grid">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding UseTrail}"
+                                         Value="False">
+                                <Setter Property="Visibility" Value="Collapsed" />
+                            </DataTrigger>
+                            <MultiDataTrigger>
+                                <MultiDataTrigger.Conditions>
+                                    <Condition Binding="{Binding UseTrail}" Value="True" />
+                                    <Condition Binding="{Binding Time}" Value="{x:Static sys:DateTime.MinValue}" />
+                                </MultiDataTrigger.Conditions>
+                                <Setter Property="Visibility" Value="Collapsed" />
+                            </MultiDataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Grid.Style>
             </Grid>
 
             <StackPanel DockPanel.Dock="Top">
@@ -107,7 +123,8 @@
                     </BulletDecorator>
                 </Grid>
 
-                <Grid Margin="0,0,0,5">
+                <Grid Margin="0,0,0,5"
+                      Visibility="{Binding UseModule, Converter={x:Static Converter.GetTrueToVisible}}">
                     <BulletDecorator>
                         <BulletDecorator.Bullet>
                             <TextBlock Text="产品名称：" />

@@ -10,6 +10,7 @@ namespace H.Modules.License
 {
     public interface ILicenseService
     {
+        bool UseTrial { get; set; }
         LicenseOption IsVail(out string error);
         LicenseOption IsVail(string module, out string error);
         LicenseOption TryActive(string module, string lic, out string error);

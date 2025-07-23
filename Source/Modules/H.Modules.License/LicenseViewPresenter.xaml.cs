@@ -30,30 +30,42 @@ namespace H.Modules.License
         {
             this.HostID = this.LicenseService?.GetHostID();
             this.Module = Assembly.GetEntryAssembly().GetName().Name;
+            this.UseTrail = this.LicenseService?.UseTrial ?? false;
             LicenseOption option = this.LicenseService?.IsVail(this.Module, out string error);
             if (option != null)
             {
                 this.Time = option.EndTime;
-                this.IsTrail = option.Level == -1;
+                this.UseTrail = option.Level == -1;
                 this.Lic = option.License;
                 this.Level = option.Level;
             }
         }
 
-        private bool _isTrail;
+        private bool _UseTrail;
         [System.Text.Json.Serialization.JsonIgnore]
-
         [System.Xml.Serialization.XmlIgnore]
         [Browsable(false)]
-        public bool IsTrail
+        public bool UseTrail
         {
-            get { return _isTrail; }
+            get { return _UseTrail; }
             set
             {
-                _isTrail = value;
+                _UseTrail = value;
                 RaisePropertyChanged();
             }
         }
+
+        private bool _UseModule = true;
+        public bool UseModule
+        {
+            get { return _UseModule; }
+            set
+            {
+                _UseModule = value;
+                RaisePropertyChanged();
+            }
+        }
+
 
         private string _module;
         [Browsable(false)]
@@ -169,7 +181,7 @@ namespace H.Modules.License
             this.Level = option.Level;
             Ioc<IVipFlagViewPresenter>.Instance?.Refresh();
             Ioc<ILicenseFlagViewPresenter>.Instance?.Refresh();
-            if(_license is ISaveable saveable)
+            if (_license is ISaveable saveable)
                 saveable.Save(out string message);
 
         }, x => string.IsNullOrEmpty(this.Error));
