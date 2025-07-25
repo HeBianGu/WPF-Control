@@ -69,9 +69,10 @@
                 <Setter Property="Opacity" Value="0.5" />
             </DataTrigger>
 
-            <Trigger Property="h:Part.IsDragEnter" Value="True">
-                <!--<Setter TargetName="path" Property="Effect" Value="{DynamicResource {x:Static h:EffectShadowKeys.Default3}}" />-->
-            </Trigger>
+            <!--<Trigger Property="h:Part.IsDragEnter" Value="True">
+                --><!--<Setter TargetName="path" Property="Effect" Value="{DynamicResource {x:Static h:EffectShadowKeys.Default3}}" />--><!--
+            </Trigger>-->
+            
             <DataTrigger Binding="{Binding State}"
                          Value="Running">
                 <!--<Setter TargetName="path" Property="Stroke" Value="{DynamicResource {x:Static h:BrushKeys.Accent}}" />-->

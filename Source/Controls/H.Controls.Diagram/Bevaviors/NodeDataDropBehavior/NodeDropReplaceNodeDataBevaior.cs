@@ -37,6 +37,7 @@ public class NodeDropReplaceNodeDataBevaior : DropNodeDataBehaviorBase<Node>
     private void AssociatedObject_Drop(object sender, DragEventArgs e)
     {
         this.OnDrop(e);
+        NodeDropReplaceNodeDataBevaior.SetCanReplaceNode(this.AssociatedObject, false);
     }
 
     public static bool GetCanReplaceNode(DependencyObject obj)

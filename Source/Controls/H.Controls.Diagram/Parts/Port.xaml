@@ -30,7 +30,6 @@
                 <Setter TargetName="boder" Property="Background" Value="{DynamicResource {x:Static h:BrushKeys.Dark8}}" />
                 <!--<Setter TargetName="boder" Property="Effect" Value="{DynamicResource {x:Static h:EffectShadowKeys.Default3}}" />-->
             </Trigger>
-
             <!--<Trigger Property="local:Part.IsCanDrop" Value="False">
                 <Setter Property="Visibility" Value="Visible" TargetName="tb_unenble"/>
             </Trigger>-->

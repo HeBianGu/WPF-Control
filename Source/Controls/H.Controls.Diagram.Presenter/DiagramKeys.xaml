@@ -128,6 +128,9 @@
                 <Setter Property="Background" Value="{DynamicResource {x:Static h:BrushKeys.Selected}}" />
                 <Setter Property="BorderBrush" Value="{DynamicResource {x:Static h:BrushKeys.Accent}}" />
             </DataTrigger>
+            <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=Node},Path=(NodeDropReplaceNodeDataBevaior.CanReplaceNode)}" Value="True">
+                <Setter Property="BorderBrush" Value="{DynamicResource {x:Static h:BrushKeys.Green}}" />
+            </DataTrigger>
         </Style.Triggers>
     </Style>
 
@@ -241,6 +244,11 @@
                          Value="True">
                 <Setter Property="Fill" Value="{DynamicResource {x:Static h:BrushKeys.Selected}}" />
             </DataTrigger>
+
+            <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=Node},Path=(NodeDropReplaceNodeDataBevaior.CanReplaceNode)}" Value="True">
+                <Setter Property="Stroke" Value="{DynamicResource {x:Static h:BrushKeys.Green}}" />
+                <Setter Property="StrokeDashArray" Value="2,2"/>
+            </DataTrigger>
         </Style.Triggers>
     </Style>
 
@@ -313,6 +321,11 @@
             <Trigger Property="h:Part.IsCanDrop" Value="True">
                 <Setter Property="Fill" Value="{DynamicResource {x:Static h:BrushKeys.Green}}" />
             </Trigger>
+
+            <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=Port},Path=(PortDropNodeDataBevaior.IsDragOver)}" Value="True">
+                <Setter Property="Fill" Value="{DynamicResource {x:Static h:BrushKeys.Green}}" />
+                <!--<Setter TargetName="path" Property="Effect" Value="{DynamicResource {x:Static h:EffectShadowKeys.Default3}}" />-->
+            </DataTrigger>
 
             <DataTrigger Binding="{Binding HasError}"
                          Value="True">

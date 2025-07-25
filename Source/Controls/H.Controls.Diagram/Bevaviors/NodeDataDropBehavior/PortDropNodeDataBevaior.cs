@@ -35,13 +35,14 @@ public class PortDropNodeDataBevaior : DropNodeDataBehaviorBase<Port>
         e.Handled = true;
         this.SetPreviewOpacity(1.0);
         this._cacheNode = null;
-
+        PortDropNodeDataBevaior.SetIsDragOver(this.AssociatedObject, false);
     }
 
     private void AssociatedObject_DragLeave(object sender, DragEventArgs e)
     {
         this.Cancel();
         e.Handled = true;
+        PortDropNodeDataBevaior.SetIsDragOver(this.AssociatedObject, false);
     }
 
     private void AssociatedObject_DragEnter(object sender, DragEventArgs e)
@@ -49,6 +50,7 @@ public class PortDropNodeDataBevaior : DropNodeDataBehaviorBase<Port>
         this.Sumit(e);
         this.SetPreviewOpacity(0.2);
         e.Handled = true;
+        PortDropNodeDataBevaior.SetIsDragOver(this.AssociatedObject, true);
     }
 
     private void SetPreviewOpacity(double opacity = 0.2)
@@ -112,6 +114,30 @@ public class PortDropNodeDataBevaior : DropNodeDataBehaviorBase<Port>
         }
         diagram.RefreshLayout();
         this._cacheNode = node;
+    }
+
+
+
+    public static bool GetIsDragOver(DependencyObject obj)
+    {
+        return (bool)obj.GetValue(IsDragOverProperty);
+    }
+
+    public static void SetIsDragOver(DependencyObject obj, bool value)
+    {
+        obj.SetValue(IsDragOverProperty, value);
+    }
+
+    public static readonly DependencyProperty IsDragOverProperty =
+        DependencyProperty.RegisterAttached("IsDragOver", typeof(bool), typeof(PortDropNodeDataBevaior), new PropertyMetadata(default(bool), OnIsDragOverChanged));
+
+    static public void OnIsDragOverChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+    {
+        DependencyObject control = d as DependencyObject;
+
+        bool n = (bool)e.NewValue;
+
+        bool o = (bool)e.OldValue;
     }
 
 
