@@ -17,12 +17,24 @@
                     <SolidColorBrush Opacity="0.2"
                                      Color="Black" />
                 </Border.Background>
-                <TextBlock Foreground="White">
-                    <Run Text="颜色：" />
-                    <Run Text="{Binding Color}" />
-                    <Run Text="    位置：" />
-                    <Run Text="{Binding ElementName=p, Path=Position}" />
-                </TextBlock>
+                <DockPanel>
+                    <Border Width="20"
+                            Height="10"
+                            Margin="2"
+                            BorderBrush="White"
+                            BorderThickness="1"
+                            CornerRadius="2">
+                        <Border.Background>
+                            <SolidColorBrush Color="{Binding Color}" />
+                        </Border.Background>
+                    </Border>
+                    <TextBlock Foreground="White">
+                        <Run Text="颜色：" />
+                        <Run Text="{Binding Color}" />
+                        <Run Text="    位置：" />
+                        <Run Text="{Binding ElementName=p, Path=Position}" />
+                    </TextBlock>
+                </DockPanel>
             </Border>
         </Grid>
     </DataTemplate>
