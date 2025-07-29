@@ -227,7 +227,7 @@ namespace H.Controls.ShapeBox
         void DrawShapes()
         {
             using var drawingContext = this._shapeDrawingVisual.RenderOpen();
-            if (this.Shapes == null)
+            if (this.Shapes == null||this.Shapes.Count==0)
                 return;
             double strokeThickness = this.StrokeThickness < 0 ? this.ToThickness(this.ImageSource) : this.StrokeThickness;
             foreach (var shape in this.Shapes)
@@ -238,6 +238,8 @@ namespace H.Controls.ShapeBox
 
         public double ToThickness(ImageSource image)
         {
+            if (image == null)
+                return 1.0;
             double s = Math.Sqrt(image.Height * image.Height + image.Width * image.Width);
             return s / 200;
         }
