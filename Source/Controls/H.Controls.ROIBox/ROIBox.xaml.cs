@@ -311,13 +311,38 @@ namespace H.Controls.ROIBox
                 control.UpdateRect();
             }));
 
-        private void UpdateRect()
+        public bool UseROI
+        {
+            get { return (bool)GetValue(UseROIProperty); }
+            set { SetValue(UseROIProperty, value); }
+        }
+
+        public static readonly DependencyProperty UseROIProperty =
+            DependencyProperty.Register("UseROI", typeof(bool), typeof(ROIBox), new FrameworkPropertyMetadata(true, (d, e) =>
+            {
+                ROIBox control = d as ROIBox;
+
+                if (control == null) return;
+
+                if (e.OldValue is bool o)
+                {
+
+                }
+
+                if (e.NewValue is bool n)
+                {
+
+                }
+                control.UpdateRect();
+            }));
+
+        protected virtual void UpdateRect()
         {
             this._rectDrawingVisual.Stroke = this.Stroke;
             this._rectDrawingVisual.StrokeThickness = this.GetStrokeThickness();
             this._rectDrawingVisual.HandleLength = this.UseState ? this.GetHandleLength() : 0;
             this._rectDrawingVisual.Fill = this.Fill;
-            this._rectDrawingVisual.Rect = this.Rect;
+            this._rectDrawingVisual.Rect = this.UseROI ? this.Rect : Rect.Empty;
             this._rectDrawingVisual.Draw();
         }
 
