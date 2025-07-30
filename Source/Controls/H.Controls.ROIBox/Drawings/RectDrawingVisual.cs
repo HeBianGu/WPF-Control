@@ -145,6 +145,8 @@ namespace H.Controls.ROIBox.Drawings
         public void Draw()
         {
             using var dc = this.RenderOpen();
+            if (this.Rect.IsEmpty)
+                return;
             var combine = new CombinedGeometry(GeometryCombineMode.Exclude, new RectangleGeometry(this._box.BoundingBox), new RectangleGeometry(this.Rect));
             dc.PushClip(combine);
             dc.DrawRectangle(this.Fill, null, this._box.BoundingBox);
@@ -152,8 +154,6 @@ namespace H.Controls.ROIBox.Drawings
             dc.DrawRectangle(Brushes.Transparent, new Pen(this.Stroke, this.StrokeThickness), this.Rect);
 
             var center = new Point(this.Rect.Left + this.Rect.Width / 2, this.Rect.Top + this.Rect.Height / 2);
-
-          
 
             if (this._box.UseCross)
             {
@@ -181,7 +181,7 @@ namespace H.Controls.ROIBox.Drawings
             dc.DrawHandle(new Point(center.X, this.Rect.Bottom), this.Stroke, hthickness, this.HandleLength);
 
             FormattedText formattedText = new FormattedText(
-                $"{(int)this.Rect.Left},{(int)this.Rect.Top},{(int)this.Rect.Width},{(int)this.Rect.Height}",
+                $"ROI x:{(int)this.Rect.Left} y:{(int)this.Rect.Top} w:{(int)this.Rect.Width} h:{(int)this.Rect.Height}",
                 System.Globalization.CultureInfo.CurrentCulture,
                 FlowDirection.LeftToRight,
                 new Typeface("Microsoft YaHei"),

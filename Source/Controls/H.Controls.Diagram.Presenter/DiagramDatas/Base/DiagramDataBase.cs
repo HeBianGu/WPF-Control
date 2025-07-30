@@ -257,6 +257,18 @@ public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
         this.InvalidateDatas();
     }
 
+
+    public RelayCommand AddNodedCommand => new RelayCommand(x =>
+    {
+        if (x is RoutedEventArgs<IEnumerable<Node>> args)
+        {
+            foreach (var item in args.Entity.Select(x=>x.GetContent()).OfType<IDiagramableNodeData>())
+            {
+                item.DiagramData = this;
+            }
+        }
+    });
+
     public RelayCommand SelectedPartChangedCommand => new RelayCommand(e =>
     {
         if (e is RoutedEventArgs args && args.Source is Diagram diagram)

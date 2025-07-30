@@ -71,6 +71,10 @@
                     <b:InvokeCommandAction Command="{Binding ItemsChangedCommand}"
                                            PassEventArgsToCommand="True" />
                 </b:EventTrigger>
+                <b:EventTrigger EventName="AddNoded">
+                    <b:InvokeCommandAction Command="{Binding AddNodedCommand}"
+                                 PassEventArgsToCommand="True" />
+                </b:EventTrigger>
                 <b:EventTrigger EventName="SelectedPartChanged">
                     <b:InvokeCommandAction Command="{Binding SelectedPartChangedCommand}"
                                            PassEventArgsToCommand="True" />

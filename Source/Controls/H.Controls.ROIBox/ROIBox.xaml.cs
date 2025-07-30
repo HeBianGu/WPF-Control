@@ -191,30 +191,25 @@ namespace H.Controls.ROIBox
                 control.UpdateRect();
             }));
 
-        public double HandleLength
+        public double GetHandleLength()
         {
-            get { return (double)GetValue(HandleLengthProperty); }
-            set { SetValue(HandleLengthProperty, value); }
+            return this.GetStrokeThickness() * 5.0;
         }
 
-        public static readonly DependencyProperty HandleLengthProperty =
-            DependencyProperty.Register("HandleLength", typeof(double), typeof(ROIBox), new FrameworkPropertyMetadata(6.0, (d, e) =>
-            {
-                ROIBox control = d as ROIBox;
+        public double GetStrokeThickness()
+        {
+            if (this.StrokeThickness < 0)
+                return ToThickness(this.ImageSource);
+            return this.StrokeThickness;
+        }
 
-                if (control == null) return;
-
-                if (e.OldValue is double o)
-                {
-
-                }
-
-                if (e.NewValue is double n)
-                {
-
-                }
-                control.UpdateRect();
-            }));
+        public double ToThickness(ImageSource image)
+        {
+            if (image == null)
+                return 1.0;
+            double s = Math.Sqrt(image.Height * image.Height + image.Width * image.Width);
+            return s / 200;
+        }
 
         public Brush Stroke
         {
@@ -319,8 +314,8 @@ namespace H.Controls.ROIBox
         private void UpdateRect()
         {
             this._rectDrawingVisual.Stroke = this.Stroke;
-            this._rectDrawingVisual.StrokeThickness = this.StrokeThickness;
-            this._rectDrawingVisual.HandleLength = this.HandleLength;
+            this._rectDrawingVisual.StrokeThickness = this.GetStrokeThickness();
+            this._rectDrawingVisual.HandleLength = this.UseState ? this.GetHandleLength() : 0;
             this._rectDrawingVisual.Fill = this.Fill;
             this._rectDrawingVisual.Rect = this.Rect;
             this._rectDrawingVisual.Draw();

@@ -20,12 +20,12 @@ public abstract class DiagramableNodeDataBase : TextNodeData, IDiagramableNodeDa
 {
     [Browsable(false)]
     public IDiagramData DiagramData { get; set; }
-    protected override void Loaded(object obj)
-    {
-        base.Loaded(obj);
-        if (obj is IDiagramData diagramData)
-            this.DiagramData = diagramData;
-    }
+    //protected override void Loaded(object obj)
+    //{
+    //    base.Loaded(obj);
+    //    if (obj is IDiagramData diagramData)
+    //        this.DiagramData = diagramData;
+    //}
     [JsonIgnore]
     [Browsable(false)]
     public IEnumerable<INodeData> AllFromNodeDatas => this.GetAllFromNodeDatas();

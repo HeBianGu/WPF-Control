@@ -137,7 +137,7 @@ namespace H.Controls.ROIBox.State
         bool HitPoint(Point targetPoint, Point position)
         {
             var v = targetPoint - position;
-            return Math.Abs(v.X) < this._box.HandleLength / 2 && Math.Abs(v.Y) < this._box.HandleLength;
+            return Math.Abs(v.X) < this._box.GetHandleLength() / 2 && Math.Abs(v.Y) < this._box.GetHandleLength();
         }
 
         void UpdateRect(Point to)
