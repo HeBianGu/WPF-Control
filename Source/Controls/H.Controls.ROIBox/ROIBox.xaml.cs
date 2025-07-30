@@ -243,7 +243,7 @@ namespace H.Controls.ROIBox
         }
 
         public static readonly DependencyProperty StrokeThicknessProperty =
-            DependencyProperty.Register("StrokeThickness", typeof(double), typeof(ROIBox), new FrameworkPropertyMetadata(1.0, (d, e) =>
+            DependencyProperty.Register("StrokeThickness", typeof(double), typeof(ROIBox), new FrameworkPropertyMetadata(-1.0, (d, e) =>
             {
                 ROIBox control = d as ROIBox;
 

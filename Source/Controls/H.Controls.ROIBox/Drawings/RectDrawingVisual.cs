@@ -149,9 +149,9 @@ namespace H.Controls.ROIBox.Drawings
                 return;
             var combine = new CombinedGeometry(GeometryCombineMode.Exclude, new RectangleGeometry(this._box.BoundingBox), new RectangleGeometry(this.Rect));
             dc.PushClip(combine);
-            dc.DrawRectangle(this.Fill, null, this._box.BoundingBox);
+            dc.DrawRoundedRectangle(this.Fill, null, this._box.BoundingBox, this.StrokeThickness, this.StrokeThickness);
             dc.Pop();
-            dc.DrawRectangle(Brushes.Transparent, new Pen(this.Stroke, this.StrokeThickness), this.Rect);
+            dc.DrawRoundedRectangle(Brushes.Transparent, new Pen(this.Stroke, this.StrokeThickness), this.Rect, this.StrokeThickness, this.StrokeThickness);
 
             var center = new Point(this.Rect.Left + this.Rect.Width / 2, this.Rect.Top + this.Rect.Height / 2);
 
