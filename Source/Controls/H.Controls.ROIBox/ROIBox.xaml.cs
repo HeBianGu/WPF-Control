@@ -25,7 +25,7 @@ namespace H.Controls.ROIBox
             DefaultStyleKeyProperty.OverrideMetadata(typeof(ROIBox), new FrameworkPropertyMetadata(typeof(ROIBox)));
         }
 
-        private VisualCollection _visualCollection;
+        protected VisualCollection _visualCollection;
         private ImageDrawingVisual _imageDrawingVisual = new ImageDrawingVisual();
         private RectDrawingVisual _rectDrawingVisual;
         private IState _currentState;
@@ -55,26 +55,56 @@ namespace H.Controls.ROIBox
 
         private void ROIBox_MouseLeave(object sender, System.Windows.Input.MouseEventArgs e)
         {
-
-            _currentState?.MouseLeave(sender, e);
+            if (this.UseState)
+                _currentState?.MouseLeave(sender, e);
         }
 
         private void ROIBox_MouseUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            _currentState?.MouseUp(sender, e);
+            if (this.UseState)
+                _currentState?.MouseUp(sender, e);
         }
 
         private void ROIBox_MouseMove(object sender, System.Windows.Input.MouseEventArgs e)
         {
-
-            _currentState?.MouseMove(sender, e);
+            if (this.UseState)
+                _currentState?.MouseMove(sender, e);
         }
 
         private void ROIBox_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            _currentState?.MouseDown(sender, e);
-            e.Handled = true;
+            if (this.UseState)
+            {
+                _currentState?.MouseDown(sender, e);
+                e.Handled = true;
+            }
         }
+
+        public bool UseState
+        {
+            get { return (bool)GetValue(UseStateProperty); }
+            set { SetValue(UseStateProperty, value); }
+        }
+
+        public static readonly DependencyProperty UseStateProperty =
+            DependencyProperty.Register("UseState", typeof(bool), typeof(ROIBox), new FrameworkPropertyMetadata(true, (d, e) =>
+            {
+                ROIBox control = d as ROIBox;
+
+                if (control == null) return;
+
+                if (e.OldValue is bool o)
+                {
+
+                }
+
+                if (e.NewValue is bool n)
+                {
+
+                }
+
+            }));
+
 
         #region - VisualCollection -
 
@@ -292,7 +322,7 @@ namespace H.Controls.ROIBox
             this._rectDrawingVisual.StrokeThickness = this.StrokeThickness;
             this._rectDrawingVisual.HandleLength = this.HandleLength;
             this._rectDrawingVisual.Fill = this.Fill;
-            this._rectDrawingVisual.Rect = this.Rect; 
+            this._rectDrawingVisual.Rect = this.Rect;
             this._rectDrawingVisual.Draw();
         }
 

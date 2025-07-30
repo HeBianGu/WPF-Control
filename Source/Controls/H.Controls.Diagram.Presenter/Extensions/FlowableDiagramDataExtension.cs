@@ -15,13 +15,23 @@ public static class FlowableDiagramDataExtension
         data.State = DiagramFlowableState.Running;
         data.Message = "正在运行";
         data.Wait();
-        var b = await action?.Invoke();
-        data.State = b.ToDiagramFlowableState();
-        var message = b == null ? "用户取消" : b == true ? "运行成功" : "运行失败";
-        IocMessage.ShowSnackInfo(message);
-        H.Extensions.Mvvm.Commands.Commands.InvalidateRequerySuggested();
-        data.Message = message;
-        return b;
+        try
+        {
+            var b = await action?.Invoke();
+            data.State = b.ToDiagramFlowableState();
+            var message = b == null ? "用户取消" : b == true ? "运行成功" : "运行失败";
+            IocMessage.ShowSnackInfo(message);
+            H.Extensions.Mvvm.Commands.Commands.InvalidateRequerySuggested();
+            data.Message = message;
+            return b;
+        }
+        catch (Exception ex)
+        {
+            IocLog.Instance?.Error(ex);
+            data.Message = ex.Message;
+            return false;
+
+        }
     }
 
     public static void Reset(this IFlowableDiagramData flowableDiagramData)

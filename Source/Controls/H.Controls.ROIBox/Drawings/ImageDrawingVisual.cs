@@ -37,9 +37,9 @@ public class ImageDrawingVisual : DrawingVisual
 
     public void Draw()
     {
+        using var dc = this.RenderOpen();
         if (this.ImageSource == null)
             return;
-        using var dc = this.RenderOpen();
         var rect = new Rect(0, 0, this.ImageSource.Width, this.ImageSource.Height);
         dc.DrawImage(this.ImageSource, rect);
     }
