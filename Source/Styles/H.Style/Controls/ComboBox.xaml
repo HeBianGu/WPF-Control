@@ -71,7 +71,6 @@
         <Setter Property="Cattach.UseGuide" Value="True" />
         <Setter Property="Cattach.GuideTitle" Value="{Binding RelativeSource={RelativeSource Mode=Self}, Path=ToolTip}" />
         <Setter Property="Cattach.GuideData" Value="{Binding RelativeSource={RelativeSource Mode=Self}, Path=ToolTip}" />
-        <Setter Property="Cattach.ItemHeight" Value="{DynamicResource {x:Static LayoutKeys.ItemHeight}}" />
         <Setter Property="Cattach.ItemHorizontalContentAlignment" Value="Stretch" />
         <Setter Property="Cattach.ItemVerticalContentAlignment" Value="Center" />
         <Setter Property="Cattach.ItemMinHeight" Value="{DynamicResource {x:Static LayoutKeys.ItemHeight}}" />
@@ -153,8 +152,10 @@
                                 </Border>
                                 <ScrollViewer Margin="2,4"
                                               SnapsToDevicePixels="True">
-                                    <StackPanel IsItemsHost="True"
-                                                KeyboardNavigation.DirectionalNavigation="Contained" />
+                                    <!--<StackPanel IsItemsHost="True"
+                                                KeyboardNavigation.DirectionalNavigation="Contained" />-->
+
+                                    <ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
                                 </ScrollViewer>
                                 <!--<Border Grid.RowSpan="3"
                                         IsHitTestVisible="False"
