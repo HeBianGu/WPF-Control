@@ -262,9 +262,14 @@ public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
     {
         if (x is RoutedEventArgs<IEnumerable<Node>> args)
         {
-            foreach (var item in args.Entity.Select(x=>x.GetContent()).OfType<IDiagramableNodeData>())
+            foreach (var item in args.Entity.Select(x => x.GetContent()).OfType<IDiagramableNodeData>())
             {
                 item.DiagramData = this;
+            }
+
+            foreach (var item in args.Entity.Select(x => x.GetContent()).OfType<ITextNodeData>())
+            {
+                item.Text = this.Datas.NodeDatas.Count+" " + item.Text;
             }
         }
     });
