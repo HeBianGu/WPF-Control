@@ -75,6 +75,7 @@ namespace H.Controls.ROIBox.State
         {
             if (e.ChangedButton != MouseButton.Left)
                 return;
+            e.Handled = true;
             var p = e.GetPosition(sender as FrameworkElement);
             this._mouseDown = p;
             this._downRect = this._box.Rect;

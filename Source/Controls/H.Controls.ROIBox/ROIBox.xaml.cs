@@ -47,63 +47,36 @@ namespace H.Controls.ROIBox
             this.Loaded += this.ROIBox_Loaded;
         }
 
-        private void ROIBox_Loaded(object sender, RoutedEventArgs e)
+        protected virtual IState GetState()
+        {
+            return this._currentState;
+        }
+
+        protected virtual void ROIBox_Loaded(object sender, RoutedEventArgs e)
         {
             this.UpdateImage();
             this.UpdateRect();
         }
 
-        private void ROIBox_MouseLeave(object sender, System.Windows.Input.MouseEventArgs e)
+        protected virtual void ROIBox_MouseLeave(object sender, System.Windows.Input.MouseEventArgs e)
         {
-            if (this.UseState)
-                _currentState?.MouseLeave(sender, e);
+            this.GetState()?.MouseLeave(sender, e);
         }
 
-        private void ROIBox_MouseUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        protected virtual void ROIBox_MouseUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            if (this.UseState)
-                _currentState?.MouseUp(sender, e);
+            this.GetState()?.MouseUp(sender, e);
         }
 
-        private void ROIBox_MouseMove(object sender, System.Windows.Input.MouseEventArgs e)
+        protected virtual void ROIBox_MouseMove(object sender, System.Windows.Input.MouseEventArgs e)
         {
-            if (this.UseState)
-                _currentState?.MouseMove(sender, e);
+            this.GetState()?.MouseMove(sender, e);
         }
 
-        private void ROIBox_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        protected virtual void ROIBox_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            if (this.UseState)
-            {
-                _currentState?.MouseDown(sender, e);
-                e.Handled = true;
-            }
+            this.GetState()?.MouseDown(sender, e);
         }
-
-        public bool UseState
-        {
-            get { return (bool)GetValue(UseStateProperty); }
-            set { SetValue(UseStateProperty, value); }
-        }
-
-        public static readonly DependencyProperty UseStateProperty =
-            DependencyProperty.Register("UseState", typeof(bool), typeof(ROIBox), new FrameworkPropertyMetadata(true, (d, e) =>
-            {
-                ROIBox control = d as ROIBox;
-
-                if (control == null) return;
-
-                if (e.OldValue is bool o)
-                {
-
-                }
-
-                if (e.NewValue is bool n)
-                {
-
-                }
-
-            }));
 
 
         #region - VisualCollection -
@@ -338,9 +311,10 @@ namespace H.Controls.ROIBox
 
         protected virtual void UpdateRect()
         {
+            var state = this.GetState();
             this._rectDrawingVisual.Stroke = this.Stroke;
             this._rectDrawingVisual.StrokeThickness = this.GetStrokeThickness();
-            this._rectDrawingVisual.HandleLength = this.UseState ? this.GetHandleLength() : 0;
+            this._rectDrawingVisual.HandleLength = state != this._currentState ? this.GetHandleLength() : 0;
             this._rectDrawingVisual.Fill = this.Fill;
             this._rectDrawingVisual.Rect = this.UseROI ? this.Rect : Rect.Empty;
             this._rectDrawingVisual.Draw();

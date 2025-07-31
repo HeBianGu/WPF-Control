@@ -12,6 +12,10 @@ namespace H.Controls.ShapeBox.Shapes
 {
     public class LineShape : TitleShapeBase
     {
+        public LineShape()
+        {
+
+        }
         public LineShape(Point from, Point to)
         {
             this.From = from;
@@ -19,11 +23,23 @@ namespace H.Controls.ShapeBox.Shapes
         }
         public Point From { get; set; }
         public Point To { get; set; }
+        public bool UseCross { get; set; } = true;
         public override void Draw(DrawingContext drawingContext, Brush stroke, double strokeThickness = 1, Brush fill = null)
         {
             if (this.From == this.To)
                 return;
-            drawingContext.DrawLine(new Pen(stroke, strokeThickness), this.From, this.To);
+            var p = new Pen(stroke, strokeThickness);
+            drawingContext.DrawLine(p, this.From, this.To);
+
+            if (this.UseCross)
+            {
+                var hv = new Vector(strokeThickness * 2, 0);
+                drawingContext.DrawLine(p, this.From - hv, this.From + hv);
+                drawingContext.DrawLine(p, this.To - hv, this.To + hv);
+                var vv = new Vector(0, strokeThickness * 2);
+                drawingContext.DrawLine(p, this.From - vv, this.From + vv);
+                drawingContext.DrawLine(p, this.To - vv, this.To + vv);
+            }
         }
     }
 }
