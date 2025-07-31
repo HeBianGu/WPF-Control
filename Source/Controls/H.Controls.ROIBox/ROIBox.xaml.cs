@@ -314,7 +314,7 @@ namespace H.Controls.ROIBox
             var state = this.GetState();
             this._rectDrawingVisual.Stroke = this.Stroke;
             this._rectDrawingVisual.StrokeThickness = this.GetStrokeThickness();
-            this._rectDrawingVisual.HandleLength = state != this._currentState ? this.GetHandleLength() : 0;
+            this._rectDrawingVisual.HandleLength = state == this._currentState ? this.GetHandleLength() : 0;
             this._rectDrawingVisual.Fill = this.Fill;
             this._rectDrawingVisual.Rect = this.UseROI ? this.Rect : Rect.Empty;
             this._rectDrawingVisual.Draw();

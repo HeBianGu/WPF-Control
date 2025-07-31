@@ -14,7 +14,7 @@ using System.Windows.Media;
 
 namespace H.Controls.ShapeBox
 {
-    public class ShapeBox : FrameworkElement
+    public class ShapeBox : FrameworkElement, IView
     {
         static ShapeBox()
         {
@@ -194,6 +194,59 @@ namespace H.Controls.ShapeBox
             set { SetValue(ShapesProperty, value); }
         }
 
+        public Point Position
+        {
+            get { return (Point)GetValue(PositionProperty); }
+            set { SetValue(PositionProperty, value); }
+        }
+
+        public static readonly DependencyProperty PositionProperty =
+            DependencyProperty.Register("Position", typeof(Point), typeof(ShapeBox), new FrameworkPropertyMetadata(default(Point), (d, e) =>
+            {
+                ShapeBox control = d as ShapeBox;
+
+                if (control == null) return;
+
+                if (e.OldValue is Point o)
+                {
+
+                }
+
+                if (e.NewValue is Point n)
+                {
+
+                }
+
+            }));
+
+
+        public double Scale
+        {
+            get { return (double)GetValue(ScaleProperty); }
+            set { SetValue(ScaleProperty, value); }
+        }
+
+        public static readonly DependencyProperty ScaleProperty =
+            DependencyProperty.Register("Scale", typeof(double), typeof(ShapeBox), new FrameworkPropertyMetadata(1.0, (d, e) =>
+            {
+                ShapeBox control = d as ShapeBox;
+
+                if (control == null) return;
+
+                if (e.OldValue is double o)
+                {
+
+                }
+
+                if (e.NewValue is double n)
+                {
+
+                }
+
+            }));
+
+        public Size Size => this.RenderSize;
+
         public static readonly DependencyProperty ShapesProperty =
             DependencyProperty.Register("Shapes", typeof(ObservableCollection<IShape>), typeof(ShapeBox), new FrameworkPropertyMetadata(default(ObservableCollection<IShape>), (d, e) =>
             {
@@ -227,12 +280,12 @@ namespace H.Controls.ShapeBox
         void DrawShapes()
         {
             using var drawingContext = this._shapeDrawingVisual.RenderOpen();
-            if (this.Shapes == null||this.Shapes.Count==0)
+            if (this.Shapes == null || this.Shapes.Count == 0)
                 return;
             double strokeThickness = this.StrokeThickness < 0 ? this.ToThickness(this.ImageSource) : this.StrokeThickness;
             foreach (var shape in this.Shapes)
             {
-                shape.Draw(drawingContext, this.Stroke, strokeThickness, this.Fill);
+                shape.Draw(this, drawingContext, this.Stroke, strokeThickness, this.Fill);
             }
         }
 

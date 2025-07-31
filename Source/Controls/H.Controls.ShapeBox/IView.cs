@@ -5,12 +5,12 @@
 // QQ:908293466 Group:971261058 
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
-using System.Windows.Media;
-
-namespace H.Controls.ShapeBox.Shapes.Base
+namespace H.Controls.ShapeBox
 {
-    public interface IShape
+    public interface IView
     {
-        void Draw(IView view, DrawingContext drawingContext, Brush stroke, double strokeThickness = 1, Brush fill = null);
+        Point Position { get; }
+        double Scale { get; }
+        Size Size { get; }
     }
 }

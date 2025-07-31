@@ -13,12 +13,12 @@ namespace H.Controls.ShapeBox.Shapes
     public class RectShape : TitleShapeBase
     {
         public Rect Rect { get; set; }
-        public override void Draw(DrawingContext drawingContext, Brush stroke, double strokeThickness = 1, Brush fill = null)
+        public override void Draw(IView view, DrawingContext drawingContext, Brush stroke, double strokeThickness = 1, Brush fill = null)
         {
             if (this.Rect.IsEmpty)
                 return;
             drawingContext.DrawRectangle(fill, new Pen(stroke, strokeThickness), Rect);
-            this.DrawTitle(drawingContext, this.Rect.TopLeft, stroke);
+            this.DrawTitle(view, drawingContext, this.Rect.TopLeft, stroke);
         }
     }
 }

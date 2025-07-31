@@ -10,11 +10,11 @@ using System.Windows.Media;
 
 namespace H.Controls.ShapeBox.Shapes.Base
 {
-    public abstract class TitleShapeBase : ShapeBase
+    public abstract class TitleShapeBase : CommonShapeBase
     {
         public string Title { get; set; }
 
-        public virtual void DrawTitle(DrawingContext drawingContext, Point point, Brush brush)
+        public virtual void DrawTitle(IView view, DrawingContext drawingContext, Point point, Brush brush)
         {
             if (string.IsNullOrEmpty(this.Title))
                 return;

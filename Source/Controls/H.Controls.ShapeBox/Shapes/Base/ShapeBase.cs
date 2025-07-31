@@ -5,6 +5,7 @@
 // QQ:908293466 Group:971261058 
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
+using H.Controls.ShapeBox.Drawings;
 using System.Windows.Ink;
 using System.Windows.Media;
 
@@ -15,8 +16,29 @@ namespace H.Controls.ShapeBox.Shapes.Base
         public Brush Stroke { get; set; }
         public double StrokeThickness { get; set; }
         public Brush fill { get; set; }
-        public abstract void Draw(DrawingContext drawingContext, Brush stroke, double strokeThickness = 1, Brush fill = null);
+        public abstract void Draw(IView view, DrawingContext drawingContext, Brush stroke, double strokeThickness = 1, Brush fill = null);
     }
 
+
+    public abstract class CommonShapeBase : ShapeBase
+    {
+        public void DrawCross(IView view, DrawingContext drawingContext, Point point, Brush stroke, double strokeThickness = 1)
+        {
+            drawingContext.DrawCross(point, stroke, strokeThickness, 10.0 / view.Scale, 5.0 / view.Scale, 45);
+        }
+
+        public void DrawDimensionLine(IView view, DrawingContext dc, Point from, Point to, Brush stroke, double strokeThickness = 1.0)
+        {
+            if (from == to)
+                return;
+            var p = new Pen(stroke, strokeThickness);
+            dc.DrawLine(p, from, to);
+            this.DrawCross(view, dc, from, stroke, strokeThickness);
+            this.DrawCross(view, dc, to, stroke, strokeThickness);
+            double length = (from - to).Length;
+            var center = from + (to - from) / 2;
+            dc.DrawTextAtCenter(length.ToString("F2"), center, stroke, 15.0 / view.Scale);
+        }
+    }
 
 }
