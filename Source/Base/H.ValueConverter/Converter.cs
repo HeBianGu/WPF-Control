@@ -833,6 +833,8 @@ internal static class ObjectExtension
     public static bool TryChangeType(this object obj, Type rType, out object result)
     {
         result = null;
+        if (obj == null)
+            return false;
         Type type = obj.GetType();
         if (typeof(IConvertible).IsAssignableFrom(rType) && typeof(IConvertible).IsAssignableFrom(type))
         {

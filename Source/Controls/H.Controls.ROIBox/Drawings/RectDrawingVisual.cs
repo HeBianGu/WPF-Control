@@ -142,6 +142,33 @@ namespace H.Controls.ROIBox.Drawings
 
             }));
 
+
+        public double Scale
+        {
+            get { return (double)GetValue(ScaleProperty); }
+            set { SetValue(ScaleProperty, value); }
+        }
+
+        public static readonly DependencyProperty ScaleProperty =
+            DependencyProperty.Register("Scale", typeof(double), typeof(RectDrawingVisual), new FrameworkPropertyMetadata(1.0, (d, e) =>
+            {
+                RectDrawingVisual control = d as RectDrawingVisual;
+
+                if (control == null) return;
+
+                if (e.OldValue is double o)
+                {
+
+                }
+
+                if (e.NewValue is double n)
+                {
+
+                }
+
+            }));
+
+
         public void Draw()
         {
             using var dc = this.RenderOpen();
@@ -185,7 +212,7 @@ namespace H.Controls.ROIBox.Drawings
                 System.Globalization.CultureInfo.CurrentCulture,
                 FlowDirection.LeftToRight,
                 new Typeface("Microsoft YaHei"),
-                10,
+                10.0 / this.Scale,
                 Brushes.White,
                 VisualTreeHelper.GetDpi(this).PixelsPerDip);
             dc.DrawText(formattedText, this.Rect.BottomLeft);

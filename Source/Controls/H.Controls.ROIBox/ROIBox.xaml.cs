@@ -164,16 +164,47 @@ namespace H.Controls.ROIBox
                 control.UpdateRect();
             }));
 
-        public double GetHandleLength()
+        public double Scale
         {
-            return this.GetStrokeThickness() * 5.0;
+            get { return (double)GetValue(ScaleProperty); }
+            set { SetValue(ScaleProperty, value); }
         }
 
-        public double GetStrokeThickness()
+        public static readonly DependencyProperty ScaleProperty =
+            DependencyProperty.Register("Scale", typeof(double), typeof(ROIBox), new FrameworkPropertyMetadata(1.0, (d, e) =>
+            {
+                ROIBox control = d as ROIBox;
+
+                if (control == null) return;
+
+                if (e.OldValue is double o)
+                {
+
+                }
+
+                if (e.NewValue is double n)
+                {
+
+                }
+                control.OnScaleChanged();
+            }));
+
+        protected virtual void OnScaleChanged()
+        {
+            this.UpdateRect();
+        }
+
+
+        public double GetHandleLength()
+        {
+            return this.GetStrokeThickness() * 3.0;
+        }
+
+        public virtual double GetStrokeThickness()
         {
             if (this.StrokeThickness < 0)
                 return ToThickness(this.ImageSource);
-            return this.StrokeThickness;
+            return this.StrokeThickness / this.Scale;
         }
 
         public double ToThickness(ImageSource image)
@@ -216,7 +247,7 @@ namespace H.Controls.ROIBox
         }
 
         public static readonly DependencyProperty StrokeThicknessProperty =
-            DependencyProperty.Register("StrokeThickness", typeof(double), typeof(ROIBox), new FrameworkPropertyMetadata(-1.0, (d, e) =>
+            DependencyProperty.Register("StrokeThickness", typeof(double), typeof(ROIBox), new FrameworkPropertyMetadata(2.0, (d, e) =>
             {
                 ROIBox control = d as ROIBox;
 
@@ -314,8 +345,9 @@ namespace H.Controls.ROIBox
             var state = this.GetState();
             this._rectDrawingVisual.Stroke = this.Stroke;
             this._rectDrawingVisual.StrokeThickness = this.GetStrokeThickness();
-            this._rectDrawingVisual.HandleLength = state == this._currentState ? this.GetHandleLength() : 0;
+            this._rectDrawingVisual.HandleLength = this.GetHandleLength();
             this._rectDrawingVisual.Fill = this.Fill;
+            this._rectDrawingVisual.Scale = double.IsNaN(this.Scale) ? 1 : this.Scale;
             this._rectDrawingVisual.Rect = this.UseROI ? this.Rect : Rect.Empty;
             this._rectDrawingVisual.Draw();
         }

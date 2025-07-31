@@ -41,6 +41,7 @@ namespace H.Controls.ShapeBox.Drawings
 
         public static void DrawTextAtCenter(this DrawingContext dc, string text, Point point, Brush brush, double fontSize = 10.0)
         {
+            fontSize= double.IsNaN(fontSize)?10:fontSize;
             FormattedText formattedText = new FormattedText(
                                     $"{text}",
                                     System.Globalization.CultureInfo.CurrentCulture,

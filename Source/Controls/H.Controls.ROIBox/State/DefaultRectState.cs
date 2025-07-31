@@ -6,18 +6,25 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
+using H.Extensions.Mvvm.ViewModels.Base;
 using System.Windows.Input;
 
 namespace H.Controls.ROIBox.State
 {
 
-    public class DefaultRectState : IState
+    public class DefaultRectState : DisplayBindableBase, IState
     {
         private readonly ROIBox _box;
         public DefaultRectState(ROIBox box)
         {
             this._box = box;
         }
+        public DefaultRectState()
+        {
+
+        }
+
+        protected virtual ROIBox GetROIBox() => this._box;
         private Point? _mouseDown;
         private HitHandleType HitHandleType = HitHandleType.None;
         private Rect _downRect;
@@ -35,7 +42,7 @@ namespace H.Controls.ROIBox.State
         {
             var p = e.GetPosition(sender as FrameworkElement);
             var cursor = this.GetCursor(p);
-            this._box.Cursor = cursor;
+            this.GetROIBox().Cursor = cursor;
 
             if (e.LeftButton != MouseButtonState.Pressed)
                 return;
@@ -44,29 +51,29 @@ namespace H.Controls.ROIBox.State
 
         private Cursor GetCursor(Point p)
         {
-            if (this.HitPoint(this._box.Rect.TopLeft, p))
+            if (this.HitPoint(this.GetROIBox().Rect.TopLeft, p))
                 return Cursors.SizeNWSE;
 
-            if (this.HitPoint(this._box.Rect.BottomRight, p))
+            if (this.HitPoint(this.GetROIBox().Rect.BottomRight, p))
                 return Cursors.SizeNWSE;
 
-            if (this.HitPoint(this._box.Rect.TopRight, p))
+            if (this.HitPoint(this.GetROIBox().Rect.TopRight, p))
                 return Cursors.SizeNESW;
 
-            if (this.HitPoint(this._box.Rect.BottomLeft, p))
+            if (this.HitPoint(this.GetROIBox().Rect.BottomLeft, p))
                 return Cursors.SizeNESW;
-            var center = new Point(this._box.Rect.Left + this._box.Rect.Width / 2, this._box.Rect.Top + this._box.Rect.Height / 2);
+            var center = new Point(this.GetROIBox().Rect.Left + this.GetROIBox().Rect.Width / 2, this.GetROIBox().Rect.Top + this.GetROIBox().Rect.Height / 2);
 
-            if (this.HitPoint(new Point(this._box.Rect.Left, center.Y), p))
+            if (this.HitPoint(new Point(this.GetROIBox().Rect.Left, center.Y), p))
                 return Cursors.SizeWE;
-            if (this.HitPoint(new Point(this._box.Rect.Right, center.Y), p))
+            if (this.HitPoint(new Point(this.GetROIBox().Rect.Right, center.Y), p))
                 return Cursors.SizeWE;
 
-            if (this.HitPoint(new Point(center.X, this._box.Rect.Top), p))
+            if (this.HitPoint(new Point(center.X, this.GetROIBox().Rect.Top), p))
                 return Cursors.SizeNS;
-            if (this.HitPoint(new Point(center.X, this._box.Rect.Bottom), p))
+            if (this.HitPoint(new Point(center.X, this.GetROIBox().Rect.Bottom), p))
                 return Cursors.SizeNS;
-            if (this._box.Rect.Contains(p))
+            if (this.GetROIBox().Rect.Contains(p))
                 return Cursors.SizeAll;
             return Cursors.Cross;
         }
@@ -78,7 +85,7 @@ namespace H.Controls.ROIBox.State
             e.Handled = true;
             var p = e.GetPosition(sender as FrameworkElement);
             this._mouseDown = p;
-            this._downRect = this._box.Rect;
+            this._downRect = this.GetROIBox().Rect;
             if (this.HitPoint(this._downRect.TopLeft, p))
             {
                 this.HitHandleType = HitHandleType.TopLeft;
@@ -138,7 +145,7 @@ namespace H.Controls.ROIBox.State
         bool HitPoint(Point targetPoint, Point position)
         {
             var v = targetPoint - position;
-            return Math.Abs(v.X) < this._box.GetHandleLength() / 2 && Math.Abs(v.Y) < this._box.GetHandleLength();
+            return Math.Abs(v.X) < this.GetROIBox().GetHandleLength() / 2 && Math.Abs(v.Y) < this.GetROIBox().GetHandleLength();
         }
 
         void UpdateRect(Point to)
@@ -211,14 +218,30 @@ namespace H.Controls.ROIBox.State
             {
                 targetRect = new Rect(this._mouseDown.Value, to);
             }
-            targetRect.Intersect(new Rect(0, 0, this._box.ImageSource.Width, this._box.ImageSource.Height));
-            this._box.Rect = targetRect;
+            targetRect.Intersect(new Rect(0, 0, this.GetROIBox().ImageSource.Width, this.GetROIBox().ImageSource.Height));
+            this.GetROIBox().Rect = targetRect;
+            this.OnRectChanged();
+        }
+
+        protected virtual void OnRectChanged()
+        {
+
         }
 
         void Clear()
         {
             this._mouseDown = null;
             this.HitHandleType = HitHandleType.None;
+        }
+
+        public virtual void Exit()
+        {
+          
+        }
+
+        public virtual void Enter()
+        {
+          
         }
     }
 }

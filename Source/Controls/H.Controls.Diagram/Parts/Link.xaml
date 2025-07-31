@@ -96,7 +96,9 @@
                         <!--<DataTrigger Binding="{Binding Stroke}"
                                      Value="{x:Null}">
                             <Setter Property="Stroke" Value="{DynamicResource {x:Static h:BrushKeys.Foreground}}" />
-                            --><!--<Setter Property="StrokeThickness" Value="3" />--><!--
+                        -->
+                        <!--<Setter Property="StrokeThickness" Value="3" />-->
+                        <!--
                         </DataTrigger>-->
                         <DataTrigger Binding="{Binding Stroke}"
                                      Value="{x:Null}">

@@ -55,5 +55,15 @@ namespace H.Controls.ROIBox.State
         {
             this._mouseDown = null;
         }
+
+        public void Exit()
+        {
+       
+        }
+
+        public void Enter()
+        {
+           
+        }
     }
 }

@@ -19,9 +19,10 @@
             <Popup Width="{Binding ElementName=tb, Path=ActualWidth, Mode=OneWay}"
                    IsOpen="{Binding ElementName=tb, Path=IsKeyboardFocused, Mode=OneWay}"
                    StaysOpen="True">
-                <Border Background="{DynamicResource {x:Static BrushKeys.Selected}}"
+                <Border Margin="0,0,0.5,0"
+                        Background="{DynamicResource {x:Static BrushKeys.Selected}}"
                         BorderBrush="{DynamicResource {x:Static BrushKeys.ForegroundAssist}}"
-                        BorderThickness="1" Margin="0 0 0.5 0"
+                        BorderThickness="1"
                         CornerRadius="{DynamicResource {x:Static LayoutKeys.CornerRadius}}">
                     <DockPanel>
                         <TextBlock Margin="5"
@@ -33,9 +34,9 @@
                                    DockPanel.Dock="Right"
                                    Text="{Binding Maximum, Converter={x:Static Converter.GetMathRound}, ConverterParameter=2}" />
                         <Slider Focusable="False"
+                                IsSnapToTickEnabled="True"
                                 Maximum="{Binding Maximum}"
                                 Minimum="{Binding Minimum}"
-                                IsSnapToTickEnabled="True"
                                 TickFrequency="{Binding TickFrequency}"
                                 Value="{Binding Value, Converter={lt:GetValueFromStringValueConverter}}" />
                     </DockPanel>
