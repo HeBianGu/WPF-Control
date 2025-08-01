@@ -9,14 +9,15 @@ using System.Windows.Media;
 
 namespace H.Controls.ShapeBox.Shapes.Base
 {
-    public interface IPreviewShape
+    public interface ISelectableShape
     {
-        void DrawPreview(IView view, DrawingContext drawingContext, Brush stroke, double strokeThickness = 1, Brush fill = null);
+        void DrawSelect(IView view, DrawingContext drawingContext, Brush stroke, double strokeThickness = 1, Brush fill = null);
     }
 
-    public abstract class PreviewShapeBase : SelectableShapeBase, IPreviewShape
+
+    public abstract class SelectableShapeBase : CommonShapeBase, ISelectableShape
     {
-        public virtual void DrawPreview(IView view, DrawingContext drawingContext, Brush stroke, double strokeThickness = 1, Brush fill = null)
+        public virtual void DrawSelect(IView view, DrawingContext drawingContext, Brush stroke, double strokeThickness = 1, Brush fill = null)
         {
             this.Draw(view, drawingContext, stroke, strokeThickness, fill);
         }

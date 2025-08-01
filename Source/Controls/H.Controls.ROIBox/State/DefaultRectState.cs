@@ -243,5 +243,10 @@ namespace H.Controls.ROIBox.State
         {
           
         }
+
+        public void ScaleChanged()
+        {
+          
+        }
     }
 }

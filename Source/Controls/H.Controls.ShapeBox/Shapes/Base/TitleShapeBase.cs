@@ -10,7 +10,7 @@ using System.Windows.Media;
 
 namespace H.Controls.ShapeBox.Shapes.Base
 {
-    public abstract class TitleShapeBase : CommonShapeBase
+    public abstract class TitleShapeBase : PreviewShapeBase
     {
         public string Title { get; set; }
 

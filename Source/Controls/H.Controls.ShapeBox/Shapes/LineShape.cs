@@ -69,7 +69,6 @@ namespace H.Controls.ShapeBox.Shapes
             drawingContext.DrawLine(p, from, to);
             this.DrawPoint(view, drawingContext, from, fill, strokeThickness * 2);
             this.DrawPoint(view, drawingContext, to, fill, strokeThickness * 2);
-
         }
     }
 }

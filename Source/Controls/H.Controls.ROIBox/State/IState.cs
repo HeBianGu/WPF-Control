@@ -15,6 +15,7 @@ public interface IState
     void MouseLeave(object sender, MouseEventArgs e);
     void MouseMove(object sender, MouseEventArgs e);
     void MouseUp(object sender, MouseButtonEventArgs e);
-    void Exit(); 
+    void Exit();
     void Enter();
+    void ScaleChanged();
 }
