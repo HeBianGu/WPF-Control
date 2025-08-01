@@ -656,10 +656,11 @@
                 <Setter Property="Cursor" Value="Cross" />
             </Trigger>
             <Trigger Property="AreZoomModifiersActive" Value="True">
-                <Setter Property="Cursor" Value="{x:Static local:ZoomboxCursors.Zoom}" />
+                <!--<Setter Property="Cursor" Value="{x:Static local:ZoomboxCursors.Zoom}" />-->
+                <Setter Property="Cursor" Value="Arrow" />
             </Trigger>
             <Trigger Property="AreRelativeZoomModifiersActive" Value="True">
-                <Setter Property="Cursor" Value="{x:Static local:ZoomboxCursors.ZoomRelative}" />
+                <Setter Property="Cursor" Value="Arrow" />
             </Trigger>
             <!--
                 The IsDraggingContent and IsSelectingRegion triggers should

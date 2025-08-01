@@ -22,9 +22,14 @@ namespace H.Controls.ShapeBox.Shapes.Base
 
     public abstract class CommonShapeBase : ShapeBase
     {
-        public void DrawCross(IView view, DrawingContext drawingContext, Point point, Brush stroke, double strokeThickness = 1)
+        public void DrawCross(IView view, DrawingContext drawingContext, Point point, Brush stroke, double strokeThickness = 1, double angle = 0)
         {
-            drawingContext.DrawCross(point, stroke, strokeThickness, 10.0 / view.Scale, 5.0 / view.Scale, 45);
+            drawingContext.DrawCross(point, stroke, strokeThickness, strokeThickness * 4.0, strokeThickness * 4.0, angle);
+        }
+
+        public void DrawPoint(IView view, DrawingContext drawingContext, Point point, Brush fill, double radius = 1)
+        {
+            drawingContext.DrawEllipse(fill, null, point, radius, radius);
         }
 
         public void DrawDimensionLine(IView view, DrawingContext dc, Point from, Point to, Brush stroke, double strokeThickness = 1.0)

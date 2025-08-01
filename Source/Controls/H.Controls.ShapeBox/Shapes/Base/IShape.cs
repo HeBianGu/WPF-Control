@@ -5,6 +5,7 @@
 // QQ:908293466 Group:971261058 
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
+using System.Security.Cryptography;
 using System.Windows.Media;
 
 namespace H.Controls.ShapeBox.Shapes.Base

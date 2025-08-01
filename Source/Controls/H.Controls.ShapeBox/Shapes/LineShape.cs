@@ -11,7 +11,7 @@ using H.Controls.ShapeBox.Shapes.Base;
 
 namespace H.Controls.ShapeBox.Shapes
 {
-    public class LineShape : CommonShapeBase
+    public class LineShape : PreviewShapeBase
     {
         public LineShape()
         {
@@ -34,8 +34,8 @@ namespace H.Controls.ShapeBox.Shapes
             drawingContext.DrawLine(p, this.From, this.To);
             if (this.UseCross)
             {
-                this.DrawCross(view, drawingContext, this.From, stroke, strokeThickness);
-                this.DrawCross(view, drawingContext, this.To, stroke, strokeThickness);
+                this.DrawCross(view, drawingContext, this.From, stroke, strokeThickness, this.Angle + 45);
+                this.DrawCross(view, drawingContext, this.To, stroke, strokeThickness, this.Angle + 45);
             }
 
             if (this.UseText)
@@ -58,6 +58,18 @@ namespace H.Controls.ShapeBox.Shapes
             if (angleInDegrees < 0)
                 angleInDegrees += 360;
             return angleInDegrees;
+        }
+
+        public override void DrawPreview(IView view, DrawingContext drawingContext, Brush stroke, double strokeThickness = 1, Brush fill = null)
+        {
+            double length = 20.0 / view.Scale;
+            var from = new Point(0, 0);
+            var to = new Point(length, 0);
+            var p = new Pen(stroke, strokeThickness);
+            drawingContext.DrawLine(p, from, to);
+            this.DrawPoint(view, drawingContext, from, fill, strokeThickness * 2);
+            this.DrawPoint(view, drawingContext, to, fill, strokeThickness * 2);
+
         }
     }
 }
