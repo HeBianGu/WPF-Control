@@ -60,13 +60,13 @@ public abstract class PortableNodeData : NodeData, IPortableNodeData
         }
     }
 
-    public override object Clone()
-    {
-        PortableNodeData data = base.Clone() as PortableNodeData;
-        data.PortDatas.Clear();
-        data.InitPortDatas();
-        return data;
-    }
+    //public override object Clone()
+    //{
+    //    PortableNodeData data = base.Clone() as PortableNodeData;
+    //    data.PortDatas.Clear();
+    //    data.InitPortDatas();
+    //    return data;
+    //}
 
     #region - Serializing -
     [OnSerializing]

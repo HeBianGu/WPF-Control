@@ -56,10 +56,10 @@ public abstract class DropNodeDataBehaviorBase<T> : Behavior<T> where T : UIElem
         IDraggableAdorner adorner = this.GetDraggableAdorner(e);
         if (adorner == null)
             return null;
-        ICloneable obj = adorner.GetData() as ICloneable;
+        INodeData obj = adorner.GetData() as INodeData;
         if (obj == null)
-            throw new ArgumentException("没有实现ICloneable接口");
-        INodeData nodeData = obj.Clone() as INodeData;
+            throw new ArgumentException("未找到节点接口");
+        INodeData nodeData = obj.Create();
         return nodeData;
     }
 

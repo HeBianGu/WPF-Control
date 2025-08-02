@@ -50,10 +50,9 @@ public abstract class AddNodeCommand : AddNodeCommandBase
         IList nodeSource = diagram.Nodes;
         if (nodeSource == null)
             return;
-
-        if (nodeData is ICloneable cloneable)
-            nodeData = cloneable.Clone() as INodeData;
-
+        //if (nodeData is ICloneable cloneable)
+        //    nodeData = cloneable.Clone() as INodeData;
+        nodeData = nodeData.Create();
         Node toNode = this.CreateNode(nodeData);
         toNode.Measure(new Size(double.PositiveInfinity, double.PositiveInfinity));
         this.OffSet = this.GetOffSet(fromNode, toNode);

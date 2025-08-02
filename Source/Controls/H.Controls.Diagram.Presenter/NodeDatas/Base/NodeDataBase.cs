@@ -27,6 +27,11 @@ public abstract class NodeDataBase : DisplayBindableBase, ICloneable, INodeData
         return result;
     }
 
+    public INodeData Create()
+    {
+       return Activator.CreateInstance(GetType()) as INodeData;
+    }
+
     private Point _location;
     [Display(Name = "位置坐标", GroupName = "样式")]
     public Point Location

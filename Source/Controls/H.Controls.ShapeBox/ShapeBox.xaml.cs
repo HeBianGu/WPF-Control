@@ -262,7 +262,7 @@ namespace H.Controls.ShapeBox
 
         private void ShapesCollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
         {
-            this.DrawShapes();
+            this.Dispatcher.Invoke(() => this.DrawShapes());
         }
 
         public void DelayUpdateAll()

@@ -299,12 +299,12 @@ public abstract class NodeData : NodeDataBase, ITemplate, ILinkDataCreator, IPor
         //node.EffectOpacity = this.EffectOpacity;
     }
 
-    public override object Clone()
-    {
-        NodeData data = base.Clone() as NodeData;
-        data.ID = Guid.NewGuid().ToString();
-        return data;
-    }
+    //public override object Clone()
+    //{
+    //    NodeData data = base.Clone() as NodeData;
+    //    data.ID = Guid.NewGuid().ToString();
+    //    return data;
+    //}
 
     public virtual ILinkData CreateLinkData()
     {
