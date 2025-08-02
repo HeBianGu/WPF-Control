@@ -25,7 +25,7 @@ namespace H.Controls.ShapeBox.Shapes.Base
         }
         public bool UseHandle { get; set; }
 
-        public override void Drawing(IView view, DrawingContext dc, Pen pen, Brush fill = null)
+        public override void MatrixDrawing(IView view, DrawingContext dc, Pen pen, Brush fill = null)
         {
             if (this.UseHandle)
                 this.DrawHandle(view, dc, pen, fill);
@@ -45,8 +45,11 @@ namespace H.Controls.ShapeBox.Shapes.Base
             return Enumerable.Empty<IHandle>();
         }
 
-        public IHandle HitIHandle(IView view, Point position)
+        public virtual IHandle HitIHandle(IView view, Point position)
         {
+            position = this.GetInvertMatrix().Transform(position);
+            if (this.UseHandle == false)
+                return null;
             foreach (var handle in this.CreateHandles())
             {
                 if (handle.HitTestPoint(view, position))

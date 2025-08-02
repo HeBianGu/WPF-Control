@@ -26,29 +26,46 @@ namespace H.Controls.ShapeBox.Shapes
         public Point To { get; set; }
         public bool UseCross { get; set; } = true;
         public bool UseText { get; set; } = true;
-        public override void Drawing(IView view, DrawingContext drawingContext, Pen pen, Brush fill = null)
+
+        public override void MatrixDrawing(IView view, DrawingContext drawingContext, Pen pen, Brush fill = null)
         {
-            
             if (this.From == this.To)
                 return;
-            drawingContext.DrawLine(pen, this.From, this.To);
+            Matrix matrix = this.GetInvertMatrix();
+            var normalToPoint = matrix.Transform(this.To);
+            drawingContext.DrawLine(pen, this.From, normalToPoint);
             if (this.UseCross)
             {
                 this.DrawCross(view, drawingContext, this.From, pen, this.Angle + 45);
-                this.DrawCross(view, drawingContext, this.To, pen, this.Angle + 45);
+                this.DrawCross(view, drawingContext, normalToPoint, pen, this.Angle + 45);
             }
 
             if (this.UseText)
             {
-                double length = (this.From - this.To).Length;
-                drawingContext.DrawTextAtCenter(length.ToString("F2"), this.Center, pen.Brush, 10.0 / view.Scale);
+                double length = (this.From - normalToPoint).Length;
+                var normalToCenter = matrix.Transform(this.Center);
+                drawingContext.DrawTextAtCenter(length.ToString("F2"), normalToCenter, pen.Brush, 15.0 / view.Scale);
             }
-            base.Drawing(view, drawingContext, pen, fill);
+            base.MatrixDrawing(view, drawingContext, pen, fill);
         }
 
         public double Angle => this.CalculateAngle(this.From.X, this.From.Y, this.To.X, this.To.Y);
 
         public Point Center => this.From + (this.To - this.From) / 2;
+
+        protected Matrix GetRotateAtFromMatrix()
+        {
+            Matrix matrix = new Matrix();
+            matrix.RotateAt(-this.Angle, this.From.X, this.From.Y);
+            return matrix;
+        }
+
+        protected override Matrix GetMatrix()
+        {
+            Matrix matrix = new Matrix();
+            matrix.RotateAt(this.Angle, this.From.X, this.From.Y);
+            return matrix;
+        }
 
         double CalculateAngle(double x1, double y1, double x2, double y2)
         {
@@ -71,5 +88,17 @@ namespace H.Controls.ShapeBox.Shapes
             this.DrawPoint(view, drawingContext, from, fill, strokeThickness * 2);
             this.DrawPoint(view, drawingContext, to, fill, strokeThickness * 2);
         }
+
+        protected override IEnumerable<IHandle> CreateHandles()
+        {
+            yield return new ActionHandle(x => this.From = x, this.From);
+            yield return new ActionHandle(x => this.To = x, this.To);
+        }
+
+        //public override IHandle HitIHandle(IView view, Point position)
+        //{
+        //    Matrix matrix = this.GetRotateAtFromMatrix();
+        //    return base.HitIHandle(view, matrix.Transform(position));
+        //}
     }
 }

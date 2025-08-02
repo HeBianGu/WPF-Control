@@ -11,6 +11,7 @@ using System.Windows.Media;
 
 namespace H.Controls.ShapeBox.Shapes
 {
+
     public class CaliperCircleShape : PreviewShapeBase
     {
         public CaliperCircleShape()
@@ -27,7 +28,7 @@ namespace H.Controls.ShapeBox.Shapes
         public double ToRadius { get; set; }
         public int CaliperCount { get; set; }
 
-        public override void Drawing(IView view, DrawingContext drawingContext, Pen pen, Brush fill = null)
+        public override void MatrixDrawing(IView view, DrawingContext drawingContext, Pen pen, Brush fill = null)
         {
             if (this.FromRadius < 0 || this.ToRadius < 0)
                 return;
@@ -40,15 +41,17 @@ namespace H.Controls.ShapeBox.Shapes
             double angle = 360.0 / caliperCount;
             double l = Math.Abs(this.FromRadius - this.ToRadius);
             double tangentLength = this.FromRadius * Math.Tan(Math.PI / caliperCount);
+
+            var linePen = new Pen(Brushes.LightBlue, pen.Thickness / 2);
             for (int i = 0; i < caliperCount; i++)
             {
                 drawingContext.PushTransform(new RotateTransform() { Angle = angle * i, CenterX = this.Center.X, CenterY = this.Center.Y });
                 Rect rect = new Rect(this.Center.X - this.FromRadius - l, this.Center.Y - tangentLength / 2, l * 2, tangentLength);
-                drawingContext.DrawRectangle(null, new Pen(Brushes.LightBlue, pen.Thickness / 2), rect);
+                drawingContext.DrawRectangle(null, linePen, rect);
                 drawingContext.Pop();
             }
 
-            base.Drawing(view, drawingContext, pen, fill);
+            base.MatrixDrawing(view, drawingContext, pen, fill);
         }
 
         protected override IEnumerable<IHandle> CreateHandles()

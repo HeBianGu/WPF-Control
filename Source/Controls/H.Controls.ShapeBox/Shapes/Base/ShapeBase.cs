@@ -5,7 +5,7 @@
 // QQ:908293466 Group:971261058 
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
-using H.Controls.ShapeBox.Drawings;
+using System.Text.Json.Serialization;
 using System.Windows.Ink;
 using System.Windows.Media;
 
@@ -13,8 +13,11 @@ namespace H.Controls.ShapeBox.Shapes.Base
 {
     public abstract class ShapeBase : IShape
     {
+        [JsonIgnore]
         public Brush Stroke { get; set; }
+        [JsonIgnore]
         public double StrokeThickness { get; set; } = -1;
+        [JsonIgnore]
         public Brush Fill { get; set; }
         public virtual void Draw(IView view, DrawingContext drawingContext, Brush stroke, double strokeThickness = 1, Brush fill = null)
         {
@@ -44,32 +47,6 @@ namespace H.Controls.ShapeBox.Shapes.Base
         }
 
         public abstract void Drawing(IView view, DrawingContext dc, Pen pen, Brush fill = null);
-    }
-
-
-    public abstract class CommonShapeBase : ShapeBase
-    {
-        public void DrawCross(IView view, DrawingContext drawingContext, Point point, Pen pen, double angle = 0)
-        {
-            drawingContext.DrawCross(point, pen.Brush, pen.Thickness, pen.Thickness * 4.0, pen.Thickness * 4.0, angle);
-        }
-
-        public void DrawPoint(IView view, DrawingContext drawingContext, Point point, Brush fill, double radius = 1)
-        {
-            drawingContext.DrawEllipse(fill, null, point, radius, radius);
-        }
-
-        public void DrawDimensionLine(IView view, DrawingContext dc, Point from, Point to, Pen pen)
-        {
-            if (from == to)
-                return;
-            dc.DrawLine(pen, from, to);
-            this.DrawCross(view, dc, from, pen);
-            this.DrawCross(view, dc, to, pen);
-            double length = (from - to).Length;
-            var center = from + (to - from) / 2;
-            dc.DrawTextAtCenter(length.ToString("F2"), center, pen.Brush, 15.0 / view.Scale);
-        }
     }
 
 }

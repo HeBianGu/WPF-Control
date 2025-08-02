@@ -16,7 +16,10 @@ namespace H.Controls.ShapeBox.Shapes
     {
         public ROIRectShape()
         {
-            this.Fill = new SolidColorBrush(Colors.Black) { Opacity = 0.2 };
+            Application.Current.Dispatcher.Invoke(() =>
+            {
+                this.Fill = new SolidColorBrush(Colors.Black) { Opacity = 0.2 };
+            });
         }
         public Rect Rect { get; set; }
 
@@ -25,7 +28,7 @@ namespace H.Controls.ShapeBox.Shapes
         public bool UseCross { get; set; } = false;
         public bool UseText { get; set; } = true;
 
-        public override void Drawing(IView view, DrawingContext dc, Pen pen, Brush fill = null)
+        public override void MatrixDrawing(IView view, DrawingContext dc, Pen pen, Brush fill = null)
         {
             if (this.Rect.IsEmpty)
                 return;
@@ -68,7 +71,7 @@ namespace H.Controls.ShapeBox.Shapes
                 var txt = $"ROI x:{(int)this.Rect.Left} y:{(int)this.Rect.Top} w:{(int)this.Rect.Width} h:{(int)this.Rect.Height}";
                 dc.DrawTextAt(txt, this.Rect.BottomLeft, pen.Brush, 15.0 / view.Scale);
             }
-            base.Drawing(view, dc, pen, fill);
+            base.MatrixDrawing(view, dc, pen, fill);
         }
 
         public override void DrawPreview(IView view, DrawingContext drawingContext, Brush stroke, double strokeThickness = 1, Brush fill = null)
