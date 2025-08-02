@@ -28,7 +28,6 @@ namespace H.Controls.ShapeBox.Shapes.Base
             dc.PushTransform(new MatrixTransform(this.GetMatrix()));
             this.MatrixDrawing(view, dc, pen, fill);
             dc.Pop();
-
         }
 
         public abstract void MatrixDrawing(IView view, DrawingContext dc, Pen pen, Brush fill = null);

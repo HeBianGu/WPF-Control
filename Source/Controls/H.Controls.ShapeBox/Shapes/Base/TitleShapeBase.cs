@@ -14,11 +14,11 @@ namespace H.Controls.ShapeBox.Shapes.Base
     {
         public string Title { get; set; }
 
-        public virtual void DrawTitle(IView view, DrawingContext drawingContext, Point point, Brush brush)
+        public virtual void DrawTitle(IView view, DrawingContext drawingContext, Point point, Brush brush, double fontsize = 10.0)
         {
             if (string.IsNullOrEmpty(this.Title))
                 return;
-            drawingContext.DrawTextAt(this.Title, point, brush);
+            drawingContext.DrawTextAt(this.Title, point, brush, fontsize);
         }
     }
 

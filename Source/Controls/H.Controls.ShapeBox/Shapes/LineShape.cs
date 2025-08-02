@@ -11,7 +11,7 @@ using H.Controls.ShapeBox.Shapes.Base;
 
 namespace H.Controls.ShapeBox.Shapes
 {
-    public class LineShape : PreviewShapeBase
+    public class LineShape : TitleShapeBase
     {
         public LineShape()
         {
@@ -25,7 +25,7 @@ namespace H.Controls.ShapeBox.Shapes
         public Point From { get; set; }
         public Point To { get; set; }
         public bool UseCross { get; set; } = true;
-        public bool UseText { get; set; } = true;
+        public bool UseText { get; set; } = false;
 
         public override void MatrixDrawing(IView view, DrawingContext drawingContext, Pen pen, Brush fill = null)
         {
@@ -39,17 +39,27 @@ namespace H.Controls.ShapeBox.Shapes
                 this.DrawCross(view, drawingContext, this.From, pen, this.Angle + 45);
                 this.DrawCross(view, drawingContext, normalToPoint, pen, this.Angle + 45);
             }
-
+            var normalToCenter = matrix.Transform(this.Center);
             if (this.UseText)
             {
                 double length = (this.From - normalToPoint).Length;
-                var normalToCenter = matrix.Transform(this.Center);
                 drawingContext.DrawTextAtCenter(length.ToString("F2"), normalToCenter, pen.Brush, 15.0 / view.Scale);
             }
+
+            this.DrawTitle(view, drawingContext, normalToCenter, pen.Brush, 15.0 / view.Scale);
             base.MatrixDrawing(view, drawingContext, pen, fill);
         }
 
+        public override void DrawTitle(IView view, DrawingContext drawingContext, Point point, Brush brush, double fontsize = 10.0)
+        {
+            if (string.IsNullOrEmpty(this.Title))
+                return;
+            drawingContext.DrawTextAtCenter(this.Title, point, brush, fontsize);
+        }
+
         public double Angle => this.CalculateAngle(this.From.X, this.From.Y, this.To.X, this.To.Y);
+
+        public double Length => (this.From - this.To).Length;
 
         public Point Center => this.From + (this.To - this.From) / 2;
 
