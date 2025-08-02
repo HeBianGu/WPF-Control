@@ -28,6 +28,7 @@ namespace H.Controls.ShapeBox.Shapes
         public bool UseText { get; set; } = true;
         public override void Drawing(IView view, DrawingContext drawingContext, Pen pen, Brush fill = null)
         {
+            base.Drawing(view, drawingContext, pen, fill);
             if (this.From == this.To)
                 return;
             drawingContext.DrawLine(pen, this.From, this.To);

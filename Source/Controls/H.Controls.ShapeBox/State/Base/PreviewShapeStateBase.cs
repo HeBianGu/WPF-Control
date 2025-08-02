@@ -13,10 +13,7 @@ namespace H.Controls.ShapeBox.State.Base
 {
     public abstract class PreviewShapeStateBase : StateBase
     {
-        protected virtual IPreviewShape GetPreviewShape()
-        {
-            return null;
-        }
+        protected abstract IPreviewShape GetPreviewShape();
 
         protected virtual IPreviewShapeView GetPreviewShapeView()
         {

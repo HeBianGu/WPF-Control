@@ -27,6 +27,7 @@ namespace H.Controls.ShapeBox.Shapes
 
         public override void Drawing(IView view, DrawingContext dc, Pen pen, Brush fill = null)
         {
+            base.Drawing(view, dc, pen, fill);
             if (this.Rect.IsEmpty)
                 return;
             var boundingBox = new Rect(0, 0, view.Size.Width, view.Size.Height);

@@ -6,10 +6,13 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
+using System.ComponentModel.DataAnnotations;
 using System.Windows.Input;
+using H.Common.Attributes;
 using H.Controls.ShapeBox.Shapes;
 using H.Controls.ShapeBox.Shapes.Base;
 using H.Controls.ShapeBox.State.Base;
+using H.Extensions.FontIcon;
 
 namespace H.Controls.ShapeBox.State
 {
@@ -26,6 +29,9 @@ namespace H.Controls.ShapeBox.State
         Right,
         Area
     }
+
+    [Icon(FontIcons.Crop)]
+    [Display(Name = "绘制ROI")]
     public class ROIRectState : PreviewShapeStateBase
     {
         private Point? _mouseDown;

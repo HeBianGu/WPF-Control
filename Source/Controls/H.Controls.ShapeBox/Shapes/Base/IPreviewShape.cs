@@ -14,7 +14,7 @@ namespace H.Controls.ShapeBox.Shapes.Base
         void DrawPreview(IView view, DrawingContext drawingContext, Brush stroke, double strokeThickness = 1, Brush fill = null);
     }
 
-    public abstract class PreviewShapeBase : SelectableShapeBase, IPreviewShape
+    public abstract class PreviewShapeBase : HandleShapeBase, IPreviewShape
     {
         public virtual void DrawPreview(IView view, DrawingContext drawingContext, Brush stroke, double strokeThickness = 1, Brush fill = null)
         {
