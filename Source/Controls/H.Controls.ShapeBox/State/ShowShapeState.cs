@@ -14,9 +14,10 @@ using System.ComponentModel.DataAnnotations;
 
 namespace H.Controls.ShapeBox.State
 {
+
     [Icon(FontIcons.Unit)]
     [Display(Name = "显示对象")]
-    public class ShowShapeState<T> : PreviewShapeStateBase where T : IShape
+    public class ShowShapeState<T> : HandleShapeStateBase where T : IShape
     {
         public T Shape { get; set; }
         protected override IPreviewShape GetPreviewShape()
@@ -40,6 +41,19 @@ namespace H.Controls.ShapeBox.State
         {
             base.Exit();
             this.DrawStateShape();
+        }
+
+        public override IHandle HitHandle(Point point)
+        {
+            if (this.Shape is IHandleShape handleShape)
+                return handleShape.HitIHandle(this.View, point);
+            return null;
+        }
+
+        protected override void OnHitHandleMoved()
+        {
+            base.OnHitHandleMoved();    
+            this.DrawStateShape(this.Shape);
         }
     }
 }

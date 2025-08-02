@@ -13,7 +13,6 @@ using H.Controls.ShapeBox.State.Base;
 
 namespace H.Controls.ShapeBox.State
 {
-
     public class DrawLineShapeState : PreviewShapeStateBase
     {
         protected LineShape _lineShape = new LineShape();

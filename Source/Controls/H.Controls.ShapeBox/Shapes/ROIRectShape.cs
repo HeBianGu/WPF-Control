@@ -27,7 +27,6 @@ namespace H.Controls.ShapeBox.Shapes
 
         public override void Drawing(IView view, DrawingContext dc, Pen pen, Brush fill = null)
         {
-            base.Drawing(view, dc, pen, fill);
             if (this.Rect.IsEmpty)
                 return;
             var boundingBox = new Rect(0, 0, view.Size.Width, view.Size.Height);
@@ -69,7 +68,7 @@ namespace H.Controls.ShapeBox.Shapes
                 var txt = $"ROI x:{(int)this.Rect.Left} y:{(int)this.Rect.Top} w:{(int)this.Rect.Width} h:{(int)this.Rect.Height}";
                 dc.DrawTextAt(txt, this.Rect.BottomLeft, pen.Brush, 15.0 / view.Scale);
             }
-
+            base.Drawing(view, dc, pen, fill);
         }
 
         public override void DrawPreview(IView view, DrawingContext drawingContext, Brush stroke, double strokeThickness = 1, Brush fill = null)

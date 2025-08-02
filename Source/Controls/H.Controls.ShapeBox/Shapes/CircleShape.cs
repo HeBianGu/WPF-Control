@@ -29,7 +29,6 @@ namespace H.Controls.ShapeBox.Shapes
         public bool UseDimension { get; set; } = true;
         public override void Drawing(IView view, DrawingContext drawingContext, Pen pen, Brush fill = null)
         {
-            base.Drawing(view, drawingContext, pen, fill);
             if (this.Radius < 0)
                 return;
             drawingContext.DrawEllipse(fill, pen, this.Center, this.Radius, this.Radius);
@@ -37,7 +36,8 @@ namespace H.Controls.ShapeBox.Shapes
             if (this.UseCenter)
                 this.DrawCross(view, drawingContext, this.Center, pen);
             if (this.UseDimension)
-                this.DrawDimensionLine(view, drawingContext, this.Center, this.Center + new Vector(this.Radius, 0), pen);
+                this.DrawDimensionLine(view, drawingContext, this.Center, this.Center + new Vector(this.Radius, 0), pen); 
+            base.Drawing(view, drawingContext, pen, fill);
         }
 
         public override void DrawPreview(IView view, DrawingContext drawingContext, Brush stroke, double strokeThickness = 1, Brush fill = null)

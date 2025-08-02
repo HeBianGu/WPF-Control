@@ -21,6 +21,7 @@ namespace H.Controls.ShapeBox.State.Base
         }
         public override void MouseLeave(object sender, MouseEventArgs e)
         {
+            base.MouseLeave(sender, e);
             this.GetPreviewShapeView()?.DrawPreviewShape();
         }
 

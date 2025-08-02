@@ -15,11 +15,11 @@ namespace H.Controls.ShapeBox.Shapes
         public Rect Rect { get; set; }
         public override void Drawing(IView view, DrawingContext drawingContext, Pen pen, Brush fill = null)
         {
-            base.Drawing(view, drawingContext, pen, fill);
             if (this.Rect.IsEmpty)
                 return;
             drawingContext.DrawRectangle(fill, pen, Rect);
             this.DrawTitle(view, drawingContext, this.Rect.TopLeft, pen.Brush);
+            base.Drawing(view, drawingContext, pen, fill);
         }
     }
 }

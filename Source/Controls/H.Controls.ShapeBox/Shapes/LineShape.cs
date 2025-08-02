@@ -28,7 +28,7 @@ namespace H.Controls.ShapeBox.Shapes
         public bool UseText { get; set; } = true;
         public override void Drawing(IView view, DrawingContext drawingContext, Pen pen, Brush fill = null)
         {
-            base.Drawing(view, drawingContext, pen, fill);
+            
             if (this.From == this.To)
                 return;
             drawingContext.DrawLine(pen, this.From, this.To);
@@ -43,6 +43,7 @@ namespace H.Controls.ShapeBox.Shapes
                 double length = (this.From - this.To).Length;
                 drawingContext.DrawTextAtCenter(length.ToString("F2"), this.Center, pen.Brush, 10.0 / view.Scale);
             }
+            base.Drawing(view, drawingContext, pen, fill);
         }
 
         public double Angle => this.CalculateAngle(this.From.X, this.From.Y, this.To.X, this.To.Y);

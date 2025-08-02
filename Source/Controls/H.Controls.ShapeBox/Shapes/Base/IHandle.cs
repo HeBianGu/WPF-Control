@@ -13,7 +13,10 @@ namespace H.Controls.ShapeBox.Shapes.Base
     public interface IHandle
     {
         Point Postion { get; }
+        bool HitTestPoint(IView view, Point position);
         void Draw(IView view, DrawingContext drawingContext, Pen pen, Brush fill = null);
+
+        void MoveTo(Point point);
     }
 
     public abstract class HandleBase : IHandle
@@ -30,13 +33,28 @@ namespace H.Controls.ShapeBox.Shapes.Base
         {
             drawingContext.DrawHandle(this.Postion, pen.Brush, pen.Thickness, this.Length / view.Scale);
         }
+
+        public bool HitTestPoint(IView view, Point position)
+        {
+            var d = 0.5 * this.Length / view.Scale;
+            var v = this.Postion - position;
+            return Math.Abs(v.X) < d && Math.Abs(v.Y) < d;
+        }
+
+        public abstract void MoveTo(Point point);
     }
 
     public class ActionHandle : HandleBase
     {
-        public ActionHandle(Point postion) : base(postion)
+        private Action<Point> _moveToAction;
+        public ActionHandle(Action<Point> moveToAction, Point postion) : base(postion)
         {
+            this._moveToAction = moveToAction;
+        }
 
+        public override void MoveTo(Point point)
+        {
+            this._moveToAction?.Invoke(point);
         }
     }
 }

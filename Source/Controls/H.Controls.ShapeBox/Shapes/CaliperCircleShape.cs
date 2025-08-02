@@ -20,22 +20,42 @@ namespace H.Controls.ShapeBox.Shapes
         public CaliperCircleShape(Point center, double radius) : this()
         {
             this.Center = center;
-            this.Radius = radius;
+            this.FromRadius = radius;
         }
         public Point Center { get; set; }
-        public double Radius { get; set; }
+        public double FromRadius { get; set; }
+        public double ToRadius { get; set; }
+        public int CaliperCount { get; set; }
+
         public override void Drawing(IView view, DrawingContext drawingContext, Pen pen, Brush fill = null)
         {
-            base.Drawing(view, drawingContext, pen, fill);
-            if (this.Radius < 0)
+            if (this.FromRadius < 0 || this.ToRadius < 0)
                 return;
-            drawingContext.DrawEllipse(fill, pen, this.Center, this.Radius, this.Radius);
+            drawingContext.DrawEllipse(fill, pen, this.Center, this.FromRadius, this.FromRadius);
+            //drawingContext.DrawEllipse(fill, pen, this.Center, this.ToRadius, this.ToRadius);
             this.DrawCross(view, drawingContext, this.Center, pen);
+
+            //  Do ：说明
+            int caliperCount = this.CaliperCount > 0 ? this.CaliperCount : 36;
+            double angle = 360.0 / caliperCount;
+            double l = Math.Abs(this.FromRadius - this.ToRadius);
+            double tangentLength = this.FromRadius * Math.Tan(Math.PI / caliperCount);
+            for (int i = 0; i < caliperCount; i++)
+            {
+                drawingContext.PushTransform(new RotateTransform() { Angle = angle * i, CenterX = this.Center.X, CenterY = this.Center.Y });
+                Rect rect = new Rect(this.Center.X - this.FromRadius - l, this.Center.Y - tangentLength / 2, l * 2, tangentLength);
+                drawingContext.DrawRectangle(null, new Pen(Brushes.LightBlue, pen.Thickness / 2), rect);
+                drawingContext.Pop();
+            }
+
+            base.Drawing(view, drawingContext, pen, fill);
         }
 
         protected override IEnumerable<IHandle> CreateHandles()
         {
-            yield return new ActionHandle(this.Center);
+            yield return new ActionHandle(x => this.Center = x, this.Center);
+            yield return new ActionHandle(x => this.FromRadius = (x - this.Center).Length, new Point(this.Center.X + this.FromRadius, this.Center.Y));
+            yield return new ActionHandle(x => this.ToRadius = (x - this.Center).Length, new Point(this.Center.X + this.ToRadius, this.Center.Y));
         }
 
         public override void DrawPreview(IView view, DrawingContext drawingContext, Brush stroke, double strokeThickness = 1, Brush fill = null)

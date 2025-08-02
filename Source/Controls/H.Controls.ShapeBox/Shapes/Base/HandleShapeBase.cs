@@ -10,7 +10,14 @@ using System.Windows.Media;
 
 namespace H.Controls.ShapeBox.Shapes.Base
 {
-    public abstract class HandleShapeBase : SelectableShapeBase
+    public interface IHandleShape
+    {
+        bool UseHandle { get; set; }
+
+        IHandle HitIHandle(IView view, Point position);
+    }
+
+    public abstract class HandleShapeBase : SelectableShapeBase, IHandleShape
     {
         protected HandleShapeBase()
         {
@@ -31,13 +38,21 @@ namespace H.Controls.ShapeBox.Shapes.Base
             }
         }
 
-
-
         public List<IHandle> Handles { get; set; }
 
         protected virtual IEnumerable<IHandle> CreateHandles()
         {
             return Enumerable.Empty<IHandle>();
+        }
+
+        public IHandle HitIHandle(IView view, Point position)
+        {
+            foreach (var handle in this.CreateHandles())
+            {
+                if (handle.HitTestPoint(view, position))
+                    return handle;
+            }
+            return null;
         }
     }
 }
