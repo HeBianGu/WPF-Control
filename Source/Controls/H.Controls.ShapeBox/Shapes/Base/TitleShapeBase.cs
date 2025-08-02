@@ -18,7 +18,7 @@ namespace H.Controls.ShapeBox.Shapes.Base
         {
             if (string.IsNullOrEmpty(this.Title))
                 return;
-            drawingContext.DrawText(this.Title, point, brush);
+            drawingContext.DrawTextAt(this.Title, point, brush);
         }
     }
 

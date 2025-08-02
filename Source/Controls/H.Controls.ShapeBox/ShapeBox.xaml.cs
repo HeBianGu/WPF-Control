@@ -9,8 +9,12 @@ global using System.Windows;
 using H.Controls.ShapeBox.Drawings;
 using H.Controls.ShapeBox.Shapes.Base;
 using H.Controls.ShapeBox.State;
+using H.Controls.ShapeBox.State.Base;
 using System.Collections.ObjectModel;
+using System.Runtime.CompilerServices;
 using System.Windows.Media;
+using System.Windows.Media.TextFormatting;
+using System.Windows.Threading;
 
 namespace H.Controls.ShapeBox
 {
@@ -24,45 +28,24 @@ namespace H.Controls.ShapeBox
         private VisualCollection _visualCollection;
         private ImageDrawingVisual _imageDrawingVisual = new ImageDrawingVisual();
         private ShapeDrawingVisual _shapeDrawingVisual = new ShapeDrawingVisual();
-        private IState _currentState;
         public ShapeBox()
         {
-            this._currentState = new DefaultRectState(this);
             this._visualCollection = new VisualCollection(this);
-            this._visualCollection.Add(_imageDrawingVisual);
-            this._visualCollection.Add(_shapeDrawingVisual);
-            this.MouseDown += this.ShapeBox_MouseDown;
-            this.MouseMove += this.ShapeBox_MouseMove;
-            this.MouseUp += this.ShapeBox_MouseUp;
-            this.MouseLeave += this.ShapeBox_MouseLeave;
-            this.Loaded += this.ShapeBox_Loaded;
+            foreach (var item in this.CreateVisuals())
+            {
+                this._visualCollection.Add(item);
+            }
+        }
+
+        protected virtual IEnumerable<Visual> CreateVisuals()
+        {
+            yield return _imageDrawingVisual;
+            yield return _shapeDrawingVisual;
         }
 
         private void ShapeBox_Loaded(object sender, RoutedEventArgs e)
         {
             this.UpdateImage();
-        }
-
-        private void ShapeBox_MouseLeave(object sender, System.Windows.Input.MouseEventArgs e)
-        {
-
-            _currentState?.MouseLeave(sender, e);
-        }
-
-        private void ShapeBox_MouseUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
-        {
-            _currentState?.MouseUp(sender, e);
-        }
-
-        private void ShapeBox_MouseMove(object sender, System.Windows.Input.MouseEventArgs e)
-        {
-
-            _currentState?.MouseMove(sender, e);
-        }
-
-        private void ShapeBox_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
-        {
-            _currentState?.MouseDown(sender, e);
         }
 
         #region - VisualCollection -
@@ -188,12 +171,6 @@ namespace H.Controls.ShapeBox
 
             }));
 
-        public ObservableCollection<IShape> Shapes
-        {
-            get { return (ObservableCollection<IShape>)GetValue(ShapesProperty); }
-            set { SetValue(ShapesProperty, value); }
-        }
-
         public Point Position
         {
             get { return (Point)GetValue(PositionProperty); }
@@ -242,10 +219,22 @@ namespace H.Controls.ShapeBox
                 {
 
                 }
-
+                control.OnScaleChanged();
             }));
 
+        protected virtual void OnScaleChanged()
+        {
+            if (this.StrokeThickness > 0)
+                this.DrawShapes();
+        }
+
         public Size Size => this.RenderSize;
+
+        public ObservableCollection<IShape> Shapes
+        {
+            get { return (ObservableCollection<IShape>)GetValue(ShapesProperty); }
+            set { SetValue(ShapesProperty, value); }
+        }
 
         public static readonly DependencyProperty ShapesProperty =
             DependencyProperty.Register("Shapes", typeof(ObservableCollection<IShape>), typeof(ShapeBox), new FrameworkPropertyMetadata(default(ObservableCollection<IShape>), (d, e) =>
@@ -264,17 +253,33 @@ namespace H.Controls.ShapeBox
                     n.CollectionChanged += control.ShapesCollectionChanged;
                 }
                 control.DrawShapes();
+                control.OnShapesChanged();
             }));
+
+        protected virtual void OnShapesChanged()
+        {
+        }
 
         private void ShapesCollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
         {
             this.DrawShapes();
         }
 
+        public void DelayUpdateAll()
+        {
+            this.DelayInvoke(() => this.UpdateAll());
+        }
+
+        public virtual void UpdateAll()
+        {
+            this.UpdateImage();
+            this.DrawShapes();
+        }
+
         protected override void OnRender(DrawingContext drawingContext)
         {
             base.OnRender(drawingContext);
-            this.DrawShapes();
+            this.DelayUpdateAll();
         }
 
         void DrawShapes()
@@ -282,7 +287,7 @@ namespace H.Controls.ShapeBox
             using var drawingContext = this._shapeDrawingVisual.RenderOpen();
             if (this.Shapes == null || this.Shapes.Count == 0)
                 return;
-            double strokeThickness = this.StrokeThickness < 0 ? this.ToThickness(this.ImageSource) : this.StrokeThickness;
+            double strokeThickness = this.ToViewThickness(this.StrokeThickness);
             foreach (var shape in this.Shapes)
             {
                 shape.Draw(this, drawingContext, this.Stroke, strokeThickness, this.Fill);
@@ -295,6 +300,12 @@ namespace H.Controls.ShapeBox
                 return 1.0;
             double s = Math.Sqrt(image.Height * image.Height + image.Width * image.Width);
             return s / 200;
+        }
+
+        public double ToViewThickness(double thickness)
+        {
+            return thickness < 0 ? this.ToThickness(this.ImageSource) : thickness / this.Scale;
+
         }
     }
 }

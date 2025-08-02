@@ -7,11 +7,12 @@
 // Licensed under the MIT License (the "License")
 
 using System.Windows.Input;
+using H.Controls.ShapeBox.State.Base;
 
 namespace H.Controls.ShapeBox.State
 {
 
-    public class DefaultRectState : IState
+    public class DefaultRectState : StateBase
     {
         private readonly ShapeBox _box;
         public DefaultRectState(ShapeBox box)
@@ -19,28 +20,27 @@ namespace H.Controls.ShapeBox.State
             this._box = box;
         }
         private Point? _mouseDown;
-        public void MouseLeave(object sender, MouseEventArgs e)
+        public override void MouseLeave(object sender, MouseEventArgs e)
         {
             this.Clear();
         }
 
-        public void MouseUp(object sender, MouseButtonEventArgs e)
+        public override void MouseUp(object sender, MouseButtonEventArgs e)
         {
             this.Clear();
         }
 
-        public void MouseMove(object sender, MouseEventArgs e)
+        public override void MouseMove(object sender, MouseEventArgs e)
         {
 
         }
 
 
-        public void MouseDown(object sender, MouseButtonEventArgs e)
+        public override void MouseDown(object sender, MouseButtonEventArgs e)
         {
 
         }
-
-        void Clear()
+        protected override void Clear()
         {
             this._mouseDown = null;
         }

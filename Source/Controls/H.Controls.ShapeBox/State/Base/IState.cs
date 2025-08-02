@@ -8,7 +8,7 @@
 
 using System.Windows.Input;
 
-namespace H.Controls.ShapeBox.State;
+namespace H.Controls.ShapeBox.State.Base;
 public interface IState
 {
     void MouseDown(object sender, MouseButtonEventArgs e);

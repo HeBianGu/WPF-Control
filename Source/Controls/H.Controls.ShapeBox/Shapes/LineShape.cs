@@ -26,22 +26,21 @@ namespace H.Controls.ShapeBox.Shapes
         public Point To { get; set; }
         public bool UseCross { get; set; } = true;
         public bool UseText { get; set; } = true;
-        public override void Draw(IView view, DrawingContext drawingContext, Brush stroke, double strokeThickness = 1, Brush fill = null)
+        public override void Drawing(IView view, DrawingContext drawingContext, Pen pen, Brush fill = null)
         {
             if (this.From == this.To)
                 return;
-            var p = new Pen(stroke, strokeThickness);
-            drawingContext.DrawLine(p, this.From, this.To);
+            drawingContext.DrawLine(pen, this.From, this.To);
             if (this.UseCross)
             {
-                this.DrawCross(view, drawingContext, this.From, stroke, strokeThickness, this.Angle + 45);
-                this.DrawCross(view, drawingContext, this.To, stroke, strokeThickness, this.Angle + 45);
+                this.DrawCross(view, drawingContext, this.From, pen, this.Angle + 45);
+                this.DrawCross(view, drawingContext, this.To, pen, this.Angle + 45);
             }
 
             if (this.UseText)
             {
                 double length = (this.From - this.To).Length;
-                drawingContext.DrawTextAtCenter(length.ToString("F2"), this.Center, stroke, 10.0 / view.Scale);
+                drawingContext.DrawTextAtCenter(length.ToString("F2"), this.Center, pen.Brush, 10.0 / view.Scale);
             }
         }
 

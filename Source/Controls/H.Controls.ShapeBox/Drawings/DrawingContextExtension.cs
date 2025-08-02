@@ -5,6 +5,8 @@
 // QQ:908293466 Group:971261058 
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
+using System.Runtime.CompilerServices;
+using System.Windows.Ink;
 using System.Windows.Media;
 
 namespace H.Controls.ShapeBox.Drawings
@@ -13,8 +15,15 @@ namespace H.Controls.ShapeBox.Drawings
     {
         public static void DrawHandle(this DrawingContext dc, Point point, Brush stroke, double strokeThickness = 1, double len = 6)
         {
+            dc.DrawHandle(point, new Pen(stroke, strokeThickness), len);
+        }
+
+        public static void DrawHandle(this DrawingContext dc, Point point, Pen pen,double len = 6)
+        {
             double s = len / 2;
-            dc.DrawEllipse(null, new Pen(stroke, strokeThickness), point, len, len);
+            //dc.DrawEllipse(null, pen, point, len, len);
+            dc.DrawRectangle(Brushes.White, pen, new Rect(point.X - s, point.Y - s, len, len));
+
         }
 
         public static void DrawCross(this DrawingContext dc, Point point, Brush stroke, double strokeThickness = 1, double wlen = 6, double hlen = 6, double angle = 0)
@@ -28,7 +37,7 @@ namespace H.Controls.ShapeBox.Drawings
             dc.Pop();
         }
 
-        public static void DrawText(this DrawingContext dc, string text, Point point, Brush brush, double fontSize = 10.0, double offset = 5)
+        public static void DrawTextAt(this DrawingContext dc, string text, Point point, Brush brush, double fontSize = 10.0, double offset = 5)
         {
             FormattedText formattedText = new FormattedText(
                                     $"{text}",
@@ -41,7 +50,7 @@ namespace H.Controls.ShapeBox.Drawings
 
         public static void DrawTextAtCenter(this DrawingContext dc, string text, Point point, Brush brush, double fontSize = 10.0)
         {
-            fontSize= double.IsNaN(fontSize)?10:fontSize;
+            fontSize = double.IsNaN(fontSize) ? 10 : fontSize;
             FormattedText formattedText = new FormattedText(
                                     $"{text}",
                                     System.Globalization.CultureInfo.CurrentCulture,
