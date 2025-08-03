@@ -13,12 +13,13 @@ using H.Controls.ShapeBox.State.Base;
 using System.Collections.ObjectModel;
 using System.Runtime.CompilerServices;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
 using System.Windows.Media.TextFormatting;
 using System.Windows.Threading;
 
 namespace H.Controls.ShapeBox
 {
-    public class ShapeBox : FrameworkElement, IShapeView
+    public class ShapeBox : FrameworkElement, IShapeView, IImageView
     {
         static ShapeBox()
         {
@@ -306,6 +307,22 @@ namespace H.Controls.ShapeBox
         {
             return thickness < 0 ? this.ToThickness(this.ImageSource) : thickness / this.Scale;
 
+        }
+
+        public Color PickColor(Point point)
+        {
+            if (this.ImageSource is BitmapSource bitmapSource)
+                return this.GetPixelColor(bitmapSource, (int)point.X, (int)point.Y);
+            return Colors.Transparent;
+        }
+
+        private Color GetPixelColor(BitmapSource bitmap, int x, int y)
+        {
+            if (x < 0 || x >= bitmap.PixelWidth || y < 0 || y >= bitmap.PixelHeight)
+                return Colors.Transparent;
+            byte[] pixel = new byte[4];
+            bitmap.CopyPixels(new Int32Rect(x, y, 1, 1), pixel, 4, 0);
+            return System.Windows.Media.Color.FromArgb(255, pixel[2], pixel[1], pixel[0]);
         }
     }
 }

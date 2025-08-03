@@ -30,7 +30,7 @@ namespace H.Controls.ShapeBox.Shapes
             base.MatrixDrawing(view, drawingContext, pen, fill);
         }
 
-        public override void DrawPreview(IView view, DrawingContext drawingContext, Brush stroke, double strokeThickness = 1, Brush fill = null)
+        public override void DrawPreview(IView view, DrawingContext drawingContext, Brush stroke, double strokeThickness = 1, Brush fill = null, double offset = 0)
         {
             double r = 10.0 / view.Scale;
             if (this.UseCross)

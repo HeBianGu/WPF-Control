@@ -61,7 +61,7 @@ namespace H.Controls.ShapeBox.Shapes
             yield return new ActionHandle(x => this.ToRadius = (x - this.Center).Length, new Point(this.Center.X + this.ToRadius, this.Center.Y));
         }
 
-        public override void DrawPreview(IView view, DrawingContext drawingContext, Brush stroke, double strokeThickness = 1, Brush fill = null)
+        public override void DrawPreview(IView view, DrawingContext drawingContext, Brush stroke, double strokeThickness = 1, Brush fill = null, double offset = 0)
         {
             var r = 10.0 / view.Scale;
             var c = new Point(r, r);

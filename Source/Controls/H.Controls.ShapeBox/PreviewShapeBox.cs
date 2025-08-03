@@ -141,7 +141,7 @@ namespace H.Controls.ShapeBox
             double strokeThickness = this.ToViewThickness(this.PreviewStrokeThickness);
             foreach (var previewShape in previewShapes)
             {
-                previewShape.DrawPreview(this, drawingContext, this.PreviewStroke, strokeThickness, this.PreviewFill);
+                previewShape.DrawPreview(this, drawingContext, this.PreviewStroke, strokeThickness, this.PreviewFill, offset);
             }
             drawingContext.Pop();
         }

@@ -28,10 +28,10 @@ namespace H.Controls.ShapeBox.State.Base
         public override void MouseMove(object sender, MouseEventArgs e)
         {
             base.MouseMove(sender, e);
-            this.UpdatePreviewShape();
+            this.DrawPreviewShape();
         }
 
-        void UpdatePreviewShape()
+        protected void DrawPreviewShape()
         {
             var shape = this.GetPreviewShape();
             if (shape == null)
@@ -48,7 +48,7 @@ namespace H.Controls.ShapeBox.State.Base
         public override void ScaleChanged()
         {
             base.ScaleChanged();
-            this.UpdatePreviewShape();
+            this.DrawPreviewShape();
         }
     }
 }

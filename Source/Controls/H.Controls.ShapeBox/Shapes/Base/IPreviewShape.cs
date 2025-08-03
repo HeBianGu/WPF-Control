@@ -11,12 +11,12 @@ namespace H.Controls.ShapeBox.Shapes.Base
 {
     public interface IPreviewShape
     {
-        void DrawPreview(IView view, DrawingContext drawingContext, Brush stroke, double strokeThickness = 1, Brush fill = null);
+        void DrawPreview(IView view, DrawingContext drawingContext, Brush stroke, double strokeThickness = 1, Brush fill = null, double offset = 0);
     }
 
     public abstract class PreviewShapeBase : HandleShapeBase, IPreviewShape
     {
-        public virtual void DrawPreview(IView view, DrawingContext drawingContext, Brush stroke, double strokeThickness = 1, Brush fill = null)
+        public virtual void DrawPreview(IView view, DrawingContext drawingContext, Brush stroke, double strokeThickness = 1, Brush fill = null, double offset = 0)
         {
             this.Draw(view, drawingContext, stroke, strokeThickness, fill);
         }

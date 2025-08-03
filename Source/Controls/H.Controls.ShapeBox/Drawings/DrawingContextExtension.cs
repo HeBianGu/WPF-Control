@@ -18,7 +18,7 @@ namespace H.Controls.ShapeBox.Drawings
             dc.DrawHandle(point, new Pen(stroke, strokeThickness), len);
         }
 
-        public static void DrawHandle(this DrawingContext dc, Point point, Pen pen,double len = 6)
+        public static void DrawHandle(this DrawingContext dc, Point point, Pen pen, double len = 6)
         {
             double s = len / 2;
             //dc.DrawEllipse(null, pen, point, len, len);
@@ -37,7 +37,13 @@ namespace H.Controls.ShapeBox.Drawings
             dc.Pop();
         }
 
-        public static void DrawTextAt(this DrawingContext dc, string text, Point point, Brush brush, double fontSize = 10.0, double offset = 5)
+        public static void DrawCircle(this DrawingContext dc, Point point, Pen pen, double radius, Brush fill = null)
+        {
+            dc.DrawEllipse(fill, pen, point, radius, radius);
+
+        }
+
+        public static Rect DrawTextAt(this DrawingContext dc, string text, Point point, Brush brush, double fontSize = 10.0, double offset = 5)
         {
             FormattedText formattedText = new FormattedText(
                                     $"{text}",
@@ -45,10 +51,12 @@ namespace H.Controls.ShapeBox.Drawings
                                     FlowDirection.LeftToRight,
                                     new Typeface("Microsoft YaHei"),
                                     fontSize, brush, 1.2);
-            dc.DrawText(formattedText, point + new Vector(offset, offset));
+            var p = point + new Vector(offset, offset);
+            dc.DrawText(formattedText, p);
+            return new Rect(p, new Size(formattedText.Width, formattedText.Height));
         }
 
-        public static void DrawTextAtCenter(this DrawingContext dc, string text, Point point, Brush brush, double fontSize = 10.0)
+        public static Rect DrawTextAtCenter(this DrawingContext dc, string text, Point point, Brush brush, double fontSize = 10.0)
         {
             fontSize = double.IsNaN(fontSize) ? 10 : fontSize;
             FormattedText formattedText = new FormattedText(
@@ -57,7 +65,9 @@ namespace H.Controls.ShapeBox.Drawings
                                     FlowDirection.LeftToRight,
                                     new Typeface("Microsoft YaHei"),
                                     fontSize, brush, 1.2);
-            dc.DrawText(formattedText, point - new Vector(formattedText.Width / 2, formattedText.Height / 2));
+            var p = point - new Vector(formattedText.Width / 2, formattedText.Height / 2);
+            dc.DrawText(formattedText, p);
+            return new Rect(p, new Size(formattedText.Width, formattedText.Height));
         }
     }
 }
