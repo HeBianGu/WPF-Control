@@ -18,7 +18,6 @@ namespace H.Controls.ShapeBox.State.Adds.Base
             if (points.Count == 2)
             {
                 this.TwoClick(points.ElementAt(1));
-                this.Sumit();
             }
         }
         protected override void OneClick(Point p)

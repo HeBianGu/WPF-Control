@@ -8,6 +8,7 @@
 using System.Runtime.CompilerServices;
 using System.Windows.Ink;
 using System.Windows.Media;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace H.Controls.ShapeBox.Drawings
 {
@@ -45,12 +46,8 @@ namespace H.Controls.ShapeBox.Drawings
 
         public static Rect DrawTextAt(this DrawingContext dc, string text, Point point, Brush brush, double fontSize = 10.0, double offset = 5)
         {
-            FormattedText formattedText = new FormattedText(
-                                    $"{text}",
-                                    System.Globalization.CultureInfo.CurrentCulture,
-                                    FlowDirection.LeftToRight,
-                                    new Typeface("Microsoft YaHei"),
-                                    fontSize, brush, 1.2);
+            fontSize = fontSize.ToFontSize();
+            FormattedText formattedText = text.ToForematedText(brush, fontSize);
             var p = point + new Vector(offset, offset);
             dc.DrawText(formattedText, p);
             return new Rect(p, new Size(formattedText.Width, formattedText.Height));
@@ -58,16 +55,62 @@ namespace H.Controls.ShapeBox.Drawings
 
         public static Rect DrawTextAtCenter(this DrawingContext dc, string text, Point point, Brush brush, double fontSize = 10.0)
         {
-            fontSize = double.IsNaN(fontSize) ? 10 : fontSize;
-            FormattedText formattedText = new FormattedText(
-                                    $"{text}",
-                                    System.Globalization.CultureInfo.CurrentCulture,
-                                    FlowDirection.LeftToRight,
-                                    new Typeface("Microsoft YaHei"),
-                                    fontSize, brush, 1.2);
+            fontSize = fontSize.ToFontSize();
+            FormattedText formattedText = text.ToForematedText(brush, fontSize);
             var p = point - new Vector(formattedText.Width / 2, formattedText.Height / 2);
             dc.DrawText(formattedText, p);
             return new Rect(p, new Size(formattedText.Width, formattedText.Height));
+        }
+
+        public static Rect DrawTextAtTopCenter(this DrawingContext dc, string text, Point point, Brush brush, double fontSize = 10.0)
+        {
+            fontSize = fontSize.ToFontSize();
+            FormattedText formattedText = text.ToForematedText(brush, fontSize);
+            var p = point - new Vector(formattedText.Width / 2, formattedText.Height);
+            dc.DrawText(formattedText, p);
+            return new Rect(p, new Size(formattedText.Width, formattedText.Height));
+        }
+
+        public static Rect DrawTextAtBottomCenter(this DrawingContext dc, string text, Point point, Brush brush, double fontSize = 10.0)
+        {
+            fontSize = fontSize.ToFontSize();
+            FormattedText formattedText = text.ToForematedText(brush, fontSize);
+            var p = point + new Vector(formattedText.Width / 2, formattedText.Height);
+            dc.DrawText(formattedText, p);
+            return new Rect(p, new Size(formattedText.Width, formattedText.Height));
+        }
+
+        public static Rect DrawTextAtRight(this DrawingContext dc, string text, Point point, Brush brush, double fontSize = 10.0)
+        {
+            fontSize = fontSize.ToFontSize();
+            FormattedText formattedText = text.ToForematedText(brush, fontSize);
+            var p = point - new Vector(0, formattedText.Height / 2);
+            dc.DrawText(formattedText, p);
+            return new Rect(p, new Size(formattedText.Width, formattedText.Height));
+        }
+
+        public static Rect DrawTextAtLeft(this DrawingContext dc, string text, Point point, Brush brush, double fontSize = 10.0)
+        {
+            fontSize = fontSize.ToFontSize();
+            FormattedText formattedText = text.ToForematedText(brush, fontSize);
+            var p = point - new Vector(-formattedText.Width, formattedText.Height / 2);
+            dc.DrawText(formattedText, p);
+            return new Rect(p, new Size(formattedText.Width, formattedText.Height));
+        }
+
+        private static FormattedText ToForematedText(this string text, Brush brush, double fontSize = 10.0)
+        {
+            return new FormattedText(
+                                      $"{text}",
+                                      System.Globalization.CultureInfo.CurrentCulture,
+                                      FlowDirection.LeftToRight,
+                                      new Typeface("Microsoft YaHei"),
+                                      fontSize, brush, 1.2);
+        }
+
+        private static double ToFontSize(this double fontSize)
+        {
+            return double.IsNaN(fontSize) ? 10 : fontSize;
         }
     }
 }

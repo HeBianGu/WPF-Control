@@ -8,19 +8,25 @@
 
 using H.Common.Attributes;
 using H.Controls.ShapeBox.Shapes;
-using H.Controls.ShapeBox.State.Base;
 using H.Extensions.FontIcon;
 using System.ComponentModel.DataAnnotations;
 
 namespace H.Controls.ShapeBox.State.Adds
 {
-    [Icon(FontIcons.CalculatorSubtract)]
-    [Display(Name = "绘制直线")]
-    public class AddLineShapeState : AddFromToShapeState<LineShape>
+    [Icon(FontIcons.Ruler)]
+    [Display(Name = "绘制标尺")]
+    public class AddRulerLineShapeState : AddFromToShapeState<RulerLineShape>
     {
-        public AddLineShapeState()
+        public AddRulerLineShapeState()
         {
+            this.Shape.UseHandle = false;
             this.Shape.UseText = true;
+        }
+
+        protected override void Sumit()
+        {
+            base.Sumit();
+            this.DrawStateShape(this.Shape);
         }
     }
 }

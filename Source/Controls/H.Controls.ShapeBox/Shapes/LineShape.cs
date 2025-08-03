@@ -11,7 +11,13 @@ using H.Controls.ShapeBox.Shapes.Base;
 
 namespace H.Controls.ShapeBox.Shapes
 {
-    public class LineShape : TitleShapeBase
+    public interface IFromToShape : IShape
+    {
+        Point From { get; set; }
+        Point To { get; set; }
+    }
+
+    public class LineShape : TitleShapeBase, IFromToShape
     {
         public LineShape()
         {
@@ -36,14 +42,14 @@ namespace H.Controls.ShapeBox.Shapes
             drawingContext.DrawLine(pen, this.From, normalToPoint);
             if (this.UseCross)
             {
-                this.DrawCross(view, drawingContext, this.From, pen,45);
-                this.DrawCross(view, drawingContext, normalToPoint, pen,45);
+                this.DrawCross(view, drawingContext, this.From, pen, 45);
+                this.DrawCross(view, drawingContext, normalToPoint, pen, 45);
             }
             var normalToCenter = matrix.Transform(this.Center);
             if (this.UseText)
             {
                 double length = (this.From - normalToPoint).Length;
-                drawingContext.DrawTextAtCenter(length.ToString("F2"), normalToCenter, pen.Brush, 15.0 / view.Scale);
+                drawingContext.DrawTextAtTopCenter(length.ToString("F2"), normalToCenter, pen.Brush, 15.0 / view.Scale);
             }
 
             this.DrawTitle(view, drawingContext, normalToCenter, pen.Brush, 15.0 / view.Scale);
@@ -54,7 +60,7 @@ namespace H.Controls.ShapeBox.Shapes
         {
             if (string.IsNullOrEmpty(this.Title))
                 return;
-            drawingContext.DrawTextAtCenter(this.Title, point, brush, fontsize);
+            drawingContext.DrawTextAtTopCenter(this.Title, point, brush, fontsize);
         }
 
         public double Angle => this.CalculateAngle(this.From.X, this.From.Y, this.To.X, this.To.Y);
@@ -90,8 +96,10 @@ namespace H.Controls.ShapeBox.Shapes
 
         protected override IEnumerable<IHandle> CreateHandles()
         {
+            Matrix matrix = this.GetInvertMatrix();
+            var normalToPoint = matrix.Transform(this.To);
             yield return new ActionHandle(x => this.From = x, this.From);
-            yield return new ActionHandle(x => this.To = x, this.To);
+            yield return new ActionHandle(x => this.To = x, normalToPoint);
         }
 
         //public override IHandle HitIHandle(IView view, Point position)
