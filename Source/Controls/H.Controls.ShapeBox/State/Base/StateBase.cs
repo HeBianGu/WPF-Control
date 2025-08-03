@@ -42,24 +42,12 @@ namespace H.Controls.ShapeBox.State.Base
 
         }
 
-        protected virtual void Sumit()
-        {
+        protected virtual IStateShapeView GetStateShapeView() => this.View as IStateShapeView;
 
-        }
+        protected virtual IShapeView GetShapeView()=> this.View as IShapeView;
 
-        protected virtual IStateShapeView GetStateShapeView()
-        {
-            if (this.View is IStateShapeView stateShapeView)
-                return stateShapeView;
-            return null;
-        }
 
-        protected FrameworkElement GetElementView()
-        {
-            if (this.View is FrameworkElement frameworkElement)
-                return frameworkElement;
-            return null;
-        }
+        protected FrameworkElement GetElementView() => this.View as FrameworkElement;
 
         protected void SetCursor(Cursor cursor)
         {
@@ -74,12 +62,6 @@ namespace H.Controls.ShapeBox.State.Base
             this.GetStateShapeView()?.DrawStateShape(shapes);
         }
 
-        public virtual void Cancel()
-        {
-            this.Clear();
-            this.DrawStateShape();
-        }
-
         public virtual void Enter()
         {
 
@@ -87,7 +69,8 @@ namespace H.Controls.ShapeBox.State.Base
 
         public virtual void Exit()
         {
-            this.Cancel();
+            this.Clear();
+            this.DrawStateShape();
             this.View = null;
         }
 

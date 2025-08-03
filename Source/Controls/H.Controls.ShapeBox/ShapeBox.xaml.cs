@@ -18,7 +18,7 @@ using System.Windows.Threading;
 
 namespace H.Controls.ShapeBox
 {
-    public class ShapeBox : FrameworkElement, IView
+    public class ShapeBox : FrameworkElement, IShapeView
     {
         static ShapeBox()
         {
@@ -282,7 +282,7 @@ namespace H.Controls.ShapeBox
             this.DelayUpdateAll();
         }
 
-        void DrawShapes()
+        public void DrawShapes()
         {
             using var drawingContext = this._shapeDrawingVisual.RenderOpen();
             if (this.Shapes == null || this.Shapes.Count == 0)

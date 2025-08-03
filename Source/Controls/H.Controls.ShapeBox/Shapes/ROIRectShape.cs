@@ -16,10 +16,8 @@ namespace H.Controls.ShapeBox.Shapes
     {
         public ROIRectShape()
         {
-            Application.Current.Dispatcher.Invoke(() =>
-            {
-                this.Fill = new SolidColorBrush(Colors.Black) { Opacity = 0.2 };
-            });
+            this.Fill = new SolidColorBrush(Colors.Black) { Opacity = 0.2 };
+            this.Fill.Freeze();
         }
         public Rect Rect { get; set; }
 

@@ -17,32 +17,8 @@ namespace H.Controls.ShapeBox.State
 
     [Icon(FontIcons.Unit)]
     [Display(Name = "显示对象")]
-    public class ShowShapeState<T> : HandleShapeStateBase where T : IShape
+    public class ShowShapeState<T> : ShapeState<T> where T : IShape
     {
-        public T Shape { get; set; }
-        protected override IPreviewShape GetPreviewShape()
-        {
-            return this.Shape as IPreviewShape;
-        }
-
-        public override void ScaleChanged()
-        {
-            base.ScaleChanged();
-            this.DrawStateShape(this.Shape);
-        }
-
-        public override void Enter()
-        {
-            base.Enter();
-            this.DrawStateShape(this.Shape);
-        }
-
-        public override void Exit()
-        {
-            base.Exit();
-            this.DrawStateShape();
-        }
-
         public override IHandle HitHandle(Point point)
         {
             if (this.Shape is IHandleShape handleShape)
