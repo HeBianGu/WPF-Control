@@ -33,9 +33,9 @@ namespace H.Controls.ShapeBox.Shapes
         public override void DrawPreview(IView view, DrawingContext drawingContext, Brush stroke, double strokeThickness = 1, Brush fill = null)
         {
             double r = 10.0 / view.Scale;
-            this.DrawPoint(view, drawingContext, new Point(r, r), fill);
             if (this.UseCross)
                 this.DrawCross(view, drawingContext, new Point(r, r), new Pen(stroke, strokeThickness), 45);
+            this.DrawPoint(view, drawingContext, new Point(r, r), fill, strokeThickness);
         }
 
         protected override IEnumerable<IHandle> CreateHandles()
