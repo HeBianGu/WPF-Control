@@ -36,8 +36,8 @@ namespace H.Controls.ShapeBox.Shapes
             drawingContext.DrawLine(pen, this.From, normalToPoint);
             if (this.UseCross)
             {
-                this.DrawCross(view, drawingContext, this.From, pen, this.Angle + 45);
-                this.DrawCross(view, drawingContext, normalToPoint, pen, this.Angle + 45);
+                this.DrawCross(view, drawingContext, this.From, pen,45);
+                this.DrawCross(view, drawingContext, normalToPoint, pen,45);
             }
             var normalToCenter = matrix.Transform(this.Center);
             if (this.UseText)
@@ -75,17 +75,6 @@ namespace H.Controls.ShapeBox.Shapes
             Matrix matrix = new Matrix();
             matrix.RotateAt(this.Angle, this.From.X, this.From.Y);
             return matrix;
-        }
-
-        double CalculateAngle(double x1, double y1, double x2, double y2)
-        {
-            double deltaY = y2 - y1;
-            double deltaX = x2 - x1;
-            double angleInRadians = Math.Atan2(deltaY, deltaX);
-            double angleInDegrees = angleInRadians * (180 / Math.PI);
-            if (angleInDegrees < 0)
-                angleInDegrees += 360;
-            return angleInDegrees;
         }
 
         public override void DrawPreview(IView view, DrawingContext drawingContext, Brush stroke, double strokeThickness = 1, Brush fill = null)

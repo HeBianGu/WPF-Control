@@ -10,29 +10,25 @@ using H.Controls.ShapeBox.Shapes.Base;
 
 namespace H.Controls.ShapeBox.State.Adds.Base
 {
-    public abstract class TwoClickAddSahpeState<T> : OneClickAddShapeState<T> where T : IShape
+    public abstract class OneClickAddShapeState<T> : AddShapeState<T> where T : IShape
     {
         protected override void OnClick(Queue<Point> points)
         {
-            base.OnClick(points);
-            if (points.Count == 2)
+            if (points.Count == 1)
             {
-                this.TwoClick(points.ElementAt(1));
-                this.Sumit();
+                this.OneClick(points.ElementAt(0));
             }
         }
-        protected override void OneClick(Point p)
-        {
-
-        }
-        protected virtual void TwoClick(Point p)
+        protected virtual void OneClick(Point p)
         {
             this.Sumit();
         }
+
         protected override void OnPreviewMouseMove(Point p)
         {
-            if (this._clickPoints.Count == 1)
+            if (this._clickPoints.Count == 0)
                 this.ClickPreviewMove(p);
         }
+        protected abstract void ClickPreviewMove(Point p);
     }
 }

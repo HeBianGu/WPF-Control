@@ -10,23 +10,23 @@ using H.Controls.ShapeBox.Shapes.Base;
 
 namespace H.Controls.ShapeBox.State.Adds.Base
 {
-    public abstract class OneClickShapeState<T> : AddShapeState<T> where T : IShape
+    public abstract class ThreeClickAddSahpeState<T> : OneClickAddShapeState<T> where T : IShape
     {
         protected override void OnClick(Queue<Point> points)
         {
-            if (points.Count == 1)
-                this.OneClick(points.ElementAt(0));
-        }
-        protected virtual void OneClick(Point p)
-        {
-            this.Sumit();
+            base.OnClick(points);
+            if (points.Count == 3)
+            {
+                this.ThreeClick(points.ElementAt(1));
+                this.Sumit();
+            }
         }
 
+        protected abstract void ThreeClick(Point p);
         protected override void OnPreviewMouseMove(Point p)
         {
-            if (this._clickPoints.Count == 0)
+            if (this._clickPoints.Count == 2)
                 this.ClickPreviewMove(p);
         }
-        protected abstract void ClickPreviewMove(Point p);
     }
 }

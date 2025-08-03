@@ -33,7 +33,7 @@ namespace H.Controls.ShapeBox.State.Adds.Base
         public override void MouseMove(object sender, MouseEventArgs e)
         {
             base.MouseMove(sender, e);
-            if (this._clickPoints == null || this._clickPoints.Count == 0)
+            if (this._clickPoints == null)
                 return;
             var p = e.GetPosition(sender as FrameworkElement);
             this.OnPreviewMouseMove(p);

@@ -9,38 +9,36 @@
 using H.Common.Attributes;
 using H.Controls.ShapeBox.Shapes;
 using H.Controls.ShapeBox.State.Adds.Base;
-using H.Controls.ShapeBox.State.Base;
 using H.Extensions.FontIcon;
 using System.ComponentModel.DataAnnotations;
 
 namespace H.Controls.ShapeBox.State.Adds
 {
-    [Icon(FontIcons.CalculatorSubtract)]
-    [Display(Name = "绘制直线")]
-    public class AddLineShapeState : TwoClickAddSahpeState<LineShape>
+    [Icon(FontIcons.CircleRing)]
+    [Display(Name = "绘制圆")]
+    public class AddCircleShapeState : TwoClickAddSahpeState<CircleShape>
     {
-        public AddLineShapeState()
+        public AddCircleShapeState()
         {
-            this.Shape = new LineShape() { UseText = true };
+            this.Shape = new CircleShape() { UseDimension = true };
         }
 
         protected override void OneClick(Point p)
         {
             base.OneClick(p);
-            this.Shape.From = p;
-            this.Shape.To = p;
+            this.Shape.Center = p;
             this.DrawStateShape(this.Shape);
         }
         protected override void TwoClick(Point p)
         {
-            this.Shape.To = p;
+            this.Shape.Radius = (p - this.Shape.Center).Length;
             this.DrawStateShape(this.Shape);
             this.Sumit();
         }
 
         protected override void ClickPreviewMove(Point p)
         {
-            this.Shape.To = p;
+            this.Shape.Radius = (p - this.Shape.Center).Length;
             this.DrawStateShape(this.Shape);
         }
     }

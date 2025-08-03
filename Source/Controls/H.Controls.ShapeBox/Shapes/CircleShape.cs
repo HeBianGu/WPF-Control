@@ -25,25 +25,36 @@ namespace H.Controls.ShapeBox.Shapes
         public Point Center { get; set; }
 
         public double Radius { get; set; }
-        public bool UseCenter { get; set; } = false;
+        public bool UseCross { get; set; } = false;
         public bool UseDimension { get; set; } = true;
         public override void MatrixDrawing(IView view, DrawingContext drawingContext, Pen pen, Brush fill = null)
         {
-            if (this.Radius < 0)
+            if (this.Radius <= 0)
                 return;
             drawingContext.DrawEllipse(fill, pen, this.Center, this.Radius, this.Radius);
 
-            if (this.UseCenter)
+            if (this.UseCross)
                 this.DrawCross(view, drawingContext, this.Center, pen);
             if (this.UseDimension)
-                this.DrawDimensionLine(view, drawingContext, this.Center, this.Center + new Vector(this.Radius, 0), pen); 
+            {
+                this.DrawDimensionLine(view, drawingContext, this.Center, this.Center + new Vector(this.Radius, 0), pen);
+            }
+            else
+            {
+                if (this.UseCross)
+                    this.DrawCross(view, drawingContext, this.Center, pen);
+            }
+              
             base.MatrixDrawing(view, drawingContext, pen, fill);
         }
 
         public override void DrawPreview(IView view, DrawingContext drawingContext, Brush stroke, double strokeThickness = 1, Brush fill = null)
         {
-            var r = 20.0 / view.Scale;
-            drawingContext.DrawEllipse(fill, new Pen(stroke,strokeThickness), this.Center, r, r);
+            var r = 10.0 / view.Scale;
+            var center = new Point(r, r);
+            drawingContext.DrawEllipse(null, new Pen(stroke, strokeThickness), center, r, r);
+            this.DrawPoint(view, drawingContext, center, fill, strokeThickness);
+            this.DrawPoint(view, drawingContext, center + new Vector(r, 0), fill, strokeThickness);
         }
     }
 }

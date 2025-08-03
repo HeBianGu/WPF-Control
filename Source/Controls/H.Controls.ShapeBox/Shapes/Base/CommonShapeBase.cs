@@ -27,11 +27,23 @@ namespace H.Controls.ShapeBox.Shapes.Base
             if (from == to)
                 return;
             dc.DrawLine(pen, from, to);
-            this.DrawCross(view, dc, from, pen);
-            this.DrawCross(view, dc, to, pen);
+            double angle = this.CalculateAngle(from.X, from.Y, to.X, to.Y);
+            this.DrawCross(view, dc, from, pen, angle + 45);
+            this.DrawCross(view, dc, to, pen, angle + 45);
             double length = (from - to).Length;
             var center = from + (to - from) / 2;
             dc.DrawTextAtCenter(length.ToString("F2"), center, pen.Brush, 15.0 / view.Scale);
+        }
+
+        protected double CalculateAngle(double x1, double y1, double x2, double y2)
+        {
+            double deltaY = y2 - y1;
+            double deltaX = x2 - x1;
+            double angleInRadians = Math.Atan2(deltaY, deltaX);
+            double angleInDegrees = angleInRadians * (180 / Math.PI);
+            if (angleInDegrees < 0)
+                angleInDegrees += 360;
+            return angleInDegrees;
         }
     }
 

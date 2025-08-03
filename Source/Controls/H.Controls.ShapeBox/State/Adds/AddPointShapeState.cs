@@ -9,39 +9,29 @@
 using H.Common.Attributes;
 using H.Controls.ShapeBox.Shapes;
 using H.Controls.ShapeBox.State.Adds.Base;
-using H.Controls.ShapeBox.State.Base;
 using H.Extensions.FontIcon;
 using System.ComponentModel.DataAnnotations;
 
 namespace H.Controls.ShapeBox.State.Adds
 {
-    [Icon(FontIcons.CalculatorSubtract)]
-    [Display(Name = "绘制直线")]
-    public class AddLineShapeState : TwoClickAddSahpeState<LineShape>
+    [Icon(FontIcons.CalculatorMultiply)]
+    [Display(Name = "绘制点")]
+    public class AddPointShapeState : OneClickAddShapeState<PointShape>
     {
-        public AddLineShapeState()
+        public AddPointShapeState()
         {
-            this.Shape = new LineShape() { UseText = true };
+            this.Shape = new PointShape();
         }
 
         protected override void OneClick(Point p)
         {
+            this.Shape.Point = p;
             base.OneClick(p);
-            this.Shape.From = p;
-            this.Shape.To = p;
-            this.DrawStateShape(this.Shape);
         }
-        protected override void TwoClick(Point p)
-        {
-            this.Shape.To = p;
-            this.DrawStateShape(this.Shape);
-            this.Sumit();
-        }
-
         protected override void ClickPreviewMove(Point p)
         {
-            this.Shape.To = p;
-            this.DrawStateShape(this.Shape);
+            //this.Shape.Point = p;
+            //this.DrawStateShape(this.Shape);
         }
     }
 }
