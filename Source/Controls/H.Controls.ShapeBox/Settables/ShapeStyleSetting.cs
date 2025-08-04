@@ -7,6 +7,7 @@
 // Licensed under the MIT License (the "License")
 using H.Extensions.Setting;
 using H.Services.Setting;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Reflection;
 using System.Text.Json.Serialization;
@@ -25,10 +26,13 @@ namespace H.Controls.ShapeBox
 
     public class ShapeStyleSetting<T> : Settable<T>, IShapeStyleSetting where T : new()
     {
+        [DefaultValue(null)]
         [Display(Name = "线条颜色", GroupName = "样式")]
         public Brush Stroke { get; set; }
+        [DefaultValue(-1)]
         [Display(Name = "线条粗细", GroupName = "样式")]
         public double StrokeThickness { get; set; } = -1;
+        [DefaultValue(null)]
         [Display(Name = "填充色", GroupName = "样式")]
         public Brush Fill { get; set; }
 

@@ -5,6 +5,7 @@
 // QQ:908293466 Group:971261058 
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
 using System.Windows.Ink;
@@ -15,12 +16,16 @@ namespace H.Controls.ShapeBox.Shapes.Base
     public abstract class ShapeBase : IShape
     {
         [JsonIgnore]
+        [DefaultValue(null)]
         [Display(Name = "线条颜色",GroupName ="样式")]
         public Brush Stroke { get; set; }
         [JsonIgnore]
+        [DefaultValue(-1)]
         [Display(Name = "线条粗细", GroupName = "样式")]
         public double StrokeThickness { get; set; } = -1;
+
         [JsonIgnore]
+        [DefaultValue(null)]
         [Display(Name = "填充色", GroupName = "样式")]
         public Brush Fill { get; set; }
         public virtual void Draw(IView view, DrawingContext drawingContext, Brush stroke, double strokeThickness = 1, Brush fill = null)
