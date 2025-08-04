@@ -7,6 +7,7 @@
 // Licensed under the MIT License (the "License")
 using H.Controls.ShapeBox.Drawings;
 using H.Controls.ShapeBox.Shapes.Base;
+using System.ComponentModel.DataAnnotations;
 using System.Windows.Media;
 
 namespace H.Controls.ShapeBox.Shapes
@@ -23,10 +24,17 @@ namespace H.Controls.ShapeBox.Shapes
             this.Center = center;
             this.FromRadius = radius;
         }
+
+        [Display(Name = "中心坐标", GroupName = "数据")]
         public Point Center { get; set; }
+        [Display(Name = "起始半径", GroupName = "数据")]
         public double FromRadius { get; set; }
+        [Display(Name = "终止半径", GroupName = "数据")]
         public double ToRadius { get; set; }
-        public int CaliperCount { get; set; }
+        [Display(Name = "卡尺数量", GroupName = "数据")]
+        public int CaliperCount { get; set; } = 36;
+        [Display(Name = "卡尺颜色", GroupName = "数据")]
+        public Brush MinorStroke{ get; set; } = Brushes.LightBlue;
 
         public override void MatrixDrawing(IView view, DrawingContext drawingContext, Pen pen, Brush fill = null)
         {
@@ -42,7 +50,7 @@ namespace H.Controls.ShapeBox.Shapes
             double l = Math.Abs(this.FromRadius - this.ToRadius);
             double tangentLength = this.FromRadius * Math.Tan(Math.PI / caliperCount);
 
-            var linePen = new Pen(Brushes.LightBlue, pen.Thickness / 2);
+            var linePen = new Pen(this.MinorStroke, pen.Thickness / 2);
             for (int i = 0; i < caliperCount; i++)
             {
                 drawingContext.PushTransform(new RotateTransform() { Angle = angle * i, CenterX = this.Center.X, CenterY = this.Center.Y });

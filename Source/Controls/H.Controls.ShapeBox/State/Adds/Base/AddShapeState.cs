@@ -46,13 +46,13 @@ namespace H.Controls.ShapeBox.State.Adds.Base
         protected virtual void Sumit()
         {
             this.Clear();
-            this.DrawStateShape();
+            this.ClearStateShape();
         }
 
         public virtual void Cancel()
         {
             this.Clear();
-            this.DrawStateShape();
+            this.ClearStateShape();
         }
 
         protected override void Clear()

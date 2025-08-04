@@ -5,6 +5,7 @@
 // QQ:908293466 Group:971261058 
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
+using System.ComponentModel.DataAnnotations;
 using System.Windows.Media;
 using H.Controls.ShapeBox.Shapes.Base;
 
@@ -20,7 +21,11 @@ namespace H.Controls.ShapeBox.Shapes
         {
             this.Point = center;
         }
+
+        [Display(Name = "点坐标", GroupName = "数据")]
         public Point Point { get; set; }
+
+        [Display(Name = "启用交线", GroupName = "样式")]
         public bool UseCross { get; set; } = true;
         public override void MatrixDrawing(IView view, DrawingContext drawingContext, Pen pen, Brush fill = null)
         {

@@ -22,19 +22,19 @@ namespace H.Controls.ShapeBox.State.Adds
             base.OneClick(p);
             this.Shape.From = p;
             this.Shape.To = p;
-            this.DrawStateShape(this.Shape);
+            this.UpdateStateShape();
         }
         protected override void TwoClick(Point p)
         {
             this.Shape.To = p;
-            this.DrawStateShape(this.Shape);
+            this.UpdateStateShape();
             this.Sumit();
         }
 
         protected override void ClickPreviewMove(Point p)
         {
             this.Shape.To = p;
-            this.DrawStateShape(this.Shape);
+            this.UpdateStateShape();
         }
     }
 }

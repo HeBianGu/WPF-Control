@@ -7,6 +7,7 @@
 // Licensed under the MIT License (the "License")
 
 using H.Controls.ShapeBox.Shapes.Base;
+using H.Services.Message;
 
 namespace H.Controls.ShapeBox.State.Base
 {
@@ -20,17 +21,33 @@ namespace H.Controls.ShapeBox.State.Base
         public override void ScaleChanged()
         {
             base.ScaleChanged();
-            this.DrawStateShape(this.Shape);
+            this.UpdateStateShape();
         }
 
         public override void Enter()
         {
             base.Enter();
-            this.DrawStateShape(this.Shape);
+            this.UpdateStateShape();
         }
         public override void Exit()
         {
             base.Exit();
+            this.ClearStateShape();
+        }
+
+        public override async void ShowEdit()
+        {
+            await IocMessage.Form?.ShowTabEdit(this.Shape, x => x.Title = this.Name);
+            this.UpdateStateShape();
+        }
+
+        protected void UpdateStateShape()
+        {
+            this.DrawStateShape(this.Shape);
+        }
+
+        protected void ClearStateShape()
+        {
             this.DrawStateShape();
         }
     }

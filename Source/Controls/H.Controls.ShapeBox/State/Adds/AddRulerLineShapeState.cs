@@ -26,7 +26,7 @@ namespace H.Controls.ShapeBox.State.Adds
         protected override void Sumit()
         {
             base.Sumit();
-            this.DrawStateShape(this.Shape);
+            this.UpdateStateShape();
         }
     }
 }

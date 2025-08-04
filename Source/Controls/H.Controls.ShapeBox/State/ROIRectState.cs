@@ -13,6 +13,7 @@ using H.Controls.ShapeBox.Shapes;
 using H.Controls.ShapeBox.Shapes.Base;
 using H.Controls.ShapeBox.State.Base;
 using H.Extensions.FontIcon;
+using H.Services.Message;
 
 namespace H.Controls.ShapeBox.State
 {
@@ -269,6 +270,12 @@ namespace H.Controls.ShapeBox.State
 
         public override void ScaleChanged()
         {
+            this.DrawStateShape(this._rOIRectShape);
+        }
+
+        public override async void ShowEdit()
+        {
+            await IocMessage.Form?.ShowTabEdit(this._rOIRectShape, x => x.Title = this.Name);
             this.DrawStateShape(this._rOIRectShape);
         }
     }

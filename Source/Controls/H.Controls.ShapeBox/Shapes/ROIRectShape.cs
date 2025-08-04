@@ -5,10 +5,13 @@
 // QQ:908293466 Group:971261058 
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Windows.Media;
 using H.Controls.ShapeBox.Drawings;
 using H.Controls.ShapeBox.Shapes.Base;
 using H.Extensions.Common;
+using H.Extensions.TypeConverter;
 
 namespace H.Controls.ShapeBox.Shapes
 {
@@ -19,11 +22,17 @@ namespace H.Controls.ShapeBox.Shapes
             this.Fill = new SolidColorBrush(Colors.Black) { Opacity = 0.2 };
             this.Fill.Freeze();
         }
+        [TypeConverter(typeof(Round2RectConverter))]
+        [Display(Name = "ROI范围", GroupName = "数据")]
         public Rect Rect { get; set; }
 
+        [Display(Name = "句柄长度", GroupName = "样式")]
         public double HandleLength { get; set; } = 6.0;
 
-        public bool UseCross { get; set; } = false;
+        [Display(Name = "启用交线", GroupName = "样式")]
+        public bool UseCross { get; set; } = true;
+
+        [Display(Name = "启用文本", GroupName = "样式")]
         public bool UseText { get; set; } = true;
 
         public override void MatrixDrawing(IView view, DrawingContext dc, Pen pen, Brush fill = null)

@@ -5,8 +5,11 @@
 // QQ:908293466 Group:971261058 
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Windows.Media;
 using H.Controls.ShapeBox.Shapes.Base;
+using H.Extensions.TypeConverter;
 
 namespace H.Controls.ShapeBox.Shapes
 {
@@ -20,6 +23,8 @@ namespace H.Controls.ShapeBox.Shapes
         {
             this.Rect = rect;
         }
+        [TypeConverter(typeof(Round2RectConverter))]
+        [Display(Name = "矩形范围", GroupName = "数据")]
         public Rect Rect { get; set; }
         public override void MatrixDrawing(IView view, DrawingContext drawingContext, Pen pen, Brush fill = null)
         {

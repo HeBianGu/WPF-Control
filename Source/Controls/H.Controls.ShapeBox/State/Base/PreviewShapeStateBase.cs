@@ -11,7 +11,7 @@ using System.Windows.Input;
 
 namespace H.Controls.ShapeBox.State.Base
 {
-    public abstract class PreviewShapeStateBase : StateBase
+    public abstract class PreviewShapeStateBase : ShowEditStateBase
     {
         protected abstract IPreviewShape GetPreviewShape();
 

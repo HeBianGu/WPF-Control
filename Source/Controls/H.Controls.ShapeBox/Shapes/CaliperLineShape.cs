@@ -7,6 +7,7 @@
 // Licensed under the MIT License (the "License")
 using H.Controls.ShapeBox.Drawings;
 using H.Controls.ShapeBox.Shapes.Base;
+using System.ComponentModel.DataAnnotations;
 using System.Windows.Media;
 
 namespace H.Controls.ShapeBox.Shapes
@@ -23,9 +24,13 @@ namespace H.Controls.ShapeBox.Shapes
             this.From = start;
             this.To = end;
         }
-        public int CaliperCount { get; set; }
 
+        [Display(Name = "卡尺数量", GroupName = "数据")]
+        public int CaliperCount { get; set; }
+        [Display(Name = "偏移位置", GroupName = "数据")]
         public double Offset { get; set; } = 10.0;
+        [Display(Name = "卡尺颜色", GroupName = "数据")]
+        public Brush MinorStroke { get; set; } = Brushes.LightBlue;
 
         public override void MatrixDrawing(IView view, DrawingContext drawingContext, Pen pen, Brush fill = null)
         {
@@ -34,7 +39,7 @@ namespace H.Controls.ShapeBox.Shapes
             Matrix matrix = this.GetInvertMatrix();
             var normalToPoint = matrix.Transform(this.To);
             int capliperCount = this.CaliperCount > 0 ? this.CaliperCount : 20;
-            var linePen = new Pen(Brushes.LightBlue, pen.Thickness / 2);
+            var linePen = new Pen(this.MinorStroke, pen.Thickness / 2);
             var offsetVector = new Vector(0, this.Offset);
             var step = (normalToPoint - this.From) / capliperCount;
             double w = step.Length;

@@ -8,6 +8,7 @@
 
 using H.Controls.ShapeBox.Shapes.Base;
 using H.Extensions.Mvvm.ViewModels.Base;
+using H.Iocable;
 using System.Windows.Input;
 
 namespace H.Controls.ShapeBox.State.Base
@@ -44,7 +45,7 @@ namespace H.Controls.ShapeBox.State.Base
 
         protected virtual IStateShapeView GetStateShapeView() => this.View as IStateShapeView;
 
-        protected virtual IShapeView GetShapeView()=> this.View as IShapeView;
+        protected virtual IShapeView GetShapeView() => this.View as IShapeView;
 
 
         protected FrameworkElement GetElementView() => this.View as FrameworkElement;

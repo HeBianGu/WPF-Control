@@ -5,6 +5,7 @@
 // QQ:908293466 Group:971261058 
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
+using System.ComponentModel.DataAnnotations;
 using System.Windows.Media;
 using H.Controls.ShapeBox.Drawings;
 using H.Controls.ShapeBox.Shapes.Base;
@@ -22,10 +23,14 @@ namespace H.Controls.ShapeBox.Shapes
             this.Center = center;
             this.Radius = radius;
         }
-        public Point Center { get; set; }
 
+        [Display(Name = "中心坐标", GroupName = "数据")]
+        public Point Center { get; set; }
+        [Display(Name = "半径", GroupName = "数据")]
         public double Radius { get; set; }
+        [Display(Name = "启用交线", GroupName = "样式")]
         public bool UseCross { get; set; } = false;
+        [Display(Name = "启用标尺", GroupName = "样式")]
         public bool UseDimension { get; set; } = true;
         public override void MatrixDrawing(IView view, DrawingContext drawingContext, Pen pen, Brush fill = null)
         {
