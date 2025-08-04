@@ -50,5 +50,10 @@ namespace H.Controls.ShapeBox.State.Base
             base.ScaleChanged();
             this.DrawPreviewShape();
         }
+
+        public override IShapeStyleSetting GetShapeStyleSetting()
+        {
+            return PickPixelShapeStyleSetting.Instance;
+        }
     }
 }

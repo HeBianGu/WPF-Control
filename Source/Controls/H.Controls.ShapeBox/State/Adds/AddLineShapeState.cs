@@ -22,5 +22,10 @@ namespace H.Controls.ShapeBox.State.Adds
         {
             this.Shape.UseText = true;
         }
+
+        public override IShapeStyleSetting GetShapeStyleSetting()
+        {
+            return LineShapeStyleSetting.Instance;
+        }
     }
 }

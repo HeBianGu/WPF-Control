@@ -6,21 +6,13 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
-using H.Mvvm.Commands;
-using H.Services.Message;
-
 namespace H.Controls.ShapeBox.State.Base
 {
-    public abstract class ShowEditStateBase : ShapeStyleSettingStateBase
+    public abstract class ShapeStyleSettingStateBase : StateBase
     {
-        public RelayCommand EditCommand => new RelayCommand(x =>
+        public virtual IShapeStyleSetting GetShapeStyleSetting()
         {
-            this.ShowEdit();
-        });
-
-        public virtual async void ShowEdit()
-        {
-            await IocMessage.Form?.ShowEdit(this);
+            return null;
         }
     }
 }

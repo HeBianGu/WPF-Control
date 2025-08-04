@@ -27,7 +27,7 @@ public class ObjectPropertyItem<T> : BindingVisiblablePropertyItemBase, IDataErr
         var defaultValueAttribute = property.GetCustomAttribute<DefaultValueAttribute>();
         if (defaultValueAttribute != null && this.ReadOnly == false)
         {
-            if (defaultValueAttribute.Value.TryChangeType(out T t))
+            if (defaultValueAttribute.Value?.TryChangeType(out T t) == true)
             {
                 this.UseSetDefault = true;
                 this._defaultValue = t;

@@ -27,18 +27,19 @@ namespace H.Controls.ShapeBox.State.Base
         public override void Enter()
         {
             base.Enter();
+            this.GetShapeStyleSetting()?.SaveTo(this.Shape);
             this.UpdateStateShape();
         }
-        public override void Exit()
-        {
-            base.Exit();
-            this.ClearStateShape();
-        }
 
+        public override IShapeStyleSetting GetShapeStyleSetting()
+        {
+            return base.GetShapeStyleSetting();
+        }
         public override async void ShowEdit()
         {
             await IocMessage.Form?.ShowTabEdit(this.Shape, x => x.Title = this.Name);
             this.UpdateStateShape();
+            this.GetShapeStyleSetting()?.LoadBy(this.Shape);
         }
 
         protected void UpdateStateShape()

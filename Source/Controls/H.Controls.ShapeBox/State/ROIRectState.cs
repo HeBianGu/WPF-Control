@@ -39,9 +39,18 @@ namespace H.Controls.ShapeBox.State
         private HitHandleType HitHandleType = HitHandleType.None;
         private Rect _downRect;
 
-        private ROIRectShape _rOIRectShape = new ROIRectShape();
+        public ROIRectState()
+        {
+            this._rOIRectShape = this.GetShapeStyleSetting()?.Create<ROIRectShape>() ?? new ROIRectShape();
+        }
 
+        private ROIRectShape _rOIRectShape = new ROIRectShape();
         protected ROIRectShape ROIRectShape => this._rOIRectShape;
+
+        public override IShapeStyleSetting GetShapeStyleSetting()
+        {
+            return ROIRectStateStyleSetting.Instance;
+        }
         public override void MouseLeave(object sender, MouseEventArgs e)
         {
             this.Clear();
@@ -265,6 +274,7 @@ namespace H.Controls.ShapeBox.State
 
         public override void Enter()
         {
+            this.GetShapeStyleSetting()?.SaveTo(this._rOIRectShape);
             this.DrawStateShape(this._rOIRectShape);
         }
 
@@ -277,6 +287,7 @@ namespace H.Controls.ShapeBox.State
         {
             await IocMessage.Form?.ShowTabEdit(this._rOIRectShape, x => x.Title = this.Name);
             this.DrawStateShape(this._rOIRectShape);
+            this.GetShapeStyleSetting()?.LoadBy(this._rOIRectShape);
         }
     }
 }

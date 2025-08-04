@@ -28,5 +28,10 @@ namespace H.Controls.ShapeBox.State.Adds
             base.Sumit();
             this.UpdateStateShape();
         }
+
+        public override IShapeStyleSetting GetShapeStyleSetting()
+        {
+            return RulerLineShapeStyleSetting.Instance;
+        }
     }
 }

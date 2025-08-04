@@ -33,5 +33,10 @@ namespace H.Controls.ShapeBox.State.Adds
             //this.Shape.Point = p;
             //this.DrawStateShape(this.Shape);
         }
+
+        public override IShapeStyleSetting GetShapeStyleSetting()
+        {
+            return PointShapeStyleSetting.Instance;
+        }
     }
 }

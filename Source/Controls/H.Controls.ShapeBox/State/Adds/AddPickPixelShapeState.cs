@@ -18,7 +18,7 @@ using H.Controls.ShapeBox.Shapes.Base;
 namespace H.Controls.ShapeBox.State.Adds
 {
     [Icon(FontIcons.Eyedropper)]
-    [Display(Name = "拾取像素点")]
+    [Display(Name = "拾取像素")]
     public class AddPickPixelShapeState : OneClickAddShapeState<PixelColorPointShape>
     {
         private PixelColorPointShape _previewShape = new PixelColorPointShape();
@@ -45,6 +45,11 @@ namespace H.Controls.ShapeBox.State.Adds
         protected override IPreviewShape GetPreviewShape()
         {
             return this._previewShape;
+        }
+
+        public override IShapeStyleSetting GetShapeStyleSetting()
+        {
+            return PickPixelShapeStyleSetting.Instance;
         }
     }
 }

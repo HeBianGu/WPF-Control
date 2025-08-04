@@ -41,5 +41,10 @@ namespace H.Controls.ShapeBox.State.Adds
             this.Shape.Radius = (p - this.Shape.Center).Length;
             this.UpdateStateShape();
         }
+
+        public override IShapeStyleSetting GetShapeStyleSetting()
+        {
+            return CircleShapeStyleSetting.Instance;
+        }
     }
 }
