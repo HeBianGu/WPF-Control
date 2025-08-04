@@ -17,11 +17,16 @@ public class TextPropertyItem : ObjectPropertyItem<string>
         {
             this.TextWrapping = ta.TextWrapping;
             this.UseClear = ta.UseClear;
+
+            UnitAttribute unit = property.GetCustomAttribute<UnitAttribute>();
+            if (unit != null)
+                this.Unit = unit.Unit;
         }
     }
 
+    public string Unit { get; set; }
+
     private TextWrapping _textWrapping = TextWrapping.Wrap;
-    /// <summary> 说明  </summary>
     public TextWrapping TextWrapping
     {
         get { return _textWrapping; }
@@ -33,7 +38,6 @@ public class TextPropertyItem : ObjectPropertyItem<string>
     }
 
     private bool _useClear;
-    /// <summary> 说明  </summary>
     public bool UseClear
     {
         get { return _useClear; }

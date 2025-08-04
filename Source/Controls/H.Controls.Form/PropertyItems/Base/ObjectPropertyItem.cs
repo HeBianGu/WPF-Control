@@ -6,11 +6,14 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
+using H.Mvvm.Commands;
+
 namespace H.Controls.Form.PropertyItems.Base;
 
 public class ObjectPropertyItem<T> : BindingVisiblablePropertyItemBase, IDataErrorInfo, IDisposable
 {
     private readonly MethodInfo _notifyMethodInfo;
+    private readonly T _defaultValue;
     public ObjectPropertyItem(PropertyInfo property, object obj) : base(property, obj)
     {
         List<RequiredAttribute> required = property.GetCustomAttributes<RequiredAttribute>()?.ToList();
@@ -20,6 +23,16 @@ public class ObjectPropertyItem<T> : BindingVisiblablePropertyItemBase, IDataErr
         this.AddValueChanged();
         this.LoadValue();
         this._notifyMethodInfo = this.GetNotifyMethodInfo();
+
+        var defaultValueAttribute = property.GetCustomAttribute<DefaultValueAttribute>();
+        if (defaultValueAttribute != null && this.ReadOnly == false)
+        {
+            if (defaultValueAttribute.Value.TryChangeType(out T t))
+            {
+                this.UseSetDefault = true;
+                this._defaultValue = t;
+            }
+        }
     }
 
     public void DependencyProperty_ValueChanged(object sender, EventArgs e)
@@ -239,7 +252,6 @@ public class ObjectPropertyItem<T> : BindingVisiblablePropertyItemBase, IDataErr
     }
 
     private string _message;
-    /// <summary> 说明  </summary>
     public string Message
     {
         get { return _message; }
@@ -251,10 +263,7 @@ public class ObjectPropertyItem<T> : BindingVisiblablePropertyItemBase, IDataErr
     }
 
     public string Flag { get; set; }
-
     public string Error { get; private set; }
-
-    // 验证
     public string this[string columnName]
     {
         get
@@ -262,5 +271,10 @@ public class ObjectPropertyItem<T> : BindingVisiblablePropertyItemBase, IDataErr
             return this.Error = this.Message;
         }
     }
+
+    public RelayCommand SetDefaultCommand => new RelayCommand(x =>
+    {
+        this.SetValue(this._defaultValue);
+    });
 
 }

@@ -16,8 +16,6 @@
     <Style x:Key="S.TextBlock.Flag"
            TargetType="TextBlock">
         <Setter Property="Text" Value="{Binding Flag}" />
-        <Setter Property="Width" Value="10" />
-        <Setter Property="Grid.Column" Value="1" />
         <Setter Property="VerticalAlignment" Value="Center" />
         <Setter Property="Foreground" Value="{DynamicResource {x:Static BrushKeys.Red}}" />
         <Setter Property="ToolTip" Value="该值不能为空" />
@@ -79,10 +77,13 @@
         <Setter Property="ItemHeaderTemplate">
             <Setter.Value>
                 <DataTemplate>
-                    <TextBlock Width="{Binding RelativeSource={RelativeSource AncestorType=local:Form}, Path=TitleWidth}"
-                               Margin="5,0"
-                               VerticalAlignment="Center"
-                               Text="{Binding}" />
+                    <DockPanel Width="{Binding RelativeSource={RelativeSource AncestorType=local:Form}, Path=TitleWidth}">
+                        <TextBlock Margin="5,0"
+                                   VerticalAlignment="Center"
+                                   Text="{Binding Name}" />
+                        <TextBlock Style="{StaticResource S.TextBlock.Flag}" />
+                    </DockPanel>
+
                 </DataTemplate>
             </Setter.Value>
         </Setter>
@@ -98,15 +99,30 @@
                                       ToolTip="{Binding Description}">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="Auto" />
-                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="20" />
                                         <ColumnDefinition />
                                         <ColumnDefinition Width="Auto" />
                                     </Grid.ColumnDefinitions>
                                     <ContentPresenter Grid.Column="0"
-                                                      Content="{Binding Name}"
+                                                      Content="{Binding}"
                                                       ContentTemplate="{Binding RelativeSource={RelativeSource AncestorType={x:Type local:Form}}, Path=ItemHeaderTemplate}" />
-                                    <TextBlock Grid.Column="1"
-                                               Style="{StaticResource S.TextBlock.Flag}" />
+                                    <Button Grid.Column="1"
+                                            Height="Auto"
+                                            Margin="2"
+                                            Padding="0"
+                                            VerticalAlignment="Center"
+                                            Background="Transparent"
+                                            Command="{Binding SetDefaultCommand}"
+                                            ToolTip="恢复默认值"
+                                            Visibility="{Binding UseSetDefault, Converter={x:Static Converter.GetTrueToVisible}}">
+                                        <Border Width="8"
+                                                Height="8"
+                                                Margin="2"
+                                                Background="{DynamicResource {x:Static BrushKeys.BorderBrush}}"
+                                                BorderBrush="{Binding RelativeSource={RelativeSource AncestorType=Button}, Path=Foreground}"
+                                                BorderThickness="1"
+                                                CornerRadius="0" />
+                                    </Button>
                                     <ContentPresenter Grid.Column="2"
                                                       Content="{Binding}" />
                                     <TextBlock Grid.Column="3"
