@@ -17,7 +17,7 @@ namespace H.Controls.ShapeBox.Shapes
     {
         public RectShape()
         {
-            
+
         }
         public RectShape(Rect rect)
         {
@@ -31,7 +31,7 @@ namespace H.Controls.ShapeBox.Shapes
             if (this.Rect.IsEmpty)
                 return;
             drawingContext.DrawRectangle(fill, pen, Rect);
-            this.DrawTitle(view, drawingContext, this.Rect.TopLeft, pen.Brush);
+            this.DrawTitle(view, drawingContext, this.Rect.TopLeft, pen.Brush, 10 / view.Scale);
             base.MatrixDrawing(view, drawingContext, pen, fill);
         }
     }

@@ -183,7 +183,7 @@ public class DataGridAutoColumnBehavior : Behavior<DataGrid>
                 Binding binding = new Binding();
                 string path = string.Format(this.BindingPath, string.Format(columnAttribute?.PropertyPath ?? "{0}", p.Name));
                 binding.Path = new PropertyPath(path);
-                binding.Mode = readOnly?.IsReadOnly == true ? BindingMode.OneWay : BindingMode.TwoWay;
+                binding.Mode = readOnly?.IsReadOnly == true || !p.CanWrite ? BindingMode.OneWay : BindingMode.TwoWay;
                 bound.Binding = binding;
                 if (columnAttribute?.ConvertyType != null)
                     binding.Converter = Activator.CreateInstance(columnAttribute.ConvertyType) as IValueConverter;
