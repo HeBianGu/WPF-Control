@@ -62,10 +62,5 @@ namespace H.Controls.ShapeBox.Shapes.Base
         //    yield return new ActionHandle(x => this.From = x, this.From);
         //    yield return new ActionHandle(x => this.To = x, normalToPoint);
         //}
-
-        public override string ToString()
-        {
-            return this.Points.ToString();
-        }
     }
 }
