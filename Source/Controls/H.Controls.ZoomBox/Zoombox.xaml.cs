@@ -922,6 +922,25 @@ namespace H.Controls.ZoomBox
             // keep the Position property in sync with the Viewport
             Zoombox zoombox = (Zoombox)o;
             zoombox.Position = new Point(-zoombox.Viewport.Left * zoombox.Scale / zoombox._viewboxFactor, -zoombox.Viewport.Top * zoombox.Scale / zoombox._viewboxFactor);
+
+            zoombox.OnViewportChanged();
+        }
+
+
+        public static readonly RoutedEvent ViewportChangedRoutedEvent =
+            EventManager.RegisterRoutedEvent("ViewportChanged", RoutingStrategy.Bubble, typeof(EventHandler<RoutedEventArgs>), typeof(Zoombox));
+        public event RoutedEventHandler ViewportChanged
+        {
+            add { this.AddHandler(ViewportChangedRoutedEvent, value); }
+            remove { this.RemoveHandler(ViewportChangedRoutedEvent, value); }
+        }
+
+        //激发路由事件,借用Click事件的激发方法
+
+        protected void OnViewportChanged()
+        {
+            RoutedEventArgs args = new RoutedEventArgs(ViewportChangedRoutedEvent, this);
+            this.RaiseEvent(args);
         }
 
         #endregion
