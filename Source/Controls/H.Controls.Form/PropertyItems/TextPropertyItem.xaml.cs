@@ -93,18 +93,14 @@ public class TextPropertyItem : ObjectPropertyItem<string>
         return value?.ToString();
     }
 
-    //[Browsable(true)]
-    //[Display(Name = "恢复默认", Icon = "\xe8dc", Order = 1)]
-    //public override RelayCommand LoadDefaultCommand => new RelayCommand(l =>
-    //{
-    //    this.LoadDefault();
-    //    this.LoadValue();
-    //});
+    protected override bool LoadDefaultValue(object obj, out string t)
+    {
+        t = obj == null ? null : IsTypeConverter(this.PropertyInfo) ? TypeConverterToString(obj) : (obj?.ToString());
+        return true;
+    }
 
-    //[Browsable(true)]
-    //[Display(Name = "删除", Icon = "\xe857", Order = 0)]
-    //public RelayCommand ClearCommand => new RelayCommand(l =>
-    //{
-    //    this.Value = null;
-    //});
+    protected override bool CanSetDefault(object obj)
+    {
+        return base.CanSetDefault(obj);
+    }
 }

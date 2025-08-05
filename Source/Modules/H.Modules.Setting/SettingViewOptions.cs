@@ -69,7 +69,7 @@ internal class SettingViewOptions : IocOptionInstance<SettingViewOptions>, ISett
 
     private double _minWidth = 100;
     [TypeConverter(typeof(LengthConverter))]
-    [DefaultValue(100)]
+    [DefaultValue(100d)]
     [Display(Name = "最小宽度", Description = "设置页面最小宽度")]
     public double MinWidth
     {
@@ -94,7 +94,7 @@ internal class SettingViewOptions : IocOptionInstance<SettingViewOptions>, ISett
     }
 
     private double _minHeight = 100;
-    [DefaultValue(100)]
+    [DefaultValue(100d)]
     [TypeConverter(typeof(LengthConverter))]
     [Display(Name = "最小高度", Description = "设置页面最小高度")]
     public double MinHeight

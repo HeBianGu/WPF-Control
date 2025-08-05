@@ -121,7 +121,8 @@
                                                 Background="{DynamicResource {x:Static BrushKeys.BorderBrush}}"
                                                 BorderBrush="{Binding RelativeSource={RelativeSource AncestorType=Button}, Path=Foreground}"
                                                 BorderThickness="1"
-                                                CornerRadius="0" />
+                                                CornerRadius="0"
+                                                Opacity="0.6" />
                                     </Button>
                                     <ContentPresenter Grid.Column="2"
                                                       Content="{Binding}" />

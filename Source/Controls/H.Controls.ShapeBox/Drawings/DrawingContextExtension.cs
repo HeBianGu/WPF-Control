@@ -44,6 +44,22 @@ namespace H.Controls.ShapeBox.Drawings
 
         }
 
+        public static void DrawPoints(this DrawingContext dc, Pen pen, Brush fill = null, bool isFilled = true, bool isClosed = true, params Point[] points)
+        {
+            var gemetry = points.ToGeometry(isFilled, isClosed);
+            dc.DrawGeometry(fill, pen, gemetry);
+        }
+
+        public static void DrawPloyLine(this DrawingContext dc, Pen pen, params Point[] points)
+        {
+            dc.DrawPoints(pen, null, false, false, points);
+        }
+
+        public static void DrawPloygon(this DrawingContext dc, Pen pen, Brush fill = null, params Point[] points)
+        {
+            dc.DrawPoints(pen, fill, true, true, points);
+        }
+
         public static Rect DrawTextAt(this DrawingContext dc, string text, Point point, Brush brush, double fontSize = 10.0, double offset = 5)
         {
             fontSize = fontSize.ToFontSize();

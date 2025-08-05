@@ -7,13 +7,14 @@
 // Licensed under the MIT License (the "License")
 
 using H.Mvvm.Commands;
+using System.ComponentModel;
 
 namespace H.Controls.Form.PropertyItems.Base;
 
 public class ObjectPropertyItem<T> : BindingVisiblablePropertyItemBase, IDataErrorInfo, IDisposable
 {
     private readonly MethodInfo _notifyMethodInfo;
-    private readonly T _defaultValue;
+    private T _defaultValue;
     public ObjectPropertyItem(PropertyInfo property, object obj) : base(property, obj)
     {
         List<RequiredAttribute> required = property.GetCustomAttributes<RequiredAttribute>()?.ToList();
@@ -27,7 +28,7 @@ public class ObjectPropertyItem<T> : BindingVisiblablePropertyItemBase, IDataErr
         var defaultValueAttribute = property.GetCustomAttribute<DefaultValueAttribute>();
         if (defaultValueAttribute != null && this.ReadOnly == false)
         {
-            if (defaultValueAttribute.Value?.TryChangeType(out T t) == true)
+            if (this.LoadDefaultValue(defaultValueAttribute.Value, out T t))
             {
                 this.UseSetDefault = true;
                 this._defaultValue = t;
@@ -275,6 +276,24 @@ public class ObjectPropertyItem<T> : BindingVisiblablePropertyItemBase, IDataErr
     public RelayCommand SetDefaultCommand => new RelayCommand(x =>
     {
         this.SetValue(this._defaultValue);
-    });
+        this.LoadValue();
+    }, x => this.CanSetDefault(x));
+
+    protected virtual bool LoadDefaultValue(object obj, out T t)
+    {
+        t = default(T);
+        return obj?.TryChangeType(out t) == true;
+    }
+
+    protected virtual bool CanSetDefault(object obj)
+    {
+        if (!this.UseSetDefault)
+            return false;
+        if (this._defaultValue == null && this.Value == null)
+            return false;
+        if (this._defaultValue != null && this._defaultValue.Equals(this.Value))
+            return false;
+        return true;
+    }
 
 }

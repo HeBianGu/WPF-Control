@@ -6,6 +6,7 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 using System.Windows.Media;
+using System.Windows.Shapes;
 
 namespace H.Controls.ShapeBox.Drawings
 {
