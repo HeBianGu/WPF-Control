@@ -32,7 +32,7 @@ namespace H.Controls.ShapeBox.Shapes.Base
             this.DrawCross(view, dc, to, pen, angle + 45);
             double length = (from - to).Length;
             var center = from + (to - from) / 2;
-            dc.DrawTextAtCenter(length.ToString("F2"), center, pen.Brush, 15.0 / view.Scale);
+            dc.DrawTextAtTopCenter(length.ToString("F2"), center, pen.Brush, 15.0 / view.Scale);
         }
 
         protected double CalculateAngle(double x1, double y1, double x2, double y2)
