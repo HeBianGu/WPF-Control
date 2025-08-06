@@ -22,7 +22,9 @@ namespace H.Controls.Form.PropertyItem.Attribute.SourcePropertyItem
         {
             if (_sourceMethodInfo == null)
                 _sourceMethodInfo = obj.GetType().GetMethod(this.MethodName);
-            return _sourceMethodInfo.Invoke(obj, null) as IEnumerable;
+            if (_sourceMethodInfo.Invoke(obj, null) is IEnumerable objects)
+                return objects;
+            return null;
         }
     }
 }
