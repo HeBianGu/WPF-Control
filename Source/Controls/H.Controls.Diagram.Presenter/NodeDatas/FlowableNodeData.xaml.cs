@@ -218,7 +218,7 @@ public class FlowableNodeData : ShowPropertyViewNodeDataBase, IFlowableNodeData
                 if (result.State == FlowableResultState.Break)
                 {
                     this.State = FlowableState.Break;
-                    this.Message = "不满足执行条件阻止流程";
+                    this.Message = result.Message ?? "不满足执行条件阻止流程";
                     return FlowableResult.Break;
                 }
                 else
