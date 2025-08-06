@@ -32,6 +32,8 @@ namespace H.Controls.ShapeBox.Shapes.Base
         {
             get
             {
+                if (this.Points.Count == 0)
+                    return new Rect(0, 0, 0, 0);
                 var minx = this.Points.Min(x => x.X);
                 var miny = this.Points.Min(x => x.Y);
                 return new Rect(minx, miny, this.Points.Max(x => x.X) - minx, this.Points.Max(x => x.Y) - miny);

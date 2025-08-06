@@ -4059,6 +4059,33 @@ namespace H.Controls.ZoomBox
         }
 
         #endregion
+
+
+        public bool UseShowViewFinder
+        {
+            get { return (bool)GetValue(UseShowViewFinderProperty); }
+            set { SetValue(UseShowViewFinderProperty, value); }
+        }
+
+        public static readonly DependencyProperty UseShowViewFinderProperty =
+            DependencyProperty.Register("UseShowViewFinder", typeof(bool), typeof(Zoombox), new FrameworkPropertyMetadata(true, (d, e) =>
+            {
+                Zoombox control = d as Zoombox;
+
+                if (control == null) return;
+
+                if (e.OldValue is bool o)
+                {
+
+                }
+
+                if (e.NewValue is bool n)
+                {
+
+                }
+
+            }));
+
     }
 
 }

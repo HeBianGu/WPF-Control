@@ -6,27 +6,25 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
-namespace System
+namespace H.Controls.Panel;
+
+public static class Extention
 {
-    public static class Extention
-    {
-        ///// <summary>
-        ///// 注册
-        ///// </summary>
-        ///// <param name="service"></param>
-        //public static void AddPropertyGrid(this IServiceCollection service)
-        //{
-        //    service.AddSingleton<IService, Service>();
-        //}
+    ///// <summary>
+    ///// 注册
+    ///// </summary>
+    ///// <param name="service"></param>
+    //public static void AddPropertyGrid(this IServiceCollection service)
+    //{
+    //    service.AddSingleton<IService, Service>();
+    //}
 
-        ///// <summary>
-        ///// 配置
-        ///// </summary>
-        ///// <param name="service"></param>
-        //public static void UseContainPanel(this IApplicationBuilder service, Action<ContainPanelSetting> action)
-        //{
-        //    action?.Invoke(ContainPanelSetting.Instance);
-        //}
-    }
-
+    ///// <summary>
+    ///// 配置
+    ///// </summary>
+    ///// <param name="service"></param>
+    //public static void UseContainPanel(this IApplicationBuilder service, Action<ContainPanelSetting> action)
+    //{
+    //    action?.Invoke(ContainPanelSetting.Instance);
+    //}
 }

@@ -484,7 +484,8 @@
                                                                 ViewportPen="{StaticResource ViewportPen}" />
                             </Grid>
                         </Border>
-                        <Grid Name="ShowViewFinderGlyph"
+                        <Grid Name="ShowViewFinderGlyph" 
+                              Visibility="{Binding Path=UseShowViewFinder, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource VisibleIfNotTrueConverter}}"
                               HorizontalAlignment="Right"
                               VerticalAlignment="Bottom"
                               Opacity="0">
