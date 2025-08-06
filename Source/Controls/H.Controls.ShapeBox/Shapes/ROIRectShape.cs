@@ -62,7 +62,7 @@ namespace H.Controls.ShapeBox.Shapes
             }
 
             double hanldeLength = this.HandleLength / view.Scale;
-            double hthickness = hanldeLength / 2;
+            double hthickness = pen.Thickness;
             dc.DrawHandle(this.Rect.TopLeft, pen.Brush, hthickness, hanldeLength);
             dc.DrawHandle(this.Rect.BottomRight, pen.Brush, hthickness, hanldeLength);
             dc.DrawHandle(this.Rect.TopRight, pen.Brush, hthickness, hanldeLength);
