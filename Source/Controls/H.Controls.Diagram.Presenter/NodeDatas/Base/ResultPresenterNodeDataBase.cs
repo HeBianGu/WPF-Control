@@ -6,6 +6,7 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
+
 namespace H.Controls.Diagram.Presenter.NodeDatas.Base;
 
 public interface IResultPresenter
@@ -37,6 +38,15 @@ public abstract class ResultPresenterNodeDataBase : FlowableNodeData, IResultPre
     public virtual IResultPresenter CreateResultPresenter()
     {
         return null;
+    }
+
+    public override IFlowableResult Invoke(IFlowableLinkData previors, IFlowableDiagramData diagram)
+    {
+        this.ResultPresenter = null;
+        var r = base.Invoke(previors, diagram);
+        if (this.ResultPresenter == null)
+            this.ResultPresenter = this.CreateResultPresenter();
+        return r;
     }
 
     //protected virtual IFlowableResult OK(IResultPresenter resultPresenter = null, string message = "运行成功")

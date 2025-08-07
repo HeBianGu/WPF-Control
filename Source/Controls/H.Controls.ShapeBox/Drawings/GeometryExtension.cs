@@ -25,5 +25,11 @@ namespace H.Controls.ShapeBox.Drawings
             return streamGeom;
         }
 
+
+        public static bool IsZoreOrEmpty(this Rect rect)
+        {
+            return rect.IsEmpty || rect.Size.IsEmpty || rect.Height == 0 || rect.Width == 0;
+        }
+
     }
 }
