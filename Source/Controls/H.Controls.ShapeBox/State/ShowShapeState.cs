@@ -28,7 +28,7 @@ namespace H.Controls.ShapeBox.State
 
         protected override void OnHitHandleMoved()
         {
-            base.OnHitHandleMoved();    
+            base.OnHitHandleMoved();
             this.DrawStateShape(this.Shape);
         }
     }

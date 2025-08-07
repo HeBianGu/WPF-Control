@@ -61,7 +61,7 @@ namespace H.Controls.ShapeBox.Shapes
             base.MatrixDrawing(view, drawingContext, pen, fill);
         }
 
-        public override void DrawTitle(IView view, DrawingContext drawingContext, Point point, Brush brush, double fontsize = 10.0)
+        public override void DrawTitle(IView view, DrawingContext drawingContext, Point point, Brush brush, double fontsize = 10.0, double offset = 5)
         {
             if (string.IsNullOrEmpty(this.Title))
                 return;

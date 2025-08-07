@@ -6,13 +6,13 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 using H.Controls.ShapeBox.Drawings;
+using H.Controls.ShapeBox.Geometrys;
 using H.Controls.ShapeBox.Shapes.Base;
 using System.ComponentModel.DataAnnotations;
 using System.Windows.Media;
 
 namespace H.Controls.ShapeBox.Shapes
 {
-
     public class CaliperCircleShape : PreviewShapeBase
     {
         public CaliperCircleShape()
@@ -34,7 +34,7 @@ namespace H.Controls.ShapeBox.Shapes
         [Display(Name = "卡尺数量", GroupName = "数据")]
         public int CaliperCount { get; set; } = 36;
         [Display(Name = "卡尺颜色", GroupName = "数据")]
-        public Brush MinorStroke{ get; set; } = Brushes.LightBlue;
+        public Brush MinorStroke { get; set; } = Brushes.LightBlue;
 
         public override void MatrixDrawing(IView view, DrawingContext drawingContext, Pen pen, Brush fill = null)
         {
@@ -76,6 +76,14 @@ namespace H.Controls.ShapeBox.Shapes
             drawingContext.DrawEllipse(null, new Pen(stroke, strokeThickness), c, r, r);
             this.DrawPoint(view, drawingContext, c, fill, strokeThickness);
             this.DrawPoint(view, drawingContext, c + new Vector(r, 0), fill, strokeThickness);
+        }
+
+        public bool Contains(Point point, double radius)
+        {
+            Circle outcirle = new Circle(this.Center.X, this.Center.Y, this.ToRadius);
+            Circle innercirle = new Circle(this.Center.X, this.Center.Y, this.FromRadius - (this.ToRadius - this.FromRadius));
+            Circle incircle = new Circle(point.X, point.Y, radius);
+            return outcirle.Contains(incircle) && incircle.Contains(innercirle);
         }
     }
 }

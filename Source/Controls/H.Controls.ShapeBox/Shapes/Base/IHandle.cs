@@ -57,4 +57,16 @@ namespace H.Controls.ShapeBox.Shapes.Base
             this._moveToAction?.Invoke(point);
         }
     }
+    public class ActionCircleHandle : ActionHandle
+    {
+        public ActionCircleHandle(Action<Point> moveToAction, Point postion) : base(moveToAction, postion)
+        {
+
+        }
+
+        public override void Draw(IView view, DrawingContext drawingContext, Pen pen, Brush fill = null)
+        {
+            drawingContext.DrawCircle(this.Postion, pen, 0.5 * this.Length / view.Scale, Brushes.White);
+        }
+    }
 }

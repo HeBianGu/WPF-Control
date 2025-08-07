@@ -14,4 +14,9 @@ namespace H.Controls.ShapeBox.Shapes.Base
     {
         void Draw(IView view, DrawingContext drawingContext, Brush stroke, double strokeThickness = 1, Brush fill = null);
     }
+
+    public interface IBoundingBoxShape : IShape
+    {
+        Rect BoundingBox { get; set; }
+    }
 }

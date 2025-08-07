@@ -49,8 +49,14 @@ namespace H.Controls.ShapeBox.Shapes
                 if (this.UseCross)
                     this.DrawCross(view, drawingContext, this.Center, pen);
             }
-              
+
             base.MatrixDrawing(view, drawingContext, pen, fill);
+        }
+
+        protected override IEnumerable<IHandle> CreateHandles()
+        {
+            yield return new ActionHandle(x => this.Center = x, this.Center);
+            yield return new ActionHandle(x => this.Radius = (x - this.Center).Length, new Point(this.Center.X + this.Radius, this.Center.Y));
         }
 
         public override void DrawPreview(IView view, DrawingContext drawingContext, Brush stroke, double strokeThickness = 1, Brush fill = null, double offset = 0)

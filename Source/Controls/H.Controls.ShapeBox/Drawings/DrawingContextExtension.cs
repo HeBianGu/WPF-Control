@@ -62,56 +62,46 @@ namespace H.Controls.ShapeBox.Drawings
 
         public static Rect DrawTextAt(this DrawingContext dc, string text, Point point, Brush brush, double fontSize = 10.0, double offset = 5)
         {
-            fontSize = fontSize.ToFontSize();
-            FormattedText formattedText = text.ToForematedText(brush, fontSize);
-            var p = point + new Vector(offset, offset);
-            dc.DrawText(formattedText, p);
-            return new Rect(p, new Size(formattedText.Width, formattedText.Height));
+            return dc.DrawTextAt(text, point, brush, fontSize, x => new Vector(offset, offset));
         }
 
         public static Rect DrawTextAtCenter(this DrawingContext dc, string text, Point point, Brush brush, double fontSize = 10.0)
         {
-            fontSize = fontSize.ToFontSize();
-            FormattedText formattedText = text.ToForematedText(brush, fontSize);
-            var p = point - new Vector(formattedText.Width / 2, formattedText.Height / 2);
-            dc.DrawText(formattedText, p);
-            return new Rect(p, new Size(formattedText.Width, formattedText.Height));
+            return dc.DrawTextAt(text, point, brush, fontSize, x => new Vector(-x.Width / 2, -x.Height / 2));
         }
 
         public static Rect DrawTextAtTopCenter(this DrawingContext dc, string text, Point point, Brush brush, double fontSize = 10.0)
         {
+            return dc.DrawTextAt(text, point, brush, fontSize, x => new Vector(-x.Width / 2, -x.Height));
+        }
+
+        public static Rect DrawTextAtTopLeft(this DrawingContext dc, string text, Point point, Brush brush, double fontSize = 10.0)
+        {
+            return dc.DrawTextAt(text, point, brush, fontSize, x => new Vector(0, -x.Height));
+        }
+
+        public static Rect DrawTextAt(this DrawingContext dc, string text, Point point, Brush brush, double fontSize, Func<FormattedText, Vector> getOffset)
+        {
             fontSize = fontSize.ToFontSize();
             FormattedText formattedText = text.ToForematedText(brush, fontSize);
-            var p = point - new Vector(formattedText.Width / 2, formattedText.Height);
+            var p = point + getOffset(formattedText);
             dc.DrawText(formattedText, p);
             return new Rect(p, new Size(formattedText.Width, formattedText.Height));
         }
 
         public static Rect DrawTextAtBottomCenter(this DrawingContext dc, string text, Point point, Brush brush, double fontSize = 10.0)
         {
-            fontSize = fontSize.ToFontSize();
-            FormattedText formattedText = text.ToForematedText(brush, fontSize);
-            var p = point + new Vector(formattedText.Width / 2, formattedText.Height);
-            dc.DrawText(formattedText, p);
-            return new Rect(p, new Size(formattedText.Width, formattedText.Height));
+            return dc.DrawTextAt(text, point, brush, fontSize, x => new Vector(x.Width / 2, x.Height));
         }
 
         public static Rect DrawTextAtRight(this DrawingContext dc, string text, Point point, Brush brush, double fontSize = 10.0)
         {
-            fontSize = fontSize.ToFontSize();
-            FormattedText formattedText = text.ToForematedText(brush, fontSize);
-            var p = point - new Vector(0, formattedText.Height / 2);
-            dc.DrawText(formattedText, p);
-            return new Rect(p, new Size(formattedText.Width, formattedText.Height));
+            return dc.DrawTextAt(text, point, brush, fontSize, x => new Vector(0, -x.Height / 2));
         }
 
         public static Rect DrawTextAtLeft(this DrawingContext dc, string text, Point point, Brush brush, double fontSize = 10.0)
         {
-            fontSize = fontSize.ToFontSize();
-            FormattedText formattedText = text.ToForematedText(brush, fontSize);
-            var p = point - new Vector(-formattedText.Width, formattedText.Height / 2);
-            dc.DrawText(formattedText, p);
-            return new Rect(p, new Size(formattedText.Width, formattedText.Height));
+            return dc.DrawTextAt(text, point, brush, fontSize, x => new Vector(x.Width, -x.Height / 2));
         }
 
         private static FormattedText ToForematedText(this string text, Brush brush, double fontSize = 10.0)

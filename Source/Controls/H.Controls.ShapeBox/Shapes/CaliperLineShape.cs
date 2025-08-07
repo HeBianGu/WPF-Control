@@ -6,6 +6,7 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 using H.Controls.ShapeBox.Drawings;
+using H.Controls.ShapeBox.Geometrys;
 using H.Controls.ShapeBox.Shapes.Base;
 using System.ComponentModel.DataAnnotations;
 using System.Windows.Media;
@@ -77,6 +78,21 @@ namespace H.Controls.ShapeBox.Shapes
             drawingContext.DrawLine(p, from, to);
             this.DrawPoint(view, drawingContext, from, fill, strokeThickness * 2);
             this.DrawPoint(view, drawingContext, to, fill, strokeThickness * 2);
+        }
+
+        public bool Contains(Point from, Point to)
+        {
+            return this.Contains(from) && this.Contains(to);
+        }
+
+        public bool Contains(Point from)
+        {
+            Matrix matrix = this.GetInvertMatrix();
+            from = matrix.Transform(from);
+            var v = new Vector(0, this.Offset);
+            var normalToPoint = matrix.Transform(this.To);
+            Rect rect = new Rect(this.From - v, normalToPoint + v);
+            return rect.Contains(from);
         }
     }
 }
