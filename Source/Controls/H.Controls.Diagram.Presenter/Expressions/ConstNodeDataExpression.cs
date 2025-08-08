@@ -14,9 +14,10 @@ public interface IConstNodeDataExpression : INodeDataExpression
     void UpdatePath();
 }
 
-public static class ConstNodeDataExpressions
+// 这里的静态资源是单例，不可以用在默认值，会有冲突
+internal static class ConstNodeDataExpressions
 {
-    public static ConstNodeDataExpression<string> Empty { get; } = new ConstNodeDataExpression<string>(string.Empty, "默认") { ID= "D7ABB0A2-16DE-4417-A93E-9F1FC2FEBFA0" };
+    public static ConstNodeDataExpression<string> Empty { get; } = new ConstNodeDataExpression<string>(string.Empty, "默认");
     //public static ConstNodeDataExpression<string> Null { get; } = new ConstNodeDataExpression<string>(null, "默认", "无");
     public static ConstNodeDataExpression<int> IntZore { get; } = new ConstNodeDataExpression<int>(0, "默认");
     public static ConstNodeDataExpression<double> DoubleZore { get; } = new ConstNodeDataExpression<double>(0.0, "默认");
@@ -41,8 +42,6 @@ public class ConstNodeDataExpression<T> : NodeDataExpression, IGetableNodeDataEx
     {
 
     }
-
-    public string ID { get; set; } = Guid.NewGuid().ToString();
     public ConstNodeDataExpression(T value, string groupName)
     {
         this.Value = value;
@@ -73,13 +72,12 @@ public class ConstNodeDataExpression<T> : NodeDataExpression, IGetableNodeDataEx
             return this.Path == expression.Path 
                 && this.GroupName == expression.GroupName 
                 && this.Name == expression.Name 
-                && this.Value.Equals(expression.Value)
-                && this.ID.Equals(expression.ID);
+                && this.Value.Equals(expression.Value);
         return false;
     }
 
     public override int GetHashCode()
     {
-        return HashCode.Combine(this.Path.GetHashCode(), this.GroupName.GetHashCode(), this.Name.GetHashCode(),this.Value.GetHashCode(), this.ID.GetHashCode());
+        return HashCode.Combine(this.Path.GetHashCode(), this.GroupName.GetHashCode(), this.Name.GetHashCode(),this.Value.GetHashCode());
     }
 }
