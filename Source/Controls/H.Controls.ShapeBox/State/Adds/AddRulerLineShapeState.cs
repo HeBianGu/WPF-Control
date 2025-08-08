@@ -13,7 +13,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace H.Controls.ShapeBox.State.Adds
 {
-    [Icon(FontIcons.Ruler)]
+    [Icon(FontIcons.Design)]
     [Display(Name = "绘制标尺")]
     public class AddRulerLineShapeState : AddFromToShapeState<RulerLineShape>
     {

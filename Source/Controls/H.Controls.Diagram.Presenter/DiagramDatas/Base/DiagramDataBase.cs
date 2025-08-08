@@ -317,6 +317,7 @@ public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
 
                  }, null, x =>
                  {
+                     x.TitleWidth = double.NaN;
                      //x.UseGroupNames = "数据";
                      x.UseCommand = true;
                      //x.TabNames = new ObservableCollection<string>();

@@ -10,6 +10,7 @@ namespace H.Services.Message.Form;
 
 public interface IFormOption
 {
+    double TitleWidth { get; set; }
     string ExceptPropertyNames { get; set; }
     double MessageWidth { get; set; }
     object SelectObject { get; set; }
