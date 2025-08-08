@@ -169,7 +169,7 @@ public class FlowableNodeData : ShowPropertyViewNodeDataBase, IFlowableNodeData
 
     public virtual IFlowableResult Invoke(IFlowableLinkData previors, IFlowableDiagramData diagram)
     {
-        Thread.Sleep(FlowableDiagramDataSetting.Instance.FlowSleepMillisecondsTimeout);
+        //Thread.Sleep(FlowableDiagramDataSetting.Instance.FlowSleepMillisecondsTimeout);
         return FlowableDiagramDataSetting.Instance.UseMock
             ? this.Random.Next(0, 19) == 1 ? this.Error("模拟仿真一个错误信息") : this.OK("模拟仿真一个成功信息")
             : this.OK("运行成功");
