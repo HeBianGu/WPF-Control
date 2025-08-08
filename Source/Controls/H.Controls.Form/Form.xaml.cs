@@ -793,7 +793,7 @@ public partial class Form : ItemsControl, IFormOption
 
     // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
     public static readonly DependencyProperty TitleWidthProperty =
-        DependencyProperty.Register("TitleWidth", typeof(double), typeof(Form), new FrameworkPropertyMetadata(100.0, (d, e) =>
+        DependencyProperty.Register("TitleWidth", typeof(double), typeof(Form), new FrameworkPropertyMetadata(double.NaN, (d, e) =>
         {
             Form control = d as Form;
 

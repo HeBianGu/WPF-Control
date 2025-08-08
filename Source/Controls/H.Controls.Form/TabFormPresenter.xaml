@@ -22,6 +22,7 @@
                                     SelectObject="{Binding RelativeSource={RelativeSource AncestorType=TabControl}, Path=DataContext.SelectObject}"
                                     UseClass="{Binding RelativeSource={RelativeSource AncestorType=TabControl}, Path=DataContext.UseClass}"
                                     UseGroupNames="{Binding}"
+                                    TitleWidth="{Binding RelativeSource={RelativeSource AncestorType=TabControl},Path=DataContext.TitleWidth}"
                                     UsePropertyView="{Binding RelativeSource={RelativeSource AncestorType=TabControl}, Path=DataContext.UsePropertyView}" />
                     </Border>
                 </DataTemplate>

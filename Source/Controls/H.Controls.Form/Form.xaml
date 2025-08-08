@@ -78,15 +78,15 @@
             <Setter.Value>
                 <DataTemplate>
                     <DockPanel Width="{Binding RelativeSource={RelativeSource AncestorType=local:Form}, Path=TitleWidth}">
-                        <TextBlock Margin="5,0"
+                        <TextBlock Margin="2,0"
                                    VerticalAlignment="Center"
                                    Text="{Binding Name}" />
                         <TextBlock Style="{StaticResource S.TextBlock.Flag}" />
                     </DockPanel>
-
                 </DataTemplate>
             </Setter.Value>
         </Setter>
+        <Setter Property="Grid.IsSharedSizeScope" Value="True"/>
         <Setter Property="ItemContainerStyle">
             <Setter.Value>
                 <Style TargetType="ContentPresenter">
@@ -98,7 +98,7 @@
                                       Cattach.UseGuide="True"
                                       ToolTip="{Binding Description}">
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="Auto" SharedSizeGroup="Form" />
                                         <ColumnDefinition Width="20" />
                                         <ColumnDefinition />
                                         <ColumnDefinition Width="Auto" />

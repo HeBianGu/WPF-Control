@@ -12,7 +12,6 @@ global using H.Services.Message.Form;
 global using System.Collections.Generic;
 global using System.Collections.ObjectModel;
 global using System.Windows;
-using H.Extensions.Mvvm.ViewModels.Base;
 
 namespace H.Controls.Form;
 
@@ -64,7 +63,7 @@ public class FormPresenter : DisplayBindableBase, IFormOption
     public string ExceptPropertyNames { get; set; }
     public double MessageWidth { get; set; } = 15.0;
     public string Title { get; set; }
-    public double TitleWidth { get; set; } = 100;
+    public double TitleWidth { get; set; } = double.NaN;
     public bool UseArray { get; set; } = true;
     public bool UseAsync { get; set; }
     public bool UseBoolen { get; set; } = true;
