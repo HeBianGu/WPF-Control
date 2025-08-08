@@ -12,5 +12,5 @@ public enum FlowableResultState
 {
     OK = 0,
     Error,
-    Break
+    Continue
 }

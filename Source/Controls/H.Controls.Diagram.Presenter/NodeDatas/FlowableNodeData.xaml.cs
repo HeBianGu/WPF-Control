@@ -200,9 +200,9 @@ public class FlowableNodeData : ShowPropertyViewNodeDataBase, IFlowableNodeData
     {
         if (!this.CanInvoke(previors, diagram))
         {
-            this.State = FlowableState.Break;
+            this.State = FlowableState.Continue;
             this.Message = "不满足执行条件阻止流程";
-            return FlowableResult.Break;
+            return FlowableResult.Continue;
         }
 
         try
@@ -215,11 +215,11 @@ public class FlowableNodeData : ShowPropertyViewNodeDataBase, IFlowableNodeData
                 if (this.UseInfoLogger)
                     IocLog.Instance?.Info($"正在执行<{this.GetType().Name}>:{this.Text}");
                 IFlowableResult result = await InvokeAsync(previors, diagram);
-                if (result.State == FlowableResultState.Break)
+                if (result.State == FlowableResultState.Continue)
                 {
-                    this.State = FlowableState.Break;
+                    this.State = FlowableState.Continue;
                     this.Message = result.Message ?? "不满足执行条件阻止流程";
-                    return FlowableResult.Break;
+                    return FlowableResult.Continue;
                 }
                 else
                 {
@@ -288,7 +288,7 @@ public class FlowableNodeData : ShowPropertyViewNodeDataBase, IFlowableNodeData
             nresult = await this.TryInvokeAsync(from, diagramData) as FlowableResult;
             if (nresult == null)
                 return null;
-            if (nresult.State == FlowableResultState.Break)
+            if (nresult.State == FlowableResultState.Continue)
                 return true;
             if (nresult.State == FlowableResultState.Error)
                 return false;

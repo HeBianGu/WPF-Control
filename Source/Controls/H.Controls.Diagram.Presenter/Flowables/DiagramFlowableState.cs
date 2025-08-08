@@ -17,5 +17,5 @@ public enum DiagramFlowableState
     Stopped,
     Canceling,
     Canceled,
-    Break
+    Continue
 }
