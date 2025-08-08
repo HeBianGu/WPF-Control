@@ -31,5 +31,8 @@
         <ResourceDictionary Source="pack://application:,,,/H.Controls.Diagram.Presenter;component/Flowables/FlowableInvokeMode.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Controls.Diagram.Presenter;component/Flowables/DiagramFlowableMode.xaml" />
         <!--<ResourceDictionary Source="pack://application:,,,/H.Controls.Diagram.Presenter;component/CommandsPropertyPresenter.xaml" />-->
+        <ResourceDictionary Source="pack://application:,,,/H.Controls.Diagram.Presenter;component/Expressions/NodeDataExpression.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Controls.Diagram.Presenter;component/Expressions/ExpressionComboBoxPropertyItem.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Controls.Diagram.Presenter;component/Expressions/ConstNodeDataExpressionsPresenter.xaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

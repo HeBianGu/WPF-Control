@@ -8,6 +8,7 @@
 
 namespace H.Controls.Diagram.Presenter.DiagramDatas.Base;
 
+
 public abstract class NodeDataGroupsDiagramDataBase : FlowableDiagramDataBase, INodeDataGroupsDiagramData
 {
     protected NodeDataGroupsDiagramDataBase()

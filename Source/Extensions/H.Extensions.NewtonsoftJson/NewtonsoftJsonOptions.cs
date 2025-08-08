@@ -10,6 +10,7 @@ using H.Extensions.NewtonsoftJson.Jsonable;
 using H.Extensions.Setting;
 using H.Services.Setting;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
@@ -51,7 +52,7 @@ public class NewtonsoftJsonOptions : IocOptionInstance<NewtonsoftJsonOptions>, I
         };
         return setting;
     }
-
+    
 }
 
 public class DateTimeConverter : Newtonsoft.Json.JsonConverter

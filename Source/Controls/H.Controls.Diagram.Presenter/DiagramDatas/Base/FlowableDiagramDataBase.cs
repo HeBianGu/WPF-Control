@@ -8,9 +8,8 @@
 
 global using H.Controls.Diagram.Datas;
 using H.Controls.Diagram.Presenter.Extensions;
-using System.Text.RegularExpressions;
 namespace H.Controls.Diagram.Presenter.DiagramDatas.Base;
-public abstract class FlowableDiagramDataBase : ZoomableDiagramDataBase, IFlowableDiagramData
+public abstract class FlowableDiagramDataBase : ExpressionableDiagramDataBase, IFlowableDiagramData
 {
     private DiagramFlowableState _state = DiagramFlowableState.None;
     [JsonIgnore]

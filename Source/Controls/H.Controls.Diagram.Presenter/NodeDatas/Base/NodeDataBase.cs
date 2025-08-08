@@ -29,7 +29,7 @@ public abstract class NodeDataBase : DisplayBindableBase, ICloneable, INodeData
 
     public INodeData Create()
     {
-       return Activator.CreateInstance(GetType()) as INodeData;
+        return Activator.CreateInstance(GetType()) as INodeData;
     }
 
     private Point _location;

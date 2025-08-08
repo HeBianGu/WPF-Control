@@ -8,13 +8,11 @@
 
 global using H.Controls.Diagram.Presenter.DiagramDatas.Base;
 using H.Controls.Diagram.Presenter.Extensions;
-using H.Controls.Diagram.Presenter.LinkDatas;
-using H.Controls.Diagram.Presenter.PortDatas;
-using System.Windows.Media.Animation;
 
 namespace H.Controls.Diagram.Presenter.NodeDatas;
 
-public class FlowableNodeData : ShowPropertyViewNodeDataBase, IFlowableNodeData
+
+public class FlowableNodeData : ExpressionNodeDataBase, IFlowableNodeData
 {
     private FlowableState _state = FlowableState.Ready;
     [Browsable(false)]

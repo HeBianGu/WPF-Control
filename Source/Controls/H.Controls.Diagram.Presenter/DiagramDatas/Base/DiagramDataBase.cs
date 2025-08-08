@@ -16,12 +16,11 @@ global using H.Controls.Form.PropertyItem.Attribute.SourcePropertyItem;
 global using H.Controls.Form.PropertyItem.ComboBoxPropertyItems;
 global using H.Extensions.FontIcon;
 global using H.Extensions.Mvvm.Commands;
+global using H.Mvvm.Commands;
 global using H.Services.Message;
 global using H.Services.Message.Dialog;
 global using System.Text.Json.Serialization;
 global using System.Windows.Input;
-global using H.Mvvm.Commands;
-using H.Controls.Diagram.Presenter.NodeDatas.Base;
 namespace H.Controls.Diagram.Presenter.DiagramDatas.Base;
 
 public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
@@ -269,7 +268,7 @@ public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
 
             foreach (var item in args.Entity.Select(x => x.GetContent()).OfType<ITextNodeData>())
             {
-                item.Text = this.Datas.NodeDatas.Count+" " + item.Text;
+                item.Text = this.Datas.NodeDatas.Count + " " + item.Text;
             }
         }
     });
