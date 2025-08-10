@@ -26,8 +26,12 @@ namespace H.Controls.ShapeBox.Shapes
             this.Rect = rect;
         }
 
-        [Display(Name = "启用标尺", GroupName = "样式")]
-        public bool UseDimension { get; set; } = true;
+        //[Display(Name = "启用标尺", GroupName = "样式")]
+        //public bool UseDimension { get; set; } = true;
+        [Display(Name = "启用交线", GroupName = "样式")]
+        public bool UseCross { get; set; } = false;
+        [Display(Name = "启用文本", GroupName = "样式")]
+        public bool UseText { get; set; } = false;
 
         [TypeConverter(typeof(Round2RectConverter))]
         [Display(Name = "矩形范围", GroupName = "数据")]
@@ -38,6 +42,20 @@ namespace H.Controls.ShapeBox.Shapes
                 return;
             drawingContext.DrawRectangle(fill, pen, Rect);
             this.DrawTitle(view, drawingContext, this.Rect.TopLeft, pen.Brush, 10 / view.Scale, 10 / view.Scale);
+            if (this.UseText)
+            {
+                var topCenter = this.Rect.GetTopCenter();
+                drawingContext.DrawTextAtBottomCenter(this.Rect.Width.ToString("F2"), topCenter, pen.Brush, 10.0 / view.Scale);
+
+                var rightCenter = this.Rect.GetRightCenter();
+                drawingContext.DrawTextAtLeft(this.Rect.Width.ToString("F2"), rightCenter, pen.Brush, 10.0 / view.Scale);
+            }
+
+            if (this.UseCross)
+            {
+                this.DrawCross(view, drawingContext, this.Rect.TopLeft, pen, 45);
+                this.DrawCross(view, drawingContext, this.Rect.BottomRight, pen, 45);
+            }
             base.MatrixDrawing(view, drawingContext, pen, fill);
         }
 

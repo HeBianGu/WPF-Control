@@ -485,7 +485,7 @@
                             </Grid>
                         </Border>
                         <Grid Name="ShowViewFinderGlyph" 
-                              Visibility="{Binding Path=UseShowViewFinder, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource VisibleIfNotTrueConverter}}"
+                              Visibility="{Binding Path=UseShowViewFinder, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource VisibleIfTrueConverter}}"
                               HorizontalAlignment="Right"
                               VerticalAlignment="Bottom"
                               Opacity="0">

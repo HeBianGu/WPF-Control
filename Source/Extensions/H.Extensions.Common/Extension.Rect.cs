@@ -20,6 +20,26 @@ public static class RectExtenstion
         return new Point((rect.Left + rect.Right) / 2, (rect.Top + rect.Bottom) / 2);
     }
 
+    public static Point GetTopCenter(this Rect rect)
+    {
+        return new Point(rect.Left + rect.Width / 2, rect.Top);
+    }
+
+    public static Point GetBottomCenter(this Rect rect)
+    {
+        return new Point(rect.Left + rect.Width / 2, rect.Bottom);
+    }
+
+    public static Point GetLeftCenter(this Rect rect)
+    {
+        return new Point(rect.Left, rect.Top + rect.Height / 2);
+    }
+    public static Point GetRightCenter(this Rect rect)
+    {
+        return new Point(rect.Right, rect.Top + rect.Height / 2);
+    }
+
+
     public static Rect ToRect(this Point point, double len)
     {
         return new Rect(point.X - len, point.Y - len, 2 * len, 2 * len);

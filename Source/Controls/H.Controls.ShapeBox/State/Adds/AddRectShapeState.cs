@@ -20,13 +20,13 @@ namespace H.Controls.ShapeBox.State.Adds
     {
         public AddRectShapeState()
         {
-            this.Shape = new RectShape() { UseDimension = true };
+            this.Shape = new RectShape() { UseText = true, UseCross = true, UseHandle = false };
         }
 
         protected override void TwoClick(Point p)
         {
             var first = this._clickPoints.ElementAt(0);
-            this.Shape.Rect = new Rect(first,p);
+            this.Shape.Rect = new Rect(first, p);
             this.UpdateStateShape();
             this.Sumit();
         }

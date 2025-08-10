@@ -91,7 +91,7 @@ namespace H.Controls.ShapeBox.Drawings
 
         public static Rect DrawTextAtBottomCenter(this DrawingContext dc, string text, Point point, Brush brush, double fontSize = 10.0)
         {
-            return dc.DrawTextAt(text, point, brush, fontSize, x => new Vector(x.Width / 2, x.Height));
+            return dc.DrawTextAt(text, point, brush, fontSize, x => new Vector(-x.Width / 2, 0));
         }
 
         public static Rect DrawTextAtRight(this DrawingContext dc, string text, Point point, Brush brush, double fontSize = 10.0)
@@ -101,7 +101,7 @@ namespace H.Controls.ShapeBox.Drawings
 
         public static Rect DrawTextAtLeft(this DrawingContext dc, string text, Point point, Brush brush, double fontSize = 10.0)
         {
-            return dc.DrawTextAt(text, point, brush, fontSize, x => new Vector(x.Width, -x.Height / 2));
+            return dc.DrawTextAt(text, point, brush, fontSize, x => new Vector(-x.Width, -x.Height / 2));
         }
 
         private static FormattedText ToForematedText(this string text, Brush brush, double fontSize = 10.0)
