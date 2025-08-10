@@ -25,6 +25,10 @@ namespace H.Controls.ShapeBox.Shapes
         {
             this.Rect = rect;
         }
+
+        [Display(Name = "启用标尺", GroupName = "样式")]
+        public bool UseDimension { get; set; } = true;
+
         [TypeConverter(typeof(Round2RectConverter))]
         [Display(Name = "矩形范围", GroupName = "数据")]
         public Rect Rect { get; set; }
