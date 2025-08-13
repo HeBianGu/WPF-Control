@@ -1,0 +1,8 @@
+﻿<Project>
+  <Target Name="PackageReference" BeforeTargets="CoreCompile">
+    <PackageReference Include="OpenCvSharp4.runtime.win" Version="4.11.0.20250507" MSBuildFileDirectory="$(ProjectDir)" />
+  </Target>
+  <Target Name="Resource" BeforeTargets="CoreCompile">
+    <Resource Include="**\*.png"  MSBuildFileDirectory="$(ProjectDir)" />
+  </Target>
+</Project>
