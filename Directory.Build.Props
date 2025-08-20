@@ -47,7 +47,4 @@
   <!--<ItemGroup>
     <Resource Include="..\..\..\Document\logo.ico"/>
   </ItemGroup>-->
-
-  <UsingTask TaskName="Resource" AssemblyFile="$(NuGetPackageRoot)\Platform.Runtime\1.0.5\lib\netstandard2.0\Platform.Runtime.dll" />
-  <UsingTask TaskName="PackageReference" AssemblyFile="$(NuGetPackageRoot)\Platform.Runtime\1.0.5\lib\netstandard2.0\Platform.Runtime.dll"  />
 </Project>

@@ -20,9 +20,9 @@
                         <!--  UseCommand="{Binding RelativeSource={RelativeSource AncestorType=TabControl}, Path=DataContext.UseCommand}"  -->
                         <local:Form IsHitTestVisible="{Binding RelativeSource={RelativeSource AncestorType=TabControl}, Path=DataContext.IsHitTestVisible}"
                                     SelectObject="{Binding RelativeSource={RelativeSource AncestorType=TabControl}, Path=DataContext.SelectObject}"
+                                    TitleWidth="{Binding RelativeSource={RelativeSource AncestorType=TabControl}, Path=DataContext.TitleWidth}"
                                     UseClass="{Binding RelativeSource={RelativeSource AncestorType=TabControl}, Path=DataContext.UseClass}"
                                     UseGroupNames="{Binding}"
-                                    TitleWidth="{Binding RelativeSource={RelativeSource AncestorType=TabControl},Path=DataContext.TitleWidth}"
                                     UsePropertyView="{Binding RelativeSource={RelativeSource AncestorType=TabControl}, Path=DataContext.UsePropertyView}" />
                     </Border>
                 </DataTemplate>

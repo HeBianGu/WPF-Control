@@ -86,7 +86,7 @@
                 </DataTemplate>
             </Setter.Value>
         </Setter>
-        <Setter Property="Grid.IsSharedSizeScope" Value="True"/>
+        <Setter Property="Grid.IsSharedSizeScope" Value="True" />
         <Setter Property="ItemContainerStyle">
             <Setter.Value>
                 <Style TargetType="ContentPresenter">
@@ -98,7 +98,8 @@
                                       Cattach.UseGuide="True"
                                       ToolTip="{Binding Description}">
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="Auto" SharedSizeGroup="Form" />
+                                        <ColumnDefinition Width="Auto"
+                                                          SharedSizeGroup="Form" />
                                         <ColumnDefinition Width="20" />
                                         <ColumnDefinition />
                                         <ColumnDefinition Width="Auto" />

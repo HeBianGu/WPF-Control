@@ -179,6 +179,8 @@ namespace H.Controls.ShapeBox
             double strokeThickness = this.ToViewThickness(this.StateStrokeThickness);
             foreach (var shape in shapes)
             {
+                if (shape == null)
+                    continue;
                 shape.Draw(this, drawingContext, this.StateStroke, strokeThickness, this.StateFill);
             }
         }

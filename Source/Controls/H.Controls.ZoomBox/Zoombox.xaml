@@ -484,11 +484,11 @@
                                                                 ViewportPen="{StaticResource ViewportPen}" />
                             </Grid>
                         </Border>
-                        <Grid Name="ShowViewFinderGlyph" 
-                              Visibility="{Binding Path=UseShowViewFinder, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource VisibleIfTrueConverter}}"
+                        <Grid Name="ShowViewFinderGlyph"
                               HorizontalAlignment="Right"
                               VerticalAlignment="Bottom"
-                              Opacity="0">
+                              Opacity="0"
+                              Visibility="{Binding Path=UseShowViewFinder, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource VisibleIfTrueConverter}}">
                             <FontIconToggleButton Name="ShowViewFinder"
                                                   Margin="5"
                                                   HorizontalAlignment="Right"
