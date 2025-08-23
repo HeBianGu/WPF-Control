@@ -17,7 +17,7 @@ using H.Controls.Form.PropertyItem.Attribute;
 
 namespace H.Controls.Form.PropertyItem.Base
 {
-    public abstract class SelectSourcePropertyItem<T> : ObjectPropertyItem<T>
+    public abstract class SelectSourcePropertyItem<T> : ObjectPropertyItem<T>, ISelectSourcePropertyItem
     {
         public SelectSourcePropertyItem(PropertyInfo property, object obj) : base(property, obj)
         {
@@ -81,6 +81,10 @@ namespace H.Controls.Form.PropertyItem.Base
             }
         }
 
+        public void RefreshSource()
+        {
+            this.Collection = this.CreateSource()?.ToObservable();
+        }
     }
 
     public class SelectSourcePropertyItem : SelectSourcePropertyItem<object>

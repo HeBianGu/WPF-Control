@@ -9,6 +9,7 @@
 global using H.Controls.Form.Provider;
 global using System.Collections;
 global using System.Windows.Threading;
+using H.Controls.Form.PropertyItems.Base;
 
 namespace H.Controls.Form;
 
@@ -700,8 +701,21 @@ public partial class Form : ItemsControl, IFormOption
         RoutedEventArgs args = new RoutedEventArgs(ValueChangedRoutedEvent, this);
         args.Source = tuple;
 
-        if (tuple.Item1 is IRefreshOnValueChanged refreshOnValueChanged && refreshOnValueChanged.CanRefresh)
+        if (tuple.Item1 is IRefreshFilterOnValueChanged refreshOnValueChanged && refreshOnValueChanged.CanRefreshFilterOnValueChanged)
+        {
             this.RefreshItemsFilter();
+        }
+        if (tuple.Item1 is IRefreshSourceOnValueChanged refreshSourceOnValueChanged)
+        {
+           var sourcePropertyItems= this.ItemsSource.OfType<ISelectSourcePropertyItem>();
+            foreach (var propertyName in refreshSourceOnValueChanged.GetPropertyNames())
+            {
+                foreach (var item in sourcePropertyItems.Where(x=>x.PropertyInfo.Name==propertyName))
+                {
+                    item.RefreshSource();
+                }
+            }
+        }
         ////  Do ：触发通知方法
         //CustomValidationAttribute attribute = tuple.Item1.PropertyInfo.GetCustomAttribute<CustomValidationAttribute>();
 

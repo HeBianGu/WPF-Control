@@ -8,9 +8,9 @@
 
 namespace H.Controls.Form.Attributes;
 
-public class RefreshOnValueChangedAttribute : Attribute
+public class RefreshFilterOnValueChangedAttribute : Attribute
 {
-    public RefreshOnValueChangedAttribute(bool canRefresh = true)
+    public RefreshFilterOnValueChangedAttribute(bool canRefresh = true)
     {
         this.CanRefresh = canRefresh;
     }

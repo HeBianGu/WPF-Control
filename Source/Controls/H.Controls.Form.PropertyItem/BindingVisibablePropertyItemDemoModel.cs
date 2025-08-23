@@ -15,12 +15,12 @@ namespace H.Controls.Form.PropertyItem
     public class BindingVisibablePropertyItemDemoModel : SourcePropertyItemDemoModel
     {
         [Display(Name = "EnumSourcePropertyItem", Description = "演示应用PropertyItemAttribute自定义显示样式")]
-        [RefreshOnValueChanged]
+        [RefreshFilterOnValueChanged]
         [EnumSourcePropertyItem(typeof(ComboBoxPropertyItem))]
         public HorizontalAlignment HorizontalAlignment { get; set; }
 
         [Display(Name = "EnumComboBoxPropertyItem", Description = "演示应用PropertyItemAttribute自定义显示样式")]
-        [RefreshOnValueChanged]
+        [RefreshFilterOnValueChanged]
         [PropertyItem(typeof(EnumComboBoxPropertyItem))]
         public VerticalAlignment VerticalAlignment { get; set; }
 

@@ -8,12 +8,23 @@
 
 namespace H.Controls.Form.PropertyItems.Base;
 
-public interface IRefreshOnValueChanged
+public interface IRefreshFilterOnValueChanged
 {
-    bool CanRefresh { get; }
+    bool CanRefreshFilterOnValueChanged { get; }
 }
 
-public abstract class BindingVisiblablePropertyItemBase : ObjectPropertyItemBase, IBindingVisibleable, IRefreshOnValueChanged
+public interface IRefreshSourceOnValueChanged
+{
+    IEnumerable<string> GetPropertyNames();
+}
+
+public interface ISelectSourcePropertyItem : IPropertyItem
+{
+    void RefreshSource();
+}
+
+
+public abstract class BindingVisiblablePropertyItemBase : ObjectPropertyItemBase, IBindingVisibleable, IRefreshFilterOnValueChanged, IRefreshSourceOnValueChanged
 {
     private readonly MethodInfo _methodInfo;
     private readonly PropertyInfo _propertyInfo;
@@ -52,16 +63,32 @@ public abstract class BindingVisiblablePropertyItemBase : ObjectPropertyItemBase
         return true;
     }
 
-    #region - IRefreshOnValueChanged -
+ 
 
-    private bool? _canRefresh;
-    public bool CanRefresh
+    #region - IRefreshFilterOnValueChanged -
+
+    private bool? _CanRefreshFilterOnValueChanged;
+    public virtual bool CanRefreshFilterOnValueChanged
     {
         get
         {
-            if (this._canRefresh == null)
-                this._canRefresh = this.PropertyInfo.GetCustomAttribute<RefreshOnValueChangedAttribute>()?.CanRefresh == true;
-            return this._canRefresh.Value;
+            if (this._CanRefreshFilterOnValueChanged == null)
+                this._CanRefreshFilterOnValueChanged = this.PropertyInfo.GetCustomAttribute<RefreshFilterOnValueChangedAttribute>()?.CanRefresh == true;
+            return this._CanRefreshFilterOnValueChanged.Value;
+        }
+    }
+    #endregion
+
+    #region - IRefreshSourceOnValueChanged -
+
+    IEnumerable<string> IRefreshSourceOnValueChanged.GetPropertyNames()
+    {
+        var names = this.PropertyInfo.GetCustomAttribute<RefreshSourceOnValueChangedAttribute>()?.SourcePropertyNames;
+        if (names == null)
+            yield break;
+        foreach (var item in names.Split(','))
+        {
+            yield return item;
         }
     }
     #endregion
