@@ -134,7 +134,6 @@ namespace H.Controls.FilterBox
         }
 
         [JsonIgnore]
-
         [XmlIgnore]
         public IMetaSettingService MetaSettingService => new NewtonsoftJsonMetaSettingService();
 

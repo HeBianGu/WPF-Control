@@ -43,7 +43,11 @@ public class DeleteCommand : DisplayMarkupCommandBase
                 return;
             ItemsControl items = element.GetParent<ItemsControl>();
             if (items.ItemsSource is IList list)
+            {
                 list.Remove(element.DataContext);
+                if (items is Selector selector && selector.SelectedItem == null)
+                    selector.SelectedItem = list.OfType<object>().FirstOrDefault();
+            }
             else
                 items.Items.Remove(element.DataContext);
         }

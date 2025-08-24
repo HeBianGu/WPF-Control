@@ -8,7 +8,17 @@
 
 namespace H.Common.Attributes;
 
+
 public class IDAttribute : Attribute
 {
+    public IDAttribute()
+    {
+        
+    }
+
+    public IDAttribute(string id)
+    {
+        this.ID = id;
+    }
     public string ID { get; set; }
 }
