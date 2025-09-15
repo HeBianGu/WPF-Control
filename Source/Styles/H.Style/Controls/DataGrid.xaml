@@ -476,9 +476,13 @@
         <Setter Property="RowHeaderStyle" Value="{DynamicResource {x:Static local:DataGridRowHeaderKeys.Default}}" />
         <Setter Property="ColumnHeaderStyle" Value="{DynamicResource {x:Static local:DataGridColumnHeaderKeys.Default}}" />
         <Style.Triggers>
-            <Trigger Property="IsGrouping" Value="true">
-                <Setter Property="ScrollViewer.CanContentScroll" Value="false" />
-            </Trigger>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="IsGrouping" Value="true" />
+                    <Condition Property="VirtualizingPanel.IsVirtualizingWhenGrouping" Value="false" />
+                </MultiTrigger.Conditions>
+                <Setter Property="ScrollViewer.CanContentScroll" Value="false"/>
+            </MultiTrigger>
             <Trigger Property="IsEnabled" Value="False">
                 <Setter Property="Opacity" Value="0.6" />
             </Trigger>
