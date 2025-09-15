@@ -228,18 +228,18 @@ public partial class ApplicationBase
         this.Configure(bulder);
     }
 
-    protected virtual IEnumerable<ISplashLoadable> GetSplashLoads()
-    {
-        foreach (IDbConnectService item in Ioc.Services.GetServices<IDbConnectService>())
-        {
-            yield return item;
-        }
+    //protected virtual IEnumerable<ISplashLoadable> GetSplashLoads()
+    //{
+    //    foreach (IDbConnectService item in Ioc.Services.GetServices<IDbConnectService>())
+    //    {
+    //        yield return item;
+    //    }
 
-        foreach (ISplashLoadable item in Ioc.Services.GetServices<ISplashLoadable>())
-        {
-            yield return item;
-        }
-    }
+    //    foreach (ISplashLoadable item in Ioc.Services.GetServices<ISplashLoadable>())
+    //    {
+    //        yield return item;
+    //    }
+    //}
 
     /// <summary>
     /// 加载启动页面

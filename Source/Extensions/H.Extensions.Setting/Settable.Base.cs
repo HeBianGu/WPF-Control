@@ -13,6 +13,7 @@ global using System.IO;
 global using System.Reflection;
 global using System.Xml.Serialization;
 using H.Services.AppPath;
+using H.Services.Logger;
 using H.Services.Setting;
 using System.ComponentModel;
 using System.Text.Json.Serialization;
@@ -64,8 +65,9 @@ public abstract class SettableBase : DisplayBindableBase, ISettable, ILoadable, 
         var path = this.GetDefaultPath();
         if (!File.Exists(path))
         {
-            message = "文件不存在";
-            return false;
+            message = "文件不存在:" + path;
+            IocLog.Instance?.Info(message);
+            return true;
         }
         message = null;
         this.Load(path);
