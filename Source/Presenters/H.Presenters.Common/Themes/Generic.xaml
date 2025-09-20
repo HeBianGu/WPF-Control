@@ -11,6 +11,7 @@
         <ResourceDictionary Source="pack://application:,,,/H.Presenters.Common;component/FilePathTextBoxPresenter.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Presenters.Common;component/ImageFilePathPresenter.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Presenters.Common;component/ImageViewPresenter.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Presenters.Common;component/AddImageListPresenter.xaml" />
 
         <ResourceDictionary Source="pack://application:,,,/H.Presenters.Common;component/ListBoxPresenter.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Presenters.Common;component/ItemsControlPresenter.xaml" />
