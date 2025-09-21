@@ -9,7 +9,7 @@
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.RowIndex.BackGround, TypeInTargetAssembly={x:Type local:ColorKeys}}">#fafafa</Color>
 
     <!--  Foreground  -->
-    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.CaptionForeground, TypeInTargetAssembly={x:Type local:ColorKeys}}">#606266</Color>
+    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.CaptionForeground, TypeInTargetAssembly={x:Type local:ColorKeys}}">#272727</Color>
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextForeground.Title, TypeInTargetAssembly={x:Type local:ColorKeys}}">#000000</Color>
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextForeground, TypeInTargetAssembly={x:Type local:ColorKeys}}">#606266</Color>
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextForeground.Select, TypeInTargetAssembly={x:Type local:ColorKeys}}">#000000</Color>
