@@ -40,4 +40,28 @@ public class AddImageListPresenter : DisplayBindableBase
             this.Paths.Remove(t);
     });
 
+
+    private bool _UseAdd = true;
+    public bool UseAdd
+    {
+        get { return _UseAdd; }
+        set
+        {
+            _UseAdd = value;
+            RaisePropertyChanged();
+        }
+    }
+
+
+    private bool _UseRemove = true;
+    public bool UseRemove
+    {
+        get { return _UseRemove; }
+        set
+        {
+            _UseRemove = value;
+            RaisePropertyChanged();
+        }
+    }
+
 }

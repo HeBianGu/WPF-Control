@@ -51,10 +51,13 @@
                             </Grid>
                         </Border>
                         <DataTemplate.Triggers>
-                            <DataTrigger Binding="{Binding ElementName=b, Path=IsMouseOver}"
-                                         Value="True">
+                            <MultiDataTrigger>
+                                <MultiDataTrigger.Conditions>
+                                    <Condition Binding="{Binding ElementName=b, Path=IsMouseOver}" Value="True" />
+                                    <Condition Binding="{Binding RelativeSource={RelativeSource AncestorType=ItemsControl}, Path=DataContext.UseRemove}" Value="True" />
+                                </MultiDataTrigger.Conditions>
                                 <Setter TargetName="btn_removeImage" Property="Visibility" Value="Visible" />
-                            </DataTrigger>
+                            </MultiDataTrigger>
                         </DataTemplate.Triggers>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
@@ -69,7 +72,8 @@
                             Cattach.CornerRadius="5"
                             Command="{Binding AddFileCommand}"
                             Content="{x:Static FontIcons.Add}"
-                            FontSize="20" />
+                            FontSize="20"
+                            Visibility="{Binding UseAdd, Converter={GetTrueToVisibleConverter}}" />
         </DockPanel>
     </DataTemplate>
 </ResourceDictionary>
