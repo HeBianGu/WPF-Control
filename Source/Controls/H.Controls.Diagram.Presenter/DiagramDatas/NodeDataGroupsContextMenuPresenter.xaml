@@ -85,7 +85,7 @@
                                     </ContextMenu.Template>
                                 </ContextMenu>
                             </Border.ContextMenu>
-                            <FontIconToggleButton Margin="0,5"
+                            <FontIconToggleButton Margin="0,0,0,6"
                                                   CheckedGlyph="&#xE725;"
                                                   FontSize="25"
                                                   IsChecked="{Binding RelativeSource={RelativeSource AncestorType=Border}, Path=ContextMenu.IsOpen}"
