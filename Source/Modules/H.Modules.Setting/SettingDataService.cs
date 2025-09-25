@@ -54,7 +54,7 @@ public class SettingDataService : LazyInstance<SettingDataService>, ISettingData
             try
             {
                 var r = item.Load(out message);
-                if (r == false)
+                if (!string.IsNullOrEmpty(message))
                     IocLog.Instance?.Error(message);
             }
             catch (Exception ex)
