@@ -63,7 +63,7 @@ public abstract class SettableBase : DisplayBindableBase, ISettable, ILoadable, 
     public virtual bool Load(out string message)
     {
         var path = this.GetDefaultPath();
-        if (!File.Exists(path))
+        if (!this.HasFile())
         {
             message = "文件不存在:" + path;
             IocLog.Instance?.Info(message);
@@ -72,6 +72,12 @@ public abstract class SettableBase : DisplayBindableBase, ISettable, ILoadable, 
         message = null;
         this.Load(path);
         return true;
+    }
+
+    protected bool HasFile()
+    {
+        var path = this.GetDefaultPath();
+        return File.Exists(path);
     }
 
     protected virtual void Load(string path)

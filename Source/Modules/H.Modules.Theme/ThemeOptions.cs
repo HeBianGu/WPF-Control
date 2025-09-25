@@ -249,7 +249,7 @@ public class ThemeOptions : IocOptionInstance<ThemeOptions>, ILoginedSplashLoada
     public override bool Load(out string message)
     {
         var r = base.Load(out message);
-        if (r == false)
+        if (!this.HasFile())
         {
             if (this.ColorResource != null)
             {
