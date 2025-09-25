@@ -1,8 +1,9 @@
-﻿<ApplicationBase x:Class="H.Test.Test.App"
-                 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                 xmlns:h="https://github.com/HeBianGu"
-                 xmlns:local="clr-namespace:H.Test.Test">
+﻿<ApplicationBase
+    x:Class="H.Test.Test.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:h="https://github.com/HeBianGu"
+    xmlns:local="clr-namespace:H.Test.Test">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>

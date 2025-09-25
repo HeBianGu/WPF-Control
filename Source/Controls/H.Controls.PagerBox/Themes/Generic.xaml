@@ -5,6 +5,7 @@
 
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/H.Controls.PagerBox;component/PagerBox.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Controls.PagerBox;component/PageBoxPresenter.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
     <!--<TextBlock HorizontalAlignment="Left" Style="{DynamicResource {x:Static h:TextBlockKeys.Default}}">

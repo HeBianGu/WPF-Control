@@ -18,6 +18,21 @@ public class DataGridRowKeys
     public static ComponentResourceKey Default => new ComponentResourceKey(typeof(DataGridRowKeys), "S.DataGridRow.Default");
 }
 
+public class DataGridColumnHeaderKeys
+{
+    public static ComponentResourceKey Default => new ComponentResourceKey(typeof(DataGridColumnHeaderKeys), "S.DataGridColumnHeader.Default");
+}
+
+public class DataGridRowHeaderKeys
+{
+    public static ComponentResourceKey Default => new ComponentResourceKey(typeof(DataGridRowHeaderKeys), "S.DataGridRowHeader.Default");
+}
+
+public class DataGridCellKeys
+{
+    public static ComponentResourceKey Default => new ComponentResourceKey(typeof(DataGridCellKeys), "S.DataGridCell.Default");
+}
+
 public class DataGridCheckBoxColumn : System.Windows.Controls.DataGridCheckBoxColumn
 {
     public DataGridCheckBoxColumn()
