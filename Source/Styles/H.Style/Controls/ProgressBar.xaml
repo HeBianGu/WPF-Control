@@ -36,14 +36,14 @@
                         <Border x:Name="PART_Track"
                                 BorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrush}}"
                                 BorderThickness="1"
-                                CornerRadius="2" />
+                                CornerRadius="{DynamicResource {x:Static LayoutKeys.CornerRadius}}" />
                         <Border x:Name="PART_Indicator"
                                 Margin="5"
                                 HorizontalAlignment="Left"
                                 Background="{TemplateBinding Foreground}"
                                 BorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrush}}"
                                 BorderThickness="0"
-                                CornerRadius="2">
+                                CornerRadius="{DynamicResource {x:Static LayoutKeys.CornerRadius}}">
                             <Grid x:Name="Animation"
                                   ClipToBounds="True">
                                 <Border x:Name="PART_GlowRect"
@@ -51,7 +51,7 @@
                                         Margin="-100,0,0,0"
                                         HorizontalAlignment="Left"
                                         Background="{DynamicResource {x:Static BrushKeys.ForegroundTitle}}"
-                                        CornerRadius="2">
+                                        CornerRadius="{DynamicResource {x:Static LayoutKeys.CornerRadius}}">
                                     <!--<Rectangle.Fill>
                                         <LinearGradientBrush Opacity="0.5" StartPoint="0,0" EndPoint="1,0">
                                             <LinearGradientBrush.GradientStops>

@@ -18,7 +18,7 @@
                     <Border Background="{TemplateBinding Background}"
                             BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}"
-                            CornerRadius="2">
+                            CornerRadius="{DynamicResource {x:Static LayoutKeys.CornerRadius}}">
                         <DockPanel>
                             <Control DockPanel.Dock="Top"
                                      Template="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(h:Cattach.TopTemplate)}" />

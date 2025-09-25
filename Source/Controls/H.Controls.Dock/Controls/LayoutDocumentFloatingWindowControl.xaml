@@ -16,7 +16,7 @@
         <Setter Property="shell:WindowChrome.WindowChrome">
             <Setter.Value>
                 <shell:WindowChrome CaptionHeight="{DynamicResource {x:Static h:LayoutKeys.ItemHeight}}"
-                                    CornerRadius="2"
+                                    CornerRadius="{DynamicResource {x:Static LayoutKeys.CornerRadius}}"
                                     GlassFrameThickness="0"
                                     ResizeBorderThickness="10"
                                     ShowSystemMenu="False" />

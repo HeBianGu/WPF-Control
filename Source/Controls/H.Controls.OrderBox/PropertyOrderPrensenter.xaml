@@ -31,7 +31,7 @@
                                       IsChecked="{Binding IsSelected}" />
                             <FontIconButton BorderBrush="{DynamicResource {x:Static h:BrushKeys.BorderBrush}}"
                                             BorderThickness="1"
-                                            Cattach.CornerRadius="2"
+                                            Cattach.CornerRadius="{DynamicResource {x:Static LayoutKeys.CornerRadius}}"
                                             DockPanel.Dock="Right"
                                             FontSize="12">
                                 <Behaviors:Interaction.Behaviors>

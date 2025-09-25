@@ -22,7 +22,7 @@
                 CheckedBorderBrush="{TemplateBinding PressedBorderBrush}"
                 ClickMode="Press"
                 ControlSizeDefinition="{TemplateBinding ControlSizeDefinition}"
-                CornerRadius="2"
+                CornerRadius="{DynamicResource {x:Static LayoutKeys.CornerRadius}}"
                 FocusVisualStyle="{x:Null}"
                 FocusedBackground="{TemplateBinding FocusedBackground}"
                 FocusedBorderBrush="{TemplateBinding FocusedBorderBrush}"
@@ -64,12 +64,12 @@
                         Background="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Ribbon.Background}"
                         BorderBrush="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Ribbon.BorderBrush}"
                         BorderThickness="{TemplateBinding BorderThickness}"
-                        CornerRadius="2">
+                        CornerRadius="{DynamicResource {x:Static LayoutKeys.CornerRadius}}">
                         <Border
                             x:Name="SubMenuInnerBorder"
                             Background="{DynamicResource {x:Static BrushKeys.Background}}"
                             BorderThickness="0"
-                            CornerRadius="2">
+                            CornerRadius="{DynamicResource {x:Static LayoutKeys.CornerRadius}}">
                             <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto" />

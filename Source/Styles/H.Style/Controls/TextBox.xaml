@@ -18,7 +18,7 @@
         <Setter Property="AllowDrop" Value="true" />
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="Padding" Value="2,0" />
-        <Setter Property="Cattach.CornerRadius" Value="2" />
+        <Setter Property="Cattach.CornerRadius" Value="{DynamicResource {x:Static LayoutKeys.CornerRadius}}" />
         <Setter Property="MinHeight" Value="{DynamicResource {x:Static LayoutKeys.ItemHeight}}" />
         <Setter Property="CaretBrush" Value="{DynamicResource {x:Static BrushKeys.ForegroundSelect}}" />
         <Setter Property="SelectionBrush" Value="{DynamicResource {x:Static BrushKeys.ForegroundSelect}}" />

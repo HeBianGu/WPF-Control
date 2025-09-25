@@ -57,7 +57,7 @@
                     Grid.ColumnSpan="2"
                     BorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrush}}"
                     BorderThickness="1"
-                    CornerRadius="2">
+                    CornerRadius="{DynamicResource {x:Static LayoutKeys.CornerRadius}}">
                 <Border.Background>
                     <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Background}}" />
                 </Border.Background>

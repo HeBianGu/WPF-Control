@@ -3,7 +3,7 @@
                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                    xmlns:h="https://github.com/HeBianGu"
                    xmlns:local="clr-namespace:H.Test.Controls">
-    <Application.Resources>
+    <!--<Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <FontSizeTheme Type="Default" />
@@ -11,5 +11,5 @@
                 <ColorTheme Type="Dark" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
-    </Application.Resources>
+    </Application.Resources>-->
 </h:ApplicationBase>

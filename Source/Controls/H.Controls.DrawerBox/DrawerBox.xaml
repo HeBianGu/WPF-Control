@@ -11,7 +11,7 @@
                             Background="{TemplateBinding Background}"
                             BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}"
-                            CornerRadius="2">
+                            CornerRadius="{DynamicResource {x:Static LayoutKeys.CornerRadius}}">
                         <Grid>
                             <Control x:Name="PART_DrawerTemplate"
                                      Template="{TemplateBinding DrawerTemplate}" />

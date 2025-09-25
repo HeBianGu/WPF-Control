@@ -129,10 +129,10 @@
                           SnapsToDevicePixels="True">
                         <Border x:Name="OuterBorder"
                                 Background="{TemplateBinding Background}"
-                                CornerRadius="2">
+                                CornerRadius="{DynamicResource {x:Static LayoutKeys.CornerRadius}}">
                             <Border x:Name="InnerBorder"
                                     Background="Transparent"
-                                    CornerRadius="2">
+                                    CornerRadius="{DynamicResource {x:Static LayoutKeys.CornerRadius}}">
                                 <StackPanel x:Name="StackPanel"
                                             Orientation="Horizontal">
                                     <!--  Please note that the setter for the Style property is only so that this ToggleButton doesn't accidentally pick up some styles defined at the app level.  -->
@@ -249,11 +249,11 @@
                                         Background="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Ribbon.Background}"
                                         BorderBrush="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Ribbon.BorderBrush}"
                                         BorderThickness="{TemplateBinding BorderThickness}"
-                                        CornerRadius="2">
+                                        CornerRadius="{DynamicResource {x:Static LayoutKeys.CornerRadius}}">
                                     <Border x:Name="SubMenuInnerBorder"
                                             Background="{DynamicResource {x:Static BrushKeys.Background}}"
                                             BorderThickness="0"
-                                            CornerRadius="2">
+                                            CornerRadius="{DynamicResource {x:Static LayoutKeys.CornerRadius}}">
                                         <Grid>
                                             <Grid.RowDefinitions>
                                                 <RowDefinition Height="Auto" />
@@ -653,10 +653,10 @@
                                   SnapsToDevicePixels="True">
                                 <Border x:Name="OuterBorder"
                                         Background="{TemplateBinding Background}"
-                                        CornerRadius="2">
+                                        CornerRadius="{DynamicResource {x:Static LayoutKeys.CornerRadius}}">
                                     <Border x:Name="InnerBorder"
                                             Background="Transparent"
-                                            CornerRadius="2">
+                                            CornerRadius="{DynamicResource {x:Static LayoutKeys.CornerRadius}}">
                                         <StackPanel x:Name="StackPanel"
                                                     Orientation="Horizontal">
                                             <!--  Please note that the setter for the Style property is only so that this ToggleButton doesn't accidentally pick up some styles defined at the app level.  -->
@@ -783,11 +783,11 @@
                                                 Background="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Ribbon.Background}"
                                                 BorderBrush="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Ribbon.BorderBrush}"
                                                 BorderThickness="{TemplateBinding BorderThickness}"
-                                                CornerRadius="2">
+                                                CornerRadius="{DynamicResource {x:Static LayoutKeys.CornerRadius}}">
                                             <Border x:Name="SubMenuInnerBorder"
                                                     Background="{DynamicResource {x:Static BrushKeys.Background}}"
                                                     BorderThickness="0"
-                                                    CornerRadius="2">
+                                                    CornerRadius="{DynamicResource {x:Static LayoutKeys.CornerRadius}}">
                                                 <Grid>
                                                     <Grid.RowDefinitions>
                                                         <RowDefinition Height="Auto" />

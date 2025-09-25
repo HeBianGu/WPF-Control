@@ -11,7 +11,7 @@
         <Setter Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.BorderBrush}}" />
         <Setter Property="Background" Value="{DynamicResource {x:Static BrushKeys.MouseOver}}" />
         <Setter Property="BorderThickness" Value="1" />
-        <Setter Property="Cattach.CornerRadius" Value="2" />
+        <Setter Property="Cattach.CornerRadius" Value="{DynamicResource {x:Static LayoutKeys.CornerRadius}}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type local:PropertyOrderBox}">

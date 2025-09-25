@@ -17,7 +17,7 @@
         <Setter Property="VirtualizingPanel.VirtualizationMode" Value="Recycling" />
         <Setter Property="Padding" Value="4" />
         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-        <Setter Property="Cattach.CornerRadius" Value="2" />
+        <Setter Property="Cattach.CornerRadius" Value="{DynamicResource {x:Static LayoutKeys.CornerRadius}}" />
         <Setter Property="Background" Value="{DynamicResource {x:Static h:BrushKeys.Background}}" />
         <Setter Property="BorderBrush" Value="{DynamicResource {x:Static h:BrushKeys.BorderBrush}}" />
         <Setter Property="BorderThickness" Value="1" />

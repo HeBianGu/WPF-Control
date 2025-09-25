@@ -12,7 +12,7 @@
                     Padding="10,6"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Bottom"
-                    CornerRadius="2">
+                    CornerRadius="{DynamicResource {x:Static LayoutKeys.CornerRadius}}">
                 <Border.Background>
                     <SolidColorBrush Opacity="0.2"
                                      Color="Black" />
@@ -23,7 +23,7 @@
                             Margin="2"
                             BorderBrush="White"
                             BorderThickness="1"
-                            CornerRadius="2">
+                            CornerRadius="{DynamicResource {x:Static LayoutKeys.CornerRadius}}">
                         <Border.Background>
                             <SolidColorBrush Color="{Binding Color}" />
                         </Border.Background>

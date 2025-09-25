@@ -19,7 +19,7 @@
                     <Border Background="{TemplateBinding Background}"
                             BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}"
-                            CornerRadius="2">
+                            CornerRadius="{DynamicResource {x:Static LayoutKeys.CornerRadius}}">
                         <ToggleButton x:Name="button"
                                       Background="Transparent"
                                       BorderThickness="0,1,0,0"

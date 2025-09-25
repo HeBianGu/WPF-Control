@@ -18,7 +18,7 @@
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <Grid Background="Transparent">
-                                    <Border Margin="2" CornerRadius="2" Style="{DynamicResource {x:Static h:BorderKeys.CardBorderBrush}}">
+                                    <Border Margin="2" CornerRadius="{DynamicResource {x:Static LayoutKeys.CornerRadius}}" Style="{DynamicResource {x:Static h:BorderKeys.CardBorderBrush}}">
                                         <Border.Background>
                                             <SolidColorBrush Color="{Binding}" />
                                         </Border.Background>

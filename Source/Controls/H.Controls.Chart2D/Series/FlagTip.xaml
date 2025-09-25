@@ -73,7 +73,7 @@
                             <ControlTemplate TargetType="Label">
                                 <Grid>
                                     <Border Background="{TemplateBinding Background}"
-                                            CornerRadius="2"
+                                            CornerRadius="{DynamicResource {x:Static LayoutKeys.CornerRadius}}"
                                             Opacity="0.8" />
 
                                     <TextBlock Margin="20,6"

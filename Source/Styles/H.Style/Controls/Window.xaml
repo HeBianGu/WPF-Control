@@ -123,7 +123,7 @@
         </Setter>
         <Setter Property="Background" Value="{DynamicResource {x:Static BrushKeys.Background}}" />
         <Setter Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.BorderBrush}}" />
-        <Setter Property="Cattach.CornerRadius" Value="2" />
+        <Setter Property="Cattach.CornerRadius" Value="{DynamicResource {x:Static LayoutKeys.CornerRadius}}" />
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="Template">
             <Setter.Value>

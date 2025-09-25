@@ -19,7 +19,7 @@
                     Background="{DynamicResource {x:Static h:BrushKeys.Background}}"
                     BorderBrush="{DynamicResource {x:Static h:BrushKeys.BorderBrush}}"
                     BorderThickness="1"
-                    CornerRadius="2" />
+                    CornerRadius="{DynamicResource {x:Static LayoutKeys.CornerRadius}}" />
             <!--<Grid Width="15"
                   Height="15"
                   Margin="10,5">

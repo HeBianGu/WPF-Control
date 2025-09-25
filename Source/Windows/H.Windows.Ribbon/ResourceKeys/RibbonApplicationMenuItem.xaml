@@ -12,7 +12,7 @@
             Background="{TemplateBinding Background}"
             BorderBrush="{TemplateBinding BorderBrush}"
             BorderThickness="{TemplateBinding BorderThickness}"
-            CornerRadius="2"
+            CornerRadius="{DynamicResource {x:Static LayoutKeys.CornerRadius}}"
             SnapsToDevicePixels="True">
             <Grid Margin="1">
                 <Grid.ColumnDefinitions>
@@ -38,7 +38,7 @@
                     Background="{TemplateBinding CheckedBackground}"
                     BorderBrush="{TemplateBinding CheckedBorderBrush}"
                     BorderThickness="1"
-                    CornerRadius="2"
+                    CornerRadius="{DynamicResource {x:Static LayoutKeys.CornerRadius}}"
                     Visibility="Hidden">
                     <Path
                         x:Name="CheckMark"
@@ -98,13 +98,13 @@
                                 Background="{Binding Path=Ribbon.Background, RelativeSource={RelativeSource TemplatedParent}}"
                                 BorderBrush="{Binding Path=Ribbon.BorderBrush, RelativeSource={RelativeSource TemplatedParent}}"
                                 BorderThickness="{TemplateBinding BorderThickness}"
-                                CornerRadius="2" />
+                                CornerRadius="{DynamicResource {x:Static LayoutKeys.CornerRadius}}" />
                             <Border
                                 x:Name="PopupOverlayBorder"
                                 Background="{TemplateBinding Background}"
                                 BorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrush}}"
                                 BorderThickness="{TemplateBinding BorderThickness}"
-                                CornerRadius="2">
+                                CornerRadius="{DynamicResource {x:Static LayoutKeys.CornerRadius}}">
                                 <Grid>
                                     <Grid.RowDefinitions>
                                         <RowDefinition />
@@ -287,7 +287,7 @@
                 Background="{TemplateBinding Background}"
                 BorderBrush="{TemplateBinding BorderBrush}"
                 BorderThickness="{TemplateBinding BorderThickness}"
-                CornerRadius="2">
+                CornerRadius="{DynamicResource {x:Static LayoutKeys.CornerRadius}}">
                 <Grid Margin="1">
                     <Grid.ColumnDefinitions>
                         <!--  Icon or check mark column  -->
@@ -313,7 +313,7 @@
                         Background="{TemplateBinding CheckedBackground}"
                         BorderBrush="{TemplateBinding CheckedBorderBrush}"
                         BorderThickness="1"
-                        CornerRadius="2"
+                        CornerRadius="{DynamicResource {x:Static LayoutKeys.CornerRadius}}"
                         Visibility="Hidden">
                         <Path
                             x:Name="CheckMark"
@@ -369,13 +369,13 @@
                             Background="{Binding Path=Ribbon.Background, RelativeSource={RelativeSource TemplatedParent}}"
                             BorderBrush="{Binding Path=Ribbon.BorderBrush, RelativeSource={RelativeSource TemplatedParent}}"
                             BorderThickness="{TemplateBinding BorderThickness}"
-                            CornerRadius="2" />
+                            CornerRadius="{DynamicResource {x:Static LayoutKeys.CornerRadius}}" />
                         <Border
                             x:Name="PopupOverlayBorder"
                             Background="{TemplateBinding Background}"
                             BorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrush}}"
                             BorderThickness="{TemplateBinding BorderThickness}"
-                            CornerRadius="2">
+                            CornerRadius="{DynamicResource {x:Static LayoutKeys.CornerRadius}}">
 
                             <Grid>
                                 <Grid.RowDefinitions>
@@ -594,7 +594,7 @@
                 Background="{TemplateBinding Background}"
                 BorderBrush="{TemplateBinding BorderBrush}"
                 BorderThickness="{TemplateBinding BorderThickness}"
-                CornerRadius="2">
+                CornerRadius="{DynamicResource {x:Static LayoutKeys.CornerRadius}}">
                 <Grid Margin="1">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition
@@ -622,7 +622,7 @@
                         Background="{TemplateBinding CheckedBackground}"
                         BorderBrush="{TemplateBinding CheckedBorderBrush}"
                         BorderThickness="1"
-                        CornerRadius="2"
+                        CornerRadius="{DynamicResource {x:Static LayoutKeys.CornerRadius}}"
                         Visibility="Hidden">
                         <Path
                             x:Name="CheckMark"
@@ -673,13 +673,13 @@
                             Background="{Binding Path=Ribbon.Background, RelativeSource={RelativeSource TemplatedParent}}"
                             BorderBrush="{Binding Path=Ribbon.BorderBrush, RelativeSource={RelativeSource TemplatedParent}}"
                             BorderThickness="{TemplateBinding BorderThickness}"
-                            CornerRadius="2" />
+                            CornerRadius="{DynamicResource {x:Static LayoutKeys.CornerRadius}}" />
                         <Border
                             x:Name="PopupOverlayBorder"
                             Background="{TemplateBinding Background}"
                             BorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrush}}"
                             BorderThickness="{TemplateBinding BorderThickness}"
-                            CornerRadius="2">
+                            CornerRadius="{DynamicResource {x:Static LayoutKeys.CornerRadius}}">
                             <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition />

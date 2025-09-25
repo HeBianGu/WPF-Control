@@ -27,12 +27,12 @@
                             Background="{TemplateBinding Background}"
                             BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="1"
-                            CornerRadius="2">
+                            CornerRadius="{DynamicResource {x:Static LayoutKeys.CornerRadius}}">
                         <Grid>
                             <Border Name="InnerBorder"
                                     Background="{TemplateBinding MouseOverBackground}"
                                     BorderBrush="{TemplateBinding MouseOverBorderBrush}"
-                                    CornerRadius="2"
+                                    CornerRadius="{DynamicResource {x:Static LayoutKeys.CornerRadius}}"
                                     Opacity="0" />
                             <Image Name="GroupImage"
                                    Width="16"
@@ -186,17 +186,17 @@
                                 Margin="1"
                                 BorderBrush="{TemplateBinding BorderBrush}"
                                 BorderThickness="1"
-                                CornerRadius="2" />
+                                CornerRadius="{DynamicResource {x:Static LayoutKeys.CornerRadius}}" />
                         <Border x:Name="ButtonOuterBorder"
                                 Background="{TemplateBinding Background}"
                                 BorderBrush="{TemplateBinding BorderBrush}"
                                 BorderThickness="1"
-                                CornerRadius="2" />
+                                CornerRadius="{DynamicResource {x:Static LayoutKeys.CornerRadius}}" />
                         <Border x:Name="PART_HotBackground"
                                 Background="{TemplateBinding MouseOverBackground}"
                                 BorderBrush="{TemplateBinding MouseOverBorderBrush}"
                                 BorderThickness="1"
-                                CornerRadius="2"
+                                CornerRadius="{DynamicResource {x:Static LayoutKeys.CornerRadius}}"
                                 Opacity="0" />
                         <Grid Margin="2">
                             <Grid.RowDefinitions>
@@ -213,12 +213,12 @@
                                         VerticalAlignment="Top"
                                         BorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrush}}"
                                         BorderThickness="0"
-                                        CornerRadius="2">
+                                        CornerRadius="{DynamicResource {x:Static LayoutKeys.CornerRadius}}">
                                     <Grid>
                                         <Border x:Name="ImageInnerBorder"
                                                 BorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrush}}"
                                                 BorderThickness="0"
-                                                CornerRadius="2" />
+                                                CornerRadius="{DynamicResource {x:Static LayoutKeys.CornerRadius}}" />
                                         <Image x:Name="GroupImage"
                                                Width="32"
                                                Height="32"
@@ -374,7 +374,7 @@
                         Background="{TemplateBinding MouseOverBackground}"
                         BorderBrush="{TemplateBinding MouseOverBorderBrush}"
                         BorderThickness="1"
-                        CornerRadius="2"
+                        CornerRadius="{DynamicResource {x:Static LayoutKeys.CornerRadius}}"
                         Opacity="0"
                         SnapsToDevicePixels="True" />
                 <Border Name="SeparatorBorder"
@@ -466,7 +466,7 @@
                    PlacementTarget="{Binding ElementName=PART_ToggleButton}"
                    PopupAnimation="{DynamicResource {x:Static SystemParameters.MenuPopupAnimationKey}}">
                 <classic:SystemDropShadowChrome Name="Shdw"
-                                                CornerRadius="2"
+                                                CornerRadius="{DynamicResource {x:Static LayoutKeys.CornerRadius}}"
                                                 FocusVisualStyle="{x:Null}"
                                                 Focusable="True"
                                                 KeyTipService.IsKeyTipScope="True"
@@ -491,7 +491,7 @@
                                 Background="{TemplateBinding MouseOverBackground}"
                                 BorderBrush="{TemplateBinding MouseOverBorderBrush}"
                                 BorderThickness="1"
-                                CornerRadius="2"
+                                CornerRadius="{DynamicResource {x:Static LayoutKeys.CornerRadius}}"
                                 Opacity="0"
                                 SnapsToDevicePixels="True" />
                         <Border Margin="2,3.5,2,0"

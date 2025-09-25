@@ -30,7 +30,7 @@
                 </Grid.RowDefinitions>
                 <Border Grid.RowSpan="5"
                         Grid.ColumnSpan="5"
-                        CornerRadius="2">
+                        CornerRadius="{DynamicResource {x:Static LayoutKeys.CornerRadius}}">
                     <Border.Background>
                         <SolidColorBrush Color="{DynamicResource {x:Static h:ColorKeys.Background}}" />
                     </Border.Background>
@@ -53,7 +53,7 @@
                                    Text="{Binding Title}" />
                         <FontIconButton Grid.Column="1"
                                         HorizontalAlignment="Right"
-                                        Cattach.CornerRadius="2"
+                                        Cattach.CornerRadius="{DynamicResource {x:Static LayoutKeys.CornerRadius}}"
                                         Command="{local:CloseAdornerDialogCommand}"
                                         CommandParameter="{Binding}"
                                         Content="{x:Static FontIcons.Cancel}"

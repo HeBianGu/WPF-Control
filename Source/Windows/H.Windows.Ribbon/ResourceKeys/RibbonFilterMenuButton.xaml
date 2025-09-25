@@ -118,11 +118,11 @@
                                         Background="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Ribbon.Background}"
                                         BorderBrush="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Ribbon.BorderBrush}"
                                         BorderThickness="{TemplateBinding BorderThickness}"
-                                        CornerRadius="2">
+                                        CornerRadius="{DynamicResource {x:Static LayoutKeys.CornerRadius}}">
                                     <Border x:Name="SubMenuInnerBorder"
                                             Background="{DynamicResource {x:Static BrushKeys.Background}}"
                                             BorderThickness="0"
-                                            CornerRadius="2">
+                                            CornerRadius="{DynamicResource {x:Static LayoutKeys.CornerRadius}}">
                                         <ScrollViewer x:Name="PART_SubMenuScrollViewer"
                                                       Margin="1"
                                                       Style="{DynamicResource {ComponentResourceKey TypeInTargetAssembly={x:Type FrameworkElement},

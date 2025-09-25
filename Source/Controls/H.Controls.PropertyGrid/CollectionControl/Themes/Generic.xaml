@@ -218,7 +218,7 @@
                                     Background="{TemplateBinding Background}"
                                     BorderBrush="{TemplateBinding BorderBrush}"
                                     BorderThickness="{TemplateBinding BorderThickness}"
-                                    CornerRadius="2"
+                                    CornerRadius="{DynamicResource {x:Static LayoutKeys.CornerRadius}}"
                                     SnapsToDevicePixels="True">
                                 <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                                   VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
@@ -229,7 +229,7 @@
 
                             <local:ButtonChrome x:Name="ToggleButtonChrome"
                                                 Grid.Column="1"
-                                                CornerRadius="2"
+                                                CornerRadius="{DynamicResource {x:Static LayoutKeys.CornerRadius}}"
                                                 RenderEnabled="{Binding IsEnabled, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:CollectionControlButton}}"
                                                 RenderMouseOver="{TemplateBinding IsMouseOver}">
                                 <Grid x:Name="arrowGlyph"

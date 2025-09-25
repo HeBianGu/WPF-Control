@@ -16,7 +16,7 @@
                     Background="{DynamicResource {x:Static h:BrushKeys.Background}}"
                     BorderBrush="{DynamicResource {x:Static h:BrushKeys.BorderBrush}}"
                     BorderThickness="1"
-                    CornerRadius="2" />
+                    CornerRadius="{DynamicResource {x:Static LayoutKeys.CornerRadius}}" />
             <!--<Grid x:Name="g"
                   Width="25"
                   Height="25">

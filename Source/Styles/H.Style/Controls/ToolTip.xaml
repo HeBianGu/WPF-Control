@@ -33,7 +33,7 @@
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="HasDropShadow" Value="true">
-                            <Setter TargetName="Border" Property="CornerRadius" Value="2" />
+                            <Setter TargetName="Border" Property="CornerRadius" Value="{DynamicResource {x:Static LayoutKeys.CornerRadius}}" />
                             <Setter TargetName="Border" Property="SnapsToDevicePixels" Value="true" />
                         </Trigger>
                     </ControlTemplate.Triggers>

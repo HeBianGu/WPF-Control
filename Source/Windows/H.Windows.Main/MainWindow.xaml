@@ -30,7 +30,7 @@
         <Setter Property="Background" Value="{DynamicResource {x:Static BrushKeys.Background}}" />
         <Setter Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.BorderBrush}}" />
         <Setter Property="BorderThickness" Value="1" />
-        <Setter Property="Cattach.CornerRadius" Value="2" />
+        <Setter Property="Cattach.CornerRadius" Value="{DynamicResource {x:Static LayoutKeys.CornerRadius}}" />
         <!--<Setter Property="WindowStartupLocation" Value="CenterScreen" />-->
         <Setter Property="SnapsToDevicePixels" Value="true" />
         <Setter Property="CaptionHeight" Value="{DynamicResource {x:Static h:LayoutKeys.WindowCaptionHeight}}" />

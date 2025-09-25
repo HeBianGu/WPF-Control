@@ -31,7 +31,7 @@
                                 Background="{TemplateBinding Background}"
                                 BorderBrush="{TemplateBinding BorderBrush}"
                                 BorderThickness="{TemplateBinding BorderThickness}"
-                                CornerRadius="2"
+                                CornerRadius="{DynamicResource {x:Static LayoutKeys.CornerRadius}}"
                                 Visibility="{TemplateBinding HeaderVisibility}">
 
                             <ContentPresenter x:Name="PART_Header"

@@ -74,12 +74,12 @@
                                 Background="White"
                                 BorderBrush="{x:Null}"
                                 BorderThickness="0"
-                                CornerRadius="2"
+                                CornerRadius="{DynamicResource {x:Static LayoutKeys.CornerRadius}}"
                                 Opacity="0.5" />
                         <Grid x:Name="PART_Default">
                             <Border Background="#FF9CA2AB"
                                     BorderThickness="0"
-                                    CornerRadius="2">
+                                    CornerRadius="{DynamicResource {x:Static LayoutKeys.CornerRadius}}">
                                 <Grid>
                                     <Border x:Name="PART_Border1"
                                             Margin="1"
@@ -131,7 +131,7 @@
                               Opacity="0">
                             <Border Background="#FF9CA2AB"
                                     BorderThickness="0"
-                                    CornerRadius="2">
+                                    CornerRadius="{DynamicResource {x:Static LayoutKeys.CornerRadius}}">
                                 <Border Margin="1"
                                         BorderThickness="0"
                                         CornerRadius="1">
@@ -148,7 +148,7 @@
                               Opacity="0">
                             <Border Background="#FF90959D"
                                     BorderThickness="0"
-                                    CornerRadius="2">
+                                    CornerRadius="{DynamicResource {x:Static LayoutKeys.CornerRadius}}">
                                 <Border Margin="1"
                                         Background="#FFB5BBC5"
                                         BorderThickness="0"
@@ -218,11 +218,11 @@
                                 Background="White"
                                 BorderBrush="{x:Null}"
                                 BorderThickness="0"
-                                CornerRadius="2"
+                                CornerRadius="{DynamicResource {x:Static LayoutKeys.CornerRadius}}"
                                 Opacity="0.5" />
                         <Grid x:Name="PART_Default">
                             <Border BorderThickness="0"
-                                    CornerRadius="2">
+                                    CornerRadius="{DynamicResource {x:Static LayoutKeys.CornerRadius}}">
                                 <Border.Background>
                                     <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
                                         <GradientStop Offset="0" Color="#FFC19497" />
@@ -244,7 +244,7 @@
                         <Grid x:Name="PART_MouseOver"
                               Opacity="0">
                             <Border BorderThickness="0"
-                                    CornerRadius="2">
+                                    CornerRadius="{DynamicResource {x:Static LayoutKeys.CornerRadius}}">
                                 <Border.Background>
                                     <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
                                         <GradientStop Offset="0" Color="#FFC19497" />
@@ -267,7 +267,7 @@
                               Opacity="0">
                             <Border Background="#FF9B6F72"
                                     BorderThickness="0"
-                                    CornerRadius="2">
+                                    CornerRadius="{DynamicResource {x:Static LayoutKeys.CornerRadius}}">
                                 <Border Margin="1"
                                         Background="#FFE69197"
                                         BorderThickness="0"
@@ -341,7 +341,7 @@
                                 Opacity="0.5" />
                         <Grid x:Name="PART_Default">
                             <Border BorderThickness="0"
-                                    CornerRadius="2">
+                                    CornerRadius="{DynamicResource {x:Static LayoutKeys.CornerRadius}}">
                                 <Border.Background>
                                     <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
                                         <GradientStop Offset="0" Color="#FFA9AAAB" />
@@ -363,7 +363,7 @@
                         <Grid x:Name="PART_MouseOver"
                               Opacity="0">
                             <Border BorderThickness="0"
-                                    CornerRadius="2">
+                                    CornerRadius="{DynamicResource {x:Static LayoutKeys.CornerRadius}}">
                                 <Border.Background>
                                     <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
                                         <GradientStop Offset="0" Color="#FFA9AAAB" />
@@ -386,7 +386,7 @@
                               Opacity="0">
                             <Border Background="#FF87888A"
                                     BorderThickness="0"
-                                    CornerRadius="2">
+                                    CornerRadius="{DynamicResource {x:Static LayoutKeys.CornerRadius}}">
                                 <Border Margin="1"
                                         Background="#FFB5BBC5"
                                         BorderThickness="0"

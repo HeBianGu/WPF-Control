@@ -84,7 +84,7 @@
                     <Border Background="{TemplateBinding Background}"
                             BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="1"
-                            CornerRadius="2" />
+                            CornerRadius="{DynamicResource {x:Static LayoutKeys.CornerRadius}}" />
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
@@ -110,7 +110,7 @@
             </Grid.RowDefinitions>
             <Border x:Name="Border"
                     Grid.RowSpan="3"
-                    CornerRadius="2">
+                    CornerRadius="{DynamicResource {x:Static LayoutKeys.CornerRadius}}">
                 <Border.Background>
                     <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Dark0_1}}" />
                 </Border.Background>
@@ -163,7 +163,7 @@
                                   MaxWidth="18" />
             </Grid.ColumnDefinitions>
             <Border Grid.ColumnSpan="3"
-                    CornerRadius="2">
+                    CornerRadius="{DynamicResource {x:Static LayoutKeys.CornerRadius}}">
                 <Border.Background>
                     <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Dark0_1}}" />
                 </Border.Background>

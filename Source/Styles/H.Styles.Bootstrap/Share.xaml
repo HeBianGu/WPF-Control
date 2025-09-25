@@ -12,7 +12,7 @@
             </Setter.Value>
         </Setter>-->
         <Setter Property="Foreground" Value="{DynamicResource {x:Static BrushKeys.Foreground}}" />
-        <Setter Property="Cattach.CornerRadius" Value="2" />
+        <Setter Property="Cattach.CornerRadius" Value="{DynamicResource {x:Static LayoutKeys.CornerRadius}}" />
     </Style>
 
     <Style x:Key="S.Border.TemplatedParent"
