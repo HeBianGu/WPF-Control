@@ -44,5 +44,6 @@
         <ResourceDictionary Source="pack://application:,,,/H.Style;component/Controls/FontIconTextBlock.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Style;component/Controls/FontIconToggleButton.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Style;component/Controls/GroupItem.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Style;component/Controls/Hyperlink.xaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>
