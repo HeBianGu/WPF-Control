@@ -318,6 +318,14 @@
                                                HorizontalContentAlignment="Stretch"
                                                Focusable="{TemplateBinding Focusable}"
                                                Foreground="{TemplateBinding Foreground}" />
+
+                            <ContentPresenter x:Name="PART_Watermark"
+                                              Margin="5,0"
+                                              VerticalAlignment="Center"
+                                              Content="{Binding RelativeSource={RelativeSource AncestorType=DatePicker}, Path=(Cattach.Watermark)}"
+                                              IsHitTestVisible="False"
+                                              Opacity="0.5"
+                                              Visibility="Collapsed" />
                             <!--<Grid x:Name="PART_DisabledVisual"
                                   Grid.Row="0"
                                   Grid.Column="0"
@@ -368,6 +376,22 @@
                             </VisualStateGroup>
                         </VisualStateManager.VisualStateGroups>-->
                     </Border>
+                    <ControlTemplate.Triggers>
+                        <!-- 当 SelectedDate 为空 且 文本框没有任何文本 时显示水印 -->
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding SelectedDate, RelativeSource={RelativeSource AncestorType=DatePicker}}" Value="{x:Null}" />
+                                <Condition Binding="{Binding Text, ElementName=PART_TextBox}" Value="" />
+                            </MultiDataTrigger.Conditions>
+                            <Setter TargetName="PART_Watermark" Property="Visibility" Value="Visible" />
+                        </MultiDataTrigger>
+
+                        <!-- 获得焦点时如果已经有文本仍然保持隐藏；失焦后自动依赖上面 MultiDataTrigger -->
+                        <Trigger SourceName="PART_TextBox" Property="IsKeyboardFocused" Value="True">
+                            <Setter TargetName="PART_Watermark" Property="Visibility" Value="Collapsed" />
+                        </Trigger>
+
+                    </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
