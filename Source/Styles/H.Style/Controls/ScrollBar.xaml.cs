@@ -12,3 +12,9 @@ public class ScrollBarKeys
 {
     public static ComponentResourceKey Default => new ComponentResourceKey(typeof(ScrollBarKeys), "S.ScrollBar.Default");
 }
+
+
+public class ScrollBarStyleKeys
+{
+    public static ComponentResourceKey Length => new ComponentResourceKey(typeof(ScrollBarStyleKeys), "S.ScrollBarStyle.Length");
+}
