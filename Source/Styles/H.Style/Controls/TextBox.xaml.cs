@@ -33,7 +33,9 @@ public class DeleteTextCommandExtension : MarkupExtension, ICommand
     public void Execute(object parameter)
     {
         if (parameter is TextBox text)
-            text.ClearValue(TextBox.TextProperty);
+        {
+            text.Text = null;
+        }
     }
 
     public override object ProvideValue(IServiceProvider serviceProvider)

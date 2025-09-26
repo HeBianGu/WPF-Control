@@ -205,17 +205,6 @@
                                         TypeInTargetAssembly={x:Type local:TextBoxKeys}}"
            BasedOn="{StaticResource {x:Static local:TextBoxKeys.Attach}}"
            TargetType="{x:Type TextBox}">
-        <!--<Setter Property="local:DeleteTextTextBoxCommand.Text" Value="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Text, UpdateSourceTrigger=PropertyChanged}" />-->
-        <Setter Property="Cattach.Attach">
-            <Setter.Value>
-                <Button Height="Auto"
-                        Margin="1"
-                        Command="{local:DeleteTextCommandExtension}"
-                        CommandParameter="{Binding RelativeSource={RelativeSource AncestorType={x:Type TextBox}}}"
-                        CommandTarget="{Binding RelativeSource={RelativeSource AncestorType=TextBox}}"
-                        Content="删除" />
-            </Setter.Value>
-        </Setter>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type TextBox}">
@@ -226,20 +215,23 @@
                             </Border>
                             <Path Style="{StaticResource S.Path.Icon.Cattachable}" />
                             <Border Style="{StaticResource S.Border.Attach}">
-                                <DockPanel>
-                                    <local:FontIconButton x:Name="btn_delete"
-                                                          Width="Auto"
-                                                          Height="Auto"
-                                                          Margin="1"
-                                                          Command="{local:DeleteTextCommandExtension}"
-                                                          CommandParameter="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}}"
-                                                          Content="&#xE711;" />
-                                </DockPanel>
+                                <ContentPresenter Style="{StaticResource S.ContentPresenter.Attach}" />
                             </Border>
-                            <Grid Margin="{TemplateBinding Padding}">
-                                <ScrollViewer x:Name="PART_ContentHost" />
-                                <Control Template="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(Cattach.CenterTemplate)}" />
-                            </Grid>
+                            <DockPanel>
+                                <local:FontIconButton x:Name="btn_delete"
+                                                      Width="Auto"
+                                                      Height="Auto"
+                                                      Margin="1"
+                                                      Background="{x:Null}"
+                                                      Command="{local:DeleteTextCommandExtension}"
+                                                      CommandParameter="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}}"
+                                                      Content="&#xE711;"
+                                                      DockPanel.Dock="Right" />
+                                <Grid Margin="{TemplateBinding Padding}">
+                                    <ScrollViewer x:Name="PART_ContentHost" />
+                                    <Control Template="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(Cattach.CenterTemplate)}" />
+                                </Grid>
+                            </DockPanel>
                         </DockPanel>
                     </Border>
                     <ControlTemplate.Triggers>
