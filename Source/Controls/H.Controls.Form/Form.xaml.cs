@@ -705,12 +705,12 @@ public partial class Form : ItemsControl, IFormOption
         {
             this.RefreshItemsFilter();
         }
-        if (tuple.Item1 is IRefreshSourceOnValueChanged refreshSourceOnValueChanged)
+        if (tuple.Item1 is IRefreshSourceOnValueChanged refreshSourceOnValueChanged && this.ItemsSource != null)
         {
-           var sourcePropertyItems= this.ItemsSource.OfType<ISelectSourcePropertyItem>();
+            var sourcePropertyItems = this.ItemsSource.OfType<ISelectSourcePropertyItem>();
             foreach (var propertyName in refreshSourceOnValueChanged.GetPropertyNames())
             {
-                foreach (var item in sourcePropertyItems.Where(x=>x.PropertyInfo.Name==propertyName))
+                foreach (var item in sourcePropertyItems.Where(x => x.PropertyInfo.Name == propertyName))
                 {
                     item.RefreshSource();
                 }
