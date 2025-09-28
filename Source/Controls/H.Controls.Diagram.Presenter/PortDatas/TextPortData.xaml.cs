@@ -190,10 +190,10 @@ public class TextPortData : PortData, ITextPortData
     [Display(Name = "高", GroupName = "样式")]
     public double Height
     {
-        get { return _width; }
+        get { return _height; }
         set
         {
-            _width = value;
+            _height = value;
             RaisePropertyChanged();
         }
     }

@@ -246,6 +246,32 @@ public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
         this.DataSource.Nodes.AligmentToNodesWithStartNode();
     }, x => this.DataSource.Nodes.Count > 0);
 
+
+    [Icon(FontIcons.Color)]
+    [System.Text.Json.Serialization.JsonIgnore]
+    [Display(Name = "恢复默认样式", GroupName = "操作", Order = 5)]
+    public virtual DisplayCommand LoadNodeDefaultCommand => new DisplayCommand(e =>
+    {
+        foreach (var item in this.Datas.NodeDatas)
+        {
+            if (item is IDefaultable defaultable)
+                defaultable.LoadDefault();
+
+            if (item is IPortableNodeData portable)
+            {
+                foreach (var p in portable.PortDatas.OfType<IDefaultable>())
+                {
+                    p.LoadDefault();
+                }
+            }
+        }
+
+        foreach (var item in this.Datas.LinkDatas.OfType<IDefaultable>())
+        {
+            item.LoadDefault();
+        }
+    }, x => this.DataSource.Nodes.Count > 0);
+
     public RelayCommand ItemsChangedCommand => new RelayCommand(e =>
     {
         this.OnItemsChanged();

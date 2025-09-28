@@ -8,8 +8,7 @@
 
 namespace H.Extensions.Mvvm.ViewModels;
 
-public interface IDisplayBindable : IIconable, INameable, IOrderable, IGroupable, IDable, IDescriptionable
+public interface IDisplayBindable : IIconable, INameable, IOrderable, IGroupable, IDable, IDescriptionable, IDefaultable
 {
-
     string ShortName { get; set; }
 }
