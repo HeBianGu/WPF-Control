@@ -69,15 +69,15 @@ public class ConstNodeDataExpression<T> : NodeDataExpression, IGetableNodeDataEx
     public override bool Equals(object obj)
     {
         if (obj is ConstNodeDataExpression<T> expression)
-            return this.Path == expression.Path 
-                && this.GroupName == expression.GroupName 
-                && this.Name == expression.Name 
-                && this.Value.Equals(expression.Value);
+            return this.Path == expression.Path
+                && this.GroupName == expression.GroupName
+                && this.Name == expression.Name
+                && this.Value?.Equals(expression.Value) == true;
         return false;
     }
 
     public override int GetHashCode()
     {
-        return HashCode.Combine(this.Path.GetHashCode(), this.GroupName.GetHashCode(), this.Name.GetHashCode(),this.Value.GetHashCode());
+        return HashCode.Combine(this.Path.GetHashCode(), this.GroupName.GetHashCode(), this.Name.GetHashCode(), this.Value?.GetHashCode());
     }
 }
