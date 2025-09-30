@@ -436,8 +436,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H.Controls.ROIBox", "..\Sou
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H.Controls.ImageColorPicker", "..\Source\Controls\H.Controls.ImageColorPicker\H.Controls.ImageColorPicker.csproj", "{6207F3DC-3644-8B68-DB5D-0A21CEC9B639}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H.Controls.ImageColorPicker", "..\..\WPF-VisionMaster\Source\WPF-Control\Source\Controls\H.Controls.ImageColorPicker\H.Controls.ImageColorPicker.csproj", "{0172155B-7480-BF68-908C-1A27942C6F15}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
