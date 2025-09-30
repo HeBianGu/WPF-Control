@@ -14,7 +14,7 @@
     <Copyright>Copyright © HeBianGu 2023-2025</Copyright>
     <Authors>HeBianGu</Authors>
     <!--nuget-->
-    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <GeneratePackageOnBuild>False</GeneratePackageOnBuild>
     <RepositoryUrl>https://github.com/HeBianGu/WPF-Control</RepositoryUrl>
     <PackageProjectUrl>https://github.com/HeBianGu/WPF-Control</PackageProjectUrl>
     <PackageReadmeFile>README.md</PackageReadmeFile>
