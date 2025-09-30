@@ -74,6 +74,11 @@ public abstract partial class ApplicationBase : Application, IConfigureableAppli
     #region - Exception -
     protected virtual void InitExcetion()
     {
+
+        //PresentationTraceSources.DataBindingSource.Switch.Level = SourceLevels.Error;
+        //// 或完全关闭：
+        //// PresentationTraceSources.DataBindingSource.Switch.Level = SourceLevels.Off;
+
         //#if DEBUG
         //            return;
         //#endif
