@@ -48,7 +48,7 @@
             <Border HorizontalAlignment="Left"
                     VerticalAlignment="Top"
                     Background="{DynamicResource {x:Static h:BrushKeys.Red}}"
-                    CornerRadius="2"
+                    CornerRadius="{DynamicResource {x:Static LayoutKeys.CornerRadius}}"
                     Visibility="{Binding Watched, Converter={x:Static h:Converter.GetTrueToCollapsed}}">
                 <TextBlock Margin="5,3"
                            Foreground="White"
@@ -101,7 +101,7 @@
                 BorderThickness="1">
             <DockPanel Margin="2">
                 <Grid>
-                    <Image Source="{Binding Url, Converter={x:Static h:Converter.GetFileImageSourceInMemory}, ConverterParameter=200, IsAsync=True}" />
+                    <Image Source="{Binding Url, Converter={x:Static h:ConverterEx.GetFileImageSourceInMemory}, ConverterParameter=200, IsAsync=True}" />
                     <TextBlock HorizontalAlignment="Center"
                                VerticalAlignment="Center"
                                FontSize="15"

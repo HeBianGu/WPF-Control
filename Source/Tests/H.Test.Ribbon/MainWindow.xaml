@@ -265,7 +265,7 @@
 
             </RibbonTab>
         </Ribbon>
-        <Button Content="按钮" />
+        <Button Content="按钮"  VerticalAlignment="Bottom"/>
     </DockPanel>
 </RibbonWindow>
 

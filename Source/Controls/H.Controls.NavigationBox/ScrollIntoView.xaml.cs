@@ -1,8 +1,10 @@
-﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
-
-using System.Collections;
-using System.Windows;
-using System.Windows.Controls;
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
 
 namespace H.Controls.NavigationBox
 {
@@ -27,7 +29,6 @@ namespace H.Controls.NavigationBox
 
             this._navigation = this.Template.FindName("PART_NAVIGATION", this) as ListBox;
 
-
             this._contain = this.Template.FindName("PART_CONTAINT", this) as ListBox;
 
             this._navigation.SelectionChanged += (l, k) =>
@@ -42,7 +43,6 @@ namespace H.Controls.NavigationBox
             set { SetValue(NavigationDataTemplateProperty, value); }
         }
 
-
         public static readonly DependencyProperty NavigationDataTemplateProperty =
             DependencyProperty.Register("NavigationDataTemplate", typeof(DataTemplate), typeof(ScrollIntoView), new PropertyMetadata(default(DataTemplate), (d, e) =>
              {
@@ -54,13 +54,11 @@ namespace H.Controls.NavigationBox
 
              }));
 
-
         public DataTemplate ContainDataTemplate
         {
             get { return (DataTemplate)GetValue(ContainDataTemplateProperty); }
             set { SetValue(ContainDataTemplateProperty, value); }
         }
-
 
         public static readonly DependencyProperty ContainDataTemplateProperty =
             DependencyProperty.Register("ContainDataTemplate", typeof(DataTemplate), typeof(ScrollIntoView), new PropertyMetadata(default(DataTemplate), (d, e) =>
@@ -73,13 +71,11 @@ namespace H.Controls.NavigationBox
 
              }));
 
-
         public IEnumerable Source
         {
             get { return (IEnumerable)GetValue(SourceProperty); }
             set { SetValue(SourceProperty, value); }
         }
-
 
         public static readonly DependencyProperty SourceProperty =
             DependencyProperty.Register("Source", typeof(IEnumerable), typeof(ScrollIntoView), new PropertyMetadata(default(IEnumerable), (d, e) =>

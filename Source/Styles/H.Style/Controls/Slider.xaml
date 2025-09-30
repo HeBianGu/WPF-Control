@@ -99,7 +99,7 @@
                     Height="4"
                     Margin="0"
                     BorderThickness="0"
-                    CornerRadius="2">
+                    CornerRadius="{DynamicResource {x:Static LayoutKeys.CornerRadius}}">
             -->
             <!--<Border.BorderBrush>
                     <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.BorderBrush}}" />
@@ -207,7 +207,7 @@
                     Margin="0"
                     BorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrush}}"
                     BorderThickness="1"
-                    CornerRadius="2">
+                    CornerRadius="{DynamicResource {x:Static LayoutKeys.CornerRadius}}">
                 <Border.Background>
                     <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Background}}" />
                 </Border.Background>

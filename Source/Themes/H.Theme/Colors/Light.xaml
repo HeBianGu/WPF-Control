@@ -1,6 +1,6 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:local="clr-namespace:H.Themes.Colors"
+                    xmlns:local="clr-namespace:H.Themes"
                     xmlns:po="http://schemas.microsoft.com/winfx/2006/xaml/presentation/options">
 
     <!--  Background  -->
@@ -9,7 +9,7 @@
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.RowIndex.BackGround, TypeInTargetAssembly={x:Type local:ColorKeys}}">#fafafa</Color>
 
     <!--  Foreground  -->
-    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.CaptionForeground, TypeInTargetAssembly={x:Type local:ColorKeys}}">#606266</Color>
+    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.CaptionForeground, TypeInTargetAssembly={x:Type local:ColorKeys}}">#272727</Color>
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextForeground.Title, TypeInTargetAssembly={x:Type local:ColorKeys}}">#000000</Color>
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextForeground, TypeInTargetAssembly={x:Type local:ColorKeys}}">#606266</Color>
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextForeground.Select, TypeInTargetAssembly={x:Type local:ColorKeys}}">#000000</Color>

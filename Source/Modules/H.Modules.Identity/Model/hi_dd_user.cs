@@ -1,17 +1,15 @@
-﻿
-using H.Controls.Form;
-using H.Extensions.Behvaiors;
-using H.Services.Common;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Xml.Serialization;
-using H.Extensions.DataBase;
-using H.Controls.Form.PropertyItem.ComboBoxPropertyItems;
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
+
 using H.Controls.Form.PropertyItem.Attribute.SourcePropertyItem;
+using H.Controls.Form.PropertyItem.ComboBoxPropertyItems;
 using H.Extensions.Behvaiors.DataGrids;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace H.Modules.Identity
 {
@@ -52,7 +50,6 @@ namespace H.Modules.Identity
                 RaisePropertyChanged();
             }
         }
-
 
         private string _password;
         [Display(Name = "登陆密码")]

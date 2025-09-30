@@ -1,14 +1,15 @@
-﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
 
 global using H.Controls.Form.Provider;
-global using H.Extensions.Common;
 global using System.Collections;
-global using System.ComponentModel;
-global using System.ComponentModel.DataAnnotations; 
-global using System.Windows.Controls;
-global using System.Windows.Data;
-global using System.Windows.Input;
 global using System.Windows.Threading;
+using H.Controls.Form.PropertyItems.Base;
 
 namespace H.Controls.Form;
 
@@ -700,8 +701,21 @@ public partial class Form : ItemsControl, IFormOption
         RoutedEventArgs args = new RoutedEventArgs(ValueChangedRoutedEvent, this);
         args.Source = tuple;
 
-        if (tuple.Item1 is IRefreshOnValueChanged refreshOnValueChanged && refreshOnValueChanged.CanRefresh)
+        if (tuple.Item1 is IRefreshFilterOnValueChanged refreshOnValueChanged && refreshOnValueChanged.CanRefreshFilterOnValueChanged)
+        {
             this.RefreshItemsFilter();
+        }
+        if (tuple.Item1 is IRefreshSourceOnValueChanged refreshSourceOnValueChanged && this.ItemsSource != null)
+        {
+            var sourcePropertyItems = this.ItemsSource.OfType<ISelectSourcePropertyItem>();
+            foreach (var propertyName in refreshSourceOnValueChanged.GetPropertyNames())
+            {
+                foreach (var item in sourcePropertyItems.Where(x => x.PropertyInfo.Name == propertyName))
+                {
+                    item.RefreshSource();
+                }
+            }
+        }
         ////  Do ：触发通知方法
         //CustomValidationAttribute attribute = tuple.Item1.PropertyInfo.GetCustomAttribute<CustomValidationAttribute>();
 
@@ -793,7 +807,7 @@ public partial class Form : ItemsControl, IFormOption
 
     // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
     public static readonly DependencyProperty TitleWidthProperty =
-        DependencyProperty.Register("TitleWidth", typeof(double), typeof(Form), new FrameworkPropertyMetadata(100.0, (d, e) =>
+        DependencyProperty.Register("TitleWidth", typeof(double), typeof(Form), new FrameworkPropertyMetadata(double.NaN, (d, e) =>
         {
             Form control = d as Form;
 

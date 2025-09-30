@@ -1,6 +1,14 @@
-﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
+
 global using H.Extensions.StoryBoard;
-using H.Extensions.Attach;
+using H.Attach;
+using H.Modules.Guide.Base;
 using System.Windows.Shapes;
 using System.Windows.Threading;
 
@@ -111,8 +119,6 @@ public partial class GuideBox : FrameworkElement
 
         }));
 
-
-
     public Style PathStyle
     {
         get { return (Style)GetValue(PathStyleProperty); }
@@ -193,7 +199,6 @@ public partial class GuideBox : FrameworkElement
         set { SetValue(BackgroundProperty, value); }
     }
 
-
     public static readonly DependencyProperty BackgroundProperty =
         DependencyProperty.Register("Background", typeof(Brush), typeof(GuideBox), new FrameworkPropertyMetadata(default(Brush), (d, e) =>
         {
@@ -213,7 +218,6 @@ public partial class GuideBox : FrameworkElement
 
         }));
 
-
     public static readonly RoutedEvent ClosedRoutedEvent =
         EventManager.RegisterRoutedEvent("Closed", RoutingStrategy.Bubble, typeof(EventHandler<RoutedEventArgs>), typeof(GuideBox));
 
@@ -229,7 +233,6 @@ public partial class GuideBox : FrameworkElement
     }
 
     #endregion
-
 
     #region - FrameworkElement -
     protected override Size ArrangeOverride(Size finalSize)
@@ -353,7 +356,7 @@ public partial class GuideBox : FrameworkElement
         Cattach.SetGuideTitle(this._contentControl, title);
         string icon = Cattach.GetGuideIcon(currentElement);
         Cattach.SetGuideIcon(this._contentControl, icon);
-        string version = Cattach.GetGuideAssemblyVersion(currentElement);
+        Version version = Cattach.GetGuideAssemblyVersion(currentElement);
         Cattach.SetGuideAssemblyVersion(this._contentControl, version);
         this._contentControl.Content = Cattach.GetGuideData(this._guideTree.Current.Element);
         this._contentControl.ContentTemplate = Cattach.GetGuideDataTemplate(this._guideTree.Current.Element);

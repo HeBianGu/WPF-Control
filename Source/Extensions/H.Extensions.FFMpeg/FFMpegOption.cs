@@ -1,4 +1,12 @@
-﻿using FFMpegCore;
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
+
+using FFMpegCore;
 using FFMpegCore.Enums;
 using H.Extensions.Setting;
 using H.Services.Setting;
@@ -36,7 +44,6 @@ public class FFMpegOption : IocOptionInstance<FFMpegOption>, IFFMpegOption
         }
     }
 
-
     private string _binaryFolder = string.Empty;
     [Display(Name = "exe路径")]
     public string BinaryFolder
@@ -48,7 +55,6 @@ public class FFMpegOption : IocOptionInstance<FFMpegOption>, IFFMpegOption
             RaisePropertyChanged();
         }
     }
-
 
     private string _temporaryFilesFolder = Path.GetTempPath();
     [DefaultValue(FFMpegLogLevel.Info)]

@@ -1,12 +1,6 @@
 ﻿
-using H.Controls.TagBox;
-using H.Extensions.Common;
-using H.Services.Common;
-using H.Mvvm;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
+
+global using H.Mvvm.Commands;
 
 namespace H.App.FileManager
 {

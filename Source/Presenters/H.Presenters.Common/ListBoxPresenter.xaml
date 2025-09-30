@@ -15,6 +15,7 @@
                      HorizontalAlignment="Stretch"
                      BorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrush}}"
                      BorderThickness="1"
+                     Cattach.ItemHeight="Auto"
                      DisplayMemberPath="{Binding DisplayMemberPath}"
                      ItemTemplate="{Binding ItemContentTemplate}"
                      ItemsSource="{Binding ItemsSource}"

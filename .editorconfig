@@ -95,6 +95,7 @@ csharp_style_unused_value_expression_statement_preference = discard_variable:sil
 csharp_space_around_binary_operators = before_and_after
 csharp_indent_labels = one_less_than_current
 csharp_prefer_system_threading_lock = true:suggestion
+csharp_prefer_static_anonymous_function = true:suggestion
 
 [*.vb]
 #### 命名样式 ####
@@ -180,3 +181,7 @@ dotnet_style_predefined_type_for_member_access = true:silent
 tab_width = 4
 indent_size = 4
 dotnet_style_operator_placement_when_wrapping = beginning_of_line
+
+# 头文件
+[*.{cs,vb}]
+file_header_template = Copyright (c) HeBianGu Authors. All Rights Reserved. \nAuthor: HeBianGu \nGithub: https://github.com/HeBianGu/WPF-Control \nDocument: https://hebiangu.github.io/WPF-Control-Docs  \nQQ:908293466 Group:971261058 \nbilibili: https://space.bilibili.com/370266611 \nLicensed under the MIT License (the "License");

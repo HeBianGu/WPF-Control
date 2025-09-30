@@ -11,7 +11,7 @@
         <Setter Property="BorderBrush" Value="{DynamicResource {x:Static h:BrushKeys.BorderBrush}}" />
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="BorderBrush" Value="{DynamicResource {x:Static h:BrushKeys.BorderBrush}}" />
-        <Setter Property="CornerRadius" Value="2" />
+        <Setter Property="CornerRadius" Value="{DynamicResource {x:Static LayoutKeys.CornerRadius}}" />
         <Setter Property="Background" Value="{DynamicResource {x:Static h:BrushKeys.Background}}" />
     </Style>
 

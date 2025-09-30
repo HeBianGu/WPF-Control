@@ -21,7 +21,6 @@
     <ProjectReference Include="..\..\Extensions\H.Extensions.Validation\H.Extensions.Validation.csproj" />
     <ProjectReference Include="..\..\Modules\H.Modules.Style\H.Modules.Style.csproj" />
     <ProjectReference Include="..\..\Styles\H.Style\H.Style.csproj" />
-    <ProjectReference Include="..\..\Themes\H.Theme\H.Theme.csproj" />
     <ProjectReference Include="..\..\Modules\H.Modules.Setting\H.Modules.Setting.csproj" />
      <ProjectReference Include="..\..\Modules\H.Modules.Messages.Snack\H.Modules.Messages.Snack.csproj" />
     <ProjectReference Include="..\..\Modules\H.Modules.Messages.Dialog\H.Modules.Messages.Dialog.csproj" />

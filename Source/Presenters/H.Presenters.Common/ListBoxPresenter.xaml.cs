@@ -1,9 +1,15 @@
-﻿global using H.Mvvm.Commands;
-global using H.Presenters.Common;
-global using System.Collections;
-global using System.ComponentModel.DataAnnotations;
-global using System.Windows;
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
+
 global using H.Common.Attributes;
+global using System.Collections;
+global using System.Windows;
+using H.Mvvm.Commands;
 
 namespace H.Presenters.Common;
 public interface IListBoxPresenter : IItemsSourcePresenter
@@ -60,14 +66,12 @@ public class ListBoxPresenter : ItemsSourcePresenterBase, IListBoxPresenter
         }
     }
 
-
     public RelayCommand DeleteSelectedCommand => new RelayCommand(x =>
     {
         if (this.ItemsSource is IList list)
             list.Remove(this.SelectedItem);
     }, x => this.SelectedItem != null);
 }
-
 
 public static partial class DialogServiceExtension
 {
@@ -86,7 +90,7 @@ public static partial class DialogServiceExtension
     public static async Task<T> ShowListBox<T>(this IDialogMessageService service, Action<IListBoxPresenter> option, Action<IListBoxPresenter> sumitAction = null, Action<IDialog> builder = null, Func<IListBoxPresenter, Task<bool>> canSumit = null)
     {
         T result = default(T);
-        var r = await service.ShowDialog<ListBoxPresenter>(option, x=>
+        var r = await service.ShowDialog<ListBoxPresenter>(option, x =>
         {
             sumitAction?.Invoke(x);
             result = (T)x.SelectedItem;
@@ -104,6 +108,8 @@ public static partial class DialogServiceExtension
 public class ShowListBoxCommand : ShowSourceCommandBase
 {
     public string DisplayMemberPath { get; set; }
+
+    [Obsolete]
     public override async Task ExecuteAsync(object parameter)
     {
         await IocMessage.Dialog.ShowListBox(x =>

@@ -53,7 +53,7 @@
                                 </Grid>
                             </Border>
                         </BulletDecorator.Bullet>
-                        <VisualStateManager.VisualStateGroups>
+                        <!--<VisualStateManager.VisualStateGroups>
                             <VisualStateGroup x:Name="CheckStates">
                                 <VisualState x:Name="Checked">
                                     <Storyboard>
@@ -75,12 +75,20 @@
                                     </Storyboard>
                                 </VisualState>
                             </VisualStateGroup>
-                        </VisualStateManager.VisualStateGroups>
+                        </VisualStateManager.VisualStateGroups>-->
                         <ContentPresenter Margin="4,0,0,0"
                                           HorizontalAlignment="Left"
                                           VerticalAlignment="Center"
                                           RecognizesAccessKey="True" />
                     </BulletDecorator>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsChecked" Value="true">
+                            <Setter TargetName="CheckMark" Property="Visibility" Value="Visible" />
+                        </Trigger>
+                        <Trigger Property="IsChecked" Value="{x:Null}">
+                            <Setter TargetName="InderminateMark" Property="Visibility" Value="Visible" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
@@ -90,23 +98,12 @@
             </Trigger>
             <Trigger Property="IsChecked" Value="true">
                 <Setter Property="Foreground" Value="{DynamicResource {x:Static BrushKeys.Foreground}}" />
-                <!--<Setter.Value>
-                    <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Foreground}}" />
-                </Setter.Value>-->
-                <Setter Property="Background">
-                    <Setter.Value>
-                        <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.BorderBrush}}" />
-                    </Setter.Value>
-                </Setter>
+                <Setter Property="Background" Value="{DynamicResource {x:Static BrushKeys.BorderBrush}}" />
             </Trigger>
 
             <Trigger Property="IsMouseOver" Value="true">
                 <Setter Property="Foreground" Value="{DynamicResource {x:Static BrushKeys.ForegroundTitle}}" />
-                <Setter Property="Background">
-                    <Setter.Value>
-                        <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.MouseOver}}" />
-                    </Setter.Value>
-                </Setter>
+                <Setter Property="Background" Value="{DynamicResource {x:Static BrushKeys.MouseOver}}" />
             </Trigger>
             <Trigger Property="IsPressed" Value="true">
                 <Setter Property="Opacity" Value="0.6" />

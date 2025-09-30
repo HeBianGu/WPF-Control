@@ -73,20 +73,21 @@ namespace H.App.FileManager
                 x.WorkingDirectory = "D:\\ffmpeg";
             });
             services.AddSingleton<IScheduledTaskService, ProjectSaveScheduledTaskService>();
-            services.AddDefaultIdentify();
+            services.AddIdentifyDefaultServices();
         }
 
         protected override void Configure(IApplicationBuilder app)
         {
             base.Configure(app);
             app.UseApplicationOptions();
-            app.UseDefaultIdentifyOptions();
+            app.UseIdentifyDefaultOptions();
             app.UseSettingDataOptions(x =>
             {
                 x.Add(AppSetting.Instance);
             });
             app.UseFFMpeg();
             app.UseWindowSetting();
+
         }
     }
 }

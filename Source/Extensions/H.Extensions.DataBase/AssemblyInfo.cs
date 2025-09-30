@@ -1,3 +1,11 @@
+// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
+
 using System.Windows;
 using System.Windows.Markup;
 
@@ -9,7 +17,6 @@ using System.Windows.Markup;
                                               //(used if a resource is not found in the page,
                                               // app, or any theme specific resource dictionaries)
 )]
-
 
 [assembly: XmlnsDefinition("QQ:908293466", "H.Extensions.DataBase")]
 [assembly: XmlnsPrefix("QQ:908293466", "h")]

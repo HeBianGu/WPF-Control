@@ -1,11 +1,11 @@
 ﻿
 using H.Common.Interfaces;
-using H.Services.Common;
 using System;
 using System.Collections;
 using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Globalization;
+using System.Runtime.CompilerServices;
 using System.Security;
 using System.Security.Permissions;
 using System.Windows;
@@ -311,6 +311,7 @@ namespace H.Controls.ZoomBox
                 {
                     // create a viewbox and make it the logical child of the Zoombox
                     Viewbox viewbox = new Viewbox();
+                    RenderOptions.SetBitmapScalingMode(viewbox, RenderOptions.GetBitmapScalingMode(this));
                     this.AddLogicalChild(viewbox);
 
                     // now set the new parent to be the viewbox
@@ -921,6 +922,25 @@ namespace H.Controls.ZoomBox
             // keep the Position property in sync with the Viewport
             Zoombox zoombox = (Zoombox)o;
             zoombox.Position = new Point(-zoombox.Viewport.Left * zoombox.Scale / zoombox._viewboxFactor, -zoombox.Viewport.Top * zoombox.Scale / zoombox._viewboxFactor);
+
+            zoombox.OnViewportChanged();
+        }
+
+
+        public static readonly RoutedEvent ViewportChangedRoutedEvent =
+            EventManager.RegisterRoutedEvent("ViewportChanged", RoutingStrategy.Bubble, typeof(EventHandler<RoutedEventArgs>), typeof(Zoombox));
+        public event RoutedEventHandler ViewportChanged
+        {
+            add { this.AddHandler(ViewportChangedRoutedEvent, value); }
+            remove { this.RemoveHandler(ViewportChangedRoutedEvent, value); }
+        }
+
+        //激发路由事件,借用Click事件的激发方法
+
+        protected void OnViewportChanged()
+        {
+            RoutedEventArgs args = new RoutedEventArgs(ViewportChangedRoutedEvent, this);
+            this.RaiseEvent(args);
         }
 
         #endregion
@@ -4039,6 +4059,33 @@ namespace H.Controls.ZoomBox
         }
 
         #endregion
+
+
+        public bool UseShowViewFinder
+        {
+            get { return (bool)GetValue(UseShowViewFinderProperty); }
+            set { SetValue(UseShowViewFinderProperty, value); }
+        }
+
+        public static readonly DependencyProperty UseShowViewFinderProperty =
+            DependencyProperty.Register("UseShowViewFinder", typeof(bool), typeof(Zoombox), new FrameworkPropertyMetadata(true, (d, e) =>
+            {
+                Zoombox control = d as Zoombox;
+
+                if (control == null) return;
+
+                if (e.OldValue is bool o)
+                {
+
+                }
+
+                if (e.NewValue is bool n)
+                {
+
+                }
+
+            }));
+
     }
 
 }

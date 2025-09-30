@@ -1,5 +1,12 @@
-﻿using H.Mvvm;
-using H.Mvvm.Commands;
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
+
+using H.Extensions.Mvvm.Commands;
 using System.Windows.Input;
 
 namespace H.Controls.ScheduleBox
@@ -12,7 +19,6 @@ namespace H.Controls.ScheduleBox
         public static RoutedUICommand Add { get; } = new RoutedUICommand("添加任务", nameof(Add), typeof(Commands));
         public static RoutedUICommand Edit { get; } = new RoutedUICommand("编辑任务", nameof(Edit), typeof(Commands));
         public static RoutedUICommand Delete { get; } = new RoutedUICommand("删除任务", nameof(Delete), typeof(Commands));
-
 
     }
 }

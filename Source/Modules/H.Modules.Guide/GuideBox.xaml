@@ -50,7 +50,7 @@
                                 <Button x:Name="bt_next"
                                         Margin="5,0"
                                         HorizontalAlignment="Left"
-                                        Background="{DynamicResource {x:Static h:BrushKeys.Orange}}"
+                                        Background="{DynamicResource {x:Static BrushKeys.Orange}}"
                                         Command="{x:Static local:GuideBox.NextCommand}"
                                         Content="下一步"
                                         Foreground="White" />
@@ -60,31 +60,31 @@
                                 <Border Width="30"
                                         Height="30"
                                         Margin="0,0,5,0"
-                                        Background="{DynamicResource {x:Static h:BrushKeys.Orange}}"
+                                        Background="{DynamicResource {x:Static BrushKeys.Orange}}"
                                         CornerRadius="15">
                                     <TextBlock HorizontalAlignment="Center"
                                                VerticalAlignment="Center"
-                                               FontSize="{StaticResource {x:Static h:FontSizeKeys.Header5}}"
+                                               FontSize="{StaticResource {x:Static FontSizeKeys.Header5}}"
                                                FontWeight="Bold"
                                                Foreground="White"
                                                Text="{Binding RelativeSource={RelativeSource AncestorType=local:GuideBox}, Path=CurrentIndex}" />
                                 </Border>
                                 <FontIconTextBlock Foreground="White"
-                                                   Text="{TemplateBinding h:Cattach.GuideIcon}" />
+                                                   Text="{TemplateBinding Cattach.GuideIcon}" />
 
                                 <DockPanel DockPanel.Dock="Top">
                                     <TextBlock Margin="5,0"
                                                VerticalAlignment="Center"
-                                               FontSize="{StaticResource {x:Static h:FontSizeKeys.Header3}}"
+                                               FontSize="{StaticResource {x:Static FontSizeKeys.Header3}}"
                                                FontWeight="Bold"
                                                Foreground="{DynamicResource {x:Static BrushKeys.White}}">
                                         <!--<Run Text="{Binding RelativeSource={RelativeSource AncestorType=local:GuideBox}, Path=CurrentIndex}" /><Run Text="/" /><Run Text="{Binding RelativeSource={RelativeSource AncestorType=local:GuideBox}, Path=Total}" />-->
                                         <!--<Run Text="{Binding RelativeSource={RelativeSource AncestorType=local:GuideBox}, Path=CurrentIndex}" />-->
-                                        <Run Text="{TemplateBinding h:Cattach.GuideTitle}" />
+                                        <Run Text="{TemplateBinding Cattach.GuideTitle}" />
                                     </TextBlock>
-                                    <TextBlock x:Name="n"
+                                    <TextBlock x:Name="txt_version"
                                                Margin="0,2"
-                                               Foreground="{DynamicResource {x:Static BrushKeys.Red}}" />
+                                               Text="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(Cattach.GuideAssemblyVersion)}" />
                                 </DockPanel>
 
                             </DockPanel>
@@ -94,7 +94,7 @@
                                     <DataTemplate DataType="{x:Type sys:String}">
                                         <TextBlock Width="{Binding Source={x:Static local:GuideOptions.Instance}, Path=TextMaxWidth}"
                                                    Foreground="White"
-                                                   Opacity="0.6"
+                                                   Opacity="0.8"
                                                    Text="{Binding}"
                                                    TextWrapping="Wrap" />
                                     </DataTemplate>
@@ -110,7 +110,8 @@
                     <ControlTemplate.Triggers>
                         <DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=Self}, Path=(Cattach.GuideAssemblyVersion), Converter={local:GetIsNewAssemblyVersionConverter}}"
                                      Value="True">
-                            <Setter TargetName="n" Property="Text" Value="new" />
+                            <Setter TargetName="txt_version" Property="Text" Value="new" />
+                            <Setter TargetName="txt_version" Property="Foreground" Value="{DynamicResource {x:Static BrushKeys.Red}}" />
                         </DataTrigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

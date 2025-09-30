@@ -1,17 +1,15 @@
-﻿
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
 
-
-
-using System;
 using System.Windows.Input;
-using H.Services.Common;
 using H.Services.Common.DataBase;
 using H.Services.Message;
 using H.Services.Message.Dialog;
-
-
-
-
 
 #if NETFRAMEWORK
 using System.Data.Entity;
@@ -68,7 +66,6 @@ namespace H.DataBases.Share
                 IocMessage.Window.Show("数据库配置已修改，请重新启动").Wait();
                 return false;
             }
-
 
 #if NETCOREAPP
             //db.Database.EnsureCreated();

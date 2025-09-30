@@ -1,0 +1,9 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/H.Components.Modbus;component/Presenters/ModbusTcpDataItem.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Components.Modbus;component/Presenters/ModbusDataViewPresenter.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Components.Modbus;component/Presenters/MasterState.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Components.Modbus;component/Presenters/ModbusDataState.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+</ResourceDictionary>

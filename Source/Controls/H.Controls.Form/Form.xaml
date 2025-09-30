@@ -16,8 +16,6 @@
     <Style x:Key="S.TextBlock.Flag"
            TargetType="TextBlock">
         <Setter Property="Text" Value="{Binding Flag}" />
-        <Setter Property="Width" Value="10" />
-        <Setter Property="Grid.Column" Value="1" />
         <Setter Property="VerticalAlignment" Value="Center" />
         <Setter Property="Foreground" Value="{DynamicResource {x:Static BrushKeys.Red}}" />
         <Setter Property="ToolTip" Value="该值不能为空" />
@@ -79,31 +77,55 @@
         <Setter Property="ItemHeaderTemplate">
             <Setter.Value>
                 <DataTemplate>
-                    <TextBlock Width="{Binding RelativeSource={RelativeSource AncestorType=local:Form}, Path=TitleWidth}"
-                               Margin="5,0"
-                               VerticalAlignment="Center"
-                               Text="{Binding}" />
+                    <DockPanel Width="{Binding RelativeSource={RelativeSource AncestorType=local:Form}, Path=TitleWidth}">
+                        <TextBlock Margin="2,0"
+                                   VerticalAlignment="Center"
+                                   Text="{Binding Name}" />
+                        <TextBlock Style="{StaticResource S.TextBlock.Flag}" />
+                    </DockPanel>
                 </DataTemplate>
             </Setter.Value>
         </Setter>
+        <Setter Property="Grid.IsSharedSizeScope" Value="True" />
         <Setter Property="ItemContainerStyle">
             <Setter.Value>
                 <Style TargetType="ContentPresenter">
                     <Setter Property="ContentTemplate">
                         <Setter.Value>
                             <DataTemplate>
-                                <Grid ToolTip="{Binding Description}">
+                                <Grid Margin="0,0.5"
+                                      Cattach.GuideData="{Binding Description}"
+                                      Cattach.GuideTitle="{Binding Name}"
+                                      Cattach.UseGuide="True"
+                                      ToolTip="{Binding Description}">
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="Auto" />
-                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="Auto"
+                                                          SharedSizeGroup="Form" />
+                                        <ColumnDefinition Width="20" />
                                         <ColumnDefinition />
                                         <ColumnDefinition Width="Auto" />
                                     </Grid.ColumnDefinitions>
                                     <ContentPresenter Grid.Column="0"
-                                                      Content="{Binding Name}"
+                                                      Content="{Binding}"
                                                       ContentTemplate="{Binding RelativeSource={RelativeSource AncestorType={x:Type local:Form}}, Path=ItemHeaderTemplate}" />
-                                    <TextBlock Grid.Column="1"
-                                               Style="{StaticResource S.TextBlock.Flag}" />
+                                    <Button Grid.Column="1"
+                                            Height="Auto"
+                                            Margin="2"
+                                            Padding="0"
+                                            VerticalAlignment="Center"
+                                            Background="Transparent"
+                                            Command="{Binding SetDefaultCommand}"
+                                            ToolTip="恢复默认值"
+                                            Visibility="{Binding UseSetDefault, Converter={x:Static Converter.GetTrueToVisible}}">
+                                        <Border Width="8"
+                                                Height="8"
+                                                Margin="2"
+                                                Background="{DynamicResource {x:Static BrushKeys.BorderBrush}}"
+                                                BorderBrush="{Binding RelativeSource={RelativeSource AncestorType=Button}, Path=Foreground}"
+                                                BorderThickness="1"
+                                                CornerRadius="0"
+                                                Opacity="0.6" />
+                                    </Button>
                                     <ContentPresenter Grid.Column="2"
                                                       Content="{Binding}" />
                                     <TextBlock Grid.Column="3"
@@ -115,6 +137,37 @@
                 </Style>
             </Setter.Value>
         </Setter>
+        <!--<Setter Property="BindingGroupStyle">
+            <Setter.Value>
+                <GroupStyle>
+                    <GroupStyle.ContainerStyle>
+                        <Style TargetType="{x:Type GroupItem}">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type GroupItem}">
+                                        <Expander IsExpanded="True">
+                                            <Expander.Header>
+                                                <DockPanel>
+                                                    <TextBlock Text="{Binding Path=Name}" />
+                                                    <TextBlock Margin="5,0">
+                                                        <Run Text="[" />
+                                                        <Run Text="{Binding Path=ItemCount, Mode=OneWay}" />
+                                                        <Run Text="]" />
+                                                    </TextBlock>
+                                                </DockPanel>
+                                            </Expander.Header>
+                                            <Expander.Content>
+                                                <ItemsPresenter />
+                                            </Expander.Content>
+                                        </Expander>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </GroupStyle.ContainerStyle>
+                </GroupStyle>
+            </Setter.Value>
+        </Setter>-->
         <!--<Setter Property="GroupStyle">
             <Setter.Value>
                 <GroupStyle>
@@ -146,15 +199,15 @@
                 </GroupStyle>
         -->
         <!--<GroupStyle>
-                                <GroupStyle.HeaderTemplate>
-                                    <DataTemplate>
-                                        <DockPanel Background="LightBlue" Height="40">
-                                            <TextBlock Text="{Binding Path=Name}" Foreground="Blue" Margin="30,0,0,0" Width="100"/>
-                                            <TextBlock Text="{Binding Path=ItemCount}" Foreground="Blue"/>
-                                        </DockPanel>
-                                    </DataTemplate>
-                                </GroupStyle.HeaderTemplate>
-                            </GroupStyle>-->
+                    <GroupStyle.HeaderTemplate>
+                        <DataTemplate>
+                            <DockPanel Background="LightBlue" Height="40">
+                                <TextBlock Text="{Binding Path=Name}" Foreground="Blue" Margin="30,0,0,0" Width="100"/>
+                                <TextBlock Text="{Binding Path=ItemCount}" Foreground="Blue"/>
+                            </DockPanel>
+                        </DataTemplate>
+                    </GroupStyle.HeaderTemplate>
+                </GroupStyle>-->
         <!--
             </Setter.Value>
         </Setter>-->

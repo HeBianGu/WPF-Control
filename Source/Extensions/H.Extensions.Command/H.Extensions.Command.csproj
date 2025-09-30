@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <ItemGroup>
-    <ProjectReference Include="..\..\Providers\H.Mvvm\H.Mvvm.csproj" />
+    <ProjectReference Include="..\..\Base\H.Mvvm\H.Mvvm.csproj" />
     <ProjectReference Include="..\..\Services\H.Services.Message\H.Services.Message.csproj" />
     <ProjectReference Include="..\H.Extensions.Common\H.Extensions.Common.csproj" />
   </ItemGroup>

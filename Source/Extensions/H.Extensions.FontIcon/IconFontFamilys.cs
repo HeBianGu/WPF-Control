@@ -1,5 +1,12 @@
-﻿using System.IO;
-using System.Windows;
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
+
+using System.IO;
 using System.Windows.Media;
 
 namespace H.Extensions.FontIcon;
@@ -19,11 +26,11 @@ public static class IconFontFamilys
         }
     }
 
-    public static FontFamily locationSegoeFluentIcons
+    public static FontFamily LocationSegoeFluentIcons
     {
         get
         {
-          return  Fonts.GetFontFamilies(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Assets/Segoe Fluent Icons.ttf")).FirstOrDefault();
+            return Fonts.GetFontFamilies(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Assets/Segoe Fluent Icons.ttf")).FirstOrDefault();
         }
     }
 }

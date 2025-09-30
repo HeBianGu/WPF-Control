@@ -4,7 +4,7 @@
                     xmlns:h="https://github.com/HeBianGu"
                     xmlns:ln="clr-namespace:H.Controls.Diagram.Presenter.NodeDatas"
                     xmlns:local="clr-namespace:H.Controls.Diagram.Presenter">
-    <DataTemplate DataType="{x:Type ln:ImageNodeDataBase}">
+    <DataTemplate DataType="{x:Type ln:ImageSrcNodeDataBase}">
         <Border x:Name="boder"
                 Background="Transparent">
             <AdornerDecorator HorizontalAlignment="Left"

@@ -1,4 +1,12 @@
-﻿using H.Extensions.ApplicationBase;
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
+
+using H.Extensions.ApplicationBase;
 using H.Modules.About;
 using H.Modules.Feedback;
 using H.Modules.Guide;
@@ -8,9 +16,8 @@ using H.Modules.Help.Support;
 using H.Modules.Help.WebSite;
 using H.Modules.Setting;
 using H.Modules.SplashScreen;
-using H.Services.Common.Feedback;
 
-namespace H.ApplicationBases.Module
+namespace H.ApplicationBases.Modules
 {
 
     public class DefaultModuleOptions : CacheActionOptionsBase, IDefaultModuleOptions
@@ -30,7 +37,7 @@ namespace H.ApplicationBases.Module
             this.ConfigOptions(action);
         }
 
-        public void UseReleaseVersionsOptionsAbout(Action<IReleaseVersionsOptions> action)
+        public void UseReleaseVersionsOptions(Action<IReleaseVersionsOptions> action)
         {
             this.ConfigOptions(action);
         }

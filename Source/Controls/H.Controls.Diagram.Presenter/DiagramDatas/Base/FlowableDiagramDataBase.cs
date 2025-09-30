@@ -1,9 +1,15 @@
-﻿global using H.Controls.Diagram.Datas;
-global using H.Controls.Diagram.Presenter.Flowables;
-global using H.Extensions.FontIcon;
-using System.Text.Json.Serialization;
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
+
+global using H.Controls.Diagram.Datas;
+using H.Controls.Diagram.Presenter.Extensions;
 namespace H.Controls.Diagram.Presenter.DiagramDatas.Base;
-public abstract class FlowableDiagramDataBase : ZoomableDiagramDataBase, IFlowableDiagramData
+public abstract class FlowableDiagramDataBase : ExpressionableDiagramDataBase, IFlowableDiagramData
 {
     private DiagramFlowableState _state = DiagramFlowableState.None;
     [JsonIgnore]
@@ -29,7 +35,7 @@ public abstract class FlowableDiagramDataBase : ZoomableDiagramDataBase, IFlowab
         }
     }
 
-    private DiagramFlowableZoomMode _flowableZoomMode = DiagramFlowableZoomMode.Rect;
+    private DiagramFlowableZoomMode _flowableZoomMode = DiagramFlowableZoomMode.None;
     [Display(Name = "自动缩放", GroupName = "数据", Description = "执行时节点自动缩放")]
     public DiagramFlowableZoomMode FlowableZoomMode
     {
@@ -55,6 +61,8 @@ public abstract class FlowableDiagramDataBase : ZoomableDiagramDataBase, IFlowab
     public virtual void OnInvokingPart(IPartData part)
     {
         var diagram = this.GetTargetElement<Diagram>();
+        if (diagram == null)
+            return;
         if (this.FlowableZoomMode == DiagramFlowableZoomMode.Rect)
         {
             diagram.Dispatcher.Invoke(() =>
@@ -124,19 +132,19 @@ public abstract class FlowableDiagramDataBase : ZoomableDiagramDataBase, IFlowab
 
     public virtual async Task<bool?> Start()
     {
-        var start = this.GetStartNodeData();
+        var start = await this.GetStartNodeData();
         if (start == null)
             return false;
         var r = await this.InvokeState(() => start.Start(this));
         return r;
     }
 
-    protected virtual IFlowableNodeData GetStartNodeData()
+    protected virtual async Task<IFlowableNodeData> GetStartNodeData()
     {
-        var start = this.TryGetStartNodeData<IFlowableNodeData>(out string message);
+        var start = await this.TryGetStartNodeData<IFlowableNodeData>();
         if (start == null)
         {
-            this.Message = message;
+            this.Message = "未运行";
             IocMessage.ShowNotifyInfo(this.Message);
             return null;
         }
@@ -150,10 +158,12 @@ public abstract class FlowableDiagramDataBase : ZoomableDiagramDataBase, IFlowab
 
     public virtual void Stop()
     {
+        if (!this.State.CanStop())
+            return;
         this.State = DiagramFlowableState.Canceling;
         this.GotoState(x =>
         {
-            if (x.State == FlowableState.Running || x.State == FlowableState.Wait || x.State == FlowableState.Ready)
+            if (x.State == FlowableState.Running || x.State == FlowableState.Wait || x.State == FlowableState.Ready || x.State == FlowableState.Continue)
                 return FlowableState.Canceling;
             return null;
         });
@@ -164,11 +174,12 @@ public abstract class FlowableDiagramDataBase : ZoomableDiagramDataBase, IFlowab
         this.GotoState(x => FlowableState.Ready);
     }
 
-    public virtual void Wait()
+    public virtual void Wait(Func<IFlowableNodeData, bool> match = null)
     {
-        this.GotoState(x => FlowableState.Wait);
+        this.GotoState(x => FlowableState.Wait, match);
     }
 
+    [JsonIgnore]
     public IEnumerable<IFlowableNodeData> FlowableNodeDatas => this.DataSource.GetNodeDatas().OfType<IFlowableNodeData>();
 
     protected override IDiagramDataSource CreateDataSource()

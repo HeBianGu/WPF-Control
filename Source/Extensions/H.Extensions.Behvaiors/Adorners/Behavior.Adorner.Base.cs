@@ -1,12 +1,13 @@
-﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
 
-
-using Microsoft.Xaml.Behaviors;
 #if NET
 #endif 
-using System.Windows;
-using System.Windows.Media;
-
 namespace H.Extensions.Behvaiors.Adorners;
 
 public abstract class AdornerBehaviorBase : Behavior<FrameworkElement>
@@ -28,13 +29,11 @@ public abstract class AdornerBehaviorBase : Behavior<FrameworkElement>
 
         }));
 
-
     public Visual AdornerVisual
     {
         get { return (Visual)GetValue(AdornerVisualProperty); }
         set { SetValue(AdornerVisualProperty, value); }
     }
-
 
     public static readonly DependencyProperty AdornerVisualProperty =
         DependencyProperty.Register("AdornerVisual", typeof(Visual), typeof(AdornerBehaviorBase), new FrameworkPropertyMetadata(default(Visual), (d, e) =>
@@ -60,7 +59,6 @@ public abstract class AdornerBehaviorBase : Behavior<FrameworkElement>
         set { SetValue(IsUseProperty, value); }
     }
 
-
     public static readonly DependencyProperty IsUseProperty =
         DependencyProperty.Register("IsUse", typeof(bool), typeof(AdornerBehaviorBase), new FrameworkPropertyMetadata(true, (d, e) =>
         {
@@ -79,13 +77,11 @@ public abstract class AdornerBehaviorBase : Behavior<FrameworkElement>
             }
         }));
 
-
     public bool IsHitTestVisible
     {
         get { return (bool)GetValue(IsHitTestVisibleProperty); }
         set { SetValue(IsHitTestVisibleProperty, value); }
     }
-
 
     public static readonly DependencyProperty IsHitTestVisibleProperty =
         DependencyProperty.Register("IsHitTestVisible", typeof(bool), typeof(AdornerBehaviorBase), new FrameworkPropertyMetadata(default(bool), (d, e) =>
@@ -106,8 +102,5 @@ public abstract class AdornerBehaviorBase : Behavior<FrameworkElement>
 
         }));
 
-
 }
-
-
 

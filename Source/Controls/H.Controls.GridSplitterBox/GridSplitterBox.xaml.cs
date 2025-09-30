@@ -1,13 +1,18 @@
-﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
-using H.Mvvm;
-using System;
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
+
+using H.Extensions.Mvvm.Commands;
+using H.Extensions.TextJsonable;
+using H.Services.Common.Serialize.Meta;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
-using H.Services.Common.Serialize.Meta;
-using H.Extensions.TextJsonable;
-using H.Mvvm.Commands;
 
 namespace H.Controls.GridSplitterBox
 {
@@ -24,7 +29,6 @@ namespace H.Controls.GridSplitterBox
 
         public static ComponentResourceKey ToggleKey => new ComponentResourceKey(typeof(GridSplitterBox), "S.GridSplitterBox.Toggle");
 
-
         private const string GridSplitterName = "PART_GridSplitter";
 
         static GridSplitterBox()
@@ -37,7 +41,6 @@ namespace H.Controls.GridSplitterBox
         private ColumnDefinition _menuColumnDefinition = null;
         private RowDefinition _menuRowDefinition = null;
         private double _menuWidthTemp;
-
 
         public override void OnApplyTemplate()
         {
@@ -106,8 +109,6 @@ namespace H.Controls.GridSplitterBox
             this.RefreshState();
         }
 
-
-
         private void RefreshButtonState()
         {
             if (this.Mode == GridSplitteMode.Hidden)
@@ -117,7 +118,6 @@ namespace H.Controls.GridSplitterBox
             if (this.MenuWidth.Value == this.MenuMaxWidth)
                 this.IsExpanded = true;
         }
-
 
         private void RefreshState()
         {
@@ -153,13 +153,11 @@ namespace H.Controls.GridSplitterBox
             }
         }
 
-
         public GridSplitteMode Mode
         {
             get { return (GridSplitteMode)GetValue(ModeProperty); }
             set { SetValue(ModeProperty, value); }
         }
-
 
         public static readonly DependencyProperty ModeProperty =
             DependencyProperty.Register("Mode", typeof(GridSplitteMode), typeof(GridSplitterBox), new FrameworkPropertyMetadata(GridSplitteMode.Hidden, (d, e) =>
@@ -180,13 +178,11 @@ namespace H.Controls.GridSplitterBox
 
             }));
 
-
         public object MenuContent
         {
             get { return GetValue(MenuContentProperty); }
             set { SetValue(MenuContentProperty, value); }
         }
-
 
         public static readonly DependencyProperty MenuContentProperty =
             DependencyProperty.Register("MenuContent", typeof(object), typeof(GridSplitterBox), new FrameworkPropertyMetadata(default(object), (d, e) =>
@@ -207,13 +203,11 @@ namespace H.Controls.GridSplitterBox
 
              }));
 
-
         public DataTemplate MenuTempate
         {
             get { return (DataTemplate)GetValue(MenuTempateProperty); }
             set { SetValue(MenuTempateProperty, value); }
         }
-
 
         public static readonly DependencyProperty MenuTempateProperty =
             DependencyProperty.Register("MenuTempate", typeof(DataTemplate), typeof(GridSplitterBox), new FrameworkPropertyMetadata(default(DataTemplate), (d, e) =>
@@ -234,13 +228,11 @@ namespace H.Controls.GridSplitterBox
 
              }));
 
-
         public double GridSpliteWidth
         {
             get { return (double)GetValue(GridSpliteWidthProperty); }
             set { SetValue(GridSpliteWidthProperty, value); }
         }
-
 
         public static readonly DependencyProperty GridSpliteWidthProperty =
             DependencyProperty.Register("GridSpliteWidth", typeof(double), typeof(GridSplitterBox), new FrameworkPropertyMetadata(5.0, (d, e) =>
@@ -267,7 +259,6 @@ namespace H.Controls.GridSplitterBox
             set { SetValue(MenuMinWidthProperty, value); }
         }
 
-
         public static readonly DependencyProperty MenuMinWidthProperty =
             DependencyProperty.Register("MenuMinWidth", typeof(double), typeof(GridSplitterBox), new FrameworkPropertyMetadata(10.0, (d, e) =>
              {
@@ -292,7 +283,6 @@ namespace H.Controls.GridSplitterBox
             set { SetValue(MenuMaxWidthProperty, value); }
         }
 
-
         public static readonly DependencyProperty MenuMaxWidthProperty =
             DependencyProperty.Register("MenuMaxWidth", typeof(double), typeof(GridSplitterBox), new FrameworkPropertyMetadata(300.0, (d, e) =>
              {
@@ -312,13 +302,11 @@ namespace H.Controls.GridSplitterBox
 
              }));
 
-
         public GridLength MenuWidth
         {
             get { return (GridLength)GetValue(MenuWidthProperty); }
             set { SetValue(MenuWidthProperty, value); }
         }
-
 
         public static readonly DependencyProperty MenuWidthProperty =
             DependencyProperty.Register("MenuWidth", typeof(GridLength), typeof(GridSplitterBox), new FrameworkPropertyMetadata(new GridLength(200.0), (d, e) =>
@@ -345,7 +333,6 @@ namespace H.Controls.GridSplitterBox
             set { SetValue(GridSpliterBackgroundProperty, value); }
         }
 
-
         public static readonly DependencyProperty GridSpliterBackgroundProperty =
             DependencyProperty.Register("GridSpliterBackground", typeof(Brush), typeof(GridSplitterBox), new FrameworkPropertyMetadata(default(Brush), (d, e) =>
              {
@@ -371,7 +358,6 @@ namespace H.Controls.GridSplitterBox
             set { SetValue(ToggleHorizontalAlignmentProperty, value); }
         }
 
-
         public static readonly DependencyProperty ToggleHorizontalAlignmentProperty =
             DependencyProperty.Register("ToggleHorizontalAlignment", typeof(HorizontalAlignment), typeof(GridSplitterBox), new FrameworkPropertyMetadata(default(HorizontalAlignment), (d, e) =>
              {
@@ -391,13 +377,11 @@ namespace H.Controls.GridSplitterBox
 
              }));
 
-
         public VerticalAlignment ToggleVerticalAlignment
         {
             get { return (VerticalAlignment)GetValue(ToggleVerticalAlignmentProperty); }
             set { SetValue(ToggleVerticalAlignmentProperty, value); }
         }
-
 
         public static readonly DependencyProperty ToggleVerticalAlignmentProperty =
             DependencyProperty.Register("ToggleVerticalAlignment", typeof(VerticalAlignment), typeof(GridSplitterBox), new FrameworkPropertyMetadata(default(VerticalAlignment), (d, e) =>
@@ -418,13 +402,11 @@ namespace H.Controls.GridSplitterBox
 
              }));
 
-
         public Dock MenuDock
         {
             get { return (Dock)GetValue(MenuDockProperty); }
             set { SetValue(MenuDockProperty, value); }
         }
-
 
         public static readonly DependencyProperty MenuDockProperty =
             DependencyProperty.Register("MenuDock", typeof(Dock), typeof(GridSplitterBox), new FrameworkPropertyMetadata(default(Dock), (d, e) =>
@@ -451,7 +433,6 @@ namespace H.Controls.GridSplitterBox
             set { SetValue(ToggleStyleProperty, value); }
         }
 
-
         public static readonly DependencyProperty ToggleStyleProperty =
             DependencyProperty.Register("ToggleStyle", typeof(Style), typeof(GridSplitterBox), new FrameworkPropertyMetadata(default(Style), (d, e) =>
             {
@@ -471,13 +452,11 @@ namespace H.Controls.GridSplitterBox
 
             }));
 
-
         public string OpenGeometry
         {
             get { return (string)GetValue(OpenGeometryProperty); }
             set { SetValue(OpenGeometryProperty, value); }
         }
-
 
         public static readonly DependencyProperty OpenGeometryProperty =
             DependencyProperty.Register("OpenGeometry", typeof(string), typeof(GridSplitterBox), new FrameworkPropertyMetadata(default(string), (d, e) =>
@@ -498,13 +477,11 @@ namespace H.Controls.GridSplitterBox
 
             }));
 
-
         public string CloseGeometry
         {
             get { return (string)GetValue(CloseGeometryProperty); }
             set { SetValue(CloseGeometryProperty, value); }
         }
-
 
         public static readonly DependencyProperty CloseGeometryProperty =
             DependencyProperty.Register("CloseGeometry", typeof(string), typeof(GridSplitterBox), new FrameworkPropertyMetadata(default(string), (d, e) =>
@@ -525,13 +502,11 @@ namespace H.Controls.GridSplitterBox
 
             }));
 
-
         public bool IsExpanded
         {
             get { return (bool)GetValue(IsExpandedProperty); }
             set { SetValue(IsExpandedProperty, value); }
         }
-
 
         public static readonly DependencyProperty IsExpandedProperty =
             DependencyProperty.Register("IsExpanded", typeof(bool), typeof(GridSplitterBox), new FrameworkPropertyMetadata(true, (d, e) =>
@@ -552,13 +527,11 @@ namespace H.Controls.GridSplitterBox
                 control.Save(out string message);
             }));
 
-
         public bool UseToggle
         {
             get { return (bool)GetValue(UseToggleProperty); }
             set { SetValue(UseToggleProperty, value); }
         }
-
 
         public static readonly DependencyProperty UseToggleProperty =
             DependencyProperty.Register("UseToggle", typeof(bool), typeof(GridSplitterBox), new FrameworkPropertyMetadata(true, (d, e) =>
@@ -578,7 +551,6 @@ namespace H.Controls.GridSplitterBox
                 }
 
             }));
-
 
         public string ID { get; set; }
 

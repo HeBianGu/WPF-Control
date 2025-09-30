@@ -1,9 +1,16 @@
+// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
+
 global using H.Iocable;
 global using H.Services.Logger;
-global using H.Mvvm;
+global using H.Services.Operation;
 global using System.Windows;
 global using System.Windows.Markup;
-global using H.Services.Operation;
 
 [assembly: ThemeInfo(
     ResourceDictionaryLocation.None, //where theme specific resource dictionaries are located

@@ -1,178 +1,213 @@
-﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
 
-
-using H.Mvvm;
-using System;
-using System.Linq;
 using System.Windows;
 using System.Windows.Input;
+using System.Windows.Media.Media3D;
 
-namespace H.Controls.Panel
+namespace H.Controls.Panel.Panel;
+
+public class CrossPanel : PanelBase
 {
-    public class CrossPanel : PanelBase
+    public CrossPanel()
     {
-        public CrossPanel()
+        CommandBinding binding = new CommandBinding(Commands.Selected);
+        this.CommandBindings.Add(binding);
+        binding.Executed += (l, k) =>
         {
-            CommandBinding binding = new CommandBinding(Commands.Selected);
-            this.CommandBindings.Add(binding);
-            binding.Executed += (l, k) =>
+            if (k.Parameter is UIElement element)
             {
-                if (k.Parameter is UIElement element)
-                {
-                    int index = this.Children.IndexOf(element);
+                int index = this.Children.IndexOf(element);
 
-                    this.StartIndex = index;
-                }
-            };
-            binding.CanExecute += (l, k) =>
-            {
-                k.CanExecute = true;
-            };
-        }
-
-        public double SmallSize
-        {
-            get { return (double)GetValue(SmallSizeProperty); }
-            set { SetValue(SmallSizeProperty, value); }
-        }
-
-        public static readonly DependencyProperty SmallSizeProperty =
-            DependencyProperty.Register("SmallSize", typeof(double), typeof(CrossPanel), new PropertyMetadata(100.0, (d, e) =>
-            {
-                CrossPanel control = d as CrossPanel;
-                if (control == null)
-                    return;
-                control.InvalidateArrange();
-            }));
-
-
-        public int? RowCount
-        {
-            get { return (int?)GetValue(RowCountProperty); }
-            set { SetValue(RowCountProperty, value); }
-        }
-
-        public static readonly DependencyProperty RowCountProperty =
-            DependencyProperty.Register("RowCount", typeof(int?), typeof(CrossPanel), new PropertyMetadata(null, (d, e) =>
-            {
-                CrossPanel control = d as CrossPanel;
-                if (control == null)
-                    return;
-                control.InvalidateArrange();
-            }));
-
-
-        public int? ColumnCount
-        {
-            get { return (int?)GetValue(ColumnCountProperty); }
-            set { SetValue(ColumnCountProperty, value); }
-        }
-
-        public static readonly DependencyProperty ColumnCountProperty =
-            DependencyProperty.Register("ColumnCount", typeof(int?), typeof(CrossPanel), new PropertyMetadata(null, (d, e) =>
-            {
-                CrossPanel control = d as CrossPanel;
-                if (control == null)
-                    return;
-                control.InvalidateArrange();
-
-            }));
-
-        /// <summary> 最后一列平铺满 </summary>
-        public bool IsFull
-        {
-            get { return (bool)GetValue(IsFullProperty); }
-            set { SetValue(IsFullProperty, value); }
-        }
-
-        public static readonly DependencyProperty IsFullProperty =
-            DependencyProperty.Register("IsFull", typeof(bool), typeof(CrossPanel), new PropertyMetadata(true, (d, e) =>
-            {
-                CrossPanel control = d as CrossPanel;
-                if (control == null)
-                    return;
-                control.InvalidateArrange();
-
-            }));
-
-        protected override Size ArrangeOverride(Size finalSize)
-        {
-            System.Collections.Generic.List<UIElement> children = this.GetChildren();
-
-            Action<UIElement, Point> action = (elment, end) =>
-            {
-                elment.Arrange(new Rect(end, elment.DesiredSize));
-            };
-            FrameworkElement center = children[0] as FrameworkElement;
-            double cx = finalSize.Width / 2;
-            double cy = finalSize.Height / 2;
-            center.Width = finalSize.Width - this.SmallSize * 2;
-            center.Height = finalSize.Height - this.SmallSize * 2;
-            center.Measure(finalSize);
-            Point cp = new Point(cx - center.DesiredSize.Width / 2, cy - center.DesiredSize.Height / 2);
-            action(center, cp);
-            int count = (children.Count - 1);
-            double height = finalSize.Height - this.SmallSize * 2;
-            int xcount = this.ColumnCount.HasValue ? this.ColumnCount.Value : (int)(count * (finalSize.Width / (height + finalSize.Width)));
-            xcount = xcount + xcount % 2;
-            int ycount = this.RowCount.HasValue ? this.RowCount.Value : count - xcount;
-            ycount = ycount + ycount % 2;
-            Func<int, FrameworkElement, Point> GetPoint = (index, element) =>
-            {
-                if (index < xcount / 2)
-                {
-                    double len = finalSize.Width / (xcount / 2);
-                    double ix = index * len + len / 2;
-                    double iy = this.SmallSize / 2;
-                    element.Width = len;
-                    element.Height = this.SmallSize;
-                    return new Point(ix, iy);
-                }
-                else if (index < xcount / 2 + ycount / 2)
-                {
-                    double len = height / (ycount / 2);
-                    double ix = finalSize.Width - this.SmallSize / 2;
-                    double iy = (index - (xcount / 2)) * len + len / 2 + this.SmallSize;
-                    element.Width = this.SmallSize;
-                    element.Height = len;
-                    return new Point(ix, iy);
-                }
-                else if (index < xcount + ycount / 2)
-                {
-                    double len = finalSize.Width / (xcount / 2);
-                    double ix = (index - (xcount / 2 + ycount / 2)) * len + len / 2;
-                    double iy = finalSize.Height - this.SmallSize / 2;
-                    element.Width = len;
-                    element.Height = this.SmallSize;
-                    return new Point(ix, iy);
-                }
-                else
-                {
-                    //  Do ：最后一个单独处理，平铺满
-                    int yc = this.RowCount.HasValue ? this.RowCount.Value : count - xcount;
-                    double len = this.IsFull && yc % 2 == 1 ? height / (yc - (ycount / 2)) : height / (ycount / 2);
-                    double ix = this.SmallSize / 2;
-                    double iy = (index - (xcount + ycount / 2)) * len + len / 2 + this.SmallSize;
-                    element.Width = this.SmallSize;
-                    element.Height = len;
-                    return new Point(ix, iy);
-                }
-            };
-
-            {
-                int index = 0;
-                foreach (FrameworkElement item in children.Cast<FrameworkElement>())
-                {
-                    if (item == center)
-                        continue;
-                    Point c = GetPoint(index, item);
-                    item.Measure(finalSize);
-                    Point ip = new Point(c.X - item.DesiredSize.Width / 2, c.Y - item.DesiredSize.Height / 2);
-                    action(item, ip);
-                    index++;
-                }
+                this.StartIndex = index;
             }
-            return base.ArrangeOverride(finalSize);
+        };
+        binding.CanExecute += (l, k) =>
+        {
+            k.CanExecute = true;
+        };
+    }
+
+    public double SmallSize
+    {
+        get { return (double)GetValue(SmallSizeProperty); }
+        set { SetValue(SmallSizeProperty, value); }
+    }
+
+    public static readonly DependencyProperty SmallSizeProperty =
+        DependencyProperty.Register("SmallSize", typeof(double), typeof(CrossPanel), new PropertyMetadata(100.0, (d, e) =>
+        {
+            CrossPanel control = d as CrossPanel;
+            if (control == null)
+                return;
+            control.InvalidateArrange();
+        }));
+
+    public int? RowCount
+    {
+        get { return (int?)GetValue(RowCountProperty); }
+        set { SetValue(RowCountProperty, value); }
+    }
+
+    public static readonly DependencyProperty RowCountProperty =
+        DependencyProperty.Register("RowCount", typeof(int?), typeof(CrossPanel), new PropertyMetadata(null, (d, e) =>
+        {
+            CrossPanel control = d as CrossPanel;
+            if (control == null)
+                return;
+            control.InvalidateArrange();
+        }));
+
+    public int? ColumnCount
+    {
+        get { return (int?)GetValue(ColumnCountProperty); }
+        set { SetValue(ColumnCountProperty, value); }
+    }
+
+    public static readonly DependencyProperty ColumnCountProperty =
+        DependencyProperty.Register("ColumnCount", typeof(int?), typeof(CrossPanel), new PropertyMetadata(null, (d, e) =>
+        {
+            CrossPanel control = d as CrossPanel;
+            if (control == null)
+                return;
+            control.InvalidateArrange();
+
+        }));
+
+    /// <summary> 最后一列平铺满 </summary>
+    public bool IsFull
+    {
+        get { return (bool)GetValue(IsFullProperty); }
+        set { SetValue(IsFullProperty, value); }
+    }
+
+    public static readonly DependencyProperty IsFullProperty =
+        DependencyProperty.Register("IsFull", typeof(bool), typeof(CrossPanel), new PropertyMetadata(true, (d, e) =>
+        {
+            CrossPanel control = d as CrossPanel;
+            if (control == null)
+                return;
+            control.InvalidateArrange();
+
+        }));
+
+    private double GetSmallSizeHeight(Size finalSize)
+    {
+        //if (this.Dock == DockType.TopAndBottom)
+        //{
+        //    return this.SmallSize * 2 > finalSize.Height ? finalSize.Height / 4 : this.SmallSize;
+        //}
+        //else
+        //{
+        //    return this.SmallSize > finalSize.Height ? finalSize.Height / 3 : this.SmallSize;
+        //}
+        return this.SmallSize * 2 > finalSize.Height ? finalSize.Height / 4 : this.SmallSize;
+    }
+
+    private double GetSmallSizeWidth(Size finalSize)
+    {
+        //int xcount = this.ColumnCount.HasValue ? this.ColumnCount.Value : (int)(count * (finalSize.Width / (height + finalSize.Width)));
+        //if (this.Dock == DockType.LeftAndRight)
+        //{
+        //    return this.SmallSize * 2 > finalSize.Width ? finalSize.Width / 4 : this.SmallSize;
+        //}
+        //else
+        //{
+        //    return this.SmallSize > finalSize.Width ? finalSize.Width / 3 : this.SmallSize;
+        //}
+        return this.SmallSize * 2 > finalSize.Width ? finalSize.Width / 4 : this.SmallSize;
+    }
+
+
+    protected override Size ArrangeOverride(Size finalSize)
+    {
+        List<UIElement> children = this.GetChildren();
+
+        Action<UIElement, Point> action = (elment, end) =>
+        {
+            elment.Arrange(new Rect(end, elment.DesiredSize));
+        };
+
+        var samllHeight = this.GetSmallSizeHeight(finalSize);
+        var smallWidth = this.GetSmallSizeWidth(finalSize);
+
+        FrameworkElement center = children[0] as FrameworkElement;
+        double cx = finalSize.Width / 2;
+        double cy = finalSize.Height / 2;
+        center.Width = finalSize.Width - smallWidth * 2;
+        center.Height = finalSize.Height - samllHeight * 2;
+        center.Measure(finalSize);
+        Point cp = new Point(cx - center.DesiredSize.Width / 2, cy - center.DesiredSize.Height / 2);
+        action(center, cp);
+        int count = children.Count - 1;
+        double height = finalSize.Height - smallWidth * 2;
+        int xcount = this.ColumnCount.HasValue ? this.ColumnCount.Value : (int)(count * (finalSize.Width / (height + finalSize.Width)));
+        xcount = xcount + xcount % 2;
+        int ycount = this.RowCount.HasValue ? this.RowCount.Value : count - xcount;
+        ycount = ycount + ycount % 2;
+
+
+
+        Func<int, FrameworkElement, Point> GetPoint = (index, element) =>
+        {
+            if (index < xcount / 2)
+            {
+                double len = finalSize.Width / (xcount / 2);
+                double ix = index * len + len / 2;
+                double iy = samllHeight / 2;
+                element.Width = len;
+                element.Height = samllHeight;
+                return new Point(ix, iy);
+            }
+            else if (index < xcount / 2 + ycount / 2)
+            {
+                double len = height / (ycount / 2);
+                double ix = finalSize.Width - smallWidth / 2;
+                double iy = (index - xcount / 2) * len + len / 2 + samllHeight;
+                element.Width = smallWidth;
+                element.Height = len;
+                return new Point(ix, iy);
+            }
+            else if (index < xcount + ycount / 2)
+            {
+                double len = finalSize.Width / (xcount / 2);
+                double ix = (index - (xcount / 2 + ycount / 2)) * len + len / 2;
+                double iy = finalSize.Height - samllHeight / 2;
+                element.Width = len;
+                element.Height = samllHeight;
+                return new Point(ix, iy);
+            }
+            else
+            {
+                //  Do ：最后一个单独处理，平铺满
+                int yc = this.RowCount.HasValue ? this.RowCount.Value : count - xcount;
+                double len = this.IsFull && yc % 2 == 1 ? height / (yc - ycount / 2) : height / (ycount / 2);
+                double ix = smallWidth / 2;
+                double iy = (index - (xcount + ycount / 2)) * len + len / 2 + samllHeight;
+                element.Width = smallWidth;
+                element.Height = len;
+                return new Point(ix, iy);
+            }
+        };
+
+        {
+            int index = 0;
+            foreach (FrameworkElement item in children.Cast<FrameworkElement>())
+            {
+                if (item == center)
+                    continue;
+                Point c = GetPoint(index, item);
+                item.Measure(finalSize);
+                Point ip = new Point(c.X - item.DesiredSize.Width / 2, c.Y - item.DesiredSize.Height / 2);
+                action(item, ip);
+                index++;
+            }
         }
+        return base.ArrangeOverride(finalSize);
     }
 }

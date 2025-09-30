@@ -1,0 +1,27 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
+                    xmlns:local="clr-namespace:H.Components.Modbus"
+                    xmlns:m="clr-namespace:H.Components.Modbus.Base"
+                    xmlns:p="clr-namespace:H.Components.Modbus.Presenters">
+    <DataTemplate DataType="{x:Type p:ModbusTcpDataItemBase}">
+        <DockPanel>
+            <ContentPresenter Content="{Binding State}" />
+            <TextBlock Margin="5,0">
+                <Run Text="{Binding Name}" />
+                <Run Text="-" />
+                <Run Text="{Binding Value}" />
+            </TextBlock>
+        </DockPanel>
+
+        <!--<Form Margin="5,0"
+                  SelectObject="{Binding}"
+                  UsePropertyView="True">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <UniformGrid Columns="2" />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+            </Form>-->
+    </DataTemplate>
+</ResourceDictionary>

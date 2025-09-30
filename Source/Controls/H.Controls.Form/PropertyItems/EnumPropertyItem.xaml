@@ -4,7 +4,7 @@
                     xmlns:local="clr-namespace:H.Controls.Form.PropertyItems">
     <DataTemplate DataType="{x:Type local:EnumPropertyItem}">
         <ComboBox Grid.Column="2"
-                  Margin="0,0,0,1"
+                  Cattach.UseGuide="False"
                   ItemsSource="{Binding PropertyInfo.PropertyType, Converter={x:Static h:Converter.GetEnumSource}}"
                   SelectedItem="{Binding Value}" />
     </DataTemplate>

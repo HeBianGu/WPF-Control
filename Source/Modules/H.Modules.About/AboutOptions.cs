@@ -1,5 +1,10 @@
-﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
-
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
 
 using H.Common.Attributes;
 using H.Controls.Form.Attributes;
@@ -75,7 +80,6 @@ public class AboutOptions : IocOptionInstance<AboutOptions>, IAboutOptions
         }
     }
 
-
     private string _culture;
     [System.Text.Json.Serialization.JsonIgnore]
 
@@ -121,7 +125,6 @@ public class AboutOptions : IocOptionInstance<AboutOptions>, IAboutOptions
         }
     }
 
-
     private string _copyright;
     [System.Text.Json.Serialization.JsonIgnore]
 
@@ -150,7 +153,6 @@ public class AboutOptions : IocOptionInstance<AboutOptions>, IAboutOptions
             _assemblyVersion = value;
         }
     }
-
 
     private string _version;
     [ReadOnly(true)]

@@ -1,5 +1,6 @@
 ﻿using H.Data.Test;
 using H.Windows.Dialog;
+using H.Windows.Main;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -38,7 +39,7 @@ namespace H.Test.Test
             {
                 x.Width = 500;
                 x.Height = 300;
-                if(x is Window window)
+                if (x is Window window)
                     window.SizeToContent = SizeToContent.Height;
             });
         }

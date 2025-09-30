@@ -1,12 +1,8 @@
 ﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
-
-using H.Mvvm.ViewModels.Base;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Windows.Media;
+global using System.Collections.ObjectModel;
+global using System.Windows.Media;
+global using H.Mvvm.ViewModels.Base;
 
 namespace H.Controls.Chart2D
 {

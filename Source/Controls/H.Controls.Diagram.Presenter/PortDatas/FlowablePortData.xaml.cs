@@ -1,6 +1,14 @@
-﻿global using H.Controls.Diagram.Parts;
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
+
 global using H.Common;
-global using H.Controls.Diagram.Flowables;
+global using H.Controls.Diagram.Parts;
+using H.Controls.Diagram.Presenter.Extensions;
 
 namespace H.Controls.Diagram.Presenter.PortDatas;
 
@@ -205,7 +213,7 @@ public class FlowablePortData : TextPortData, IFlowablePortData
         return true;
     }
 
-    public async Task<bool?> Start(IFlowableDiagramData diagramData)
+    public virtual async Task<bool?> Start(IFlowableDiagramData diagramData, IFlowableNodeData nodeData, Predicate<IFlowableLinkData> predicate = null)
     {
         if (this.State == FlowableState.Canceling)
             return null;
@@ -220,14 +228,24 @@ public class FlowablePortData : TextPortData, IFlowablePortData
                     return false;
             }
         }
-        var LinkDatas = this.GetToLinkDatas(diagramData).OfType<IFlowableLinkData>();
-        foreach (var linkData in LinkDatas)
+        var LinkDatas = this.GetToLinkDatas(diagramData).OfType<IFlowableLinkData>().Where(x => predicate?.Invoke(x) != false);
+
+        if (nodeData.InvokeMode == FlowableInvokeMode.Serial)
         {
-            var lr = await linkData.Start(diagramData);
-            if (lr != true)
-                return lr;
+            foreach (var linkData in LinkDatas)
+            {
+                var lr = await linkData.Start(diagramData);
+                if (lr != true)
+                    return lr;
+            }
+            return true;
         }
-        return true;
+        else
+        {
+            var tasks = LinkDatas.Select(x => x.Start(diagramData));
+            var all = await Task.WhenAll(tasks.ToArray());
+            return all.All(x => x != false);
+        }
     }
 }
 

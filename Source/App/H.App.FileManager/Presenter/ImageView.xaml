@@ -10,7 +10,7 @@
                         BorderThickness="1">
                     <Grid Margin="5">
                         <Image Width="100"
-                               Source="{Binding Url, Converter={x:Static h:Converter.GetFileImageSourceInMemory}, ConverterParameter=100, IsAsync=True}" />
+                               Source="{Binding Url, Converter={x:Static h:ConverterEx.GetFileImageSourceInMemory}, ConverterParameter=100, IsAsync=True}" />
                         <Image Width="30"
                                Height="30"
                                HorizontalAlignment="Right"
@@ -47,7 +47,7 @@
             <Border HorizontalAlignment="Left"
                     VerticalAlignment="Top"
                     Background="{DynamicResource {x:Static h:BrushKeys.Red}}"
-                    CornerRadius="2"
+                    CornerRadius="{DynamicResource {x:Static LayoutKeys.CornerRadius}}"
                     Visibility="{Binding Watched, Converter={x:Static h:Converter.GetTrueToCollapsed}}">
                 <TextBlock Margin="5,3"
                            Foreground="White"

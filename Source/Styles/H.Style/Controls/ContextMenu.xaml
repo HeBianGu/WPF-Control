@@ -30,7 +30,7 @@
                         <Grid>
                             <StackPanel IsItemsHost="True"
                                         KeyboardNavigation.DirectionalNavigation="Cycle" />
-                            <Border IsHitTestVisible="False"
+                            <!--<Border IsHitTestVisible="False"
                                     Opacity="{Binding Source={x:Static local:WindowSetting.Instance}, Path=Opacity}"
                                     Visibility="{Binding Source={x:Static local:WindowSetting.Instance}, Path=UseBackImage, Converter={x:Static Converter.GetTrueToVisible}}">
                                 <Border.Background>
@@ -38,7 +38,7 @@
                                                 RenderOptions.BitmapScalingMode="LowQuality"
                                                 Stretch="{Binding Source={x:Static local:WindowSetting.Instance}, Path=Stretch}" />
                                 </Border.Background>
-                            </Border>
+                            </Border>-->
                         </Grid>
                     </Border>
                     <ControlTemplate.Triggers>

@@ -49,6 +49,9 @@
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextForeground, TypeInTargetAssembly={x:Type ColorKeys}}">#FF000000</Color>
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextForeground.Title, TypeInTargetAssembly={x:Type ColorKeys}}">#FF000000</Color>
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextForeground.Select, TypeInTargetAssembly={x:Type ColorKeys}}">#FF000000</Color>-->
+
+    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Accent, TypeInTargetAssembly={x:Type ColorKeys}}">#FF0C9AAC</Color>
+
     <!--  浅色  -->
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.0, TypeInTargetAssembly={x:Type ColorKeys}}">#FF0B8596</Color>
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextBackground, TypeInTargetAssembly={x:Type ColorKeys}}">#FF0B8596</Color>
@@ -92,4 +95,8 @@
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextForeground, TypeInTargetAssembly={x:Type ColorKeys}}">#F3EBD4</Color>
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextForeground.Title, TypeInTargetAssembly={x:Type ColorKeys}}">#FFFBF1</Color>
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextForeground.Select, TypeInTargetAssembly={x:Type ColorKeys}}">#FFFBF1</Color>
+
+    <!--  Menu  -->
+    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Menu.Background, TypeInTargetAssembly={x:Type ColorKeys}}">#191a20</Color>
+    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Menu.Foreground, TypeInTargetAssembly={x:Type ColorKeys}}">#f8fafc</Color>
 </ResourceDictionary>

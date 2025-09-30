@@ -71,9 +71,9 @@
                                     </ControlTemplate>
                                 </Cattach.CaptionRightTemplate>-->
                                 <Form Margin="20,0,0,0"
-                                            Padding="0"
-                                            BorderThickness="1,0,0,0"
-                                            SelectObject="{Binding}">
+                                      Padding="0"
+                                      BorderThickness="1,0,0,0"
+                                      SelectObject="{Binding}">
                                     <Control.BorderBrush>
                                         <SolidColorBrush Color="{DynamicResource {x:Static h:ColorKeys.BorderBrush}}" />
                                     </Control.BorderBrush>

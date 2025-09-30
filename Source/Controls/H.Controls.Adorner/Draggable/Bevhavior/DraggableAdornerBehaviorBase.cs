@@ -1,11 +1,13 @@
-﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
+
 using Microsoft.Xaml.Behaviors;
 using System.Runtime.InteropServices;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Controls.Primitives;
-using System.Windows.Documents;
-using System.Windows.Input;
 
 namespace H.Controls.Adorner.Draggable.Bevhavior;
 
@@ -31,7 +33,6 @@ public abstract class DraggableAdornerBehaviorBase : Behavior<UIElement>
         set { SetValue(AncestorTypeProperty, value); }
     }
 
-
     public static readonly DependencyProperty AncestorTypeProperty =
         DependencyProperty.Register("AncestorType", typeof(Type), typeof(DraggableAdornerBehavior), new PropertyMetadata(typeof(ScrollViewer)));
 
@@ -42,17 +43,14 @@ public abstract class DraggableAdornerBehaviorBase : Behavior<UIElement>
         set { SetValue(DragGroupProperty, value); }
     }
 
-
     public static readonly DependencyProperty DragGroupProperty =
         DependencyProperty.Register("DragGroup", typeof(string), typeof(DraggableAdornerBehavior), new PropertyMetadata("DragGroup"));
-
 
     public DragDropEffects DragDropEffects
     {
         get { return (DragDropEffects)GetValue(DragDropEffectsProperty); }
         set { SetValue(DragDropEffectsProperty, value); }
     }
-
 
     public static readonly DependencyProperty DragDropEffectsProperty =
         DependencyProperty.Register("DragDropEffects", typeof(DragDropEffects), typeof(DraggableAdornerBehavior), new PropertyMetadata(DragDropEffects.Copy));
@@ -93,8 +91,6 @@ public abstract class DraggableAdornerBehaviorBase : Behavior<UIElement>
         this.AssociatedObject.MouseLeave -= AssociatedObject_MouseLeave;
         this.AssociatedObject.GiveFeedback -= AssociatedObject_GiveFeedback;
     }
-
-
 
     private void AssociatedObject_GiveFeedback(object sender, GiveFeedbackEventArgs e)
     {
@@ -165,7 +161,6 @@ public abstract class DraggableAdornerBehaviorBase : Behavior<UIElement>
         DragDrop.DoDragDrop(this.AssociatedObject, dragData, this.DragDropEffects);
     }
 
-
     private void AssociatedObject_MouseUp(object sender, MouseButtonEventArgs e)
     {
         //Mouse.OverrideCursor = Cursors.Arrow;
@@ -215,6 +210,4 @@ public abstract class DraggableAdornerBehaviorBase : Behavior<UIElement>
         return new Point(w32Mouse.X, w32Mouse.Y);
     }
 }
-
-
 

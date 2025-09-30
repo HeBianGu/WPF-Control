@@ -459,7 +459,7 @@
     <Style x:Key="CalendarItemStyle"
            TargetType="{x:Type CalendarItem}">
         <Setter Property="Margin" Value="0,3,0,3" />
-        <Setter Property="Cattach.CornerRadius" Value="2" />
+        <Setter Property="Cattach.CornerRadius" Value="{DynamicResource {x:Static LayoutKeys.CornerRadius}}" />
         <!--<Setter Property="Cattach.CaptionCornerRadius" Value="0 2 2 0" />
         <Setter Property="Cattach.CaptionHeight" Value="{DynamicResource {x:Static LayoutKeys.RowHeight}}" />
         <Setter Property="Cattach.CaptionFontSize" Value="{DynamicResource {x:Static FontSizeKeys.Header5}}" />
@@ -648,7 +648,7 @@
                                           BorderThickness="{TemplateBinding BorderThickness}"
                                           Style="{TemplateBinding CalendarItemStyle}" />
                         </StackPanel>
-                        <Border x:Name="bm"
+                        <!--<Border x:Name="bm"
                                 IsHitTestVisible="False"
                                 Opacity="{Binding Source={x:Static local:WindowSetting.Instance}, Path=Opacity}"
                                 Visibility="{Binding Source={x:Static local:WindowSetting.Instance}, Path=UseBackImage, Converter={x:Static Converter.GetTrueToVisible}}">
@@ -656,7 +656,7 @@
                                 <ImageBrush ImageSource="{Binding Source={x:Static local:WindowSetting.Instance}, Path=BackImagePath}"
                                             Stretch="{Binding Source={x:Static local:WindowSetting.Instance}, Path=Stretch}" />
                             </Border.Background>
-                        </Border>
+                        </Border>-->
                     </Grid>
                 </ControlTemplate>
             </Setter.Value>

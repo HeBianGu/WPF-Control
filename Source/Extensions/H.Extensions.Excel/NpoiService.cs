@@ -1,5 +1,12 @@
-﻿using H.Services.Common.Excel;
-using H.Services.Logger;
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
+
+using H.Services.Common.Excel;
 using NPOI.HSSF.UserModel;
 using NPOI.SS.UserModel;
 using NPOI.XSSF.UserModel;
@@ -31,7 +38,6 @@ public class NpoiService : IExcelService
             string header = display?.Name ?? p.Name;
             row0.CreateCell(i).SetCellValue(header);
         }
-
 
         for (int r = 0; r < collection.Count(); r++)
         {

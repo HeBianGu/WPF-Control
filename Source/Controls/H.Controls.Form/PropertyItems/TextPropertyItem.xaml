@@ -5,8 +5,8 @@
     <DataTemplate DataType="{x:Type local:TextPropertyItem}">
         <TextBox Height="Auto"
                  MinHeight="{DynamicResource {x:Static h:LayoutKeys.ItemHeight}}"
-                 Margin="0,0,0,1"
                  VerticalContentAlignment="Center"
+                 Cattach.UseGuide="False"
                  IsReadOnly="{Binding ReadOnly}"
                  Text="{Binding Value, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
                  TextWrapping="{Binding TextWrapping}"

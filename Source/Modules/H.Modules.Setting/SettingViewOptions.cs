@@ -1,8 +1,16 @@
-﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
+
+using H.Controls.Form;
 using H.Extensions.Setting;
+using H.Services.Message.Form;
 using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
-using System.Windows;
+using System.Text.Json.Serialization;
 
 namespace H.Modules.Setting;
 
@@ -42,7 +50,7 @@ internal class SettingViewOptions : IocOptionInstance<SettingViewOptions>, ISett
         get { return _navigationTitleWidth; }
         set
         {
-            _titleWidth = value;
+            _navigationTitleWidth = value;
         }
     }
 
@@ -61,7 +69,7 @@ internal class SettingViewOptions : IocOptionInstance<SettingViewOptions>, ISett
 
     private double _minWidth = 100;
     [TypeConverter(typeof(LengthConverter))]
-    [DefaultValue(100)]
+    [DefaultValue(100d)]
     [Display(Name = "最小宽度", Description = "设置页面最小宽度")]
     public double MinWidth
     {
@@ -86,7 +94,7 @@ internal class SettingViewOptions : IocOptionInstance<SettingViewOptions>, ISett
     }
 
     private double _minHeight = 100;
-    [DefaultValue(100)]
+    [DefaultValue(100d)]
     [TypeConverter(typeof(LengthConverter))]
     [Display(Name = "最小高度", Description = "设置页面最小高度")]
     public double MinHeight
@@ -111,4 +119,16 @@ internal class SettingViewOptions : IocOptionInstance<SettingViewOptions>, ISett
         }
     }
 
+    private IFormOption _formOption = new FormPresenter() { UseCommand = false };
+    [Browsable(false)]
+    [JsonIgnore]
+    public IFormOption FormOption
+    {
+        get { return _formOption; }
+        internal set
+        {
+            _formOption = value;
+            RaisePropertyChanged();
+        }
+    }
 }

@@ -1,8 +1,8 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:local="clr-namespace:H.Themes.Colors"
+                    xmlns:local="clr-namespace:H.Themes"
                     xmlns:po="http://schemas.microsoft.com/winfx/2006/xaml/presentation/options">
-    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Accent, TypeInTargetAssembly={x:Type local:ColorKeys}}">#FF0093FF</Color>
+    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Accent, TypeInTargetAssembly={x:Type local:ColorKeys}}">#2D80FF</Color>
     <!--  Background  -->
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.CaptionBackground, TypeInTargetAssembly={x:Type local:ColorKeys}}">#191a20</Color>
 
@@ -68,8 +68,8 @@
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.0, TypeInTargetAssembly={x:Type local:ColorKeys}}">#121317</Color>
 
     <!--  Color  -->
-    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.LightGray, TypeInTargetAssembly={x:Type local:ColorKeys}}">#2c2c2c</Color>
-    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Gray, TypeInTargetAssembly={x:Type local:ColorKeys}}">#000000</Color>
+    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.LightGray, TypeInTargetAssembly={x:Type local:ColorKeys}}">LightGray</Color>
+    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Gray, TypeInTargetAssembly={x:Type local:ColorKeys}}">Gray</Color>
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Black, TypeInTargetAssembly={x:Type local:ColorKeys}}">#374857</Color>
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Orange, TypeInTargetAssembly={x:Type local:ColorKeys}}">#FFC107</Color>
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Red, TypeInTargetAssembly={x:Type local:ColorKeys}}">#FF4D4F</Color>
@@ -80,4 +80,9 @@
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Blue, TypeInTargetAssembly={x:Type local:ColorKeys}}">#4D9EFF</Color>
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.LightBlue, TypeInTargetAssembly={x:Type local:ColorKeys}}">LightSkyBlue</Color>
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Pink, TypeInTargetAssembly={x:Type local:ColorKeys}}">#FF7EB9</Color>
+
+
+    <!--  Menu  -->
+    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Menu.Background, TypeInTargetAssembly={x:Type local:ColorKeys}}">#191a20</Color>
+    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Menu.Foreground, TypeInTargetAssembly={x:Type local:ColorKeys}}">#8F939C</Color>
 </ResourceDictionary>

@@ -1,0 +1,40 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
+                    xmlns:h="https://github.com/HeBianGu"
+                    xmlns:lc="clr-namespace:H.Modules.Login.Commands"
+                    xmlns:local="clr-namespace:H.Modules.Login">
+    <DataTemplate DataType="{x:Type local:LoginButtonViewPresenter}">
+        <DockPanel>
+            <FontIconTextBlock Margin="5,0"
+                               Cursor="Hand"
+                               Text="{x:Static FontIcons.Contact}">
+                <b:Interaction.Behaviors>
+                    <ContextMenuDisplayBehavior MouseButton="Left" />
+                </b:Interaction.Behaviors>
+                <FontIconTextBlock.ContextMenu>
+                    <ContextMenu Placement="Bottom"
+                                 VerticalOffset="10">
+                        <MenuItem Command="{lc:LogoutCommand}"
+                                  Style="{DynamicResource {x:Static MenuItemKeys.BindCommand}}" />
+                        <MenuItem Command="{lc:SwitchUserCommand}"
+                                  Style="{DynamicResource {x:Static MenuItemKeys.BindCommand}}" />
+                    </ContextMenu>
+                </FontIconTextBlock.ContextMenu>
+            </FontIconTextBlock>
+            <TextBlock Margin="5,0"
+                       VerticalAlignment="Center">
+                <Hyperlink x:Name="hl" Foreground="{Binding RelativeSource={RelativeSource AncestorType=TextBlock},Path=Foreground}"
+                           Command="{lc:ShowCurrentUserCommand}">
+                    <TextBlock Text="{Binding Source={Ioc Type={x:Type ILoginService}}, Path=User.Name, FallbackValue=登录}" />
+                </Hyperlink>
+            </TextBlock>
+        </DockPanel>
+        <DataTemplate.Triggers>
+            <DataTrigger Binding="{Binding Source={Ioc Type={x:Type ILoginService}}, Path=User}"
+                         Value="{x:Null}">
+                <Setter TargetName="hl" Property="Command" Value="{lc:LoginCommand}" />
+            </DataTrigger>
+        </DataTemplate.Triggers>
+    </DataTemplate>
+</ResourceDictionary>

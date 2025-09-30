@@ -1,22 +1,15 @@
-﻿
-using H.Extensions.Attach;
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
+
 using H.Extensions.Setting;
 using H.Services.Setting;
-using System.Windows.Threading;
 
 namespace H.Modules.Guide;
-
-public interface IGuideOptions
-{
-    int AnimationDuration { get; set; }
-    Color CoverColor { get; set; }
-    double CoverOpacity { get; set; }
-    Brush Stroke { get; set; }
-    DoubleCollection StrokeDashArray { get; set; }
-    double StrokeThickness { get; set; }
-    double TextMaxWidth { get; set; }
-    bool UseOnLoad { get; set; }
-}
 
 [Display(Name = "向导页面", GroupName = SettingGroupNames.GroupControl, Description = "设置向导页面信息")]
 public class GuideOptions : IocOptionInstance<GuideOptions>, IGuideOptions
@@ -34,6 +27,18 @@ public class GuideOptions : IocOptionInstance<GuideOptions>, IGuideOptions
         }
     }
 
+    private string _version;
+    [Display(Name = "历史版本号", Description = "上一次加载向导的历史版本号")]
+    public string Version
+    {
+        get { return _version; }
+        set
+        {
+            _version = value;
+            RaisePropertyChanged();
+        }
+    }
+
     public override bool Load(out string message)
     {
         message = null;
@@ -42,15 +47,24 @@ public class GuideOptions : IocOptionInstance<GuideOptions>, IGuideOptions
               return base.Load(out string message);
           });
 
-        if (this.UseOnLoad)
-        {
-            Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.SystemIdle, new Action(() =>
-                      {
-                          Cattach.SetIsGuide(Application.Current.MainWindow, true);
-                      }));
-
-            this.UseOnLoad = false;
-        }
+        //if (this.UseOnLoad)
+        //{
+        //    Application.Current.MainWindow.Loaded += (s, e) =>
+        //    {
+        //        Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.SystemIdle, new Action(async () =>
+        //        {
+        //            var version = Assembly.GetEntryAssembly().GetName().Version.ToString();
+        //            await Ioc<IGuideService>.Instance.Show(x => Cattach.GetGuideAssemblyVersion(x) == version || version == "1.0.0.0");
+        //        }));
+        //    };
+        //    //Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.SystemIdle, new Action(async () =>
+        //    //{
+        //    //    var version = Assembly.GetEntryAssembly().GetName().Version.ToString();
+        //    //    await Ioc<IGuideService>.Instance.Show(x => Cattach.GetGuideAssemblyVersion(x) == version || version == "1.0.0.0");
+        //    //    //Cattach.SetIsGuide(Application.Current.MainWindow, true);
+        //    //}));
+        //    this.UseOnLoad = false;
+        //}
         return r;
     }
     private double _textMaxWidth = 300.0;
@@ -97,7 +111,6 @@ public class GuideOptions : IocOptionInstance<GuideOptions>, IGuideOptions
         //this.Stroke = Application.Current.FindResource(BrushKeys.Orange) as Brush;
     }
 
-
     private Brush _stroke = Brushes.Orange;
     [Display(Name = "线条颜色")]
     public Brush Stroke
@@ -110,7 +123,6 @@ public class GuideOptions : IocOptionInstance<GuideOptions>, IGuideOptions
         }
     }
 
-
     private double _strokeThickness = 1;
     [Display(Name = "线条厚度")]
     public double StrokeThickness
@@ -122,7 +134,6 @@ public class GuideOptions : IocOptionInstance<GuideOptions>, IGuideOptions
             RaisePropertyChanged();
         }
     }
-
 
     private DoubleCollection _strokeDashArray = new DoubleCollection(new double[] { 1.0, 1.0 });
     [Display(Name = "线条虚线")]

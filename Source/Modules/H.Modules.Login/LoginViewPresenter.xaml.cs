@@ -1,17 +1,26 @@
-﻿
-using H.Mvvm;
-using Microsoft.Extensions.Options;
-using System;
-using System.Threading;
-using System.Threading.Tasks;
-using H.Mvvm.ViewModels.Base;
-using H.Mvvm.Commands;
-using H.Services.Message.Dialog;
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
+
+using H.Common.Attributes;
+using H.Extensions.FontIcon;
+using H.Extensions.Mvvm.Commands;
+using H.Extensions.Mvvm.ViewModels.Base;
 using H.Services.Identity;
+using H.Services.Message.Dialog;
+using H.Services.Setting;
+using Microsoft.Extensions.Options;
+using System.ComponentModel.DataAnnotations;
 
 namespace H.Modules.Login
 {
-    public class LoginViewPresenter : BindableBase, ILoginViewPresenter
+    [Icon(FontIcons.Connect)]
+    [Display(Name = "登录页面", GroupName = SettingGroupNames.GroupSystem, Description = "登录页面的呈现")]
+    public class LoginViewPresenter : DisplayBindableBase, ILoginViewPresenter
     {
         private IOptions<LoginOptions> _options;
         public LoginViewPresenter(IOptions<LoginOptions> options)
@@ -31,7 +40,6 @@ namespace H.Modules.Login
                 RaisePropertyChanged();
             }
         }
-
 
         private string _password;
         public string Password

@@ -1,10 +1,17 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
   <ItemGroup>
-    <ProjectReference Include="..\..\Extensions\H.Extensions.Attach\H.Extensions.Attach.csproj" />
+    <ProjectReference Include="..\..\Base\H.Attach\H.Attach.csproj" />
     <ProjectReference Include="..\..\Extensions\H.Extensions.DataBase\H.Extensions.DataBase.csproj" />
     <ProjectReference Include="..\..\Services\H.Services.Common\H.Services.Common.csproj" />
-    <ProjectReference Include="..\..\Providers\H.Mvvm\H.Mvvm.csproj" />
     <ProjectReference Include="..\..\Styles\H.Style\H.Style.csproj" />
     <ProjectReference Include="..\H.Controls.Form\H.Controls.Form.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="TextPropertyItems\SliderTextPropertyItem.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="TextPropertyItems\UnitTextPropertyItem.xaml">
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
 </Project>

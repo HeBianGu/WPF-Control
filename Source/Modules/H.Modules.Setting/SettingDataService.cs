@@ -1,8 +1,14 @@
-﻿using H.Common;
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
+
+using H.Common;
 using H.Common.Interfaces;
-using H.Services.Identity;
 using System.Collections.ObjectModel;
-using System.Reflection.Metadata;
 using System.Text;
 
 namespace H.Modules.Setting;
@@ -48,7 +54,7 @@ public class SettingDataService : LazyInstance<SettingDataService>, ISettingData
             try
             {
                 var r = item.Load(out message);
-                if (r == false)
+                if (!string.IsNullOrEmpty(message))
                     IocLog.Instance?.Error(message);
             }
             catch (Exception ex)
@@ -64,7 +70,7 @@ public class SettingDataService : LazyInstance<SettingDataService>, ISettingData
     public bool LoadLoginedLoad(Action<ISettable> action, out string message)
     {
         message = null;
-        foreach (ILoginedSplashLoad item in this.Settings.OfType<ILoginedSplashLoad>())
+        foreach (ILoginedSplashLoadable item in this.Settings.OfType<ILoginedSplashLoadable>())
         {
             action?.Invoke(item as ISettable);
             item.Load(out message);
@@ -99,7 +105,6 @@ public class SettingDataService : LazyInstance<SettingDataService>, ISettingData
             item.LoadDefault();
         }
     }
-
 
     public void Clear()
     {

@@ -1,4 +1,11 @@
-﻿using System;
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
+
 using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
@@ -98,7 +105,6 @@ namespace H.Controls.HorseTextBlock
             get { return (RepeatBehavior)GetValue(RepeatBehaviorProperty); }
             set { SetValue(RepeatBehaviorProperty, value); }
         }
-
 
         public static readonly DependencyProperty RepeatBehaviorProperty =
             DependencyProperty.Register("RepeatBehavior", typeof(RepeatBehavior), typeof(HorseTextBlock), new FrameworkPropertyMetadata(new RepeatBehavior(3), (d, e) =>

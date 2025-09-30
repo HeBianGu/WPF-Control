@@ -1,6 +1,14 @@
-﻿using H.Common.Interfaces;
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
+
+using H.Attach;
+using H.Common.Interfaces;
 using H.Extensions.AppPath;
-using H.Extensions.Attach;
 using H.Services.AppPath;
 using H.Services.Common.DataBase;
 using H.Services.Common.MainWindow;
@@ -19,10 +27,11 @@ using System.Windows;
 
 namespace H.Extensions.ApplicationBase;
 
-public abstract partial class ApplicationBase : Application, IConfigureableApplication
+public abstract partial class ApplicationBase : Application, IConfigureableApplication, ILoginableApplication
 {
     public ApplicationBase()
     {
+        this.ShutdownMode = ShutdownMode.OnMainWindowClose;
         AppPaths.Register(this.CreateAppPathServce());
         this.InitExcetion();
         this.InitServiceCollection();
@@ -47,8 +56,15 @@ public abstract partial class ApplicationBase : Application, IConfigureableAppli
         this.OnSingleton(e);
         base.OnStartup(e);
         Window window = this.CreateMainWindow(e);
+        window.Loaded += (s, e) =>
+        {
+            var loads = Ioc.GetAssignableFromServices<IMainWindowLoadedLoadable>().Distinct();
+            foreach (var item in loads)
+                item.Load(out string message);
+
+        };
         this.OnSplashScreen(e);
-        this.OnLogin(e);
+        this.OnLogin();
         Ioc<IMainWindowSavableService>.Instance?.Load(window);
         this.MainWindow.Show();
         this.ILogger?.Info("系统启动");
@@ -58,6 +74,11 @@ public abstract partial class ApplicationBase : Application, IConfigureableAppli
     #region - Exception -
     protected virtual void InitExcetion()
     {
+
+        //PresentationTraceSources.DataBindingSource.Switch.Level = SourceLevels.Error;
+        //// 或完全关闭：
+        //// PresentationTraceSources.DataBindingSource.Switch.Level = SourceLevels.Off;
+
         //#if DEBUG
         //            return;
         //#endif
@@ -166,7 +187,7 @@ public abstract partial class ApplicationBase : Application, IConfigureableAppli
     public ILogService ILogger => Ioc.Services.GetService<ILogService>();
     protected virtual async void ShowMessage(string message, string title = "提示")
     {
-        await IocMessage.ShowDialogMessage(message,title);
+        await IocMessage.ShowDialogMessage(message, title);
         //MessageBox.Show(message);
 
         //if (MessageProxy.Windower == null)
@@ -178,6 +199,16 @@ public abstract partial class ApplicationBase : Application, IConfigureableAppli
         //    MessageProxy.Windower.ShowSumit("当前程序已经运行！");
         //}
 
+    }
+
+    void ILoginableApplication.Login()
+    {
+        this.OnLogin();
+    }
+
+    void IConfigureableApplication.Configure()
+    {
+        this.Configure();
     }
 }
 
@@ -196,24 +227,24 @@ public partial class ApplicationBase
     {
 
     }
-    public void Configure()
+    protected void Configure()
     {
         ApplicationBuilder bulder = new ApplicationBuilder();
         this.Configure(bulder);
     }
 
-    protected virtual IEnumerable<ISplashLoad> GetSplashLoads()
-    {
-        foreach (IDbConnectService item in Ioc.Services.GetServices<IDbConnectService>())
-        {
-            yield return item;
-        }
+    //protected virtual IEnumerable<ISplashLoadable> GetSplashLoads()
+    //{
+    //    foreach (IDbConnectService item in Ioc.Services.GetServices<IDbConnectService>())
+    //    {
+    //        yield return item;
+    //    }
 
-        foreach (ISplashLoad item in Ioc.Services.GetServices<ISplashLoad>())
-        {
-            yield return item;
-        }
-    }
+    //    foreach (ISplashLoadable item in Ioc.Services.GetServices<ISplashLoadable>())
+    //    {
+    //        yield return item;
+    //    }
+    //}
 
     /// <summary>
     /// 加载启动页面
@@ -245,8 +276,8 @@ public partial class ApplicationBase
 
             {
                 int index = 0;
-                IEnumerable<ISplashLoad> loads = Ioc.GetAssignableFromServices<ISplashLoad>().Distinct();
-                foreach (ISplashLoad load in loads)
+                IEnumerable<ISplashLoadable> loads = Ioc.GetAssignableFromServices<ISplashLoadable>().Distinct();
+                foreach (ISplashLoadable load in loads)
                 {
                     if (c?.IsCancel == true)
                         return null;
@@ -257,7 +288,7 @@ public partial class ApplicationBase
                     if (s != null)
                         s.Message = $"[{index}/{loads.Count()}]正在加载{load.Name}...";
                     bool r = load.Load(out string message);
-                    if (s != null && !string.IsNullOrEmpty(message))
+                    if (s != null && !string.IsNullOrEmpty(message) && !r)
                         s.Message = message;
                     if (r == false)
                     {
@@ -311,7 +342,7 @@ public partial class ApplicationBase
     /// <summary>
     /// 加载登录页面
     /// </summary>
-    protected virtual void OnLogin(StartupEventArgs e)
+    protected virtual void OnLogin()
     {
         {
             ILoginViewPresenter presenter = Ioc.Services.GetService<ILoginViewPresenter>();
@@ -363,9 +394,9 @@ public partial class ApplicationBase
                     Thread.Sleep(sleep);
                 }
 
-                IEnumerable<ILoginedSplashLoad> loads = Ioc.GetAssignableFromServices<ISplashLoad>().Distinct().OfType<ILoginedSplashLoad>();
+                IEnumerable<ILoginedSplashLoadable> loads = Ioc.GetAssignableFromServices<ISplashLoadable>().Distinct().OfType<ILoginedSplashLoadable>();
                 int index = 0;
-                foreach (ILoginedSplashLoad load in loads)
+                foreach (ILoginedSplashLoadable load in loads)
                 {
                     if (c?.IsCancel == true)
                         return null;
@@ -441,7 +472,6 @@ public partial class ApplicationBase
     /// </summary>
     protected virtual void OnSetting()
     {
-
         //var sss=   Ioc.Services.GetType().GetFields(BindingFlags.NonPublic | BindingFlags.Static|bind);
 
         ////  Do ：加载注入的ISetting

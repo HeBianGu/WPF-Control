@@ -25,45 +25,61 @@
                           ItemsSource="{Binding Source={StaticResource GroupedGuideDatas}}">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition SharedSizeGroup="icon" />
-                                <ColumnDefinition SharedSizeGroup="title" />
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition SharedSizeGroup="data" />
-                            </Grid.ColumnDefinitions>
-                            <FontIconTextBlock Grid.Column="0"
-                                               Margin="5,0"
-                                               Text="{Binding Icon}" />
-                            <TextBlock Grid.Column="1"
-                                       HorizontalAlignment="Left"
-                                       VerticalAlignment="Center"
-                                       Text="{Binding Tilte}"
-                                       TextTrimming="CharacterEllipsis"
-                                       ToolTip="{Binding Tilte}" />
-                            <ContentPresenter Grid.Column="3"
-                                              HorizontalAlignment="Right"
-                                              VerticalAlignment="Center"
-                                              Content="{Binding Data}"
-                                              ContentTemplate="{Binding DataTemplate}"
-                                              DockPanel.Dock="Right"
-                                              Opacity="0.6" />
-                            <Border Grid.Column="2"
-                                    Width="{Binding Element.ActualWidth}"
-                                    Height="{Binding Element.ActualHeight}"
-                                    MinWidth="20"
-                                    MinHeight="20"
-                                    MaxWidth="400"
-                                    MaxHeight="200"
-                                    Margin="20,2"
-                                    HorizontalAlignment="Left">
-                                <Border.Background>
-                                    <VisualBrush AlignmentX="Left"
-                                                 Stretch="Uniform"
-                                                 Visual="{Binding Element}" />
-                                </Border.Background>
-                            </Border>
-                        </Grid>
+                        <Border Margin="0,-1,0,0"
+                                BorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrush}}"
+                                BorderThickness="1">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition SharedSizeGroup="icon" />
+                                    <ColumnDefinition SharedSizeGroup="title" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition SharedSizeGroup="data" />
+                                </Grid.ColumnDefinitions>
+                                <Border Grid.ColumnSpan="2"
+                                        Margin="-1"
+                                        BorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrush}}"
+                                        BorderThickness="1" />
+
+                                <Border Grid.Column="2"
+                                        Margin="-1"
+                                        BorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrush}}"
+                                        BorderThickness="1" />
+
+                                <FontIconTextBlock Grid.Column="0"
+                                                   Margin="10,0"
+                                                   Text="{Binding Icon}" />
+
+                                <TextBlock Grid.Column="1"
+                                           Margin="5,0"
+                                           HorizontalAlignment="Left"
+                                           VerticalAlignment="Center"
+                                           Text="{Binding Tilte}"
+                                           TextTrimming="CharacterEllipsis"
+                                           ToolTip="{Binding Tilte}" />
+                                <ContentPresenter Grid.Column="3"
+                                                  HorizontalAlignment="Right"
+                                                  VerticalAlignment="Center"
+                                                  Content="{Binding Data}"
+                                                  ContentTemplate="{Binding DataTemplate}"
+                                                  DockPanel.Dock="Right"
+                                                  Opacity="0.6" />
+                                <Border Grid.Column="2"
+                                        Width="{Binding Element.ActualWidth}"
+                                        Height="{Binding Element.ActualHeight}"
+                                        MinWidth="20"
+                                        MinHeight="20"
+                                        MaxWidth="400"
+                                        MaxHeight="200"
+                                        Margin="20,2"
+                                        HorizontalAlignment="Left">
+                                    <Border.Background>
+                                        <VisualBrush AlignmentX="Left"
+                                                     Stretch="Uniform"
+                                                     Visual="{Binding Element}" />
+                                    </Border.Background>
+                                </Border>
+                            </Grid>
+                        </Border>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
                 <ItemsControl.GroupStyle>

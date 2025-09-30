@@ -36,12 +36,12 @@
                                 Background="{TemplateBinding Background}"
                                 BorderBrush="{TemplateBinding BorderBrush}"
                                 BorderThickness="{TemplateBinding BorderThickness}"
-                                CornerRadius="2">
+                                CornerRadius="{DynamicResource {x:Static LayoutKeys.CornerRadius}}">
                             <Border x:Name="InnerBorder"
                                     Background="Transparent"
                                     BorderBrush="Transparent"
                                     BorderThickness="{TemplateBinding BorderThickness}"
-                                    CornerRadius="2">
+                                    CornerRadius="{DynamicResource {x:Static LayoutKeys.CornerRadius}}">
                                 <ContentPresenter Margin="2"
                                                   HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                                   VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
@@ -51,7 +51,7 @@
                         <Border x:Name="PressedStateOverlay"
                                 HorizontalAlignment="Stretch"
                                 VerticalAlignment="Stretch"
-                                CornerRadius="2" />
+                                CornerRadius="{DynamicResource {x:Static LayoutKeys.CornerRadius}}" />
                     </Grid>
                     <ControlTemplate.Triggers>
                         <!--  IsEnabled  -->

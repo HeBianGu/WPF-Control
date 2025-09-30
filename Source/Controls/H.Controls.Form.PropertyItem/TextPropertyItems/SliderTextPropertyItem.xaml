@@ -1,0 +1,46 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:h="https://github.com/HeBianGu"
+                    xmlns:local="clr-namespace:H.Controls.Form.PropertyItem"
+                    xmlns:lt="clr-namespace:H.Controls.Form.PropertyItem.TextPropertyItems">
+    <DataTemplate DataType="{x:Type lt:SliderTextPropertyItemBase}">
+        <Grid>
+            <TextBox x:Name="tb"
+                     Height="Auto"
+                     MinHeight="{DynamicResource {x:Static h:LayoutKeys.ItemHeight}}"
+                     VerticalContentAlignment="Center"
+                     Cattach.UseGuide="False"
+                     IsReadOnly="{Binding ReadOnly}"
+                     Style="{DynamicResource {x:Static TextBoxKeys.Attach}}"
+                     Text="{Binding Value, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                     TextWrapping="{Binding TextWrapping}"
+                     ToolTip="{Binding Message}" />
+            <Popup Width="{Binding ElementName=tb, Path=ActualWidth, Mode=OneWay}"
+                   IsOpen="{Binding ElementName=tb, Path=IsKeyboardFocused, Mode=OneWay}"
+                   StaysOpen="True">
+                <Border Margin="0,0,0.5,0"
+                        Background="{DynamicResource {x:Static BrushKeys.Selected}}"
+                        BorderBrush="{DynamicResource {x:Static BrushKeys.ForegroundAssist}}"
+                        BorderThickness="1"
+                        CornerRadius="{DynamicResource {x:Static LayoutKeys.CornerRadius}}">
+                    <DockPanel>
+                        <TextBlock Margin="5"
+                                   VerticalAlignment="Center"
+                                   DockPanel.Dock="Left"
+                                   Text="{Binding Minimum, Converter={x:Static Converter.GetMathRound}, ConverterParameter=2}" />
+                        <TextBlock Margin="5"
+                                   VerticalAlignment="Center"
+                                   DockPanel.Dock="Right"
+                                   Text="{Binding Maximum, Converter={x:Static Converter.GetMathRound}, ConverterParameter=2}" />
+                        <Slider Focusable="False"
+                                IsSnapToTickEnabled="True"
+                                Maximum="{Binding Maximum}"
+                                Minimum="{Binding Minimum}"
+                                TickFrequency="{Binding TickFrequency}"
+                                Value="{Binding Value, Converter={lt:GetValueFromStringValueConverter}}" />
+                    </DockPanel>
+                </Border>
+            </Popup>
+        </Grid>
+    </DataTemplate>
+</ResourceDictionary>

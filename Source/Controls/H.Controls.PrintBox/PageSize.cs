@@ -1,10 +1,12 @@
-﻿
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
 
-
-using System.Collections.Generic;
 using System.Printing;
-using System.Windows;
-using System.Windows.Markup;
 
 namespace H.Controls.PrintBox
 {
@@ -38,7 +40,7 @@ namespace H.Controls.PrintBox
         public string Name { get; private set; }
         public string SizeDesc { get; private set; }
         public PageMediaSizeName SizeName { get; private set; }
-        public Size SizeInInch {  get; private set; }
+        public Size SizeInInch { get; private set; }
 
         public Size Size { get; private set; }
 

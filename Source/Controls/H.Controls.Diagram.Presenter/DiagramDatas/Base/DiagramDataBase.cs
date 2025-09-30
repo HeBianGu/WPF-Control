@@ -1,17 +1,26 @@
-﻿global using H.Controls.Diagram.Layouts;
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
+
+global using H.Common.Attributes;
+global using H.Controls.Diagram.GraphSource;
+global using H.Controls.Diagram.Layouts;
 global using H.Controls.Diagram.Layouts.Base;
 global using H.Controls.Diagram.LinkDrawers;
 global using H.Controls.Diagram.Presenter.NodeDatas.Card;
-global using System.Windows.Input;
-global using H.Common.Attributes;
-global using H.Controls.Diagram.GraphSource;
 global using H.Controls.Form.PropertyItem.Attribute.SourcePropertyItem;
 global using H.Controls.Form.PropertyItem.ComboBoxPropertyItems;
 global using H.Extensions.FontIcon;
+global using H.Extensions.Mvvm.Commands;
 global using H.Mvvm.Commands;
 global using H.Services.Message;
-global using System.Text.Json.Serialization;
 global using H.Services.Message.Dialog;
+global using System.Text.Json.Serialization;
+global using System.Windows.Input;
 namespace H.Controls.Diagram.Presenter.DiagramDatas.Base;
 
 public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
@@ -80,7 +89,6 @@ public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
             RaisePropertyChanged();
         }
     }
-
 
     private ILinkDrawer _linkDrawer = new BrokenLinkDrawer();
     [System.Text.Json.Serialization.JsonIgnore]
@@ -164,7 +172,6 @@ public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
         }
     }
 
-
     private string _message;
     public string Message
     {
@@ -175,7 +182,6 @@ public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
             RaisePropertyChanged();
         }
     }
-
 
     [Icon(FontIcons.EditMirrored)]
     [Display(Name = "编辑面板", GroupName = "操作", Order = 0, Description = "点击此功能，编辑面板信息")]
@@ -233,13 +239,38 @@ public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
     [Display(Name = "对齐节点", GroupName = "操作", Order = 5)]
     public virtual DisplayCommand AlignmentCommand => new DisplayCommand(e =>
     {
-        foreach (Node item in this.DataSource.Nodes)
-        {
-            item.AligmentLayout();
-        }
+        //foreach (Node item in this.DataSource.Nodes)
+        //{
+        //    item.AligmentLayout();
+        //}
+        this.DataSource.Nodes.AligmentToNodesWithStartNode();
     }, x => this.DataSource.Nodes.Count > 0);
 
 
+    [Icon(FontIcons.Color)]
+    [System.Text.Json.Serialization.JsonIgnore]
+    [Display(Name = "恢复默认样式", GroupName = "操作", Order = 5)]
+    public virtual DisplayCommand LoadNodeDefaultCommand => new DisplayCommand(e =>
+    {
+        foreach (var item in this.Datas.NodeDatas)
+        {
+            if (item is IDefaultable defaultable)
+                defaultable.LoadDefault();
+
+            if (item is IPortableNodeData portable)
+            {
+                foreach (var p in portable.PortDatas.OfType<IDefaultable>())
+                {
+                    p.LoadDefault();
+                }
+            }
+        }
+
+        foreach (var item in this.Datas.LinkDatas.OfType<IDefaultable>())
+        {
+            item.LoadDefault();
+        }
+    }, x => this.DataSource.Nodes.Count > 0);
 
     public RelayCommand ItemsChangedCommand => new RelayCommand(e =>
     {
@@ -250,6 +281,23 @@ public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
     {
         this.InvalidateDatas();
     }
+
+
+    public RelayCommand AddNodedCommand => new RelayCommand(x =>
+    {
+        if (x is RoutedEventArgs<IEnumerable<Node>> args)
+        {
+            foreach (var item in args.Entity.Select(x => x.GetContent()).OfType<IDiagramableNodeData>())
+            {
+                item.DiagramData = this;
+            }
+
+            foreach (var item in args.Entity.Select(x => x.GetContent()).OfType<ITextNodeData>())
+            {
+                item.Text = this.Datas.NodeDatas.Count + " " + item.Text;
+            }
+        }
+    });
 
     public RelayCommand SelectedPartChangedCommand => new RelayCommand(e =>
     {
@@ -268,22 +316,37 @@ public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
         this.OnMouseDoubleClick(e);
     });
 
-    protected virtual void OnMouseDoubleClick(object e)
+    protected virtual async void OnMouseDoubleClick(object e)
     {
         if (e is MouseButtonEventArgs args && args.OriginalSource is FrameworkElement framework)
         {
             if (framework?.DataContext == null)
                 return;
-            {
-                IocMessage.Form?.ShowTabEdit(framework?.DataContext, x =>
-                {
 
-                }, null, x =>
+            if (framework?.DataContext is IDiagramShowPropertyView showPropertyView)
+            {
+                var propertyPresenter = showPropertyView.GetPropertyPresenter();
+                await IocMessage.ShowDialog(propertyPresenter, x =>
                 {
-                    //x.UseGroupNames = "数据";
-                    x.UseCommand = false;
-                    //x.TabNames = new ObservableCollection<string>();
+                    x.DialogButton = DialogButton.None;
+                    if (showPropertyView is ITitleable title && title.Title != null)
+                        x.Title = title.Title;
+                    if (showPropertyView is INameable nameable && nameable.Name != null)
+                        x.Title = nameable.Name;
                 });
+            }
+            else
+            {
+                await IocMessage.Form?.ShowTabEdit(framework?.DataContext, x =>
+                 {
+
+                 }, null, x =>
+                 {
+                     x.TitleWidth = double.NaN;
+                     //x.UseGroupNames = "数据";
+                     x.UseCommand = true;
+                     //x.TabNames = new ObservableCollection<string>();
+                 });
             }
         }
     }
@@ -368,6 +431,15 @@ public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
     protected virtual void OnDeserialized()
     {
         this.DataSource = this.CreateDataSource();
+
+        foreach (var item in this.Datas.NodeDatas.OfType<IOnDiagramDeserialized>())
+        {
+            item.OnDiagramDeserialized();
+        }
+        foreach (var item in this.Datas.LinkDatas.OfType<IOnDiagramDeserialized>())
+        {
+            item.OnDiagramDeserialized();
+        }
     }
 
     protected virtual IDiagramDataSource CreateDataSource()

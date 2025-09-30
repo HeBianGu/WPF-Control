@@ -1,6 +1,10 @@
-﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
-
-using System;
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
 
 namespace H.Modules.License
 {
@@ -28,7 +32,6 @@ namespace H.Modules.License
     1709, 1721, 1723, 1733, 1741, 1747, 1753, 1759, 1777, 1783, 1787, 1789,
     1801, 1811, 1823, 1831, 1847, 1861, 1867, 1871, 1873, 1877, 1879, 1889,
     1901, 1907, 1913, 1931, 1933, 1949, 1951, 1973, 1979, 1987, 1993, 1997, 1999 };
-
 
         private uint[] data = null;
         public int dataLength;
@@ -113,7 +116,6 @@ namespace H.Modules.License
                 else
                     posVal = 9999999;
 
-
                 if (posVal >= radix)
                     throw (new ArithmeticException("Invalid string in constructor."));
                 else
@@ -154,7 +156,6 @@ namespace H.Modules.License
             if (leftOver != 0)
                 dataLength++;
 
-
             if (dataLength > maxLength)
                 throw (new ArithmeticException("Byte overflow in constructor."));
 
@@ -173,7 +174,6 @@ namespace H.Modules.License
             else if (leftOver == 3)
                 data[dataLength - 1] = (uint)((inData[0] << 16) + (inData[1] << 8) + inData[2]);
 
-
             while (dataLength > 1 && data[dataLength - 1] == 0)
                 dataLength--;
         }
@@ -189,7 +189,6 @@ namespace H.Modules.License
             if (dataLength > maxLength || inLen > inData.Length)
                 throw (new ArithmeticException("Byte overflow in constructor."));
 
-
             data = new uint[maxLength];
 
             for (int i = inLen - 1, j = 0; i >= 3; i -= 4, j++)
@@ -204,7 +203,6 @@ namespace H.Modules.License
                 data[dataLength - 1] = (uint)((inData[0] << 8) + inData[1]);
             else if (leftOver == 3)
                 data[dataLength - 1] = (uint)((inData[0] << 16) + (inData[1] << 8) + inData[2]);
-
 
             if (dataLength == 0)
                 dataLength = 1;
@@ -434,7 +432,6 @@ namespace H.Modules.License
                 throw (new ArithmeticException("Multiplication overflow."));
             }
 
-
             result.dataLength = bi1.dataLength + bi2.dataLength;
             if (result.dataLength > maxLength)
                 result.dataLength = maxLength;
@@ -534,7 +531,6 @@ namespace H.Modules.License
 
             return result;
         }
-
 
         private static int shiftRight(uint[] buffer, int shiftVal)
         {
@@ -642,7 +638,6 @@ namespace H.Modules.License
             return true;
         }
 
-
         public override int GetHashCode()
         {
             return this.ToString().GetHashCode();
@@ -667,7 +662,6 @@ namespace H.Modules.License
             return false;
         }
 
-
         public static bool operator <(BigInteger bi1, BigInteger bi2)
         {
             int pos = maxLength - 1;
@@ -687,12 +681,10 @@ namespace H.Modules.License
             return false;
         }
 
-
         public static bool operator >=(BigInteger bi1, BigInteger bi2)
         {
             return (bi1 == bi2 || bi1 > bi2);
         }
-
 
         public static bool operator <=(BigInteger bi1, BigInteger bi2)
         {
@@ -1104,7 +1096,6 @@ namespace H.Modules.License
 
                     tempNum = BarrettReduction(tempNum * tempNum, n, constant);
 
-
                     if (tempNum.dataLength == 1 && tempNum.data[0] == 1)
                     {
                         if (thisNegative && (exp.data[0] & 0x1) != 0)
@@ -1135,7 +1126,6 @@ namespace H.Modules.License
             q1.dataLength = x.dataLength - kMinusOne;
             if (q1.dataLength <= 0)
                 q1.dataLength = 1;
-
 
             BigInteger q2 = q1 * constant;
             BigInteger q3 = new BigInteger();
@@ -1441,7 +1431,6 @@ namespace H.Modules.License
             if ((thisVal.data[0] & 0x1) == 0)
                 return false;
 
-
             int bits = thisVal.bitCount();
             BigInteger a = new BigInteger();
             BigInteger p_sub1 = thisVal - 1;
@@ -1499,7 +1488,6 @@ namespace H.Modules.License
 
             return LucasStrongTestHelper(thisVal);
         }
-
 
         private bool LucasStrongTestHelper(BigInteger thisVal)
         {
@@ -1582,7 +1570,6 @@ namespace H.Modules.License
 
                 lucas[2] = thisVal.BarrettReduction(lucas[2] * lucas[2], thisVal, constant);
             }
-
 
             if (isPrime)
             {
@@ -2080,7 +2067,6 @@ namespace H.Modules.License
 
             Q_k = (Q_k * Q) % n;
 
-
             for (int i = 0; i < s; i++)
             {
                 u1 = (u1 * v) % n;
@@ -2227,8 +2213,6 @@ namespace H.Modules.License
 
         }
 
-
-
         public static void RSATest2(int rounds)
         {
             Random rand = new Random();
@@ -2261,7 +2245,6 @@ namespace H.Modules.License
                         0x78, 0xFA, 0xB8, 0x02, 0x55, 0x80,
                         0x9B, 0xC2, 0xA5, 0xCB,
                 };
-
 
             BigInteger bi_p = new BigInteger(pseudoPrime1);
             BigInteger bi_q = new BigInteger(pseudoPrime2);
@@ -2343,10 +2326,6 @@ namespace H.Modules.License
                 Console.WriteLine(" <PASSED>.");
             }
         }
-
-
-
-
 
     }
 }

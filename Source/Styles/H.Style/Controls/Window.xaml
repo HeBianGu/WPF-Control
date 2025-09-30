@@ -1,7 +1,6 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:lc="clr-namespace:H.Styles.Controls"
-                    xmlns:lcd="clr-namespace:H.Styles.Commands"
                     xmlns:local="clr-namespace:H.Styles">
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/H.Style;component/Share.xaml" />
@@ -36,6 +35,63 @@
         <Setter Property="Foreground" Value="{DynamicResource {x:Static BrushKeys.CaptionForeground}}" />
     </Style>
 
+    <Style x:Key="{ComponentResourceKey ResourceId=S.Window.FontIconButton.Maximize,
+                                        TypeInTargetAssembly={x:Type lc:WindowKeys}}"
+           BasedOn="{StaticResource {x:Static lc:WindowKeys.FontIconButton}}"
+           TargetType="{x:Type lc:FontIconButton}">
+        <Setter Property="ToolTip" Value="最大化" />
+        <Setter Property="FontSize" Value="10" />
+        <Setter Property="Content" Value="&#xE922;" />
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=Window}, Path=WindowState}"
+                         Value="Maximized">
+                <Setter Property="Visibility" Value="Collapsed" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=Window}, Path=ResizeMode}"
+                         Value="NoResize">
+                <Setter Property="Visibility" Value="Collapsed" />
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="{ComponentResourceKey ResourceId=S.Window.FontIconButton.Minimize,
+                                        TypeInTargetAssembly={x:Type lc:WindowKeys}}"
+           BasedOn="{StaticResource {x:Static lc:WindowKeys.FontIconButton}}"
+           TargetType="{x:Type lc:FontIconButton}">
+        <Setter Property="ToolTip" Value="最小化" />
+        <Setter Property="FontSize" Value="10" />
+        <Setter Property="Content" Value="&#xE921;" />
+    </Style>
+
+    <Style x:Key="{ComponentResourceKey ResourceId=S.Window.FontIconButton.Restore,
+                                        TypeInTargetAssembly={x:Type lc:WindowKeys}}"
+           BasedOn="{StaticResource {x:Static lc:WindowKeys.FontIconButton}}"
+           TargetType="{x:Type lc:FontIconButton}">
+        <Setter Property="ToolTip" Value="还原" />
+        <Setter Property="FontSize" Value="10" />
+        <Setter Property="Content" Value="&#xE923;" />
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=Window}, Path=WindowState}"
+                         Value="Normal">
+                <Setter Property="Visibility" Value="Collapsed" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=Window}, Path=ResizeMode}"
+                         Value="NoResize">
+                <Setter Property="Visibility" Value="Collapsed" />
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="{ComponentResourceKey ResourceId=S.Window.FontIconButton.Close,
+                                        TypeInTargetAssembly={x:Type lc:WindowKeys}}"
+           BasedOn="{StaticResource {x:Static lc:WindowKeys.FontIconButton}}"
+           TargetType="{x:Type lc:FontIconButton}">
+        <Setter Property="FontSize" Value="10" />
+        <Setter Property="ToolTip" Value="关闭" />
+        <Setter Property="Content" Value="&#xE8BB;" />
+    </Style>
+
+    <lc:GetNullToCollapsedConverter x:Key="GetNullToCollapsedConverter" />
     <Style x:Key="{ComponentResourceKey ResourceId=S.Window.Default,
                                         TypeInTargetAssembly={x:Type lc:WindowKeys}}"
            TargetType="{x:Type Window}">
@@ -67,7 +123,7 @@
         </Setter>
         <Setter Property="Background" Value="{DynamicResource {x:Static BrushKeys.Background}}" />
         <Setter Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.BorderBrush}}" />
-        <Setter Property="Cattach.CornerRadius" Value="2" />
+        <Setter Property="Cattach.CornerRadius" Value="{DynamicResource {x:Static LayoutKeys.CornerRadius}}" />
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="Template">
             <Setter.Value>
@@ -96,16 +152,16 @@
                                                     Margin="7,0,5,0"
                                                     VerticalAlignment="Center"
                                                     Command="{x:Static SystemCommands.ShowSystemMenuCommand}"
+                                                    CommandTarget="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}}"
                                                     Content="{TemplateBinding Icon}"
                                                     IsTabStop="False"
                                                     Style="{x:Null}"
-                                                    Visibility="{Binding Icon, RelativeSource={RelativeSource Mode=TemplatedParent}, Converter={x:Static Converter.GetNullToCollapsed}}"
+                                                    Visibility="{Binding Icon, RelativeSource={RelativeSource Mode=TemplatedParent}, Converter={StaticResource GetNullToCollapsedConverter}}"
                                                     WindowChrome.IsHitTestVisibleInChrome="True">
                                                 <Button.Template>
                                                     <ControlTemplate TargetType="{x:Type Button}">
                                                         <Image Source="{TemplateBinding Content}" />
                                                     </ControlTemplate>
-
                                                 </Button.Template>
                                             </Button>
                                             <TextBlock Margin="5,0"
@@ -117,25 +173,20 @@
                                                     HorizontalAlignment="Right"
                                                     Orientation="Horizontal">
                                             <lc:FontIconButton x:Name="Btn_Minimize"
-                                                               Command="{lcd:MinimizeWindowCommand}"
+                                                               Command="{lc:MinimizeWindowCommand}"
                                                                CommandParameter="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}}"
-                                                               FontSize="10"
-                                                               Style="{DynamicResource {x:Static lc:WindowKeys.FontIconButton}}" />
-                                            <lc:FontIconButton x:Name="Btn_Maximize"
-                                                               Command="{lcd:MaximizeWindowCommand}"
+                                                               Style="{DynamicResource {x:Static lc:WindowKeys.MinimizeButton}}" />
+                                            <lc:FontIconButton Command="{lc:MaximizeWindowCommand}"
                                                                CommandParameter="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}}"
-                                                               FontSize="10"
-                                                               Style="{DynamicResource {x:Static lc:WindowKeys.FontIconButton}}" />
-                                            <lc:FontIconButton x:Name="Btn_Restore"
-                                                               Command="{lcd:RestoreWindowCommand}"
+                                                               CommandTarget="{Binding RelativeSource={RelativeSource AncestorType={x:Type Window}}}"
+                                                               Style="{DynamicResource {x:Static lc:WindowKeys.MaximizeButton}}" />
+                                            <lc:FontIconButton Command="{lc:RestoreWindowCommand}"
                                                                CommandParameter="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}}"
-                                                               FontSize="10"
-                                                               Style="{DynamicResource {x:Static lc:WindowKeys.FontIconButton}}" />
-                                            <lc:FontIconButton x:Name="Btn_Close"
-                                                               Command="{lcd:CloseAfterSaveWindowCommand}"
+                                                               CommandTarget="{Binding RelativeSource={RelativeSource AncestorType=Window}}"
+                                                               Style="{DynamicResource {x:Static lc:WindowKeys.RestoreButton}}" />
+                                            <lc:FontIconButton Command="{lc:CloseWindowCommand}"
                                                                CommandParameter="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}}"
-                                                               FontSize="10"
-                                                               Style="{DynamicResource {x:Static lc:WindowKeys.FontIconButton}}" />
+                                                               Style="{DynamicResource {x:Static lc:WindowKeys.CloseButton}}" />
                                         </StackPanel>
                                     </Grid>
                                 </Border>
@@ -144,7 +195,7 @@
                                     <ContentPresenter />
                                 </AdornerDecorator>
 
-                                <Border Grid.RowSpan="3"
+                                <!--<Border Grid.RowSpan="3"
                                         IsHitTestVisible="False"
                                         Opacity="{Binding Source={x:Static lc:WindowSetting.Instance}, Path=Opacity}"
                                         Visibility="{Binding Source={x:Static lc:WindowSetting.Instance}, Path=UseBackImage, Converter={x:Static Converter.GetTrueToVisible}}">
@@ -152,7 +203,7 @@
                                         <ImageBrush ImageSource="{Binding Source={x:Static lc:WindowSetting.Instance}, Path=BackImagePath}"
                                                     Stretch="{Binding Source={x:Static lc:WindowSetting.Instance}, Path=Stretch}" />
                                     </Border.Background>
-                                </Border>
+                                </Border>-->
 
                                 <ResizeGrip x:Name="WindowResizeGrip"
                                             Grid.Row="1"
@@ -169,19 +220,19 @@
                             <Setter TargetName="WindowResizeGrip" Property="Visibility" Value="Visible" />
                         </Trigger>
                         <Trigger Property="WindowState" Value="Maximized">
-                            <Setter TargetName="Btn_Maximize" Property="Visibility" Value="Collapsed" />
-                            <Setter TargetName="Btn_Restore" Property="Visibility" Value="Visible" />
+                            <!--<Setter TargetName="Btn_Maximize" Property="Visibility" Value="Collapsed" />
+                            <Setter TargetName="Btn_Restore" Property="Visibility" Value="Visible" />-->
                             <Setter TargetName="PART_Border" Property="Padding" Value="7" />
                         </Trigger>
-                        <Trigger Property="WindowState" Value="Normal">
+                        <!--<Trigger Property="WindowState" Value="Normal">
                             <Setter TargetName="Btn_Maximize" Property="Visibility" Value="Visible" />
                             <Setter TargetName="Btn_Restore" Property="Visibility" Value="Collapsed" />
-                        </Trigger>
-                        <Trigger Property="ResizeMode" Value="NoResize">
+                        </Trigger>-->
+                        <!--<Trigger Property="ResizeMode" Value="NoResize">
                             <Setter TargetName="Btn_Minimize" Property="Visibility" Value="Collapsed" />
                             <Setter TargetName="Btn_Maximize" Property="Visibility" Value="Collapsed" />
                             <Setter TargetName="Btn_Restore" Property="Visibility" Value="Collapsed" />
-                        </Trigger>
+                        </Trigger>-->
                         <Trigger Property="IsActive" Value="False">
                             <Setter TargetName="grid" Property="Opacity" Value="0.5" />
                         </Trigger>

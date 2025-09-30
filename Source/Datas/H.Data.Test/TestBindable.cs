@@ -1,10 +1,12 @@
-﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
 
-using H.Mvvm;
-using H.Mvvm.ViewModels.Tree;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+using H.Extensions.Mvvm.ViewModels.Tree;
 using System.Windows.Media;
 
 namespace H.Data.Test
@@ -13,7 +15,7 @@ namespace H.Data.Test
     {
         public TestBindable() : base(DateTime.Now)
         {
-            
+
         }
 
         public static TestBindables Randoms(int c = 100)
@@ -82,7 +84,6 @@ namespace H.Data.Test
             }
         }
 
-
         private bool _bool3;
         /// <summary> 说明  </summary>
         public bool Bool3
@@ -94,7 +95,6 @@ namespace H.Data.Test
                 RaisePropertyChanged();
             }
         }
-
 
         private string _value;
         /// <summary> 说明  </summary>
@@ -120,7 +120,6 @@ namespace H.Data.Test
             }
         }
 
-
         private string _value2;
         /// <summary> 说明  </summary>
         public string Value2
@@ -132,7 +131,6 @@ namespace H.Data.Test
                 RaisePropertyChanged("Value2");
             }
         }
-
 
         private string _value3;
         /// <summary> 说明  </summary>
@@ -146,7 +144,6 @@ namespace H.Data.Test
             }
         }
 
-
         private string _value4;
         /// <summary> 说明  </summary>
         public string Value4
@@ -158,7 +155,6 @@ namespace H.Data.Test
                 RaisePropertyChanged("Value4");
             }
         }
-
 
         private string _value5;
         /// <summary> 说明  </summary>
@@ -172,7 +168,6 @@ namespace H.Data.Test
             }
         }
 
-
         private string _value6;
         /// <summary> 说明  </summary>
         public string Value6
@@ -184,7 +179,6 @@ namespace H.Data.Test
                 RaisePropertyChanged("Value6");
             }
         }
-
 
         private string _value7;
         /// <summary> 说明  </summary>
@@ -198,7 +192,6 @@ namespace H.Data.Test
             }
         }
 
-
         private string _value9;
         /// <summary> 说明  </summary>
         public string Value9
@@ -210,7 +203,6 @@ namespace H.Data.Test
                 RaisePropertyChanged("Value9");
             }
         }
-
 
         private int _int1;
         /// <summary> 说明  </summary>
@@ -236,7 +228,6 @@ namespace H.Data.Test
             }
         }
 
-
         private int _int3;
         /// <summary> 说明  </summary>
         public int Int3
@@ -249,8 +240,6 @@ namespace H.Data.Test
             }
         }
 
-
-
         private DateTime _datetime1;
         /// <summary> 说明  </summary>
         public DateTime DateTime1
@@ -262,7 +251,6 @@ namespace H.Data.Test
                 RaisePropertyChanged("DateTime1");
             }
         }
-
 
         private DateTime _datetime2;
         /// <summary> 说明  </summary>
@@ -287,7 +275,6 @@ namespace H.Data.Test
                 RaisePropertyChanged("DateTime3");
             }
         }
-
 
         private double _double1;
         /// <summary> 说明  </summary>

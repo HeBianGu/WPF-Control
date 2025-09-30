@@ -4,6 +4,7 @@
                     xmlns:local="clr-namespace:H.Controls.Form.PropertyItem">
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/H.Controls.Form.PropertyItem;component/ComboBoxPropertyItems/ComboBoxPropertyItem.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Controls.Form.PropertyItem;component/ComboBoxPropertyItems/SelectedIndexComboBoxPropertyItem.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Controls.Form.PropertyItem;component/ComboBoxPropertyItems/EnumComboBoxPropertyItem.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Controls.Form.PropertyItem;component/ComboBoxPropertyItems/FormComboBoxPropertyItem.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Controls.Form.PropertyItem;component/ComboBoxPropertyItems/PresenterComboBoxPropertyItem.xaml" />
@@ -22,5 +23,8 @@
         <ResourceDictionary Source="pack://application:,,,/H.Controls.Form.PropertyItem;component/PropertyItems/ColorPropertyItem.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Controls.Form.PropertyItem;component/PropertyItems/ComboboxRepositoryPropertyItem.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Controls.Form.PropertyItem;component/TextPropertyItems/HyperlinkPropertyItem.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Controls.Form.PropertyItem;component/TextPropertyItems/UnitTextPropertyItem.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Controls.Form.PropertyItem;component/TextPropertyItems/SliderTextPropertyItem.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Controls.Form.PropertyItem;component/FontIconButtonCommandPropertyItem.xaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

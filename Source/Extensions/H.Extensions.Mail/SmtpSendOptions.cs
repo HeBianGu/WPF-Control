@@ -1,4 +1,12 @@
-﻿using H.Common.Attributes;
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
+
+using H.Common.Attributes;
 using H.Extensions.Setting;
 using H.Services.Setting;
 using System.ComponentModel;
@@ -22,7 +30,6 @@ public class SmtpSendOptions<T> : IocOptionInstance<T>, ISmtpSendOptions where T
         }
     }
 
-
     private int _port;
     [DefaultValue(25)]
     [Display(Name = "端口号")]
@@ -35,7 +42,6 @@ public class SmtpSendOptions<T> : IocOptionInstance<T>, ISmtpSendOptions where T
             RaisePropertyChanged();
         }
     }
-
 
     private bool _enableSsl;
     [DefaultValue(true)]
@@ -63,7 +69,6 @@ public class SmtpSendOptions<T> : IocOptionInstance<T>, ISmtpSendOptions where T
             RaisePropertyChanged();
         }
     }
-
 
     private string _password;
     [Required]

@@ -1,4 +1,12 @@
-﻿using Microsoft.Win32;
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
+
+using Microsoft.Win32;
 namespace H.Services.Message.IODialog;
 
 public class IOFileDialogService : IIOFileDialogService
@@ -6,13 +14,15 @@ public class IOFileDialogService : IIOFileDialogService
     public string ShowOpenFile(Action<IIOFileDialogOption> optionAction)
     {
         OpenFileDialog openFileDialog = this.GetOpenFileDialog(optionAction, false);
-        return openFileDialog.ShowDialog() != true ? null : openFileDialog.FileName;
+        var r = openFileDialog.ShowDialog();
+        return r != true ? null : openFileDialog.FileName;
     }
 
     public string[] ShowOpenFiles(Action<IIOFileDialogOption> optionAction)
     {
         OpenFileDialog openFileDialog = this.GetOpenFileDialog(optionAction, true);
-        return openFileDialog.ShowDialog() != true ? null : openFileDialog.FileNames;
+        var r = openFileDialog.ShowDialog();
+        return r != true ? null : openFileDialog.FileNames;
     }
 
     public OpenFileDialog GetOpenFileDialog(Action<IIOFileDialogOption> optionAction, bool multiselect)

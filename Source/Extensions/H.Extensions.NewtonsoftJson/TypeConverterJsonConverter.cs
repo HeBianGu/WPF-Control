@@ -1,8 +1,17 @@
-﻿using Newtonsoft.Json;
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
+
+using Newtonsoft.Json;
 using System.ComponentModel;
+using System.Windows;
+using System.Windows.Threading;
 
 namespace H.Extensions.NewtonsoftJson;
-
 
 public class TypeConverterJsonConverter<T> : JsonConverter where T : TypeConverter
 {
@@ -82,6 +91,14 @@ public class TypeConverterJsonConverter : JsonConverter
         TypeConverter converter = CreateTypeConverter(value.GetType());
         if (converter == null)
             writer.WriteValue(value);
+        if (value is DispatcherObject dispatcherObject && dispatcherObject.Dispatcher != null)
+        {
+            dispatcherObject.Dispatcher.Invoke(() =>
+            {
+                writer.WriteValue(converter.ConvertToInvariantString(value));
+            });
+            return;
+        }
         writer.WriteValue(converter.ConvertToInvariantString(value));
     }
 

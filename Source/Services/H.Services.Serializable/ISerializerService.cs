@@ -1,5 +1,12 @@
-﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
 
+using H.Services.Logger;
 using System.IO;
 
 namespace H.Services.Serializable;
@@ -19,6 +26,20 @@ public static class SerializerServiceExtensions
             return null;
         System.Diagnostics.Debug.WriteLine(filePath);
         string txt = File.ReadAllText(filePath);
+
+#if DEBUG
+        try
+        {
+            return service.DeserializeObject(txt, type);
+        }
+        catch (Exception ex)
+        {
+            File.Delete(filePath);
+            IocLog.Instance?.Error(ex);
+            System.Diagnostics.Debug.WriteLine(ex);
+            return null;
+        }
+#endif
         return service.DeserializeObject(txt, type);
     }
     public static T Load<T>(this ISerializerService service, string filePath)

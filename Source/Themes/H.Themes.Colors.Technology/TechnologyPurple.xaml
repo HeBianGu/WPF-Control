@@ -6,6 +6,8 @@
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/H.Theme;component/Colors/Dark.xaml" />
     </ResourceDictionary.MergedDictionaries>
+    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Accent, TypeInTargetAssembly={x:Type ColorKeys}}">#6A1BFF</Color>
+
     <!--  Background  -->
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.CaptionBackground, TypeInTargetAssembly={x:Type ColorKeys}}">#0F0523</Color>
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextBackground, TypeInTargetAssembly={x:Type ColorKeys}}">#1A0C33</Color>
@@ -68,4 +70,8 @@
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.28, TypeInTargetAssembly={x:Type ColorKeys}}">#FFFFFFFF</Color>
     <!--<Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextForeground.Title, TypeInTargetAssembly={x:Type ColorKeys}}">#FFFFFFFF</Color>-->
     <!--<Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextForeground.Select, TypeInTargetAssembly={x:Type ColorKeys}}">#FFFFFFFF</Color>-->
+
+    <!--  Menu  -->
+    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Menu.Background, TypeInTargetAssembly={x:Type ColorKeys}}">#0F0523</Color>
+    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Menu.Foreground, TypeInTargetAssembly={x:Type ColorKeys}}">#D6B3FF</Color>
 </ResourceDictionary>

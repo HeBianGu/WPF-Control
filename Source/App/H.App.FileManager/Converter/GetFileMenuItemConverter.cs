@@ -1,8 +1,8 @@
 ﻿global using H.Controls.TagBox;
 global using System.Globalization;
 global using System.Windows.Input;
-global using H.Mvvm.ViewModels.Tree;
-global using H.Mvvm.Commands;
+global using H.Extensions.Mvvm.ViewModels.Tree;
+global using H.Extensions.Mvvm.Commands;
 global using H.Services.Project;
 global using H.Extensions.DataBase.Repository;
 

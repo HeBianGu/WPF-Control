@@ -35,7 +35,7 @@
                            Background="{DynamicResource {x:Static h:BrushKeys.MouseOver}}">
                     <Button Command="{Binding RefreshCommand}"
                             Content="更多操作" />
-                    <ToggleButton Cattach.CornerRadius="2"
+                    <ToggleButton Cattach.CornerRadius="{DynamicResource {x:Static LayoutKeys.CornerRadius}}"
                                   Content="{x:Static h:Geometrys.Down}"
                                   Style="{DynamicResource {x:Static h:ToggleButtonKeys.Geometry}}">
                         <b:Interaction.Behaviors>
@@ -186,7 +186,7 @@
                                             <Border Padding="2"
                                                     BorderBrush="{DynamicResource {x:Static h:BrushKeys.BorderBrush}}"
                                                     BorderThickness="1"
-                                                    CornerRadius="2">
+                                                    CornerRadius="{DynamicResource {x:Static LayoutKeys.CornerRadius}}">
 
                                                 <DockPanel x:Name="dp"
                                                            Width="200"

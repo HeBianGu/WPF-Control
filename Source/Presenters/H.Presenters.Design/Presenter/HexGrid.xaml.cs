@@ -1,4 +1,10 @@
-﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
 
 using System.Globalization;
 using System.Windows.Data;
@@ -41,7 +47,6 @@ public class HexGrid : Panel
         DependencyProperty.Register("RowCount", typeof(int), typeof(HexGrid),
         new FrameworkPropertyMetadata(1, FrameworkPropertyMetadataOptions.AffectsMeasure | FrameworkPropertyMetadataOptions.AffectsArrange),
         ValidateCountCallback);
-
 
     public int RowCount
     {
@@ -263,8 +268,6 @@ public class HexGrid : Panel
             columnWidth = 0.50 * hexSize.Width;
         }
 
-
-
         // arrange elements
         UIElementCollection elements = this.InternalChildren;
         for (int i = 0; i < elements.Count; i++)
@@ -300,7 +303,6 @@ public class HexGrid : Panel
     }
 }
 
-
 public class HexItem : ListBoxItem
 {
     static HexItem()
@@ -317,7 +319,6 @@ public class HexItem : ListBoxItem
     }
 
 }
-
 
 public class HexList : ListBox
 {
@@ -360,7 +361,6 @@ public class HexList : ListBox
         return new HexItem();
     }
 }
-
 
 public class HexClipConverter : IMultiValueConverter
 {

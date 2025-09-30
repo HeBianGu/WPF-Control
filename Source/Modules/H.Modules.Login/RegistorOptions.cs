@@ -1,10 +1,21 @@
-﻿using H.Extensions.Setting;
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
+
+using H.Common.Attributes;
+using H.Extensions.FontIcon;
+using H.Extensions.Setting;
 using H.Services.Setting;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
 namespace H.Modules.Login
 {
+    [Icon(FontIcons.AddFriend)]
     [Display(Name = "注册页面设置", GroupName = SettingGroupNames.GroupSystem, Description = "注册页面设置的信息")]
     public class RegistorOptions : IocOptionInstance<RegistorOptions>, IRegistorOptions
     {
@@ -63,7 +74,7 @@ namespace H.Modules.Login
         }
 
         private string _image;
-        [DefaultValue("pack://application:,,,/H.Style;component/Logo.ico")]
+        [DefaultValue("pack://application:,,,/H.Style;component/Assets/Logo.ico")]
         [Display(Name = "左侧图片")]
         public string Image
         {
@@ -74,7 +85,6 @@ namespace H.Modules.Login
                 RaisePropertyChanged();
             }
         }
-
 
         public override void LoadDefault()
         {

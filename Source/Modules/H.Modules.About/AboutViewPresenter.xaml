@@ -7,7 +7,8 @@
             <h:StaticForm SelectObject="{Binding Source={x:Static local:AboutOptions.Instance}}"
                           UseBoolen="False"
                           UseEnum="False"
-                          UseNull="False"
+                          UseNull="False"  
+                          UseCommand="False"
                           UsePropertyView="True" />
         </Grid>
         <DataTemplate.Triggers>

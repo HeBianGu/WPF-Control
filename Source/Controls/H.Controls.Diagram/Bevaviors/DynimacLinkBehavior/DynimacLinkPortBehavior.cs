@@ -1,8 +1,10 @@
-﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
-using System;
-using System.Linq;
-using System.Windows;
-using System.Windows.Media;
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
 
 namespace H.Controls.Diagram.Bevaviors.DynimacLinkBehavior;
 
@@ -87,7 +89,6 @@ public class DynimacLinkPortBehavior : DynimacLinkBehaviorBase<Port>
             _tempPort = null;
         }
 
-
         if (this.AssociatedObject._dynamicLink.FromPort == null) return;
 
         //  Do ：设置所有系统点可用
@@ -128,7 +129,6 @@ public class DynimacLinkPortBehavior : DynimacLinkBehaviorBase<Port>
         System.Diagnostics.Debug.WriteLine("CreateDynamicLink：" + span.ToString());
 #endif 
     }
-
 
     //bool _isUseArrow;
     protected override void InitDynamic(Port port)

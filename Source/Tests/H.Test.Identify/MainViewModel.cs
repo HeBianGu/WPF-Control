@@ -1,11 +1,12 @@
 ﻿using H.Controls.Chart2D;
 using H.Modules.Operation;
-using H.Mvvm.ViewModels.Base;
+using H.Extensions.Mvvm.ViewModels.Base;
 using System;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Threading;
+using H.Mvvm.ViewModels.Base;
 
 namespace H.Test.Identify
 {

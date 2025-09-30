@@ -1,8 +1,12 @@
-﻿using H.Extensions.Setting;
-using H.Services.Common;
-using H.Mvvm;
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
 
-
+using H.Extensions.Setting;
 
 #if NETFRAMEWORK
 using System.Data.Entity;
@@ -10,26 +14,22 @@ using System.Data.Entity;
 
 #if NETCOREAPP
 using Microsoft.Extensions.DependencyInjection;
-using System;
 #endif
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text.Json.Serialization;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Input;
-using System.Xml.Serialization;
-using H.Mvvm.Commands;
+using H.Extensions.Mvvm.Commands;
 using H.Services.Message;
 using H.Common.Interfaces;
 using H.Services.Common.DataBase;
-using H.Extensions.AppPath;
 using System.IO;
 using H.Services.AppPath;
+using H.Mvvm.Commands;
+using H.Services.Setting;
 
 namespace H.DataBases.Share
 {
+    [Display(Name = "数据库配置", GroupName = SettingGroupNames.GroupData)]
     public abstract class DbSettableBase<T> : LazySettableInstance<T>, IDbSettable where T : new()
     {
         public abstract string GetConnect();
@@ -68,7 +68,7 @@ namespace H.DataBases.Share
                   s.IsBusy = true;
                   s.Message = "正在连接...";
 
-                  System.Collections.Generic.IEnumerable<IDbConnectService> inits = Ioc.Services.GetServices<ISplashLoad>().OfType<IDbConnectService>();
+                  System.Collections.Generic.IEnumerable<IDbConnectService> inits = Ioc.Services.GetServices<ISplashLoadable>().OfType<IDbConnectService>();
                   bool r = false;
                   foreach (IDbConnectService init in inits)
                   {

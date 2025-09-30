@@ -1,11 +1,12 @@
-﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
 
 using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Windows;
-using System.Windows.Media;
 
 namespace H.Controls.Diagram.LinkDrawers;
 
@@ -24,7 +25,6 @@ public class BrokenLinkDrawer : LinkDrawer
     }
     //public int InnerSpan
     //{ get; set; } = 30;
-
 
     private int _innerSpan = 30;
     [Display(Name = "内部间隔", GroupName = "折线信息", Order = 0)]
@@ -187,9 +187,23 @@ public class BrokenLinkDrawer : LinkDrawer
 
     private Point GetCenter(List<Point> points)
     {
+        // 直线
+        if (points.TrueForAll(p => p.X == points[0].X))
+        {
+            return new Point(points[0].X, (points.Min(x => x.Y) + points.Max(x => x.Y)) / 2);
+        }
+        // 直线
+        if (points.TrueForAll(p => p.Y == points[0].Y))
+        {
+            return new Point((points.Min(x => x.X) + points.Max(x => x.X)) / 2, points[0].Y);
+        }
+
         if (points.Count > 2)
             return new Point(points[2].X / 2 + points[1].X / 2, points[2].Y / 2 + points[1].Y / 2);
         return points.Count > 1 ? points[1] : points[0];
+
+        //  ToDo：获取最长的线作为文本显示位置
+
         //if (points.Count > 5)
         //{
         //    points = points.Take(points.Count - 5).ToList();
@@ -272,6 +286,5 @@ public class BrokenLinkDrawer : LinkDrawer
 
     //    return path;
     //}
-
 
 }

@@ -1,10 +1,12 @@
-﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
 
 global using H.Controls.Adorner.Adorner;
-using System;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Documents;
 
@@ -17,23 +19,28 @@ namespace H.Modules.Messages.Notice
 
         private void CheckValid()
         {
-            UIElement child = Application.Current.MainWindow.Content as UIElement;
-            AdornerLayer layer = AdornerLayer.GetAdornerLayer(child);
-            System.Collections.Generic.IEnumerable<PresenterAdorner> adorners = layer.GetAdorners(child)?.OfType<PresenterAdorner>().Where(x => x.Presenter == this._noticeBox);
-            //if (adorners == null || adorners.Count() == 0)
-            //{
-            //    PresenterAdorner adorner = new PresenterAdorner(child, this._noticeBox);
-            //    layer.Add(adorner);
-            //}
-            if (adorners != null)
+            Application.Current.Dispatcher.Invoke(() =>
             {
-                foreach (var item in adorners)
+                UIElement child = PresenterAdorner.GetAdonerElement();
+                AdornerLayer layer = AdornerLayer.GetAdornerLayer(child);
+                if (layer == null)
+                    return;
+                System.Collections.Generic.IEnumerable<PresenterAdorner> adorners = layer.GetAdorners(child)?.OfType<PresenterAdorner>().Where(x => x.Presenter == this._noticeBox);
+                //if (adorners == null || adorners.Count() == 0)
+                //{
+                //    PresenterAdorner adorner = new PresenterAdorner(child, this._noticeBox);
+                //    layer.Add(adorner);
+                //}
+                if (adorners != null)
                 {
-                    layer.Remove(item);
+                    foreach (var item in adorners)
+                    {
+                        layer.Remove(item);
+                    }
                 }
-            }
-            PresenterAdorner adorner = new PresenterAdorner(child, this._noticeBox);
-            layer.Add(adorner);
+                PresenterAdorner adorner = new PresenterAdorner(child, this._noticeBox);
+                layer.Add(adorner);
+            });
         }
 
         public async void ShowInfo(string message)
@@ -41,10 +48,11 @@ namespace H.Modules.Messages.Notice
             this.CheckValid();
             InfoMessagePresenter presenter = new InfoMessagePresenter() { Message = message };
             this._noticeBox.Collection.Add(presenter);
-            await Task.Run(() =>
-            {
-                Thread.Sleep(3000);
-            });
+            //await Task.Run(() =>
+            //{
+            //    Thread.Sleep(3000);
+            //});
+            await Task.Delay(3000);
             this._noticeBox.Collection.Remove(presenter);
         }
 
@@ -100,10 +108,11 @@ namespace H.Modules.Messages.Notice
             this.CheckValid();
             SuccessMessagePresenter presenter = new SuccessMessagePresenter() { Message = message };
             this._noticeBox.Collection.Add(presenter);
-            await Task.Run(() =>
-             {
-                 Thread.Sleep(3000);
-             });
+            //await Task.Run(() =>
+            // {
+            //     Thread.Sleep(3000);
+            // });
+            await Task.Delay(3000);
             this._noticeBox.Collection.Remove(presenter);
         }
 

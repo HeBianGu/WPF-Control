@@ -4,7 +4,7 @@
     <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.77" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Extensions\H.Extensions.Attach\H.Extensions.Attach.csproj" />
+    <ProjectReference Include="..\..\Base\H.Attach\H.Attach.csproj" />
     <ProjectReference Include="..\..\Extensions\H.Extensions.Behvaiors\H.Extensions.Behvaiors.csproj" />
     <ProjectReference Include="..\..\Extensions\H.Extensions.Common\H.Extensions.Common.csproj" />
     <ProjectReference Include="..\..\Extensions\H.Extensions.Setting\H.Extensions.Setting.csproj" />

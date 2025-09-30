@@ -1,23 +1,27 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
-using CommunityToolkit.Mvvm.Input;
+﻿using H.Mvvm.Commands;
+using H.Mvvm.ViewModels.Base;
 using System.Windows.Input;
 
 namespace H.Test.Mvvm
 {
-    public class MyViewModel : ObservableObject
+    public class MyViewModel : Bindable
     {
         public MyViewModel()
         {
-            IncrementCounterCommand = new RelayCommand(IncrementCounter);
+            IncrementCounterCommand = new RelayCommand(x => IncrementCounter());
         }
 
-        private int counter;
-
+        private int _cCounter;
         public int Counter
         {
-            get => counter;
-            private set => SetProperty(ref counter, value);
+            get { return _cCounter; }
+            set
+            {
+                _cCounter = value;
+                RaisePropertyChanged();
+            }
         }
+
 
         public ICommand IncrementCounterCommand { get; }
 

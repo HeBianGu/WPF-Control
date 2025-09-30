@@ -1,13 +1,16 @@
-﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
 
-using Microsoft.Xaml.Behaviors;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Input;
+using System.Xml.Serialization;
 
 namespace H.Extensions.Behvaiors.TextBoxs;
 
-
+[Obsolete("输入中文有输入法是会自动LostFocus，需要再测试一下")]
 public class TextBoxEditOnDoubleClickBebavior : Behavior<TextBox>
 {
     protected override void OnAttached()

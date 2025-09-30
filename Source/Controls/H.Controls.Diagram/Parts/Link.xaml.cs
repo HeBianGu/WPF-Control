@@ -1,12 +1,12 @@
-﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
-
-
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
 
 global using H.Controls.Diagram.Parts.Base;
-using H.Controls.Diagram.Flowables;
-using System;
-using System.Windows;
-using System.Windows.Media;
 using System.Windows.Shapes;
 
 namespace H.Controls.Diagram.Parts;
@@ -73,7 +73,6 @@ public partial class Link : FlowablePart, ILink
         set { SetValue(PathStyleProperty, value); }
     }
 
-
     public static readonly DependencyProperty PathStyleProperty =
         DependencyProperty.Register("PathStyle", typeof(Style), typeof(Link), new PropertyMetadata(default(Style), (d, e) =>
         {
@@ -84,13 +83,11 @@ public partial class Link : FlowablePart, ILink
 
         }));
 
-
     public Brush Foreground
     {
         get { return (Brush)GetValue(ForegroundProperty); }
         set { SetValue(ForegroundProperty, value); }
     }
-
 
     public static readonly DependencyProperty ForegroundProperty =
         DependencyProperty.Register("Foreground", typeof(Brush), typeof(Link), new FrameworkPropertyMetadata(default(Brush), (d, e) =>
@@ -111,13 +108,11 @@ public partial class Link : FlowablePart, ILink
 
          }));
 
-
     public double FontSize
     {
         get { return (double)GetValue(FontSizeProperty); }
         set { SetValue(FontSizeProperty, value); }
     }
-
 
     public static readonly DependencyProperty FontSizeProperty =
         DependencyProperty.Register("FontSize", typeof(double), typeof(Link), new FrameworkPropertyMetadata(default(double), (d, e) =>
@@ -296,7 +291,6 @@ public partial class Link
             child.Arrange(rect);
         }
         return finalSize;
-
 
     }
 

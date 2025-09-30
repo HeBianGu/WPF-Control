@@ -136,7 +136,7 @@
                             <Border x:Name="HighlightBorder"
                                     BorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrush}}"
                                     BorderThickness="1"
-                                    CornerRadius="2"
+                                    CornerRadius="{DynamicResource {x:Static LayoutKeys.CornerRadius}}"
                                     Visibility="Hidden">
                                 <Border.Background>
                                     <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Background}}" />

@@ -1,9 +1,16 @@
-﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
 
 namespace H.Services.Message.Form;
 
 public interface IFormOption
 {
+    double TitleWidth { get; set; }
     string ExceptPropertyNames { get; set; }
     double MessageWidth { get; set; }
     object SelectObject { get; set; }
@@ -39,4 +46,6 @@ public interface IFormOption
     Thickness Padding { get; set; }
     HorizontalAlignment HorizontalAlignment { get; set; }
     VerticalAlignment VerticalAlignment { get; set; }
+    bool IsHitTestVisible { get; set; }
+
 }

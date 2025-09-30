@@ -496,9 +496,6 @@
                                             Content="Button" />
                                 </Cattach.Attach>
                             </TextBox>
-                            <TextBox Style="{DynamicResource {x:Static TextBoxKeys.Delete}}"
-                                     Text="Delete" />
-
                             <TextBox Cattach.Watermark="Watermark"
                                      Style="{DynamicResource {x:Static TextBoxKeys.Attach}}" />
                         </StackPanel>

@@ -1,8 +1,9 @@
 ﻿global using System.Collections.ObjectModel;
 global using System.IO;
-global using H.Mvvm.ViewModels;
+global using H.Extensions.Mvvm.ViewModels;
 global using H.Services.Message;
 global using H.Services.Message.Dialog;
+using H.Mvvm.Commands;
 
 namespace H.App.FileManager
 {

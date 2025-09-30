@@ -1,4 +1,12 @@
-﻿#if NET
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
+
+#if NET
 #endif
 
 using System.Windows;
@@ -11,6 +19,26 @@ public static class RectExtenstion
     {
         return new Point((rect.Left + rect.Right) / 2, (rect.Top + rect.Bottom) / 2);
     }
+
+    public static Point GetTopCenter(this Rect rect)
+    {
+        return new Point(rect.Left + rect.Width / 2, rect.Top);
+    }
+
+    public static Point GetBottomCenter(this Rect rect)
+    {
+        return new Point(rect.Left + rect.Width / 2, rect.Bottom);
+    }
+
+    public static Point GetLeftCenter(this Rect rect)
+    {
+        return new Point(rect.Left, rect.Top + rect.Height / 2);
+    }
+    public static Point GetRightCenter(this Rect rect)
+    {
+        return new Point(rect.Right, rect.Top + rect.Height / 2);
+    }
+
 
     public static Rect ToRect(this Point point, double len)
     {
@@ -50,7 +78,6 @@ public static class RectExtenstion
     {
         return new Vector(-vector.Y, vector.X);
     }
-
 
     public static double ToAngle(this Vector vector)
     {

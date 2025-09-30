@@ -17,7 +17,7 @@
         <Setter Property="VirtualizingPanel.VirtualizationMode" Value="Recycling" />
         <Setter Property="Padding" Value="4" />
         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-        <Setter Property="Cattach.CornerRadius" Value="2" />
+        <Setter Property="Cattach.CornerRadius" Value="{DynamicResource {x:Static LayoutKeys.CornerRadius}}" />
         <Setter Property="Background" Value="{DynamicResource {x:Static h:BrushKeys.Background}}" />
         <Setter Property="BorderBrush" Value="{DynamicResource {x:Static h:BrushKeys.BorderBrush}}" />
         <Setter Property="BorderThickness" Value="1" />
@@ -52,13 +52,15 @@
         </Setter>
     </Style>
 
+    <local:GetFalseToHiddenConverter x:Key="GetFalseToHiddenConverter" />
+
     <Style x:Key="{ComponentResourceKey ResourceId=S.ToggleButton.Tree,
                                         TypeInTargetAssembly={x:Type local:ToggleButtonKeys}}"
            TargetType="ToggleButton">
         <Setter Property="ClickMode" Value="Press" />
         <Setter Property="Focusable" Value="False" />
         <Setter Property="IsChecked" Value="{Binding RelativeSource={RelativeSource AncestorType=TreeViewItem}, Path=IsExpanded, Mode=TwoWay}" />
-        <Setter Property="Visibility" Value="{Binding RelativeSource={RelativeSource AncestorType=TreeViewItem}, Path=HasItems, Mode=OneWay, Converter={x:Static h:Converter.GetFalseToHidden}}" />
+        <Setter Property="Visibility" Value="{Binding RelativeSource={RelativeSource AncestorType=TreeViewItem}, Path=HasItems, Mode=OneWay, Converter={StaticResource GetFalseToHiddenConverter}}" />
         <Setter Property="Foreground" Value="{Binding RelativeSource={RelativeSource AncestorType=TreeViewItem}, Path=Foreground}" />
         <Setter Property="Template">
             <Setter.Value>

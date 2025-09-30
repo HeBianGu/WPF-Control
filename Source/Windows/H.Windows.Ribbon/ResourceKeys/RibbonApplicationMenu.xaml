@@ -264,7 +264,7 @@
                                             Background="{Binding RelativeSource={RelativeSource AncestorType={x:Type RibbonMenuButton}}, Path=Ribbon.Background}"
                                             BorderBrush="{Binding RelativeSource={RelativeSource AncestorType={x:Type RibbonMenuButton}}, Path=Ribbon.BorderBrush}"
                                             BorderThickness="1"
-                                            CornerRadius="2">
+                                            CornerRadius="{DynamicResource {x:Static LayoutKeys.CornerRadius}}">
                                         <Grid>
                                             <Grid.RowDefinitions>
                                                 <RowDefinition Height="Auto" />

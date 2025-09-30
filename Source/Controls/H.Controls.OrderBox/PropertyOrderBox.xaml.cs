@@ -1,4 +1,12 @@
-﻿global using H.Services.Message;
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
+
+global using H.Services.Message;
 global using H.Services.Message.Dialog;
 global using System.Windows;
 global using System.Windows.Controls;
@@ -24,7 +32,7 @@ namespace H.Controls.OrderBox
             this.ID = this.GetType().Name;
             this.Order = new PropertyOrderBoxOrder(this);
 
-            this.DefinePropertyOrderPrensenters.CollectionChanged +=(l, k) =>
+            this.DefinePropertyOrderPrensenters.CollectionChanged += (l, k) =>
             {
                 this.RefreshType(this.Type);
             };
@@ -52,13 +60,11 @@ namespace H.Controls.OrderBox
             };
         }
 
-
         public string DisplayName
         {
             get { return (string)GetValue(DisplayNameProperty); }
             set { SetValue(DisplayNameProperty, value); }
         }
-
 
         public static readonly DependencyProperty DisplayNameProperty =
             DependencyProperty.Register("DisplayName", typeof(string), typeof(PropertyOrderBox), new FrameworkPropertyMetadata(default(string), (d, e) =>
@@ -128,7 +134,6 @@ namespace H.Controls.OrderBox
 
             }));
 
-
         public static readonly RoutedEvent OrderChangedRoutedEvent =
             EventManager.RegisterRoutedEvent("OrderChanged", RoutingStrategy.Bubble, typeof(EventHandler<RoutedEventArgs>), typeof(PropertyOrderBox));
 
@@ -138,20 +143,17 @@ namespace H.Controls.OrderBox
             remove { this.RemoveHandler(OrderChangedRoutedEvent, value); }
         }
 
-
         protected void OnOrderChanged()
         {
             RoutedEventArgs args = new RoutedEventArgs(OrderChangedRoutedEvent, this);
             this.RaiseEvent(args);
         }
 
-
         public string PropertyNames
         {
             get { return (string)GetValue(PropertyNamesProperty); }
             set { SetValue(PropertyNamesProperty, value); }
         }
-
 
         public static readonly DependencyProperty PropertyNamesProperty =
             DependencyProperty.Register("PropertyNames", typeof(string), typeof(PropertyOrderBox), new FrameworkPropertyMetadata(default(string), (d, e) =>
@@ -171,8 +173,6 @@ namespace H.Controls.OrderBox
                 }
                 control.RefreshType(control.Type);
             }));
-
-
 
         public static readonly RoutedEvent SelectedChangedRoutedEvent =
             EventManager.RegisterRoutedEvent("SelectedChanged", RoutingStrategy.Bubble, typeof(EventHandler<RoutedEventArgs>), typeof(PropertyOrderBox));
@@ -201,7 +201,7 @@ namespace H.Controls.OrderBox
             };
             this._propertyOrders.Load();
 
-                    if (this._propertyOrders.PropertyOrders.Count > 0)
+            if (this._propertyOrders.PropertyOrders.Count > 0)
                 return;
             //加载预定义的条件
             foreach (var item in this.DefinePropertyOrderPrensenters)
@@ -218,11 +218,10 @@ namespace H.Controls.OrderBox
         }
 
         public ObservableCollection<PropertyOrderPrensenter> DefinePropertyOrderPrensenters { get; } = new ObservableCollection<PropertyOrderPrensenter>();
-public async void ShowConfig()
+        public async void ShowConfig()
         {
             bool? r = await IocMessage.Dialog.Show(_propertyOrders, x =>
             {
-                x.MinWidth = 900;
                 x.DialogButton = DialogButton.Sumit;
                 x.Title = "数据排序器";
             });

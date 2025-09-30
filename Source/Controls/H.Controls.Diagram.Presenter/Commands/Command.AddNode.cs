@@ -1,4 +1,12 @@
-﻿global using H.Common.Commands;
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
+
+global using H.Common.Commands;
 
 namespace H.Controls.Diagram.Presenter.Commands;
 
@@ -42,10 +50,9 @@ public abstract class AddNodeCommand : AddNodeCommandBase
         IList nodeSource = diagram.Nodes;
         if (nodeSource == null)
             return;
-
-        if (nodeData is ICloneable cloneable)
-            nodeData = cloneable.Clone() as INodeData;
-
+        //if (nodeData is ICloneable cloneable)
+        //    nodeData = cloneable.Clone() as INodeData;
+        nodeData = nodeData.Create();
         Node toNode = this.CreateNode(nodeData);
         toNode.Measure(new Size(double.PositiveInfinity, double.PositiveInfinity));
         this.OffSet = this.GetOffSet(fromNode, toNode);
@@ -106,7 +113,7 @@ public abstract class AddNodeCommand : AddNodeCommandBase
     {
         if (!this.IsCreateLink)
             return;
-        diagram.LinkNodes(from, to, this.Dock);
+        diagram.LinkNode(from, to, this.Dock);
     }
 }
 

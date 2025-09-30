@@ -1,8 +1,13 @@
-﻿using System.Drawing;
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
+
+using System.Drawing;
 using System.Runtime.InteropServices;
-using System.Windows;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
 
 namespace H.Extensions.ValueConverter.Images;
 
@@ -42,7 +47,7 @@ public static class IconHelper
     /// <summary> 获取系统图标 </summary>  
     public static Icon GetSystemInfoIcon(string p_Path)
     {
-        if (System.IO.Path.HasExtension(p_Path))
+        if (Path.HasExtension(p_Path))
         {
             try
             {
@@ -60,7 +65,6 @@ public static class IconHelper
         }
     }
 
-
     public static ImageSource GetIconToImageSource(Icon icon)
     {
         if (icon == null)
@@ -72,7 +76,6 @@ public static class IconHelper
             BitmapSizeOptions.FromEmptyOptions());
         return imageSource;
     }
-
 
 }
 
@@ -87,7 +90,6 @@ public struct SHFILEINFO
     [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 80)]
     public string szTypeName;
 }
-
 
 public enum SHGFI
 {

@@ -4,6 +4,7 @@
                     xmlns:local="clr-namespace:H.Controls.Form">
     <DataTemplate DataType="{x:Type local:FormPresenter}">
         <local:Form ExceptPropertyNames="{Binding ExceptPropertyNames}"
+                    IsHitTestVisible="{Binding IsHitTestVisible}"
                     SelectObject="{Binding SelectObject}"
                     TitleWidth="{Binding TitleWidth}"
                     UseArray="{Binding UseArray}"

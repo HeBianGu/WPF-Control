@@ -1,14 +1,10 @@
-﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
-
-using H.Mvvm;
-using H.Services.Common;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Security.Policy;
-using System.Threading.Tasks;
-using System.Windows.Threading;
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
 
 namespace H.Controls.Diagram.Presenter.Flowables;
 
@@ -109,7 +105,7 @@ public static class FlowableExtension
     //    Func<Node, Port, Task<bool?>> run = null;
     //    run = async (cNode, from) =>
     //    {
-           
+
     //        if (cNode.GetContent<IFlowableNodeData>() is IFlowableNodeData nodeData)
     //        {
     //            if (nodeData.State == FlowableState.Canceling)
@@ -266,13 +262,13 @@ public static class FlowableExtension
         return result.State == FlowableResultState.OK ? FlowableState.Success : FlowableState.Error;
     }
 
-
     public static DiagramFlowableState ToDiagramFlowableState(this bool? value)
     {
         if (value == null)
             return DiagramFlowableState.Canceled;
         return value == true ? DiagramFlowableState.Success : DiagramFlowableState.Error;
     }
+
     public static FlowableState ToFlowableState(this bool? value)
     {
         if (value == null)

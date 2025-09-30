@@ -3,9 +3,10 @@
                     xmlns:h="https://github.com/HeBianGu"
                     xmlns:local="clr-namespace:H.Controls.Form.PropertyItems">
     <DataTemplate DataType="{x:Type local:CommandPropertyItem}">
-        <Button Margin="0,0,0,1"
+        <Button x:Name="btn"
+                HorizontalAlignment="Left"
                 Command="{Binding Value}"
-                Content="{Binding Name}"
+                Content="{Binding Description}"
                 IsEnabled="{Binding ReadOnly, Converter={x:Static h:Converter.GetTrueToFalse}}">
             <Button.ToolTip>
                 <ToolTip>
@@ -18,5 +19,11 @@
                 </ToolTip>
             </Button.ToolTip>
         </Button>
+        <DataTemplate.Triggers>
+            <DataTrigger Binding="{Binding Description}"
+                         Value="{x:Null}">
+                <Setter TargetName="btn" Property="Content" Value="{Binding Name}" />
+            </DataTrigger>
+        </DataTemplate.Triggers>
     </DataTemplate>
 </ResourceDictionary>

@@ -52,8 +52,8 @@ namespace H.Test.Identify
 
             //  Do ：登录和注册页面
             services.AddRegisterLoginViewPresenter();
-            services.AddLoginService();
-            services.AddRegisterService();
+            services.AddIdentityLoginService();
+            services.AddIdentityRegisterService();
             services.AddSplashScreen();
             services.AddTheme();
         }

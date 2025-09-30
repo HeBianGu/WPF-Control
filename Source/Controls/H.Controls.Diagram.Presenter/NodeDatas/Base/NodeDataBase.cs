@@ -1,8 +1,15 @@
-﻿
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
+
 namespace H.Controls.Diagram.Presenter.NodeDatas.Base;
 
 [Icon("\xF0E3")]
-public abstract class NodeDataBase : DisplayBindableBase, ICloneable
+public abstract class NodeDataBase : DisplayBindableBase, ICloneable, INodeData
 {
     public NodeDataBase()
     {
@@ -18,5 +25,24 @@ public abstract class NodeDataBase : DisplayBindableBase, ICloneable
             p.SetValue(result, p.GetValue(this));
         }
         return result;
+    }
+
+    public virtual INodeData Create()
+    {
+        return Activator.CreateInstance(GetType()) as INodeData;
+    }
+
+    private Point _location;
+    [Display(Name = "位置坐标", GroupName = "样式")]
+    public Point Location
+    {
+        get { return _location; }
+        set
+        {
+            if (_location == value)
+                return;
+            _location = value;
+            RaisePropertyChanged();
+        }
     }
 }

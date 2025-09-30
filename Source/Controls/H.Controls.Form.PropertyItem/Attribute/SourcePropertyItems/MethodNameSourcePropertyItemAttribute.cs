@@ -1,7 +1,10 @@
-﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
-
-using System.Collections;
-using System.Reflection;
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
 
 namespace H.Controls.Form.PropertyItem.Attribute.SourcePropertyItem
 {
@@ -19,7 +22,9 @@ namespace H.Controls.Form.PropertyItem.Attribute.SourcePropertyItem
         {
             if (_sourceMethodInfo == null)
                 _sourceMethodInfo = obj.GetType().GetMethod(this.MethodName);
-            return _sourceMethodInfo.Invoke(obj, null) as IEnumerable;
+            if (_sourceMethodInfo.Invoke(obj, null) is IEnumerable objects)
+                return objects;
+            return null;
         }
     }
 }

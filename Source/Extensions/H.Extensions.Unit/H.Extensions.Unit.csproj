@@ -1,7 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <ItemGroup>
-    <ProjectReference Include="..\..\Providers\H.Mvvm\H.Mvvm.csproj" />
-    <ProjectReference Include="..\H.Extensions.ValueConverter\H.Extensions.ValueConverter.csproj" />
+    <ProjectReference Include="..\..\Base\H.Mvvm\H.Mvvm.csproj" />
+    <ProjectReference Include="..\..\Base\H.ValueConverter\H.ValueConverter.csproj" />
+    <ProjectReference Include="..\..\Base\H.ValueConverter\H.ValueConverter.csproj" />
   </ItemGroup>
   <ItemGroup>
     <None Update="PhysicalUnits\Provider\BritishUnits.tt">

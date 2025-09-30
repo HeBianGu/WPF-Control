@@ -12,5 +12,8 @@
     <UniformGrid>
         <FontIconButton Command="{ShowSettingCommand}"
                         Style="{DynamicResource {x:Static FontIconButtonKeys.Command}}" />
+        <Button Command="{LogoutCommand}"
+                Content="退出登录" />
+        <ContentControl Content="{Ioc Type={x:Type ILoginButtonViewPresenter}}" />
     </UniformGrid>
 </Window>

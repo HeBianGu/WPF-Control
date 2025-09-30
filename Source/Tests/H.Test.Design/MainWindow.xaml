@@ -12,10 +12,13 @@
         Style="{StaticResource {x:Static WindowKeys.Default}}"
         mc:Ignorable="d">
     <DockPanel>
-        <ItemsControl Width="250">
-            <h:CardPresenter />
-            <h:TextBlockPresenter Text="测试" />
-        </ItemsControl>
+        <ScrollViewer>
+            <ListBox Width="250"
+                          ItemsSource="{GetDesignPresenters}">
+                <!--<h:CardPresenter />
+       <h:TextBlockPresenter Text="测试" />-->
+            </ListBox>
+        </ScrollViewer>
         <Grid>
             <ContentControl>
                 <b:Interaction.Behaviors>

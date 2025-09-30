@@ -454,10 +454,10 @@
                                 Background="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Ribbon.Background}"
                                 BorderBrush="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Ribbon.BorderBrush}"
                                 BorderThickness="{TemplateBinding BorderThickness}"
-                                CornerRadius="2">
+                                CornerRadius="{DynamicResource {x:Static LayoutKeys.CornerRadius}}">
                             <Border x:Name="SubMenuInnerBorder"
                                     Background="{DynamicResource {x:Static BrushKeys.Background}}"
-                                    CornerRadius="2">
+                                    CornerRadius="{DynamicResource {x:Static LayoutKeys.CornerRadius}}">
                                 <Grid>
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="Auto" />
@@ -922,10 +922,10 @@
                                             Background="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Ribbon.Background}"
                                             BorderBrush="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Ribbon.BorderBrush}"
                                             BorderThickness="{TemplateBinding BorderThickness}"
-                                            CornerRadius="2">
+                                            CornerRadius="{DynamicResource {x:Static LayoutKeys.CornerRadius}}">
                                         <Border x:Name="SubMenuInnerBorder"
                                                 Background="{DynamicResource {x:Static BrushKeys.Background}}"
-                                                CornerRadius="2">
+                                                CornerRadius="{DynamicResource {x:Static LayoutKeys.CornerRadius}}">
                                             <Grid>
                                                 <Grid.RowDefinitions>
                                                     <RowDefinition Height="Auto" />

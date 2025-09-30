@@ -1,5 +1,13 @@
-﻿global using H.Common.Attributes;
-global using H.Mvvm.ViewModels.Base;
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
+
+global using H.Common.Attributes;
+global using H.Extensions.Mvvm.ViewModels.Base;
 global using H.Services.Message.Form;
 global using System.Collections.Generic;
 global using System.Collections.ObjectModel;
@@ -41,10 +49,21 @@ public class FormPresenter : DisplayBindableBase, IFormOption
         }
     }
 
+    private bool _isHitTestVisible = true;
+    public bool IsHitTestVisible
+    {
+        get { return _isHitTestVisible; }
+        set
+        {
+            _isHitTestVisible = value;
+            RaisePropertyChanged();
+        }
+    }
+
     public string ExceptPropertyNames { get; set; }
     public double MessageWidth { get; set; } = 15.0;
     public string Title { get; set; }
-    public double TitleWidth { get; set; } = 100;
+    public double TitleWidth { get; set; } = double.NaN;
     public bool UseArray { get; set; } = true;
     public bool UseAsync { get; set; }
     public bool UseBoolen { get; set; } = true;

@@ -14,7 +14,7 @@
                     <Border x:Name="MainBorder"
                             BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="1,1,0,1"
-                            CornerRadius="2"
+                            CornerRadius="{DynamicResource {x:Static LayoutKeys.CornerRadius}}"
                             SnapsToDevicePixels="True">
                         <ItemsPresenter />
                     </Border>

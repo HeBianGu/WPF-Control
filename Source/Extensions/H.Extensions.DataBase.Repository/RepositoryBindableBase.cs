@@ -1,15 +1,12 @@
-﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
 
-
-using H.Mvvm.ViewModels.Base;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Reflection;
-using System.Text.Json.Serialization;
-using System.Windows.Input;
-using System.Xml.Serialization;
+using H.Extensions.Mvvm.ViewModels.Base;
 
 namespace H.Extensions.DataBase.Repository
 {
@@ -40,7 +37,7 @@ namespace H.Extensions.DataBase.Repository
 
         //[Browsable(false)]
         //[System.Text.Json.Serialization.JsonIgnore]
-        
+
         //[System.Xml.Serialization.XmlIgnore]
         //public ObservableCollection<ICommand> Commands { get; } = new ObservableCollection<ICommand>();
 

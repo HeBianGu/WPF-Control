@@ -10,7 +10,7 @@
                 <FontSizeTheme Type="Default" />
                 <LayoutTheme Type="Default" />
                 <ColorTheme Type="Dark" />
-                <ConciseStyle/>
+                <ConciseStyle />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

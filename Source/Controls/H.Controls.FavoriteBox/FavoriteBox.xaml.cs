@@ -1,14 +1,21 @@
-﻿global using H.Extensions.Tree;
-global using H.Mvvm;
-global using H.Mvvm.ViewModels;
-global using H.Mvvm.ViewModels.Tree;
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
+
+global using H.Extensions.Common;
+global using H.Extensions.Tree;
+global using H.Extensions.Mvvm.Commands;
+global using H.Extensions.Mvvm.ViewModels;
+global using H.Extensions.Mvvm.ViewModels.Tree;
 global using System.Collections.Generic;
 global using System.Linq;
 global using System.Windows;
 global using System.Windows.Controls;
 global using System.Windows.Input;
-global using H.Extensions.Common;
-global using H.Mvvm.Commands;
 
 namespace H.Controls.FavoriteBox
 {
@@ -44,7 +51,6 @@ namespace H.Controls.FavoriteBox
             this.RefreshData();
         }
 
-
         private void RefreshData()
         {
             this.ItemsSource = new FavoriteTree().GetTreeNodes().ToList();
@@ -75,7 +81,6 @@ namespace H.Controls.FavoriteBox
                 }
                 //control.RefreshData();
             }));
-
 
         public string SelectedFavoritePath
         {

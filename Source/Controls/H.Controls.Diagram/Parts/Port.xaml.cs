@@ -1,9 +1,11 @@
-﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
-using System.Collections.Generic;
-using System.Linq;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Media;
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
+
 
 namespace H.Controls.Diagram.Parts;
 
@@ -16,6 +18,10 @@ public partial class Port : FlowablePart
         DefaultStyleKeyProperty.OverrideMetadata(typeof(Port), new FrameworkPropertyMetadata(typeof(Port)));
     }
 
+    public Port()
+    {
+        this.AllowDrop = true;
+    }
     public string Id => this.GetContent<IPortData>().ID;
 
     public static Port Create(Node parent)
@@ -32,7 +38,6 @@ public partial class Port : FlowablePart
         set { SetValue(DockProperty, value); }
     }
 
-
     public static readonly DependencyProperty DockProperty =
         DependencyProperty.Register("Dock", typeof(Dock), typeof(Port), new PropertyMetadata(default(Dock), (d, e) =>
         {
@@ -45,9 +50,7 @@ public partial class Port : FlowablePart
         }));
 
     public Node ParentNode { get; set; }
-
     public PortType PortType { get; set; }
-
 
     public override void Delete()
     {
@@ -68,6 +71,14 @@ public partial class Port : FlowablePart
     public IEnumerable<Link> GetLinksOutOf()
     {
         return this.ParentNode.LinksOutOf.Where(l => l.FromPort == this);
+    }
+
+    public IEnumerable<Node> GetToNodes()
+    {
+        foreach (var item in this.GetLinksOutOf())
+        {
+           yield return item.ToNode;
+        }
     }
 
     public IEnumerable<Link> GetConnectLinks()
@@ -136,4 +147,9 @@ public partial class Port : FlowablePart
     }
 
     public IPortData Data => this.GetContent<IPortData>();
+
+    protected override void OnDrop(DragEventArgs e)
+    {
+        base.OnDrop(e);
+    }
 }

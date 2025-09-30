@@ -6,6 +6,7 @@
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/H.Theme;component/Colors/Dark.xaml" />
     </ResourceDictionary.MergedDictionaries>
+    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Accent, TypeInTargetAssembly={x:Type ColorKeys}}">#00A3C2</Color>
 
     <!--  Future Neon Gradient Series  -->
     <!--  Background  -->
@@ -57,4 +58,8 @@
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.26, TypeInTargetAssembly={x:Type ColorKeys}}">#FF59B9EF</Color>
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.27, TypeInTargetAssembly={x:Type ColorKeys}}">#FF5CBFF7</Color>
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.28, TypeInTargetAssembly={x:Type ColorKeys}}">#FF5FC5FF</Color>
+
+    <!--  Menu  -->
+    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Menu.Background, TypeInTargetAssembly={x:Type ColorKeys}}">#0D1A21</Color>
+    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Menu.Foreground, TypeInTargetAssembly={x:Type ColorKeys}}">#00F0FF</Color>
 </ResourceDictionary>

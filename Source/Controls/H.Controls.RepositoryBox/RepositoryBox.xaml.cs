@@ -1,5 +1,12 @@
-﻿using H.Extensions.DataBase.Repository;
-using System;
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
+
+using H.Extensions.DataBase.Repository;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -17,7 +24,6 @@ namespace H.Controls.RepositoryBox
             get { return (Type)GetValue(TypeProperty); }
             set { SetValue(TypeProperty, value); }
         }
-
 
         public static readonly DependencyProperty TypeProperty =
             DependencyProperty.Register("Type", typeof(Type), typeof(RepositoryBox), new FrameworkPropertyMetadata(default(Type), (d, e) =>
@@ -44,13 +50,11 @@ namespace H.Controls.RepositoryBox
             this.DataContext = Ioc.GetService<IRepositoryBindable>(gType, true);
         }
 
-
         public bool UseAdd
         {
             get { return (bool)GetValue(UseAddProperty); }
             set { SetValue(UseAddProperty, value); }
         }
-
 
         public static readonly DependencyProperty UseAddProperty =
             DependencyProperty.Register("UseAdd", typeof(bool), typeof(RepositoryBox), new FrameworkPropertyMetadata(default(bool), (d, e) =>
@@ -71,13 +75,11 @@ namespace H.Controls.RepositoryBox
 
             }));
 
-
         public bool UseDelete
         {
             get { return (bool)GetValue(UseDeleteProperty); }
             set { SetValue(UseDeleteProperty, value); }
         }
-
 
         public static readonly DependencyProperty UseDeleteProperty =
             DependencyProperty.Register("UseDelete", typeof(bool), typeof(RepositoryBox), new FrameworkPropertyMetadata(default(bool), (d, e) =>
@@ -98,13 +100,11 @@ namespace H.Controls.RepositoryBox
 
             }));
 
-
         public bool UseCheckAll
         {
             get { return (bool)GetValue(UseCheckAllProperty); }
             set { SetValue(UseCheckAllProperty, value); }
         }
-
 
         public static readonly DependencyProperty UseCheckAllProperty =
             DependencyProperty.Register("UseCheckAll", typeof(bool), typeof(RepositoryBox), new FrameworkPropertyMetadata(default(bool), (d, e) =>
@@ -125,13 +125,11 @@ namespace H.Controls.RepositoryBox
 
             }));
 
-
         public bool UseClear
         {
             get { return (bool)GetValue(UseClearProperty); }
             set { SetValue(UseClearProperty, value); }
         }
-
 
         public static readonly DependencyProperty UseClearProperty =
             DependencyProperty.Register("UseClear", typeof(bool), typeof(RepositoryBox), new FrameworkPropertyMetadata(default(bool), (d, e) =>
@@ -152,13 +150,11 @@ namespace H.Controls.RepositoryBox
 
             }));
 
-
         public bool UseEdit
         {
             get { return (bool)GetValue(UseEditProperty); }
             set { SetValue(UseEditProperty, value); }
         }
-
 
         public static readonly DependencyProperty UseEditProperty =
             DependencyProperty.Register("UseEdit", typeof(bool), typeof(RepositoryBox), new FrameworkPropertyMetadata(default(bool), (d, e) =>
@@ -179,13 +175,11 @@ namespace H.Controls.RepositoryBox
 
             }));
 
-
         public bool UseExport
         {
             get { return (bool)GetValue(UseExportProperty); }
             set { SetValue(UseExportProperty, value); }
         }
-
 
         public static readonly DependencyProperty UseExportProperty =
             DependencyProperty.Register("UseExport", typeof(bool), typeof(RepositoryBox), new FrameworkPropertyMetadata(default(bool), (d, e) =>
@@ -206,13 +200,11 @@ namespace H.Controls.RepositoryBox
 
             }));
 
-
         public bool UseView
         {
             get { return (bool)GetValue(UseViewProperty); }
             set { SetValue(UseViewProperty, value); }
         }
-
 
         public static readonly DependencyProperty UseViewProperty =
             DependencyProperty.Register("UseView", typeof(bool), typeof(RepositoryBox), new FrameworkPropertyMetadata(default(bool), (d, e) =>
@@ -233,13 +225,11 @@ namespace H.Controls.RepositoryBox
 
             }));
 
-
         public bool UseDeleteChecked
         {
             get { return (bool)GetValue(UseDeleteCheckedProperty); }
             set { SetValue(UseDeleteCheckedProperty, value); }
         }
-
 
         public static readonly DependencyProperty UseDeleteCheckedProperty =
             DependencyProperty.Register("UseDeleteChecked", typeof(bool), typeof(RepositoryBox), new FrameworkPropertyMetadata(default(bool), (d, e) =>
@@ -260,13 +250,11 @@ namespace H.Controls.RepositoryBox
 
             }));
 
-
         public bool UseSave
         {
             get { return (bool)GetValue(UseSaveProperty); }
             set { SetValue(UseSaveProperty, value); }
         }
-
 
         public static readonly DependencyProperty UseSaveProperty =
             DependencyProperty.Register("UseSave", typeof(bool), typeof(RepositoryBox), new FrameworkPropertyMetadata(default(bool), (d, e) =>
@@ -287,13 +275,11 @@ namespace H.Controls.RepositoryBox
 
             }));
 
-
         public bool UseNextPage
         {
             get { return (bool)GetValue(UseNextPageProperty); }
             set { SetValue(UseNextPageProperty, value); }
         }
-
 
         public static readonly DependencyProperty UseNextPageProperty =
             DependencyProperty.Register("UseNextPage", typeof(bool), typeof(RepositoryBox), new FrameworkPropertyMetadata(default(bool), (d, e) =>
@@ -314,13 +300,11 @@ namespace H.Controls.RepositoryBox
 
             }));
 
-
         public bool UsePreviousPage
         {
             get { return (bool)GetValue(UsePreviousPageProperty); }
             set { SetValue(UsePreviousPageProperty, value); }
         }
-
 
         public static readonly DependencyProperty UsePreviousPageProperty =
             DependencyProperty.Register("UsePreviousPage", typeof(bool), typeof(RepositoryBox), new FrameworkPropertyMetadata(default(bool), (d, e) =>
@@ -340,8 +324,6 @@ namespace H.Controls.RepositoryBox
                 }
 
             }));
-
-
 
     }
 }

@@ -9,7 +9,48 @@
         Height="450"
         Style="{StaticResource {x:Static WindowKeys.Default}}"
         mc:Ignorable="d">
-    <Grid>
+    <DockPanel>
+        <DockPanel DockPanel.Dock="Top" WindowChrome.IsHitTestVisibleInChrome="True">
+            <Menu DockPanel.Dock="Left">
+                <Menu.Resources>
+                    <Style BasedOn="{StaticResource {x:Static MenuItemKeys.BindCommand}}"
+                        TargetType="MenuItem" />
+                </Menu.Resources>
+                <MenuItem Background="Transparent"
+                       Header="文件">
+                    <MenuItem Command="{ShowNewProjectCommand}" />
+                    <MenuItem Command="{ShowProjectsCommand}" />
+                    <MenuItem Command="{ShowEditProjectCommand}" />
+                    <MenuItem Command="{ShowSaveProjectCommand}" />
+                    <MenuItem Command="{ShowCurrentProjectFileCommand}" />
+                    <MenuItem Cattach.Icon="{x:Static FontIcons.Calendar}"
+                           Header="最近的项目"
+                           ItemsSource="{Binding Source={x:Static IocProject.Instance}, Path=Collection}">
+                        <MenuItem.ItemContainerStyle>
+                            <Style TargetType="MenuItem">
+                                <Setter Property="Command" Value="{ShowOpenProjectCommand}" />
+                                <Setter Property="CommandParameter" Value="{Binding}" />
+                                <Setter Property="Height" Value="50" />
+                                <Setter Property="MinWidth" Value="400" />
+                            </Style>
+                        </MenuItem.ItemContainerStyle>
+                    </MenuItem>
+                    <Separator />
+                    <MenuItem Cattach.Icon="{x:Static FontIcons.PowerButton}"
+                           Command="{CloseAfterSaveWindowCommand}"
+                           CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"
+                           Header="退出" />
+                </MenuItem>
+            </Menu>
+
+            <TextBlock HorizontalAlignment="Center"
+                    VerticalAlignment="Center">
+             <Hyperlink Command="{ShowProjectsCommand}">
+                 <Run Text="项目名称：" />
+                 <Run Text="{Binding Source={x:Static IocProject.Instance}, Path=Current.Title}" />
+             </Hyperlink>
+            </TextBlock>
+        </DockPanel>
         <TabControl>
             <TabItem Header="UserProjectService">
                 <DockPanel>
@@ -50,5 +91,5 @@
                                   Content="{Ioc Type={x:Type IProjectViewPresenter}}" />
             </TabItem>
         </TabControl>
-    </Grid>
+    </DockPanel>
 </Window>

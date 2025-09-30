@@ -1,4 +1,11 @@
-// Copyright ? 2022 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
+// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
+
 global using H.Services.Logger;
 using System.Windows.Markup;
 
@@ -15,7 +22,6 @@ using System.Windows.Markup;
 [assembly: XmlnsPrefix("QQ:908293466", "h")]
 
 [assembly: XmlnsDefinition("https://github.com/HeBianGu", "H.Controls.Diagram.Presenter.Flowables")]
-[assembly: XmlnsDefinition("https://github.com/HeBianGu", "H.Controls.Diagram.Presenter.Behaviors")]
 [assembly: XmlnsDefinition("https://github.com/HeBianGu", "H.Controls.Diagram.Presenter.DiagramDatas.Base")]
 [assembly: XmlnsDefinition("https://github.com/HeBianGu", "H.Controls.Diagram.Presenter.DiagramDatas")]
 [assembly: XmlnsDefinition("https://github.com/HeBianGu", "H.Controls.Diagram.Presenter.LinkDatas")]
@@ -25,9 +31,7 @@ using System.Windows.Markup;
 [assembly: XmlnsDefinition("https://github.com/HeBianGu", "H.Controls.Diagram.Presenter")]
 [assembly: XmlnsPrefix("https://github.com/HeBianGu", "h")]
 
-
 [assembly: XmlnsDefinition("http://schemas.microsoft.com/winfx/2006/xaml/presentation", "H.Controls.Diagram.Presenter.Flowables")]
-[assembly: XmlnsDefinition("http://schemas.microsoft.com/winfx/2006/xaml/presentation", "H.Controls.Diagram.Presenter.Behaviors")]
 [assembly: XmlnsDefinition("http://schemas.microsoft.com/winfx/2006/xaml/presentation", "H.Controls.Diagram.Presenter.DiagramDatas.Base")]
 [assembly: XmlnsDefinition("http://schemas.microsoft.com/winfx/2006/xaml/presentation", "H.Controls.Diagram.Presenter.DiagramDatas")]
 [assembly: XmlnsDefinition("http://schemas.microsoft.com/winfx/2006/xaml/presentation", "H.Controls.Diagram.Presenter.LinkDatas")]

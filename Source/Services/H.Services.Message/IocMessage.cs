@@ -1,4 +1,10 @@
-﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
 
 global using H.Services.Message.Form;
 global using H.Services.Message.TaskBar;
@@ -22,7 +28,7 @@ public static class IocMessage
 
     public static async Task<bool?> ShowDialogMessage(string message, string title = "提示", DialogButton dialogButton = DialogButton.Sumit)
     {
-        if (Dialog == null)
+        if (Dialog == null || Application.Current.MainWindow == null || Application.Current.MainWindow.IsLoaded == false)
         {
             if (Window == null)
             {
@@ -42,6 +48,9 @@ public static class IocMessage
                 {
                     x.DialogButton = dialogButton;
                     x.Padding = new Thickness(40);
+                    x.MaxHeight = 800;
+                    //if (x is Window window)
+                    //    window.Topmost = true;
                     x.Title = title;
                 });
             }

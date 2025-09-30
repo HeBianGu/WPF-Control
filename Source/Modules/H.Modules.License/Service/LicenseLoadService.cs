@@ -1,8 +1,11 @@
-﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
 
-
-
-using H.Services.Common;
 using H.Services.Common.SplashScreen;
 using H.Services.Message;
 using H.Services.Message.Dialog;
@@ -24,12 +27,12 @@ namespace H.Modules.License
         public bool Load(out string message)
         {
             message = null;
-            if (LicenseProxy.Instance == null)
+            if (IocLicense.Instance == null)
                 return true;
             if (this._options.Value.UseVailLicenceOnLoad == false)
                 return true;
 
-            var option = LicenseProxy.Instance.IsVail(out string error);
+            var option = IocLicense.Instance.IsVail(out string error);
             if (option == null)
             {
                 return Application.Current.Dispatcher.Invoke(() =>

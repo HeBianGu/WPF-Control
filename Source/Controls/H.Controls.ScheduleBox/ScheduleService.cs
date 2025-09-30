@@ -1,15 +1,10 @@
-﻿//using Microsoft.Extensions.Logging;
-//using Quartz;
-//using Quartz.Impl;
-//using Quartz.Impl.Matchers;
-//using System;
-//using System.Collections.Generic;
-//using System.Collections.ObjectModel;
-//using System.Diagnostics;
-//using System.Linq;
-//using System.Reflection;
-//using System.Threading;
-//using System.Threading.Tasks;
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
 
 //namespace H.Controls.ScheduleBox
 //{
@@ -149,7 +144,6 @@
 //        }
 //    }
 
-
 //    public class CustomJobListener : IJobListener
 //    {
 //        public string Name => "CustomJobListener";
@@ -196,7 +190,6 @@
 //            });
 //        }
 //    }
-
 
 //    public class CustomTriggerListener : ITriggerListener
 //    {
@@ -285,12 +278,10 @@
 
 //        //    //Quartz.Logging.LogContext.SetCurrentLogProvider(loggerFactory);
 
-
 //        //    //this.Initializing();
 //        //    //this.CreateJobs();
 //        //    //this.CreateListener();
 //        //}
-
 
 //        public void CreateListener()
 //        {
@@ -300,13 +291,11 @@
 
 //        }
 
-
 //        public IReadOnlyCollection<IJobDetail> GetJobDetails()
 //        {
 //            var keys = this.GetJobKeys().Result;
 //            return keys.Select(x => _scheduler.GetJobDetail(x).Result).ToList().AsReadOnly();
 //        }
-
 
 //        public async Task<IReadOnlyCollection<JobKey>> GetJobKeys()
 //        {
@@ -351,12 +340,10 @@
 //            Debug.WriteLine("------- Shutdown Complete -----------------");
 //        }
 
-
 //        public async void Start()
 //        {
 //            await _scheduler.Start();
 //        }
-
 
 //        public void Add(IJobDetail job)
 //        {
@@ -364,20 +351,17 @@
 //            _scheduler.AddJob(job, true);
 //        }
 
-
 //        public void PauseJobs()
 //        {
 //            //暂停作业
 //            _scheduler.PauseJobs(GroupMatcher<JobKey>.GroupEquals("groupa"));
 //        }
 
-
 //        public void ResumeJobs()
 //        {
 //            //恢复作业
 //            _scheduler.ResumeJobs(GroupMatcher<JobKey>.GroupEquals("groupa"));
 //        }
-
 
 //        public virtual void CreateJobs()
 //        {
@@ -407,7 +391,6 @@
 //            // scheduler has been started)
 //            //await _scheduler.Start();
 //        }
-
 
 //        public List<IScheduleJob> Jobs { get; set; } = new List<IScheduleJob>();
 //    }

@@ -1,4 +1,6 @@
-﻿using H.Mvvm;
+﻿using H.Extensions.Mvvm;
+using H.Extensions.Mvvm.Commands;
+using H.Extensions.Mvvm.ViewModels.Base;
 using H.Mvvm.Commands;
 using H.Mvvm.ViewModels.Base;
 using System.Collections.ObjectModel;

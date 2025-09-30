@@ -45,7 +45,7 @@
         <Setter Property="Icon" Value="{Logo}" />
         <Setter Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.BorderBrush}}" />
         <Setter Property="BorderThickness" Value="1" />
-        <Setter Property="Cattach.CornerRadius" Value="2" />
+        <Setter Property="Cattach.CornerRadius" Value="{DynamicResource {x:Static LayoutKeys.CornerRadius}}" />
         <!--<Setter Property="Cattach.CaptionHeight" Value="{DynamicResource {x:Static LayoutKeys.WindowCaptionHeight}}" />     会不显示-->
         <Setter Property="Cattach.CaptionHeight" Value="{DynamicResource {x:Static LayoutKeys.RowHeight}}" />
         <Setter Property="Cattach.CaptionBackground">

@@ -1,11 +1,10 @@
-﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
-using H.Mvvm;
-using H.Services.Common;
-using System;
-using System.ComponentModel.DataAnnotations;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Input;
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
 
 namespace H.Controls.Diagram.Presenter.Flowables;
 
@@ -90,7 +89,6 @@ public interface IFlowableDiagram
 //        set { SetValue(FlowableModeProperty, value); }
 //    }
 
-
 //    public static readonly DependencyProperty FlowableModeProperty =
 //        DependencyProperty.Register("FlowableMode", typeof(DiagramFlowableMode), typeof(FlowableDiagram), new FrameworkPropertyMetadata(DiagramFlowableMode.Link));
 
@@ -100,7 +98,6 @@ public interface IFlowableDiagram
 //        get { return (DiagramFlowableState)GetValue(StateProperty); }
 //        set { SetValue(StateProperty, value); }
 //    }
-
 
 //    public static readonly DependencyProperty StateProperty =
 //        DependencyProperty.Register("State", typeof(DiagramFlowableState), typeof(FlowableDiagram), new FrameworkPropertyMetadata(default(DiagramFlowableState)));
@@ -132,7 +129,6 @@ public interface IFlowableDiagram
 //        add { this.AddHandler(InvokingPartRoutedEvent, value); }
 //        remove { this.RemoveHandler(InvokingPartRoutedEvent, value); }
 //    }
-
 
 //    public static readonly RoutedEvent InvokedPartRoutedEvent =
 //        EventManager.RegisterRoutedEvent("InvokedPart", RoutingStrategy.Bubble, typeof(EventHandler<RoutedEventArgs>), typeof(FlowableDiagram));
@@ -184,7 +180,7 @@ public interface IFlowableDiagram
 //    //    var b = await node.Start(this.FlowableMode, OnInvokingPart, OnInvokedPart);
 //    //    this.State = b == null ? DiagramFlowableState.Canceled : b == true ? DiagramFlowableState.Success : DiagramFlowableState.Error;
 //    //    this.Message = message;
-//    //    H.Mvvm.Commands.InvalidateRequerySuggested();
+//    //    H.Extensions.Mvvm.Commands.InvalidateRequerySuggested();
 //    //    if (!string.IsNullOrEmpty(message))
 //    //    {
 //    //        IocMessage.Notify?.ShowInfo(message);

@@ -20,7 +20,7 @@
                     <Border x:Name="Border"
                             BorderBrush="{DynamicResource {x:Static BrushKeys.MouseOver}}"
                             BorderThickness="1"
-                            CornerRadius="2"
+                            CornerRadius="{DynamicResource {x:Static LayoutKeys.CornerRadius}}"
                             TextBlock.Foreground="{TemplateBinding Foreground}">
                         <Border.Background>
                             <SolidColorBrush Color="{DynamicResource {x:Static h:ColorKeys.MouseOver}}" />

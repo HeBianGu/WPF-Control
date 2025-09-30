@@ -1,4 +1,12 @@
-﻿using H.Mvvm.ViewModels.Base;
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
+
+using H.Extensions.Mvvm.ViewModels.Base;
 
 namespace H.Modules.Login
 {
@@ -16,7 +24,6 @@ namespace H.Modules.Login
                 this.Valid();
             }
         }
-
 
         private string _password;
         /// <summary> 说明  </summary>
@@ -56,7 +63,6 @@ namespace H.Modules.Login
             }
         }
 
-
         public bool Valid()
         {
             if (string.IsNullOrEmpty(this.UserName))
@@ -64,7 +70,6 @@ namespace H.Modules.Login
                 this.Message = "用户名不能为空";
                 return false;
             }
-
 
             if (string.IsNullOrEmpty(this.Password))
             {

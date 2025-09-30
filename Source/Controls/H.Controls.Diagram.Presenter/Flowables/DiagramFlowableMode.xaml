@@ -1,0 +1,22 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:lf="clr-namespace:H.Controls.Diagram.Presenter.Flowables"
+                    xmlns:local="clr-namespace:H.Controls.Diagram.Presenter">
+    <DataTemplate DataType="{x:Type lf:DiagramFlowableMode}">
+        <TextBlock x:Name="txt" />
+        <DataTemplate.Triggers>
+            <DataTrigger Binding="{Binding}"
+                         Value="Node">
+                <Setter TargetName="txt" Property="Text" Value="按节点运行" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding}"
+                         Value="Link">
+                <Setter TargetName="txt" Property="Text" Value="按节点+连线运行" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding}"
+                         Value="Port">
+                <Setter TargetName="txt" Property="Text" Value="按节点+连线+端口运行" />
+            </DataTrigger>
+        </DataTemplate.Triggers>
+    </DataTemplate>
+</ResourceDictionary>

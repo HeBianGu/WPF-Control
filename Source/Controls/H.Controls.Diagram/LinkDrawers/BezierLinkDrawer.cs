@@ -1,8 +1,10 @@
-﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
-
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Media;
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
 
 namespace H.Controls.Diagram.LinkDrawers;
 
@@ -89,7 +91,6 @@ public class BezierLinkDrawer : LinkDrawer
         geometry.Freeze();
         return geometry;
 
-
     }
 
     //private Geometry DrawBezier(Point p1, Point p2, Point p3, Point p4, Point p5)
@@ -116,7 +117,6 @@ public class BezierLinkDrawer : LinkDrawer
     //        BezierSegment bzs = new BezierSegment(p3, p4, end, true);
 
     //        pf.Segments.Add(bzs);
-
 
     //        PolyLineSegment pls = new PolyLineSegment();
 

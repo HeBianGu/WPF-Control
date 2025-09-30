@@ -1,13 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <UseWPF>true</UseWPF>
     <GeneratePackageOnBuild>Flase</GeneratePackageOnBuild>
   </PropertyGroup>
-
   <ItemGroup>
-    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
+    <ProjectReference Include="..\..\Base\H.Mvvm\H.Mvvm.csproj" />
   </ItemGroup>
-
 </Project>

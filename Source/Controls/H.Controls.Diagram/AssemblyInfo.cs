@@ -1,6 +1,11 @@
-﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
 
-using System.Windows;
 using System.Windows.Markup;
 
 [assembly: ThemeInfo(
@@ -21,13 +26,11 @@ using System.Windows.Markup;
 [assembly: XmlnsDefinition("https://github.com/HeBianGu", "H.Controls.Diagram.LinkDrawers")]
 [assembly: XmlnsDefinition("https://github.com/HeBianGu", "H.Controls.Diagram.Layouts")]
 [assembly: XmlnsDefinition("https://github.com/HeBianGu", "H.Controls.Diagram.Layers")]
-[assembly: XmlnsDefinition("https://github.com/HeBianGu", "H.Controls.Diagram.Flowables")]
 [assembly: XmlnsDefinition("https://github.com/HeBianGu", "H.Controls.Diagram.Datas")]
-[assembly: XmlnsDefinition("https://github.com/HeBianGu", "H.Controls.Diagram.Bevaviors.DiagramDropBehavior")]
+[assembly: XmlnsDefinition("https://github.com/HeBianGu", "H.Controls.Diagram.Bevaviors.NodeDataDropBehavior")]
 [assembly: XmlnsDefinition("https://github.com/HeBianGu", "H.Controls.Diagram.Bevaviors.DynimacLinkBehavior")]
 [assembly: XmlnsDefinition("https://github.com/HeBianGu", "H.Controls.Diagram.Bevaviors")]
 [assembly: XmlnsPrefix("https://github.com/HeBianGu", "h")]
-
 
 [assembly: XmlnsDefinition("https://github.com/HeBianGu", "H.Controls.Diagram.Layers")]
 
@@ -37,9 +40,8 @@ using System.Windows.Markup;
 [assembly: XmlnsDefinition("http://schemas.microsoft.com/winfx/2006/xaml/presentation", "H.Controls.Diagram.LinkDrawers")]
 [assembly: XmlnsDefinition("http://schemas.microsoft.com/winfx/2006/xaml/presentation", "H.Controls.Diagram.Layouts")]
 [assembly: XmlnsDefinition("http://schemas.microsoft.com/winfx/2006/xaml/presentation", "H.Controls.Diagram.Layers")]
-[assembly: XmlnsDefinition("http://schemas.microsoft.com/winfx/2006/xaml/presentation", "H.Controls.Diagram.Flowables")]
 [assembly: XmlnsDefinition("http://schemas.microsoft.com/winfx/2006/xaml/presentation", "H.Controls.Diagram.Datas")]
-[assembly: XmlnsDefinition("http://schemas.microsoft.com/winfx/2006/xaml/presentation", "H.Controls.Diagram.Bevaviors.DiagramDropBehavior")]
+[assembly: XmlnsDefinition("http://schemas.microsoft.com/winfx/2006/xaml/presentation", "H.Controls.Diagram.Bevaviors.NodeDataDropBehavior")]
 [assembly: XmlnsDefinition("http://schemas.microsoft.com/winfx/2006/xaml/presentation", "H.Controls.Diagram.Bevaviors.DynimacLinkBehavior")]
 [assembly: XmlnsDefinition("http://schemas.microsoft.com/winfx/2006/xaml/presentation", "H.Controls.Diagram.Bevaviors")]
 [assembly: XmlnsPrefix("http://schemas.microsoft.com/winfx/2006/xaml/presentation", "h")]

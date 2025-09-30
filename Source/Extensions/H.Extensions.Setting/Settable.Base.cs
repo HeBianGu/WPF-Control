@@ -1,10 +1,19 @@
-﻿global using H.Common.Interfaces;
-global using H.Mvvm.ViewModels.Base;
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
+
+global using H.Common.Interfaces;
+global using H.Extensions.Mvvm.ViewModels.Base;
 global using H.Services.Serializable;
 global using System.IO;
 global using System.Reflection;
 global using System.Xml.Serialization;
 using H.Services.AppPath;
+using H.Services.Logger;
 using H.Services.Setting;
 using System.ComponentModel;
 using System.Text.Json.Serialization;
@@ -30,7 +39,7 @@ public abstract class SettableBase : DisplayBindableBase, ISettable, ILoadable, 
 
     protected virtual string GetDefaultFolder()
     {
-        if (this is ILoginedSplashLoad)
+        if (this is ILoginedSplashLoadable)
             return AppPaths.Instance.UserSetting;
         return AppPaths.Instance.Setting;
     }
@@ -54,23 +63,35 @@ public abstract class SettableBase : DisplayBindableBase, ISettable, ILoadable, 
     public virtual bool Load(out string message)
     {
         var path = this.GetDefaultPath();
-        if (!File.Exists(path))
+        if (!this.HasFile())
         {
-            message = "文件不存在";
-            return false;
+            message = "文件不存在:" + path;
+            IocLog.Instance?.Info(message);
+            return true;
         }
         message = null;
         this.Load(path);
         return true;
     }
 
+    protected bool HasFile()
+    {
+        var path = this.GetDefaultPath();
+        return File.Exists(path);
+    }
+
     protected virtual void Load(string path)
     {
         if (!File.Exists(path))
             return;
-        object load = this.GetSerializerService()?.Load(path, this.GetType());
+        ISettable load = this.GetSerializerService()?.Load(path, this.GetType()) as ISettable;
         if (load == null)
             return;
+        this.Load(load);
+    }
+
+    public virtual void Load(ISettable settable)
+    {
         PropertyInfo[] ps = this.GetType().GetProperties();
         foreach (PropertyInfo p in ps)
         {
@@ -78,7 +99,7 @@ public abstract class SettableBase : DisplayBindableBase, ISettable, ILoadable, 
                 continue;
             if (p.CanRead && p.CanWrite)
             {
-                object v = p.GetValue(load);
+                object v = p.GetValue(settable);
                 p.SetValue(this, v);
             }
         }

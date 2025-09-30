@@ -1,4 +1,11 @@
-﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
+
 global using H.Extensions.DataBase.Repository;
 global using H.Modules.Identity;
 global using H.Services.Identity;
@@ -27,15 +34,15 @@ namespace System
         /// 注册
         /// </summary>
         /// <param name="service"></param>
-        public static void AddLoginService(this IServiceCollection service)
+        public static void AddIdentityLoginService(this IServiceCollection service)
         {
-            service.AddSingleton<ILoginService, LoginService>();
+            service.AddSingleton<ILoginService, IdentityLoginService>();
         }
 
-        public static IServiceCollection AddRegisterService(this IServiceCollection services, Action<IIdentifyOptions> setupAction = null)
+        public static IServiceCollection AddIdentityRegisterService(this IServiceCollection services, Action<IIdentifyOptions> setupAction = null)
         {
             services.AddOptions();
-            services.TryAdd(ServiceDescriptor.Singleton<IRegisterService, RegisterService>());
+            services.TryAdd(ServiceDescriptor.Singleton<IRegisterService, IdentityRegisterService>());
             if (setupAction != null)
                 services.Configure(new Action<IdentifyOptions>(setupAction));
             return services;

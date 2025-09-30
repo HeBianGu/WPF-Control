@@ -1,11 +1,13 @@
-﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
-
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
 
 #if NET
 #endif
-using System.Windows;
-using System.Windows.Documents;
-
 namespace H.Extensions.Behvaiors.Adorners;
 
 public class DragOverHitTestAdornerBehavior : HitTestAdornerBehavior
@@ -15,7 +17,6 @@ public class DragOverHitTestAdornerBehavior : HitTestAdornerBehavior
         get { return (Type)GetValue(AdornerDropErrorTypeProperty); }
         set { SetValue(AdornerDropErrorTypeProperty, value); }
     }
-
 
     public static readonly DependencyProperty AdornerDropErrorTypeProperty =
         DependencyProperty.Register("AdornerDropErrorType", typeof(Type), typeof(DragOverHitTestAdornerBehavior), new FrameworkPropertyMetadata(default(Type), (d, e) =>
@@ -44,7 +45,6 @@ public class DragOverHitTestAdornerBehavior : HitTestAdornerBehavior
         //AssociatedObject.DragLeave += AssociatedObject_DragLeave;
     }
 
-
     public static bool GetIsPreviewing(DependencyObject obj)
     {
         return (bool)obj.GetValue(IsPreviewingProperty);
@@ -54,7 +54,6 @@ public class DragOverHitTestAdornerBehavior : HitTestAdornerBehavior
     {
         obj.SetValue(IsPreviewingProperty, value);
     }
-
 
     public static readonly DependencyProperty IsPreviewingProperty =
         DependencyProperty.RegisterAttached("IsPreviewing", typeof(bool), typeof(DragOverHitTestAdornerBehavior), new PropertyMetadata(default(bool), OnIsPreviewingChanged));
@@ -68,7 +67,6 @@ public class DragOverHitTestAdornerBehavior : HitTestAdornerBehavior
         bool o = (bool)e.OldValue;
     }
 
-
     private void AssociatedObject_DragLeave(object sender, DragEventArgs e)
     {
         //this.Clear();
@@ -81,15 +79,15 @@ public class DragOverHitTestAdornerBehavior : HitTestAdornerBehavior
 
     protected virtual void Drop(object sender, DragEventArgs e)
     {
-        if (_temp.GetContent() is IHitTestElementDrop drag)
+        if (_preVisualHitElement.GetContent() is IHitTestElementDrop drag)
         {
-            if (drag.CanDrop(_temp, e))
-                drag.Drop(_temp, e);
+            if (drag.CanDrop(_preVisualHitElement, e))
+                drag.Drop(_preVisualHitElement, e);
         }
         else if (this.AssociatedObject is IHitTestElementDrop drop)
         {
-            if (drop.CanDrop(_temp, e))
-                drop.Drop(_temp, e);
+            if (drop.CanDrop(_preVisualHitElement, e))
+                drop.Drop(_preVisualHitElement, e);
         }
     }
 
@@ -111,34 +109,34 @@ public class DragOverHitTestAdornerBehavior : HitTestAdornerBehavior
         {
             if (GetIsHitTest(x) == false)
                 return false;
-            if (_temp.GetContent() is IHitTestElementDrop drop)
+            if (_preVisualHitElement.GetContent() is IHitTestElementDrop drop)
                 return drop.IsHitTest(x, e);
             return true;
         });
         if (visualHit == null)
         {
             Clear();
-            if (this.AssociatedObject != _temp)
+            if (this.AssociatedObject != _preVisualHitElement)
             {
                 DragEnter(this.AssociatedObject, e);
-                DragLeave(_temp, e);
+                DragLeave(_preVisualHitElement, e);
             }
-            _temp = this.AssociatedObject;
+            _preVisualHitElement = this.AssociatedObject;
         }
         else
         {
-            if (visualHit != _temp)
+            if (visualHit != _preVisualHitElement)
             {
                 Clear();
-                DragLeave(_temp, e);
+                DragLeave(_preVisualHitElement, e);
                 DragEnter(visualHit, e);
             }
             AddAdorner(visualHit);
-            _temp = visualHit;
+            _preVisualHitElement = visualHit;
         }
 
-        if (_temp.GetContent() is IHitTestElementDrag drag)
-            drag.DragOver(_temp, e);
+        if (_preVisualHitElement.GetContent() is IHitTestElementDrag drag)
+            drag.DragOver(_preVisualHitElement, e);
     }
 
     protected virtual void DragEnter(UIElement element, DragEventArgs e)
@@ -149,8 +147,8 @@ public class DragOverHitTestAdornerBehavior : HitTestAdornerBehavior
 
     protected virtual void DragLeave(UIElement element, DragEventArgs e)
     {
-        if (_temp.GetContent() is IHitTestElementDrag oldDrag)
-            oldDrag.DragLeave(_temp, e);
+        if (_preVisualHitElement.GetContent() is IHitTestElementDrag oldDrag)
+            oldDrag.DragLeave(_preVisualHitElement, e);
     }
 
     protected override void OnDetaching()
@@ -184,6 +182,4 @@ public class DragOverHitTestAdornerBehavior : HitTestAdornerBehavior
         return adorner;
     }
 }
-
-
 

@@ -3,7 +3,7 @@
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <UseWPF>true</UseWPF>
-    <TargetFrameworks>net7.0-windows</TargetFrameworks>
+    <TargetFrameworks>net8.0-windows</TargetFrameworks>
     <ApplicationIcon>logo.ico</ApplicationIcon>
     <Product>H文件管理器</Product>
     <Description>电脑文件管理器：包括对文件的收藏、评分、打标签和按工程管理，支持多种预览方式（表格，缩率图，预览图等），对图片、视频支持预览，放大，缩小，对视频支持播放、截图、全屏播放、放大、缩小，定位到截图时间位置等，自定义收藏夹、标签夹</Description>
@@ -38,6 +38,7 @@
     <ProjectReference Include="..\..\Extensions\H.Extensions.BackgroundImage\H.Extensions.BackgroundImage.csproj" />
     <ProjectReference Include="..\..\Extensions\H.Extensions.FFMpeg\H.Extensions.FFMpeg.csproj" />
     <ProjectReference Include="..\..\Extensions\H.Extensions.Torrent\H.Extensions.Torrent.csproj" />
+    <ProjectReference Include="..\..\Base\H.ValueConverter\H.ValueConverter.csproj" />
     <ProjectReference Include="..\..\Extensions\H.Extensions.ValueConverter\H.Extensions.ValueConverter.csproj" />
     <ProjectReference Include="..\..\Modules\H.Modules.Identity\H.Modules.Identity.csproj" />
     <ProjectReference Include="..\..\Modules\H.Modules.Login\H.Modules.Login.csproj" />
@@ -61,12 +62,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.8">
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.16">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="7.0.8" />
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="7.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="8.0.16" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.1" />
     <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.77" />
     <PackageReference Include="VideoLAN.LibVLC.Windows" Version="3.0.21" />
   </ItemGroup>

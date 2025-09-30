@@ -36,7 +36,7 @@
         <Setter Property="Foreground" Value="{DynamicResource {x:Static BrushKeys.CaptionForeground}}" />
         <Setter Property="Background" Value="LightGreen" />
         <Setter Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.CaptionBackground}}" />
-        <Setter Property="Cattach.CornerRadius" Value="2" />
+        <Setter Property="Cattach.CornerRadius" Value="{DynamicResource {x:Static LayoutKeys.CornerRadius}}" />
         <Setter Property="BorderThickness" Value="0" />
         <Setter Property="HorizontalContentAlignment" Value="Center" />
         <Setter Property="VerticalContentAlignment" Value="Center" />

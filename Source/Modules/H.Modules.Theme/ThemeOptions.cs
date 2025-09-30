@@ -1,33 +1,41 @@
-﻿using H.Common.Interfaces;
-using H.Controls.Form;
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
+
+using H.Common.Interfaces;
 using H.Controls.Form.PropertyItem.Attribute.SourcePropertyItem;
 using H.Controls.Form.PropertyItem.ComboBoxPropertyItems;
 using H.Extensions.Setting;
-using H.Mvvm.Commands;
+using H.Extensions.Mvvm.Commands;
 using H.Services.AppPath;
-using H.Services.Common;
 using H.Services.Setting;
+using H.Themes;
 using H.Themes.Backgrounds;
 using H.Themes.Colors;
 using H.Themes.Extensions;
-using H.Themes.Systems;
-using System.Collections.Generic;
+using H.Themes.FontSizes;
+using H.Themes.Layouts;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
 using System.Reflection;
 using System.Text.Json.Serialization;
 using System.Windows;
 using System.Windows.Media;
 using System.Xml.Serialization;
+using H.Mvvm.Commands;
+using System.Windows.Threading;
 
 namespace H.Modules.Theme;
 [Display(Name = "主题设置", GroupName = SettingGroupNames.GroupStyle, Description = "登录页面设置的信息")]
-public class ThemeOptions : IocOptionInstance<ThemeOptions>, ILoginedSplashLoad, IThemeOptions
+public class ThemeOptions : IocOptionInstance<ThemeOptions>, ILoginedSplashLoadable, IThemeOptions
 {
     public ThemeOptions()
     {
-        this.ColorResources.Add(new DarkColorResource()); 
+        this.ColorResources.Add(new DarkColorResource());
         this.ColorResources.Add(new LightColorResource());
         this.ColorResources.Add(new DefaultColorResource());
         this.FontFamilys = Fonts.SystemFontFamilies.ToList();
@@ -74,7 +82,6 @@ public class ThemeOptions : IocOptionInstance<ThemeOptions>, ILoginedSplashLoad,
         }
     }
 
-
     private IColorResource _colorResource;
     [JsonIgnore]
     [XmlIgnore]
@@ -90,12 +97,10 @@ public class ThemeOptions : IocOptionInstance<ThemeOptions>, ILoginedSplashLoad,
         }
     }
 
-
     [JsonIgnore]
     [XmlIgnore]
     [Browsable(false)]
     public List<IColorResource> ColorResources { get; } = new List<IColorResource>();
-
 
     private IBackgroundResource _backgroundResource;
     [JsonIgnore]
@@ -116,7 +121,6 @@ public class ThemeOptions : IocOptionInstance<ThemeOptions>, ILoginedSplashLoad,
     [XmlIgnore]
     [Browsable(false)]
     public List<IBackgroundResource> BackgroundResources { get; } = new List<IBackgroundResource>();
-
 
     private FontFamily _fontFamily;
     [PropertyNameSourcePropertyItem(typeof(ComboBoxPropertyItem), nameof(FontFamilys))]
@@ -151,7 +155,6 @@ public class ThemeOptions : IocOptionInstance<ThemeOptions>, ILoginedSplashLoad,
     [Browsable(false)]
     public List<FontFamily> FontFamilys { get; } = new List<FontFamily>();
 
-
     [JsonIgnore]
     [XmlIgnore]
     [Browsable(false)]
@@ -180,11 +183,10 @@ public class ThemeOptions : IocOptionInstance<ThemeOptions>, ILoginedSplashLoad,
                 return;
             _isDark = value;
             RaisePropertyChanged();
-            this.SwitchDark();
         }
     }
 
-    private void SwitchDark()
+    internal void SwitchDark()
     {
         if (this.IsDark == false)
         {
@@ -209,7 +211,6 @@ public class ThemeOptions : IocOptionInstance<ThemeOptions>, ILoginedSplashLoad,
     {
         this.RefreshTheme();
     }
-
 
     [Browsable(false)]
     public int BackgroundResourceSelectedIndex { get; set; }
@@ -249,7 +250,7 @@ public class ThemeOptions : IocOptionInstance<ThemeOptions>, ILoginedSplashLoad,
     public override bool Load(out string message)
     {
         var r = base.Load(out message);
-        if (r == false)
+        if (!this.HasFile())
         {
             if (this.ColorResource != null)
             {
@@ -258,7 +259,7 @@ public class ThemeOptions : IocOptionInstance<ThemeOptions>, ILoginedSplashLoad,
             }
             if (this.BackgroundResource != null)
                 this.BackgroundResourceSelectedIndex = this.BackgroundResources.IndexOf(this.BackgroundResource);
-            
+
         }
 
         if (this.ColorResourceSelectedIndex < 0 || this.ColorResourceSelectedIndex >= this.ColorResources.Count)
@@ -274,16 +275,19 @@ public class ThemeOptions : IocOptionInstance<ThemeOptions>, ILoginedSplashLoad,
 
     private void RefreshTheme()
     {
-        //this.Color.ChangeThemeType();
-        this.FontSize.ChangeFontSizeThemeType();
-        this.Layout.ChangeLayoutThemeType();
-        this.ChangeColorTheme();
-        this.ChangeFontFamily();
-        this.ChangeIconFontFamily();
-        this.ChangeBackgroundTheme();
-        this.RefreshBrushResourceDictionary();
-        if (this.ColorResource != null)
-            this.IsDark = this.ColorResource.IsDark;
+        this.DelayInvoke(() =>
+        {
+            //this.Color.ChangeThemeType();
+            this.FontSize.ChangeFontSizeThemeType();
+            this.Layout.ChangeLayoutThemeType();
+            this.ChangeColorTheme();
+            this.ChangeFontFamily();
+            this.ChangeIconFontFamily();
+            this.ChangeBackgroundTheme();
+            this.RefreshBrushResourceDictionary();
+            if (this.ColorResource != null)
+                this.IsDark = this.ColorResource.IsDark;
+        });
     }
 
     public void RefreshBrushResourceDictionary()
@@ -293,7 +297,6 @@ public class ThemeOptions : IocOptionInstance<ThemeOptions>, ILoginedSplashLoad,
             return;
         this.BackgroundResource.Resource.RefreshResourceDictionary(); ;
     }
-
 
     private void ChangeColorTheme()
     {

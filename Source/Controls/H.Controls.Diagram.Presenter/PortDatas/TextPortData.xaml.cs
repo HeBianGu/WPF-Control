@@ -1,5 +1,12 @@
-﻿using H.Extensions.Geometry;
-using H.Themes.FontSizes;
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
+
+using H.Extensions.Geometry;
 
 namespace H.Controls.Diagram.Presenter.PortDatas;
 
@@ -163,6 +170,35 @@ public class TextPortData : PortData, ITextPortData
             RaisePropertyChanged();
         }
     }
+
+
+    private double _width = 10;
+    [DefaultValue(10)]
+    [Display(Name = "宽度", GroupName = "样式")]
+    public double Width
+    {
+        get { return _width; }
+        set
+        {
+            _width = value;
+            RaisePropertyChanged();
+        }
+    }
+
+    private double _height = 10;
+    [DefaultValue(10)]
+    [Display(Name = "高", GroupName = "样式")]
+    public double Height
+    {
+        get { return _height; }
+        set
+        {
+            _height = value;
+            RaisePropertyChanged();
+        }
+    }
+
+
 
     protected virtual Geometry GetGeometry()
     {

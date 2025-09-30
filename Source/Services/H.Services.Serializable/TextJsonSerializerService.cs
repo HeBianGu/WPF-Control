@@ -1,4 +1,12 @@
-﻿using System.ComponentModel;
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
+
+using System.ComponentModel;
 using System.Text.Encodings.Web;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -35,12 +43,12 @@ public class TextJsonOptions
 }
 public class TextJsonSerializerService : IJsonSerializerService
 {
-    public object DeserializeObject(string txt, Type type)
+    public virtual object DeserializeObject(string txt, Type type)
     {
         return string.IsNullOrEmpty(txt) ? null : JsonSerializer.Deserialize(txt, type, this.GetOptions());
     }
 
-    public string SerializeObject<T>(T t)
+    public virtual string SerializeObject<T>(T t)
     {
         return JsonSerializer.Serialize(t, this.GetOptions());
     }

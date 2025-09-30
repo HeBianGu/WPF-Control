@@ -1,4 +1,12 @@
-﻿using H.Extensions.Geometry;
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
+
+using H.Extensions.Geometry;
 using System.Windows.Markup;
 using System.Windows.Media.Converters;
 
@@ -43,7 +51,6 @@ public abstract class GeometryNodeDataBase : FlowableNodeData, IGeometryNodeData
     }
 
     protected abstract Geometry GetGeometry();
-
 }
 
 public class GeometryNodeData : GeometryNodeDataBase

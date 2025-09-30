@@ -74,6 +74,28 @@
             </Setter.Value>
         </Setter>
     </Style>
+
+    <Style x:Key="{ComponentResourceKey ResourceId=S.GroupBox.AccentLine,
+                                        TypeInTargetAssembly={x:Type local:GroupBoxKeys}}"
+           BasedOn="{StaticResource {x:Static GroupBoxKeys.Default}}"
+           TargetType="GroupBox">
+        <Setter Property="Cattach.CaptionMargin" Value="0" />
+        <Setter Property="Cattach.CaptionBackground" Value="{x:Null}" />
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="HeaderTemplate">
+            <Setter.Value>
+                <DataTemplate>
+                    <Border BorderBrush="{DynamicResource {x:Static BrushKeys.Accent}}"
+                            BorderThickness="3,0,0,0">
+                        <TextBlock Margin="5,0"
+                                   FontWeight="Black"
+                                   Foreground="{DynamicResource {x:Static BrushKeys.ForegroundTitle}}"
+                                   Text="{Binding}" />
+                    </Border>
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
     <Style BasedOn="{StaticResource {x:Static local:GroupBoxKeys.Default}}"
            TargetType="GroupBox" />
 </ResourceDictionary>

@@ -32,7 +32,7 @@ namespace H.Test.SideMenu
                 x.Add(AppSetting.Instance);
             });
 
-            app.UseWindowSetting();
+            //app.UseWindowSetting();
         }
 
         protected override Window CreateMainWindow(StartupEventArgs e)

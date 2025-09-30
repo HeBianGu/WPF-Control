@@ -2,7 +2,6 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
                     xmlns:h="https://github.com/HeBianGu"
-                    xmlns:lb="clr-namespace:H.Controls.Diagram.Presenter.Behaviors"
                     xmlns:ld="clr-namespace:H.Controls.Diagram.Presenter.DiagramDatas"
                     xmlns:ldb="clr-namespace:H.Controls.Diagram.Presenter.DiagramDatas.Base"
                     xmlns:local="clr-namespace:H.Controls.Diagram.Presenter"
@@ -23,8 +22,7 @@
                    Layout="{Binding Layout}"
                    LinkDrawer="{Binding LinkDrawer}"
                    Message="{Binding Message, Mode=OneWayToSource}"
-                   UseAnimation="False"
-                   UseAutoAddLinkOnEnd="True">
+                   UseAnimation="False">
             <Control.Resources>
                 <BindingProxy x:Key="Proxy"
                               Data="{Binding ElementName=diagram}" />
@@ -73,6 +71,10 @@
                     <b:InvokeCommandAction Command="{Binding ItemsChangedCommand}"
                                            PassEventArgsToCommand="True" />
                 </b:EventTrigger>
+                <b:EventTrigger EventName="AddNoded">
+                    <b:InvokeCommandAction Command="{Binding AddNodedCommand}"
+                                           PassEventArgsToCommand="True" />
+                </b:EventTrigger>
                 <b:EventTrigger EventName="SelectedPartChanged">
                     <b:InvokeCommandAction Command="{Binding SelectedPartChangedCommand}"
                                            PassEventArgsToCommand="True" />
@@ -87,7 +89,8 @@
                 </b:EventTrigger>
             </b:Interaction.Triggers>
             <b:Interaction.Behaviors>
-                <lb:DiagramDropTextNodeBehavior NodeType="{Binding NodeType}" />
+                <DiagramDropTypeNodeDataBehavior NodeType="{Binding NodeType}"
+                                                 UseAutoAddLinkOnEnd="True" />
             </b:Interaction.Behaviors>
         </h:Diagram>
     </DataTemplate>

@@ -1,8 +1,10 @@
-﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
-
-
-using H.Extensions.TypeConverter;
-using System.Collections.ObjectModel;
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
 
 namespace H.Presenters.Design.Presenter;
 
@@ -47,7 +49,6 @@ public class DefinitionGrid : GridBase
         set { SetValue(ColumnsProperty, value); }
     }
 
-    // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
     public static readonly DependencyProperty ColumnsProperty =
         DependencyProperty.Register("Columns", typeof(ObservableCollection<GridLength>), typeof(DefinitionGrid), new FrameworkPropertyMetadata(new ObservableCollection<GridLength>(), (d, e) =>
         {
@@ -72,13 +73,19 @@ public class DefinitionGrid : GridBase
         this.RowDefinitions.Clear();
         this.ColumnDefinitions.Clear();
 
-        foreach (var item in this.Rows)
+        if (this.Rows != null)
         {
-            this.RowDefinitions.Add(new RowDefinition() { Height = item, MinHeight = this.MinRowHeight });
+            foreach (var item in this.Rows)
+            {
+                this.RowDefinitions.Add(new RowDefinition() { Height = item, MinHeight = this.MinRowHeight });
+            }
         }
-        foreach (var item in this.Columns)
+        if (this.Columns != null)
         {
-            this.ColumnDefinitions.Add(new ColumnDefinition() { Width = item });
+            foreach (var item in this.Columns)
+            {
+                this.ColumnDefinitions.Add(new ColumnDefinition() { Width = item });
+            }
         }
     }
 }

@@ -1,115 +1,114 @@
-﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
 
-using System;
-using System.Timers;
 using System.Windows;
 using Timer = System.Timers.Timer;
 
-namespace H.Controls.Panel
-{
-    public class RandomPanel : PanelBase
-    {
-        private static Random _random = new Random();
+namespace H.Controls.Panel.Panel;
 
-        protected override Size ArrangeOverride(Size finalSize)
+public class RandomPanel : PanelBase
+{
+    private static Random _random = new Random();
+
+    protected override Size ArrangeOverride(Size finalSize)
+    {
+        List<UIElement> children = this.GetChildren();
+        Point center = new Point(finalSize.Width / 2, finalSize.Height / 2);
+        for (int i = 0; i < children.Count; i++)
         {
-            System.Collections.Generic.List<UIElement> children = this.GetChildren();
-            Point center = new Point(finalSize.Width / 2, finalSize.Height / 2);
-            for (int i = 0; i < children.Count; i++)
+            UIElement elment = children[i];
+            elment.Measure(finalSize);
+            elment.RenderTransformOrigin = new Point(0.5, 0.5);
+            Point end = new Point();
+            end.X = finalSize.Width * _random.NextDouble() - elment.DesiredSize.Width / 2;
+            end.Y = finalSize.Height * _random.NextDouble() - elment.DesiredSize.Height / 2;
+            elment.Arrange(new Rect(end, elment.DesiredSize));
+        }
+
+        return base.ArrangeOverride(finalSize);
+    }
+
+    private Timer _timer = new Timer();
+
+    public RandomPanel()
+    {
+        _timer.Interval = this.Interval;
+        _timer.Elapsed += (l, k) =>
+        {
+            Application.Current.Dispatcher.Invoke(() =>
             {
-                UIElement elment = children[i];
-                elment.Measure(finalSize);
-                elment.RenderTransformOrigin = new Point(0.5, 0.5);
-                Point end = new Point();
-                end.X = finalSize.Width * _random.NextDouble() - elment.DesiredSize.Width / 2;
-                end.Y = finalSize.Height * _random.NextDouble() - elment.DesiredSize.Height / 2;
-                elment.Arrange(new Rect(end, elment.DesiredSize));
+                this.InvalidateArrange();
+            });
+
+        };
+    }
+
+    private void Start()
+    {
+        _timer.Start();
+    }
+
+    private void Stop()
+    {
+        _timer.Stop();
+    }
+
+    public bool Forever
+    {
+        get { return (bool)GetValue(ForeverProperty); }
+        set { SetValue(ForeverProperty, value); }
+    }
+
+
+    public static readonly DependencyProperty ForeverProperty =
+        DependencyProperty.Register("Forever", typeof(bool), typeof(RandomPanel), new FrameworkPropertyMetadata(default(bool), (d, e) =>
+         {
+             RandomPanel control = d as RandomPanel;
+
+             if (control == null) return;
+
+             if (e.OldValue is bool o)
+             {
+
+             }
+
+             if (e.NewValue is bool n)
+             {
+                 if (n)
+                     control.Start();
+                 else
+                 {
+                     control.Stop();
+                 }
+             }
+
+         }));
+
+    public double Interval
+    {
+        get { return (double)GetValue(IntervalProperty); }
+        set { SetValue(IntervalProperty, value); }
+    }
+
+
+    public static readonly DependencyProperty IntervalProperty =
+        DependencyProperty.Register("Interval", typeof(double), typeof(RandomPanel), new FrameworkPropertyMetadata(1000.0, (d, e) =>
+        {
+            RandomPanel control = d as RandomPanel;
+
+            if (control == null) return;
+
+            if (e.OldValue is double o)
+            {
+
             }
 
-            return base.ArrangeOverride(finalSize);
-        }
-
-        private Timer _timer = new Timer();
-
-        public RandomPanel()
-        {
-            _timer.Interval = this.Interval;
-            _timer.Elapsed += (l, k) =>
-            {
-                Application.Current.Dispatcher.Invoke(() =>
-                {
-                    this.InvalidateArrange();
-                });
-
-            };
-        }
-
-        private void Start()
-        {
-            _timer.Start();
-        }
-
-        private void Stop()
-        {
-            _timer.Stop();
-        }
-
-        public bool Forever
-        {
-            get { return (bool)GetValue(ForeverProperty); }
-            set { SetValue(ForeverProperty, value); }
-        }
-
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty ForeverProperty =
-            DependencyProperty.Register("Forever", typeof(bool), typeof(RandomPanel), new FrameworkPropertyMetadata(default(bool), (d, e) =>
-             {
-                 RandomPanel control = d as RandomPanel;
-
-                 if (control == null) return;
-
-                 if (e.OldValue is bool o)
-                 {
-
-                 }
-
-                 if (e.NewValue is bool n)
-                 {
-                     if (n)
-                     {
-                         control.Start();
-                     }
-                     else
-                     {
-                         control.Stop();
-                     }
-                 }
-
-             }));
-
-        public double Interval
-        {
-            get { return (double)GetValue(IntervalProperty); }
-            set { SetValue(IntervalProperty, value); }
-        }
-
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty IntervalProperty =
-            DependencyProperty.Register("Interval", typeof(double), typeof(RandomPanel), new FrameworkPropertyMetadata(1000.0, (d, e) =>
-            {
-                RandomPanel control = d as RandomPanel;
-
-                if (control == null) return;
-
-                if (e.OldValue is double o)
-                {
-
-                }
-
-                if (e.NewValue is double n)
-                {
-                    control._timer.Interval = n;
-                }
-            }));
-    }
+            if (e.NewValue is double n)
+                control._timer.Interval = n;
+        }));
 }

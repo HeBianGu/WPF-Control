@@ -1,34 +1,46 @@
-﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
 
-global using System.ComponentModel.DataAnnotations;
-global using H.Extensions.NewtonsoftJson;
-global using System.Windows.Markup;
-global using System.ComponentModel;
-global using H.Mvvm.ViewModels.Base;
-global using H.Mvvm.Commands;
 global using H.Extensions.Common;
+global using H.Extensions.NewtonsoftJson;
+global using H.Mvvm.Commands;
+global using H.Extensions.Mvvm.ViewModels.Base;
 global using H.Services.Common.Serialize.Meta;
+global using System.ComponentModel;
+global using System.ComponentModel.DataAnnotations;
+global using System.Windows.Markup;
 using EnumConverter = System.ComponentModel.EnumConverter;
 
 namespace H.Controls.FilterBox
 {
+    public interface IPropertyConditionPrensenter : IConditionable
+    {
+        ConditionOperate ConditionOperate { get; set; }
+        ObservableCollection<IPropertyConfidtion> Conditions { get; set; }
+    }
+
     [ContentProperty(nameof(Conditions))]
     [Display(Name = "设置条件")]
-    public class PropertyConditionPrensenter : DisplayBindableBase, IConditionable, IMetaSetting
+    public class PropertyConditionPrensenter : DisplayBindableBase, IMetaSetting, IPropertyConditionPrensenter
     {
-        public PropertyConditionPrensenter()
-        {
+        //public PropertyConditionPrensenter()
+        //{
 
-        }
+        //}
 
-        public PropertyConditionPrensenter(Type modelTyle, Func<PropertyInfo, bool> predicate = null)
-        {
-            ObservableCollection<PropertyInfo> ps = modelTyle.GetProperties().Where(x => x.PropertyType.IsPrimitive || x.PropertyType == typeof(DateTime) || x.PropertyType == typeof(string)).ToObservable();
-            if (predicate != null)
-                this.Properties = ps.Where(predicate).ToObservable();
-            else
-                this.Properties = ps.ToObservable();
-        }
+        //public PropertyConditionPrensenter(Type modelTyle, Func<PropertyInfo, bool> predicate = null)
+        //{
+        //    ObservableCollection<PropertyInfo> ps = modelTyle.GetProperties().Where(x => x.PropertyType.IsPrimitive || x.PropertyType == typeof(DateTime) || x.PropertyType == typeof(string)).ToObservable();
+        //    if (predicate != null)
+        //        this.Properties = ps.Where(predicate).ToObservable();
+        //    else
+        //        this.Properties = ps.ToObservable();
+        //}
 
         private ObservableCollection<IPropertyConfidtion> _conditions = new ObservableCollection<IPropertyConfidtion>();
         public ObservableCollection<IPropertyConfidtion> Conditions
@@ -53,12 +65,16 @@ namespace H.Controls.FilterBox
             }
         }
 
-
         [System.Text.Json.Serialization.JsonIgnore]
         [System.Xml.Serialization.XmlIgnore]
-        public RelayCommand AddConditionCommand => new RelayCommand(l =>
+        public RelayCommand AddConditionCommand => new RelayCommand(async l =>
         {
             PropertyInfo first = this.Properties.FirstOrDefault();
+            if (this.Properties.Count == 0)
+            {
+                await IocMessage.ShowDialog("不存在属性");
+                return;
+            }
             PropertyConfidtion confidtion = new PropertyConfidtion(first);
             confidtion.Filter.IsSelected = true;
             this.Conditions.Add(confidtion);
@@ -91,7 +107,7 @@ namespace H.Controls.FilterBox
             }
         }
 
-        public bool IsMatch(object obj)
+        public virtual bool IsMatch(object obj)
         {
             if (this.ConditionOperate == ConditionOperate.All)
                 return this.Conditions.All(x => x.IsMatch(obj));
@@ -103,7 +119,7 @@ namespace H.Controls.FilterBox
         }
 
         [System.Text.Json.Serialization.JsonIgnore]
-        
+
         [System.Xml.Serialization.XmlIgnore]
         public IMetaSettingService MetaSettingService => new NewtonsoftJsonMetaSettingService();
 

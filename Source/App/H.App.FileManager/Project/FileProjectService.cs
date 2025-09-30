@@ -11,7 +11,7 @@ using System;
 
 namespace H.App.FileManager
 {
-    public class FileProjectService : ProjectServiceBase<FileProjectItem>, IProjectService, ILoginedSplashLoad
+    public class FileProjectService : ProjectServiceBase<FileProjectItem>, IProjectService, ILoginedSplashLoadable
     {
         private readonly IOptions<TagOptions> _tagOptions;
         private readonly IOptions<FavoriteOptions> _favoriteOptions;

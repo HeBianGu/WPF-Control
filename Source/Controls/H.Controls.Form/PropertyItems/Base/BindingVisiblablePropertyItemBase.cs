@@ -1,18 +1,37 @@
-﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
 
 namespace H.Controls.Form.PropertyItems.Base;
 
-public interface IRefreshOnValueChanged
+public interface IRefreshFilterOnValueChanged
 {
-    bool CanRefresh { get; }
+    bool CanRefreshFilterOnValueChanged { get; }
 }
 
-public abstract class BindingVisiblablePropertyItemBase : ObjectPropertyItemBase, IBindingVisibleable, IRefreshOnValueChanged
+public interface IRefreshSourceOnValueChanged
+{
+    IEnumerable<string> GetPropertyNames();
+}
+
+public interface ISelectSourcePropertyItem : IPropertyItem
+{
+    void RefreshSource();
+}
+
+
+public abstract class BindingVisiblablePropertyItemBase : ObjectPropertyItemBase, IBindingVisibleable, IRefreshFilterOnValueChanged, IRefreshSourceOnValueChanged
 {
     private readonly MethodInfo _methodInfo;
+    private readonly PropertyInfo _propertyInfo;
     protected BindingVisiblablePropertyItemBase(PropertyInfo property, object obj) : base(property, obj)
     {
         this._methodInfo = this.CreateMethodInfo();
+        this._propertyInfo = this.CreatePropertyInfo();
     }
 
     protected virtual MethodInfo CreateMethodInfo()
@@ -24,21 +43,52 @@ public abstract class BindingVisiblablePropertyItemBase : ObjectPropertyItemBase
         return method == null ? null : method;
     }
 
-    public virtual bool GetVisible()
+    protected virtual PropertyInfo CreatePropertyInfo()
     {
-        return this._methodInfo?.Invoke(this.Obj, null) is not bool l || l != false;
+        BindingVisibleablePropertyNameAttribute attribute = this.PropertyInfo.GetCustomAttribute<BindingVisibleablePropertyNameAttribute>();
+        if (attribute?.PropertyName == null)
+            return null;
+        var method = this.Obj.GetType().GetProperty(attribute.PropertyName);
+        return method == null ? null : method;
     }
 
-    #region - IRefreshOnValueChanged -
+    public virtual bool GetVisible()
+    {
+        var mr = this._methodInfo?.Invoke(this.Obj, null);
+        if (mr is bool mb && mb == false)
+            return false;
+        var pr = this._propertyInfo?.GetValue(this.Obj);
+        if (pr is bool pb && pb == false)
+            return false;
+        return true;
+    }
 
-    private bool? _canRefresh;
-    public bool CanRefresh
+ 
+
+    #region - IRefreshFilterOnValueChanged -
+
+    private bool? _CanRefreshFilterOnValueChanged;
+    public virtual bool CanRefreshFilterOnValueChanged
     {
         get
         {
-            if (this._canRefresh == null)
-                this._canRefresh = this.PropertyInfo.GetCustomAttribute<RefreshOnValueChangedAttribute>()?.CanRefresh == true;
-            return this._canRefresh.Value;
+            if (this._CanRefreshFilterOnValueChanged == null)
+                this._CanRefreshFilterOnValueChanged = this.PropertyInfo.GetCustomAttribute<RefreshFilterOnValueChangedAttribute>()?.CanRefresh == true;
+            return this._CanRefreshFilterOnValueChanged.Value;
+        }
+    }
+    #endregion
+
+    #region - IRefreshSourceOnValueChanged -
+
+    IEnumerable<string> IRefreshSourceOnValueChanged.GetPropertyNames()
+    {
+        var names = this.PropertyInfo.GetCustomAttribute<RefreshSourceOnValueChangedAttribute>()?.SourcePropertyNames;
+        if (names == null)
+            yield break;
+        foreach (var item in names.Split(','))
+        {
+            yield return item;
         }
     }
     #endregion

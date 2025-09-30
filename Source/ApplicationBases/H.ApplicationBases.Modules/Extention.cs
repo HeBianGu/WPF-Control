@@ -1,5 +1,12 @@
-﻿using H.ApplicationBases.Module;
-using H.Extensions.FontIcon;
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
+
+using H.ApplicationBases.Modules;
 using H.Modules.About;
 using H.Modules.Feedback;
 using H.Modules.Guide;
@@ -10,7 +17,6 @@ using H.Modules.Help.Website;
 using H.Modules.Help.WebSite;
 using H.Modules.Setting;
 using H.Modules.SplashScreen;
-using H.Styles;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace System
@@ -43,7 +49,7 @@ namespace System
             options?.Invoke(opt);
             app.UseAboutOptions(opt.GetConfigOptions<Action<IAboutOptions>>());
             app.UseSplashScreenOptions(opt.GetConfigOptions<Action<ISplashScreenOptions>>());
-            app.UseGuide(opt.GetConfigOptions<Action<IGuideOptions>>());
+            app.UseGuideOptions(opt.GetConfigOptions<Action<IGuideOptions>>());
             app.UseSettingViewOptions(opt.GetConfigOptions<Action<ISettingViewOptions>>());
             app.UseSettingSecurityOptions(opt.GetConfigOptions<Action<ISettingSecurityViewOption>>());
             app.UseReleaseVersions(opt.GetConfigOptions<Action<IReleaseVersionsOptions>>());

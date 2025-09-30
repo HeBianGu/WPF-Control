@@ -1,13 +1,19 @@
-﻿global using H.Services.Common;
-global using H.Mvvm;
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
+
+global using H.Common.Interfaces.Where;
+global using H.Extensions.Mvvm.ViewModels;
 global using System;
 global using System.Collections;
 global using System.Linq;
 global using System.Windows;
 global using System.Windows.Controls;
 global using System.Windows.Threading;
-global using H.Common.Interfaces.Where;
-global using H.Mvvm.ViewModels;
 
 namespace H.Controls.TagBox
 {
@@ -53,7 +59,6 @@ namespace H.Controls.TagBox
                 }
                 control.RefreshData();
             }));
-
 
         public void RefreshData()
         {
@@ -172,7 +177,6 @@ namespace H.Controls.TagBox
                 }
 
             }));
-
 
         public static readonly RoutedEvent FilterChangedRoutedEvent =
             EventManager.RegisterRoutedEvent("FilterChanged", RoutingStrategy.Bubble, typeof(EventHandler<RoutedEventArgs>), typeof(TagFilterBox));

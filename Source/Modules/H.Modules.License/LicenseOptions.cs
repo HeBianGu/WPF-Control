@@ -1,14 +1,16 @@
-﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
-
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
 
 using H.Extensions.Setting;
 using H.Services.AppPath;
-using H.Services.Common;
 using H.Services.Setting;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using System.Text.Json.Serialization;
-using System.Xml.Serialization;
 
 namespace H.Modules.License
 {
@@ -35,7 +37,6 @@ namespace H.Modules.License
         private bool _useVailLicenceOnLoad = true;
         [Browsable(false)]
         [System.Text.Json.Serialization.JsonIgnore]
-
         [System.Xml.Serialization.XmlIgnore]
         [Display(Name = "启动时是否启用许可验证")]
         public bool UseVailLicenceOnLoad
@@ -48,10 +49,8 @@ namespace H.Modules.License
             }
         }
 
-
         private bool _useTrial = true;
         [System.Text.Json.Serialization.JsonIgnore]
-
         [System.Xml.Serialization.XmlIgnore]
         [Browsable(false)]
         [Display(Name = "启用试用")]
@@ -80,7 +79,6 @@ namespace H.Modules.License
 
         private string _filePath = AppPaths.Instance.License;
         [System.Text.Json.Serialization.JsonIgnore]
-
         [System.Xml.Serialization.XmlIgnore]
         [ReadOnly(true)]
         [Display(Name = "许可路径")]

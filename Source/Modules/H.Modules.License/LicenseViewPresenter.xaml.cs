@@ -1,15 +1,19 @@
-﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
-using H.Services.Common;
-using H.Mvvm;
-using System;
-using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
-using System.Reflection;
-using System.Xml.Serialization;
-using H.Mvvm.ViewModels.Base;
-using H.Mvvm.Commands;
-using H.Services.Setting;
-using H.Common.Attributes;
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
+
+global using H.Common.Attributes;
+global using H.Mvvm.Commands;
+global using H.Mvvm.ViewModels.Base;
+global using H.Services.Setting;
+global using System.ComponentModel;
+global using System.ComponentModel.DataAnnotations;
+global using System.Reflection;
+using H.Common.Interfaces;
 
 namespace H.Modules.License
 {
@@ -19,37 +23,49 @@ namespace H.Modules.License
     }
 
     [Icon("\xE72E")]
-    [Display(Name = "许可证书", GroupName = SettingGroupNames.GroupAuthority, Description = "应用此功能进行产品许可注册")]
+    [Display(Name = "许可", GroupName = SettingGroupNames.GroupAuthority, Description = "应用此功能进行产品许可注册")]
     public class LicenseViewPresenter : DisplayBindableBase, ILicenseViewPresenter, IDataErrorInfo
     {
         public LicenseViewPresenter()
         {
-            this.HostID = LicenseProxy.Instance?.GetHostID();
+            this.HostID = this.LicenseService?.GetHostID();
             this.Module = Assembly.GetEntryAssembly().GetName().Name;
-            LicenseOption option = LicenseProxy.Instance?.IsVail(this.Module, out string error);
+            this.UseTrail = this.LicenseService?.UseTrial ?? false;
+            LicenseOption option = this.LicenseService?.IsVail(this.Module, out string error);
             if (option != null)
             {
                 this.Time = option.EndTime;
-                this.IsTrail = option.Level == -1;
+                this.UseTrail = option.Level == -1;
                 this.Lic = option.License;
                 this.Level = option.Level;
             }
         }
 
-        private bool _isTrail;
+        private bool _UseTrail;
         [System.Text.Json.Serialization.JsonIgnore]
-
         [System.Xml.Serialization.XmlIgnore]
         [Browsable(false)]
-        public bool IsTrail
+        public bool UseTrail
         {
-            get { return _isTrail; }
+            get { return _UseTrail; }
             set
             {
-                _isTrail = value;
+                _UseTrail = value;
                 RaisePropertyChanged();
             }
         }
+
+        private bool _UseModule = true;
+        public bool UseModule
+        {
+            get { return _UseModule; }
+            set
+            {
+                _UseModule = value;
+                RaisePropertyChanged();
+            }
+        }
+
 
         private string _module;
         [Browsable(false)]
@@ -66,7 +82,6 @@ namespace H.Modules.License
 
         private string _lic;
         [System.Text.Json.Serialization.JsonIgnore]
-
         [System.Xml.Serialization.XmlIgnore]
         [Browsable(false)]
         [Display(Name = "注册码")]
@@ -93,7 +108,6 @@ namespace H.Modules.License
             }
         }
 
-
         private DateTime _time;
         [Browsable(false)]
         [Display(Name = "截止日期")]
@@ -107,10 +121,8 @@ namespace H.Modules.License
             }
         }
 
-
         private string _message;
         [System.Text.Json.Serialization.JsonIgnore]
-
         [System.Xml.Serialization.XmlIgnore]
         [Browsable(false)]
         public string Message
@@ -145,10 +157,11 @@ namespace H.Modules.License
             }
         }
 
+        protected virtual ILicenseService LicenseService => Ioc.GetService<ILicenseService>();
 
         public RelayCommand RegisterCommand => new RelayCommand(e =>
         {
-            ILicenseService _license = Ioc.GetService<ILicenseService>();
+            ILicenseService _license = LicenseService;
             if (_license == null)
             {
                 this.Message = "未找到许可服务接口<ILicenseService>";
@@ -156,7 +169,6 @@ namespace H.Modules.License
             }
 
             LicenseOption option = _license.TryActive(this.Module, this.Lic, out string error);
-
             if (option == null)
             {
                 this.Message = error;
@@ -169,6 +181,9 @@ namespace H.Modules.License
             this.Level = option.Level;
             Ioc<IVipFlagViewPresenter>.Instance?.Refresh();
             Ioc<ILicenseFlagViewPresenter>.Instance?.Refresh();
+            if (_license is ISaveable saveable)
+                saveable.Save(out string message);
+
         }, x => string.IsNullOrEmpty(this.Error));
 
         [System.Text.Json.Serialization.JsonIgnore]
@@ -199,7 +214,7 @@ namespace H.Modules.License
                     return this.Error;
                 }
 
-                ILicenseService _license = Ioc.GetService<ILicenseService>();
+                ILicenseService _license = this.LicenseService;
                 if (_license == null)
                 {
                     this.Error = "未找到许可服务接口<ILicenseService>";

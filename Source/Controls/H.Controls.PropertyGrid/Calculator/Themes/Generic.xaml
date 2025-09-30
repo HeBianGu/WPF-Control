@@ -14,95 +14,6 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Button}">
                     <Grid x:Name="Control">
-                        <Border Margin="0,0,0,-1"
-                                Background="White"
-                                BorderBrush="{x:Null}"
-                                BorderThickness="0"
-                                CornerRadius="2"
-                                Opacity="0.5" />
-                        <Grid x:Name="PART_Default">
-                            <Border Background="#FF9CA2AB"
-                                    BorderThickness="0"
-                                    CornerRadius="2">
-                                <Grid>
-                                    <Border x:Name="PART_Border1"
-                                            Margin="1"
-                                            BorderThickness="0"
-                                            CornerRadius="1">
-                                        <Border.Background>
-                                            <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
-                                                <GradientStop Offset="0" Color="#FFEDF1F7" />
-                                                <GradientStop Offset="1" Color="#FFD5DBE3" />
-                                            </LinearGradientBrush>
-                                        </Border.Background>
-                                        <Border Margin="2"
-                                                BorderThickness="0"
-                                                CornerRadius="1">
-                                            <Border.Background>
-                                                <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
-                                                    <GradientStop Offset="0" Color="#FFEDF1F7" />
-                                                    <GradientStop Offset="1" Color="#FFD5DBE3" />
-                                                </LinearGradientBrush>
-                                            </Border.Background>
-                                        </Border>
-                                    </Border>
-                                    <Border x:Name="PART_Border2"
-                                            Margin="1"
-                                            BorderThickness="0"
-                                            CornerRadius="1"
-                                            Opacity="0">
-                                        <Border.Background>
-                                            <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
-                                                <GradientStop Offset="0" Color="#FF9CA2AB" />
-                                                <GradientStop Offset="1" Color="#FF9CA2AB" />
-                                            </LinearGradientBrush>
-                                        </Border.Background>
-                                        <Border Margin="2"
-                                                BorderThickness="0"
-                                                CornerRadius="1">
-                                            <Border.Background>
-                                                <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
-                                                    <GradientStop Offset="0" Color="#FFEDF1F7" />
-                                                    <GradientStop Offset="1" Color="#FFD5DBE3" />
-                                                </LinearGradientBrush>
-                                            </Border.Background>
-                                        </Border>
-                                    </Border>
-                                </Grid>
-                            </Border>
-                        </Grid>
-                        <Grid x:Name="PART_MouseOver"
-                              Opacity="0">
-                            <Border Background="#FF9CA2AB"
-                                    BorderThickness="0"
-                                    CornerRadius="2">
-                                <Border Margin="1"
-                                        BorderThickness="0"
-                                        CornerRadius="1">
-                                    <Border.Background>
-                                        <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
-                                            <GradientStop Offset="0" Color="#FFFDFEFF" />
-                                            <GradientStop Offset="1" Color="#FFD9DFE8" />
-                                        </LinearGradientBrush>
-                                    </Border.Background>
-                                </Border>
-                            </Border>
-                        </Grid>
-                        <Grid x:Name="PART_Pressed"
-                              Opacity="0">
-                            <Border Background="#FF90959D"
-                                    BorderThickness="0"
-                                    CornerRadius="2">
-                                <Border Margin="1"
-                                        Background="#FFB5BBC5"
-                                        BorderThickness="0"
-                                        CornerRadius="1" />
-                            </Border>
-                        </Grid>
-                        <ContentPresenter x:Name="contentPresenter"
-                                          HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                          SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
                         <VisualStateManager.VisualStateGroups>
                             <VisualStateGroup x:Name="CommonStates">
                                 <VisualState x:Name="Normal" />
@@ -159,6 +70,95 @@
                                 </VisualState>
                             </VisualStateGroup>
                         </VisualStateManager.VisualStateGroups>
+                        <Border Margin="0,0,0,-1"
+                                Background="White"
+                                BorderBrush="{x:Null}"
+                                BorderThickness="0"
+                                CornerRadius="{DynamicResource {x:Static LayoutKeys.CornerRadius}}"
+                                Opacity="0.5" />
+                        <Grid x:Name="PART_Default">
+                            <Border Background="#FF9CA2AB"
+                                    BorderThickness="0"
+                                    CornerRadius="{DynamicResource {x:Static LayoutKeys.CornerRadius}}">
+                                <Grid>
+                                    <Border x:Name="PART_Border1"
+                                            Margin="1"
+                                            BorderThickness="0"
+                                            CornerRadius="1">
+                                        <Border.Background>
+                                            <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                                                <GradientStop Offset="0" Color="#FFEDF1F7" />
+                                                <GradientStop Offset="1" Color="#FFD5DBE3" />
+                                            </LinearGradientBrush>
+                                        </Border.Background>
+                                        <Border Margin="2"
+                                                BorderThickness="0"
+                                                CornerRadius="1">
+                                            <Border.Background>
+                                                <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                                                    <GradientStop Offset="0" Color="#FFEDF1F7" />
+                                                    <GradientStop Offset="1" Color="#FFD5DBE3" />
+                                                </LinearGradientBrush>
+                                            </Border.Background>
+                                        </Border>
+                                    </Border>
+                                    <Border x:Name="PART_Border2"
+                                            Margin="1"
+                                            BorderThickness="0"
+                                            CornerRadius="1"
+                                            Opacity="0">
+                                        <Border.Background>
+                                            <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                                                <GradientStop Offset="0" Color="#FF9CA2AB" />
+                                                <GradientStop Offset="1" Color="#FF9CA2AB" />
+                                            </LinearGradientBrush>
+                                        </Border.Background>
+                                        <Border Margin="2"
+                                                BorderThickness="0"
+                                                CornerRadius="1">
+                                            <Border.Background>
+                                                <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                                                    <GradientStop Offset="0" Color="#FFEDF1F7" />
+                                                    <GradientStop Offset="1" Color="#FFD5DBE3" />
+                                                </LinearGradientBrush>
+                                            </Border.Background>
+                                        </Border>
+                                    </Border>
+                                </Grid>
+                            </Border>
+                        </Grid>
+                        <Grid x:Name="PART_MouseOver"
+                              Opacity="0">
+                            <Border Background="#FF9CA2AB"
+                                    BorderThickness="0"
+                                    CornerRadius="{DynamicResource {x:Static LayoutKeys.CornerRadius}}">
+                                <Border Margin="1"
+                                        BorderThickness="0"
+                                        CornerRadius="1">
+                                    <Border.Background>
+                                        <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                                            <GradientStop Offset="0" Color="#FFFDFEFF" />
+                                            <GradientStop Offset="1" Color="#FFD9DFE8" />
+                                        </LinearGradientBrush>
+                                    </Border.Background>
+                                </Border>
+                            </Border>
+                        </Grid>
+                        <Grid x:Name="PART_Pressed"
+                              Opacity="0">
+                            <Border Background="#FF90959D"
+                                    BorderThickness="0"
+                                    CornerRadius="{DynamicResource {x:Static LayoutKeys.CornerRadius}}">
+                                <Border Margin="1"
+                                        Background="#FFB5BBC5"
+                                        BorderThickness="0"
+                                        CornerRadius="1" />
+                            </Border>
+                        </Grid>
+                        <ContentPresenter x:Name="contentPresenter"
+                                          HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                          SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
                     </Grid>
                 </ControlTemplate>
             </Setter.Value>
@@ -173,15 +173,56 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Button}">
                     <Grid x:Name="Control">
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Normal" />
+                                <VisualState x:Name="MouseOver">
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="PART_Default"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         To="0"
+                                                         Duration="0" />
+                                        <DoubleAnimation Storyboard.TargetName="PART_MouseOver"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         To="1"
+                                                         Duration="0" />
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Pressed">
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="PART_Default"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         To="0"
+                                                         Duration="0" />
+                                        <DoubleAnimation Storyboard.TargetName="PART_Pressed"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         To="1"
+                                                         Duration="0" />
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Disabled">
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="PART_Default"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         To=".5"
+                                                         Duration="0" />
+                                        <DoubleAnimation Storyboard.TargetName="contentPresenter"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         To=".5"
+                                                         Duration="0" />
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
                         <Border Margin="0,0,0,-1"
                                 Background="White"
                                 BorderBrush="{x:Null}"
                                 BorderThickness="0"
-                                CornerRadius="2"
+                                CornerRadius="{DynamicResource {x:Static LayoutKeys.CornerRadius}}"
                                 Opacity="0.5" />
                         <Grid x:Name="PART_Default">
                             <Border BorderThickness="0"
-                                    CornerRadius="2">
+                                    CornerRadius="{DynamicResource {x:Static LayoutKeys.CornerRadius}}">
                                 <Border.Background>
                                     <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
                                         <GradientStop Offset="0" Color="#FFC19497" />
@@ -203,7 +244,7 @@
                         <Grid x:Name="PART_MouseOver"
                               Opacity="0">
                             <Border BorderThickness="0"
-                                    CornerRadius="2">
+                                    CornerRadius="{DynamicResource {x:Static LayoutKeys.CornerRadius}}">
                                 <Border.Background>
                                     <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
                                         <GradientStop Offset="0" Color="#FFC19497" />
@@ -226,7 +267,7 @@
                               Opacity="0">
                             <Border Background="#FF9B6F72"
                                     BorderThickness="0"
-                                    CornerRadius="2">
+                                    CornerRadius="{DynamicResource {x:Static LayoutKeys.CornerRadius}}">
                                 <Border Margin="1"
                                         Background="#FFE69197"
                                         BorderThickness="0"
@@ -237,6 +278,20 @@
                                           HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                           VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                           SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="CalculatorDigitButtonStyle"
+           TargetType="{x:Type Button}">
+        <Setter Property="Focusable" Value="False" />
+        <Setter Property="Foreground" Value="#FF2A313A" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Grid x:Name="Control">
                         <VisualStateManager.VisualStateGroups>
                             <VisualStateGroup x:Name="CommonStates">
                                 <VisualState x:Name="Normal" />
@@ -278,20 +333,6 @@
                                 </VisualState>
                             </VisualStateGroup>
                         </VisualStateManager.VisualStateGroups>
-                    </Grid>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
-
-    <Style x:Key="CalculatorDigitButtonStyle"
-           TargetType="{x:Type Button}">
-        <Setter Property="Focusable" Value="False" />
-        <Setter Property="Foreground" Value="#FF2A313A" />
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="{x:Type Button}">
-                    <Grid x:Name="Control">
                         <Border Margin="0,0,0,-1"
                                 Background="White"
                                 BorderBrush="{x:Null}"
@@ -300,7 +341,7 @@
                                 Opacity="0.5" />
                         <Grid x:Name="PART_Default">
                             <Border BorderThickness="0"
-                                    CornerRadius="2">
+                                    CornerRadius="{DynamicResource {x:Static LayoutKeys.CornerRadius}}">
                                 <Border.Background>
                                     <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
                                         <GradientStop Offset="0" Color="#FFA9AAAB" />
@@ -322,7 +363,7 @@
                         <Grid x:Name="PART_MouseOver"
                               Opacity="0">
                             <Border BorderThickness="0"
-                                    CornerRadius="2">
+                                    CornerRadius="{DynamicResource {x:Static LayoutKeys.CornerRadius}}">
                                 <Border.Background>
                                     <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
                                         <GradientStop Offset="0" Color="#FFA9AAAB" />
@@ -345,7 +386,7 @@
                               Opacity="0">
                             <Border Background="#FF87888A"
                                     BorderThickness="0"
-                                    CornerRadius="2">
+                                    CornerRadius="{DynamicResource {x:Static LayoutKeys.CornerRadius}}">
                                 <Border Margin="1"
                                         Background="#FFB5BBC5"
                                         BorderThickness="0"
@@ -356,47 +397,6 @@
                                           HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                           VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                           SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
-                        <VisualStateManager.VisualStateGroups>
-                            <VisualStateGroup x:Name="CommonStates">
-                                <VisualState x:Name="Normal" />
-                                <VisualState x:Name="MouseOver">
-                                    <Storyboard>
-                                        <DoubleAnimation Storyboard.TargetName="PART_Default"
-                                                         Storyboard.TargetProperty="Opacity"
-                                                         To="0"
-                                                         Duration="0" />
-                                        <DoubleAnimation Storyboard.TargetName="PART_MouseOver"
-                                                         Storyboard.TargetProperty="Opacity"
-                                                         To="1"
-                                                         Duration="0" />
-                                    </Storyboard>
-                                </VisualState>
-                                <VisualState x:Name="Pressed">
-                                    <Storyboard>
-                                        <DoubleAnimation Storyboard.TargetName="PART_Default"
-                                                         Storyboard.TargetProperty="Opacity"
-                                                         To="0"
-                                                         Duration="0" />
-                                        <DoubleAnimation Storyboard.TargetName="PART_Pressed"
-                                                         Storyboard.TargetProperty="Opacity"
-                                                         To="1"
-                                                         Duration="0" />
-                                    </Storyboard>
-                                </VisualState>
-                                <VisualState x:Name="Disabled">
-                                    <Storyboard>
-                                        <DoubleAnimation Storyboard.TargetName="PART_Default"
-                                                         Storyboard.TargetProperty="Opacity"
-                                                         To=".5"
-                                                         Duration="0" />
-                                        <DoubleAnimation Storyboard.TargetName="contentPresenter"
-                                                         Storyboard.TargetProperty="Opacity"
-                                                         To=".5"
-                                                         Duration="0" />
-                                    </Storyboard>
-                                </VisualState>
-                            </VisualStateGroup>
-                        </VisualStateManager.VisualStateGroups>
                     </Grid>
                 </ControlTemplate>
             </Setter.Value>

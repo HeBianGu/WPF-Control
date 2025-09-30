@@ -2,8 +2,8 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:h="https://github.com/HeBianGu"
                     xmlns:lb="clr-namespace:H.Controls.Diagram.Bevaviors"
+                    xmlns:lbd="clr-namespace:H.Controls.Diagram.Bevaviors.NodeDataDropBehavior"
                     xmlns:ld="clr-namespace:H.Controls.Diagram.Datas"
-                    xmlns:lf="clr-namespace:H.Controls.Diagram.Flowables"
                     xmlns:local="clr-namespace:H.Controls.Diagram"
                     xmlns:lp="clr-namespace:H.Controls.Diagram.Parts"
                     xmlns:lpb="clr-namespace:H.Controls.Diagram.Parts.Base"
@@ -23,6 +23,7 @@
             <Setter.Value>
                 <h:Behaviors>
                     <lb:NodeMouseDragBehavior />
+                    <lbd:NodeDropReplaceNodeDataBevaior />
                     <!--<local:NodeMouseDragBehavior ConstrainToParentBounds="True" />
                     <local:NodeSelectionBehavior />
                     <local:NodeMouseOverBehavior/>

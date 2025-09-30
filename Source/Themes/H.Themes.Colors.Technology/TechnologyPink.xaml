@@ -6,6 +6,8 @@
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/H.Theme;component/Colors/Light.xaml" />
     </ResourceDictionary.MergedDictionaries>
+    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Accent, TypeInTargetAssembly={x:Type ColorKeys}}">#FF80AB</Color>
+
     <!--  Background  -->
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.CaptionBackground, TypeInTargetAssembly={x:Type ColorKeys}}">#FFF8FA</Color>
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextBackground, TypeInTargetAssembly={x:Type ColorKeys}}">#FFFFFF</Color>
@@ -54,4 +56,5 @@
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.2, TypeInTargetAssembly={x:Type ColorKeys}}">#C2185B</Color>
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.1, TypeInTargetAssembly={x:Type ColorKeys}}">#D81B60</Color>
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.0, TypeInTargetAssembly={x:Type ColorKeys}}">#E91E63</Color>-->
+ 
 </ResourceDictionary>

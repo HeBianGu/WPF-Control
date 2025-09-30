@@ -1,9 +1,13 @@
-﻿using H.Extensions.ValueConverter;
-using System;
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
+
+using H.ValueConverter;
 using System.Globalization;
-using System.Linq;
-using System.Windows;
-using System.Windows.Controls;
 
 namespace H.Controls.TagBox
 {
@@ -25,7 +29,6 @@ namespace H.Controls.TagBox
 
             };
         }
-
 
         public string SearchText
         {
@@ -51,7 +54,6 @@ namespace H.Controls.TagBox
 
                 }
             }));
-
 
         private void RefreshData()
         {
@@ -84,7 +86,6 @@ namespace H.Controls.TagBox
                 }
                 //control.RefreshData();
             }));
-
 
         private bool _flag = false;
         protected override void OnSelectionChanged(SelectionChangedEventArgs e)
@@ -140,7 +141,6 @@ namespace H.Controls.TagBox
                 control._flag = false;
             }));
 
-
         private void RefreshSelection()
         {
             if (this.Tags == null)
@@ -157,7 +157,6 @@ namespace H.Controls.TagBox
                 this.SelectedItems.Add(find);
             }
         }
-
 
         //声明和注册路由事件
         public static readonly RoutedEvent TagChangedRoutedEvent =

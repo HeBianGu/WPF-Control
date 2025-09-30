@@ -1,11 +1,12 @@
-﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
+
 global using H.Controls.Diagram.Parts;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Media;
 
 namespace H.Controls.Diagram.Parts;
 
@@ -23,8 +24,6 @@ public partial class Node : FlowablePart, INode
     {
         DefaultStyleKeyProperty.OverrideMetadata(typeof(Node), new FrameworkPropertyMetadata(typeof(Node)));
     }
-
-
 
     public string Id => this.GetContent<INodeData>().ID;
 
@@ -46,13 +45,11 @@ public partial class Node : FlowablePart, INode
 
     }
 
-
     public Point Location
     {
         get { return (Point)GetValue(LocationProperty); }
         set { SetValue(LocationProperty, value); }
     }
-
 
     public static readonly DependencyProperty LocationProperty =
         DependencyProperty.Register("Location", typeof(Point), typeof(Node), new FrameworkPropertyMetadata(default(Point)));
@@ -77,8 +74,6 @@ public partial class Node : FlowablePart, INode
     {
 
     }
-
-
 
     protected virtual bool GetVisiblity()
     {
@@ -147,7 +142,6 @@ public partial class Node : FlowablePart, INode
         return $"{this.GetType().Name} - {this.Id}:{NodeLayer.GetPosition(this)}";
     }
 
-
     public List<Node> GetToNodes(Func<Node, bool> filter = null)
     {
         return this.LinksOutOf.Select(k => k.ToNode).Where(filter ?? new Func<Node, bool>(l => true))?.ToList();
@@ -156,6 +150,20 @@ public partial class Node : FlowablePart, INode
     public List<Node> GetFromNodes(Func<Node, bool> filter = null)
     {
         return this.LinksInto.Select(k => k.FromNode).Where(filter ?? new Func<Node, bool>(l => true))?.ToList();
+    }
+
+    public IEnumerable<Node> GetAllToNodes()
+    {
+        List<Node> toNodes = this.GetToNodes();
+        foreach (Node item in toNodes)
+        {
+            yield return item;
+            IEnumerable<Node> parts = item.GetAllToNodes();
+            foreach (Node part in parts)
+            {
+                yield return part;
+            }
+        }
     }
 
     public IEnumerable<Part> GetAllParts(Func<Part, bool> filter = null)
@@ -222,56 +230,30 @@ public partial class Node : FlowablePart, INode
     {
         foreach (Link link in this.LinksInto)
         {
-            double spanHeight = ((link.FromNode.ActualHeight + this.ActualHeight) / 2) + 60;
-            double spanWidth = ((link.FromNode.ActualWidth + this.ActualWidth) / 2) + 60;
+            double spanHeight = ((link.FromNode.ActualHeight + this.ActualHeight) / 2) + 30;
+            double spanWidth = ((link.FromNode.ActualWidth + this.ActualWidth) / 2) + 50;
             double x = link.FromNode.Location.X;
             double y = link.FromNode.Location.Y;
 
+
             if (link.ToPort == null)
                 continue;
-            {
-                if (link.ToPort.Dock == Dock.Left)
-                {
-                    x = link.FromNode.Location.X + spanWidth;
-                }
-
-                if (link.ToPort.Dock == Dock.Right)
-                {
-                    x = link.FromNode.Location.X - spanWidth;
-                }
-
-                if (link.ToPort.Dock == Dock.Top)
-                {
-                    y = link.FromNode.Location.Y + spanHeight;
-                }
-
-                if (link.ToPort.Dock == Dock.Bottom)
-                {
-                    y = link.FromNode.Location.Y - spanHeight;
-                }
-            }
-
-            {
-                if (link.FromPort.Dock == Dock.Left)
-                {
-                    x = link.FromNode.Location.X - spanWidth;
-                }
-
-                if (link.FromPort.Dock == Dock.Right)
-                {
-                    x = link.FromNode.Location.X + spanWidth;
-                }
-
-                if (link.FromPort.Dock == Dock.Top)
-                {
-                    y = link.FromNode.Location.Y - spanHeight;
-                }
-
-                if (link.FromPort.Dock == Dock.Bottom)
-                {
-                    y = link.FromNode.Location.Y + spanHeight;
-                }
-            }
+            if (link.ToPort.Dock == Dock.Left)
+                x = link.FromNode.Location.X + spanWidth;
+            if (link.ToPort.Dock == Dock.Right)
+                x = link.FromNode.Location.X - spanWidth;
+            if (link.ToPort.Dock == Dock.Top)
+                y = link.FromNode.Location.Y + spanHeight;
+            if (link.ToPort.Dock == Dock.Bottom)
+                y = link.FromNode.Location.Y - spanHeight;
+            if (link.FromPort.Dock == Dock.Left)
+                x = link.FromNode.Location.X - spanWidth;
+            if (link.FromPort.Dock == Dock.Right)
+                x = link.FromNode.Location.X + spanWidth;
+            if (link.FromPort.Dock == Dock.Top)
+                y = link.FromNode.Location.Y - spanHeight;
+            if (link.FromPort.Dock == Dock.Bottom)
+                y = link.FromNode.Location.Y + spanHeight;
 
             if (link.ToPort.Dock == link.FromPort.Dock)
             {
@@ -343,7 +325,6 @@ public partial class Node
         System.Diagnostics.Debug.WriteLine("Node.ArrangeOverride：" + span.ToString());
 #endif 
         return finalSize;
-
 
     }
 

@@ -25,7 +25,7 @@
                 <ControlTemplate TargetType="{x:Type RibbonToolTip}">
 
                     <classic:SystemDropShadowChrome x:Name="Shadow"
-                                                    CornerRadius="2"
+                                                    CornerRadius="{DynamicResource {x:Static LayoutKeys.CornerRadius}}"
                                                     RenderOptions.ClearTypeHint="Enabled"
                                                     SnapsToDevicePixels="True"
                                                     Color="Transparent">
@@ -34,7 +34,7 @@
                                 Background="{TemplateBinding Background}"
                                 BorderBrush="{TemplateBinding BorderBrush}"
                                 BorderThickness="{TemplateBinding BorderThickness}"
-                                CornerRadius="2">
+                                CornerRadius="{DynamicResource {x:Static LayoutKeys.CornerRadius}}">
                             <Border x:Name="InnerBorder"
                                     Padding="{TemplateBinding Padding}"
                                     HorizontalAlignment="Stretch"
@@ -42,7 +42,7 @@
                                     Background="{DynamicResource {x:Static BrushKeys.Background}}"
                                     BorderBrush="Transparent"
                                     BorderThickness="0"
-                                    CornerRadius="2">
+                                    CornerRadius="{DynamicResource {x:Static LayoutKeys.CornerRadius}}">
                                 <StackPanel>
                                     <Grid x:Name="Header">
                                         <Grid.ColumnDefinitions>

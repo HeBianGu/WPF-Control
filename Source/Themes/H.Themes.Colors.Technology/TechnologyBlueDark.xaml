@@ -6,6 +6,9 @@
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/H.Theme;component/Colors/Dark.xaml" />
     </ResourceDictionary.MergedDictionaries>
+
+    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Accent, TypeInTargetAssembly={x:Type ColorKeys}}">#00A3C2</Color>
+
     <!--  Dark Tech Blue Theme  -->
     <!--  Background  -->
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.CaptionBackground, TypeInTargetAssembly={x:Type ColorKeys}}">#0D1A21</Color>
@@ -47,7 +50,7 @@
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.12, TypeInTargetAssembly={x:Type ColorKeys}}">#1E3857</Color>
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.11, TypeInTargetAssembly={x:Type ColorKeys}}">#172D4D</Color>
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.10, TypeInTargetAssembly={x:Type ColorKeys}}">#152743</Color>
-    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.9, TypeInTargetAssembly={x:Type ColorKeys}}">#1421    3F</Color>
+    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.9, TypeInTargetAssembly={x:Type ColorKeys}}">#14213F</Color>
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.8, TypeInTargetAssembly={x:Type ColorKeys}}">#131C3B</Color>
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.7, TypeInTargetAssembly={x:Type ColorKeys}}">#131837</Color>
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.6, TypeInTargetAssembly={x:Type ColorKeys}}">#121433</Color>
@@ -57,4 +60,8 @@
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.2, TypeInTargetAssembly={x:Type ColorKeys}}">#12152A</Color>
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.1, TypeInTargetAssembly={x:Type ColorKeys}}">#12172B</Color>
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.0, TypeInTargetAssembly={x:Type ColorKeys}}">#121F2B</Color>
+
+    <!--  Menu  -->
+    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Menu.Background, TypeInTargetAssembly={x:Type ColorKeys}}">#0D1A21</Color>
+    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Menu.Foreground, TypeInTargetAssembly={x:Type ColorKeys}}">#00D1FF</Color>
 </ResourceDictionary>

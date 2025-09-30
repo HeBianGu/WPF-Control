@@ -1,15 +1,14 @@
-﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
 
-
-using H.Common;
-using H.Mvvm;
-using H.Services.Common;
 using H.Services.Message;
 using H.Services.Message.IODialog;
-using Microsoft.Win32;
-using System;
 using System.IO;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -29,7 +28,6 @@ namespace H.Controls.Vlc
         public static ComponentResourceKey MouseOverKey => new ComponentResourceKey(typeof(VlcPlayer), "S.VlcPlayer.MouseOver");
         public static ComponentResourceKey ScrollViewerTransforKey => new ComponentResourceKey(typeof(VlcPlayer), "S.VlcPlayer.ScrollViewerTransfor");
         public static ComponentResourceKey NoneKey => new ComponentResourceKey(typeof(VlcPlayer), "S.VlcPlayer.None");
-
 
         static VlcPlayer()
         {
@@ -149,7 +147,6 @@ namespace H.Controls.Vlc
             this.Unloaded += VlcPlayer_Unloaded;
         }
 
-
         private void VlcPlayer_Unloaded(object sender, RoutedEventArgs e)
         {
             if (this._vlc?.SourceProvider?.MediaPlayer == null)
@@ -220,7 +217,6 @@ namespace H.Controls.Vlc
             this._media_slider = this.Template.FindName("media_slider", this) as Slider;
             this._media_slider.ValueChanged += media_slider_ValueChanged;
         }
-
 
         public bool IsPlaying
         {
@@ -371,7 +367,6 @@ namespace H.Controls.Vlc
                 //}
             }));
 
-
         public bool UseAutoPlayOnVedioSource
         {
             get { return (bool)GetValue(UseAutoPlayOnVedioSourceProperty); }
@@ -398,7 +393,6 @@ namespace H.Controls.Vlc
 
             }));
 
-
         private void InitVlc()
         {
             DirectoryInfo libDirectory = new DirectoryInfo(VlcSetting.Instance.LibvlcPath);
@@ -416,8 +410,6 @@ namespace H.Controls.Vlc
 
             this._vlc = new VlcControl();
             this.Content = this._vlc;
-
-
 
             this._vlc.SourceProvider.CreatePlayer(libDirectory/* pass your player parameters here */);
 
@@ -451,7 +443,6 @@ namespace H.Controls.Vlc
 
         }
 
-
         public double Maxinum
         {
             get { return (double)GetValue(MaxinumProperty); }
@@ -478,7 +469,6 @@ namespace H.Controls.Vlc
 
             }));
 
-
         /// <summary> 刷新当前进度 </summary>
         private void RefreshSlider()
         {
@@ -496,7 +486,6 @@ namespace H.Controls.Vlc
         private async void media_slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             long value = (long)this._media_slider.Value;
-
 
             await Task.Run(() =>
             {
@@ -545,7 +534,6 @@ namespace H.Controls.Vlc
         //    this._vlc.SourceProvider.MediaPlayer.Audio.Volume = (int)this._sound_slider.Value;
         //}
 
-
         public int Volume
         {
             get { return (int)GetValue(VolumeProperty); }
@@ -575,7 +563,6 @@ namespace H.Controls.Vlc
 
              }));
 
-
         public bool UseLeft
         {
             get { return (bool)GetValue(UseLeftProperty); }
@@ -601,7 +588,6 @@ namespace H.Controls.Vlc
                  }
 
              }));
-
 
         public bool UseRight
         {
@@ -629,7 +615,6 @@ namespace H.Controls.Vlc
 
              }));
 
-
         public bool UseBottom
         {
             get { return (bool)GetValue(UseBottomProperty); }
@@ -655,7 +640,6 @@ namespace H.Controls.Vlc
                  }
 
              }));
-
 
         public bool UseOpenFile
         {
@@ -683,7 +667,6 @@ namespace H.Controls.Vlc
 
              }));
 
-
         public bool UseVolume
         {
             get { return (bool)GetValue(UseVolumeProperty); }
@@ -709,7 +692,6 @@ namespace H.Controls.Vlc
                  }
 
              }));
-
 
         public bool UseFullScreen
         {
@@ -737,7 +719,6 @@ namespace H.Controls.Vlc
 
              }));
 
-
         public bool UseShotCut
         {
             get { return (bool)GetValue(UseShotCutProperty); }
@@ -763,7 +744,6 @@ namespace H.Controls.Vlc
                  }
 
              }));
-
 
         public bool UsePrevious
         {
@@ -791,7 +771,6 @@ namespace H.Controls.Vlc
 
              }));
 
-
         public bool UseNext
         {
             get { return (bool)GetValue(UseNextProperty); }
@@ -817,7 +796,6 @@ namespace H.Controls.Vlc
                  }
 
              }));
-
 
         public bool UseBottomMouseOver
         {
@@ -845,7 +823,6 @@ namespace H.Controls.Vlc
 
              }));
 
-
         public bool UsePlay
         {
             get { return (bool)GetValue(UsePlayProperty); }
@@ -871,7 +848,6 @@ namespace H.Controls.Vlc
                  }
 
              }));
-
 
         public bool UsePreviourFrame
         {
@@ -899,7 +875,6 @@ namespace H.Controls.Vlc
 
              }));
 
-
         public bool UseNextFrame
         {
             get { return (bool)GetValue(UseNextFrameProperty); }
@@ -925,7 +900,6 @@ namespace H.Controls.Vlc
                  }
 
              }));
-
 
         public Brush ToolBackground
         {
@@ -953,7 +927,6 @@ namespace H.Controls.Vlc
 
              }));
 
-
         public Brush ToolForeground
         {
             get { return (Brush)GetValue(ToolForegroundProperty); }
@@ -979,7 +952,6 @@ namespace H.Controls.Vlc
              }));
 
     }
-
 
     public class VlcPlayerCommands
     {

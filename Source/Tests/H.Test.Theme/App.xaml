@@ -6,10 +6,10 @@
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <FontSizeTheme Type="Default" />
+                <!--<FontSizeTheme Type="Default" />
                 <LayoutTheme Type="Default" />
                 <ColorTheme Type="Dark" />
-                <PurpleDarkTheme />
+                <PurpleDarkTheme />-->
                 <ConciseStyle/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>

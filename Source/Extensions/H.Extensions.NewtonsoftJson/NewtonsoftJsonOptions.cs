@@ -1,7 +1,16 @@
-﻿using H.Extensions.NewtonsoftJson.Jsonable;
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
+
+using H.Extensions.NewtonsoftJson.Jsonable;
 using H.Extensions.Setting;
 using H.Services.Setting;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
@@ -36,12 +45,14 @@ public class NewtonsoftJsonOptions : IocOptionInstance<NewtonsoftJsonOptions>, I
                 new TypeConverterJsonConverter(),
                 new EnumConverter(),
                 new DateTimeConverter(),
-                new JsonableJsonConverter() }//这部分序列化是会逻辑有问题用FilterBox测试
-
+                new JsonableJsonConverter() },//这部分序列化是会逻辑有问题用FilterBox测试
+            //使用对象引用
+            PreserveReferencesHandling = PreserveReferencesHandling.Objects,
+            ReferenceLoopHandling = ReferenceLoopHandling.Serialize
         };
         return setting;
     }
-
+    
 }
 
 public class DateTimeConverter : Newtonsoft.Json.JsonConverter

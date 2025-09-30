@@ -34,8 +34,8 @@ namespace H.Test.Bootstrap
 
         protected override void Configure(IApplicationBuilder app)
         {
-            app.UseWindowSetting();
-            app.UseScrollViewerSetting();
+            //app.UseWindowSetting();
+            //app.UseScrollViewerSetting();
         }
 
     }

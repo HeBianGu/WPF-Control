@@ -1,4 +1,10 @@
-﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
 
 namespace H.Controls.Diagram.Presenter.Flowables;
 
@@ -11,6 +17,12 @@ public class FlowableResult : IFlowableResult
     public string Message { get; }
 
     public FlowableResultState State { get; set; }
+
+
+    public static FlowableResult Continue { get; } = new FlowableResult("阻止流程") { State = FlowableResultState.Continue };
+    public static FlowableResult OK { get; } = new FlowableResult("运行成功") { State = FlowableResultState.OK };
+    public static FlowableResult Error { get; } = new FlowableResult("运行错误") { State = FlowableResultState.Error };
+
 }
 
 public class FlowableResult<T> : FlowableResult

@@ -17,7 +17,7 @@
                     Background="{DynamicResource {x:Static BrushKeys.Background}}"
                     BorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrush}}"
                     BorderThickness="1"
-                    CornerRadius="2" />
+                    CornerRadius="{DynamicResource {x:Static LayoutKeys.CornerRadius}}" />
             <Border Grid.Column="0"
                     Margin="1"
                     Background="{DynamicResource {x:Static BrushKeys.Background}}"
@@ -31,53 +31,6 @@
                     <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Foreground}}" />
                 </Path.Fill>
             </Path>
-            <!--<VisualStateManager.VisualStateGroups>
-                <VisualStateGroup x:Name="CommonStates">
-                    <VisualState x:Name="Normal" />
-                    <VisualState x:Name="MouseOver">
-                        <Storyboard>
-                            <ColorAnimationUsingKeyFrames Storyboard.TargetName="Border"
-                                                          Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)">
-                                <EasingColorKeyFrame KeyTime="0"
-                                                     Value="{DynamicResource {x:Static ColorKeys.MouseOver}}" />
-                            </ColorAnimationUsingKeyFrames>
-                        </Storyboard>
-                    </VisualState>
-                    <VisualState x:Name="Pressed" />
-                    <VisualState x:Name="Disabled">
-                        <Storyboard>
-                            <ColorAnimationUsingKeyFrames Storyboard.TargetName="Border"
-                                                          Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)">
-                                <EasingColorKeyFrame KeyTime="0"
-                                                     Value="{DynamicResource {x:Static ColorKeys.BackgroundDisabled}}" />
-                            </ColorAnimationUsingKeyFrames>
-                            <ColorAnimationUsingKeyFrames Storyboard.TargetName="Arrow"
-                                                          Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)">
-                                <EasingColorKeyFrame KeyTime="0"
-                                                     Value="{DynamicResource {x:Static ColorKeys.ForegroundDisabled}}" />
-                            </ColorAnimationUsingKeyFrames>
-                            <ColorAnimationUsingKeyFrames Storyboard.TargetName="Border"
-                                                          Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)">
-                                <EasingColorKeyFrame KeyTime="0"
-                                                     Value="{DynamicResource {x:Static ColorKeys.BorderBrushDisabled}}" />
-                            </ColorAnimationUsingKeyFrames>
-                        </Storyboard>
-                    </VisualState>
-                </VisualStateGroup>
-                <VisualStateGroup x:Name="CheckStates">
-                    <VisualState x:Name="Checked">
-                        <Storyboard>
-                            <ColorAnimationUsingKeyFrames Storyboard.TargetName="Border"
-                                                          Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)">
-                                <EasingColorKeyFrame KeyTime="0"
-                                                     Value="{DynamicResource {x:Static ColorKeys.Selected}}" />
-                            </ColorAnimationUsingKeyFrames>
-                        </Storyboard>
-                    </VisualState>
-                    <VisualState x:Name="Unchecked" />
-                    <VisualState x:Name="Indeterminate" />
-                </VisualStateGroup>
-            </VisualStateManager.VisualStateGroups>-->
         </Grid>
         <ControlTemplate.Triggers>
             <Trigger Property="IsChecked" Value="True">
@@ -118,6 +71,15 @@
         <Setter Property="Cattach.UseGuide" Value="True" />
         <Setter Property="Cattach.GuideTitle" Value="{Binding RelativeSource={RelativeSource Mode=Self}, Path=ToolTip}" />
         <Setter Property="Cattach.GuideData" Value="{Binding RelativeSource={RelativeSource Mode=Self}, Path=ToolTip}" />
+        <Setter Property="Cattach.ItemHorizontalContentAlignment" Value="Stretch" />
+        <Setter Property="Cattach.ItemVerticalContentAlignment" Value="Center" />
+        <Setter Property="Cattach.ItemMinHeight" Value="{DynamicResource {x:Static LayoutKeys.ItemHeight}}" />
+        <Setter Property="Cattach.ItemBackground" Value="Transparent" />
+        <Setter Property="Cattach.ItemHeight" Value="{DynamicResource {x:Static LayoutKeys.ItemHeight}}" />
+        <Setter Property="Cattach.ItemPadding" Value="5 3" />
+        <Setter Property="Cattach.ItemMargin" Value="0" />
+        <Setter Property="Cattach.ItemBorderThickness" Value="0" />
+        <Setter Property="Cattach.ItemBorderBrush" Value="Transparent" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ComboBox}">
@@ -190,10 +152,12 @@
                                 </Border>
                                 <ScrollViewer Margin="2,4"
                                               SnapsToDevicePixels="True">
-                                    <StackPanel IsItemsHost="True"
-                                                KeyboardNavigation.DirectionalNavigation="Contained" />
+                                    <!--<StackPanel IsItemsHost="True"
+                                                KeyboardNavigation.DirectionalNavigation="Contained" />-->
+
+                                    <ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
                                 </ScrollViewer>
-                                <Border Grid.RowSpan="3"
+                                <!--<Border Grid.RowSpan="3"
                                         IsHitTestVisible="False"
                                         Opacity="{Binding Source={x:Static local:WindowSetting.Instance}, Path=Opacity}"
                                         Visibility="{Binding Source={x:Static local:WindowSetting.Instance}, Path=UseBackImage, Converter={x:Static Converter.GetTrueToVisible}}">
@@ -201,7 +165,7 @@
                                         <ImageBrush ImageSource="{Binding Source={x:Static local:WindowSetting.Instance}, Path=BackImagePath}"
                                                     Stretch="{Binding Source={x:Static local:WindowSetting.Instance}, Path=Stretch}" />
                                     </Border.Background>
-                                </Border>
+                                </Border>-->
                             </Grid>
                         </Popup>
                     </Grid>
@@ -233,20 +197,15 @@
            BasedOn="{StaticResource S.Control.Base}"
            TargetType="{x:Type ComboBoxItem}">
         <Setter Property="SnapsToDevicePixels" Value="true" />
-        <!--<Setter Property="OverridesDefaultStyle" Value="true" />-->
-        <Setter Property="Padding" Value="{Binding RelativeSource={RelativeSource AncestorType=ItemsControl}, Path=(Cattach.ItemPadding)}" />
-        <Setter Property="Background">
-            <Setter.Value>
-                <SolidColorBrush Color="Transparent" />
-            </Setter.Value>
-        </Setter>
-        <Setter Property="BorderBrush">
-            <Setter.Value>
-                <SolidColorBrush Color="Transparent" />
-            </Setter.Value>
-        </Setter>
-        <Setter Property="BorderThickness" Value="0" />
-        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="Height" Value="{Binding RelativeSource={RelativeSource AncestorType=ComboBox}, Path=(Cattach.ItemHeight)}" />
+        <Setter Property="MinHeight" Value="{DynamicResource {x:Static LayoutKeys.ItemHeight}}" />
+        <Setter Property="HorizontalContentAlignment" Value="{Binding RelativeSource={RelativeSource AncestorType=ComboBox}, Path=(Cattach.ItemHorizontalContentAlignment)}" />
+        <Setter Property="Padding" Value="{Binding RelativeSource={RelativeSource AncestorType=ComboBox}, Path=(Cattach.ItemPadding)}" />
+        <Setter Property="Margin" Value="{Binding RelativeSource={RelativeSource AncestorType=ComboBox}, Path=(Cattach.ItemMargin)}" />
+        <Setter Property="VerticalContentAlignment" Value="{Binding RelativeSource={RelativeSource AncestorType=ComboBox}, Path=(Cattach.ItemVerticalContentAlignment)}" />
+        <Setter Property="Background" Value="{Binding RelativeSource={RelativeSource AncestorType=ComboBox}, Path=(Cattach.ItemBackground)}" />
+        <Setter Property="BorderBrush" Value="{Binding RelativeSource={RelativeSource AncestorType=ComboBox}, Path=(Cattach.ItemBorderBrush)}" />
+        <Setter Property="BorderThickness" Value="{Binding RelativeSource={RelativeSource AncestorType=ComboBox}, Path=(Cattach.ItemBorderThickness)}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ComboBoxItem}">

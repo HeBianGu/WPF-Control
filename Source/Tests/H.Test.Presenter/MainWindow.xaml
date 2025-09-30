@@ -34,9 +34,27 @@
             </Button.CommandParameter>
         </Button>
         <Button Command="{h:ShowCommand}"
+                Content="AddImageFilePathPresenter">
+            <Button.CommandParameter>
+                <AddImageFilePathPresenter />
+            </Button.CommandParameter>
+        </Button>
+        <Button Command="{h:ShowCommand}"
+                Content="AddImageListPresenter">
+            <Button.CommandParameter>
+                <AddImageListPresenter />
+            </Button.CommandParameter>
+        </Button>
+        <Button Command="{h:ShowCommand}"
                 Content="ImageFilePathPresenter">
             <Button.CommandParameter>
                 <ImageFilePathPresenter />
+            </Button.CommandParameter>
+        </Button>
+        <Button Command="{h:ShowCommand}"
+                Content="ImageViewPresenter">
+            <Button.CommandParameter>
+                <ImageViewPresenter />
             </Button.CommandParameter>
         </Button>
 
@@ -168,6 +186,13 @@
             <Button.CommandParameter>
                 <TextBox Width="200"
                          Text="123456" />
+            </Button.CommandParameter>
+        </Button>
+
+        <Button Command="{h:ShowCommand DialogButton=None}"
+                Content="CommandsPresenter-自定义按钮解决方案">
+            <Button.CommandParameter>
+                <TestCommandsPresenter Presenter="{GetStudent}" />
             </Button.CommandParameter>
         </Button>
     </UniformGrid>

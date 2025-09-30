@@ -1,6 +1,13 @@
-﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
 
-using System.Windows;
+using H.Themes.FontSizes;
+using H.Themes.Layouts;
 
 namespace H.Themes.Extensions;
 
@@ -16,7 +23,6 @@ public static class ThemeTypeExtension
     private static string GetFormat(string arg1) => string.Format(Format1, arg1);
     private static Uri GetUri(string arg1) => new Uri(GetFormat(arg1));
     private static ResourceDictionary GetResource(string arg1) => new ResourceDictionary() { Source = GetUri(arg1) };
-
 
     private static string GetFormat(string arg1, string arg2) => string.Format(Format2, arg1, arg2);
     private static Uri GetUri(string arg1, string arg2) => new Uri(GetFormat(arg1, arg2));
@@ -41,16 +47,15 @@ public static class ThemeTypeExtension
         return resource.IsTypeResource("Layouts");
     }
 
-
     public static void ChangeFontSizeThemeType(this FontSizeThemeType n)
     {
-        ResourceDictionary resource = n.GetFontSizeResource();
+        ResourceDictionary resource = n == FontSizeThemeType.Default ? GetResource("FontSizeKeys") : n.GetFontSizeResource();
         resource.ChangeResourceDictionary(x => x.IsFontSizesResource());
     }
 
     public static void ChangeLayoutThemeType(this LayoutThemeType n)
     {
-        ResourceDictionary resource = n.GetLayoutResource();
+        ResourceDictionary resource = n == LayoutThemeType.Default ? GetResource("LayoutKeys") : n.GetLayoutResource();
         resource.ChangeResourceDictionary(x => x.IsLayoutsResource());
     }
 
@@ -82,17 +87,21 @@ public static class ThemeTypeExtension
 
     public static ResourceDictionary GetLayoutResource(this LayoutThemeType type)
     {
+        if (type == LayoutThemeType.Default)
+            return GetResource("LayoutKeys");
         return GetResource("Layouts", type.ToString());
     }
 
     public static ResourceDictionary GetFontSizeResource(this FontSizeThemeType type)
     {
+        if (type == FontSizeThemeType.Default)
+            return GetResource("FontSizeKeys");
         return GetResource("FontSizes", type.ToString());
     }
 
     public static ResourceDictionary GetSystemsResource()
     {
-        return GetResource("Systems", "Default");
+        return GetResource("SystemKeys");
     }
 
     public static void RefreshBrushResourceDictionary()

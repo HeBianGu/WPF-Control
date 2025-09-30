@@ -1,4 +1,12 @@
-﻿global using System.Runtime.Serialization;
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
+
+global using System.Runtime.Serialization;
 namespace H.Controls.Diagram.Presenter.NodeDatas.Base;
 
 public abstract class PortableNodeData : NodeData, IPortableNodeData
@@ -52,17 +60,31 @@ public abstract class PortableNodeData : NodeData, IPortableNodeData
         }
     }
 
-    public override object Clone()
-    {
-        PortableNodeData data = base.Clone() as PortableNodeData;
-        data.PortDatas.Clear();
-        data.InitPortDatas();
-        return data;
-    }
+    //public override object Clone()
+    //{
+    //    PortableNodeData data = base.Clone() as PortableNodeData;
+    //    data.PortDatas.Clear();
+    //    data.InitPortDatas();
+    //    return data;
+    //}
 
     #region - Serializing -
     [OnSerializing]
     internal void OnSerializingMethod(StreamingContext context)
+    {
+        this.OnSerializing(context);
+    }
+
+    protected virtual void OnSerializing(StreamingContext context)
+    {
+
+    }
+    [OnSerialized]
+    internal void OnSerializedMethod(StreamingContext context)
+    {
+        this.OnSerialized(context);
+    }
+    protected virtual void OnSerialized(StreamingContext context)
     {
 
     }
@@ -71,6 +93,20 @@ public abstract class PortableNodeData : NodeData, IPortableNodeData
     internal void OnDeserializedMethod(StreamingContext context)
     {
         this.PortDatas = this.PortDatas.Except(this._defaultPortDatas).ToList();
+        this.OnDeserialized(context);
+    }
+    protected virtual void OnDeserialized(StreamingContext context)
+    {
+
+    }
+    [OnDeserializing]
+    internal void OnDeserializingMethod(StreamingContext context)
+    {
+        this.OnDeserializing(context);
+    }
+    protected virtual void OnDeserializing(StreamingContext context)
+    {
+
     }
     #endregion
 

@@ -1,10 +1,10 @@
-﻿global using H.Mvvm.ViewModels.Base;
+﻿global using H.Extensions.Mvvm.ViewModels.Base;
 using H.Controls.Adorner.Adorner;
 using H.Controls.Form;
 using H.Extensions.Behvaiors.Adorners;
 using H.Extensions.Command;
-using H.Extensions.ValueConverter;
-using H.Extensions.ValueConverter.IEnumerables;
+using H.ValueConverter;
+using H.ValueConverter.IEnumerables;
 using H.Services.Common;
 using H.Services.Common.About;
 using H.Services.Identity;
@@ -12,8 +12,8 @@ using H.Services.Message;
 using H.Services.Project;
 using H.Services.Setting;
 using H.Styles;
+using H.Themes;
 using H.Themes.Colors;
-using H.Themes.FontSizes;
 using System.Reflection;
 using System.Text;
 using System.Windows;
@@ -25,6 +25,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using H.Mvvm.ViewModels.Base;
 
 namespace H.Tools.AssemblyInfos;
 /// <summary>

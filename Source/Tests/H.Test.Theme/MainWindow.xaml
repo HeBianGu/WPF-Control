@@ -413,7 +413,7 @@
                                Text="&#xE701;" />
                     <TextBlock FontFamily="{x:Static IconFontFamilys.SystemSegoeFluentIcons}"
                                Text="&#xE706;" />
-                    <TextBlock FontFamily="{x:Static IconFontFamilys.locationSegoeFluentIcons}"
+                    <TextBlock FontFamily="{x:Static IconFontFamilys.LocationSegoeFluentIcons}"
                                Text="&#xE706;" />
                     <TextBlock FontFamily="pack://application:,,,/H.Extensions.FontIcon;component/Assets/Segoe Fluent Icons.ttf#Segoe Fluent Icons"
                                Text="&#xE706;" />

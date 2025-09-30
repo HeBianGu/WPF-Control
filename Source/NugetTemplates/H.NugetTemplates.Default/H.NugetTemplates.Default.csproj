@@ -1,26 +1,12 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <TargetFramework>net8.0-windows</TargetFramework>
     <UseWPF>true</UseWPF>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="H.Controls.Form" Version="1.0.4" />
-    <PackageReference Include="H.Controls.Step" Version="1.0.4" />
-    <PackageReference Include="H.Data.Test" Version="1.0.4" />
-    <PackageReference Include="H.Extensions.ApplicationBase" Version="1.0.4" />
-    <PackageReference Include="H.Modules.About" Version="1.0.4" />
-    <PackageReference Include="H.Modules.Messages.Dialog" Version="1.0.4" />
-    <PackageReference Include="H.Modules.Messages.Form" Version="1.0.4" />
-    <PackageReference Include="H.Modules.Messages.Notice" Version="1.0.4" />
-    <PackageReference Include="H.Modules.Messages.Snack" Version="1.0.4" />
-    <PackageReference Include="H.Modules.Setting" Version="1.0.4" />   
-    <PackageReference Include="H.Modules.Theme" Version="1.0.4" />   
-    <PackageReference Include="H.Mvvm" Version="1.0.4" />   
-    <PackageReference Include="H.Themes.Colors.Accent" Version="1.0.4" />  
-    <PackageReference Include="H.Themes.Colors.Gray" Version="1.0.4" />   
-    <PackageReference Include="H.Themes.Colors.Purple" Version="1.0.4" />
-    <PackageReference Include="H.Windows.Main" Version="1.0.4" />
+    <PackageReference Include="H.ApplicationBases.Default" Version="1.0.5" />
+    <PackageReference Include="H.Data.Test" Version="1.0.5" />
+    <PackageReference Include="H.Windows.Main" Version="1.0.5" />
   </ItemGroup>
 </Project>

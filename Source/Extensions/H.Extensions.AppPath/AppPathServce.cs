@@ -1,4 +1,12 @@
-﻿using H.Iocable;
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
+
+using H.Iocable;
 using H.Services.AppPath;
 using H.Services.Identity;
 using System.ComponentModel.DataAnnotations;
@@ -145,7 +153,8 @@ public class AppPathServce : Lazy<AppPathServce>, IAppPathServce
     /// <summary>
     /// 资源目录
     /// </summary>
-    public virtual string Assets => Path.Combine(AppDomain.CurrentDomain.BaseDirectory, nameof(Assets));
+    //public virtual string Assets => Path.Combine(AppDomain.CurrentDomain.BaseDirectory, nameof(Assets));
+    public virtual string Assets => nameof(Assets);
 
     /// <summary>
     /// 用户模板目录

@@ -1,8 +1,8 @@
 <ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:h="https://github.com/HeBianGu"
-                    xmlns:local="clr-namespace:H.Modules.Setting"
                     xmlns:lb="clr-namespace:H.Modules.Setting.Base"
+                    xmlns:local="clr-namespace:H.Modules.Setting"
                     xmlns:system="clr-namespace:System;assembly=netstandard">
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/H.Modules.Setting;component/SettingViewPresenter.xaml" />

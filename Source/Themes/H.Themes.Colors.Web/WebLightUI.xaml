@@ -1,0 +1,16 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:H.Themes.Colors.Web"
+                    xmlns:po="http://schemas.microsoft.com/winfx/2006/xaml/presentation/options">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/H.Theme;component/Colors/Light.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.CaptionBackground, TypeInTargetAssembly={x:Type ColorKeys}}">#F5F7FA</Color>
+    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextMouseOver, TypeInTargetAssembly={x:Type ColorKeys}}">#F5F7FA</Color>
+    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextSelected, TypeInTargetAssembly={x:Type ColorKeys}}">#F5F7FA</Color>
+    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.CaptionForeground, TypeInTargetAssembly={x:Type ColorKeys}}">#303133</Color>
+    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextBorderBrush, TypeInTargetAssembly={x:Type ColorKeys}}">#DCDFE6</Color>
+    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Accent, TypeInTargetAssembly={x:Type ColorKeys}}">#2D80FF</Color>
+    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextBorderBrush.Assist, TypeInTargetAssembly={x:Type ColorKeys}}">#EBEEF5</Color>
+</ResourceDictionary>

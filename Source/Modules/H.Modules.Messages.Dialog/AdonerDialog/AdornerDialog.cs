@@ -1,7 +1,12 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
+
 using System.Reflection;
-using System.Threading.Tasks;
 
 namespace H.Modules.Messages.Dialog
 {
@@ -22,8 +27,8 @@ namespace H.Modules.Messages.Dialog
             AdornerDialogPresenter dialog = new AdornerDialogPresenter(presenter);
             dialog.MinWidth = 100;
             dialog.MinHeight = 100;
-            dialog.HorizontalAlignment=System.Windows.HorizontalAlignment.Center;
-            dialog.VerticalAlignment = System.Windows.VerticalAlignment.Center;dialog.HorizontalContentAlignment=System.Windows.HorizontalAlignment.Center;
+            dialog.HorizontalAlignment = System.Windows.HorizontalAlignment.Center;
+            dialog.VerticalAlignment = System.Windows.VerticalAlignment.Center; dialog.HorizontalContentAlignment = System.Windows.HorizontalAlignment.Center;
             dialog.VerticalContentAlignment = System.Windows.VerticalAlignment.Center;
             action?.Invoke(dialog);
             dialog.Title = dialog.Title ?? presenter.GetType().GetCustomAttribute<DisplayAttribute>()?.Name ?? "提示";

@@ -1,42 +1,23 @@
+// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
 
-global using System.Windows.Markup;
-global using System.Windows;
-global using System.Windows.Markup;
-global using System.Windows;
 global using System.Collections.Generic;
+global using System.Collections.ObjectModel;
+global using System.ComponentModel;
+global using System.ComponentModel.DataAnnotations;
 global using System.Linq;
-global using System.Threading.Tasks;
 global using System.Text;
-global using System.Windows.Controls;
+global using System.Windows.Controls.Primitives;
 global using System.Windows.Data;
 global using System.Windows.Documents;
 global using System.Windows.Input;
+global using System.Windows.Markup;
 global using System.Windows.Media;
-global using System.Windows.Media.Imaging;
-global using System.Windows.Navigation;
-global using System.Windows.Shapes;
-global using System.Collections.ObjectModel;
-global using System.ComponentModel.DataAnnotations;
-global using System.ComponentModel;
-global using System.IO;
-global using System.Windows.Controls.Primitives;
-global using H.Extensions.Behvaiors;
-global using H.Extensions.Behvaiors.Adorners;
-global using H.Extensions.Behvaiors.ContextMenus;
-global using H.Extensions.Behvaiors.DataGrids;
-global using H.Extensions.Behvaiors.FrameworkElements;
-global using H.Extensions.Behvaiors.ItemsControls;
-global using H.Extensions.Behvaiors.PasswordBoxs;
-global using H.Extensions.Behvaiors.ScrollViewers;
-global using H.Extensions.Behvaiors.TextBlocks;
-global using H.Extensions.Behvaiors.TextBoxs;
-global using H.Extensions.Behvaiors.TreeViews;
-global using H.Extensions.Behvaiors.Triggers;
-global using H.Extensions.Behvaiors.Triggers.Action;
-global using H.Common;
-global using H.Common.Attributes;
-global using H.Common.Transitionable;
-global using H.Extensions.Common;
 [assembly: ThemeInfo(
     ResourceDictionaryLocation.None, //where theme specific resource dictionaries are located
                                      //(used if a resource is not found in the page,
@@ -45,7 +26,6 @@ global using H.Extensions.Common;
                                               //(used if a resource is not found in the page,
                                               // app, or any theme specific resource dictionaries)
 )]
-
 
 [assembly: XmlnsDefinition("QQ:908293466", "H.Extensions.Behvaiors")]
 [assembly: XmlnsDefinition("QQ:908293466", "H.Extensions.Behvaiors.Adorners")]

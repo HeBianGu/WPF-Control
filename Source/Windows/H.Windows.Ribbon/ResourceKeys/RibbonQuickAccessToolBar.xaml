@@ -78,7 +78,7 @@
                                             Background="{TemplateBinding Background}"
                                             BorderBrush="{TemplateBinding BorderBrush}"
                                             BorderThickness="1"
-                                            CornerRadius="2">
+                                            CornerRadius="{DynamicResource {x:Static LayoutKeys.CornerRadius}}">
                                         <DockPanel>
                                             <primitives:RibbonQuickAccessToolBarOverflowPanel Name="PART_OverflowPanel"
                                                                                               KeyboardNavigation.DirectionalNavigation="Cycle"

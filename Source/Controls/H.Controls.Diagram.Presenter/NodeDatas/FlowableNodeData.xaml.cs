@@ -1,11 +1,18 @@
-﻿global using H.Controls.Diagram.Presenter.DiagramDatas.Base;
-using H.Controls.Diagram.Presenter.NodeDatas.Base;
-using H.Extensions.FontIcon;
-using System.Windows.Documents;
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
+
+global using H.Controls.Diagram.Presenter.DiagramDatas.Base;
+using H.Controls.Diagram.Presenter.Extensions;
 
 namespace H.Controls.Diagram.Presenter.NodeDatas;
 
-public class FlowableNodeData : TextNodeData, IFlowableNodeData
+
+public class FlowableNodeData : ExpressionNodeDataBase, IFlowableNodeData
 {
     private FlowableState _state = FlowableState.Ready;
     [Browsable(false)]
@@ -16,6 +23,18 @@ public class FlowableNodeData : TextNodeData, IFlowableNodeData
         {
             _state = value;
             RaisePropertyChanged("State");
+        }
+    }
+
+    private FlowableInvokeMode _invokeMode = FlowableInvokeMode.Serial;
+    [Display(Name = "流程执行方式", GroupName = "流程控制", Description = "设置流程执行后续节点方式，串行或者并行")]
+    public FlowableInvokeMode InvokeMode
+    {
+        get { return _invokeMode; }
+        set
+        {
+            _invokeMode = value;
+            RaisePropertyChanged();
         }
     }
 
@@ -148,7 +167,7 @@ public class FlowableNodeData : TextNodeData, IFlowableNodeData
 
     public virtual IFlowableResult Invoke(IFlowableLinkData previors, IFlowableDiagramData diagram)
     {
-        Thread.Sleep(FlowableDiagramDataSetting.Instance.FlowSleepMillisecondsTimeout);
+        //Thread.Sleep(FlowableDiagramDataSetting.Instance.FlowSleepMillisecondsTimeout);
         return FlowableDiagramDataSetting.Instance.UseMock
             ? this.Random.Next(0, 19) == 1 ? this.Error("模拟仿真一个错误信息") : this.OK("模拟仿真一个成功信息")
             : this.OK("运行成功");
@@ -169,8 +188,21 @@ public class FlowableNodeData : TextNodeData, IFlowableNodeData
             return this.Invoke(previors, diagram);
         });
     }
+
+    protected virtual bool CanInvoke(IFlowableLinkData previors, IFlowableDiagramData current)
+    {
+        return true;
+    }
+
     public virtual async Task<IFlowableResult> TryInvokeAsync(IFlowableLinkData previors, IFlowableDiagramData diagram)
     {
+        if (!this.CanInvoke(previors, diagram))
+        {
+            this.State = FlowableState.Continue;
+            this.Message = "不满足执行条件阻止流程";
+            return FlowableResult.Continue;
+        }
+
         try
         {
             this.Clear();
@@ -181,10 +213,19 @@ public class FlowableNodeData : TextNodeData, IFlowableNodeData
                 if (this.UseInfoLogger)
                     IocLog.Instance?.Info($"正在执行<{this.GetType().Name}>:{this.Text}");
                 IFlowableResult result = await InvokeAsync(previors, diagram);
-                if (this.UseInfoLogger)
-                    IocLog.Instance?.Info(result.State == FlowableResultState.Error ? $"运行错误<{this.GetType().Name}>:{this.Text} {result.Message}" : $"执行完成<{this.GetType().Name}>:{this.Text} {result.Message}");
-                this.State = result.ToState();
-                return result;
+                if (result.State == FlowableResultState.Continue)
+                {
+                    this.State = FlowableState.Continue;
+                    this.Message = result.Message ?? "不满足执行条件阻止流程";
+                    return FlowableResult.Continue;
+                }
+                else
+                {
+                    if (this.UseInfoLogger)
+                        IocLog.Instance?.Info(result.State == FlowableResultState.Error ? $"运行错误<{this.GetType().Name}>:{this.Text} {result.Message}" : $"执行完成<{this.GetType().Name}>:{this.Text} {result.Message}");
+                    this.State = result.ToState();
+                    return result;
+                }
             }
         }
         catch (Exception ex)
@@ -220,19 +261,22 @@ public class FlowableNodeData : TextNodeData, IFlowableNodeData
 
     }
 
-    protected T GetFromNodeData<T>(IFlowableDiagramData diagramData, IFlowableLinkData from = null) where T : INodeData
+    protected T GetFromNodeData<T>(IDiagramData diagramData, IFlowableLinkData from = null) where T : INodeData
     {
         if (from == null)
             return default;
-        return (T)from.GetFromNodeData(diagramData);
+
+        if (from.GetFromNodeData(diagramData) is T t)
+            return t;
+        return default(T);
     }
 
-    protected T GetStartFromNodeData<T>(IFlowableDiagramData diagramData) where T : INodeData
+    protected T GetStartFromNodeData<T>(IDiagramData diagramData) where T : INodeData
     {
         return diagramData.GetStartNodeDatas().OfType<T>().FirstOrDefault();
     }
 
-    public async Task<bool?> Start(IFlowableDiagramData diagramData, IFlowableLinkData from = null)
+    public virtual async Task<bool?> Start(IFlowableDiagramData diagramData, IFlowableLinkData from = null)
     {
         if (this.State == FlowableState.Canceling)
             return null;
@@ -240,22 +284,38 @@ public class FlowableNodeData : TextNodeData, IFlowableNodeData
         using (new PartDataInvokable(this, diagramData.OnInvokingPart, diagramData.OnInvokedPart))
         {
             nresult = await this.TryInvokeAsync(from, diagramData) as FlowableResult;
+            if (nresult == null)
+                return null;
+            if (nresult.State == FlowableResultState.Continue)
+                return true;
             if (nresult.State == FlowableResultState.Error)
                 return false;
         }
-        foreach (var portData in this.GetFlowablePortDatas(diagramData))
+        var toports = this.GetFlowablePortDatas(diagramData).ToList();
+        if (this.InvokeMode == FlowableInvokeMode.Serial)
         {
-            var lr = await portData.Start(diagramData);
-            if (lr != true)
-                return lr;
+            foreach (var portData in toports)
+            {
+                var lr = await portData.Item1.Start(diagramData, this, portData.Item2);
+                if (lr != true)
+                    return lr;
+            }
+            return true;
         }
-        return true;
+        else
+        {
+            var tasks = toports.Select(x => x.Item1.Start(diagramData, this, x.Item2));
+            var all = await Task.WhenAll(tasks.ToArray());
+            return all.All(x => x != false);
+        }
+
+
     }
 
-    protected virtual IEnumerable<IFlowablePortData> GetFlowablePortDatas(IFlowableDiagramData diagramData)
+    protected virtual IEnumerable<Tuple<IFlowablePortData, Predicate<IFlowableLinkData>>> GetFlowablePortDatas(IFlowableDiagramData diagramData)
     {
         var toLinks = this.GetToLinkDatas(diagramData).OfType<IFlowableLinkData>();
-        return toLinks.Select(x => x.GetFromPortData(diagramData)).OfType<IFlowablePortData>();
+        return toLinks.Select(x => x.GetFromPortData(diagramData)).Distinct().OfType<IFlowablePortData>().Select(x => new Tuple<IFlowablePortData, Predicate<IFlowableLinkData>>(x, null));
     }
 
 }

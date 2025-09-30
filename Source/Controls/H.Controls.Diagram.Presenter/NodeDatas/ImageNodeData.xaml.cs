@@ -1,22 +1,28 @@
-﻿using H.Extensions.FontIcon;
-using Microsoft.Win32;
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
+
 using System.Windows.Media.Imaging;
 
 namespace H.Controls.Diagram.Presenter.NodeDatas;
 
-public interface IFilePathable
-{
-    string SrcFilePath { get; set; }
-}
+//public interface IFilePathable
+//{
+//    string SrcFilePath { get; set; }
+//}
 
-public interface IImageNodeData
+public interface IImageSrcNodeData
 {
     ImageSource ImageSource { get; set; }
 }
 
-public abstract class ImageNodeDataBase : FlowableNodeData, IImageNodeData
+public abstract class ImageSrcNodeDataBase : FlowableNodeData, IImageSrcNodeData
 {
-    public ImageNodeDataBase()
+    public ImageSrcNodeDataBase()
     {
         this.ImageSource = this.CreateImageSource();
     }
@@ -110,7 +116,7 @@ public abstract class ImageNodeDataBase : FlowableNodeData, IImageNodeData
     protected abstract ImageSource CreateImageSource();
 }
 
-public class ImageNodeData : ImageNodeDataBase
+public class ImageSrcNodeData : ImageSrcNodeDataBase
 {
     protected override ImageSource CreateImageSource()
     {

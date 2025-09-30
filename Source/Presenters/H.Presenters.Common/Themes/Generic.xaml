@@ -11,10 +11,14 @@
         <ResourceDictionary Source="pack://application:,,,/H.Presenters.Common;component/FilePathTextBoxPresenter.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Presenters.Common;component/ImageFilePathPresenter.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Presenters.Common;component/ImageViewPresenter.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Presenters.Common;component/AddImageListPresenter.xaml" />
 
         <ResourceDictionary Source="pack://application:,,,/H.Presenters.Common;component/ListBoxPresenter.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Presenters.Common;component/ItemsControlPresenter.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Presenters.Common;component/DataGridPresenter.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Presenters.Common;component/TreeViewPresenter.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Presenters.Common;component/CommandsPresenter.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Presenters.Common;component/CommandsBindablePresenter.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Presenters.Common;component/AddImageFilePathPresenter.xaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

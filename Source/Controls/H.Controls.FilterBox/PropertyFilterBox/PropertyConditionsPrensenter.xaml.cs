@@ -1,23 +1,63 @@
-﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
 
-
-using H.Extensions.XmlSerialize;
-
-using H.Mvvm;
-using System;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Reflection;
+using H.Extensions.Mvvm.Commands;
 using System.Text.Json.Serialization;
 using System.Xml.Serialization;
-using H.Extensions.NewtonsoftJson;
-using H.Mvvm.ViewModels.Base;
-using H.Mvvm.Commands;
-using H.Services.Common.Serialize.Meta;
 
 namespace H.Controls.FilterBox
 {
-    public class PropertyConditionsPrensenter : DisplayBindableBase, IConditionable, IMetaSetting
+    public abstract class PropertyConditionsPrensenterBase : DisplayBindableBase
+    {
+
+    }
+
+    public abstract class PropertyConditionsPrensenter<T> : PropertyConditionsPrensenterBase where T : IPropertyConditionPrensenter
+    {
+        private ObservableCollection<T> _propertyConfidtions = new ObservableCollection<T>();
+        public ObservableCollection<T> PropertyConfidtions
+        {
+            get { return _propertyConfidtions; }
+            set
+            {
+                _propertyConfidtions = value;
+                RaisePropertyChanged();
+            }
+        }
+
+
+        private T _selectedItem;
+        [JsonIgnore]
+        [XmlIgnore]
+        public T SelectedItem
+        {
+            get { return _selectedItem; }
+            set
+            {
+                _selectedItem = value;
+                RaisePropertyChanged();
+            }
+        }
+
+        [JsonIgnore]
+        [XmlIgnore]
+        public RelayCommand AddCommand => new RelayCommand(l =>
+        {
+            var item = this.Create();
+            this.PropertyConfidtions.Add(item);
+            if (this.SelectedItem == null)
+                this.SelectedItem = item;
+        });
+
+        protected abstract T Create();
+    }
+
+    public class PropertyConditionsPrensenter : PropertyConditionsPrensenter<PropertyConditionPrensenter>, IConditionable, IMetaSetting
     {
         public PropertyConditionsPrensenter()
         {
@@ -34,9 +74,8 @@ namespace H.Controls.FilterBox
         }
 
         private ObservableCollection<PropertyInfo> _properties = new ObservableCollection<PropertyInfo>();
-        [System.Text.Json.Serialization.JsonIgnore]
-        
-        [System.Xml.Serialization.XmlIgnore]
+        [JsonIgnore]
+        [XmlIgnore]
         public ObservableCollection<PropertyInfo> Properties
         {
             get { return _properties; }
@@ -46,32 +85,6 @@ namespace H.Controls.FilterBox
                 RaisePropertyChanged();
             }
         }
-
-        private ObservableCollection<PropertyConditionPrensenter> _propertyConfidtions = new ObservableCollection<PropertyConditionPrensenter>();
-        public ObservableCollection<PropertyConditionPrensenter> PropertyConfidtions
-        {
-            get { return _propertyConfidtions; }
-            set
-            {
-                _propertyConfidtions = value;
-                RaisePropertyChanged();
-            }
-        }
-
-        private PropertyConditionPrensenter _selectedItem;
-        [System.Text.Json.Serialization.JsonIgnore]
-        
-        [System.Xml.Serialization.XmlIgnore]
-        public PropertyConditionPrensenter SelectedItem
-        {
-            get { return _selectedItem; }
-            set
-            {
-                _selectedItem = value;
-                RaisePropertyChanged();
-            }
-        }
-
 
         private int _selectedIndex;
         public int SelectedIndex
@@ -84,22 +97,16 @@ namespace H.Controls.FilterBox
             }
         }
 
-        [System.Text.Json.Serialization.JsonIgnore]
-        
-        [System.Xml.Serialization.XmlIgnore]
-        public RelayCommand AddCommand => new RelayCommand(l =>
+        protected override PropertyConditionPrensenter Create()
         {
-            PropertyConditionPrensenter item = new PropertyConditionPrensenter() { ID = DateTime.Now.ToString("yyyyMMddHHmmssfff") };
-            item.Properties = this.Properties;
-            item.Load();
-            this.PropertyConfidtions.Add(item);
-            if (this.SelectedItem == null)
-                this.SelectedItem = item;
-        });
+            var result = new PropertyConditionPrensenter() { ID = DateTime.Now.ToString("yyyyMMddHHmmssfff") };
+            result.Properties = this.Properties;
+            result.Load();
+            return result;
+        }
 
-        [System.Text.Json.Serialization.JsonIgnore]
-        
-        [System.Xml.Serialization.XmlIgnore]
+        [JsonIgnore]
+        [XmlIgnore]
         public RelayCommand ClearSelectionCommand => new RelayCommand(l =>
         {
             this.SelectedItem = null;
@@ -126,9 +133,8 @@ namespace H.Controls.FilterBox
             return true;
         }
 
-        [System.Text.Json.Serialization.JsonIgnore]
-        
-        [System.Xml.Serialization.XmlIgnore]
+        [JsonIgnore]
+        [XmlIgnore]
         public IMetaSettingService MetaSettingService => new NewtonsoftJsonMetaSettingService();
 
         private bool _loaded = false;

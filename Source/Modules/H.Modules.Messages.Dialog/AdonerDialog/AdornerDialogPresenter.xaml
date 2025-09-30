@@ -5,7 +5,8 @@
                     xmlns:local="clr-namespace:H.Modules.Messages.Dialog">
     <DataTemplate DataType="{x:Type local:AdornerDialogPresenter}">
         <Grid HorizontalAlignment="Stretch"
-              VerticalAlignment="Stretch">
+              VerticalAlignment="Stretch"
+              WindowChrome.IsHitTestVisibleInChrome="True">
             <Grid.Background>
                 <SolidColorBrush Opacity="0.6"
                                  Color="Black" />
@@ -29,7 +30,7 @@
                 </Grid.RowDefinitions>
                 <Border Grid.RowSpan="5"
                         Grid.ColumnSpan="5"
-                        CornerRadius="2">
+                        CornerRadius="{DynamicResource {x:Static LayoutKeys.CornerRadius}}">
                     <Border.Background>
                         <SolidColorBrush Color="{DynamicResource {x:Static h:ColorKeys.Background}}" />
                     </Border.Background>
@@ -52,7 +53,7 @@
                                    Text="{Binding Title}" />
                         <FontIconButton Grid.Column="1"
                                         HorizontalAlignment="Right"
-                                        Cattach.CornerRadius="2"
+                                        Cattach.CornerRadius="{DynamicResource {x:Static LayoutKeys.CornerRadius}}"
                                         Command="{local:CloseAdornerDialogCommand}"
                                         CommandParameter="{Binding}"
                                         Content="{x:Static FontIcons.Cancel}"
@@ -73,7 +74,7 @@
                                       ContentTemplate="{Binding PresenterTemplate}" />
                 </Grid>
                 <StackPanel Grid.Row="2"
-                            MinHeight="20"
+                            MinHeight="0"
                             HorizontalAlignment="Center"
                             Orientation="Horizontal">
                     <Button x:Name="btn_sumit"

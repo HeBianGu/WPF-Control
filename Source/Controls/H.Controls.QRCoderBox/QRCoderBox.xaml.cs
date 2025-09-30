@@ -1,4 +1,12 @@
-﻿using QRCoder;
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
+
+using QRCoder;
 using QRCoder.Xaml;
 using System.Windows;
 using System.Windows.Controls;
@@ -25,13 +33,11 @@ namespace H.Controls.QRCoderBox
 
         }
 
-
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
             this._image = this.Template.FindName("PART_Image", this) as Image;
         }
-
 
         public void RefreshData()
         {
@@ -75,7 +81,6 @@ namespace H.Controls.QRCoderBox
                 control.RefreshData();
             }));
 
-
         public Brush LightBrush
         {
             get { return (Brush)GetValue(LightBrushProperty); }
@@ -101,7 +106,6 @@ namespace H.Controls.QRCoderBox
                 }
                 control.RefreshData();
             }));
-
 
         public Brush DarkBrush
         {
@@ -129,9 +133,6 @@ namespace H.Controls.QRCoderBox
                 control.RefreshData();
             }));
 
-
-
-
         public double IconSize
         {
             get { return (double)GetValue(IconSizeProperty); }
@@ -157,7 +158,6 @@ namespace H.Controls.QRCoderBox
                 }
 
             }));
-
 
         public ImageSource Icon
         {
@@ -185,7 +185,6 @@ namespace H.Controls.QRCoderBox
 
             }));
 
-
         public int RequestedVersion
         {
             get { return (int)GetValue(RequestedVersionProperty); }
@@ -212,7 +211,6 @@ namespace H.Controls.QRCoderBox
                 control.RefreshData();
             }));
 
-
         public bool Utf8BOM
         {
             get { return (bool)GetValue(Utf8BOMProperty); }
@@ -238,7 +236,6 @@ namespace H.Controls.QRCoderBox
                 }
                 control.RefreshData();
             }));
-
 
         public bool ForceUtf8
         {
@@ -267,7 +264,6 @@ namespace H.Controls.QRCoderBox
 
             }));
 
-
         public QRCodeGenerator.EciMode EciMode
         {
             get { return (QRCodeGenerator.EciMode)GetValue(EciModeProperty); }
@@ -294,7 +290,6 @@ namespace H.Controls.QRCoderBox
                 control.RefreshData();
 
             }));
-
 
         public string PlainText
         {
@@ -323,7 +318,6 @@ namespace H.Controls.QRCoderBox
 
             }));
 
-
         public QRCodeGenerator.ECCLevel ECCLevel
         {
             get { return (QRCodeGenerator.ECCLevel)GetValue(ECCLevelProperty); }
@@ -350,7 +344,6 @@ namespace H.Controls.QRCoderBox
                 control.RefreshData();
 
             }));
-
 
         public int PixelsPerModule
         {

@@ -1,4 +1,11 @@
-﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
+
 global using System.Collections.Generic;
 global using System.Collections.ObjectModel;
 global using System.Collections.Specialized;
@@ -21,7 +28,7 @@ public partial class ProjectBox : ListBox
     public ProjectBox()
     {
         {
-            CommandBinding commandBinding = new CommandBinding(H.Mvvm.Commands.Commands.Delete);
+            CommandBinding commandBinding = new CommandBinding(H.Extensions.Mvvm.Commands.Commands.Delete);
             commandBinding.Executed += async (l, k) =>
             {
                 if (k.Parameter is IProjectItem project)
@@ -33,7 +40,7 @@ public partial class ProjectBox : ListBox
         }
 
         {
-            CommandBinding commandBinding = new CommandBinding(H.Mvvm.Commands.Commands.Edit);
+            CommandBinding commandBinding = new CommandBinding(H.Extensions.Mvvm.Commands.Commands.Edit);
             commandBinding.Executed += async (l, k) =>
             {
                 if (k.Parameter is IProjectItem project)
@@ -45,7 +52,7 @@ public partial class ProjectBox : ListBox
         }
 
         {
-            CommandBinding commandBinding = new CommandBinding(H.Mvvm.Commands.Commands.Open);
+            CommandBinding commandBinding = new CommandBinding(H.Extensions.Mvvm.Commands.Commands.Open);
             commandBinding.Executed += async (l, k) =>
             {
                 if (k.Parameter is IProjectItem project)
@@ -61,7 +68,7 @@ public partial class ProjectBox : ListBox
         }
 
         {
-            CommandBinding commandBinding = new CommandBinding(H.Mvvm.Commands.Commands.New);
+            CommandBinding commandBinding = new CommandBinding(H.Extensions.Mvvm.Commands.Commands.New);
             commandBinding.Executed += async (l, k) =>
             {
                 await IocProject.Instance.ShowNewProject();
@@ -70,7 +77,7 @@ public partial class ProjectBox : ListBox
         }
 
         {
-            CommandBinding commandBinding = new CommandBinding(H.Mvvm.Commands.Commands.Refresh);
+            CommandBinding commandBinding = new CommandBinding(H.Extensions.Mvvm.Commands.Commands.Refresh);
             commandBinding.Executed += (l, k) =>
             {
                 this.Refresh();
@@ -93,7 +100,6 @@ public partial class ProjectBox : ListBox
 
              if (control == null) return;
 
-
              if (e.OldValue is INotifyCollectionChanged o)
              {
                  o.CollectionChanged -= control.Config_CollectionChanged;
@@ -104,7 +110,6 @@ public partial class ProjectBox : ListBox
                  n.CollectionChanged -= control.Config_CollectionChanged;
                  n.CollectionChanged += control.Config_CollectionChanged;
              }
-
 
              control.Refresh();
          }));
@@ -138,7 +143,6 @@ public partial class ProjectBox : ListBox
         this.SelectedProject = (this.SelectedItem as ProjectItemViewModel)?.Model;
     }
 
-
     public Func<IProjectItem, string> GroupBy
     {
         get { return this.Dispatcher.Invoke(() => (Func<IProjectItem, string>)GetValue(GroupByProperty)); }
@@ -148,7 +152,6 @@ public partial class ProjectBox : ListBox
     // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
     public static readonly DependencyProperty GroupByProperty =
         DependencyProperty.Register("GroupBy", typeof(Func<ProjectItem, string>), typeof(ProjectBox), new FrameworkPropertyMetadata(default(Func<ProjectItem, string>), FrameworkPropertyMetadataOptions.BindsTwoWayByDefault));
-
 
     public void Refresh()
     {

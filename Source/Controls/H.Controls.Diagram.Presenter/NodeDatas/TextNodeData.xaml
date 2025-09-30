@@ -4,7 +4,7 @@
                     xmlns:ln="clr-namespace:H.Controls.Diagram.Presenter.NodeDatas"
                     xmlns:local="clr-namespace:H.Controls.Diagram.Presenter">
     <DataTemplate DataType="{x:Type ln:TextNodeData}">
-        <Border Style="{DynamicResource {x:Static local:DiagramKeys.StateBorder}}"
+        <Border Style="{DynamicResource {x:Static local:DiagramKeys.StateBorderAnimation}}"
                 ToolTip="{Binding Description}">
             <TextBox Style="{DynamicResource {x:Static local:DiagramKeys.EditTextBox}}" />
         </Border>

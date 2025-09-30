@@ -1,15 +1,25 @@
-﻿
-using H.Mvvm;
-using Microsoft.Extensions.Options;
-using System;
-using System.Threading;
-using System.Threading.Tasks;
-using H.Services.Mail;
-using H.Mvvm.Commands;
-using H.Services.Identity;
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
+
+global using H.Common.Attributes;
+global using H.Extensions.FontIcon;
+global using H.Mvvm.Commands;
+global using H.Services.Identity;
+global using H.Services.Mail;
+global using H.Services.Setting;
+global using Microsoft.Extensions.Options;
+global using System.ComponentModel.DataAnnotations;
+using H.Extensions.Mvvm.Commands;
 
 namespace H.Modules.Login
 {
+    [Icon(FontIcons.AddFriend)]
+    [Display(Name = "注册和登录页面", GroupName = SettingGroupNames.GroupSystem, Description = "注册和登录页面的呈现")]
     public class RigisterLoginViewPresenter : LoginViewPresenter, ILoginViewPresenter
     {
         public RigisterLoginViewPresenter(IOptions<LoginOptions> options) : base(options)
@@ -28,7 +38,6 @@ namespace H.Modules.Login
             }
         }
 
-
         private MailVerify _mailVerify = new MailVerify();
         public MailVerify MailVerify
         {
@@ -39,7 +48,6 @@ namespace H.Modules.Login
                 RaisePropertyChanged();
             }
         }
-
 
         private Registor _registor = new Registor();
         public Registor Registor

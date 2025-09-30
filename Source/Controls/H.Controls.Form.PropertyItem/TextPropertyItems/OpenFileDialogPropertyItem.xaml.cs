@@ -1,12 +1,15 @@
-﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
+
 using H.Controls.Form.PropertyItem.TextPropertyItems.Base;
-using H.Mvvm;
-using H.Services.Common;
 using H.Services.Message;
-using Microsoft.Win32;
 using System.ComponentModel.DataAnnotations;
 using System.IO;
-using System.Reflection;
 
 namespace H.Controls.Form.PropertyItem.TextPropertyItems
 {
@@ -20,10 +23,34 @@ namespace H.Controls.Form.PropertyItem.TextPropertyItems
         [Display(Name = "浏览", Order = 2)]
         public DisplayCommand OpenCommand => new DisplayCommand(l =>
         {
-            var r = IocMessage.IOFileDialog.ShowOpenFile(x => x.InitialDirectory = this.Value);
+            var r = IocMessage.IOFileDialog.ShowOpenFile(x =>
+            {
+                if (File.Exists(this.Value))
+                    x.InitialDirectory = Path.GetDirectoryName(this.Value);
+            });
+            if (!File.Exists(r))
+                return;
             this.Value = r;
         })
         { Name = "浏览" };
     }
 
+
+    public class OpenFolderDialogPropertyItem : CommandsTextPropertyItemBase
+    {
+        public OpenFolderDialogPropertyItem(PropertyInfo property, object obj) : base(property, obj)
+        {
+
+        }
+
+        [Display(Name = "浏览", Order = 2)]
+        public DisplayCommand OpenCommand => new DisplayCommand(l =>
+        {
+            var r = IocMessage.IOFolderDialog.ShowOpenFolder();
+            if (!Directory.Exists(r))
+                return;
+            this.Value = r;
+        })
+        { Name = "浏览" };
+    }
 }

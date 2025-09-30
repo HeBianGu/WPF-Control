@@ -1,4 +1,10 @@
-﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
 
 namespace H.Controls.Form.PropertyItems;
 
@@ -11,11 +17,16 @@ public class TextPropertyItem : ObjectPropertyItem<string>
         {
             this.TextWrapping = ta.TextWrapping;
             this.UseClear = ta.UseClear;
+
+            UnitAttribute unit = property.GetCustomAttribute<UnitAttribute>();
+            if (unit != null)
+                this.Unit = unit.Unit;
         }
     }
 
+    public string Unit { get; set; }
+
     private TextWrapping _textWrapping = TextWrapping.Wrap;
-    /// <summary> 说明  </summary>
     public TextWrapping TextWrapping
     {
         get { return _textWrapping; }
@@ -27,7 +38,6 @@ public class TextPropertyItem : ObjectPropertyItem<string>
     }
 
     private bool _useClear;
-    /// <summary> 说明  </summary>
     public bool UseClear
     {
         get { return _useClear; }
@@ -83,18 +93,14 @@ public class TextPropertyItem : ObjectPropertyItem<string>
         return value?.ToString();
     }
 
-    //[Browsable(true)]
-    //[Display(Name = "恢复默认", Icon = "\xe8dc", Order = 1)]
-    //public override RelayCommand LoadDefaultCommand => new RelayCommand(l =>
-    //{
-    //    this.LoadDefault();
-    //    this.LoadValue();
-    //});
+    protected override bool LoadDefaultValue(object obj, out string t)
+    {
+        t = obj == null ? null : IsTypeConverter(this.PropertyInfo) ? TypeConverterToString(obj) : (obj?.ToString());
+        return true;
+    }
 
-    //[Browsable(true)]
-    //[Display(Name = "删除", Icon = "\xe857", Order = 0)]
-    //public RelayCommand ClearCommand => new RelayCommand(l =>
-    //{
-    //    this.Value = null;
-    //});
+    protected override bool CanSetDefault(object obj)
+    {
+        return base.CanSetDefault(obj);
+    }
 }

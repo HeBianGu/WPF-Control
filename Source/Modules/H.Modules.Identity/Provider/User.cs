@@ -1,9 +1,15 @@
-﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
 
+global using H.Controls.Form.Attributes;
+global using H.Extensions.Mvvm.ViewModels;
 global using System.ComponentModel;
 global using System.ComponentModel.DataAnnotations;
-global using H.Controls.Form.Attributes;
-global using H.Mvvm.ViewModels;
 
 namespace H.Modules.Identity
 {
@@ -46,7 +52,6 @@ namespace H.Modules.Identity
             }
         }
 
-
         [Required]
         [Display(Name = "登录密码")]
         public string Password
@@ -64,7 +69,7 @@ namespace H.Modules.Identity
 
         private Role _role;
         [System.Text.Json.Serialization.JsonIgnore]
-        
+
         [System.Xml.Serialization.XmlIgnore]
         [Required]
         [Display(Name = "用户角色")]

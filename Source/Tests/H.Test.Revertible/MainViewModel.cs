@@ -1,6 +1,6 @@
 ﻿using H.Extensions.Revertible;
 using H.Services.Common;
-using H.Mvvm;
+using H.Extensions.Mvvm;
 using System;
 using System.Collections.Generic;
 using System.Linq;

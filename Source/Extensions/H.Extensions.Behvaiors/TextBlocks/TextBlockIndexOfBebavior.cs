@@ -1,10 +1,13 @@
-﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
 
-using Microsoft.Xaml.Behaviors;
 using System.Collections;
 using System.Collections.Specialized;
-using System.Windows;
-using System.Windows.Controls;
 
 namespace H.Extensions.Behvaiors.TextBlocks;
 
@@ -79,7 +82,6 @@ public class TextBlockIndexOfBebavior : Behavior<TextBlock>
 
     public static readonly DependencyProperty DefaultFromValueProperty =
         DependencyProperty.Register("DefaultFromValue", typeof(int), typeof(TextBlockIndexOfBebavior), new FrameworkPropertyMetadata(1));
-
 
     public string Format
     {

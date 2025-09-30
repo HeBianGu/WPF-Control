@@ -10,7 +10,7 @@
         <ContentControl Margin="0,0,3,0"
                         Content="{Binding}"
                         Focusable="False"
-                        Opacity="0.6"/>
+                        Opacity="0.6" />
     </DataTemplate>
 
     <Style x:Key="NumericUpDown"

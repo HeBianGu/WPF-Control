@@ -1,9 +1,13 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <ItemGroup>
+    <ProjectReference Include="..\..\Controls\H.Controls.Form.PropertyItem\H.Controls.Form.PropertyItem.csproj" />
+    <ProjectReference Include="..\..\Controls\H.Controls.Form\H.Controls.Form.csproj" />
     <ProjectReference Include="..\..\Controls\H.Controls.ProgressButton\H.Controls.ProgressButton.csproj" />
-    <ProjectReference Include="..\..\Extensions\H.Extensions.Attach\H.Extensions.Attach.csproj" />
+    <ProjectReference Include="..\..\Extensions\H.Extensions.FontIcon\H.Extensions.FontIcon.csproj" />
+    <ProjectReference Include="..\..\Base\H.Attach\H.Attach.csproj" />
     <ProjectReference Include="..\..\Extensions\H.Extensions.Behvaiors\H.Extensions.Behvaiors.csproj" />
     <ProjectReference Include="..\..\Extensions\H.Extensions.Command\H.Extensions.Command.csproj" />
+    <ProjectReference Include="..\..\Extensions\H.Extensions.Common\H.Extensions.Common.csproj" />
     <ProjectReference Include="..\..\Extensions\H.Extensions.Setting\H.Extensions.Setting.csproj" />
     <ProjectReference Include="..\..\Services\H.Services.Identity\H.Services.Identity.csproj" />
     <ProjectReference Include="..\..\Services\H.Services.Mail\H.Services.Mail.csproj" />

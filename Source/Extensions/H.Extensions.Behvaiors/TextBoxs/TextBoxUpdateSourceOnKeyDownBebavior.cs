@@ -1,59 +1,61 @@
-﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
-
-using Microsoft.Xaml.Behaviors;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Input;
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
 
 namespace H.Extensions.Behvaiors.TextBoxs;
 
+[Obsolete("未测试需要测试是否有效")]
 public class TextBoxUpdateSourceOnKeyDownBebavior : Behavior<TextBox>
 {
     protected override void OnAttached()
     {
         base.OnAttached();
 
-        this.AssociatedObject.KeyDown += AssociatedObject_KeyDown;
+        //EventManager.RegisterClassHandler(
+        //  typeof(TextBox),
+        //  UIElement.GotKeyboardFocusEvent,
+        //  new RoutedEventHandler(SelectAllText),
+        //  true);
+
+        //EventManager.RegisterClassHandler(
+        //    typeof(TextBox),
+        //    UIElement.PreviewMouseLeftButtonDownEvent,
+        //    new MouseButtonEventHandler(IgnoreMouseClick),
+        //    true);
+
+        this.AssociatedObject.GotKeyboardFocus += SelectAllText;
+        this.AssociatedObject.PreviewMouseLeftButtonDown += IgnoreMouseClick;
     }
 
-
-    public Key Key
+    private void IgnoreMouseClick(object sender, MouseButtonEventArgs e)
     {
-        get { return (Key)GetValue(KeyProperty); }
-        set { SetValue(KeyProperty, value); }
-    }
-
-    // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
-    public static readonly DependencyProperty KeyProperty =
-        DependencyProperty.Register("Key", typeof(Key), typeof(TextBoxUpdateSourceOnKeyDownBebavior), new FrameworkPropertyMetadata(Key.Return, (d, e) =>
+        if (sender is TextBox textBox && !textBox.IsKeyboardFocusWithin)
         {
-            TextBoxUpdateSourceOnKeyDownBebavior control = d as TextBoxUpdateSourceOnKeyDownBebavior;
+            e.Handled = true;
+            textBox.Focus();
+        }
+    }
 
-            if (control == null) return;
-
-            if (e.OldValue is Key o)
-            {
-
-            }
-
-            if (e.NewValue is Key n)
-            {
-
-            }
-
-        }));
-
-    private void AssociatedObject_KeyDown(object sender, KeyEventArgs e)
+    private void SelectAllText(object sender, RoutedEventArgs e)
     {
-        if (e.Key == this.Key)
-            this.AssociatedObject.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+        if (sender is TextBox textBox && !textBox.IsReadOnly)
+        {
+            textBox.Dispatcher.BeginInvoke(new Action(() =>
+            {
+                textBox.SelectAll();
+            }), System.Windows.Threading.DispatcherPriority.Input);
+        }
     }
 
     protected override void OnDetaching()
     {
         base.OnDetaching();
-        this.AssociatedObject.KeyDown -= AssociatedObject_KeyDown;
 
-
+        this.AssociatedObject.GotKeyboardFocus -= SelectAllText;
+        this.AssociatedObject.PreviewMouseLeftButtonDown -= IgnoreMouseClick;
     }
 }

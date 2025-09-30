@@ -5,6 +5,7 @@
         <TextBlock Margin="0,5"
                    ToolTip="{Binding Value}">
             <Hyperlink Command="{Binding ProcessCommand}"
+                       Foreground="{DynamicResource {x:Static BrushKeys.Foreground}}"
                        NavigateUri="{Binding Value}">
                 <Run Text="{Binding Name}" />
             </Hyperlink>

@@ -1,8 +1,14 @@
-﻿using H.Extensions.FontIcon;
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
 
 namespace H.Controls.Diagram.Presenter.NodeDatas.Base;
 
-public abstract class NodeData : NodeDataBase, INodeData, ITemplate, ILinkDataCreator, IPortDataCreator
+public abstract class NodeData : NodeDataBase, ITemplate, ILinkDataCreator, IPortDataCreator
 {
     public NodeData()
     {
@@ -18,12 +24,12 @@ public abstract class NodeData : NodeDataBase, INodeData, ITemplate, ILinkDataCr
             await IocMessage.Dialog.ShowDeleteDialog(x => part.Delete());
     }, x => x is Part);
 
-    [Icon(FontIcons.Refresh)]
-    [Display(Name = "恢复默认", GroupName = "操作")]
-    public override RelayCommand LoadDefaultCommand => new RelayCommand(e =>
-    {
-        LoadDefault();
-    });
+    //[Icon(FontIcons.Refresh)]
+    //[Display(Name = "恢复默认", GroupName = "操作")]
+    //public override RelayCommand LoadDefaultCommand => new RelayCommand(e =>
+    //{
+    //    LoadDefault();
+    //});
 
     [Icon(FontIcons.AlignCenter)]
     [Display(Name = "自动对齐", GroupName = "操作")]
@@ -97,20 +103,6 @@ public abstract class NodeData : NodeDataBase, INodeData, ITemplate, ILinkDataCr
     {
         IocMessage.Form?.ShowView(this);
     });
-
-    private Point _location;
-    [Display(Name = "位置坐标", GroupName = "样式")]
-    public Point Location
-    {
-        get { return _location; }
-        set
-        {
-            if (_location == value)
-                return;
-            _location = value;
-            RaisePropertyChanged();
-        }
-    }
 
     private bool _isTemplate = true;
     [DefaultValue(true)]
@@ -307,12 +299,12 @@ public abstract class NodeData : NodeDataBase, INodeData, ITemplate, ILinkDataCr
         //node.EffectOpacity = this.EffectOpacity;
     }
 
-    public override object Clone()
-    {
-        NodeData data = base.Clone() as NodeData;
-        data.ID = Guid.NewGuid().ToString();
-        return data;
-    }
+    //public override object Clone()
+    //{
+    //    NodeData data = base.Clone() as NodeData;
+    //    data.ID = Guid.NewGuid().ToString();
+    //    return data;
+    //}
 
     public virtual ILinkData CreateLinkData()
     {

@@ -1,4 +1,12 @@
-﻿using System.Collections;
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
+
+using System.Collections;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Reflection;
@@ -97,7 +105,6 @@ public static class ObjectExtension
 
         return args?.First();
     }
-
 
     /// <summary>
     /// 创建泛型集合的实例
@@ -203,7 +210,6 @@ public static class ObjectExtension
         }
         return errors.Count == 0;
     }
-
 
     /// <summary> 模型有效信息验证 </summary>
     public static bool ModelStateDeep(this object obj, out string error)
@@ -321,7 +327,6 @@ public static class ObjectExtension
         result = (T)robject;
         return r;
     }
-
 
     public static bool TryChangeType(this object obj, Type rType, out object result)
     {
@@ -475,4 +480,10 @@ public static class ObjectExtension
         var converter = TypeDescriptor.GetConverter(typeof(T));
         return (T)converter.ConvertFromInvariantString(str);
     }
+
+    public static IEnumerable<T> ToEnumerable<T>(this T t)
+    {
+        yield return t;
+    }
+
 }

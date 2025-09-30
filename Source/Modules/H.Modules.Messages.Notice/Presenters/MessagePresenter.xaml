@@ -6,7 +6,7 @@
     <DataTemplate DataType="{x:Type local:MessagePresenterBase}">
         <Grid Width="350"
               Height="55"
-              Margin="0,0,5,5"
+              Margin="1"
               ToolTip="{Binding Message}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" />
@@ -16,7 +16,7 @@
                     Background="{DynamicResource {x:Static h:BrushKeys.Background}}"
                     BorderBrush="{DynamicResource {x:Static h:BrushKeys.BorderBrush}}"
                     BorderThickness="1"
-                    CornerRadius="2" />
+                    CornerRadius="{DynamicResource {x:Static LayoutKeys.CornerRadius}}" />
             <!--<Grid x:Name="g"
                   Width="25"
                   Height="25">
@@ -49,7 +49,8 @@
                             Margin="5,0"
                             HorizontalAlignment="Right"
                             VerticalAlignment="Center"
-                            Content="{x:Static FontIcons.Cancel}">
+                            Content="{x:Static FontIcons.Cancel}"
+                            WindowChrome.IsHitTestVisibleInChrome="True">
                 <b:Interaction.Behaviors>
                     <h:ButtonRemoveItemBehavior />
                 </b:Interaction.Behaviors>

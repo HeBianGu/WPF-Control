@@ -1,14 +1,12 @@
-﻿using H.Extensions.ApplicationBase;
-using H.Themes.Colors.Accent;
-using H.Themes.Colors.Blue;
-using H.Themes.Colors.Copper;
-using H.Themes.Colors.Gray;
-using H.Themes.Colors.Industrial;
-using H.Themes.Colors.Mineral;
-using H.Themes.Colors.Platform;
-using H.Themes.Colors.Purple;
-using H.Themes.Colors.Technology;
-using H.Themes.Colors.Web;
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
+
+using H.Extensions.ApplicationBase;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace H.ApplicationBases.Themes

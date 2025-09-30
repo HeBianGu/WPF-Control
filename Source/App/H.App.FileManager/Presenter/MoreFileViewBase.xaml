@@ -59,7 +59,7 @@
                             <Border Background="{TemplateBinding Background}"
                                     BorderBrush="{TemplateBinding BorderBrush}"
                                     BorderThickness="{TemplateBinding BorderThickness}"
-                                    CornerRadius="2">
+                                    CornerRadius="{DynamicResource {x:Static LayoutKeys.CornerRadius}}">
                                 <ScrollViewer Padding="{TemplateBinding Padding}"
                                               Focusable="false">
                                     <b:Interaction.Behaviors>

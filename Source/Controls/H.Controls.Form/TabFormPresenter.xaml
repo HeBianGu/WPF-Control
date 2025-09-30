@@ -18,7 +18,10 @@
                             BorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrush}}"
                             BorderThickness="1">
                         <!--  UseCommand="{Binding RelativeSource={RelativeSource AncestorType=TabControl}, Path=DataContext.UseCommand}"  -->
-                        <local:Form SelectObject="{Binding RelativeSource={RelativeSource AncestorType=TabControl}, Path=DataContext.SelectObject}"
+                        <local:Form IsHitTestVisible="{Binding RelativeSource={RelativeSource AncestorType=TabControl}, Path=DataContext.IsHitTestVisible}"
+                                    SelectObject="{Binding RelativeSource={RelativeSource AncestorType=TabControl}, Path=DataContext.SelectObject}"
+                                    TitleWidth="{Binding RelativeSource={RelativeSource AncestorType=TabControl}, Path=DataContext.TitleWidth}"
+                                    UseClass="{Binding RelativeSource={RelativeSource AncestorType=TabControl}, Path=DataContext.UseClass}"
                                     UseGroupNames="{Binding}"
                                     UsePropertyView="{Binding RelativeSource={RelativeSource AncestorType=TabControl}, Path=DataContext.UsePropertyView}" />
                     </Border>

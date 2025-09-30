@@ -69,6 +69,7 @@ namespace H.Test.Theme
                 x.ColorResources.Add(new AntDesignProColorResource());
                 x.ColorResources.Add(new BootstrapColorResource());
                 x.ColorResources.Add(new LayUIColorResource());
+                x.ColorResources.Add(new WebLightUIColorResource());
                 x.ColorResources.Add(new WeUIColorResource());
                 x.ColorResources.Add(new ColorUIGAColorResource());
                 x.ColorResources.Add(new FluentUIColorResource());
@@ -86,17 +87,17 @@ namespace H.Test.Theme
                 //x.ColorResources.Add(new IndustrialDarkColorResource());
                 //x.ColorResources.Add(new IndustrialDarkColorResource());
                 //x.ColorResources.Add(new IndustrialDarkColorResource());
-
+              
                 x.IconFontFamilys.Add(IconFontFamilys.SystemSegoeMDL2Asset);
                 x.IconFontFamilys.Add(IconFontFamilys.SystemSegoeFluentIcons);
                 x.IconFontFamilys.Add(IconFontFamilys.LocationSegoeMDL2Asset);
-                x.IconFontFamilys.Add(IconFontFamilys.locationSegoeFluentIcons);
+                x.IconFontFamilys.Add(IconFontFamilys.LocationSegoeFluentIcons);
             });
 
-            app.UseWindowSetting(x =>
-            {
-                x.BackImagePath = "pack://application:,,,/H.Extensions.BackgroundImage;component/b13.png";
-            });
+            //app.UseWindowSetting(x =>
+            //{
+            //    x.BackImagePath = "pack://application:,,,/H.Extensions.BackgroundImage;component/b13.png";
+            //});
         }
     }
 }

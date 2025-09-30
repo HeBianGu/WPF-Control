@@ -1,7 +1,12 @@
-﻿using System.Windows.Controls.Primitives;
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
 
 namespace H.Styles.Controls;
-
 
 public class FontIconToggleButton : ToggleButton
 {
@@ -19,7 +24,6 @@ public class FontIconToggleButton : ToggleButton
     public static readonly DependencyProperty CheckedGlyphProperty =
         DependencyProperty.Register("CheckedGlyph", typeof(string), typeof(FontIconToggleButton), new FrameworkPropertyMetadata(default(string)));
 
-
     public string UncheckedGlyph
     {
         get { return (string)GetValue(UncheckedGlyphProperty); }
@@ -28,7 +32,6 @@ public class FontIconToggleButton : ToggleButton
 
     public static readonly DependencyProperty UncheckedGlyphProperty =
         DependencyProperty.Register("UncheckedGlyph", typeof(string), typeof(FontIconToggleButton), new FrameworkPropertyMetadata(default(string)));
-
 
 }
 public class FontIconToggleButtonKeys

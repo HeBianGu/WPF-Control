@@ -8,11 +8,18 @@
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
-            <TextBlock Grid.Row="0"
+            <DockPanel Grid.Row="0"
                        HorizontalAlignment="Center"
-                       VerticalAlignment="Center"
-                       FontSize="{Binding Source={x:Static local:SplashScreenOptions.Instance}, Path=ProductFontSize}"
-                       Text="{Binding Source={x:Static local:SplashScreenOptions.Instance}, Path=Product}" />
+                       VerticalAlignment="Center">
+                <TextBlock HorizontalAlignment="Center"
+                           DockPanel.Dock="Bottom"
+                           FontSize="{Binding Source={x:Static local:SplashScreenOptions.Instance}, Path=SubFontSize}"
+                           Opacity="0.8"
+                           Text="{Binding Source={x:Static local:SplashScreenOptions.Instance}, Path=Sub}" />
+                <TextBlock Margin="0,10"
+                           FontSize="{Binding Source={x:Static local:SplashScreenOptions.Instance}, Path=ProductFontSize}"
+                           Text="{Binding Source={x:Static local:SplashScreenOptions.Instance}, Path=Product}" />
+            </DockPanel>
 
             <TextBlock Grid.Row="1"
                        Margin="0,10"

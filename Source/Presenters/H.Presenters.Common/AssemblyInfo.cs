@@ -1,4 +1,11 @@
-using System.Windows;
+// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
+
 using System.Windows.Markup;
 
 [assembly: ThemeInfo(
@@ -15,7 +22,6 @@ using System.Windows.Markup;
 
 [assembly: XmlnsDefinition("https://github.com/HeBianGu", "H.Presenters.Common")]
 [assembly: XmlnsPrefix("https://github.com/HeBianGu", "h")]
-
 
 [assembly: XmlnsDefinition("http://schemas.microsoft.com/winfx/2006/xaml/presentation", "H.Presenters.Common")]
 [assembly: XmlnsPrefix("http://schemas.microsoft.com/winfx/2006/xaml/presentation", "h")]

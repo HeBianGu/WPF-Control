@@ -1,4 +1,12 @@
-﻿namespace H.Controls.Diagram.Presenters.Workflow.NodeDatas;
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
+
+namespace H.Controls.Diagram.Presenters.Workflow.NodeDatas;
 
 //[NodeType(Type = DiagramType.Workflow, Name = "并行模式", GroupName = "基本流程图形状", Order = 0, Description = "并行模式")]
 //public class ParallelNodeData : WorkflowNodeBase

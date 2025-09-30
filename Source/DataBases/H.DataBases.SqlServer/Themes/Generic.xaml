@@ -17,7 +17,7 @@
                            TextWrapping="Wrap"
                            ToolTip="{Binding Message}" />-->
                 <Button Width="80"
-                        Command="{h:SumitWindowCommand}"
+                        Command="{SumitWindowCommand}"
                         CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"
                         Content="确定"
                         DockPanel.Dock="Right"

@@ -1,9 +1,12 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:local="clr-namespace:H.Styles.Controls">
+                    xmlns:local="clr-namespace:H.Styles.Controls"
+                    xmlns:system="clr-namespace:System;assembly=mscorlib">
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/H.Style;component/Share.xaml" />
     </ResourceDictionary.MergedDictionaries>
+
+    <system:Double  x:Key="{ComponentResourceKey ResourceId=S.ScrollBarStyle.Length, TypeInTargetAssembly={x:Type local:ScrollBarStyleKeys}}">10</system:Double>
 
     <Style x:Key="ScrollBarLineButton"
            TargetType="{x:Type RepeatButton}">
@@ -84,7 +87,7 @@
                     <Border Background="{TemplateBinding Background}"
                             BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="1"
-                            CornerRadius="2" />
+                            CornerRadius="{DynamicResource {x:Static LayoutKeys.CornerRadius}}" />
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
@@ -110,19 +113,19 @@
             </Grid.RowDefinitions>
             <Border x:Name="Border"
                     Grid.RowSpan="3"
-                    CornerRadius="2">
+                    CornerRadius="{DynamicResource {x:Static LayoutKeys.CornerRadius}}">
                 <Border.Background>
                     <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Dark0_1}}" />
                 </Border.Background>
             </Border>
             <RepeatButton Grid.Row="0"
-                          Height="12"
+                          Height="{DynamicResource {x:Static local:ScrollBarStyleKeys.Length}}"
                           Command="ScrollBar.LineUpCommand"
                           Content="M 0 3 L 6 3 L 3 0 Z"
                           Style="{StaticResource ScrollBarLineButton}" />
             <Track x:Name="PART_Track"
                    Grid.Row="1"
-                   Margin="2,0"
+                   Margin="0.5,0"
                    IsDirectionReversed="true">
                 <Track.DecreaseRepeatButton>
                     <RepeatButton Command="ScrollBar.PageUpCommand"
@@ -145,7 +148,7 @@
                 </Track.IncreaseRepeatButton>
             </Track>
             <RepeatButton Grid.Row="3"
-                          Height="12"
+                          Height="{DynamicResource {x:Static local:ScrollBarStyleKeys.Length}}"
                           Command="ScrollBar.LineDownCommand"
                           Content="M 0 0 L 3 3 L 6 0 Z"
                           Style="{StaticResource ScrollBarLineButton}" />
@@ -163,7 +166,7 @@
                                   MaxWidth="18" />
             </Grid.ColumnDefinitions>
             <Border Grid.ColumnSpan="3"
-                    CornerRadius="2">
+                    CornerRadius="{DynamicResource {x:Static LayoutKeys.CornerRadius}}">
                 <Border.Background>
                     <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Dark0_1}}" />
                 </Border.Background>
@@ -175,7 +178,7 @@
                           Style="{StaticResource ScrollBarLineButton}" />
             <Track x:Name="PART_Track"
                    Grid.Column="1"
-                   Margin="0,2"
+                   Margin="0,0.5"
                    IsDirectionReversed="False">
                 <Track.DecreaseRepeatButton>
                     <RepeatButton Command="ScrollBar.PageLeftCommand"
@@ -209,15 +212,17 @@
                                         TypeInTargetAssembly={x:Type local:ScrollBarKeys}}"
            TargetType="{x:Type ScrollBar}">
         <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="MinHeight" Value="5" />
+        <Setter Property="MinWidth" Value="5" />
         <!--<Setter Property="OverridesDefaultStyle" Value="true" />-->
         <Style.Triggers>
             <Trigger Property="Orientation" Value="Horizontal">
                 <Setter Property="Width" Value="Auto" />
-                <Setter Property="Height" Value="18" />
+                <Setter Property="Height" Value="{DynamicResource {x:Static local:ScrollBarStyleKeys.Length}}" />
                 <Setter Property="Template" Value="{StaticResource HorizontalScrollBar}" />
             </Trigger>
             <Trigger Property="Orientation" Value="Vertical">
-                <Setter Property="Width" Value="18" />
+                <Setter Property="Width" Value="{DynamicResource {x:Static local:ScrollBarStyleKeys.Length}}" />
                 <Setter Property="Height" Value="Auto" />
                 <Setter Property="Template" Value="{StaticResource VerticalScrollBar}" />
             </Trigger>

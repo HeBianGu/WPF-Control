@@ -1,0 +1,41 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:H.Controls.ImageColorPicker">
+    <DataTemplate DataType="{x:Type local:ImageColorPickerBoxPresenter}">
+        <Grid>
+            <Viewbox>
+                <local:ImageColorPickerBox x:Name="p"
+                                           ImageSource="{Binding ImageSource}"
+                                           Color="{Binding Color, Mode=TwoWay}" />
+            </Viewbox>
+            <Border Margin="2"
+                    Padding="10,6"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Bottom"
+                    CornerRadius="{DynamicResource {x:Static LayoutKeys.CornerRadius}}">
+                <Border.Background>
+                    <SolidColorBrush Opacity="0.2"
+                                     Color="Black" />
+                </Border.Background>
+                <DockPanel>
+                    <Border Width="20"
+                            Height="15"
+                            Margin="2"
+                            BorderBrush="White"
+                            BorderThickness="1"
+                            CornerRadius="{DynamicResource {x:Static LayoutKeys.CornerRadius}}">
+                        <Border.Background>
+                            <SolidColorBrush Color="{Binding Color}" />
+                        </Border.Background>
+                    </Border>
+                    <TextBlock Foreground="White" VerticalAlignment="Center">
+                        <Run Text="颜色：" />
+                        <Run Text="{Binding Color}" />
+                        <Run Text="    位置：" />
+                        <Run Text="{Binding ElementName=p, Path=Position}" />
+                    </TextBlock>
+                </DockPanel>
+            </Border>
+        </Grid>
+    </DataTemplate>
+</ResourceDictionary>

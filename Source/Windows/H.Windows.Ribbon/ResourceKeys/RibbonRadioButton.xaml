@@ -8,7 +8,7 @@
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="BorderBrush" Value="Transparent" />
         <Setter Property="BorderThickness" Value="1" />
-        <Setter Property="CornerRadius" Value="2" />
+        <Setter Property="CornerRadius" Value="{DynamicResource {x:Static LayoutKeys.CornerRadius}}" />
         <Setter Property="FocusVisualStyle" Value="{x:Null}" />
         <Setter Property="HorizontalContentAlignment" Value="Center" />
         <Setter Property="MouseOverBorderBrush" Value="{Binding RelativeSource={RelativeSource Self}, Path=Ribbon.MouseOverBorderBrush}" />

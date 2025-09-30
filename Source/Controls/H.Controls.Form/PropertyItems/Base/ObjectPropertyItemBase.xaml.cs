@@ -1,27 +1,17 @@
-﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
 
-
-using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
+using H.Mvvm.Commands;
 
 namespace H.Controls.Form.PropertyItems.Base;
 
-
-/// <summary> 类型基类 </summary>
 public abstract class ObjectPropertyItemBase : DisplayBindableBase, IPropertyItem, IValueChangeable
 {
-    public string TabGroup { get; set; }
-    public PropertyInfo PropertyInfo { get; set; }
-    public object Obj { get; set; }
-    public bool ReadOnly { get; set; }
-    public Visibility Visibility { get; set; }
-    public Action<object> ValueChanged { get; set; }
-    public string Unit { get; set; }
-    //public int Vip { get; set; }
-    //~ObjectPropertyItem()
-    //{
-    //    ValueChanged = null; 
-    //}
 
     public ObjectPropertyItemBase(PropertyInfo property, object obj)
     {
@@ -42,18 +32,32 @@ public abstract class ObjectPropertyItemBase : DisplayBindableBase, IPropertyIte
         this.ReadOnly = readyOnly?.IsReadOnly == true;
         if (!this.PropertyInfo.CanWrite)
             this.ReadOnly = true;
-        //  Do ：用于控制显示和隐藏
+
         BrowsableAttribute browsable = property.GetCustomAttribute<BrowsableAttribute>();
         this.Visibility = browsable == null || browsable.Browsable ? Visibility.Visible : Visibility.Collapsed;
-
-        UnitAttribute unit = property.GetCustomAttribute<UnitAttribute>();
-        if (unit != null)
-            this.Unit = unit.Unit;
+        this.Icon = property.GetCustomAttribute<IconAttribute>()?.Icon;
     }
 
-    /// <summary>
-    /// 从实体中加载数据到页面
-    /// </summary>
+
+    public string TabGroup { get; set; }
+    public PropertyInfo PropertyInfo { get; set; }
+    public object Obj { get; set; }
+    public bool ReadOnly { get; set; }
+    public Visibility Visibility { get; set; }
+    public Action<object> ValueChanged { get; set; }
+
+    public bool UseSetDefault { get; set; } = false;
+    private bool _isHitTestVisible = true;
+    public bool IsHitTestVisible
+    {
+        get { return _isHitTestVisible; }
+        set
+        {
+            _isHitTestVisible = value;
+            RaisePropertyChanged();
+        }
+    }
+
     public abstract void LoadValue();
 
 }

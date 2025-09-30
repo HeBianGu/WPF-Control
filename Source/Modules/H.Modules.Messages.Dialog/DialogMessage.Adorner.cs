@@ -1,11 +1,13 @@
-﻿using H.Common.Interfaces;
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
+
+using H.Common.Interfaces;
 using H.Presenters.Common;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Windows;
 
 namespace H.Modules.Messages.Dialog
 {
@@ -36,7 +38,7 @@ namespace H.Modules.Messages.Dialog
 
                 if (presenter is ILayoutable layoutable)
                     layoutable.CopyTo(x);
-                if (presenter is IDesignPresenterBase designPresenter)
+                if (presenter is IDesignPresenter designPresenter)
                     x.CopyFrom(designPresenter);
                 builder?.Invoke(x);
             }, canSumit);
@@ -56,7 +58,7 @@ namespace H.Modules.Messages.Dialog
                 x.HorizontalContentAlignment = HorizontalAlignment.Stretch;
                 x.HorizontalAlignment = HorizontalAlignment.Center;
                 x.VerticalAlignment = VerticalAlignment.Center;
-                x.MinWidth = 400;
+                x.Width = 400;
                 build?.Invoke(x);
             });
         }
@@ -112,7 +114,7 @@ namespace H.Modules.Messages.Dialog
 
     public static class LayoutableExtension
     {
-        public static void CopyFrom(this ILayoutable layoutable, IDesignPresenterBase from)
+        public static void CopyFrom(this ILayoutable layoutable, IDesignPresenter from)
         {
             layoutable.HorizontalAlignment = from.HorizontalAlignment;
             layoutable.VerticalAlignment = from.VerticalAlignment;

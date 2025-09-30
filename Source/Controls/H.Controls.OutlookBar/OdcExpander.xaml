@@ -17,20 +17,20 @@
                         <Border Background="{TemplateBinding Background}"
                                 BorderBrush="{TemplateBinding BorderBrush}"
                                 BorderThickness="{TemplateBinding BorderThickness}"
-                                CornerRadius="2" />
+                                CornerRadius="{DynamicResource {x:Static LayoutKeys.CornerRadius}}" />
 
                         <Border x:Name="boder_mouseover"
                                 Background="{DynamicResource {x:Static h:BrushKeys.MouseOver}}"
                                 BorderBrush="{TemplateBinding BorderBrush}"
                                 BorderThickness="{TemplateBinding BorderThickness}"
-                                CornerRadius="2"
+                                CornerRadius="{DynamicResource {x:Static LayoutKeys.CornerRadius}}"
                                 Opacity="0" />
 
                         <Border x:Name="boder"
                                 Background="{DynamicResource {x:Static h:BrushKeys.Selected}}"
                                 BorderBrush="{TemplateBinding BorderBrush}"
                                 BorderThickness="{TemplateBinding BorderThickness}"
-                                CornerRadius="2"
+                                CornerRadius="{DynamicResource {x:Static LayoutKeys.CornerRadius}}"
                                 Opacity="0" />
 
                         <Grid>

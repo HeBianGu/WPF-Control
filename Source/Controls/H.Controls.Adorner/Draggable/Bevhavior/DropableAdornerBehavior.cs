@@ -1,10 +1,12 @@
-﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
-
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
 
 using Microsoft.Xaml.Behaviors;
-using System.IO;
-using System.Windows;
-using System.Windows.Markup;
 using System.Xml;
 
 namespace H.Controls.Adorner.Draggable.Bevhavior;
@@ -18,7 +20,6 @@ public abstract class DropableAdornerBehavior<T> : Behavior<T> where T : UIEleme
         get { return (string)GetValue(DragGroupProperty); }
         set { SetValue(DragGroupProperty, value); }
     }
-
 
     public static readonly DependencyProperty DragGroupProperty =
         DependencyProperty.Register("DragGroup", typeof(string), typeof(DropableAdornerBehavior<T>), new PropertyMetadata("DragGroup", (d, e) =>
@@ -64,6 +65,4 @@ public abstract class DropableAdornerBehavior<T> : Behavior<T> where T : UIEleme
 
     protected abstract void DropElement(UIElement element, Point location, Point offset);
 }
-
-
 

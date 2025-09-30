@@ -1,12 +1,20 @@
-﻿global using H.Controls.Form;
-global using System.ComponentModel.DataAnnotations;
-global using System.ComponentModel;
-global using System.Windows;
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
+
 global using H.Common.Interfaces;
-global using H.Services.Message.Form;
-global using H.Services.Message.Dialog;
+global using H.Controls.Form;
 global using H.Extensions.Common;
 global using H.Services.Message;
+global using H.Services.Message.Dialog;
+global using H.Services.Message.Form;
+global using System.ComponentModel;
+global using System.ComponentModel.DataAnnotations;
+global using System.Windows;
 
 namespace H.Modules.Messages.Form
 {
@@ -19,40 +27,13 @@ namespace H.Modules.Messages.Form
 
         public async Task<bool?> ShowTabEdit<T>(T value, Action<IDialog> action = null, Predicate<T> match = null, Action<IFormOption> option = null, Window owner = null)
         {
-            IEnumerable<string> GetGroups()
-            {
-                foreach (var p in TypeDescriptor.GetProperties(value).OfType<PropertyDescriptor>())
-                {
-                    if (p.Attributes.OfType<BrowsableAttribute>().Any(x => x.Browsable == false))
-                        continue;
-                    foreach (var d in p.Attributes.OfType<DisplayAttribute>())
-                    {
-                        if (d.GroupName == null)
-                            continue;
-                        var names = d.GroupName.Split(",".ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
-                        foreach (var n in names)
-                        {
-                            yield return n;
-                        }
-                    }
-                }
-            }
 
             Action<IFormOption> toption = x =>
             {
                 option?.Invoke(x);
                 if (x is TabFormPresenter tab)
                 {
-                    var gs = tab.UseGroupNames?.Split(",".ToCharArray(), StringSplitOptions.RemoveEmptyEntries).Order(x.GroupOrderComparer);
-                    if (gs == null || gs.Count() == 0)
-                    {
-                        var names = GetGroups().Distinct();
-                        tab.TabNames = names.ToObservable();
-                    }
-                    else
-                    {
-                        tab.TabNames = gs.ToObservable();
-                    }
+                    tab.UpdateTabNames();
                 }
             };
             return await this.ShowEdit<T, TabFormPresenter>(value, action, match, toption, owner);

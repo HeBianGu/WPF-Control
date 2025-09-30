@@ -1,0 +1,22 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:c="clr-namespace:H.Themes.Colors"
+                    xmlns:local="clr-namespace:H.Themes">
+    <DataTemplate DataType="{x:Type c:ColorThemeType}">
+        <TextBlock x:Name="tb_name" />
+        <DataTemplate.Triggers>
+            <DataTrigger Binding="{Binding}"
+                         Value="Default">
+                <Setter TargetName="tb_name" Property="Text" Value="常规" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding}"
+                         Value="Dark">
+                <Setter TargetName="tb_name" Property="Text" Value="深色" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding}"
+                         Value="Light">
+                <Setter TargetName="tb_name" Property="Text" Value="浅色" />
+            </DataTrigger>
+        </DataTemplate.Triggers>
+    </DataTemplate>
+</ResourceDictionary>

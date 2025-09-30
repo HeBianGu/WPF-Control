@@ -1,13 +1,12 @@
-﻿
-using H.Mvvm;
-using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
+
 using System.Collections.Specialized;
-using System.Linq;
-using System.Reflection;
-using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Threading;
 
 namespace H.Controls.FilterBox
@@ -43,7 +42,6 @@ namespace H.Controls.FilterBox
             get { return (string)GetValue(DisplayNameProperty); }
             set { SetValue(DisplayNameProperty, value); }
         }
-
 
         public static readonly DependencyProperty DisplayNameProperty =
             DependencyProperty.Register("DisplayName", typeof(string), typeof(SelectionFilterBox), new FrameworkPropertyMetadata(default(string), (d, e) =>
@@ -109,7 +107,6 @@ namespace H.Controls.FilterBox
             set { SetValue(TypeProperty, value); }
         }
 
-
         public static readonly DependencyProperty TypeProperty =
             DependencyProperty.Register("Type", typeof(Type), typeof(SelectionFilterBox), new FrameworkPropertyMetadata(default(Type), (d, e) =>
             {
@@ -129,13 +126,11 @@ namespace H.Controls.FilterBox
                 control.DelayRefreshData();
             }));
 
-
         public bool UseCheckAll
         {
             get { return (bool)GetValue(UseCheckAllProperty); }
             set { SetValue(UseCheckAllProperty, value); }
         }
-
 
         public static readonly DependencyProperty UseCheckAllProperty =
             DependencyProperty.Register("UseCheckAll", typeof(bool), typeof(SelectionFilterBox), new FrameworkPropertyMetadata(true, (d, e) =>
@@ -156,13 +151,11 @@ namespace H.Controls.FilterBox
 
             }));
 
-
         public string PropertyName
         {
             get { return (string)GetValue(PropertyNameProperty); }
             set { SetValue(PropertyNameProperty, value); }
         }
-
 
         public static readonly DependencyProperty PropertyNameProperty =
             DependencyProperty.Register("PropertyName", typeof(string), typeof(SelectionFilterBox), new FrameworkPropertyMetadata(default(string), (d, e) =>
@@ -188,7 +181,6 @@ namespace H.Controls.FilterBox
             get { return (IEnumerable)GetValue(DatasProperty); }
             set { SetValue(DatasProperty, value); }
         }
-
 
         public static readonly DependencyProperty DatasProperty =
             DependencyProperty.Register("Datas", typeof(IEnumerable), typeof(SelectionFilterBox), new FrameworkPropertyMetadata(default(IEnumerable), (d, e) =>
@@ -217,7 +209,6 @@ namespace H.Controls.FilterBox
                 this.RefreshData();
             });
         }
-
 
         public void RefreshData()
         {
@@ -285,7 +276,6 @@ namespace H.Controls.FilterBox
             set { SetValue(FilterProperty, value); }
         }
 
-
         public static readonly DependencyProperty FilterProperty =
             DependencyProperty.Register("Filter", typeof(IFilterable), typeof(SelectionFilterBox), new FrameworkPropertyMetadata(default(IFilterable), FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, (d, e) =>
             {
@@ -305,7 +295,6 @@ namespace H.Controls.FilterBox
 
             }));
 
-
         //声明和注册路由事件
         public static readonly RoutedEvent FilterChangedRoutedEvent =
             EventManager.RegisterRoutedEvent("FilterChanged", RoutingStrategy.Bubble, typeof(EventHandler<RoutedEventArgs>), typeof(SelectionFilterBox));
@@ -323,7 +312,6 @@ namespace H.Controls.FilterBox
             RoutedEventArgs args = new RoutedEventArgs(FilterChangedRoutedEvent, this);
             this.RaiseEvent(args);
         }
-
 
         public ListBoxItem GetCheckAllItem()
         {

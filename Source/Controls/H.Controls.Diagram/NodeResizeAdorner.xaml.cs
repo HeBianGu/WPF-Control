@@ -1,5 +1,11 @@
-﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
-global using H.Controls.Adorner;
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
+
 global using H.Controls.Adorner.Adorner.ControlTemplateAdorners;
 global using H.Extensions.TypeConverter;
 
@@ -31,7 +37,6 @@ public class NoteResizeAdorner : ResizeAdorner
     protected override void SetTop(double change)
     {
         //Canvas.SetTop(this.AdornedElement, Math.Max(Canvas.GetTop(this.AdornedElement) + change, 0));
-
 
         Node node = this.AdornedElement.GetParent<Node>();
         Point point = NodeLayer.GetPosition(node);
@@ -76,12 +81,10 @@ public class NoteResizeAdorner : ResizeAdorner
         //Canvas.SetTop(this.AdornedElement, Canvas.GetTop(this.AdornedElement) + change);
     }
 
-
     protected override void SetHeight(double change)
     {
         FrameworkElement element = this.AdornedElement as FrameworkElement;
         element.Height = Math.Max(this.MinValue, element.Height + change);
-
 
         Node node = this.AdornedElement.GetParent<Node>();
         Point point = NodeLayer.GetPosition(node);

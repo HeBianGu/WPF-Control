@@ -1,8 +1,10 @@
-﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
-
-using Microsoft.Xaml.Behaviors;
-using System.Windows;
-using System.Windows.Controls;
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
 
 namespace H.Extensions.Behvaiors.TreeViews;
 
@@ -17,7 +19,7 @@ public class TreeViewSelectedItemBindableBehavior : Behavior<TreeView>
     }
 
     public static readonly DependencyProperty SelectedItemProperty =
-        DependencyProperty.Register("SelectedItem", typeof(object), typeof(TreeViewSelectedItemBindableBehavior), new UIPropertyMetadata(null, OnSelectedItemChanged));
+        DependencyProperty.Register("SelectedItem", typeof(object), typeof(TreeViewSelectedItemBindableBehavior), new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, OnSelectedItemChanged));
 
     private static void OnSelectedItemChanged(DependencyObject sender, DependencyPropertyChangedEventArgs e)
     {
@@ -31,7 +33,6 @@ public class TreeViewSelectedItemBindableBehavior : Behavior<TreeView>
     protected override void OnAttached()
     {
         base.OnAttached();
-
         this.AssociatedObject.SelectedItemChanged += OnTreeViewSelectedItemChanged;
     }
 
@@ -48,5 +49,4 @@ public class TreeViewSelectedItemBindableBehavior : Behavior<TreeView>
         this.SelectedItem = e.NewValue;
     }
 }
-
 
