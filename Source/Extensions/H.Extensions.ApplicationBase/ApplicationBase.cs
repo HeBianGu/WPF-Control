@@ -288,7 +288,7 @@ public partial class ApplicationBase
                     if (s != null)
                         s.Message = $"[{index}/{loads.Count()}]正在加载{load.Name}...";
                     bool r = load.Load(out string message);
-                    if (s != null && !string.IsNullOrEmpty(message))
+                    if (s != null && !string.IsNullOrEmpty(message) && !r)
                         s.Message = message;
                     if (r == false)
                     {

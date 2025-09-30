@@ -7,10 +7,10 @@
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <!--<FontSizeTheme Type="Default" />
+                <FontSizeTheme Type="Default" />
                 <LayoutTheme Type="Default" />
                 <ColorTheme Type="Dark" />
-                <ConciseStyle />-->
+                <ConciseStyle />
                 <ResourceDictionary Source="pack://application:,,,/H.App.FileManager;component/Presenter/FileView.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/H.App.FileManager;component/Presenter/ImageView.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/H.App.FileManager;component/Presenter/VideoView.xaml" />

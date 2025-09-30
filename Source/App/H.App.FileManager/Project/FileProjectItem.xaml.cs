@@ -1,8 +1,15 @@
 ﻿using H.Controls.FavoriteBox;
+using H.Controls.Form.Attributes;
+using H.Controls.Form.PropertyItem.TextPropertyItems;
 using H.Controls.TagBox;
 using H.DataBases.Share;
+using H.Extensions.DataBase;
+using H.Extensions.DataBase.Repository;
 using H.Modules.Project;
+using H.Modules.Project.Base;
+using H.Presenters.Common;
 using H.Services.Common;
+using H.Services.Setting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -12,10 +19,6 @@ using System.ComponentModel.DataAnnotations;
 using System.IO;
 using System.Text.Json.Serialization;
 using System.Xml.Serialization;
-using H.Extensions.DataBase;
-using H.Modules.Project.Base;
-using H.Extensions.DataBase.Repository;
-using H.Services.Setting;
 
 namespace H.App.FileManager
 {
@@ -23,6 +26,7 @@ namespace H.App.FileManager
     {
         private string _baseFolder;
         [Required]
+        [PropertyItem(typeof(OpenFolderDialogPropertyItem))]
         [Display(Name = "文件路径", Order = 5)]
         public string BaseFolder
         {

@@ -35,4 +35,22 @@ namespace H.Controls.Form.PropertyItem.TextPropertyItems
         { Name = "浏览" };
     }
 
+
+    public class OpenFolderDialogPropertyItem : CommandsTextPropertyItemBase
+    {
+        public OpenFolderDialogPropertyItem(PropertyInfo property, object obj) : base(property, obj)
+        {
+
+        }
+
+        [Display(Name = "浏览", Order = 2)]
+        public DisplayCommand OpenCommand => new DisplayCommand(l =>
+        {
+            var r = IocMessage.IOFolderDialog.ShowOpenFolder();
+            if (!Directory.Exists(r))
+                return;
+            this.Value = r;
+        })
+        { Name = "浏览" };
+    }
 }
