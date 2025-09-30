@@ -93,7 +93,8 @@
                     <Setter Property="ContentTemplate">
                         <Setter.Value>
                             <DataTemplate>
-                                <Grid Cattach.GuideData="{Binding Description}"
+                                <Grid Margin="0,0.5"
+                                      Cattach.GuideData="{Binding Description}"
                                       Cattach.GuideTitle="{Binding Name}"
                                       Cattach.UseGuide="True"
                                       ToolTip="{Binding Description}">

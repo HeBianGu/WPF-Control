@@ -34,9 +34,27 @@
             </Button.CommandParameter>
         </Button>
         <Button Command="{h:ShowCommand}"
+                Content="AddImageFilePathPresenter">
+            <Button.CommandParameter>
+                <AddImageFilePathPresenter />
+            </Button.CommandParameter>
+        </Button>
+        <Button Command="{h:ShowCommand}"
+                Content="AddImageListPresenter">
+            <Button.CommandParameter>
+                <AddImageListPresenter />
+            </Button.CommandParameter>
+        </Button>
+        <Button Command="{h:ShowCommand}"
                 Content="ImageFilePathPresenter">
             <Button.CommandParameter>
                 <ImageFilePathPresenter />
+            </Button.CommandParameter>
+        </Button>
+        <Button Command="{h:ShowCommand}"
+                Content="ImageViewPresenter">
+            <Button.CommandParameter>
+                <ImageViewPresenter />
             </Button.CommandParameter>
         </Button>
 

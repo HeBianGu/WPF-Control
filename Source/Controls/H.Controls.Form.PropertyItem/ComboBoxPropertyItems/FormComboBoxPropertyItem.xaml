@@ -3,8 +3,7 @@
                     xmlns:local="clr-namespace:H.Controls.Form.PropertyItem.ComboBoxPropertyItems">
     <DataTemplate DataType="{x:Type local:FormComboBoxPropertyItem}">
         <DockPanel>
-            <ComboBox Margin="0,0,0,1"
-                      Cattach.UseGuide="False"
+            <ComboBox Cattach.UseGuide="False"
                       DisplayMemberPath="{Binding DisplayMemberPath}"
                       DockPanel.Dock="Top"
                       ItemsSource="{Binding Collection}"

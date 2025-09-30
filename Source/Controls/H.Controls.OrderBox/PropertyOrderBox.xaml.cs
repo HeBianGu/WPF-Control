@@ -222,7 +222,6 @@ namespace H.Controls.OrderBox
         {
             bool? r = await IocMessage.Dialog.Show(_propertyOrders, x =>
             {
-                x.MinWidth = 900;
                 x.DialogButton = DialogButton.Sumit;
                 x.Title = "数据排序器";
             });

@@ -233,7 +233,6 @@ namespace H.Controls.FilterBox
             {
                 x.DialogButton = DialogButton.Sumit;
                 x.Title = "数据过滤器";
-                x.MinWidth = 900;
             });
             if (r == true)
             {

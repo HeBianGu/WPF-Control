@@ -27,6 +27,7 @@ using System.Windows;
 using System.Windows.Media;
 using System.Xml.Serialization;
 using H.Mvvm.Commands;
+using System.Windows.Threading;
 
 namespace H.Modules.Theme;
 [Display(Name = "主题设置", GroupName = SettingGroupNames.GroupStyle, Description = "登录页面设置的信息")]
@@ -274,16 +275,19 @@ public class ThemeOptions : IocOptionInstance<ThemeOptions>, ILoginedSplashLoada
 
     private void RefreshTheme()
     {
-        //this.Color.ChangeThemeType();
-        this.FontSize.ChangeFontSizeThemeType();
-        this.Layout.ChangeLayoutThemeType();
-        this.ChangeColorTheme();
-        this.ChangeFontFamily();
-        this.ChangeIconFontFamily();
-        this.ChangeBackgroundTheme();
-        this.RefreshBrushResourceDictionary();
-        if (this.ColorResource != null)
-            this.IsDark = this.ColorResource.IsDark;
+        this.DelayInvoke(() =>
+        {
+            //this.Color.ChangeThemeType();
+            this.FontSize.ChangeFontSizeThemeType();
+            this.Layout.ChangeLayoutThemeType();
+            this.ChangeColorTheme();
+            this.ChangeFontFamily();
+            this.ChangeIconFontFamily();
+            this.ChangeBackgroundTheme();
+            this.RefreshBrushResourceDictionary();
+            if (this.ColorResource != null)
+                this.IsDark = this.ColorResource.IsDark;
+        });
     }
 
     public void RefreshBrushResourceDictionary()

@@ -53,41 +53,6 @@
     </h:MainWindow.CaptionTempate>
     <Grid>
         <TabControl TabStripPlacement="Left">
-            <TabItem Header="FrozenOnRightSide">
-                <DataGrid
-                    FrozenColumnCount="1"
-                    ItemsSource="{h:GetStudents Count=50}">
-                    <!--<DataGrid.ColumnHeaderStyle>
-                        <Style BasedOn="{StaticResource {x:Static DataGridColumnHeaderKeys.Default}}" TargetType="DataGridColumnHeader">
-                            <Setter Property="FlowDirection" Value="LeftToRight" />
-                        </Style>
-                    </DataGrid.ColumnHeaderStyle>
-                    <DataGrid.CellStyle>
-                        <Style TargetType="DataGridCell" BasedOn="{StaticResource {x:Static DataGridCellKeys.Default}}">
-                            <Setter Property="FlowDirection" Value="LeftToRight" />
-                        </Style>
-                    </DataGrid.CellStyle>-->
-                    <DataGrid.Columns>
-                        <DataGridTemplateColumn Header="操作">
-                            <DataGridTemplateColumn.CellTemplate>
-                                <DataTemplate>
-                                    <DockPanel Panel.ZIndex="999" Background="Red">
-                                        <Button Content="编辑" />
-                                        <Button Margin="1,0" Content="删除" />
-                                        <Button Content="查看" />
-                                    </DockPanel>
-                                </DataTemplate>
-                            </DataGridTemplateColumn.CellTemplate>
-                        </DataGridTemplateColumn>
-                        <DataGridTextColumn Binding="{Binding Name}" Header="名称" />
-                        <DataGridTextColumn Binding="{Binding Emall}" Header="名称" />
-                        <DataGridTextColumn Binding="{Binding Emall}" Header="名称" />
-                        <DataGridTextColumn Binding="{Binding Emall}" Header="名称" />
-                        <DataGridTextColumn Binding="{Binding Emall}" Header="名称" />
-                        <DataGridTextColumn Binding="{Binding Emall}" Header="名称" />
-                    </DataGrid.Columns>
-                </DataGrid>
-            </TabItem>
             <TabItem Header="ImageColorPickerBox">
                 <DockPanel>
                     <ImageColorPickerBox ImageSource="{Logo}" />

@@ -17,10 +17,10 @@
 
     <Style x:Key="DateTimeUpDown"
            TargetType="{x:Type local:DateTimeUpDown}">
-        <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.WindowBrushKey}}" />
-        <Setter Property="BorderBrush" Value="{DynamicResource {x:Static local:ResourceKeys.ControlNormalBorderKey}}" />
+        <Setter Property="Background" Value="{DynamicResource {x:Static BrushKeys.Background}}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.BorderBrush}}" />
         <Setter Property="BorderThickness" Value="1" />
-        <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.WindowTextBrushKey}}" />
+        <Setter Property="Foreground" Value="{DynamicResource {x:Static BrushKeys.Foreground}}" />
         <Setter Property="HorizontalContentAlignment" Value="Right" />
         <Setter Property="IsTabStop" Value="False" />
         <Setter Property="TextAlignment" Value="Right" />
@@ -79,7 +79,8 @@
                             <Setter TargetName="PART_TextBox" Property="IsReadOnly" Value="True" />
                         </DataTrigger>
                         <Trigger Property="IsEnabled" Value="False">
-                            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}" />
+                            <Setter Property="Opacity" Value="0.5"/>
+                            <!--<Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}" />-->
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

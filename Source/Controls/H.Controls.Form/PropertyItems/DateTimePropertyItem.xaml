@@ -3,8 +3,7 @@
                     xmlns:h="https://github.com/HeBianGu"
                     xmlns:local="clr-namespace:H.Controls.Form.PropertyItems">
     <DataTemplate DataType="{x:Type local:DateTimePropertyItem}">
-        <DatePicker Margin="0,0,0,1"
-                    VerticalAlignment="Stretch"
+        <DatePicker VerticalAlignment="Stretch"
                     VerticalContentAlignment="Center"
                     IsEnabled="{Binding ReadOnly, Converter={x:Static h:Converter.GetTrueToFalse}}"
                     SelectedDate="{Binding Value}" />

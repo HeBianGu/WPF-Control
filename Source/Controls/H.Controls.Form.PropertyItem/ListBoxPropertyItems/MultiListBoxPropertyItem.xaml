@@ -2,8 +2,7 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:H.Controls.Form.PropertyItem.ComboBoxPropertyItems">
     <DataTemplate DataType="{x:Type local:MultiListBoxPropertyItem}">
-        <ListBox Margin="0,0,0,1"
-                 Cattach.SelectedItems="{Binding Value}"
+        <ListBox Cattach.SelectedItems="{Binding Value}"
                  ItemsSource="{Binding Collection}"
                  SelectionMode="Multiple" />
     </DataTemplate>

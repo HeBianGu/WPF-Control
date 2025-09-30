@@ -51,7 +51,6 @@ public abstract class GeometryNodeDataBase : FlowableNodeData, IGeometryNodeData
     }
 
     protected abstract Geometry GetGeometry();
-
 }
 
 public class GeometryNodeData : GeometryNodeDataBase
