@@ -4,7 +4,6 @@
                     xmlns:local="clr-namespace:H.Controls.Form.PropertyItem">
     <DataTemplate DataType="{x:Type local:FontIconButtonCommandPropertyItem}">
         <FontIconButton x:Name="btn"
-                        Margin="0,0,0,1"
                         HorizontalAlignment="Left"
                         Command="{Binding Value}"
                         Content="{Binding Icon}"

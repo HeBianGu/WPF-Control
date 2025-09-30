@@ -4,7 +4,6 @@
                     xmlns:local="clr-namespace:H.Controls.Form.PropertyItems">
     <DataTemplate DataType="{x:Type local:CommandPropertyItem}">
         <Button x:Name="btn"
-                Margin="0,0,0,1"
                 HorizontalAlignment="Left"
                 Command="{Binding Value}"
                 Content="{Binding Description}"

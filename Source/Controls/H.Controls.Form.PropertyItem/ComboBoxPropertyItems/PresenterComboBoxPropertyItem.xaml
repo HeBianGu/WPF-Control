@@ -4,7 +4,6 @@
     <DataTemplate DataType="{x:Type local:PresenterComboBoxPropertyItem}">
         <DockPanel>
             <ComboBox Height="Auto"
-                      Margin="0,0,0,1"
                       Cattach.ItemHeight="Auto"
                       Cattach.UseGuide="False"
                       DisplayMemberPath="{Binding DisplayMemberPath}"

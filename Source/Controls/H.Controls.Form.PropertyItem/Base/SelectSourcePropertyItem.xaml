@@ -13,7 +13,6 @@
                 </Border.BorderBrush>
                 <DockPanel>
                     <ComboBox x:Name="cbx"
-                              Margin="0,0,0,1"
                               DockPanel.Dock="Top"
                               ItemsSource="{Binding Collection}"
                               SelectedItem="{Binding Value}"

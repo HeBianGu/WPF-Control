@@ -4,7 +4,6 @@
     <DataTemplate DataType="{x:Type local:CommandsTextPropertyItemBase}">
         <TextBox Height="Auto"
                  MinHeight="{DynamicResource {x:Static LayoutKeys.ItemHeight}}"
-                 Margin="0,0,0,1"
                  VerticalContentAlignment="Center"
                  IsReadOnly="{Binding ReadOnly}"
                  Style="{DynamicResource {x:Static TextBoxKeys.Attach}}"

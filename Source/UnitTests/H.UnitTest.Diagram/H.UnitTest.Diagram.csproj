@@ -17,7 +17,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Controls\H.Controls.Diagram.Presenters.OpenCV\H.Controls.Diagram.Presenters.OpenCV.csproj" />
     <ProjectReference Include="..\..\Extensions\H.Extensions.NewtonsoftJson\H.Extensions.NewtonsoftJson.csproj" />
     <ProjectReference Include="..\..\Extensions\H.Extensions.TextJsonable\H.Extensions.TextJsonable.csproj" />
   </ItemGroup>

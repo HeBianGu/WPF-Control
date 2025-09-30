@@ -5,7 +5,7 @@
                     xmlns:system="clr-namespace:System;assembly=mscorlib">
     <system:Double x:Key="{ComponentResourceKey ResourceId=S.Layout.WindowCaptionHeight, TypeInTargetAssembly={x:Type ll:LayoutKeys}}">50</system:Double>
     <system:Double x:Key="{ComponentResourceKey ResourceId=S.Layout.ItemHeight, TypeInTargetAssembly={x:Type ll:LayoutKeys}}">40</system:Double>
-    <system:Double x:Key="{ComponentResourceKey ResourceId=S.Layout.IconHeight, TypeInTargetAssembly={x:Type ll:LayoutKeys}}">35</system:Double>
+    <system:Double x:Key="{ComponentResourceKey ResourceId=S.Layout.IconHeight, TypeInTargetAssembly={x:Type ll:LayoutKeys}}">20</system:Double>
     <system:Double x:Key="{ComponentResourceKey ResourceId=S.Layout.RowHeight, TypeInTargetAssembly={x:Type ll:LayoutKeys}}">45</system:Double>
     <CornerRadius x:Key="{ComponentResourceKey ResourceId=S.Layout.CornerRadius, TypeInTargetAssembly={x:Type ll:LayoutKeys}}">4</CornerRadius>
     <Thickness x:Key="{ComponentResourceKey ResourceId=S.Layout.Padding, TypeInTargetAssembly={x:Type ll:LayoutKeys}}">10 0</Thickness>

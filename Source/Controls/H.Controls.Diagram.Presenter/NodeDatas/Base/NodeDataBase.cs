@@ -27,7 +27,7 @@ public abstract class NodeDataBase : DisplayBindableBase, ICloneable, INodeData
         return result;
     }
 
-    public INodeData Create()
+    public virtual INodeData Create()
     {
         return Activator.CreateInstance(GetType()) as INodeData;
     }

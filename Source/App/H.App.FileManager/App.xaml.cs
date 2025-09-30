@@ -87,6 +87,7 @@ namespace H.App.FileManager
             });
             app.UseFFMpeg();
             app.UseWindowSetting();
+
         }
     }
 }

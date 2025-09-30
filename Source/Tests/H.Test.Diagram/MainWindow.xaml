@@ -172,19 +172,19 @@
                     <TabItem Header="Image">
                         <ScrollViewer>
                             <ItemsControl>
-                                <h:ImageNodeData Name=""
+                                <h:ImageSrcNodeData Name=""
                                                  ImageSource="{h:Logo}"
                                                  Text="我的电脑" />
-                                <h:ImageNodeData Name=""
+                                <h:ImageSrcNodeData Name=""
                                                  ImageSource="{h:Logo}"
                                                  Text="网上邻居" />
-                                <h:ImageNodeData Name=""
+                                <h:ImageSrcNodeData Name=""
                                                  ImageSource="{h:Logo}"
                                                  Text="服务器" />
-                                <h:ImageNodeData Name=""
+                                <h:ImageSrcNodeData Name=""
                                                  ImageSource="{h:Logo}"
                                                  Text="网关" />
-                                <h:ImageNodeData Name=""
+                                <h:ImageSrcNodeData Name=""
                                                  ImageSource="{h:Logo}"
                                                  Text="客户" />
                             </ItemsControl>
@@ -361,7 +361,7 @@
                                 <h:BrokenLinkDrawer />
                             </h:Diagram.LinkDrawer>
                             <b:Interaction.Behaviors>
-                                <h:DiagramDropTextNodeBehavior NodeType="{Binding NodeType}" />
+                                <h:DiagramDropTypeNodeDataBehavior NodeType="{Binding NodeType}" />
                             </b:Interaction.Behaviors>
                             <b:Interaction.Triggers>
                                 <b:EventTrigger EventName="ItemsChanged">

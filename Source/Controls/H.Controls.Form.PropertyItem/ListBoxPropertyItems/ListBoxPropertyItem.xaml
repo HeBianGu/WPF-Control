@@ -2,8 +2,7 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:H.Controls.Form.PropertyItem.ComboBoxPropertyItems">
     <DataTemplate DataType="{x:Type local:ListBoxPropertyItem}">
-        <ListBox Margin="0,0,0,1"
-                 ItemsSource="{Binding Collection}"
+        <ListBox ItemsSource="{Binding Collection}"
                  SelectedItem="{Binding Value}" />
     </DataTemplate>
 </ResourceDictionary>
