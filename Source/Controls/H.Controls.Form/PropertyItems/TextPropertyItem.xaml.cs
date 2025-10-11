@@ -17,11 +17,12 @@ public class TextPropertyItem : ObjectPropertyItem<string>
         {
             this.TextWrapping = ta.TextWrapping;
             this.UseClear = ta.UseClear;
-
-            UnitAttribute unit = property.GetCustomAttribute<UnitAttribute>();
-            if (unit != null)
-                this.Unit = unit.Unit;
         }
+
+
+        UnitAttribute unit = property.GetCustomAttribute<UnitAttribute>();
+        if (unit != null)
+            this.Unit = unit.Unit;
     }
 
     public string Unit { get; set; }
