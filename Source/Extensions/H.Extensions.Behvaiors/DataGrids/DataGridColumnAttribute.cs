@@ -29,6 +29,10 @@ public class DataGridColumnAttribute : Attribute, IDataGridColumn
     /// "{0}.Property"
     /// </summary>
     public string PropertyPath { get; set; } = "{0}";
+    /// <summary>
+    /// "{0:F2}"
+    /// </summary>
+    public string StringFormat { get; set; }
     public virtual DataGridColumn GetDataGridColumn(PropertyInfo propertyInfo)
     {
         DataGridColumn dataGridColumn = Activator.CreateInstance(this.Template) as DataGridColumn;

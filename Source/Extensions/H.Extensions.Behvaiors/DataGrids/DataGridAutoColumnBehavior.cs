@@ -187,6 +187,8 @@ public class DataGridAutoColumnBehavior : Behavior<DataGrid>
                 bound.Binding = binding;
                 if (columnAttribute?.ConvertyType != null)
                     binding.Converter = Activator.CreateInstance(columnAttribute.ConvertyType) as IValueConverter;
+                if (columnAttribute?.StringFormat != null)
+                    binding.StringFormat = columnAttribute.StringFormat;
             }
             dataGrid.Columns.Add(column);
         }
