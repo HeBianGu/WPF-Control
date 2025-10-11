@@ -7,6 +7,7 @@
 // Licensed under the MIT License (the "License")
 
 using H.Modules.Help.Base;
+using System.IO;
 
 namespace H.Modules.Help.ReleaseVersions;
 
@@ -15,5 +16,14 @@ public class ReleaseVersionsService : ShowHelpServiceBase, IReleaseVersionsServi
     public override void Show()
     {
         ReleaseVersionsOptions.Instance.Uri.ShowProcess();
+    }
+}
+
+public class FileReleaseVersionsService : ReleaseVersionsService
+{
+    public override void Show()
+    {
+        string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Assets", "版本发行说明.txt");
+        filePath.ShowProcess();
     }
 }
