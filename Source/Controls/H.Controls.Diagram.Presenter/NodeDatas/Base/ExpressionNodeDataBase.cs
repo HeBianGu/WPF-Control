@@ -7,6 +7,7 @@
 // Licensed under the MIT License (the "License")
 
 using H.Controls.Diagram.Presenter.Expressions;
+using System;
 
 namespace H.Controls.Diagram.Presenter.NodeDatas.Base;
 
@@ -38,9 +39,9 @@ public abstract class ExpressionNodeDataBase : ShowPropertyViewNodeDataBase, IEx
     public IEnumerable<NodeDataExpression> GetRectFromExpressions() => this.GetFromExpressions<Rect>();
     public IEnumerable<NodeDataExpression> GetPointFromExpressions() => this.GetFromExpressions<Point>();
     public IEnumerable<NodeDataExpression> GetSizeFromExpressions() => this.GetFromExpressions<Size>();
-    public virtual IEnumerable<NodeDataExpression> GetExpressions()
+    public virtual IEnumerable<NodeDataExpression> GetExpressions(Predicate<object> predicate = null)
     {
-        return this.GetExpressions(this.Text, this.Text);
+        return this.GetExpressions(this.Text, this.Text, predicate);
     }
 
     public virtual bool TryGetExpressionValue<T>(NodeDataExpression expression, out T value)

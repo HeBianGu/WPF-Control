@@ -140,11 +140,11 @@ public static class NodeDataExpressionExtension
         return TryGetExpressionValue(displayName, nodeData, out value);
     }
 
-    public static IEnumerable<NodeDataExpression> GetExpressions(this IExpressionable expressionable, string groupName, string path = null)
+    public static IEnumerable<NodeDataExpression> GetExpressions(this IExpressionable expressionable, string groupName, string path = null, Predicate<object> predicate = null)
     {
-        return GetObjExpressions(expressionable, path, groupName);
+        return GetObjExpressions(expressionable, path, groupName, predicate);
     }
-    private static IEnumerable<NodeDataExpression> GetObjExpressions(object obj, string path, string groupName)
+    private static IEnumerable<NodeDataExpression> GetObjExpressions(object obj, string path, string groupName, Predicate<object> predicate = null)
     {
         var properties = obj.GetType().GetProperties().Where(x => x.CanRead);
         foreach (var property in properties)
@@ -171,6 +171,8 @@ public static class NodeDataExpressionExtension
                 continue;
             var value = property.GetValue(obj);
             if (value == null)
+                continue;
+            if(predicate?.Invoke(value)==false)
                 continue;
             var nes = GetObjExpressions(value, ne.Path, groupName);
             foreach (var item in nes)

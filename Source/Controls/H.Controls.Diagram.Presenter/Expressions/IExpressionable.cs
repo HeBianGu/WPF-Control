@@ -22,7 +22,7 @@ public interface IExpressionable
     /// <summary>
     /// 获取表达式
     /// </summary>
-    IEnumerable<NodeDataExpression> GetExpressions();
+    IEnumerable<NodeDataExpression> GetExpressions(Predicate<object> predicate = null);
     /// <summary>
     /// 尝试获取表达式值
     /// </summary>
