@@ -28,3 +28,8 @@ public interface IExpressionable
     /// </summary>
     bool TryGetExpressionValue(NodeDataExpression expression, out object value);
 }
+
+public interface IDefaultValueExpressionable
+{
+    IEnumerable<NodeDataExpression> GetDefaultValueExpressions(Predicate<object> predicate = null);
+}

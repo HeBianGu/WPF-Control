@@ -25,6 +25,8 @@
         <ResourceDictionary Source="pack://application:,,,/H.Controls.Form.PropertyItem;component/TextPropertyItems/HyperlinkPropertyItem.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Controls.Form.PropertyItem;component/TextPropertyItems/UnitTextPropertyItem.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Controls.Form.PropertyItem;component/TextPropertyItems/SliderTextPropertyItem.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Controls.Form.PropertyItem;component/TextPropertyItems/DeleteTextPropertyItem.xaml" />
+
         <ResourceDictionary Source="pack://application:,,,/H.Controls.Form.PropertyItem;component/FontIconButtonCommandPropertyItem.xaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

@@ -43,8 +43,13 @@ public abstract class CommandsBindableBase : Bindable
     /// <returns>命令的集合。</returns>
     protected virtual IEnumerable<IDisplayCommand> CreateCommands()
     {
+        return this.CreateCommands(BindingFlags.Instance | BindingFlags.Static | BindingFlags.Public);
+    }
+
+    protected virtual IEnumerable<IDisplayCommand> CreateCommands(BindingFlags bindingAttr)
+    {
         Type type = this.GetType();
-        IEnumerable<PropertyInfo> cmdps = type.GetProperties().Where(x => typeof(IDisplayCommand).IsAssignableFrom(x.PropertyType));
+        IEnumerable<PropertyInfo> cmdps = type.GetProperties(bindingAttr).Where(x => typeof(IDisplayCommand).IsAssignableFrom(x.PropertyType));
         foreach (PropertyInfo cmdp in cmdps)
         {
             if (cmdp.CanRead == false)

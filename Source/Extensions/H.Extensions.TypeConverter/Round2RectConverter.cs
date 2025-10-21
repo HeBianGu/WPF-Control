@@ -28,6 +28,8 @@ namespace H.Extensions.TypeConverter
         {
             if (value is string strValue)
             {
+                if (string.IsNullOrEmpty(strValue))
+                    return Rect.Empty;
                 string[] parts = strValue.Split(',');
                 if (parts.Length == 4)
                 {
@@ -47,6 +49,8 @@ namespace H.Extensions.TypeConverter
         {
             if (destinationType == typeof(string) && value is Rect rect)
             {
+                if (rect.IsEmpty)
+                    return "";
                 // 将 double 转为 int
                 double x = Math.Round(rect.X, 2);
                 double y = Math.Round(rect.Y, 2);
