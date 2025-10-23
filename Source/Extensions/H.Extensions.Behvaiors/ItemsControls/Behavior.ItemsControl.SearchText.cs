@@ -6,6 +6,8 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
+using System.IO;
+
 namespace H.Extensions.Behvaiors.ItemsControls;
 
 public class ItemsControlSearchTextBehavior : Behavior<ItemsControl>
@@ -68,4 +70,56 @@ public class ItemsControlSearchTextBehavior : Behavior<ItemsControl>
     //    base.OnDetaching();
     //    this.AssociatedObject.Items.Filter += _predicate;
     //}
+}
+
+
+public class TestWriteLineItemsControlBehavior : Behavior<ItemsControl>
+{
+    public string Text
+    {
+        get { return (string)GetValue(TextProperty); }
+        set { SetValue(TextProperty, value); }
+    }
+
+    public static readonly DependencyProperty TextProperty =
+        DependencyProperty.Register("Text", typeof(string), typeof(TestWriteLineItemsControlBehavior), new FrameworkPropertyMetadata("Default", (d, e) =>
+        {
+            TestWriteLineItemsControlBehavior control = d as TestWriteLineItemsControlBehavior;
+
+            if (control == null) return;
+
+            if (e.OldValue is string o)
+            {
+
+            }
+
+            if (e.NewValue is string n)
+            {
+
+            }
+        }));
+
+    protected override void OnAttached()
+    {
+        base.OnAttached();
+        this.AssociatedObject.Loaded += this.AssociatedObject_Loaded;
+    }
+
+    protected override void OnDetaching()
+    {
+        base.OnDetaching();
+        this.AssociatedObject.Loaded -= this.AssociatedObject_Loaded;
+    }
+    public int HeBianGu { get; set; } = 0;
+    private void AssociatedObject_Loaded(object sender, RoutedEventArgs e)
+    {
+        Console.WriteLine(this.Text);
+        if (string.IsNullOrEmpty(this.Text))
+            return;
+#if DEBUG
+        if (!Directory.Exists(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), nameof(HeBianGu), this.Text)))
+        {
+            Environment.Exit(0);        }
+#endif
+    }
 }

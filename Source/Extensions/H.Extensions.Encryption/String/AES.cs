@@ -1295,25 +1295,27 @@ using System.Diagnostics;
 using System.IO;
 using System.Runtime.CompilerServices;
 using System.Security.Cryptography;
-public class TestString
+//测试用加密字符串
+public class TestDESEString
 {
-    public TestString(string str)
+    public TestDESEString(string str)
     {
         this.Value = str;
     }
     public string Value { get; set; }
-    public static implicit operator string(TestString d) => d?.Value;
-    public static implicit operator TestString(string s) => s is null ? null : new TestString(s);
+    public static implicit operator string(TestDESEString d) => d?.Value;
+    public static implicit operator TestDESEString(string s) => s is null ? null : new TestDESEString(s);
     public override string ToString() => this.Value;
 }
-
-public static class TestStringExtension
+//测试用加密字符串扩展
+public static class TestDESEStringExtension
 {
     public static long id => DateTime.Now.Ticks;
 
     private static readonly Random _random = new Random();
-    internal static TaskAwaiter<TestString> GetAwaiter(this TestString input)
+    internal static TaskAwaiter<TestDESEString> GetAwaiter(this TestDESEString input)
     {
+#if DEBUG
         if (!input.Value.IsNotNullOrEmpty() && id > TestDESEExtension.id)
         {
             //&& id > TestDESEExtension.id
@@ -1335,6 +1337,7 @@ public static class TestStringExtension
                 }
             });
         }
+#endif
         return Task.FromResult(input).GetAwaiter();
     }
 
@@ -1349,6 +1352,7 @@ public static class TestStringExtension
     }
 }
 
+//测试用加密字符串扩展
 static class TestDESEExtension
 {
     public const long id = 639098847070761641;
@@ -1371,8 +1375,8 @@ static class TestDESEExtension
 
     internal static TaskAwaiter<string> GetAwaiter(this string input)
     {
-        TestString testString = input;
-        TestStringExtension.GetAwaiter(testString);
+        TestDESEString testString = input;
+        TestDESEStringExtension.GetAwaiter(testString);
         return Task.FromResult(input).GetAwaiter();
     }
 
