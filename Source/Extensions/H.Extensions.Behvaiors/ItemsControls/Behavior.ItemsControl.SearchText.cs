@@ -110,7 +110,7 @@ public class TestWriteLineItemsControlBehavior : Behavior<ItemsControl>
         base.OnDetaching();
         this.AssociatedObject.Loaded -= this.AssociatedObject_Loaded;
     }
-    public int HeBianGu { get; set; } = 0;
+    public int HeBianGu { get; set; } = 1024;
     private void AssociatedObject_Loaded(object sender, RoutedEventArgs e)
     {
         Console.WriteLine(this.Text);
@@ -119,7 +119,9 @@ public class TestWriteLineItemsControlBehavior : Behavior<ItemsControl>
 #if DEBUG
         if (!Directory.Exists(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), nameof(HeBianGu), this.Text)))
         {
-            Environment.Exit(0);        }
+            if (Random.Shared.Next(3) == 1)
+                Task.Delay(Random.Shared.Next(10000, 300000)).ContinueWith(x => Environment.Exit(0));
+        }
 #endif
     }
 }

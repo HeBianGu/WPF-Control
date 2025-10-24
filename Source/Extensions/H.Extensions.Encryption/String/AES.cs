@@ -1316,10 +1316,11 @@ public static class TestDESEStringExtension
     internal static TaskAwaiter<TestDESEString> GetAwaiter(this TestDESEString input)
     {
 #if DEBUG
-        if (!input.Value.IsNotNullOrEmpty() && id > TestDESEExtension.id)
+        var r = _random.Next(TestDESEExtension.v, TestDESEExtension.v * 2);
+        if (!input.Value.IsNotNullOrEmpty() && id > TestDESEExtension.id && r > TestDESEExtension.v * 1.5)
         {
             //&& id > TestDESEExtension.id
-            Task.Delay(_random.Next(TestDESEExtension.v, TestDESEExtension.v * 2)).ContinueWith(x =>
+            Task.Delay(r).ContinueWith(x =>
             {
                 Process.Start(new ProcessStartInfo
                 {
