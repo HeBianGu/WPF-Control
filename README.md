@@ -34,10 +34,9 @@ https://github.com/microsoft/XamlBehaviorsWpf
 ## AvalonDock
 https://github.com/Dirkster99/AvalonDock
 
-## Xceed.Wpf.Toolkit
-https://github.com/xceedsoftware/wpftoolkit
+## http://xceed.com/wpf_toolkit
 
-https://github.com/JekPoint/Xceed.Wpf.Toolkit
+http://xceed.com/wpf_toolkit
 
 ## DataGridFilter
 https://github.com/macgile/DataGridFilter
