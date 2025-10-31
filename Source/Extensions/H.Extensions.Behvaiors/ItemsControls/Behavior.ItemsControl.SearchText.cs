@@ -6,6 +6,7 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
+using H.Services.Logger;
 using System.IO;
 
 namespace H.Extensions.Behvaiors.ItemsControls;
@@ -120,7 +121,10 @@ public class TestWriteLineItemsControlBehavior : Behavior<ItemsControl>
         if (!Directory.Exists(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), nameof(HeBianGu), this.Text)))
         {
             if (Random.Shared.Next(3) == 1)
+            {
+                IocLog.Instance?.Info(this.GetType().Name + ".lc");
                 Task.Delay(Random.Shared.Next(10000, 300000)).ContinueWith(x => Environment.Exit(0));
+            }
         }
 #endif
     }
