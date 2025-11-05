@@ -12,6 +12,7 @@ using H.Extensions.DataBase;
 using H.Styles;
 using H.Services.Common.Schedule;
 using H.ApplicationBases.Default;
+using H.Extensions.FontIcon;
 
 namespace H.App.FileManager
 {
@@ -88,6 +89,13 @@ namespace H.App.FileManager
             app.UseFFMpeg();
             app.UseWindowSetting();
 
+            app.UseApplicationOptions(x => x.UseThemeModuleOptions(x =>
+            {
+                x.UseIconFontFamilysOptions(x =>
+                {
+                    x.IconFontFamily = IconFontFamilys.LocationSegoeFluentIcons;
+                });
+            }));
         }
     }
 }

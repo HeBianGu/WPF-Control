@@ -47,10 +47,9 @@
                                                SnapsToDevicePixels="False"
                                                Source="{TemplateBinding Image}"
                                                Stretch="None" />
-                                        <!--<TextBlock HorizontalAlignment="Center"
-                                                   VerticalAlignment="Center"
-                                                   Style="{DynamicResource {x:Static h:TextBlockKeys.Icon}}"
-                                                   Text="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(h:Cattach.Icon)}" />-->
+                                        <FontIconTextBlock HorizontalAlignment="Center"
+                                                           VerticalAlignment="Center"
+                                                           Text="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(h:Cattach.Icon)}" />
 
                                     </Grid>
                                     <ContentPresenter x:Name="content"

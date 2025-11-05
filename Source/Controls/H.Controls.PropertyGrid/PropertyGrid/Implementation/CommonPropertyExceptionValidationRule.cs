@@ -4,6 +4,7 @@ using System;
 using System.ComponentModel;
 using System.Globalization;
 using System.Windows.Controls;
+using ValidationResult = System.Windows.Controls.ValidationResult;
 
 namespace H.Controls.PropertyGrid
 {
