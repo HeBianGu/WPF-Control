@@ -9,7 +9,7 @@ using System.Runtime.InteropServices;
 using System.Runtime.InteropServices.ComTypes;
 using System.Security.Permissions;
 using System.Text;
-
+using IDataObject = System.Runtime.InteropServices.ComTypes.IDataObject;
 using IStream = System.Runtime.InteropServices.ComTypes.IStream;
 
 namespace Standard
