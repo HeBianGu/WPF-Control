@@ -11,6 +11,13 @@ using System.Globalization;
 
 namespace H.Controls.TagBox
 {
+    public class TagBoxKeys
+    {
+        public static ComponentResourceKey Default => new ComponentResourceKey(typeof(TagBoxKeys), "S.TagBox.Default");
+        public static ComponentResourceKey ComboBox => new ComponentResourceKey(typeof(TagBoxKeys), "S.TagBox.ComboBox");
+
+    }
+
     public class TagBox : ListBox
     {
         static TagBox()

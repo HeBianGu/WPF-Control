@@ -3,7 +3,11 @@
                     xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
                     xmlns:h="https://github.com/HeBianGu"
                     xmlns:local="clr-namespace:H.Controls.TagBox">
-    <Style TargetType="{x:Type local:TagBox}">
+
+    <Style x:Key="{ComponentResourceKey ResourceId=S.TagBox.Default,
+                                        TypeInTargetAssembly={x:Type local:TagBoxKeys}}"
+           BasedOn="{StaticResource {x:Static ListBoxKeys.Default}}"
+           TargetType="{x:Type local:TagBox}">
         <Setter Property="Foreground" Value="{DynamicResource {x:Static h:BrushKeys.Foreground}}" />
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="BorderBrush" Value="Transparent" />
@@ -63,6 +67,11 @@
                 </Style>
             </Setter.Value>
         </Setter>
+    </Style>
+
+    <Style x:Key="{ComponentResourceKey ResourceId=S.TagBox.ComboBox,
+                                        TypeInTargetAssembly={x:Type local:TagBoxKeys}}"
+           TargetType="{x:Type local:TagBox}" BasedOn="{StaticResource {x:Static local:TagBoxKeys.Default}}">
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="ListBox">
@@ -73,10 +82,10 @@
                             <DockPanel x:Name="dp"
                                        DockPanel.Dock="Top">
                                 <FontIconToggleButton x:Name="tb"
-                                                      CheckedGlyph="{x:Static FontIcons.ChevronDown}"
-                                                      UncheckedGlyph="{x:Static FontIcons.ChevronUp}"
                                                       VerticalAlignment="Top"
-                                                      DockPanel.Dock="Right" />
+                                                      CheckedGlyph="{x:Static FontIcons.ChevronDown}"
+                                                      DockPanel.Dock="Right"
+                                                      UncheckedGlyph="{x:Static FontIcons.ChevronUp}" />
                                 <ListBox ItemsSource="{TemplateBinding SelectedItems}">
                                     <ItemsControl.ItemsPanel>
                                         <ItemsPanelTemplate>
@@ -203,4 +212,6 @@
         </Setter>
     </Style>
 
+    <Style BasedOn="{StaticResource {x:Static local:TagBoxKeys.Default}}"
+           TargetType="{x:Type local:TagBox}" />
 </ResourceDictionary>

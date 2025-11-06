@@ -1,37 +1,29 @@
-﻿<ResourceDictionary
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
-    xmlns:h="https://github.com/HeBianGu"
-    xmlns:local="clr-namespace:H.Controls.OrderBox">
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
+                    xmlns:h="https://github.com/HeBianGu"
+                    xmlns:local="clr-namespace:H.Controls.OrderBox">
     <DataTemplate DataType="{x:Type local:OrderBase}">
         <DockPanel ToolTip="{Binding Description}">
-            <ToggleButton
-                Width="Auto"
-                Height="Auto"
-                Background="Transparent"
-                BorderThickness="0"
-                DockPanel.Dock="Right"
-                IsChecked="{Binding UseDesc}">
-                <ToggleButton.Style>
-                    <Style BasedOn="{StaticResource {x:Static h:ToggleButtonKeys.Geometry}}" TargetType="ToggleButton">
-                        <Style.Triggers>
-                            <Trigger Property="IsChecked" Value="False">
-                                <Setter Property="Content" Value="M490.581333 664.234667V128H394.624v768l288-289.152-67.925333-67.84z" />
-                            </Trigger>
-                            <Trigger Property="IsChecked" Value="True">
-                                <Setter Property="Content" Value="M419.882667 484.992l124.117333-125.226667V896h95.957333V128l-288 289.152z" />
-                            </Trigger>
-                        </Style.Triggers>
-                    </Style>
-                </ToggleButton.Style>
+            <FontIconToggleButton Width="Auto"
+                                  Height="Auto"
+                                  Margin="5,0"
+                                  Background="Transparent"
+                                  BorderThickness="0"
+                                  CheckedGlyph="{x:Static FontIcons.Down}"
+                                  DockPanel.Dock="Right"
+                                  FontSize="10"
+                                  IsChecked="{Binding UseDesc}"
+                                  UncheckedGlyph="{x:Static FontIcons.Up}">
                 <b:Interaction.Triggers>
                     <b:EventTrigger EventName="Click">
-                        <b:CallMethodAction MethodName="OnOrderChanged" TargetObject="{Binding RelativeSource={RelativeSource AncestorType={x:Type local:OrderBox}}}" />
+                        <b:CallMethodAction MethodName="OnOrderChanged"
+                                            TargetObject="{Binding RelativeSource={RelativeSource AncestorType={x:Type local:OrderBox}}}" />
                     </b:EventTrigger>
                 </b:Interaction.Triggers>
-            </ToggleButton>
-            <TextBlock VerticalAlignment="Center" Text="{Binding Name}" />
+            </FontIconToggleButton>
+            <TextBlock VerticalAlignment="Center"
+                       Text="{Binding Name}" />
         </DockPanel>
     </DataTemplate>
 </ResourceDictionary>
