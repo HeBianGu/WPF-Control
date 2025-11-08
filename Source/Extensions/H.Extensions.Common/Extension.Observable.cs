@@ -155,6 +155,15 @@ public static class ObservableExtension
         }
     }
 
+    public static void RemoveRange<T>(this ObservableCollection<T> collection, IEnumerable<T> ts)
+    {
+        foreach (T item in ts)
+        {
+            collection.Remove(item);
+        }
+    }
+
+
     public static void Replace<T>(this ObservableCollection<T> collection, T t, Predicate<T> predicate)
     {
         T find = collection.FirstOrDefault(l => predicate(l));
