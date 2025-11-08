@@ -79,6 +79,39 @@ namespace H.Controls.FilterBox
 
         public ObservableCollection<IFilterable> Filters { get; } = new ObservableCollection<IFilterable>();
 
+
+        public ObservableCollection<IFilterable> BindingFilters
+        {
+            get { return (ObservableCollection<IFilterable>)GetValue(BindingFiltersProperty); }
+            set { SetValue(BindingFiltersProperty, value); }
+        }
+
+        public static readonly DependencyProperty BindingFiltersProperty =
+            DependencyProperty.Register("BindingFilters", typeof(ObservableCollection<IFilterable>), typeof(FilterBox), new FrameworkPropertyMetadata(new ObservableCollection<IFilterable>(), (d, e) =>
+            {
+                FilterBox control = d as FilterBox;
+
+                if (control == null) return;
+
+                if (e.OldValue is ObservableCollection<IFilterable> o)
+                {
+                    o.CollectionChanged -= BindingFilters_CollectionChanged;
+                }
+
+                if (e.NewValue is ObservableCollection<IFilterable> n)
+                {
+                    n.CollectionChanged -= BindingFilters_CollectionChanged;
+                    n.CollectionChanged += BindingFilters_CollectionChanged;
+                }
+                control.RefreshData();
+            }));
+
+        private static void BindingFilters_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+
         //声明和注册路由事件
         public static readonly RoutedEvent FilterChangedRoutedEvent =
             EventManager.RegisterRoutedEvent("FilterChanged", RoutingStrategy.Bubble, typeof(EventHandler<RoutedEventArgs>), typeof(FilterBox));
@@ -134,6 +167,11 @@ namespace H.Controls.FilterBox
             foreach (IFilterable data in this.Filters)
             {
                 yield return data;
+            }
+
+            foreach (IFilterable item in this.BindingFilters)
+            {
+                yield return item;
             }
         }
 
