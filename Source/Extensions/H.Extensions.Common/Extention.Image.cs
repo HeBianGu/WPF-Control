@@ -30,6 +30,23 @@ public static class ImageExtention
         }
     }
 
+    public static (int width, int height) GetImageResolution(this string imagePath)
+    {
+        if(!imagePath.IsImage())
+            return (0, 0);
+        try
+        {
+            var bitmap = new BitmapImage();
+            bitmap.BeginInit();
+            bitmap.UriSource = new Uri(imagePath);
+            bitmap.CacheOption = BitmapCacheOption.OnLoad;
+            bitmap.CreateOptions = BitmapCreateOptions.IgnoreImageCache;
+            bitmap.EndInit();
+            return (bitmap.PixelWidth, bitmap.PixelHeight);
+        }
+        catch { return (0, 0); }
+    }
+
     public static void ToCroppedSetClipboard(this BitmapSource bitmapSource, Int32Rect cropArea)
     {
         var croppedBitmap = new CroppedBitmap(bitmapSource, cropArea);

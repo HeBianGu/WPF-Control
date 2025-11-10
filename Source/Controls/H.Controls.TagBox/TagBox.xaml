@@ -71,7 +71,8 @@
 
     <Style x:Key="{ComponentResourceKey ResourceId=S.TagBox.ComboBox,
                                         TypeInTargetAssembly={x:Type local:TagBoxKeys}}"
-           TargetType="{x:Type local:TagBox}" BasedOn="{StaticResource {x:Static local:TagBoxKeys.Default}}">
+           BasedOn="{StaticResource {x:Static local:TagBoxKeys.Default}}"
+           TargetType="{x:Type local:TagBox}">
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="ListBox">

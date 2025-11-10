@@ -1,33 +1,29 @@
-﻿<ResourceDictionary
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
-    xmlns:h="https://github.com/HeBianGu"
-    xmlns:local="clr-namespace:H.Controls.FavoriteBox">
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
+                    xmlns:h="https://github.com/HeBianGu"
+                    xmlns:local="clr-namespace:H.Controls.FavoriteBox">
     <DataTemplate DataType="{x:Type local:FavoritesPresenter}">
         <DockPanel MinWidth="400">
-            <DockPanel
-                Margin="0,2"
-                HorizontalAlignment="Stretch"
-                DockPanel.Dock="Top"
-                LastChildFill="False">
-                <Button
-                    HorizontalAlignment="Right"
-                    Command="{local:CreateFavoriteCommand}"
-                    Content="新增根节点" />
-                <Button
-                    Margin="1,0"
-                    HorizontalAlignment="Left"
-                    Command="{local:InsertFavoriteCommand}"
-                    CommandParameter="{Binding ElementName=fb, Path=SelectedItem.Model}"
-                    Content="插入" />
+            <DockPanel Margin="0,2"
+                       HorizontalAlignment="Stretch"
+                       DockPanel.Dock="Top"
+                       LastChildFill="False">
+                <Button HorizontalAlignment="Right"
+                        Command="{local:CreateFavoriteCommand}"
+                        Content="新增根节点" />
+                <Button Margin="1,0"
+                        HorizontalAlignment="Left"
+                        Command="{local:InsertFavoriteCommand}"
+                        CommandParameter="{Binding ElementName=fb, Path=SelectedItem.Model}"
+                        Content="插入" />
             </DockPanel>
-            <local:FavoriteBox
-                x:Name="fb"
-                HorizontalContentAlignment="Stretch"
-                h:Cattach.TopTemplate="{x:Null}">
+            <local:FavoriteBox x:Name="fb"
+                               HorizontalContentAlignment="Stretch"
+                               h:Cattach.TopTemplate="{x:Null}">
                 <ItemsControl.ItemContainerStyle>
-                    <Style BasedOn="{StaticResource {x:Static h:TreeViewItemKeys.Default}}" TargetType="TreeViewItem">
+                    <Style BasedOn="{StaticResource {x:Static h:TreeViewItemKeys.Default}}"
+                           TargetType="TreeViewItem">
                         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
                         <Setter Property="IsExpanded" Value="True" />
                         <Setter Property="IsSelected" Value="{Binding Model.IsSelected, Mode=TwoWay}" />
@@ -36,24 +32,22 @@
                 <ItemsControl.ItemTemplate>
                     <HierarchicalDataTemplate ItemsSource="{Binding Nodes}">
                         <DockPanel ToolTip="{Binding Model.Description}">
-                            <Button
-                                Background="Transparent"
-                                Command="{local:DeleteFavoriteCommand}"
-                                CommandParameter="{Binding Model}"
-                                Content="删除"
-                                DockPanel.Dock="Right" />
-                            <Button
-                                Background="Transparent"
-                                Command="{local:EditFavoriteCommand}"
-                                CommandParameter="{Binding Model}"
-                                Content="编辑"
-                                DockPanel.Dock="Right" />
-                            <Border
-                                Width="10"
-                                Height="10"
-                                Margin="5,0"
-                                Background="{Binding Model.Background}" />
-                            <TextBlock VerticalAlignment="Center" Text="{Binding Model.Path, Converter={x:Static h:Converter.GetFileNameWithoutExtension}}" />
+                            <Button Background="Transparent"
+                                    Command="{local:DeleteFavoriteCommand}"
+                                    CommandParameter="{Binding Model}"
+                                    Content="删除"
+                                    DockPanel.Dock="Right" />
+                            <Button Background="Transparent"
+                                    Command="{local:EditFavoriteCommand}"
+                                    CommandParameter="{Binding Model}"
+                                    Content="编辑"
+                                    DockPanel.Dock="Right" />
+                            <Border Width="10"
+                                    Height="10"
+                                    Margin="5,0"
+                                    Background="{Binding Model.Background}" />
+                            <TextBlock VerticalAlignment="Center"
+                                       Text="{Binding Model.Path, Converter={x:Static h:Converter.GetFileNameWithoutExtension}}" />
                         </DockPanel>
                     </HierarchicalDataTemplate>
                 </ItemsControl.ItemTemplate>

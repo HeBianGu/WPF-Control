@@ -292,7 +292,7 @@
         <Setter Property="Background" Value="{DynamicResource {x:Static BrushKeys.Background}}" />
         <Setter Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.BorderBrush}}" />
         <Setter Property="BorderThickness" Value="1" />
-        <Setter Property="Cattach.Watermark" Value="请选择日期"/>
+        <Setter Property="Cattach.Watermark" Value="请选择日期" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type DatePicker}">
@@ -378,7 +378,7 @@
                         </VisualStateManager.VisualStateGroups>-->
                     </Border>
                     <ControlTemplate.Triggers>
-                        <!-- 当 SelectedDate 为空 且 文本框没有任何文本 时显示水印 -->
+                        <!--  当 SelectedDate 为空 且 文本框没有任何文本 时显示水印  -->
                         <MultiDataTrigger>
                             <MultiDataTrigger.Conditions>
                                 <Condition Binding="{Binding SelectedDate, RelativeSource={RelativeSource AncestorType=DatePicker}}" Value="{x:Null}" />
@@ -387,7 +387,7 @@
                             <Setter TargetName="PART_Watermark" Property="Visibility" Value="Visible" />
                         </MultiDataTrigger>
 
-                        <!-- 获得焦点时如果已经有文本仍然保持隐藏；失焦后自动依赖上面 MultiDataTrigger -->
+                        <!--  获得焦点时如果已经有文本仍然保持隐藏；失焦后自动依赖上面 MultiDataTrigger  -->
                         <Trigger SourceName="PART_TextBox" Property="IsKeyboardFocused" Value="True">
                             <Setter TargetName="PART_Watermark" Property="Visibility" Value="Collapsed" />
                         </Trigger>

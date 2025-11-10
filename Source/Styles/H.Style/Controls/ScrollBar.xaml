@@ -6,7 +6,7 @@
         <ResourceDictionary Source="pack://application:,,,/H.Style;component/Share.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <system:Double  x:Key="{ComponentResourceKey ResourceId=S.ScrollBarStyle.Length, TypeInTargetAssembly={x:Type local:ScrollBarStyleKeys}}">10</system:Double>
+    <system:Double x:Key="{ComponentResourceKey ResourceId=S.ScrollBarStyle.Length, TypeInTargetAssembly={x:Type local:ScrollBarStyleKeys}}">10</system:Double>
 
     <Style x:Key="ScrollBarLineButton"
            TargetType="{x:Type RepeatButton}">

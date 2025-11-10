@@ -81,7 +81,7 @@
            TargetType="GroupBox">
         <Setter Property="Cattach.CaptionMargin" Value="0" />
         <Setter Property="Cattach.CaptionBackground" Value="{x:Null}" />
-        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="BorderThickness" Value="0" />
         <Setter Property="HeaderTemplate">
             <Setter.Value>
                 <DataTemplate>
