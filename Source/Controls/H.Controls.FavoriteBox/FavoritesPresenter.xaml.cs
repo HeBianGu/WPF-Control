@@ -8,10 +8,13 @@
 
 global using H.Mvvm.ViewModels.Base;
 global using System.Collections.ObjectModel;
+using H.Extensions.Mvvm.ViewModels.Base;
 
 namespace H.Controls.FavoriteBox
 {
-    public class FavoritesPresenter : BindableBase
+    [Icon("\xE713")]
+    [Display(Name = "管理收藏夹", Description = "显示管理收藏夹页面")]
+    public class FavoritesPresenter : DisplayBindableBase
     {
         private ObservableCollection<IFavoriteItem> _collection = new ObservableCollection<IFavoriteItem>();
         /// <summary> 说明  </summary>

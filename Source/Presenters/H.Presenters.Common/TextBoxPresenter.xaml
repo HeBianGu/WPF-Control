@@ -4,6 +4,7 @@
                     xmlns:local="clr-namespace:H.Presenters.Common">
     <DataTemplate DataType="{x:Type local:TextBoxPresenter}">
         <TextBox Height="Auto"
+                 MinWidth="100"
                  MinHeight="{DynamicResource {x:Static h:LayoutKeys.ItemHeight}}"
                  Margin="5"
                  AcceptsReturn="True"
