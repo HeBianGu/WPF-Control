@@ -18,6 +18,8 @@
             <Setter.Value>
                 <HierarchicalDataTemplate ItemsSource="{Binding Nodes}">
                     <DockPanel ToolTip="{Binding Model.Description}">
+                        <CheckBox IsChecked="{Binding RelativeSource={RelativeSource AncestorType=TreeViewItem}, Path=IsSelected}"
+                                  IsHitTestVisible="False" />
                         <Border Width="10"
                                 Height="10"
                                 Margin="5,0"

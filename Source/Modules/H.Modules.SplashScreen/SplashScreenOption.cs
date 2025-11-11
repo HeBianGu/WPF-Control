@@ -11,6 +11,7 @@ using H.Extensions.Setting;
 using H.Services.Setting;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace H.Modules.SplashScreen;
 
@@ -32,6 +33,7 @@ public class SplashScreenOptions : IocOptionInstance<SplashScreenOptions>, ISpla
     }
 
     private string _product;
+    [JsonIgnore]
     [Display(Name = "登录标题")]
     public string Product
     {
@@ -44,6 +46,7 @@ public class SplashScreenOptions : IocOptionInstance<SplashScreenOptions>, ISpla
     }
 
     private string _sub;
+    [JsonIgnore]
     [DefaultValue(null)]
     [Display(Name = "副标题")]
     public string Sub
@@ -57,6 +60,7 @@ public class SplashScreenOptions : IocOptionInstance<SplashScreenOptions>, ISpla
     }
 
     private double _productFontSize;
+    [JsonIgnore]
     [DefaultValue(50)]
     [Display(Name = "字体大小")]
     public double ProductFontSize
@@ -70,6 +74,7 @@ public class SplashScreenOptions : IocOptionInstance<SplashScreenOptions>, ISpla
     }
 
     private double _subFontSize;
+    [JsonIgnore]
     [DefaultValue(20)]
     [Display(Name = "副标题字体大小")]
     public double SubFontSize

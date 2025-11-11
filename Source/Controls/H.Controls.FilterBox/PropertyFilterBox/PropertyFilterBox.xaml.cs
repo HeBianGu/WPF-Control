@@ -202,6 +202,10 @@ namespace H.Controls.FilterBox
                 return;
             Func<PropertyInfo, bool> predicate = x =>
             {
+                if (x.GetCustomAttribute<DisplayAttribute>()?.Name == null)
+                    return false;
+                if (x.GetCustomAttribute<BrowsableAttribute>()?.Browsable == false)
+                    return false;
                 return this.PropertyNames?.Split(',').Contains(x.Name) != false;
             };
             _propertyConfidtions = new PropertyConditionsPrensenter(type, predicate)

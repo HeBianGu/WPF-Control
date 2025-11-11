@@ -7,7 +7,7 @@
         <DockPanel ToolTip="{Binding Description}">
             <FontIconToggleButton Width="Auto"
                                   Height="Auto"
-                                  Margin="5,0"
+                                  Margin="5,0,0,0"
                                   Background="Transparent"
                                   BorderThickness="0"
                                   CheckedGlyph="{x:Static FontIcons.Down}"

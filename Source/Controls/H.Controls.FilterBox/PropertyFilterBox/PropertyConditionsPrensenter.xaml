@@ -5,8 +5,8 @@
                     xmlns:local="clr-namespace:H.Controls.FilterBox"
                     xmlns:system="clr-namespace:System;assembly=mscorlib">
     <DataTemplate DataType="{x:Type local:PropertyConditionsPrensenterBase}">
-        <DockPanel Width="800"
-                   Height="400">
+        <DockPanel MinWidth="800"
+                   MinHeight="400">
             <DockPanel Margin="0"
                        DockPanel.Dock="Top"
                        LastChildFill="False">
@@ -42,8 +42,8 @@
             <Border Margin="1,0"
                     BorderBrush="{DynamicResource {x:Static h:BrushKeys.BorderBrush}}"
                     BorderThickness="1">
-                <ContentControl Margin="2"
-                                Content="{Binding SelectedItem}" />
+                <ContentPresenter Margin="2"
+                                  Content="{Binding SelectedItem}" />
             </Border>
         </DockPanel>
     </DataTemplate>

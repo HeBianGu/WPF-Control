@@ -32,7 +32,7 @@ public static class ImageExtention
 
     public static (int width, int height) GetImageResolution(this string imagePath)
     {
-        if(!imagePath.IsImage())
+        if (!imagePath.IsImage())
             return (0, 0);
         try
         {
@@ -143,7 +143,7 @@ public class ImageEx
 
         try
         {
-            using (FileStream filestream = File.Open(this.FullPath, FileMode.Open, FileAccess.ReadWrite, FileShare.ReadWrite))
+            using (FileStream filestream = File.Open(this.FullPath, FileMode.Open, FileAccess.Read, FileShare.Read))
             {
                 using (BinaryReader reader = new BinaryReader(filestream))
 
@@ -167,11 +167,11 @@ public class ImageEx
                 }
             }
         }
-        catch (Exception)
+        catch (Exception ex)
         {
+            System.Diagnostics.Trace.Assert(false, ex.Message);
             return null;
             //var result = new BitmapImage(new Uri(filePath, UriKind.Absolute));
-
             //if (decodePixelWidth > 0)
             //    result.DecodePixelWidth = decodePixelWidth;
             //if (decodePixelHeight > 0)
