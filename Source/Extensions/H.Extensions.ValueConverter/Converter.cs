@@ -7,6 +7,7 @@
 // Licensed under the MIT License (the "License")
 
 using System.Reflection;
+using System.Windows.Controls;
 
 namespace H.Extensions.ValueConverter;
 
@@ -34,12 +35,17 @@ public static partial class ConverterEx
 
     #endregion
 
+    #region - ViewBox -
+    public static IValueConverter GetViewBoxScale => new ConverterBase<Viewbox, double>(x =>
+    {
+        return x.GetViewBoxScale();
+    });
+    #endregion
+
     #region - Directory -
     public static IValueConverter GetAllFile => new ConverterBase<string, List<string>>(x => x.ToDirectoryEx().GetAllFiles());
 
     #endregion
-
-
 
     public static IValueConverter GetCommands => new ConverterBase<object, IList<ICommand>>(x =>
     {

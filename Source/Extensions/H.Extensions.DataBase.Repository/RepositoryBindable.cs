@@ -20,8 +20,8 @@ namespace H.Extensions.DataBase.Repository
             //try
             //{
             includes = includes ?? this.GetIncludes()?.ToArray();
-            IEnumerable<SelectBindable<TEntity>> collection = includes == null ? this.Repository.GetList().Where(x => this.Where(x)).Select(x => new SelectBindable<TEntity>(x))
-            : this.Repository.GetList(includes).Where(x => this.Where(x)).Select(x => new SelectBindable<TEntity>(x));
+            IEnumerable<SelectBindable<TEntity>> collection = includes == null ? this.Repository.GetList().Where(x => this.Where(x)).Select(x => this.CreateSelectBindable(x))
+            : this.Repository.GetList(includes).Where(x => this.Where(x)).Select(x => this.CreateSelectBindable(x));
             //this.Collection = collection.Select(x => new SelectViewModel<TEntity>(x)).ToObservable();
             this.Collection.Load(collection);
             //}
@@ -62,13 +62,18 @@ namespace H.Extensions.DataBase.Repository
             return true;
         }
 
+        protected virtual SelectBindable<TEntity> CreateSelectBindable(TEntity entity)
+        {
+            return new SelectBindable<TEntity>(entity);
+        }
+
         public override async Task Add(params TEntity[] ms)
         {
             if (this.Repository == null)
             {
                 foreach (TEntity m in ms)
                 {
-                    this.Collection.Add(new SelectBindable<TEntity>(m));
+                    this.Collection.Add(this.CreateSelectBindable(m));
                     if (this.UseOperationLog)
                         Ioc<IOperationService>.Instance?.Log<TEntity>($"新增", m.ID, OperationType.Add);
                 }
@@ -79,7 +84,7 @@ namespace H.Extensions.DataBase.Repository
             int r = await this.Repository?.InsertRangeAsync(ms);
             if (r > 0)
             {
-                this.Collection.Add(ms.Select(x => new SelectBindable<TEntity>(x)).ToArray());
+                this.Collection.Add(ms.Select(x => this.CreateSelectBindable(x)).ToArray());
                 if (this.UseMessage)
                     IocMessage.ShowSnackInfo("新增成功");
             }
