@@ -264,6 +264,8 @@ public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
                     p.LoadDefault();
                 }
             }
+
+            
         }
 
         foreach (var item in this.Datas.LinkDatas.OfType<IDefaultable>())

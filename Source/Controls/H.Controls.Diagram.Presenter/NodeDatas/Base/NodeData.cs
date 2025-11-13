@@ -116,6 +116,12 @@ public abstract class NodeData : NodeDataBase, ITemplate, ILinkDataCreator, IPor
         }
     }
 
+    public override void LoadDefault()
+    {
+        base.LoadDefault();
+        this.IsTemplate = false;
+    }
+
     private double _height;
     [DefaultValue(60)]
     [Display(Name = "高度", GroupName = "样式")]
