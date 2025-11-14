@@ -127,6 +127,8 @@ public class CrossPanel : PanelBase
     protected override Size ArrangeOverride(Size finalSize)
     {
         List<UIElement> children = this.GetChildren();
+        if (children.Count == 0)
+            return finalSize;
 
         Action<UIElement, Point> action = (elment, end) =>
         {
