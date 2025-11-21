@@ -31,7 +31,7 @@ public static class Extension
 
     public static IApplicationBuilder UseSplashScreenOptions(this IApplicationBuilder builder, Action<ISplashScreenOptions> option = null)
     {
-        IocSetting.Instance.Add(SplashScreenOptions.Instance);
+        //IocSetting.Instance.Add(SplashScreenOptions.Instance);
         option?.Invoke(SplashScreenOptions.Instance);
         return builder;
     }

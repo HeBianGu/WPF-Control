@@ -47,7 +47,6 @@ public class SplashScreenOptions : IocOptionInstance<SplashScreenOptions>, ISpla
 
     private string _sub;
     [JsonIgnore]
-    [DefaultValue(null)]
     [Display(Name = "副标题")]
     public string Sub
     {
@@ -59,9 +58,8 @@ public class SplashScreenOptions : IocOptionInstance<SplashScreenOptions>, ISpla
         }
     }
 
-    private double _productFontSize;
+    private double _productFontSize = 50;
     [JsonIgnore]
-    [DefaultValue(50)]
     [Display(Name = "字体大小")]
     public double ProductFontSize
     {
@@ -73,9 +71,8 @@ public class SplashScreenOptions : IocOptionInstance<SplashScreenOptions>, ISpla
         }
     }
 
-    private double _subFontSize;
+    private double _subFontSize = 20;
     [JsonIgnore]
-    [DefaultValue(20)]
     [Display(Name = "副标题字体大小")]
     public double SubFontSize
     {
