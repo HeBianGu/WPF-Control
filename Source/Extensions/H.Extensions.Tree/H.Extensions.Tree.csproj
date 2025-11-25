@@ -5,6 +5,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Base\H.ValueConverter\H.ValueConverter.csproj" />
     <ProjectReference Include="..\H.Extensions.Mvvm\H.Extensions.Mvvm.csproj" />
   </ItemGroup>
 </Project>
