@@ -314,7 +314,7 @@ public class DirectoryEx
         }
     }
 
-    public List<string> GetAllFiles(Predicate<FileInfo> match = null)
+    public List<string> GetAllFiles(Predicate<FileInfo> match = null, Predicate<DirectoryInfo> matchFoder = null)
     {
         List<string> ss = new List<string>();
         if (!Directory.Exists(this.Folder))
@@ -325,6 +325,8 @@ public class DirectoryEx
             if (d is DirectoryInfo)
             {
                 DirectoryInfo dd = d as DirectoryInfo;
+                if (matchFoder?.Invoke(dd) == false)
+                    continue;
                 ss.AddRange(dd.FullName.ToDirectoryEx().GetAllFiles(match));
             }
             else if (d is FileInfo)
