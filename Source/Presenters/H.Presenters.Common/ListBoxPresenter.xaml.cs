@@ -75,17 +75,17 @@ public class ListBoxPresenter : ItemsSourcePresenterBase, IListBoxPresenter
 
 public static partial class DialogServiceExtension
 {
-    [Obsolete("ShowListBox<T>")]
-    public static async Task<bool?> ShowListBox(this IDialogMessageService service, Action<IListBoxPresenter> option, Action<IListBoxPresenter> sumitAction = null, Action<IDialog> builder = null, Func<IListBoxPresenter, Task<bool>> canSumit = null)
-    {
-        return await service.ShowDialog<ListBoxPresenter>(option, sumitAction, x =>
-        {
-            x.HorizontalContentAlignment = System.Windows.HorizontalAlignment.Stretch;
-            x.MinWidth = 200;
-            x.Padding = new Thickness(2);
-            builder?.Invoke(x);
-        }, canSumit);
-    }
+    //[Obsolete("ShowListBox<T>")]
+    //public static async Task<bool?> ShowListBox(this IDialogMessageService service, Action<IListBoxPresenter> option, Action<IListBoxPresenter> sumitAction = null, Action<IDialog> builder = null, Func<IListBoxPresenter, Task<bool>> canSumit = null)
+    //{
+    //    return await service.ShowDialog<ListBoxPresenter>(option, sumitAction, x =>
+    //    {
+    //        x.HorizontalContentAlignment = System.Windows.HorizontalAlignment.Stretch;
+    //        x.MinWidth = 200;
+    //        x.Padding = new Thickness(2);
+    //        builder?.Invoke(x);
+    //    }, canSumit);
+    //}
 
     public static async Task<T> ShowListBox<T>(this IDialogMessageService service, Action<IListBoxPresenter> option, Action<IListBoxPresenter> sumitAction = null, Action<IDialog> builder = null, Func<IListBoxPresenter, Task<bool>> canSumit = null)
     {
@@ -105,28 +105,28 @@ public static partial class DialogServiceExtension
     }
 }
 
-public class ShowListBoxCommand : ShowSourceCommandBase
-{
-    public string DisplayMemberPath { get; set; }
+//public class ShowListBoxCommand : ShowSourceCommandBase
+//{
+//    public string DisplayMemberPath { get; set; }
 
-    [Obsolete]
-    public override async Task ExecuteAsync(object parameter)
-    {
-        await IocMessage.Dialog.ShowListBox(x =>
-         {
-             if (parameter is IEnumerable objects)
-                 x.ItemsSource = objects;
-             else
-                 x.ItemsSource = this.ItemsSource;
+//    [Obsolete]
+//    public override async Task ExecuteAsync(object parameter)
+//    {
+//        await IocMessage.Dialog.ShowListBox(x =>
+//         {
+//             if (parameter is IEnumerable objects)
+//                 x.ItemsSource = objects;
+//             else
+//                 x.ItemsSource = this.ItemsSource;
 
-             if (this._targetObject is FrameworkElement element)
-             {
-                 var find = TreeViewPresenter.GetItemTemplate(element);
-                 if (find != null)
-                     x.ItemContentTemplate = find;
-                 else
-                     x.DisplayMemberPath = this.DisplayMemberPath;
-             }
-         });
-    }
-}
+//             if (this._targetObject is FrameworkElement element)
+//             {
+//                 var find = TreeViewPresenter.GetItemTemplate(element);
+//                 if (find != null)
+//                     x.ItemContentTemplate = find;
+//                 else
+//                     x.DisplayMemberPath = this.DisplayMemberPath;
+//             }
+//         });
+//    }
+//}
