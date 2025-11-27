@@ -23,4 +23,13 @@ namespace H.Controls.TagBox
     {
 
     }
+
+    public static class TagExtension
+    {
+        public static ITag GetTagByName(this ITagService service, string tagName)
+        {
+            IEnumerable<ITag> tags = service.Collection.Where(x => x.GroupName == null);
+            return tags.FirstOrDefault(x => x.Name == tagName);
+        }
+    }
 }
