@@ -257,7 +257,7 @@
                                    Text="{Binding DisplayName}" />
                     </Grid>
 
-                    <TextBlock Margin="-50,10,-50,0"
+                    <TextBlock Margin="-200,10,-200,0"
                                HorizontalAlignment="Center"
                                Foreground="{DynamicResource {x:Static h:BrushKeys.Green}}"
                                Text="{Binding Message}" />
