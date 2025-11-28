@@ -13,9 +13,28 @@ global using System.Windows.Controls;
 
 namespace H.Controls.Step
 {
-    [Display(Name = "步骤")]
-    public class StepPresenter : DisplayBindableBase
+    public interface IStepPresenter
     {
+        ObservableCollection<IStepItemPresenter> Collection { get; set; }
+        string Message { get; set; }
+    }
+
+    [Display(Name = "步骤")]
+    public class StepPresenter : DisplayBindableBase, IStepPresenter
+    {
+        private string _Message;
+
+        public string Message
+        {
+            get { return _Message; }
+            set
+            {
+                _Message = value;
+                RaisePropertyChanged();
+            }
+        }
+
+
         private Orientation _orientation = Orientation.Horizontal;
         public Orientation Orientation
         {

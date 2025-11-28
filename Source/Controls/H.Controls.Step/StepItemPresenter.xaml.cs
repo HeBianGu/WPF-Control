@@ -12,7 +12,7 @@ namespace H.Controls.Step
 {
     public class ActionStepItemPresenter : StepItemPresenter
     {
-        public Func<ActionStepItemPresenter,bool> Action { get; set; }
+        public Func<IDialog, IStepPresenter, ActionStepItemPresenter, bool> Action { get; set; }
     }
 
     public class StepItemPresenter : BindableBase, IStepItemPresenter
