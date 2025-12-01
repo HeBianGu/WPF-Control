@@ -23,11 +23,20 @@ public class NewtonsoftJsonSerializerService : IJsonSerializerService
         return JsonConvert.SerializeObject(t, GetSerializerSettings()); ;
     }
 
-    private JsonSerializerSettings GetSerializerSettings()
+    protected virtual JsonSerializerSettings GetSerializerSettings()
     {
         return NewtonsoftJsonOptions.Instance.JsonSerializerSettings;
     }
 }
+
+public class DefaultNewtonsoftJsonSerializerService : NewtonsoftJsonSerializerService
+{
+    protected override JsonSerializerSettings GetSerializerSettings()
+    {
+        return NewtonsoftJsonOptions.Instance.CreateDefaultSerializerSettings();
+    }
+}
+
 
 public static class NewtonsoftJsonSerializerServiceExtension
 {

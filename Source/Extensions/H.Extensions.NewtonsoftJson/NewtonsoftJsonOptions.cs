@@ -23,17 +23,16 @@ public class NewtonsoftJsonOptions : IocOptionInstance<NewtonsoftJsonOptions>, I
     public override void LoadDefault()
     {
         base.LoadDefault();
-        this.JsonSerializerSettings = this.CreateSerializerSettings();
+        this.JsonSerializerSettings = this.CreateReferenceSerializerSettings();
     }
     [Browsable(false)]
     [JsonInclude]
     public JsonSerializerSettings JsonSerializerSettings { get; set; }
 
-    private JsonSerializerSettings CreateSerializerSettings()
+    public JsonSerializerSettings CreateDefaultSerializerSettings()
     {
         var setting = new JsonSerializerSettings
         {
-            TypeNameHandling = TypeNameHandling.All,
             NullValueHandling = NullValueHandling.Ignore,
             DefaultValueHandling = DefaultValueHandling.Ignore,//默认值不保存,如果不加DefaultValue则跟类型默认值关连，加了之后就会根据DefaultValue关联
             Formatting = Formatting.Indented,// 增加格式化选项
@@ -46,13 +45,18 @@ public class NewtonsoftJsonOptions : IocOptionInstance<NewtonsoftJsonOptions>, I
                 new EnumConverter(),
                 new DateTimeConverter(),
                 new JsonableJsonConverter() },//这部分序列化是会逻辑有问题用FilterBox测试
-            //使用对象引用
-            PreserveReferencesHandling = PreserveReferencesHandling.Objects,
-            ReferenceLoopHandling = ReferenceLoopHandling.Serialize
         };
         return setting;
     }
-    
+
+    public JsonSerializerSettings CreateReferenceSerializerSettings()
+    {
+        var setting = this.CreateDefaultSerializerSettings();
+        setting.PreserveReferencesHandling = PreserveReferencesHandling.Objects;
+        setting.ReferenceLoopHandling = ReferenceLoopHandling.Serialize;
+        setting.TypeNameHandling = TypeNameHandling.All;
+        return setting;
+    }
 }
 
 public class DateTimeConverter : Newtonsoft.Json.JsonConverter
