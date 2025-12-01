@@ -53,7 +53,7 @@
                 </ItemsControl.ItemTemplate>
             </local:FavoriteBox>
         </DockPanel>
-        <!--<TreeView ItemsSource="{ExploreTreeDataProvider}">
+        <!--<TreeView ItemsSource="{GetExploreTree}">
             <TreeView.ItemTemplate>
                 <HierarchicalDataTemplate ItemsSource="{Binding Nodes}">
                     <TextBlock x:Name="a"

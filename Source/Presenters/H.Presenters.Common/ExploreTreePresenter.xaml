@@ -1,0 +1,33 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:h="https://github.com/HeBianGu"
+                    xmlns:local="clr-namespace:H.Presenters.Common">
+    <DataTemplate DataType="{x:Type local:ExploreTreePresenter}">
+        <TreeView ItemsSource="{Binding TreeNodes}">
+            <TreeView.ItemTemplate>
+                <HierarchicalDataTemplate ItemsSource="{Binding Nodes}">
+                    <TextBlock
+                                        x:Name="a"
+                                        VerticalAlignment="Center"
+                                        Text="{Binding Model.Name}" />
+                </HierarchicalDataTemplate>
+            </TreeView.ItemTemplate>
+            <TreeView.ItemContainerStyle>
+                <Style BasedOn="{StaticResource {x:Static h:TreeViewItemKeys.Default}}" TargetType="TreeViewItem">
+                    <Setter Property="h:BehvaiorAttach.Behaviors">
+                        <Setter.Value>
+                            <h:Behaviors>
+                                <h:TreeViewItemLazyLoadBehavior>
+                                    <h:TreeViewItemLazyLoadBehavior.Tree>
+                                        <h:ExploreTree />
+                                    </h:TreeViewItemLazyLoadBehavior.Tree>
+                                </h:TreeViewItemLazyLoadBehavior>
+                            </h:Behaviors>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </TreeView.ItemContainerStyle>
+        </TreeView>
+
+    </DataTemplate>
+</ResourceDictionary>

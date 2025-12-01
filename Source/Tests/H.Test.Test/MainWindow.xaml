@@ -488,7 +488,7 @@
                         </TreeView>
                     </TabItem>
                     <TabItem Header="资源管理器">
-                        <TreeView ItemsSource="{ExploreTreeDataProvider}">
+                        <TreeView ItemsSource="{GetExploreTree}">
                             <TreeView.ItemTemplate>
                                 <HierarchicalDataTemplate ItemsSource="{Binding Nodes}">
                                     <TextBlock
