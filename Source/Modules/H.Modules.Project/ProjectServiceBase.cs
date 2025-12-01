@@ -99,6 +99,7 @@ public abstract class ProjectServiceBase<T> : BindableBase, IProjectService, IDa
         }
         catch (Exception ex)
         {
+            Trace.Assert(false, ex.Message);
             message = ex.Message;
             IocLog.Instance?.Error(ex);
             return false;
