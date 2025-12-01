@@ -40,7 +40,7 @@ public static class TreeExtension
                 rootNode.Nodes.Clear();
                 foreach (var childrenNode in childrenNodes)
                 {
-                    Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Input, new Action(() =>
+                    Application.Current.Dispatcher.Invoke(new Action(() =>
                               {
                                   rootNode.AddNode(childrenNode);
                               }));
