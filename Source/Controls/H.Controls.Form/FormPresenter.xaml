@@ -3,7 +3,9 @@
                     xmlns:h="https://github.com/HeBianGu"
                     xmlns:local="clr-namespace:H.Controls.Form">
     <DataTemplate DataType="{x:Type local:FormPresenter}">
-        <local:Form ExceptPropertyNames="{Binding ExceptPropertyNames}"
+        <local:Form Margin="{Binding Margin}"
+                    Padding="{Binding Padding}"
+                    ExceptPropertyNames="{Binding ExceptPropertyNames}"
                     IsHitTestVisible="{Binding IsHitTestVisible}"
                     SelectObject="{Binding SelectObject}"
                     TitleWidth="{Binding TitleWidth}"

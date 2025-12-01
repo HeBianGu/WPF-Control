@@ -20,5 +20,6 @@
         <ResourceDictionary Source="pack://application:,,,/H.Presenters.Common;component/CommandsPresenter.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Presenters.Common;component/CommandsBindablePresenter.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Presenters.Common;component/AddImageFilePathPresenter.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Presenters.Common;component/FileInfoPresenter.xaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

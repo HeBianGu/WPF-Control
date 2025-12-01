@@ -108,7 +108,8 @@
                                     <ContentPresenter Grid.Column="0"
                                                       Content="{Binding}"
                                                       ContentTemplate="{Binding RelativeSource={RelativeSource AncestorType={x:Type local:Form}}, Path=ItemHeaderTemplate}" />
-                                    <Button Grid.Column="1"
+                                    <Button x:Name="btn_default"
+                                            Grid.Column="1"
                                             Height="Auto"
                                             Margin="2"
                                             Padding="0"
@@ -131,6 +132,12 @@
                                     <TextBlock Grid.Column="3"
                                                Style="{StaticResource S.TextBlock.Error}" />
                                 </Grid>
+                                <DataTemplate.Triggers>
+                                    <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=local:Form}, Path=UsePropertyView}"
+                                                 Value="true">
+                                        <Setter TargetName="btn_default" Property="Visibility" Value="Collapsed" />
+                                    </DataTrigger>
+                                </DataTemplate.Triggers>
                             </DataTemplate>
                         </Setter.Value>
                     </Setter>
