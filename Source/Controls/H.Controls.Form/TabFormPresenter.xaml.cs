@@ -21,6 +21,8 @@ public class TabFormPresenter : FormPresenter
         this.UpdateTabNames();
     }
 
+    public Dock TabStripPlacement { get; set; } = Dock.Top;
+
     public ObservableCollection<string> TabNames { get; set; } = new ObservableCollection<string>();
 
     public void UpdateTabNames()
