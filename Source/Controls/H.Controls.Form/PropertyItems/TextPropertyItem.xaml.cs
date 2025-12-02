@@ -10,6 +10,7 @@ namespace H.Controls.Form.PropertyItems;
 
 public class TextPropertyItem : ObjectPropertyItem<string>
 {
+    private readonly DisplayFormatAttribute _displayFormat;
     public TextPropertyItem(PropertyInfo property, object obj) : base(property, obj)
     {
         TextBoxAttribute ta = property.GetCustomAttribute<TextBoxAttribute>();
@@ -18,12 +19,15 @@ public class TextPropertyItem : ObjectPropertyItem<string>
             this.TextWrapping = ta.TextWrapping;
             this.UseClear = ta.UseClear;
         }
-
-
         UnitAttribute unit = property.GetCustomAttribute<UnitAttribute>();
         if (unit != null)
             this.Unit = unit.Unit;
+        DisplayFormatAttribute displayFormat = property.GetCustomAttribute<DisplayFormatAttribute>();
+        if (displayFormat != null)
+            this._displayFormat = displayFormat;
     }
+
+    public DisplayFormatAttribute DisplayFormat => this._displayFormat;
 
     public string Unit { get; set; }
 
@@ -52,7 +56,11 @@ public class TextPropertyItem : ObjectPropertyItem<string>
     protected override string GetValue()
     {
         object value = this.PropertyInfo.GetValue(this.Obj);
-        return value == null ? null : IsTypeConverter(this.PropertyInfo) ? TypeConverterToString(value) : (value?.ToString());
+        if (value == null)
+            return null;
+        if (IsTypeConverter(this.PropertyInfo))
+            TypeConverterToString(value);
+        return (value?.ToString());
     }
 
     public static bool IsIConvertible(PropertyInfo info)
@@ -69,7 +77,7 @@ public class TextPropertyItem : ObjectPropertyItem<string>
         return typeConvert != null;
     }
 
-    private string TypeConverterToString(object value)
+    protected string TypeConverterToString(object value)
     {
         TypeConverterAttribute propertyConvert = this.PropertyInfo.GetCustomAttribute<TypeConverterAttribute>();
         if (propertyConvert != null)
