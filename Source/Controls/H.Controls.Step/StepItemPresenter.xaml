@@ -111,7 +111,11 @@
                                Margin="-50,10,-50,0"
                                HorizontalAlignment="Center"
                                Foreground="{DynamicResource {x:Static h:BrushKeys.Accent}}"
-                               Text="{Binding Message}" />
+                               Text="{Binding Message}" 
+                               MaxWidth="{Binding Width}"
+                               TextAlignment="Center"
+                               TextWrapping="Wrap"
+                               ToolTip="{Binding Message}" />
 
                 </StackPanel>
 
@@ -157,7 +161,11 @@
                     <TextBlock Margin="-50,10,-50,0"
                                HorizontalAlignment="Center"
                                Foreground="{DynamicResource {x:Static h:BrushKeys.ForegroundAssist}}"
-                               Text="{Binding Message}" />
+                               Text="{Binding Message}"
+                               TextAlignment="Center"
+                               MaxWidth="{Binding Width}"
+                               TextWrapping="Wrap"
+                               ToolTip="{Binding Message}" />
                 </StackPanel>
             </StackPanel>
 
@@ -208,7 +216,11 @@
                     <TextBlock Margin="-50,10,-50,0"
                                HorizontalAlignment="Center"
                                Foreground="{DynamicResource {x:Static h:BrushKeys.Red}}"
-                               Text="{Binding Message}" />
+                               Text="{Binding Message}"
+                               TextAlignment="Center"
+                               TextWrapping="Wrap"
+                               MaxWidth="{Binding Width}"
+                               ToolTip="{Binding Message}" />
 
                 </StackPanel>
 
@@ -260,7 +272,11 @@
                     <TextBlock Margin="-200,10,-200,0"
                                HorizontalAlignment="Center"
                                Foreground="{DynamicResource {x:Static h:BrushKeys.Green}}"
-                               Text="{Binding Message}" />
+                               Text="{Binding Message}"
+                               TextAlignment="Center"
+                               TextWrapping="Wrap"
+                               MaxWidth="{Binding Width}"
+                               ToolTip="{Binding Message}" />
 
                 </StackPanel>
             </StackPanel>

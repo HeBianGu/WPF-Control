@@ -12,7 +12,6 @@ namespace H.Controls.Form.PropertyItems.Base;
 
 public abstract class ObjectPropertyItemBase : DisplayBindableBase, IPropertyItem, IValueChangeable
 {
-
     public ObjectPropertyItemBase(PropertyInfo property, object obj)
     {
         this.PropertyInfo = property;

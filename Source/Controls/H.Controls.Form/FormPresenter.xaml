@@ -32,6 +32,26 @@
                     UsePropertyView="{Binding UsePropertyView}"
                     UseString="{Binding UseString}"
                     UseTypeConverter="{Binding UseTypeConverter}"
-                    UseTypeConverterOnly="{Binding UseTypeConverterOnly}" />
+                    UseTypeConverterOnly="{Binding UseTypeConverterOnly}">
+            <ItemsControl.GroupStyle>
+                <GroupStyle>
+                    <GroupStyle.ContainerStyle>
+                        <Style TargetType="{x:Type GroupItem}">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type GroupItem}">
+                                        <GroupBox Header="{Binding Name}" Padding="3 0">
+                                            <GroupBox.Content>
+                                                <ItemsPresenter />
+                                            </GroupBox.Content>
+                                        </GroupBox>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </GroupStyle.ContainerStyle>
+                </GroupStyle>
+            </ItemsControl.GroupStyle>
+        </local:Form>
     </DataTemplate>
 </ResourceDictionary>

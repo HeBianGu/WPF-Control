@@ -91,6 +91,12 @@ public class TypeConverterJsonConverter : JsonConverter
         TypeConverter converter = CreateTypeConverter(value.GetType());
         if (converter == null)
             writer.WriteValue(value);
+
+        if (value is Freezable freezable && freezable.IsFrozen)
+        {
+            writer.WriteValue(converter.ConvertToInvariantString(value));
+            return;
+        }
         if (value is DispatcherObject dispatcherObject && dispatcherObject.Dispatcher != null)
         {
             dispatcherObject.Dispatcher.Invoke(() =>

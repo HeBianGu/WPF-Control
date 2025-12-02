@@ -10,7 +10,6 @@ namespace H.Controls.Form.PropertyItems;
 
 public class TextPropertyItem : ObjectPropertyItem<string>
 {
-    private readonly DisplayFormatAttribute _displayFormat;
     public TextPropertyItem(PropertyInfo property, object obj) : base(property, obj)
     {
         TextBoxAttribute ta = property.GetCustomAttribute<TextBoxAttribute>();
@@ -22,12 +21,7 @@ public class TextPropertyItem : ObjectPropertyItem<string>
         UnitAttribute unit = property.GetCustomAttribute<UnitAttribute>();
         if (unit != null)
             this.Unit = unit.Unit;
-        DisplayFormatAttribute displayFormat = property.GetCustomAttribute<DisplayFormatAttribute>();
-        if (displayFormat != null)
-            this._displayFormat = displayFormat;
     }
-
-    public DisplayFormatAttribute DisplayFormat => this._displayFormat;
 
     public string Unit { get; set; }
 

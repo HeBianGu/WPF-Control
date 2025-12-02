@@ -21,7 +21,8 @@ public class TextPropertyViewItem : TextPropertyItem, IPropertyViewItem
 
     protected override string GetValue()
     {
-        if (this.DisplayFormat == null)
+        DisplayFormatAttribute displayFormat = this.PropertyInfo.GetCustomAttribute<DisplayFormatAttribute>();
+        if (displayFormat == null)
             return base.GetValue();
         object value = this.PropertyInfo.GetValue(this.Obj);
         if (value == null)
@@ -29,7 +30,7 @@ public class TextPropertyViewItem : TextPropertyItem, IPropertyViewItem
         if (IsTypeConverter(this.PropertyInfo))
             TypeConverterToString(value);
 
-        var format = this.DisplayFormat.DataFormatString;
+        var format = displayFormat.DataFormatString;
         if (string.IsNullOrWhiteSpace(format))
             return value?.ToString();
 
