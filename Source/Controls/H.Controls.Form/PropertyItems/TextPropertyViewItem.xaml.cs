@@ -19,6 +19,17 @@ public class TextPropertyViewItem : TextPropertyItem, IPropertyViewItem
 
     }
 
+    protected override bool CheckType(string value, out string error)
+    {
+        error = null;
+        return true;
+    }
+
+    protected override void SetValue(string value)
+    {
+        
+    }
+
     protected override string GetValue()
     {
         DisplayFormatAttribute displayFormat = this.PropertyInfo.GetCustomAttribute<DisplayFormatAttribute>();
@@ -29,11 +40,9 @@ public class TextPropertyViewItem : TextPropertyItem, IPropertyViewItem
             return null;
         if (IsTypeConverter(this.PropertyInfo))
             TypeConverterToString(value);
-
         var format = displayFormat.DataFormatString;
         if (string.IsNullOrWhiteSpace(format))
             return value?.ToString();
-
         var culture = CultureInfo.CurrentUICulture;
         // 1) 复合格式："{0:...}"
         if (format.Contains("{"))
@@ -48,7 +57,6 @@ public class TextPropertyViewItem : TextPropertyItem, IPropertyViewItem
                 return value?.ToString();
             }
         }
-
         // 2) 纯格式说明符："F2"、"P2"、"yyyy-MM-dd" 等
         if (value is IFormattable formattable)
         {

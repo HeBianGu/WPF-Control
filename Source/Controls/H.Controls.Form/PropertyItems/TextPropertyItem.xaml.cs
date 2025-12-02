@@ -52,6 +52,9 @@ public class TextPropertyItem : ObjectPropertyItem<string>
         object value = this.PropertyInfo.GetValue(this.Obj);
         if (value == null)
             return null;
+        TextValueConverterAttribute vc = this.PropertyInfo.GetCustomAttribute<TextValueConverterAttribute>();
+        if (vc?.ValueConverter != null)
+            return vc.Convert(value)?.ToString();
         if (IsTypeConverter(this.PropertyInfo))
             TypeConverterToString(value);
         return (value?.ToString());
@@ -96,10 +99,23 @@ public class TextPropertyItem : ObjectPropertyItem<string>
         return value?.ToString();
     }
 
+
     protected override bool LoadDefaultValue(object obj, out string t)
     {
-        t = obj == null ? null : IsTypeConverter(this.PropertyInfo) ? TypeConverterToString(obj) : (obj?.ToString());
+        if (obj == null)
+            t = null;
+        TextValueConverterAttribute vc = this.PropertyInfo.GetCustomAttribute<TextValueConverterAttribute>();
+        if (vc?.ValueConverter != null)
+            t = vc.Convert(obj)?.ToString();
+        if (IsTypeConverter(this.PropertyInfo))
+            t = TypeConverterToString(obj);
+        t = obj?.ToString();
         return true;
+    }
+
+    protected override void SetValue(string value)
+    {
+        base.SetValue(value);
     }
 
     protected override bool CanSetDefault(object obj)

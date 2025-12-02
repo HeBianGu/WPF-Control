@@ -190,6 +190,10 @@ public class ObjectPropertyItem<T> : BindingVisiblablePropertyItemBase, IDataErr
                     return instance.ConvertFrom(null, System.Globalization.CultureInfo.CurrentUICulture, value?.ToString());
             }
         }
+
+        TextValueConverterAttribute vc = this.PropertyInfo.GetCustomAttribute<TextValueConverterAttribute>();
+        if (vc?.ValueConverter != null)
+            return vc.ConvertBack(value);
         return value is IConvertible convertible ? Convert.ChangeType(value, this.PropertyInfo.PropertyType) : value;
     }
 
@@ -258,6 +262,8 @@ public class ObjectPropertyItem<T> : BindingVisiblablePropertyItemBase, IDataErr
         get { return _message; }
         set
         {
+            if (_message == value)
+                return;
             _message = value;
             RaisePropertyChanged("Message");
         }

@@ -5,8 +5,7 @@
                     xmlns:local="clr-namespace:H.Modules.Messages.Dialog">
     <DataTemplate DataType="{x:Type local:AdornerDialogPresenter}">
         <Grid HorizontalAlignment="Stretch"
-              VerticalAlignment="Stretch"
-              WindowChrome.IsHitTestVisibleInChrome="True">
+              VerticalAlignment="Stretch">
             <Grid.Background>
                 <SolidColorBrush Opacity="0.6"
                                  Color="Black" />
@@ -40,7 +39,8 @@
                         Background="{DynamicResource {x:Static h:BrushKeys.CaptionBackground}}"
                         CornerRadius="2 2 0 0"
                         TextBlock.Foreground="{DynamicResource {x:Static h:BrushKeys.CaptionForeground}}"
-                        TextElement.Foreground="{DynamicResource {x:Static h:BrushKeys.CaptionForeground}}">
+                        TextElement.Foreground="{DynamicResource {x:Static h:BrushKeys.CaptionForeground}}"
+                        WindowChrome.IsHitTestVisibleInChrome="True">
                     <!--  Background="{DynamicResource {x:Static h:BrushKeys.CaptionBackground}}"  -->
                     <!--
                         BorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrush}}"
