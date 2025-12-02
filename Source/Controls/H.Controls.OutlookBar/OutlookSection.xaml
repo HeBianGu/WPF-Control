@@ -31,7 +31,8 @@
                                       TextBlock.FontWeight="Bold">
                             <ToggleButton.Content>
                                 <DockPanel Focusable="False">
-                                    <ContentControl x:Name="cc_top" DockPanel.Dock="Right"
+                                    <ContentControl x:Name="cc_top"
+                                                    DockPanel.Dock="Right"
                                                     Template="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(h:Cattach.CaptionRightTemplate)}" />
 
                                     <Grid Width="{TemplateBinding Height}"
@@ -64,7 +65,8 @@
                         </ToggleButton>
                     </Border>
                     <ControlTemplate.Triggers>
-                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=odc:OutlookBar},Path=IsMaximized}" Value="False">
+                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=odc:OutlookBar}, Path=IsMaximized}"
+                                     Value="False">
                             <Setter TargetName="cc_top" Property="Visibility" Value="Collapsed" />
                         </DataTrigger>
                         <Trigger Property="IsMaximized" Value="False">

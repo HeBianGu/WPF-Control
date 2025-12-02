@@ -20,7 +20,7 @@ namespace H.Controls.Step
     }
 
     [Display(Name = "步骤")]
-    public class StepPresenter : DisplayBindableBase, IStepPresenter
+    public class StepPresenter : DesignPresenterBase, IStepPresenter
     {
         private string _Message;
 
@@ -33,7 +33,6 @@ namespace H.Controls.Step
                 RaisePropertyChanged();
             }
         }
-
 
         private Orientation _orientation = Orientation.Horizontal;
         public Orientation Orientation

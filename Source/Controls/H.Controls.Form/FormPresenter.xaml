@@ -40,7 +40,8 @@
                             <Setter Property="Template">
                                 <Setter.Value>
                                     <ControlTemplate TargetType="{x:Type GroupItem}">
-                                        <GroupBox Header="{Binding Name}" Padding="3 0">
+                                        <GroupBox Padding="3,0"
+                                                  Header="{Binding Name}">
                                             <GroupBox.Content>
                                                 <ItemsPresenter />
                                             </GroupBox.Content>
