@@ -8,6 +8,7 @@
     <ProjectReference Include="..\..\Extensions\H.Extensions.Common\H.Extensions.Common.csproj" />
     <ProjectReference Include="..\..\Extensions\H.Extensions.FontIcon\H.Extensions.FontIcon.csproj" />
     <ProjectReference Include="..\..\Extensions\H.Extensions.Mvvm\H.Extensions.Mvvm.csproj" />
+    <ProjectReference Include="..\..\Extensions\H.Extensions.TextJsonable\H.Extensions.TextJsonable.csproj" />
     <ProjectReference Include="..\..\Extensions\H.Extensions.Tree\H.Extensions.Tree.csproj" />
     <ProjectReference Include="..\..\Services\H.Services.Common\H.Services.Common.csproj" />
     <ProjectReference Include="..\..\Services\H.Services.Message\H.Services.Message.csproj" />

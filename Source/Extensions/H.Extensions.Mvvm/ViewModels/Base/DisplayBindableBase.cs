@@ -186,7 +186,12 @@ public abstract class DisplayBindableBase : CommandsBindableBase, IDable, IDispl
     /// </summary>
     public virtual void LoadDefault()
     {
-        PropertyInfo[] ps = GetType().GetProperties();
+        this.LoadDefault(this);
+    }
+
+    public virtual void LoadDefault(object obj)
+    {
+        PropertyInfo[] ps = obj.GetType().GetProperties();
         foreach (PropertyInfo p in ps)
         {
             DefaultValueAttribute d = p.GetCustomAttribute<DefaultValueAttribute>();
@@ -195,11 +200,11 @@ public abstract class DisplayBindableBase : CommandsBindableBase, IDable, IDispl
             if (typeof(IConvertible).IsAssignableFrom(p.PropertyType))
             {
                 object value = Convert.ChangeType(d.Value, p.PropertyType);
-                p.SetValue(this, value);
+                p.SetValue(obj, value);
             }
             else
             {
-                p.SetValue(this, d.Value);
+                p.SetValue(obj, d.Value);
             }
         }
     }

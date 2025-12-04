@@ -22,5 +22,7 @@
         <ResourceDictionary Source="pack://application:,,,/H.Presenters.Common;component/AddImageFilePathPresenter.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Presenters.Common;component/FileInfoPresenter.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Presenters.Common;component/ExploreTreePresenter.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Presenters.Common;component/MetaSettingPresenter.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Presenters.Common;component/MetaSettingsPresenter.xaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

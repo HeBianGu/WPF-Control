@@ -1,0 +1,24 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:h="https://github.com/HeBianGu"
+                    xmlns:local="clr-namespace:H.Presenters.Common">
+    <DataTemplate DataType="{x:Type local:MetaSettingsPresenterBase}">
+        <DockPanel>
+            <DockPanel DockPanel.Dock="Top">
+                <ItemsControl ItemsSource="{Binding Commands}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <FontIconButton Style="{DynamicResource {x:Static FontIconButtonKeys.Command}}"
+                                            Command="{Binding}"/>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </DockPanel>
+            <ListBox BorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrush}}"
+                     BorderThickness="1"
+                     ItemsSource="{Binding Collection}"
+                     SelectedItem="{Binding SelectedItem}" >
+            </ListBox>
+        </DockPanel>
+    </DataTemplate>
+</ResourceDictionary>
