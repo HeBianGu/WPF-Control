@@ -34,9 +34,10 @@ public static class SerializerServiceExtensions
         }
         catch (Exception ex)
         {
-            File.Delete(filePath);
+            Trace.Assert(false, ex.Message);
             IocLog.Instance?.Error(ex);
             System.Diagnostics.Debug.WriteLine(ex);
+            File.Delete(filePath);
             return null;
         }
 #endif

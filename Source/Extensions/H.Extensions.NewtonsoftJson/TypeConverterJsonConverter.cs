@@ -81,6 +81,7 @@ public class TypeConverterJsonConverter : JsonConverter
             var r = converter.ConvertFromInvariantString(str);
             if (r is Freezable freezable && freezable.CanFreeze)
                 freezable.Freeze();
+            return r;
         }
         return reader.Value;
     }
