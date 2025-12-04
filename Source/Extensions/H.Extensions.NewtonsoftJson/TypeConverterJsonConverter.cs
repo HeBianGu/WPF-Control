@@ -77,7 +77,11 @@ public class TypeConverterJsonConverter : JsonConverter
         }
         TypeConverter converter = CreateTypeConverter(objectType);
         if (reader?.Value is string str && converter != null)
-            return converter.ConvertFromInvariantString(str);
+        {
+            var r = converter.ConvertFromInvariantString(str);
+            if (r is Freezable freezable && freezable.CanFreeze)
+                freezable.Freeze();
+        }
         return reader.Value;
     }
 
@@ -92,11 +96,11 @@ public class TypeConverterJsonConverter : JsonConverter
         if (converter == null)
             writer.WriteValue(value);
 
-        if (value is Freezable freezable && freezable.IsFrozen)
-        {
-            writer.WriteValue(converter.ConvertToInvariantString(value));
-            return;
-        }
+        //if (value is Freezable freezable && freezable.IsFrozen)
+        //{
+        //    writer.WriteValue(converter.ConvertToInvariantString(value));
+        //    return;
+        //}
         if (value is DispatcherObject dispatcherObject && dispatcherObject.Dispatcher != null)
         {
             dispatcherObject.Dispatcher.Invoke(() =>

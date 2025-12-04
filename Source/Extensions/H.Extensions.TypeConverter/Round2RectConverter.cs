@@ -12,6 +12,7 @@ using System.Windows;
 
 namespace H.Extensions.TypeConverter
 {
+
     public class Round2RectConverter : System.ComponentModel.TypeConverter
     {
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
@@ -29,7 +30,7 @@ namespace H.Extensions.TypeConverter
             if (value is string strValue)
             {
                 if (string.IsNullOrEmpty(strValue))
-                    return Rect.Empty;
+                    return System.Windows.Rect.Empty;
                 string[] parts = strValue.Split(',');
                 if (parts.Length == 4)
                 {
@@ -38,7 +39,7 @@ namespace H.Extensions.TypeConverter
                         double.TryParse(parts[2], out double width) &&
                         double.TryParse(parts[3], out double height))
                     {
-                        return new Rect(x, y, width, height);
+                        return new System.Windows.Rect(x, y, width, height);
                     }
                 }
             }
@@ -47,11 +48,10 @@ namespace H.Extensions.TypeConverter
 
         public override object ConvertTo(ITypeDescriptorContext context, CultureInfo culture, object value, Type destinationType)
         {
-            if (destinationType == typeof(string) && value is Rect rect)
+            if (destinationType == typeof(string) && value is System.Windows.Rect rect)
             {
                 if (rect.IsEmpty)
                     return "";
-                // 将 double 转为 int
                 double x = Math.Round(rect.X, 2);
                 double y = Math.Round(rect.Y, 2);
                 double width = Math.Round(rect.Width, 2);

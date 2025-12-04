@@ -17,6 +17,29 @@ using H.Controls.Form.PropertyItem.Attribute;
 
 namespace H.Controls.Form.PropertyItem.Base
 {
+    public class SelectSourceItem<T>
+    {
+        public SelectSourceItem(T key, string value)
+        {
+            this.Key = key;
+            this.Value = value;
+        }
+        public T Key { get; set; }
+        public string Value { get; set; }
+
+        public override int GetHashCode()
+        {
+            return this.Key.GetHashCode();
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (obj is SelectSourceItem<T> item)
+                return this.Key.Equals(item.Key);
+            return false;
+        }
+    }
+
     public abstract class SelectSourcePropertyItem<T> : ObjectPropertyItem<T>, ISelectSourcePropertyItem
     {
         public SelectSourcePropertyItem(PropertyInfo property, object obj) : base(property, obj)
@@ -55,8 +78,6 @@ namespace H.Controls.Form.PropertyItem.Base
                 RaisePropertyChanged();
             }
         }
-
-
 
         private string _selectedValuePath;
         public string SelectedValuePath

@@ -132,17 +132,30 @@ public static class PropertyInfoExtention
 
     public static IPropertyItem CreateView(this PropertyInfo info, object obj)
     {
-        PropertyItemAttribute editor = info.GetCustomAttribute<PropertyItemAttribute>();
-        if (editor?.Type != null)
+        IPropertyViewItem Create(Type type)
         {
-            if (typeof(IPropertyViewItem).IsAssignableFrom(editor.Type))
+            if (typeof(IPropertyViewItem).IsAssignableFrom(type))
             {
-                var r = Activator.CreateInstance(editor.Type, info, obj) as IPropertyViewItem;
+                var r = Activator.CreateInstance(type, info, obj) as IPropertyViewItem;
                 if (r is IHitTestPropertyViewItem hitTest)
                     hitTest.IsHitTestVisible = false;
                 return r;
             }
+            return null;
+        }
 
+        {
+            PropertyViewItemAttribute editor = info.GetCustomAttribute<PropertyViewItemAttribute>();
+            var r = Create(editor?.Type);
+            if (r != null)
+                return r;
+        }
+
+        {
+            PropertyItemAttribute editor = info.GetCustomAttribute<PropertyItemAttribute>();
+            var r = Create(editor?.Type);
+            if (r != null)
+                return r;
         }
 
         return TextPropertyItem.IsTypeConverter(info)

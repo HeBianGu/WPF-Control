@@ -95,6 +95,7 @@ public class ObjectPropertyItem<T> : BindingVisiblablePropertyItemBase, IDataErr
             catch (Exception ex)
             {
                 this.Message = ex.Message + $"[{this.PropertyInfo.PropertyType.Name}]";
+                //Trace.Assert(false, ex.Message);
                 return;
             }
 

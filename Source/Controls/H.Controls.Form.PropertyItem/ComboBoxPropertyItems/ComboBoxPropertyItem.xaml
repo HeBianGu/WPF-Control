@@ -7,7 +7,7 @@
                   Cattach.UseGuide="False"
                   DisplayMemberPath="{Binding DisplayMemberPath}"
                   ItemsSource="{Binding Collection}"
-                  SelectedItem="{Binding Value}"
+                  SelectedValue="{Binding Value}"
                   SelectedValuePath="{Binding SelectedValuePath}" />
     </DataTemplate>
 </ResourceDictionary>
