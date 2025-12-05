@@ -39,3 +39,26 @@ public class ShowTabEditCommand : ShowMessageDialogCommandBase
         return base.CanExecute(parameter) && (parameter != null || this.Value != null);
     }
 }
+
+[Icon("\xE70F")]
+[Display(Name = "查看", Description = "显示多标签表单编辑数据")]
+public class ShowTabViewCommand : ShowMessageDialogCommandBase
+{
+    public bool UseModelState { get; set; } = true;
+    public object Value { get; set; }
+    public string TabNames { get; set; }
+
+    public override async Task ExecuteAsync(object parameter)
+    {
+        Action<IFormOption> optionView = x =>
+        {
+            x.UseGroupNames = TabNames;
+            x.UsePropertyView = true;
+        };
+        await IocMessage.Form.ShowTabEdit(this.Value ?? parameter, x => this.Invoke(x), this.UseModelState ? null : x => true, optionView);
+    }
+    public override bool CanExecute(object parameter)
+    {
+        return base.CanExecute(parameter) && (parameter != null || this.Value != null);
+    }
+}
