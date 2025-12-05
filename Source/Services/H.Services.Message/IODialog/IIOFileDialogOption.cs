@@ -13,7 +13,7 @@ public interface IIOFileDialogOption
     const string defaultFilter = "所有文件(*.*)|*.*";
     const string defaultTitle = "打开文件";
     const string defaultImageFilter = "图片文件(*.jpg;*.png;*.bmp)|*.jpg;*.png;*.bmp";
-    const string defaultTextFilter = "文本文件(*.txt;*.csv)|*.txt;*.csv";
+    const string defaultTextFilter = "文本文件(*.txt)|*.txt";
     const string defaultExcelFilter = "Excel文件(*.xlsx;*.xls)|*.xlsx;*.xls";
     const string defaultWordFilter = "Word文件(*.doc;*.docx)|*.doc;*.docx";
     const string defaultPdfFilter = "PDF文件(*.pdf)|*.pdf";
