@@ -16,7 +16,9 @@ global using System.ComponentModel;
 global using System.ComponentModel.DataAnnotations;
 global using System.Diagnostics;
 global using System.Windows.Threading;
+using H.Common.Attributes;
 using H.Extensions.Common;
+using H.Extensions.FontIcon;
 using H.Extensions.ObservableSource;
 using H.Services.Common;
 
@@ -117,52 +119,60 @@ namespace H.Extensions.DataBase.Repository
 
         #region - 命令 -
 
-        [Display(Name = "新增", GroupName = "操作")]
+        [Icon(FontIcons.Add)]
+        [Display(Name = "新增", GroupName = "操作,菜单栏")]
         public IDisplayCommand AddCommand => new DisplayCommand(async l => await Add(l));
 
-        [Display(Name = "编辑", GroupName = "操作")]
+        [Icon(FontIcons.Edit)]
+        [Display(Name = "编辑", GroupName = "操作,菜单栏")]
         public IDisplayCommand EditCommand => new DisplayCommand(async l => await Edit(l), l => this.GetEntity(l) != null);
 
-        [Display(Name = "编辑", GroupName = "操作")]
-        [Browsable(false)]
-        public IDisplayCommand EditTransactionCommand => new DisplayCommand(x =>
-        {
-            //if (e is TEntity project)
-            //{
-            //    bool r = await s.BeginEditAsync(() =>
-            //    {
-            //        if (project.ModelState(out List<string> message) == false)
-            //        {
-            //            IocMessage.Snack?.ShowInfo(message?.FirstOrDefault());
-            //            return false;
-            //        }
-            //        return true;
-            //    });
-            //    if (r)
-            //    {
-            //        if (this.Repository != null)
-            //            this.Repository.Save();
-            //    }
-            //    else
-            //    {
-            //        //  Do ：rollback
-            //    }
-            //}
-        });
+        //[Icon(FontIcons.Edit)]
+        //[Display(Name = "编辑", GroupName = "操作,菜单栏")]
+        //[Browsable(false)]
+        //public IDisplayCommand EditTransactionCommand => new DisplayCommand(x =>
+        //{
+        //    //if (e is TEntity project)
+        //    //{
+        //    //    bool r = await s.BeginEditAsync(() =>
+        //    //    {
+        //    //        if (project.ModelState(out List<string> message) == false)
+        //    //        {
+        //    //            IocMessage.Snack?.ShowInfo(message?.FirstOrDefault());
+        //    //            return false;
+        //    //        }
+        //    //        return true;
+        //    //    });
+        //    //    if (r)
+        //    //    {
+        //    //        if (this.Repository != null)
+        //    //            this.Repository.Save();
+        //    //    }
+        //    //    else
+        //    //    {
+        //    //        //  Do ：rollback
+        //    //    }
+        //    //}
+        //});
 
-        [Display(Name = "删除", GroupName = "操作")]
+        [Icon(FontIcons.Delete)]
+        [Display(Name = "删除", GroupName = "操作,菜单栏")]
         public IDisplayCommand DeleteCommand => new DisplayCommand(async l => await Delete(l), l => this.GetEntity(l) != null);
 
-        [Display(Name = "查看", GroupName = "操作")]
+        [Icon(FontIcons.View)]
+        [Display(Name = "查看", GroupName = "操作,菜单栏")]
         public IDisplayCommand ViewCommand => new DisplayCommand(async l => await View(l), l => this.GetEntity(l) != null);
 
-        [Display(Name = "清空", GroupName = "操作")]
+        [Icon(FontIcons.Clear)]
+        [Display(Name = "清空", GroupName = "操作,菜单栏")]
         public IDisplayCommand ClearCommand => new DisplayCommand(async l => await Clear(l), l => this.Collection != null && this.Collection.Count > 0);
 
-        [Display(Name = "保存", GroupName = "操作")]
+        [Icon(FontIcons.Save)]
+        [Display(Name = "保存", GroupName = "操作,菜单栏")]
         public IDisplayCommand SaveCommand => new DisplayCommand(async l => await this.Save());
 
-        [Display(Name = "导出", GroupName = "操作")]
+        [Icon(FontIcons.Export)]
+        [Display(Name = "导出", GroupName = "操作,菜单栏")]
         public IDisplayCommand ExportCommand => new DisplayCommand(async l =>
         {
             SaveFileDialog saveFileDialog = new SaveFileDialog();
@@ -179,7 +189,21 @@ namespace H.Extensions.DataBase.Repository
 
         }, l => this.Collection != null && this.Collection.Count > 0);
 
-        [Display(Name = "下一个", GroupName = "操作")]
+
+        [Icon(FontIcons.Previous)]
+        [Display(Name = "上一个", GroupName = "操作,菜单栏,工具栏")]
+        public IDisplayCommand PreviousCommand => new DisplayCommand(x =>
+        {
+            this.Previous();
+        }, x => this.Collection.Count > 0);
+
+        public virtual void Previous()
+        {
+            this.Collection.Previous();
+        }
+
+        [Icon(FontIcons.Next)]
+        [Display(Name = "下一个", GroupName = "操作,菜单栏,工具栏")]
         public IDisplayCommand NextCommand => new DisplayCommand(x =>
         {
             this.Next();
@@ -191,16 +215,6 @@ namespace H.Extensions.DataBase.Repository
             this.Collection.Next();
         }
 
-        [Display(Name = "上一个", GroupName = "操作")]
-        public IDisplayCommand PreviousCommand => new DisplayCommand(x =>
-        {
-            this.Previous();
-        }, x => this.Collection.Count > 0);
-
-        public virtual void Previous()
-        {
-            this.Collection.Previous();
-        }
         //public RelayCommand ImportCommand => new RelayCommand(async l =>
         //{
         //    OpenFileDialog openFileDialog = new OpenFileDialog();
@@ -215,7 +229,9 @@ namespace H.Extensions.DataBase.Repository
 
         //    await this.Import(openFileDialog.FileName);
         //}); 
-        [Display(Name = "全选", GroupName = "操作")]
+
+        [Icon(FontIcons.CheckboxComposite)]
+        [Display(Name = "全选", GroupName = "操作,菜单栏")]
         public IDisplayCommand CheckedAllCommand => new DisplayCommand(l =>
         {
             if (l is Boolean b)
@@ -230,14 +246,16 @@ namespace H.Extensions.DataBase.Repository
             }
         }, l => this.Collection != null && this.Collection.Count > 0);
 
-        [Display(Name = "取消选则", GroupName = "操作")]
+        [Icon(FontIcons.Checkbox)]
+        [Display(Name = "取消选则", GroupName = "操作,菜单栏")]
         public IDisplayCommand CheckedNoneCommand => new DisplayCommand(l =>
         {
             this.Collection.Foreach(K => K.IsSelected = false);
 
         }, l => this.Collection != null && this.Collection.Count > 0);
 
-        [Display(Name = "全选当前页", GroupName = "操作")]
+        [Icon(FontIcons.CheckboxComposite)]
+        [Display(Name = "全选当前页", GroupName = "操作,菜单栏")]
         public IDisplayCommand CheckedAllCurrentPageCommand => new DisplayCommand(l =>
         {
             if (l is Boolean b)
@@ -253,7 +271,8 @@ namespace H.Extensions.DataBase.Repository
             }
         }, l => this.Collection != null && this.Collection.Count > 0);
 
-        [Display(Name = "全选当前过滤器", GroupName = "操作")]
+        [Icon(FontIcons.CheckboxComposite)]
+        [Display(Name = "全选当前过滤器", GroupName = "操作,菜单栏")]
         public IDisplayCommand CheckedAllFilterSourceCommand => new DisplayCommand(l =>
         {
             if (l is Boolean b)
@@ -274,7 +293,8 @@ namespace H.Extensions.DataBase.Repository
             }
         }, l => this.Collection != null && this.Collection.Count > 0);
 
-        [Display(Name = "删除选中", GroupName = "操作")]
+        [Icon(FontIcons.Delete)]
+        [Display(Name = "删除选中", GroupName = "操作,菜单栏")]
         public IDisplayCommand DeleteCheckedCommand => new DisplayCommand(async l => await DeleteAllChecked(l), l => this.Collection.Any(k => k.IsSelected));
 
         //public RelayCommand PrintCommand => new RelayCommand(async (s, e) =>
@@ -288,7 +308,8 @@ namespace H.Extensions.DataBase.Repository
         //    return await MessageProxy.Printer.PrintTable(finds);
         //}
 
-        [Display(Name = "表格设置", GroupName = "操作")]
+        [Icon(FontIcons.GridView)]
+        [Display(Name = "表格设置", GroupName = "操作,菜单栏")]
         public IDisplayCommand GridSetCommand => new DisplayCommand(GridSet);
 
         protected void GridSet(object obj)

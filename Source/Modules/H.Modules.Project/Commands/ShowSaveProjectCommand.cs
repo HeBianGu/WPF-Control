@@ -14,6 +14,13 @@ public class ShowSaveProjectCommand : ShowProjectCommandBase
 {
     public override async Task ExecuteAsync(object parameter)
     {
-        await IocProject.Instance?.ShowSaveProject();
+        var current = IocProject.Instance?.Current;
+        if (current == null)
+            return;
+        await IocProject.Instance?.ShowSaveProject(current);
+    }
+    public override bool CanExecute(object parameter)
+    {
+        return IocProject.Instance?.Current != null;
     }
 }

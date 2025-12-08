@@ -6,20 +6,24 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
-global using H.Services.Serializable;
-global using System.Collections;
-global using System.ComponentModel.DataAnnotations;
 global using H.Common.Interfaces;
 global using H.Extensions.Common;
 global using H.Mvvm.ViewModels.Base;
 global using H.Services.AppPath;
+global using H.Services.Serializable;
 global using H.Services.Setting;
+global using System.Collections;
+global using System.ComponentModel.DataAnnotations;
 global using System.IO;
+using H.Extensions.FontIcon;
+using H.Extensions.Mvvm.Commands;
+using System.Reflection.Metadata;
+using System.Text.Json.Serialization;
 
 namespace H.Modules.Project;
 
 [Display(Name = "工程数据", GroupName = SettingGroupNames.GroupData)]
-public abstract class ProjectServiceBase<T> : BindableBase, IProjectService, IDataSource<T> where T : IProjectItem
+public abstract class ProjectServiceBase<T> : CommandsBindableBase, IProjectService, IDataSource<T> where T : IProjectItem
 {
     private readonly IOptions<ProjectOptions> _options;
     public ProjectServiceBase(IOptions<ProjectOptions> options)
@@ -194,6 +198,38 @@ public abstract class ProjectServiceBase<T> : BindableBase, IProjectService, IDa
         this.Current = null;
     }
 
+
+    [JsonIgnore]
+    [Icon("\xE7C3")]
+    [Display(Name = "新建项目", GroupName = "菜单栏,工具栏,右键菜单", Description = "显示新建项目页面")]
+    public DisplayCommand ShowNewProjectCommand => new DisplayCommand(x =>
+    {
+        IocProject.Instance?.ShowNewProject();
+    });
+
+    [JsonIgnore]
+    [Icon(FontIcons.Edit)]
+    [Display(Name = "编辑项目", GroupName = "菜单栏,右键菜单", Description = "显示选中项目编辑页面")]
+    public DisplayCommand EditCommand => new DisplayCommand(x =>
+    {
+        IocProject.Instance?.ShowEidtProject(this.Current);
+    }, x => this.Current != null);
+
+    [JsonIgnore]
+    [Icon(FontIcons.Save)]
+    [Display(Name = "保存项目", GroupName = "菜单栏,工具栏,右键菜单", Description = "保存当前选中向导到配置文件中")]
+    public DisplayCommand ShowSaveProjectCommand => new DisplayCommand(x =>
+    {
+        IocProject.Instance?.ShowSaveProject(this.Current);
+    }, x => this.Current != null);
+
+    [JsonIgnore]
+    [Icon("\xE8E5")]
+    [Display(Name = "打开项目文件", GroupName = "菜单栏,右键菜单", Description = "用记事本打开当前项目的配置文件数据")]
+    public DisplayCommand ShowCurrentProjectFileCommand => new DisplayCommand(x =>
+    {
+        IocProject.Instance?.ShowCurrentProjectFile(this.Current);
+    }, x => this.Current != null);
 }
 
 public class Projects<T>

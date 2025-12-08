@@ -8,6 +8,7 @@
 
 global using H.Services.Message.Dialog;
 global using H.Services.Project;
+using System.Windows.Media.Animation;
 
 namespace H.Modules.Project;
 
@@ -132,7 +133,7 @@ static partial class ProjectExtension
         return r;
     }
 
-    public static async Task<bool?> ShowSaveProject(this IProjectService projectService)
+    public static async Task<bool?> ShowSaveProject(this IProjectService projectService, IProjectItem current)
     {
         string message = null;
         var c = projectService.Current;
@@ -149,6 +150,15 @@ static partial class ProjectExtension
         if (r == false && !string.IsNullOrEmpty(message))
             await IocMessage.ShowDialogMessage(message);
         return r;
+    }
+
+    public static bool ShowCurrentProjectFile(this IProjectService projectService, IProjectItem current)
+    {
+        if (current == null)
+            return false;
+        string p = System.IO.Path.Combine(current.Path ?? ProjectOptions.Instance.DefaultProjectFolder, current.Title + ProjectOptions.Instance.Extenstion);
+        Process.Start(new ProcessStartInfo("notepad", p) { UseShellExecute = true });
+        return true;
     }
 
     public static bool Contain(this IProjectService projectService, IProjectItem projectItem)
