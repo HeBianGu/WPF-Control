@@ -6,14 +6,9 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
-global using H.Extensions.Mvvm.ViewModels.Base;
+namespace H.Extensions.Mvvm.ViewModels.Base;
 
-namespace H.Controls.Diagram.Presenter.DiagramDatas.Base;
-
-[Icon("\xE722")]
-public abstract class NodeDataGroupBase : GroupDisplayBindableBase<INodeData>, INodeDataGroup
+public interface ICommandsBindable
 {
-
+    ObservableCollection<ICommand> Commands { get; }
 }
-
-

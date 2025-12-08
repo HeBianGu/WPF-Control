@@ -1,0 +1,42 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:cmd="clr-namespace:H.Extensions.Mvvm.Commands">
+    <!--<ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/H.Extensions.Mail;component/DialogWindow.xaml" />
+    </ResourceDictionary.MergedDictionaries>--><!--
+    <DataTemplate DataType="{x:Type cmd:DisplayCommand}">
+        <StackPanel Margin="5">
+            <BulletDecorator>
+                <BulletDecorator.Bullet>
+                    <TextBlock Width="80"
+                               Text="发送邮箱" />
+                </BulletDecorator.Bullet>
+                <TextBox Text="{Binding Model.From}" />
+            </BulletDecorator>
+            <BulletDecorator>
+                <BulletDecorator.Bullet>
+                    <TextBlock Width="80"
+                               Text="接收邮箱" />
+                </BulletDecorator.Bullet>
+                <ListBox ItemsSource="{Binding Model.To}" />
+            </BulletDecorator>
+            <ListBox ItemsSource="{Binding Model.Cc}" />
+            <ListBox ItemsSource="{Binding Model.Bcc}" />
+            <BulletDecorator>
+                <BulletDecorator.Bullet>
+                    <TextBlock Width="80"
+                               Text="主题" />
+                </BulletDecorator.Bullet>
+                <TextBox Text="{Binding Model.Subject}" />
+            </BulletDecorator>
+            <BulletDecorator>
+                <BulletDecorator.Bullet>
+                    <TextBlock Width="80"
+                               Text="内容" />
+                </BulletDecorator.Bullet>
+                <TextBox Text="{Binding Model.Body}" />
+            </BulletDecorator>
+            <ListBox ItemsSource="{Binding Model.Attachments}" />
+        </StackPanel>
+    </DataTemplate>-->
+</ResourceDictionary>

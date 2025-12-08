@@ -19,7 +19,7 @@ namespace H.Extensions.Mvvm.ViewModels.Base;
 /// <summary>
 /// 提供了创建命令的基类，用于绑定到视图模型。
 /// </summary>
-public abstract class CommandsBindableBase : Bindable
+public abstract class CommandsBindableBase : Bindable, ICommandsBindable
 {
     /// <summary>
     /// 初始化 <see cref="CommandsBindableBase"/> 类的新实例。
@@ -33,8 +33,8 @@ public abstract class CommandsBindableBase : Bindable
     /// 获取命令的集合。
     /// </summary>
     [Browsable(false)]
-    [System.Text.Json.Serialization.JsonIgnore]
-    [System.Xml.Serialization.XmlIgnore]
+    [JsonIgnore]
+    [XmlIgnore]
     public ObservableCollection<ICommand> Commands { get; } = new ObservableCollection<ICommand>();
 
     /// <summary>
