@@ -125,7 +125,7 @@
                                                 BorderBrush="{Binding RelativeSource={RelativeSource AncestorType=Button}, Path=Foreground}"
                                                 BorderThickness="1"
                                                 CornerRadius="0"
-                                                Opacity="0.6" />
+                                                Opacity="0.8" />
                                     </Button>
                                     <ContentPresenter Grid.Column="2"
                                                       Content="{Binding}" />
@@ -136,6 +136,10 @@
                                     <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=local:Form}, Path=UsePropertyView}"
                                                  Value="true">
                                         <Setter TargetName="btn_default" Property="Visibility" Value="Collapsed" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding ElementName=btn_default, Path=IsEnabled}"
+                                                 Value="False">
+                                        <Setter TargetName="btn_default" Property="Opacity" Value="0.2" />
                                     </DataTrigger>
                                 </DataTemplate.Triggers>
                             </DataTemplate>

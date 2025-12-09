@@ -20,7 +20,9 @@
             </DockPanel>
             <local:FavoriteBox x:Name="fb"
                                HorizontalContentAlignment="Stretch"
-                               h:Cattach.TopTemplate="{x:Null}">
+                               h:Cattach.TopTemplate="{x:Null}"
+                               BorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrush}}"
+                               BorderThickness="1">
                 <ItemsControl.ItemContainerStyle>
                     <Style BasedOn="{StaticResource {x:Static h:TreeViewItemKeys.Default}}"
                            TargetType="TreeViewItem">
@@ -32,16 +34,18 @@
                 <ItemsControl.ItemTemplate>
                     <HierarchicalDataTemplate ItemsSource="{Binding Nodes}">
                         <DockPanel ToolTip="{Binding Model.Description}">
-                            <Button Background="Transparent"
-                                    Command="{local:DeleteFavoriteCommand}"
-                                    CommandParameter="{Binding Model}"
-                                    Content="删除"
-                                    DockPanel.Dock="Right" />
-                            <Button Background="Transparent"
-                                    Command="{local:EditFavoriteCommand}"
-                                    CommandParameter="{Binding Model}"
-                                    Content="编辑"
-                                    DockPanel.Dock="Right" />
+                            <FontIconButton Background="Transparent"
+                                            Command="{local:DeleteFavoriteCommand}"
+                                            CommandParameter="{Binding Model}"
+                                            Content="{x:Static FontIcons.Delete}"
+                                            DockPanel.Dock="Right"
+                                            ToolTip="删除" />
+                            <FontIconButton Background="Transparent"
+                                            Command="{local:EditFavoriteCommand}"
+                                            CommandParameter="{Binding Model}"
+                                            Content="{x:Static FontIcons.Edit}"
+                                            DockPanel.Dock="Right"
+                                            ToolTip="编辑" />
                             <Border Width="10"
                                     Height="10"
                                     Margin="5,0"

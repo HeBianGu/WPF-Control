@@ -9,6 +9,7 @@
 global using H.Common.Attributes;
 global using System.Collections;
 global using System.Windows;
+using H.Extensions.FontIcon;
 using H.Mvvm.Commands;
 
 namespace H.Presenters.Common;
@@ -19,8 +20,8 @@ public interface IListBoxPresenter : IItemsSourcePresenter
 
     bool UseDelete { get; set; }
 }
-[Icon("\xE890")]
-[Display(Name = "选择数据")]
+[Icon(FontIcons.List)]
+[Display(Name = "数据列表")]
 public class ListBoxPresenter : ItemsSourcePresenterBase, IListBoxPresenter
 {
     public ListBoxPresenter()
