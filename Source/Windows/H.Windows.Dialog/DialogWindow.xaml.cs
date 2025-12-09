@@ -99,6 +99,7 @@ public partial class DialogWindow : Window, IDialog
     }
 
     DataTemplate IDialog.PresenterTemplate { get => this.ContentTemplate; set => this.ContentTemplate = value; }
+    public bool UseActionAutoClose { get; set; } = true;
 
     public static readonly DependencyProperty FontIconProperty =
         DependencyProperty.Register("FontIcon", typeof(string), typeof(DialogWindow), new FrameworkPropertyMetadata("\xEA8F"));
@@ -207,11 +208,14 @@ public partial class DialogWindow : Window
                 Task.Run(() =>
                 {
                     result = func.Invoke(dialog, presenter);
-                    dialog.Dispatcher.Invoke(() =>
+                    if (dialog.UseActionAutoClose)
                     {
-                        if (dialog.DialogResult == null)
-                            dialog.DialogResult = true;
-                    });
+                        dialog.Dispatcher.Invoke(() =>
+                        {
+                            if (dialog.DialogResult == null)
+                                dialog.DialogResult = true;
+                        });
+                    }
                 });
             }
         };

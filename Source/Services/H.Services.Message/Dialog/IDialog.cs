@@ -21,4 +21,5 @@ public interface IDialog : ILayoutable, ICancelable, ITransitionHostable
     DialogButton DialogButton { get; set; }
     Window Owner { get; set; }
     DataTemplate PresenterTemplate { get; set; }
+    bool UseActionAutoClose { get; set; }
 }

@@ -15,7 +15,11 @@ namespace H.Modules.Messages.Dialog
         public override void Execute(object parameter)
         {
             if (parameter is AdornerDialogPresenter presenter)
+            {
+                presenter.DialogResult = false;
                 presenter.Close();
+            }
+
         }
 
         public override bool CanExecute(object parameter)

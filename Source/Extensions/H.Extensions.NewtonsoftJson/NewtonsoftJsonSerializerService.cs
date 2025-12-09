@@ -15,7 +15,7 @@ public class NewtonsoftJsonSerializerService : IJsonSerializerService
 {
     public object DeserializeObject(string txt, Type type)
     {
-        return JsonConvert.DeserializeObject(txt, GetSerializerSettings());
+        return JsonConvert.DeserializeObject(txt, type, GetSerializerSettings());
     }
 
     public string SerializeObject<T>(T t)
