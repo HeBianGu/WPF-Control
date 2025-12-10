@@ -12,7 +12,7 @@ public static class AppDomianPaths
 {
     public const string Assets = nameof(Assets);
     public static string DefaultTemplates => Path.Combine(Assets, "DefaultTemplates");
-    public static string DefaultProjects => Path.Combine(DefaultTemplates, "Projects");
+    public static string DefaultProjects => Path.Combine(DefaultTemplates, "Project");
     public static string Modules => "Modules";
     public static string Components => "Components";
     public static string Versions => "Versions";
