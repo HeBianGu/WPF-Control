@@ -20,3 +20,46 @@ public interface ISnackMessageService
     void ShowSuccess(string message);
     void ShowWarn(string message);
 }
+
+public static class SnackMessageServiceExtension
+{
+    public static void ShowErrorDispatcher(this ISnackMessageService service, string message)
+    {
+        Application.Current.Dispatcher.Invoke(() =>
+        {
+            service.ShowError(message);
+        });
+    }
+
+    public static void ShowFatalDispatcher(this ISnackMessageService service, string message)
+    {
+        Application.Current.Dispatcher.Invoke(() =>
+        {
+            service.ShowFatal(message);
+        });
+    }
+
+    public static void ShowWarnDispatcher(this ISnackMessageService service, string message)
+    {
+        Application.Current.Dispatcher.Invoke(() =>
+        {
+            service.ShowWarn(message);
+        });
+    }
+
+    public static void ShowInfoDispatcher(this ISnackMessageService service, string message)
+    {
+        Application.Current.Dispatcher.Invoke(() =>
+        {
+            service.ShowInfo(message);
+        });
+    }
+
+    public static void ShowSuccessDispatcher(this ISnackMessageService service, string message)
+    {
+        Application.Current.Dispatcher.Invoke(() =>
+        {
+            service.ShowSuccess(message);
+        });
+    }
+}

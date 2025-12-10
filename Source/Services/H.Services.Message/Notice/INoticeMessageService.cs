@@ -20,3 +20,46 @@ public interface INoticeMessageService
     void ShowSuccess(string message);
     void ShowWarn(string message);
 }
+
+public static class NoticeMessageServiceExtension
+{
+    public static void ShowErrorDispatcher(this INoticeMessageService service, string message)
+    {
+        Application.Current.Dispatcher.Invoke(() =>
+        {
+            service.ShowError(message);
+        });
+    }
+
+    public static void ShowFatalDispatcher(this INoticeMessageService service, string message)
+    {
+        Application.Current.Dispatcher.Invoke(() =>
+        {
+            service.ShowFatal(message);
+        });
+    }
+
+    public static void ShowWarnDispatcher(this INoticeMessageService service, string message)
+    {
+        Application.Current.Dispatcher.Invoke(() =>
+        {
+            service.ShowWarn(message);
+        });
+    }
+
+    public static void ShowInfoDispatcher(this INoticeMessageService service, string message)
+    {
+        Application.Current.Dispatcher.Invoke(() =>
+        {
+            service.ShowInfo(message);
+        });
+    }
+
+    public static void ShowSuccessDispatcher(this INoticeMessageService service, string message)
+    {
+        Application.Current.Dispatcher.Invoke(() =>
+        {
+            service.ShowSuccess(message);
+        });
+    }
+}
