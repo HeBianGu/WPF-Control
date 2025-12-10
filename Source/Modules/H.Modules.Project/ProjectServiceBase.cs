@@ -165,10 +165,11 @@ public abstract class ProjectServiceBase<T> : CommandsBindableBase, IProjectServ
         if (data != null)
         {
             var orders = data.Items.OrderByDescending(x => x.UpdateTime);
-            foreach (T item in orders)
-            {
-                this.Add(data.Items.ToArray());
-            }
+            this.Collection = orders.ToObservable();
+            //foreach (T item in orders)
+            //{
+            //    this.Add(data.Items.ToArray());
+            //}
             this.Current = orders.FirstOrDefault();
         }
         if (this.Current == null)

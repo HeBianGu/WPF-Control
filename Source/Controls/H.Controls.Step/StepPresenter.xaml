@@ -4,12 +4,13 @@
                     xmlns:local="clr-namespace:H.Controls.Step">
     <DataTemplate DataType="{x:Type local:StepPresenter}">
         <DockPanel>
-            <TextBlock MaxWidth="500"
+            <TextBlock MaxWidth="{Binding MaxWidth}"
                        Margin="0,6"
                        HorizontalAlignment="Left"
                        DockPanel.Dock="Bottom"
                        Text="{Binding Message}"
-                       TextWrapping="Wrap" />
+                       ToolTip="{Binding Message}"
+                       TextTrimming="CharacterEllipsis" />
             <local:Step x:Name="step"
                         Padding="50,0"
                         ClipToBounds="False"
