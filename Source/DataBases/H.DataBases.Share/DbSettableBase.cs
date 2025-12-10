@@ -37,7 +37,7 @@ namespace H.DataBases.Share
         public override void LoadDefault()
         {
             base.LoadDefault();
-            this.ConfigPath = Path.Combine(AppPaths.Instance.Config, this.GetType().Name + AppPaths.Instance.ConfigExtention);
+            this.ConfigPath = Path.Combine(AppPaths.Instance.Config, this.GetType().Name + ".json");
         }
         protected override string GetDefaultPath()
         {

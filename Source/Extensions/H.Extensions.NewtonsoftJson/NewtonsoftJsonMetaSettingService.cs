@@ -19,8 +19,12 @@ public class NewtonsoftJsonMetaSettingService : JsonMetaSettingServiceBase
     {
         string path = this.GetFilePath(typeof(T).Name, id);
         if (!File.Exists(path))
-            return default;
-
+        {
+            var defPath = this.GetDefaultTemplateFilePath(typeof(T).Name, id);
+            if (!File.Exists(defPath))
+                return default;
+            path = defPath;
+        }
         System.Diagnostics.Debug.WriteLine(path);
         string txt = File.ReadAllText(path);
         var obj = JsonConvert.DeserializeObject(txt, typeof(T), GetSerializerSettings());
@@ -50,5 +54,11 @@ public class NewtonsoftJsonMetaSettingService : JsonMetaSettingServiceBase
         if (!Directory.Exists(Path.GetDirectoryName(path)))
             Directory.CreateDirectory(Path.GetDirectoryName(path));
         return path;
+    }
+
+    private string GetDefaultTemplateFilePath(string typeName, string id)
+    {
+        var cache = Path.GetFileNameWithoutExtension(AppPaths.Instance.Cache);
+        return Path.Combine(AppDomianPaths.DefaultTemplates, cache, typeName, id + ".json");
     }
 }

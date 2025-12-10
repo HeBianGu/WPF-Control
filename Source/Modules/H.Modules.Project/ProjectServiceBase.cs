@@ -183,7 +183,7 @@ public abstract class ProjectServiceBase<T> : CommandsBindableBase, IProjectServ
 
     protected virtual Projects<T> LoadDefaultProjects()
     {
-        string path = AppPaths.Instance.DefaultProjects;
+        string path = AppDomianPaths.DefaultProjects;
         string toPath = this.GetFolderPath();
         path.ToDirectoryEx().BackupToDirectory(toPath);
         Projects<T> data = this.GetSerializer().Load<Projects<T>>(this._projectsPath);

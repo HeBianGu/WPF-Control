@@ -14,7 +14,6 @@ using System.IO;
 using System.Reflection;
 
 namespace H.Extensions.AppPath;
-
 /// <summary>
 /// 系统路径
 /// </summary>
@@ -25,11 +24,6 @@ public class AppPathServce : Lazy<AppPathServce>, IAppPathServce
     /// 公司名称
     /// </summary>
     public virtual string Company { get; set; } = "HeBianGu";
-
-    /// <summary>
-    /// 配置文件扩展名
-    /// </summary>
-    public virtual string ConfigExtention { get; set; } = ".xml";
 
     /// <summary>
     /// 构造函数
@@ -69,7 +63,16 @@ public class AppPathServce : Lazy<AppPathServce>, IAppPathServce
     /// <summary>
     /// 默认目录
     /// </summary>
-    public virtual string Default => Path.Combine(this.Document, this.Company, this.AppName, nameof(this.Default));
+    public virtual string Default
+    {
+        get
+        {
+            if (string.IsNullOrEmpty(this.Version))
+                return Path.Combine(this.Document, this.Company, this.AppName, nameof(this.Default));
+            return Path.Combine(this.Document, this.Company, this.AppName, nameof(this.Default), this.Version);
+        }
+    }
+
 
     /// <summary>
     /// 配置目录
@@ -116,6 +119,7 @@ public class AppPathServce : Lazy<AppPathServce>, IAppPathServce
     /// </summary>
     public virtual string Cache => Path.Combine(this.Default, nameof(this.Cache));
 
+    public virtual string Version { get; }
     #endregion
 
     #region - 登录用户目录 -
@@ -123,7 +127,18 @@ public class AppPathServce : Lazy<AppPathServce>, IAppPathServce
     /// <summary>
     /// 用户路径
     /// </summary>
-    public virtual string UserPath => this.GetUserName() == null ? this.Default : Path.Combine(this.AppPath, this.GetUserName() ?? nameof(this.Default));
+    public virtual string UserPath
+    {
+        get
+        {
+            var userName = this.GetUserName();
+            if (userName == null)
+                return this.Default;
+            if (string.IsNullOrEmpty(this.Version))
+                return Path.Combine(this.AppPath, userName);
+            return Path.Combine(this.AppPath, userName, this.Version);
+        }
+    }
 
     private string GetUserName()
     {
@@ -146,17 +161,6 @@ public class AppPathServce : Lazy<AppPathServce>, IAppPathServce
     public virtual string UserProject => Path.Combine(this.UserPath, nameof(this.Project));
 
     /// <summary>
-    /// 默认项目目录
-    /// </summary>
-    public virtual string DefaultProjects => Path.Combine(Assets, nameof(DefaultProjects));
-
-    /// <summary>
-    /// 资源目录
-    /// </summary>
-    //public virtual string Assets => Path.Combine(AppDomain.CurrentDomain.BaseDirectory, nameof(Assets));
-    public virtual string Assets => nameof(Assets);
-
-    /// <summary>
     /// 用户模板目录
     /// </summary>
     public virtual string UserTemplate => Path.Combine(this.UserPath, nameof(this.Template));
@@ -175,25 +179,6 @@ public class AppPathServce : Lazy<AppPathServce>, IAppPathServce
     /// 用户日志目录
     /// </summary>
     public virtual string UserLog => Path.Combine(this.Default, nameof(this.Log));
-
-    #endregion
-
-    #region - 程序根目录 -
-
-    /// <summary>
-    /// 模块目录
-    /// </summary>
-    public virtual string Module => Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Module");
-
-    /// <summary>
-    /// 组件目录
-    /// </summary>
-    public virtual string Component => Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Component");
-
-    /// <summary>
-    /// 版本目录
-    /// </summary>
-    public virtual string Version => Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Version");
 
     #endregion
 

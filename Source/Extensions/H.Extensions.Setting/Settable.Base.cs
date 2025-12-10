@@ -65,9 +65,14 @@ public abstract class SettableBase : DisplayBindableBase, ISettable, ILoadable, 
         var path = this.GetDefaultPath();
         if (!this.HasFile())
         {
-            message = "文件不存在:" + path;
-            IocLog.Instance?.Info(message);
-            return true;
+            var defPath = this.GetDefaultTemplateFilePath();
+            if (!File.Exists(defPath))
+            {
+                message = "文件不存在:" + path;
+                IocLog.Instance?.Info(message);
+                return true;
+            }
+            path = defPath;
         }
         message = null;
         this.Load(path);
@@ -115,5 +120,11 @@ public abstract class SettableBase : DisplayBindableBase, ISettable, ILoadable, 
         var path = this.GetDefaultPath();
         if (File.Exists(path))
             File.Delete(path);
+    }
+
+    private string GetDefaultTemplateFilePath()
+    {
+        var folder = Path.GetFileNameWithoutExtension(this.GetDefaultFolder());
+        return Path.Combine(AppDomianPaths.DefaultTemplates, folder, this.GetType().Name + ".json");
     }
 }
