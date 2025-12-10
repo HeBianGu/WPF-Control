@@ -8,6 +8,8 @@
 
 namespace H.Services.Message.Dialog.Commands;
 
+[Icon("\xE70F")]
+[Display(Name = "编辑", Description = "显示弹窗消息")]
 public class ShowEditCommand : ShowMessageDialogCommandBase
 {
     public bool UseModelState { get; set; } = true;
