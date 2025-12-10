@@ -93,7 +93,7 @@ public class MetaSettingsPresenter<T> : MetaSettingsPresenterBase, IMetaSetting
     public virtual async Task<T> ShowSelectItemAsync()
     {
         this.Load();
-        var r = await IocMessage.Dialog.Show(this);
+        var r = await IocMessage.Dialog.Show(this, x => x.Title = "选择项目");
         if (r != true)
             return default;
         return this.SelectedItem;

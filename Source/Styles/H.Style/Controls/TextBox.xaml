@@ -222,6 +222,8 @@
                                                       Width="Auto"
                                                       Height="Auto"
                                                       Margin="1"
+                                                      Cattach.Title="删除文本"
+                                                      ToolTip="点击此按钮删除文本"
                                                       Background="{x:Null}"
                                                       Command="{local:DeleteTextCommandExtension}"
                                                       CommandParameter="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}}"

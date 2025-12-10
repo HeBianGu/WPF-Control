@@ -7,5 +7,6 @@
            TargetType="{x:Type local:TextFilterBox}">
         <Setter Property="Cattach.Title" Value="搜索" />
         <Setter Property="Cattach.Watermark" Value="输入搜索条件" />
+        <Setter Property="ToolTip" Value="输入搜索数据对数据进行搜索" />
     </Style>
 </ResourceDictionary>

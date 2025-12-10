@@ -23,14 +23,18 @@
                                 <FontIconToggleButton x:Name="tb_filter"
                                                       Background="{DynamicResource {x:Static h:BrushKeys.MouseOver}}"
                                                       BorderThickness="1,0,0,0"
+                                                      Cattach.Title="选择过滤器"
                                                       CheckedGlyph="{x:Static FontIcons.Filter}"
                                                       DockPanel.Dock="Right"
+                                                      ToolTip="点击此按钮选择过滤器"
                                                       UncheckedGlyph="{x:Static FontIcons.Filter}" />
                                 <Button x:Name="PART_Button"
                                         Height="Auto"
                                         Margin="1"
+                                        Cattach.Title="设置过滤器"
                                         Content="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=PropertyConfidtions.SelectedItem}"
-                                        ContentTemplate="{TemplateBinding SelectedDataTemplate}" />
+                                        ContentTemplate="{TemplateBinding SelectedDataTemplate}"
+                                        ToolTip="点击此按钮设置过滤器" />
                             </DockPanel>
 
                             <Popup Height="Auto"

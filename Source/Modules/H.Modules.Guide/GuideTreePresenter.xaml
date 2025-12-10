@@ -57,6 +57,7 @@
                                            TextTrimming="CharacterEllipsis"
                                            ToolTip="{Binding Tilte}" />
                                 <ContentPresenter Grid.Column="3"
+                                                  Margin="5,0"
                                                   HorizontalAlignment="Right"
                                                   VerticalAlignment="Center"
                                                   Content="{Binding Data}"
