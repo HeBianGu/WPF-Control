@@ -35,8 +35,15 @@ public static class PathExtension
     {
         return System.IO.Path.GetPathRoot(filePath);
     }
-    public static string GetFileName(this string filePath, string relativeTo)
+    public static string GetRelativePath(this string filePath, string relativeTo)
     {
         return System.IO.Path.GetRelativePath(relativeTo, filePath);
+    }
+
+    public static string GetRelativeStartsWithPath(this string filePath, string relativeTo)
+    {
+        if (filePath.StartsWith(relativeTo, StringComparison.OrdinalIgnoreCase))
+            return filePath.GetRelativePath(relativeTo);
+        return filePath;
     }
 }

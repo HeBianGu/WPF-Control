@@ -62,6 +62,7 @@ static partial class ProjectExtension
         projectService.Add(project);
         projectService.Current = project;
         project.Save(out string message);
+        projectService.ProjectAdded?.Invoke(project);
         return true;
     }
     public static async Task<bool?> ShowEidtProject(this IProjectService projectService, IProjectItem project, Action<IDialog> action = null)

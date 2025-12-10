@@ -18,4 +18,5 @@ public interface IProjectService : ISplashSave, ISplashLoadable
     void Delete(Func<IProjectItem, bool> func);
     IEnumerable<IProjectItem> Where(Func<IProjectItem, bool> func = null);
     Action<IProjectItem, IProjectItem> CurrentChanged { get; set; }
+    Action<IProjectItem> ProjectAdded { get; set; }
 }

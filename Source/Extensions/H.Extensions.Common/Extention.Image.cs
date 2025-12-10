@@ -8,13 +8,14 @@
 
 using System.IO;
 using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
 using System.Windows;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
 namespace H.Extensions.Common;
 
-public static class ImageExtention
+public static partial class ImageExtention
 {
     public static ImageEx ToImageEx(this string filePath) => new ImageEx(filePath);
 
@@ -97,6 +98,163 @@ public static class ImageExtention
             return null;
         ImageSourceConverter converter = new ImageSourceConverter();
         return converter.ConvertFromInvariantString(filePath) as ImageSource;
+    }
+}
+
+public static partial class ImageExtention
+{
+    [DllImport("kernel32.dll", SetLastError = true, CharSet = CharSet.Auto)]
+    private static extern bool CreateHardLink(string lpFileName, string lpExistingFileName, IntPtr lpSecurityAttributes);
+
+    public static (bool success, string message) CreateHardLinkTo(this string sourcePath, string destinationPath)
+    {
+        try
+        {
+            // 1. 基本检查
+            if (!File.Exists(sourcePath))
+                return (false, "源文件不存在");
+
+            // 2. 文件系统检查
+            if (!IsFileSystemSupported(sourcePath))
+                return (false, "文件系统不支持硬链接");
+
+            // 3. 磁盘分区检查
+            if (!CanCreateHardLink(sourcePath, destinationPath))
+                return (false, "不能跨磁盘分区创建硬链接");
+
+            // 4. 目录准备
+            string destDir = Path.GetDirectoryName(destinationPath);
+            if (!Directory.Exists(destDir))
+            {
+                try
+                {
+                    Directory.CreateDirectory(destDir);
+                }
+                catch (Exception ex)
+                {
+                    return (false, $"创建目录失败: {ex.Message}");
+                }
+            }
+
+            // 5. 删除已存在的目标文件
+            if (File.Exists(destinationPath))
+            {
+                try
+                {
+                    File.Delete(destinationPath);
+                }
+                catch (Exception ex)
+                {
+                    return (false, $"删除已存在文件失败: {ex.Message}");
+                }
+            }
+
+            // 6. 创建硬链接
+            bool apiSuccess = CreateHardLink(destinationPath, sourcePath, IntPtr.Zero);
+
+            if (!apiSuccess)
+            {
+                int errorCode = Marshal.GetLastWin32Error();
+                string errorMsg = GetErrorMessage(errorCode);
+                return (false, $"API调用失败 (错误代码 {errorCode}): {errorMsg}");
+            }
+
+            // 7. 验证结果
+            if (!File.Exists(destinationPath))
+                return (false, "API调用成功但文件未创建");
+
+            // 8. 最终验证
+            return VerifyHardLink(sourcePath, destinationPath);
+        }
+        catch (Exception ex)
+        {
+            return (false, $"异常: {ex.Message}");
+        }
+    }
+
+    private static (bool success, string message) VerifyHardLink(string sourcePath, string destinationPath)
+    {
+        try
+        {
+            FileInfo sourceInfo = new FileInfo(sourcePath);
+            FileInfo destInfo = new FileInfo(destinationPath);
+
+            if (sourceInfo.Length != destInfo.Length)
+                return (false, "文件大小不匹配");
+
+            // 简单的内容验证（对于图片文件）
+            if (sourceInfo.Length > 0)
+            {
+                using (var sourceStream = File.OpenRead(sourcePath))
+                using (var destStream = File.OpenRead(destinationPath))
+                {
+                    if (sourceStream.Length != destStream.Length)
+                        return (false, "文件内容长度验证失败");
+                }
+            }
+
+            return (true, "硬链接创建并验证成功");
+        }
+        catch (Exception ex)
+        {
+            return (false, $"验证失败: {ex.Message}");
+        }
+    }
+
+    private static string GetErrorMessage(int errorCode)
+    {
+        return errorCode switch
+        {
+            5 => "拒绝访问 (ERROR_ACCESS_DENIED)",
+            80 => "文件已存在 (ERROR_FILE_EXISTS)",
+            183 => "文件已存在 (ERROR_ALREADY_EXISTS)",
+            17 => "目标文件系统不支持硬链接",
+            1327 => "需要提升的权限",
+            _ => $"未知错误: {errorCode}"
+        };
+    }
+
+    public static bool IsFileSystemSupported(string path)
+    {
+        try
+        {
+            DriveInfo drive = new DriveInfo(Path.GetPathRoot(path));
+            string fileSystem = drive.DriveFormat;
+            Console.WriteLine($"文件系统: {fileSystem}");
+
+            // NTFS 支持硬链接，FAT32、exFAT 不支持
+            bool supported = fileSystem.Equals("NTFS", StringComparison.OrdinalIgnoreCase);
+            Console.WriteLine($"支持硬链接: {supported}");
+
+            return supported;
+        }
+        catch
+        {
+            return false;
+        }
+    }
+    public static bool CanCreateHardLink(string sourcePath, string destinationPath)
+    {
+        try
+        {
+            DriveInfo sourceDrive = new DriveInfo(Path.GetPathRoot(sourcePath));
+            DriveInfo destDrive = new DriveInfo(Path.GetPathRoot(destinationPath));
+
+            bool sameDrive = sourceDrive.Name.Equals(destDrive.Name, StringComparison.OrdinalIgnoreCase);
+            Console.WriteLine($"同磁盘分区: {sameDrive}");
+
+            if (!sameDrive)
+            {
+                Console.WriteLine("错误: 硬链接不能跨磁盘分区创建!");
+                return false;
+            }
+
+            return true;
+        }
+        catch
+        {
+            return false;
+        }
     }
 }
 

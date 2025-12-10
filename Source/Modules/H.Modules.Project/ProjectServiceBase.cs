@@ -29,6 +29,11 @@ public abstract class ProjectServiceBase<T> : CommandsBindableBase, IProjectServ
     public ProjectServiceBase(IOptions<ProjectOptions> options)
     {
         _options = options;
+        this.ProjectAdded = x => this.OnProjectAdded(x); ;
+    }
+    protected virtual void OnProjectAdded(IProjectItem projectItem)
+    {
+
     }
 
     private IEnumerable<T> _collection = new ObservableCollection<T>();
@@ -68,7 +73,6 @@ public abstract class ProjectServiceBase<T> : CommandsBindableBase, IProjectServ
     }
 
     [System.Text.Json.Serialization.JsonIgnore]
-
     [System.Xml.Serialization.XmlIgnore]
     [Browsable(false)]
     public Action<IProjectItem, IProjectItem> CurrentChanged { get; set; }
@@ -231,6 +235,11 @@ public abstract class ProjectServiceBase<T> : CommandsBindableBase, IProjectServ
     {
         IocProject.Instance?.ShowCurrentProjectFile(this.Current);
     }, x => this.Current != null);
+
+    [System.Text.Json.Serialization.JsonIgnore]
+    [System.Xml.Serialization.XmlIgnore]
+    [Browsable(false)]
+    public Action<IProjectItem> ProjectAdded { get; set; }
 }
 
 public class Projects<T>
