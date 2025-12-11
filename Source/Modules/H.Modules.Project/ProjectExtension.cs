@@ -77,6 +77,18 @@ static partial class ProjectExtension
         });
     }
 
+    public static async Task<bool?> ShowViewProject(this IProjectService projectService, IProjectItem project, Action<IDialog> action = null)
+    {
+        return await IocMessage.Form.ShowView(project, x =>
+        {
+            x.Title = "查看项目";
+            action?.Invoke(x);
+        }, x =>
+        {
+            x.UseCommand = false;
+        });
+    }
+
     //public static async Task<bool?> ShowProjects(this IProjectService projectService, Action<IDialog> action = null)
     //{
     //    var project = projectService.Create();

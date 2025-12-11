@@ -6,22 +6,19 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
-global using H.Modules.Project;
-
 namespace H.Modules.Project.Commands;
 
-[Display(Name = "删除项目", Description = "删除当前选中的项目")]
-public class ShowDeleteProjectCommand : DisplayMarkupCommandBase
+[Icon("\xE70F")]
+[Display(Name = "查看项目", Description = "显示选中项目查看页面")]
+public class ShowViewProjectCommand : ShowProjectCommandBase
 {
     public override async Task ExecuteAsync(object parameter)
     {
+        IProjectItem projectItem = IocProject.Instance.Current;
         if (parameter is IProjectItem project)
-            await IocProject.Instance.ShowDeleteProject(project);
-    }
-    public override bool CanExecute(object parameter)
-    {
-        if (IocProject.Instance == null)
-            return false;
-        return IocProject.Instance.Current != parameter;
+            projectItem = project;
+        if (projectItem == null)
+            return;
+        await IocProject.Instance.ShowViewProject(projectItem, x => this.Invoke(x));
     }
 }

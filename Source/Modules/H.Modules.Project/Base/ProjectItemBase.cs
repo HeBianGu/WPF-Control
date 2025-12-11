@@ -13,17 +13,18 @@ using System.Text.Json.Serialization;
 
 namespace H.Modules.Project.Base;
 
-public abstract class ProjectItemBase : CommandsBindableBase, IProjectItem
+[Icon(FontIcons.DateTime)]
+[Display(Name = "新建项目")]
+public abstract class ProjectItemBase : DisplayBindableBase, IProjectItem
 {
-    private string _title;
     [Required]
     [Display(Name = "标题", Order = 4)]
     public string Title
     {
-        get { return _title; }
+        get { return this.Name; }
         set
         {
-            _title = value;
+            this.Name = value;
             RaisePropertyChanged();
         }
     }
@@ -55,7 +56,6 @@ public abstract class ProjectItemBase : CommandsBindableBase, IProjectItem
     }
 
     private DateTime _createTime = DateTime.Now;
-    [Browsable(false)]
     [ReadOnly(true)]
     [Display(Name = "创建时间", Order = 4)]
     public DateTime CreateTime
@@ -69,7 +69,6 @@ public abstract class ProjectItemBase : CommandsBindableBase, IProjectItem
     }
 
     private DateTime _updateTime = DateTime.Now;
-    [Browsable(false)]
     [ReadOnly(true)]
     [Display(Name = "修改时间", Order = 4)]
     public DateTime UpdateTime
@@ -82,8 +81,6 @@ public abstract class ProjectItemBase : CommandsBindableBase, IProjectItem
         }
     }
 
-    public string Name => this.Title;
-
     public virtual bool Save(out string message)
     {
         message = null;
@@ -91,6 +88,7 @@ public abstract class ProjectItemBase : CommandsBindableBase, IProjectItem
         if (data == null)
             return true;
         this.SaveToFile(data);
+        this.UpdateTime = DateTime.Now;
         return true;
     }
 
@@ -141,11 +139,6 @@ public abstract class ProjectItemBase : CommandsBindableBase, IProjectItem
         if (string.IsNullOrEmpty(this.Path))
             return ProjectOptions.Instance.DefaultProjectFolder;
         return this.Path;
-    }
-
-    public virtual void Dispose()
-    {
-
     }
 
     public virtual bool Delete(out string message)
