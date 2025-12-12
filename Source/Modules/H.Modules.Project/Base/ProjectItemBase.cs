@@ -103,7 +103,7 @@ public abstract class ProjectItemBase : DisplayBindableBase, IProjectItem
         return true;
     }
 
-    protected virtual ISerializerService GetSerializer() => ProjectOptions.Instance.JsonSerializerService;
+    protected virtual ISerializerService GetSerializer() => new TextJsonSerializerService();
 
     protected virtual bool LoadFile<T>(out T value)
     {
@@ -130,11 +130,11 @@ public abstract class ProjectItemBase : DisplayBindableBase, IProjectItem
 
     public virtual string GetFilePath()
     {
-        string folder = this.GetPath();
-        return System.IO.Path.Combine(folder, this.Title + ProjectOptions.Instance.Extenstion);
+        string folder = this.GetFolderPath();
+        return System.IO.Path.Combine(folder, this.ID + ProjectOptions.Instance.Extenstion);
     }
 
-    private string GetPath()
+    private string GetFolderPath()
     {
         if (string.IsNullOrEmpty(this.Path))
             return ProjectOptions.Instance.DefaultProjectFolder;

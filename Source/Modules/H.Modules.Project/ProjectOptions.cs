@@ -23,6 +23,7 @@ public class ProjectOptions : IocOptionInstance<ProjectOptions>, IProjectOptions
         this.DefaultProjectFolder = AppPaths.Instance.Project;
     }
     private string _extenstion;
+    [ReadOnly(true)]
     [DefaultValue(".prj")]
     [Display(Name = "扩展名")]
     public string Extenstion
@@ -49,6 +50,7 @@ public class ProjectOptions : IocOptionInstance<ProjectOptions>, IProjectOptions
     }
 
     private string _defaultProjectFolder;
+    [ReadOnly(true)]
     [Display(Name = "文件存储路径")]
     public string DefaultProjectFolder
     {
@@ -72,28 +74,4 @@ public class ProjectOptions : IocOptionInstance<ProjectOptions>, IProjectOptions
             RaisePropertyChanged();
         }
     }
-
-    [XmlIgnore]
-    [JsonIgnore]
-    [Browsable(false)]
-    public IJsonSerializerService JsonSerializerService { get; set; } = new TextJsonSerializerService();
-
-    //private string _historyPath;
-    //[ReadOnly(true)]
-    //[Display(Name = "历史数据保存位置")]
-    //public string HistoryPath
-    //{
-    //    get { return _historyPath; }
-    //    set
-    //    {
-    //        _historyPath = value;
-    //        RaisePropertyChanged();
-    //    }
-    //}
-
-    //public override void LoadDefault()
-    //{
-    //    base.LoadDefault();
-    //    this.HistoryPath = System.IO.Path.Combine(AppPaths.Instance.UserProject, "Histroy.json");
-    //}
 }

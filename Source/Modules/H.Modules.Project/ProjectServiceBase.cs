@@ -89,7 +89,7 @@ public abstract class ProjectServiceBase<T> : CommandsBindableBase, IProjectServ
         return func == null ? this.Collection.OfType<IProjectItem>() : this.Collection.Where(x => func(x)).OfType<IProjectItem>();
     }
 
-    protected virtual ISerializerService GetSerializer() => ProjectOptions.Instance.JsonSerializerService;
+    protected virtual ISerializerService GetSerializer() => new TextJsonSerializerService();
     protected virtual void OnItemChanged()
     {
         if (this._options.Value.SaveMode == ProjectSaveMode.OnProjectChanged)

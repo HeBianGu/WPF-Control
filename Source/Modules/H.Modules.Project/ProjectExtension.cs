@@ -169,8 +169,11 @@ static partial class ProjectExtension
     {
         if (current == null)
             return false;
-        string p = System.IO.Path.Combine(current.Path ?? ProjectOptions.Instance.DefaultProjectFolder, current.Title + ProjectOptions.Instance.Extenstion);
-        Process.Start(new ProcessStartInfo("notepad", p) { UseShellExecute = true });
+        if (current is ProjectItemBase project)
+        {
+            string p = project.GetFilePath();
+            Process.Start(new ProcessStartInfo("notepad", p) { UseShellExecute = true });
+        }
         return true;
     }
 
