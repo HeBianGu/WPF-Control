@@ -120,8 +120,9 @@ public static partial class ImageExtention
                 return (false, "文件系统不支持硬链接");
 
             // 3. 磁盘分区检查
-            if (!CanCreateHardLink(sourcePath, destinationPath))
-                return (false, "不能跨磁盘分区创建硬链接");
+            var r = CanCreateHardLink(sourcePath, destinationPath);
+            if (!r.success)
+                return (false, r.message);
 
             // 4. 目录准备
             string destDir = Path.GetDirectoryName(destinationPath);
@@ -254,7 +255,7 @@ public static partial class ImageExtention
         }
         catch
         {
-            return (false, "未知错误");
+            return (false, "不能跨磁盘分区创建硬链接");
         }
     }
 }
