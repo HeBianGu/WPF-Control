@@ -6,6 +6,7 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
+using System.Diagnostics;
 using System.IO;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
@@ -233,27 +234,27 @@ public static partial class ImageExtention
             return false;
         }
     }
-    public static bool CanCreateHardLink(string sourcePath, string destinationPath)
+    public static (bool success, string message) CanCreateHardLink(string sourcePath, string destinationPath)
     {
         try
         {
             DriveInfo sourceDrive = new DriveInfo(Path.GetPathRoot(sourcePath));
             DriveInfo destDrive = new DriveInfo(Path.GetPathRoot(destinationPath));
-
             bool sameDrive = sourceDrive.Name.Equals(destDrive.Name, StringComparison.OrdinalIgnoreCase);
-            Console.WriteLine($"同磁盘分区: {sameDrive}");
-
+            Debug.WriteLine($"同磁盘分区: {sameDrive}");
             if (!sameDrive)
             {
-                Console.WriteLine("错误: 硬链接不能跨磁盘分区创建!");
-                return false;
+                string msg = $"错误: 硬链接不能跨磁盘分区创建!源分区: {sourceDrive.Name}, 目标分区: {destDrive.Name}";
+                Debug.WriteLine(msg);
+                Trace.Assert(false, msg);
+                return (false, msg);
             }
 
-            return true;
+            return (true, null);
         }
         catch
         {
-            return false;
+            return (false, "未知错误");
         }
     }
 }
@@ -321,6 +322,7 @@ public class ImageEx
                     bitmapImage.CacheOption = BitmapCacheOption.OnLoad;
                     if (useCache)
                         _fileCache.Add(Tuple.Create(this.FullPath, decodePixelWidth, decodePixelHeight, bitmapImage));
+                    bitmapImage.Freeze();
                     return bitmapImage;
                 }
             }
