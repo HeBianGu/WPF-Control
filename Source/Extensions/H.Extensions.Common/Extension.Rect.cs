@@ -5,10 +5,6 @@
 // QQ:908293466 Group:971261058 
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
-
-#if NET
-#endif
-
 using System.Windows;
 
 namespace H.Extensions.Common;
@@ -28,6 +24,21 @@ public static class RectExtenstion
     public static Point GetBottomCenter(this Rect rect)
     {
         return new Point(rect.Left + rect.Width / 2, rect.Bottom);
+    }
+
+    public static Rect GetPadding(this Rect rect, Thickness thickness)
+    {
+        return new Rect(rect.Left - thickness.Left, rect.Top - thickness.Top, rect.Right + thickness.Right, rect.Bottom + thickness.Bottom);
+    }
+
+    public static Rect GetPadding(this Rect rect, double padding)
+    {
+        return rect.GetPadding(new Thickness(padding));
+    }
+
+    public static Rect GetPadding(this Rect rect, double wpdding, double hpading)
+    {
+        return rect.GetPadding(new Thickness(wpdding, hpading, wpdding, hpading));
     }
 
     public static Point GetLeftCenter(this Rect rect)
