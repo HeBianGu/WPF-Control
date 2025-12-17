@@ -41,6 +41,16 @@ public static class IOFileDialogExtension
         sumitAction?.Invoke(r);
         return r;
     }
+
+    public static string ShowOpenTxtFile(this IIOFileDialogService dialog, Action<string> sumitAction = null, Action<IIOFileDialogOption> optionAction = null)
+    {
+        return dialog.ShowOpenFile(sumitAction, x =>
+        {
+            x.Filter = IIOFileDialogOption.defaultTextFilter;
+            optionAction?.Invoke(x);
+        });
+    }
+
     public static string[] ShowOpenFiles(this IIOFileDialogService dialog, Action<string[]> sumitAction = null, Action<IIOFileDialogOption> optionAction = null)
     {
         string[] r = dialog.ShowOpenFiles(optionAction);
