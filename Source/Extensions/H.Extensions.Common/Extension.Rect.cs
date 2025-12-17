@@ -28,7 +28,7 @@ public static class RectExtenstion
 
     public static Rect GetPadding(this Rect rect, Thickness thickness)
     {
-        return new Rect(rect.Left - thickness.Left, rect.Top - thickness.Top, rect.Right + thickness.Right, rect.Bottom + thickness.Bottom);
+        return new Rect(rect.Left - thickness.Left, rect.Top - thickness.Top, rect.Width + thickness.Right + thickness.Left, rect.Height + thickness.Bottom + thickness.Top);
     }
 
     public static Rect GetPadding(this Rect rect, double padding)

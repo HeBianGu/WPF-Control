@@ -320,6 +320,7 @@ public class ImageEx
                         bitmapImage.DecodePixelHeight = decodePixelHeight;
                     bitmapImage.StreamSource = new MemoryStream(bytes);
                     bitmapImage.EndInit();
+                    // 立即加载而不是延迟
                     bitmapImage.CacheOption = BitmapCacheOption.OnLoad;
                     if (useCache)
                         _fileCache.Add(Tuple.Create(this.FullPath, decodePixelWidth, decodePixelHeight, bitmapImage));

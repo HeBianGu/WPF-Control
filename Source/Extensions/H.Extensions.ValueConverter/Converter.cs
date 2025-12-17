@@ -15,6 +15,7 @@ namespace H.Extensions.ValueConverter;
 public static partial class ConverterEx
 {
     #region - Image -
+    [Obsolete("GetImagePixelDisplayConverter")]
     public static IValueConverter GetImagePixelDisplay => new ConverterBase<string, string>(x =>
     {
         if (x == null)
@@ -26,6 +27,7 @@ public static partial class ConverterEx
         return tuple.Item1 + "×" + tuple.Item2;
     });
 
+    [Obsolete("GetFileImageSourceInMemoryConverter")]
     public static IValueConverter GetFileImageSourceInMemory => new ConverterBase<string, int, ImageSource>((x, p) =>
     {
         if (x == null)
