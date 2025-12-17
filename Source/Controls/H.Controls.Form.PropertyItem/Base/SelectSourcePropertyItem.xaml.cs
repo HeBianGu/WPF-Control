@@ -56,16 +56,9 @@ namespace H.Controls.Form.PropertyItem.Base
         {
             SourcePropertyItemBaseAttribute attr = this.PropertyInfo.GetCustomAttribute<SourcePropertyItemBaseAttribute>();
             if (attr == null)
-            {
-                Trace.Assert(false, "没有定义数据源");
-                yield break;
-            }
+                return null;
             IEnumerable result = attr.GetSource(this.PropertyInfo, this.Obj);
-            foreach (object item in result)
-            {
-                if (item is T t)
-                    yield return t;
-            }
+            return result.OfType<T>();
         }
 
         private ObservableCollection<T> _collection = new ObservableCollection<T>();

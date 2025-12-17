@@ -11,6 +11,13 @@
         Style="{StaticResource {x:Static WindowKeys.Default}}"
         mc:Ignorable="d">
     <TabControl TabStripPlacement="Left">
+        <TabItem Header="BrushPropertyItem">
+            <h:Form TitleWidth="200">
+                <h:Form.SelectObject>
+                    <h:BrushPropertyItemDemoModel />
+                </h:Form.SelectObject>
+            </h:Form>
+        </TabItem>
         <TabItem Header="BindingVisibablePropertyItem">
             <h:Form TitleWidth="200">
                 <h:Form.SelectObject>

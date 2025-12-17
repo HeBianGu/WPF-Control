@@ -10,16 +10,17 @@ using H.Controls.Form.PropertyItem.Base;
 
 namespace H.Controls.Form.PropertyItem.ComboBoxPropertyItems
 {
-    public class BrushesComboBoxPropertyItem : SelectSourcePropertyItem<Brush>
+    public class ColorComboBoxPropertyItem : SelectSourcePropertyItem<Color>
     {
-        public BrushesComboBoxPropertyItem(PropertyInfo property, object obj) : base(property, obj)
+        public ColorComboBoxPropertyItem(PropertyInfo property, object obj) : base(property, obj)
         {
 
         }
 
-        protected override IEnumerable<Brush> CreateSource()
+        protected override IEnumerable<Color> CreateSource()
         {
-            return typeof(Brushes).GetProperties().Select(x => x.GetValue(null)).OfType<SolidColorBrush>();
+            var source = base.CreateSource();
+            return source ?? typeof(Colors).GetProperties().Select(x => x.GetValue(null)).OfType<Color>();
         }
     }
 }
