@@ -7,6 +7,7 @@
 // Licensed under the MIT License (the "License")
 
 using System.Globalization;
+using System.Windows.Media.Imaging;
 
 namespace H.ValueConverter.Images;
 
@@ -34,7 +35,10 @@ public class GetImageSourceFromFilePathConverter : MarkupValueConverterBase
             bitmap.UriSource = new Uri(str, UriKind.RelativeOrAbsolute);
             bitmap.DecodePixelWidth = this.DecodePixel;  // 设置图片宽度为 100 像素
                                                          //bitmap.DecodePixelHeight = this.DecodePixel; // 设置图片高度为 100 像素
-            bitmap.EndInit(); return bitmap;
+            bitmap.EndInit();
+            bitmap.CacheOption = BitmapCacheOption.OnLoad;
+            bitmap.Freeze();
+            return bitmap;
         }
         catch (Exception)
         {

@@ -116,11 +116,11 @@ public abstract class NodeData : NodeDataBase, ITemplate, ILinkDataCreator, IPor
         }
     }
 
-    public override void LoadDefault()
-    {
-        base.LoadDefault();
-        this.IsTemplate = false;
-    }
+    //public override void LoadDefault()
+    //{
+    //    base.LoadDefault();
+    //    this.IsTemplate = false;
+    //}
 
     private double _height;
     [DefaultValue(60)]
