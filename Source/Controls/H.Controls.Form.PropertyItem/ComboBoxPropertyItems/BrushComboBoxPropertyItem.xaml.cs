@@ -20,7 +20,11 @@ namespace H.Controls.Form.PropertyItem.ComboBoxPropertyItems
         protected override IEnumerable<SolidColorBrush> CreateSource()
         {
             var source = base.CreateSource();
-            return source ?? typeof(Brushes).GetProperties().Select(x => x.GetValue(null)).OfType<SolidColorBrush>();
+            var all = source ?? typeof(Brushes).GetProperties().Select(x => x.GetValue(null)).OfType<SolidColorBrush>();
+            if (!all.Contains(this.Value))
+                yield return this.Value;
+            foreach (var item in all)
+                yield return item;
         }
 
         protected override void SetValue(SolidColorBrush value)
