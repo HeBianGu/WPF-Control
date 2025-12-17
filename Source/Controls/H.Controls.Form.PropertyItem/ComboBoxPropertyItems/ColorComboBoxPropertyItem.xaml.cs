@@ -20,7 +20,11 @@ namespace H.Controls.Form.PropertyItem.ComboBoxPropertyItems
         protected override IEnumerable<Color> CreateSource()
         {
             var source = base.CreateSource();
-            return source ?? typeof(Colors).GetProperties().Select(x => x.GetValue(null)).OfType<Color>();
+            var all = source ?? typeof(Colors).GetProperties().Select(x => x.GetValue(null)).OfType<Color>();
+            if (!all.Contains(this.Value))
+                yield return this.Value;
+            foreach (var item in all)
+                yield return item;
         }
     }
 }
