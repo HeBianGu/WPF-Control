@@ -8,6 +8,7 @@
 
 namespace H.Controls.Form.PropertyItem.Attribute.SourcePropertyItem
 {
+    [Obsolete(nameof(GetMethodNameSourceAttribute))]
     public class MethodNameSourcePropertyItemAttribute : SourcePropertyItemBaseAttribute
     {
         private MethodInfo _sourceMethodInfo;

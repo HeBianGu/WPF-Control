@@ -56,7 +56,13 @@ namespace H.Controls.Form.PropertyItem.Base
         {
             SourcePropertyItemBaseAttribute attr = this.PropertyInfo.GetCustomAttribute<SourcePropertyItemBaseAttribute>();
             if (attr == null)
-                return null;
+            {
+                var source = this.PropertyInfo.GetCustomAttribute<GetSourceAttribute>();
+                if (source == null)
+                    return null;
+                IEnumerable items = attr.GetSource(this.PropertyInfo, this.Obj);
+                return items.OfType<T>();
+            }
             IEnumerable result = attr.GetSource(this.PropertyInfo, this.Obj);
             return result.OfType<T>();
         }

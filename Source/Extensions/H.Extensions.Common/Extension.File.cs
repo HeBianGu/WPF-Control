@@ -131,6 +131,31 @@ public static partial class FileExtension
         return size;
     }
 
+    public static string[] GetFiles(this string folderPath, string searchPattern, SearchOption searchOption = SearchOption.TopDirectoryOnly)
+    {
+        return Directory.GetFiles(folderPath, searchPattern, searchOption);
+    }
+
+    public static string[] GetFiles(this string folderPath)
+    {
+        return Directory.GetFiles(folderPath);
+    }
+
+    public static string[] GetAllFiles(this string folderPath, string searchPattern)
+    {
+        return Directory.GetFiles(folderPath, searchPattern, SearchOption.AllDirectories);
+    }
+
+    public static IEnumerable<string> EnumerateFiles(this string folderPath, string searchPattern, SearchOption searchOption = SearchOption.TopDirectoryOnly)
+    {
+        return Directory.EnumerateFiles(folderPath, searchPattern, searchOption);
+    }
+
+    public static IEnumerable<string> EnumerateFiles(this string folderPath)
+    {
+        return Directory.EnumerateFiles(folderPath);
+    }
+
     //public void CopyDirectory()
     //{
     //    try
@@ -171,6 +196,16 @@ public static partial class FileExtension
     //    }
 
     //}
+}
+
+public static class SearchPatterns
+{
+    public const string AllFiles = "*.*";
+    public const string TextFiles = "*.txt;*.log;*.md;*.xml;*.json;*.csv";
+    public const string ImageFiles = "*.jpg;*.jpeg;*.png;*.gif;*.bmp;*.tiff;*.svg;*.webp";
+    public const string VideoFiles = "*.mp4;*.avi;*.mkv;*.mov;*.wmv;*.flv;*.webm";
+    public const string AudioFiles = "*.mp3;*.wav;*.flac;*.aac;*.ogg;*.wma";
+    public const string DocumentFiles = "*.pdf;*.doc;*.docx;*.xls;*.xlsx;*.ppt;*.pptx";
 }
 
 public static partial class FileExtension

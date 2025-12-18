@@ -6,7 +6,10 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
+using H.Controls.Form.Attributes;
+using H.Controls.Form.PropertyItem.TextPropertyItems;
 using H.Extensions.Setting;
+using H.Services.Message.IODialog;
 using H.Services.Setting;
 using System.ComponentModel;
 using System.Windows.Media;
@@ -17,6 +20,8 @@ namespace H.Windows.Main;
 public class WindowSetting : Settable<WindowSetting>
 {
     private string _backImagePath;
+    [OpenFileDialogFilter(IIOFileDialogOption.defaultImageFilter)]
+    [PropertyItem(typeof(OpenFileDialogPropertyItem))]
     [DefaultValue("pack://application:,,,/H.Extensions.BackgroundImage;component/b41.png")]
     [Display(Name = "窗口背景图片")]
     public string BackImagePath

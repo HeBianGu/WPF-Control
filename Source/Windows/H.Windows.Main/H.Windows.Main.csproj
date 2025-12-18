@@ -1,5 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <ItemGroup>
+    <ProjectReference Include="..\..\Controls\H.Controls.Form.PropertyItem\H.Controls.Form.PropertyItem.csproj" />
     <ProjectReference Include="..\..\Controls\H.Controls.GridSplitterBox\H.Controls.GridSplitterBox.csproj" />
     <ProjectReference Include="..\..\Extensions\H.Extensions.FontIcon\H.Extensions.FontIcon.csproj" />
     <ProjectReference Include="..\..\Extensions\H.Extensions.Setting\H.Extensions.Setting.csproj" />
