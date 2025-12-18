@@ -6,6 +6,7 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
+using System.Collections.Generic;
 using System.IO;
 using System.Security.Cryptography;
 using System.Windows.Media;
@@ -133,16 +134,22 @@ public static partial class FileExtension
 
     public static string[] GetFiles(this string folderPath, string searchPattern, SearchOption searchOption = SearchOption.TopDirectoryOnly)
     {
+        if (!Directory.Exists(folderPath))
+            return new string[0];
         return Directory.GetFiles(folderPath, searchPattern, searchOption);
     }
 
     public static string[] GetFiles(this string folderPath)
     {
+        if (!Directory.Exists(folderPath))
+            return new string[0];
         return Directory.GetFiles(folderPath);
     }
 
     public static string[] GetAllFiles(this string folderPath, string searchPattern)
     {
+        if (!Directory.Exists(folderPath))
+            return new string[0];
         return Directory.GetFiles(folderPath, searchPattern, SearchOption.AllDirectories);
     }
 
