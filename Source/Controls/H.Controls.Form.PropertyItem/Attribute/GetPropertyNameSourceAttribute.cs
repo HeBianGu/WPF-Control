@@ -6,13 +6,12 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
-namespace H.Controls.Form.PropertyItem.Attribute.SourcePropertyItem
+namespace H.Controls.Form.PropertyItem.Attribute
 {
-    [Obsolete(nameof(GetPropertyNameSourceAttribute))]
-    public class PropertyNameSourcePropertyItemAttribute : SourcePropertyItemBaseAttribute
+    public class GetPropertyNameSourceAttribute : GetSourceAttribute
     {
         private PropertyInfo _sourcePropertyInfo;
-        public PropertyNameSourcePropertyItemAttribute(Type type, string propertyName) : base(type)
+        public GetPropertyNameSourceAttribute(string propertyName)
         {
             this.PropertyName = propertyName;
         }

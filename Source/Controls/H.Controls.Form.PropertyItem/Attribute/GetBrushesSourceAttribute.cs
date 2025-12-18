@@ -6,15 +6,13 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
-namespace H.Controls.Form.PropertyItem.Attribute.SourcePropertyItem
+namespace H.Controls.Form.PropertyItem.Attribute
 {
-    public abstract class SourcePropertyItemBaseAttribute : PropertyItemAttribute
+    public class GetBrushesSourceAttribute : GetSourceAttribute
     {
-        public SourcePropertyItemBaseAttribute(Type type) : base(type)
+        public override IEnumerable GetSource(PropertyInfo propertyInfo, object obj)
         {
-
+            return typeof(Brushes).GetProperties().Select(x => x.GetValue(null)).OfType<SolidColorBrush>();
         }
-
-        public abstract IEnumerable GetSource(PropertyInfo propertyInfo, object obj);
     }
 }

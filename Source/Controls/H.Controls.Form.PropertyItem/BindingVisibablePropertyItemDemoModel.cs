@@ -6,6 +6,7 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
+using H.Controls.Form.PropertyItem.Attribute;
 using H.Controls.Form.PropertyItem.ComboBoxPropertyItems;
 using System.ComponentModel.DataAnnotations;
 using System.Windows;
@@ -16,7 +17,7 @@ namespace H.Controls.Form.PropertyItem
     {
         [Display(Name = "EnumSourcePropertyItem", Description = "演示应用PropertyItemAttribute自定义显示样式")]
         [RefreshFilterOnValueChanged]
-        [EnumSourcePropertyItem(typeof(ComboBoxPropertyItem))]
+        [PropertyItem(typeof(EnumComboBoxPropertyItem))]
         public HorizontalAlignment HorizontalAlignment { get; set; }
 
         [Display(Name = "EnumComboBoxPropertyItem", Description = "演示应用PropertyItemAttribute自定义显示样式")]

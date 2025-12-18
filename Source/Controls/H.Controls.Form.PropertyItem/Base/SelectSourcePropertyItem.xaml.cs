@@ -6,7 +6,6 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
-global using H.Controls.Form.PropertyItem.Attribute.SourcePropertyItem;
 global using H.Controls.Form.PropertyItems.Base;
 global using H.Extensions.Common;
 global using System.Collections.Generic;
@@ -54,17 +53,11 @@ namespace H.Controls.Form.PropertyItem.Base
         }
         protected virtual IEnumerable<T> CreateSource()
         {
-            SourcePropertyItemBaseAttribute attr = this.PropertyInfo.GetCustomAttribute<SourcePropertyItemBaseAttribute>();
-            if (attr == null)
-            {
-                var source = this.PropertyInfo.GetCustomAttribute<GetSourceAttribute>();
-                if (source == null)
-                    return null;
-                IEnumerable items = attr.GetSource(this.PropertyInfo, this.Obj);
-                return items.OfType<T>();
-            }
-            IEnumerable result = attr.GetSource(this.PropertyInfo, this.Obj);
-            return result.OfType<T>();
+            var source = this.PropertyInfo.GetCustomAttribute<GetSourceAttribute>();
+            if (source == null)
+                return null;
+            IEnumerable items = source.GetSource(this.PropertyInfo, this.Obj);
+            return items.OfType<T>();
         }
 
         private ObservableCollection<T> _collection = new ObservableCollection<T>();

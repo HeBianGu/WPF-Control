@@ -6,15 +6,10 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
-namespace H.Controls.Form.PropertyItem.Attribute.SourcePropertyItem
+namespace H.Controls.Form.PropertyItem.Attribute
 {
-    public class EnumSourcePropertyItemAttribute : SourcePropertyItemBaseAttribute
+    public class GetEnumSourceAttribute : GetSourceAttribute
     {
-        public EnumSourcePropertyItemAttribute(Type type) : base(type)
-        {
-
-        }
-
         public override IEnumerable GetSource(PropertyInfo propertyInfo, object obj)
         {
             if (propertyInfo.PropertyType.IsEnum == false)
