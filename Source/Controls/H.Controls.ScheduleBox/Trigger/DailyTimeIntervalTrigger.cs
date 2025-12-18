@@ -7,7 +7,7 @@
 // Licensed under the MIT License (the "License")
 
 using H.Controls.Form.Attributes;
-using H.Controls.Form.PropertyItem.Attribute.SourcePropertyItem;
+using H.Controls.Form.PropertyItem.Attribute;
 using H.Controls.Form.PropertyItem.ComboBoxPropertyItems;
 using Quartz;
 using System.ComponentModel;
@@ -72,7 +72,8 @@ namespace H.Controls.ScheduleBox
 
         private TimeZoneInfo _timeZoneInfo = TimeZoneInfo.Utc;
         [Display(Name = "时区")]
-        [PropertyNameSourcePropertyItem(typeof(FormComboBoxPropertyItem), nameof(GetTimeZoneInfos))]
+        [GetMethodNameSource(nameof(GetTimeZoneInfos))]
+        [PropertyItem(typeof(FormComboBoxPropertyItem))]
         public TimeZoneInfo TimeZoneInfo
         {
             get { return _timeZoneInfo; }

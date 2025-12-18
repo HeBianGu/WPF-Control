@@ -7,7 +7,6 @@
 // Licensed under the MIT License (the "License")
 
 using H.Common.Interfaces;
-using H.Controls.Form.PropertyItem.Attribute.SourcePropertyItem;
 using H.Controls.Form.PropertyItem.ComboBoxPropertyItems;
 using H.Extensions.Setting;
 using H.Extensions.Mvvm.Commands;
@@ -28,6 +27,8 @@ using System.Windows.Media;
 using System.Xml.Serialization;
 using H.Mvvm.Commands;
 using System.Windows.Threading;
+using H.Controls.Form.PropertyItem.Attribute;
+using H.Controls.Form.Attributes;
 
 namespace H.Modules.Theme;
 [Display(Name = "主题设置", GroupName = SettingGroupNames.GroupStyle, Description = "登录页面设置的信息")]
@@ -85,7 +86,8 @@ public class ThemeOptions : IocOptionInstance<ThemeOptions>, ILoginedSplashLoada
     private IColorResource _colorResource;
     [JsonIgnore]
     [XmlIgnore]
-    [PropertyNameSourcePropertyItem(typeof(ComboBoxPropertyItem), nameof(ColorResources))]
+    [GetPropertyNameSource(nameof(ColorResources))]
+    [PropertyItem(typeof(ComboBoxPropertyItem))]
     [Display(Name = "配色")]
     public IColorResource ColorResource
     {
@@ -105,7 +107,8 @@ public class ThemeOptions : IocOptionInstance<ThemeOptions>, ILoginedSplashLoada
     private IBackgroundResource _backgroundResource;
     [JsonIgnore]
     [XmlIgnore]
-    [PropertyNameSourcePropertyItem(typeof(ComboBoxPropertyItem), nameof(BackgroundResources))]
+    [GetPropertyNameSource(nameof(BackgroundResources))]
+    [PropertyItem(typeof(ComboBoxPropertyItem))]
     [Display(Name = "背景配色")]
     public IBackgroundResource BackgroundResource
     {
@@ -123,7 +126,8 @@ public class ThemeOptions : IocOptionInstance<ThemeOptions>, ILoginedSplashLoada
     public List<IBackgroundResource> BackgroundResources { get; } = new List<IBackgroundResource>();
 
     private FontFamily _fontFamily;
-    [PropertyNameSourcePropertyItem(typeof(ComboBoxPropertyItem), nameof(FontFamilys))]
+    [GetPropertyNameSource(nameof(FontFamilys))]
+    [PropertyItem(typeof(ComboBoxPropertyItem))]
     [Display(Name = "字体")]
     [TypeConverter(typeof(FontFamilyConverter))]
     public FontFamily FontFamily
@@ -137,7 +141,8 @@ public class ThemeOptions : IocOptionInstance<ThemeOptions>, ILoginedSplashLoada
     }
 
     private FontFamily _iconFontFamily;
-    [PropertyNameSourcePropertyItem(typeof(ComboBoxPropertyItem), nameof(IconFontFamilys))]
+    [GetPropertyNameSource(nameof(IconFontFamilys))]
+    [PropertyItem(typeof(ComboBoxPropertyItem))]
     [Display(Name = "图标字体")]
     [TypeConverter(typeof(FontFamilyConverter))]
     public FontFamily IconFontFamily

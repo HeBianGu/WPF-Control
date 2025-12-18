@@ -6,7 +6,7 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
-using H.Controls.Form.PropertyItem.Attribute.SourcePropertyItem;
+using H.Controls.Form.PropertyItem.Attribute;
 using H.Controls.Form.PropertyItem.ComboBoxPropertyItems;
 using H.Extensions.Behvaiors.DataGrids;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -146,7 +146,8 @@ namespace H.Modules.Identity
         [Display(Name = "角色")]
         [Column("role", Order = 9)]
         [DataGridColumn("*", PropertyPath = "{0}.Name")]
-        [MethodNameSourcePropertyItem(typeof(ComboBoxPropertyItem), nameof(GetRoles))]
+        [GetMethodNameSource(nameof(GetRoles))]
+        [PropertyItem(typeof(ComboBoxPropertyItem))]
         public virtual hi_dd_role Role
         {
             get { return _role; }

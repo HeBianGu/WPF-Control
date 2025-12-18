@@ -20,11 +20,15 @@ namespace H.Controls.Form.PropertyItem.Attribute
         public string FolderPath { get; set; }
         public SearchOption SearchOption { get; set; } = SearchOption.TopDirectoryOnly;
         public string SearchPattern { get; set; } = SearchPatterns.AllFiles;
+
+        public bool UseFullPath { get; set; } = true;
         public override IEnumerable GetSource(PropertyInfo propertyInfo, object obj)
         {
             if (this.FolderPath == null)
                 return null;
             var results = this.FolderPath.GetFiles(this.SearchPattern, this.SearchOption);
+            if (this.UseFullPath)
+                return results.Select(x => x.GetFullPath());
             return results;
         }
     }

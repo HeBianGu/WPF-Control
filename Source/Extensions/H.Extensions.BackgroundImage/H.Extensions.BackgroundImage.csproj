@@ -1,3 +1,54 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
+  <ItemGroup>
+    <Resource Remove="Assets\BackgroundImages\b13.png" />
+    <Resource Remove="Assets\BackgroundImages\b39.png" />
+    <Resource Remove="Assets\BackgroundImages\b41.png" />
+    <Resource Remove="Assets\BackgroundImages\b43.png" />
+    <Resource Remove="Assets\BackgroundImages\b5.png" />
+    <Resource Remove="Assets\BackgroundImages\b6.png" />
+    <Resource Remove="Assets\BackgroundImages\c13.png" />
+    <Resource Remove="Assets\BackgroundImages\c7.png" />
+    <Resource Remove="Assets\BackgroundImages\Cover.png" />
+    <Resource Remove="Assets\BackgroundImages\halo10.png" />
+    <Resource Remove="Assets\BackgroundImages\halo12.png" />
+    <Resource Remove="Assets\BackgroundImages\sun.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="Assets\BackgroundImages\b13.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Assets\BackgroundImages\b39.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Assets\BackgroundImages\b41.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Assets\BackgroundImages\b43.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Assets\BackgroundImages\b5.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Assets\BackgroundImages\b6.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Assets\BackgroundImages\c13.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Assets\BackgroundImages\c7.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Assets\BackgroundImages\Cover.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Assets\BackgroundImages\halo10.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Assets\BackgroundImages\halo12.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Assets\BackgroundImages\sun.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
 </Project>

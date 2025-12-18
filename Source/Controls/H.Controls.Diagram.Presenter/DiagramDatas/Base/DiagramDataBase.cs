@@ -12,7 +12,6 @@ global using H.Controls.Diagram.Layouts;
 global using H.Controls.Diagram.Layouts.Base;
 global using H.Controls.Diagram.LinkDrawers;
 global using H.Controls.Diagram.Presenter.NodeDatas.Card;
-global using H.Controls.Form.PropertyItem.Attribute.SourcePropertyItem;
 global using H.Controls.Form.PropertyItem.ComboBoxPropertyItems;
 global using H.Extensions.FontIcon;
 global using H.Extensions.Mvvm.Commands;
@@ -21,6 +20,9 @@ global using H.Services.Message;
 global using H.Services.Message.Dialog;
 global using System.Text.Json.Serialization;
 global using System.Windows.Input;
+using H.Controls.Form.Attributes;
+using H.Controls.Form.PropertyItem.Attribute;
+using H.Themes.Backgrounds;
 namespace H.Controls.Diagram.Presenter.DiagramDatas.Base;
 
 public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
@@ -94,7 +96,8 @@ public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
     [System.Text.Json.Serialization.JsonIgnore]
     [XmlIgnore]
     [Display(Name = "连线样式", GroupName = "基础信息")]
-    [PropertyNameSourcePropertyItem(typeof(ComboBoxPropertyItem), nameof(LinkDrawers))]
+    [GetPropertyNameSource(nameof(LinkDrawers))]
+    [PropertyItem(typeof(ComboBoxPropertyItem))]
     public ILinkDrawer LinkDrawer
     {
         get { return _linkDrawer; }
@@ -136,7 +139,8 @@ public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
     private ILayout _layout = new LocationLayout();
     [JsonIgnore]
     [XmlIgnore]
-    [PropertyNameSourcePropertyItem(typeof(ComboBoxPropertyItem), nameof(Layouts))]
+    [GetPropertyNameSource(nameof(Layouts))]
+    [PropertyItem(typeof(ComboBoxPropertyItem))]
     [Display(Name = "布局方式", GroupName = "基础信息")]
     public ILayout Layout
     {

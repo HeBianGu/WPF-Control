@@ -7,6 +7,8 @@
 // Licensed under the MIT License (the "License")
 
 using H.Controls.Diagram.Presenter.Extensions;
+using H.Controls.Form.Attributes;
+using H.Controls.Form.PropertyItem.Attribute;
 
 namespace H.Controls.Diagram.Presenter.NodeDatas.Base;
 
@@ -29,7 +31,8 @@ public abstract class SelectableFromNodeDataBase : ResultPresenterNodeDataBase, 
     }
 
     private INodeData _selectedFromNodeData;
-    [MethodNameSourcePropertyItem(typeof(ComboBoxPropertyItem), nameof(GetSelectableFromNodeDatas))]
+    [GetMethodNameSource(nameof(GetSelectableFromNodeDatas))]
+    [PropertyItem(typeof(ComboBoxPropertyItem))]
     [Display(Name = "输入控制", GroupName = "流程控制")]
     public INodeData SelectedFromNodeData
     {
