@@ -11,14 +11,14 @@ namespace H.Services.Message.Notice;
 public interface INoticeMessageService
 {
     Task<bool?> ShowDialog(string message);
-    void ShowError(string message);
-    void ShowFatal(string message);
-    void ShowInfo(string message);
+    void ShowError(string message = "运行错误");
+    void ShowFatal(string message = "严重错误");
+    void ShowInfo(string message = "运行完成");
     void Show(INoticeItem message);
     Task<T> ShowProgress<T>(Func<IPercentNoticeItem, T> action);
     Task<T> ShowString<T>(Func<INoticeItem, T> action);
-    void ShowSuccess(string message);
-    void ShowWarn(string message);
+    void ShowSuccess(string message = "运行成功");
+    void ShowWarn(string message = "异常警告");
 }
 
 public static class NoticeMessageServiceExtension

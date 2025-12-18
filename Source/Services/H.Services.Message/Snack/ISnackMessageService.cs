@@ -11,14 +11,14 @@ namespace H.Services.Message.Snack;
 public interface ISnackMessageService
 {
     Task<bool?> ShowDialog(string message);
-    void ShowError(string message);
-    void ShowFatal(string message);
-    void ShowInfo(string message);
+    void ShowError(string message = "运行错误");
+    void ShowFatal(string message = "严重错误");
+    void ShowInfo(string message = "运行完成");
     void Show(ISnackItem message);
     Task<T> ShowProgress<T>(Func<IPercentSnackItem, T> action);
     Task<T> ShowString<T>(Func<ISnackItem, T> action);
-    void ShowSuccess(string message);
-    void ShowWarn(string message);
+    void ShowSuccess(string message = "运行成功");
+    void ShowWarn(string message = "异常警告");
 }
 
 public static class SnackMessageServiceExtension

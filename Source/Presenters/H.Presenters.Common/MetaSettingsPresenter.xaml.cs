@@ -90,10 +90,10 @@ public class MetaSettingsPresenter<T> : MetaSettingsPresenterBase, IMetaSetting
         return true;
     }
 
-    public virtual async Task<T> ShowSelectItemAsync()
+    public virtual async Task<T> ShowSelectItemAsync(Action<IDialog> builder = null)
     {
         this.Load();
-        var r = await IocMessage.Dialog.Show(this, x => x.Title = "选择项目");
+        var r = await IocMessage.Dialog.Show(this, builder);
         if (r != true)
             return default;
         return this.SelectedItem;
