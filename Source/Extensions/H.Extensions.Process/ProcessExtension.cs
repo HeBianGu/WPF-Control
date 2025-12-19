@@ -44,7 +44,7 @@ namespace H.Extensions.Process
                 process.ErrorDataReceived += (s, e) =>
                 {
                     if (!string.IsNullOrEmpty(e.Data))
-                        infoLog?.Invoke(process, "[ERR] " + e.Data);
+                        infoLog?.Invoke(process, "[Received] " + e.Data);
                 };
 
                 if (!process.Start())
