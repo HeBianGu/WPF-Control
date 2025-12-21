@@ -35,7 +35,7 @@ public static class SerializerServiceExtensions
         catch (Exception ex)
         {
             Trace.Assert(false, ex.Message);
-            IocLog.Instance?.Error(ex);
+            IocLog.Error(ex);
             System.Diagnostics.Debug.WriteLine(ex);
             //File.Delete(filePath);
             string n = Path.Combine(Path.GetDirectoryName(filePath), Path.GetRandomFileName()+ Path.GetExtension(filePath));

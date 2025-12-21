@@ -109,7 +109,7 @@ public abstract class ProjectServiceBase<T> : CommandsBindableBase, IProjectServ
         {
             Trace.Assert(false, ex.Message);
             message = ex.Message;
-            IocLog.Instance?.Error(ex);
+            IocLog.Error(ex);
             return false;
         }
     }

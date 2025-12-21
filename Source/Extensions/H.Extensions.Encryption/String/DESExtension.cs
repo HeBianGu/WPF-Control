@@ -46,7 +46,7 @@ public static class DESExtension
         }
         catch (Exception ex)
         {
-            IocLog.Instance?.Error(ex);
+            IocLog.Error(ex);
             return value;
         }
 
@@ -74,7 +74,7 @@ public static class DESExtension
         }
         catch (Exception ex)
         {
-            IocLog.Instance?.Error(ex);
+            IocLog.Error(ex);
             return value;
         }
 

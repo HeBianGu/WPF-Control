@@ -109,7 +109,7 @@ public static class TestExtension
         }
         catch (Exception ex)
         {
-            IocLog.Instance?.Error(ex);
+            IocLog.Error(ex);
             return value;
         }
 

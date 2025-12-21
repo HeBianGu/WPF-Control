@@ -35,7 +35,7 @@ public abstract class ScheduledTaskServiceBase : IScheduledTaskService
     {
         this.Invoke(out string message);
         //if (this.Invoke(out string message) == false)
-        //IocLog.Instance?.Error(message);
+        //IocLog.Error(message);
     }
 
     public abstract bool Invoke(out string message);

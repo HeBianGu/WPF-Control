@@ -111,7 +111,7 @@ public class NpoiService : IExcelService
         }
         catch (Exception ex)
         {
-            IocLog.Instance?.Error(ex);
+            IocLog.Error(ex);
             message = ex.Message;
         }
         return null;

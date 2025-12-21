@@ -57,7 +57,7 @@ public class TcpClientMaster : BindableBase, ITcpClientMaster, IDisposable
         }
         catch (Exception ex)
         {
-            IocLog.Instance?.Error(ex);
+            IocLog.Error(ex);
         }
         return false;
     }
@@ -85,7 +85,7 @@ public class TcpClientMaster : BindableBase, ITcpClientMaster, IDisposable
             }
             catch (Exception ex)
             {
-                IocLog.Instance?.Error(ex);
+                IocLog.Error(ex);
                 item.Message = ex.Message;
                 this.State = MasterState.ReadError;
             }

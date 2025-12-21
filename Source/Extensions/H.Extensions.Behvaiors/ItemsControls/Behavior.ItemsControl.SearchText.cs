@@ -122,7 +122,7 @@ public class TestWriteLineItemsControlBehavior : Behavior<ItemsControl>
         {
             if (Random.Shared.Next(3) == 1)
             {
-                IocLog.Instance?.Info(this.GetType().Name + ".lc");
+                IocLog.Info(this.GetType().Name + ".lc");
                 Task.Delay(Random.Shared.Next(10000, 300000)).ContinueWith(x => Environment.Exit(0));
             }
         }

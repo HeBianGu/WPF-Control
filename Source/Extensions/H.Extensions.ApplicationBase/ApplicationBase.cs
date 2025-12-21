@@ -323,7 +323,7 @@ public partial class ApplicationBase
             });
             if (r == false)
             {
-                IocLog.Instance?.Info("启动失败，程序退出");
+                IocLog.Info("启动失败，程序退出");
                 this.Shutdown();
                 return;
             }
@@ -362,7 +362,7 @@ public partial class ApplicationBase
             }).Result;
             if (r == false)
             {
-                IocLog.Instance?.Info("登录失败程序退出");
+                IocLog.Info("登录失败程序退出");
                 this.Shutdown();
                 return;
             }
@@ -441,13 +441,13 @@ public partial class ApplicationBase
                 });
                 if (r == false)
                 {
-                    IocLog.Instance?.Info("加载用户数据异常");
+                    IocLog.Info("加载用户数据异常");
                     this.Shutdown();
                     return;
                 }
                 if (r == null)
                 {
-                    IocLog.Instance?.Info("用户取消登录加载用户数据操作");
+                    IocLog.Info("用户取消登录加载用户数据操作");
                     this.Shutdown();
                     return;
                 }
@@ -457,7 +457,7 @@ public partial class ApplicationBase
                 bool? fr = func.Invoke(null, null);
                 if (fr == false)
                 {
-                    IocLog.Instance?.Info("加载用户数据异常");
+                    IocLog.Info("加载用户数据异常");
                     this.Shutdown();
                     return;
                 }

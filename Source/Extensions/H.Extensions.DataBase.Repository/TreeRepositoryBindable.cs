@@ -55,7 +55,7 @@ namespace H.Extensions.DataBase.Repository
             }
             catch (Exception ex)
             {
-                IocLog.Instance?.Error(ex);
+                IocLog.Error(ex);
                 IocMessage.Dialog.Show("加载数据错误:" + ex.Message);
             }
             finally

@@ -182,7 +182,7 @@ namespace H.Modules.Login
                 catch (Exception ex)
                 {
                     s.Message = ex.Message;
-                    IocLog.Instance?.Error(ex);
+                    IocLog.Error(ex);
                     return false;
                 }
                 finally
@@ -237,7 +237,7 @@ namespace H.Modules.Login
                 catch (Exception ex)
                 {
                     s.Message = ex.Message;
-                    IocLog.Instance?.Error(ex);
+                    IocLog.Error(ex);
                     return false;
                 }
                 finally

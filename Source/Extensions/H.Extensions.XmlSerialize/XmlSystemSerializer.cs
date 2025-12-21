@@ -42,7 +42,7 @@ namespace H.Extensions.XmlSerialize
             }
             catch (Exception ex)
             {
-                IocLog.Instance?.Error(ex);
+                IocLog.Error(ex);
                 Trace.Assert(false);
             }
         }
@@ -66,7 +66,7 @@ namespace H.Extensions.XmlSerialize
             }
             catch (Exception ex)
             {
-                IocLog.Instance?.Error(ex);
+                IocLog.Error(ex);
                 //Trace.Assert(false);
                 File.Delete(filePath);
             }

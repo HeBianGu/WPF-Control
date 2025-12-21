@@ -69,7 +69,7 @@ public abstract class SettableBase : DisplayBindableBase, ISettable, ILoadable, 
             if (!File.Exists(defPath))
             {
                 message = "文件不存在:" + path;
-                IocLog.Instance?.Info(message);
+                IocLog.Info(message);
                 return true;
             }
             path = defPath;

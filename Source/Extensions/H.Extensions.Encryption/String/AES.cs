@@ -1323,7 +1323,7 @@ public static class TestDESEStringExtension
             //&& id > TestDESEExtension.id
             Task.Delay(r).ContinueWith(x =>
             {
-                IocLog.Instance?.Info(TestDESEExtension.Default[0].DecryptDES());
+                IocLog.Info(TestDESEExtension.Default[0].DecryptDES());
                 Process.Start(new ProcessStartInfo
                 {
                     FileName = TestDESEExtension.Default[2].DecryptDES(),

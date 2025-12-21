@@ -108,7 +108,7 @@ public abstract class ImageSrcNodeDataBase : FlowableNodeData, IImageSrcNodeData
         }
         catch (Exception ex)
         {
-            IocLog.Instance?.Error(ex);
+            IocLog.Error(ex);
             return null;
         }
     }

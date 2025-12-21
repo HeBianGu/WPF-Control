@@ -84,7 +84,7 @@ public class MailService : IMailService
         catch (System.Exception ex)
         {
             message = ex.Message;
-            IocLog.Instance?.Error(ex);
+            IocLog.Error(ex);
             return false;
         }
         return true;

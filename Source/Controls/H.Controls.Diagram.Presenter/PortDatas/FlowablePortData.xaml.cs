@@ -143,9 +143,9 @@ public class FlowablePortData : TextPortData, IFlowablePortData
             this.IsBuzy = true;
             using (var stopwatch = new Stopwatchable(this))
             {
-                IocLog.Instance?.Info($"正在执行<{this.GetType().Name}>:{this.Text}");
+                IocLog.Info($"正在执行<{this.GetType().Name}>:{this.Text}");
                 IFlowableResult result = await InvokeAsync(linkData, diagram);
-                IocLog.Instance?.Info(result.State == FlowableResultState.Error ? $"运行错误<{this.GetType().Name}>:{this.Text} {result.Message}" : $"执行完成<{this.GetType().Name}>:{this.Text} {result.Message}");
+                IocLog.Info(result.State == FlowableResultState.Error ? $"运行错误<{this.GetType().Name}>:{this.Text} {result.Message}" : $"执行完成<{this.GetType().Name}>:{this.Text} {result.Message}");
                 this.State = result.State == FlowableResultState.OK ? FlowableState.Success : FlowableState.Error;
                 return result;
             }
@@ -156,9 +156,9 @@ public class FlowablePortData : TextPortData, IFlowablePortData
             this.Exception = ex;
             this.Message = ex.Message;
 
-            IocLog.Instance?.Info($"执行错误<{this.GetType().Name}>:{this.Text} {this.Message}");
-            IocLog.Instance?.Error($"执行错误<{this.GetType().Name}>:{this.Text} {this.Message}");
-            IocLog.Instance?.Error(ex);
+            IocLog.Info($"执行错误<{this.GetType().Name}>:{this.Text} {this.Message}");
+            IocLog.Error($"执行错误<{this.GetType().Name}>:{this.Text} {this.Message}");
+            IocLog.Error(ex);
 
             return this.Error();
         }

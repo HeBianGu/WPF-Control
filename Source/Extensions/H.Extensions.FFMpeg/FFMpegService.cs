@@ -21,7 +21,7 @@ public class FFMpegService : IFFMpegService
         }
         catch (Exception ex)
         {
-            IocLog.Instance?.Error(ex);
+            IocLog.Error(ex);
         }
         return null;
     }

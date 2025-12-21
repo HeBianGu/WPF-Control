@@ -29,7 +29,7 @@ namespace H.Controls.ScheduleBox
                catch (Exception ex)
                {
                    scheduleJob.Message = ex.Message;
-                   IocLog.Instance?.Error(ex);
+                   IocLog.Error(ex);
                }
                finally
                {

@@ -269,7 +269,7 @@ public class ImageEx
         this.FullPath = fullPath;
     }
 
-    public void ClearCache()
+    public static void ClearCache()
     {
         _fileCache.Clear();
     }

@@ -254,12 +254,12 @@ public class DirectoryEx
         }
         catch (UnauthorizedAccessException)
         {
-            //IocLog.Instance?.Error(ex);
+            //IocLog.Error(ex);
             logAction?.Invoke($"{sourceFolder}\r\nAccess Denied\r\n");
         }
         catch (Exception e)
         {
-            //IocLog.Instance?.Error(e);
+            //IocLog.Error(e);
             logAction?.Invoke($"{sourceFolder}\r\n{e.Message}\r\n");
         }
 
