@@ -33,7 +33,7 @@ namespace H.Controls.PropertyGrid
 
         public override int GetHashCode()
         {
-            return this.Color.GetHashCode() ^ this.Name.GetHashCode();
+            return HashCode.Combine(this.Color, this.Name);
         }
     }
 }

@@ -33,6 +33,6 @@ public class NodeDataExpression : INodeDataExpression
 
     public override int GetHashCode()
     {
-        return HashCode.Combine(this.Path.GetHashCode(), this.GroupName.GetHashCode(), this.Name.GetHashCode());
+        return HashCode.Combine(this.Path, this.GroupName, this.Name);
     }
 }
