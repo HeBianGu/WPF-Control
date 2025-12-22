@@ -114,7 +114,7 @@ static partial class ProjectExtension
         var r = await IocMessage.Dialog.Show("确定要删除？");
         if (r != true)
             return r;
-        projectService.Delete(x => x == project);
+        await projectService.DeleteAsync(x => x == project);
         return projectService.Save(out string message);
     }
 

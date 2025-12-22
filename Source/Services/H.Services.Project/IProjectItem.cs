@@ -17,5 +17,5 @@ public interface IProjectItem : ISaveable, ILoadable
     string Title { get; set; }
     string Path { get; set; }
     bool Close(out string message);
-    bool Delete(out string message);
+    Task<(bool success, string message)> DeleteAsync();
 }
