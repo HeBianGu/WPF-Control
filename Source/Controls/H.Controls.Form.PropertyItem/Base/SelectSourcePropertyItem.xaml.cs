@@ -28,7 +28,7 @@ namespace H.Controls.Form.PropertyItem.Base
 
         public override int GetHashCode()
         {
-            return this.Key.GetHashCode();
+            return HashCode.Combine(this.Key);
         }
 
         public override bool Equals(object obj)
