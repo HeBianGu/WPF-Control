@@ -56,7 +56,7 @@ public class TextPropertyItem : ObjectPropertyItem<string>
         if (vc?.ValueConverter != null)
             return vc.Convert(value)?.ToString();
         if (IsTypeConverter(this.PropertyInfo))
-            TypeConverterToString(value);
+            return TypeConverterToString(value);
         return (value?.ToString());
     }
 
