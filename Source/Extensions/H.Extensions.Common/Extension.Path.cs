@@ -46,4 +46,11 @@ public static class PathExtension
             return filePath.GetRelativePath(relativeTo);
         return filePath;
     }
+
+    public static string GetAppDomainRelativePath(this string filePath)
+    {
+        string currentDir = AppDomain.CurrentDomain.BaseDirectory;
+        return filePath.GetRelativeStartsWithPath(AppDomain.CurrentDomain.BaseDirectory);
+    }
+   
 }
