@@ -10,6 +10,7 @@ using H.Extensions.FontIcon;
 using H.Extensions.Mvvm.Commands;
 using System.IO;
 using System.Text.Json.Serialization;
+using System.Threading.Tasks;
 
 namespace H.Modules.Project.Base;
 
@@ -141,11 +142,12 @@ public abstract class ProjectItemBase : DisplayBindableBase, IProjectItem
         return this.Path;
     }
 
-    public virtual bool Delete(out string message)
+    public virtual Task<(bool success, string message)> DeleteAsync()
     {
+        string message;
         bool r = this.Close(out message);
         if (r == false)
-            return false;
+            return Task.FromResult((false, message));
         if (File.Exists(this.Path))
             File.Delete(this.Path);
         if (!string.IsNullOrEmpty(this.Path))
@@ -154,6 +156,6 @@ public abstract class ProjectItemBase : DisplayBindableBase, IProjectItem
             if (File.Exists(find))
                 File.Delete(find);
         }
-        return true;
+        return Task.FromResult((true, string.Empty));
     }
 }

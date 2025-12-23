@@ -131,11 +131,11 @@ public abstract class ProjectServiceBase<T> : CommandsBindableBase, IProjectServ
         }
     }
 
-    public virtual void Delete(params T[] ts)
+    public virtual async Task DeleteAsync(params T[] ts)
     {
         foreach (T item in ts)
         {
-            item.Delete(out string message);
+            await item.DeleteAsync();
             if (this.Collection is IList list)
                 list.Remove(item);
         }
@@ -151,10 +151,10 @@ public abstract class ProjectServiceBase<T> : CommandsBindableBase, IProjectServ
         if (project is T t)
             this.Add(t);
     }
-    void IProjectService.Delete(Func<IProjectItem, bool> func)
+    async Task IProjectService.DeleteAsync(Func<IProjectItem, bool> func)
     {
         IEnumerable<T> ps = this.Collection.Where(x => func(x));
-        this.Delete(ps.ToArray());
+        await this.DeleteAsync(ps.ToArray());
     }
 
     private string _projectsPath => System.IO.Path.Combine(this.GetFolderPath(), "projects.json");
@@ -203,6 +203,10 @@ public abstract class ProjectServiceBase<T> : CommandsBindableBase, IProjectServ
         this.Current = null;
     }
 
+    public void Delete(params T[] ts)
+    {
+        this.DeleteAsync(ts).Wait();
+    }
 
     [JsonIgnore]
     [Icon("\xE7C3")]
