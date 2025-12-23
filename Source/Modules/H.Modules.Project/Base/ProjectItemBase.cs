@@ -30,19 +30,19 @@ public abstract class ProjectItemBase : DisplayBindableBase, IProjectItem
         }
     }
 
-    private string _path;
-    [ReadOnly(true)]
-    [Browsable(false)]
-    [Display(Name = "工程文件路径", Order = 4)]
-    public string Path
-    {
-        get { return _path; }
-        set
-        {
-            _path = value;
-            RaisePropertyChanged();
-        }
-    }
+    //private string _path;
+    //[ReadOnly(true)]
+    //[Browsable(false)]
+    //[Display(Name = "工程文件路径", Order = 4)]
+    //public string Path
+    //{
+    //    get { return _path; }
+    //    set
+    //    {
+    //        _path = value;
+    //        RaisePropertyChanged();
+    //    }
+    //}
 
     private bool _isFixed;
     [Display(Name = "是否固定", Order = 4)]
@@ -135,11 +135,12 @@ public abstract class ProjectItemBase : DisplayBindableBase, IProjectItem
         return System.IO.Path.Combine(folder, this.ID + ProjectOptions.Instance.Extenstion);
     }
 
-    private string GetFolderPath()
+    public string GetFolderPath()
     {
-        if (string.IsNullOrEmpty(this.Path))
-            return ProjectOptions.Instance.DefaultProjectFolder;
-        return this.Path;
+        return ProjectOptions.Instance.DefaultProjectFolder;
+        //if (string.IsNullOrEmpty(this.Path))
+        //    return ProjectOptions.Instance.DefaultProjectFolder;
+        //return this.Path;
     }
 
     public virtual Task<(bool success, string message)> DeleteAsync()
@@ -148,14 +149,16 @@ public abstract class ProjectItemBase : DisplayBindableBase, IProjectItem
         bool r = this.Close(out message);
         if (r == false)
             return Task.FromResult((false, message));
-        if (File.Exists(this.Path))
-            File.Delete(this.Path);
-        if (!string.IsNullOrEmpty(this.Path))
-        {
-            string find = this.GetFilePath();
-            if (File.Exists(find))
-                File.Delete(find);
-        }
+
+        var filePath = this.GetFilePath();
+        if (File.Exists(filePath))
+            File.Delete(filePath);
+        //if (!string.IsNullOrEmpty(filePath))
+        //{
+        //    string find = this.GetFilePath();
+        //    if (File.Exists(find))
+        //        File.Delete(find);
+        //}
         return Task.FromResult((true, string.Empty));
     }
 }
