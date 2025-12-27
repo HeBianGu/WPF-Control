@@ -8,8 +8,8 @@
                 <ItemsControl ItemsSource="{Binding Commands}">
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
-                            <FontIconButton Style="{DynamicResource {x:Static FontIconButtonKeys.Command}}"
-                                            Command="{Binding}"/>
+                            <FontIconButton Command="{Binding}"
+                                            Style="{DynamicResource {x:Static FontIconButtonKeys.Command}}" />
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
                 </ItemsControl>
@@ -17,8 +17,7 @@
             <ListBox BorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrush}}"
                      BorderThickness="1"
                      ItemsSource="{Binding Collection}"
-                     SelectedItem="{Binding SelectedItem}" >
-            </ListBox>
+                     SelectedItem="{Binding SelectedItem}" />
         </DockPanel>
     </DataTemplate>
 </ResourceDictionary>

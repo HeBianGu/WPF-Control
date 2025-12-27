@@ -18,6 +18,6 @@ public abstract class EntityBase<TPrimaryKey> : IEntityBase<TPrimaryKey>
     /// </summary>
     [Browsable(false)]
     [ReadOnly(true)]
-    [Column("id", Order = 0)]
+    [Column("id", Order = -1)]
     public virtual TPrimaryKey ID { get; set; }
 }

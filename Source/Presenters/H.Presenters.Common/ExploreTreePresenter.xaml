@@ -6,14 +6,14 @@
         <TreeView ItemsSource="{Binding TreeNodes}">
             <TreeView.ItemTemplate>
                 <HierarchicalDataTemplate ItemsSource="{Binding Nodes}">
-                    <TextBlock
-                                        x:Name="a"
-                                        VerticalAlignment="Center"
-                                        Text="{Binding Model.Name}" />
+                    <TextBlock x:Name="a"
+                               VerticalAlignment="Center"
+                               Text="{Binding Model.Name}" />
                 </HierarchicalDataTemplate>
             </TreeView.ItemTemplate>
             <TreeView.ItemContainerStyle>
-                <Style BasedOn="{StaticResource {x:Static h:TreeViewItemKeys.Default}}" TargetType="TreeViewItem">
+                <Style BasedOn="{StaticResource {x:Static h:TreeViewItemKeys.Default}}"
+                       TargetType="TreeViewItem">
                     <Setter Property="h:BehvaiorAttach.Behaviors">
                         <Setter.Value>
                             <h:Behaviors>

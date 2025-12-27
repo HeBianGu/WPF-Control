@@ -26,7 +26,7 @@ public abstract class CommandsBindableBase : Bindable, ICommandsBindable
     /// </summary>
     public CommandsBindableBase()
     {
-        this.Commands = new ObservableCollection<ICommand>(this.CreateCommands().OrderBy(x => x.Order).OfType<ICommand>());
+        this.UpdateCommands();
     }
 
     /// <summary>
@@ -36,6 +36,16 @@ public abstract class CommandsBindableBase : Bindable, ICommandsBindable
     [JsonIgnore]
     [XmlIgnore]
     public ObservableCollection<ICommand> Commands { get; } = new ObservableCollection<ICommand>();
+
+
+    protected void UpdateCommands()
+    {
+        this.Commands.Clear();
+        foreach (var item in this.CreateCommands().OrderBy(x => x.Order).OfType<ICommand>())
+        {
+            this.Commands.Add(item);
+        }
+    }
 
     /// <summary>
     /// 创建命令的方法，派生类可以重写此方法以创建自定义命令。

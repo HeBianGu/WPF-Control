@@ -222,13 +222,13 @@
                                                       Width="Auto"
                                                       Height="Auto"
                                                       Margin="1"
-                                                      Cattach.Title="删除文本"
-                                                      ToolTip="点击此按钮删除文本"
                                                       Background="{x:Null}"
+                                                      Cattach.Title="删除文本"
                                                       Command="{local:DeleteTextCommandExtension}"
                                                       CommandParameter="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}}"
                                                       Content="&#xE711;"
-                                                      DockPanel.Dock="Right" />
+                                                      DockPanel.Dock="Right"
+                                                      ToolTip="点击此按钮删除文本" />
                                 <Grid Margin="{TemplateBinding Padding}">
                                     <ScrollViewer x:Name="PART_ContentHost" />
                                     <Control Template="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(Cattach.CenterTemplate)}" />

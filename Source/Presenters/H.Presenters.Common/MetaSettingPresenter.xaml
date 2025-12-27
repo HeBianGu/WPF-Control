@@ -4,7 +4,7 @@
                     xmlns:local="clr-namespace:H.Presenters.Common">
     <DataTemplate DataType="{x:Type local:MetaSettingsPresenterBase}">
         <DockPanel>
-            <TextBlock Text="{Binding Data}"/>
+            <TextBlock Text="{Binding Data}" />
         </DockPanel>
     </DataTemplate>
 </ResourceDictionary>
