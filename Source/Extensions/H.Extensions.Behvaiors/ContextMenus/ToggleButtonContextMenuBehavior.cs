@@ -13,6 +13,14 @@ public class ToggleButtonContextMenuBehavior : Behavior<ToggleButton>
     protected override void OnAttached()
     {
         this.AssociatedObject.Loaded += AssociatedObject_Loaded;
+        this.AssociatedObject.Unloaded += this.AssociatedObject_Unloaded;
+    }
+
+    private void AssociatedObject_Unloaded(object sender, RoutedEventArgs e)
+    {
+        this.AssociatedObject.Checked -= AssociatedObject_Checked;
+        this.AssociatedObject.Unchecked -= AssociatedObject_Unchecked;
+        this.AssociatedObject.ContextMenu.Closed -= ContextMenu_Closed;
     }
 
     private void AssociatedObject_Loaded(object sender, RoutedEventArgs e)
