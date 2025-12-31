@@ -11,8 +11,10 @@ using System.IO;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Threading;
 
 namespace H.Extensions.Common;
 
@@ -343,3 +345,119 @@ public class ImageEx
     }
 
 }
+
+
+[Obsolete("未验证")]
+public class AsyncImage : Image
+{
+    public AsyncImage()
+    {
+        this.Unloaded += (l, k) =>
+            {
+                _cts?.Cancel();
+            };
+    }
+    private CancellationTokenSource _cts;
+
+    public static readonly DependencyProperty UriSourceProperty =
+        DependencyProperty.Register(
+            nameof(UriSource),
+            typeof(string),
+            typeof(AsyncImage),
+            new PropertyMetadata(null, OnUriSourceChanged));
+
+    public string UriSource
+    {
+        get => (string)GetValue(UriSourceProperty);
+        set => SetValue(UriSourceProperty, value);
+    }
+
+    private static void OnUriSourceChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+    {
+        var ctrl = (AsyncImage)d;
+        ctrl.LoadAsync(e.NewValue as string);
+    }
+
+    private void LoadAsync(string uriOrPath)
+    {
+        // cancel previous load if any
+        _cts?.Cancel();
+        _cts = new CancellationTokenSource();
+        var token = _cts.Token;
+
+        // Clear or keep previous source (optional). Here we clear.
+        Source = null;
+
+        if (string.IsNullOrWhiteSpace(uriOrPath))
+            return;
+
+        Task.Run(() =>
+        {
+            try
+            {
+                token.ThrowIfCancellationRequested();
+
+                BitmapImage bmp = new BitmapImage();
+                bmp.BeginInit();
+
+                // Allow async download for HTTP(S). For local files, we'll use file stream.
+                bmp.CacheOption = BitmapCacheOption.OnDemand;
+                bmp.CreateOptions = BitmapCreateOptions.DelayCreation;
+
+                // Decide if it's a web uri or local file
+                if (IsWebUri(uriOrPath))
+                {
+                    bmp.UriSource = new Uri(uriOrPath, UriKind.Absolute);
+                }
+                else
+                {
+                    // Local file: load stream to avoid locking the file
+                    using (var fs = new FileStream(uriOrPath, FileMode.Open, FileAccess.Read, FileShare.Read))
+                    {
+                        bmp.CacheOption = BitmapCacheOption.OnLoad; // fully load into memory
+                        bmp.StreamSource = fs;
+                        bmp.EndInit();
+                        bmp.Freeze(); // freeze before leaving using
+                                      // marshal back
+                        if (!token.IsCancellationRequested)
+                        {
+                            Dispatcher.BeginInvoke(DispatcherPriority.Background, new Action(() =>
+                            {
+                                if (!token.IsCancellationRequested)
+                                    Source = bmp;
+                            }));
+                        }
+                        return;
+                    }
+                }
+
+                bmp.EndInit();
+                bmp.Freeze();
+
+                token.ThrowIfCancellationRequested();
+
+                Dispatcher.BeginInvoke(DispatcherPriority.Background, new Action(() =>
+                {
+                    if (!token.IsCancellationRequested)
+                        Source = bmp;
+                }));
+            }
+            catch
+            {
+                // swallow or log; keep UI responsive
+            }
+        }, token);
+    }
+
+    private static bool IsWebUri(string s)
+    {
+        if (string.IsNullOrEmpty(s)) return false;
+        Uri uri;
+        if (Uri.TryCreate(s, UriKind.Absolute, out uri))
+        {
+            return uri.Scheme == Uri.UriSchemeHttp || uri.Scheme == Uri.UriSchemeHttps;
+        }
+        return false;
+    }
+}
+
