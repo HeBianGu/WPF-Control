@@ -16,6 +16,11 @@ public static class RectExtenstion
         return new Point((rect.Left + rect.Right) / 2, (rect.Top + rect.Bottom) / 2);
     }
 
+    public static double GetArea(this Rect rect)
+    {
+        return rect.Width * rect.Height;
+    }
+
     public static Point GetTopCenter(this Rect rect)
     {
         return new Point(rect.Left + rect.Width / 2, rect.Top);
