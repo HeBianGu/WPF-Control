@@ -64,30 +64,14 @@ public abstract class FlowableDiagramDataBase : ExpressionableDiagramDataBase, I
         if (diagram == null)
             return;
         if (this.FlowableZoomMode == DiagramFlowableZoomMode.Rect)
-        {
-            diagram.Dispatcher.Invoke(() =>
-            {
-                var n = diagram.Nodes.FirstOrDefault(x => x.GetContent() == part);
-                if (n == null)
-                    return;
-                diagram.ZoomTo(n);
-            });
-
-        }
-
+            this.ZoomTo(part);
         else if (this.FlowableZoomMode == DiagramFlowableZoomMode.Center)
         {
             //Point point = diagram.SelectedPart.Bound.GetCenter();
             //diagram.ZoomToCenter(part.Bound.BottomRight);
         }
         if (this.UseFlowableSelectToRunning)
-        {
-            diagram.Dispatcher.Invoke(() =>
-            {
-                var n = diagram.Nodes.FirstOrDefault(x => x.GetContent() == part);
-                diagram.SelectedPart = n;
-            });
-        }
+            this.Select(part);
 
         if (part is ITextable textable)
             this.Message = "正在运行 - " + textable.Text;

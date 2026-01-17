@@ -20,6 +20,7 @@ global using H.Services.Message;
 global using H.Services.Message.Dialog;
 global using System.Text.Json.Serialization;
 global using System.Windows.Input;
+using H.Controls.Diagram.Parts.Base;
 using H.Controls.Form.Attributes;
 using H.Controls.Form.PropertyItem.Attribute;
 using H.Themes.Backgrounds;
@@ -269,7 +270,7 @@ public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
                 }
             }
 
-            
+
         }
 
         foreach (var item in this.Datas.LinkDatas.OfType<IDefaultable>())
@@ -317,6 +318,19 @@ public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
 
     }
 
+    public void Select(IPartData part)
+    {
+        var diagram = this.GetTargetElement<Diagram>();
+        if (diagram == null)
+            return;
+
+        diagram.Dispatcher.Invoke(() =>
+        {
+            var n = diagram.Nodes.FirstOrDefault(x => x.GetContent() == part);
+            diagram.SelectedPart = n;
+        });
+    }
+
     public RelayCommand MouseDoubleClickCommand => new RelayCommand(e =>
     {
         this.OnMouseDoubleClick(e);
@@ -335,6 +349,7 @@ public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
                 await IocMessage.ShowDialog(propertyPresenter, x =>
                 {
                     x.DialogButton = DialogButton.None;
+                    x.Background = null;
                     if (showPropertyView is ITitleable title && title.Title != null)
                         x.Title = title.Title;
                     if (showPropertyView is INameable nameable && nameable.Name != null)
@@ -345,7 +360,7 @@ public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
             {
                 await IocMessage.Form?.ShowTabEdit(framework?.DataContext, x =>
                  {
-
+                     x.Background = null;
                  }, null, x =>
                  {
                      x.TitleWidth = double.NaN;

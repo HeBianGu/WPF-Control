@@ -5,11 +5,12 @@
                     xmlns:local="clr-namespace:H.Modules.Messages.Dialog">
     <DataTemplate DataType="{x:Type local:AdornerDialogPresenter}">
         <Grid HorizontalAlignment="Stretch"
-              VerticalAlignment="Stretch">
-            <Grid.Background>
+              VerticalAlignment="Stretch"
+              Background="{Binding Background}">
+            <!--<Grid.Background>
                 <SolidColorBrush Opacity="0.6"
                                  Color="Black" />
-            </Grid.Background>
+            </Grid.Background>-->
             <Grid Width="{Binding Width}"
                   Height="{Binding Height}"
                   MinWidth="{Binding MinWidth}"

@@ -8,6 +8,7 @@
 
 global using H.Controls.Diagram.Layers;
 global using H.Controls.Diagram.Parts.Base;
+using H.Controls.Diagram.Parts;
 
 namespace H.Controls.Diagram.Presenter.DiagramDatas.Base;
 
@@ -19,9 +20,23 @@ public abstract class ZoomableDiagramDataBase : DiagramDataBase, IZoomableDiagra
     {
         this.GetTargetElement<Diagram>().ZoomToFit();
     }, x => this.GetTargetElement<Diagram>() != null);
-    protected void ZoomToFit()
+    public void ZoomToFit()
     {
         this.GetTargetElement<Diagram>()?.ZoomToFit();
+    }
+
+    public void ZoomTo(IPartData part)
+    {
+        var diagram = this.GetTargetElement<Diagram>();
+        if (diagram == null)
+            return;
+        diagram.Dispatcher.Invoke(() =>
+        {
+            var n = diagram.Nodes.FirstOrDefault(x => x.GetContent() == part);
+            if (n == null)
+                return;
+            diagram.ZoomTo(n);
+        });
     }
 
     //[Icon(FontIcons.SIPMove)]

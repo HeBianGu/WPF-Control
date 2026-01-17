@@ -30,6 +30,9 @@ namespace H.Modules.Messages.Dialog
             this.HorizontalContentAlignment = HorizontalAlignment.Center;
             this.VerticalContentAlignment = VerticalAlignment.Center;
             this.Padding = new Thickness(10, 6, 10, 6);
+            SolidColorBrush background = new SolidColorBrush(Colors.Black) { Opacity = 0.6 };
+            background.Freeze();
+            this.Background = background;
         }
         private string _title = "提示";
         public string Title
