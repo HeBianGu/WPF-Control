@@ -136,5 +136,6 @@ namespace H.Modules.Messages.Dialog
         public ITransitionable Transitionable { get; set; }
         public DataTemplate PresenterTemplate { get; set; }
         public bool UseActionAutoClose { get; set; } = true;
+        public bool UseDropShadowEffect { get; set; } = false;
     }
 }

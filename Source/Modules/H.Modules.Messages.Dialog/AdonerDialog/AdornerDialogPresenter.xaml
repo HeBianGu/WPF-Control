@@ -7,10 +7,6 @@
         <Grid HorizontalAlignment="Stretch"
               VerticalAlignment="Stretch"
               Background="{Binding Background}">
-            <!--<Grid.Background>
-                <SolidColorBrush Opacity="0.6"
-                                 Color="Black" />
-            </Grid.Background>-->
             <Grid Width="{Binding Width}"
                   Height="{Binding Height}"
                   MinWidth="{Binding MinWidth}"
@@ -28,8 +24,11 @@
                     <RowDefinition />
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
-                <Border Grid.RowSpan="5"
+                <Border x:Name="b_content"
+                        Grid.RowSpan="5"
                         Grid.ColumnSpan="5"
+                        BorderBrush="{Binding BorderBrush}"
+                        BorderThickness="{Binding BorderThickness}"
                         CornerRadius="{DynamicResource {x:Static LayoutKeys.CornerRadius}}">
                     <Border.Background>
                         <SolidColorBrush Color="{DynamicResource {x:Static h:ColorKeys.Background}}" />
@@ -42,11 +41,6 @@
                         TextBlock.Foreground="{DynamicResource {x:Static h:BrushKeys.CaptionForeground}}"
                         TextElement.Foreground="{DynamicResource {x:Static h:BrushKeys.CaptionForeground}}"
                         WindowChrome.IsHitTestVisibleInChrome="True">
-                    <!--  Background="{DynamicResource {x:Static h:BrushKeys.CaptionBackground}}"  -->
-                    <!--
-                        BorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrush}}"
-                        BorderThickness="0,0,0,1"
-                    -->
                     <DockPanel>
                         <FontIconTextBlock Margin="10,0,7,0"
                                            Text="{Binding Icon}" />
@@ -112,6 +106,10 @@
                          Value="SumitAndCancel">
                 <Setter TargetName="btn_sumit" Property="Visibility" Value="Visible" />
                 <Setter TargetName="btn_cancel" Property="Visibility" Value="Visible" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding UseDropShadowEffect}"
+                         Value="True">
+                <Setter TargetName="b_content" Property="Effect" Value="{DynamicResource {x:Static DropShadowEffectKeys.DropShadowEffect2}}" />
             </DataTrigger>
         </DataTemplate.Triggers>
     </DataTemplate>

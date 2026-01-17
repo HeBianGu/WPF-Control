@@ -350,6 +350,7 @@ public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
                 {
                     x.DialogButton = DialogButton.None;
                     x.Background = null;
+                    x.UseDropShadowEffect = true;
                     if (showPropertyView is ITitleable title && title.Title != null)
                         x.Title = title.Title;
                     if (showPropertyView is INameable nameable && nameable.Name != null)
@@ -360,7 +361,7 @@ public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
             {
                 await IocMessage.Form?.ShowTabEdit(framework?.DataContext, x =>
                  {
-                     x.Background = null;
+                    
                  }, null, x =>
                  {
                      x.TitleWidth = double.NaN;

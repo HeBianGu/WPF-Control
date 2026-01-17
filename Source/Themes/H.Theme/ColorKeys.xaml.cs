@@ -320,4 +320,7 @@ public static class ColorKeys
 
     public static ComponentResourceKey MenuBackground => new ComponentResourceKey(typeof(ColorKeys), "S.Color.Menu.Background");
     public static ComponentResourceKey MenuForeground => new ComponentResourceKey(typeof(ColorKeys), "S.Color.Menu.Foreground");
+
+    public static ComponentResourceKey DropShadowEffect => new ComponentResourceKey(typeof(ColorKeys), "S.Color.DropShadowEffect");
+
 }

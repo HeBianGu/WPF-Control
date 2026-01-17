@@ -100,6 +100,7 @@ public partial class DialogWindow : Window, IDialog
 
     DataTemplate IDialog.PresenterTemplate { get => this.ContentTemplate; set => this.ContentTemplate = value; }
     public bool UseActionAutoClose { get; set; } = true;
+    public bool UseDropShadowEffect { get; set; }
 
     public static readonly DependencyProperty FontIconProperty =
         DependencyProperty.Register("FontIcon", typeof(string), typeof(DialogWindow), new FrameworkPropertyMetadata("\xEA8F"));

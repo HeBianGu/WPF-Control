@@ -22,4 +22,5 @@ public interface IDialog : ILayoutable, ICancelable, ITransitionHostable
     Window Owner { get; set; }
     DataTemplate PresenterTemplate { get; set; }
     bool UseActionAutoClose { get; set; }
+    bool UseDropShadowEffect { get; set; }
 }

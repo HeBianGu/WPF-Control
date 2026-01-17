@@ -144,3 +144,5 @@ public static class BrushKeys
     public static ComponentResourceKey MenuBackground => new ComponentResourceKey(typeof(BrushKeys), "S.Brush.Menu.Background");
     public static ComponentResourceKey MenuForeground => new ComponentResourceKey(typeof(BrushKeys), "S.Brush.Menu.Foreground");
 }
+
+
