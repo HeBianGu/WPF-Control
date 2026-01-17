@@ -35,7 +35,7 @@
         <Setter Property="SnapsToDevicePixels" Value="true" />
         <Setter Property="CaptionHeight" Value="{DynamicResource {x:Static h:LayoutKeys.WindowCaptionHeight}}" />
 
-        <Setter Property="UseLayoutRounding" Value="True"/>
+        <Setter Property="UseLayoutRounding" Value="True" />
     </Style>
 
     <Style x:Key="{ComponentResourceKey ResourceId=S.MainWindow.Default,

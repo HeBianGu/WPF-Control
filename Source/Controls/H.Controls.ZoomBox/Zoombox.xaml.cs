@@ -21,7 +21,7 @@ namespace H.Controls.ZoomBox
 {
     [TemplatePart(Name = PART_VerticalScrollBar, Type = typeof(ScrollBar))]
     [TemplatePart(Name = PART_HorizontalScrollBar, Type = typeof(ScrollBar))]
-    public sealed class Zoombox : ContentControl, IZoombox
+    public class Zoombox : ContentControl, IZoombox
     {
         private const string PART_VerticalScrollBar = "PART_VerticalScrollBar";
         private const string PART_HorizontalScrollBar = "PART_HorizontalScrollBar";

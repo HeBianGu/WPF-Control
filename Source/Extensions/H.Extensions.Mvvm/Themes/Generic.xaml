@@ -3,7 +3,8 @@
                     xmlns:cmd="clr-namespace:H.Extensions.Mvvm.Commands">
     <!--<ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/H.Extensions.Mail;component/DialogWindow.xaml" />
-    </ResourceDictionary.MergedDictionaries>--><!--
+    </ResourceDictionary.MergedDictionaries>-->
+    <!--
     <DataTemplate DataType="{x:Type cmd:DisplayCommand}">
         <StackPanel Margin="5">
             <BulletDecorator>
