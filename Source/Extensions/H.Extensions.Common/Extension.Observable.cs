@@ -62,8 +62,13 @@ public static class ObservableExtension
         if (collection == null)
             return new ObservableCollection<T>();
         return new ObservableCollection<T>(collection);
-
     }
+
+    public static ObservableCollection<T> ToOfTypeObservable<T>(this object t)
+    {
+        return t.ToEnumerable().OfType<T>().ToObservable();
+    }
+
     /// <summary> 调用主线程执行Action </summary>
     public static void Invoke<T>(this ObservableCollection<T> collection, Action<ObservableCollection<T>> action)
     {
