@@ -18,6 +18,11 @@ public class GetImageSourceFromBase64Converter : MarkupValueConverterBase
         if (value == null)
             return null;
         string base64String = value.ToString();
+        return ToImageSource(base64String);
+    }
+
+    public static ImageSource ToImageSource(string base64String, int decodePixel = 0)
+    {
         // 将 Base64 字符串转换为字节数组
         byte[] imageBytes = System.Convert.FromBase64String(base64String);
 
@@ -28,7 +33,7 @@ public class GetImageSourceFromBase64Converter : MarkupValueConverterBase
             bitmap.BeginInit();
             bitmap.StreamSource = stream;
             bitmap.CacheOption = BitmapCacheOption.OnLoad;
-            bitmap.DecodePixelWidth = this.DecodePixel;  // 设置图片宽度为 100 像素
+            bitmap.DecodePixelWidth = decodePixel;  // 设置图片宽度为 100 像素
             //bitmap.DecodePixelHeight = this.DecodePixel; // 设置图片高度为 100 像素
             bitmap.EndInit();
         }
