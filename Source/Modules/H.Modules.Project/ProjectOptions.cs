@@ -20,7 +20,7 @@ public class ProjectOptions : IocOptionInstance<ProjectOptions>, IProjectOptions
     public override void LoadDefault()
     {
         base.LoadDefault();
-        this.DefaultProjectFolder = AppPaths.Instance.Project;
+        this.DefaultProjectFolder = AppPaths.Instance.UserProject;
     }
     private string _extenstion;
     [ReadOnly(true)]

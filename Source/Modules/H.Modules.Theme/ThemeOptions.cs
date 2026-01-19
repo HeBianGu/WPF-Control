@@ -264,7 +264,6 @@ public class ThemeOptions : IocOptionInstance<ThemeOptions>, ILoginedSplashLoada
             }
             if (this.BackgroundResource != null)
                 this.BackgroundResourceSelectedIndex = this.BackgroundResources.IndexOf(this.BackgroundResource);
-
         }
 
         if (this.ColorResourceSelectedIndex < 0 || this.ColorResourceSelectedIndex >= this.ColorResources.Count)
@@ -274,13 +273,13 @@ public class ThemeOptions : IocOptionInstance<ThemeOptions>, ILoginedSplashLoada
         if (this.BackgroundResourceSelectedIndex < 0 || this.BackgroundResourceSelectedIndex >= this.BackgroundResources.Count)
             this.BackgroundResourceSelectedIndex = 0;
         this.BackgroundResource = this.BackgroundResources[this.BackgroundResourceSelectedIndex];
-        this.RefreshTheme();
+        this.RefreshTheme(false);
         return r;
     }
 
-    private void RefreshTheme()
+    private void RefreshTheme(bool isDelay = true)
     {
-        this.DelayInvoke(() =>
+        Action action = () =>
         {
             //this.Color.ChangeThemeType();
             this.FontSize.ChangeFontSizeThemeType();
@@ -292,7 +291,11 @@ public class ThemeOptions : IocOptionInstance<ThemeOptions>, ILoginedSplashLoada
             this.RefreshBrushResourceDictionary();
             if (this.ColorResource != null)
                 this.IsDark = this.ColorResource.IsDark;
-        });
+        };
+        if (isDelay)
+            this.DelayInvoke(action);
+        else
+            action();
     }
 
     public void RefreshBrushResourceDictionary()
