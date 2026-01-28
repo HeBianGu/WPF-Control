@@ -23,6 +23,8 @@ public class GetImageSourceFromBase64Converter : MarkupValueConverterBase
 
     public static ImageSource ToImageSource(string base64String, int decodePixel = 0)
     {
+        if (base64String == null)
+            return null;
         // 将 Base64 字符串转换为字节数组
         byte[] imageBytes = System.Convert.FromBase64String(base64String);
 
