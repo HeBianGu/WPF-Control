@@ -8,6 +8,7 @@
                       DockPanel.Dock="Top"
                       ItemsSource="{Binding Collection}"
                       SelectedItem="{Binding Value}"
+                      IsHitTestVisible="{Binding IsHitTestVisible}"
                       SelectedValuePath="{Binding SelectedValuePath}" />
             <Form Padding="0"
                   SelectObject="{Binding Value}" />

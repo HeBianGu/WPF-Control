@@ -3,6 +3,7 @@
                     xmlns:local="clr-namespace:H.Controls.Form.PropertyItem.ComboBoxPropertyItems">
     <DataTemplate DataType="{x:Type local:BrushComboBoxPropertyItem}">
         <ComboBox Cattach.UseGuide="False"
+                  IsHitTestVisible="{Binding IsHitTestVisible}"
                   ItemsSource="{Binding Collection}"
                   SelectedItem="{Binding Value}">
             <ItemsControl.ItemTemplate>

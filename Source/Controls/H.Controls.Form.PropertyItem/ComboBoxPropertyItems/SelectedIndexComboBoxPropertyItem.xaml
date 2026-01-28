@@ -9,6 +9,7 @@
                   IsHitTestVisible="{Binding IsHitTestVisible}"
                   ItemsSource="{Binding Collection}"
                   SelectedIndex="{Binding Value}"
-                  SelectedValuePath="{Binding SelectedValuePath}" />
+                  SelectedValuePath="{Binding SelectedValuePath}">
+        </ComboBox>
     </DataTemplate>
 </ResourceDictionary>

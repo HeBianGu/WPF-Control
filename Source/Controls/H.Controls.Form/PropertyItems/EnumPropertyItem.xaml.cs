@@ -13,5 +13,7 @@ public class EnumPropertyItem : ObjectPropertyItem<Enum>
     public EnumPropertyItem(PropertyInfo property, object obj)
         : base(property, obj)
     {
+        if (this.ReadOnly)
+            this.IsHitTestVisible = false;
     }
 }

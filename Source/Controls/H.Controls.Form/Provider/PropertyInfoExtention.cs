@@ -139,6 +139,8 @@ public static class PropertyInfoExtention
                 var r = Activator.CreateInstance(type, info, obj) as IPropertyViewItem;
                 if (r is IHitTestPropertyViewItem hitTest)
                     hitTest.IsHitTestVisible = false;
+                if (r is ObjectPropertyItemBase objectPropertyItemBase)
+                    objectPropertyItemBase.ReadOnly = true;
                 return r;
             }
             return null;

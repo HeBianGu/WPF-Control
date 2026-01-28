@@ -4,7 +4,8 @@
     <DataTemplate DataType="{x:Type local:ComboBoxPropertyItem}">
         <ComboBox Height="Auto"
                   Cattach.ItemHeight="Auto"
-                  Cattach.UseGuide="False"
+                  Cattach.UseGuide="False" 
+                  IsHitTestVisible="{Binding IsHitTestVisible}"
                   DisplayMemberPath="{Binding DisplayMemberPath}"
                   ItemsSource="{Binding Collection}"
                   SelectedValue="{Binding Value}"

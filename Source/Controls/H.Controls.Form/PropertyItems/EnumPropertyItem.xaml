@@ -5,6 +5,7 @@
     <DataTemplate DataType="{x:Type local:EnumPropertyItem}">
         <ComboBox Grid.Column="2"
                   Cattach.UseGuide="False"
+                  IsHitTestVisible="{Binding ReadOnly,Converter={x:Static Converter.GetTrueToFalse}}"
                   ItemsSource="{Binding PropertyInfo.PropertyType, Converter={x:Static h:Converter.GetEnumSource}}"
                   SelectedItem="{Binding Value}" />
     </DataTemplate>

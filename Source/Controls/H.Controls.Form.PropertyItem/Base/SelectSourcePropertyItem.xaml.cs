@@ -50,6 +50,9 @@ namespace H.Controls.Form.PropertyItem.Base
 
             this.DisplayMemberPath = property.GetCustomAttribute<DisplayMemberPathAttribute>()?.Path;
             this.SelectedValuePath = property.GetCustomAttribute<SelectedValuePathAttribute>()?.Path;
+
+            if (this.ReadOnly)
+                this.IsHitTestVisible = false;
         }
         protected virtual IEnumerable<T> CreateSource()
         {

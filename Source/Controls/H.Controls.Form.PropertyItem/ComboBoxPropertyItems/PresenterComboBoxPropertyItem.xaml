@@ -8,6 +8,7 @@
                       Cattach.UseGuide="False"
                       DisplayMemberPath="{Binding DisplayMemberPath}"
                       DockPanel.Dock="Top"
+                      IsHitTestVisible="{Binding IsHitTestVisible}"
                       ItemsSource="{Binding Collection}"
                       SelectedItem="{Binding Value}"
                       SelectedValuePath="{Binding SelectedValuePath}" />
