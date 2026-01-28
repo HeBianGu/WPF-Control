@@ -33,6 +33,8 @@ public static class RectExtenstion
 
     public static Rect GetPadding(this Rect rect, Thickness thickness)
     {
+        if (rect.IsEmpty)
+            return rect;
         return new Rect(rect.Left - thickness.Left, rect.Top - thickness.Top, rect.Width + thickness.Right + thickness.Left, rect.Height + thickness.Bottom + thickness.Top);
     }
 

@@ -69,6 +69,17 @@ public static partial class ImageExtention
 
     public static MemoryStream ToCroppedImageStream(this BitmapSource bitmapSource, Int32Rect cropArea)
     {
+        if (cropArea.X < 0)
+            cropArea.X = 0;
+        if (cropArea.Y < 0)
+            cropArea.Y = 0;
+        if (cropArea.X + cropArea.Width > bitmapSource.PixelWidth)
+            cropArea.Width = bitmapSource.PixelWidth - cropArea.X;
+        if (cropArea.Y + cropArea.Height > bitmapSource.PixelHeight)
+            cropArea.Height = bitmapSource.PixelHeight - cropArea.Y;
+
+        if (cropArea.Width <= 0 || cropArea.Height <= 0)
+            return new MemoryStream();
         var croppedBitmap = new CroppedBitmap(bitmapSource, cropArea);
         var encoder = new JpegBitmapEncoder();
         encoder.Frames.Add(BitmapFrame.Create(croppedBitmap));
