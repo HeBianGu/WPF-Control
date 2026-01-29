@@ -4,10 +4,14 @@
                     xmlns:h="https://github.com/HeBianGu"
                     xmlns:local="clr-namespace:H.Presenters.Common">
     <DataTemplate DataType="{x:Type local:DataGridPresenter}">
+        <DataGrid ItemsSource="{Binding ItemsSource}"/>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type local:DataGridTypePresenter}">
         <DataGrid ItemsSource="{Binding ItemsSource}">
-            <!--<b:Interaction.Behaviors>
-                <DataGridAutoColumnBehavior/>
-            </b:Interaction.Behaviors>-->
+            <b:Interaction.Behaviors>
+                <DataGridAutoColumnBehavior Type="{Binding Type}"/>
+            </b:Interaction.Behaviors>
         </DataGrid>
     </DataTemplate>
 </ResourceDictionary>
