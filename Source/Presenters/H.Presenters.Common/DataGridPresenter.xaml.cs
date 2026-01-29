@@ -46,7 +46,7 @@ public static partial class DialogServiceExtension
         return await service.ShowDataGrid(option, sumitAction, builder, canSumit);
     }
 
-    public static async Task<bool?> ShowDataGrid<ItemT>(this IDialogMessageService service, Action<DataGridTypePresenter> option, Action<DataGridTypePresenter> sumitAction = null, Action<IDialog> builder = null, Func<DataGridTypePresenter, Task<bool>> canSumit = null)
+    public static async Task<bool?> ShowTypeDataGrid<ItemT>(this IDialogMessageService service, Action<DataGridTypePresenter> option, Action<DataGridTypePresenter> sumitAction = null, Action<IDialog> builder = null, Func<DataGridTypePresenter, Task<bool>> canSumit = null)
     {
         return await service.ShowDataGrid(x =>
         {

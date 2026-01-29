@@ -188,7 +188,13 @@ public class TextBlockCountBehavior : Behavior<TextBlock>
         PropertyInfo p = type.GetProperty(this.PropertyName);
         if (p == null)
             return;
-        int count = this.ItemsSource.OfType<object>().Count(x => p.GetValue(x)?.Equals(this.Value) == true);
+        int count = this.ItemsSource.OfType<object>().Count(x =>
+        {
+            var v = p.GetValue(x);
+            if (this.Value == null && v == null)
+                return true;
+            return v?.Equals(this.Value) == true;
+        });
         DisplayAttribute display = p.GetCustomAttribute<DisplayAttribute>();
         stringBuilder.Append(string.Format(this.Format, count, display?.Name ?? p.Name, this.Value));
         this.AssociatedObject.Text = stringBuilder.ToString();
