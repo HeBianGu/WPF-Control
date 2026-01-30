@@ -153,7 +153,7 @@
         <DataTemplate.Triggers>
             <DataTrigger Binding="{Binding ElementName=grid, Path=IsMouseOver}"
                          Value="True">
-                <Setter TargetName="txt" Property="Foreground" Value="{DynamicResource {x:Static h:BrushKeys.Accent}}" />
+                <Setter TargetName="txt" Property="Foreground" Value="{DynamicResource {x:Static local:ChartBrushKeys.Palette0}}" />
             </DataTrigger>
             <DataTrigger Binding="{Binding IsChecked}"
                          Value="False">

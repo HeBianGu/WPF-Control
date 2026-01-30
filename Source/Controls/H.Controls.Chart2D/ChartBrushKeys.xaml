@@ -1,0 +1,32 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:H.Controls.Chart2D"
+                    xmlns:po="http://schemas.microsoft.com/winfx/2006/xaml/presentation/options">
+    <SolidColorBrush x:Key="{ComponentResourceKey ResourceId=S.Chart.Palette.0, TypeInTargetAssembly={x:Type local:ChartBrushKeys}}"
+                     po:Freeze="True"
+                     Color="#5470C6" />
+    <SolidColorBrush x:Key="{ComponentResourceKey ResourceId=S.Chart.Palette.1, TypeInTargetAssembly={x:Type local:ChartBrushKeys}}"
+                     po:Freeze="True"
+                     Color="#91CC75" />
+    <SolidColorBrush x:Key="{ComponentResourceKey ResourceId=S.Chart.Palette.2, TypeInTargetAssembly={x:Type local:ChartBrushKeys}}"
+                     po:Freeze="True"
+                     Color="#FAC858" />
+    <SolidColorBrush x:Key="{ComponentResourceKey ResourceId=S.Chart.Palette.3, TypeInTargetAssembly={x:Type local:ChartBrushKeys}}"
+                     po:Freeze="True"
+                     Color="#EE6666" />
+    <SolidColorBrush x:Key="{ComponentResourceKey ResourceId=S.Chart.Palette.4, TypeInTargetAssembly={x:Type local:ChartBrushKeys}}"
+                     po:Freeze="True"
+                     Color="#73C0DE" />
+    <SolidColorBrush x:Key="{ComponentResourceKey ResourceId=S.Chart.Palette.5, TypeInTargetAssembly={x:Type local:ChartBrushKeys}}"
+                     po:Freeze="True"
+                     Color="#3BA272" />
+    <SolidColorBrush x:Key="{ComponentResourceKey ResourceId=S.Chart.Palette.6, TypeInTargetAssembly={x:Type local:ChartBrushKeys}}"
+                     po:Freeze="True"
+                     Color="#FC8452" />
+    <SolidColorBrush x:Key="{ComponentResourceKey ResourceId=S.Chart.Palette.7, TypeInTargetAssembly={x:Type local:ChartBrushKeys}}"
+                     po:Freeze="True"
+                     Color="#9A60B4" />
+    <SolidColorBrush x:Key="{ComponentResourceKey ResourceId=S.Chart.Palette.8, TypeInTargetAssembly={x:Type local:ChartBrushKeys}}"
+                     po:Freeze="True"
+                     Color="#EA7CCC" />
+</ResourceDictionary>

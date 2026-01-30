@@ -22,6 +22,25 @@ namespace H.Controls.Chart2D
             return new PiePresenter(tuples);
         }
 
+        public static BarPresenter ToBarPresenter<T>(this IEnumerable<T> datas, Func<T, string> nameSelecter, Func<T, double> valueSelecter)
+        {
+            var tuples = datas.ToTuples(nameSelecter, valueSelecter);
+            return new BarPresenter(tuples);
+        }
+
+
+        public static RadarPresenter ToRadarPresenter<T>(this IEnumerable<T> datas, Func<T, string> nameSelecter, Func<T, double> valueSelecter)
+        {
+            var tuples = datas.ToTuples(nameSelecter, valueSelecter);
+            return new RadarPresenter(tuples);
+        }
+
+        public static LinePresenter ToLinePresenter<T>(this IEnumerable<T> datas, Func<T, string> nameSelecter, Func<T, double> valueSelecter)
+        {
+            var tuples = datas.ToTuples(nameSelecter, valueSelecter);
+            return new LinePresenter(tuples);
+        }
+
         public static IEnumerable<Tuple<string, double>> ToTuples<T>(this IEnumerable<T> datas, Func<T, string> nameSelecter, Func<T, double> valueSelecter)
         {
             return datas.Select(x => Tuple.Create(nameSelecter.Invoke(x), valueSelecter.Invoke(x)));

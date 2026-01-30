@@ -12,6 +12,7 @@ using System.Windows.Threading;
 
 namespace H.Controls.Chart2D
 {
+
     public class Chart : ViewLayerGroup
     {
         public static new ComponentResourceKey DefaultKey => new ComponentResourceKey(typeof(Chart), "S.Chart.Default");

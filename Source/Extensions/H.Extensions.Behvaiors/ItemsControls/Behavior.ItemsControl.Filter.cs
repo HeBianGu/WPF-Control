@@ -12,7 +12,7 @@ using System.Collections.Specialized;
 
 namespace H.Extensions.Behvaiors.ItemsControls;
 
-public class ItemsControlFilterBehavior : Behavior<ItemsControl>
+public abstract class FilterBehaviorBase<T> : Behavior<T> where T : FrameworkElement
 {
     public IEnumerable ItemsSource
     {
@@ -42,7 +42,6 @@ public class ItemsControlFilterBehavior : Behavior<ItemsControl>
 
     public static readonly DependencyProperty FilterItemsSourceProperty =
         DependencyProperty.Register("FilterItemsSource", typeof(IEnumerable), typeof(ItemsControlFilterBehavior), new FrameworkPropertyMetadata(default(IEnumerable)));
-
 
     private void CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
     {
@@ -472,7 +471,7 @@ public class ItemsControlFilterBehavior : Behavior<ItemsControl>
         yield return this.Order5;
     }
 
-    private void RefreshData()
+    protected virtual void RefreshData()
     {
         if (this.ItemsSource == null)
             return;
@@ -488,7 +487,6 @@ public class ItemsControlFilterBehavior : Behavior<ItemsControl>
                 continue;
             source = item.Where(source);
         }
-        this.AssociatedObject.ItemsSource = source;
         this.FilterItemsSource = source;
     }
 
@@ -505,5 +503,19 @@ public class ItemsControlFilterBehavior : Behavior<ItemsControl>
     protected override void OnDetaching()
     {
         this.AssociatedObject.Loaded -= AssociatedObject_Loaded;
+    }
+}
+
+public class FilterBehavior : FilterBehaviorBase<FrameworkElement>
+{
+
+}
+
+public class ItemsControlFilterBehavior : FilterBehaviorBase<ItemsControl>
+{
+    protected override void RefreshData()
+    {
+        base.RefreshData();
+        this.AssociatedObject.ItemsSource = this.FilterItemsSource;
     }
 }

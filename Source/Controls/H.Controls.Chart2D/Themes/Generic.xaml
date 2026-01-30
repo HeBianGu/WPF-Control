@@ -29,5 +29,6 @@
         <ResourceDictionary Source="pack://application:,,,/H.Controls.Chart2D;component/Presenter/PiePresenter.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Controls.Chart2D;component/Presenter/RadarPresenter.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Controls.Chart2D;component/Presenter/BarPresenter.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Controls.Chart2D;component/ChartBrushKeys.xaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

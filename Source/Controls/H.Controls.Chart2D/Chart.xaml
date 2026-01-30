@@ -413,7 +413,7 @@
 
     <Style TargetType="{x:Type local:ChartMap}">
         <Setter Property="Background" Value="{DynamicResource {x:Static h:BrushKeys.Dark0_6}}" />
-        <Setter Property="Foreground" Value="{DynamicResource {x:Static h:BrushKeys.Accent}}" />
+        <Setter Property="Foreground" Value="{DynamicResource {x:Static local:ChartBrushKeys.Palette0}}" />
         <Setter Property="Height" Value="{DynamicResource {x:Static h:LayoutKeys.RowHeight}}" />
         <Setter Property="Template">
             <Setter.Value>

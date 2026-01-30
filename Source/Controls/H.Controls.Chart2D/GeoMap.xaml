@@ -62,7 +62,7 @@
                                     <Style.Triggers>
                                         <Trigger Property="IsMouseOver" Value="True">
                                             <!--<Setter Property="Opacity" Value="0.8"/>-->
-                                            <Setter Property="Fill" Value="{DynamicResource {x:Static h:BrushKeys.Accent}}" />
+                                            <Setter Property="Fill" Value="{DynamicResource {x:Static local:ChartBrushKeys.Palette0}}" />
                                         </Trigger>
                                     </Style.Triggers>
                                 </Style>
@@ -182,7 +182,7 @@
                                     <Style.Triggers>
                                         <Trigger Property="IsMouseOver" Value="True">
                                             <!--<Setter Property="Opacity" Value="0.8"/>-->
-                                            <Setter Property="Fill" Value="{DynamicResource {x:Static h:BrushKeys.Accent}}" />
+                                            <Setter Property="Fill" Value="{DynamicResource {x:Static local:ChartBrushKeys.Palette0}}" />
                                         </Trigger>
                                     </Style.Triggers>
                                 </Style>

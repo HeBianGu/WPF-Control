@@ -17,9 +17,7 @@ namespace H.Controls.Chart2D
         public PiePresenter()
         {
             this.Height = 500;
-            Color[] colors = new Color[12] { Colors.Red, Colors.Green, Colors.Orange, Colors.Purple, Colors.Gray, Colors.Brown, Colors.DeepPink, Colors.DeepSkyBlue, Colors.DarkViolet, Colors.Black, Colors.LightBlue, Colors.DarkTurquoise };
-            this.Foreground = colors.ToObservable();
-
+            this.Foreground = ChartBrushKeys.ChartColors.ToObservable();
             for (int i = 1; i < 5; i++)
             {
                 this.Data.Add(random.Next(10));

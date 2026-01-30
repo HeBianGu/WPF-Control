@@ -24,5 +24,10 @@ namespace H.Controls.Chart2D
         {
 
         }
+
+        public BarPresenter(IEnumerable<Tuple<string, double>> tuples):base(tuples)
+        {
+           
+        }
     }
 }
