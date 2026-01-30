@@ -14,7 +14,46 @@
                      yAxis="{Binding yAxis}">
             <local:Series DisplayName="{Binding Name}"
                           Style="{DynamicResource {x:Static local:Series.BarKey}}"
-                          yDatas="{Binding Data}" />
+                          yDatas="{Binding Data}">
+                <local:MarkPosition Foreground="{DynamicResource {x:Static h:BrushKeys.Background}}"
+                                    MarkForeground="{DynamicResource {x:Static h:BrushKeys.Foreground}}"
+                                    MarkValueType="Last"
+                                    Style="{DynamicResource {x:Static local:MarkPosition.SingleKey}}"
+                                    TryFreeze="False"
+                                    Visibility="{Binding UseLastMarkPositon, Converter={x:Static h:Converter.GetTrueToVisible}}" />
+                <local:MarkPosition Foreground="{DynamicResource {x:Static h:BrushKeys.Red}}"
+                                    MarkValueType="Max"
+                                    Style="{DynamicResource {x:Static local:MarkPosition.SingleKey}}"
+                                    TryFreeze="False"
+                                    Visibility="{Binding UseMaxMarkPositon, Converter={x:Static h:Converter.GetTrueToVisible}}" />
+
+                <local:MarkPosition Foreground="{DynamicResource {x:Static h:BrushKeys.Green}}"
+                                    MarkValueType="Min"
+                                    Style="{DynamicResource {x:Static local:MarkPosition.SingleKey}}"
+                                    TryFreeze="False"
+                                    Visibility="{Binding UseMinMarkPositon, Converter={x:Static h:Converter.GetTrueToVisible}}" />
+                <local:MarkLine Data="{Binding Data}"
+                                Foreground="{DynamicResource {x:Static h:BrushKeys.Red}}"
+                                MarkLineType="Min"
+                                Style="{DynamicResource {x:Static local:MarkLine.SingleKey}}"
+                                TryFreeze="False"
+                                Visibility="{Binding UseMaxMarkLine, Converter={x:Static h:Converter.GetTrueToVisible}}"
+                                Value="{Binding MaxValue}" />
+
+                <local:MarkLine Data="{Binding Data}"
+                                Foreground="{DynamicResource {x:Static h:BrushKeys.Red}}"
+                                MarkLineType="Max"
+                                Style="{DynamicResource {x:Static local:MarkLine.SingleKey}}"
+                                TryFreeze="False"
+                                Visibility="{Binding UseMinMarkLine, Converter={x:Static h:Converter.GetTrueToVisible}}"
+                                Value="{Binding MinValue}" />
+
+                <local:MarkLine Data="{Binding Data}"
+                                MarkLineType="Average"
+                                Style="{DynamicResource {x:Static local:MarkLine.SingleKey}}"
+                                TryFreeze="False"
+                                Visibility="{Binding UseAverageMarkLine, Converter={x:Static h:Converter.GetTrueToVisible}}" />
+            </local:Series>
         </local:Chart>
     </DataTemplate>
 </ResourceDictionary>

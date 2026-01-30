@@ -80,19 +80,6 @@ namespace H.Controls.Chart2D
             }
         }
 
-        //private ObservableCollection<Color> _foreground = new ObservableCollection<Color>();
-        //[Display(Name = "显示颜色", GroupName = "常用,数据")]
-        //[TypeConverter(typeof(BrushArrayTypeConverter))]
-        //public ObservableCollection<Color> Foreground
-        //{
-        //    get { return _foreground; }
-        //    set
-        //    {
-        //        _foreground = value;
-        //        RaisePropertyChanged();
-        //    }
-        //}
-
         private bool _useAverageMarkLine = false;
         [Display(Name = "均值标记线", GroupName = "常用,样式")]
         public bool UseAverageMarkLine
