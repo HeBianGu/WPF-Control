@@ -33,6 +33,17 @@ public class ItemsControlFilterBehavior : Behavior<ItemsControl>
             control.RefreshData();
         }));
 
+
+    public IEnumerable FilterItemsSource
+    {
+        get { return (IEnumerable)GetValue(FilterItemsSourceProperty); }
+        set { SetValue(FilterItemsSourceProperty, value); }
+    }
+
+    public static readonly DependencyProperty FilterItemsSourceProperty =
+        DependencyProperty.Register("FilterItemsSource", typeof(IEnumerable), typeof(ItemsControlFilterBehavior), new FrameworkPropertyMetadata(default(IEnumerable)));
+
+
     private void CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
     {
         RefreshData();
@@ -478,6 +489,7 @@ public class ItemsControlFilterBehavior : Behavior<ItemsControl>
             source = item.Where(source);
         }
         this.AssociatedObject.ItemsSource = source;
+        this.FilterItemsSource = source;
     }
 
     protected override void OnAttached()

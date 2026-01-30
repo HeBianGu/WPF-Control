@@ -17,8 +17,26 @@ using H.Mvvm.Commands;
 
 namespace H.Extensions.Mvvm.ViewModels.Base;
 
+public static class DesignPresenterKeys
+{
+    public static ComponentResourceKey BindBorder => new ComponentResourceKey(typeof(DesignPresenterKeys), "S.DesignPresenter.BindBorder");
+
+}
+
 public abstract class DesignPresenterBase : DisplayBindableBase, IDesignPresenter
 {
+
+    private string _Title;
+    public string Title
+    {
+        get { return _Title; }
+        set
+        {
+            _Title = value;
+            RaisePropertyChanged();
+        }
+    }
+
     private bool _isSelected;
     [Browsable(false)]
     [System.Text.Json.Serialization.JsonIgnore]
@@ -37,7 +55,6 @@ public abstract class DesignPresenterBase : DisplayBindableBase, IDesignPresente
     private bool _isMouseOver;
     [Browsable(false)]
     [System.Text.Json.Serialization.JsonIgnore]
-
     [XmlIgnore]
     public bool IsMouseOver
     {

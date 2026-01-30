@@ -10,6 +10,7 @@ using System.Windows.Media;
 
 namespace H.Controls.Chart2D
 {
+
     [Display(Name = "饼状图")]
     public class PiePresenter : Chart2DPresenterBase
     {
@@ -33,6 +34,13 @@ namespace H.Controls.Chart2D
         {
             this.xDisplay = dataProvider.GetData().Select(x => x.Item1).ToObservable();
             IEnumerable<double> data = dataProvider.GetData().Select(x => x.Item2);
+            this.RefreshData(data);
+        }
+
+        public PiePresenter(IEnumerable<Tuple<string, double>> tuples) : this()
+        {
+            this.xDisplay = tuples.Select(x => x.Item1).ToObservable();
+            IEnumerable<double> data = tuples.Select(x => x.Item2);
             this.RefreshData(data);
         }
 
