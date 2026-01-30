@@ -15,6 +15,39 @@ namespace H.Controls.Chart2D
                 (Color)ColorConverter.ConvertFromString("#FC8452"),
                 (Color)ColorConverter.ConvertFromString("#9A60B4"),
                 (Color)ColorConverter.ConvertFromString("#EA7CCC"),
+
+                // Additional palette colors
+                (Color)ColorConverter.ConvertFromString("#2F4554"),
+                (Color)ColorConverter.ConvertFromString("#61A0A8"),
+                (Color)ColorConverter.ConvertFromString("#D48265"),
+                (Color)ColorConverter.ConvertFromString("#749F83"),
+                (Color)ColorConverter.ConvertFromString("#CA8622"),
+                (Color)ColorConverter.ConvertFromString("#BDA29A"),
+                (Color)ColorConverter.ConvertFromString("#6E7074"),
+                (Color)ColorConverter.ConvertFromString("#546570"),
+                (Color)ColorConverter.ConvertFromString("#C4CCD3"),
+
+                (Color)ColorConverter.ConvertFromString("#4E79A7"),
+                (Color)ColorConverter.ConvertFromString("#F28E2B"),
+                (Color)ColorConverter.ConvertFromString("#E15759"),
+                (Color)ColorConverter.ConvertFromString("#76B7B2"),
+                (Color)ColorConverter.ConvertFromString("#59A14F"),
+                (Color)ColorConverter.ConvertFromString("#EDC948"),
+                (Color)ColorConverter.ConvertFromString("#B07AA1"),
+                (Color)ColorConverter.ConvertFromString("#FF9DA7"),
+                (Color)ColorConverter.ConvertFromString("#9C755F"),
+                (Color)ColorConverter.ConvertFromString("#BAB0AC"),
+
+                (Color)ColorConverter.ConvertFromString("#1F77B4"),
+                (Color)ColorConverter.ConvertFromString("#FF7F0E"),
+                (Color)ColorConverter.ConvertFromString("#2CA02C"),
+                (Color)ColorConverter.ConvertFromString("#D62728"),
+                (Color)ColorConverter.ConvertFromString("#9467BD"),
+                (Color)ColorConverter.ConvertFromString("#8C564B"),
+                (Color)ColorConverter.ConvertFromString("#E377C2"),
+                (Color)ColorConverter.ConvertFromString("#7F7F7F"),
+                (Color)ColorConverter.ConvertFromString("#BCBD22"),
+                (Color)ColorConverter.ConvertFromString("#17BECF"),
             };
         public static ComponentResourceKey Palette0 => new ComponentResourceKey(typeof(ChartBrushKeys), "S.Chart.Palette.0");
         public static ComponentResourceKey Palette1=> new ComponentResourceKey(typeof(ChartBrushKeys), "S.Chart.Palette.1");

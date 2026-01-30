@@ -25,18 +25,6 @@ public static class DesignPresenterKeys
 
 public abstract class DesignPresenterBase : DisplayBindableBase, IDesignPresenter
 {
-
-    private string _Title;
-    public string Title
-    {
-        get { return _Title; }
-        set
-        {
-            _Title = value;
-            RaisePropertyChanged();
-        }
-    }
-
     private bool _isSelected;
     [Browsable(false)]
     [System.Text.Json.Serialization.JsonIgnore]

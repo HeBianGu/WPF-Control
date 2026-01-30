@@ -110,19 +110,6 @@ namespace H.Controls.Chart2D
             }
         }
 
-        //private Brush _foreground;
-        //[Display(Name = "线条颜色", GroupName = "常用,样式")]
-        //public Brush Foreground
-        //{
-        //    get { return _foreground; }
-        //    set
-        //    {
-        //        _foreground = value;
-        //        RaisePropertyChanged();
-        //    }
-        //}
-
-
         protected IEnumerable<double> Load(IEnumerable<double> data, double max = double.PositiveInfinity, double min = 0.0, int count = 5)
         {
             if (data.Count() == 0)

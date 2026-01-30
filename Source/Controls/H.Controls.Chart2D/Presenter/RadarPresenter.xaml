@@ -17,7 +17,7 @@
                 <local:RadarAxis yDisplay="{Binding xDisplay}" />
             </local:ViewLayerGroup>
 
-            <local:Series>
+            <local:Series  DisplayName="{Binding Name}">
                 <local:RadarLine Data="{Binding Data}"
                                  TryFreeze="False" />
                 <local:PolarScatter Data="{Binding Data}"

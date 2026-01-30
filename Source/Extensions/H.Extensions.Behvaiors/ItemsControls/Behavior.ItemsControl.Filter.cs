@@ -21,9 +21,9 @@ public abstract class FilterBehaviorBase<T> : Behavior<T> where T : FrameworkEle
     }
 
     public static readonly DependencyProperty ItemsSourceProperty =
-        DependencyProperty.Register("ItemsSource", typeof(IEnumerable), typeof(ItemsControlFilterBehavior), new FrameworkPropertyMetadata(default(IEnumerable), (d, e) =>
+        DependencyProperty.Register("ItemsSource", typeof(IEnumerable), typeof(FilterBehaviorBase<T>), new FrameworkPropertyMetadata(default(IEnumerable), (d, e) =>
         {
-            ItemsControlFilterBehavior control = d as ItemsControlFilterBehavior;
+            FilterBehaviorBase<T> control = d as FilterBehaviorBase<T>;
             if (control == null)
                 return;
             if (e.OldValue is INotifyCollectionChanged o)
@@ -41,7 +41,7 @@ public abstract class FilterBehaviorBase<T> : Behavior<T> where T : FrameworkEle
     }
 
     public static readonly DependencyProperty FilterItemsSourceProperty =
-        DependencyProperty.Register("FilterItemsSource", typeof(IEnumerable), typeof(ItemsControlFilterBehavior), new FrameworkPropertyMetadata(default(IEnumerable)));
+        DependencyProperty.Register("FilterItemsSource", typeof(IEnumerable), typeof(FilterBehaviorBase<T>), new FrameworkPropertyMetadata(default(IEnumerable)));
 
     private void CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
     {
@@ -55,9 +55,9 @@ public abstract class FilterBehaviorBase<T> : Behavior<T> where T : FrameworkEle
     }
 
     public static readonly DependencyProperty FilterProperty =
-        DependencyProperty.Register("Filter", typeof(IFilterable), typeof(ItemsControlFilterBehavior), new FrameworkPropertyMetadata(default(IFilterable), (d, e) =>
+        DependencyProperty.Register("Filter", typeof(IFilterable), typeof(FilterBehaviorBase<T>), new FrameworkPropertyMetadata(default(IFilterable), (d, e) =>
         {
-            ItemsControlFilterBehavior control = d as ItemsControlFilterBehavior;
+            FilterBehaviorBase<T> control = d as FilterBehaviorBase<T>;
 
             if (control == null) return;
 
@@ -80,9 +80,9 @@ public abstract class FilterBehaviorBase<T> : Behavior<T> where T : FrameworkEle
     }
 
     public static readonly DependencyProperty Filter1Property =
-        DependencyProperty.Register("Filter1", typeof(IFilterable), typeof(ItemsControlFilterBehavior), new FrameworkPropertyMetadata(default(IFilterable), (d, e) =>
+        DependencyProperty.Register("Filter1", typeof(IFilterable), typeof(FilterBehaviorBase<T>), new FrameworkPropertyMetadata(default(IFilterable), (d, e) =>
         {
-            ItemsControlFilterBehavior control = d as ItemsControlFilterBehavior;
+            FilterBehaviorBase<T> control = d as FilterBehaviorBase<T>;
 
             if (control == null) return;
 
@@ -105,9 +105,9 @@ public abstract class FilterBehaviorBase<T> : Behavior<T> where T : FrameworkEle
     }
 
     public static readonly DependencyProperty Filter2Property =
-        DependencyProperty.Register("Filter2", typeof(IFilterable), typeof(ItemsControlFilterBehavior), new FrameworkPropertyMetadata(default(IFilterable), (d, e) =>
+        DependencyProperty.Register("Filter2", typeof(IFilterable), typeof(FilterBehaviorBase<T>), new FrameworkPropertyMetadata(default(IFilterable), (d, e) =>
         {
-            ItemsControlFilterBehavior control = d as ItemsControlFilterBehavior;
+            FilterBehaviorBase<T> control = d as FilterBehaviorBase<T>;
 
             if (control == null) return;
 
@@ -130,9 +130,9 @@ public abstract class FilterBehaviorBase<T> : Behavior<T> where T : FrameworkEle
     }
 
     public static readonly DependencyProperty Filter3Property =
-        DependencyProperty.Register("Filter3", typeof(IFilterable), typeof(ItemsControlFilterBehavior), new FrameworkPropertyMetadata(default(IFilterable), (d, e) =>
+        DependencyProperty.Register("Filter3", typeof(IFilterable), typeof(FilterBehaviorBase<T>), new FrameworkPropertyMetadata(default(IFilterable), (d, e) =>
         {
-            ItemsControlFilterBehavior control = d as ItemsControlFilterBehavior;
+            FilterBehaviorBase<T> control = d as FilterBehaviorBase<T>;
 
             if (control == null) return;
 
@@ -155,9 +155,9 @@ public abstract class FilterBehaviorBase<T> : Behavior<T> where T : FrameworkEle
     }
 
     public static readonly DependencyProperty Filter4Property =
-        DependencyProperty.Register("Filter4", typeof(IDisplayFilter), typeof(ItemsControlFilterBehavior), new FrameworkPropertyMetadata(default(IDisplayFilter), (d, e) =>
+        DependencyProperty.Register("Filter4", typeof(IDisplayFilter), typeof(FilterBehaviorBase<T>), new FrameworkPropertyMetadata(default(IDisplayFilter), (d, e) =>
         {
-            ItemsControlFilterBehavior control = d as ItemsControlFilterBehavior;
+            FilterBehaviorBase<T> control = d as FilterBehaviorBase<T>;
 
             if (control == null) return;
 
@@ -180,9 +180,9 @@ public abstract class FilterBehaviorBase<T> : Behavior<T> where T : FrameworkEle
     }
 
     public static readonly DependencyProperty Filter5Property =
-        DependencyProperty.Register("Filter5", typeof(IFilterable), typeof(ItemsControlFilterBehavior), new FrameworkPropertyMetadata(default(IFilterable), (d, e) =>
+        DependencyProperty.Register("Filter5", typeof(IFilterable), typeof(FilterBehaviorBase<T>), new FrameworkPropertyMetadata(default(IFilterable), (d, e) =>
         {
-            ItemsControlFilterBehavior control = d as ItemsControlFilterBehavior;
+            FilterBehaviorBase<T> control = d as FilterBehaviorBase<T>;
 
             if (control == null) return;
 
@@ -205,9 +205,9 @@ public abstract class FilterBehaviorBase<T> : Behavior<T> where T : FrameworkEle
     }
 
     public static readonly DependencyProperty Filter6Property =
-        DependencyProperty.Register("Filter6", typeof(IFilterable), typeof(ItemsControlFilterBehavior), new FrameworkPropertyMetadata(default(IFilterable), (d, e) =>
+        DependencyProperty.Register("Filter6", typeof(IFilterable), typeof(FilterBehaviorBase<T>), new FrameworkPropertyMetadata(default(IFilterable), (d, e) =>
         {
-            ItemsControlFilterBehavior control = d as ItemsControlFilterBehavior;
+            FilterBehaviorBase<T> control = d as FilterBehaviorBase<T>;
 
             if (control == null) return;
 
@@ -230,9 +230,9 @@ public abstract class FilterBehaviorBase<T> : Behavior<T> where T : FrameworkEle
     }
 
     public static readonly DependencyProperty Filter7Property =
-        DependencyProperty.Register("Filter7", typeof(IFilterable), typeof(ItemsControlFilterBehavior), new FrameworkPropertyMetadata(default(IFilterable), (d, e) =>
+        DependencyProperty.Register("Filter7", typeof(IFilterable), typeof(FilterBehaviorBase<T>), new FrameworkPropertyMetadata(default(IFilterable), (d, e) =>
         {
-            ItemsControlFilterBehavior control = d as ItemsControlFilterBehavior;
+            FilterBehaviorBase<T> control = d as FilterBehaviorBase<T>;
 
             if (control == null) return;
 
@@ -255,9 +255,9 @@ public abstract class FilterBehaviorBase<T> : Behavior<T> where T : FrameworkEle
     }
 
     public static readonly DependencyProperty Filter8Property =
-        DependencyProperty.Register("Filter8", typeof(IFilterable), typeof(ItemsControlFilterBehavior), new FrameworkPropertyMetadata(default(IFilterable), (d, e) =>
+        DependencyProperty.Register("Filter8", typeof(IFilterable), typeof(FilterBehaviorBase<T>), new FrameworkPropertyMetadata(default(IFilterable), (d, e) =>
         {
-            ItemsControlFilterBehavior control = d as ItemsControlFilterBehavior;
+            FilterBehaviorBase<T> control = d as FilterBehaviorBase<T>;
 
             if (control == null) return;
 
@@ -280,9 +280,9 @@ public abstract class FilterBehaviorBase<T> : Behavior<T> where T : FrameworkEle
     }
 
     public static readonly DependencyProperty Filter9Property =
-        DependencyProperty.Register("Filter9", typeof(IFilterable), typeof(ItemsControlFilterBehavior), new FrameworkPropertyMetadata(default(IFilterable), (d, e) =>
+        DependencyProperty.Register("Filter9", typeof(IFilterable), typeof(FilterBehaviorBase<T>), new FrameworkPropertyMetadata(default(IFilterable), (d, e) =>
         {
-            ItemsControlFilterBehavior control = d as ItemsControlFilterBehavior;
+            FilterBehaviorBase<T> control = d as FilterBehaviorBase<T>;
 
             if (control == null) return;
 
@@ -305,9 +305,9 @@ public abstract class FilterBehaviorBase<T> : Behavior<T> where T : FrameworkEle
     }
 
     public static readonly DependencyProperty OrderProperty =
-        DependencyProperty.Register("Order", typeof(IOrderWhereable), typeof(ItemsControlFilterBehavior), new FrameworkPropertyMetadata(default(IOrderWhereable), (d, e) =>
+        DependencyProperty.Register("Order", typeof(IOrderWhereable), typeof(FilterBehaviorBase<T>), new FrameworkPropertyMetadata(default(IOrderWhereable), (d, e) =>
         {
-            ItemsControlFilterBehavior control = d as ItemsControlFilterBehavior;
+            FilterBehaviorBase<T> control = d as FilterBehaviorBase<T>;
 
             if (control == null) return;
 
@@ -330,9 +330,9 @@ public abstract class FilterBehaviorBase<T> : Behavior<T> where T : FrameworkEle
     }
 
     public static readonly DependencyProperty Order2Property =
-        DependencyProperty.Register("Order2", typeof(IOrderWhereable), typeof(ItemsControlFilterBehavior), new FrameworkPropertyMetadata(default(IOrderWhereable), (d, e) =>
+        DependencyProperty.Register("Order2", typeof(IOrderWhereable), typeof(FilterBehaviorBase<T>), new FrameworkPropertyMetadata(default(IOrderWhereable), (d, e) =>
         {
-            ItemsControlFilterBehavior control = d as ItemsControlFilterBehavior;
+            FilterBehaviorBase<T> control = d as FilterBehaviorBase<T>;
 
             if (control == null) return;
 
@@ -355,9 +355,9 @@ public abstract class FilterBehaviorBase<T> : Behavior<T> where T : FrameworkEle
     }
 
     public static readonly DependencyProperty Order1Property =
-        DependencyProperty.Register("Order1", typeof(IOrderWhereable), typeof(ItemsControlFilterBehavior), new FrameworkPropertyMetadata(default(IOrderWhereable), (d, e) =>
+        DependencyProperty.Register("Order1", typeof(IOrderWhereable), typeof(FilterBehaviorBase<T>), new FrameworkPropertyMetadata(default(IOrderWhereable), (d, e) =>
         {
-            ItemsControlFilterBehavior control = d as ItemsControlFilterBehavior;
+            FilterBehaviorBase<T> control = d as FilterBehaviorBase<T>;
 
             if (control == null) return;
 
@@ -380,9 +380,9 @@ public abstract class FilterBehaviorBase<T> : Behavior<T> where T : FrameworkEle
     }
 
     public static readonly DependencyProperty Order3Property =
-        DependencyProperty.Register("Order3", typeof(IOrderWhereable), typeof(ItemsControlFilterBehavior), new FrameworkPropertyMetadata(default(IOrderWhereable), (d, e) =>
+        DependencyProperty.Register("Order3", typeof(IOrderWhereable), typeof(FilterBehaviorBase<T>), new FrameworkPropertyMetadata(default(IOrderWhereable), (d, e) =>
         {
-            ItemsControlFilterBehavior control = d as ItemsControlFilterBehavior;
+            FilterBehaviorBase<T> control = d as FilterBehaviorBase<T>;
 
             if (control == null) return;
 
@@ -405,9 +405,9 @@ public abstract class FilterBehaviorBase<T> : Behavior<T> where T : FrameworkEle
     }
 
     public static readonly DependencyProperty Order4Property =
-        DependencyProperty.Register("Order4", typeof(IOrderWhereable), typeof(ItemsControlFilterBehavior), new FrameworkPropertyMetadata(default(IOrderWhereable), (d, e) =>
+        DependencyProperty.Register("Order4", typeof(IOrderWhereable), typeof(FilterBehaviorBase<T>), new FrameworkPropertyMetadata(default(IOrderWhereable), (d, e) =>
         {
-            ItemsControlFilterBehavior control = d as ItemsControlFilterBehavior;
+            FilterBehaviorBase<T> control = d as FilterBehaviorBase<T>;
 
             if (control == null) return;
 
@@ -430,9 +430,9 @@ public abstract class FilterBehaviorBase<T> : Behavior<T> where T : FrameworkEle
     }
 
     public static readonly DependencyProperty Order5Property =
-        DependencyProperty.Register("Order5", typeof(IOrderWhereable), typeof(ItemsControlFilterBehavior), new FrameworkPropertyMetadata(default(IOrderWhereable), (d, e) =>
+        DependencyProperty.Register("Order5", typeof(IOrderWhereable), typeof(FilterBehaviorBase<T>), new FrameworkPropertyMetadata(default(IOrderWhereable), (d, e) =>
         {
-            ItemsControlFilterBehavior control = d as ItemsControlFilterBehavior;
+            FilterBehaviorBase<T> control = d as FilterBehaviorBase<T>;
 
             if (control == null) return;
 
