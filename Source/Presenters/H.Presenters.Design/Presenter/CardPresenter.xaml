@@ -31,7 +31,7 @@
                                Margin="0"
                                Padding="0"
                                VerticalAlignment="Center"
-                               Style="{DynamicResource {x:Static h:TextBlockKeys.Binding}}" />
+                               Style="{DynamicResource {x:Static h:DesignTextBlockKeys.Binding}}" />
                 </StackPanel>
             </Border>
         </local:DesignBorder>

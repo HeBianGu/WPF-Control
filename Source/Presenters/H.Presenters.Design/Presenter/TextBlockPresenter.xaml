@@ -7,7 +7,7 @@
         <local:DesignBorder>
             <TextBlock Height="Auto"
                        VerticalAlignment="{Binding VerticalContentAlignment}"
-                       Style="{DynamicResource {x:Static h:TextBlockKeys.Binding}}" />
+                       Style="{DynamicResource {x:Static h:DesignTextBlockKeys.Binding}}" />
         </local:DesignBorder>
     </DataTemplate>
 </ResourceDictionary>

@@ -243,7 +243,8 @@ namespace H.Controls.Chart2D
 
             //  Do ：显示文本
             Label t = new Label();
-            t.Content = point.Y.ToString("G3");
+            // Avoid scientific notation: use up to 3 decimal places (no exponent).
+            t.Content = point.Y.ToString("0.###");
             t.Style = this.LabelStyle;
             if (this.MarkForeground != null)
                 t.Foreground = this.MarkForeground;

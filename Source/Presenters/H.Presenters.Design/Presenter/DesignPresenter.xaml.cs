@@ -8,12 +8,12 @@
 
 namespace H.Presenters.Design.Presenter;
 
-public class TextBlockKeys
+public class DesignTextBlockKeys
 {
-    public static ComponentResourceKey Binding => new ComponentResourceKey(typeof(TextBlockKeys), "S.TextBlock.Binding");
+    public static ComponentResourceKey Binding => new ComponentResourceKey(typeof(DesignTextBlockKeys), "S.TextBlock.Binding");
 }
 
-public class BorderKeys
+public class DesignBorderKeys
 {
-    public static ComponentResourceKey Binding => new ComponentResourceKey(typeof(BorderKeys), "S.Border.Binding");
+    public static ComponentResourceKey Binding => new ComponentResourceKey(typeof(DesignBorderKeys), "S.Border.Binding");
 }

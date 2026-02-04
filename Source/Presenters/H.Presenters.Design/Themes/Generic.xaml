@@ -22,7 +22,7 @@
     </ResourceDictionary.MergedDictionaries>
 
     <Style x:Key="{ComponentResourceKey ResourceId=S.TextBlock.Binding,
-                                        TypeInTargetAssembly={x:Type lp:TextBlockKeys}}"
+                                        TypeInTargetAssembly={x:Type lp:DesignTextBlockKeys}}"
            TargetType="TextBlock">
         <Setter Property="Foreground" Value="{Binding Foreground}" />
         <Setter Property="FontSize" Value="{Binding FontSize}" />

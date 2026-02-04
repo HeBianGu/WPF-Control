@@ -5,7 +5,7 @@
     xmlns:local="clr-namespace:H.Presenters.Design.Presenter">
 
 
-    <Style x:Key="{ComponentResourceKey ResourceId=S.Border.Binding, TypeInTargetAssembly={x:Type local:BorderKeys}}" TargetType="{x:Type Border}">
+    <Style x:Key="{ComponentResourceKey ResourceId=S.Border.Binding, TypeInTargetAssembly={x:Type local:DesignBorderKeys}}" TargetType="{x:Type Border}">
         <Setter Property="Opacity" Value="{Binding Opacity}" />
         <Setter Property="Height" Value="{Binding Height}" />
         <Setter Property="Width" Value="{Binding Width}" />
@@ -89,7 +89,7 @@
     <Style
         x:Key="{ComponentResourceKey ResourceId=S.DesignBorder.Default,
                                      TypeInTargetAssembly={x:Type local:DesignBorder}}"
-        BasedOn="{StaticResource {x:Static local:BorderKeys.Binding}}"
+        BasedOn="{StaticResource {x:Static local:DesignBorderKeys.Binding}}"
         TargetType="{x:Type local:DesignBorder}">
         <Setter Property="h:MouseOverHitTestAdornerBehavior.IsMouseOver" Value="{Binding IsMouseOver, Mode=TwoWay}" />
         <Setter Property="h:SelectedHitTestAdornerBehavior.IsSelected" Value="{Binding IsSelected, Mode=TwoWay}" />
