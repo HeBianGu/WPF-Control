@@ -1,8 +1,9 @@
-﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:h="https://github.com/HeBianGu"
-                    xmlns:local="clr-namespace:H.Presenters.Design.Presenter"
-                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:h="https://github.com/HeBianGu"
+    xmlns:local="clr-namespace:H.Presenters.Design.Presenter"
+    xmlns:sys="clr-namespace:System;assembly=mscorlib">
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/H.Presenters.Design;component/Presenter/PanelPresenter.xaml" />
     </ResourceDictionary.MergedDictionaries>
@@ -21,13 +22,13 @@
                 </ItemsControl.ItemContainerStyle>
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
-                        <local:DefinitionGrid Background="Transparent"
-                                              Columns="{Binding Columns}"
-                                              MinRowHeight="{Binding MinRowHeight}"
-                                              Rows="{Binding Rows}">
+                        <local:DefinitionGrid
+                            Background="Transparent"
+                            Columns="{Binding Columns}"
+                            MinRowHeight="{Binding MinRowHeight}"
+                            Rows="{Binding Rows}">
                             <local:DefinitionGrid.GridLinePen>
-                                <Pen Brush="{Binding LineBrush}"
-                                     Thickness="{Binding LineThickness}" />
+                                <Pen Brush="{Binding LineBrush}" Thickness="{Binding LineThickness}" />
                             </local:DefinitionGrid.GridLinePen>
                             <h:BehvaiorAttach.Behaviors>
                                 <h:Behaviors>

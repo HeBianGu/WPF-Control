@@ -6,15 +6,17 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
+using H.Common.Interfaces;
 using H.Controls.Adorner.Draggable;
 using H.Extensions.Behvaiors.Adorners;
+using H.Presenters.Design.Base;
 using H.Presenters.Design.PrintPresenter;
 using System.Collections;
 using System.Windows.Documents;
 
 namespace H.Controls.PrintBox
 {
-    public class ReportDragOverHitTestAdornerBehavior : DragOverHitTestAdornerBehavior
+    public class PrintBoxDragOverHitTestAdornerBehavior : DragOverHitTestAdornerBehavior
     {
         public bool UsePreView
         {
@@ -23,9 +25,9 @@ namespace H.Controls.PrintBox
         }
 
         public static readonly DependencyProperty UsePreViewProperty =
-            DependencyProperty.Register("UsePreView", typeof(bool), typeof(ReportDragOverHitTestAdornerBehavior), new FrameworkPropertyMetadata(default(bool), (d, e) =>
+            DependencyProperty.Register("UsePreView", typeof(bool), typeof(PrintBoxDragOverHitTestAdornerBehavior), new FrameworkPropertyMetadata(default(bool), (d, e) =>
             {
-                ReportDragOverHitTestAdornerBehavior control = d as ReportDragOverHitTestAdornerBehavior;
+                PrintBoxDragOverHitTestAdornerBehavior control = d as PrintBoxDragOverHitTestAdornerBehavior;
 
                 if (control == null) return;
 
@@ -87,14 +89,21 @@ namespace H.Controls.PrintBox
                 return;
             }
 
-            var value = data is ICloneable cloneable ? cloneable.Clone() : data;
-            if (element.GetContent() is ListPrintPagePresenter listPrintPage)
+            var econtent = element.GetContent();
+            var value = data is ICloneable cloneable ? cloneable.Clone() as IDesignPresenter : data as IDesignPresenter;
+            if (econtent is IItemsControlPrintPagePresenter listPrintPage)
             {
                 listPrintPage.Presenters.Add(value);
                 return;
             }
 
-            if (element.GetContent() is IHitTestElementDrop drag)
+            if (econtent is IContentPrintPagePresenter contentPrintPage)
+            {
+                contentPrintPage.Content= value;
+                return;
+            }
+
+            if (econtent is IHitTestElementDrop drag)
             {
                 if (drag.CanDrop(element, e))
                     drag.Drop(element, e);
@@ -121,7 +130,7 @@ namespace H.Controls.PrintBox
         {
             System.Diagnostics.Debug.WriteLine("Remove");
             IDraggableAdorner adorner = e.Data.GetData("DragGroup") as IDraggableAdorner;
-            var data = adorner.GetData();
+            var data = adorner.GetData() as IDesignPresenter;
             var element = (adorner as System.Windows.Documents.Adorner).AdornedElement;
             if (element == from)
                 return;
@@ -131,9 +140,9 @@ namespace H.Controls.PrintBox
                 return;
             }
 
-            if (element.GetContent() is ListPrintPagePresenter listPrintPage)
+            if (element.GetContent() is IChildableDesignPresenter listPrintPage)
             {
-                listPrintPage.Presenters.Remove(data);
+                listPrintPage.Delete(data);
                 return;
             }
             if (element.GetContent() is IHitTestElementDrag drag)

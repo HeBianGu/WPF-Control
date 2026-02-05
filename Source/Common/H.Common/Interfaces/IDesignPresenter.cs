@@ -17,7 +17,6 @@ public interface IDesignPresenter : ISelectable
     Thickness BorderThickness { get; set; }
     int Column { get; set; }
     int ColumnSpan { get; set; }
-    ICommand DeleteCommand { get; }
     double Height { get; set; }
     HorizontalAlignment HorizontalAlignment { get; set; }
     HorizontalAlignment HorizontalContentAlignment { get; set; }

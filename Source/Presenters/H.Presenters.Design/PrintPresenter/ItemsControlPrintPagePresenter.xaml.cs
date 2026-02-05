@@ -6,6 +6,7 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
+using H.Common.Interfaces;
 using H.Controls.Adorner.Adorner;
 using H.Mvvm.Commands;
 using System.Collections;
@@ -13,25 +14,20 @@ using System.Windows.Markup;
 
 namespace H.Presenters.Design.PrintPresenter
 {
+    public interface IItemsControlPrintPagePresenter: IPanelDesignPresenter
+    {
+       
+    }
+
     [ContentProperty("Presenters")]
     [DefaultProperty("Presenters")]
     [Display(Name = "列表分页")]
-    public class ListPrintPagePresenter : PrintPagePresenterBase, IGetDropAdorner
+    public class ItemsControlPrintPagePresenter : PrintPagePresenterBase, IGetDropAdorner, IItemsControlPrintPagePresenter
     {
-        public RelayCommand DeleteCommand => new RelayCommand(x =>
-        {
-            if (x is ContentControl project)
-            {
-                Adorner adorner = project.GetParent<Adorner>();
-                ItemsControl source = adorner.AdornedElement.GetParent<ItemsControl>();
-                source.GetItemsSource<IList>().Remove(project.Content);
-            }
-        });
-
-        private ObservableCollection<object> _presenters = new ObservableCollection<object>();
+        private ObservableCollection<IDesignPresenter> _presenters = new ObservableCollection<IDesignPresenter>();
         [Display(Name = "数据列表")]
         [Browsable(false)]
-        public ObservableCollection<object> Presenters
+        public ObservableCollection<IDesignPresenter> Presenters
         {
             get { return _presenters; }
             set
@@ -39,6 +35,12 @@ namespace H.Presenters.Design.PrintPresenter
                 _presenters = value;
                 RaisePropertyChanged();
             }
+        }
+
+        public void Delete(IDesignPresenter designPresenter)
+        {
+            if (this.Presenters.Contains(designPresenter))
+                this.Presenters.Remove(designPresenter);
         }
 
         public Adorner GetDropAdorner(UIElement element)

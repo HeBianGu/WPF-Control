@@ -10,7 +10,8 @@
                     <Border
                         Background="{TemplateBinding Background}"
                         BorderBrush="{TemplateBinding BorderBrush}"
-                        BorderThickness="{TemplateBinding BorderThickness}">
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(Cattach.CornerRadius)}">
                         <DockPanel>
                             <Control DockPanel.Dock="Top" Template="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(h:Cattach.TopTemplate)}" />
                             <Control
@@ -18,7 +19,7 @@
                                 Template="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(h:Cattach.RightTemplate)}"
                                 Visibility="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=UseRight, Converter={x:Static h:Converter.GetTrueToVisible}}" />
                             <Control DockPanel.Dock="Left" Template="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(h:Cattach.LeftTemplate)}" />
-                            <ScrollViewer HorizontalScrollBarVisibility="Auto">
+                            <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
                                 <ItemsPresenter
                                     Margin="{TemplateBinding Padding}"
                                     HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"

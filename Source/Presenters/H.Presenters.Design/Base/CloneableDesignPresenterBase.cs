@@ -13,7 +13,7 @@ using H.Common.Interfaces;
 
 namespace H.Presenters.Design.Base;
 
-public abstract class CloneableDesignPresenterBase : DesignPresenterBase, ICloneable, ICloneable<CloneableDesignPresenterBase>, ICloneableDesignPresenter
+public abstract class CloneableDesignPresenterBase : DeletableDesignPresenterBase, ICloneable, ICloneable<CloneableDesignPresenterBase>, ICloneableDesignPresenter
 {
     //public virtual object Clone()
     //{

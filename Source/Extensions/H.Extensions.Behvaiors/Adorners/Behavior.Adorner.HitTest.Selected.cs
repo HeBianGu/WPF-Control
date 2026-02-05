@@ -8,6 +8,8 @@
 
 #if NET
 #endif
+using H.Common.Interfaces;
+
 namespace H.Extensions.Behvaiors.Adorners;
 
 public class SelectedHitTestAdornerBehavior : HitTestAdornerBehavior
@@ -43,6 +45,32 @@ public class SelectedHitTestAdornerBehavior : HitTestAdornerBehavior
 
             control._preVisualHitElement = e.NewValue as UIElement;
             control.OnSelectdElementChanged();
+
+        }));
+
+
+    public IDesignPresenter SelectedDesignPresenter
+    {
+        get { return (IDesignPresenter)GetValue(SelectedDesignPresenterProperty); }
+        set { SetValue(SelectedDesignPresenterProperty, value); }
+    }
+
+    public static readonly DependencyProperty SelectedDesignPresenterProperty =
+        DependencyProperty.Register("SelectedDesignPresenter", typeof(IDesignPresenter), typeof(SelectedHitTestAdornerBehavior), new FrameworkPropertyMetadata(default(IDesignPresenter), (d, e) =>
+        {
+            SelectedHitTestAdornerBehavior control = d as SelectedHitTestAdornerBehavior;
+
+            if (control == null) return;
+
+            if (e.OldValue is IDesignPresenter o)
+            {
+
+            }
+
+            if (e.NewValue is IDesignPresenter n)
+            {
+
+            }
 
         }));
 
@@ -90,6 +118,9 @@ public class SelectedHitTestAdornerBehavior : HitTestAdornerBehavior
             this.AdornerVisual = this.AssociatedObject;
         Point point = e.GetPosition(this.AssociatedObject);
         var visualHitElement = this.AssociatedObject.HitTest<UIElement>(point, x => GetIsHitTest(x));
+        var content = visualHitElement.GetContent();
+        if(content is IDesignPresenter presenter)
+            this.SelectedDesignPresenter = presenter;
         this.SelectedElement = visualHitElement;
 
         //if (visualHitElement == null)

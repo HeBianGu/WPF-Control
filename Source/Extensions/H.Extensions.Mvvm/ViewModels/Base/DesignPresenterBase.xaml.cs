@@ -346,47 +346,4 @@ public abstract class DesignPresenterBase : DisplayBindableBase, IDesignPresente
             RaisePropertyChanged();
         }
     }
-
-    [Display(Name = "删除")]
-    public ICommand DeleteCommand => new RelayCommand(e =>
-    {
-        Delete(e);
-    });
-
-    protected virtual void Delete(object e)
-    {
-        if (e is ContentControl project)
-        {
-            Adorner adorner = GetParent<Adorner>(project);
-            ItemsControl source = GetParent<ItemsControl>(adorner.AdornedElement);
-            GetItemsSource<IList>(source).Remove(project.Content);
-        }
-    }
-
-    private T GetItemsSource<T>(UIElement element) where T : IEnumerable
-    {
-        return element is ItemsControl items ? (T)items.ItemsSource : default;
-    }
-
-    private T GetParent<T>(DependencyObject element) where T : DependencyObject
-    {
-        if (element == null) return null;
-        DependencyObject parent = VisualTreeHelper.GetParent(element);
-        while (parent != null && !(parent is T))
-        {
-            DependencyObject newVisualParent = VisualTreeHelper.GetParent(parent);
-            if (newVisualParent != null)
-                parent = newVisualParent;
-            else
-            {
-                if (parent is FrameworkElement)
-                    parent = (parent as FrameworkElement).Parent;
-                else
-                {
-                    break;
-                }
-            }
-        }
-        return parent as T;
-    }
 }

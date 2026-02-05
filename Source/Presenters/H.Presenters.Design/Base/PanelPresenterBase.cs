@@ -14,7 +14,7 @@ namespace H.Presenters.Design.Base;
 
 [ContentProperty("Presenters")]
 [DefaultProperty("Presenters")]
-public abstract class PanelPresenterBase : DropAdornerDesignPresenterBase
+public abstract class PanelPresenterBase : DropAdornerDesignPresenterBase, IPanelDesignPresenter
 {
     public PanelPresenterBase()
     {
@@ -86,5 +86,11 @@ public abstract class PanelPresenterBase : DropAdornerDesignPresenterBase
         this.Presenters.Remove(_dropBackup);
         _dropBackup = null;
 
+    }
+
+    public void Delete(IDesignPresenter designPresenter)
+    {
+        if (this.Presenters.Contains(designPresenter))
+            this.Presenters.Remove(designPresenter);
     }
 }

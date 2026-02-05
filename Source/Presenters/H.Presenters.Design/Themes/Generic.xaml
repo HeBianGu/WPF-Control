@@ -22,7 +22,8 @@
         <ResourceDictionary Source="pack://application:,,,/H.Presenters.Design;component/Presenter/UserPresenter.xaml" />
 
         <ResourceDictionary Source="pack://application:,,,/H.Presenters.Design;component/PrintPresenter/PrintDataGrid.xaml" />
-        <ResourceDictionary Source="pack://application:,,,/H.Presenters.Design;component/PrintPresenter/ListPrintPagePresenter.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Presenters.Design;component/PrintPresenter/ItemsControlPrintPagePresenter.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Presenters.Design;component/PrintPresenter/ContentPrintPagePresenter.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Presenters.Design;component/PrintPresenter/PrintBoxPresenter.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Presenters.Design;component/PrintPresenter/PrintDataGridPresenter.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Presenters.Design;component/PrintPresenter/TablePrintPagePresenter.xaml" />

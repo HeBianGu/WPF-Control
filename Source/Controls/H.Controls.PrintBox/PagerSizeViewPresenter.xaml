@@ -1,25 +1,26 @@
-﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:h="https://github.com/HeBianGu"
-                    xmlns:local="clr-namespace:H.Controls.PrintBox"
-                    xmlns:system="clr-namespace:System;assembly=netstandard">
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:h="https://github.com/HeBianGu"
+    xmlns:local="clr-namespace:H.Controls.PrintBox"
+    xmlns:system="clr-namespace:System;assembly=netstandard">
     <DataTemplate DataType="{x:Type local:PagerSizeViewPresenter}">
         <StackPanel MinWidth="400">
             <BulletDecorator>
                 <BulletDecorator.Bullet>
-                    <TextBlock VerticalAlignment="Center"
-                               Text="纸张类型" />
+                    <TextBlock VerticalAlignment="Center" Text="纸张类型" />
                 </BulletDecorator.Bullet>
-                <ComboBox Margin="5,0"
-                          h:Cattach.BackgroundColumn="1"
-                          h:Cattach.Title="纸张类型"
-                          ItemsSource="{Binding Collection}"
-                          SelectedItem="{Binding SelectedPagerSizeData}">
+                <ComboBox
+                    Margin="5,0"
+                    h:Cattach.BackgroundColumn="1"
+                    h:Cattach.Title="纸张类型"
+                    ItemsSource="{Binding Collection}"
+                    SelectedItem="{Binding SelectedPagerSizeData}">
                     <ComboBox.ItemTemplate>
                         <DataTemplate>
                             <TextBlock>
-                                <Run Text="{Binding Name,Mode=OneWay}" />
-                                <Run Text="{Binding SizeDesc,Mode=OneWay}" />
+                                <Run Text="{Binding Name, Mode=OneWay}" />
+                                <Run Text="{Binding SizeDesc, Mode=OneWay}" />
                             </TextBlock>
                         </DataTemplate>
                     </ComboBox.ItemTemplate>
@@ -28,13 +29,13 @@
 
             <BulletDecorator>
                 <BulletDecorator.Bullet>
-                    <TextBlock VerticalAlignment="Center"
-                               Text="布局方式" />
+                    <TextBlock VerticalAlignment="Center" Text="布局方式" />
                 </BulletDecorator.Bullet>
-                <ComboBox Margin="5,1"
-                          h:Cattach.BackgroundColumn="1"
-                          h:Cattach.Title="布局方式"
-                          SelectedIndex="{Binding LayoutSelectedIndex}">
+                <ComboBox
+                    Margin="5,1"
+                    h:Cattach.BackgroundColumn="1"
+                    h:Cattach.Title="布局方式"
+                    SelectedIndex="{Binding LayoutSelectedIndex}">
                     <system:String>水平</system:String>
                     <system:String>垂直</system:String>
                 </ComboBox>

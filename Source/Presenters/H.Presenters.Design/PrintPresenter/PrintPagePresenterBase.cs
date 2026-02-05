@@ -11,7 +11,7 @@ using System.Windows.Input;
 
 namespace H.Presenters.Design.PrintPresenter
 {
-    public class PrintPagePresenterBase : DesignPresenterBase, IPrintPagePresenter, ICloneable
+    public class PrintPagePresenterBase : DeletableDesignPresenterBase, IPrintPagePresenter, ICloneable
     {
         public PrintPagePresenterBase()
         {

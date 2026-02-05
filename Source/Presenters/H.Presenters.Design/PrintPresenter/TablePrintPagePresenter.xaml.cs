@@ -63,17 +63,6 @@ namespace H.Presenters.Design.PrintPresenter
             }
         }
 
-        [Display(Name = "删除")]
-        public new RelayCommand DeleteCommand => new RelayCommand(x =>
-        {
-            if (x is ContentControl project)
-            {
-                Adorner adorner = project.GetParent<Adorner>();
-                ItemsControl source = adorner.AdornedElement.GetParent<ItemsControl>();
-                source.GetItemsSource<IList>().Remove(project.Content);
-            }
-        });
-
         //public object Clone()
         //{
         //    return this.CloneBy(x => x.GetCustomAttribute<BrowsableAttribute>()?.Browsable != false);
