@@ -31,7 +31,7 @@ public abstract class DropAdornerDesignPresenterBase : CommandsDesignPresenterBa
 
     public virtual void Drop(UIElement element, DragEventArgs e)
     {
-        //IDragAdorner adorner = e.Data.GetData("DragGroup") as IDragAdorner;
+        //IDraggableAdorner adorner = e.Data.GetData("DragGroup") as IDraggableAdorner;
         //if (adorner.GetData() is ICloneable cloneable)
         //{
         //    object value = cloneable.Clone();

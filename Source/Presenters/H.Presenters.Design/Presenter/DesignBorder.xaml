@@ -5,24 +5,12 @@
     xmlns:local="clr-namespace:H.Presenters.Design.Presenter">
 
 
-    <Style x:Key="{ComponentResourceKey ResourceId=S.Border.Binding, TypeInTargetAssembly={x:Type local:DesignBorderKeys}}" TargetType="{x:Type Border}">
-        <Setter Property="Opacity" Value="{Binding Opacity}" />
-        <Setter Property="Height" Value="{Binding Height}" />
-        <Setter Property="Width" Value="{Binding Width}" />
-        <Setter Property="MinHeight" Value="{Binding MinHeight}" />
-        <Setter Property="MinWidth" Value="{Binding MinWidth}" />
-        <Setter Property="Margin" Value="{Binding Margin}" />
-        <Setter Property="Visibility" Value="{Binding IsVisible, Converter={x:Static h:Converter.GetTrueToVisible}}" />
-        <Setter Property="IsEnabled" Value="{Binding IsEnabled}" />
-        <Setter Property="HorizontalAlignment" Value="{Binding HorizontalAlignment}" />
-        <Setter Property="VerticalAlignment" Value="{Binding VerticalAlignment}" />
-        <Setter Property="Background" Value="{Binding Background}" />
-        <Setter Property="BorderBrush" Value="{Binding BorderBrush}" />
-        <Setter Property="BorderThickness" Value="{Binding BorderThickness}" />
-        <Setter Property="CornerRadius" Value="{Binding CornerRadius}" />
-        <Setter Property="TextBlock.Foreground" Value="{Binding Foreground}" />
-        <Setter Property="TextElement.Foreground" Value="{Binding Foreground}" />
-        <Setter Property="SelectedHitTestAdornerBehavior.IsSelected" Value="{Binding IsSelected}"/>
+    <Style
+        x:Key="{ComponentResourceKey ResourceId=S.Border.Binding,
+                                     TypeInTargetAssembly={x:Type local:DesignBorderKeys}}"
+        BasedOn="{StaticResource {x:Static DesignPresenterKeys.BindBorder}}"
+        TargetType="{x:Type Border}">
+        <Setter Property="SelectedHitTestAdornerBehavior.IsSelected" Value="{Binding IsSelected}" />
     </Style>
 
 

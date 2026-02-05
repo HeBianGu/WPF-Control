@@ -1,15 +1,17 @@
-﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:local="clr-namespace:H.Styles.Controls"
-                    xmlns:system="clr-namespace:System;assembly=mscorlib">
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:H.Styles.Controls"
+    xmlns:system="clr-namespace:System;assembly=mscorlib">
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/H.Style;component/Share.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <Style x:Key="{ComponentResourceKey ResourceId=S.TextBox.Default,
-                                        TypeInTargetAssembly={x:Type local:TextBoxKeys}}"
-           BasedOn="{StaticResource S.Control.Base}"
-           TargetType="{x:Type TextBox}">
+    <Style
+        x:Key="{ComponentResourceKey ResourceId=S.TextBox.Default,
+                                     TypeInTargetAssembly={x:Type local:TextBoxKeys}}"
+        BasedOn="{StaticResource S.Control.Base}"
+        TargetType="{x:Type TextBox}">
         <Setter Property="SnapsToDevicePixels" Value="True" />
         <!--<Setter Property="OverridesDefaultStyle" Value="True" />-->
         <Setter Property="KeyboardNavigation.TabNavigation" Value="None" />
@@ -39,8 +41,7 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type TextBoxBase}">
                     <Border Style="{StaticResource S.Border.TemplatedParent}">
-                        <ScrollViewer x:Name="PART_ContentHost"
-                                      Margin="{TemplateBinding Padding}" />
+                        <ScrollViewer x:Name="PART_ContentHost" Margin="{TemplateBinding Padding}" />
                     </Border>
                 </ControlTemplate>
             </Setter.Value>
@@ -48,18 +49,20 @@
         <Setter Property="Validation.ErrorTemplate">
             <Setter.Value>
                 <ControlTemplate>
-                    <Border Background="Transparent"
-                            BorderBrush="{DynamicResource {x:Static BrushKeys.Red}}"
-                            BorderThickness="1"
-                            CornerRadius="{DynamicResource {x:Static LayoutKeys.CornerRadius}}"
-                            IsHitTestVisible="False"
-                            ToolTipService.InitialShowDelay="0"
-                            ToolTipService.ShowOnDisabled="True">
+                    <Border
+                        Background="Transparent"
+                        BorderBrush="{DynamicResource {x:Static BrushKeys.Red}}"
+                        BorderThickness="1"
+                        CornerRadius="{DynamicResource {x:Static LayoutKeys.CornerRadius}}"
+                        IsHitTestVisible="False"
+                        ToolTipService.InitialShowDelay="0"
+                        ToolTipService.ShowOnDisabled="True">
                         <Border.ToolTip>
-                            <ToolTip Background="{DynamicResource {x:Static BrushKeys.Red}}"
-                                     BorderBrush="{x:Null}"
-                                     Content="{Binding [0].ErrorContent}"
-                                     Foreground="{DynamicResource {x:Static BrushKeys.White}}" />
+                            <ToolTip
+                                Background="{DynamicResource {x:Static BrushKeys.Red}}"
+                                BorderBrush="{x:Null}"
+                                Content="{Binding [0].ErrorContent}"
+                                Foreground="{DynamicResource {x:Static BrushKeys.White}}" />
                         </Border.ToolTip>
                         <AdornedElementPlaceholder Margin="-4" />
                     </Border>
@@ -100,10 +103,11 @@
         </Style.Triggers>
     </Style>
 
-    <Style x:Key="{ComponentResourceKey ResourceId=S.TextBox.Edit,
-                                        TypeInTargetAssembly={x:Type local:TextBoxKeys}}"
-           BasedOn="{StaticResource {x:Static local:TextBoxKeys.Default}}"
-           TargetType="{x:Type TextBox}">
+    <Style
+        x:Key="{ComponentResourceKey ResourceId=S.TextBox.Edit,
+                                     TypeInTargetAssembly={x:Type local:TextBoxKeys}}"
+        BasedOn="{StaticResource {x:Static local:TextBoxKeys.Default}}"
+        TargetType="{x:Type TextBox}">
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="BorderBrush" Value="Transparent" />
         <Setter Property="MinHeight" Value="5" />
@@ -118,10 +122,11 @@
         </Style.Triggers>
     </Style>
 
-    <Style x:Key="{ComponentResourceKey ResourceId=S.TextBox.Attach,
-                                        TypeInTargetAssembly={x:Type local:TextBoxKeys}}"
-           BasedOn="{StaticResource {x:Static local:TextBoxKeys.Default}}"
-           TargetType="{x:Type TextBox}">
+    <Style
+        x:Key="{ComponentResourceKey ResourceId=S.TextBox.Attach,
+                                     TypeInTargetAssembly={x:Type local:TextBoxKeys}}"
+        BasedOn="{StaticResource {x:Static local:TextBoxKeys.Default}}"
+        TargetType="{x:Type TextBox}">
         <Setter Property="Cattach.TitleForeground" Value="{DynamicResource {x:Static BrushKeys.CaptionForeground}}" />
         <Setter Property="Cattach.TitleBackground" Value="{DynamicResource {x:Static BrushKeys.CaptionBackground}}" />
         <Setter Property="Cattach.TitleWidth" Value="Auto" />
@@ -179,20 +184,19 @@
         <Setter Property="Cattach.CenterTemplate">
             <Setter.Value>
                 <ControlTemplate>
-                    <ContentPresenter x:Name="c"
-                                      Margin="5,0"
-                                      VerticalAlignment="Center"
-                                      Content="{Binding RelativeSource={RelativeSource AncestorType=TextBox}, Path=(Cattach.Watermark)}"
-                                      IsHitTestVisible="False"
-                                      Opacity="0.5"
-                                      Visibility="Collapsed" />
+                    <ContentPresenter
+                        x:Name="c"
+                        Margin="5,0"
+                        VerticalAlignment="Center"
+                        Content="{Binding RelativeSource={RelativeSource AncestorType=TextBox}, Path=(Cattach.Watermark)}"
+                        IsHitTestVisible="False"
+                        Opacity="0.5"
+                        Visibility="Collapsed" />
                     <ControlTemplate.Triggers>
-                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=TextBox}, Path=Text}"
-                                     Value="">
+                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=TextBox}, Path=Text}" Value="">
                             <Setter TargetName="c" Property="Visibility" Value="Visible" />
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=TextBox}, Path=Text}"
-                                     Value="{x:Null}">
+                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=TextBox}, Path=Text}" Value="{x:Null}">
                             <Setter TargetName="c" Property="Visibility" Value="Visible" />
                         </DataTrigger>
                     </ControlTemplate.Triggers>
@@ -201,10 +205,11 @@
         </Setter>
     </Style>
 
-    <Style x:Key="{ComponentResourceKey ResourceId=S.TextBox.Delete,
-                                        TypeInTargetAssembly={x:Type local:TextBoxKeys}}"
-           BasedOn="{StaticResource {x:Static local:TextBoxKeys.Attach}}"
-           TargetType="{x:Type TextBox}">
+    <Style
+        x:Key="{ComponentResourceKey ResourceId=S.TextBox.Delete,
+                                     TypeInTargetAssembly={x:Type local:TextBoxKeys}}"
+        BasedOn="{StaticResource {x:Static local:TextBoxKeys.Attach}}"
+        TargetType="{x:Type TextBox}">
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type TextBox}">
@@ -218,17 +223,18 @@
                                 <ContentPresenter Style="{StaticResource S.ContentPresenter.Attach}" />
                             </Border>
                             <DockPanel>
-                                <local:FontIconButton x:Name="btn_delete"
-                                                      Width="Auto"
-                                                      Height="Auto"
-                                                      Margin="1"
-                                                      Background="{x:Null}"
-                                                      Cattach.Title="删除文本"
-                                                      Command="{local:DeleteTextCommandExtension}"
-                                                      CommandParameter="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}}"
-                                                      Content="&#xE711;"
-                                                      DockPanel.Dock="Right"
-                                                      ToolTip="点击此按钮删除文本" />
+                                <local:FontIconButton
+                                    x:Name="btn_delete"
+                                    Width="Auto"
+                                    Height="Auto"
+                                    Margin="1"
+                                    Background="{x:Null}"
+                                    Cattach.Title="删除文本"
+                                    Command="{local:DeleteTextCommandExtension}"
+                                    CommandParameter="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}}"
+                                    Content="&#xE711;"
+                                    DockPanel.Dock="Right"
+                                    ToolTip="点击此按钮删除文本" />
                                 <Grid Margin="{TemplateBinding Padding}">
                                     <ScrollViewer x:Name="PART_ContentHost" />
                                     <Control Template="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(Cattach.CenterTemplate)}" />
@@ -251,6 +257,5 @@
             </Setter.Value>
         </Setter>
     </Style>
-    <Style BasedOn="{StaticResource {x:Static local:TextBoxKeys.Default}}"
-           TargetType="TextBox" />
+    <Style BasedOn="{StaticResource {x:Static local:TextBoxKeys.Default}}" TargetType="TextBox" />
 </ResourceDictionary>

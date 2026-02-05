@@ -10,6 +10,7 @@ using H.Common.Interfaces;
 using H.Presenters.Design.Presenter;
 using System.Windows.Markup;
 namespace H.Presenters.Design;
+
 public class GetDesignPresenters : MarkupExtension
 {
     public override object ProvideValue(IServiceProvider serviceProvider)

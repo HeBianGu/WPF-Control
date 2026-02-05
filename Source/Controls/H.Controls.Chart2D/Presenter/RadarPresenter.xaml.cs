@@ -1,6 +1,7 @@
 ﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
 
+using H.Common.Attributes;
 using H.Extensions.Common;
 using H.Services.Common;
 using System;
@@ -13,6 +14,7 @@ using System.Windows.Media;
 
 namespace H.Controls.Chart2D
 {
+    [Icon("\xE9D2")]
     [Display(Name = "雷达图")]
     public class RadarPresenter : Chart2DPresenterBase
     {

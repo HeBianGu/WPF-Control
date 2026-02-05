@@ -369,6 +369,19 @@ public static class ObjectExtension
         return func.Invoke(find);
     }
 
+    public static object ClonePrimitive(this object t)
+    {
+        Predicate<PropertyInfo> match = x =>
+        {
+          return  x.PropertyType.IsPrimitive 
+            || x.PropertyType.IsValueType 
+            || x.PropertyType == typeof(DateTime) 
+            || x.PropertyType == typeof(string)
+            || x.PropertyType.IsEnum;
+        };
+       return t.CloneBy(match);
+    }
+
     public static object CloneBy(this object t, Predicate<PropertyInfo> predicate = null)
     {
         object n = Activator.CreateInstance(t.GetType());

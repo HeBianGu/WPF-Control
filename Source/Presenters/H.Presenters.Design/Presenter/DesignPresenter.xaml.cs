@@ -15,5 +15,6 @@ public class DesignTextBlockKeys
 
 public class DesignBorderKeys
 {
+    public static ComponentResourceKey Default => new ComponentResourceKey(typeof(DesignBorderKeys), "S.Border.Default");
     public static ComponentResourceKey Binding => new ComponentResourceKey(typeof(DesignBorderKeys), "S.Border.Binding");
 }

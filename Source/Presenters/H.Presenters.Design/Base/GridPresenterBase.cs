@@ -63,7 +63,7 @@ public abstract class GridPresenterBase : PanelPresenterBase
 
     public override void DragEnter(UIElement element, DragEventArgs e)
     {
-        //IDragAdorner adorner = e.Data.GetData("DragGroup") as IDragAdorner;
+        //IDraggableAdorner adorner = e.Data.GetData("DragGroup") as IDraggableAdorner;
         //if (adorner.GetData() is ICloneable cloneable)
         //{
         //    object value = cloneable.Clone();

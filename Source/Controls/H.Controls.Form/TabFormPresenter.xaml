@@ -1,31 +1,36 @@
-﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:h="https://github.com/HeBianGu"
-                    xmlns:local="clr-namespace:H.Controls.Form">
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:h="https://github.com/HeBianGu"
+    xmlns:local="clr-namespace:H.Controls.Form">
     <DataTemplate DataType="{x:Type local:TabFormPresenter}">
-        <TabControl ItemsSource="{Binding TabNames}"
-                    TabStripPlacement="{Binding TabStripPlacement}"
-                    WindowChrome.IsHitTestVisibleInChrome="True">
+        <TabControl
+            ItemsSource="{Binding TabNames}"
+            TabStripPlacement="{Binding TabStripPlacement}"
+            WindowChrome.IsHitTestVisibleInChrome="True">
             <TabControl.ItemTemplate>
                 <DataTemplate>
-                    <TextBlock MinWidth="50"
-                               HorizontalAlignment="Center"
-                               Text="{Binding}"
-                               TextAlignment="Center" />
+                    <TextBlock
+                        MinWidth="50"
+                        HorizontalAlignment="Center"
+                        Text="{Binding}"
+                        TextAlignment="Center" />
                 </DataTemplate>
             </TabControl.ItemTemplate>
             <TabControl.ContentTemplate>
                 <DataTemplate>
-                    <Border Padding="2"
-                            BorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrush}}"
-                            BorderThickness="1">
+                    <Border
+                        Padding="2"
+                        BorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrush}}"
+                        BorderThickness="1">
                         <!--  UseCommand="{Binding RelativeSource={RelativeSource AncestorType=TabControl}, Path=DataContext.UseCommand}"  -->
-                        <local:Form IsHitTestVisible="{Binding RelativeSource={RelativeSource AncestorType=TabControl}, Path=DataContext.IsHitTestVisible}"
-                                    SelectObject="{Binding RelativeSource={RelativeSource AncestorType=TabControl}, Path=DataContext.SelectObject}"
-                                    TitleWidth="{Binding RelativeSource={RelativeSource AncestorType=TabControl}, Path=DataContext.TitleWidth}"
-                                    UseClass="{Binding RelativeSource={RelativeSource AncestorType=TabControl}, Path=DataContext.UseClass}"
-                                    UseGroupNames="{Binding}"
-                                    UsePropertyView="{Binding RelativeSource={RelativeSource AncestorType=TabControl}, Path=DataContext.UsePropertyView}" />
+                        <local:Form
+                            IsHitTestVisible="{Binding RelativeSource={RelativeSource AncestorType=TabControl}, Path=DataContext.IsHitTestVisible}"
+                            SelectObject="{Binding RelativeSource={RelativeSource AncestorType=TabControl}, Path=DataContext.SelectObject}"
+                            TitleWidth="{Binding RelativeSource={RelativeSource AncestorType=TabControl}, Path=DataContext.TitleWidth}"
+                            UseClass="{Binding RelativeSource={RelativeSource AncestorType=TabControl}, Path=DataContext.UseClass}"
+                            UseGroupNames="{Binding}"
+                            UsePropertyView="{Binding RelativeSource={RelativeSource AncestorType=TabControl}, Path=DataContext.UsePropertyView}" />
                     </Border>
                 </DataTemplate>
             </TabControl.ContentTemplate>

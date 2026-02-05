@@ -19,6 +19,8 @@
         <Setter Property="BorderThickness" Value="{Binding BorderThickness}" />
         <Setter Property="CornerRadius" Value="{Binding CornerRadius}" />
         <Setter Property="Background" Value="{Binding Background}" />
+        <Setter Property="TextBlock.Foreground" Value="{Binding Foreground}" />
+        <Setter Property="TextElement.Foreground" Value="{Binding Foreground}" />
         <Setter Property="Grid.Row" Value="{Binding Row}" />
         <Setter Property="Grid.Column" Value="{Binding Column}" />
         <Setter Property="Grid.RowSpan" Value="{Binding RowSpan}" />

@@ -1,31 +1,33 @@
-﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
-                    xmlns:h="https://github.com/HeBianGu"
-                    xmlns:lb="clr-namespace:H.Controls.Diagram.Presenter.Behaviors"
-                    xmlns:ld="clr-namespace:H.Controls.Diagram.Presenter.DiagramDatas"
-                    xmlns:ldb="clr-namespace:H.Controls.Diagram.Presenter.DiagramDatas.Base"
-                    xmlns:local="clr-namespace:H.Controls.Diagram.Presenter">
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
+    xmlns:h="https://github.com/HeBianGu"
+    xmlns:lb="clr-namespace:H.Controls.Diagram.Presenter.Behaviors"
+    xmlns:ld="clr-namespace:H.Controls.Diagram.Presenter.DiagramDatas"
+    xmlns:ldb="clr-namespace:H.Controls.Diagram.Presenter.DiagramDatas.Base"
+    xmlns:local="clr-namespace:H.Controls.Diagram.Presenter">
     <DataTemplate DataType="{x:Type ld:NodeDataGroupsTreeViewPresenter}">
         <TreeView ItemsSource="{Binding NodeDataGroups}">
             <ItemsControl.ItemTemplate>
                 <HierarchicalDataTemplate ItemsSource="{Binding NodeDatas}">
-                    <DockPanel h:DraggableDataTemplateAdornerBehavior.IsUse="{Binding IsTemplate}"
-                               Background="Transparent">
+                    <DockPanel h:DraggableDataTemplateAdornerBehavior.IsUse="{Binding IsTemplate}" Background="Transparent">
                         <DockPanel.ToolTip>
                             <ToolTip Content="{Binding}" />
                         </DockPanel.ToolTip>
-                        <FontIconTextBlock Margin="5,0"
-                                           HorizontalAlignment="Right"
-                                           Text="{Binding Icon}" />
-                        <TextBlock MaxWidth="100"
-                                   Margin="20,0,2,0"
-                                   DockPanel.Dock="Right"
-                                   FontSize="{DynamicResource {x:Static FontSizeKeys.Header7}}"
-                                   Opacity="0.6"
-                                   Text="{Binding Description}"
-                                   TextTrimming="CharacterEllipsis"
-                                   ToolTip="{Binding Description}" />
+                        <FontIconTextBlock
+                            Margin="5,0"
+                            HorizontalAlignment="Right"
+                            Text="{Binding Icon}" />
+                        <TextBlock
+                            MaxWidth="100"
+                            Margin="20,0,2,0"
+                            DockPanel.Dock="Right"
+                            FontSize="{DynamicResource {x:Static FontSizeKeys.Header7}}"
+                            Opacity="0.6"
+                            Text="{Binding Description}"
+                            TextTrimming="CharacterEllipsis"
+                            ToolTip="{Binding Description}" />
                         <TextBlock Text="{Binding Name}" />
                     </DockPanel>
                 </HierarchicalDataTemplate>

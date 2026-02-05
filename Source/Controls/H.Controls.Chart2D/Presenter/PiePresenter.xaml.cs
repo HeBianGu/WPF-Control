@@ -1,5 +1,6 @@
 ﻿// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 global using H.Extensions.Common;
+using H.Common.Attributes;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -10,7 +11,7 @@ using System.Windows.Media;
 
 namespace H.Controls.Chart2D
 {
-
+    [Icon("\xE9D2")]
     [Display(Name = "饼状图")]
     public class PiePresenter : Chart2DPresenterBase
     {
