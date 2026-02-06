@@ -1,0 +1,9 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+  <ItemGroup>
+    <ProjectReference Include="..\..\Presenters\H.Presenters.Design\H.Presenters.Design.csproj" />
+    <ProjectReference Include="..\H.Controls.Chart2D\H.Controls.Chart2D.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.77" />
+  </ItemGroup>
+</Project>

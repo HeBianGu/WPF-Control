@@ -165,6 +165,14 @@ public static partial class Converter
         }
         return list;
     });
+
+    public static IValueConverter GetValueToList => new ConverterBase<object,IList>(x =>
+    {
+        var result= new List<object>();
+        result.Add(x);
+        return result;
+    });
+
     public static IValueConverter GetIEnumerablePropertyList => new IEnumerableConverterBase<object, string, object>((x, p) =>
     {
         if (x.GetType().IsGenericType)

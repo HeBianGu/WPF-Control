@@ -63,7 +63,7 @@ public abstract class PanelPresenterBase : DropAdornerDesignPresenterBase, IPane
     public override void DragEnter(UIElement element, DragEventArgs e)
     {
         IDraggableAdorner adorner = e.Data.GetData("DragGroup") as IDraggableAdorner;
-        if (adorner.GetData() is ICloneableDesignPresenter value)
+        if (adorner.GetData() is IDesignPresenter value)
         {
             this.Presenters.Add(value);
             _dropBackup = value;
@@ -76,8 +76,8 @@ public abstract class PanelPresenterBase : DropAdornerDesignPresenterBase, IPane
     {
         this.Presenters.Remove(_dropBackup);
         _dropBackup.Opacity = 1;
-        if (_dropBackup is ICloneableDesignPresenter cloneable)
-            this.Presenters.Add(cloneable.Clone());
+        if (_dropBackup is ICloneable cloneable&& cloneable.Clone() is IDesignPresenter clone)
+            this.Presenters.Add(clone);
         _dropBackup = null;
     }
 

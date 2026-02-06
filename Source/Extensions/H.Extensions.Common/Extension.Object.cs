@@ -369,10 +369,12 @@ public static class ObjectExtension
         return func.Invoke(find);
     }
 
-    public static object ClonePrimitive(this object t)
+    public static object ClonePrimitive(this object t, Predicate<PropertyInfo> predicate = null)
     {
         Predicate<PropertyInfo> match = x =>
         {
+            if (predicate?.Invoke(x) == false)
+                return false;
           return  x.PropertyType.IsPrimitive 
             || x.PropertyType.IsValueType 
             || x.PropertyType == typeof(DateTime) 

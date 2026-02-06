@@ -6,12 +6,22 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
-using H.Common.Interfaces;
 
-namespace H.Presenters.Design.Base;
 
-public interface ICloneableDesignPresenter : IDesignPresenter,ICloneable<ICloneableDesignPresenter>, ICloneable
+namespace H.Controls.Chart2D.Presenter;
+
+public class Service : IService
 {
-   
+
 }
 
+public interface IService
+{
+
+}
+
+//[Display(Name = "参数设置", GroupName = SystemSetting.GroupStyle)]
+//public class Setting : LazySettingInstance<Setting>
+//{
+
+//}

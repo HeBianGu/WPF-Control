@@ -13,7 +13,7 @@ using H.Common.Interfaces;
 
 namespace H.Presenters.Design.Base;
 
-public abstract class CloneableDesignPresenterBase : DeletableDesignPresenterBase, ICloneable, ICloneable<CloneableDesignPresenterBase>, ICloneableDesignPresenter
+public abstract class CloneableDesignPresenterBase : DeletableDesignPresenterBase, ICloneable, ICloneableDesignPresenter
 {
     //public virtual object Clone()
     //{
@@ -23,19 +23,14 @@ public abstract class CloneableDesignPresenterBase : DeletableDesignPresenterBas
     //    //return JsonSerializer.Deserialize(txt, GetType());
     //}
 
-    public CloneableDesignPresenterBase Clone()
-    {
-        return ((ICloneable)this).Clone() as CloneableDesignPresenterBase;
-    }
-
     object ICloneable.Clone()
     {
-        return this.CloneBy(x => x.GetCustomAttribute<BrowsableAttribute>()?.Browsable != false);
+        return this.ClonePrimitive(x => x.GetCustomAttribute<BrowsableAttribute>()?.Browsable != false);
     }
 
-    ICloneableDesignPresenter ICloneableDesignPresenter.Clone()
+    ICloneableDesignPresenter ICloneable<ICloneableDesignPresenter>.Clone()
     {
-        return this.Clone();
+        return this.ClonePrimitive(x => x.GetCustomAttribute<BrowsableAttribute>()?.Browsable != false) as ICloneableDesignPresenter;
     }
 }
 

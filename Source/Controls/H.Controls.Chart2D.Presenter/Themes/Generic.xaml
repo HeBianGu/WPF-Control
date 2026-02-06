@@ -1,0 +1,12 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:h="https://github.com/HeBianGu"
+    xmlns:local="clr-namespace:H.Controls.Chart2D.Presenter">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/H.Controls.Chart2D.Presenter;component/Presenter/LinePresenter.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Controls.Chart2D.Presenter;component/Presenter/PiePresenter.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Controls.Chart2D.Presenter;component/Presenter/RadarPresenter.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Controls.Chart2D.Presenter;component/Presenter/BarPresenter.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+</ResourceDictionary>

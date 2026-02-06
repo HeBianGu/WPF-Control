@@ -79,17 +79,17 @@
                                      TypeInTargetAssembly={x:Type local:DesignBorder}}"
         BasedOn="{StaticResource {x:Static local:DesignBorderKeys.Binding}}"
         TargetType="{x:Type local:DesignBorder}">
-        <Setter Property="h:MouseOverHitTestAdornerBehavior.IsMouseOver" Value="{Binding IsMouseOver, Mode=TwoWay}" />
-        <Setter Property="h:SelectedHitTestAdornerBehavior.IsSelected" Value="{Binding IsSelected, Mode=TwoWay}" />
-        <Setter Property="h:HitTestAdornerBehavior.IsHitTest" Value="True" />
-        <Setter Property="h:BehvaiorAttach.Behaviors">
+        <Setter Property="MouseOverHitTestAdornerBehavior.IsMouseOver" Value="{Binding IsMouseOver, Mode=TwoWay}" />
+        <Setter Property="SelectedHitTestAdornerBehavior.IsSelected" Value="{Binding IsSelected, Mode=TwoWay}" />
+        <Setter Property="HitTestAdornerBehavior.IsHitTest" Value="True" />
+        <Setter Property="BehvaiorAttach.Behaviors">
             <Setter.Value>
-                <h:Behaviors>
-                    <h:DraggableDataTemplateAdornerBehavior DragDropEffects="Move" RoutingStrategy="Tunnel" />
-                </h:Behaviors>
+                <Behaviors>
+                    <DraggableDataTemplateAdornerBehavior DragDropEffects="Move" RoutingStrategy="Tunnel" />
+                </Behaviors>
             </Setter.Value>
         </Setter>
-        <Setter Property="h:ControlTemplateAdorner.Template" Value="{StaticResource S.ControlTemplate.Adorner}" />
+        <Setter Property="ControlTemplateAdorner.Template" Value="{StaticResource S.ControlTemplate.Adorner}" />
     </Style>
 
     <!--<Style x:Key="{ComponentResourceKey ResourceId=S.DesignBorder.Default, TypeInTargetAssembly={x:Type local:DesignBorder}}" BasedOn="{StaticResource {x:Static local:DesignBorder.DefaultKey}}" TargetType="{x:Type local:DesignBorder}">

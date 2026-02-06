@@ -24,8 +24,6 @@ namespace H.Presenters.Design.PrintPresenter
     [Display(Name = "内容分页")]
     public class ContentPrintPagePresenter : PrintPagePresenterBase, IGetDropAdorner, IContentPrintPagePresenter
     {
-    
-
         private IDesignPresenter _content;
         [Display(Name = "内容")]
         [Browsable(false)]
@@ -39,6 +37,7 @@ namespace H.Presenters.Design.PrintPresenter
             }
         }
 
+        public ObservableCollection<IDesignPresenter> Presenters => this.Content.ToEnumerable().ToObservable();
         public void Delete(IDesignPresenter designPresenter)
         {
            if(designPresenter==this.Content)
