@@ -110,7 +110,7 @@ public class Chart2DPresenterBase : DeletableDesignPresenterBase, ICloneable
     }
 
     private bool _UseLegend = true;
-    [Display(Name = "显示网格", GroupName = "常用,样式")]
+    [Display(Name = "显示图例", GroupName = "常用,样式")]
     public bool UseLegend
     {
         get { return _UseLegend; }

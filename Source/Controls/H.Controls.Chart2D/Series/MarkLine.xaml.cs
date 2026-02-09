@@ -131,25 +131,20 @@ namespace H.Controls.Chart2D
         public override void Draw(Canvas canvas)
         {
             base.Draw(canvas);
-
             List<double> data = this.GetData().ToList();
             List<string> names = this.GetDisplayName();
             for (int i = 0; i < data.Count; i++)
             {
                 double value = data[i];
-
-                if (double.IsNaN(value)) continue;
-
+                if (double.IsNaN(value)) 
+                    continue;
                 Point start;
-
                 Point end;
-
                 if (this.MarkLineType == MarkLineType.Custom)
                 {
                     start = this.Start;
                     end = this.End;
                 }
-
                 else
                 {
                     start = this.Orientation == Orientation.Horizontal ? new Point(this.minX, value) : new Point(value, this.minY);
@@ -157,11 +152,8 @@ namespace H.Controls.Chart2D
                 }
 
                 {
-                    //  Do ：添加标定线
                     Path path = new Path();
-
                     path.Style = this.PathStyle;
-
                     if (this.MarkBrushes.Count > i)
                     {
                         path.Stroke = new SolidColorBrush(this.MarkBrushes[i]);
@@ -170,22 +162,15 @@ namespace H.Controls.Chart2D
                     {
                         path.Stroke = this.Foreground;
                     }
-
                     PolyLineSegment pls = new PolyLineSegment();
-
                     pls.Points.Add(new Point(this.GetX(start.X), this.GetY(start.Y)));
                     pls.Points.Add(new Point(this.GetX(end.X), this.GetY(end.Y)));
-
                     PathFigure pf = new PathFigure();
                     pf.StartPoint = pls.Points.FirstOrDefault();
                     pf.Segments.Add(pls);
-
                     PathGeometry pg = new PathGeometry(new List<PathFigure>() { pf });
-
                     pg.Figures.Add(pf);
-
                     path.Data = pg;
-
                     this.Children.Add(path);
                 }
 
@@ -194,7 +179,6 @@ namespace H.Controls.Chart2D
                     //  Do ：添加标定线
                     Path path = new Path();
                     path.Style = this.TrangleStyle;
-
                     if (this.MarkBrushes.Count > i)
                     {
                         path.Stroke = new SolidColorBrush(this.MarkBrushes[i]);
@@ -205,33 +189,25 @@ namespace H.Controls.Chart2D
                     }
 
                     path.Fill = path.Stroke;
-
                     PolyLineSegment pls = new PolyLineSegment();
-
                     pls.Points.Add(new Point(25, 0));
                     pls.Points.Add(new Point(50, 5));
                     pls.Points.Add(new Point(25, 10));
                     pls.Points.Add(new Point(20, 5));
                     pls.Points.Add(new Point(25, 0));
-
                     PathFigure pf = new PathFigure();
                     pf.StartPoint = pls.Points.FirstOrDefault();
                     pf.Segments.Add(pls);
-
                     PathGeometry pg = new PathGeometry(new List<PathFigure>() { pf });
-
                     path.Data = pg;
-
                     if (path.RenderTransform is TransformGroup group)
                     {
                         TransformGroup ng = group.Clone();
-
                         if (ng.Children[2] is RotateTransform rotate)
                         {
                             double angle = Math.Atan2(end.Y - start.Y, end.X - start.X) * 180 / Math.PI;
                             rotate.Angle = -angle;
                         }
-
                         path.RenderTransform = ng;
                     }
 
@@ -240,10 +216,8 @@ namespace H.Controls.Chart2D
                         Canvas.SetBottom(path, this.ActualHeight - this.GetY(end.Y) - (path.ActualHeight / 2));
                         Canvas.SetLeft(path, this.GetX(end.X) - (path.ActualWidth / 2));
                     };
-
                     this.Children.Add(path);
                 }
-
 
                 {
                     //  Do ：绘制文本
@@ -265,16 +239,10 @@ namespace H.Controls.Chart2D
                         Canvas.SetTop(text, this.GetY(end.Y) - (text.ActualHeight / 2));
                         Canvas.SetLeft(text, this.GetX(end.X) + (text.ActualWidth / 2));
                     };
-
-
-
                     this.Children.Add(text);
                 }
-
                 {
-                    //  Do ：绘制文本
                     Label text = new Label();
-
                     if (this.MarkBrushes.Count > i)
                     {
                         text.Foreground = new SolidColorBrush(this.MarkBrushes[i]);
@@ -284,9 +252,7 @@ namespace H.Controls.Chart2D
                         text.Foreground = this.Foreground;
                     }
                     text.Content = value.ToString("G4");
-
                     text.Style = this.LabelStyle;
-
                     if (this.MarkBrushes.Count > i)
                     {
                         text.Foreground = new SolidColorBrush(this.MarkBrushes[i]);
@@ -300,19 +266,14 @@ namespace H.Controls.Chart2D
                         Canvas.SetTop(text, this.GetY(start.Y) - (text.ActualHeight / 2));
                         Canvas.SetLeft(text, this.GetX(start.X) - (text.ActualWidth * 1.5));
                     };
-
                     this.Children.Add(text);
                 }
-
-                //  Do ：显示标记
-                if (this.MarkStyle == null) return;
-
+                if (this.MarkStyle == null) 
+                    return;
                 EllipseMarker m = Activator.CreateInstance(this.MarkStyle.TargetType) as EllipseMarker;
-
                 if (m != null)
                 {
                     m.Style = this.MarkStyle;
-
                     if (this.MarkBrushes.Count > i)
                     {
                         m.Stroke = new SolidColorBrush(this.MarkBrushes[i]);
@@ -321,7 +282,6 @@ namespace H.Controls.Chart2D
                     {
                         m.Stroke = this.Foreground;
                     }
-
                     Canvas.SetLeft(m, this.GetX(start.X));
                     Canvas.SetTop(m, this.GetY(start.Y));
                     this.Children.Add(m);
@@ -355,21 +315,15 @@ namespace H.Controls.Chart2D
             List<double> result = new List<double>();
 
             if (this.MarkLineType == MarkLineType.Max)
-            {
                 yield return this.maxY;
-            }
 
             else if (this.MarkLineType == MarkLineType.Min)
-            {
                 yield return this.minX;
-            }
 
             else if (this.MarkLineType == MarkLineType.Average)
             {
                 if (this.Data.Count > 0)
-                {
                     yield return this.Data.Average();
-                }
             }
             else
             {
@@ -377,9 +331,7 @@ namespace H.Controls.Chart2D
                     yield return this.Value;
                 else
                     foreach (double item in this.Data)
-                    {
                         yield return item;
-                    }
             }
         }
 
@@ -414,33 +366,25 @@ namespace H.Controls.Chart2D
         private List<string> GetDisplayName()
         {
             List<string> result = new List<string>();
-
             if (this.MarkLineType == MarkLineType.Max)
-            {
                 result.Add("最大值");
-            }
-
             else if (this.MarkLineType == MarkLineType.Min)
-            {
                 result.Add("最小值");
-            }
-
             else if (this.MarkLineType == MarkLineType.Average)
-            {
                 result.Add("平均值");
-            }
             else
-            {
                 result = this.yDisplay?.ToList();
-            }
-
             return result;
         }
     }
 
     public enum MarkLineType
     {
-        Default = 0, Max, Min, Average, Custom
+        Default = 0, 
+        Max, 
+        Min, 
+        Average, 
+        Custom
     }
 
 }

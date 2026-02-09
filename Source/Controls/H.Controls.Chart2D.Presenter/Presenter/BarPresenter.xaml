@@ -10,6 +10,7 @@
                 Background="{x:Null}"
                 Style="{DynamicResource {x:Static Chart.BarKey}}"
                 UseDrawOnce="False"
+                UseGrid="{Binding UseGrid}"
                 UseLegend="{Binding UseLegend}"
                 UseRefreshButton="False"
                 Visibility="{Binding IsVisible, Converter={x:Static Converter.GetTrueToVisible}}"

@@ -20,7 +20,6 @@ namespace H.Controls.Chart2D
               {
                   this.Draw(this);
               };
-
         }
     }
 
@@ -164,25 +163,20 @@ namespace H.Controls.Chart2D
                 double endAngle = 360 * (sum + y) / total;
                 sum = sum + y;
                 double max = len;
-                //半径跟随值变化
                 if (this.IsCustomized)
                     len = len * this.Data[i] / this.Data.Max();
-                //  Do ：增加标记
                 {
-                    //  Do ：第二个点
                     Point start = new Point(center.X - max - (max / 10), center.Y);
                     Matrix matrix = new Matrix();
                     matrix.RotateAt(((endAngle - startAngle) / 2) + startAngle, center.X, center.Y);
                     Point end = matrix.Transform(start);
 
-                    //  Do ：第一个点
                     Point startFirst = new Point(center.X - len, center.Y);
                     Matrix matrixFirst = new Matrix();
                     matrixFirst.RotateAt(((endAngle - startAngle) / 2) + startAngle, center.X, center.Y);
                     Point endFirst = matrixFirst.Transform(startFirst);
 
                     Path path = new Path();
-
                     path.Visibility = use ? Visibility.Visible : Visibility.Hidden;
                     path.Style = this.LineStyle;
                     if (this.Foreground.Count > i)
@@ -193,39 +187,24 @@ namespace H.Controls.Chart2D
                     pf.Segments.Add(new LineSegment(end, true));
 
                     double hlen = len / 8;
-
                     double endParam = end.X > center.X ? hlen : -hlen;
-
                     pf.Segments.Add(new LineSegment(new Point(end.X + endParam, end.Y), true));
-
                     PathGeometry pg = new PathGeometry(new List<PathFigure>() { pf });
-
                     path.Data = pg;
-
-
                     this.Children.Add(path);
-
-                    //  Do ：显示文本
                     Label t = new Label();
                     t.Content = this.xDisplay.Count > i ? this.xDisplay[i] : this.Data[i].ToString();
-
                     t.Visibility = use ? Visibility.Visible : Visibility.Hidden;
-
                     t.Style = this.LabelStyle;
-
                     t.Loaded += (o, e) =>
                     {
                         endParam = end.X > center.X ? hlen + (hlen / 2) : -hlen - t.ActualWidth - (hlen / 2);
-
                         Canvas.SetLeft(t, end.X + endParam);
                         Canvas.SetTop(t, end.Y - (t.ActualHeight / 2));
                     };
-
-
                     canvas.Children.Add(t);
                 }
 
-                //  Do ：增加扇形
                 {
                     ArcSegment arc = new ArcSegment();
                     Matrix matrix = new Matrix();

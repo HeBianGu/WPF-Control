@@ -50,7 +50,7 @@
                     <Setter Property="StrokeDashCap" Value="Round" />
                     <Setter Property="StrokeThickness" Value="1" />
                     <Setter Property="Stroke" Value="{Binding RelativeSource={RelativeSource AncestorType=local:Layer}, Path=Foreground}" />
-                    <Setter Property="RenderTransform">
+                    <!--<Setter Property="RenderTransform">
                         <Setter.Value>
                             <TransformGroup>
                                 <ScaleTransform />
@@ -60,7 +60,7 @@
                             </TransformGroup>
                         </Setter.Value>
                     </Setter>
-                    <Setter Property="RenderTransformOrigin" Value="0,1" />
+                    <Setter Property="RenderTransformOrigin" Value="0,1" />-->
                     <!--<Style.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter Property="Opacity" Value="1" />
@@ -79,7 +79,7 @@
                     </Style.Triggers>-->
 
 
-                    <Style.Triggers>
+                    <!--<Style.Triggers>
                         <EventTrigger RoutedEvent="MouseEnter">
                             <BeginStoryboard>
                                 <Storyboard>
@@ -92,13 +92,15 @@
                                             <ElasticEase Oscillations="6" Springiness="10" />
                                         </DoubleAnimation.EasingFunction>
                                     </DoubleAnimation>
-                                    <!--<DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)"
+                    -->
+                    <!--<DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)"
                                                      From="1" To="1.1"
                                                      Duration="00:00:02">
                                         <DoubleAnimation.EasingFunction>
                                             <ElasticEase Oscillations="6" Springiness="10" />
                                         </DoubleAnimation.EasingFunction>
                                     </DoubleAnimation>-->
+                    <!--
                                 </Storyboard>
                             </BeginStoryboard>
                         </EventTrigger>
@@ -115,13 +117,15 @@
                                             <ElasticEase Oscillations="6" Springiness="10" />
                                         </DoubleAnimation.EasingFunction>
                                     </DoubleAnimation>
-                                    <!--<DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)"
+                    -->
+                    <!--<DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)"
                                                      From="1.1" To="1"
                                                      Duration="00:00:02">
                                         <DoubleAnimation.EasingFunction>
                                             <ElasticEase Oscillations="6" Springiness="10" />
                                         </DoubleAnimation.EasingFunction>
                                     </DoubleAnimation>-->
+                    <!--
                                 </Storyboard>
                             </BeginStoryboard>
                         </EventTrigger>
@@ -130,7 +134,7 @@
                             <Setter Property="StrokeThickness" Value="4" />
                             <Setter Property="Opacity" Value="1" />
                         </Trigger>
-                    </Style.Triggers>
+                    </Style.Triggers>-->
                 </Style>
             </Setter.Value>
         </Setter>

@@ -22,7 +22,7 @@
                 <Style TargetType="Path">
                     <Setter Property="StrokeThickness" Value="3" />
                     <Setter Property="Stroke" Value="{Binding RelativeSource={RelativeSource AncestorType=local:Layer}, Path=Foreground}" />
-                    <Setter Property="OpacityMask">
+                    <!--<Setter Property="OpacityMask">
                         <Setter.Value>
                             <LinearGradientBrush StartPoint="1,0.5" EndPoint="0,0.5">
                                 <GradientStop Offset="0" Color="#00000000" />
@@ -30,9 +30,9 @@
                                 <GradientStop Offset="1" Color="#00000000" />
                             </LinearGradientBrush>
                         </Setter.Value>
-                    </Setter>
+                    </Setter>-->
                     <Style.Triggers>
-                        <EventTrigger RoutedEvent="Loaded">
+                        <!--<EventTrigger RoutedEvent="Loaded">
                             <BeginStoryboard>
                                 <Storyboard>
                                     <DoubleAnimation
@@ -52,9 +52,7 @@
                                         Duration="0" />
                                 </Storyboard>
                             </BeginStoryboard>
-                        </EventTrigger>
-
-
+                        </EventTrigger>-->
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter Property="StrokeThickness" Value="5" />
                             <Setter Property="Opacity" Value="1" />

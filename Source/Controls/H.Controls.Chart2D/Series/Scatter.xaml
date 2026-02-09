@@ -24,7 +24,7 @@
         BasedOn="{StaticResource {x:Static h:Layer.DefaultKey}}"
         TargetType="{x:Type local:ScatterBase}">
         <Setter Property="AlignmentCenter" Value="False" />
-        <Setter Property="SplitMilliSecond" Value="-1900" />
+        <!--<Setter Property="SplitMilliSecond" Value="-1900" />
         <Setter Property="Timelines">
             <Setter.Value>
                 <local:Timelines>
@@ -48,7 +48,7 @@
                     </DoubleAnimation>
                 </local:Timelines>
             </Setter.Value>
-        </Setter>
+        </Setter>-->
     </Style>
 
     <Style
@@ -97,7 +97,6 @@
                         </Setter.Value>
                     </Setter>
                     <Setter Property="Opacity" Value="0.6" />
-
                     <Style.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
                             <Trigger.EnterActions>
