@@ -9,7 +9,7 @@
         <Border
             Width="600"
             Height="Auto"
-            Margin="10">
+            Margin="10,6">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="250" />
@@ -17,7 +17,7 @@
                     <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
                 <Border
-                    Margin="5,0,5,10"
+                    Margin="5,0,5,6"
                     BorderBrush="{DynamicResource {x:Static h:BrushKeys.BorderBrush}}"
                     BorderThickness="0,0,0,0">
                     <Image Source="{Binding Source={x:Static local:RegistorOptions.Instance}, Path=Image}" />
@@ -87,7 +87,7 @@
                             VerticalAlignment="Center"
                             FontSize="25"
                             Text="用户登录" />
-                        <BulletDecorator Margin="0,2">
+                        <BulletDecorator Margin="0,1">
                             <BulletDecorator.Bullet>
                                 <TextBlock Width="60" Text="账号" />
                             </BulletDecorator.Bullet>
@@ -106,7 +106,7 @@
                             Style="{DynamicResource {x:Static PasswordBoxKeys.Attach}}"
                             Text="{Binding UserName}" />-->
 
-                        <BulletDecorator Margin="0,2">
+                        <BulletDecorator Margin="0,1">
                             <BulletDecorator.Bullet>
                                 <TextBlock Width="60" Text="密码" />
                             </BulletDecorator.Bullet>
@@ -117,7 +117,7 @@
                             </PasswordBox>
                         </BulletDecorator>
 
-                        <Grid>
+                        <Grid Height="{DynamicResource {x:Static LayoutKeys.ItemHeight}}" Margin="0,1">
                             <CheckBox
                                 HorizontalAlignment="Right"
                                 Content="记住密码"
@@ -140,7 +140,7 @@
                             Content="登录" />
 
                         <Button
-                            Margin="0,2"
+                            Margin="0,1"
                             Background="Transparent"
                             Command="{Binding GotoMailCommand}"
                             Content="立即注册"
@@ -223,14 +223,14 @@
                             FontSize="25"
                             Text="注册账号" />
 
-                        <BulletDecorator Margin="0,2" VerticalAlignment="Center">
+                        <BulletDecorator Margin="0,1" VerticalAlignment="Center">
                             <BulletDecorator.Bullet>
                                 <TextBlock Width="80" Text="用户名" />
                             </BulletDecorator.Bullet>
                             <TextBox Text="{Binding Registor.UserName, UpdateSourceTrigger=PropertyChanged}" />
                         </BulletDecorator>
 
-                        <BulletDecorator Margin="0,2" VerticalAlignment="Center">
+                        <BulletDecorator Margin="0,1" VerticalAlignment="Center">
                             <BulletDecorator.Bullet>
                                 <TextBlock Width="80" Text="密码" />
                             </BulletDecorator.Bullet>
@@ -241,7 +241,7 @@
                             </PasswordBox>
                         </BulletDecorator>
 
-                        <BulletDecorator Margin="0,2" VerticalAlignment="Center">
+                        <BulletDecorator Margin="0,1" VerticalAlignment="Center">
                             <BulletDecorator.Bullet>
                                 <TextBlock Width="80" Text="确认密码" />
                             </BulletDecorator.Bullet>
@@ -254,7 +254,7 @@
 
                         <Button
                             Width="Auto"
-                            Margin="0,2"
+                            Margin="0,1"
                             Command="{Binding GotoMailCommand}"
                             Content="上一步"
                             Visibility="{Binding Source={x:Static local:RegistorOptions.Instance}, Path=UseMail, Converter={x:Static h:Converter.GetTrueToVisible}}" />
@@ -266,12 +266,13 @@
 
 
                         <h:ProgressButton
-                            Margin="0,2"
+                            Margin="0,1"
                             HorizontalAlignment="Stretch"
                             Command="{Binding RegisterCommand}"
                             Content="注册" />
 
                         <Button
+                            Margin="0,1"
                             Background="Transparent"
                             Command="{Binding GotoLoginCommand}"
                             Content="直接登录"

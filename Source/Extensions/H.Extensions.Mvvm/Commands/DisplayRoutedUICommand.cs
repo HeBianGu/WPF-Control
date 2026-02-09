@@ -8,11 +8,11 @@
 
 namespace H.Extensions.Mvvm.Commands;
 
-public interface IDisplayCommand : ICommand
+public class DisplayRoutedUICommand : RoutedUICommand, IDisplayCommand
 {
-    string Name { get; set; }
-    string Icon { get; set; }
-    string Description { get; set; }
-    string GroupName { get; set; }
-    int Order { get; set; }
+    public string Icon { get; set; }
+    public string Description { get; set; }
+    public string GroupName { get; set; }
+    public int Order { get; set; }
+    string IDisplayCommand.Name { get; set; }
 }

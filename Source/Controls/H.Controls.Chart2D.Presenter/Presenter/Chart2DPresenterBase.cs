@@ -109,6 +109,19 @@ public class Chart2DPresenterBase : DeletableDesignPresenterBase, ICloneable
         }
     }
 
+    private bool _UseLegend = true;
+    [Display(Name = "显示网格", GroupName = "常用,样式")]
+    public bool UseLegend
+    {
+        get { return _UseLegend; }
+        set
+        {
+            _UseLegend = value;
+            RaisePropertyChanged();
+        }
+    }
+
+
     protected IEnumerable<double> Load(IEnumerable<double> data, double max = double.PositiveInfinity, double min = 0.0, int count = 5)
     {
         if (data.Count() == 0)

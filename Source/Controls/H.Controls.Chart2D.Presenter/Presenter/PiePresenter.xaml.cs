@@ -58,4 +58,18 @@ public class PiePresenter : Chart2DPresenterBase
             RaisePropertyChanged();
         }
     }
+
+    private double _len= double.NaN;
+    [DefaultValue(double.NaN)]
+    [Display(Name = "显示半径", GroupName = "常用,样式")]
+    public double Len
+    {
+        get { return _len; }
+        set
+        {
+            _len = value;
+            RaisePropertyChanged();
+        }
+    }
+
 }

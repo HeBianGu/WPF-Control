@@ -1,15 +1,15 @@
-﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:h="https://github.com/HeBianGu"
-                    xmlns:local="clr-namespace:H.Presenters.Design.Presenter">
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:h="https://github.com/HeBianGu"
+    xmlns:local="clr-namespace:H.Presenters.Design.Presenter">
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/H.Presenters.Design;component/Presenter/PanelPresenter.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
     <DataTemplate DataType="{x:Type local:FixedGridPresenter}">
         <local:DesignBorder>
-            <ItemsControl VerticalAlignment="Stretch"
-                          Style="{StaticResource S.ItemsControl.PanelPresenter}">
+            <ItemsControl VerticalAlignment="Stretch" Style="{StaticResource S.ItemsControl.PanelPresenter}">
                 <ItemsControl.ItemContainerStyle>
                     <Style TargetType="ContentPresenter">
                         <Setter Property="HorizontalAlignment" Value="{Binding ChildrenHorizontalAlignment}" />
@@ -22,20 +22,20 @@
                 </ItemsControl.ItemContainerStyle>
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
-                        <local:FixedGrid Background="Transparent"
-                                         ColumnGridLength="{Binding ColumnsGridLength}"
-                                         Columns="{Binding Columns}"
-                                         MinRowHeight="{Binding MinRowHeight}"
-                                         RowGridLength="{Binding RowGridLength}"
-                                         Rows="{Binding Rows}">
+                        <local:FixedGrid
+                            Background="Transparent"
+                            ColumnGridLength="{Binding ColumnsGridLength}"
+                            Columns="{Binding Columns}"
+                            MinRowHeight="{Binding MinRowHeight}"
+                            RowGridLength="{Binding RowGridLength}"
+                            Rows="{Binding Rows}">
                             <h:BehvaiorAttach.Behaviors>
                                 <h:Behaviors>
                                     <h:MouseOverAdornerBehavior AdornerType="{x:Type h:GridLineAdorner}" />
                                 </h:Behaviors>
                             </h:BehvaiorAttach.Behaviors>
                             <local:FixedGrid.GridLinePen>
-                                <Pen Brush="{Binding LineBrush}"
-                                     Thickness="{Binding LineThickness}" />
+                                <Pen Brush="{Binding LineBrush}" Thickness="{Binding LineThickness}" />
                             </local:FixedGrid.GridLinePen>
                         </local:FixedGrid>
                     </ItemsPanelTemplate>

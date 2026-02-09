@@ -10,6 +10,7 @@
                 MinWidth="200"
                 Background="{x:Null}"
                 UseDrawOnce="False"
+                UseLegend="{Binding UseLegend}"
                 UseRefreshButton="False"
                 Visibility="{Binding IsVisible, Converter={x:Static Converter.GetTrueToVisible}}"
                 xAxis="{Binding xAxis}"

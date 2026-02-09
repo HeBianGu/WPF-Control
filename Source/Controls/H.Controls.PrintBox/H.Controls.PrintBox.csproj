@@ -14,6 +14,7 @@
 	</ItemGroup>
 	<ItemGroup>
     <ProjectReference Include="..\..\Base\H.Attach\H.Attach.csproj" />
+    <ProjectReference Include="..\..\Extensions\H.Extensions.FontIcon\H.Extensions.FontIcon.csproj" />
     <ProjectReference Include="..\..\Extensions\H.Extensions.Setting\H.Extensions.Setting.csproj" />
     <ProjectReference Include="..\..\Presenters\H.Presenters.Design\H.Presenters.Design.csproj" />
     <ProjectReference Include="..\H.Controls.Adorner\H.Controls.Adorner.csproj" />

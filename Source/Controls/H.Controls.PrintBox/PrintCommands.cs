@@ -6,16 +6,17 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
+using H.Extensions.Mvvm.Commands;
 using System.Windows.Input;
 
 namespace H.Controls.PrintBox
 {
     public static class PrintCommands
     {
-        public static RoutedUICommand PrintView = new RoutedUICommand() { Text = "打印预览" };
-        public static RoutedUICommand Print = new RoutedUICommand() { Text = "打印" };
-        public static RoutedUICommand PrintSetting = new RoutedUICommand() { Text = "打印设置" };
+        public static DisplayRoutedUICommand PrintView = new DisplayRoutedUICommand() { Text = "打印预览", Icon = "\xE890" };
+        public static DisplayRoutedUICommand Print = new DisplayRoutedUICommand() { Text = "打印", Icon = "\xE749" };
+        public static DisplayRoutedUICommand PrintSetting = new DisplayRoutedUICommand() { Text = "打印设置", Icon = "\xE713" };
         //public static RoutedUICommand ParamSetting = new RoutedUICommand() { Text = "参数设置" };
-        public static RoutedUICommand PageSize = new RoutedUICommand() { Text = "纸张设置" };
+        public static DisplayRoutedUICommand PageSize = new DisplayRoutedUICommand() { Text = "纸张设置", Icon = "\xE8FF" };
     }
 }

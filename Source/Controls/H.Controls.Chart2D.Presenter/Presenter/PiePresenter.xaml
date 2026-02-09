@@ -9,12 +9,14 @@
                 MinWidth="200"
                 Background="{x:Null}"
                 UseDrawOnce="False"
+                UseLegend="{Binding UseLegend}"
                 UseRefreshButton="False"
                 Visibility="{Binding IsVisible, Converter={x:Static Converter.GetTrueToVisible}}">
                 <Series>
                     <Pie
                         Data="{Binding Data}"
                         Foreground="{Binding Foreground}"
+                        Len="{Binding Len}"
                         TryFreeze="False"
                         xDisplay="{Binding xDisplay}" />
                 </Series>
