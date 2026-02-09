@@ -11,6 +11,16 @@
         BasedOn="{StaticResource {x:Static DesignPresenterKeys.BindBorder}}"
         TargetType="{x:Type Border}">
         <Setter Property="SelectedHitTestAdornerBehavior.IsSelected" Value="{Binding IsSelected}" />
+        <Setter Property="ContextMenu">
+            <Setter.Value>
+                <ContextMenu>
+                    <MenuItem
+                        Command="{Binding DeleteCommand}"
+                        CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=ContextMenu}}"
+                        Header="删除" />
+                </ContextMenu>
+            </Setter.Value>
+        </Setter>
     </Style>
 
 
@@ -71,7 +81,6 @@
                 </ItemsControl.ItemsPanel>
             </h:PropertyGrid>-->
         </DockPanel>
-
     </ControlTemplate>
 
     <Style

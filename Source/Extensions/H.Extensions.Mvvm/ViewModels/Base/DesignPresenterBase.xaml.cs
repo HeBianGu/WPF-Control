@@ -138,7 +138,7 @@ public abstract class DesignPresenterBase : DisplayBindableBase, IDesignPresente
         }
     }
 
-    private Thickness _margin = new Thickness(10, 0, 10, 0);
+    private Thickness _margin = new Thickness(0, 0, 0, 0);
     [Display(Name = "外部间距", GroupName = "布局")]
     /// <summary> 说明  </summary>
     public Thickness Margin
@@ -151,7 +151,7 @@ public abstract class DesignPresenterBase : DisplayBindableBase, IDesignPresente
         }
     }
 
-    private Thickness _padding = new Thickness(10, 0, 10, 0);
+    private Thickness _padding = new Thickness(0, 0, 0, 0);
     [Display(Name = "内部间距", GroupName = "布局")]
     /// <summary> 说明  </summary>
     public Thickness Padding

@@ -9,6 +9,7 @@
 using H.Common.Interfaces;
 using H.Mvvm.Commands;
 using System.Collections;
+using System.Windows.Documents;
 using System.Windows.Input;
 
 namespace H.Presenters.Design.Base;
@@ -23,22 +24,34 @@ public abstract class DeletableDesignPresenterBase : DesignPresenterBase
 
     protected virtual void Delete(object e)
     {
+        UIElement helement = null;
+        object content = null;
+        // Adorner
         if (e is ContentControl c)
         {
             Adorner adorner = c.GetParent<Adorner>();
-            FrameworkElement element = adorner.AdornedElement.GetParent<FrameworkElement>(x =>
-            {
-                return x.GetContent() is IChildableDesignPresenter childable1&&childable1!= c.Content;
-            });
+            helement = adorner.AdornedElement;
+            content = c.Content;
+        }
+        // ContextMenu
+        if (e is ContextMenu b)
+        {
+            helement = b.PlacementTarget;
+            content = b.GetContent();
+        }
 
-            if (element?.GetContent() is IChildableDesignPresenter childable && c.Content is IDesignPresenter item)
-                childable.Delete(item);
-            else
-            {
-                adorner.AdornedElement.GetItemsSource<IList>()?.Remove(c.Content);
-                ItemsControl itemsControl = adorner.AdornedElement.GetParent<ItemsControl>();
-                itemsControl.GetItemsSource<IList>()?.Remove(c.Content);
-            }
+        FrameworkElement element = helement.GetParent<FrameworkElement>(x =>
+        {
+            return x.GetContent() is IChildableDesignPresenter childable1 && childable1 != content;
+        });
+
+        if (element?.GetContent() is IChildableDesignPresenter childable && content is IDesignPresenter item)
+            childable.Delete(item);
+        else
+        {
+            helement.GetItemsSource<IList>()?.Remove(content);
+            ItemsControl itemsControl = helement.GetParent<ItemsControl>();
+            itemsControl.GetItemsSource<IList>()?.Remove(content);
         }
     }
 }
