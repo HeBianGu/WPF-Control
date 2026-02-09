@@ -15,7 +15,7 @@ namespace H.Presenters.Design.PrintPresenter
     [Display(Name = "表格分页")]
     public class TablePrintPagePresenter : PrintDataGridPresenter, IPrintPagePresenter
     {
-        private string _title;
+        private string _title= "表格分页";
         [Display(Name = "标题", GroupName = "常用,数据")]
         public string Title
         {
@@ -27,45 +27,5 @@ namespace H.Presenters.Design.PrintPresenter
             }
         }
 
-        private string _user;
-        [Display(Name = "用户", GroupName = "常用,数据")]
-        public string User
-        {
-            get { return _user; }
-            set
-            {
-                _user = value;
-                RaisePropertyChanged();
-            }
-        }
-
-        private DateTime _date = DateTime.Now;
-        [Display(Name = "日期", GroupName = "常用,数据")]
-        public DateTime Date
-        {
-            get { return _date; }
-            set
-            {
-                _date = value;
-                RaisePropertyChanged();
-            }
-        }
-
-        private int _total;
-        [Browsable(false)]
-        public int Total
-        {
-            get { return _total; }
-            set
-            {
-                _total = value;
-                RaisePropertyChanged();
-            }
-        }
-
-        //public object Clone()
-        //{
-        //    return this.CloneBy(x => x.GetCustomAttribute<BrowsableAttribute>()?.Browsable != false);
-        //}
     }
 }

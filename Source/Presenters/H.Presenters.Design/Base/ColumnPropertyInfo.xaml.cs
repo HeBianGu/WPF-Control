@@ -7,6 +7,7 @@
 // Licensed under the MIT License (the "License")
 
 using H.Mvvm.ViewModels.Base;
+using System.Windows.Data;
 using System.Xml.Serialization;
 
 namespace H.Presenters.Design.Base;
@@ -19,9 +20,11 @@ public class ColumnPropertyInfo : BindableBase
         DisplayAttribute display = t.GetCustomAttribute<DisplayAttribute>();
         this.Header = display?.Name ?? t.Name;
         this.PropertyInfo = t;
+        BrowsableAttribute browsable = t.GetCustomAttribute<BrowsableAttribute>();
+        if (browsable != null)
+            this.IsVisible = browsable.Browsable;
     }
     [System.Text.Json.Serialization.JsonIgnore]
-
     [XmlIgnore]
     [Browsable(false)]
     public PropertyInfo PropertyInfo { get; }

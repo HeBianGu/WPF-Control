@@ -5,21 +5,21 @@
     xmlns:local="clr-namespace:H.Presenters.Design.Presenter"
     xmlns:sys="clr-namespace:System;assembly=mscorlib">
     <DataTemplate DataType="{x:Type local:DataGridDesignPresenterBase}">
-        <local:DesignBorder MinWidth="400"
-                            MinHeight="200">
-            <local:DesignDataGrid AlternatingRowBackground="{Binding AlternatingRowBackground}"
-                                  Background="{Binding GridBackground}"
-                                  BorderBrush="{Binding GridBorderBrush}"
-                                  ColumnHeaderHeight="{Binding ColumnHeaderHeight}"
-                                  ColumnPropertyInfos="{Binding ColumnPropertyInfos,Mode=TwoWay}"
-                                  Foreground="{Binding GridForeground}"
-                                  HorizontalGridLinesBrush="{Binding HorizontalGridLinesBrush}"
-                                  IsHitTestVisible="False"
-                                  IsReadOnly="True"
-                                  ItemsSource="{Binding ItemsSource}"
-                                  RowHeight="{Binding RowHeight}"
-                                  Style="{DynamicResource {x:Static local:DesignDataGrid.DefaultKey}}"
-                                  VerticalGridLinesBrush="{Binding VerticalGridLinesBrush}">
+        <local:DesignBorder MinWidth="400" MinHeight="200">
+            <local:DesignDataGrid
+                AlternatingRowBackground="{Binding AlternatingRowBackground}"
+                Background="{Binding GridBackground}"
+                BorderBrush="{Binding GridBorderBrush}"
+                ColumnHeaderHeight="{Binding ColumnHeaderHeight}"
+                ColumnPropertyInfos="{Binding ColumnPropertyInfos, Mode=TwoWay}"
+                Foreground="{Binding GridForeground}"
+                HorizontalGridLinesBrush="{Binding HorizontalGridLinesBrush}"
+                IsHitTestVisible="False"
+                IsReadOnly="True"
+                ItemsSource="{Binding ItemsSource}"
+                RowHeight="{Binding RowHeight}"
+                Style="{DynamicResource {x:Static local:DesignDataGrid.DefaultKey}}"
+                VerticalGridLinesBrush="{Binding VerticalGridLinesBrush}">
                 <DataGrid.ColumnHeaderStyle>
                     <Style TargetType="DataGridColumnHeader">
                         <Setter Property="Background" Value="{Binding RelativeSource={RelativeSource AncestorType=DataGrid}, Path=DataContext.GridHeaderBackground}" />
@@ -36,17 +36,19 @@
                         <Setter Property="Template">
                             <Setter.Value>
                                 <ControlTemplate TargetType="{x:Type DataGridCell}">
-                                    <Border Background="{TemplateBinding Background}"
-                                            BorderBrush="{TemplateBinding BorderBrush}"
-                                            BorderThickness="{TemplateBinding BorderThickness}"
-                                            SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
-                                        <ContentPresenter Margin="{TemplateBinding Padding}"
-                                                          HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                                          Content="{TemplateBinding Content}"
-                                                          ContentStringFormat="{TemplateBinding ContentStringFormat}"
-                                                          ContentTemplate="{TemplateBinding ContentTemplate}"
-                                                          SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                                    <Border
+                                        Background="{TemplateBinding Background}"
+                                        BorderBrush="{TemplateBinding BorderBrush}"
+                                        BorderThickness="{TemplateBinding BorderThickness}"
+                                        SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
+                                        <ContentPresenter
+                                            Margin="{TemplateBinding Padding}"
+                                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                            Content="{TemplateBinding Content}"
+                                            ContentStringFormat="{TemplateBinding ContentStringFormat}"
+                                            ContentTemplate="{TemplateBinding ContentTemplate}"
+                                            SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
                                     </Border>
                                 </ControlTemplate>
                             </Setter.Value>

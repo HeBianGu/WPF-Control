@@ -45,4 +45,15 @@ public class DefinitionGridPresenter : GridPresenterBase
             RaisePropertyChanged();
         }
     }
+
+    public override ICloneableDesignPresenter Clone()
+    {
+        if(base.Clone() is DefinitionGridPresenter definitionGridPresenter)
+        {
+            definitionGridPresenter.Rows = this.Rows.ToObservable();
+            definitionGridPresenter.Columns = this.Columns.ToObservable();
+            return definitionGridPresenter;
+        }
+        return base.Clone();
+    }
 }

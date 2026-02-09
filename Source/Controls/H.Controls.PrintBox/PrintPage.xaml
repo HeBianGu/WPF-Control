@@ -12,6 +12,22 @@
                 <ControlTemplate TargetType="local:PrintPage">
                     <Grid>
                         <Border
+                            Width="{Binding RelativeSource={RelativeSource AncestorType=local:PrintBox}, Path=PrintableAreaWidth}"
+                            MinHeight="{Binding RelativeSource={RelativeSource AncestorType=local:PrintBox}, Path=PrintPageHeight}"
+                            Padding="{Binding RelativeSource={RelativeSource AncestorType=local:PrintBox}, Path=FixedPageMargin}"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            IsHitTestVisible="False">
+                            <Border.Effect>
+                                <DropShadowEffect
+                                    BlurRadius="0"
+                                    Direction="-45"
+                                    ShadowDepth="10"
+                                    Color="LightGray" />
+                            </Border.Effect>
+                        </Border>
+                        <Border
                             x:Name="PART_Host"
                             Width="{Binding RelativeSource={RelativeSource AncestorType=local:PrintBox}, Path=PrintableAreaWidth}"
                             MinHeight="{Binding RelativeSource={RelativeSource AncestorType=local:PrintBox}, Path=PrintPageHeight}"
@@ -20,16 +36,9 @@
                             BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}"
                             IsHitTestVisible="True">
-                            <Border.Effect>
-                                <DropShadowEffect
-                                    BlurRadius="0"
-                                    Direction="-45"
-                                    ShadowDepth="10"
-                                    Color="LightGray" />
-                            </Border.Effect>
                             <ContentPresenter />
-                            <!--  Margin="{Binding RelativeSource={RelativeSource AncestorType=local:PrintBox}, Path=FixedPageMargin}"  -->
                         </Border>
+
                         <local:PrintRuler PageHeight="{Binding RelativeSource={RelativeSource AncestorType=local:PrintBox}, Path=PrintPageHeight, Mode=TwoWay}" />
                     </Grid>
                     <ControlTemplate.Triggers>
