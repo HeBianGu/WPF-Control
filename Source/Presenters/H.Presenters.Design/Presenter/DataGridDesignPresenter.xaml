@@ -4,14 +4,14 @@
     xmlns:h="https://github.com/HeBianGu"
     xmlns:local="clr-namespace:H.Presenters.Design.Presenter"
     xmlns:sys="clr-namespace:System;assembly=mscorlib">
-    <!--<DataTemplate DataType="{x:Type local:DataGridDesignPresenter}">
+    <DataTemplate DataType="{x:Type local:DataGridDesignPresenterBase}">
         <local:DesignBorder MinWidth="400"
                             MinHeight="200">
             <local:DesignDataGrid AlternatingRowBackground="{Binding AlternatingRowBackground}"
                                   Background="{Binding GridBackground}"
                                   BorderBrush="{Binding GridBorderBrush}"
                                   ColumnHeaderHeight="{Binding ColumnHeaderHeight}"
-                                  ColumnPropertyInfos="{Binding ColumnPropertyInfos}"
+                                  ColumnPropertyInfos="{Binding ColumnPropertyInfos,Mode=TwoWay}"
                                   Foreground="{Binding GridForeground}"
                                   HorizontalGridLinesBrush="{Binding HorizontalGridLinesBrush}"
                                   IsHitTestVisible="False"
@@ -55,5 +55,5 @@
                 </DataGrid.CellStyle>
             </local:DesignDataGrid>
         </local:DesignBorder>
-    </DataTemplate>-->
+    </DataTemplate>
 </ResourceDictionary>

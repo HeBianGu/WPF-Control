@@ -8,11 +8,8 @@
 
 namespace H.Presenters.Design.Presenter;
 
-[Display(Name = "DataGrid")]
-public class DataGridDesignPresenter : DataGridPresenterBase
+
+public class DataGridDesignPresenter : DataGridDesignPresenterBase
 {
-    public DataGridDesignPresenter()
-    {
-        this.ColumnSpan = 12;
-    }
+ 
 }

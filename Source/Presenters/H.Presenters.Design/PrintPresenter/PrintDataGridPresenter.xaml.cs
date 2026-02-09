@@ -6,6 +6,7 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
+using H.Presenters.Design.Presenter;
 using System.Windows.Markup;
 
 namespace H.Presenters.Design.PrintPresenter
@@ -13,7 +14,7 @@ namespace H.Presenters.Design.PrintPresenter
     [Display(Name = "数据表")]
     [ContentProperty("ItemsSource")]
     [DefaultProperty("ItemsSource")]
-    public class PrintDataGridPresenter : DataGridPresenterBase
+    public class PrintDataGridPresenter : DataGridDesignPresenterBase
     {
         public override void LoadDefault()
         {

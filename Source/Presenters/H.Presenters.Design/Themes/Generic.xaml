@@ -5,11 +5,15 @@
     xmlns:lp="clr-namespace:H.Presenters.Design.Presenter"
     xmlns:sys="clr-namespace:System;assembly=mscorlib">
     <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/H.Presenters.Design;component/Base/ColumnPropertyInfo.xaml" />
+
         <ResourceDictionary Source="pack://application:,,,/H.Presenters.Design;component/Presenter/DesignBorder.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Presenters.Design;component/Presenter/FixedGrid.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Presenters.Design;component/Presenter/DesignDataGrid.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Presenters.Design;component/Presenter/HexGrid.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Presenters.Design;component/Presenter/PanelPresenter.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Presenters.Design;component/Presenter/CardPresenter.xaml" />
+
         <ResourceDictionary Source="pack://application:,,,/H.Presenters.Design;component/Presenter/DataGridDesignPresenter.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Presenters.Design;component/Presenter/DateTimeNowPresenter.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Presenters.Design;component/Presenter/DefinitionGridPresenter.xaml" />

@@ -6,13 +6,38 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
+using H.Extensions.FontIcon;
 using System.Collections;
+using System.Text.Json.Serialization;
 using System.Xml.Serialization;
 
-namespace H.Presenters.Design.Base;
+namespace H.Presenters.Design.Presenter;
 
-public abstract class DataGridPresenterBase : CloneableDesignPresenterBase
+public class DataGridDesignPresenter<T> : DataGridDesignPresenterBase
 {
+    public DataGridDesignPresenter()
+    {
+
+    }
+
+    public override IEnumerable<ColumnPropertyInfo> CreateColumnPropertyInfos()
+    {
+        foreach (var item in typeof(T).GetDisplayProperties())
+        {
+            yield return new ColumnPropertyInfo(item);
+        }
+    }
+}
+
+[Icon(FontIcons.List)]
+[Display(Name = "数据表格")]
+public abstract class DataGridDesignPresenterBase : CloneableDesignPresenterBase
+{
+    protected DataGridDesignPresenterBase()
+    {
+        this.ColumnPropertyInfos = this.CreateColumnPropertyInfos().ToObservable();
+        this.ColumnSpan = 12;
+    }
     public override void LoadDefault()
     {
         base.LoadDefault();
@@ -190,12 +215,11 @@ public abstract class DataGridPresenterBase : CloneableDesignPresenterBase
     }
 
     private ObservableCollection<ColumnPropertyInfo> _columnPropertyInfos = new ObservableCollection<ColumnPropertyInfo>();
-    [System.Text.Json.Serialization.JsonIgnore]
-
+    [JsonIgnore]
     [XmlIgnore]
     [ReadOnly(true)]
     [Display(Name = "列头设置", GroupName = "常用,数据")]
-    public ObservableCollection<ColumnPropertyInfo> ColumnPropertyInfos
+    public virtual ObservableCollection<ColumnPropertyInfo> ColumnPropertyInfos
     {
         get { return _columnPropertyInfos; }
         set
@@ -209,4 +233,18 @@ public abstract class DataGridPresenterBase : CloneableDesignPresenterBase
     {
         this.ColumnPropertyInfos = new ObservableCollection<ColumnPropertyInfo>(this.ColumnPropertyInfos);
     }
+    public virtual IEnumerable<ColumnPropertyInfo> CreateColumnPropertyInfos()
+    {
+        yield break;
+    }
+
+    //public override ICloneableDesignPresenter Clone()
+    //{
+    //    var result = base.Clone();
+    //    if (result is DataGridDesignPresenterBase dataGrid)
+    //    {
+    //        dataGrid.ColumnPropertyInfos = this.ColumnPropertyInfos.Select(x => x.Clone()).ToObservable();
+    //    }
+    //    return result;
+    //}
 }
