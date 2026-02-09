@@ -11,12 +11,12 @@
                 Style="{DynamicResource {x:Static Chart.CoordKey}}"
                 UseDrawOnce="False"
                 UseGrid="{Binding UseGrid}"
+                UseLegend="{Binding UseLegend}"
                 UseRefreshButton="False"
                 UsexAxis="{Binding UsexAxis}"
                 UseyAxis="{Binding UseyAxis}"
                 Visibility="{Binding IsVisible, Converter={x:Static Converter.GetTrueToVisible}}"
                 xAxis="{Binding xAxis}"
-                UseLegend="{Binding UseLegend}"
                 xDisplay="{Binding xDisplay}"
                 yAxis="{Binding yAxis}">
                 <Series DisplayName="{Binding Name}" yDatas="{Binding Data}">

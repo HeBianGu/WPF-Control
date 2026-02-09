@@ -12,7 +12,7 @@ global using System.Collections.ObjectModel;
 
 namespace H.Presenters.Design.Presenter;
 
-[Display(Name = "DefinitionGrid")]
+[Display(Name = "自定义网格布局")]
 public class DefinitionGridPresenter : GridPresenterBase
 {
     public DefinitionGridPresenter()

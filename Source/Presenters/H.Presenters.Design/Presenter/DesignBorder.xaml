@@ -25,15 +25,15 @@
                 <Run Text="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=Content.Name}" />
                 <Run Text="]" />
             </TextBlock>-->
-            <Button
-                Background="Red"
+            <FontIconButton
+                Background="{DynamicResource {x:Static BrushKeys.Red}}"
                 BorderBrush="Transparent"
+                Cattach.CornerRadius="50"
                 Command="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=Content.DeleteCommand}"
                 CommandParameter="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}}"
-                Content="{x:Static h:Geometrys.Close}"
+                Content="{x:Static FontIcons.Delete}"
                 DockPanel.Dock="Right"
                 Foreground="White"
-                Style="{DynamicResource {x:Static h:ButtonKeys.Geometry}}"
                 ToolTip="删除" />
             <!--<Button h:Cattach.Icon="&#xe729;"
                     h:Cattach.IconSize="20"
