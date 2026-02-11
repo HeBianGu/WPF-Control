@@ -14,9 +14,9 @@ using System.Windows.Markup;
 
 namespace H.Presenters.Design.PrintPresenter
 {
-    public interface IItemsControlPrintPagePresenter: IPanelDesignPresenter
+    public interface IItemsControlPrintPagePresenter : IPanelDesignPresenter
     {
-       
+
     }
 
     [ContentProperty("Presenters")]

@@ -11,15 +11,20 @@ using H.Services.Identity;
 namespace H.Presenters.Design.Presenter;
 
 [Display(Name = "当前用户")]
-public class UserPresenter : TitlePresenter
+public class UserPresenter : TitlePresenter, IUpdateable
 {
     public UserPresenter()
     {
         this.Title = "当前用户：";
-        this.Text = Ioc<ILoginService>.Instance?.User?.Name;
+        this.UpdateData();
     }
     public override void LoadDefault()
     {
         base.LoadDefault();
+    }
+
+    public void UpdateData()
+    {
+        this.Text = Ioc<ILoginService>.Instance?.User?.Name;
     }
 }

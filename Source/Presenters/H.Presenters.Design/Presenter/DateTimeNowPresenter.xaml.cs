@@ -9,16 +9,22 @@
 namespace H.Presenters.Design.Presenter;
 
 [Display(Name = "当前日期")]
-public class DateTimeNowPresenter : TitlePresenter
+public class DateTimeNowPresenter : TitlePresenter, IUpdateable
 {
     public DateTimeNowPresenter()
     {
         this.Title = "当前日期：";
-        this.Text = DateTime.Now.ToString(this.Format);
+        this.UpdateData();
+
     }
     public override void LoadDefault()
     {
         base.LoadDefault();
+    }
+
+    public void UpdateData()
+    {
+        this.Text = DateTime.Now.ToString(this.Format);
     }
 
     private string _format = "yyyy-MM-dd HH:mm:ss";

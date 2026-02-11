@@ -13,18 +13,12 @@ using System.Text.Json.Serialization;
 using System.Xml.Serialization;
 
 namespace H.Controls.Chart2D.Presenter.Presenter;
-public class Chart2DPresenterBase : CloneableDesignPresenterBase, ICloneable
+public abstract class Chart2DPresenterBase : CloneableDesignPresenterBase, ICloneable, IChartDesignPresenter
 {
     public Chart2DPresenterBase()
     {
         this.MinHeight = 200.0;
     }
-
-    //public override void LoadDefault()
-    //{
-    //    base.LoadDefault();
-    //    this.Foreground = Application.Current.FindResource(BrushKeys.Foreground) as Brush;
-    //}
 
     protected static Random random = new Random();
 
@@ -137,4 +131,6 @@ public class Chart2DPresenterBase : CloneableDesignPresenterBase, ICloneable
             current += vSpan;
         }
     }
+
+    public abstract void UpdateData(IEnumerable<Tuple<string, double>> tuples);
 }

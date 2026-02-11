@@ -25,6 +25,8 @@ public class RadarPresenter : Chart2DPresenterBase
         this.RefreshData(data);
     }
 
+
+
     public RadarPresenter(IChartDataProvider dataProvider) : this()
     {
         this.xDisplay = dataProvider.GetData().Select(x => x.Item1).ToObservable();
@@ -33,6 +35,13 @@ public class RadarPresenter : Chart2DPresenterBase
     }
 
     public RadarPresenter(IEnumerable<Tuple<string, double>> tuples) : this()
+    {
+        this.xDisplay = tuples.Select(x => x.Item1).ToObservable();
+        IEnumerable<double> data = tuples.Select(x => x.Item2);
+        this.RefreshData(data);
+    }
+
+    public override void UpdateData(IEnumerable<Tuple<string, double>> tuples)
     {
         this.xDisplay = tuples.Select(x => x.Item1).ToObservable();
         IEnumerable<double> data = tuples.Select(x => x.Item2);

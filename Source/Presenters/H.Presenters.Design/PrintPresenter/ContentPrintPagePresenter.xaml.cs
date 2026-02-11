@@ -14,9 +14,9 @@ using System.Windows.Markup;
 
 namespace H.Presenters.Design.PrintPresenter
 {
-    public interface IContentPrintPagePresenter: IContentDesignPresenter
+    public interface IContentPrintPagePresenter : IContentDesignPresenter
     {
-       
+
     }
 
     [ContentProperty("Content")]
@@ -40,7 +40,7 @@ namespace H.Presenters.Design.PrintPresenter
         public ObservableCollection<IDesignPresenter> Presenters => this.Content.ToEnumerable().ToObservable();
         public void Delete(IDesignPresenter designPresenter)
         {
-           if(designPresenter==this.Content)
+            if (designPresenter == this.Content)
                 this.Content = null;
         }
 

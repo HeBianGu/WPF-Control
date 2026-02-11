@@ -10,6 +10,7 @@
 using H.Common.Attributes;
 
 namespace H.Controls.Chart2D.Presenter.Presenter;
+
 [Icon("\xE9D2")]
 [Display(Name = "折线图")]
 public class LinePresenter : Chart2DPresenterBase
@@ -34,10 +35,15 @@ public class LinePresenter : Chart2DPresenterBase
 
     public LinePresenter(IEnumerable<Tuple<string, double>> tuples)
     {
+        this.UpdateData(tuples);
+        this.Height = 300.0;
+    }
+
+    public override void UpdateData(IEnumerable<Tuple<string, double>> tuples)
+    {
         this.xDisplay = tuples.Select(x => x.Item1).ToObservable();
         IEnumerable<double> data = tuples.Select(x => x.Item2);
         this.RefreshData(data);
-        this.Height = 300.0;
     }
 
     public void RefreshData(IEnumerable<double> data)

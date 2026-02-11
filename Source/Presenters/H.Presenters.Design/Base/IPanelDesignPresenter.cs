@@ -10,7 +10,7 @@ using H.Common.Interfaces;
 
 namespace H.Presenters.Design.Base;
 
-public interface IPanelDesignPresenter: IChildableDesignPresenter
+public interface IPanelDesignPresenter : IChildableDesignPresenter
 {
     ObservableCollection<IDesignPresenter> Presenters { get; set; }
 }

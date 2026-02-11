@@ -36,6 +36,11 @@ public class PiePresenter : Chart2DPresenterBase
 
     public PiePresenter(IEnumerable<Tuple<string, double>> tuples) : this()
     {
+        this.UpdateData(tuples);
+    }
+
+    public override void UpdateData(IEnumerable<Tuple<string, double>> tuples)
+    {
         this.xDisplay = tuples.Select(x => x.Item1).ToObservable();
         IEnumerable<double> data = tuples.Select(x => x.Item2);
         this.RefreshData(data);
@@ -58,7 +63,7 @@ public class PiePresenter : Chart2DPresenterBase
         }
     }
 
-    private double _len= double.NaN;
+    private double _len = double.NaN;
     [DefaultValue(double.NaN)]
     [Display(Name = "显示半径", GroupName = "常用,样式")]
     public double Len
