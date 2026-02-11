@@ -289,157 +289,104 @@ public static class ObjectExtension
         return false;
     }
 
-    public static object ClonePrimitive(this object t, Predicate<PropertyInfo> predicate = null)
+    public static object CloneByBasicType(this object t, Predicate<PropertyInfo> predicate = null)
     {
         Predicate<PropertyInfo> match = x =>
         {
             if (predicate?.Invoke(x) == false)
                 return false;
-            return x.PropertyType.IsPrimitive
-              || x.PropertyType.IsValueType
-              || x.PropertyType == typeof(DateTime)
-              || x.PropertyType == typeof(string)
-              || x.PropertyType.IsEnum;
+            return x.PropertyType.IsBasicType();
         };
         return t.CloneBy(match);
     }
 
-    public static object CloneBy(this object t, Predicate<PropertyInfo> predicate = null)
+    public static object CloneByDisplay(this object from, Predicate<PropertyInfo> predicate = null)
     {
-        object n = Activator.CreateInstance(t.GetType());
-        PropertyInfo[] ps = t.GetType().GetProperties();
-        foreach (PropertyInfo p in ps)
+        return from.CloneBy(x =>
         {
-            if (p.CanWrite == false || p.CanRead == false)
-                continue;
-            if (predicate?.Invoke(p) == false)
-                continue;
+            if (predicate?.Invoke(x) == false)
+                return false;
+            var display = x.GetCustomAttribute<DisplayAttribute>();
+            if (display == null)
+                return false;
+            var browsable = x.GetCustomAttribute<BrowsableAttribute>();
+            if (browsable?.Browsable == false)
+                return false;
+            return true;
+        });
+    }
 
-            if (p.PropertyType.IsPrimitive || p.PropertyType.IsValueType || p.PropertyType == typeof(DateTime) || p.PropertyType == typeof(string))
-            {
-                p.SetValue(n, p.GetValue(t));
-                continue;
-            }
-            //var tConvert = p.PropertyType.GetCustomAttribute<TypeConverterAttribute>();
-            //if (tConvert != null)
-            //{
-            //    var t = Type.GetType(tConvert.ConverterTypeName);
-            //    TypeConverter typeConverter = Activator.CreateInstance(t) as TypeConverter;
-            //    if (typeof(Freezable).IsAssignableFrom(typeof(T)))
-            //        result = Application.Current.Dispatcher.Invoke(() =>
-            //        {
-            //            return (T)typeConverter.ConvertFromString(obj.ToString());
-            //        });
-            //    else
-            //        result = (T)typeConverter.ConvertFromString(obj.ToString());
-            //    return true;
-            //}
-            if (p.PropertyType.TryCreateInstance(out object nn))
-            {
-                if (nn is IList list && p.GetValue(t) is IList old)
-                {
-                    foreach (object item in old)
-                    {
-                        list.Add(item.CloneBy(predicate));
-                    }
-                }
-                else
-                {
-                    p.SetValue(n, nn.CloneBy(predicate));
-                }
-            }
-        }
+    public static object CloneBy(this object from, Predicate<PropertyInfo> predicate = null)
+    {
+        var n = Activator.CreateInstance(from.GetType());
+        n.CopyByBasicType(from, predicate);
+        n.CopyByList(from, predicate);
+        //n.CopyByTypeConverter(from, predicate);
         return n;
     }
 
-    public static T CloneCast<T>(this T t, Predicate<PropertyInfo> predicate = null) where T : class
+    public static T CloneCast<T>(this T t, Predicate<PropertyInfo> predicate = null) where T : class, new()
     {
         return t.CloneBy(predicate) as T;
     }
 
-    //public static object CloneXml(this object realObject)
-    //{
-    //    return XmlSerialize.Instance.CloneXml(realObject);
-    //}
-
-    public static void CopyPrimitivePropertyValueFrom(this object to, object from, Predicate<PropertyInfo> predicate = null, Func<PropertyInfo, PropertyInfo, bool> firstOrDefault = null)
+    public static void CopyByBasicType<T>(this T to, T from, Predicate<PropertyInfo> predicate = null, Func<PropertyInfo, PropertyInfo, bool> firstOrDefault = null)
     {
-        PropertyInfo[] toPs = to.GetType().GetProperties();
-        PropertyInfo[] fromPs = from.GetType().GetProperties();
-        foreach (PropertyInfo p in fromPs)
+        var ps = to.GetType().GetProperties().Where(x => x.CanWrite && x.CanWrite && predicate?.Invoke(x) != false);
+        foreach (PropertyInfo p in ps)
         {
-            if (p.CanWrite == false)
-                continue;
-            if (predicate?.Invoke(p) == false)
-                continue;
-            PropertyInfo top = null;
-            if (firstOrDefault == null)
-                top = toPs.FirstOrDefault(x => x.Name == p.Name && x.PropertyType == p.PropertyType);
-            else
-            {
-                top = toPs.FirstOrDefault(x => firstOrDefault.Invoke(x, p));
-            }
-
-            if (top == null)
-                continue;
-            if (top.CanWrite == false)
-                continue;
-            if (p.PropertyType.IsPrimitive
-                || p.PropertyType.IsValueType
-                || p.PropertyType == typeof(DateTime)
-                || p.PropertyType == typeof(string)
-                || p.PropertyType.IsEnum)
-                top.SetValue(to, p.GetValue(from));
+            if (p.PropertyType.IsBasicType())
+                p.SetValue(to, p.GetValue(from));
         }
     }
 
-
-    public static void CopyPropertyValueFrom(this object to, object from, Predicate<PropertyInfo> predicate = null, Func<PropertyInfo, PropertyInfo, bool> firstOrDefault = null)
+    public static void CopyByTypeConverter<T>(this T to, T from, Predicate<PropertyInfo> predicate = null)
     {
-        PropertyInfo[] toPs = to.GetType().GetProperties();
-        PropertyInfo[] fromPs = from.GetType().GetProperties();
-        foreach (PropertyInfo p in fromPs)
+        var ps = to.GetType().GetProperties().Where(x => x.CanWrite && x.CanWrite && predicate?.Invoke(x) != false);
+        foreach (PropertyInfo p in ps)
         {
-            if (p.CanWrite == false)
+            var tConvert = p.GetCustomAttribute<TypeConverterAttribute>();
+            if (tConvert == null)
                 continue;
-
-            if (predicate?.Invoke(p) == false)
-                continue;
-
-            PropertyInfo top = null;
-            if (firstOrDefault == null)
-                top = toPs.FirstOrDefault(x => x.Name == p.Name && x.PropertyType == p.PropertyType);
-            else
+            var value = p.GetValue(from);
+            if (value == null)
             {
-                top = toPs.FirstOrDefault(x => firstOrDefault.Invoke(x, p));
-            }
-
-            if (top == null)
-                continue;
-
-            if (top.CanWrite == false)
-                continue;
-
-            if (p.PropertyType.IsPrimitive || p.PropertyType.IsValueType || p.PropertyType == typeof(DateTime) || p.PropertyType == typeof(string))
-            {
-                top.SetValue(to, p.GetValue(from));
+                p.SetValue(to, value);
                 continue;
             }
-
-            if (p.PropertyType.TryCreateInstance(out object nn))
-                //if (nn is IList list && p.GetValue(from) is IList old)
-                //{
-                //    foreach (var item in old)
-                //    {
-                //        list.Add(item.CloneBy(predicate));
-                //    }
-                //}
-                //else
-                //{
-                //    p.SetValue(from, nn);
-                //}
-                p.SetValue(from, nn);
+            var t = Type.GetType(tConvert.ConverterTypeName);
+            TypeConverter typeConverter = Activator.CreateInstance(t) as TypeConverter;
+            var str = typeConverter.ConvertToInvariantString(value);
+            var nvalue = typeConverter.ConvertFromInvariantString(str);
+            if (nvalue is Freezable freezable)
+                freezable.Freeze();
+            p.SetValue(to, nvalue);
         }
+    }
+
+    public static void CopyByList<T>(this T to, T from, Predicate<PropertyInfo> predicate = null)
+    {
+        var ps = to.GetType().GetProperties().Where(x => x.CanWrite && x.CanWrite && predicate?.Invoke(x) != false);
+        foreach (PropertyInfo p in ps)
+        {
+            if (!typeof(IList).IsAssignableFrom(p.PropertyType))
+                return;
+            if (p.GetValue(to) is IList list && p.GetValue(from) is IList old)
+            {
+                list.Clear();
+                foreach (object item in old)
+                {
+                    list.Add(item.CloneBy(predicate));
+                }
+            }
+        }
+    }
+
+    public static void Copy<T>(this T to, T from, Predicate<PropertyInfo> predicate = null)
+    {
+        to.CopyByBasicType(from, predicate);
+        to.CopyByList(from, predicate);
+        to.CopyByTypeConverter(from, predicate);
     }
 
     public static T ToByTypeConverter<T>(this string str)

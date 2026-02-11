@@ -24,7 +24,7 @@ namespace H.Presenters.Design.PrintPresenter
 
         public object Clone()
         {
-          return this.ClonePrimitive();
+          return this.CloneByBasicType();
         }
 
         public virtual void Refresh()

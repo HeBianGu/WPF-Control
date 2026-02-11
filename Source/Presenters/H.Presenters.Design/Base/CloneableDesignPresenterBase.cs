@@ -30,7 +30,7 @@ public abstract class CloneableDesignPresenterBase : DeletableDesignPresenterBas
 
     public virtual ICloneableDesignPresenter Clone()
     {
-        return this.ClonePrimitive(x => x.GetCustomAttribute<BrowsableAttribute>()?.Browsable != false) as ICloneableDesignPresenter;
+        return this.CloneByDisplay() as ICloneableDesignPresenter;
     }
 }
 

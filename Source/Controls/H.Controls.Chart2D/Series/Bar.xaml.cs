@@ -130,24 +130,15 @@ namespace H.Controls.Chart2D
         public override void Draw(Canvas canvas)
         {
             base.Draw(canvas);
-
             double span = (this.maxX - this.minX) / this.xAxis.Count;
-
             double itemWidth = span * this.WidthPercent;
-
             for (int i = 0; i < this.xAxis.Count; i++)
             {
                 double x = this.xAxis[i];
-
                 double y = this.Data[i];
-
                 Path path = new Path();
-
                 path.Style = this.PathStyle;
-
                 PolyLineSegment area = new PolyLineSegment();
-
-                //  Do ：添加曲线
                 area.Points.Add(new Point(this.GetX(x - (itemWidth / 2) + (this.MulIndex * itemWidth / this.MulCount), this.ActualWidth), this.GetY(this.minY, this.ActualHeight)));
 
                 area.Points.Add(new Point(this.GetX(x - (itemWidth / 2) + (this.MulIndex * itemWidth / this.MulCount), this.ActualWidth), this.GetY(y, this.ActualHeight)));

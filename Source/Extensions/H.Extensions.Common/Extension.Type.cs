@@ -111,4 +111,13 @@ public static class TypeExtension
             yield return item;
         }
     }
+
+    public static bool IsBasicType(this Type type)
+    {
+        return type.IsPrimitive
+                || type.IsValueType
+                || type == typeof(DateTime)
+                || type == typeof(string)
+                || type.IsEnum;
+    }
 }

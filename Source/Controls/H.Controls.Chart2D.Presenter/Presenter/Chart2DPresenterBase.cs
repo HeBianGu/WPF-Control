@@ -13,7 +13,7 @@ using System.Text.Json.Serialization;
 using System.Xml.Serialization;
 
 namespace H.Controls.Chart2D.Presenter.Presenter;
-public class Chart2DPresenterBase : DeletableDesignPresenterBase, ICloneable
+public class Chart2DPresenterBase : CloneableDesignPresenterBase, ICloneable
 {
     public Chart2DPresenterBase()
     {
@@ -138,10 +138,5 @@ public class Chart2DPresenterBase : DeletableDesignPresenterBase, ICloneable
                 break;
             current += vSpan;
         }
-    }
-
-    public object Clone()
-    {
-        return this.ClonePrimitive();
     }
 }

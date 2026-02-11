@@ -71,5 +71,4 @@ public class PiePresenter : Chart2DPresenterBase
             RaisePropertyChanged();
         }
     }
-
 }
