@@ -23,7 +23,7 @@ public abstract class MetaSettingBase : IMetaSetting
     protected MetaSettingBase()
     {
         this._json = this.CreateMetaSettingService();
-        this.ID = this.GetType().GetCustomAttribute<IDAttribute>()?.ID;
+        this.ID = this.GetType().Name;
     }
     public string ID { get; set; } = "2FC39B7F-8C77-437B-A984-3EBDC28FF5F2";
     protected IMetaSettingService Json => this._json;
