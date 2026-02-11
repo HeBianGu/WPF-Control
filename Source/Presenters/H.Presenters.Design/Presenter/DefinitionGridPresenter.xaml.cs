@@ -9,6 +9,7 @@
 global using H.Extensions.TypeConverter;
 global using H.Presenters.Design.Base;
 global using System.Collections.ObjectModel;
+using System.Text.Json.Serialization;
 
 namespace H.Presenters.Design.Presenter;
 

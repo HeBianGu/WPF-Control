@@ -23,9 +23,6 @@ public abstract class PanelPresenterBase : DropAdornerDesignPresenterBase, IPane
     }
     private ObservableCollection<IDesignPresenter> _presenters = new ObservableCollection<IDesignPresenter>();
     [Browsable(false)]
-    [System.Text.Json.Serialization.JsonIgnore]
-
-    [XmlIgnore]
     public ObservableCollection<IDesignPresenter> Presenters
     {
         get { return _presenters; }
@@ -76,7 +73,7 @@ public abstract class PanelPresenterBase : DropAdornerDesignPresenterBase, IPane
     {
         this.Presenters.Remove(_dropBackup);
         _dropBackup.Opacity = 1;
-        if (_dropBackup is ICloneable cloneable&& cloneable.Clone() is IDesignPresenter clone)
+        if (_dropBackup is ICloneable cloneable && cloneable.Clone() is IDesignPresenter clone)
             this.Presenters.Add(clone);
         _dropBackup = null;
     }

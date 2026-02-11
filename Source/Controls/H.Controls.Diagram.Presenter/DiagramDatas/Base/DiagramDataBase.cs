@@ -453,7 +453,6 @@ public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
     protected virtual void OnDeserialized()
     {
         this.DataSource = this.CreateDataSource();
-
         foreach (var item in this.Datas.NodeDatas.OfType<IOnDiagramDeserialized>())
         {
             item.OnDiagramDeserialized();
