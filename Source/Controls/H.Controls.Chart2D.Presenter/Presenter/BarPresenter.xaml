@@ -13,6 +13,8 @@
                 UseGrid="{Binding UseGrid}"
                 UseLegend="{Binding UseLegend}"
                 UseRefreshButton="False"
+                UsexAxis="{Binding UsexAxis}"
+                UseyAxis="{Binding UseyAxis}"
                 Visibility="{Binding IsVisible, Converter={x:Static Converter.GetTrueToVisible}}"
                 xAxis="{Binding xAxis}"
                 xDisplay="{Binding xDisplay}"

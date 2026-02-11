@@ -16,7 +16,6 @@ public class PiePresenter : Chart2DPresenterBase
 {
     public PiePresenter()
     {
-        this.Height = 500;
         this.Foreground = ChartBrushKeys.ChartColors.ToObservable();
         for (int i = 1; i < 5; i++)
         {

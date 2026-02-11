@@ -65,7 +65,10 @@
                             BorderThickness="{TemplateBinding BorderThickness}"
                             CornerRadius="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(h:Cattach.CornerRadius)}" />
                         <local:LayerGroup>
-                            <local:Grid Style="{TemplateBinding GridStyle}" Visibility="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=UseGrid, Converter={x:Static h:Converter.GetTrueToVisible}}" />
+                            <local:Grid
+                                Style="{TemplateBinding GridStyle}"
+                                TryFreeze="False"
+                                Visibility="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=UseGrid, Mode=TwoWay, Converter={x:Static h:Converter.GetTrueToVisible}}" />
                             <ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
                             <local:xAxis
                                 VerticalAlignment="Bottom"
@@ -150,7 +153,10 @@
                             BorderThickness="{TemplateBinding BorderThickness}"
                             CornerRadius="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(h:Cattach.CornerRadius)}" />
                         <local:LayerGroup>
-                            <local:Grid Style="{TemplateBinding GridStyle}" />
+                            <local:Grid
+                                Style="{TemplateBinding GridStyle}"
+                                TryFreeze="False"
+                                Visibility="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=UseGrid, Mode=TwoWay, Converter={x:Static h:Converter.GetTrueToVisible}}" />
                             <ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
                             <local:xAxis
                                 VerticalAlignment="Bottom"
@@ -207,7 +213,10 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type local:Chart}">
                     <local:LayerGroup>
-                        <local:Grid Style="{StaticResource {x:Static h:Grid.VerticalKey}}" />
+                        <local:Grid
+                            Style="{StaticResource {x:Static h:Grid.VerticalKey}}"
+                            TryFreeze="False"
+                            Visibility="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=UseGrid, Mode=TwoWay, Converter={x:Static h:Converter.GetTrueToVisible}}" />
                         <ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
 
                         <Button
@@ -250,7 +259,10 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type local:Chart}">
                     <local:LayerGroup>
-                        <local:Grid Style="{StaticResource {x:Static h:Grid.VerticalKey}}" />
+                        <local:Grid
+                            Style="{StaticResource {x:Static h:Grid.VerticalKey}}"
+                            TryFreeze="False"
+                            Visibility="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=UseGrid, Mode=TwoWay, Converter={x:Static h:Converter.GetTrueToVisible}}" />
 
                         <ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
 
@@ -285,7 +297,10 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type local:Chart}">
                     <local:LayerGroup>
-                        <local:Grid Style="{StaticResource {x:Static h:Grid.VerticalKey}}" />
+                        <local:Grid
+                            Style="{StaticResource {x:Static h:Grid.VerticalKey}}"
+                            TryFreeze="False"
+                            Visibility="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=UseGrid, Mode=TwoWay, Converter={x:Static h:Converter.GetTrueToVisible}}" />
                         <ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
                         <local:xAxis Style="{TemplateBinding xAxisStyle}" Visibility="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=UsexAxis, Converter={x:Static h:Converter.GetTrueToVisible}}" />
                         <local:yAxis
@@ -311,7 +326,7 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type local:Chart}">
                     <local:LayerGroup>
-                        <local:Grid />
+                        <local:Grid TryFreeze="False" Visibility="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=UseGrid, Mode=TwoWay, Converter={x:Static h:Converter.GetTrueToVisible}}" />
                         <ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
                         <local:xAxis Style="{TemplateBinding xAxisStyle}" Visibility="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=UsexAxis, Converter={x:Static h:Converter.GetTrueToVisible}}" />
                         <local:yAxis Style="{TemplateBinding yAxisStyle}" Visibility="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=UseyAxis, Converter={x:Static h:Converter.GetTrueToVisible}}" />
@@ -356,7 +371,7 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type local:Chart}">
                     <local:LayerGroup>
-                        <local:Grid />
+                        <local:Grid TryFreeze="False" Visibility="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=UseGrid, Mode=TwoWay, Converter={x:Static h:Converter.GetTrueToVisible}}" />
                         <ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
                         <local:xAxis Style="{TemplateBinding xAxisStyle}" Visibility="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=UsexAxis, Converter={x:Static h:Converter.GetTrueToVisible}}" />
                         <local:yAxis Style="{TemplateBinding yAxisStyle}" Visibility="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=UseyAxis, Converter={x:Static h:Converter.GetTrueToVisible}}" />
@@ -404,7 +419,7 @@
                         BorderThickness="{TemplateBinding BorderThickness}"
                         CornerRadius="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(h:Cattach.CornerRadius)}">
                         <local:LayerGroup>
-                            <local:Polar />
+                            <local:Polar TryFreeze="False" Visibility="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=UseGrid, Mode=TwoWay, Converter={x:Static h:Converter.GetTrueToVisible}}" />
                             <ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
                             <local:RadiusAxis />
                             <local:AngleAxis />

@@ -57,35 +57,30 @@ public static class TypeExtension
         return false;
     }
 
-    public static object TryConvertFromString(this Type type, string txt, out string error)
+    public static TypeConverter GetTypeConverter(this PropertyInfo propertyInfo)
     {
-        try
+        var typeConvert = propertyInfo.GetCustomAttribute<TypeConverterAttribute>();
+        if (typeConvert != null)
         {
-            error = null;
-            TypeConverterAttribute typeConvert = type.GetCustomAttribute<TypeConverterAttribute>();
-            if (typeConvert != null)
-            {
-                Type t = Type.GetType(typeConvert.ConverterTypeName);
-                ConstructorInfo constructor = t.GetConstructors().FirstOrDefault(l => l.GetParameters().Count() == 0);
-                if (constructor != null)
-                {
-                    TypeConverter instance = Activator.CreateInstance(t) as TypeConverter;
-                    return instance.ConvertFrom(null, System.Globalization.CultureInfo.CurrentUICulture, txt);
-                }
-            }
-            if (typeof(IConvertible).IsAssignableFrom(type))
-                return Convert.ChangeType(txt, type);
-
-            error = "未识别转换方法";
-            return null;
+            Type t = Type.GetType(typeConvert.ConverterTypeName);
+            ConstructorInfo constructor = t.GetConstructors().FirstOrDefault(l => l.GetParameters().Count() == 0);
+            if (constructor != null)
+                return Activator.CreateInstance(t) as TypeConverter;
         }
-        catch (Exception ex)
-        {
-            error = ex.Message;
-            return null;
-        }
+        return TypeDescriptor.GetConverter(propertyInfo.PropertyType);
     }
 
+    public static object TryConvertFromString(this Type type, string txt, out string error)
+    {
+        error = null;
+        TypeConverter instance = TypeDescriptor.GetConverter(type);
+        if (instance != null)
+            return instance.ConvertFromInvariantString(txt);
+        if (typeof(IConvertible).IsAssignableFrom(type))
+            return Convert.ChangeType(txt, type);
+        error = "未识别转换方法";
+        return null;
+    }
 
     public static string GetDisplayName(this Type type)
     {

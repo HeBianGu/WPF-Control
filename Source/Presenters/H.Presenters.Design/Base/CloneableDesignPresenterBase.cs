@@ -10,6 +10,7 @@ global using H.Extensions.Common;
 global using H.Extensions.Mvvm.ViewModels.Base;
 global using System.Reflection;
 using H.Common.Interfaces;
+using H.Extensions.Mvvm.ViewModels;
 
 namespace H.Presenters.Design.Base;
 
@@ -30,7 +31,14 @@ public abstract class CloneableDesignPresenterBase : DeletableDesignPresenterBas
 
     public virtual ICloneableDesignPresenter Clone()
     {
-        return this.CloneByDisplay() as ICloneableDesignPresenter;
+        var result = this.CloneByDisplay() as ICloneableDesignPresenter;
+        if (result is IDisplayBindable display)
+        {
+            display.Name = this.Name;
+            display.Description = this.Description;
+            display.GroupName = this.GroupName;
+        }
+        return result;
     }
 }
 

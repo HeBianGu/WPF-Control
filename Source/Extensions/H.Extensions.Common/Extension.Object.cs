@@ -6,6 +6,7 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
+using System;
 using System.Collections;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
@@ -319,9 +320,12 @@ public static class ObjectExtension
     public static object CloneBy(this object from, Predicate<PropertyInfo> predicate = null)
     {
         var n = Activator.CreateInstance(from.GetType());
+        //  Do ：基础数据
         n.CopyByBasicType(from, predicate);
+        //  Do ：IList数据CloneBy递归复制
         n.CopyByList(from, predicate);
-        //n.CopyByTypeConverter(from, predicate);
+        //  Do ：TypeConverter系列数据
+        n.CopyByTypeConverter(from, predicate);
         return n;
     }
 
@@ -345,8 +349,8 @@ public static class ObjectExtension
         var ps = to.GetType().GetProperties().Where(x => x.CanWrite && x.CanWrite && predicate?.Invoke(x) != false);
         foreach (PropertyInfo p in ps)
         {
-            var tConvert = p.GetCustomAttribute<TypeConverterAttribute>();
-            if (tConvert == null)
+            var typeConverter = p.GetTypeConverter();
+            if (typeConverter == null)
                 continue;
             var value = p.GetValue(from);
             if (value == null)
@@ -354,8 +358,6 @@ public static class ObjectExtension
                 p.SetValue(to, value);
                 continue;
             }
-            var t = Type.GetType(tConvert.ConverterTypeName);
-            TypeConverter typeConverter = Activator.CreateInstance(t) as TypeConverter;
             var str = typeConverter.ConvertToInvariantString(value);
             var nvalue = typeConverter.ConvertFromInvariantString(str);
             if (nvalue is Freezable freezable)

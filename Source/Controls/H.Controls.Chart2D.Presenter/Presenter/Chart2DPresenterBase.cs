@@ -17,9 +17,7 @@ public class Chart2DPresenterBase : CloneableDesignPresenterBase, ICloneable
 {
     public Chart2DPresenterBase()
     {
-        this.Height = 200.0;
-        this.RowSpan = 20;
-        this.ColumnSpan = 20;
+        this.MinHeight = 200.0;
     }
 
     //public override void LoadDefault()

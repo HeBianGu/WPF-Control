@@ -218,6 +218,12 @@ namespace H.Controls.Chart2D
                   //Debug.WriteLine(this.GetType().FullName);
               };
 
+
+            this.IsVisibleChanged += (l, k) =>
+            {
+                this.TryDraw();
+            };
+
         }
 
         ///// <summary>  </summary>

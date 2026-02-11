@@ -126,8 +126,6 @@ namespace H.Controls.Chart2D
 
              }));
 
-
-
         public override void Draw(Canvas canvas)
         {
             base.Draw(canvas);
@@ -136,7 +134,7 @@ namespace H.Controls.Chart2D
             for (int i = 0; i < data.Count; i++)
             {
                 double value = data[i];
-                if (double.IsNaN(value)) 
+                if (double.IsNaN(value))
                     continue;
                 Point start;
                 Point end;
@@ -268,7 +266,7 @@ namespace H.Controls.Chart2D
                     };
                     this.Children.Add(text);
                 }
-                if (this.MarkStyle == null) 
+                if (this.MarkStyle == null)
                     return;
                 EllipseMarker m = Activator.CreateInstance(this.MarkStyle.TargetType) as EllipseMarker;
                 if (m != null)
@@ -380,10 +378,10 @@ namespace H.Controls.Chart2D
 
     public enum MarkLineType
     {
-        Default = 0, 
-        Max, 
-        Min, 
-        Average, 
+        Default = 0,
+        Max,
+        Min,
+        Average,
         Custom
     }
 
