@@ -176,7 +176,10 @@ namespace H.Controls.PrintBox
 
         protected override DependencyObject GetContainerForItemOverride()
         {
-            return new PrintPage();
+            var result = new PrintPage();
+            if (this.ItemContainerStyle != null)
+                result.Style = this.ItemContainerStyle;
+            return result;
         }
 
         public double PrintableAreaWidth
