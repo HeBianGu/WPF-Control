@@ -48,19 +48,19 @@ public static class GridExtension
                 return true;
             row = i;
         }
-        row = grid.RowDefinitions.Count;
+        row = grid.RowDefinitions.Count - 1;
         return true;
     }
 
     public static bool HitTestColumn(this Grid grid, Point point, out int column)
     {
         column = 0;
-        if (point.Y < 0)
+        if (point.X < 0)
         {
             column = 0;
             return false;
         }
-        if (point.Y > grid.ActualWidth)
+        if (point.X > grid.ActualWidth)
         {
             column = grid.ColumnDefinitions.Count;
             return false;
@@ -72,7 +72,7 @@ public static class GridExtension
                 return true;
             column = i;
         }
-        column = grid.ColumnDefinitions.Count;
+        column = grid.ColumnDefinitions.Count - 1;
         return true;
     }
 

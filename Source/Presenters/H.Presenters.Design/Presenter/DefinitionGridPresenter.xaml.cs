@@ -16,12 +16,12 @@ namespace H.Presenters.Design.Presenter;
 [Display(Name = "自定义网格布局")]
 public class DefinitionGridPresenter : GridPresenterBase
 {
-    public DefinitionGridPresenter()
-    {
-        this.Rows = Enumerable.Range(0, 6).Select(x => new GridLength(1, GridUnitType.Star)).ToObservable();
-        this.Columns = Enumerable.Range(0, 6).Select(x => new GridLength(1, GridUnitType.Star)).ToObservable();
-    }
-    private ObservableCollection<GridLength> _rows;
+    //public DefinitionGridPresenter()
+    //{
+    //    this.Rows = Enumerable.Range(0, 6).Select(x => new GridLength(1, GridUnitType.Star)).ToObservable();
+    //    this.Columns = Enumerable.Range(0, 6).Select(x => new GridLength(1, GridUnitType.Star)).ToObservable();
+    //}
+    private ObservableCollection<GridLength> _rows = new ObservableCollection<GridLength>();
     [Display(Name = "行数", GroupName = "常用,样式")]
     [TypeConverter(typeof(ObservableCollectionTypeConverter<GridLength, GridLengthConverter>))]
     public ObservableCollection<GridLength> Rows
@@ -34,7 +34,7 @@ public class DefinitionGridPresenter : GridPresenterBase
         }
     }
 
-    private ObservableCollection<GridLength> _columns;
+    private ObservableCollection<GridLength> _columns = new ObservableCollection<GridLength>();
     [Display(Name = "列数", GroupName = "常用,样式")]
     [TypeConverter(typeof(ObservableCollectionTypeConverter<GridLength, GridLengthConverter>))]
     public ObservableCollection<GridLength> Columns
