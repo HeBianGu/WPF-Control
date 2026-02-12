@@ -11,7 +11,7 @@ using H.Services.Identity;
 
 namespace H.Presenters.Design.Presenter;
 
-[Icon(FontIcons.UserAPN)]
+[Icon(FontIcons.SwitchUser)]
 [Display(Name = "当前用户")]
 public class UserPresenter : TitlePresenter, IUpdateable
 {

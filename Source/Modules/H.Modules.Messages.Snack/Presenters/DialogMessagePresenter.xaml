@@ -1,13 +1,15 @@
-﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
-                    xmlns:h="https://github.com/HeBianGu"
-                    xmlns:local="clr-namespace:H.Modules.Messages.Snack">
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
+    xmlns:h="https://github.com/HeBianGu"
+    xmlns:local="clr-namespace:H.Modules.Messages.Snack">
     <DataTemplate DataType="{x:Type local:DialogMessagePresenter}">
-        <Grid Width="350"
-              Height="40"
-              Margin="1"
-              ToolTip="{Binding Message}">
+        <Grid
+            Width="350"
+            Height="40"
+            Margin="1"
+            ToolTip="{Binding Message}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="Auto" />
@@ -15,11 +17,12 @@
                 <ColumnDefinition Width="Auto" />
                 <!--<ColumnDefinition Width="Auto" />-->
             </Grid.ColumnDefinitions>
-            <Border Grid.ColumnSpan="5"
-                    Background="{DynamicResource {x:Static h:BrushKeys.Background}}"
-                    BorderBrush="{DynamicResource {x:Static h:BrushKeys.BorderBrush}}"
-                    BorderThickness="1"
-                    CornerRadius="{DynamicResource {x:Static LayoutKeys.CornerRadius}}" />
+            <Border
+                Grid.ColumnSpan="5"
+                Background="{DynamicResource {x:Static h:BrushKeys.Background}}"
+                BorderBrush="{DynamicResource {x:Static h:BrushKeys.BorderBrush}}"
+                BorderThickness="1"
+                CornerRadius="{DynamicResource {x:Static LayoutKeys.CornerRadius}}" />
             <!--<Grid Width="15"
                   Height="15"
                   Margin="10,5">
@@ -32,42 +35,48 @@
                     </DrawingBrush>
                 </Grid.Background>
             </Grid>-->
-            <FontIconTextBlock Margin="10,0"
-                               FontSize="20"
-                               Foreground="{DynamicResource {x:Static BrushKeys.Accent}}"
-                               Text="{Binding Icon}" />
+            <FontIconTextBlock
+                Margin="10,0"
+                FontSize="20"
+                Foreground="{DynamicResource {x:Static BrushKeys.Accent}}"
+                Text="{Binding Icon}" />
 
-            <TextBlock Grid.Column="1"
-                       Margin="0,0"
-                       VerticalAlignment="Center"
-                       TextTrimming="CharacterEllipsis"
-                       ToolTip="{Binding Time}">
+            <TextBlock
+                Grid.Column="1"
+                Margin="0,0"
+                VerticalAlignment="Center"
+                TextTrimming="CharacterEllipsis"
+                ToolTip="{Binding Time}">
                 <Run Text="[" /><Run Text="{Binding Time, Mode=OneWay}" /><Run Text="] " />
             </TextBlock>
 
-            <TextBlock Grid.Column="2"
-                       Margin="0,2"
-                       VerticalAlignment="Center"
-                       Text="{Binding Message}"
-                       TextTrimming="CharacterEllipsis"
-                       TextWrapping="Wrap" />
+            <TextBlock
+                Grid.Column="2"
+                Margin="0,2"
+                VerticalAlignment="Center"
+                Text="{Binding Message}"
+                TextTrimming="CharacterEllipsis"
+                TextWrapping="Wrap" />
 
-            <DockPanel Grid.Column="3"
-                       LastChildFill="False"
-                       WindowChrome.IsHitTestVisibleInChrome="True">
-                <Button Height="Auto"
-                        Margin="2,0,5,0"
-                        Padding="5,3"
-                        VerticalAlignment="Center"
-                        Command="{Binding CancelCommand}"
-                        Content="取消"
-                        DockPanel.Dock="Right" />
-                <Button Height="Auto"
-                        Padding="5,3"
-                        VerticalAlignment="Center"
-                        Command="{Binding SumitCommand}"
-                        Content="确定"
-                        DockPanel.Dock="Right" />
+            <DockPanel
+                Grid.Column="3"
+                LastChildFill="False"
+                WindowChrome.IsHitTestVisibleInChrome="True">
+                <Button
+                    Height="Auto"
+                    Margin="2,0,5,0"
+                    Padding="5,3"
+                    VerticalAlignment="Center"
+                    Command="{Binding CancelCommand}"
+                    Content="取消"
+                    DockPanel.Dock="Right" />
+                <Button
+                    Height="Auto"
+                    Padding="5,3"
+                    VerticalAlignment="Center"
+                    Command="{Binding SumitCommand}"
+                    Content="确定"
+                    DockPanel.Dock="Right" />
             </DockPanel>
         </Grid>
     </DataTemplate>
