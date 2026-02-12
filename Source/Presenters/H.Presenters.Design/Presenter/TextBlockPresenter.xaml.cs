@@ -8,10 +8,12 @@
 
 global using System.ComponentModel;
 global using System.Windows;
+using H.Extensions.FontIcon;
 using H.Themes;
 
 namespace H.Presenters.Design.Presenter;
 
+[Icon(FontIcons.Font)]
 [Display(Name = "文本")]
 public class TextBlockPresenter : CommandsDesignPresenterBase, ITextData
 {

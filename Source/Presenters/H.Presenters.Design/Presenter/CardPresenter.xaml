@@ -31,7 +31,7 @@
                         Text="{Binding Title}" />
                     <TextBlock
                         Height="Auto"
-                        Margin="0"
+                        Margin="5"
                         Padding="0"
                         VerticalAlignment="Center"
                         Style="{DynamicResource {x:Static h:DesignTextBlockKeys.Binding}}" />

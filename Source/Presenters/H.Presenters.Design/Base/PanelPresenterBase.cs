@@ -7,11 +7,13 @@
 // Licensed under the MIT License (the "License")
 
 using H.Common.Interfaces;
+using H.Extensions.FontIcon;
 using System.Windows.Markup;
 using System.Xml.Serialization;
 
 namespace H.Presenters.Design.Base;
 
+[Icon(FontIcons.Tiles)]
 [ContentProperty("Presenters")]
 [DefaultProperty("Presenters")]
 public abstract class PanelPresenterBase : DropAdornerDesignPresenterBase, IPanelDesignPresenter

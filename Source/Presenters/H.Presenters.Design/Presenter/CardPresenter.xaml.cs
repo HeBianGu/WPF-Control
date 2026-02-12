@@ -6,8 +6,11 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
+using H.Extensions.FontIcon;
+
 namespace H.Presenters.Design.Presenter;
 
+[Icon(FontIcons.Smartcard)]
 [Display(Name = "卡片")]
 public class CardPresenter : TitlePresenter
 {

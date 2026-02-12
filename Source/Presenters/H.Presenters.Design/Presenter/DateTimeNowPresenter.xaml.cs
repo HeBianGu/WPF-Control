@@ -6,8 +6,11 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
+using H.Extensions.FontIcon;
+
 namespace H.Presenters.Design.Presenter;
 
+[Icon(FontIcons.Calendar)]
 [Display(Name = "当前日期")]
 public class DateTimeNowPresenter : TitlePresenter, IUpdateable
 {

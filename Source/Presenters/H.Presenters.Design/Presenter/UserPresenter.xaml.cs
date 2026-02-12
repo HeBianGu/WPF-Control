@@ -6,10 +6,12 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
+using H.Extensions.FontIcon;
 using H.Services.Identity;
 
 namespace H.Presenters.Design.Presenter;
 
+[Icon(FontIcons.UserAPN)]
 [Display(Name = "当前用户")]
 public class UserPresenter : TitlePresenter, IUpdateable
 {

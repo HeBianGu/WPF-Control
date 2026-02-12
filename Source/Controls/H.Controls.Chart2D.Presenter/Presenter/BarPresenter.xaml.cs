@@ -8,9 +8,10 @@
 
 global using H.Services.Common;
 using H.Common.Attributes;
+using H.Extensions.FontIcon;
 
 namespace H.Controls.Chart2D.Presenter.Presenter;
-[Icon("\xE9D2")]
+[Icon(FontIcons.FourBars)]
 [Display(Name = "柱状图")]
 public class BarPresenter : LinePresenter
 {
