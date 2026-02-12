@@ -24,6 +24,10 @@ namespace H.Presenters.Design.PrintPresenter
     [Display(Name = "内容分页")]
     public class ContentPrintPagePresenter : PrintPagePresenterBase, IGetDropAdorner, IContentPrintPagePresenter
     {
+        public ContentPrintPagePresenter()
+        {
+            this.UseFixedPageHeight = true;
+        }
         private IDesignPresenter _content;
         [Display(Name = "内容")]
         [Browsable(false)]

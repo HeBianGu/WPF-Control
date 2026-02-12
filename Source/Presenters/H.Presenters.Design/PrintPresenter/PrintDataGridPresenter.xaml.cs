@@ -32,5 +32,16 @@ namespace H.Presenters.Design.PrintPresenter
             this.ColumnHorizontalContentAlignment = HorizontalAlignment.Left;
             this.CellHorizontalContentAlignment = HorizontalAlignment.Left;
         }
+
+        private bool _UseFixedPageHeight;
+        public bool UseFixedPageHeight
+        {
+            get { return _UseFixedPageHeight; }
+            set
+            {
+                _UseFixedPageHeight = value;
+                RaisePropertyChanged();
+            }
+        }
     }
 }

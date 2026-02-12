@@ -44,6 +44,7 @@
                 Content="{x:Static FontIcons.Delete}"
                 DockPanel.Dock="Right"
                 Foreground="White"
+                IsEnabled="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=Content.Locked, Converter={GetTrueToFalseValueConverter}}"
                 ToolTip="删除" />
             <!--<Button h:Cattach.Icon="&#xe729;"
                     h:Cattach.IconSize="20"

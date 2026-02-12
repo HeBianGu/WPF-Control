@@ -9,6 +9,7 @@
 using System.Collections;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.DirectoryServices.ActiveDirectory;
 using System.Reflection;
 using System.Windows;
 using System.Windows.Threading;
@@ -115,4 +116,11 @@ public static class TypeExtension
                 || type == typeof(string)
                 || type.IsEnum;
     }
+
+
+    public static Type ToUnderlyingType(this Type type)
+    {
+        return Nullable.GetUnderlyingType(type) ?? type;
+    }
+
 }

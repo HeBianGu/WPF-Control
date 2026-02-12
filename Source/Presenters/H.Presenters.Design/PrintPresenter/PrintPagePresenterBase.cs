@@ -31,5 +31,17 @@ namespace H.Presenters.Design.PrintPresenter
         {
 
         }
+
+        private bool _UseFixedPageHeight;
+        public bool UseFixedPageHeight
+        {
+            get { return _UseFixedPageHeight; }
+            set
+            {
+                _UseFixedPageHeight = value;
+                RaisePropertyChanged();
+            }
+        }
+
     }
 }

@@ -20,11 +20,10 @@ namespace H.Controls.PrintBox
             DefaultStyleKeyProperty.OverrideMetadata(typeof(PrintPage), new FrameworkPropertyMetadata(typeof(PrintPage)));
         }
 
-        Border _border = null;
+        private Border _border = null;
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
-
             _border = this.Template.FindName("PART_Host", this) as Border;
         }
 

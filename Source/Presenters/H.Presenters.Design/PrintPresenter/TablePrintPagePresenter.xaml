@@ -14,6 +14,15 @@
                     DockPanel.Dock="Top"
                     FontSize="25"
                     Text="{Binding Title}" />
+                <TextBlock
+                    Margin="5"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Bottom"
+                    DockPanel.Dock="Top">
+                    <Run Text="合计:" />
+                    <Run Text="{Binding ItemsSource.Count, Mode=OneWay, FallbackValue=0}" />
+                    <Run Text="条" />
+                </TextBlock>
                 <local:PrintDataGrid
                     AlternatingRowBackground="{Binding AlternatingRowBackground}"
                     Background="{Binding GridBackground}"
@@ -36,6 +45,7 @@
                             <Setter Property="Background" Value="{Binding RelativeSource={RelativeSource AncestorType=DataGrid}, Path=DataContext.GridHeaderBackground}" />
                             <Setter Property="Foreground" Value="{Binding RelativeSource={RelativeSource AncestorType=DataGrid}, Path=DataContext.GridHeaderForeground}" />
                             <Setter Property="Padding" Value="2,0" />
+                            <Setter Property="ContentStringFormat" Value="{}{0:yyyy-MM-dd HH:mm:ss}" />
                             <Setter Property="HorizontalContentAlignment" Value="{Binding RelativeSource={RelativeSource AncestorType=DataGrid}, Path=DataContext.ColumnHorizontalContentAlignment}" />
                         </Style>
                     </DataGrid.ColumnHeaderStyle>

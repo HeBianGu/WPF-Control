@@ -96,21 +96,21 @@ public abstract class DraggableAdornerBehaviorBase : Behavior<UIElement>
     {
         if (adorner != null)
         {
-            //Visual lbl = sender as Visual;
-            //PresentationSource source = PresentationSource.FromVisual(lbl);
-            //if (source == null || source.RootVisual is Popup)
-            //{
-            //    Point pos = (Application.Current.MainWindow.Content as FrameworkElement).PointFromScreen(GetMousePosition());
-            //    adorner.UpdatePosition(pos);
-            //}
-            //else
-            //{
-            //    Point pos = lbl.PointFromScreen(GetMousePosition());
-            //    adorner.UpdatePosition(pos);
-            //}
+            Visual lbl = sender as Visual;
+            PresentationSource source = PresentationSource.FromVisual(lbl);
+            if (source == null || source.RootVisual is Popup)
+            {
+                Point pos = (Application.Current.MainWindow.Content as FrameworkElement).PointFromScreen(GetMousePosition());
+                adorner.UpdatePosition(pos);
+            }
+            else
+            {
+                Point pos = lbl.PointFromScreen(GetMousePosition());
+                adorner.UpdatePosition(pos);
+            }
 
-            Point pos = this._adornerElement.PointFromScreen(GetMousePosition());
-            adorner.UpdatePosition(pos);
+            //Point pos = this._adornerElement.PointFromScreen(GetMousePosition());
+            //adorner.UpdatePosition(pos);
         }
     }
 

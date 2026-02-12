@@ -16,6 +16,7 @@
                 HorizontalGridLinesBrush="{Binding HorizontalGridLinesBrush}"
                 IsHitTestVisible="False"
                 IsReadOnly="True"
+                ItemStringFormat=""
                 ItemsSource="{Binding ItemsSource}"
                 RowHeight="{Binding RowHeight}"
                 Style="{DynamicResource {x:Static local:DesignDataGrid.DefaultKey}}"

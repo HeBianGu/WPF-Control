@@ -15,6 +15,10 @@ namespace H.Presenters.Design.PrintPresenter
     [Display(Name = "表格分页")]
     public class TablePrintPagePresenter : PrintDataGridPresenter, IPrintPagePresenter
     {
+        public TablePrintPagePresenter()
+        {
+            this.UseFixedPageHeight = false;
+        }
         private string _title= "表格分页";
         [Display(Name = "标题", GroupName = "常用,数据")]
         public string Title

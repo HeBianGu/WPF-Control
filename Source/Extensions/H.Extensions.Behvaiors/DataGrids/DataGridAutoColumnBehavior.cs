@@ -185,10 +185,17 @@ public class DataGridAutoColumnBehavior : Behavior<DataGrid>
                 binding.Path = new PropertyPath(path);
                 binding.Mode = readOnly?.IsReadOnly == true || !p.CanWrite ? BindingMode.OneWay : BindingMode.TwoWay;
                 bound.Binding = binding;
-                if (columnAttribute?.ConvertyType != null)
-                    binding.Converter = Activator.CreateInstance(columnAttribute.ConvertyType) as IValueConverter;
+                if (columnAttribute?.ValueConvertType != null)
+                    binding.Converter = Activator.CreateInstance(columnAttribute.ValueConvertType) as IValueConverter;
                 if (columnAttribute?.StringFormat != null)
                     binding.StringFormat = columnAttribute.StringFormat;
+                else
+                {
+                    var dformat = p.GetCustomAttribute<DisplayFormatAttribute>();
+                    if (dformat != null)
+                        binding.StringFormat = dformat.DataFormatString;
+                }
+
             }
             dataGrid.Columns.Add(column);
         }

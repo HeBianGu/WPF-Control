@@ -7,6 +7,7 @@
 // Licensed under the MIT License (the "License")
 
 using H.Mvvm.ViewModels.Base;
+using System.DirectoryServices.ActiveDirectory;
 using System.Windows.Data;
 using System.Xml.Serialization;
 
@@ -23,6 +24,9 @@ public class ColumnPropertyInfo : BindableBase
         BrowsableAttribute browsable = t.GetCustomAttribute<BrowsableAttribute>();
         if (browsable != null)
             this.IsVisible = browsable.Browsable;
+        var format = t.GetCustomAttribute<DisplayFormatAttribute>();
+        if (format != null)
+            this.DataFormatString = format.DataFormatString;
     }
     [System.Text.Json.Serialization.JsonIgnore]
     [XmlIgnore]
@@ -40,6 +44,20 @@ public class ColumnPropertyInfo : BindableBase
             RaisePropertyChanged();
         }
     }
+
+
+    private string _DataFormatString;
+    [Display(Name = "格式化显示")]
+    public string DataFormatString
+    {
+        get { return _DataFormatString; }
+        set
+        {
+            _DataFormatString = value;
+            RaisePropertyChanged();
+        }
+    }
+
 
     //private double _width = double.NaN;
     //[Display(Name = "列宽")]

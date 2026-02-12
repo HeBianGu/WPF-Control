@@ -28,7 +28,6 @@ public abstract class DesignPresenterBase : DisplayBindableBase, IDesignPresente
     private bool _isSelected;
     [Browsable(false)]
     [System.Text.Json.Serialization.JsonIgnore]
-
     [XmlIgnore]
     public bool IsSelected
     {
@@ -138,7 +137,7 @@ public abstract class DesignPresenterBase : DisplayBindableBase, IDesignPresente
         }
     }
 
-    private Thickness _margin = new Thickness(0, 0, 0, 0);
+    private Thickness _margin;
     [Display(Name = "外部间距", GroupName = "布局")]
     /// <summary> 说明  </summary>
     public Thickness Margin
@@ -151,7 +150,7 @@ public abstract class DesignPresenterBase : DisplayBindableBase, IDesignPresente
         }
     }
 
-    private Thickness _padding = new Thickness(0, 0, 0, 0);
+    private Thickness _padding;
     [Display(Name = "内部间距", GroupName = "布局")]
     /// <summary> 说明  </summary>
     public Thickness Padding
@@ -165,6 +164,7 @@ public abstract class DesignPresenterBase : DisplayBindableBase, IDesignPresente
     }
 
     private HorizontalAlignment _horizontalAlignment = HorizontalAlignment.Stretch;
+    [DefaultValue(HorizontalAlignment.Stretch)]
     [Display(Name = "水平对齐", GroupName = "布局")]
     /// <summary> 说明  </summary>
     public HorizontalAlignment HorizontalAlignment
@@ -178,6 +178,7 @@ public abstract class DesignPresenterBase : DisplayBindableBase, IDesignPresente
     }
 
     private HorizontalAlignment _horizontalContentAlignment;
+    [DefaultValue(HorizontalAlignment.Left)]
     [Display(Name = "水平内容对齐", GroupName = "布局")]
     /// <summary> 说明  </summary>
     public HorizontalAlignment HorizontalContentAlignment
@@ -191,6 +192,7 @@ public abstract class DesignPresenterBase : DisplayBindableBase, IDesignPresente
     }
 
     private VerticalAlignment _verticalAlignment = VerticalAlignment.Stretch;
+    [DefaultValue(VerticalAlignment.Stretch)]
     [Display(Name = "垂直对齐", GroupName = "布局")]
     /// <summary> 说明  </summary>
     public VerticalAlignment VerticalAlignment
@@ -204,6 +206,7 @@ public abstract class DesignPresenterBase : DisplayBindableBase, IDesignPresente
     }
 
     private VerticalAlignment _verticalContentAlignment;
+    [DefaultValue(VerticalAlignment.Top)]
     [Display(Name = "垂直内部对齐", GroupName = "布局")]
     /// <summary> 说明  </summary>
     public VerticalAlignment VerticalContentAlignment
@@ -270,6 +273,7 @@ public abstract class DesignPresenterBase : DisplayBindableBase, IDesignPresente
     }
 
     private bool _isVisible = true;
+    [DefaultValue(true)]
     [Display(Name = "可见", GroupName = "样式")]
     /// <summary> 说明  </summary>
     public bool IsVisible
@@ -283,6 +287,7 @@ public abstract class DesignPresenterBase : DisplayBindableBase, IDesignPresente
     }
 
     private bool _isEnabled = true;
+    [DefaultValue(true)]
     [Display(Name = "可用", GroupName = "样式")]
     /// <summary> 说明  </summary>
     public bool IsEnabled

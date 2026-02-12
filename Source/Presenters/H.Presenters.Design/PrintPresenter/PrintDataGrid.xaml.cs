@@ -6,6 +6,8 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Windows.Data;
 using System.Windows.Threading;
 
 namespace H.Presenters.Design.PrintPresenter
@@ -107,6 +109,11 @@ namespace H.Presenters.Design.PrintPresenter
             {
                 e.Cancel = !find.IsVisible;
                 e.Column.Header = find.Header;
+                if (e.Column is DataGridTextColumn textColumn && textColumn.Binding is Binding binding)
+                {
+                    binding.StringFormat = find.DataFormatString;
+                    //binding.Converter = Activator.CreateInstance(columnAttribute.ValueConvertType) as IValueConverter;
+                }
             }
             else
             {

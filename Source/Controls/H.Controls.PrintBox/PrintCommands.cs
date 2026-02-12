@@ -17,6 +17,6 @@ namespace H.Controls.PrintBox
         public static DisplayRoutedUICommand Print = new DisplayRoutedUICommand() { Text = "打印", Icon = "\xE749" };
         public static DisplayRoutedUICommand PrintSetting = new DisplayRoutedUICommand() { Text = "打印设置", Icon = "\xE713" };
         //public static RoutedUICommand ParamSetting = new RoutedUICommand() { Text = "参数设置" };
-        public static DisplayRoutedUICommand PageSize = new DisplayRoutedUICommand() { Text = "纸张设置", Icon = "\xE8FF" };
+        //public static DisplayRoutedUICommand PageSize = new DisplayRoutedUICommand() { Text = "纸张设置", Icon = "\xE8FF" };
     }
 }

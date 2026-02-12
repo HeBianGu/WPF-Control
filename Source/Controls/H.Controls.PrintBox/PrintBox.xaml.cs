@@ -79,14 +79,14 @@ namespace H.Controls.PrintBox
             //    };
             //    this.CommandBindings.Add(binding);
             //}
-            {
-                CommandBinding binding = new CommandBinding(PrintCommands.PageSize);
-                binding.Executed += async (l, k) =>
-                {
-                    await this.ShowPageSize();
-                };
-                this.CommandBindings.Add(binding);
-            }
+            //{
+            //    CommandBinding binding = new CommandBinding(PrintCommands.PageSize);
+            //    binding.Executed += async (l, k) =>
+            //    {
+            //        await this.ShowPageSize();
+            //    };
+            //    this.CommandBindings.Add(binding);
+            //}
         }
 
         public async Task ShowPageSize()
@@ -280,7 +280,6 @@ namespace H.Controls.PrintBox
             private set { SetValue(PrintPageHeightProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty PrintPageHeightProperty =
             DependencyProperty.Register("PrintPageHeight", typeof(double), typeof(PrintBox), new FrameworkPropertyMetadata(default(double), (d, e) =>
             {

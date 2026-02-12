@@ -24,7 +24,7 @@ public class DataGridColumnAttribute : Attribute, IDataGridColumn
     }
     public DataGridLength Width { get; set; } = DataGridLength.Auto;
     public Type Template { get; set; } = typeof(DataGridTextColumn);
-    public Type ConvertyType { get; set; }
+    public Type ValueConvertType { get; set; }
     /// <summary>
     /// "{0}.Property"
     /// </summary>

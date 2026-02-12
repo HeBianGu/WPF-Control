@@ -24,6 +24,10 @@ namespace H.Presenters.Design.PrintPresenter
     [Display(Name = "列表分页")]
     public class ItemsControlPrintPagePresenter : PrintPagePresenterBase, IGetDropAdorner, IItemsControlPrintPagePresenter
     {
+        public ItemsControlPrintPagePresenter()
+        {
+            this.UseFixedPageHeight = true;
+        }
         private ObservableCollection<IDesignPresenter> _presenters = new ObservableCollection<IDesignPresenter>();
         [Display(Name = "数据列表")]
         [Browsable(false)]

@@ -14,13 +14,26 @@ using System.Windows.Input;
 
 namespace H.Presenters.Design.Base;
 
-public abstract class DeletableDesignPresenterBase : DesignPresenterBase
+public abstract class DeletableDesignPresenterBase : DesignPresenterBase, ILockableDesignPresenter
 {
     [Display(Name = "删除")]
     public ICommand DeleteCommand => new RelayCommand(e =>
     {
         Delete(e);
     });
+
+
+    private bool _Locked = false;
+    [Display(Name = "高", GroupName = "常用,布局")]
+    public bool Locked
+    {
+        get { return _Locked; }
+        set
+        {
+            _Locked = value;
+            RaisePropertyChanged();
+        }
+    }
 
     protected virtual void Delete(object e)
     {
