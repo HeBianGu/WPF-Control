@@ -21,7 +21,7 @@ public abstract class PanelPresenterBase : DropAdornerDesignPresenterBase, IPane
     public PanelPresenterBase()
     {
         //this.MinHeight = 100;
-        this.MinWidth = 30;
+        this.MinWidth = 50;
     }
     private ObservableCollection<IDesignPresenter> _presenters = new ObservableCollection<IDesignPresenter>();
     [Browsable(false)]
