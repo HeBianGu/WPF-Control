@@ -92,4 +92,18 @@ public abstract class PanelPresenterBase : DropAdornerDesignPresenterBase, IPane
         if (this.Presenters.Contains(designPresenter))
             this.Presenters.Remove(designPresenter);
     }
+
+    public override ICloneableDesignPresenter Clone()
+    {
+        var r = base.Clone();
+        if (r is PanelPresenterBase panel)
+        {
+            foreach (var item in this.Presenters)
+            {
+                if (item is ICloneable cloneable && cloneable.Clone() is IDesignPresenter clone)
+                    panel.Presenters.Add(clone);
+            }
+        }
+        return r;
+    }
 }
