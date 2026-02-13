@@ -41,7 +41,7 @@ public abstract class CommandsBindableBase : Bindable, ICommandsBindable
     protected void UpdateCommands()
     {
         this.Commands.Clear();
-        foreach (var item in this.CreateCommands().OrderBy(x => x.Order).OfType<ICommand>())
+        foreach (var item in this.CreateCommands().Where(x => x != null).OrderBy(x => x.Order).OfType<ICommand>())
         {
             this.Commands.Add(item);
         }

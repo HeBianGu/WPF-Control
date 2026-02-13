@@ -55,7 +55,7 @@ public abstract class DesignPresenterBase : DisplayBindableBase, IDesignPresente
 
     private double _height = double.NaN;
     [DefaultValue(double.NaN)]
-    [Display(Name = "高", GroupName = "常用,布局")]
+    [Display(Name = "高", GroupName = "常用,样式")]
     [TypeConverter(typeof(LengthConverter))]
     public double Height
     {
@@ -69,7 +69,7 @@ public abstract class DesignPresenterBase : DisplayBindableBase, IDesignPresente
 
     private double _width = double.NaN;
     [DefaultValue(double.NaN)]
-    [Display(Name = "宽", GroupName = "常用,布局")]
+    [Display(Name = "宽", GroupName = "常用,样式")]
     [TypeConverter(typeof(LengthConverter))]
     public double Width
     {
@@ -83,7 +83,7 @@ public abstract class DesignPresenterBase : DisplayBindableBase, IDesignPresente
 
     private double _minHeight = double.NaN;
     [DefaultValue(double.NaN)]
-    [Display(Name = "最小高度", GroupName = "布局")]
+    [Display(Name = "最小高度", GroupName = "样式")]
     [TypeConverter(typeof(LengthConverter))]
     public double MinHeight
     {
@@ -97,7 +97,7 @@ public abstract class DesignPresenterBase : DisplayBindableBase, IDesignPresente
 
     private double _minWidth = double.NaN;
     [DefaultValue(double.NaN)]
-    [Display(Name = "最小宽度", GroupName = "布局")]
+    [Display(Name = "最小宽度", GroupName = "样式")]
     [TypeConverter(typeof(LengthConverter))]
     public double MinWidth
     {
@@ -111,7 +111,7 @@ public abstract class DesignPresenterBase : DisplayBindableBase, IDesignPresente
 
     private double _maxHeight = double.NaN;
     [DefaultValue(double.NaN)]
-    [Display(Name = "最大高度", GroupName = "布局")]
+    [Display(Name = "最大高度", GroupName = "样式")]
     [TypeConverter(typeof(LengthConverter))]
     public double MaxHeight
     {
@@ -125,7 +125,7 @@ public abstract class DesignPresenterBase : DisplayBindableBase, IDesignPresente
 
     private double _maxWidth = double.NaN;
     [DefaultValue(double.NaN)]
-    [Display(Name = "最大宽度", GroupName = "布局")]
+    [Display(Name = "最大宽度", GroupName = "样式")]
     [TypeConverter(typeof(LengthConverter))]
     public double MaxWidth
     {
@@ -274,7 +274,7 @@ public abstract class DesignPresenterBase : DisplayBindableBase, IDesignPresente
 
     private bool _isVisible = true;
     [DefaultValue(true)]
-    [Display(Name = "可见", GroupName = "样式")]
+    [Display(Name = "是否显示", GroupName = "样式")]
     /// <summary> 说明  </summary>
     public bool IsVisible
     {
@@ -288,7 +288,7 @@ public abstract class DesignPresenterBase : DisplayBindableBase, IDesignPresente
 
     private bool _isEnabled = true;
     [DefaultValue(true)]
-    [Display(Name = "可用", GroupName = "样式")]
+    [Display(Name = "是否可用", GroupName = "样式")]
     /// <summary> 说明  </summary>
     public bool IsEnabled
     {
@@ -351,4 +351,18 @@ public abstract class DesignPresenterBase : DisplayBindableBase, IDesignPresente
             RaisePropertyChanged();
         }
     }
+
+    private bool _IsHitTestVisible = true;
+    [DefaultValue(true)]
+    [Display(Name = "是否可点击", GroupName = "样式")]
+    public bool IsHitTestVisible
+    {
+        get { return _IsHitTestVisible; }
+        set
+        {
+            _IsHitTestVisible = value;
+            RaisePropertyChanged();
+        }
+    }
+
 }
