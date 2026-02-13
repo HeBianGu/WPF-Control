@@ -121,8 +121,8 @@ public abstract class DisplayBindableBase : CommandsBindableBase, IDable, IDispl
     /// <summary>
     /// 获取或设置对象的分组名称。
     /// </summary>
-    [System.Text.Json.Serialization.JsonIgnore]
-    [System.Xml.Serialization.XmlIgnore]
+    [JsonIgnore]
+    [XmlIgnore]
     [Browsable(false)]
     public virtual string GroupName
     {
@@ -139,8 +139,8 @@ public abstract class DisplayBindableBase : CommandsBindableBase, IDable, IDispl
     /// <summary>
     /// 获取或设置对象的描述。
     /// </summary>
-    [System.Text.Json.Serialization.JsonIgnore]
-    [System.Xml.Serialization.XmlIgnore]
+    [JsonIgnore]
+    [XmlIgnore]
     [Browsable(false)]
     public virtual string Description
     {
@@ -157,8 +157,8 @@ public abstract class DisplayBindableBase : CommandsBindableBase, IDable, IDispl
     /// <summary>
     /// 获取或设置对象的顺序。
     /// </summary>
-    [System.Text.Json.Serialization.JsonIgnore]
-    [System.Xml.Serialization.XmlIgnore]
+    [JsonIgnore]
+    [XmlIgnore]
     [Browsable(false)]
     public virtual int Order
     {
