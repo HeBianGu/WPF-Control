@@ -38,7 +38,8 @@ public abstract class GridPresenterBase : PanelPresenterBase
         }
     }
 
-    private double _lineThickness = 1;
+    private double _lineThickness = 1.0;
+    [DefaultValue(1.0)]
     [Display(Name = "网线粗细", GroupName = "常用,样式")]
     public double LineThickness
     {

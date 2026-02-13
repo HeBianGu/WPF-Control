@@ -21,7 +21,7 @@ public abstract class PanelPresenterBase : DropAdornerDesignPresenterBase, IPane
     public PanelPresenterBase()
     {
         //this.MinHeight = 100;
-        this.MinWidth = 300;
+        this.MinWidth = 30;
     }
     private ObservableCollection<IDesignPresenter> _presenters = new ObservableCollection<IDesignPresenter>();
     [Browsable(false)]
@@ -35,7 +35,7 @@ public abstract class PanelPresenterBase : DropAdornerDesignPresenterBase, IPane
         }
     }
 
-    private HorizontalAlignment _childrenHorizontalAlignment = HorizontalAlignment.Center;
+    private HorizontalAlignment _childrenHorizontalAlignment = HorizontalAlignment.Stretch;
     [Display(Name = "水平内部对齐", GroupName = "常用,样式")]
     public HorizontalAlignment ChildrenHorizontalAlignment
     {
@@ -47,7 +47,7 @@ public abstract class PanelPresenterBase : DropAdornerDesignPresenterBase, IPane
         }
     }
 
-    private VerticalAlignment _childrenVerticalAlignment = VerticalAlignment.Center;
+    private VerticalAlignment _childrenVerticalAlignment = VerticalAlignment.Stretch;
     [Display(Name = "垂直内部对齐", GroupName = "常用,样式")]
     public VerticalAlignment ChildrenVerticalAlignment
     {

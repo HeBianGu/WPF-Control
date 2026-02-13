@@ -1,12 +1,12 @@
 ﻿<ResourceDictionary
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:h="https://github.com/HeBianGu"
+    xmlns:c="clr-namespace:H.Presenters.Design.Controls"
     xmlns:local="clr-namespace:H.Presenters.Design.Presenter"
     xmlns:sys="clr-namespace:System;assembly=mscorlib">
 
     <DataTemplate DataType="{x:Type local:CardPresenter}">
-        <local:DesignBorder>
+        <c:DesignBorder>
             <Border CornerRadius="{Binding CornerRadius}">
                 <Border.Effect>
                     <DropShadowEffect Opacity="{Binding DropShadowEffectOpacity}" Color="Black" />
@@ -34,9 +34,9 @@
                         Margin="5"
                         Padding="0"
                         VerticalAlignment="Center"
-                        Style="{DynamicResource {x:Static h:DesignTextBlockKeys.Binding}}" />
+                        Style="{DynamicResource {x:Static c:DesignTextBlockKeys.Binding}}" />
                 </StackPanel>
             </Border>
-        </local:DesignBorder>
+        </c:DesignBorder>
     </DataTemplate>
 </ResourceDictionary>

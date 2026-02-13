@@ -7,7 +7,7 @@
 // Licensed under the MIT License (the "License")
 
 using H.Common.Interfaces;
-using H.Presenters.Design.Presenter;
+using H.Presenters.Design.Controls;
 using System.Windows.Markup;
 namespace H.Presenters.Design;
 

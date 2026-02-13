@@ -1,6 +1,7 @@
 ﻿<ResourceDictionary
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:c="clr-namespace:H.Presenters.Design.Controls"
     xmlns:h="https://github.com/HeBianGu"
     xmlns:local="clr-namespace:H.Presenters.Design.Presenter"
     xmlns:sys="clr-namespace:System;assembly=mscorlib">
@@ -8,7 +9,7 @@
         <ResourceDictionary Source="pack://application:,,,/H.Presenters.Design;component/Presenter/PanelPresenter.xaml" />
     </ResourceDictionary.MergedDictionaries>
     <DataTemplate DataType="{x:Type local:UniformGridPresenter}">
-        <local:DesignBorder>
+        <c:DesignBorder>
             <ItemsControl Style="{StaticResource S.ItemsControl.PanelPresenter}">
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
@@ -16,6 +17,6 @@
                     </ItemsPanelTemplate>
                 </ItemsControl.ItemsPanel>
             </ItemsControl>
-        </local:DesignBorder>
+        </c:DesignBorder>
     </DataTemplate>
 </ResourceDictionary>

@@ -1,7 +1,7 @@
 ﻿using System.Runtime.CompilerServices;
 using System.Windows.Threading;
 
-namespace H.Presenters.Design.Presenter
+namespace H.Presenters.Design.Controls
 {
     public class DesignDataGrid : DataGrid
     {
@@ -91,7 +91,7 @@ namespace H.Presenters.Design.Presenter
             }
             if (descriptor is PropertyInfo pi)
             {
-                Object[] attributes = pi.GetCustomAttributes(typeof(DisplayAttribute), true);
+                object[] attributes = pi.GetCustomAttributes(typeof(DisplayAttribute), true);
                 for (int i = 0; i < attributes.Length; ++i)
                 {
                     DisplayAttribute displayName = attributes[i] as DisplayAttribute;

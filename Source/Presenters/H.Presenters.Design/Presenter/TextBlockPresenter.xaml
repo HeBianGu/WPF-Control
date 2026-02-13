@@ -1,15 +1,16 @@
 ﻿<ResourceDictionary
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:h="https://github.com/HeBianGu"
+    xmlns:c="clr-namespace:H.Presenters.Design.Controls"
     xmlns:local="clr-namespace:H.Presenters.Design.Presenter"
     xmlns:sys="clr-namespace:System;assembly=mscorlib">
     <DataTemplate DataType="{x:Type local:TextBlockPresenter}">
-        <local:DesignBorder>
+        <c:DesignBorder>
             <TextBlock
                 Height="Auto"
+                HorizontalAlignment="{Binding HorizontalContentAlignment}"
                 VerticalAlignment="{Binding VerticalContentAlignment}"
-                Style="{DynamicResource {x:Static h:DesignTextBlockKeys.Binding}}" />
-        </local:DesignBorder>
+                Style="{DynamicResource {x:Static DesignTextBlockKeys.Binding}}" />
+        </c:DesignBorder>
     </DataTemplate>
 </ResourceDictionary>

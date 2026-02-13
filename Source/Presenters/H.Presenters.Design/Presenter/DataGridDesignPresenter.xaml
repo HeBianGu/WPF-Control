@@ -1,12 +1,13 @@
 ﻿<ResourceDictionary
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:c="clr-namespace:H.Presenters.Design.Controls"
     xmlns:h="https://github.com/HeBianGu"
     xmlns:local="clr-namespace:H.Presenters.Design.Presenter"
     xmlns:sys="clr-namespace:System;assembly=mscorlib">
     <DataTemplate DataType="{x:Type local:DataGridDesignPresenterBase}">
-        <local:DesignBorder MinWidth="400" MinHeight="200">
-            <local:DesignDataGrid
+        <c:DesignBorder MinWidth="400" MinHeight="200">
+            <c:DesignDataGrid
                 AlternatingRowBackground="{Binding AlternatingRowBackground}"
                 Background="{Binding GridBackground}"
                 BorderBrush="{Binding GridBorderBrush}"
@@ -19,7 +20,7 @@
                 ItemStringFormat=""
                 ItemsSource="{Binding ItemsSource}"
                 RowHeight="{Binding RowHeight}"
-                Style="{DynamicResource {x:Static local:DesignDataGrid.DefaultKey}}"
+                Style="{DynamicResource {x:Static c:DesignDataGrid.DefaultKey}}"
                 VerticalGridLinesBrush="{Binding VerticalGridLinesBrush}">
                 <DataGrid.ColumnHeaderStyle>
                     <Style TargetType="DataGridColumnHeader">
@@ -56,7 +57,7 @@
                         </Setter>
                     </Style>
                 </DataGrid.CellStyle>
-            </local:DesignDataGrid>
-        </local:DesignBorder>
+            </c:DesignDataGrid>
+        </c:DesignBorder>
     </DataTemplate>
 </ResourceDictionary>

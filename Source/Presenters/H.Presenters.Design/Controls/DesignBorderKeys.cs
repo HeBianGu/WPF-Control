@@ -6,12 +6,7 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
-namespace H.Presenters.Design.Presenter;
-
-public class DesignTextBlockKeys
-{
-    public static ComponentResourceKey Binding => new ComponentResourceKey(typeof(DesignTextBlockKeys), "S.TextBlock.Binding");
-}
+namespace H.Presenters.Design.Controls;
 
 public class DesignBorderKeys
 {

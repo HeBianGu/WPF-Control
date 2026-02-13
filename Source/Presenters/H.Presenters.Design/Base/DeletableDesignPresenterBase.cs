@@ -7,7 +7,10 @@
 // Licensed under the MIT License (the "License")
 
 using H.Common.Interfaces;
+using H.Extensions.FontIcon;
+using H.Extensions.Mvvm.Commands;
 using H.Mvvm.Commands;
+using H.Services.Message;
 using System.Collections;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -16,15 +19,15 @@ namespace H.Presenters.Design.Base;
 
 public abstract class DeletableDesignPresenterBase : DesignPresenterBase, ILockableDesignPresenter
 {
+    [Icon(FontIcons.Delete)]
     [Display(Name = "删除")]
-    public ICommand DeleteCommand => new RelayCommand(e =>
+    public DisplayCommand DeleteCommand => new DisplayCommand(e =>
     {
         Delete(e);
     });
 
-
     private bool _Locked = false;
-    [Display(Name = "高", GroupName = "常用,布局")]
+    [Display(Name = "锁定", GroupName = "常用,布局")]
     public bool Locked
     {
         get { return _Locked; }

@@ -13,7 +13,7 @@ using System.Text.Json.Serialization;
 using System.Xml.Serialization;
 
 namespace H.Controls.Chart2D.Presenter.Presenter;
-public abstract class Chart2DPresenterBase : CloneableDesignPresenterBase, ICloneable, IChartDesignPresenter
+public abstract class Chart2DPresenterBase : CommandsDesignPresenterBase, ICloneable, IChartDesignPresenter
 {
     public Chart2DPresenterBase()
     {

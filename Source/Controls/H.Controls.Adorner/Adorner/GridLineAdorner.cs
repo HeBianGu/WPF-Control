@@ -26,17 +26,18 @@ public class GridLineAdorner : AdornerBase
         Grid grid = this.AdornedElement as Grid;
         if (grid == null)
             return;
-        this.Pen = this.Pen ?? new Pen(Brushes.Blue, 1);
+        var pen = this.Pen ?? new Pen(Brushes.Blue, 1);
+        if (pen == null)
+        {
+            var p = new Pen(Brushes.Blue, 1);
+            p.Freeze();
+            pen = p;
+        }
         foreach (RowDefinition item in grid.RowDefinitions)
-        {
-            dc.DrawLine(this.Pen, new Point(0, item.Offset), new Point(this.ActualWidth, item.Offset));
-        }
-        dc.DrawLine(this.Pen, new Point(0, grid.ActualHeight), new Point(this.ActualWidth, this.ActualHeight));
-
+            dc.DrawLine(pen, new Point(0, item.Offset), new Point(this.ActualWidth, item.Offset));
+        dc.DrawLine(pen, new Point(0, grid.ActualHeight), new Point(this.ActualWidth, this.ActualHeight));
         foreach (ColumnDefinition item in grid.ColumnDefinitions)
-        {
-            dc.DrawLine(this.Pen, new Point(item.Offset, 0), new Point(item.Offset, this.ActualHeight));
-        }
-        dc.DrawLine(this.Pen, new Point(this.ActualWidth, 0), new Point(this.ActualWidth, this.ActualHeight));
+            dc.DrawLine(pen, new Point(item.Offset, 0), new Point(item.Offset, this.ActualHeight));
+        dc.DrawLine(pen, new Point(this.ActualWidth, 0), new Point(this.ActualWidth, this.ActualHeight));
     }
 }

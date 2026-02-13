@@ -9,7 +9,7 @@
 using System.Globalization;
 using System.Windows.Data;
 
-namespace H.Presenters.Design.Presenter;
+namespace H.Presenters.Design.Controls;
 
 public class HexGrid : Panel
 {

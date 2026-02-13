@@ -8,6 +8,8 @@
 
 #if NET
 #endif 
+using System.Runtime.CompilerServices;
+
 namespace H.Extensions.Behvaiors.Adorners;
 
 public abstract class AdornerBehaviorBase : Behavior<FrameworkElement>
@@ -26,7 +28,7 @@ public abstract class AdornerBehaviorBase : Behavior<FrameworkElement>
             if (control == null) return;
 
             Type config = e.NewValue as Type;
-
+            control.UpdateAdorner();
         }));
 
     public Visual AdornerVisual
@@ -75,6 +77,7 @@ public abstract class AdornerBehaviorBase : Behavior<FrameworkElement>
             {
 
             }
+            control.UpdateAdorner();
         }));
 
     public bool IsHitTestVisible
@@ -101,6 +104,11 @@ public abstract class AdornerBehaviorBase : Behavior<FrameworkElement>
             }
 
         }));
+
+    protected virtual void UpdateAdorner()
+    {
+        
+    }
 
 }
 
