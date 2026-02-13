@@ -46,7 +46,7 @@
                             BorderThickness="1"
                             Cattach.CornerRadius="50"
                             Command="{Binding}"
-                            CommandParameter="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}}"
+                            CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=ContentControl}}"
                             Style="{DynamicResource {x:Static FontIconButtonKeys.Command}}" />
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
