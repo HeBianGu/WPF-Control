@@ -474,11 +474,11 @@ public class ObservableSource<T> : Bindable, IObservableSource<T>
     {
         if (isdesc)
         {
-            this.Cache.OrderBy(keySelector);
+            this.Cache.SortBy(keySelector);
         }
         else
         {
-            this.Cache.OrderByDesc(keySelector);
+            this.Cache.SortByDesc(keySelector);
         }
         this.RefreshPage();
     }

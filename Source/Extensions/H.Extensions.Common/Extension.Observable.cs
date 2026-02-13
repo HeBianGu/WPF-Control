@@ -15,7 +15,7 @@ namespace H.Extensions.Common;
 
 public static class ObservableExtension
 {
-    public static void OrderBy<TSource, TKey>(this Collection<TSource> source, Func<TSource, TKey> keySelector)
+    public static void SortBy<TSource, TKey>(this Collection<TSource> source, Func<TSource, TKey> keySelector)
     {
         List<TSource> sortedList = Enumerable.OrderBy(source, keySelector).ToList();
         source.Clear();
@@ -23,7 +23,7 @@ public static class ObservableExtension
             source.Add(sortedItem);
     }
 
-    public static void OrderBy<TSource, TKey>(this Collection<TSource> source, Func<TSource, TKey> keySelector, bool isdesc)
+    public static void SortBy<TSource, TKey>(this Collection<TSource> source, Func<TSource, TKey> keySelector, bool isdesc)
     {
         List<TSource> sortedList = isdesc ? source.OrderByDescending(keySelector).ToList() : Enumerable.OrderBy(source, keySelector).ToList();
         source.Clear();
@@ -31,7 +31,7 @@ public static class ObservableExtension
             source.Add(sortedItem);
     }
 
-    public static void OrderByDesc<TSource, TKey>(this Collection<TSource> source, Func<TSource, TKey> keySelector)
+    public static void SortByDesc<TSource, TKey>(this Collection<TSource> source, Func<TSource, TKey> keySelector)
     {
         List<TSource> sortedList = source.OrderByDescending(keySelector).ToList();
         source.Clear();
