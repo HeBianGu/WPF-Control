@@ -10,7 +10,7 @@ using H.Common.Interfaces;
 
 namespace H.Presenters.Design.PrintPresenter;
 
-public interface IPrintPagePresenter : IDesignPresenter
+public interface IPrintPagePresenter : IDesignPresenter, ICloneable
 {
 
 }

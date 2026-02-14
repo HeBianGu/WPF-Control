@@ -66,10 +66,10 @@ public abstract class MetaSetting<T> : MetaSettingBase
 
 public abstract class MetaSettingCollection<T> : MetaSettingBase where T : class, new()
 {
-    public List<T> Data { get; set; } = new List<T>();
+    public ObservableCollection<T> Data { get; set; } = new ObservableCollection<T>();
     public override void Load()
     {
-        var dts = this.Json.Deserilize<List<T>>(this.ID, this.GetFolderName());
+        var dts = this.Json.Deserilize<ObservableCollection<T>>(this.ID, this.GetFolderName());
         if (dts == null)
             return;
         this.Data = dts;
