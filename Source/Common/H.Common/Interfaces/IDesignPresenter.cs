@@ -11,7 +11,7 @@ using System.Windows.Input;
 
 namespace H.Common.Interfaces;
 
-public interface IDesignPresenter : ISelectable
+public interface IDesignPresenter : ISelectable, INameable
 {
     Brush Background { get; set; }
     Brush BorderBrush { get; set; }

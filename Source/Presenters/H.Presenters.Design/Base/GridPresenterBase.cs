@@ -26,7 +26,8 @@ public abstract class GridPresenterBase : PanelPresenterBase
         base.LoadDefault();
         this.MinRowHeight = (double)Application.Current.FindResource(LayoutKeys.RowHeight);
     }
-    private Brush _lineBrush = Brushes.LightGray;
+    private Brush _lineBrush;
+    [DefaultValue(null)]
     [Display(Name = "网线颜色", GroupName = "常用,样式")]
     public Brush LineBrush
     {

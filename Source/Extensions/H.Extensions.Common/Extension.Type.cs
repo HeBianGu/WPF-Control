@@ -61,14 +61,15 @@ public static class TypeExtension
     public static TypeConverter GetTypeConverter(this PropertyInfo propertyInfo)
     {
         var typeConvert = propertyInfo.GetCustomAttribute<TypeConverterAttribute>();
-        if (typeConvert != null)
-        {
-            Type t = Type.GetType(typeConvert.ConverterTypeName);
-            ConstructorInfo constructor = t.GetConstructors().FirstOrDefault(l => l.GetParameters().Count() == 0);
-            if (constructor != null)
-                return Activator.CreateInstance(t) as TypeConverter;
-        }
-        return TypeDescriptor.GetConverter(propertyInfo.PropertyType);
+        if (typeConvert == null)
+            typeConvert = propertyInfo.PropertyType.GetCustomAttribute<TypeConverterAttribute>();
+        if (typeConvert == null)
+            return null;
+        Type t = Type.GetType(typeConvert.ConverterTypeName);
+        ConstructorInfo constructor = t.GetConstructors().FirstOrDefault(l => l.GetParameters().Count() == 0);
+        if (constructor != null)
+            return Activator.CreateInstance(t) as TypeConverter;
+        return null;
     }
 
     public static object TryConvertFromString(this Type type, string txt, out string error)

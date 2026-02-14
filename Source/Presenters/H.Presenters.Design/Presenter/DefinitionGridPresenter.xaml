@@ -74,6 +74,26 @@
                                                 </Setter.Value>
                                             </Setter>
                                         </MultiDataTrigger>
+
+                                        <MultiDataTrigger>
+                                            <MultiDataTrigger.Conditions>
+                                                <Condition Binding="{Binding RelativeSource={RelativeSource AncestorType=l:DesignBox}, Path=UseDesign, FallbackValue=true}" Value="false" />
+                                                <Condition Binding="{Binding LineBrush}" Value="{x:Null}" />
+                                            </MultiDataTrigger.Conditions>
+                                            <Setter Property="GridLinePen">
+                                                <Setter.Value>
+                                                    <Pen Brush="{DynamicResource {x:Static BrushKeys.BorderBrush}}" Thickness="{Binding LineThickness}" />
+                                                </Setter.Value>
+                                            </Setter>
+                                        </MultiDataTrigger>
+
+                                        <MultiDataTrigger>
+                                            <MultiDataTrigger.Conditions>
+                                                <Condition Binding="{Binding RelativeSource={RelativeSource AncestorType=l:DesignBox}, Path=UseDesign, FallbackValue=true}" Value="false" />
+                                                <Condition Binding="{Binding LineThickness}" Value="0" />
+                                            </MultiDataTrigger.Conditions>
+                                            <Setter Property="GridLinePen" Value="{x:Null}" />
+                                        </MultiDataTrigger>
                                     </Style.Triggers>
                                 </Style>
                             </c:DefinitionGrid.Style>

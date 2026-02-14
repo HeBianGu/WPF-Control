@@ -160,6 +160,11 @@
             </Setter.Value>
         </Setter>
         <Setter Property="ControlTemplateAdorner.Template" Value="{StaticResource S.ControlTemplate.Adorner}" />
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding BorderBrush}" Value="{x:Null}">
+                <Setter Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.BorderBrush}}" />
+            </DataTrigger>
+        </Style.Triggers>
     </Style>
 
     <!--<Style x:Key="{ComponentResourceKey ResourceId=S.DesignBorder.Default, TypeInTargetAssembly={x:Type local:DesignBorder}}" BasedOn="{StaticResource {x:Static local:DesignBorder.DefaultKey}}" TargetType="{x:Type local:DesignBorder}">

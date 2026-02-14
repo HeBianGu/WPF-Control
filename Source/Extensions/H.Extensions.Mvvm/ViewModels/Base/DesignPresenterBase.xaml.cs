@@ -220,6 +220,7 @@ public abstract class DesignPresenterBase : DisplayBindableBase, IDesignPresente
     }
 
     private Brush _background;
+    [DefaultValue(null)]
     [Display(Name = "背景颜色", GroupName = "样式")]
     /// <summary> 说明  </summary>
     public Brush Background
@@ -233,6 +234,7 @@ public abstract class DesignPresenterBase : DisplayBindableBase, IDesignPresente
     }
 
     private Brush _borderBrush;
+    [DefaultValue(null)]
     [Display(Name = "边框颜色", GroupName = "样式")]
     /// <summary> 说明  </summary>
     public Brush BorderBrush
