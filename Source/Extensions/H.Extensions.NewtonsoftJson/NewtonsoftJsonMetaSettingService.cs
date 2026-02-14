@@ -15,9 +15,9 @@ namespace H.Extensions.NewtonsoftJson;
 
 public class NewtonsoftJsonMetaSettingService : JsonMetaSettingServiceBase
 {
-    public override T Deserilize<T>(string id)
+    public override T Deserilize<T>(string id, string folderName = null)
     {
-        string path = this.GetFilePath(typeof(T).Name, id);
+        string path = this.GetFilePath(folderName ?? typeof(T).Name, id);
         if (!File.Exists(path))
         {
             var defPath = this.GetDefaultTemplateFilePath(typeof(T).Name, id);
@@ -31,10 +31,10 @@ public class NewtonsoftJsonMetaSettingService : JsonMetaSettingServiceBase
         return (T)obj;
     }
 
-    public override void Serilize(object setting, string id)
+    public override void Serilize(object setting, string id, string folderName = null)
     {
         var txt = JsonConvert.SerializeObject(setting, GetSerializerSettings());
-        File.WriteAllText(this.GetFilePath(setting.GetType().Name, id), txt);
+        File.WriteAllText(this.GetFilePath(folderName ?? setting.GetType().Name, id), txt);
     }
 
     private JsonSerializerSettings GetSerializerSettings()

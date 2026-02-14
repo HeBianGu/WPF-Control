@@ -8,6 +8,8 @@
 
 namespace H.Services.Message.Dialog.Commands;
 
+[Icon("\ue890")]
+[Display(Name = "显示", Description = "显示呈现页面")]
 public class ShowCommand : ShowMessageDialogCommandBase
 {
     public ShowCommand()

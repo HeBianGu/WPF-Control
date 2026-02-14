@@ -37,7 +37,7 @@ public abstract class MetaSetting<T> : MetaSettingBase
     public T Data { get; set; }
     public override void Load()
     {
-        var dts = this.Json.Deserilize<T>(this.ID);
+        var dts = this.Json.Deserilize<T>(this.ID, this.GetFolderName());
         if (dts == null)
             return;
         this.Data = dts;
@@ -47,7 +47,7 @@ public abstract class MetaSetting<T> : MetaSettingBase
     {
         try
         {
-            this.Json.Serilize(this.Data, this.ID);
+            this.Json.Serilize(this.Data, this.ID, this.GetFolderName());
         }
         catch (System.Exception ex)
         {
@@ -57,4 +57,51 @@ public abstract class MetaSetting<T> : MetaSettingBase
         message = null;
         return true;
     }
+
+    protected string GetFolderName()
+    {
+        return typeof(T).Name;
+    }
+}
+
+public abstract class MetaSettingCollection<T> : MetaSettingBase where T : class, new()
+{
+    public List<T> Data { get; set; } = new List<T>();
+    public override void Load()
+    {
+        var dts = this.Json.Deserilize<List<T>>(this.ID, this.GetFolderName());
+        if (dts == null)
+            return;
+        this.Data = dts;
+    }
+    public override bool Save(out string message)
+    {
+        try
+        {
+            this.Json.Serilize(this.Data, this.ID, this.GetFolderName());
+        }
+        catch (System.Exception ex)
+        {
+            message = ex.Message;
+            return false;
+        }
+        message = null;
+        return true;
+    }
+
+    protected string GetFolderName()
+    {
+        return $"{typeof(T).Name}s";
+    }
+
+    //public void SavePages(int index, T item)
+    //{
+    //    var find = this.Data?.ElementAtOrDefault(index);
+    //    if (find == null)
+    //    {
+    //        this.Data.Add(item);
+    //        return;
+    //    }
+    //    this.Save(out string message);
+    //}
 }
