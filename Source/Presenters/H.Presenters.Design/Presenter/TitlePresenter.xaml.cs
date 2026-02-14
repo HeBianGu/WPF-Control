@@ -30,7 +30,7 @@ public class TitlePresenter : TextBlockPresenter
     }
 
     private string _title;
-    [Display(Name = "文本颜色", GroupName = "常用,数据")]
+    [Display(Name = "标题", GroupName = "常用,数据")]
     public string Title
     {
         get { return _title; }
