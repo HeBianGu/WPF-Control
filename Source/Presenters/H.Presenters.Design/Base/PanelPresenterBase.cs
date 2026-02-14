@@ -59,14 +59,17 @@ public abstract class PanelPresenterBase : DropAdornerDesignPresenterBase, IPane
         }
     }
 
+    private double _cacheOpacity = 1.0;
     public override void DragEnter(UIElement element, DragEventArgs e)
     {
         IDraggableAdorner adorner = e.Data.GetData("DragGroup") as IDraggableAdorner;
         if (adorner.GetData() is IDesignPresenter value)
         {
             this.Presenters.Add(value);
+            this._cacheOpacity = value.Opacity;
             _dropBackup = value;
             _dropBackup.Opacity = 0.5;
+            _dropBackup.IsHitTestVisible = false;
         }
     }
 
@@ -74,17 +77,17 @@ public abstract class PanelPresenterBase : DropAdornerDesignPresenterBase, IPane
     public override void Drop(UIElement element, DragEventArgs e)
     {
         this.Presenters.Remove(_dropBackup);
-        _dropBackup.Opacity = 1;
+        _dropBackup.Opacity = this._cacheOpacity;
         if (_dropBackup is ICloneable cloneable && cloneable.Clone() is IDesignPresenter clone)
             this.Presenters.Add(clone);
         _dropBackup = null;
+        this._cacheOpacity = 1.0;
     }
 
     public override void DragLeave(UIElement element, DragEventArgs e)
     {
         this.Presenters.Remove(_dropBackup);
         _dropBackup = null;
-
     }
 
     public void Delete(IDesignPresenter designPresenter)

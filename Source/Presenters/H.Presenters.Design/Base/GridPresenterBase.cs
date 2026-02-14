@@ -87,7 +87,10 @@ public abstract class GridPresenterBase : PanelPresenterBase
 
     public override bool IsHitTest(UIElement element, DragEventArgs e)
     {
-        return element.GetContent() != _dropBackup;
+        var current = element.GetContent();
+        if (current == _dropBackup)
+            return false;
+        return !_dropBackup.GetChildrenDesignPresenters().Contains(current);
     }
 
     public override void DragOver(UIElement element, DragEventArgs e)

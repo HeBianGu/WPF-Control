@@ -24,6 +24,8 @@ public interface IDesignPresenter : ISelectable
     bool IsEnabled { get; set; }
     bool IsMouseOver { get; set; }
     bool IsVisible { get; set; }
+
+    bool IsHitTestVisible { get; set; }
     Thickness Margin { get; set; }
     double MinHeight { get; set; }
     double MinWidth { get; set; }

@@ -38,6 +38,20 @@ public abstract class DeletableDesignPresenterBase : DesignPresenterBase, ILocka
         }
     }
 
+    private bool _UseTool = true;
+    [Browsable(false)]
+    [ReadOnly(true)]
+    [Display(Name = "启用工具栏", GroupName = "数据")]
+    public bool UseTool
+    {
+        get { return _UseTool; }
+        set
+        {
+            _UseTool = value;
+            RaisePropertyChanged();
+        }
+    }
+
     protected virtual void Delete(object e)
     {
         UIElement helement = null;

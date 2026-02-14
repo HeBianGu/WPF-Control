@@ -38,14 +38,16 @@
                 <Run Text="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=Content.Name}" />
                 <Run Text="]" />
             </TextBlock>-->
-
             <ItemsControl
                 DockPanel.Dock="Right"
                 IsEnabled="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=Content.Locked, Converter={GetTrueToFalseValueConverter}}"
-                ItemsSource="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=Content.Commands}">
+                ItemsSource="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=Content.Commands}"
+                Visibility="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=Content.UseTool, Converter={GetTrueToVisibleConverter}}">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
                         <FontIconButton
+                            x:Name="b"
+                            Margin="1,0"
                             Background="{DynamicResource {x:Static BrushKeys.Background}}"
                             BorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrush}}"
                             BorderThickness="1"
@@ -53,6 +55,12 @@
                             Command="{Binding}"
                             CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=ContentControl}}"
                             Style="{DynamicResource {x:Static FontIconButtonKeys.Command}}" />
+                        <DataTemplate.Triggers>
+                            <DataTrigger Binding="{Binding Name}" Value="删除">
+                                <Setter TargetName="b" Property="Background" Value="{DynamicResource {x:Static BrushKeys.Red}}" />
+                                <Setter TargetName="b" Property="Foreground" Value="White" />
+                            </DataTrigger>
+                        </DataTemplate.Triggers>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
                 <ItemsControl.ItemsPanel>
@@ -61,6 +69,30 @@
                     </ItemsPanelTemplate>
                 </ItemsControl.ItemsPanel>
             </ItemsControl>
+
+            <FontIconToggleButton
+                Margin="1,0"
+                BorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrush}}"
+                Cattach.CornerRadius="50"
+                CheckedGlyph="{x:Static FontIcons.Lock}"
+                DockPanel.Dock="Right"
+                IsChecked="{Binding RelativeSource={RelativeSource AncestorType=ContentControl}, Path=Content.Locked, Mode=TwoWay}"
+                UncheckedGlyph="{x:Static FontIcons.Unlock}"
+                Visibility="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=Content.UseTool, Converter={GetTrueToVisibleConverter}}">
+                <FontIconToggleButton.Style>
+                    <Style BasedOn="{StaticResource {x:Static FontIconToggleButtonKeys.Switch}}" TargetType="{x:Type FontIconToggleButton}">
+                        <Setter Property="Background" Value="{DynamicResource {x:Static BrushKeys.Background}}" />
+                        <Setter Property="BorderThickness" Value="1" />
+                        <Style.Triggers>
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter Property="Background" Value="{DynamicResource {x:Static BrushKeys.Orange}}" />
+                                <Setter Property="Foreground" Value="White" />
+                                <Setter Property="BorderThickness" Value="0" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </FontIconToggleButton.Style>
+            </FontIconToggleButton>
             <!--<DockPanel DockPanel.Dock="Right">
                 <FontIconButton
                     Background="{DynamicResource {x:Static BrushKeys.Red}}"
