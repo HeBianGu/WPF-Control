@@ -24,16 +24,16 @@ public class TextBlockPresenter : CommandsDesignPresenterBase, ITextData
     public override void LoadDefault()
     {
         base.LoadDefault();
-        //this.FontSize = (double)Application.Current.FindResource(FontSizeKeys.Default);
-        ////this.FontFamily = Application.Current.FindResource(SystemKeys.FontFamily) as FontFamily;
-        //this.FontStyle = FontStyles.Normal;
-        //this.FontWeight = FontWeights.Normal;
-        //this.FontStretch = FontStretches.Normal;
-        ////this.Foreground = Application.Current.FindResource(BrushKeys.Foreground) as Brush;
-        ////this.Height = (double)Application.Current.FindResource(SystemKeys.ItemHeight);
-        //this.Foreground = Brushes.Black;
-        ////this.Height = (double)Application.Current.FindResource(LayoutKeys.RowHeight);
-        //this.VerticalContentAlignment = VerticalAlignment.Center;
+        this.FontSize = (double)Application.Current.FindResource(FontSizeKeys.Default);
+        //this.FontFamily = Application.Current.FindResource(SystemKeys.FontFamily) as FontFamily;
+        this.FontStyle = FontStyles.Normal;
+        this.FontWeight = FontWeights.Normal;
+        this.FontStretch = FontStretches.Normal;
+        //this.Foreground = Application.Current.FindResource(BrushKeys.Foreground) as Brush;
+        //this.Height = (double)Application.Current.FindResource(SystemKeys.ItemHeight);
+        //this.Foreground = (Brush)Application.Current.FindResource(BrushKeys.Foreground);
+        //this.Height = (double)Application.Current.FindResource(LayoutKeys.RowHeight);
+        this.VerticalContentAlignment = VerticalAlignment.Center;
     }
     private string _text;
     [Display(Name = "文本", GroupName = "常用,数据")]

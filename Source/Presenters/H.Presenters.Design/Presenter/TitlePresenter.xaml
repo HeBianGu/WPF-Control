@@ -11,10 +11,12 @@
                     Height="Auto"
                     FontSize="{Binding TitleFontSize}"
                     FontWeight="{Binding TitleFontWeight}"
-                    Foreground="{Binding TitleForeground}"
                     Style="{DynamicResource {x:Static DesignTextBlockKeys.Binding}}"
                     Text="{Binding Title}" />
-                <TextBlock Height="Auto" Style="{DynamicResource {x:Static DesignTextBlockKeys.Binding}}" />
+                <TextBlock
+                    Height="Auto"
+                    Style="{DynamicResource {x:Static DesignTextBlockKeys.Binding}}"
+                    Text="{Binding Text}" />
             </DockPanel>
         </c:DesignBorder>
     </DataTemplate>

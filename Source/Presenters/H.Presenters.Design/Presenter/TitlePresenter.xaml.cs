@@ -26,7 +26,6 @@ public class TitlePresenter : TextBlockPresenter
         this.TitleFontSize = (double)Application.Current.FindResource(FontSizeKeys.Default);
         this.TitleFontWeight = FontWeights.Normal;
         //this.TitleForeground = Application.Current.FindResource(BrushKeys.ForegroundDefault) as Brush;
-        this.TitleForeground = Brushes.Black;
 
     }
 
@@ -50,19 +49,6 @@ public class TitlePresenter : TextBlockPresenter
         set
         {
             _titleFontSize = value;
-            RaisePropertyChanged();
-        }
-    }
-
-    private Brush _titleForeground;
-    [DefaultValue(null)]
-    [Display(Name = "抬头颜色", GroupName = "常用,样式")]
-    public Brush TitleForeground
-    {
-        get { return _titleForeground; }
-        set
-        {
-            _titleForeground = value;
             RaisePropertyChanged();
         }
     }

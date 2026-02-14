@@ -18,6 +18,11 @@
         <Setter Property="HorizontalAlignment" Value="{Binding HorizontalAlignment}" />
         <Setter Property="VerticalAlignment" Value="{Binding VerticalAlignment}" />
         <Setter Property="Padding" Value="{Binding Padding}" />
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding Foreground}" Value="{x:Null}">
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static BrushKeys.Foreground}}" />
+            </DataTrigger>
+        </Style.Triggers>
     </Style>
 
 </ResourceDictionary>

@@ -30,7 +30,6 @@ public class CardPresenter : TitlePresenter
         this.Width = 250;
         this.CornerRadius = new CornerRadius(5);
         this.Foreground = Brushes.White;
-        this.TitleForeground = Brushes.White;
         this.FontSize = 25;
         this.TitleFontSize = 15;
         this.HorizontalContentAlignment = HorizontalAlignment.Center;
