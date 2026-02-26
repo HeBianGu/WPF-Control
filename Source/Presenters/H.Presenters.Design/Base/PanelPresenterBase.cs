@@ -23,6 +23,18 @@ public abstract class PanelPresenterBase : DropAdornerDesignPresenterBase, IPane
         //this.MinHeight = 100;
         this.MinWidth = 50;
     }
+
+    private bool _AllowDrop;
+    public bool AllowDrop
+    {
+        get { return _AllowDrop; }
+        set
+        {
+            _AllowDrop = value;
+            RaisePropertyChanged();
+        }
+    }
+
     private ObservableCollection<IDesignPresenter> _presenters = new ObservableCollection<IDesignPresenter>();
     [Browsable(false)]
     public ObservableCollection<IDesignPresenter> Presenters

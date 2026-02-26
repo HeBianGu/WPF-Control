@@ -16,6 +16,12 @@ public class GridLineAdorner : AdornerBase
     {
         this.Pen = GetPen(adornedElement);
         this.Fill = GetFill(adornedElement);
+        this.MouseMove += GridLineAdorner_MouseMove;    
+    }
+
+    private void GridLineAdorner_MouseMove(object sender, MouseEventArgs e)
+    {
+     
     }
 
     public Brush Fill { get; set; }

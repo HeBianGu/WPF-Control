@@ -60,7 +60,6 @@ public abstract class DraggableAdornerBehaviorBase : Behavior<UIElement>
 
     protected override void OnAttached()
     {
-        this.AssociatedObject.AllowDrop = true;
         if (this.RoutingStrategy == RoutingStrategy.Bubble)
         {
             this.AssociatedObject.PreviewMouseDown += AssociatedObject_MouseDown;

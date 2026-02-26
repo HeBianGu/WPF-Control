@@ -33,6 +33,7 @@ public interface IHitTestElementDrop : IGetDropAdorner
 {
     bool CanDrop(UIElement element, DragEventArgs e);
     void Drop(UIElement element, DragEventArgs e);
+
     bool IsHitTest(UIElement element, DragEventArgs e);
 }
 

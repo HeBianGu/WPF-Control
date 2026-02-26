@@ -97,7 +97,7 @@ public abstract class GridPresenterBase : PanelPresenterBase
     public override void DragOver(UIElement element, DragEventArgs e)
     {
         var p = e.GetPosition(element);
-        var grid = element.GetChild<Grid>();
+        var grid = element is Grid ? element as Grid : element.GetChild<Grid>();
         if (_dropBackup == null)
         {
             IDraggableAdorner adorner = e.Data.GetData("DragGroup") as IDraggableAdorner;

@@ -7,7 +7,8 @@
 // Licensed under the MIT License (the "License")
 
 #if NET
-#endif 
+#endif
+
 namespace H.Extensions.Behvaiors.Adorners;
 
 public class MouseOverHitTestAdornerBehavior : HitTestAdornerBehavior
@@ -39,6 +40,12 @@ public class MouseOverHitTestAdornerBehavior : HitTestAdornerBehavior
     protected override void OnAttached()
     {
         this.AssociatedObject.MouseMove += AssociatedObject_MouseMove;
+        this.AssociatedObject.MouseLeave += AssociatedObject_MouseLeave;
+    }
+
+    private void AssociatedObject_MouseLeave(object sender, MouseEventArgs e)
+    {
+        this.Clear();
     }
 
     private void AssociatedObject_MouseMove(object sender, MouseEventArgs e)
@@ -64,6 +71,7 @@ public class MouseOverHitTestAdornerBehavior : HitTestAdornerBehavior
     protected override void OnDetaching()
     {
         this.AssociatedObject.MouseMove -= AssociatedObject_MouseMove;
+        this.AssociatedObject.MouseLeave -= AssociatedObject_MouseLeave;
         Clear();
     }
 
