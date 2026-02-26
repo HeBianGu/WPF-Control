@@ -69,8 +69,9 @@ public class DragOverHitTestAdornerBehavior : HitTestAdornerBehavior
 
     private void AssociatedObject_DragLeave(object sender, DragEventArgs e)
     {
-        this.Clear();
-        DragLeave(_preVisualHitElement, e);
+        //System.Diagnostics.Debug.WriteLine(e.OriginalSource);
+        //this.Clear();
+        //DragLeave(_preVisualHitElement, e);
     }
 
     private void AssociatedObject_DragEnter(object sender, DragEventArgs e)
@@ -113,27 +114,26 @@ public class DragOverHitTestAdornerBehavior : HitTestAdornerBehavior
         });
         if (visualHit == null)
             return;
-        if (visualHit == null)
+        //if (visualHit == null)
+        //{
+        //    Clear();
+        //    if (this.AssociatedObject != _preVisualHitElement)
+        //    {
+        //        DragEnter(this.AssociatedObject, e);
+        //        DragLeave(_preVisualHitElement, e);
+        //    }
+        //}
+        //else
+        //{
+        if (visualHit.GetContent() != _preVisualHitElement.GetContent())
         {
             Clear();
-            if (this.AssociatedObject != _preVisualHitElement)
-            {
-                DragEnter(this.AssociatedObject, e);
-                DragLeave(_preVisualHitElement, e);
-            }
+            DragLeave(_preVisualHitElement, e);
+            DragEnter(visualHit, e);
         }
-        else
-        {
-            if (visualHit.GetContent() != _preVisualHitElement.GetContent())
-            {
-                Clear();
-                DragLeave(_preVisualHitElement, e);
-                DragEnter(visualHit, e);
-            }
-            AddAdorner(visualHit);
-            _preVisualHitElement = visualHit;
-        }
-
+        AddAdorner(visualHit);
+        _preVisualHitElement = visualHit;
+        //}
         if (_preVisualHitElement.GetContent() is IHitTestElementDragable drag)
             drag.DragOver(_preVisualHitElement, e);
     }
