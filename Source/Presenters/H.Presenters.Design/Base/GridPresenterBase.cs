@@ -88,6 +88,8 @@ public abstract class GridPresenterBase : PanelPresenterBase
 
     public override bool IsHitTest(UIElement element, DragEventArgs e)
     {
+        if (!this.AllowDrop)
+            return false;
         var current = element.GetContent();
         if (current == _dropBackup)
             return false;
@@ -108,6 +110,11 @@ public abstract class GridPresenterBase : PanelPresenterBase
                     value.Row = r;
                     value.Column = c;
                     value.Opacity = 0.5;
+                }
+                if (value is PanelPresenterBase panel)
+                {
+                    panel.AllowDrop = false;
+                    panel.IsHitTestVisible = false;
                 }
                 this.Presenters.Add(value);
                 _dropBackup = value;

@@ -10,7 +10,7 @@
         <ResourceDictionary Source="pack://application:,,,/H.Presenters.Design;component/Controls/DefinitionGrid.xaml" />
     </ResourceDictionary.MergedDictionaries>
     <DataTemplate DataType="{x:Type local:DefinitionGridPresenter}">
-        <c:DesignBorder AllowDrop="{Binding AllowDrop}">
+        <c:DesignBorder AllowDrop="True" IsHitTestVisible="{Binding IsHitTestVisible}">
             <ItemsControl Style="{StaticResource S.ItemsControl.PanelPresenter}">
                 <ItemsControl.ItemContainerStyle>
                     <Style TargetType="ContentPresenter">

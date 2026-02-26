@@ -39,11 +39,10 @@ public class DragOverHitTestAdornerBehavior : HitTestAdornerBehavior
 
     protected override void OnAttached()
     {
-        this.AssociatedObject.AllowDrop = true;
-        this.AssociatedObject.PreviewDragOver += AssociatedObject_DragOver;
-        this.AssociatedObject.PreviewDrop += AssociatedObject_Drop;
-        this.AssociatedObject.PreviewDragEnter += AssociatedObject_DragEnter;
-        this.AssociatedObject.PreviewDragLeave += AssociatedObject_DragLeave;
+        this.AssociatedObject.DragOver += AssociatedObject_DragOver;
+        this.AssociatedObject.Drop += AssociatedObject_Drop;
+        this.AssociatedObject.DragEnter += AssociatedObject_DragEnter;
+        this.AssociatedObject.DragLeave += AssociatedObject_DragLeave;
     }
 
     public static bool GetIsPreviewing(DependencyObject obj)
@@ -108,9 +107,9 @@ public class DragOverHitTestAdornerBehavior : HitTestAdornerBehavior
         {
             if (GetIsHitTest(x) == false)
                 return false;
-            //return x.GetContent() is IHitTestElementDrop;
             if (x.GetContent() is IHitTestElementDrop drop)
                 return drop.IsHitTest(x, e);
+            //if (_preVisualHitElement.GetContent() is IHitTestElementDrop drop)
             return false;
         });
         if (visualHit == null)
@@ -154,10 +153,10 @@ public class DragOverHitTestAdornerBehavior : HitTestAdornerBehavior
 
     protected override void OnDetaching()
     {
-        this.AssociatedObject.PreviewDragOver -= AssociatedObject_DragOver;
-        this.AssociatedObject.PreviewDrop -= AssociatedObject_Drop;
-        this.AssociatedObject.PreviewDragEnter -= AssociatedObject_DragEnter;
-        this.AssociatedObject.PreviewDragLeave -= AssociatedObject_DragLeave;
+        this.AssociatedObject.DragOver -= AssociatedObject_DragOver;
+        this.AssociatedObject.Drop -= AssociatedObject_Drop;
+        this.AssociatedObject.DragEnter -= AssociatedObject_DragEnter;
+        this.AssociatedObject.DragLeave -= AssociatedObject_DragLeave;
         this.Clear();
     }
 

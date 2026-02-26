@@ -24,17 +24,6 @@ public abstract class PanelPresenterBase : DropAdornerDesignPresenterBase, IPane
         this.MinWidth = 50;
     }
 
-    private bool _AllowDrop;
-    public bool AllowDrop
-    {
-        get { return _AllowDrop; }
-        set
-        {
-            _AllowDrop = value;
-            RaisePropertyChanged();
-        }
-    }
-
     private ObservableCollection<IDesignPresenter> _presenters = new ObservableCollection<IDesignPresenter>();
     [Browsable(false)]
     public ObservableCollection<IDesignPresenter> Presenters
@@ -77,6 +66,11 @@ public abstract class PanelPresenterBase : DropAdornerDesignPresenterBase, IPane
         IDraggableAdorner adorner = e.Data.GetData("DragGroup") as IDraggableAdorner;
         if (adorner.GetData() is IDesignPresenter value)
         {
+            if (value is PanelPresenterBase panel)
+            {
+                panel.AllowDrop = false;
+                panel.IsHitTestVisible = false;
+            }
             this.Presenters.Add(value);
             this._cacheOpacity = value.Opacity;
             _dropBackup = value;
@@ -88,12 +82,22 @@ public abstract class PanelPresenterBase : DropAdornerDesignPresenterBase, IPane
     protected IDesignPresenter _dropBackup;
     public override void Drop(UIElement element, DragEventArgs e)
     {
+        if (_dropBackup == null)
+            return;
         this.Presenters.Remove(_dropBackup);
         _dropBackup.Opacity = this._cacheOpacity;
         if (_dropBackup is ICloneable cloneable && cloneable.Clone() is IDesignPresenter clone)
+        {
+            if (clone is PanelPresenterBase panel)
+            {
+                panel.AllowDrop = true;
+                panel.IsHitTestVisible = true;
+            }
             this.Presenters.Add(clone);
+        }
         _dropBackup = null;
         this._cacheOpacity = 1.0;
+
     }
 
     public override void DragLeave(UIElement element, DragEventArgs e)
