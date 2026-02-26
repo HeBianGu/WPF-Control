@@ -12,7 +12,7 @@ using H.Controls.Adorner.Adorner;
 
 namespace H.Presenters.Design.Base;
 
-public abstract class DropAdornerDesignPresenterBase : CommandsDesignPresenterBase, IHitTestElementDrag, IHitTestElementDrop
+public abstract class DropAdornerDesignPresenterBase : CommandsDesignPresenterBase, IHitTestElementDragable, IHitTestElementDropable
 {
     public virtual Adorner GetDragAdorner(UIElement element)
     {

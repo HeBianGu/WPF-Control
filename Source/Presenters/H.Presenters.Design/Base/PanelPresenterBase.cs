@@ -66,44 +66,38 @@ public abstract class PanelPresenterBase : DropAdornerDesignPresenterBase, IPane
         IDraggableAdorner adorner = e.Data.GetData("DragGroup") as IDraggableAdorner;
         if (adorner.GetData() is IDesignPresenter value)
         {
-            if (value is PanelPresenterBase panel)
-            {
-                panel.AllowDrop = false;
-                panel.IsHitTestVisible = false;
-            }
             this.Presenters.Add(value);
             this._cacheOpacity = value.Opacity;
-            _dropBackup = value;
-            _dropBackup.Opacity = 0.5;
-            _dropBackup.IsHitTestVisible = false;
+            _droppingDesignPresenter = value;
+            _droppingDesignPresenter.Opacity = 0.5;
+            _droppingDesignPresenter.IsHitTestVisible = false;
         }
     }
 
-    protected IDesignPresenter _dropBackup;
+    protected IDesignPresenter _droppingDesignPresenter;
     public override void Drop(UIElement element, DragEventArgs e)
     {
-        if (_dropBackup == null)
+        if (_droppingDesignPresenter == null)
             return;
-        this.Presenters.Remove(_dropBackup);
-        _dropBackup.Opacity = this._cacheOpacity;
-        if (_dropBackup is ICloneable cloneable && cloneable.Clone() is IDesignPresenter clone)
+        this.Presenters.Remove(_droppingDesignPresenter);
+        _droppingDesignPresenter.Opacity = this._cacheOpacity;
+        _droppingDesignPresenter.BorderBrush = null;
+        _droppingDesignPresenter.BorderThickness = new Thickness(0);
+        if (_droppingDesignPresenter is ICloneable cloneable && cloneable.Clone() is IDesignPresenter clone)
         {
-            if (clone is PanelPresenterBase panel)
-            {
-                panel.AllowDrop = true;
-                panel.IsHitTestVisible = true;
-            }
+            clone.IsHitTestVisible = true;
+
             this.Presenters.Add(clone);
         }
-        _dropBackup = null;
+        _droppingDesignPresenter = null;
         this._cacheOpacity = 1.0;
 
     }
 
     public override void DragLeave(UIElement element, DragEventArgs e)
     {
-        this.Presenters.Remove(_dropBackup);
-        _dropBackup = null;
+        this.Presenters.Remove(_droppingDesignPresenter);
+        _droppingDesignPresenter = null;
     }
 
     public void Delete(IDesignPresenter designPresenter)

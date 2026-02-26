@@ -10,7 +10,7 @@
 #endif
 namespace H.Extensions.Behvaiors.Adorners;
 
-public interface IHitTestElementDrag : IHitTestElementDrop, IGetDragAdorner
+public interface IHitTestElementDragable : IHitTestElementDropable, IGetDragAdorner
 {
     void DragEnter(UIElement element, DragEventArgs e);
     void DragLeave(UIElement element, DragEventArgs e);
@@ -29,11 +29,10 @@ public interface IGetDragAdorner
     void RemoveDragAdorner(UIElement element);
 }
 
-public interface IHitTestElementDrop : IGetDropAdorner
+public interface IHitTestElementDropable : IGetDropAdorner
 {
     bool CanDrop(UIElement element, DragEventArgs e);
     void Drop(UIElement element, DragEventArgs e);
-
     bool IsHitTest(UIElement element, DragEventArgs e);
 }
 

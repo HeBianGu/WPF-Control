@@ -88,19 +88,21 @@ public abstract class GridPresenterBase : PanelPresenterBase
 
     public override bool IsHitTest(UIElement element, DragEventArgs e)
     {
-        if (!this.AllowDrop)
+        if (this.IsHitTestVisible == false)
             return false;
         var current = element.GetContent();
-        if (current == _dropBackup)
+        if (current == _droppingDesignPresenter)
             return false;
-        return !_dropBackup.GetChildrenDesignPresenters().Contains(current);
+        if (current is not PanelPresenterBase)
+            return false;
+        return !_droppingDesignPresenter.GetChildrenDesignPresenters().Contains(current);
     }
 
     public override void DragOver(UIElement element, DragEventArgs e)
     {
         var p = e.GetPosition(element);
         var grid = element is Grid ? element as Grid : element.GetChild<Grid>();
-        if (_dropBackup == null)
+        if (_droppingDesignPresenter == null)
         {
             IDraggableAdorner adorner = e.Data.GetData("DragGroup") as IDraggableAdorner;
             if (adorner.GetData() is IDesignPresenter value)
@@ -110,24 +112,24 @@ public abstract class GridPresenterBase : PanelPresenterBase
                     value.Row = r;
                     value.Column = c;
                     value.Opacity = 0.5;
-                }
-                if (value is PanelPresenterBase panel)
-                {
-                    panel.AllowDrop = false;
-                    panel.IsHitTestVisible = false;
+                    value.IsHitTestVisible = false;
+                    value.BorderBrush = Brushes.Green;
+                    value.BorderThickness = new Thickness(1);
                 }
                 this.Presenters.Add(value);
-                _dropBackup = value;
+                _droppingDesignPresenter = value;
             }
         }
         else
         {
             if (grid.HitTestRow(p, out int r) && grid.HitTestColumn(p, out int c))
             {
-                if (_dropBackup.Row == r && _dropBackup.Column == c)
+                if (_droppingDesignPresenter.Row == r && _droppingDesignPresenter.Column == c)
                     return;
-                _dropBackup.Row = r;
-                _dropBackup.Column = c;
+                _droppingDesignPresenter.Row = r;
+                _droppingDesignPresenter.Column = c;
+                _droppingDesignPresenter.BorderBrush = null;
+                _droppingDesignPresenter.BorderThickness = new Thickness(0);
                 //this.Presenters.Remove(_dropBackup);
                 //this.Presenters.Add(_dropBackup);
                 element.InvalidateVisual();

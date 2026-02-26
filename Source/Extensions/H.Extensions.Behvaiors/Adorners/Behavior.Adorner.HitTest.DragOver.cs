@@ -80,12 +80,12 @@ public class DragOverHitTestAdornerBehavior : HitTestAdornerBehavior
 
     protected virtual void Drop(object sender, DragEventArgs e)
     {
-        if (_preVisualHitElement.GetContent() is IHitTestElementDrop drag)
+        if (_preVisualHitElement.GetContent() is IHitTestElementDropable drag)
         {
             if (drag.CanDrop(_preVisualHitElement, e))
                 drag.Drop(_preVisualHitElement, e);
         }
-        else if (this.AssociatedObject is IHitTestElementDrop drop)
+        else if (this.AssociatedObject is IHitTestElementDropable drop)
         {
             if (drop.CanDrop(_preVisualHitElement, e))
                 drop.Drop(_preVisualHitElement, e);
@@ -107,9 +107,8 @@ public class DragOverHitTestAdornerBehavior : HitTestAdornerBehavior
         {
             if (GetIsHitTest(x) == false)
                 return false;
-            if (x.GetContent() is IHitTestElementDrop drop)
+            if (x.GetContent() is IHitTestElementDropable drop)
                 return drop.IsHitTest(x, e);
-            //if (_preVisualHitElement.GetContent() is IHitTestElementDrop drop)
             return false;
         });
         if (visualHit == null)
@@ -135,19 +134,19 @@ public class DragOverHitTestAdornerBehavior : HitTestAdornerBehavior
             _preVisualHitElement = visualHit;
         }
 
-        if (_preVisualHitElement.GetContent() is IHitTestElementDrag drag)
+        if (_preVisualHitElement.GetContent() is IHitTestElementDragable drag)
             drag.DragOver(_preVisualHitElement, e);
     }
 
     protected virtual void DragEnter(UIElement element, DragEventArgs e)
     {
-        if (element.GetContent() is IHitTestElementDrag newDrag)
+        if (element.GetContent() is IHitTestElementDragable newDrag)
             newDrag.DragEnter(element, e);
     }
 
     protected virtual void DragLeave(UIElement element, DragEventArgs e)
     {
-        if (_preVisualHitElement.GetContent() is IHitTestElementDrag oldDrag)
+        if (_preVisualHitElement.GetContent() is IHitTestElementDragable oldDrag)
             oldDrag.DragLeave(_preVisualHitElement, e);
     }
 
@@ -169,7 +168,7 @@ public class DragOverHitTestAdornerBehavior : HitTestAdornerBehavior
     {
         Adorner adorner = Activator.CreateInstance(this.AdornerType, elment) as Adorner;
         object data = elment.GetDataContext();
-        if (data is IHitTestElementDrag drag)
+        if (data is IHitTestElementDragable drag)
         {
             if (drag.CanDrop(elment, null))
                 adorner = drag.GetDragAdorner(elment);

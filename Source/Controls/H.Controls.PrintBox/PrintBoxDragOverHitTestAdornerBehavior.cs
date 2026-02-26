@@ -103,7 +103,7 @@ namespace H.Controls.PrintBox
                 return;
             }
 
-            if (econtent is IHitTestElementDrop drag)
+            if (econtent is IHitTestElementDropable drag)
             {
                 if (drag.CanDrop(element, e))
                     drag.Drop(element, e);
@@ -145,7 +145,7 @@ namespace H.Controls.PrintBox
                 listPrintPage.Delete(data);
                 return;
             }
-            if (element.GetContent() is IHitTestElementDrag drag)
+            if (element.GetContent() is IHitTestElementDragable drag)
             {
                 drag.DragLeave(element, e);
                 return;
