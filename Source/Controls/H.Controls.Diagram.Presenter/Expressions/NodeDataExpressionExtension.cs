@@ -181,4 +181,9 @@ public static class NodeDataExpressionExtension
             }
         }
     }
+
+    public static IEnumerable<NodeDataExpression> OfType<T>(this IEnumerable<NodeDataExpression> expressions)
+    {
+        return expressions.Where(x => x.Type == typeof(T).FullName);
+    }
 }

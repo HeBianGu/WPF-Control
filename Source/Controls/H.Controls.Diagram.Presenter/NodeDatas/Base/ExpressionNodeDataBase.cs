@@ -11,7 +11,7 @@ using System;
 
 namespace H.Controls.Diagram.Presenter.NodeDatas.Base;
 
-public interface IExpressionNodeData : ITextNodeData, IExpressionable, IDefaultValueExpressionable
+public interface IExpressionNodeData : ITextNodeData, IExpressionable, IDefaultValueExpressionable, INodeData
 {
 
 }
@@ -24,7 +24,7 @@ public abstract class ExpressionNodeDataBase : ShowPropertyViewNodeDataBase, IEx
         if (this is IDefaultValueExpressionable defaultValueExpressionable)
         {
             var defaults = defaultValueExpressionable.GetDefaultValueExpressions();
-            result= result.Concat(defaults).ToList();
+            result = result.Concat(defaults).ToList();
         }
         if (this.DiagramData is IExpressionable expressionable)
         {
