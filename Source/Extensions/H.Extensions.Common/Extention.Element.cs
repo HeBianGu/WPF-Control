@@ -535,7 +535,7 @@ public static class ElementExtention
             if (x.VisualHit is T t)
             {
                 if (predicate?.Invoke(t) != false)
-                    return HitTestResultBehavior.Stop;
+                    return HitTestResultBehavior.Continue;
             }
             return HitTestResultBehavior.Continue;
         };

@@ -16,14 +16,12 @@ public class SelectedHitTestAdornerBehavior : HitTestAdornerBehavior
 {
     public ObservableCollection<object> Parameters { get; } = new ObservableCollection<object>();
 
-    [Obsolete]
     public UIElement SelectedElement
     {
         get { return (UIElement)GetValue(SelectedElementProperty); }
         set { SetValue(SelectedElementProperty, value); }
     }
 
-    [Obsolete]
     public static readonly DependencyProperty SelectedElementProperty =
         DependencyProperty.Register("SelectedElement", typeof(UIElement), typeof(SelectedHitTestAdornerBehavior), new FrameworkPropertyMetadata(default(UIElement), FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, (d, e) =>
         {
@@ -144,7 +142,6 @@ public class SelectedHitTestAdornerBehavior : HitTestAdornerBehavior
         //this._preVisualHitElement = visualHitElement;
     }
 
-    [Obsolete("没效果")]
     public static readonly RoutedEvent SelectedChanged =
         EventManager.RegisterRoutedEvent(
             "SelectedChanged",
@@ -152,7 +149,6 @@ public class SelectedHitTestAdornerBehavior : HitTestAdornerBehavior
             typeof(RoutedEventHandler),
             typeof(SelectedHitTestAdornerBehavior));
 
-    [Obsolete]
     public static void AddSelectedChangedHandler(DependencyObject d, RoutedEventHandler handler)
     {
         if (d is UIElement uiElement)
@@ -161,7 +157,6 @@ public class SelectedHitTestAdornerBehavior : HitTestAdornerBehavior
         }
     }
 
-    [Obsolete]
     public static void RemoveSelectedChangedHandler(DependencyObject d, RoutedEventHandler handler)
     {
         if (d is UIElement uiElement)
@@ -170,7 +165,6 @@ public class SelectedHitTestAdornerBehavior : HitTestAdornerBehavior
         }
     }
 
-    [Obsolete]
     public void OnSelectedChanged()
     {
         RoutedEventArgs args = new RoutedEventArgs(SelectedChanged, this.AssociatedObject);
