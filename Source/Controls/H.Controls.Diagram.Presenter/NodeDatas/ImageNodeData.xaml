@@ -14,16 +14,8 @@
                     Margin="5"
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
-                    h:DraggableDataTemplateAdornerBehavior.IsUse="{Binding IsTemplate}"
                     Background="Transparent"
                     ClipToBounds="False">
-                    <!--    -->
-                    <!--<Border x:Name="icon"
-                            Background="{DynamicResource {x:Static h:BrushKeys.Dark0_5}}"
-                            Visibility="Collapsed">
-                        <TextBlock FontSize="200" Text="x:Static h:IconAll.Image" />
-                    </Border>-->
-
                     <Image
                         Margin="{Binding StrokeThickness}"
                         RenderOptions.BitmapScalingMode="LowQuality"
@@ -54,8 +46,7 @@
                         FontSize="{Binding TitleFontSize}"
                         FontWeight="Bold"
                         Foreground="White"
-                        Text="{Binding Name}"
-                        Visibility="{Binding IsTemplate, Converter={x:Static h:Converter.GetTrueToVisible}}">
+                        Text="{Binding Name}">
                         <TextBlock.Effect>
                             <DropShadowEffect
                                 BlurRadius="20"
@@ -77,9 +68,9 @@
                         </TextBlock.Effect>
                     </TextBlock>
 
-                    <b:Interaction.Behaviors>
+                    <!--<b:Interaction.Behaviors>
                         <h:LoadedAdornerBehavior AdornerType="{x:Type h:NoteResizeAdorner}" IsUse="{Binding IsTemplate, Converter={x:Static h:Converter.GetTrueToFalse}}" />
-                    </b:Interaction.Behaviors>
+                    </b:Interaction.Behaviors>-->
                 </Grid>
             </AdornerDecorator>
         </Border>

@@ -32,6 +32,15 @@
                                         <WrapPanel HorizontalAlignment="Center" />
                                     </ItemsPanelTemplate>
                                 </ItemsControl.ItemsPanel>
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <ContentPresenter Content="{Binding}">
+                                            <b:Interaction.Behaviors>
+                                                <DraggableDataTemplateAdornerBehavior />
+                                            </b:Interaction.Behaviors>
+                                        </ContentPresenter>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
                             </ItemsControl>
                         </Expander>
                     </DataTemplate>

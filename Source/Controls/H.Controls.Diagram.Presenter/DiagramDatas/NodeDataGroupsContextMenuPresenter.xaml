@@ -43,6 +43,15 @@
                                                             <UniformGrid Columns="2" />
                                                         </ItemsPanelTemplate>
                                                     </ItemsControl.ItemsPanel>
+                                                    <ItemsControl.ItemTemplate>
+                                                        <DataTemplate>
+                                                            <ContentPresenter Content="{Binding}">
+                                                                <b:Interaction.Behaviors>
+                                                                    <DraggableDataTemplateAdornerBehavior />
+                                                                </b:Interaction.Behaviors>
+                                                            </ContentPresenter>
+                                                        </DataTemplate>
+                                                    </ItemsControl.ItemTemplate>
                                                     <ItemsControl.GroupStyle>
                                                         <GroupStyle>
                                                             <GroupStyle.ContainerStyle>

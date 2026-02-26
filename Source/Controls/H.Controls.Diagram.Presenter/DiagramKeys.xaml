@@ -30,7 +30,7 @@
         <Setter Property="FontStyle" Value="{Binding FontStyle}" />
         <Setter Property="Text" Value="{Binding Text}" />
         <Setter Property="AcceptsReturn" Value="True" />
-        <Setter Property="IsHitTestVisible" Value="{Binding IsTemplate, Converter={x:Static h:Converter.GetTrueToFalse}}" />
+        <!--<Setter Property="IsHitTestVisible" Value="{Binding IsTemplate, Converter={x:Static h:Converter.GetTrueToFalse}}" />-->
         <Setter Property="CaretBrush">
             <Setter.Value>
                 <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Foreground}}" />
@@ -57,7 +57,7 @@
         <Setter Property="Background" Value="{Binding Fill}" />
         <Setter Property="BorderBrush" Value="{Binding Stroke}" />
         <Setter Property="CornerRadius" Value="{Binding CornerRadius, Converter={x:Static h:Converter.GetDoubleToCornerRadius}}" />
-        <Setter Property="h:DraggableDataTemplateAdornerBehavior.IsUse" Value="{Binding IsTemplate}" />
+        <!--<Setter Property="h:DraggableDataTemplateAdornerBehavior.IsUse" Value="{Binding IsTemplate}" />-->
 
         <!--  Guide  -->
         <Setter Property="Cattach.UseGuide" Value="True" />
@@ -176,11 +176,12 @@
         <Setter Property="Cattach.UseGuide" Value="True" />
         <Setter Property="Cattach.GuideTitle" Value="{Binding Text}" />
         <Setter Property="Cattach.GuideData" Value="{Binding Description}" />
+        <Setter Property="ToolTip" Value="{Binding Description}" />
         <!--<Setter Property="h:DraggableDataTemplateAdornerBehavior.IsUse" Value="{Binding IsTemplate}"/>-->
         <Style.Triggers>
-            <DataTrigger Binding="{Binding IsTemplate}" Value="True">
+            <!--<DataTrigger Binding="{Binding IsTemplate}" Value="True">
                 <Setter Property="ToolTip" Value="{Binding Description}" />
-            </DataTrigger>
+            </DataTrigger>-->
             <DataTrigger Binding="{Binding Stroke}" Value="{x:Null}">
                 <Setter Property="Stroke" Value="{DynamicResource {x:Static h:BrushKeys.Foreground}}" />
             </DataTrigger>
