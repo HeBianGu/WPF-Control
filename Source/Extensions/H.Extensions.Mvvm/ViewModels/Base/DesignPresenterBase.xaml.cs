@@ -355,9 +355,7 @@ public abstract class DesignPresenterBase : DisplayBindableBase, IDesignPresente
     }
 
     private bool _IsHitTestVisible = true;
-    [JsonIgnore]
-    [Browsable(false)]
-    [DefaultValue(true)]
+    //[Browsable(false)]
     [Display(Name = "是否可点击", GroupName = "样式")]
     public bool IsHitTestVisible
     {

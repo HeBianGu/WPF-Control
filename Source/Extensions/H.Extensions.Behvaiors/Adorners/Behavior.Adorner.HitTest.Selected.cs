@@ -117,9 +117,10 @@ public class SelectedHitTestAdornerBehavior : HitTestAdornerBehavior
         if (this.AdornerVisual == null)
             this.AdornerVisual = this.AssociatedObject;
         Point point = e.GetPosition(this.AssociatedObject);
-        var visualHitElement = this.AssociatedObject.HitTest<UIElement>(point, x => GetIsHitTest(x));
+        var all = this.AssociatedObject.HitTestAll<UIElement>(point, x => GetIsHitTest(x));
+        var visualHitElement = all.LastOrDefault();
         var content = visualHitElement.GetContent();
-        if(content is IDesignPresenter presenter)
+        if (content is IDesignPresenter presenter)
             this.SelectedDesignPresenter = presenter;
         this.SelectedElement = visualHitElement;
 

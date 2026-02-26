@@ -523,4 +523,51 @@ public static class ElementExtention
             child = parentObject;
         }
     }
+
+    public static IReadOnlyList<T> HitTestAll<T>(this UIElement element, Point point, Predicate<T> predicate = null)
+    where T : DependencyObject
+    {
+        if (element == null)
+            throw new ArgumentNullException(nameof(element));
+        List<T> result = new List<T>();
+        HitTestResultCallback hitTestResultCallback = x =>
+        {
+            if (x.VisualHit is T t)
+            {
+                if (predicate?.Invoke(t) != false)
+                    return HitTestResultBehavior.Stop;
+            }
+            return HitTestResultBehavior.Continue;
+        };
+        HitTestFilterCallback hitTestFilterCallback = x =>
+        {
+            Type type = x.GetType();
+            if (type.Name == element.GetType().Name)
+                return HitTestFilterBehavior.ContinueSkipSelf;
+            if (x is T t)
+            {
+                if (predicate?.Invoke(t) != false)
+                    result.Add(t);
+            }
+            return HitTestFilterBehavior.Continue;
+        };
+        PointHitTestParameters parameters = new PointHitTestParameters(point);
+        VisualTreeHelper.HitTest(element, hitTestFilterCallback, hitTestResultCallback, new PointHitTestParameters(point));
+        return result;
+    }
+
+    public static T HitTestBottomMost<T>(this UIElement element, Point point, Predicate<T> predicate = null)
+    where T : DependencyObject
+    {
+        IReadOnlyList<T> hits = element.HitTestAll(point, predicate);
+        return hits.Count == 0 ? null : hits[^1];
+    }
+
+    public static IEnumerable<T> HitTestReverse<T>(this UIElement element, Point point, Predicate<T> predicate = null)
+    where T : DependencyObject
+    {
+        IReadOnlyList<T> hits = element.HitTestAll(point, predicate);
+        for (int i = hits.Count - 1; i >= 0; i--)
+            yield return hits[i];
+    }
 }
