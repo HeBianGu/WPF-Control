@@ -17,6 +17,7 @@ using System.Windows.Input;
 
 namespace H.Presenters.Design.Base;
 
+
 public abstract class DeletableDesignPresenterBase : DesignPresenterBase, ILockableDesignPresenter
 {
     [Icon(FontIcons.Delete)]

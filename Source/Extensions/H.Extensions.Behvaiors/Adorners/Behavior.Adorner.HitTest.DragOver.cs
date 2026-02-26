@@ -39,10 +39,19 @@ public class DragOverHitTestAdornerBehavior : HitTestAdornerBehavior
 
     protected override void OnAttached()
     {
-        this.AssociatedObject.DragOver += AssociatedObject_DragOver;
-        this.AssociatedObject.Drop += AssociatedObject_Drop;
+        this.AssociatedObject.PreviewDragOver += AssociatedObject_DragOver;
+        this.AssociatedObject.PreviewDrop += AssociatedObject_Drop;
         this.AssociatedObject.DragEnter += AssociatedObject_DragEnter;
         this.AssociatedObject.DragLeave += AssociatedObject_DragLeave;
+    }
+
+    protected override void OnDetaching()
+    {
+        this.AssociatedObject.PreviewDragOver -= AssociatedObject_DragOver;
+        this.AssociatedObject.PreviewDrop -= AssociatedObject_Drop;
+        this.AssociatedObject.DragEnter -= AssociatedObject_DragEnter;
+        this.AssociatedObject.DragLeave -= AssociatedObject_DragLeave;
+        this.Clear();
     }
 
     public static bool GetIsPreviewing(DependencyObject obj)
@@ -70,8 +79,8 @@ public class DragOverHitTestAdornerBehavior : HitTestAdornerBehavior
     private void AssociatedObject_DragLeave(object sender, DragEventArgs e)
     {
         //System.Diagnostics.Debug.WriteLine(e.OriginalSource);
-        //this.Clear();
-        //DragLeave(_preVisualHitElement, e);
+        this.Clear();
+        DragLeave(_preVisualHitElement, e);
     }
 
     private void AssociatedObject_DragEnter(object sender, DragEventArgs e)
@@ -95,12 +104,14 @@ public class DragOverHitTestAdornerBehavior : HitTestAdornerBehavior
 
     private void AssociatedObject_Drop(object sender, DragEventArgs e)
     {
+        e.Handled = true;
         Drop(sender, e);
         Clear();
     }
 
     private void AssociatedObject_DragOver(object sender, DragEventArgs e)
     {
+        e.Handled = true;
         if (this.AdornerVisual == null)
             this.AdornerVisual = this.AssociatedObject;
         Point point = e.GetPosition(this.AssociatedObject);
@@ -112,8 +123,6 @@ public class DragOverHitTestAdornerBehavior : HitTestAdornerBehavior
                 return drop.IsHitTest(x, e);
             return false;
         });
-        if (visualHit == null)
-            return;
         //if (visualHit == null)
         //{
         //    Clear();
@@ -136,6 +145,7 @@ public class DragOverHitTestAdornerBehavior : HitTestAdornerBehavior
         //}
         if (_preVisualHitElement.GetContent() is IHitTestElementDragable drag)
             drag.DragOver(_preVisualHitElement, e);
+       
     }
 
     protected virtual void DragEnter(UIElement element, DragEventArgs e)
@@ -150,14 +160,7 @@ public class DragOverHitTestAdornerBehavior : HitTestAdornerBehavior
             oldDrag.DragLeave(_preVisualHitElement, e);
     }
 
-    protected override void OnDetaching()
-    {
-        this.AssociatedObject.DragOver -= AssociatedObject_DragOver;
-        this.AssociatedObject.Drop -= AssociatedObject_Drop;
-        this.AssociatedObject.DragEnter -= AssociatedObject_DragEnter;
-        this.AssociatedObject.DragLeave -= AssociatedObject_DragLeave;
-        this.Clear();
-    }
+
 
     protected override bool CheckAdorner(UIElement elment)
     {

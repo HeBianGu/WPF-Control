@@ -81,8 +81,6 @@ public abstract class PanelPresenterBase : DropAdornerDesignPresenterBase, IPane
             return;
         this.Presenters.Remove(_droppingDesignPresenter);
         _droppingDesignPresenter.Opacity = this._cacheOpacity;
-        _droppingDesignPresenter.BorderBrush = null;
-        _droppingDesignPresenter.BorderThickness = new Thickness(0);
         if (_droppingDesignPresenter is ICloneable cloneable && cloneable.Clone() is IDesignPresenter clone)
         {
             clone.IsHitTestVisible = true;

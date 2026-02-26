@@ -13,6 +13,10 @@ using H.Themes;
 
 namespace H.Presenters.Design.Base;
 
+public class BorderDefinitionPresenter : DesignPresenterBase
+{
+
+}
 
 public abstract class GridPresenterBase : PanelPresenterBase
 {
@@ -98,6 +102,7 @@ public abstract class GridPresenterBase : PanelPresenterBase
         return !_droppingDesignPresenter.GetChildrenDesignPresenters().Contains(current);
     }
 
+    private BorderDefinitionPresenter _activeBorder = new BorderDefinitionPresenter();
     public override void DragOver(UIElement element, DragEventArgs e)
     {
         var p = e.GetPosition(element);
@@ -113,10 +118,11 @@ public abstract class GridPresenterBase : PanelPresenterBase
                     value.Column = c;
                     value.Opacity = 0.5;
                     value.IsHitTestVisible = false;
-                    value.BorderBrush = Brushes.Green;
-                    value.BorderThickness = new Thickness(1);
+                    _activeBorder.Row = r;
+                    _activeBorder.Column = c;
                 }
                 this.Presenters.Add(value);
+                this.Presenters.Add(this._activeBorder);
                 _droppingDesignPresenter = value;
             }
         }
@@ -128,12 +134,24 @@ public abstract class GridPresenterBase : PanelPresenterBase
                     return;
                 _droppingDesignPresenter.Row = r;
                 _droppingDesignPresenter.Column = c;
-                _droppingDesignPresenter.BorderBrush = null;
-                _droppingDesignPresenter.BorderThickness = new Thickness(0);
+                _activeBorder.Row = r;
+                _activeBorder.Column = c;
                 //this.Presenters.Remove(_dropBackup);
                 //this.Presenters.Add(_dropBackup);
                 element.InvalidateVisual();
             }
         }
+    }
+
+    public override void Drop(UIElement element, DragEventArgs e)
+    {
+        this.Presenters.Remove(this._activeBorder);
+        base.Drop(element, e);
+    }
+
+    public override void DragLeave(UIElement element, DragEventArgs e)
+    {
+        this.Presenters.Remove(this._activeBorder);
+        base.DragLeave(element, e);
     }
 }
