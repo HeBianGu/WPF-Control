@@ -40,10 +40,10 @@ public class DesignSelectedHitTestAdornerBehavior : SelectedHitTestAdornerBehavi
     protected override UIElement HitElement(Point point)
     {
         var all = this.AssociatedObject.HitTestAllByFilter<UIElement>(point, x => GetIsHitTest(x));
-        var children = all.Where(x => x.GetContent() is not IPanelDesignPresenter);
+        var children = all.Where(x => x.GetContent() is not IChildableDesignPresenter);
         var result = children.FirstOrDefault();
         if (result == null)
-            result = all.Where(x => x.GetContent() is IPanelDesignPresenter)?.LastOrDefault();
+            result = all.Where(x => x.GetContent() is IChildableDesignPresenter)?.LastOrDefault();
         if (result.GetContent() is IDesignPresenter presenter)
             this.SelectedDesignPresenter = presenter;
         return result;
