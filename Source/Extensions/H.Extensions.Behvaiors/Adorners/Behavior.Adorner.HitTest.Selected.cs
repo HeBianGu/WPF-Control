@@ -9,13 +9,13 @@
 #if NET
 #endif
 using H.Common.Interfaces;
+using H.Extensions.Common;
 
 namespace H.Extensions.Behvaiors.Adorners;
 
 public class SelectedHitTestAdornerBehavior : HitTestAdornerBehavior
 {
     public ObservableCollection<object> Parameters { get; } = new ObservableCollection<object>();
-
     public UIElement SelectedElement
     {
         get { return (UIElement)GetValue(SelectedElementProperty); }
@@ -37,40 +37,13 @@ public class SelectedHitTestAdornerBehavior : HitTestAdornerBehavior
             {
                 SetIsSelected(n, true);
                 control.AddAdorner(n);
-                //触发事件
                 control.OnSelectedChanged();
             }
-
             control._preVisualHitElement = e.NewValue as UIElement;
             control.OnSelectdElementChanged();
-
         }));
 
 
-    public IDesignPresenter SelectedDesignPresenter
-    {
-        get { return (IDesignPresenter)GetValue(SelectedDesignPresenterProperty); }
-        set { SetValue(SelectedDesignPresenterProperty, value); }
-    }
-
-    public static readonly DependencyProperty SelectedDesignPresenterProperty =
-        DependencyProperty.Register("SelectedDesignPresenter", typeof(IDesignPresenter), typeof(SelectedHitTestAdornerBehavior), new FrameworkPropertyMetadata(default(IDesignPresenter), (d, e) =>
-        {
-            SelectedHitTestAdornerBehavior control = d as SelectedHitTestAdornerBehavior;
-
-            if (control == null) return;
-
-            if (e.OldValue is IDesignPresenter o)
-            {
-
-            }
-
-            if (e.NewValue is IDesignPresenter n)
-            {
-
-            }
-
-        }));
 
     protected virtual void OnSelectdElementChanged()
     {
@@ -115,31 +88,12 @@ public class SelectedHitTestAdornerBehavior : HitTestAdornerBehavior
         if (this.AdornerVisual == null)
             this.AdornerVisual = this.AssociatedObject;
         Point point = e.GetPosition(this.AssociatedObject);
-        var all = this.AssociatedObject.HitTestAll<UIElement>(point, x => GetIsHitTest(x));
-        var visualHitElement = all.LastOrDefault();
-        var content = visualHitElement.GetContent();
-        if (content is IDesignPresenter presenter)
-            this.SelectedDesignPresenter = presenter;
-        this.SelectedElement = visualHitElement;
+        this.SelectedElement = this.HitElement(point);
+    }
 
-        //if (visualHitElement == null)
-        //{
-        //    this.Clear();
-        //    //if (this.SelectedElement != null)
-        //    //    SetIsSelected(_temp, false);
-
-        //    //this.SelectedElement = null;
-        //}
-        //else
-        //{
-        //    if (visualHitElement != this.SelectedElement)
-        //        this.Clear();
-        //    this.AddAdorner(visualHitElement);
-        //    //SelectedHitTestAdornerBehavior.SetIsSelected(visualHitElement, true);
-        //    this.SelectedElement = visualHitElement;
-
-        //}
-        //this._preVisualHitElement = visualHitElement;
+    protected virtual UIElement HitElement(Point point)
+    {
+        return this.AssociatedObject.HitTest<UIElement>(point, x => GetIsHitTest(x));
     }
 
     public static readonly RoutedEvent SelectedChanged =

@@ -145,7 +145,7 @@ public class DragOverHitTestAdornerBehavior : HitTestAdornerBehavior
         //}
         if (_preVisualHitElement.GetContent() is IHitTestElementDragable drag)
             drag.DragOver(_preVisualHitElement, e);
-       
+
     }
 
     protected virtual void DragEnter(UIElement element, DragEventArgs e)

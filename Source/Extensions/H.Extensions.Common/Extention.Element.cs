@@ -17,7 +17,7 @@ using System.Windows.Media.Imaging;
 
 namespace H.Extensions.Common;
 
-public static class ElementExtention
+public static partial class ElementExtention
 {
     public static void BindCommand(this UIElement @ui, ICommand com, Action<object, ExecutedRoutedEventArgs> call)
     {
@@ -444,7 +444,6 @@ public static class ElementExtention
             }
             return HitTestResultBehavior.Continue;
         };
-        //Point point = Mouse.GetPosition(element);
         PointHitTestParameters parameters = new PointHitTestParameters(point);
         VisualTreeHelper.HitTest(element, hitTestFilterCallback, hitTestResultCallback, parameters);
         return result;
@@ -467,11 +466,6 @@ public static class ElementExtention
             Type type = x.GetType();
             if (type.Name == element.GetType().Name)
                 return HitTestFilterBehavior.ContinueSkipSelf;
-            if (x is T t)
-            {
-                if (predicate?.Invoke(t) != false)
-                    result = t;
-            }
             return HitTestFilterBehavior.Continue;
         };
 
@@ -480,7 +474,10 @@ public static class ElementExtention
             if (x.VisualHit is T t)
             {
                 if (predicate?.Invoke(t) != false)
+                {
+                    result = t;
                     return HitTestResultBehavior.Stop;
+                }
             }
             return HitTestResultBehavior.Continue;
         };
@@ -535,7 +532,8 @@ public static class ElementExtention
             if (x.VisualHit is T t)
             {
                 if (predicate?.Invoke(t) != false)
-                    return HitTestResultBehavior.Continue;
+                    result.Add(t);
+                return HitTestResultBehavior.Continue;
             }
             return HitTestResultBehavior.Continue;
         };
@@ -544,11 +542,6 @@ public static class ElementExtention
             Type type = x.GetType();
             if (type.Name == element.GetType().Name)
                 return HitTestFilterBehavior.ContinueSkipSelf;
-            if (x is T t)
-            {
-                if (predicate?.Invoke(t) != false)
-                    result.Add(t);
-            }
             return HitTestFilterBehavior.Continue;
         };
         PointHitTestParameters parameters = new PointHitTestParameters(point);
@@ -556,18 +549,28 @@ public static class ElementExtention
         return result;
     }
 
-    public static T HitTestBottomMost<T>(this UIElement element, Point point, Predicate<T> predicate = null)
-    where T : DependencyObject
+    public static IReadOnlyList<T> HitTestAllByFilter<T>(this UIElement element, Point point, Predicate<T> predicate = null)
+where T : DependencyObject
     {
-        IReadOnlyList<T> hits = element.HitTestAll(point, predicate);
-        return hits.Count == 0 ? null : hits[^1];
-    }
-
-    public static IEnumerable<T> HitTestReverse<T>(this UIElement element, Point point, Predicate<T> predicate = null)
-    where T : DependencyObject
-    {
-        IReadOnlyList<T> hits = element.HitTestAll(point, predicate);
-        for (int i = hits.Count - 1; i >= 0; i--)
-            yield return hits[i];
+        if (element == null)
+            throw new ArgumentNullException(nameof(element));
+        List<T> result = new List<T>();
+        HitTestResultCallback hitTestResultCallback = x =>
+        {
+            return HitTestResultBehavior.Continue;
+        };
+        HitTestFilterCallback hitTestFilterCallback = x =>
+        {
+            Type type = x.GetType();
+            if (type.Name == element.GetType().Name)
+                return HitTestFilterBehavior.ContinueSkipSelf;
+            if (x is T t)
+                if (predicate?.Invoke(t) != false)
+                    result.Add(t);
+            return HitTestFilterBehavior.Continue;
+        };
+        PointHitTestParameters parameters = new PointHitTestParameters(point);
+        VisualTreeHelper.HitTest(element, hitTestFilterCallback, hitTestResultCallback, new PointHitTestParameters(point));
+        return result;
     }
 }

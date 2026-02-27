@@ -66,28 +66,6 @@ public abstract class HitTestAdornerBehavior : AdornerBehaviorBase
             drop.RemoveDropAdorner(_preVisualHitElement);
     }
 
-    //HitTestResultBehavior HitTestCallBack(HitTestResult result)
-    //{
-    //    if (HitTestAdornerBehavior.GetIsHitTest(result.VisualHit))
-    //    {
-    //        return HitTestResultBehavior.Stop;
-    //    }
-    //    return HitTestResultBehavior.Continue;
-    //}
-
-    //HitTestFilterBehavior HitTestFilter(DependencyObject obj)
-    //{
-    //    Type type = obj.GetType();
-    //    if (type.Name == this.GetType().Name)
-    //        return HitTestFilterBehavior.ContinueSkipSelf;
-    //    if (HitTestAdornerBehavior.GetIsHitTest(obj))
-    //    {
-    //        _visualHit = obj as UIElement;
-    //    }
-
-    //    return HitTestFilterBehavior.Continue;
-    //}
-
     protected virtual void AddAdorner(UIElement elment)
     {
         if (_preVisualHitElement == elment)

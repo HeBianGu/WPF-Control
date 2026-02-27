@@ -150,7 +150,7 @@
         BasedOn="{StaticResource {x:Static local:DesignBorderKeys.Binding}}"
         TargetType="{x:Type local:DesignBorder}">
         <Setter Property="AllowDrop" Value="False" />
-        <Setter Property="IsHitTestVisible" Value="{Binding IsHitTestVisible}" />
+        <Setter Property="IsHitTestVisible" Value="False" />
         <Setter Property="MouseOverHitTestAdornerBehavior.IsMouseOver" Value="{Binding IsMouseOver, Mode=TwoWay}" />
         <Setter Property="SelectedHitTestAdornerBehavior.IsSelected" Value="{Binding IsSelected, Mode=TwoWay}" />
         <Setter Property="HitTestAdornerBehavior.IsHitTest" Value="True" />
