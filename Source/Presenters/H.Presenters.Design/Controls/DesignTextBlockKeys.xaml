@@ -10,14 +10,12 @@
         <Setter Property="FontStretch" Value="{Binding FontStretch}" />
         <Setter Property="FontWeight" Value="{Binding FontWeight}" />
         <Setter Property="FontStyle" Value="{Binding FontStyle}" />
-        <Setter Property="Opacity" Value="{Binding Opacity}" />
+        <!--<Setter Property="Opacity" Value="{Binding Opacity}" />
         <Setter Property="Height" Value="{Binding Height}" />
-        <Setter Property="Margin" Value="{Binding Margin}" />
         <Setter Property="Visibility" Value="{Binding IsVisible, Converter={x:Static Converter.GetTrueToVisible}}" />
         <Setter Property="IsEnabled" Value="{Binding IsEnabled}" />
         <Setter Property="HorizontalAlignment" Value="{Binding HorizontalAlignment}" />
-        <Setter Property="VerticalAlignment" Value="{Binding VerticalAlignment}" />
-        <Setter Property="Padding" Value="{Binding Padding}" />
+        <Setter Property="VerticalAlignment" Value="{Binding VerticalAlignment}" />-->
         <Style.Triggers>
             <DataTrigger Binding="{Binding Foreground}" Value="{x:Null}">
                 <Setter Property="Foreground" Value="{DynamicResource {x:Static BrushKeys.Foreground}}" />

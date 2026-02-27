@@ -10,7 +10,7 @@ global using H.Common.Interfaces;
 global using H.Controls.Diagram.Presenter.NodeDatas.Base;
 namespace H.Controls.Diagram.Presenter.NodeDatas;
 
-public interface ITextNodeData : ITextable
+public interface ITextNodeData : INodeData, ITextable
 {
     FontFamily FontFamily { get; set; }
     double FontSize { get; set; }
