@@ -207,14 +207,17 @@
 
     <Style x:Key="{ComponentResourceKey ResourceId=S.DataGridRowHeader.Default, TypeInTargetAssembly={x:Type local:DataGridRowHeaderKeys}}" TargetType="{x:Type DataGridRowHeader}">
         <Setter Property="Background" Value="{x:Null}" />
-        <Setter Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.BorderBrush}}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.BorderBrushAssist}}" />
         <Setter Property="BorderThickness" Value="1,0,1,1" />
         <Setter Property="Margin" Value="0" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type DataGridRowHeader}">
                     <Grid>
-                        <Border Width="10" Style="{StaticResource S.Border.TemplatedParent}">
+                        <Border
+                            Width="10"
+                            CornerRadius="1"
+                            Style="{StaticResource S.Border.TemplatedParent}">
                             <StackPanel Orientation="Horizontal">
                                 <ContentPresenter VerticalAlignment="Center" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
                                 <Control

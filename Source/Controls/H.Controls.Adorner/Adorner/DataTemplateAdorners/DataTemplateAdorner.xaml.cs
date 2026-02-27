@@ -7,6 +7,7 @@
 // Licensed under the MIT License (the "License")
 
 using H.Controls.Adorner.Adorner.Base;
+using System.Windows;
 
 namespace H.Controls.Adorner.Adorner.DataTemplateAdorners;
 
@@ -18,8 +19,10 @@ public class DataTemplateAdorner : VisualCollectionAdornerBase
     }
 
     protected ContentPresenter _contentPresenter = new ContentPresenter();
+
     public DataTemplateAdorner(UIElement adornedElement) : base(adornedElement)
     {
+       
         _visualCollection.Add(_contentPresenter);
         object data = GetData(adornedElement);
         if (data != null)

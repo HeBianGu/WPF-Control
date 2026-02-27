@@ -26,7 +26,7 @@ namespace H.Modules.Identity
         [Display(Name = "角色名称")]
         public string Name
         {
-            get { return this.Model.Name; }
+            get { return this.Model?.Name; }
             set
             {
                 this.Model.Name = value;

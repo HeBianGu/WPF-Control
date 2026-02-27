@@ -22,7 +22,7 @@ namespace H.Modules.Messages.Dialog
                 x.VerticalAlignment = VerticalAlignment.Center;
                 x.HorizontalContentAlignment = HorizontalAlignment.Center;
                 x.VerticalContentAlignment = VerticalAlignment.Center;
-                x.Margin = new Thickness(20, 20, 20, 20);
+                x.Margin = new Thickness(10, 6, 10, 6);
                 if (data is StringPresenter)
                 {
                     x.MinWidth = 400;

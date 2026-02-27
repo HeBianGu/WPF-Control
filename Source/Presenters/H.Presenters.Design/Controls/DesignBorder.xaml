@@ -120,7 +120,10 @@
             <!--<TextBlock Foreground="{DynamicResource {x:Static h:BrushKeys.Accent}}"
                        Text="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=Content.Icon}" />-->
 
-            <TextBlock VerticalAlignment="Center" Foreground="{DynamicResource {x:Static h:BrushKeys.Accent}}">
+            <TextBlock
+                VerticalAlignment="Center"
+                FontSize="18"
+                Foreground="{DynamicResource {x:Static h:BrushKeys.Accent}}">
                 <Run Text="[" /><Run Text="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=Content.Name}" /> <Run Text="]" />
             </TextBlock>
             <!--<Button h:Cattach.Icon="{x:Static h:Icons.User}"
@@ -172,20 +175,5 @@
             </DataTrigger>
         </Style.Triggers>
     </Style>
-
-    <!--<Style x:Key="{ComponentResourceKey ResourceId=S.DesignBorder.Default, TypeInTargetAssembly={x:Type local:DesignBorder}}" BasedOn="{StaticResource {x:Static local:DesignBorder.DefaultKey}}" TargetType="{x:Type local:DesignBorder}">
-        <Setter Property="h:MouseOverHitTestAdornerBehavior.IsMouseOver" Value="{Binding IsMouseOver, Mode=TwoWay}" />
-        <Setter Property="h:SelectedHitTestAdornerBehavior.IsSelected" Value="{Binding IsSelected, Mode=TwoWay}" />
-        <Setter Property="h:HitTestAdornerBehavior.IsHitTest" Value="True" />
-        <Setter Property="h:Cattach.Behaviors">
-            <Setter.Value>
-                <h:Behaviors>
-                    <h:DragDataTempalteAdornerBehaviour DragDropEffects="Move" RoutingStrategy="Tunnel" />
-                </h:Behaviors>
-            </Setter.Value>
-        </Setter>
-        <Setter Property="h:ControlTemplateAdorner.Template" Value="{StaticResource S.ControlTemplate.Adorner}" />
-    </Style>-->
-
     <Style BasedOn="{StaticResource {x:Static local:DesignBorder.DefaultKey}}" TargetType="{x:Type local:DesignBorder}" />
 </ResourceDictionary>
