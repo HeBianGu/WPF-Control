@@ -15,6 +15,7 @@ public class DragableDataTemplateAdorner : DataTemplateAdorner, IDraggableAdorne
     private Point _location;
     public Point Offset { get; set; }
     public DraggableAdornerMode DropAdornerMode { get; set; }
+    public double BorderPadding { get; set; } = 2;
     public DragableDataTemplateAdorner(UIElement adornedElement, Point offset) : base(adornedElement)
     {
         this._borderPen = this.CreateBorderPen();
@@ -74,6 +75,6 @@ public class DragableDataTemplateAdorner : DataTemplateAdorner, IDraggableAdorne
         rect.Offset(_location.X, _location.Y);
         if (this._borderPen == null)
             return;
-        drawingContext.DrawRoundedRectangle(null, this._borderPen, rect.GetPadding(10), 2, 2);
+        drawingContext.DrawRoundedRectangle(null, this._borderPen, rect.GetPadding(this.BorderPadding), 2, 2);
     }
 }
