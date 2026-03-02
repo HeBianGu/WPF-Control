@@ -19,6 +19,7 @@ namespace H.Presenters.Design.PrintPresenter
 
     }
 
+    [Obsolete]
     [ContentProperty("Content")]
     [DefaultProperty("Content")]
     [Display(Name = "内容分页")]
@@ -28,6 +29,7 @@ namespace H.Presenters.Design.PrintPresenter
         {
             this.UseFixedPageHeight = true;
         }
+
         private IDesignPresenter _content;
         [Display(Name = "内容")]
         [Browsable(false)]

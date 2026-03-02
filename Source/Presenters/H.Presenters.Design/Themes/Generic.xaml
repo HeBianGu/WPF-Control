@@ -34,6 +34,7 @@
         <ResourceDictionary Source="pack://application:,,,/H.Presenters.Design;component/PrintPresenter/PrintBoxPresenter.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Presenters.Design;component/PrintPresenter/PrintDataGridPresenter.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Presenters.Design;component/PrintPresenter/TablePrintPagePresenter.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Presenters.Design;component/PrintPresenter/DefinitionGridPrintPagePresenter.xaml" />
 
         <ResourceDictionary Source="pack://application:,,,/H.Presenters.Design;component/DesignBox.xaml" />
     </ResourceDictionary.MergedDictionaries>

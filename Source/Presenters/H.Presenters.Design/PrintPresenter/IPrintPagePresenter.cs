@@ -12,5 +12,5 @@ namespace H.Presenters.Design.PrintPresenter;
 
 public interface IPrintPagePresenter : IDesignPresenter, ICloneable
 {
-
+    bool UseFixedPageHeight { get; set; }
 }
