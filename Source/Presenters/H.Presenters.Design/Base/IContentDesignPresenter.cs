@@ -12,5 +12,5 @@ namespace H.Presenters.Design.Base;
 
 public interface IChildableDesignPresenter : IDesignPresenter
 {
-    void Delete(FrameworkElement element);
+    
 }

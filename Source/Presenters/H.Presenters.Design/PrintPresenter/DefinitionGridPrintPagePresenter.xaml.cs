@@ -24,10 +24,10 @@ namespace H.Presenters.Design.PrintPresenter
         {
             this.UseFixedPageHeight = true;
         }
-        private DefinitionGridPresenter _content = new DefinitionGridPresenter() { UseTool = true };
+        private PrintDefinitionGridPresenter _content = new PrintDefinitionGridPresenter();
         [Display(Name = "内容")]
         [Browsable(false)]
-        public DefinitionGridPresenter Content
+        public PrintDefinitionGridPresenter Content
         {
             get { return _content; }
             set
@@ -36,5 +36,15 @@ namespace H.Presenters.Design.PrintPresenter
                 RaisePropertyChanged();
             }
         }
+    }
+
+    public interface IPrintPageContentPresenter
+    {
+
+    }
+
+    public class PrintDefinitionGridPresenter : DefinitionGridPresenter, IPrintPageContentPresenter
+    {
+
     }
 }

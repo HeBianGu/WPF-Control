@@ -10,6 +10,7 @@ using H.Common.Interfaces;
 using H.Extensions.FontIcon;
 using H.Extensions.Mvvm.Commands;
 using H.Mvvm.Commands;
+using H.Presenters.Design.PrintPresenter;
 using H.Services.Message;
 using System.Collections;
 using System.Windows.Documents;
@@ -71,18 +72,21 @@ public abstract class DeletableDesignPresenterBase : DesignPresenterBase, ILocka
             content = b.GetContent();
         }
 
-        FrameworkElement element = helement.GetParent<FrameworkElement>(x =>
-        {
-            return x.GetContent() is IChildableDesignPresenter childable1 && childable1 != content;
-        });
+       
 
-        if (element?.GetContent() is IChildableDesignPresenter childable)
-            childable.Delete(element);
-        else
+        if (helement.GetContent() is IPrintPageContentPresenter)
         {
-            helement.GetItemsSource<IList>()?.Remove(content);
-            ItemsControl itemsControl = helement.GetParent<ItemsControl>();
-            itemsControl.GetItemsSource<IList>()?.Remove(content);
+            FrameworkElement element = helement.GetParent<FrameworkElement>(x =>
+            {
+                return x.GetContent() is IPrintPagePresenter childable1 && childable1 != content;
+            });
+            var printPagePresenter = element.GetContent();
+            element.GetItemsSource<IList>()?.Remove(printPagePresenter);
+            element.GetParent<ItemsControl>()?.GetItemsSource<IList>()?.Remove(printPagePresenter);
+            return;
         }
+        helement.GetItemsSource<IList>()?.Remove(content);
+        ItemsControl itemsControl = helement.GetParent<ItemsControl>();
+        itemsControl.GetItemsSource<IList>()?.Remove(content);
     }
 }

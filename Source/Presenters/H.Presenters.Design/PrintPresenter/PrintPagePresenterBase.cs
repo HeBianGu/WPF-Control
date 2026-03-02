@@ -33,11 +33,6 @@ namespace H.Presenters.Design.PrintPresenter
 
         }
 
-        public void Delete(FrameworkElement element)
-        {
-            element.getitem
-        }
-
         private bool _UseFixedPageHeight;
         public bool UseFixedPageHeight
         {
