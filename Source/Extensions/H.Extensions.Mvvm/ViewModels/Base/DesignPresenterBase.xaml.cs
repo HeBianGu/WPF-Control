@@ -260,6 +260,19 @@ public abstract class DesignPresenterBase : DisplayBindableBase, IDesignPresente
         }
     }
 
+    private CornerRadius _CornerRadius;
+    [Display(Name = "边框圆角", GroupName = "样式")]
+    public CornerRadius CornerRadius
+    {
+        get { return _CornerRadius; }
+        set
+        {
+            _CornerRadius = value;
+            RaisePropertyChanged();
+        }
+    }
+
+
     private double _opacity = 1;
     [DefaultValue(1.0)]
     [Display(Name = "透明度", GroupName = "样式")]
