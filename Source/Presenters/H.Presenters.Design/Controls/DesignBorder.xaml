@@ -170,7 +170,7 @@
             <DataTrigger Binding="{Binding BorderBrush}" Value="{x:Null}">
                 <Setter Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.BorderBrush}}" />
             </DataTrigger>
-            <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=l:DesignBox}, Path=UseDesign, FallbackValue=true}" Value="false">
+            <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=l:DesignBox}, Path=UseDesign, FallbackValue=false}" Value="false">
                 <Setter Property="IsHitTestVisible" Value="True" />
             </DataTrigger>
         </Style.Triggers>
