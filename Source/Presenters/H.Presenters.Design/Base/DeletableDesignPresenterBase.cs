@@ -76,8 +76,8 @@ public abstract class DeletableDesignPresenterBase : DesignPresenterBase, ILocka
             return x.GetContent() is IChildableDesignPresenter childable1 && childable1 != content;
         });
 
-        if (element?.GetContent() is IChildableDesignPresenter childable && content is IDesignPresenter item)
-            childable.Delete(item);
+        if (element?.GetContent() is IChildableDesignPresenter childable)
+            childable.Delete(element);
         else
         {
             helement.GetItemsSource<IList>()?.Remove(content);

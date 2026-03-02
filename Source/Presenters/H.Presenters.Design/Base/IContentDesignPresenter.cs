@@ -12,10 +12,5 @@ namespace H.Presenters.Design.Base;
 
 public interface IChildableDesignPresenter : IDesignPresenter
 {
-    void Delete(IDesignPresenter designPresenter);
-}
-
-public interface IContentDesignPresenter: IChildableDesignPresenter
-{
-    IDesignPresenter Content { get; set; }
+    void Delete(FrameworkElement element);
 }

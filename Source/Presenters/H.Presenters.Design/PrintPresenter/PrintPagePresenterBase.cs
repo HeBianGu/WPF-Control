@@ -6,12 +6,13 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
+using H.Common.Interfaces;
 using H.Extensions.Common;
 using System.Windows.Input;
 
 namespace H.Presenters.Design.PrintPresenter
 {
-    public class PrintPagePresenterBase : DeletableDesignPresenterBase, IPrintPagePresenter, ICloneable
+    public class PrintPagePresenterBase : DeletableDesignPresenterBase, IPrintPagePresenter, ICloneable, IChildableDesignPresenter
     {
         public PrintPagePresenterBase()
         {
@@ -30,6 +31,11 @@ namespace H.Presenters.Design.PrintPresenter
         public virtual void Refresh()
         {
 
+        }
+
+        public void Delete(FrameworkElement element)
+        {
+            element.getitem
         }
 
         private bool _UseFixedPageHeight;

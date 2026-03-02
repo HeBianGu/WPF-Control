@@ -117,4 +117,10 @@ public abstract class PanelPresenterBase : DropAdornerDesignPresenterBase, IPane
         }
         return r;
     }
+
+    public void Delete(FrameworkElement element)
+    {
+        if (element.GetContent() is IDesignPresenter designPresenter)
+            this.Delete(designPresenter);
+    }
 }

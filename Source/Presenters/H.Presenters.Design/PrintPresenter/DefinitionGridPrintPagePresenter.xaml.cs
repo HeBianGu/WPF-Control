@@ -24,7 +24,7 @@ namespace H.Presenters.Design.PrintPresenter
         {
             this.UseFixedPageHeight = true;
         }
-        private DefinitionGridPresenter _content = new DefinitionGridPresenter() { UseTool = false };
+        private DefinitionGridPresenter _content = new DefinitionGridPresenter() { UseTool = true };
         [Display(Name = "内容")]
         [Browsable(false)]
         public DefinitionGridPresenter Content

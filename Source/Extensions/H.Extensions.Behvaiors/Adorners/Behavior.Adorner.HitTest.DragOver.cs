@@ -123,26 +123,27 @@ public class DragOverHitTestAdornerBehavior : HitTestAdornerBehavior
                 return drop.IsHitTest(x, e);
             return false;
         });
-        //if (visualHit == null)
-        //{
-        //    Clear();
-        //    if (this.AssociatedObject != _preVisualHitElement)
-        //    {
-        //        DragEnter(this.AssociatedObject, e);
-        //        DragLeave(_preVisualHitElement, e);
-        //    }
-        //}
-        //else
-        //{
-        if (visualHit.GetContent() != _preVisualHitElement.GetContent())
+        if (visualHit == null)
         {
             Clear();
-            DragLeave(_preVisualHitElement, e);
-            DragEnter(visualHit, e);
+            if (this.AssociatedObject != _preVisualHitElement)
+            {
+                DragEnter(this.AssociatedObject, e);
+                DragLeave(_preVisualHitElement, e);
+            }
+
         }
-        AddAdorner(visualHit);
-        _preVisualHitElement = visualHit;
-        //}
+        else
+        {
+            if (visualHit.GetContent() != _preVisualHitElement.GetContent())
+            {
+                Clear();
+                DragLeave(_preVisualHitElement, e);
+                DragEnter(visualHit, e);
+            }
+            AddAdorner(visualHit);
+            _preVisualHitElement = visualHit;
+        }
         if (_preVisualHitElement.GetContent() is IHitTestElementDragable drag)
             drag.DragOver(_preVisualHitElement, e);
 

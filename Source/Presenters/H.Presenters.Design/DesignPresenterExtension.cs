@@ -27,16 +27,6 @@ public static class DesignPresenterExtension
                 }
             }
         }
-
-        if (designPresenter is IContentPrintPagePresenter contentPrintPagePresenter)
-        {
-            yield return contentPrintPagePresenter;
-            yield return contentPrintPagePresenter.Content;
-            foreach (var child in GetChildrenDesignPresenters(contentPrintPagePresenter.Content))
-            {
-                yield return child;
-            }
-        }
     }
 
     public static IEnumerable<IDesignPresenter> GetChildrenDesignPresenters(this IDesignPresenter designPresenters, Predicate<IDesignPresenter> predicate = null)
