@@ -23,7 +23,7 @@ namespace H.Presenters.Design.PrintPresenter
             //this.BorderBrush = PrintBoxMessage.Instance.BorderBrush;
         }
 
-        public object Clone()
+        public virtual object Clone()
         {
             return this.CloneByBasicType();
         }

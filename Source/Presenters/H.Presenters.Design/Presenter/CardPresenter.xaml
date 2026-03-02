@@ -25,10 +25,11 @@
                         Margin="0"
                         Padding="0"
                         VerticalAlignment="Center"
+                        Style="{DynamicResource {x:Static c:DesignTextBlockKeys.Binding}}"
                         FontSize="{Binding TitleFontSize}"
                         FontWeight="{Binding TitleFontWeight}"
-                        Foreground="{Binding TitleForeground}"
-                        Text="{Binding Title}" />
+                        Text="{Binding Title}">
+                    </TextBlock>
                     <TextBlock
                         Height="Auto"
                         Margin="5"

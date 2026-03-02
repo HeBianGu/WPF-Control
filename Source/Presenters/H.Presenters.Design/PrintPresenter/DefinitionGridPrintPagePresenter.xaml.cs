@@ -11,6 +11,7 @@ using H.Controls.Adorner.Adorner;
 using H.Mvvm.Commands;
 using H.Presenters.Design.Presenter;
 using System.Collections;
+using System.Text.Json.Serialization;
 using System.Windows.Markup;
 
 namespace H.Presenters.Design.PrintPresenter
@@ -36,6 +37,19 @@ namespace H.Presenters.Design.PrintPresenter
                 RaisePropertyChanged();
             }
         }
+        [JsonIgnore]
+        [Browsable(false)]
+        public IEnumerable<IDesignPresenter> Presenters => this.Content.ToEnumerable();
+
+        public override object Clone()
+        {
+            var r = base.Clone();
+            if (r is DefinitionGridPrintPagePresenter presenter)
+                presenter.Content = this.Content.Clone() as PrintDefinitionGridPresenter;
+            return r;
+        }
+
+
     }
 
     public interface IPrintPageContentPresenter

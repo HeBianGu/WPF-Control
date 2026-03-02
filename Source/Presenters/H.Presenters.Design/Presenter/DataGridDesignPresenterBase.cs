@@ -31,7 +31,7 @@ public class DataGridDesignPresenter<T> : DataGridDesignPresenterBase
 
 [Icon(FontIcons.List)]
 [Display(Name = "数据表格")]
-public abstract class DataGridDesignPresenterBase : CloneableDesignPresenterBase
+public abstract class DataGridDesignPresenterBase : CommandsDesignPresenterBase
 {
     protected DataGridDesignPresenterBase()
     {
