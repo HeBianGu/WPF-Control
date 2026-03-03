@@ -18,7 +18,14 @@ public class DateTimeNowPresenter : TitlePresenter, IUpdateable
     {
         this.Title = "当前日期：";
         this.UpdateData();
-
+        Task.Run(async () =>
+        {
+            while (true)
+            {
+                await Task.Delay(1000);
+                this.UpdateData();
+            }
+        });
     }
     public override void LoadDefault()
     {
