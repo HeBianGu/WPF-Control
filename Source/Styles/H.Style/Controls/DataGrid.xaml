@@ -323,11 +323,11 @@
                         SnapsToDevicePixels="True">
                         <ContentPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" Style="{StaticResource S.ContentPresenter.TemplatedParent}" />
                     </Border>
-                    <ControlTemplate.Triggers>
+                    <!--<ControlTemplate.Triggers>
                         <Trigger Property="IsFocused" Value="True">
                             <Setter TargetName="border" Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.BorderBrushTitle}}" />
                         </Trigger>
-                    </ControlTemplate.Triggers>
+                    </ControlTemplate.Triggers>-->
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
