@@ -98,10 +98,6 @@ namespace System
         {
             app.UseThemeOptions(x =>
             {
-                x.IconFontFamilys.Add(IconFontFamilys.SystemSegoeMDL2Asset);
-                x.IconFontFamilys.Add(IconFontFamilys.SystemSegoeFluentIcons);
-                x.IconFontFamilys.Add(IconFontFamilys.ResourceSegoeMDL2Asset);
-                x.IconFontFamilys.Add(IconFontFamilys.ResourceSegoeFluentIcons);
                 option?.Invoke(x);
             });
         }
