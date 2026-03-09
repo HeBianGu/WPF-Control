@@ -150,6 +150,8 @@ public class ThemeOptions : IocOptionInstance<ThemeOptions>, ILoginedSplashLoada
     }
 
     private FontFamily _iconFontFamily;
+    [JsonIgnore]
+    [XmlIgnore]
     [GetPropertyNameSource(nameof(IconFontFamilys))]
     [PropertyItem(typeof(ComboBoxPropertyItem))]
     [Display(Name = "图标字体")]
@@ -357,6 +359,6 @@ public class ThemeOptions : IocOptionInstance<ThemeOptions>, ILoginedSplashLoada
 
     protected override string GetDefaultFolder()
     {
-        return AppPaths.Instance.UserSetting;
+        return AppPaths.Instance.Setting;
     }
 }
