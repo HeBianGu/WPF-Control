@@ -46,6 +46,15 @@
                                                     <ItemsControl.ItemTemplate>
                                                         <DataTemplate>
                                                             <ContentPresenter Content="{Binding}">
+                                                                <ContentPresenter.ToolTip>
+                                                                    <ToolTip>
+                                                                        <TextBlock>
+                                                                            <Run Text="{Binding Name}" />
+                                                                            <Run Text=":" />
+                                                                            <Run Text="{Binding Description}" />
+                                                                        </TextBlock>
+                                                                    </ToolTip>
+                                                                </ContentPresenter.ToolTip>
                                                                 <b:Interaction.Behaviors>
                                                                     <DraggableDataTemplateAdornerBehavior />
                                                                 </b:Interaction.Behaviors>
