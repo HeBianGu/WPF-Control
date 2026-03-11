@@ -1929,9 +1929,13 @@ namespace H.Controls.ZoomBox
         {
             if (_content == null)
                 return;
-
+            var rect = new Rect(region.Location, region.Size);
+            if (rect.Width==0)
+                rect.Width = 1;
+            if (rect.Height == 0)
+                rect.Height = 1;
             // adjust the current scale and position
-            this.UpdateView(new ZoomboxView(region), true, true);
+            this.UpdateView(new ZoomboxView(rect), true, true);
         }
 
         public void ZoomTo(double scale)
