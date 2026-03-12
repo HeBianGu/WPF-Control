@@ -38,6 +38,11 @@ https://github.com/Dirkster99/AvalonDock
 
 http://xceed.com/wpf_toolkit
 
+    Copyright (C) 2007-2013 Xceed Software Inc.
+    
+    This program is provided to you under the terms of the Microsoft Public
+    License (Ms-PL) as published at http://wpftoolkit.codeplex.com/license
+
 ## DataGridFilter
 https://github.com/macgile/DataGridFilter
 
