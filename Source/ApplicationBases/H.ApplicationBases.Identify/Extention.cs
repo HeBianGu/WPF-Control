@@ -27,6 +27,7 @@ namespace System
         {
             DefaultIndentifyOptions opt = new DefaultIndentifyOptions();
             options?.Invoke(opt);
+            services.AddIdentifySeedService();
             //  Do ：身份认证
             services.AddDbContextBySetting<IdentifyDataContext>(opt.GetConfigOptions<Action<ISqliteSettable>>());
             services.AddSingleton<IStringRepository<hi_dd_user>, DbContextRepository<IdentifyDataContext, hi_dd_user>>();

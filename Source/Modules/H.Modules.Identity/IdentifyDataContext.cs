@@ -8,6 +8,7 @@
 
 namespace H.Modules.Identity
 {
+
     public class IdentifyDataContext : DbContext
     {
         public IdentifyDataContext(DbContextOptions<IdentifyDataContext> options) : base(options)
@@ -18,7 +19,8 @@ namespace H.Modules.Identity
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            modelBuilder.BuildIdentifySeed();
+            Ioc.GetService<IIdentifySeedService>(false)?.BuildSeed(modelBuilder);
+            //modelBuilder.BuildIdentifySeed();
         }
 
         public DbSet<hi_dd_user> hi_dd_users { get; set; }

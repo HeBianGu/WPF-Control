@@ -68,6 +68,11 @@ namespace System
             service.AddSingleton<IAuthorityViewPresenter, AuthorityViewPresenter>();
         }
 
+        public static void AddIdentifySeedService(this IServiceCollection service)
+        {
+            service.AddSingleton<IIdentifySeedService, IdentifySeedService>();
+        }
+
         public static IApplicationBuilder UseIdentifyOptions(this IApplicationBuilder builder, Action<IIdentifyOptions> option = null)
         {
             IocSetting.Instance.Add(IdentifyOptions.Instance);
