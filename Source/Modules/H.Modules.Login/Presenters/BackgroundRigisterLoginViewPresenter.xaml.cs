@@ -15,9 +15,9 @@ namespace H.Modules.Login.Presenters;
 
 [Icon(FontIcons.Connect)]
 [Display(Name = "登录页面", GroupName = SettingGroupNames.GroupSystem, Description = "登录页面的呈现")]
-public class BackgroundLoginViewPresenter : LoginViewPresenter
+public class BackgroundRigisterLoginViewPresenter : RigisterLoginViewPresenter
 {
-    public BackgroundLoginViewPresenter(IOptions<LoginOptions> options) : base(options)
+    public BackgroundRigisterLoginViewPresenter(IOptions<LoginOptions> options) : base(options)
     {
 
     }

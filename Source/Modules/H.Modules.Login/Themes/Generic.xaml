@@ -9,5 +9,6 @@
         <ResourceDictionary Source="pack://application:,,,/H.Modules.Login;component/Presenters/LoginButtonViewPresenter.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Modules.Login;component/Presenters/CurrentUserViewPresenter.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Modules.Login;component/Presenters/BackgroundLoginViewPresenter.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Modules.Login;component/Presenters/BackgroundRigisterLoginViewPresenter.xaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>
