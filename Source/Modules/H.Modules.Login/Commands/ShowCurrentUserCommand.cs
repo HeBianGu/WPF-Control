@@ -6,11 +6,8 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
-using H.Common.Attributes;
-using H.Extensions.FontIcon;
+using H.Modules.Login.Presenters;
 using H.Services.Message.Dialog.Commands;
-using H.Services.Setting;
-using System.ComponentModel.DataAnnotations;
 
 namespace H.Modules.Login.Commands;
 

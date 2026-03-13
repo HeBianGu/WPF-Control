@@ -3,10 +3,10 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="clr-namespace:H.Modules.Login">
     <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="pack://application:,,,/H.Modules.Login;component/LoginViewPresenter.xaml" />
-        <ResourceDictionary Source="pack://application:,,,/H.Modules.Login;component/RigisterLoginViewPresenter.xaml" />
-        <ResourceDictionary Source="pack://application:,,,/H.Modules.Login;component/LoginedSplashViewPresenter.xaml" />
-        <ResourceDictionary Source="pack://application:,,,/H.Modules.Login;component/LoginButtonViewPresenter.xaml" />
-        <ResourceDictionary Source="pack://application:,,,/H.Modules.Login;component/CurrentUserViewPresenter.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Modules.Login;component/Presenters/LoginViewPresenter.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Modules.Login;component/Presenters/RigisterLoginViewPresenter.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Modules.Login;component/Presenters/LoginedSplashViewPresenter.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Modules.Login;component/Presenters/LoginButtonViewPresenter.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Modules.Login;component/Presenters/CurrentUserViewPresenter.xaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

@@ -10,19 +10,17 @@ global using H.Common.Attributes;
 global using H.Extensions.FontIcon;
 global using H.Mvvm.ViewModels.Base;
 global using H.Services.Setting;
-global using System.ComponentModel.DataAnnotations;
 
-namespace H.Modules.Login
+namespace H.Modules.Login.Presenters;
+
+[Icon(FontIcons.Contact)]
+[Display(Name = "登录工具", GroupName = SettingGroupNames.GroupSystem, Description = "显示登录工具按钮")]
+public class LoginButtonViewPresenter : BindableBase, ILoginButtonViewPresenter
 {
-    [Icon(FontIcons.Contact)]
-    [Display(Name = "登录工具", GroupName = SettingGroupNames.GroupSystem, Description = "显示登录工具按钮")]
-    public class LoginButtonViewPresenter : BindableBase, ILoginButtonViewPresenter
-    {
 
-    }
+}
 
-    public interface ILoginButtonViewPresenter
-    {
+public interface ILoginButtonViewPresenter
+{
 
-    }
 }

@@ -4,7 +4,7 @@
     xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
     xmlns:h="https://github.com/HeBianGu"
     xmlns:lc="clr-namespace:H.Modules.Login.Commands"
-    xmlns:local="clr-namespace:H.Modules.Login">
+    xmlns:local="clr-namespace:H.Modules.Login.Presenters">
     <DataTemplate DataType="{x:Type local:LoginButtonViewPresenter}">
         <DockPanel>
             <FontIconTextBlock
