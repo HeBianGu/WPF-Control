@@ -157,7 +157,7 @@ public class LoginOptions : IocOptionInstance<LoginOptions>, ILoginOptions
     }
 
     private string _Background;
-    [DefaultValue("pack://application:,,,/H.Modules.Login;component/Assets/background.png")]
+    [DefaultValue("pack://application:,,,/H.Modules.Login;component/Assets/background.jpg")]
     [JsonIgnore]
     [Browsable(false)]
     public string Background

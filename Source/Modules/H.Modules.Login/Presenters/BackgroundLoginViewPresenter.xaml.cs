@@ -31,6 +31,7 @@ public class BackgroundLoginViewPresenter : LoginViewPresenter, ILoginViewPresen
             ImageBrush imageBrush = new ImageBrush();
             imageBrush.ImageSource = converter.ConvertFromInvariantString(background) as ImageSource;
             window.Background = imageBrush;
+            Cattach.SetCornerRadius(window, new CornerRadius(10));
             Cattach.SetCaptionForeground(window, Brushes.White);
         }
     }

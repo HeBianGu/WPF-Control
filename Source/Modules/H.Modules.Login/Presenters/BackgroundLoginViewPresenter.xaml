@@ -5,16 +5,16 @@
     xmlns:h="https://github.com/HeBianGu"
     xmlns:local="clr-namespace:H.Modules.Login.Presenters">
     <DataTemplate DataType="{x:Type local:BackgroundLoginViewPresenter}">
-        <Grid Width="1000" Height="500">
+        <Grid Width="900" Height="450">
             <Border
-                Width="350"
-                Margin="60,50"
+                Width="310"
+                Margin="51,21,51,31"
                 HorizontalAlignment="Right"
                 CornerRadius="5"
                 Style="{DynamicResource {x:Static BorderKeys.Effect}}" />
             <Border
-                Width="350"
-                Margin="60,50"
+                Width="310"
+                Margin="50,20,50,30"
                 HorizontalAlignment="Right"
                 Background="White"
                 CornerRadius="5">
@@ -24,12 +24,14 @@
                     Margin="20"
                     HorizontalAlignment="Stretch"
                     VerticalAlignment="Center">
-                    <TextBlock
-                        HorizontalAlignment="Left"
-                        VerticalAlignment="Center"
-                        FontSize="25"
-                        Foreground="Black"
-                        Text="{x:Static ApplicationProvider.Product}" />
+                    <Viewbox Margin="0 5">
+                        <TextBlock
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            FontSize="24"
+                            Foreground="Black"
+                            Text="{x:Static ApplicationProvider.Product}" />
+                    </Viewbox>
                     <TextBlock
                         Margin="0,20"
                         HorizontalAlignment="Left"
@@ -82,7 +84,7 @@
                                         Background="Transparent"
                                         BorderThickness="0"
                                         CheckedGlyph="&#xE890;"
-                                        IsChecked="{Binding ShowPassword,Mode=TwoWay}"
+                                        IsChecked="{Binding ShowPassword, Mode=TwoWay}"
                                         UncheckedGlyph="&#xECE4;" />
                                 </Grid>
                                 <ControlTemplate.Triggers>
@@ -122,8 +124,9 @@
                     </Control>
                     <!--  登录  -->
                     <CheckBox
+                        Margin="5"
                         HorizontalAlignment="Right"
-                        Content="记住密码" Margin="5"
+                        Content="记住密码"
                         IsChecked="{Binding Source={x:Static h:LoginOptions.Instance}, Path=Remember}" />
                     <h:ProgressButton
                         HorizontalAlignment="Stretch"
