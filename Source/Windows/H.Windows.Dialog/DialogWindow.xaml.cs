@@ -9,6 +9,7 @@
 using H.Common.Interfaces;
 using H.Common.Transitionable;
 using H.Services.Message.Dialog;
+using H.Styles.Controls;
 using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;

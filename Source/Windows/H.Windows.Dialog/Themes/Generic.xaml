@@ -4,5 +4,6 @@
     xmlns:local="clr-namespace:H.Windows.Dialog">
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/H.Windows.Dialog;component/DialogWindow.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Windows.Dialog;component/TransparencyDialogWindow.xaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

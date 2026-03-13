@@ -3,42 +3,11 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:h="https://github.com/HeBianGu"
     xmlns:local="clr-namespace:H.Windows.Dialog">
-    <Style x:Key="{ComponentResourceKey ResourceId=S.DialogWindow.Default, TypeInTargetAssembly={x:Type local:DialogKeys}}" TargetType="{x:Type local:DialogWindow}">
-        <Setter Property="SnapsToDevicePixels" Value="true" />
-        <Setter Property="WindowChrome.WindowChrome" Value="{DynamicResource {x:Static h:WindowKeys.WindowChrome}}" />
-        <Setter Property="Foreground" Value="{DynamicResource {x:Static BrushKeys.Foreground}}" />
-        <Setter Property="FontSize" Value="{DynamicResource {x:Static h:FontSizeKeys.Default}}" />
-        <Setter Property="ResizeMode" Value="NoResize" />
-        <!--<Setter Property="MinWidth" Value="400" />
-        <Setter Property="MinHeight" Value="200" />-->
-        <!--<Setter Property="SizeToContent" Value="WidthAndHeight"/>-->
-        <Setter Property="Icon" Value="{h:Logo}" />
-        <Setter Property="ShowInTaskbar" Value="False" />
-        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-        <Setter Property="VerticalContentAlignment" Value="Stretch" />
-        <Setter Property="WindowStyle" Value="None" />
-        <Setter Property="Padding" Value="10,6" />
-        <Setter Property="h:Cattach.CaptionBackground">
-            <Setter.Value>
-                <SolidColorBrush Color="{DynamicResource {x:Static h:ColorKeys.CaptionBackground}}" />
-            </Setter.Value>
-        </Setter>
-        <Setter Property="h:Cattach.CaptionForeground">
-            <Setter.Value>
-                <SolidColorBrush Color="{DynamicResource {x:Static h:ColorKeys.CaptionForeground}}" />
-            </Setter.Value>
-        </Setter>
-        <Setter Property="Background" Value="{DynamicResource {x:Static BrushKeys.Background}}" />
-        <Setter Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.BorderBrush}}" />
-        <Setter Property="Cattach.CornerRadius" Value="{DynamicResource {x:Static LayoutKeys.CornerRadius}}" />
-        <Setter Property="BorderThickness" Value="1" />
-        <Setter Property="Cattach.TitleFontSize" Value="{DynamicResource {x:Static FontSizeKeys.Header4}}" />
-        <Setter Property="Cattach.TitleForeground" Value="{Binding RelativeSource={RelativeSource Mode=Self}, Path=(Cattach.CaptionForeground)}" />
-        <Setter Property="Cattach.TitleMargin" Value="0 5" />
-        <Setter Property="Cattach.CaptionMargin" Value="5 0" />
+    <Style x:Key="{ComponentResourceKey ResourceId=S.TransparencyDialogWindow.Default, TypeInTargetAssembly={x:Type local:TransparencyDialogKeys}}" TargetType="{x:Type local:TransparencyDialogWindow}" BasedOn="{StaticResource {x:Static local:DialogKeys.Default}}">
+        <Setter Property="AllowsTransparency" Value="True"/>
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="{x:Type local:DialogWindow}">
+                <ControlTemplate TargetType="{x:Type local:TransparencyDialogWindow}">
                     <Border x:Name="PART_Border" Background="{TemplateBinding BorderBrush}">
                         <Border
                             Margin="0"
@@ -194,10 +163,10 @@
         </Setter>
     </Style>
 
-    <Style x:Key="{ComponentResourceKey ResourceId=S.DialogWindow.None, TypeInTargetAssembly={x:Type local:DialogKeys}}" TargetType="{x:Type local:DialogWindow}">
+    <Style x:Key="{ComponentResourceKey ResourceId=S.TransparencyDialogWindow.None, TypeInTargetAssembly={x:Type local:TransparencyDialogKeys}}" TargetType="{x:Type local:DialogWindow}">
         <Setter Property="BottomTemplate" Value="{x:Null}" />
     </Style>
-    <Style x:Key="{ComponentResourceKey ResourceId=S.DialogWindow.Sumit, TypeInTargetAssembly={x:Type local:DialogKeys}}" TargetType="{x:Type local:DialogWindow}">
+    <Style x:Key="{ComponentResourceKey ResourceId=S.TransparencyDialogWindow.Sumit, TypeInTargetAssembly={x:Type local:TransparencyDialogKeys}}" TargetType="{x:Type local:DialogWindow}">
         <Setter Property="BottomTemplate">
             <Setter.Value>
                 <ControlTemplate>
@@ -213,7 +182,7 @@
             </Setter.Value>
         </Setter>
     </Style>
-    <Style x:Key="{ComponentResourceKey ResourceId=S.DialogWindow.Cancel, TypeInTargetAssembly={x:Type local:DialogKeys}}" TargetType="{x:Type local:DialogWindow}">
+    <Style x:Key="{ComponentResourceKey ResourceId=S.TransparencyDialogWindow.Cancel, TypeInTargetAssembly={x:Type local:TransparencyDialogKeys}}" TargetType="{x:Type local:DialogWindow}">
         <Setter Property="BottomTemplate">
             <Setter.Value>
                 <ControlTemplate>
@@ -229,7 +198,7 @@
             </Setter.Value>
         </Setter>
     </Style>
-    <Style x:Key="{ComponentResourceKey ResourceId=S.DialogWindow.SumitAndCancel, TypeInTargetAssembly={x:Type local:DialogKeys}}" TargetType="{x:Type local:DialogWindow}">
+    <Style x:Key="{ComponentResourceKey ResourceId=S.TransparencyDialogWindow.SumitAndCancel, TypeInTargetAssembly={x:Type local:TransparencyDialogKeys}}" TargetType="{x:Type local:DialogWindow}">
         <Setter Property="BottomTemplate">
             <Setter.Value>
                 <ControlTemplate>
@@ -255,6 +224,5 @@
             </Setter.Value>
         </Setter>
     </Style>
-    
-    <Style BasedOn="{StaticResource {x:Static local:DialogKeys.Default}}" TargetType="{x:Type local:DialogWindow}" />
+    <Style BasedOn="{StaticResource {x:Static local:TransparencyDialogKeys.Default}}" TargetType="{x:Type local:TransparencyDialogWindow}" />
 </ResourceDictionary>
