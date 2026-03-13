@@ -20,10 +20,13 @@ using H.Services.Logger;
 using H.Services.Message;
 using H.Services.Message.Dialog;
 using H.Services.Setting;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Reflection;
 using System.Text;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace H.Extensions.ApplicationBase;
 
@@ -358,6 +361,7 @@ public partial class ApplicationBase
                     w.SizeToContent = SizeToContent.WidthAndHeight;
                     w.ShowInTaskbar = true;
                     Cattach.SetCaptionBackground(w, null);
+                    presenter.InitWindow(w);
                 }
             }).Result;
             if (r == false)

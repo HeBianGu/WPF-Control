@@ -46,6 +46,29 @@ public class LoginViewPresenter : DisplayBindableBase, ILoginViewPresenter
         }
     }
 
+    private bool _ShowPassword = true;
+
+    public bool ShowPassword
+    {
+        get { return _ShowPassword; }
+        set
+        {
+            _ShowPassword = value;
+            RaisePropertyChanged();
+        }
+    }
+
+    private string _Error;
+    public string Error
+    {
+        get { return _Error; }
+        set
+        {
+            _Error = value;
+            RaisePropertyChanged();
+        }
+    }
+
     public InvokeCommand LoginCommand => new InvokeCommand(async (s, e) =>
     {
         if (e is IDialog dialog)
@@ -61,6 +84,7 @@ public class LoginViewPresenter : DisplayBindableBase, ILoginViewPresenter
                      if (!r)
                      {
                          s.Message = message;
+                         this.Error = s.Message;
                          Thread.Sleep(2000);
                          return false;
                      }
@@ -87,6 +111,7 @@ public class LoginViewPresenter : DisplayBindableBase, ILoginViewPresenter
                  catch (Exception ex)
                  {
                      s.Message = ex.Message;
+                     this.Error = s.Message;
                      IocLog.Error(ex);
                      return false;
                  }
@@ -111,4 +136,9 @@ public class LoginViewPresenter : DisplayBindableBase, ILoginViewPresenter
             }
         }
     });
+
+    public virtual void InitWindow(Window window)
+    {
+
+    }
 }

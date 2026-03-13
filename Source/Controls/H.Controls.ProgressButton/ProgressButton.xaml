@@ -10,7 +10,11 @@
         <Setter Property="Height" Value="{DynamicResource {x:Static LayoutKeys.ItemHeight}}" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="Foreground" Value="{DynamicResource {x:Static BrushKeys.Foreground}}" />
-
+        <Setter Property="Foreground" Value="{DynamicResource {x:Static BrushKeys.CaptionForeground}}" />
+        <Setter Property="Background" Value="{DynamicResource {x:Static BrushKeys.CaptionBackground}}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.CaptionBackground}}" />
+        <Setter Property="Cattach.CornerRadius" Value="{DynamicResource {x:Static LayoutKeys.CornerRadius}}" />
+        <Setter Property="BorderThickness" Value="0" />
         <Setter Property="Cursor" Value="Hand" />
         <Setter Property="Padding" Value="10,6" />
         <Setter Property="Template">
@@ -18,17 +22,11 @@
                 <ControlTemplate TargetType="{x:Type local:ProgressButton}">
                     <Border
                         x:Name="Border"
-                        BorderBrush="{DynamicResource {x:Static BrushKeys.MouseOver}}"
-                        BorderThickness="1"
-                        CornerRadius="{DynamicResource {x:Static LayoutKeys.CornerRadius}}"
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(Cattach.CornerRadius)}"
                         TextBlock.Foreground="{TemplateBinding Foreground}">
-                        <Border.Background>
-                            <SolidColorBrush Color="{DynamicResource {x:Static h:ColorKeys.MouseOver}}" />
-                        </Border.Background>
-                        <!--<ContentPresenter Margin="{TemplateBinding Padding}"
-                                          HorizontalAlignment="Center"
-                                          VerticalAlignment="Center"
-                                          RecognizesAccessKey="True" />-->
                         <Grid>
                             <ContentPresenter
                                 x:Name="cp"
@@ -71,15 +69,6 @@
                                         </ColorAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>
-                                <!--<VisualState x:Name="Disabled">
-                                    <Storyboard>
-                                        <ColorAnimationUsingKeyFrames Storyboard.TargetName="Border"
-                                                                      Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)">
-                                            <EasingColorKeyFrame KeyTime="0"
-                                                                 Value="{DynamicResource {x:Static h:ColorKeys.BackgroundDisabled}}" />
-                                        </ColorAnimationUsingKeyFrames>
-                                    </Storyboard>
-                                </VisualState>-->
                             </VisualStateGroup>
                         </VisualStateManager.VisualStateGroups>
                     </Border>
@@ -88,7 +77,6 @@
                             <Setter TargetName="cp" Property="Content" Value="{Binding Path=Message, RelativeSource={RelativeSource TemplatedParent}}" />
                             <Setter Property="IsEnabled" Value="False" />
                         </Trigger>
-
                         <Trigger Property="Content" Value="">
                             <Setter TargetName="cp" Property="Visibility" Value="Collapsed" />
                         </Trigger>

@@ -59,6 +59,7 @@
                                                     Command="{x:Static SystemCommands.ShowSystemMenuCommand}"
                                                     Content="{TemplateBinding FontIcon}"
                                                     IsTabStop="False"
+                                                    Foreground="{Binding RelativeSource={RelativeSource Mode=TemplatedParent},Path=(Cattach.CaptionForeground)}"
                                                     Visibility="{Binding FontIcon, RelativeSource={RelativeSource Mode=TemplatedParent}, Converter={x:Static Converter.GetNullToCollapsed}}"
                                                     WindowChrome.IsHitTestVisibleInChrome="True" />
                                                 <TextBlock VerticalAlignment="Center" Text="{TemplateBinding Title}" />
@@ -73,21 +74,25 @@
                                                     Command="{MinimizeWindowCommand}"
                                                     CommandParameter="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}}"
                                                     Content="{x:Static FontIcons.ChromeMinimize}"
+                                                    Foreground="{Binding RelativeSource={RelativeSource Mode=TemplatedParent},Path=(Cattach.CaptionForeground)}"
                                                     Style="{DynamicResource {x:Static h:WindowKeys.MinimizeButton}}" />
                                                 <FontIconButton
                                                     Command="{MaximizeWindowCommand}"
                                                     CommandParameter="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}}"
                                                     Content="{x:Static FontIcons.ChromeMaximize}"
+                                                    Foreground="{Binding RelativeSource={RelativeSource Mode=TemplatedParent},Path=(Cattach.CaptionForeground)}"
                                                     Style="{DynamicResource {x:Static h:WindowKeys.MaximizeButton}}" />
                                                 <FontIconButton
                                                     Command="{RestoreWindowCommand}"
                                                     CommandParameter="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}}"
                                                     Content="{x:Static FontIcons.ChromeRestore}"
+                                                    Foreground="{Binding RelativeSource={RelativeSource Mode=TemplatedParent},Path=(Cattach.CaptionForeground)}"
                                                     Style="{DynamicResource {x:Static h:WindowKeys.RestoreButton}}" />
                                                 <FontIconButton
                                                     Command="{CloseWindowCommand}"
                                                     CommandParameter="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}}"
                                                     Content="{x:Static FontIcons.ChromeClose}"
+                                                    Foreground="{Binding RelativeSource={RelativeSource Mode=TemplatedParent},Path=(Cattach.CaptionForeground)}"
                                                     IsCancel="True"
                                                     Style="{DynamicResource {x:Static h:WindowKeys.CloseButton}}" />
                                             </StackPanel>

@@ -18,7 +18,7 @@ namespace H.Modules.SplashScreen;
 public interface ISplashScreenOptions : ISettable
 {
     string Product { get; set; }
-    double ProductFontSize { get; set; }
+    //double ProductFontSize { get; set; }
 
     string Sub { get; set; }
 }
@@ -58,18 +58,18 @@ public class SplashScreenOptions : IocOptionInstance<SplashScreenOptions>, ISpla
         }
     }
 
-    private double _productFontSize = 50;
-    [JsonIgnore]
-    [Display(Name = "字体大小")]
-    public double ProductFontSize
-    {
-        get { return _productFontSize; }
-        set
-        {
-            _productFontSize = value;
-            RaisePropertyChanged();
-        }
-    }
+    //private double _productFontSize = 50;
+    //[JsonIgnore]
+    //[Display(Name = "字体大小")]
+    //public double ProductFontSize
+    //{
+    //    get { return _productFontSize; }
+    //    set
+    //    {
+    //        _productFontSize = value;
+    //        RaisePropertyChanged();
+    //    }
+    //}
 
     private double _subFontSize = 20;
     [JsonIgnore]

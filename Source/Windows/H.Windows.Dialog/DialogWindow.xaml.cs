@@ -25,6 +25,14 @@ public partial class DialogWindow : Window, IDialog
             await TransitionShow();
         };
 
+        this.MouseDown += (s, e) =>
+        {
+            if (e.ChangedButton == MouseButton.Left)
+            {
+                this.DragMove();
+            }
+        };
+
     }
     static DialogWindow()
     {

@@ -10,5 +10,5 @@ namespace H.Services.Identity;
 
 public interface ILoginViewPresenter
 {
-
+    void InitWindow(Window window);
 }

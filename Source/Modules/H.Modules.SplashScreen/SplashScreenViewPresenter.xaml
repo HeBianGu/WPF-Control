@@ -19,10 +19,10 @@
                     FontSize="{Binding Source={x:Static local:SplashScreenOptions.Instance}, Path=SubFontSize}"
                     Opacity="0.8"
                     Text="{Binding Source={x:Static local:SplashScreenOptions.Instance}, Path=Sub}" />
-                <TextBlock
-                    Margin="0,10"
-                    FontSize="{Binding Source={x:Static local:SplashScreenOptions.Instance}, Path=ProductFontSize}"
-                    Text="{Binding Source={x:Static local:SplashScreenOptions.Instance}, Path=Product}" />
+
+                <Viewbox Margin="0,10">
+                    <TextBlock Text="{Binding Source={x:Static local:SplashScreenOptions.Instance}, Path=Product}" />
+                </Viewbox>
             </DockPanel>
 
             <TextBlock
