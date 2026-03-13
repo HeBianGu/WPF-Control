@@ -27,3 +27,23 @@ public partial class TransparencyDialogWindow : DialogWindow, IDialog
         DefaultStyleKeyProperty.OverrideMetadata(typeof(TransparencyDialogWindow), new FrameworkPropertyMetadata(typeof(TransparencyDialogWindow)));
     }
 }
+
+public partial class TransparencyDialogWindow
+{
+    protected override ResourceKey GetResourceKey(DialogButton dialogButton)
+    {
+        switch (dialogButton)
+        {
+            case DialogButton.Sumit:
+                return TransparencyDialogKeys.Sumit;
+            case DialogButton.None:
+                return TransparencyDialogKeys.None;
+            case DialogButton.Cancel:
+                return TransparencyDialogKeys.Cancel;
+            case DialogButton.SumitAndCancel:
+                return TransparencyDialogKeys.SumitAndCancel;
+            default:
+                return TransparencyDialogKeys.Sumit;
+        }
+    }
+}

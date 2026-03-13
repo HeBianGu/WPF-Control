@@ -20,7 +20,7 @@ public class ShowIocDialogWindowCommand : DialogCommandBase
         if (value == null)
             throw new ArgumentNullException(this.Type.FullName);
         var title = value is ITitleable titleable ? titleable.Title : value.GetType().GetCustomAttribute<DisplayAttribute>()?.Name;
-        DialogWindow.ShowPresenter(value, x =>
+        DialogWindow.ShowPresenter<DialogWindow>(value, x =>
         {
             x.Width = this.Width;
             x.Height = this.Height;

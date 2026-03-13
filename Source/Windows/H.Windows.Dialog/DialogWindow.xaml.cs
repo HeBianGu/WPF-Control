@@ -137,7 +137,7 @@ public partial class DialogWindow : Window, IDialog
 
 public partial class DialogWindow : Window
 {
-    public static ResourceKey GetResourceKey(DialogButton dialogButton)
+    protected virtual ResourceKey GetResourceKey(DialogButton dialogButton)
     {
         switch (dialogButton)
         {
@@ -154,9 +154,9 @@ public partial class DialogWindow : Window
         }
     }
 
-    public static bool? ShowPresenter(object presenter, Action<IDialog> action = null, Func<Task<bool>> canSumit = null)
+    public static bool? ShowPresenter<T>(object presenter, Action<IDialog> action = null, Func<Task<bool>> canSumit = null) where T : DialogWindow, new()
     {
-        DialogWindow dialog = new DialogWindow();
+        T dialog = new T();
         dialog.Content = presenter;
         dialog.Width = 400;
         dialog.SizeToContent = SizeToContent.Height;
@@ -165,7 +165,7 @@ public partial class DialogWindow : Window
             dialog.FontIcon = iconable.Icon;
         action?.Invoke(dialog);
         dialog.Title = dialog.Title ?? presenter.GetType().GetCustomAttribute<DisplayAttribute>()?.Name ?? "提示";
-        ResourceKey key = GetResourceKey(dialog.DialogButton);
+        ResourceKey key = dialog.GetResourceKey(dialog.DialogButton);
         dialog.Style = Application.Current.FindResource(key) as Style;
         var owner = dialog.Owner ?? Application.Current.MainWindow;
         if (owner?.IsLoaded == true)
@@ -182,16 +182,16 @@ public partial class DialogWindow : Window
         return r;
     }
 
-    public static T ShowAction<P, T>(P presenter, Func<IDialog, P, T> func, Action<IDialog> action = null)
+    public static T ShowAction<P, T, TDialogWindow>(P presenter, Func<IDialog, P, T> func, Action<IDialog> action = null) where TDialogWindow : DialogWindow, new()
     {
-        DialogWindow dialog = new DialogWindow();
+        TDialogWindow dialog = new TDialogWindow();
         dialog.Content = presenter;
         dialog.Width = 500;
         dialog.MinHeight = 150;
         dialog.SizeToContent = SizeToContent.Height;
         action?.Invoke(dialog);
         dialog.Title = dialog.Title ?? presenter.GetType().GetCustomAttribute<DisplayAttribute>()?.Name ?? "提示";
-        dialog.Style = Application.Current.FindResource(GetResourceKey(dialog.DialogButton)) as Style;
+        dialog.Style = Application.Current.FindResource(dialog.GetResourceKey(dialog.DialogButton)) as Style;
         var owner = dialog.Owner ?? Application.Current.MainWindow;
         if (owner?.IsLoaded == true)
         {

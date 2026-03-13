@@ -26,6 +26,15 @@ namespace System
         /// 注册
         /// </summary>
         /// <param name="service"></param>
+        public static void AddWindowTransparencyDialogMessage(this IServiceCollection services)
+        {
+            services.AddSingleton<IDialogMessageService, WindowTransparencyDialogMessageService>();
+        }
+
+        /// <summary>
+        /// 注册
+        /// </summary>
+        /// <param name="service"></param>
         public static void AddAdornerDialogMessage(this IServiceCollection services)
         {
             services.AddSingleton<IDialogMessageService, AdornerDialogMessageService>();
@@ -38,6 +47,11 @@ namespace System
         public static void AddWindowMessage(this IServiceCollection services)
         {
             services.AddSingleton<IWindowDialogMessageService, WindowDialogMessageService>();
+        }
+
+        public static void AddWindowTransparencyMessage(this IServiceCollection services)
+        {
+            services.AddSingleton<IWindowDialogMessageService, WindowTransparencyDialogMessageService>();
         }
     }
 }

@@ -312,8 +312,8 @@ public partial class ApplicationBase
                 {
                     x.DialogButton = DialogButton.None;
                     x.Title = Assembly.GetEntryAssembly().GetName().Version.ToString();
-                    x.Width = 500;
-                    x.Height = 300;
+                    x.Width = 550;
+                    x.Height = 350;
                     if (x is Window w)
                     {
                         w.SizeToContent = SizeToContent.Manual;
