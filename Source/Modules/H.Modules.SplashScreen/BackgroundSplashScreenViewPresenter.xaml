@@ -23,7 +23,52 @@
                                    Text="{Binding Source={x:Static local:SplashScreenOptions.Instance}, Path=Sub}" />
                     </Viewbox>
                     <Viewbox Margin="10">
-                        <TextBlock Text="{Binding Source={x:Static local:SplashScreenOptions.Instance}, Path=Product}" />
+                        <Grid>
+                            <TextBlock HorizontalAlignment="Center"
+                                       Text="{Binding Source={x:Static local:SplashScreenOptions.Instance}, Path=Product}" />
+                            <TextBlock x:Name="ReflectionTextBlock"
+                                       HorizontalAlignment="Center"
+                                       Opacity="0.55"
+                                       RenderTransformOrigin="0 1"
+                                       Text="{Binding Source={x:Static local:SplashScreenOptions.Instance}, Path=Product}">
+                                <TextBlock.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform ScaleY="-1" />
+                                        <SkewTransform x:Name="ReflectionSkewTransform" AngleX="-18" />
+                                    </TransformGroup>
+                                </TextBlock.RenderTransform>
+
+                                <TextBlock.Triggers>
+                                    <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+                                        <BeginStoryboard>
+                                            <Storyboard AutoReverse="True"
+                                                        RepeatBehavior="Forever">
+                                                <DoubleAnimation Storyboard.TargetName="ReflectionSkewTransform"
+                                                                 Storyboard.TargetProperty="AngleX"
+                                                                 From="-50"
+                                                                 To="50"
+                                                                 Duration="0:0:10">
+                                                    <DoubleAnimation.EasingFunction>
+                                                        <SineEase EasingMode="EaseInOut" />
+                                                    </DoubleAnimation.EasingFunction>
+                                                </DoubleAnimation>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </EventTrigger>
+                                </TextBlock.Triggers>
+
+                                <TextBlock.OpacityMask>
+                                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                        <GradientStop Offset="0" Color="#70FFFFFF" />
+                                        <GradientStop Offset="1" Color="#00FFFFFF" />
+                                    </LinearGradientBrush>
+                                </TextBlock.OpacityMask>
+
+                                <TextBlock.Effect>
+                                    <BlurEffect Radius="0.6" />
+                                </TextBlock.Effect>
+                            </TextBlock>
+                        </Grid>
                     </Viewbox>
                 </DockPanel>
 
