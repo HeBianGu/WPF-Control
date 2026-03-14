@@ -315,8 +315,6 @@ public partial class ApplicationBase
                 {
                     x.DialogButton = DialogButton.None;
                     x.Title = Assembly.GetEntryAssembly().GetName().Version.ToString();
-                    if (x is Window w && presenter is IWindowInitable initable)
-                        initable.InitWindow(w);
                 }, func).Result;
             });
             if (r == false)
@@ -351,8 +349,6 @@ public partial class ApplicationBase
                 x.MinWidth = 400;
                 x.DialogButton = DialogButton.None;
                 x.Title = Assembly.GetEntryAssembly().GetName().Version.ToString();
-                if (x is Window w && presenter is IWindowInitable initable)
-                    initable.InitWindow(w);
             }).Result;
             if (r == false)
             {
@@ -422,15 +418,9 @@ public partial class ApplicationBase
                     return IocMessage.Window.ShowAction(presenter, x =>
                     {
                         x.DialogButton = DialogButton.None;
-                        x.Title = Ioc<ILoginService>.Instance?.User?.Account;
-                        //x.Width = 500;
+                        x.Title = "欢迎" + Ioc<ILoginService>.Instance?.User?.Account;
                         x.MinHeight = 0.0;
                         x.Height = double.NaN;
-                        if (x is Window w)
-                        {
-                            w.SizeToContent = SizeToContent.Height;
-                            Cattach.SetCaptionBackground(w, null);
-                        }
                     }, func).Result;
                 });
                 if (r == false)

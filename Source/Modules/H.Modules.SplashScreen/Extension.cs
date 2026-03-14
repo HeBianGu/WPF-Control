@@ -20,10 +20,15 @@ public static class Extension
     {
         return services.AddSplashScreen<SplashScreenViewPresenter>(setupAction);
     }
-    public static IServiceCollection AddSplashScreen<T>(this IServiceCollection services, Action<ISplashScreenOptions> setupAction = null) where T : ISplashScreenViewPresenter
+
+    public static IServiceCollection AddBackgroundSplashScreen(this IServiceCollection services, Action<ISplashScreenOptions> setupAction = null)
+    {
+        return services.AddSplashScreen<BackgroundSplashScreenViewPresenter>(setupAction);
+    }
+    public static IServiceCollection AddSplashScreen<T>(this IServiceCollection services, Action<ISplashScreenOptions> setupAction = null) where T : class, ISplashScreenViewPresenter
     {
         services.AddOptions();
-        services.TryAdd(ServiceDescriptor.Singleton<ISplashScreenViewPresenter, SplashScreenViewPresenter>());
+        services.TryAdd(ServiceDescriptor.Singleton<ISplashScreenViewPresenter, T>());
         if (setupAction != null)
             services.Configure(new Action<SplashScreenOptions>(setupAction));
         return services;

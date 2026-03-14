@@ -3,7 +3,7 @@
                     xmlns:local="clr-namespace:H.Modules.SplashScreen">
     <DataTemplate DataType="{x:Type local:SplashScreenViewPresenter}">
         <Grid Width="550"
-              Height="300">
+              Height="280">
             <Grid Margin="20">
                 <Grid.RowDefinitions>
                     <RowDefinition />

@@ -6,12 +6,14 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
+using H.Attach;
+using H.Common.Interfaces;
 using H.Extensions.Mvvm.ViewModels.Base;
 
 namespace H.Modules.Login.Presenters;
 
 [Icon(FontIcons.Connect)]
-public class LoginedSplashViewPresenter : DisplayBindableBase, ILoginedSplashViewPresenter
+public class LoginedSplashViewPresenter : DisplayBindableBase, ILoginedSplashViewPresenter, IWindowInitable
 {
     private string _message;
     public string Message
@@ -22,5 +24,11 @@ public class LoginedSplashViewPresenter : DisplayBindableBase, ILoginedSplashVie
             _message = value;
             RaisePropertyChanged();
         }
+    }
+
+    public void InitWindow(Window window)
+    {
+        window.SizeToContent = SizeToContent.Height;
+        Cattach.SetCaptionBackground(window, null);
     }
 }

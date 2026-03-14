@@ -19,6 +19,11 @@ public static class Extension
         return services.AddLoginViewPresenter<LoginViewPresenter>();
     }
 
+    public static IServiceCollection AddBackgroundLoginViewPresenter(this IServiceCollection services, Action<ILoginOptions> setupAction = null)
+    {
+        return services.AddLoginViewPresenter<BackgroundLoginViewPresenter>();
+    }
+
     public static IServiceCollection AddLoginViewPresenter<T>(this IServiceCollection services, Action<ILoginOptions> setupAction = null) where T : LoginViewPresenter
     {
         services.AddOptions();
@@ -35,10 +40,15 @@ public static class Extension
         return services.AddRegisterLoginViewPresenter<RigisterLoginViewPresenter>();
     }
 
+    public static IServiceCollection AddBackgroundRigisterLoginViewPresenter(this IServiceCollection services, Action<ILoginOptions> setupAction = null, Action<IRegistorOptions> setupRegisterAction = null)
+    {
+        return services.AddRegisterLoginViewPresenter<BackgroundRigisterLoginViewPresenter>();
+    }
+
     public static IServiceCollection AddRegisterLoginViewPresenter<T>(this IServiceCollection services, Action<ILoginOptions> setupAction = null, Action<IRegistorOptions> setupRegisterAction = null) where T : RigisterLoginViewPresenter
     {
         services.AddOptions();
-        services.TryAdd(ServiceDescriptor.Singleton<ILoginViewPresenter, RigisterLoginViewPresenter>());
+        services.TryAdd(ServiceDescriptor.Singleton<ILoginViewPresenter, T>());
         services.TryAdd(ServiceDescriptor.Singleton<ILoginedSplashViewPresenter, LoginedSplashViewPresenter>());
         services.AddLoginButtonViewPresenter();
         if (setupAction != null)

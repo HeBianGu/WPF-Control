@@ -171,6 +171,8 @@ public partial class DialogWindow : Window
         dialog.CanSumit = canSumit;
         if (presenter is IIconable iconable && !string.IsNullOrEmpty(iconable.Icon))
             dialog.FontIcon = iconable.Icon;
+        if (presenter is IWindowInitable initable)
+            initable.InitWindow(dialog);
         action?.Invoke(dialog);
         dialog.Title = dialog.Title ?? presenter.GetType().GetCustomAttribute<DisplayAttribute>()?.Name ?? "提示";
         ResourceKey key = dialog.GetResourceKey(dialog.DialogButton);
@@ -197,6 +199,8 @@ public partial class DialogWindow : Window
         dialog.Width = 500;
         dialog.MinHeight = 150;
         dialog.SizeToContent = SizeToContent.Height;
+        if (presenter is IWindowInitable initable)
+            initable.InitWindow(dialog);
         action?.Invoke(dialog);
         dialog.Title = dialog.Title ?? presenter.GetType().GetCustomAttribute<DisplayAttribute>()?.Name ?? "提示";
         dialog.Style = Application.Current.FindResource(dialog.GetResourceKey(dialog.DialogButton)) as Style;

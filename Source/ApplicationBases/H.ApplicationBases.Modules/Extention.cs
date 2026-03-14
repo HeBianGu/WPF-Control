@@ -33,7 +33,7 @@ namespace System
             options?.Invoke(opt);
             services.AddAbout(opt.GetConfigOptions<Action<IAboutOptions>>());
             services.AddGuide(opt.GetConfigOptions<Action<IGuideOptions>>());
-            services.AddSplashScreen(opt.GetConfigOptions<Action<ISplashScreenOptions>>());
+            services.AddBackgroundSplashScreen(opt.GetConfigOptions<Action<ISplashScreenOptions>>());
             services.AddSetting(opt.GetConfigOptions<Action<ISettingViewOptions>>());
             services.AddReleaseVersions(opt.GetConfigOptions<Action<IReleaseVersionsOptions>>());
             services.AddSupport(opt.GetConfigOptions<Action<ISupportOptions>>());

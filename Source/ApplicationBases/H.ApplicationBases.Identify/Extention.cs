@@ -45,7 +45,7 @@ namespace System
             services.AddOperationViewPresenter();
 
             //  Do ：登录和注册页面
-            services.AddRegisterLoginViewPresenter(opt.GetConfigOptions<Action<ILoginOptions>>(), opt.GetConfigOptions<Action<IRegistorOptions>>());
+            services.AddBackgroundRigisterLoginViewPresenter(opt.GetConfigOptions<Action<ILoginOptions>>(), opt.GetConfigOptions<Action<IRegistorOptions>>());
             services.AddIdentityLoginService();
             services.AddIdentityRegisterService(opt.GetConfigOptions<Action<IIdentifyOptions>>());
         }
