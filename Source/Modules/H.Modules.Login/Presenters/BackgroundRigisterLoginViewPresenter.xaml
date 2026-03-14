@@ -5,24 +5,26 @@
                     xmlns:l="clr-namespace:H.Modules.Login"
                     xmlns:local="clr-namespace:H.Modules.Login.Presenters">
     <DataTemplate DataType="{x:Type local:BackgroundRigisterLoginViewPresenter}">
-        <DataTemplate.Resources>
+        <!--<DataTemplate.Resources>
             <ResourceDictionary>
                 <ResourceDictionary.MergedDictionaries>
                     <ResourceDictionary Source="pack://application:,,,/H.Theme;component/Colors/Light.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/H.Theme;component/BrushKeys.xaml" />
                 </ResourceDictionary.MergedDictionaries>
             </ResourceDictionary>
-        </DataTemplate.Resources>
+        </DataTemplate.Resources>-->
         <Grid Width="900"
               Height="450">
-            <Border Width="310"
+            <Border Width="308"
                     Margin="51,21,51,31"
                     HorizontalAlignment="Right"
+                    BorderThickness="1"
                     CornerRadius="5"
                     Style="{DynamicResource {x:Static BorderKeys.Effect}}" />
             <Border Width="310"
                     Margin="50,20,50,30"
                     HorizontalAlignment="Right"
-                    Background="White"
+                    Background="{DynamicResource {x:Static BrushKeys.Background}}"
                     CornerRadius="5">
                 <ListBox Grid.Column="1"
                          VerticalAlignment="Center"
@@ -37,7 +39,6 @@
                             <TextBlock HorizontalAlignment="Left"
                                        VerticalAlignment="Center"
                                        FontSize="24"
-                                       Foreground="Black"
                                        Text="{x:Static ApplicationProvider.Product}" />
                         </Viewbox>
                         <TextBlock Margin="0,20"
@@ -264,7 +265,6 @@
                             <TextBlock Margin="0,0,0,20"
                                        HorizontalAlignment="Center"
                                        FontSize="25"
-                                       Foreground="Black"
                                        Text="注册账号" />
                             <StackPanel>
                                 <TextBox Margin="0,2"
