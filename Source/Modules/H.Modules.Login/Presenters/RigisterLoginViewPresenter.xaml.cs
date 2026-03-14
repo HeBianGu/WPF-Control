@@ -147,7 +147,7 @@ public class RigisterLoginViewPresenter : LoginViewPresenter, ILoginViewPresente
     {
         this.Forget.IsForget = true;
         if (RegistorOptions.Instance.UseMail)
-            this.SelectedIndex = 1;
+            this.SelectedIndex = 3;
         else
             this.SelectedIndex = 3;
     }

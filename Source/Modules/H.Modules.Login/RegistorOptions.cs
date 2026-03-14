@@ -7,6 +7,7 @@
 // Licensed under the MIT License (the "License")
 
 using H.Extensions.Setting;
+using System.Text.Json.Serialization;
 
 namespace H.Modules.Login;
 
@@ -15,6 +16,7 @@ namespace H.Modules.Login;
 public class RegistorOptions : IocOptionInstance<RegistorOptions>, IRegistorOptions
 {
     private bool _useMail;
+    [JsonIgnore]
     [DefaultValue(false)]
     [Display(Name = "启用邮箱注册", Description = "启用邮箱注册")]
     public bool UseMail
@@ -79,11 +81,5 @@ public class RegistorOptions : IocOptionInstance<RegistorOptions>, IRegistorOpti
             _image = value;
             RaisePropertyChanged();
         }
-    }
-
-    public override void LoadDefault()
-    {
-        base.LoadDefault();
-        System.Diagnostics.Debug.WriteLine(this.Image);
     }
 }
