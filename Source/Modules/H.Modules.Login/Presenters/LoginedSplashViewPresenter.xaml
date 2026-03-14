@@ -1,16 +1,14 @@
-﻿<ResourceDictionary
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
-    xmlns:h="https://github.com/HeBianGu"
-    xmlns:local="clr-namespace:H.Modules.Login.Presenters">
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
+                    xmlns:h="https://github.com/HeBianGu"
+                    xmlns:local="clr-namespace:H.Modules.Login.Presenters">
     <DataTemplate DataType="{x:Type local:LoginedSplashViewPresenter}">
-        <TextBlock
-            Margin="10,0,10,20"
-            HorizontalAlignment="Center"
-            VerticalAlignment="Top"
-            Text="{Binding Message}"
-            TextTrimming="CharacterEllipsis"
-            ToolTip="{Binding Message}" />
+        <TextBlock Margin="10,0,10,20"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Top"
+                   Text="{Binding Message}"
+                   TextTrimming="CharacterEllipsis"
+                   ToolTip="{Binding Message}" />
     </DataTemplate>
 </ResourceDictionary>

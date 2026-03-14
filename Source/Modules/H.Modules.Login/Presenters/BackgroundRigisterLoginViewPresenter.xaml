@@ -5,6 +5,13 @@
                     xmlns:l="clr-namespace:H.Modules.Login"
                     xmlns:local="clr-namespace:H.Modules.Login.Presenters">
     <DataTemplate DataType="{x:Type local:BackgroundRigisterLoginViewPresenter}">
+        <DataTemplate.Resources>
+            <ResourceDictionary>
+                <ResourceDictionary.MergedDictionaries>
+                    <ResourceDictionary Source="pack://application:,,,/H.Theme;component/Colors/Light.xaml" />
+                </ResourceDictionary.MergedDictionaries>
+            </ResourceDictionary>
+        </DataTemplate.Resources>
         <Grid Width="900"
               Height="450">
             <Border Width="310"
@@ -562,13 +569,6 @@
                                        Text="{Binding Forget.Message}"
                                        ToolTip="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Text}" />
 
-                            <Button Width="Auto"
-                                    Margin="0,2"
-                                    Command="{Binding GotoMailCommand}"
-                                    Content="上一步"
-                                    Style="{DynamicResource {x:Static ButtonKeys.Accent}}"
-                                    Visibility="{Binding Source={x:Static l:RegistorOptions.Instance}, Path=UseMail, Converter={x:Static Converter.GetTrueToVisible}}" />
-
                             <ProgressButton Width="Auto"
                                             Margin="0,2"
                                             Command="{Binding ChangePasswordCommand}"
@@ -598,6 +598,13 @@
                                     Content="直接登录"
                                     DockPanel.Dock="Bottom"
                                     Style="{DynamicResource {x:Static ButtonKeys.Success}}" />
+
+                            <Button Width="Auto"
+                                    Margin="0,2"
+                                    Command="{Binding GotoMailCommand}"
+                                    Content="上一步"
+                                    Visibility="{Binding Source={x:Static l:RegistorOptions.Instance}, Path=UseMail, Converter={x:Static Converter.GetTrueToVisible}}" />
+
                         </StackPanel>
                         <FontIconButton Margin="20"
                                         HorizontalAlignment="Left"

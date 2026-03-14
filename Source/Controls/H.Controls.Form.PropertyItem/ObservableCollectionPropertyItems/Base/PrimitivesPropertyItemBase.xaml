@@ -1,8 +1,7 @@
-﻿<ResourceDictionary
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:h="https://github.com/HeBianGu"
-    xmlns:local="clr-namespace:H.Controls.Form.PropertyItem.ObservableCollectionPropertyItems.Base">
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:h="https://github.com/HeBianGu"
+                    xmlns:local="clr-namespace:H.Controls.Form.PropertyItem.ObservableCollectionPropertyItems.Base">
     <DataTemplate DataType="{x:Type local:PrimitivesPropertyItemBase}">
         <Grid Visibility="{Binding Visibility}">
             <Grid.ColumnDefinitions>
@@ -12,17 +11,17 @@
 
             <Expander Background="Transparent">
                 <Expander.Header>
-                    <DockPanel
-                        Margin="1,0,0,0"
-                        HorizontalAlignment="Stretch"
-                        LastChildFill="False">
+                    <DockPanel Margin="1,0,0,0"
+                               HorizontalAlignment="Stretch"
+                               LastChildFill="False">
                         <TextBlock>
                             <Run Text="{Binding Name}" />
                             <Run Text="[" />
                             <Run Text="{Binding Value.Count, Mode=OneWay}" />
                             <Run Text="]" />
                         </TextBlock>
-                        <TextBlock DockPanel.Dock="Right" Style="{StaticResource S.TextBlock.Error}" />
+                        <TextBlock DockPanel.Dock="Right"
+                                   Style="{StaticResource S.TextBlock.Error}" />
                     </DockPanel>
                 </Expander.Header>
                 <!--<h:Cattach.CaptionRightTemplate>
@@ -34,12 +33,11 @@
                    </ControlTemplate>
                </h:Cattach.CaptionRightTemplate>-->
 
-                <ItemsControl
-                    x:Name="lb_items"
-                    Margin="20,0,0,0"
-                    BorderThickness="5,0,0,0"
-                    IsEnabled="{Binding ReadOnly, Converter={x:Static h:Converter.GetTrueToFalse}}"
-                    ItemsSource="{Binding Value}">
+                <ItemsControl x:Name="lb_items"
+                              Margin="20,0,0,0"
+                              BorderThickness="5,0,0,0"
+                              IsEnabled="{Binding ReadOnly, Converter={x:Static h:Converter.GetTrueToFalse}}"
+                              ItemsSource="{Binding Value}">
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
                             <Grid>
@@ -48,20 +46,19 @@
                                     <ColumnDefinition Width="Auto" />
                                 </Grid.ColumnDefinitions>
                                 <DockPanel LastChildFill="True">
-                                    <TextBlock
-                                        Margin="0,0,0,0"
-                                        VerticalAlignment="Center"
-                                        Text="[" />
+                                    <TextBlock Margin="0,0,0,0"
+                                               VerticalAlignment="Center"
+                                               Text="[" />
                                     <TextBlock VerticalAlignment="Center">
                                         <!--<h:Interaction.Behaviors>
                                            <h:ItemsControlItemIndexBehavior />
                                        </h:Interaction.Behaviors>-->
                                     </TextBlock>
-                                    <TextBlock
-                                        Margin="0,0,5,0"
-                                        VerticalAlignment="Center"
-                                        Text="]" />
-                                    <Button DockPanel.Dock="Right" Visibility="{Binding RelativeSource={RelativeSource AncestorType=ItemsControl}, Path=DataContext.ReadOnly, Converter={x:Static h:Converter.GetTrueToCollapsed}}">
+                                    <TextBlock Margin="0,0,5,0"
+                                               VerticalAlignment="Center"
+                                               Text="]" />
+                                    <Button DockPanel.Dock="Right"
+                                            Visibility="{Binding RelativeSource={RelativeSource AncestorType=ItemsControl}, Path=DataContext.ReadOnly, Converter={x:Static h:Converter.GetTrueToCollapsed}}">
                                         <!--<h:Interaction.Triggers>
                                            <h:EventTrigger EventName="Click">
                                                <h:CloseItemsAction Item="{Binding RelativeSource={RelativeSource AncestorType=ContentControl, AncestorLevel=2}}" ItemsControl="{Binding RelativeSource={RelativeSource AncestorType=ItemsControl}}" />
@@ -71,10 +68,9 @@
                                            <h:RemoveItemVisualTreeButtonBehavior/>
                                        </h:Interaction.Behaviors>-->
                                     </Button>
-                                    <TextBox
-                                        Width="Auto"
-                                        HorizontalAlignment="Stretch"
-                                        Text="{Binding Value, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}">
+                                    <TextBox Width="Auto"
+                                             HorizontalAlignment="Stretch"
+                                             Text="{Binding Value, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}">
                                         <!--<h:Interaction.Triggers>
                                            <h:EventTrigger EventName="TextChanged">
                                                <h:CallMethodAction MethodName="RefreshValue" TargetObject="{Binding RelativeSource={RelativeSource AncestorType=ListBox}, Path=DataContext}" />
@@ -83,15 +79,15 @@
                                     </TextBox>
                                 </DockPanel>
 
-                                <Grid Grid.Column="1" Width="{Binding RelativeSource={RelativeSource AncestorType=local:Form}, Path=MessageWidth}">
-                                    <TextBlock
-                                        HorizontalAlignment="Center"
-                                        VerticalAlignment="Center"
-                                        FontSize="14"
-                                        Foreground="Red"
-                                        Text="&#xe626;"
-                                        TextTrimming="CharacterEllipsis"
-                                        ToolTip="{Binding Message}" />
+                                <Grid Grid.Column="1"
+                                      Width="{Binding RelativeSource={RelativeSource AncestorType=local:Form}, Path=MessageWidth}">
+                                    <TextBlock HorizontalAlignment="Center"
+                                               VerticalAlignment="Center"
+                                               FontSize="14"
+                                               Foreground="Red"
+                                               Text="&#xe626;"
+                                               TextTrimming="CharacterEllipsis"
+                                               ToolTip="{Binding Message}" />
                                     <!--  Visibility="{Binding Message, Converter={x:Static h:XConverter.VisibilityWithOutStringConverter}, ConverterParameter={x:Null}, Mode=TwoWay}" />  -->
                                 </Grid>
                             </Grid>
@@ -102,7 +98,8 @@
         </Grid>
 
         <DataTemplate.Triggers>
-            <DataTrigger Binding="{Binding Value.Count, Mode=OneWay}" Value="0">
+            <DataTrigger Binding="{Binding Value.Count, Mode=OneWay}"
+                         Value="0">
                 <Setter TargetName="lb_items" Property="Visibility" Value="Collapsed" />
             </DataTrigger>
         </DataTemplate.Triggers>

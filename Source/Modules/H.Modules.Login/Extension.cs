@@ -24,18 +24,7 @@ public static class Extension
             services.Configure(new Action<LoginOptions>(setupAction));
         return services;
     }
-
-    public static IServiceCollection AddBackgroundLoginViewPresenter(this IServiceCollection services, Action<ILoginOptions> setupAction = null)
-    {
-        services.AddOptions();
-        services.TryAdd(ServiceDescriptor.Singleton<ILoginViewPresenter, BackgroundLoginViewPresenter>());
-        services.TryAdd(ServiceDescriptor.Singleton<ILoginedSplashViewPresenter, LoginedSplashViewPresenter>());
-        services.AddLoginButtonViewPresenter();
-        if (setupAction != null)
-            services.Configure(new Action<LoginOptions>(setupAction));
-        return services;
-    }
-
+ 
     public static IServiceCollection AddRegisterLoginViewPresenter(this IServiceCollection services, Action<ILoginOptions> setupAction = null, Action<IRegistorOptions> setupRegisterAction = null)
     {
         services.AddOptions();
@@ -49,18 +38,6 @@ public static class Extension
         return services;
     }
 
-    public static IServiceCollection AddBackgroundRigisterLoginViewPresenter(this IServiceCollection services, Action<ILoginOptions> setupAction = null, Action<IRegistorOptions> setupRegisterAction = null)
-    {
-        services.AddOptions();
-        services.TryAdd(ServiceDescriptor.Singleton<ILoginViewPresenter, BackgroundRigisterLoginViewPresenter>());
-        services.TryAdd(ServiceDescriptor.Singleton<ILoginedSplashViewPresenter, LoginedSplashViewPresenter>());
-        services.AddLoginButtonViewPresenter();
-        if (setupAction != null)
-            services.Configure(new Action<LoginOptions>(setupAction));
-        if (setupRegisterAction != null)
-            services.Configure(new Action<RegistorOptions>(setupRegisterAction));
-        return services;
-    }
 
     private static IServiceCollection AddLoginButtonViewPresenter(this IServiceCollection services)
     {

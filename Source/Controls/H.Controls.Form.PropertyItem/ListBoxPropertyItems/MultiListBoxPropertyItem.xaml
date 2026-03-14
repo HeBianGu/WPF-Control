@@ -1,11 +1,9 @@
-﻿<ResourceDictionary
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="clr-namespace:H.Controls.Form.PropertyItem.ComboBoxPropertyItems">
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:H.Controls.Form.PropertyItem.ComboBoxPropertyItems">
     <DataTemplate DataType="{x:Type local:MultiListBoxPropertyItem}">
-        <ListBox
-            Cattach.SelectedItems="{Binding Value}"
-            ItemsSource="{Binding Collection}"
-            SelectionMode="Multiple" />
+        <ListBox Cattach.SelectedItems="{Binding Value}"
+                 ItemsSource="{Binding Collection}"
+                 SelectionMode="Multiple" />
     </DataTemplate>
 </ResourceDictionary>

@@ -1,12 +1,10 @@
-﻿<ResourceDictionary
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="clr-namespace:H.Controls.Form.PropertyItem.ComboBoxPropertyItems">
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:H.Controls.Form.PropertyItem.ComboBoxPropertyItems">
     <DataTemplate DataType="{x:Type local:EnumComboBoxPropertyItem}">
-        <ComboBox
-            Cattach.UseGuide="False"
-            IsHitTestVisible="{Binding IsHitTestVisible}"
-            ItemsSource="{Binding Collection}"
-            SelectedItem="{Binding Value}" />
+        <ComboBox Cattach.UseGuide="False"
+                  IsHitTestVisible="{Binding IsHitTestVisible}"
+                  ItemsSource="{Binding Collection}"
+                  SelectedItem="{Binding Value}" />
     </DataTemplate>
 </ResourceDictionary>

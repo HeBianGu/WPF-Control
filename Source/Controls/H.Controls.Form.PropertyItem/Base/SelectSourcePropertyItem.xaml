@@ -18,7 +18,7 @@
                               SelectedItem="{Binding Value}"
                               ToolTip="{Binding Name}" />
                     <Form Padding="0"
-                                SelectObject="{Binding ElementName=cbx, Path=SelectedItem}" />
+                          SelectObject="{Binding ElementName=cbx, Path=SelectedItem}" />
                 </DockPanel>
             </Border>
         </Expander>

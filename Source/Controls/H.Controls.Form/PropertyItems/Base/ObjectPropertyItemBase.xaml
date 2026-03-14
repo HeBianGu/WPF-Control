@@ -1,11 +1,11 @@
-﻿<ResourceDictionary
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:h="https://github.com/HeBianGu"
-    xmlns:local="clr-namespace:H.Controls.Form.PropertyItems.Base">
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:h="https://github.com/HeBianGu"
+                    xmlns:local="clr-namespace:H.Controls.Form.PropertyItems.Base">
     <DataTemplate DataType="{x:Type local:ObjectPropertyItemBase}">
         <Border MinHeight="{DynamicResource {x:Static h:LayoutKeys.ItemHeight}}">
-            <ContentPresenter VerticalAlignment="Center" Content="{Binding Value}" />
+            <ContentPresenter VerticalAlignment="Center"
+                              Content="{Binding Value}" />
         </Border>
     </DataTemplate>
 </ResourceDictionary>

@@ -1,13 +1,12 @@
-﻿<ResourceDictionary
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="clr-namespace:H.Controls.Form.PropertyItem.TextPropertyItems">
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:H.Controls.Form.PropertyItem.TextPropertyItems">
     <DataTemplate DataType="{x:Type local:HyperlinkPropertyItem}">
-        <TextBlock Margin="0,5" ToolTip="{Binding Value}">
-            <Hyperlink
-                Command="{Binding ProcessCommand}"
-                Foreground="{DynamicResource {x:Static BrushKeys.Foreground}}"
-                NavigateUri="{Binding Value}">
+        <TextBlock Margin="0,5"
+                   ToolTip="{Binding Value}">
+            <Hyperlink Command="{Binding ProcessCommand}"
+                       Foreground="{DynamicResource {x:Static BrushKeys.Foreground}}"
+                       NavigateUri="{Binding Value}">
                 <Run Text="{Binding Name}" />
             </Hyperlink>
         </TextBlock>
