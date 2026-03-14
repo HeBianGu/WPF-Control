@@ -16,54 +16,52 @@
                            VerticalAlignment="Center">
                     <Viewbox Width="300"
                              DockPanel.Dock="Bottom">
-                        <TextBlock HorizontalAlignment="Center"
-                                   DockPanel.Dock="Bottom"
-                                   FontSize="{Binding Source={x:Static local:SplashScreenOptions.Instance}, Path=SubFontSize}"
-                                   Opacity="0.8"
-                                   Text="{Binding Source={x:Static local:SplashScreenOptions.Instance}, Path=Sub}" />
-                    </Viewbox>
-                    <Viewbox Margin="10">
                         <Grid>
                             <TextBlock HorizontalAlignment="Center"
-                                       Text="{Binding Source={x:Static local:SplashScreenOptions.Instance}, Path=Product}" />
-                            <TextBlock x:Name="ReflectionTextBlock"
-                                       HorizontalAlignment="Center"
-                                       Opacity="0.55"
+                                       FontSize="{Binding Source={x:Static local:SplashScreenOptions.Instance}, Path=SubFontSize}"
+                                       Opacity="0.6"
+                                       Text="{Binding Source={x:Static local:SplashScreenOptions.Instance}, Path=Sub}" />
+                            <TextBlock HorizontalAlignment="Center"
+                                       FontSize="{Binding Source={x:Static local:SplashScreenOptions.Instance}, Path=SubFontSize}"
+                                       Opacity="0.35"
                                        RenderTransformOrigin="0 1"
-                                       Text="{Binding Source={x:Static local:SplashScreenOptions.Instance}, Path=Product}">
+                                       Text="{Binding Source={x:Static local:SplashScreenOptions.Instance}, Path=Sub}">
                                 <TextBlock.RenderTransform>
                                     <TransformGroup>
-                                        <ScaleTransform ScaleY="-1" />
-                                        <SkewTransform x:Name="ReflectionSkewTransform" AngleX="-18" />
+                                        <ScaleTransform ScaleY="-0.5" />
                                     </TransformGroup>
                                 </TextBlock.RenderTransform>
-
-                                <TextBlock.Triggers>
-                                    <EventTrigger RoutedEvent="FrameworkElement.Loaded">
-                                        <BeginStoryboard>
-                                            <Storyboard AutoReverse="True"
-                                                        RepeatBehavior="Forever">
-                                                <DoubleAnimation Storyboard.TargetName="ReflectionSkewTransform"
-                                                                 Storyboard.TargetProperty="AngleX"
-                                                                 From="-50"
-                                                                 To="50"
-                                                                 Duration="0:0:10">
-                                                    <DoubleAnimation.EasingFunction>
-                                                        <SineEase EasingMode="EaseInOut" />
-                                                    </DoubleAnimation.EasingFunction>
-                                                </DoubleAnimation>
-                                            </Storyboard>
-                                        </BeginStoryboard>
-                                    </EventTrigger>
-                                </TextBlock.Triggers>
-
                                 <TextBlock.OpacityMask>
                                     <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
                                         <GradientStop Offset="0" Color="#70FFFFFF" />
                                         <GradientStop Offset="1" Color="#00FFFFFF" />
                                     </LinearGradientBrush>
                                 </TextBlock.OpacityMask>
-
+                                <TextBlock.Effect>
+                                    <BlurEffect Radius="0.6" />
+                                </TextBlock.Effect>
+                            </TextBlock>
+                        </Grid>
+                    </Viewbox>
+                    <Viewbox Margin="10">
+                        <Grid>
+                            <TextBlock HorizontalAlignment="Center"
+                                       Text="{Binding Source={x:Static local:SplashScreenOptions.Instance}, Path=Product}" />
+                            <TextBlock HorizontalAlignment="Center"
+                                       Opacity="0.65"
+                                       RenderTransformOrigin="0 1"
+                                       Text="{Binding Source={x:Static local:SplashScreenOptions.Instance}, Path=Product}">
+                                <TextBlock.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform ScaleY="-0.5" />
+                                    </TransformGroup>
+                                </TextBlock.RenderTransform>
+                                <TextBlock.OpacityMask>
+                                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                        <GradientStop Offset="0" Color="#70FFFFFF" />
+                                        <GradientStop Offset="1" Color="#00FFFFFF" />
+                                    </LinearGradientBrush>
+                                </TextBlock.OpacityMask>
                                 <TextBlock.Effect>
                                     <BlurEffect Radius="0.6" />
                                 </TextBlock.Effect>
