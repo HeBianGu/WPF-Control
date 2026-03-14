@@ -6,11 +6,9 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
-using H.Common.Interfaces;
+namespace H.Common.Interfaces;
 
-namespace H.Services.Identity;
-
-public interface ILoginViewPresenter
+public interface IWindowInitable
 {
-
+    void InitWindow(Window window);
 }

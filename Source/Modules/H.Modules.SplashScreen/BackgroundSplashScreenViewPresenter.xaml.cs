@@ -6,27 +6,19 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
+global using H.Mvvm.ViewModels.Base;
+global using H.Services.Common.SplashScreen;
 using H.Attach;
 using H.Common.Interfaces;
-using H.Extensions.Mvvm.Commands;
-using H.Extensions.Mvvm.ViewModels.Base;
-using H.Services.Message.Dialog;
 
-namespace H.Modules.Login.Presenters;
+namespace H.Modules.SplashScreen;
 
-[Icon(FontIcons.Connect)]
-[Display(Name = "登录页面", GroupName = SettingGroupNames.GroupSystem, Description = "登录页面的呈现")]
-public class BackgroundRigisterLoginViewPresenter : RigisterLoginViewPresenter, IWindowInitable
+public class BackgroundSplashScreenViewPresenter : SplashScreenViewPresenter
 {
-    public BackgroundRigisterLoginViewPresenter(IOptions<LoginOptions> options) : base(options)
-    {
-
-    }
-
     public override void InitWindow(Window window)
     {
         base.InitWindow(window);
-        var background = LoginOptions.Instance?.Background;
+        var background = SplashScreenOptions.Instance?.Background;
         if (background != null)
         {
             var converter = TypeDescriptor.GetConverter(typeof(ImageSource));

@@ -84,4 +84,18 @@ public class SplashScreenOptions : IocOptionInstance<SplashScreenOptions>, ISpla
         }
     }
 
+    private string _Background;
+    [DefaultValue("pack://application:,,,/H.Modules.SplashScreen;component/Assets/background.jpg")]
+    [JsonIgnore]
+    [Browsable(false)]
+    public string Background
+    {
+        get { return _Background; }
+        set
+        {
+            _Background = value;
+            RaisePropertyChanged();
+        }
+    }
+
 }

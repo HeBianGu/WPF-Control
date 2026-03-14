@@ -8,10 +8,12 @@
 
 global using H.Mvvm.ViewModels.Base;
 global using H.Services.Common.SplashScreen;
+using H.Attach;
+using H.Common.Interfaces;
 
 namespace H.Modules.SplashScreen;
 
-public class SplashScreenViewPresenter : BindableBase, ISplashScreenViewPresenter
+public class SplashScreenViewPresenter : BindableBase, ISplashScreenViewPresenter, IWindowInitable
 {
     private string _message;
     public string Message
@@ -22,5 +24,11 @@ public class SplashScreenViewPresenter : BindableBase, ISplashScreenViewPresente
             _message = value;
             RaisePropertyChanged();
         }
+    }
+
+    public virtual void InitWindow(Window window)
+    {
+        window.SizeToContent = SizeToContent.WidthAndHeight;
+        Cattach.SetCaptionBackground(window, null);
     }
 }

@@ -315,13 +315,8 @@ public partial class ApplicationBase
                 {
                     x.DialogButton = DialogButton.None;
                     x.Title = Assembly.GetEntryAssembly().GetName().Version.ToString();
-                    x.Width = 550;
-                    x.Height = 350;
-                    if (x is Window w)
-                    {
-                        w.SizeToContent = SizeToContent.Manual;
-                        Cattach.SetCaptionBackground(w, null);
-                    }
+                    if (x is Window w && presenter is IWindowInitable initable)
+                        initable.InitWindow(w);
                 }, func).Result;
             });
             if (r == false)
@@ -356,13 +351,8 @@ public partial class ApplicationBase
                 x.MinWidth = 400;
                 x.DialogButton = DialogButton.None;
                 x.Title = Assembly.GetEntryAssembly().GetName().Version.ToString();
-                if (x is Window w)
-                {
-                    w.SizeToContent = SizeToContent.WidthAndHeight;
-                    w.ShowInTaskbar = true;
-                    Cattach.SetCaptionBackground(w, null);
-                    presenter.InitWindow(w);
-                }
+                if (x is Window w && presenter is IWindowInitable initable)
+                    initable.InitWindow(w);
             }).Result;
             if (r == false)
             {
