@@ -55,9 +55,30 @@ namespace H.DataBases.Sqlite
 
         public override string GetConnect()
         {
+            return $"Data Source={this.GetDBFilePath()}";
+        }
+
+        public string GetDBFilePath()
+        {
             if (string.IsNullOrEmpty(this.FilePath))
-                return $"Data Source={this.InitialCatalog}";
-            return $"Data Source={Path.Combine(this.FilePath, this.InitialCatalog)}";
+                return this.InitialCatalog;
+            return Path.Combine(this.FilePath, this.InitialCatalog);
+        }
+
+        public override (bool success, string message) LoadDefaultTemplate()
+        {
+            string filePath = this.GetDBFilePath();
+            string defaultPath = filePath.ToDefaultTemplatePath(AppPaths.Instance.Data);
+            if (File.Exists(defaultPath))
+            {
+                if (File.Exists(filePath))
+                    File.Delete(filePath);
+                File.Copy(defaultPath, filePath);
+                this.FilePath = Path.GetDirectoryName(defaultPath);
+                this.InitialCatalog = Path.GetFileName(defaultPath);
+                return (true, null);
+            }
+            return base.LoadDefaultTemplate();
         }
     }
 }

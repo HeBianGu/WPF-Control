@@ -265,6 +265,17 @@ public partial class ApplicationBase
             {
                 if (s != null)
                     s.Message = "正在加载设置数据...";
+                foreach (var item in IocSetting.Instance.Settings.OfType<IDefaultTemplateable>())
+                {
+                    s.Message = $"正在加载设置<{item.Name}>默认数据...";
+                    var t = item.LoadDefaultTemplate();
+                    if (t.success)
+                    {
+                        s.Message = $"设置<{item.Name}>默认数据加载完成";
+                        Thread.Sleep(1000);
+                    }
+                }
+
                 //  Do ：加载设置参数
                 string message = null;
                 var r = IocSetting.Instance?.Load(x =>

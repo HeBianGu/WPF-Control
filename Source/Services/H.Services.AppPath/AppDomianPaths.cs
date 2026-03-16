@@ -17,3 +17,12 @@ public static class AppDomianPaths
     public static string Components => "Components";
     public static string Versions => "Versions";
 }
+
+public static class AppDomianPathExtensions
+{
+    public static string ToDefaultTemplatePath(this string path, string relativePath)
+    {
+        var rpath = Path.GetRelativePath(relativePath, path);
+        return Path.Combine(AppDomianPaths.DefaultTemplates, rpath);
+    }
+}

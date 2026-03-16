@@ -20,12 +20,19 @@ using System.Text.Json.Serialization;
 
 namespace H.Extensions.Setting;
 
-public abstract class SettableBase : DisplayBindableBase, ISettable, ILoadable, ISaveable, IDefaultable, IClearable
+public abstract class SettableBase : DisplayBindableBase, ISettable, ILoadable,
+    ISaveable, IDefaultable, IClearable, IFileDefaultTemplateable
 {
+    protected SettableBase()
+    {
+        this.Version = this.GetType().Assembly.GetName().Version.ToString();
+    }
     [XmlIgnore]
     [JsonIgnore]
     [Browsable(false)]
     public bool IsVisibleInSetting { get; set; } = true;
+
+    public string Version { get; set; }
 
     public override void LoadDefault()
     {
@@ -65,14 +72,8 @@ public abstract class SettableBase : DisplayBindableBase, ISettable, ILoadable, 
         var path = this.GetDefaultPath();
         if (!this.HasFile())
         {
-            var defPath = this.GetDefaultTemplateFilePath();
-            if (!File.Exists(defPath))
-            {
-                message = "文件不存在:" + path;
-                IocLog.Info(message);
-                return true;
-            }
-            path = defPath;
+            message = "文件不存在:" + path;
+            return true;
         }
         message = null;
         this.Load(path);
@@ -122,7 +123,23 @@ public abstract class SettableBase : DisplayBindableBase, ISettable, ILoadable, 
             File.Delete(path);
     }
 
-    private string GetDefaultTemplateFilePath()
+    public virtual (bool success, string message) LoadDefaultTemplate()
+    {
+        var path = this.GetDefaultPath();
+        if (File.Exists(path))
+            return (false, "已存在配置文件:" + path);
+        string message;
+        var defPath = this.GetDefaultTemplatePath();
+        if (!File.Exists(defPath))
+        {
+            message = "默认模板文件文件不存在:" + defPath;
+            return (false, message);
+        }
+        File.Copy(defPath, this.GetDefaultPath());
+        return (true, defPath);
+    }
+
+    public string GetDefaultTemplatePath()
     {
         var folder = Path.GetFileNameWithoutExtension(this.GetDefaultFolder());
         return Path.Combine(AppDomianPaths.DefaultTemplates, folder, this.GetType().Name + ".json");

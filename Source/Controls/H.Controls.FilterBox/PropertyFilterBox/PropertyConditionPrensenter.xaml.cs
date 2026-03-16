@@ -28,20 +28,6 @@ namespace H.Controls.FilterBox
     [Display(Name = "设置条件")]
     public class PropertyConditionPrensenter : DisplayBindableBase, IMetaSetting, IPropertyConditionPrensenter
     {
-        //public PropertyConditionPrensenter()
-        //{
-
-        //}
-
-        //public PropertyConditionPrensenter(Type modelTyle, Func<PropertyInfo, bool> predicate = null)
-        //{
-        //    ObservableCollection<PropertyInfo> ps = modelTyle.GetProperties().Where(x => x.PropertyType.IsPrimitive || x.PropertyType == typeof(DateTime) || x.PropertyType == typeof(string)).ToObservable();
-        //    if (predicate != null)
-        //        this.Properties = ps.Where(predicate).ToObservable();
-        //    else
-        //        this.Properties = ps.ToObservable();
-        //}
-
         private ObservableCollection<IPropertyConfidtion> _conditions = new ObservableCollection<IPropertyConfidtion>();
         public ObservableCollection<IPropertyConfidtion> Conditions
         {
@@ -119,7 +105,6 @@ namespace H.Controls.FilterBox
         }
 
         [System.Text.Json.Serialization.JsonIgnore]
-
         [System.Xml.Serialization.XmlIgnore]
         public IMetaSettingService MetaSettingService => new NewtonsoftJsonMetaSettingService();
 
