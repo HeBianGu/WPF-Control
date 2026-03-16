@@ -51,8 +51,7 @@ public abstract class ProjectServiceBase<T> : CommandsBindableBase, IProjectServ
     private IProjectItem _current;
 
     public event EventHandler CollectionChanged;
-    [System.Text.Json.Serialization.JsonIgnore]
-
+    [JsonIgnore]
     [System.Xml.Serialization.XmlIgnore]
     [Browsable(false)]
     public IProjectItem Current
@@ -164,16 +163,14 @@ public abstract class ProjectServiceBase<T> : CommandsBindableBase, IProjectServ
     public virtual bool Load(out string message)
     {
         message = string.Empty;
-        Projects<T> data = !File.Exists(this._projectsPath) ? this.LoadDefaultProjects() : this.GetSerializer().Load<Projects<T>>(this._projectsPath);
+        if (!File.Exists(this._projectsPath))
+            return true;
+        Projects<T> data = this.GetSerializer().Load<Projects<T>>(this._projectsPath);
         this.Clear();
         if (data != null)
         {
             var orders = data.Items.OrderByDescending(x => x.UpdateTime);
             this.Collection = orders.ToObservable();
-            //foreach (T item in orders)
-            //{
-            //    this.Add(data.Items.ToArray());
-            //}
             this.Current = orders.FirstOrDefault();
         }
         if (this.Current == null)
@@ -185,16 +182,16 @@ public abstract class ProjectServiceBase<T> : CommandsBindableBase, IProjectServ
         return true;
     }
 
-    protected virtual Projects<T> LoadDefaultProjects()
-    {
-        string path = AppDomianPaths.DefaultProjects;
-        string toPath = this.GetFolderPath();
-        path.ToDirectoryEx().BackupToDirectory(toPath);
-        Projects<T> data = this.GetSerializer().Load<Projects<T>>(this._projectsPath);
-        if (data == null)
-            return null;
-        return data;
-    }
+    //protected virtual Projects<T> LoadDefaultProjects()
+    //{
+    //    string path = AppDomianPaths.DefaultProjects;
+    //    string toPath = this.GetFolderPath();
+    //    path.ToDirectoryEx().BackupToDirectory(toPath);
+    //    Projects<T> data = this.GetSerializer().Load<Projects<T>>(this._projectsPath);
+    //    if (data == null)
+    //        return null;
+    //    return data;
+    //}
 
     public void Clear()
     {
@@ -206,6 +203,20 @@ public abstract class ProjectServiceBase<T> : CommandsBindableBase, IProjectServ
     public void Delete(params T[] ts)
     {
         this.DeleteAsync(ts).Wait();
+    }
+
+    public (bool success, string message) LoadDefaultTemplate()
+    {
+        string path = AppDomianPaths.DefaultProjects;
+        if (!Directory.Exists(path))
+            return (false, "默认项目模版不存在");
+        string toPath = this.GetFolderPath();
+        path.ToDirectoryEx().BackupToDirectory(toPath);
+        return (true, null);
+        //Projects<T> data = this.GetSerializer().Load<Projects<T>>(this._projectsPath);
+        //if (data == null)
+        //    return null;
+        //return data;
     }
 
     [JsonIgnore]
@@ -244,6 +255,7 @@ public abstract class ProjectServiceBase<T> : CommandsBindableBase, IProjectServ
     [System.Xml.Serialization.XmlIgnore]
     [Browsable(false)]
     public Action<IProjectItem> ProjectAdded { get; set; }
+    string INameable.Name { get => this.Name; set => throw new NotImplementedException(); }
 }
 
 public class Projects<T>

@@ -13,7 +13,3 @@ public interface IDefaultTemplateable : INameable
     (bool success, string message) LoadDefaultTemplate();
 }
 
-public interface IFileDefaultTemplateable : IDefaultTemplateable
-{
-    string GetDefaultTemplatePath();
-}

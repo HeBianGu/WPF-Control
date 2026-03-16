@@ -23,6 +23,7 @@ public static class AppDomianPathExtensions
     public static string ToDefaultTemplatePath(this string path, string relativePath)
     {
         var rpath = Path.GetRelativePath(relativePath, path);
-        return Path.Combine(AppDomianPaths.DefaultTemplates, rpath);
+        var folderName = Path.GetFileNameWithoutExtension(relativePath);
+        return Path.Combine(AppDomain.CurrentDomain.BaseDirectory, AppDomianPaths.DefaultTemplates, folderName, rpath);
     }
 }

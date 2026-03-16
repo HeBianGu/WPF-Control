@@ -21,7 +21,7 @@ using System.Text.Json.Serialization;
 namespace H.Extensions.Setting;
 
 public abstract class SettableBase : DisplayBindableBase, ISettable, ILoadable,
-    ISaveable, IDefaultable, IClearable, IFileDefaultTemplateable
+    ISaveable, IDefaultable, IClearable, IDefaultTemplateable
 {
     protected SettableBase()
     {

@@ -261,31 +261,47 @@ public partial class ApplicationBase
         tls?.Load(out string message);
         Func<IDialog, ISplashScreenViewPresenter, bool?> func = (c, s) =>
         {
-            if (c?.IsCancel != true)
             {
                 if (s != null)
                     s.Message = "正在加载设置数据...";
-                foreach (var item in IocSetting.Instance.Settings.OfType<IDefaultTemplateable>())
-                {
-                    s.Message = $"正在加载设置<{item.Name}>默认数据...";
-                    var t = item.LoadDefaultTemplate();
-                    if (t.success)
-                    {
-                        s.Message = $"设置<{item.Name}>默认数据加载完成";
-                        Thread.Sleep(1000);
-                    }
-                }
-
                 //  Do ：加载设置参数
                 string message = null;
                 var r = IocSetting.Instance?.Load(x =>
                 {
                     if (s != null)
                         s.Message = $"正在加载设置<{x.Name}>数据...";
+                    if (s is IDefaultTemplateable templateable)
+                    {
+                        var t = templateable.LoadDefaultTemplate();
+                        if (t.success)
+                        {
+                            s.Message = $"加载<{x.Name}>默认模板数据加载完成";
+                            Thread.Sleep(100);
+                        }
+                    }
                 }, out message);
                 if (r == false)
                     s.Message = message;
                 Thread.Sleep(sleep);
+            }
+
+            {
+                int index = 0;
+                IEnumerable<IDefaultTemplateable> items = Ioc.GetAssignableFromServices<IDefaultTemplateable>().Distinct();
+                foreach (IDefaultTemplateable item in items)
+                {
+                    if (c?.IsCancel == true)
+                        return null;
+                    if (item == null)
+                        continue;
+                    s.Message = $"正在加载设置<{item.Name}>默认模板数据...";
+                    var t = item.LoadDefaultTemplate();
+                    if (t.success)
+                    {
+                        s.Message = $"设置<{item.Name}>默认模板数据完成";
+                        Thread.Sleep(100);
+                    }
+                }
             }
 
             {

@@ -13,6 +13,7 @@ using System.Data.Entity;
 #if NETCOREAPP
 #endif
 using H.DataBases.Share;
+using H.Extensions.Common;
 using H.Services.AppPath;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
@@ -68,15 +69,13 @@ namespace H.DataBases.Sqlite
         public override (bool success, string message) LoadDefaultTemplate()
         {
             string filePath = this.GetDBFilePath();
+            if (File.Exists(filePath))
+                return (false, null);
             string defaultPath = filePath.ToDefaultTemplatePath(AppPaths.Instance.Data);
             if (File.Exists(defaultPath))
             {
-                if (File.Exists(filePath))
-                    File.Delete(filePath);
                 File.Copy(defaultPath, filePath);
-                this.FilePath = Path.GetDirectoryName(defaultPath);
-                this.InitialCatalog = Path.GetFileName(defaultPath);
-                return (true, null);
+                return (true, defaultPath);
             }
             return base.LoadDefaultTemplate();
         }
