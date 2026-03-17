@@ -19,11 +19,10 @@ namespace H.Modules.License
     {
         private bool _useTipTrialOnLoad = false;
         [System.Text.Json.Serialization.JsonIgnore]
-
         [System.Xml.Serialization.XmlIgnore]
         [Browsable(false)]
         [DefaultValue(true)]
-        [Display(Name = "不提示试用许可")]
+        [Display(Name = "启动时不提示试用许可")]
         public bool UseTipTrialOnLoad
         {
             get { return _useTipTrialOnLoad; }

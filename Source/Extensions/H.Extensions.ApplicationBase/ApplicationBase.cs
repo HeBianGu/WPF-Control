@@ -20,6 +20,7 @@ using H.Services.Logger;
 using H.Services.Message;
 using H.Services.Message.Dialog;
 using H.Services.Setting;
+using System;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Reflection;
@@ -261,21 +262,27 @@ public partial class ApplicationBase
         tls?.Load(out string message);
         Func<IDialog, ISplashScreenViewPresenter, bool?> func = (c, s) =>
         {
+
+            int index = 0;
+            IEnumerable<ISplashLoadable> loads = Ioc.GetAssignableFromServices<ISplashLoadable>().Distinct();
+            IEnumerable<IDefaultTemplateable> templates = Ioc.GetAssignableFromServices<IDefaultTemplateable>().Distinct();
+            int total = loads.Count() + templates.Count() + 1;
             {
+                index++;
                 if (s != null)
-                    s.Message = "正在加载设置数据...";
+                    s.Message = $"[{index}/{total}]正在加载设置数据...";
                 //  Do ：加载设置参数
                 string message = null;
                 var r = IocSetting.Instance?.Load(x =>
                 {
                     if (s != null)
-                        s.Message = $"正在加载设置<{x.Name}>数据...";
+                        s.Message = $"[{index}/{total}]正在加载设置<{x.Name}>数据...";
                     if (s is IDefaultTemplateable templateable)
                     {
                         var t = templateable.LoadDefaultTemplate();
                         if (t.success)
                         {
-                            s.Message = $"加载<{x.Name}>默认模板数据加载完成";
+                            s.Message = $"[{index}/{total}]加载<{x.Name}>默认模板数据加载完成";
                             Thread.Sleep(100);
                         }
                     }
@@ -286,27 +293,25 @@ public partial class ApplicationBase
             }
 
             {
-                int index = 0;
-                IEnumerable<IDefaultTemplateable> items = Ioc.GetAssignableFromServices<IDefaultTemplateable>().Distinct();
-                foreach (IDefaultTemplateable item in items)
+                index++;
+                foreach (IDefaultTemplateable item in templates)
                 {
                     if (c?.IsCancel == true)
                         return null;
                     if (item == null)
                         continue;
-                    s.Message = $"正在加载设置<{item.Name}>默认模板数据...";
+                    s.Message = $"[{index}/{total}]正在加载设置<{item.Name}>默认模板数据...";
                     var t = item.LoadDefaultTemplate();
                     if (t.success)
                     {
-                        s.Message = $"设置<{item.Name}>默认模板数据完成";
+                        s.Message = $"[{index}/{total}]设置<{item.Name}>默认模板数据完成";
                         Thread.Sleep(100);
                     }
                 }
             }
 
             {
-                int index = 0;
-                IEnumerable<ISplashLoadable> loads = Ioc.GetAssignableFromServices<ISplashLoadable>().Distinct();
+
                 foreach (ISplashLoadable load in loads)
                 {
                     if (c?.IsCancel == true)
@@ -316,7 +321,7 @@ public partial class ApplicationBase
                         continue;
                     index++;
                     if (s != null)
-                        s.Message = $"[{index}/{loads.Count()}]正在加载{load.Name}...";
+                        s.Message = $"[{index}/{total}]正在加载{load.Name}...";
                     bool r = load.Load(out string message);
                     if (s != null && !string.IsNullOrEmpty(message) && !r)
                         s.Message = message;
