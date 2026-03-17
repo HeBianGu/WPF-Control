@@ -10,6 +10,7 @@ global using H.Controls.Form.Attributes;
 global using H.Extensions.Mvvm.ViewModels;
 global using System.ComponentModel;
 global using System.ComponentModel.DataAnnotations;
+using H.Services.Identity.Author;
 
 namespace H.Modules.Identity
 {
@@ -66,10 +67,8 @@ namespace H.Modules.Identity
 
         //[Browsable(false)]
         //public string RoleID { get; set; }
-
         private Role _role;
         [System.Text.Json.Serialization.JsonIgnore]
-
         [System.Xml.Serialization.XmlIgnore]
         [Required]
         [Display(Name = "用户角色")]
@@ -87,9 +86,11 @@ namespace H.Modules.Identity
             }
         }
 
+        IRole IUser.Role => this.Role;
         public virtual bool IsValid(string authorId)
         {
-            if (this.Role == null) return false;
+            if (this.Role == null)
+                return false;
             return this.Role.IsValid(authorId);
         }
     }

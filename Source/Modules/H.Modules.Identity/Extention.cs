@@ -9,7 +9,6 @@
 global using H.Extensions.DataBase.Repository;
 global using H.Modules.Identity;
 global using H.Services.Identity;
-global using H.Services.Identity.User;
 global using Microsoft.EntityFrameworkCore;
 global using Microsoft.Extensions.DependencyInjection;
 global using Microsoft.Extensions.DependencyInjection.Extensions;
@@ -93,6 +92,7 @@ namespace System
             role1.Name = "管理员";
             role1.Code = "01";
             roles.Add(role1);
+
             hi_dd_role role2 = new hi_dd_role();
             role2.ID = "{0E465AF1-4C5B-417B-B496-E74E8A0D7E5C}";
             role2.Name = "普通用户";
@@ -106,12 +106,14 @@ namespace System
             user1.Password = "123456";
             user1.Name = "超级用户";
             user1.RoleID = role1.ID;
+            user1.Enable = true;
             users.Add(user1);
             hi_dd_user user2 = new hi_dd_user();
             user2.ID = "{A8EE1331-0DA7-42F1-80E2-CD2A20D62BC9}";
             user2.Account = "user";
             user2.Password = "123456";
             user2.Name = "HeBianGu";
+            user2.Enable = true;
             user2.RoleID = role2.ID;
             users.Add(user2);
 

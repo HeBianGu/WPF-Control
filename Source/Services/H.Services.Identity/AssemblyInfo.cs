@@ -6,7 +6,6 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
-global using H.Services.Identity.User;
 global using System.Windows;
 global using System.Windows.Markup;
 
@@ -21,19 +20,13 @@ global using System.Windows.Markup;
 
 [assembly: XmlnsDefinition("QQ:908293466", "H.Services.Identity")]
 [assembly: XmlnsDefinition("QQ:908293466", "H.Services.Identity.Author")]
-[assembly: XmlnsDefinition("QQ:908293466", "H.Services.Identity.Role")]
-[assembly: XmlnsDefinition("QQ:908293466", "H.Services.Identity.User")]
 [assembly: XmlnsPrefix("QQ:908293466", "h")]
 
 [assembly: XmlnsDefinition("https://github.com/HeBianGu", "H.Services.Identity")]
 [assembly: XmlnsDefinition("https://github.com/HeBianGu", "H.Services.Identity.Author")]
-[assembly: XmlnsDefinition("https://github.com/HeBianGu", "H.Services.Identity.Role")]
-[assembly: XmlnsDefinition("https://github.com/HeBianGu", "H.Services.Identity.User")]
 [assembly: XmlnsPrefix("https://github.com/HeBianGu", "h")]
 
 [assembly: XmlnsDefinition("http://schemas.microsoft.com/winfx/2006/xaml/presentation", "H.Services.Identity")]
 [assembly: XmlnsDefinition("http://schemas.microsoft.com/winfx/2006/xaml/presentation", "H.Services.Identity.Author")]
-[assembly: XmlnsDefinition("http://schemas.microsoft.com/winfx/2006/xaml/presentation", "H.Services.Identity.Role")]
-[assembly: XmlnsDefinition("http://schemas.microsoft.com/winfx/2006/xaml/presentation", "H.Services.Identity.User")]
 [assembly: XmlnsPrefix("http://schemas.microsoft.com/winfx/2006/xaml/presentation", "h")]
 

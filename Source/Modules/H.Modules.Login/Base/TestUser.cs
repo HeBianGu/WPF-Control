@@ -8,7 +8,7 @@
 
 using H.Controls.Form.Attributes;
 using H.Controls.Form.PropertyItem.TextPropertyItems;
-using H.Services.Identity.User;
+using H.Services.Identity.Author;
 
 namespace H.Modules.Login.Base;
 
@@ -29,6 +29,9 @@ public class TestUser : IUser
     public string Password { get; set; }
     [Display(Name = "显示名称")]
     public string Name { get; set; }
+
+    public IRole Role => null;
+
     public bool IsValid(string authorId)
     {
         return true;

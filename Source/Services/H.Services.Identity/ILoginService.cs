@@ -6,6 +6,8 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
+using H.Iocable;
+
 namespace H.Services.Identity;
 
 public interface ILoginService
@@ -13,4 +15,9 @@ public interface ILoginService
     IUser User { get; }
     bool Login(string name, string password, out string message);
     bool Logout(out string message);
+}
+
+public class IocLogin : Ioc<ILoginService>
+{
+    public static IUser User => Instance?.User;
 }

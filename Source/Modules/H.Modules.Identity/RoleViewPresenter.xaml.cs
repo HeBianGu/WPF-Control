@@ -7,7 +7,6 @@
 // Licensed under the MIT License (the "License")
 
 global using H.Extensions.DataBase;
-global using H.Services.Identity.Role;
 global using H.Services.Message;
 global using H.Services.Message.Dialog;
 global using H.Services.Setting;
@@ -60,6 +59,11 @@ namespace H.Modules.Identity
             hi_dd_role entity = this.GetEntity(obj);
             if (entity == null)
                 return;
+            if (entity.ID == "{4360CE12-E5F4-4EA6-937C-9FDEA4DF06F6}")
+            {
+                await IocMessage.ShowDialogMessage("管理员角色只读不可以编辑");
+                return;
+            }
             RoleEditPresenter roleViewModel = new RoleEditPresenter(entity);
             bool? r = await IocMessage.Dialog.Show(roleViewModel, x =>
             {
@@ -83,6 +87,19 @@ namespace H.Modules.Identity
             {
                 IocMessage.ShowSnackInfo("保存失败，数据库保存错误");
             }
+        }
+
+        public override async Task Delete(object obj)
+        {
+            hi_dd_role entity = this.GetEntity(obj);
+            if (entity == null)
+                return;
+            if (entity.ID == "{4360CE12-E5F4-4EA6-937C-9FDEA4DF06F6}")
+            {
+                await IocMessage.ShowDialogMessage("管理员角色只读不可以编辑");
+                return;
+            }
+            await base.Delete(obj);
         }
     }
 

@@ -136,13 +136,11 @@ namespace H.Modules.Identity
 
         [Browsable(false)]
         [Column("role_id", Order = 8)]
-        //[Binding("Role.ID")]
         public string RoleID { get; set; }
 
         private hi_dd_role _role;
         [System.Text.Json.Serialization.JsonIgnore]
         [System.Xml.Serialization.XmlIgnore]
-        //[Required]
         [Display(Name = "角色")]
         [Column("role", Order = 9)]
         [DataGridColumn("*", PropertyPath = "{0}.Name")]

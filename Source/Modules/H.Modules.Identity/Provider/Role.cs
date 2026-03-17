@@ -6,6 +6,8 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
+using H.Services.Identity.Author;
+
 namespace H.Modules.Identity
 {
     public class Role : SelectBindable<hi_dd_role>, IRole
@@ -20,8 +22,8 @@ namespace H.Modules.Identity
         }
 
         [Browsable(false)]
-        public string ID => this.Model.ID;
-        //private string _name;
+        public string ID => this.Model?.ID;
+
         [Required]
         [Display(Name = "角色名称")]
         public string Name
@@ -34,22 +36,12 @@ namespace H.Modules.Identity
             }
         }
 
-        //private ObservableCollection<IAuthor> _authors = new ObservableCollection<IAuthor>();
-        //[Browsable(false)]
-        //public ObservableCollection<IAuthor> Authors
-        //{
-        //    get { return _authors; }
-        //    set
-        //    {
-        //        _authors = value;
-        //        RaisePropertyChanged();
-        //    }
-        //}
-
+        public IReadOnlyCollection<IAuthor> Authors => this.Model?.Authors.ToList().AsReadOnly();
         public virtual bool IsValid(string authorId)
         {
-            return true;
-            //return Model.Authors.Any(x => x.AuthorCode == authorId);
+            if (this.Model == null)
+                return false;
+            return this.Model.Authors.Any(x => x.AuthorCode == authorId);
         }
     }
 }
