@@ -209,6 +209,9 @@ static partial class ProjectExtension
         if (project is ProjectItemBase p)
         {
             var filePath = p.GetFilePath();
+            var folder= Path.GetDirectoryName(filePath);
+            if (!Directory.Exists(folder))
+                Directory.CreateDirectory(folder);
             File.Copy(nfilePath, filePath, true);
             projectService.Add(project);
             projectService.Current = project;

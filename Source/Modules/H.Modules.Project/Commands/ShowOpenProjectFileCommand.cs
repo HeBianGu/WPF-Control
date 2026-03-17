@@ -16,13 +16,10 @@ public class ShowOpenProjectFileCommand : ShowProjectCommandBase
 {
     public override async Task ExecuteAsync(object parameter)
     {
-        var current = IocProject.Instance?.Current;
-        if (current == null)
-            return;
         await IocProject.Instance?.ShowOpenProjectFile();
     }
     public override bool CanExecute(object parameter)
     {
-        return IocProject.Instance?.Current != null;
+        return IocProject.Instance != null;
     }
 }
