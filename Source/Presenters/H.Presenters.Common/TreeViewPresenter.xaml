@@ -5,34 +5,20 @@
     xmlns:h="https://github.com/HeBianGu"
     xmlns:local="clr-namespace:H.Presenters.Common">
     <DataTemplate DataType="{x:Type local:TreeViewPresenter}">
-        <ScrollViewer VerticalScrollBarVisibility="Auto">
-            <TreeView
-                x:Name="t"
-                ItemTemplate="{Binding ItemContentTemplate}"
-                ItemsSource="{Binding ItemsSource}">
-                <b:Interaction.Triggers>
-                    <b:EventTrigger EventName="SelectedItemChanged">
-                        <b:InvokeCommandAction Command="{Binding SelectedItemChangedCommand}" PassEventArgsToCommand="True" />
-                    </b:EventTrigger>
-                </b:Interaction.Triggers>
-                <TreeView.ItemContainerStyle>
-                    <Style BasedOn="{StaticResource {x:Static TreeViewItemKeys.Default}}" TargetType="TreeViewItem">
-                        <Setter Property="IsExpanded" Value="True" />
-                    </Style>
-                </TreeView.ItemContainerStyle>
-            </TreeView>
-        </ScrollViewer>
-        <!--<DataTemplate.Triggers>
-            <DataTrigger Binding="{Binding ItemTemplate}"
-                         Value="{x:Null}">
-                <Setter TargetName="t" Property="ItemTemplate">
-                    <Setter.Value>
-                        <HierarchicalDataTemplate ItemsSource="{Binding Nodes}">
-                            <TextBlock Text="{Binding Model}" />
-                        </HierarchicalDataTemplate>
-                    </Setter.Value>
-                </Setter>
-            </DataTrigger>
-        </DataTemplate.Triggers>-->
+        <TreeView
+            ItemTemplate="{Binding ItemContentTemplate}"
+            ItemsSource="{Binding ItemsSource}"
+            WindowChrome.IsHitTestVisibleInChrome="True">
+            <b:Interaction.Triggers>
+                <b:EventTrigger EventName="SelectedItemChanged">
+                    <b:InvokeCommandAction Command="{Binding SelectedItemChangedCommand}" PassEventArgsToCommand="True" />
+                </b:EventTrigger>
+            </b:Interaction.Triggers>
+            <TreeView.ItemContainerStyle>
+                <Style BasedOn="{StaticResource {x:Static TreeViewItemKeys.Default}}" TargetType="TreeViewItem">
+                    <Setter Property="IsExpanded" Value="True" />
+                </Style>
+            </TreeView.ItemContainerStyle>
+        </TreeView>
     </DataTemplate>
 </ResourceDictionary>

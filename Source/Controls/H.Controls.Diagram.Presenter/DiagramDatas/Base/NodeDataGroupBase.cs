@@ -13,6 +13,16 @@ namespace H.Controls.Diagram.Presenter.DiagramDatas.Base;
 [Icon("\xE722")]
 public abstract class NodeDataGroupBase : GroupDisplayBindableBase<INodeData>, INodeDataGroup
 {
+    private bool _IsVisible = true;
+    public bool IsVisible
+    {
+        get { return _IsVisible; }
+        set
+        {
+            _IsVisible = value;
+            RaisePropertyChanged();
+        }
+    }
 
 }
 

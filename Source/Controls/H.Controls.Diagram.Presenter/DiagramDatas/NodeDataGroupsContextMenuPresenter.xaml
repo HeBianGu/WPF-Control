@@ -12,7 +12,7 @@
             <ItemsControl ItemsSource="{Binding NodeDataGroups}">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <Border Background="Transparent">
+                        <Border Background="Transparent" Visibility="{Binding IsVisible, Converter={GetTrueToVisibleConverter}}">
                             <b:Interaction.Behaviors>
                                 <MouseOverContextMenuBehavior />
                             </b:Interaction.Behaviors>

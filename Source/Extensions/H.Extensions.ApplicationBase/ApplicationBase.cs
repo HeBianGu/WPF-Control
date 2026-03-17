@@ -192,17 +192,6 @@ public abstract partial class ApplicationBase : Application, IConfigureableAppli
     protected virtual async void ShowMessage(string message, string title = "提示")
     {
         await IocMessage.ShowDialogMessage(message, title);
-        //MessageBox.Show(message);
-
-        //if (MessageProxy.Windower == null)
-        //{
-        //    MessageBox.Show("当前程序已经运行！");
-        //}
-        //else
-        //{
-        //    MessageProxy.Windower.ShowSumit("当前程序已经运行！");
-        //}
-
     }
 
     void ILoginableApplication.Login()
@@ -237,19 +226,6 @@ public partial class ApplicationBase
         this.Configure(bulder);
     }
 
-    //protected virtual IEnumerable<ISplashLoadable> GetSplashLoads()
-    //{
-    //    foreach (IDbConnectService item in Ioc.Services.GetServices<IDbConnectService>())
-    //    {
-    //        yield return item;
-    //    }
-
-    //    foreach (ISplashLoadable item in Ioc.Services.GetServices<ISplashLoadable>())
-    //    {
-    //        yield return item;
-    //    }
-    //}
-
     /// <summary>
     /// 加载启动页面
     /// </summary>
@@ -270,21 +246,21 @@ public partial class ApplicationBase
             {
                 index++;
                 if (s != null)
-                    s.Message = $"[{index}/{total}]正在加载设置数据...";
+                    s.Message = $"[{index}/{total}]正在加载设置...";
                 //  Do ：加载设置参数
                 string message = null;
                 var r = IocSetting.Instance?.Load(x =>
                 {
                     if (s != null)
-                        s.Message = $"[{index}/{total}]正在加载设置<{x.Name}>数据...";
+                        s.Message = $"[{index}/{total}]正在加载设置数据<{x.Name}>...";
                     if (s is IDefaultTemplateable templateable)
                     {
-                        var t = templateable.LoadDefaultTemplate();
-                        if (t.success)
-                        {
-                            s.Message = $"[{index}/{total}]加载<{x.Name}>默认模板数据加载完成";
-                            Thread.Sleep(100);
-                        }
+                        templateable.LoadDefaultTemplate();
+                        //if (t.success)
+                        //{
+                        //    s.Message = $"[{index}/{total}]加载<{x.Name}>默认模板数据加载完成";
+                        //    Thread.Sleep(100);
+                        //}
                     }
                 }, out message);
                 if (r == false)
@@ -300,13 +276,13 @@ public partial class ApplicationBase
                         return null;
                     if (item == null)
                         continue;
-                    s.Message = $"[{index}/{total}]正在加载设置<{item.Name}>默认模板数据...";
-                    var t = item.LoadDefaultTemplate();
-                    if (t.success)
-                    {
-                        s.Message = $"[{index}/{total}]设置<{item.Name}>默认模板数据完成";
-                        Thread.Sleep(100);
-                    }
+                    s.Message = $"[{index}/{total}]正在加载模板<{item.Name}>...";
+                    item.LoadDefaultTemplate();
+                    //if (t.success)
+                    //{
+                    //    s.Message = $"[{index}/{total}]设置<{item.Name}>默认模板数据完成";
+                    //    Thread.Sleep(100);
+                    //}
                 }
             }
 

@@ -30,20 +30,6 @@ public abstract class ProjectItemBase : DisplayBindableBase, IProjectItem
         }
     }
 
-    //private string _path;
-    //[ReadOnly(true)]
-    //[Browsable(false)]
-    //[Display(Name = "工程文件路径", Order = 4)]
-    //public string Path
-    //{
-    //    get { return _path; }
-    //    set
-    //    {
-    //        _path = value;
-    //        RaisePropertyChanged();
-    //    }
-    //}
-
     private bool _isFixed;
     [Display(Name = "是否固定", Order = 4)]
     public bool IsFixed
@@ -132,15 +118,12 @@ public abstract class ProjectItemBase : DisplayBindableBase, IProjectItem
     public virtual string GetFilePath()
     {
         string folder = this.GetFolderPath();
-        return System.IO.Path.Combine(folder, this.ID + ProjectOptions.Instance.Extenstion);
+        return System.IO.Path.Combine(folder, this.Title + ProjectOptions.Instance.Extenstion);
     }
 
     public string GetFolderPath()
     {
         return ProjectOptions.Instance.DefaultProjectFolder;
-        //if (string.IsNullOrEmpty(this.Path))
-        //    return ProjectOptions.Instance.DefaultProjectFolder;
-        //return this.Path;
     }
 
     public virtual Task<(bool success, string message)> DeleteAsync()
