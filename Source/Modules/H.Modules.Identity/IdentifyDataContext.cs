@@ -19,8 +19,7 @@ namespace H.Modules.Identity
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            Ioc.GetService<IIdentifySeedService>(false)?.BuildSeed(modelBuilder);
-            //modelBuilder.BuildIdentifySeed();
+            modelBuilder.BuildIdentifySeed();
         }
 
         public DbSet<hi_dd_user> hi_dd_users { get; set; }

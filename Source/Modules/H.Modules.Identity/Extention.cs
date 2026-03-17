@@ -68,11 +68,6 @@ namespace System
             service.AddSingleton<IAuthorityViewPresenter, AuthorityViewPresenter>();
         }
 
-        public static void AddIdentifySeedService(this IServiceCollection service)
-        {
-            service.AddSingleton<IIdentifySeedService, IdentifySeedService>();
-        }
-
         public static IApplicationBuilder UseIdentifyOptions(this IApplicationBuilder builder, Action<IIdentifyOptions> option = null)
         {
             IocSetting.Instance.Add(IdentifyOptions.Instance);
@@ -119,11 +114,6 @@ namespace System
             user2.Name = "HeBianGu";
             user2.RoleID = role2.ID;
             users.Add(user2);
-
-            //role1.Authors.Add(author1);
-            //role1.Authors.Add(author2);
-            //author1.Roles.Add(role1);
-            //author2.Roles.Add(role1);
 
             modelBuilder.Entity<hi_dd_author>().HasData(authors);
             modelBuilder.Entity<hi_dd_role>().HasData(roles);
