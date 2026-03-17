@@ -13,6 +13,7 @@ using H.Extensions.DataBase;
 using H.Modules.Identity;
 using H.Modules.Login;
 using H.Modules.Operation;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace System
@@ -27,7 +28,7 @@ namespace System
         /// 注册
         /// </summary>
         /// <param name="service"></param>
-        public static void AddIdentifyDefaultServices<TContext>(this IServiceCollection services, Action<IDefaultIndentifyOptions> options = null) where TContext : IdentifyDataContext
+        public static void AddIdentifyDefaultServices<TContext>(this IServiceCollection services, Action<IDefaultIndentifyOptions> options = null) where TContext : DbContext
         {
             DefaultIndentifyOptions opt = new DefaultIndentifyOptions();
             options?.Invoke(opt);

@@ -82,7 +82,7 @@ namespace H.Modules.Identity
 
         private bool _enable;
         [Display(Name = "启用")]
-        [Column("enable", Order = 4)]
+        [Column("enable", Order = 11)]
         /// <summary> 说明  </summary>
         public bool Enable
         {
