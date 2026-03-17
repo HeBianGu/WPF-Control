@@ -139,9 +139,8 @@ public abstract class SettableBase : DisplayBindableBase, ISettable, ILoadable,
         return (true, defPath);
     }
 
-    public string GetDefaultTemplatePath()
+    private string GetDefaultTemplatePath()
     {
-        var folder = Path.GetFileNameWithoutExtension(this.GetDefaultFolder());
-        return Path.Combine(AppDomianPaths.DefaultTemplates, folder, this.GetType().Name + ".json");
+        return Path.Combine(AppDomianPaths.DefaultTemplates, AppDomianPaths.DefaultSettings, this.GetType().Name + ".json");
     }
 }

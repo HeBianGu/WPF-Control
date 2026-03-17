@@ -182,17 +182,6 @@ public abstract class ProjectServiceBase<T> : CommandsBindableBase, IProjectServ
         return true;
     }
 
-    //protected virtual Projects<T> LoadDefaultProjects()
-    //{
-    //    string path = AppDomianPaths.DefaultProjects;
-    //    string toPath = this.GetFolderPath();
-    //    path.ToDirectoryEx().BackupToDirectory(toPath);
-    //    Projects<T> data = this.GetSerializer().Load<Projects<T>>(this._projectsPath);
-    //    if (data == null)
-    //        return null;
-    //    return data;
-    //}
-
     public void Clear()
     {
         if (this.Collection is IList list)
@@ -213,10 +202,6 @@ public abstract class ProjectServiceBase<T> : CommandsBindableBase, IProjectServ
         string toPath = this.GetFolderPath();
         path.ToDirectoryEx().BackupToDirectory(toPath);
         return (true, null);
-        //Projects<T> data = this.GetSerializer().Load<Projects<T>>(this._projectsPath);
-        //if (data == null)
-        //    return null;
-        //return data;
     }
 
     [JsonIgnore]
