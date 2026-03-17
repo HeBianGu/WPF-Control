@@ -6,9 +6,11 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
+using H.Extensions.FontIcon;
+
 namespace H.Modules.Project.Commands;
 
-[Icon("\xE74E")]
+[Icon(FontIcons.Save)]
 [Display(Name = "保存项目", Description = "保存当前选中向导到配置文件中")]
 public class ShowSaveProjectCommand : ShowProjectCommandBase
 {

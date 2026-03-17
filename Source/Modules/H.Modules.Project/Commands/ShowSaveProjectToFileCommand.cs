@@ -6,20 +6,20 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
-global using System.Diagnostics;
 using H.Extensions.FontIcon;
+
 namespace H.Modules.Project.Commands;
 
-[Icon(FontIcons.View)]
-[Display(Name = "打开项目文件", Description = "用记事本打开当前项目的配置文件数据")]
-public class ShowCurrentProjectFileCommand : ShowProjectCommandBase
+[Icon(FontIcons.SaveAs)]
+[Display(Name = "导出项目文件", Description = "保存当前选中向导到配置文件中")]
+public class ShowSaveProjectToFileCommand : ShowProjectCommandBase
 {
     public override void Execute(object parameter)
     {
         var current = IocProject.Instance?.Current;
         if (current == null)
             return;
-        IocProject.Instance?.ShowCurrentProjectFile(current);
+        IocProject.Instance?.ShowSaveToFile(current);
     }
     public override bool CanExecute(object parameter)
     {

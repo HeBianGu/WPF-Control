@@ -8,6 +8,9 @@
 
 global using H.Services.Message.Dialog;
 global using H.Services.Project;
+using H.Services.Message.IODialog;
+using System;
+using System.Runtime.CompilerServices;
 using System.Windows.Media.Animation;
 
 namespace H.Modules.Project;
@@ -163,6 +166,57 @@ static partial class ProjectExtension
         if (r == false && !string.IsNullOrEmpty(message))
             await IocMessage.ShowDialogMessage(message);
         return r;
+    }
+
+    public static bool ShowSaveToFile(this IProjectService projectService, IProjectItem current)
+    {
+        if (current == null)
+            return false;
+        if (current is ProjectItemBase project)
+        {
+            var filePath = project.GetFilePath();
+            if (!File.Exists(filePath))
+                return false;
+            var r = IocMessage.IOFileDialog.ShowSaveFile(x =>
+              {
+                  x.DefaultExt = filePath.GetExtension();
+                  x.DefaultFileName = filePath.GetFileName();
+              });
+            if (r == null)
+                return false;
+            File.Copy(filePath, r, true);
+        }
+        return true;
+    }
+
+    public static async Task<bool?> ShowOpenProjectFile(this IProjectService projectService)
+    {
+        var filter = $"项目文件(*{ProjectOptions.Instance.Extenstion})|*{ProjectOptions.Instance.Extenstion}";
+        var nfilePath = IocMessage.IOFileDialog.ShowOpenFile(x => x.Filter = filter);
+        if (!File.Exists(nfilePath))
+            return false;
+        string nname = Path.GetFileNameWithoutExtension(nfilePath);
+        var project = projectService.Create();
+        if (project == null)
+            return false;
+        project.Title = nname;
+        var r = await IocMessage.Form.ShowEdit(project, x =>
+        {
+            x.Title = "导入项目文件";
+        }, null, x => x.UseCommand = false);
+        if (r != true)
+            return r;
+        if (project is ProjectItemBase p)
+        {
+            var filePath = p.GetFilePath();
+            File.Copy(nfilePath, filePath, true);
+            projectService.Add(project);
+            projectService.Current = project;
+            project.Save(out string message);
+            projectService.ProjectAdded?.Invoke(project);
+            return File.Exists(filePath);
+        }
+        return false;
     }
 
     public static bool ShowCurrentProjectFile(this IProjectService projectService, IProjectItem current)
