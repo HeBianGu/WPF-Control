@@ -59,7 +59,7 @@
                 <Border.Background>
                     <SolidColorBrush Opacity="0.2" Color="Black" />
                 </Border.Background>
-                <StackPanel WindowChrome.IsHitTestVisibleInChrome="True">
+                <StackPanel>
                     <FontIconButton
                         Command="ApplicationCommands.Print"
                         CommandTarget="{Binding ElementName=dv}"

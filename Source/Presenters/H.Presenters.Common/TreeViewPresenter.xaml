@@ -5,10 +5,7 @@
     xmlns:h="https://github.com/HeBianGu"
     xmlns:local="clr-namespace:H.Presenters.Common">
     <DataTemplate DataType="{x:Type local:TreeViewPresenter}">
-        <TreeView
-            ItemTemplate="{Binding ItemContentTemplate}"
-            ItemsSource="{Binding ItemsSource}"
-            WindowChrome.IsHitTestVisibleInChrome="True">
+        <TreeView ItemTemplate="{Binding ItemContentTemplate}" ItemsSource="{Binding ItemsSource}">
             <b:Interaction.Triggers>
                 <b:EventTrigger EventName="SelectedItemChanged">
                     <b:InvokeCommandAction Command="{Binding SelectedItemChangedCommand}" PassEventArgsToCommand="True" />

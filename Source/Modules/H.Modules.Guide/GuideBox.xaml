@@ -42,7 +42,7 @@
                 <ControlTemplate TargetType="ContentControl">
                     <Border>
                         <DockPanel>
-                            <DockPanel DockPanel.Dock="Bottom" WindowChrome.IsHitTestVisibleInChrome="True">
+                            <DockPanel DockPanel.Dock="Bottom">
                                 <Button
                                     HorizontalAlignment="Left"
                                     Command="{x:Static local:GuideBox.SkipCommand}"

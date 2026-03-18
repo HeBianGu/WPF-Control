@@ -21,19 +21,6 @@
                 BorderBrush="{DynamicResource {x:Static h:BrushKeys.BorderBrush}}"
                 BorderThickness="1"
                 CornerRadius="{DynamicResource {x:Static LayoutKeys.CornerRadius}}" />
-            <!--<Grid Width="15"
-                  Height="15"
-                  Margin="10,5">
-                <Grid.Background>
-                    <DrawingBrush>
-                        <DrawingBrush.Drawing>
-                            <GeometryDrawing Brush="{DynamicResource {x:Static h:BrushKeys.Foreground}}"
-                                             Geometry="{Binding Geometry}" />
-                        </DrawingBrush.Drawing>
-                    </DrawingBrush>
-                </Grid.Background>
-            </Grid>-->
-
             <FontIconTextBlock
                 x:Name="g"
                 Margin="10,0"
@@ -62,8 +49,7 @@
                 Margin="5,0"
                 HorizontalAlignment="Right"
                 VerticalAlignment="Center"
-                Content="{x:Static FontIcons.Cancel}"
-                WindowChrome.IsHitTestVisibleInChrome="True">
+                Content="{x:Static FontIcons.Cancel}">
                 <b:Interaction.Behaviors>
                     <h:ButtonRemoveItemBehavior />
                 </b:Interaction.Behaviors>

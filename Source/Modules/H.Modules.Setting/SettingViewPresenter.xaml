@@ -12,8 +12,7 @@
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
             <TabControl ItemsSource="{Binding Groups}"
-                        SelectedItem="{Binding SelectedGroup}"
-                        WindowChrome.IsHitTestVisibleInChrome="True">
+                        SelectedItem="{Binding SelectedGroup}">
                 <TabControl.ContentTemplate>
                     <DataTemplate>
                         <h:NavigationBox Margin="0"
