@@ -95,21 +95,21 @@ public abstract class DraggableAdornerBehaviorBase : Behavior<UIElement>
     {
         if (adorner != null)
         {
-            Visual lbl = sender as Visual;
-            PresentationSource source = PresentationSource.FromVisual(lbl);
-            if (source == null || source.RootVisual is Popup)
-            {
-                Point pos = (Application.Current.MainWindow.Content as FrameworkElement).PointFromScreen(GetMousePosition());
-                adorner.UpdatePosition(pos);
-            }
-            else
-            {
-                Point pos = lbl.PointFromScreen(GetMousePosition());
-                adorner.UpdatePosition(pos);
-            }
-
-            //Point pos = this._adornerElement.PointFromScreen(GetMousePosition());
-            //adorner.UpdatePosition(pos);
+            //Visual lbl = sender as Visual;
+            //PresentationSource source = PresentationSource.FromVisual(lbl);
+            //if (source == null || source.RootVisual is Popup)
+            //{
+            //    Point pos = (Application.Current.MainWindow.Content as FrameworkElement).PointFromScreen(GetMousePosition());
+            //    adorner.UpdatePosition(pos);
+            //}
+            //else
+            //{
+            //    Point pos = lbl.PointFromScreen(GetMousePosition());
+            //    adorner.UpdatePosition(pos);
+            //}
+            // 修改拖动ContextMenu上的模板位置错位的问题，注意可能会引起Design的问题
+            Point pos = this._adornerElement.PointFromScreen(GetMousePosition());
+            adorner.UpdatePosition(pos);
         }
     }
 
@@ -181,7 +181,6 @@ public abstract class DraggableAdornerBehaviorBase : Behavior<UIElement>
         FrameworkElement lbl = sender as FrameworkElement;
         var popup = lbl.GetParent<Popup>();
         this._adornerElement = popup != null ? popup.PlacementTarget : lbl;
-
         //PresentationSource source = PresentationSource.FromVisual(lbl);
         //if (source == null)
         //    this._adornerElement = Application.Current.MainWindow;
