@@ -20,6 +20,15 @@ public abstract class ZoomableDiagramDataBase : DiagramDataBase, IZoomableDiagra
     {
         this.GetTargetElement<Diagram>().ZoomToFit();
     }, x => this.GetTargetElement<Diagram>() != null);
+
+    protected override void Loaded(object obj)
+    {
+        base.Loaded(obj);
+        Application.Current.Dispatcher.BeginInvoke(() =>
+        {
+            this.ZoomToFit();
+        }, DispatcherPriority.Input);
+    }
     public void ZoomToFit()
     {
         this.GetTargetElement<Diagram>()?.ZoomToFit();
