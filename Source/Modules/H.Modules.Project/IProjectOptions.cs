@@ -11,7 +11,6 @@ namespace H.Modules.Project;
 public interface IProjectOptions
 {
     string Extenstion { get; set; }
-    string DefaultProjectFolder { get; set; }
     string DefaultProjectName { get; set; }
     ProjectSaveMode SaveMode { get; set; }
 }

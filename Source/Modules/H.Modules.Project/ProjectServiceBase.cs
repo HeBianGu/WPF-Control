@@ -199,6 +199,8 @@ public abstract class ProjectServiceBase<T> : CommandsBindableBase, IProjectServ
         string path = AppDomianPaths.DefaultProjects;
         if (!Directory.Exists(path))
             return (false, "默认项目模版不存在");
+        if (File.Exists(_projectsPath))
+            return (false, "已存在项目");
         string toPath = this.GetFolderPath();
         path.ToDirectoryEx().BackupToDirectory(toPath);
         return (true, null);

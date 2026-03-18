@@ -231,7 +231,7 @@ public partial class ApplicationBase
     /// </summary>
     protected virtual void OnSplashScreen(StartupEventArgs e)
     {
-        int sleep = 1000;
+        int sleep = 100;
         ISplashScreenViewPresenter presenter = Ioc.Services.GetService<ISplashScreenViewPresenter>();
         //  Do ： 在显示页面前需要加载主题，否则主题会出现变化
         var tls = Ioc.GetService<ILoadThemeOptionsService>(false);
@@ -278,11 +278,6 @@ public partial class ApplicationBase
                         continue;
                     s.Message = $"[{index}/{total}]正在加载模板<{item.Name}>...";
                     item.LoadDefaultTemplate();
-                    //if (t.success)
-                    //{
-                    //    s.Message = $"[{index}/{total}]设置<{item.Name}>默认模板数据完成";
-                    //    Thread.Sleep(100);
-                    //}
                 }
             }
 
@@ -334,9 +329,6 @@ public partial class ApplicationBase
         }
         else
         {
-            //bool r = IocSetting.Instance.Load(null, out string message);
-            //if (r == false)
-            //    IocMessage.Window.Show(message);
             bool? fr = func.Invoke(null, null);
             if (fr == false)
                 throw new ArgumentException("初始化数据异常，请看日志");
@@ -368,7 +360,9 @@ public partial class ApplicationBase
 
         {
 
-            int sleep = 1000;
+            int sleep = 100;
+
+
             ILoginedSplashViewPresenter presenter = Ioc.Services.GetService<ILoginedSplashViewPresenter>();
             //  Do ： 在显示页面前需要加载主题，否则主题会出现变化
             var tls = Ioc.GetService<ILoadThemeOptionsService>(false);
@@ -392,7 +386,23 @@ public partial class ApplicationBase
                     Thread.Sleep(sleep);
                 }
 
+
+
                 IEnumerable<ILoginedSplashLoadable> loads = Ioc.GetAssignableFromServices<ISplashLoadable>().Distinct().OfType<ILoginedSplashLoadable>();
+
+                {
+                    IEnumerable<IDefaultTemplateable> templates = loads.OfType<IDefaultTemplateable>();
+                    foreach (IDefaultTemplateable item in templates)
+                    {
+                        if (c?.IsCancel == true)
+                            return null;
+                        if (item == null)
+                            continue;
+                        s.Message = $"正在加载模板<{item.Name}>...";
+                        item.LoadDefaultTemplate();
+                    }
+                }
+
                 int index = 0;
                 foreach (ILoginedSplashLoadable load in loads)
                 {

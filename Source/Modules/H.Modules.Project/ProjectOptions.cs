@@ -20,7 +20,6 @@ public class ProjectOptions : IocOptionInstance<ProjectOptions>, IProjectOptions
     public override void LoadDefault()
     {
         base.LoadDefault();
-        this.DefaultProjectFolder = AppPaths.Instance.UserProject;
     }
     private string _extenstion;
     [ReadOnly(true)]
@@ -45,19 +44,6 @@ public class ProjectOptions : IocOptionInstance<ProjectOptions>, IProjectOptions
         set
         {
             _saveMode = value;
-            RaisePropertyChanged();
-        }
-    }
-
-    private string _defaultProjectFolder;
-    [ReadOnly(true)]
-    [Display(Name = "文件存储路径")]
-    public string DefaultProjectFolder
-    {
-        get { return _defaultProjectFolder; }
-        set
-        {
-            _defaultProjectFolder = value;
             RaisePropertyChanged();
         }
     }

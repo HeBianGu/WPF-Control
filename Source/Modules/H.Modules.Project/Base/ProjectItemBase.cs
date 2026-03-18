@@ -18,6 +18,10 @@ namespace H.Modules.Project.Base;
 [Display(Name = "新建项目")]
 public abstract class ProjectItemBase : DisplayBindableBase, IProjectItem
 {
+    protected ProjectItemBase()
+    {
+        this.Path = this.GetFolderPath();
+    }
     [Required]
     [Display(Name = "标题", Order = 4)]
     public string Title
@@ -67,6 +71,20 @@ public abstract class ProjectItemBase : DisplayBindableBase, IProjectItem
             RaisePropertyChanged();
         }
     }
+
+    private string _path;
+    [Browsable(false)]
+    [JsonIgnore]
+    public string Path
+    {
+        get { return _path; }
+        set
+        {
+            _path = value;
+            RaisePropertyChanged();
+        }
+    }
+
 
     public virtual bool Save(out string message)
     {
@@ -121,9 +139,9 @@ public abstract class ProjectItemBase : DisplayBindableBase, IProjectItem
         return System.IO.Path.Combine(folder, this.Title + ProjectOptions.Instance.Extenstion);
     }
 
-    public string GetFolderPath()
+    public virtual string GetFolderPath()
     {
-        return ProjectOptions.Instance.DefaultProjectFolder;
+        return AppPaths.Instance.UserProject;
     }
 
     public virtual Task<(bool success, string message)> DeleteAsync()
