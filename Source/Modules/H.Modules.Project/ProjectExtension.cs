@@ -55,11 +55,24 @@ static partial class ProjectExtension
         {
             project.Title = defalultName + (projectService.Where().Count() + 1).ToString();
         }
+        else
+        {
+            project.Title = project.Title + (projectService.Where().Count() + 1).ToString();
+        }
         var r = await IocMessage.Form.ShowEdit(project, x =>
         {
             x.Title = "新建项目";
             action?.Invoke(x);
-        }, null, x => x.UseCommand = false);
+        }, x =>
+        {
+            bool exist = projectService.Where(p => p.Title == x.Title).Count() > 0;
+            if (exist)
+            {
+                IocMessage.ShowSnackInfo($"项目名称已经存在<{x.Title}>");
+                return false;
+            }
+            return true;
+        }, x => x.UseCommand = false);
         if (r != true)
             return r;
         projectService.Add(project);
@@ -209,7 +222,7 @@ static partial class ProjectExtension
         if (project is ProjectItemBase p)
         {
             var filePath = p.GetFilePath();
-            var folder= Path.GetDirectoryName(filePath);
+            var folder = Path.GetDirectoryName(filePath);
             if (!Directory.Exists(folder))
                 Directory.CreateDirectory(folder);
             File.Copy(nfilePath, filePath, true);
