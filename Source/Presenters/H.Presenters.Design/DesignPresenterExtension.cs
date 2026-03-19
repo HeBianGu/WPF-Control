@@ -15,6 +15,14 @@ public static class DesignPresenterExtension
 {
     public static IEnumerable<IDesignPresenter> GetChildrenDesignPresenters(this IDesignPresenter designPresenter)
     {
+        if (designPresenter is DefinitionGridPrintPagePresenter definition)
+        {
+            yield return definition;
+            foreach (var item in GetChildrenDesignPresenters(definition.Content))
+            {
+                yield return item;
+            }
+        }
         if (designPresenter is IPanelDesignPresenter panelDesignPresenter)
         {
             yield return panelDesignPresenter;

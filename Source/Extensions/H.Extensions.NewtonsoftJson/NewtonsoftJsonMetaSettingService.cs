@@ -20,7 +20,7 @@ public class NewtonsoftJsonMetaSettingService : JsonMetaSettingServiceBase
         string path = this.GetFilePath(folderName ?? typeof(T).Name, id);
         if (!File.Exists(path))
         {
-            var defPath = this.GetDefaultTemplateFilePath(typeof(T).Name, id);
+            var defPath = this.GetDefaultTemplateFilePath(folderName ?? typeof(T).Name, id);
             if (!File.Exists(defPath))
                 return default;
             path = defPath;
