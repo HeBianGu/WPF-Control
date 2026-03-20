@@ -29,7 +29,7 @@ public static class UserExtension
 
     public static bool IsInRole(this IUser user, string roleId)
     {
-        if (user.Role == null)
+        if (user?.Role == null)
             return false;
         return user.Role.ID == roleId;
     }
