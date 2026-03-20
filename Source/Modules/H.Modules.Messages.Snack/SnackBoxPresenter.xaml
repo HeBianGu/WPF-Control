@@ -6,7 +6,8 @@
         <Grid
             Margin="1"
             HorizontalAlignment="Center"
-            VerticalAlignment="Top">
+            VerticalAlignment="Top"
+            WindowChrome.IsHitTestVisibleInChrome="True">
             <ItemsControl ItemsSource="{Binding Collection}" ScrollViewer.VerticalScrollBarVisibility="Disabled">
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
