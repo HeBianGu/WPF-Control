@@ -248,6 +248,7 @@ public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
         //{
         //    item.AligmentLayout();
         //}
+
         this.DataSource.Nodes.AligmentToNodesWithStartNode();
     }, x => this.DataSource.Nodes.Count > 0);
 
