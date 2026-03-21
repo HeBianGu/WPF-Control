@@ -20,7 +20,8 @@ namespace H.Test.SplashScreen
         {
             services.AddWindowMessage();
             services.AddWindowDialogMessage();
-            services.AddSplashScreen();
+            //services.AddSplashScreen(x => x.SleepMicroseconds = 2000);
+             services.AddBackgroundSplashScreen(x => x.SleepMicroseconds = 2000);
             services.AddSetting();
         }
 

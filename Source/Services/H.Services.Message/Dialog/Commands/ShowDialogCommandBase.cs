@@ -17,6 +17,8 @@ public abstract class ShowDialogCommandBase : DisplayMarkupCommandBase
     public DialogButton DialogButton { get; set; }
     public ITransitionable Transitionable { get; set; }
     public HorizontalAlignment HorizontalContentAlignment { get; set; } = HorizontalAlignment.Stretch;
+
+    public VerticalAlignment VerticalContentAlignment { get; set; } = VerticalAlignment.Stretch;
     public DataTemplate PresenterTemplate { get; set; }
     protected virtual void Invoke(IDialog w, object parameter = null)
     {
@@ -25,6 +27,7 @@ public abstract class ShowDialogCommandBase : DisplayMarkupCommandBase
         w.Transitionable = this.Transitionable;
         w.Title = this.Name ?? w.Title;
         w.HorizontalContentAlignment = this.HorizontalContentAlignment;
+        w.VerticalContentAlignment = this.VerticalContentAlignment;
         w.Icon = this.Icon ?? w.Icon;
         var target = this.GetTargetElement(parameter);
         if (target != null)

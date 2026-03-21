@@ -6,7 +6,6 @@
               xmlns:h="https://github.com/HeBianGu"
               xmlns:local="clr-namespace:H.App.FileManager"
               xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-              Title="MainWindow"
               Width="1300"
               Height="750"
               CaptionHeight="45"

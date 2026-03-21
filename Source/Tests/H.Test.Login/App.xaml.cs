@@ -28,7 +28,8 @@ namespace H.Test.Login
             services.AddWindowMessage();
             services.AddAdornerDialogMessage();
             //services.AddLoginViewPresenter();
-            services.AddRegisterLoginViewPresenter();
+            //services.AddRegisterLoginViewPresenter();
+            services.AddBackgroundRigisterLoginViewPresenter();
             services.AddTestLoginService();
             services.AddTestRegistorService();
             services.AddMail();

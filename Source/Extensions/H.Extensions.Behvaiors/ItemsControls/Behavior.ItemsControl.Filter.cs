@@ -516,6 +516,7 @@ public class ItemsControlFilterBehavior : FilterBehaviorBase<ItemsControl>
     protected override void RefreshData()
     {
         base.RefreshData();
-        this.AssociatedObject.ItemsSource = this.FilterItemsSource;
+        if (this.AssociatedObject != null)
+            this.AssociatedObject.ItemsSource = this.FilterItemsSource;
     }
 }

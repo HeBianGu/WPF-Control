@@ -18,8 +18,7 @@ namespace H.Modules.SplashScreen;
 public interface ISplashScreenOptions : ISettable
 {
     string Product { get; set; }
-    //double ProductFontSize { get; set; }
-
+    int SleepMicroseconds { get; set; }
     string Sub { get; set; }
 }
 
@@ -97,5 +96,7 @@ public class SplashScreenOptions : IocOptionInstance<SplashScreenOptions>, ISpla
             RaisePropertyChanged();
         }
     }
+
+    public int SleepMicroseconds { get; set; } = 100;
 
 }

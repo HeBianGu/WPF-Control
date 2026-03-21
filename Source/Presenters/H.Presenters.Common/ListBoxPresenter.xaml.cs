@@ -77,16 +77,10 @@ public class ListBoxPresenter : ItemsSourcePresenterBase, IListBoxPresenter
 public static partial class DialogServiceExtension
 {
     //[Obsolete("ShowListBox<T>")]
-    //public static async Task<bool?> ShowListBox(this IDialogMessageService service, Action<IListBoxPresenter> option, Action<IListBoxPresenter> sumitAction = null, Action<IDialog> builder = null, Func<IListBoxPresenter, Task<bool>> canSumit = null)
-    //{
-    //    return await service.ShowDialog<ListBoxPresenter>(option, sumitAction, x =>
-    //    {
-    //        x.HorizontalContentAlignment = System.Windows.HorizontalAlignment.Stretch;
-    //        x.MinWidth = 200;
-    //        x.Padding = new Thickness(2);
-    //        builder?.Invoke(x);
-    //    }, canSumit);
-    //}
+    public static async Task<bool?> ShowListBox(this IDialogMessageService service, Action<IListBoxPresenter> option, Action<IListBoxPresenter> sumitAction = null, Action<IDialog> builder = null, Func<IListBoxPresenter, Task<bool>> canSumit = null)
+    {
+        return await service.ShowListBox<bool?>(option, sumitAction, builder, canSumit);
+    }
 
     public static async Task<T> ShowListBox<T>(this IDialogMessageService service, Action<IListBoxPresenter> option, Action<IListBoxPresenter> sumitAction = null, Action<IDialog> builder = null, Func<IListBoxPresenter, Task<bool>> canSumit = null)
     {

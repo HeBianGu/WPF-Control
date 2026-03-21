@@ -130,7 +130,7 @@
                                                         Header="Icon">
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
-                                            <FontIconTextBlock FontFamily="{x:Static IconFontFamilys.LocationSegoeFluentIcons}"
+                                            <FontIconTextBlock FontFamily="{x:Static IconFontFamilys.ResourceSegoeFluentIcons}"
                                                                FontSize="100"
                                                                Text="{Binding Item2}" />
                                         </DataTemplate>

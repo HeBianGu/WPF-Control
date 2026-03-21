@@ -43,16 +43,27 @@ public static partial class DialogServiceExtension
 {
     public static async Task<bool?> ShowDataGrid(this IDialogMessageService service, Action<DataGridPresenter> option, Action<DataGridPresenter> sumitAction = null, Action<IDialog> builder = null, Func<DataGridPresenter, Task<bool>> canSumit = null)
     {
-        return await service.ShowDataGrid(option, sumitAction, builder, canSumit);
+        return await service.ShowDialog(option, sumitAction, x =>
+        {
+            x.HorizontalContentAlignment = System.Windows.HorizontalAlignment.Stretch;
+            x.MinWidth = 200;
+            x.Padding = new Thickness(2);
+            builder?.Invoke(x);
+        }, canSumit);
     }
 
     public static async Task<bool?> ShowTypeDataGrid<ItemT>(this IDialogMessageService service, Action<DataGridTypePresenter> option, Action<DataGridTypePresenter> sumitAction = null, Action<IDialog> builder = null, Func<DataGridTypePresenter, Task<bool>> canSumit = null)
     {
-        return await service.ShowDataGrid(x =>
+        return await service.ShowTypeDataGrid(x =>
         {
             option?.Invoke(x);
             x.Type = typeof(ItemT);
         }, sumitAction, builder, canSumit);
+    }
+
+    public static async Task<bool?> ShowTypeDataGrid(this IDialogMessageService service, Action<DataGridTypePresenter> option, Action<DataGridTypePresenter> sumitAction = null, Action<IDialog> builder = null, Func<DataGridTypePresenter, Task<bool>> canSumit = null)
+    {
+        return await service.ShowDataGrid(option, sumitAction, builder, canSumit);
     }
 
     public static async Task<bool?> ShowDataGrid<T>(this IDialogMessageService service, Action<T> option, Action<T> sumitAction = null, Action<IDialog> builder = null, Func<T, Task<bool>> canSumit = null) where T : new()
@@ -92,5 +103,22 @@ public class ShowDataGridCommand : ShowSourceCommandBase
              else
                  x.ItemsSource = this.ItemsSource;
          });
+    }
+}
+
+
+public class ShowTypeDataGridCommand : ShowSourceCommandBase
+{
+    public Type Type { get; set; }
+    public override async Task ExecuteAsync(object parameter)
+    {
+        await IocMessage.Dialog.ShowTypeDataGrid(x =>
+        {
+            if (parameter is IEnumerable objects)
+                x.ItemsSource = objects;
+            else
+                x.ItemsSource = this.ItemsSource;
+            x.Type = this.Type;
+        });
     }
 }

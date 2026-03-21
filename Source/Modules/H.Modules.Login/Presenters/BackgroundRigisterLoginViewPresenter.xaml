@@ -39,7 +39,7 @@
                         Margin="20"
                         HorizontalAlignment="Stretch"
                         VerticalAlignment="Center">
-                        <Viewbox Margin="0,5">
+                        <Viewbox Margin="0,5" Height="50">
                             <TextBlock
                                 HorizontalAlignment="Left"
                                 VerticalAlignment="Center"

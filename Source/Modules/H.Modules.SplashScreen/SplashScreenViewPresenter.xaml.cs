@@ -26,6 +26,8 @@ public class SplashScreenViewPresenter : BindableBase, ISplashScreenViewPresente
         }
     }
 
+    public int SleepMicroseconds => SplashScreenOptions.Instance.SleepMicroseconds;
+
     public virtual void InitWindow(Window window)
     {
         window.SizeToContent = SizeToContent.WidthAndHeight;

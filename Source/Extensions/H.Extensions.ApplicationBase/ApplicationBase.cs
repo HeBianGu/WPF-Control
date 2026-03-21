@@ -231,8 +231,8 @@ public partial class ApplicationBase
     /// </summary>
     protected virtual void OnSplashScreen(StartupEventArgs e)
     {
-        int sleep = 100;
         ISplashScreenViewPresenter presenter = Ioc.Services.GetService<ISplashScreenViewPresenter>();
+        int sleep = presenter?.SleepMicroseconds??100;
         //  Do ： 在显示页面前需要加载主题，否则主题会出现变化
         var tls = Ioc.GetService<ILoadThemeOptionsService>(false);
         tls?.Load(out string message);
@@ -276,7 +276,8 @@ public partial class ApplicationBase
                         return null;
                     if (item == null)
                         continue;
-                    s.Message = $"[{index}/{total}]正在加载模板<{item.Name}>...";
+                    if (s != null)
+                        s.Message = $"[{index}/{total}]正在加载模板<{item.Name}>...";
                     item.LoadDefaultTemplate();
                 }
             }

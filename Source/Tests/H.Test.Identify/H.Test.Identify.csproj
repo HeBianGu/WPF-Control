@@ -11,7 +11,7 @@
   </ItemGroup>
   
   <ItemGroup>
-    <ProjectReference Include="..\..\Controls\H.Controls.Chart2D\H.Controls.Chart2D.csproj" />
+    <ProjectReference Include="..\..\Controls\H.Controls.Chart2D.Presenter\H.Controls.Chart2D.Presenter.csproj" />
     <ProjectReference Include="..\..\Controls\H.Controls.RepositoryBox\H.Controls.RepositoryBox.csproj" />
     <ProjectReference Include="..\..\DataBases\H.DataBases.Sqlite\H.DataBases.Sqlite.csproj" />
     <ProjectReference Include="..\..\Datas\H.Data.Test\H.Data.Test.csproj" />

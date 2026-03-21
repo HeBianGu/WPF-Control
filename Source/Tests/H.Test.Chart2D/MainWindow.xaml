@@ -254,7 +254,7 @@
 
                     <GroupBox Height="470"
                               Header="LinePresenter">
-                        <h:LinePresenter />
+                        <LinePresenter />
                     </GroupBox>
                 </StackPanel>
             </ScrollViewer>

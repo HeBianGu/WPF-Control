@@ -7,6 +7,7 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Threading;
 using H.Mvvm.ViewModels.Base;
+using H.Controls.Chart2D.Presenter.Presenter;
 
 namespace H.Test.Identify
 {

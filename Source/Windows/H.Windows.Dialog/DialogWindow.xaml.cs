@@ -162,6 +162,11 @@ public partial class DialogWindow : Window
         }
     }
 
+    public static bool? ShowPresenter(object presenter, Action<IDialog> action = null, Func<Task<bool>> canSumit = null)
+    {
+        return ShowPresenter<DialogWindow>(presenter, action, canSumit);
+    }
+
     public static bool? ShowPresenter<T>(object presenter, Action<IDialog> action = null, Func<Task<bool>> canSumit = null) where T : DialogWindow, new()
     {
         T dialog = new T();

@@ -93,7 +93,7 @@ namespace H.App.FileManager
             {
                 x.UseIconFontFamilysOptions(x =>
                 {
-                    x.IconFontFamily = IconFontFamilys.LocationSegoeFluentIcons;
+                    x.IconFontFamily = IconFontFamilys.ResourceSegoeFluentIcons;
                 });
             }));
         }

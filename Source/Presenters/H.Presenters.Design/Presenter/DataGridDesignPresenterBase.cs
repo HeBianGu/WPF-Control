@@ -13,7 +13,7 @@ using System.Xml.Serialization;
 
 namespace H.Presenters.Design.Presenter;
 
-public class DataGridDesignPresenter<T> : DataGridDesignPresenterBase
+public abstract class DataGridDesignPresenter<T> : DataGridDesignPresenterBase
 {
     public DataGridDesignPresenter()
     {
