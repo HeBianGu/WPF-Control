@@ -6,16 +6,17 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
-using System.Windows.Markup;
+namespace H.Common.Attributes;
 
-namespace H.Data.Test;
-
-public class GetStudentsExtension : MarkupExtension
+public class ResourceKeyAttribute : Attribute
 {
-    public int Count { get; set; } = 10;
-
-    public override object ProvideValue(IServiceProvider serviceProvider)
+    public ResourceKeyAttribute()
     {
-        return new ObservableCollection<Student>(Enumerable.Range(0, this.Count).Select(x => new Student()));
+        
     }
+    public ResourceKeyAttribute(string key)
+    {
+        this.Key = key;
+    }
+    public string Key { get; private set; }
 }

@@ -24,5 +24,6 @@
         <Button Click="Button_Click" Content="{Binding Source={x:Static GlobalizationOptions.Instance}, Path=CultureInfo, IsAsync=True, Converter={GetGlobalizationValueConverter ResourcesType={x:Type p:Resources}, Key=AppTitle}}" />
         <Button Click="Button_Click" Content="{GlobalizationBinding ResourcesType={x:Type p:Resources}, Key=AppTitle}" />
         <Button Click="Button_Click" Content="{x:Static p:Resources.AppTitle}" />
+        <Button Command="{ShowEditCommand Value={GetStudent}}" Content="Form表单" />
     </UniformGrid>
 </h:MainWindow>

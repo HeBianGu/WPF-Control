@@ -10,6 +10,7 @@ using H.Mvvm.Commands;
 
 namespace H.Extensions.Mvvm.ViewModels.Base;
 
+
 /// <summary>
 /// 提供显示相关功能的可绑定基类。
 /// </summary>

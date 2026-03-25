@@ -33,6 +33,7 @@ public partial class App : ApplicationBase
         services.AddSetting();
         services.AddAdornerDialogMessage();
         services.AddGlobalization();
+        services.AddFormMessageService();
     }
 
     protected override Window CreateMainWindow(StartupEventArgs e)

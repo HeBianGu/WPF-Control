@@ -7,10 +7,13 @@
 // Licensed under the MIT License (the "License")
 
 using H.Mvvm.Commands;
+using System.Reflection;
+using System.Resources;
+using System.Xml.Linq;
 
 namespace H.Controls.Form.PropertyItems.Base;
 
-public abstract class ObjectPropertyItemBase : DisplayBindableBase, IPropertyItem, IValueChangeable
+public abstract class ObjectPropertyItemBase : ResxDisplayBindableBase, IPropertyItem, IValueChangeable
 {
     public ObjectPropertyItemBase(PropertyInfo property, object obj)
     {
@@ -35,9 +38,9 @@ public abstract class ObjectPropertyItemBase : DisplayBindableBase, IPropertyIte
         BrowsableAttribute browsable = property.GetCustomAttribute<BrowsableAttribute>();
         this.Visibility = browsable == null || browsable.Browsable ? Visibility.Visible : Visibility.Collapsed;
         this.Icon = property.GetCustomAttribute<IconAttribute>()?.Icon;
+
+        this.UpdateResx();
     }
-
-
     public string TabGroup { get; set; }
     public PropertyInfo PropertyInfo { get; set; }
     public object Obj { get; set; }
@@ -59,4 +62,27 @@ public abstract class ObjectPropertyItemBase : DisplayBindableBase, IPropertyIte
 
     public abstract void LoadValue();
 
+    protected override string GetResxName()
+    {
+        if (this.Obj == null || this.PropertyInfo == null)
+            return null;
+        var type = this.Obj.GetType();
+        return this.GetResourceManager(type)?.GetString($"Property_{type.Name}_{this.PropertyInfo.Name}");
+    }
+
+    protected override string GetResxGroupName()
+    {
+        if (this.Obj == null || this.PropertyInfo == null)
+            return null;
+        var type = this.Obj.GetType();
+        return this.GetResourceManager(type)?.GetString($"Property_{type.Name}_{this.PropertyInfo.Name}_GroupName");
+    }
+
+    protected override string GetResxDescription()
+    {
+        if (this.Obj == null || this.PropertyInfo == null)
+            return null;
+        var type = this.Obj.GetType();
+        return this.GetResourceManager(type)?.GetString($"Property_{type.Name}_{this.PropertyInfo.Name}_Description");
+    }
 }

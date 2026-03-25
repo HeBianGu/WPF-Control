@@ -6,19 +6,16 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
-using System.Collections.ObjectModel;
+namespace H.Data.Test;
 
-namespace H.Data.Test
+public class TestBindables : ObservableCollection<TestBindable>
 {
-    public class TestBindables : ObservableCollection<TestBindable>
+    public TestBindables()
     {
-        public TestBindables()
-        {
 
-        }
-        public TestBindables(IEnumerable<TestBindable> collection) : base(collection)
-        {
+    }
+    public TestBindables(IEnumerable<TestBindable> collection) : base(collection)
+    {
 
-        }
     }
 }

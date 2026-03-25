@@ -8,15 +8,14 @@
 
 using System.Windows.Markup;
 
-namespace H.Data.Test
-{
-    public class GetTestBindablesExtension : MarkupExtension
-    {
-        public int Count { get; set; } = 10;
+namespace H.Data.Test;
 
-        public override object ProvideValue(IServiceProvider serviceProvider)
-        {
-            return Enumerable.Range(0, this.Count).Select(x => new TestBindable());
-        }
+public class GetTestBindablesExtension : MarkupExtension
+{
+    public int Count { get; set; } = 10;
+
+    public override object ProvideValue(IServiceProvider serviceProvider)
+    {
+        return Enumerable.Range(0, this.Count).Select(x => new TestBindable());
     }
 }

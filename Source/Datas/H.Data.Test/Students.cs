@@ -6,19 +6,16 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
-using System.Collections.ObjectModel;
+namespace H.Data.Test;
 
-namespace H.Data.Test
+public class Students : ObservableCollection<Student>
 {
-    public class Students : ObservableCollection<Student>
+    public Students()
     {
-        public Students()
-        {
 
-        }
-        public Students(IEnumerable<Student> collection) : base(collection)
-        {
+    }
+    public Students(IEnumerable<Student> collection) : base(collection)
+    {
 
-        }
     }
 }
