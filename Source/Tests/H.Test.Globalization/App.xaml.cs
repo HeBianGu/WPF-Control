@@ -34,6 +34,9 @@ public partial class App : ApplicationBase
         services.AddAdornerDialogMessage();
         services.AddGlobalization();
         services.AddFormMessageService();
+        services.AddNoticeMessage();
+        services.AddSnackMessage();
+        services.AddAbout();
     }
 
     protected override Window CreateMainWindow(StartupEventArgs e)
