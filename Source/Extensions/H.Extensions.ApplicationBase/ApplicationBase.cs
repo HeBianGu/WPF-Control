@@ -10,6 +10,7 @@ using H.Attach;
 using H.Common.Interfaces;
 using H.Extensions.AppPath;
 using H.Services.AppPath;
+using H.Services.Common;
 using H.Services.Common.DataBase;
 using H.Services.Common.MainWindow;
 using H.Services.Common.Schedule;
@@ -59,6 +60,8 @@ public abstract partial class ApplicationBase : Application, IConfigureableAppli
         this.Configure();
         this.OnSingleton(e);
         base.OnStartup(e);
+        //  Do ：在显示页面前需要加载多语言
+        Ioc.GetService<ILoadGlobalizationOptionsService>(false)?.Load(out string message);
         Window window = this.CreateMainWindow(e);
         window.Loaded += (s, e) =>
         {
@@ -232,7 +235,7 @@ public partial class ApplicationBase
     protected virtual void OnSplashScreen(StartupEventArgs e)
     {
         ISplashScreenViewPresenter presenter = Ioc.Services.GetService<ISplashScreenViewPresenter>();
-        int sleep = presenter?.SleepMicroseconds??100;
+        int sleep = presenter?.SleepMicroseconds ?? 100;
         //  Do ： 在显示页面前需要加载主题，否则主题会出现变化
         var tls = Ioc.GetService<ILoadThemeOptionsService>(false);
         tls?.Load(out string message);

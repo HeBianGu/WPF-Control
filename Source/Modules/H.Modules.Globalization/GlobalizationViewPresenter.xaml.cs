@@ -8,11 +8,11 @@
 
 using Microsoft.Extensions.Options;
 
-namespace H.Modules.Theme;
-public class ColorThemeViewPresenter : IColorThemeViewPresenter
+namespace H.Modules.Globalization;
+public class GlobalizationViewPresenter : IGlobalizationViewPresenter
 {
-    private readonly IOptions<ThemeOptions> _options;
-    public ColorThemeViewPresenter(IOptions<ThemeOptions> options)
+    private readonly IOptions<GlobalizationOptions> _options;
+    public GlobalizationViewPresenter(IOptions<GlobalizationOptions> options)
     {
         _options = options;
     }

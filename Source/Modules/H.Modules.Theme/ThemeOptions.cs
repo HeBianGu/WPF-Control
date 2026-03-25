@@ -32,7 +32,7 @@ using H.Controls.Form.Attributes;
 using H.Extensions.FontIcon;
 
 namespace H.Modules.Theme;
-[Display(Name = "主题设置", GroupName = SettingGroupNames.GroupStyle, Description = "登录页面设置的信息")]
+[Display(Name = "主题设置", GroupName = SettingGroupNames.GroupStyle, Description = "主题设置设置的信息")]
 public class ThemeOptions : IocOptionInstance<ThemeOptions>, ILoginedSplashLoadable, IThemeOptions
 {
     public ThemeOptions()

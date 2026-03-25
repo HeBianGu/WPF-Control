@@ -6,14 +6,10 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
-using Microsoft.Extensions.Options;
+using System.Windows.Media;
 
-namespace H.Modules.Theme;
-public class ColorThemeViewPresenter : IColorThemeViewPresenter
+namespace H.Modules.Globalization;
+public interface IGlobalizationOptions
 {
-    private readonly IOptions<ThemeOptions> _options;
-    public ColorThemeViewPresenter(IOptions<ThemeOptions> options)
-    {
-        _options = options;
-    }
+
 }
