@@ -58,7 +58,16 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Type_StyleOptions" xml:space="preserve">
-    <value>Stile del controllo</value>
+  <data name="Property_AboutOptions_Title" xml:space="preserve">
+    <value>Titolo del prodotto</value>
+  </data>
+  <data name="Type_AboutOptions" xml:space="preserve">
+    <value>Studente</value>
+  </data>
+  <data name="Type_AboutOptions_Description" xml:space="preserve">
+    <value>Studente</value>
+  </data>
+  <data name="Type_AboutOptions_GroupName" xml:space="preserve">
+    <value>Studente</value>
   </data>
 </root>
