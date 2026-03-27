@@ -58,19 +58,16 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="DataGrid_WaterMark" xml:space="preserve">
-    <value>Nu există date disponibile.</value>
+  <data name="Property_AboutOptions_Title" xml:space="preserve">
+    <value>Titlul produsului</value>
   </data>
-  <data name="Maximize" xml:space="preserve">
-    <value>Maximizare</value>
+  <data name="Type_AboutOptions" xml:space="preserve">
+    <value>Elev</value>
   </data>
-  <data name="Minimize" xml:space="preserve">
-    <value>Minimizare</value>
+  <data name="Type_AboutOptions_Description" xml:space="preserve">
+    <value>Elev</value>
   </data>
-  <data name="Close" xml:space="preserve">
-    <value>Închideți</value>
-  </data>
-  <data name="Restore" xml:space="preserve">
-    <value>Restore</value>
+  <data name="Type_AboutOptions_GroupName" xml:space="preserve">
+    <value>Elev</value>
   </data>
 </root>
