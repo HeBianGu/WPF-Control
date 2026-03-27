@@ -20,7 +20,7 @@ using System.Text.Json.Serialization;
 
 namespace H.Extensions.Setting;
 
-public abstract class SettableBase : DisplayBindableBase, ISettable, ILoadable,
+public abstract class SettableBase : ResxDisplayBindableBase, ISettable, ILoadable,
     ISaveable, IDefaultable, IClearable, IDefaultTemplateable
 {
     protected SettableBase()

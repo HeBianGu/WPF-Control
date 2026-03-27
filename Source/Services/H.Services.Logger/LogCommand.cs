@@ -37,7 +37,7 @@ public class LogCommand : DisplayMarkupCommandBase
     public override void Execute(object parameter)
     {
         if (this.Type == LogType.Debug)
-           IocLog.Debug(this.Message);
+            IocLog.Debug(this.Message);
         if (this.Type == LogType.Info)
             IocLog.Info(this.Message);
         if (this.Type == LogType.Error)

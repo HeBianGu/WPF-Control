@@ -1,6 +1,7 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:lc="clr-namespace:H.Styles.Controls"
+                    xmlns:p="clr-namespace:H.Styles.Properties"
                     xmlns:local="clr-namespace:H.Styles">
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/H.Style;component/Share.xaml" />
@@ -39,7 +40,7 @@
                                         TypeInTargetAssembly={x:Type lc:WindowKeys}}"
            BasedOn="{StaticResource {x:Static lc:WindowKeys.FontIconButton}}"
            TargetType="{x:Type lc:FontIconButton}">
-        <Setter Property="ToolTip" Value="最大化" />
+        <Setter Property="ToolTip" Value="{x:Static p:Resources.Maximize}" />
         <Setter Property="FontSize" Value="10" />
         <Setter Property="Content" Value="&#xE922;" />
         <Style.Triggers>
@@ -58,7 +59,7 @@
                                         TypeInTargetAssembly={x:Type lc:WindowKeys}}"
            BasedOn="{StaticResource {x:Static lc:WindowKeys.FontIconButton}}"
            TargetType="{x:Type lc:FontIconButton}">
-        <Setter Property="ToolTip" Value="最小化" />
+        <Setter Property="ToolTip" Value="{x:Static p:Resources.Minimize}" />
         <Setter Property="FontSize" Value="10" />
         <Setter Property="Content" Value="&#xE921;" />
     </Style>
@@ -67,7 +68,7 @@
                                         TypeInTargetAssembly={x:Type lc:WindowKeys}}"
            BasedOn="{StaticResource {x:Static lc:WindowKeys.FontIconButton}}"
            TargetType="{x:Type lc:FontIconButton}">
-        <Setter Property="ToolTip" Value="还原" />
+        <Setter Property="ToolTip" Value="{x:Static p:Resources.Restore}" />
         <Setter Property="FontSize" Value="10" />
         <Setter Property="Content" Value="&#xE923;" />
         <Style.Triggers>
@@ -87,7 +88,7 @@
            BasedOn="{StaticResource {x:Static lc:WindowKeys.FontIconButton}}"
            TargetType="{x:Type lc:FontIconButton}">
         <Setter Property="FontSize" Value="10" />
-        <Setter Property="ToolTip" Value="关闭" />
+        <Setter Property="ToolTip" Value="{x:Static p:Resources.Close}" />
         <Setter Property="Content" Value="&#xE8BB;" />
     </Style>
 

@@ -16,6 +16,7 @@ public class ShowCommand : ShowMessageDialogCommandBase
     {
         this.Width = double.NaN;
         this.Height = double.NaN;
+        this.Name = Properties.Resources.Show;
     }
     public object Presnter { get; set; }
     public override bool CanExecute(object parameter)

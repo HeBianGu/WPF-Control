@@ -2,6 +2,7 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
                     xmlns:h="https://github.com/HeBianGu"
+                    xmlns:p="clr-namespace:H.Modules.Login.Properties"
                     xmlns:local="clr-namespace:H.Modules.Login.Presenters">
     <DataTemplate DataType="{x:Type local:BackgroundLoginViewPresenter}">
         <Grid Width="900"
@@ -34,11 +35,11 @@
                                FontSize="15"
                                FontWeight="ExtraBold"
                                Foreground="{DynamicResource {x:Static BrushKeys.Accent}}"
-                               Text="账号登录" />
+                               Text="{x:Static p:Resources.AccountLogin}" />
                     <!--  用户名  -->
                     <TextBox HorizontalAlignment="Stretch"
                              Cattach.TitleBackground="{x:Null}"
-                             Cattach.Watermark="请输入用户名"
+                             Cattach.Watermark="{x:Static p:Resources.InputAccount}"
                              Style="{DynamicResource {x:Static TextBoxKeys.Delete}}"
                              Text="{Binding UserName}">
                         <Cattach.Title>
@@ -54,7 +55,7 @@
                                     <PasswordBox x:Name="p"
                                                  Cattach.Password="{Binding Password, Mode=TwoWay}"
                                                  Cattach.TitleBackground="{x:Null}"
-                                                 Cattach.Watermark="请输入密码"
+                                                 Cattach.Watermark="{x:Static p:Resources.InputPassword}"
                                                  Style="{DynamicResource {x:Static PasswordBoxKeys.Attach}}">
                                         <Cattach.Title>
                                             <FontIconTextBlock Margin="-2,0,0,0"
@@ -64,7 +65,7 @@
                                     </PasswordBox>
                                     <TextBox x:Name="t"
                                              Cattach.TitleBackground="{x:Null}"
-                                             Cattach.Watermark="请输入密码"
+                                             Cattach.Watermark="{x:Static p:Resources.InputPassword}"
                                              Style="{DynamicResource {x:Static TextBoxKeys.Attach}}"
                                              Text="{Binding Password, UpdateSourceTrigger=PropertyChanged}">
                                         <Cattach.Title>
@@ -121,12 +122,12 @@
                     <!--  登录  -->
                     <CheckBox Margin="5"
                               HorizontalAlignment="Right"
-                              Content="记住密码"
+                              Content="{x:Static p:Resources.RemenberPassword}"
                               IsChecked="{Binding Source={x:Static h:LoginOptions.Instance}, Path=Remember}" />
                     <h:ProgressButton HorizontalAlignment="Stretch"
                                       Command="{Binding LoginCommand}"
                                       CommandParameter="{Binding RelativeSource={RelativeSource AncestorType={x:Type h:IDialog}}}"
-                                      Content="登录">
+                                      Content="{x:Static p:Resources.Login}">
                         <h:ProgressButton.Style>
                             <Style BasedOn="{StaticResource {x:Static h:ProgressButton.CommandKey}}"
                                    TargetType="ProgressButton">

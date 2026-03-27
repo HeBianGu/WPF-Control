@@ -18,7 +18,7 @@ namespace H.Modules.Messages.Dialog
             dialog.MinWidth = 100;
             dialog.CanSumit = canSumit;
             action?.Invoke(dialog);
-            dialog.Title = dialog.Title ?? presenter.GetType().GetCustomAttribute<DisplayAttribute>()?.Name ?? "提示";
+            dialog.Title = dialog.Title ?? presenter.GetType().GetCustomAttribute<DisplayAttribute>()?.Name ?? Properties.Resources.DefaultTitle;
             return await dialog.ShowDialog();
         }
 
@@ -31,7 +31,7 @@ namespace H.Modules.Messages.Dialog
             dialog.VerticalAlignment = System.Windows.VerticalAlignment.Center; dialog.HorizontalContentAlignment = System.Windows.HorizontalAlignment.Center;
             dialog.VerticalContentAlignment = System.Windows.VerticalAlignment.Center;
             action?.Invoke(dialog);
-            dialog.Title = dialog.Title ?? presenter.GetType().GetCustomAttribute<DisplayAttribute>()?.Name ?? "提示";
+            dialog.Title = dialog.Title ?? presenter.GetType().GetCustomAttribute<DisplayAttribute>()?.Name ?? Properties.Resources.DefaultTitle;
             T result = default;
 #pragma warning disable CS4014 // 由于此调用不会等待，因此在调用完成前将继续执行当前方法
             Task.Run(() =>

@@ -12,6 +12,10 @@ namespace H.Services.Message.Dialog.Commands;
 [Display(Name = "查看", Description = "显示表单查看数据")]
 public class ShowViewCommand : ShowMessageDialogCommandBase
 {
+    public ShowViewCommand()
+    {
+        this.Name = Properties.Resources.View;
+    }
     public object Value { get; set; }
 
     public override async Task ExecuteAsync(object parameter)

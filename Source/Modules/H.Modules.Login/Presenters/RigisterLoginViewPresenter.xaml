@@ -2,6 +2,7 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
                     xmlns:l="clr-namespace:H.Modules.Login"
+                    xmlns:p="clr-namespace:H.Modules.Login.Properties"
                     xmlns:local="clr-namespace:H.Modules.Login.Presenters"
                     xmlns:system="clr-namespace:System;assembly=System.Runtime">
     <DataTemplate DataType="{x:Type local:RigisterLoginViewPresenter}">
@@ -69,11 +70,11 @@
                                    HorizontalAlignment="Center"
                                    VerticalAlignment="Center"
                                    FontSize="25"
-                                   Text="用户登录" />
+                                   Text="{x:Static p:Resources.UserLogin}" />
                         <BulletDecorator Margin="0,1">
                             <BulletDecorator.Bullet>
                                 <TextBlock Width="60"
-                                           Text="账号" />
+                                           Text="{x:Static p:Resources.Account}" />
                             </BulletDecorator.Bullet>
                             <TextBox Text="{Binding UserName}" />
                         </BulletDecorator>
@@ -93,7 +94,7 @@
                         <BulletDecorator Margin="0,1">
                             <BulletDecorator.Bullet>
                                 <TextBlock Width="60"
-                                           Text="密码" />
+                                           Text="{x:Static p:Resources.Password}" />
                             </BulletDecorator.Bullet>
                             <PasswordBox>
                                 <b:Interaction.Behaviors>
@@ -105,14 +106,14 @@
                         <Grid Height="{DynamicResource {x:Static LayoutKeys.ItemHeight}}"
                               Margin="0,1">
                             <CheckBox HorizontalAlignment="Right"
-                                      Content="记住密码"
+                                      Content="{x:Static p:Resources.RemenberPassword}"
                                       IsChecked="{Binding Source={x:Static LoginOptions.Instance}, Path=Remember}" />
 
                             <Button Padding="0"
                                     HorizontalAlignment="Left"
                                     Background="Transparent"
                                     Command="{Binding GotoForgetCommand}"
-                                    Content="忘记密码"
+                                    Content="{x:Static p:Resources.ForgetPassword}"
                                     Visibility="{Binding Source={x:Static RegistorOptions.Instance}, Path=UseMail, Converter={x:Static Converter.GetTrueToVisible}}" />
                         </Grid>
 
@@ -120,14 +121,14 @@
                         <ProgressButton HorizontalAlignment="Stretch"
                                         Command="{Binding LoginCommand}"
                                         CommandParameter="{Binding RelativeSource={RelativeSource AncestorType={x:Type IDialog}}}"
-                                        Content="登录" />
+                                        Content="{x:Static p:Resources.Login}" />
 
                         <TextBlock Margin="5"
                                    HorizontalAlignment="Center"
                                    DockPanel.Dock="Bottom">
                             <Hyperlink Command="{Binding GotoMailCommand}"
                                        Foreground="{DynamicResource {x:Static BrushKeys.Foreground}}">
-                                立即注册
+                              <Run Text="{x:Static p:Resources.RegisterNow}"/>
                             </Hyperlink>
                         </TextBlock>
                         <!--<Button
@@ -144,12 +145,12 @@
                                    HorizontalAlignment="Center"
                                    DockPanel.Dock="Top"
                                    FontSize="25"
-                                   Text="邮箱验证" />
+                                   Text="{x:Static p:Resources.EmailVerification}" />
                         <BulletDecorator Margin="0,2"
                                          VerticalAlignment="Center">
                             <BulletDecorator.Bullet>
                                 <TextBlock Width="80"
-                                           Text="邮箱地址" />
+                                           Text="{x:Static p:Resources.EmailAddress}" />
                             </BulletDecorator.Bullet>
                             <TextBox Text="{Binding MailVerify.Mail, UpdateSourceTrigger=PropertyChanged}" />
                         </BulletDecorator>
@@ -158,13 +159,13 @@
                                          VerticalAlignment="Center">
                             <BulletDecorator.Bullet>
                                 <TextBlock Width="80"
-                                           Text="验证码" />
+                                           Text="{x:Static p:Resources.VerificationCode}" />
                             </BulletDecorator.Bullet>
                             <DockPanel>
                                 <ProgressButton Command="{Binding GetVerifyCodeCommand}"
-                                                Content="获取验证码"
+                                                Content="{x:Static p:Resources.GetVerificationCode}"
                                                 DockPanel.Dock="Right"
-                                                Message="发送邮件中" />
+                                                Message="{x:Static p:Resources.SendingEmail}" />
                                 <TextBox Text="{Binding MailVerify.InputCode, UpdateSourceTrigger=PropertyChanged}" />
                             </DockPanel>
                         </BulletDecorator>
@@ -174,28 +175,28 @@
                                    LastChildFill="False">
                             <CheckBox IsChecked="{Binding MailVerify.Agree}" />
                             <TextBlock VerticalAlignment="Center">
-                                <Run Text="我已阅读并同意" />
+                                <Run Text="{x:Static p:Resources.Agree}" />
                                 <Hyperlink Command="{ProcessCommand}"
                                            CommandParameter="{Binding Source={x:Static l:RegistorOptions.Instance}, Path=ServiceAgreementUri}">
-                                    <TextBlock Text="服务协议" />
+                                    <TextBlock Text="{x:Static p:Resources.ServiceAgreement}" />
                                 </Hyperlink>
-                                <Run Text="和" />
+                                <Run Text="{x:Static p:Resources.And}" />
                                 <Hyperlink Command="{ProcessCommand}"
                                            CommandParameter="{Binding Source={x:Static l:RegistorOptions.Instance}, Path=PrivacypolicyUri}">
-                                    <TextBlock Text="隐私政策" />
+                                    <TextBlock Text="{x:Static p:Resources.Privacypolicy}" />
                                 </Hyperlink>
                             </TextBlock>
                         </DockPanel>
 
                         <Button Grid.Row="4"
                                 Width="Auto"
-                                Cattach.BuzyText="执行中..."
+                                Cattach.BuzyText="{x:Static p:Resources.Invoking}"
                                 Command="{Binding GotoNextCommand}"
-                                Content="下一步" />
+                                Content="{x:Static p:Resources.Next}" />
 
                         <Button Background="Transparent"
                                 Command="{Binding GotoLoginCommand}"
-                                Content="直接登录"
+                                Content="{x:Static p:Resources.LoginDirect}"
                                 DockPanel.Dock="Bottom" />
 
                         <TextBlock HorizontalAlignment="Center"
@@ -213,13 +214,13 @@
                                    HorizontalAlignment="Center"
                                    DockPanel.Dock="Top"
                                    FontSize="25"
-                                   Text="注册账号" />
+                                   Text="{x:Static p:Resources.RegisterAccount}" />
 
                         <BulletDecorator Margin="0,1"
                                          VerticalAlignment="Center">
                             <BulletDecorator.Bullet>
                                 <TextBlock Width="80"
-                                           Text="用户名" />
+                                           Text="{x:Static p:Resources.Account}" />
                             </BulletDecorator.Bullet>
                             <TextBox Text="{Binding Registor.UserName, UpdateSourceTrigger=PropertyChanged}" />
                         </BulletDecorator>
@@ -228,7 +229,7 @@
                                          VerticalAlignment="Center">
                             <BulletDecorator.Bullet>
                                 <TextBlock Width="80"
-                                           Text="密码" />
+                                           Text="{x:Static p:Resources.Password}" />
                             </BulletDecorator.Bullet>
                             <PasswordBox>
                                 <b:Interaction.Behaviors>
@@ -241,7 +242,7 @@
                                          VerticalAlignment="Center">
                             <BulletDecorator.Bullet>
                                 <TextBlock Width="80"
-                                           Text="确认密码" />
+                                           Text="{x:Static p:Resources.ConfirmationPassword}" />
                             </BulletDecorator.Bullet>
                             <PasswordBox>
                                 <b:Interaction.Behaviors>
@@ -253,7 +254,7 @@
                         <Button Width="Auto"
                                 Margin="0,1"
                                 Command="{Binding GotoMailCommand}"
-                                Content="上一步"
+                                Content="{x:Static p:Resources.Previous}"
                                 Visibility="{Binding Source={x:Static l:RegistorOptions.Instance}, Path=UseMail, Converter={x:Static Converter.GetTrueToVisible}}" />
 
                         <!--<Button Width="Auto"
@@ -265,14 +266,14 @@
                         <ProgressButton Margin="0,1"
                                         HorizontalAlignment="Stretch"
                                         Command="{Binding RegisterCommand}"
-                                        Content="注册" />
+                                        Content="{x:Static p:Resources.Register}" />
 
                         <TextBlock Margin="5"
                                    HorizontalAlignment="Center"
                                    DockPanel.Dock="Bottom">
                             <Hyperlink Command="{Binding GotoLoginCommand}"
                                        Foreground="{DynamicResource {x:Static BrushKeys.Foreground}}">
-                                直接登录
+                                <Run Text="{x:Static p:Resources.LoginDirect}"/>
                             </Hyperlink>
                         </TextBlock>
 
@@ -297,12 +298,12 @@
                                    HorizontalAlignment="Center"
                                    DockPanel.Dock="Top"
                                    FontSize="25"
-                                   Text="修改密码" />
+                                   Text="{x:Static p:Resources.ChangePassword}" />
 
                         <BulletDecorator Margin="0,2">
                             <BulletDecorator.Bullet>
                                 <TextBlock Width="80"
-                                           Text="账号" />
+                                           Text="{x:Static p:Resources.Account}" />
                             </BulletDecorator.Bullet>
                             <TextBox IsReadOnly="True"
                                      Text="{Binding UserName}" />
@@ -312,7 +313,7 @@
                                          VerticalAlignment="Center">
                             <BulletDecorator.Bullet>
                                 <TextBlock Width="80"
-                                           Text="密码" />
+                                           Text="{x:Static p:Resources.Password}" />
                             </BulletDecorator.Bullet>
                             <PasswordBox>
                                 <b:Interaction.Behaviors>
@@ -326,7 +327,7 @@
                                          VerticalAlignment="Center">
                             <BulletDecorator.Bullet>
                                 <TextBlock Width="80"
-                                           Text="确认密码" />
+                                           Text="{x:Static p:Resources.ConfirmationPassword}" />
                             </BulletDecorator.Bullet>
                             <PasswordBox>
                                 <b:Interaction.Behaviors>
@@ -338,17 +339,17 @@
                         <Button Width="Auto"
                                 Margin="0,2"
                                 Command="{Binding GotoMailCommand}"
-                                Content="上一步"
+                                Content="{x:Static p:Resources.Previous}"
                                 Visibility="{Binding Source={x:Static l:RegistorOptions.Instance}, Path=UseMail, Converter={x:Static Converter.GetTrueToVisible}}" />
 
                         <ProgressButton Width="Auto"
                                         Margin="0,2"
                                         Command="{Binding ChangePasswordCommand}"
-                                        Content="修改" />
+                                        Content="{x:Static p:Resources.Change}" />
 
                         <Button Background="Transparent"
                                 Command="{Binding GotoLoginCommand}"
-                                Content="直接登录"
+                                Content="{x:Static p:Resources.LoginDirect}"
                                 DockPanel.Dock="Bottom" />
 
                         <TextBlock HorizontalAlignment="Center"

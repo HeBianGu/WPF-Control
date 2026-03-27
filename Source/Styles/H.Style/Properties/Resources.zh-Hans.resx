@@ -120,4 +120,16 @@
   <data name="DataGrid_WaterMark" xml:space="preserve">
     <value>暂无数据</value>
   </data>
+  <data name="Maximize" xml:space="preserve">
+    <value>暂无数据</value>
+  </data>
+  <data name="Minimize" xml:space="preserve">
+    <value>暂无数据</value>
+  </data>
+  <data name="Close" xml:space="preserve">
+    <value>暂无数据</value>
+  </data>
+  <data name="Restore" xml:space="preserve">
+    <value>暂无数据</value>
+  </data>
 </root>

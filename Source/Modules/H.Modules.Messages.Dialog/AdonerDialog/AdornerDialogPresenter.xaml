@@ -3,7 +3,8 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
     xmlns:h="https://github.com/HeBianGu"
-    xmlns:local="clr-namespace:H.Modules.Messages.Dialog">
+    xmlns:local="clr-namespace:H.Modules.Messages.Dialog"
+    xmlns:p="clr-namespace:H.Modules.Messages.Dialog.Properties">
     <DataTemplate DataType="{x:Type local:AdornerDialogPresenter}">
         <Grid
             HorizontalAlignment="Stretch"
@@ -56,7 +57,7 @@
                             Command="{local:CloseAdornerDialogCommand}"
                             CommandParameter="{Binding}"
                             Content="{x:Static FontIcons.Cancel}"
-                            DockPanel.Dock="Right"/>
+                            DockPanel.Dock="Right" />
                     </DockPanel>
                 </Border>
                 <Grid
@@ -80,22 +81,22 @@
                     Orientation="Horizontal">
                     <Button
                         x:Name="btn_sumit"
-                        Width="100"
+                        MinWidth="100"
                         Margin="6,0,6,10"
                         HorizontalAlignment="Center"
                         Command="{local:SumitAdornerDialogCommand}"
                         CommandParameter="{Binding}"
-                        Content="确定"
+                        Content="{x:Static p:Resources.Sumit}"
                         IsDefault="True"
                         Visibility="Collapsed" />
                     <Button
                         x:Name="btn_cancel"
-                        Width="100"
+                        MinWidth="100"
                         Margin="6,0,6,10"
                         HorizontalAlignment="Center"
                         Command="{local:CancelAdornerDialogCommand}"
                         CommandParameter="{Binding}"
-                        Content="取消"
+                        Content="{x:Static p:Resources.Cancel}"
                         IsCancel="True"
                         Visibility="Collapsed" />
                 </StackPanel>

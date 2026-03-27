@@ -15,7 +15,6 @@ public interface IProjectItem : ISaveable, ILoadable
     DateTime UpdateTime { get; set; }
     bool IsFixed { get; set; }
     string Title { get; set; }
-    //string Path { get; set; }
     bool Close(out string message);
     Task<(bool success, string message)> DeleteAsync();
 }

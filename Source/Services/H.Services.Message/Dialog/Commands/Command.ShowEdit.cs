@@ -12,6 +12,10 @@ namespace H.Services.Message.Dialog.Commands;
 [Display(Name = "编辑", Description = "显示弹窗消息")]
 public class ShowEditCommand : ShowMessageDialogCommandBase
 {
+    public ShowEditCommand()
+    {
+        this.Name = Properties.Resources.Edit;
+    }
     public bool UseModelState { get; set; } = true;
     public object Value { get; set; }
 

@@ -29,6 +29,7 @@ using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
+using H.Extensions.ApplicationBase.Properties;
 
 namespace H.Extensions.ApplicationBase;
 
@@ -184,7 +185,7 @@ public abstract partial class ApplicationBase : Application, IConfigureableAppli
         mutex = new Mutex(true, thisProc.ProcessName, out createdNew);
         if (!createdNew)
         {
-            this.ShowMessage("当前程序已经运行！");
+            this.ShowMessage(H.Extensions.ApplicationBase.Properties.Resources.Message_Singleton);
             this.Shutdown();
         }
     }
@@ -192,7 +193,7 @@ public abstract partial class ApplicationBase : Application, IConfigureableAppli
     #endregion
 
     public ILogService ILogger => Ioc.Services.GetService<ILogService>();
-    protected virtual async void ShowMessage(string message, string title = "提示")
+    protected virtual async void ShowMessage(string message, string title = null)
     {
         await IocMessage.ShowDialogMessage(message, title);
     }
@@ -249,13 +250,13 @@ public partial class ApplicationBase
             {
                 index++;
                 if (s != null)
-                    s.Message = $"[{index}/{total}]正在加载设置...";
+                    s.Message = $"[{index}/{total}]{H.Extensions.ApplicationBase.Properties.Resources.Message_LoadingSetting}...";
                 //  Do ：加载设置参数
                 string message = null;
                 var r = IocSetting.Instance?.Load(x =>
                 {
                     if (s != null)
-                        s.Message = $"[{index}/{total}]正在加载设置数据<{x.Name}>...";
+                        s.Message = $"[{index}/{total}]{H.Extensions.ApplicationBase.Properties.Resources.Message_LoadingSetting}<{x.Name}>...";
                     if (s is IDefaultTemplateable templateable)
                     {
                         templateable.LoadDefaultTemplate();
@@ -280,7 +281,7 @@ public partial class ApplicationBase
                     if (item == null)
                         continue;
                     if (s != null)
-                        s.Message = $"[{index}/{total}]正在加载模板<{item.Name}>...";
+                        s.Message = $"[{index}/{total}]{H.Extensions.ApplicationBase.Properties.Resources.Message_LoadingTempate}<{item.Name}>...";
                     item.LoadDefaultTemplate();
                 }
             }
@@ -296,7 +297,7 @@ public partial class ApplicationBase
                         continue;
                     index++;
                     if (s != null)
-                        s.Message = $"[{index}/{total}]正在加载{load.Name}...";
+                        s.Message = $"[{index}/{total}]{H.Extensions.ApplicationBase.Properties.Resources.Message_Loading}{load.Name}...";
                     bool r = load.Load(out string message);
                     if (s != null && !string.IsNullOrEmpty(message) && !r)
                         s.Message = message;
@@ -310,7 +311,7 @@ public partial class ApplicationBase
             }
 
             if (s != null)
-                s.Message = "加载完成";
+                s.Message = H.Extensions.ApplicationBase.Properties.Resources.Message_LoadSuccess;
             Thread.Sleep(sleep);
             return true;
         };
@@ -335,7 +336,7 @@ public partial class ApplicationBase
         {
             bool? fr = func.Invoke(null, null);
             if (fr == false)
-                throw new ArgumentException("初始化数据异常，请看日志");
+                throw new ArgumentException(H.Extensions.ApplicationBase.Properties.Resources.Message_LoadException);
         }
     }
 
@@ -376,13 +377,13 @@ public partial class ApplicationBase
                 if (c?.IsCancel != true)
                 {
                     if (s != null)
-                        s.Message = "正在加载用户设置数据...";
+                        s.Message = $"{H.Extensions.ApplicationBase.Properties.Resources.Message_LoadException}...";
                     //  Do ：加载设置参数
                     string message = null;
                     var r = IocSetting.Instance?.LoadLoginedLoad(x =>
                     {
                         if (s != null)
-                            s.Message = $"正在加载设置<{x.Name}>数据...";
+                            s.Message = $"{H.Extensions.ApplicationBase.Properties.Resources.Message_LoadingSetting}<{x.Name}>...";
                         Thread.Sleep(20);
                     }, out message);
                     if (r == false)
@@ -402,7 +403,7 @@ public partial class ApplicationBase
                             return null;
                         if (item == null)
                             continue;
-                        s.Message = $"正在加载模板<{item.Name}>...";
+                        s.Message = $"{H.Extensions.ApplicationBase.Properties.Resources.Message_LoadingTempate}<{item.Name}>...";
                         item.LoadDefaultTemplate();
                     }
                 }
@@ -417,7 +418,7 @@ public partial class ApplicationBase
                         continue;
                     index++;
                     if (s != null)
-                        s.Message = $"[{index}/{loads.Count()}]正在加载用户数据<{load.Name}>...";
+                        s.Message = $"[{index}/{loads.Count()}]{H.Extensions.ApplicationBase.Properties.Resources.Message_LoadingUser}<{load.Name}>...";
                     bool r = load.Load(out string message);
                     if (s != null && !string.IsNullOrEmpty(message))
                         s.Message = message;
@@ -429,7 +430,8 @@ public partial class ApplicationBase
                     Thread.Sleep(sleep);
                 }
                 if (s != null)
-                    s.Message = "用户数据加载完成";
+                    s.Message = H.Extensions.ApplicationBase.Properties.Resources.Message_LoadSuccess
+                ;
                 Thread.Sleep(sleep);
                 return true;
             };
@@ -440,7 +442,7 @@ public partial class ApplicationBase
                     return IocMessage.Window.ShowAction(presenter, x =>
                     {
                         x.DialogButton = DialogButton.None;
-                        x.Title = "欢迎" + Ioc<ILoginService>.Instance?.User?.Account;
+                        x.Title = Ioc<ILoginService>.Instance?.User?.Account;
                         x.MinHeight = 0.0;
                         x.Height = double.NaN;
                     }, func).Result;
@@ -479,7 +481,6 @@ public partial class ApplicationBase
     protected virtual void OnSetting()
     {
         //var sss=   Ioc.Services.GetType().GetFields(BindingFlags.NonPublic | BindingFlags.Static|bind);
-
         ////  Do ：加载注入的ISetting
         //{
         //    var settings = Ioc.Services.GetServices<ISetting>();
@@ -491,7 +492,5 @@ public partial class ApplicationBase
         //    IocSetting.Instance.Add(settings.ToArray());
         //}
         //ConcurrentDictionary<Type,Func<ServiceProviderEngine>>
-
-        //Microsoft.Extensions.DependencyInjection
     }
 }

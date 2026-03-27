@@ -11,6 +11,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<ProjectReference Include="..\..\ApplicationBases\H.ApplicationBases.Default\H.ApplicationBases.Default.csproj" />
+		<ProjectReference Include="..\..\ApplicationBases\H.ApplicationBases.Identify\H.ApplicationBases.Identify.csproj" />
+		<ProjectReference Include="..\..\ApplicationBases\H.ApplicationBases.Themes\H.ApplicationBases.Themes.csproj" />
 		<ProjectReference Include="..\..\Datas\H.Data.Test\H.Data.Test.csproj" />
 		<ProjectReference Include="..\..\Extensions\H.Extensions.ApplicationBase\H.Extensions.ApplicationBase.csproj" />
 		<ProjectReference Include="..\..\Extensions\H.Extensions.AppPath\H.Extensions.AppPath.csproj" />
@@ -30,6 +33,7 @@
 		<ProjectReference Include="..\..\Modules\H.Modules.About\H.Modules.About.csproj" />
 		<ProjectReference Include="..\..\Modules\H.Modules.Messages.Notice\H.Modules.Messages.Notice.csproj" />
 		<ProjectReference Include="..\..\Modules\H.Modules.Messages.Snack\H.Modules.Messages.Snack.csproj" />
+
 	</ItemGroup>
 
 	<ItemGroup>

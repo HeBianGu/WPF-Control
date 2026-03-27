@@ -78,7 +78,7 @@ public class RigisterLoginViewPresenter : LoginViewPresenter, ILoginViewPresente
         MailMessageItem mailMessageItem = new MailMessageItem();
         mailMessageItem.From = this.MailVerify.Mail;
         mailMessageItem.To = new string[] { RegistorOptions.Instance.MailAccount };
-        mailMessageItem.Subject = "注册验证码";
+        mailMessageItem.Subject = Properties.Resources.RegisterVerificationCode;
         mailMessageItem.Body = this._code.ToString();
         string message = null;
         var r = await Task.Run(() =>
@@ -101,7 +101,7 @@ public class RigisterLoginViewPresenter : LoginViewPresenter, ILoginViewPresente
                  s.IsBusy = false;
              }
          });
-        this.MailVerify.Message = r ? "验证码已发送" : message;
+        this.MailVerify.Message = r ? Properties.Resources.VerificationCodeSended : message;
     }, (s, e) => this.MailVerify.IsMailValid());
 
     public RelayCommand GotoMailCommand => new RelayCommand(l =>
@@ -162,7 +162,7 @@ public class RigisterLoginViewPresenter : LoginViewPresenter, ILoginViewPresente
             try
             {
                 s.IsBusy = true;
-                s.Message = "正在修改密码...";
+                s.Message = string.Format(Properties.Resources.Format_Doing, Properties.Resources.ChangePassword);
                 Thread.Sleep(1000);
                 bool r = Ioc<IRegisterService>.Instance.ResetPassword(this.MailVerify.Mail, this.UserName, this.Forget.Password, out string message);
                 if (!r)
@@ -172,7 +172,7 @@ public class RigisterLoginViewPresenter : LoginViewPresenter, ILoginViewPresente
                     this.Forget.Message = message;
                     return false;
                 }
-                s.Message = "修改成功";
+                s.Message = string.Format(Properties.Resources.Format_Success, Properties.Resources.ChangePassword);
                 Thread.Sleep(1000);
                 return true;
             }
@@ -217,7 +217,7 @@ public class RigisterLoginViewPresenter : LoginViewPresenter, ILoginViewPresente
             try
             {
                 s.IsBusy = true;
-                s.Message = "正在注册...";
+                s.Message = string.Format(Properties.Resources.Format_Doing, Properties.Resources.Register);
                 Thread.Sleep(1000);
                 bool r = Ioc<IRegisterService>.Instance.Register(this.MailVerify.Mail, this.Registor.UserName, this.Registor.Password, out string message);
                 if (!r)
@@ -227,7 +227,7 @@ public class RigisterLoginViewPresenter : LoginViewPresenter, ILoginViewPresente
                     this.Registor.Message = message;
                     return false;
                 }
-                s.Message = "注册成功";
+                s.Message = string.Format(Properties.Resources.Format_Success, Properties.Resources.Register);
                 Thread.Sleep(1000);
                 return true;
             }

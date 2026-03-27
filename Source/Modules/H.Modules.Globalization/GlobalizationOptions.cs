@@ -34,7 +34,7 @@ using System.Xml.Serialization;
 namespace H.Modules.Globalization;
 
 [Display(Name = "语言设置", GroupName = SettingGroupNames.GroupStyle, Description = "语言设置设置的信息")]
-public class GlobalizationOptions : IocOptionInstance<GlobalizationOptions>, ILoginedSplashLoadable, IGlobalizationOptions
+public class GlobalizationOptions : IocOptionInstance<GlobalizationOptions>, IGlobalizationOptions
 {
     public GlobalizationOptions()
     {
@@ -52,6 +52,8 @@ public class GlobalizationOptions : IocOptionInstance<GlobalizationOptions>, ILo
         get { return _CultureInfo; }
         set
         {
+            if (_CultureInfo == value)
+                return;
             _CultureInfo = value;
             RaisePropertyChanged();
             this.UpdateCultureInfo(value);
@@ -74,13 +76,11 @@ public class GlobalizationOptions : IocOptionInstance<GlobalizationOptions>, ILo
         Application.Current.Dispatcher.Thread.CurrentUICulture = culture;
         Application.Current.Dispatcher.Thread.CurrentCulture = culture;
     }
-
+    [JsonIgnore]
     public IReadOnlyCollection<CultureInfo> SupportedCultureInfos { get; set; }
 
     public IList<CultureInfo> GetSupportedCultureInfos()
     {
-        var SSSS = Assembly.GetEntryAssembly().GetManifestResourceNames();
-
         var name = Assembly.GetEntryAssembly().GetName().Name;
         List<CultureInfo> infos = new List<CultureInfo>();
         try

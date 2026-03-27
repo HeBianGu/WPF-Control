@@ -10,7 +10,7 @@ global using H.Common.Commands;
 
 namespace H.Services.Message.Dialog.Commands;
 
-public abstract class ShowDialogCommandBase : DisplayMarkupCommandBase
+public abstract class ShowDialogCommandBase : ResxDisplayMarkupCommandBase
 {
     public double Width { get; set; } = double.NaN;
     public double Height { get; set; } = double.NaN;

@@ -11,6 +11,7 @@ using H.Common.Interfaces;
 using H.Extensions.Mvvm.Commands;
 using H.Extensions.Mvvm.ViewModels.Base;
 using H.Services.Message.Dialog;
+using H.Modules.Login.Properties;
 
 namespace H.Modules.Login.Presenters;
 
@@ -80,7 +81,7 @@ public class LoginViewPresenter : DisplayBindableBase, ILoginViewPresenter, IWin
                  try
                  {
                      s.IsBusy = true;
-                     s.Message = "正在登录...";
+                     s.Message = string.Format(Properties.Resources.Format_Doing, Properties.Resources.Login);
                      Thread.Sleep(1000);
                      bool r = Ioc<ILoginService>.Instance.Login(this.UserName, this.Password, out string message);
                      if (!r)
@@ -106,7 +107,7 @@ public class LoginViewPresenter : DisplayBindableBase, ILoginViewPresenter, IWin
                          s.Message = message;
                          Thread.Sleep(1000);
                      }
-                     s.Message = "登录成功";
+                     s.Message = string.Format(Properties.Resources.Format_Success, Properties.Resources.Login);
                      Thread.Sleep(1000);
                      return true;
                  }

@@ -14,5 +14,9 @@ namespace H.Services.Message.Dialog.Commands;
 [Display(Name = "显示消息", Description = "显示弹窗消息")]
 public abstract class ShowMessageDialogCommandBase : ShowDialogCommandBase, ICommand
 {
-    public string Message { get; set; } = "默认消息";
+    protected ShowMessageDialogCommandBase()
+    {
+        this.Name = Properties.Resources.ShowMessage;
+    }
+    public string Message { get; set; } = Properties.Resources.DefaultMessage;
 }

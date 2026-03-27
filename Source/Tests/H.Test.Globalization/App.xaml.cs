@@ -6,8 +6,13 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
+using H.DataBases.Share;
 using H.Extensions.ApplicationBase;
+using H.Extensions.DataBase;
 using H.Extensions.FontIcon;
+using H.Modules.Identity;
+using H.Modules.Login;
+using H.Modules.Operation;
 using H.Modules.Setting;
 using H.Services.Setting;
 using H.Styles;
@@ -30,13 +35,10 @@ public partial class App : ApplicationBase
 {
     protected override void ConfigureServices(IServiceCollection services)
     {
-        services.AddSetting();
-        services.AddAdornerDialogMessage();
+        services.AddApplicationServices();
+        services.AddIdentifyDefaultServices();
         services.AddGlobalization();
-        services.AddFormMessageService();
-        services.AddNoticeMessage();
-        services.AddSnackMessage();
-        services.AddAbout();
+
     }
 
     protected override Window CreateMainWindow(StartupEventArgs e)
@@ -51,5 +53,7 @@ public partial class App : ApplicationBase
         {
 
         });
+
+        app.UseApplicationOptions();
     }
 }

@@ -10,13 +10,6 @@ using H.Common.Attributes;
 
 namespace H.Services.Common.Serialize.Meta;
 
-public interface IMetaSetting
-{
-    string ID { get; set; }
-    void Load();
-    bool Save(out string message);
-}
-
 public abstract class MetaSettingBase : IMetaSetting
 {
     private readonly IMetaSettingService _json;

@@ -97,7 +97,7 @@ public class CloseAfterSaveWindowCommand : CloseWindowCommand
         bool isNotice = isMainWindow && WindowSetting.Instance.UseNoticeOnMainWindowClose;
         if (isNotice || this.UseDialog)
         {
-            var dr = await IocMessage.ShowDialogMessage(this.Message, "提示", DialogButton.SumitAndCancel);
+            var dr = await IocMessage.ShowDialogMessage(this.Message, null, DialogButton.SumitAndCancel);
             if (dr != true)
                 return;
         }

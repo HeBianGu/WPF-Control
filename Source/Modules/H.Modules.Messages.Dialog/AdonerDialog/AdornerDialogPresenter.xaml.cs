@@ -34,7 +34,7 @@ namespace H.Modules.Messages.Dialog
             background.Freeze();
             this.Background = background;
         }
-        private string _title = "提示";
+        private string _title = Properties.Resources.DefaultTitle;
         public string Title
         {
             get { return _title; }

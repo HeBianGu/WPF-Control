@@ -31,7 +31,7 @@ public class CloseWindowCommand : WindowCommandBase
         bool isMain = Application.Current.MainWindow == window && WindowSetting.Instance.UseNoticeOnMainWindowClose;
         if (isMain || this.UseDialog)
         {
-            var r = await IocMessage.ShowDialogMessage(this.Message, "提示", DialogButton.SumitAndCancel);
+            var r = await IocMessage.ShowDialogMessage(this.Message, null, DialogButton.SumitAndCancel);
             if (r != true)
                 return false;
         }

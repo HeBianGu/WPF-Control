@@ -12,6 +12,6 @@ public class ShowNotImplementedCommand : ShowMessageCommand
 {
     public ShowNotImplementedCommand()
     {
-        this.Message = "功能暂未实现";
+        this.Message = Properties.Resources.NotImplemented;
     }
 }
