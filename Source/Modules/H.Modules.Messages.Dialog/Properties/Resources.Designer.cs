@@ -61,7 +61,7 @@ namespace H.Modules.Messages.Dialog.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 确定.
+        ///   Looks up a localized string similar to 取消.
         /// </summary>
         public static string Cancel {
             get {
@@ -79,7 +79,7 @@ namespace H.Modules.Messages.Dialog.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 取消.
+        ///   Looks up a localized string similar to 确定.
         /// </summary>
         public static string Sumit {
             get {
