@@ -58,19 +58,16 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="DataGrid_WaterMark" xml:space="preserve">
-    <value>Inga data tillgängliga</value>
+  <data name="Property_AboutOptions_Title" xml:space="preserve">
+    <value>Produktnamn</value>
   </data>
-  <data name="Maximize" xml:space="preserve">
-    <value>Maximera</value>
+  <data name="Type_AboutOptions" xml:space="preserve">
+    <value>Student</value>
   </data>
-  <data name="Minimize" xml:space="preserve">
-    <value>Minimera</value>
+  <data name="Type_AboutOptions_Description" xml:space="preserve">
+    <value>Student</value>
   </data>
-  <data name="Close" xml:space="preserve">
-    <value>Stäng</value>
-  </data>
-  <data name="Restore" xml:space="preserve">
-    <value>Återställ</value>
+  <data name="Type_AboutOptions_GroupName" xml:space="preserve">
+    <value>Student</value>
   </data>
 </root>
