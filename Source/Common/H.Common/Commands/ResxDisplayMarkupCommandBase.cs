@@ -19,7 +19,6 @@ public abstract class ResxDisplayMarkupCommandBase : DisplayMarkupCommandBase
     protected void UpdateResx()
     {
         string rname = this.GetResxName();
-        string rgroup = this.GetResxGroupName();
         string rdesc = this.GetResxDescription();
         this.Name = rname ?? this.Name;
         this.Description = rdesc ?? this.Description;
@@ -28,19 +27,25 @@ public abstract class ResxDisplayMarkupCommandBase : DisplayMarkupCommandBase
     protected virtual string GetResxName()
     {
         var type = this.GetType();
-        return this.GetResourceManager(type)?.GetString($"Type_{type.Name}");
-    }
-
-    protected virtual string GetResxGroupName()
-    {
-        var type = this.GetType();
-        return this.GetResourceManager(type)?.GetString($"Type_{type.Name}_GroupName");
+        string key = $"Type_{type.Name}";
+        var result = this.GetResourceManager(type)?.GetString(key);
+        if (result == null)
+        {
+            System.Diagnostics.Debug.WriteLine(key);
+        }
+        return result;
     }
 
     protected virtual string GetResxDescription()
     {
         var type = this.GetType();
-        return this.GetResourceManager(type)?.GetString($"Type_{type.Name}_Description");
+        string key = $"Type_{type.Name}_Description";
+        var result = this.GetResourceManager(type)?.GetString(key);
+        if (result == null)
+        {
+            System.Diagnostics.Debug.WriteLine(key);
+        }
+        return result;
     }
 
     private ResourceManager _resourceManager;

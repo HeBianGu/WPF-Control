@@ -119,8 +119,7 @@
     <value>서비스 약관</value>
   </data>
   <data name="LoginDirect" xml:space="preserve">
-    <value>바로 로그인
-</value>
+    <value>바로 로그인</value>
   </data>
   <data name="Privacypolicy" xml:space="preserve">
     <value>개인정보 처리방침</value>

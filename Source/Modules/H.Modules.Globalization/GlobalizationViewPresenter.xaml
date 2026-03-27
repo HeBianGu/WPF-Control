@@ -34,11 +34,11 @@
                     </Border>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
-            <!--<ItemsControl.ItemsPanel>
+            <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
-                    <WrapPanel HorizontalAlignment="Left" />
+                    <UniformGrid Rows="8"/>
                 </ItemsPanelTemplate>
-            </ItemsControl.ItemsPanel>-->
+            </ItemsControl.ItemsPanel>
         </ListBox>
     </DataTemplate>
 </ResourceDictionary>

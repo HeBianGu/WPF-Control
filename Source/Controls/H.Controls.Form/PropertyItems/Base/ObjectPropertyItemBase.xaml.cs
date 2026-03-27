@@ -67,7 +67,13 @@ public abstract class ObjectPropertyItemBase : ResxDisplayBindableBase, IPropert
         if (this.Obj == null || this.PropertyInfo == null)
             return null;
         var type = this.Obj.GetType();
-        return this.GetResourceManager(type)?.GetString($"Property_{type.Name}_{this.PropertyInfo.Name}");
+        string key = $"Property_{type.Name}_{this.PropertyInfo.Name}";
+        var result = this.GetResourceManager(type)?.GetString(key);
+        if (result == null)
+        {
+            System.Diagnostics.Debug.WriteLine(key);
+        }
+        return result;
     }
 
     protected override string GetResxGroupName()
@@ -75,7 +81,12 @@ public abstract class ObjectPropertyItemBase : ResxDisplayBindableBase, IPropert
         if (this.Obj == null || this.PropertyInfo == null)
             return null;
         var type = this.Obj.GetType();
-        return this.GetResourceManager(type)?.GetString($"Property_{type.Name}_{this.PropertyInfo.Name}_GroupName");
+        string key = $"Property_{type.Name}_{this.PropertyInfo.Name}_GroupName";
+        var result = this.GetResourceManager(type)?.GetString(key);
+        if (result == null)
+            System.Diagnostics.Debug.WriteLine(key);
+        return result;
+
     }
 
     protected override string GetResxDescription()
@@ -83,6 +94,10 @@ public abstract class ObjectPropertyItemBase : ResxDisplayBindableBase, IPropert
         if (this.Obj == null || this.PropertyInfo == null)
             return null;
         var type = this.Obj.GetType();
-        return this.GetResourceManager(type)?.GetString($"Property_{type.Name}_{this.PropertyInfo.Name}_Description");
+        string key = $"Property_{type.Name}_{this.PropertyInfo.Name}_Description";
+        var result = this.GetResourceManager(type)?.GetString(key);
+        if (result == null)
+            System.Diagnostics.Debug.WriteLine(key);
+        return result;
     }
 }
