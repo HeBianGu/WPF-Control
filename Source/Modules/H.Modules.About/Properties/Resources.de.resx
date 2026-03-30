@@ -61,6 +61,42 @@
   <data name="Property_AboutOptions_Title" xml:space="preserve">
     <value>Produkttitel</value>
   </data>
+  <data name="Property_AboutOptions_ProductName" xml:space="preserve">
+    <value>Produktname</value>
+  </data>
+  <data name="Property_AboutOptions_ProductDescription" xml:space="preserve">
+    <value>Produktinformationen</value>
+  </data>
+  <data name="Property_AboutOptions_Company" xml:space="preserve">
+    <value>Unternehmensinformationen</value>
+  </data>
+  <data name="Property_AboutOptions_Culture" xml:space="preserve">
+    <value>Produktbereich</value>
+  </data>
+  <data name="Property_AboutOptions_Trademark" xml:space="preserve">
+    <value>Produktmarke</value>
+  </data>
+  <data name="Property_AboutOptions_Configuration" xml:space="preserve">
+    <value>Produktkonfiguration</value>
+  </data>
+  <data name="Property_AboutOptions_Copyright" xml:space="preserve">
+    <value>Lizenzzertifikat</value>
+  </data>
+  <data name="Property_AboutOptions_AssemblyVersion" xml:space="preserve">
+    <value>Assembly-Version</value>
+  </data>
+  <data name="Property_AboutOptions_AssemblyVersion_Description" xml:space="preserve">
+    <value>Die Versionsnummer der Assembly dient zur Kennzeichnung der Eindeutigkeit und Kompatibilität der Assembly.</value>
+  </data>
+  <data name="Property_AboutOptions_FileVersion" xml:space="preserve">
+    <value>Dateiversion</value>
+  </data>
+  <data name="Property_AboutOptions_Privacy" xml:space="preserve">
+    <value>Datenschutzrichtlinie</value>
+  </data>
+  <data name="Property_AboutOptions_Agreement" xml:space="preserve">
+    <value>Nutzungsvereinbarung</value>
+  </data>
   <data name="Type_AboutOptions" xml:space="preserve">
     <value>Schüler</value>
   </data>
@@ -69,5 +105,23 @@
   </data>
   <data name="Type_AboutOptions_GroupName" xml:space="preserve">
     <value>Schüler</value>
+  </data>
+  <data name="Type_ShowAboutCommand" xml:space="preserve">
+    <value>Über</value>
+  </data>
+  <data name="Type_ShowAboutCommand_Description" xml:space="preserve">
+    <value>Info-Seite anzeigen</value>
+  </data>
+  <data name="Type_ShowPrivacyCommand" xml:space="preserve">
+    <value>Datenschutzrichtlinie</value>
+  </data>
+  <data name="Type_ShowPrivacyCommand_Description" xml:space="preserve">
+    <value>Datenschutzerklärung des Systems anzeigen</value>
+  </data>
+  <data name="Type_ShowAgreementCommand" xml:space="preserve">
+    <value>Nutzungsbedingungen</value>
+  </data>
+  <data name="Type_ShowAgreementCommand_Description" xml:space="preserve">
+    <value>Systemdienstvereinbarung anzeigen</value>
   </data>
 </root>

@@ -61,4 +61,19 @@
   <data name="Type_SqliteSettable" xml:space="preserve">
     <value>Einstellungsseite</value>
   </data>
+  <data name="Type_SqliteSettable_GroupName" xml:space="preserve">
+    <value>Dateneinstellungen</value>
+  </data>
+  <data name="Property_SqliteSettable_FilePath" xml:space="preserve">
+    <value>Datenbankordnerpfad</value>
+  </data>
+  <data name="Property_SqliteSettable_FilePath_Description" xml:space="preserve">
+    <value>In der Datenbank gespeicherter Ordnerpfad</value>
+  </data>
+  <data name="Property_SqliteSettable_InitialCatalog" xml:space="preserve">
+    <value>Datenbankname</value>
+  </data>
+  <data name="Property_SqliteSettable_InitialCatalog_Description" xml:space="preserve">
+    <value>Name der Datenbankdatei</value>
+  </data>
 </root>

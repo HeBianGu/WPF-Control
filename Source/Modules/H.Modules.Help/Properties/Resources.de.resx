@@ -61,4 +61,64 @@
   <data name="Type_SupportOptions" xml:space="preserve">
     <value>Technischer Support</value>
   </data>
+  <data name="Type_ReleaseVersionsOptions" xml:space="preserve">
+    <value>Versionshinweise</value>
+  </data>
+  <data name="Type_ReleaseVersionsOptions_GroupName" xml:space="preserve">
+    <value>Systemeinstellungen</value>
+  </data>
+  <data name="Type_ReleaseVersionsOptions_Description" xml:space="preserve">
+    <value>Versionshinweise der Software anzeigen</value>
+  </data>
+  <data name="Type_SupportOptions_GroupName" xml:space="preserve">
+    <value>Systemeinstellungen</value>
+  </data>
+  <data name="Type_SupportOptions_Description" xml:space="preserve">
+    <value>Technischen Support der Software anzeigen</value>
+  </data>
+  <data name="Type_WebsiteOptions" xml:space="preserve">
+    <value>Offizielle Website</value>
+  </data>
+  <data name="Type_WebsiteOptions_GroupName" xml:space="preserve">
+    <value>Systemeinstellungen</value>
+  </data>
+  <data name="Type_WebsiteOptions_Description" xml:space="preserve">
+    <value>Offizielle Website anzeigen</value>
+  </data>
+  <data name="Type_ContactOptions" xml:space="preserve">
+    <value>Kontaktinformationen</value>
+  </data>
+  <data name="Type_ContactOptions_GroupName" xml:space="preserve">
+    <value>Systemeinstellungen</value>
+  </data>
+  <data name="Type_ContactOptions_Description" xml:space="preserve">
+    <value>So können Sie den Entwickler kontaktieren.</value>
+  </data>
+  <data name="Property_ContactOptions_GitHub" xml:space="preserve">
+    <value>GitHub-Adresse</value>
+  </data>
+  <data name="Property_ContactOptions_GitHubIssue" xml:space="preserve">
+    <value>Frage stellen</value>
+  </data>
+  <data name="Property_ContactOptions_Email" xml:space="preserve">
+    <value>E-Mail senden</value>
+  </data>
+  <data name="Property_ContactOptions_QQ" xml:space="preserve">
+    <value>QQ hinzufügen</value>
+  </data>
+  <data name="Property_ContactOptions_Podcast" xml:space="preserve">
+    <value>Podcast-Adresse</value>
+  </data>
+  <data name="Property_ContactOptions_Blog" xml:space="preserve">
+    <value>Blog-Adresse</value>
+  </data>
+  <data name="Property_SupportOptions_Uri" xml:space="preserve">
+    <value>Adresse</value>
+  </data>
+  <data name="Property_WebsiteOptions_Uri" xml:space="preserve">
+    <value>Adresse</value>
+  </data>
+  <data name="Property_ReleaseVersionsOptions_Uri" xml:space="preserve">
+    <value>Adresse</value>
+  </data>
 </root>

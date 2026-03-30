@@ -61,4 +61,91 @@
   <data name="Type_SettingViewOptions" xml:space="preserve">
     <value>Einstellungsseite</value>
   </data>
+  <data name="Type_ShowSettingCommand" xml:space="preserve">
+    <value>Einstellungen</value>
+  </data>
+  <data name="Type_ShowSettingCommand_Description" xml:space="preserve">
+    <value>Systemeinstellungsseite anzeigen</value>
+  </data>
+  <data name="Type_SettingViewOptions_GroupName" xml:space="preserve">
+    <value>Anzeigeeinstellungen</value>
+  </data>
+  <data name="Type_SettingSecurityViewOption" xml:space="preserve">
+    <value>Einstellungen der Seitensteuerung</value>
+  </data>
+  <data name="Type_SettingSecurityViewOption_GroupName" xml:space="preserve">
+    <value>Sicherheitseinstellungen</value>
+  </data>
+  <data name="Property_SettingViewOptions_Margin" xml:space="preserve">
+    <value>Seitenabstand</value>
+  </data>
+  <data name="Property_SettingViewOptions_Margin_Description" xml:space="preserve">
+    <value>Seitenränder festlegen</value>
+  </data>
+  <data name="Property_SettingViewOptions_TitleWidth" xml:space="preserve">
+    <value>Titelbreite</value>
+  </data>
+  <data name="Property_SettingViewOptions_TitleWidth_Description" xml:space="preserve">
+    <value>Seitentitelbreite festlegen</value>
+  </data>
+  <data name="Property_SettingViewOptions_NavigationiTitleWidth" xml:space="preserve">
+    <value>Minimale Navigationsbreite</value>
+  </data>
+  <data name="Property_SettingViewOptions_NavigationiTitleWidth_Description" xml:space="preserve">
+    <value>Minimale Breite für die Seitennavigation festlegen</value>
+  </data>
+  <data name="Property_SettingViewOptions_Width" xml:space="preserve">
+    <value>Seitenbreite</value>
+  </data>
+  <data name="Property_SettingViewOptions_Width_Description" xml:space="preserve">
+    <value>Seitenbreite festlegen</value>
+  </data>
+  <data name="Property_SettingViewOptions_MinWidth" xml:space="preserve">
+    <value>Minimale Breite</value>
+  </data>
+  <data name="Property_SettingViewOptions_MinWidth_Description" xml:space="preserve">
+    <value>Minimale Seitenbreite festlegen</value>
+  </data>
+  <data name="Property_SettingViewOptions_Height" xml:space="preserve">
+    <value>Seitenhöhe</value>
+  </data>
+  <data name="Property_SettingViewOptions_Height_Description" xml:space="preserve">
+    <value>Seitenhöhe festlegen</value>
+  </data>
+  <data name="Property_SettingViewOptions_MinHeight" xml:space="preserve">
+    <value>Minimale Höhe</value>
+  </data>
+  <data name="Property_SettingViewOptions_MinHeight_Description" xml:space="preserve">
+    <value>Mindesthöhe der Seite festlegen</value>
+  </data>
+  <data name="Property_SettingViewOptions_UseSetDefault" xml:space="preserve">
+    <value>Standard wiederherstellen aktivieren</value>
+  </data>
+  <data name="Property_SettingViewOptions_UseSetDefault_Description" xml:space="preserve">
+    <value>Wiederherstellung der Standardwerte-Schaltfläche anzeigen</value>
+  </data>
+  <data name="Property_SettingSecurityViewOption_UsePassword" xml:space="preserve">
+    <value>Passwort aktivieren</value>
+  </data>
+  <data name="Property_SettingSecurityViewOption_UsePassword_Description" xml:space="preserve">
+    <value>Festlegen, ob der Passwortschutz aktiviert ist. Wenn aktiviert, muss beim Aufrufen der Einstellungsseite das voreingestellte Administratorpasswort eingegeben werden.</value>
+  </data>
+  <data name="Property_SettingSecurityViewOption_RememberPassword" xml:space="preserve">
+    <value>Passwort merken</value>
+  </data>
+  <data name="Property_SettingSecurityViewOption_RememberPassword_Description" xml:space="preserve">
+    <value>Nach dem Merken des Passworts wird beim nächsten Öffnen der Einstellungsseite automatisch darauf zugegriffen.</value>
+  </data>
+  <data name="Property_SettingSecurityViewOption_Password" xml:space="preserve">
+    <value>Administratorpasswort festlegen</value>
+  </data>
+  <data name="Property_SettingSecurityViewOption_Password_Description" xml:space="preserve">
+    <value>Legt fest, ob der Passwortschutz aktiviert ist. Nach der Aktivierung muss beim Aufrufen der Einstellungsseite das voreingestellte Administratorpasswort eingegeben werden.</value>
+  </data>
+  <data name="Property_SettingSecurityViewOption_PasswordCount" xml:space="preserve">
+    <value>Anzahl der Passwortüberprüfungen</value>
+  </data>
+  <data name="Property_SettingSecurityViewOption_PasswordCount_Description" xml:space="preserve">
+    <value>Passworteingabefehleranzahl überschreitet die zulässige Anzahl der Passwortprüfungen, Eingabe nicht mehr erlaubt</value>
+  </data>
 </root>

@@ -61,4 +61,55 @@
   <data name="Type_GuideOptions" xml:space="preserve">
     <value>Steuerelementstil</value>
   </data>
+  <data name="Type_GuideOptions_GroupName" xml:space="preserve">
+    <value>Steuerelementeinstellungen</value>
+  </data>
+  <data name="Type_GuideOptions_Description" xml:space="preserve">
+    <value>Assistentenseiteninformationen festlegen</value>
+  </data>
+  <data name="Type_SettingViewOptions_GroupName" xml:space="preserve">
+    <value>Anzeigeeinstellungen</value>
+  </data>
+  <data name="Type_SettingSecurityViewOption" xml:space="preserve">
+    <value>Einstellungsseitensteuerung</value>
+  </data>
+  <data name="Type_SettingSecurityViewOption_GroupName" xml:space="preserve">
+    <value>Sicherheitseinstellungen</value>
+  </data>
+  <data name="Property_GuideOptions_UseOnLoad" xml:space="preserve">
+    <value>Automatischer Start</value>
+  </data>
+  <data name="Property_GuideOptions_UseOnLoad_Description" xml:space="preserve">
+    <value>Beim Start den Einrichtungsassistenten anzeigen</value>
+  </data>
+  <data name="Property_GuideOptions_TextMaxWidth" xml:space="preserve">
+    <value>Detailbreite</value>
+  </data>
+  <data name="Property_GuideOptions_TextMaxWidth_Description" xml:space="preserve">
+    <value>Maximale Breite der Detailseite festlegen</value>
+  </data>
+  <data name="Property_GuideOptions_CoverColor" xml:space="preserve">
+    <value>Hintergrundfarbe</value>
+  </data>
+  <data name="Property_GuideOptions_CoverColor_Description" xml:space="preserve">
+    <value>Farbe des Overlay-Hintergrunds festlegen</value>
+  </data>
+  <data name="Property_GuideOptions_CoverOpacity" xml:space="preserve">
+    <value>Transparenz</value>
+  </data>
+  <data name="Property_GuideOptions_CoverOpacity_Description" xml:space="preserve">
+    <value>Deckkraft des Overlay-Hintergrunds festlegen</value>
+  </data>
+  <data name="Property_GuideOptions_Stroke" xml:space="preserve">
+    <value>Linienfarbe</value>
+  </data>
+  <data name="Property_GuideOptions_StrokeThickness" xml:space="preserve">
+    <value>Linienstärke</value>
+  </data>
+  <data name="Property_GuideOptions_StrokeDashArray" xml:space="preserve">
+    <value>gestrichelte Linie</value>
+  </data>
+  <data name="Property_GuideOptions_AnimationDuration" xml:space="preserve">
+    <value>Animationsintervall</value>
+  </data>
 </root>

@@ -61,4 +61,13 @@
   <data name="Type_StyleOptions" xml:space="preserve">
     <value>Steuerelementstil</value>
   </data>
+  <data name="Type_StyleOptions_GroupName" xml:space="preserve">
+    <value>Anzeigeeinstellungen</value>
+  </data>
+  <data name="Type_StyleOptions_Description" xml:space="preserve">
+    <value>Informationen zu den Einstellungen des Steuerelementstils</value>
+  </data>
+  <data name="Property_StyleOptions_StyleResource" xml:space="preserve">
+    <value>Steuerelementstil</value>
+  </data>
 </root>

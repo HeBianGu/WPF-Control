@@ -64,4 +64,22 @@
   <data name="Hello" xml:space="preserve">
     <value>Hallo 2</value>
   </data>
+  <data name="Property_FFMpegOption_WorkingDirectory" xml:space="preserve">
+    <value>Arbeitsverzeichnis</value>
+  </data>
+  <data name="Property_FFMpegOption_UsingMultithreading" xml:space="preserve">
+    <value>Mehrere Threads aktivieren</value>
+  </data>
+  <data name="Property_FFMpegOption_BinaryFolder" xml:space="preserve">
+    <value>EXE-Pfad</value>
+  </data>
+  <data name="Property_FFMpegOption_TemporaryFilesFolder" xml:space="preserve">
+    <value>Cache-Pfad</value>
+  </data>
+  <data name="Property_FFMpegOption_FFMpegLogLevel" xml:space="preserve">
+    <value>Protokollebene</value>
+  </data>
+  <data name="Property_FFMpegOption_UseCache" xml:space="preserve">
+    <value>Caching aktivieren</value>
+  </data>
 </root>

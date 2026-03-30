@@ -64,4 +64,55 @@
   <data name="Hello" xml:space="preserve">
     <value>Hallo 2</value>
   </data>
+  <data name="Property_AppSetting_DisplayMode" xml:space="preserve">
+    <value>Layout-Modus</value>
+  </data>
+  <data name="Property_AppSetting_ViewSizeMode" xml:space="preserve">
+    <value>Maßstabsgrafikgröße</value>
+  </data>
+  <data name="Property_AppSetting_Stretch" xml:space="preserve">
+    <value>Streckmodus des Vorschaubilds</value>
+  </data>
+  <data name="Property_AppSetting_UseProject" xml:space="preserve">
+    <value>Projektverwaltung aktivieren</value>
+  </data>
+  <data name="Property_FileProjectItemSetting_UseFavorite" xml:space="preserve">
+    <value>Favoritenfilter aktivieren</value>
+  </data>
+  <data name="Property_FileProjectItemSetting_UseFavoritePath" xml:space="preserve">
+    <value>Favoriten aktivieren</value>
+  </data>
+  <data name="Property_FileProjectItemSetting_UseSeeLater" xml:space="preserve">
+    <value>Später ansehen aktivieren</value>
+  </data>
+  <data name="Property_FileProjectItemSetting_UseAreaTag" xml:space="preserve">
+    <value>Ländermarkierung aktivieren</value>
+  </data>
+  <data name="Property_FileProjectItemSetting_UseArticulationTag" xml:space="preserve">
+    <value>Schärfemarkierung aktivieren</value>
+  </data>
+  <data name="Property_FileProjectItemSetting_UseExtension" xml:space="preserve">
+    <value>Erweiterung aktivieren</value>
+  </data>
+  <data name="Property_FileProjectItemSetting_UseFileType" xml:space="preserve">
+    <value>Dateityp aktivieren</value>
+  </data>
+  <data name="Property_FileProjectItemSetting_UseHistory" xml:space="preserve">
+    <value>Verlauf aktivieren</value>
+  </data>
+  <data name="Property_FileProjectItemSetting_UseWatched" xml:space="preserve">
+    <value>Ansicht aktivieren</value>
+  </data>
+  <data name="Property_FileProjectItemSetting_UseScore" xml:space="preserve">
+    <value>Bewertung aktivieren</value>
+  </data>
+  <data name="Property_FileProjectItemSetting_UseObjectTag" xml:space="preserve">
+    <value>Objektmarkierung aktivieren</value>
+  </data>
+  <data name="Property_FileProjectItemSetting_UseOrderBox" xml:space="preserve">
+    <value>Sortierung aktivieren</value>
+  </data>
+  <data name="Property_FileProjectItemSetting_UsePixelFormat" xml:space="preserve">
+    <value>Pixelformat aktivieren</value>
+  </data>
 </root>

@@ -61,4 +61,19 @@
   <data name="Type_GlobalizationOptions" xml:space="preserve">
     <value>Spracheinstellungen</value>
   </data>
+  <data name="Type_GlobalizationOptions_GroupName" xml:space="preserve">
+    <value>Anzeigeeinstellungen</value>
+  </data>
+  <data name="Type_GlobalizationOptions_Description" xml:space="preserve">
+    <value>Informationen zu den Spracheinstellungen</value>
+  </data>
+  <data name="Type_ShowGlobalizationViewCommand" xml:space="preserve">
+    <value>Spracheinstellungen</value>
+  </data>
+  <data name="Type_ShowGlobalizationViewCommand_Description" xml:space="preserve">
+    <value>Anzeigesprache festlegen</value>
+  </data>
+  <data name="Property_GlobalizationOptions_CultureInfo" xml:space="preserve">
+    <value>Sprache</value>
+  </data>
 </root>
