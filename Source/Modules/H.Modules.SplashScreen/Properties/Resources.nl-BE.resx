@@ -61,4 +61,10 @@
   <data name="Type_SplashScreenOptions" xml:space="preserve">
     <value>Opstartpagina</value>
   </data>
+  <data name="Type_SplashScreenOptions_GroupName" xml:space="preserve">
+    <value>Systeeminstellingen</value>
+  </data>
+  <data name="Type_SplashScreenOptions_Description" xml:space="preserve">
+    <value>Opstartpagina-instellingen</value>
+  </data>
 </root>

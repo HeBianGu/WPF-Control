@@ -61,4 +61,16 @@
   <data name="Type_Log4netOptions" xml:space="preserve">
     <value>Logboekconfiguratie</value>
   </data>
+  <data name="Type_Log4netOptions_GroupName" xml:space="preserve">
+    <value>Systeeminstellingen</value>
+  </data>
+  <data name="Type_Log4netOptions_Description" xml:space="preserve">
+    <value>Informatie ingesteld op de inlogpagina</value>
+  </data>
+  <data name="Property_Log4netOptions_LogPath" xml:space="preserve">
+    <value>Logboekpad</value>
+  </data>
+  <data name="Property_Log4netOptions_tempPath" xml:space="preserve">
+    <value>Cachepad</value>
+  </data>
 </root>

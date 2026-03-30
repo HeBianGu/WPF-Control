@@ -61,4 +61,13 @@
   <data name="Type_StyleOptions" xml:space="preserve">
     <value>Besturingselementstijl</value>
   </data>
+  <data name="Type_StyleOptions_GroupName" xml:space="preserve">
+    <value>Weergave-instellingen</value>
+  </data>
+  <data name="Type_StyleOptions_Description" xml:space="preserve">
+    <value>Informatie over instellingen voor besturingselementstijlen</value>
+  </data>
+  <data name="Property_StyleOptions_StyleResource" xml:space="preserve">
+    <value>Besturingselementstijl</value>
+  </data>
 </root>

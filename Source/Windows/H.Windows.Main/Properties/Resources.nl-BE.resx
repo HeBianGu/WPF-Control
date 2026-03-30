@@ -61,4 +61,34 @@
   <data name="Type_WindowSetting" xml:space="preserve">
     <value>Vensterinstellingen</value>
   </data>
+  <data name="Type_WindowSetting_GroupName" xml:space="preserve">
+    <value>Besturingselementinstellingen</value>
+  </data>
+  <data name="Type_WindowSetting_Description" xml:space="preserve">
+    <value>Vensterparameters instellen</value>
+  </data>
+  <data name="Property_WindowSetting_BackImagePath" xml:space="preserve">
+    <value>Achtergrondafbeelding van venster</value>
+  </data>
+  <data name="Property_WindowSetting_UseBackImage" xml:space="preserve">
+    <value>Achtergrondafbeelding van venster inschakelen</value>
+  </data>
+  <data name="Property_WindowSetting_Opacity" xml:space="preserve">
+    <value>Afbeeldingstransparantie</value>
+  </data>
+  <data name="Property_WindowSetting_Stretch" xml:space="preserve">
+    <value>Afbeelding uitrekken</value>
+  </data>
+  <data name="Property_WindowSetting_UseNoticeOnMainWindowClose" xml:space="preserve">
+    <value>Waarschuwing bij het sluiten van het hoofdvenster</value>
+  </data>
+  <data name="Property_WindowSetting_UseNoticeOnMainWindowClose_Description" xml:space="preserve">
+    <value>Wanneer u op sluiten klikt in het hoofdvenster, wordt gevraagd of u het venster wilt sluiten.</value>
+  </data>
+  <data name="Property_WindowSetting_UseSaveOnMainWindowClose" xml:space="preserve">
+    <value>Hoofdvenster sluiten en gegevens opslaan</value>
+  </data>
+  <data name="Property_WindowSetting_UseSaveOnMainWindowClose_Description" xml:space="preserve">
+    <value>Wanneer op sluiten in het hoofdvenster wordt geklikt, sluit het hoofdvenster en worden de gegevens opgeslagen.</value>
+  </data>
 </root>

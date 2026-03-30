@@ -64,4 +64,55 @@
   <data name="Hello" xml:space="preserve">
     <value>Hallo 2</value>
   </data>
+  <data name="Property_AppSetting_DisplayMode" xml:space="preserve">
+    <value>Lay-outmethode</value>
+  </data>
+  <data name="Property_AppSetting_ViewSizeMode" xml:space="preserve">
+    <value>Afmetingen van de schaaltekening</value>
+  </data>
+  <data name="Property_AppSetting_Stretch" xml:space="preserve">
+    <value>Uitrekmethode van miniatuurweergave</value>
+  </data>
+  <data name="Property_AppSetting_UseProject" xml:space="preserve">
+    <value>Projectbeheer inschakelen</value>
+  </data>
+  <data name="Property_FileProjectItemSetting_UseFavorite" xml:space="preserve">
+    <value>Favorietenfilter inschakelen</value>
+  </data>
+  <data name="Property_FileProjectItemSetting_UseFavoritePath" xml:space="preserve">
+    <value>Favorieten inschakelen</value>
+  </data>
+  <data name="Property_FileProjectItemSetting_UseSeeLater" xml:space="preserve">
+    <value>Inschakelen om later te bekijken</value>
+  </data>
+  <data name="Property_FileProjectItemSetting_UseAreaTag" xml:space="preserve">
+    <value>Landmarkering per land inschakelen</value>
+  </data>
+  <data name="Property_FileProjectItemSetting_UseArticulationTag" xml:space="preserve">
+    <value>Duidelijkheidsmarkering inschakelen</value>
+  </data>
+  <data name="Property_FileProjectItemSetting_UseExtension" xml:space="preserve">
+    <value>Extensie inschakelen</value>
+  </data>
+  <data name="Property_FileProjectItemSetting_UseFileType" xml:space="preserve">
+    <value>Bestandstype inschakelen</value>
+  </data>
+  <data name="Property_FileProjectItemSetting_UseHistory" xml:space="preserve">
+    <value>Geschiedenis inschakelen</value>
+  </data>
+  <data name="Property_FileProjectItemSetting_UseWatched" xml:space="preserve">
+    <value>Inschakelen om te bekijken</value>
+  </data>
+  <data name="Property_FileProjectItemSetting_UseScore" xml:space="preserve">
+    <value>Beoordeling inschakelen</value>
+  </data>
+  <data name="Property_FileProjectItemSetting_UseObjectTag" xml:space="preserve">
+    <value>Objectmarkering inschakelen</value>
+  </data>
+  <data name="Property_FileProjectItemSetting_UseOrderBox" xml:space="preserve">
+    <value>Sorteerder inschakelen</value>
+  </data>
+  <data name="Property_FileProjectItemSetting_UsePixelFormat" xml:space="preserve">
+    <value>Pixelformaat inschakelen</value>
+  </data>
 </root>
