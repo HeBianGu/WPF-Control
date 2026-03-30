@@ -61,4 +61,29 @@
   <data name="Type_FeedbackOptions" xml:space="preserve">
     <value>테마 설정</value>
   </data>
+  <data name="Type_FeedbackOptions_GroupName" xml:space="preserve">
+    <value>시스템 설정</value>
+  </data>
+  <data name="Type_FeedbackOptions_Description" xml:space="preserve">
+    <value>사용자 피드백 설정 정보</value>
+  </data>
+  <data name="Property_FeedbackOptions_Host" xml:space="preserve">
+    <value>서버</value>
+  </data>
+  <data name="Property_FeedbackOptions_Port" xml:space="preserve">
+    <value>포트 번호</value>
+  </data>
+  <data name="Property_FeedbackOptions_EnableSsl" xml:space="preserve">
+    <value>SSL 사용
+</value>
+  </data>
+  <data name="Property_FeedbackOptions_User" xml:space="preserve">
+    <value>발신 계정</value>
+  </data>
+  <data name="Property_FeedbackOptions_Password" xml:space="preserve">
+    <value>라이선스 키</value>
+  </data>
+  <data name="Property_FeedbackOptions_IsBodyHtml" xml:space="preserve">
+    <value>HTML 형식 사용</value>
+  </data>
 </root>

@@ -61,4 +61,19 @@
   <data name="Type_SqliteSettable" xml:space="preserve">
     <value>설정 페이지</value>
   </data>
+  <data name="Type_SqliteSettable_GroupName" xml:space="preserve">
+    <value>데이터 설정</value>
+  </data>
+  <data name="Property_SqliteSettable_FilePath" xml:space="preserve">
+    <value>데이터베이스 폴더 경로</value>
+  </data>
+  <data name="Property_SqliteSettable_FilePath_Description" xml:space="preserve">
+    <value>데이터베이스에 저장된 폴더 경로</value>
+  </data>
+  <data name="Property_SqliteSettable_InitialCatalog" xml:space="preserve">
+    <value>데이터베이스 이름</value>
+  </data>
+  <data name="Property_SqliteSettable_InitialCatalog_Description" xml:space="preserve">
+    <value>데이터베이스 파일 이름</value>
+  </data>
 </root>

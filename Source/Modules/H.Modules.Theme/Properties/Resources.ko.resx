@@ -61,4 +61,37 @@
   <data name="Type_ThemeOptions" xml:space="preserve">
     <value>테마 설정</value>
   </data>
+  <data name="Type_ThemeOptions_GroupName" xml:space="preserve">
+    <value>표시 설정</value>
+  </data>
+  <data name="Type_ThemeOptions_Description" xml:space="preserve">
+    <value>테마 설정 정보</value>
+  </data>
+  <data name="Property_ThemeOptions_FontSize" xml:space="preserve">
+    <value>글꼴 크기</value>
+  </data>
+  <data name="Property_ThemeOptions_Layout" xml:space="preserve">
+    <value>레이아웃</value>
+  </data>
+  <data name="Property_ThemeOptions_ColorResource" xml:space="preserve">
+    <value>색상 구성</value>
+  </data>
+  <data name="Property_ThemeOptions_BackgroundResource" xml:space="preserve">
+    <value>배경 색상</value>
+  </data>
+  <data name="Property_ThemeOptions_FontFamily" xml:space="preserve">
+    <value>글꼴</value>
+  </data>
+  <data name="Property_ThemeOptions_IconFontFamily" xml:space="preserve">
+    <value>아이콘 글꼴</value>
+  </data>
+  <data name="Property_ThemeOptions_IsDark" xml:space="preserve">
+    <value>라이트/다크 테마 전환</value>
+  </data>
+  <data name="Type_ShowColorThemeViewCommand" xml:space="preserve">
+    <value>색상 테마</value>
+  </data>
+  <data name="Type_ShowColorThemeViewCommand_Description" xml:space="preserve">
+    <value>색상 테마 표시 설정</value>
+  </data>
 </root>

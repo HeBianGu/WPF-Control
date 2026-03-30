@@ -61,4 +61,35 @@
   <data name="Type_WindowSetting" xml:space="preserve">
     <value>창 설정</value>
   </data>
+  <data name="Type_WindowSetting_GroupName" xml:space="preserve">
+    <value>컨트롤 설정</value>
+  </data>
+  <data name="Type_WindowSetting_Description" xml:space="preserve">
+    <value>창 매개변수 설정</value>
+  </data>
+  <data name="Property_WindowSetting_BackImagePath" xml:space="preserve">
+    <value>창 배경 이미지</value>
+  </data>
+  <data name="Property_WindowSetting_UseBackImage" xml:space="preserve">
+    <value>창 배경 이미지 사용
+</value>
+  </data>
+  <data name="Property_WindowSetting_Opacity" xml:space="preserve">
+    <value>이미지 투명도</value>
+  </data>
+  <data name="Property_WindowSetting_Stretch" xml:space="preserve">
+    <value>이미지 늘리기</value>
+  </data>
+  <data name="Property_WindowSetting_UseNoticeOnMainWindowClose" xml:space="preserve">
+    <value>메인 창 종료 알림</value>
+  </data>
+  <data name="Property_WindowSetting_UseNoticeOnMainWindowClose_Description" xml:space="preserve">
+    <value>当 메인 창에서 닫기를 클릭하면 창을 닫을지 여부를 묻는 메시지가 표시됩니다.</value>
+  </data>
+  <data name="Property_WindowSetting_UseSaveOnMainWindowClose" xml:space="preserve">
+    <value>주 창을 닫을 때 데이터 저장</value>
+  </data>
+  <data name="Property_WindowSetting_UseSaveOnMainWindowClose_Description" xml:space="preserve">
+    <value>메인 창에서 닫기를 클릭하면 메인 창이 닫히고 데이터가 저장됩니다.</value>
+  </data>
 </root>
