@@ -61,4 +61,64 @@
   <data name="Type_SupportOptions" xml:space="preserve">
     <value>Wsparcie techniczne</value>
   </data>
+  <data name="Type_ReleaseVersionsOptions" xml:space="preserve">
+    <value>Informacje o wydaniu</value>
+  </data>
+  <data name="Type_ReleaseVersionsOptions_GroupName" xml:space="preserve">
+    <value>Ustawienia systemowe</value>
+  </data>
+  <data name="Type_ReleaseVersionsOptions_Description" xml:space="preserve">
+    <value>Zobacz informacje o wydaniu oprogramowania</value>
+  </data>
+  <data name="Type_SupportOptions_GroupName" xml:space="preserve">
+    <value>Ustawienia systemowe</value>
+  </data>
+  <data name="Type_SupportOptions_Description" xml:space="preserve">
+    <value>Zobacz wsparcie techniczne oprogramowania</value>
+  </data>
+  <data name="Type_WebsiteOptions" xml:space="preserve">
+    <value>Oficjalna strona internetowa</value>
+  </data>
+  <data name="Type_WebsiteOptions_GroupName" xml:space="preserve">
+    <value>Ustawienia systemowe</value>
+  </data>
+  <data name="Type_WebsiteOptions_Description" xml:space="preserve">
+    <value>Zobacz oficjalną stronę internetową</value>
+  </data>
+  <data name="Type_ContactOptions" xml:space="preserve">
+    <value>Dane kontaktowe</value>
+  </data>
+  <data name="Type_ContactOptions_GroupName" xml:space="preserve">
+    <value>Ustawienia systemowe</value>
+  </data>
+  <data name="Type_ContactOptions_Description" xml:space="preserve">
+    <value>W ten sposób można skontaktować się z deweloperem.</value>
+  </data>
+  <data name="Property_ContactOptions_GitHub" xml:space="preserve">
+    <value>Adres GitHub</value>
+  </data>
+  <data name="Property_ContactOptions_GitHubIssue" xml:space="preserve">
+    <value>Zadaj pytanie</value>
+  </data>
+  <data name="Property_ContactOptions_Email" xml:space="preserve">
+    <value>Wyślij e-mail</value>
+  </data>
+  <data name="Property_ContactOptions_QQ" xml:space="preserve">
+    <value>Dodaj QQ</value>
+  </data>
+  <data name="Property_ContactOptions_Podcast" xml:space="preserve">
+    <value>Adres podcastu</value>
+  </data>
+  <data name="Property_ContactOptions_Blog" xml:space="preserve">
+    <value>Adres bloga</value>
+  </data>
+  <data name="Property_SupportOptions_Uri" xml:space="preserve">
+    <value>Adres</value>
+  </data>
+  <data name="Property_WebsiteOptions_Uri" xml:space="preserve">
+    <value>Adres</value>
+  </data>
+  <data name="Property_ReleaseVersionsOptions_Uri" xml:space="preserve">
+    <value>Adres</value>
+  </data>
 </root>

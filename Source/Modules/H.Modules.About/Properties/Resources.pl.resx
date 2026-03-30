@@ -61,6 +61,42 @@
   <data name="Property_AboutOptions_Title" xml:space="preserve">
     <value>Tytuł produktu</value>
   </data>
+  <data name="Property_AboutOptions_ProductName" xml:space="preserve">
+    <value>Nazwa produktu</value>
+  </data>
+  <data name="Property_AboutOptions_ProductDescription" xml:space="preserve">
+    <value>Informacje o produkcie</value>
+  </data>
+  <data name="Property_AboutOptions_Company" xml:space="preserve">
+    <value>Informacje o firmie</value>
+  </data>
+  <data name="Property_AboutOptions_Culture" xml:space="preserve">
+    <value>Obszar produktu</value>
+  </data>
+  <data name="Property_AboutOptions_Trademark" xml:space="preserve">
+    <value>Znak towarowy produktu</value>
+  </data>
+  <data name="Property_AboutOptions_Configuration" xml:space="preserve">
+    <value>Konfiguracja produktu</value>
+  </data>
+  <data name="Property_AboutOptions_Copyright" xml:space="preserve">
+    <value>Certyfikat licencyjny</value>
+  </data>
+  <data name="Property_AboutOptions_AssemblyVersion" xml:space="preserve">
+    <value>Wersja zestawu程序集</value>
+  </data>
+  <data name="Property_AboutOptions_AssemblyVersion_Description" xml:space="preserve">
+    <value>Numer wersji zestawu, używany do identyfikacji unikalności i zgodności zestawu</value>
+  </data>
+  <data name="Property_AboutOptions_FileVersion" xml:space="preserve">
+    <value>Wersja pliku</value>
+  </data>
+  <data name="Property_AboutOptions_Privacy" xml:space="preserve">
+    <value>Polityka prywatności</value>
+  </data>
+  <data name="Property_AboutOptions_Agreement" xml:space="preserve">
+    <value>Umowa o świadczenie usług</value>
+  </data>
   <data name="Type_AboutOptions" xml:space="preserve">
     <value>Uczeń</value>
   </data>
@@ -69,5 +105,23 @@
   </data>
   <data name="Type_AboutOptions_GroupName" xml:space="preserve">
     <value>Uczeń</value>
+  </data>
+  <data name="Type_ShowAboutCommand" xml:space="preserve">
+    <value>Informacje</value>
+  </data>
+  <data name="Type_ShowAboutCommand_Description" xml:space="preserve">
+    <value>Pokaż stronę „Informacje”</value>
+  </data>
+  <data name="Type_ShowPrivacyCommand" xml:space="preserve">
+    <value>Polityka prywatności</value>
+  </data>
+  <data name="Type_ShowPrivacyCommand_Description" xml:space="preserve">
+    <value>Zobacz politykę prywatności systemu</value>
+  </data>
+  <data name="Type_ShowAgreementCommand" xml:space="preserve">
+    <value>Umowa o świadczenie usług</value>
+  </data>
+  <data name="Type_ShowAgreementCommand_Description" xml:space="preserve">
+    <value>Wyświetl umowę o świadczenie usług systemowych</value>
   </data>
 </root>
