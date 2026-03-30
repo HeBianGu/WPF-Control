@@ -61,4 +61,37 @@
   <data name="Type_ThemeOptions" xml:space="preserve">
     <value>Impostazioni tema</value>
   </data>
+  <data name="Type_ThemeOptions_GroupName" xml:space="preserve">
+    <value>Impostazioni di visualizzazione</value>
+  </data>
+  <data name="Type_ThemeOptions_Description" xml:space="preserve">
+    <value>Informazioni sulle impostazioni del tema</value>
+  </data>
+  <data name="Property_ThemeOptions_FontSize" xml:space="preserve">
+    <value>Font size</value>
+  </data>
+  <data name="Property_ThemeOptions_Layout" xml:space="preserve">
+    <value>Layout</value>
+  </data>
+  <data name="Property_ThemeOptions_ColorResource" xml:space="preserve">
+    <value>Color Scheme</value>
+  </data>
+  <data name="Property_ThemeOptions_BackgroundResource" xml:space="preserve">
+    <value>Colore di sfondo</value>
+  </data>
+  <data name="Property_ThemeOptions_FontFamily" xml:space="preserve">
+    <value>Carattere</value>
+  </data>
+  <data name="Property_ThemeOptions_IconFontFamily" xml:space="preserve">
+    <value>Icon Font</value>
+  </data>
+  <data name="Property_ThemeOptions_IsDark" xml:space="preserve">
+    <value>Switch Light/Dark Theme</value>
+  </data>
+  <data name="Type_ShowColorThemeViewCommand" xml:space="preserve">
+    <value>Tema colore</value>
+  </data>
+  <data name="Type_ShowColorThemeViewCommand_Description" xml:space="preserve">
+    <value>Mostra le impostazioni del tema colore</value>
+  </data>
 </root>
