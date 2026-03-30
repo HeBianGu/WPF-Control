@@ -61,4 +61,19 @@
   <data name="Type_SqliteSettable" xml:space="preserve">
     <value>设置页面</value>
   </data>
+  <data name="Type_SqliteSettable_GroupName" xml:space="preserve">
+    <value>数据设置</value>
+  </data>
+  <data name="Property_SqliteSettable_FilePath" xml:space="preserve">
+    <value>数据库文件夹路径</value>
+  </data>
+  <data name="Property_SqliteSettable_FilePath_Description" xml:space="preserve">
+    <value>数据库保存的文件夹路径</value>
+  </data>
+  <data name="Property_SqliteSettable_InitialCatalog" xml:space="preserve">
+    <value>数据库名称</value>
+  </data>
+  <data name="Property_SqliteSettable_InitialCatalog_Description" xml:space="preserve">
+    <value>数据库文件的名称</value>
+  </data>
 </root>

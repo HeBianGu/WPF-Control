@@ -58,7 +58,16 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Type_SettingViewOptions" xml:space="preserve">
-    <value>设置页面</value>
+  <data name="Type_ShowStepCommand" xml:space="preserve">
+    <value>显示消息</value>
+  </data>
+  <data name="Type_ShowStepCommand_Description" xml:space="preserve">
+    <value>显示弹窗消息</value>
+  </data>
+  <data name="Type_ShowVerticalStepCommand" xml:space="preserve">
+    <value>显示消息</value>
+  </data>
+  <data name="Type_ShowVerticalStepCommand_Description" xml:space="preserve">
+    <value>显示弹窗消息</value>
   </data>
 </root>

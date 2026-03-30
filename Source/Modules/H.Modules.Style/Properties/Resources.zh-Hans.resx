@@ -61,4 +61,13 @@
   <data name="Type_StyleOptions" xml:space="preserve">
     <value>控件样式</value>
   </data>
+  <data name="Type_StyleOptions_GroupName" xml:space="preserve">
+    <value>显示设置</value>
+  </data>
+  <data name="Type_StyleOptions_Description" xml:space="preserve">
+    <value>控件样式设置设置的信息</value>
+  </data>
+  <data name="Property_StyleOptions_StyleResource" xml:space="preserve">
+    <value>控件样式</value>
+  </data>
 </root>

@@ -94,4 +94,58 @@
   <data name="Show" xml:space="preserve">
     <value>显示</value>
   </data>
+  <data name="Type_ShowIocCommand" xml:space="preserve">
+    <value>显示消息</value>
+  </data>
+  <data name="Type_ShowIocCommand_Description" xml:space="preserve">
+    <value>显示弹窗消息</value>
+  </data>
+  <data name="Type_ShowMessageCommand" xml:space="preserve">
+    <value>显示消息</value>
+  </data>
+  <data name="Type_ShowMessageCommand_Description" xml:space="preserve">
+    <value>显示弹窗消息</value>
+  </data>
+  <data name="Type_ShowCommand" xml:space="preserve">
+    <value>显示</value>
+  </data>
+  <data name="Type_ShowCommand_Description" xml:space="preserve">
+    <value>显示呈现页面</value>
+  </data>
+  <data name="Type_ShowPercentCommand" xml:space="preserve">
+    <value>显示消息</value>
+  </data>
+  <data name="Type_ShowPercentCommand_Description" xml:space="preserve">
+    <value>显示弹窗消息</value>
+  </data>
+  <data name="Type_ShowStringCommand" xml:space="preserve">
+    <value>显示消息</value>
+  </data>
+  <data name="Type_ShowStringCommand_Description" xml:space="preserve">
+    <value>显示弹窗消息</value>
+  </data>
+  <data name="Type_ShowWaitCommand" xml:space="preserve">
+    <value>显示消息</value>
+  </data>
+  <data name="Type_ShowWaitCommand_Description" xml:space="preserve">
+    <value>显示弹窗消息</value>
+  </data>
+  <data name="Type_ShowEditCommand" xml:space="preserve">
+    <value>编辑</value>
+  </data>
+  <data name="Type_ShowEditCommand_Description" xml:space="preserve">
+    <value>显示弹窗消息</value>
+  </data>
+  <data name="Type_ShowTabEditCommand" xml:space="preserve">
+    <value>编辑</value>
+  </data>
+  <data name="Type_ShowTabEditCommand_Description" xml:space="preserve">
+    <value>显示多标签表单编辑数据</value>
+  </data>
+  <data name="Type_ShowViewCommand" xml:space="preserve">
+    <value>查看</value>
+  </data>
+  <data name="Type_ShowViewCommand_Description" xml:space="preserve">
+    <value>显示表单查看数据</value>
+  </data>
 </root>
