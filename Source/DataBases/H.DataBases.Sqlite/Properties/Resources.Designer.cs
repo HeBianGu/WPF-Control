@@ -97,7 +97,7 @@ namespace H.DataBases.Sqlite.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 设置页面.
+        ///   Looks up a localized string similar to 数据库配置.
         /// </summary>
         public static string Type_SqliteSettable {
             get {
