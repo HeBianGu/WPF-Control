@@ -94,4 +94,58 @@
   <data name="Show" xml:space="preserve">
     <value>Affichage</value>
   </data>
+  <data name="Type_ShowIocCommand" xml:space="preserve">
+    <value>Afficher le message</value>
+  </data>
+  <data name="Type_ShowIocCommand_Description" xml:space="preserve">
+    <value>Afficher le message contextuel</value>
+  </data>
+  <data name="Type_ShowMessageCommand" xml:space="preserve">
+    <value>Afficher le message</value>
+  </data>
+  <data name="Type_ShowMessageCommand_Description" xml:space="preserve">
+    <value>Afficher un message contextuel</value>
+  </data>
+  <data name="Type_ShowCommand" xml:space="preserve">
+    <value>Afficher</value>
+  </data>
+  <data name="Type_ShowCommand_Description" xml:space="preserve">
+    <value>Afficher la page de présentation</value>
+  </data>
+  <data name="Type_ShowPercentCommand" xml:space="preserve">
+    <value>Afficher le message</value>
+  </data>
+  <data name="Type_ShowPercentCommand_Description" xml:space="preserve">
+    <value>Afficher un message contextuel</value>
+  </data>
+  <data name="Type_ShowStringCommand" xml:space="preserve">
+    <value>Afficher le message</value>
+  </data>
+  <data name="Type_ShowStringCommand_Description" xml:space="preserve">
+    <value>Afficher le message contextuel</value>
+  </data>
+  <data name="Type_ShowWaitCommand" xml:space="preserve">
+    <value>Afficher le message</value>
+  </data>
+  <data name="Type_ShowWaitCommand_Description" xml:space="preserve">
+    <value>Afficher le message contextuel</value>
+  </data>
+  <data name="Type_ShowEditCommand" xml:space="preserve">
+    <value>Modifier</value>
+  </data>
+  <data name="Type_ShowEditCommand_Description" xml:space="preserve">
+    <value>Afficher un message contextuel</value>
+  </data>
+  <data name="Type_ShowTabEditCommand" xml:space="preserve">
+    <value>Modifier</value>
+  </data>
+  <data name="Type_ShowTabEditCommand_Description" xml:space="preserve">
+    <value>Afficher et modifier des données dans un formulaire à onglets multiples</value>
+  </data>
+  <data name="Type_ShowViewCommand" xml:space="preserve">
+    <value>Voir</value>
+  </data>
+  <data name="Type_ShowViewCommand_Description" xml:space="preserve">
+    <value>Afficher les données du formulaire</value>
+  </data>
 </root>
