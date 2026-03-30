@@ -94,4 +94,58 @@
   <data name="Show" xml:space="preserve">
     <value>Отображение</value>
   </data>
+  <data name="Type_ShowIocCommand" xml:space="preserve">
+    <value>Показать сообщение</value>
+  </data>
+  <data name="Type_ShowIocCommand_Description" xml:space="preserve">
+    <value>Показать всплывающее сообщение</value>
+  </data>
+  <data name="Type_ShowMessageCommand" xml:space="preserve">
+    <value>Показать сообщение</value>
+  </data>
+  <data name="Type_ShowMessageCommand_Description" xml:space="preserve">
+    <value>Показать всплывающее сообщение</value>
+  </data>
+  <data name="Type_ShowCommand" xml:space="preserve">
+    <value>Показать</value>
+  </data>
+  <data name="Type_ShowCommand_Description" xml:space="preserve">
+    <value>Отображение страницы представления</value>
+  </data>
+  <data name="Type_ShowPercentCommand" xml:space="preserve">
+    <value>Показать сообщение</value>
+  </data>
+  <data name="Type_ShowPercentCommand_Description" xml:space="preserve">
+    <value>Показать всплывающее сообщение</value>
+  </data>
+  <data name="Type_ShowStringCommand" xml:space="preserve">
+    <value>Показать сообщение</value>
+  </data>
+  <data name="Type_ShowStringCommand_Description" xml:space="preserve">
+    <value>Показать всплывающее сообщение</value>
+  </data>
+  <data name="Type_ShowWaitCommand" xml:space="preserve">
+    <value>Показать сообщение</value>
+  </data>
+  <data name="Type_ShowWaitCommand_Description" xml:space="preserve">
+    <value>Показать всплывающее сообщение</value>
+  </data>
+  <data name="Type_ShowEditCommand" xml:space="preserve">
+    <value>Редактировать</value>
+  </data>
+  <data name="Type_ShowEditCommand_Description" xml:space="preserve">
+    <value>Показать всплывающее сообщение</value>
+  </data>
+  <data name="Type_ShowTabEditCommand" xml:space="preserve">
+    <value>Редактировать</value>
+  </data>
+  <data name="Type_ShowTabEditCommand_Description" xml:space="preserve">
+    <value>Отображение и редактирование данных в многостраничной форме с вкладками</value>
+  </data>
+  <data name="Type_ShowViewCommand" xml:space="preserve">
+    <value>Просмотр</value>
+  </data>
+  <data name="Type_ShowViewCommand_Description" xml:space="preserve">
+    <value>Показать данные формы</value>
+  </data>
 </root>
