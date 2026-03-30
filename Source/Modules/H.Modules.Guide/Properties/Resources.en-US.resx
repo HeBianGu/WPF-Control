@@ -61,4 +61,55 @@
   <data name="Type_GuideOptions" xml:space="preserve">
     <value>Control Style</value>
   </data>
+  <data name="Type_GuideOptions_GroupName" xml:space="preserve">
+    <value>Control Settings</value>
+  </data>
+  <data name="Type_GuideOptions_Description" xml:space="preserve">
+    <value>Set Wizard Page Information</value>
+  </data>
+  <data name="Type_SettingViewOptions_GroupName" xml:space="preserve">
+    <value>Display Settings</value>
+  </data>
+  <data name="Type_SettingSecurityViewOption" xml:space="preserve">
+    <value>Settings Page Controls</value>
+  </data>
+  <data name="Type_SettingSecurityViewOption_GroupName" xml:space="preserve">
+    <value>Security Settings</value>
+  </data>
+  <data name="Property_GuideOptions_UseOnLoad" xml:space="preserve">
+    <value>Auto Start</value>
+  </data>
+  <data name="Property_GuideOptions_UseOnLoad_Description" xml:space="preserve">
+    <value>Show onboarding wizard on startup</value>
+  </data>
+  <data name="Property_GuideOptions_TextMaxWidth" xml:space="preserve">
+    <value>Detail Width</value>
+  </data>
+  <data name="Property_GuideOptions_TextMaxWidth_Description" xml:space="preserve">
+    <value>Set the maximum width of the details page</value>
+  </data>
+  <data name="Property_GuideOptions_CoverColor" xml:space="preserve">
+    <value>Background Color</value>
+  </data>
+  <data name="Property_GuideOptions_CoverColor_Description" xml:space="preserve">
+    <value>Set the color of the overlay background.</value>
+  </data>
+  <data name="Property_GuideOptions_CoverOpacity" xml:space="preserve">
+    <value>Opacity</value>
+  </data>
+  <data name="Property_GuideOptions_CoverOpacity_Description" xml:space="preserve">
+    <value>Set the opacity of the overlay background</value>
+  </data>
+  <data name="Property_GuideOptions_Stroke" xml:space="preserve">
+    <value>Line Color</value>
+  </data>
+  <data name="Property_GuideOptions_StrokeThickness" xml:space="preserve">
+    <value>Line Thickness</value>
+  </data>
+  <data name="Property_GuideOptions_StrokeDashArray" xml:space="preserve">
+    <value>Dashed Line</value>
+  </data>
+  <data name="Property_GuideOptions_AnimationDuration" xml:space="preserve">
+    <value>Animation Interval</value>
+  </data>
 </root>

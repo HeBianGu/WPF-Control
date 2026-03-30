@@ -58,22 +58,73 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Type_SqliteSettable" xml:space="preserve">
-    <value>Settings Page</value>
+  <data name="Active_Files" xml:space="preserve">
+    <value>Active Files</value>
   </data>
-  <data name="Type_SqliteSettable_GroupName" xml:space="preserve">
-    <value>Data Settings</value>
+  <data name="Active_ToolWindows" xml:space="preserve">
+    <value>Active Tool Windows</value>
   </data>
-  <data name="Property_SqliteSettable_FilePath" xml:space="preserve">
-    <value>Database Folder Path</value>
+  <data name="Anchorable_AutoHide" xml:space="preserve">
+    <value>Auto Hide</value>
   </data>
-  <data name="Property_SqliteSettable_FilePath_Description" xml:space="preserve">
-    <value>Folder path saved in the database</value>
+  <data name="Anchorable_BtnAutoHide_Hint" xml:space="preserve">
+    <value>Auto Hide</value>
   </data>
-  <data name="Property_SqliteSettable_InitialCatalog" xml:space="preserve">
-    <value>Database Name</value>
+  <data name="Anchorable_BtnClose_Hint" xml:space="preserve">
+    <value>Hide</value>
   </data>
-  <data name="Property_SqliteSettable_InitialCatalog_Description" xml:space="preserve">
-    <value>Name of the database file</value>
+  <data name="Anchorable_CxMenu_Hint" xml:space="preserve">
+    <value>Window Position</value>
+  </data>
+  <data name="Anchorable_Dock" xml:space="preserve">
+    <value>Dock</value>
+  </data>
+  <data name="Anchorable_DockAsDocument" xml:space="preserve">
+    <value>Dock as Tabbed Document</value>
+  </data>
+  <data name="Anchorable_Float" xml:space="preserve">
+    <value>Float</value>
+  </data>
+  <data name="Anchorable_Hide" xml:space="preserve">
+    <value>Hide</value>
+  </data>
+  <data name="Document_BtnPinned_Hint" xml:space="preserve">
+    <value>Toggle Pin status</value>
+  </data>
+  <data name="Document_Close" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="Document_CloseAll" xml:space="preserve">
+    <value>Close All</value>
+  </data>
+  <data name="Document_CloseAllButThis" xml:space="preserve">
+    <value>Close All But This</value>
+  </data>
+  <data name="Document_CxMenu_Hint" xml:space="preserve">
+    <value>Window Position</value>
+  </data>
+  <data name="Document_DockAsDocument" xml:space="preserve">
+    <value>Dock as Tabbed Document</value>
+  </data>
+  <data name="Document_Float" xml:space="preserve">
+    <value>Floating</value>
+  </data>
+  <data name="Document_MoveToNextTabGroup" xml:space="preserve">
+    <value>Move To Next Tab Group</value>
+  </data>
+  <data name="Document_MoveToPreviousTabGroup" xml:space="preserve">
+    <value>Move To Previous Tab Group</value>
+  </data>
+  <data name="Document_NewHorizontalTabGroup" xml:space="preserve">
+    <value>New Horizontal Tab Group</value>
+  </data>
+  <data name="Document_NewVerticalTabGroup" xml:space="preserve">
+    <value>New Vertical Tab Group</value>
+  </data>
+  <data name="Window_Maximize" xml:space="preserve">
+    <value>Maximize</value>
+  </data>
+  <data name="Window_Restore" xml:space="preserve">
+    <value>Restore</value>
   </data>
 </root>

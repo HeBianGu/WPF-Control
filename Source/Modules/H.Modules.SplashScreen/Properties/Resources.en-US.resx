@@ -61,4 +61,10 @@
   <data name="Type_SplashScreenOptions" xml:space="preserve">
     <value>Startup Page</value>
   </data>
+  <data name="Type_SplashScreenOptions_GroupName" xml:space="preserve">
+    <value>System Settings</value>
+  </data>
+  <data name="Type_SplashScreenOptions_Description" xml:space="preserve">
+    <value>Launch Page Settings Information</value>
+  </data>
 </root>

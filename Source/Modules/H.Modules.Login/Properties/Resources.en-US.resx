@@ -160,4 +160,61 @@
   <data name="Login" xml:space="preserve">
     <value>Login</value>
   </data>
+  <data name="Type_LoginOptions_GroupName" xml:space="preserve">
+    <value>System Settings</value>
+  </data>
+  <data name="Type_LoginOptions_Description" xml:space="preserve">
+    <value>Information Set on the Login Page</value>
+  </data>
+  <data name="Type_RegistorOptions_GroupName" xml:space="preserve">
+    <value>System Settings</value>
+  </data>
+  <data name="Type_RegistorOptions_Description" xml:space="preserve">
+    <value>Information set on the registration page</value>
+  </data>
+  <data name="Property_LoginOptions_Product" xml:space="preserve">
+    <value>Login Title</value>
+  </data>
+  <data name="Property_LoginOptions_ProductFontSize" xml:space="preserve">
+    <value>Font Size</value>
+  </data>
+  <data name="Property_LoginOptions_AdminName" xml:space="preserve">
+    <value>Administrator Account</value>
+  </data>
+  <data name="Property_LoginOptions_LastUserName" xml:space="preserve">
+    <value>Last Logged-in User</value>
+  </data>
+  <data name="Property_LoginOptions_Remember" xml:space="preserve">
+    <value>Remember Password</value>
+  </data>
+  <data name="Property_LoginOptions_UseVisitor" xml:space="preserve">
+    <value>Enable Guest</value>
+  </data>
+  <data name="Property_LoginOptions_UseVisitor_Description" xml:space="preserve">
+    <value>Allow access to the main window even if login fails when Guest Mode is enabled.</value>
+  </data>
+  <data name="Property_LoginOptions_UseLogoutRestart" xml:space="preserve">
+    <value>Sign out and restart</value>
+  </data>
+  <data name="Property_LoginOptions_UseLogoutRestart_Description" xml:space="preserve">
+    <value>Enable logout and restart the application</value>
+  </data>
+  <data name="Property_RegistorOptions_UseMail" xml:space="preserve">
+    <value>Enable Email Registration</value>
+  </data>
+  <data name="Property_RegistorOptions_UseMail_Description" xml:space="preserve">
+    <value>Enable Email Registration</value>
+  </data>
+  <data name="Property_RegistorOptions_ServiceAgreementUri" xml:space="preserve">
+    <value>Application License</value>
+  </data>
+  <data name="Property_RegistorOptions_PrivacypolicyUri" xml:space="preserve">
+    <value>Privacy Policy</value>
+  </data>
+  <data name="Property_RegistorOptions_MailAccount" xml:space="preserve">
+    <value>Email address for sending verification code</value>
+  </data>
+  <data name="Property_RegistorOptions_Image" xml:space="preserve">
+    <value>Left Image</value>
+  </data>
 </root>

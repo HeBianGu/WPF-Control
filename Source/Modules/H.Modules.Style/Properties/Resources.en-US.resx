@@ -61,4 +61,13 @@
   <data name="Type_StyleOptions" xml:space="preserve">
     <value>Control Style</value>
   </data>
+  <data name="Type_StyleOptions_GroupName" xml:space="preserve">
+    <value>Display Settings</value>
+  </data>
+  <data name="Type_StyleOptions_Description" xml:space="preserve">
+    <value>Information about control style settings</value>
+  </data>
+  <data name="Property_StyleOptions_StyleResource" xml:space="preserve">
+    <value>Control Style</value>
+  </data>
 </root>

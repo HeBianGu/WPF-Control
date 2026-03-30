@@ -61,4 +61,16 @@
   <data name="Type_Log4netOptions" xml:space="preserve">
     <value>Log Configuration</value>
   </data>
+  <data name="Type_Log4netOptions_GroupName" xml:space="preserve">
+    <value>System Settings</value>
+  </data>
+  <data name="Type_Log4netOptions_Description" xml:space="preserve">
+    <value>Information Set on the Login Page</value>
+  </data>
+  <data name="Property_Log4netOptions_LogPath" xml:space="preserve">
+    <value>Log Path</value>
+  </data>
+  <data name="Property_Log4netOptions_tempPath" xml:space="preserve">
+    <value>Cache Path</value>
+  </data>
 </root>

@@ -61,6 +61,42 @@
   <data name="Property_AboutOptions_Title" xml:space="preserve">
     <value>Product Title</value>
   </data>
+  <data name="Property_AboutOptions_ProductName" xml:space="preserve">
+    <value>Product Name</value>
+  </data>
+  <data name="Property_AboutOptions_ProductDescription" xml:space="preserve">
+    <value>Product Information</value>
+  </data>
+  <data name="Property_AboutOptions_Company" xml:space="preserve">
+    <value>Company Information</value>
+  </data>
+  <data name="Property_AboutOptions_Culture" xml:space="preserve">
+    <value>Product Area</value>
+  </data>
+  <data name="Property_AboutOptions_Trademark" xml:space="preserve">
+    <value>Product Trademark</value>
+  </data>
+  <data name="Property_AboutOptions_Configuration" xml:space="preserve">
+    <value>Product Configuration</value>
+  </data>
+  <data name="Property_AboutOptions_Copyright" xml:space="preserve">
+    <value>License Certificate</value>
+  </data>
+  <data name="Property_AboutOptions_AssemblyVersion" xml:space="preserve">
+    <value>Assembly Version</value>
+  </data>
+  <data name="Property_AboutOptions_AssemblyVersion_Description" xml:space="preserve">
+    <value>The version number of the assembly, used to identify the assembly's uniqueness and compatibility.</value>
+  </data>
+  <data name="Property_AboutOptions_FileVersion" xml:space="preserve">
+    <value>File Version</value>
+  </data>
+  <data name="Property_AboutOptions_Privacy" xml:space="preserve">
+    <value>Privacy Policy</value>
+  </data>
+  <data name="Property_AboutOptions_Agreement" xml:space="preserve">
+    <value>Terms of Service</value>
+  </data>
   <data name="Type_AboutOptions" xml:space="preserve">
     <value>Student</value>
   </data>
@@ -69,5 +105,23 @@
   </data>
   <data name="Type_AboutOptions_GroupName" xml:space="preserve">
     <value>Student</value>
+  </data>
+  <data name="Type_ShowAboutCommand" xml:space="preserve">
+    <value>About</value>
+  </data>
+  <data name="Type_ShowAboutCommand_Description" xml:space="preserve">
+    <value>Display About Page</value>
+  </data>
+  <data name="Type_ShowPrivacyCommand" xml:space="preserve">
+    <value>Privacy Policy</value>
+  </data>
+  <data name="Type_ShowPrivacyCommand_Description" xml:space="preserve">
+    <value>View the system privacy policy</value>
+  </data>
+  <data name="Type_ShowAgreementCommand" xml:space="preserve">
+    <value>Terms of Service</value>
+  </data>
+  <data name="Type_ShowAgreementCommand_Description" xml:space="preserve">
+    <value>View System Service Agreement</value>
   </data>
 </root>

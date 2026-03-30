@@ -61,4 +61,91 @@
   <data name="Type_SettingViewOptions" xml:space="preserve">
     <value>Settings Page</value>
   </data>
+  <data name="Type_ShowSettingCommand" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="Type_ShowSettingCommand_Description" xml:space="preserve">
+    <value>Display System Settings Page</value>
+  </data>
+  <data name="Type_SettingViewOptions_GroupName" xml:space="preserve">
+    <value>Display Settings</value>
+  </data>
+  <data name="Type_SettingSecurityViewOption" xml:space="preserve">
+    <value>Settings Page Control</value>
+  </data>
+  <data name="Type_SettingSecurityViewOption_GroupName" xml:space="preserve">
+    <value>Security Settings</value>
+  </data>
+  <data name="Property_SettingViewOptions_Margin" xml:space="preserve">
+    <value>Page Margin</value>
+  </data>
+  <data name="Property_SettingViewOptions_Margin_Description" xml:space="preserve">
+    <value>Set Page Margins</value>
+  </data>
+  <data name="Property_SettingViewOptions_TitleWidth" xml:space="preserve">
+    <value>Title Width</value>
+  </data>
+  <data name="Property_SettingViewOptions_TitleWidth_Description" xml:space="preserve">
+    <value>Set Page Title Width</value>
+  </data>
+  <data name="Property_SettingViewOptions_NavigationiTitleWidth" xml:space="preserve">
+    <value>Minimum Navigation Width</value>
+  </data>
+  <data name="Property_SettingViewOptions_NavigationiTitleWidth_Description" xml:space="preserve">
+    <value>Set Minimum Width for Page Navigation</value>
+  </data>
+  <data name="Property_SettingViewOptions_Width" xml:space="preserve">
+    <value>Page Width</value>
+  </data>
+  <data name="Property_SettingViewOptions_Width_Description" xml:space="preserve">
+    <value>Set Page Width</value>
+  </data>
+  <data name="Property_SettingViewOptions_MinWidth" xml:space="preserve">
+    <value>Minimum Width</value>
+  </data>
+  <data name="Property_SettingViewOptions_MinWidth_Description" xml:space="preserve">
+    <value>Set minimum page width</value>
+  </data>
+  <data name="Property_SettingViewOptions_Height" xml:space="preserve">
+    <value>Page Height</value>
+  </data>
+  <data name="Property_SettingViewOptions_Height_Description" xml:space="preserve">
+    <value>Set page height</value>
+  </data>
+  <data name="Property_SettingViewOptions_MinHeight" xml:space="preserve">
+    <value>Minimum Height</value>
+  </data>
+  <data name="Property_SettingViewOptions_MinHeight_Description" xml:space="preserve">
+    <value>Set Minimum Page Height</value>
+  </data>
+  <data name="Property_SettingViewOptions_UseSetDefault" xml:space="preserve">
+    <value>Enable Restore Defaults</value>
+  </data>
+  <data name="Property_SettingViewOptions_UseSetDefault_Description" xml:space="preserve">
+    <value>Enable the option to show the Restore Default button.</value>
+  </data>
+  <data name="Property_SettingSecurityViewOption_UsePassword" xml:space="preserve">
+    <value>Enable Password</value>
+  </data>
+  <data name="Property_SettingSecurityViewOption_UsePassword_Description" xml:space="preserve">
+    <value>Set whether password protection is enabled. When enabled, accessing the Settings page requires entering the preset administrator password.</value>
+  </data>
+  <data name="Property_SettingSecurityViewOption_RememberPassword" xml:space="preserve">
+    <value>Remember Password</value>
+  </data>
+  <data name="Property_SettingSecurityViewOption_RememberPassword_Description" xml:space="preserve">
+    <value>Automatically enter the settings page next time after remembering the password.</value>
+  </data>
+  <data name="Property_SettingSecurityViewOption_Password" xml:space="preserve">
+    <value>Set Administrator Password</value>
+  </data>
+  <data name="Property_SettingSecurityViewOption_Password_Description" xml:space="preserve">
+    <value>Set whether to enable password protection. When enabled, entering the settings page requires the preset administrator password.</value>
+  </data>
+  <data name="Property_SettingSecurityViewOption_PasswordCount" xml:space="preserve">
+    <value>Password Validation Attempts</value>
+  </data>
+  <data name="Property_SettingSecurityViewOption_PasswordCount_Description" xml:space="preserve">
+    <value>Password entry has exceeded the maximum number of verification attempts. Further input is not allowed.</value>
+  </data>
 </root>

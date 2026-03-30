@@ -61,4 +61,34 @@
   <data name="Type_WindowSetting" xml:space="preserve">
     <value>Window Settings</value>
   </data>
+  <data name="Type_WindowSetting_GroupName" xml:space="preserve">
+    <value>Control Settings</value>
+  </data>
+  <data name="Type_WindowSetting_Description" xml:space="preserve">
+    <value>Window Settings</value>
+  </data>
+  <data name="Property_WindowSetting_BackImagePath" xml:space="preserve">
+    <value>Window Background Image</value>
+  </data>
+  <data name="Property_WindowSetting_UseBackImage" xml:space="preserve">
+    <value>Enable window background image</value>
+  </data>
+  <data name="Property_WindowSetting_Opacity" xml:space="preserve">
+    <value>Image Opacity</value>
+  </data>
+  <data name="Property_WindowSetting_Stretch" xml:space="preserve">
+    <value>Image Stretch</value>
+  </data>
+  <data name="Property_WindowSetting_UseNoticeOnMainWindowClose" xml:space="preserve">
+    <value>Main Window Close Prompt</value>
+  </data>
+  <data name="Property_WindowSetting_UseNoticeOnMainWindowClose_Description" xml:space="preserve">
+    <value>A prompt will appear asking whether to close the window when the main window is clicked to close.</value>
+  </data>
+  <data name="Property_WindowSetting_UseSaveOnMainWindowClose" xml:space="preserve">
+    <value>Save data when the main window closes</value>
+  </data>
+  <data name="Property_WindowSetting_UseSaveOnMainWindowClose_Description" xml:space="preserve">
+    <value>When the main window is closed, save the data.</value>
+  </data>
 </root>
