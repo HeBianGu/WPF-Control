@@ -61,4 +61,91 @@
   <data name="Type_SettingViewOptions" xml:space="preserve">
     <value>設定ページ</value>
   </data>
+  <data name="Type_ShowSettingCommand" xml:space="preserve">
+    <value>設定</value>
+  </data>
+  <data name="Type_ShowSettingCommand_Description" xml:space="preserve">
+    <value>システム設定ページを表示する</value>
+  </data>
+  <data name="Type_SettingViewOptions_GroupName" xml:space="preserve">
+    <value>表示設定</value>
+  </data>
+  <data name="Type_SettingSecurityViewOption" xml:space="preserve">
+    <value>設定ページコントロール</value>
+  </data>
+  <data name="Type_SettingSecurityViewOption_GroupName" xml:space="preserve">
+    <value>セキュリティ設定</value>
+  </data>
+  <data name="Property_SettingViewOptions_Margin" xml:space="preserve">
+    <value>ページの余白</value>
+  </data>
+  <data name="Property_SettingViewOptions_Margin_Description" xml:space="preserve">
+    <value>ページの余白を設定する</value>
+  </data>
+  <data name="Property_SettingViewOptions_TitleWidth" xml:space="preserve">
+    <value>タイトル幅</value>
+  </data>
+  <data name="Property_SettingViewOptions_TitleWidth_Description" xml:space="preserve">
+    <value>ページタイトルの幅を設定する</value>
+  </data>
+  <data name="Property_SettingViewOptions_NavigationiTitleWidth" xml:space="preserve">
+    <value>ナビゲーションの最小幅</value>
+  </data>
+  <data name="Property_SettingViewOptions_NavigationiTitleWidth_Description" xml:space="preserve">
+    <value>ページナビゲーションの最小幅を設定する</value>
+  </data>
+  <data name="Property_SettingViewOptions_Width" xml:space="preserve">
+    <value>ページ幅</value>
+  </data>
+  <data name="Property_SettingViewOptions_Width_Description" xml:space="preserve">
+    <value>ページの幅を設定する</value>
+  </data>
+  <data name="Property_SettingViewOptions_MinWidth" xml:space="preserve">
+    <value>最小幅</value>
+  </data>
+  <data name="Property_SettingViewOptions_MinWidth_Description" xml:space="preserve">
+    <value>ページの最小幅を設定する</value>
+  </data>
+  <data name="Property_SettingViewOptions_Height" xml:space="preserve">
+    <value>ページの高さ</value>
+  </data>
+  <data name="Property_SettingViewOptions_Height_Description" xml:space="preserve">
+    <value>ページの高さを設定</value>
+  </data>
+  <data name="Property_SettingViewOptions_MinHeight" xml:space="preserve">
+    <value>最小高さ</value>
+  </data>
+  <data name="Property_SettingViewOptions_MinHeight_Description" xml:space="preserve">
+    <value>ページの最小高さを設定する</value>
+  </data>
+  <data name="Property_SettingViewOptions_UseSetDefault" xml:space="preserve">
+    <value>既定値への復元を有効にする</value>
+  </data>
+  <data name="Property_SettingViewOptions_UseSetDefault_Description" xml:space="preserve">
+    <value>復元既定値ボタン機能を表示する</value>
+  </data>
+  <data name="Property_SettingSecurityViewOption_UsePassword" xml:space="preserve">
+    <value>パスワードを有効にする</value>
+  </data>
+  <data name="Property_SettingSecurityViewOption_UsePassword_Description" xml:space="preserve">
+    <value>パスワードを有効にするかどうかを設定します。有効にすると、設定ページに入る際にあらかじめ設定された管理者パスワードの入力が必要になります。</value>
+  </data>
+  <data name="Property_SettingSecurityViewOption_RememberPassword" xml:space="preserve">
+    <value>パスワードを記憶する</value>
+  </data>
+  <data name="Property_SettingSecurityViewOption_RememberPassword_Description" xml:space="preserve">
+    <value>パスワードを記憶すると、次回設定ページを開いた際に自動的に入ります</value>
+  </data>
+  <data name="Property_SettingSecurityViewOption_Password" xml:space="preserve">
+    <value>管理者パスワードを設定する</value>
+  </data>
+  <data name="Property_SettingSecurityViewOption_Password_Description" xml:space="preserve">
+    <value>パスワードを有効にするかどうかを設定します。有効にすると、設定ページに入る際に事前に設定した管理者パスワードの入力が必要になります。</value>
+  </data>
+  <data name="Property_SettingSecurityViewOption_PasswordCount" xml:space="preserve">
+    <value>パスワード検証回数</value>
+  </data>
+  <data name="Property_SettingSecurityViewOption_PasswordCount_Description" xml:space="preserve">
+    <value>パスワード入力エラー回数がパスワード認証回数を超えたため、これ以上入力できません。</value>
+  </data>
 </root>

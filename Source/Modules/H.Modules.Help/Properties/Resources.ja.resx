@@ -61,4 +61,64 @@
   <data name="Type_SupportOptions" xml:space="preserve">
     <value>技術サポート</value>
   </data>
+  <data name="Type_ReleaseVersionsOptions" xml:space="preserve">
+    <value>リリースノート</value>
+  </data>
+  <data name="Type_ReleaseVersionsOptions_GroupName" xml:space="preserve">
+    <value>システム設定</value>
+  </data>
+  <data name="Type_ReleaseVersionsOptions_Description" xml:space="preserve">
+    <value>ソフトウェアのリリースノートを確認する</value>
+  </data>
+  <data name="Type_SupportOptions_GroupName" xml:space="preserve">
+    <value>システム設定</value>
+  </data>
+  <data name="Type_SupportOptions_Description" xml:space="preserve">
+    <value>ソフトウェア技術サポートを見る</value>
+  </data>
+  <data name="Type_WebsiteOptions" xml:space="preserve">
+    <value>公式サイト</value>
+  </data>
+  <data name="Type_WebsiteOptions_GroupName" xml:space="preserve">
+    <value>システム設定</value>
+  </data>
+  <data name="Type_WebsiteOptions_Description" xml:space="preserve">
+    <value>公式サイトを見る</value>
+  </data>
+  <data name="Type_ContactOptions" xml:space="preserve">
+    <value>連絡先</value>
+  </data>
+  <data name="Type_ContactOptions_GroupName" xml:space="preserve">
+    <value>システム設定</value>
+  </data>
+  <data name="Type_ContactOptions_Description" xml:space="preserve">
+    <value>この方法で開発者に連絡できます</value>
+  </data>
+  <data name="Property_ContactOptions_GitHub" xml:space="preserve">
+    <value>GitHub アドレス</value>
+  </data>
+  <data name="Property_ContactOptions_GitHubIssue" xml:space="preserve">
+    <value>問題を提出する</value>
+  </data>
+  <data name="Property_ContactOptions_Email" xml:space="preserve">
+    <value>送信メールアドレス</value>
+  </data>
+  <data name="Property_ContactOptions_QQ" xml:space="preserve">
+    <value>QQを追加</value>
+  </data>
+  <data name="Property_ContactOptions_Podcast" xml:space="preserve">
+    <value>ポッドキャストアドレス</value>
+  </data>
+  <data name="Property_ContactOptions_Blog" xml:space="preserve">
+    <value>ブログURL</value>
+  </data>
+  <data name="Property_SupportOptions_Uri" xml:space="preserve">
+    <value>住所</value>
+  </data>
+  <data name="Property_WebsiteOptions_Uri" xml:space="preserve">
+    <value>住所</value>
+  </data>
+  <data name="Property_ReleaseVersionsOptions_Uri" xml:space="preserve">
+    <value>住所</value>
+  </data>
 </root>

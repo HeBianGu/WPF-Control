@@ -61,4 +61,19 @@
   <data name="Type_GlobalizationOptions" xml:space="preserve">
     <value>言語設定</value>
   </data>
+  <data name="Type_GlobalizationOptions_GroupName" xml:space="preserve">
+    <value>表示設定</value>
+  </data>
+  <data name="Type_GlobalizationOptions_Description" xml:space="preserve">
+    <value>言語設定の情報</value>
+  </data>
+  <data name="Type_ShowGlobalizationViewCommand" xml:space="preserve">
+    <value>言語設定</value>
+  </data>
+  <data name="Type_ShowGlobalizationViewCommand_Description" xml:space="preserve">
+    <value>表示言語を表示する</value>
+  </data>
+  <data name="Property_GlobalizationOptions_CultureInfo" xml:space="preserve">
+    <value>言語</value>
+  </data>
 </root>

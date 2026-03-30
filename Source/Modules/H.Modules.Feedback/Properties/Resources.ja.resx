@@ -61,4 +61,28 @@
   <data name="Type_FeedbackOptions" xml:space="preserve">
     <value>テーマ設定</value>
   </data>
+  <data name="Type_FeedbackOptions_GroupName" xml:space="preserve">
+    <value>システム設定</value>
+  </data>
+  <data name="Type_FeedbackOptions_Description" xml:space="preserve">
+    <value>ユーザーフィードバック設定の情報</value>
+  </data>
+  <data name="Property_FeedbackOptions_Host" xml:space="preserve">
+    <value>サーバー</value>
+  </data>
+  <data name="Property_FeedbackOptions_Port" xml:space="preserve">
+    <value>ポート番号</value>
+  </data>
+  <data name="Property_FeedbackOptions_EnableSsl" xml:space="preserve">
+    <value>SSLを有効にする</value>
+  </data>
+  <data name="Property_FeedbackOptions_User" xml:space="preserve">
+    <value>外部アカウント</value>
+  </data>
+  <data name="Property_FeedbackOptions_Password" xml:space="preserve">
+    <value>ライセンスコード</value>
+  </data>
+  <data name="Property_FeedbackOptions_IsBodyHtml" xml:space="preserve">
+    <value>HTML形式を有効にする</value>
+  </data>
 </root>

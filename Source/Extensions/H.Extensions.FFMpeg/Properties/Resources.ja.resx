@@ -64,4 +64,22 @@
   <data name="Hello" xml:space="preserve">
     <value>こんにちは2</value>
   </data>
+  <data name="Property_FFMpegOption_WorkingDirectory" xml:space="preserve">
+    <value>作業パス</value>
+  </data>
+  <data name="Property_FFMpegOption_UsingMultithreading" xml:space="preserve">
+    <value>マルチスレッドを有効にする</value>
+  </data>
+  <data name="Property_FFMpegOption_BinaryFolder" xml:space="preserve">
+    <value>exeパス</value>
+  </data>
+  <data name="Property_FFMpegOption_TemporaryFilesFolder" xml:space="preserve">
+    <value>キャッシュパス</value>
+  </data>
+  <data name="Property_FFMpegOption_FFMpegLogLevel" xml:space="preserve">
+    <value>ログレベル</value>
+  </data>
+  <data name="Property_FFMpegOption_UseCache" xml:space="preserve">
+    <value>キャッシュを有効にする</value>
+  </data>
 </root>

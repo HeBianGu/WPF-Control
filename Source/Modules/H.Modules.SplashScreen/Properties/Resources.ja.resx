@@ -61,4 +61,10 @@
   <data name="Type_SplashScreenOptions" xml:space="preserve">
     <value>起動画面</value>
   </data>
+  <data name="Type_SplashScreenOptions_GroupName" xml:space="preserve">
+    <value>システム設定</value>
+  </data>
+  <data name="Type_SplashScreenOptions_Description" xml:space="preserve">
+    <value>起動画面設定情報</value>
+  </data>
 </root>

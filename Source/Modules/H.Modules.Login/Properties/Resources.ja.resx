@@ -160,4 +160,61 @@
   <data name="Login" xml:space="preserve">
     <value>ログイン</value>
   </data>
+  <data name="Type_LoginOptions_GroupName" xml:space="preserve">
+    <value>システム設定</value>
+  </data>
+  <data name="Type_LoginOptions_Description" xml:space="preserve">
+    <value>ログインページで設定された情報</value>
+  </data>
+  <data name="Type_RegistorOptions_GroupName" xml:space="preserve">
+    <value>システム設定</value>
+  </data>
+  <data name="Type_RegistorOptions_Description" xml:space="preserve">
+    <value>登録ページで設定した情報</value>
+  </data>
+  <data name="Property_LoginOptions_Product" xml:space="preserve">
+    <value>ログインタイトル</value>
+  </data>
+  <data name="Property_LoginOptions_ProductFontSize" xml:space="preserve">
+    <value>フォントサイズ</value>
+  </data>
+  <data name="Property_LoginOptions_AdminName" xml:space="preserve">
+    <value>管理者アカウント</value>
+  </data>
+  <data name="Property_LoginOptions_LastUserName" xml:space="preserve">
+    <value>前回ログインユーザー</value>
+  </data>
+  <data name="Property_LoginOptions_Remember" xml:space="preserve">
+    <value>パスワードを記憶する</value>
+  </data>
+  <data name="Property_LoginOptions_UseVisitor" xml:space="preserve">
+    <value>ゲストを有効にする</value>
+  </data>
+  <data name="Property_LoginOptions_UseVisitor_Description" xml:space="preserve">
+    <value>ゲストモードを有効にすると、ログインに成功しなくてもメインウィンドウに入ることができます。</value>
+  </data>
+  <data name="Property_LoginOptions_UseLogoutRestart" xml:space="preserve">
+    <value>ログアウトして再起動</value>
+  </data>
+  <data name="Property_LoginOptions_UseLogoutRestart_Description" xml:space="preserve">
+    <value>ログアウトを有効にしてアプリを再起動する</value>
+  </data>
+  <data name="Property_RegistorOptions_UseMail" xml:space="preserve">
+    <value>メールアドレス登録を有効にする</value>
+  </data>
+  <data name="Property_RegistorOptions_UseMail_Description" xml:space="preserve">
+    <value>メール登録を有効にする</value>
+  </data>
+  <data name="Property_RegistorOptions_ServiceAgreementUri" xml:space="preserve">
+    <value>アプリケーションライセンス</value>
+  </data>
+  <data name="Property_RegistorOptions_PrivacypolicyUri" xml:space="preserve">
+    <value>プライバシーポリシー</value>
+  </data>
+  <data name="Property_RegistorOptions_MailAccount" xml:space="preserve">
+    <value>验证码を送信するメールアドレス</value>
+  </data>
+  <data name="Property_RegistorOptions_Image" xml:space="preserve">
+    <value>左側の画像</value>
+  </data>
 </root>

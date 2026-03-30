@@ -61,4 +61,55 @@
   <data name="Type_GuideOptions" xml:space="preserve">
     <value>コントロールスタイル</value>
   </data>
+  <data name="Type_GuideOptions_GroupName" xml:space="preserve">
+    <value>コントロール設定</value>
+  </data>
+  <data name="Type_GuideOptions_Description" xml:space="preserve">
+    <value>ウィザードページ情報を設定する</value>
+  </data>
+  <data name="Type_SettingViewOptions_GroupName" xml:space="preserve">
+    <value>表示設定</value>
+  </data>
+  <data name="Type_SettingSecurityViewOption" xml:space="preserve">
+    <value>設定ページ制御</value>
+  </data>
+  <data name="Type_SettingSecurityViewOption_GroupName" xml:space="preserve">
+    <value>セキュリティ設定</value>
+  </data>
+  <data name="Property_GuideOptions_UseOnLoad" xml:space="preserve">
+    <value>自動起動</value>
+  </data>
+  <data name="Property_GuideOptions_UseOnLoad_Description" xml:space="preserve">
+    <value>起動時にチュートリアルを表示する</value>
+  </data>
+  <data name="Property_GuideOptions_TextMaxWidth" xml:space="preserve">
+    <value>詳細幅</value>
+  </data>
+  <data name="Property_GuideOptions_TextMaxWidth_Description" xml:space="preserve">
+    <value>設定詳細ページの最大幅</value>
+  </data>
+  <data name="Property_GuideOptions_CoverColor" xml:space="preserve">
+    <value>背景色</value>
+  </data>
+  <data name="Property_GuideOptions_CoverColor_Description" xml:space="preserve">
+    <value>マスク背景の色を設定する</value>
+  </data>
+  <data name="Property_GuideOptions_CoverOpacity" xml:space="preserve">
+    <value>不透明度</value>
+  </data>
+  <data name="Property_GuideOptions_CoverOpacity_Description" xml:space="preserve">
+    <value>遮蔽背景の透明度を設定する</value>
+  </data>
+  <data name="Property_GuideOptions_Stroke" xml:space="preserve">
+    <value>線の色</value>
+  </data>
+  <data name="Property_GuideOptions_StrokeThickness" xml:space="preserve">
+    <value>線の太さ</value>
+  </data>
+  <data name="Property_GuideOptions_StrokeDashArray" xml:space="preserve">
+    <value>線の破線</value>
+  </data>
+  <data name="Property_GuideOptions_AnimationDuration" xml:space="preserve">
+    <value>アニメーション間隔</value>
+  </data>
 </root>
