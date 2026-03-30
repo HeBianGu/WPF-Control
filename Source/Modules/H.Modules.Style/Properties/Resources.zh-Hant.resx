@@ -61,4 +61,13 @@
   <data name="Type_StyleOptions" xml:space="preserve">
     <value>控制項樣式</value>
   </data>
+  <data name="Type_StyleOptions_GroupName" xml:space="preserve">
+    <value>顯示設定</value>
+  </data>
+  <data name="Type_StyleOptions_Description" xml:space="preserve">
+    <value>控制項樣式設定的資訊</value>
+  </data>
+  <data name="Property_StyleOptions_StyleResource" xml:space="preserve">
+    <value>控制項樣式</value>
+  </data>
 </root>

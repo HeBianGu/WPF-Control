@@ -61,4 +61,64 @@
   <data name="Type_SupportOptions" xml:space="preserve">
     <value>技術支援</value>
   </data>
+  <data name="Type_ReleaseVersionsOptions" xml:space="preserve">
+    <value>發行說明</value>
+  </data>
+  <data name="Type_ReleaseVersionsOptions_GroupName" xml:space="preserve">
+    <value>系統設定</value>
+  </data>
+  <data name="Type_ReleaseVersionsOptions_Description" xml:space="preserve">
+    <value>檢視軟體版本發行說明</value>
+  </data>
+  <data name="Type_SupportOptions_GroupName" xml:space="preserve">
+    <value>系統設定</value>
+  </data>
+  <data name="Type_SupportOptions_Description" xml:space="preserve">
+    <value>檢視軟體技術支援</value>
+  </data>
+  <data name="Type_WebsiteOptions" xml:space="preserve">
+    <value>官方網站</value>
+  </data>
+  <data name="Type_WebsiteOptions_GroupName" xml:space="preserve">
+    <value>系統設定</value>
+  </data>
+  <data name="Type_WebsiteOptions_Description" xml:space="preserve">
+    <value>檢視官方網站</value>
+  </data>
+  <data name="Type_ContactOptions" xml:space="preserve">
+    <value>聯絡方式</value>
+  </data>
+  <data name="Type_ContactOptions_GroupName" xml:space="preserve">
+    <value>系統設定</value>
+  </data>
+  <data name="Type_ContactOptions_Description" xml:space="preserve">
+    <value>通过此方式可以聯絡到開發者</value>
+  </data>
+  <data name="Property_ContactOptions_GitHub" xml:space="preserve">
+    <value>GitHub 位址</value>
+  </data>
+  <data name="Property_ContactOptions_GitHubIssue" xml:space="preserve">
+    <value>提出問題</value>
+  </data>
+  <data name="Property_ContactOptions_Email" xml:space="preserve">
+    <value>寄送電子郵件</value>
+  </data>
+  <data name="Property_ContactOptions_QQ" xml:space="preserve">
+    <value>加入QQ</value>
+  </data>
+  <data name="Property_ContactOptions_Podcast" xml:space="preserve">
+    <value>播客位址</value>
+  </data>
+  <data name="Property_ContactOptions_Blog" xml:space="preserve">
+    <value>部落格網址</value>
+  </data>
+  <data name="Property_SupportOptions_Uri" xml:space="preserve">
+    <value>地址</value>
+  </data>
+  <data name="Property_WebsiteOptions_Uri" xml:space="preserve">
+    <value>地址</value>
+  </data>
+  <data name="Property_ReleaseVersionsOptions_Uri" xml:space="preserve">
+    <value>地址</value>
+  </data>
 </root>
