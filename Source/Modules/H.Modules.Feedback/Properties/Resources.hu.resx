@@ -61,4 +61,28 @@
   <data name="Type_FeedbackOptions" xml:space="preserve">
     <value>Téma beállítások</value>
   </data>
+  <data name="Type_FeedbackOptions_GroupName" xml:space="preserve">
+    <value>Rendszerbeállítások</value>
+  </data>
+  <data name="Type_FeedbackOptions_Description" xml:space="preserve">
+    <value>Felhasználói visszajelzési beállítások adatai</value>
+  </data>
+  <data name="Property_FeedbackOptions_Host" xml:space="preserve">
+    <value>Szerver</value>
+  </data>
+  <data name="Property_FeedbackOptions_Port" xml:space="preserve">
+    <value>Port number</value>
+  </data>
+  <data name="Property_FeedbackOptions_EnableSsl" xml:space="preserve">
+    <value>SSL engedélyezése</value>
+  </data>
+  <data name="Property_FeedbackOptions_User" xml:space="preserve">
+    <value>Külső fiók</value>
+  </data>
+  <data name="Property_FeedbackOptions_Password" xml:space="preserve">
+    <value>Licenckulcs</value>
+  </data>
+  <data name="Property_FeedbackOptions_IsBodyHtml" xml:space="preserve">
+    <value>HTML formátum engedélyezése</value>
+  </data>
 </root>

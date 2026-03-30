@@ -61,4 +61,13 @@
   <data name="Type_StyleOptions" xml:space="preserve">
     <value>Vezérlőstílus</value>
   </data>
+  <data name="Type_StyleOptions_GroupName" xml:space="preserve">
+    <value>Megjelenítési beállítások</value>
+  </data>
+  <data name="Type_StyleOptions_Description" xml:space="preserve">
+    <value>A vezérlő stílusbeállításainak adatai</value>
+  </data>
+  <data name="Property_StyleOptions_StyleResource" xml:space="preserve">
+    <value>Vezérlőstílus</value>
+  </data>
 </root>

@@ -64,4 +64,55 @@
   <data name="Hello" xml:space="preserve">
     <value>Szia 2</value>
   </data>
+  <data name="Property_AppSetting_DisplayMode" xml:space="preserve">
+    <value>Elrendezés módja</value>
+  </data>
+  <data name="Property_AppSetting_ViewSizeMode" xml:space="preserve">
+    <value>Miniature map size</value>
+  </data>
+  <data name="Property_AppSetting_Stretch" xml:space="preserve">
+    <value>Kicsinyítési arány nyújtási mód</value>
+  </data>
+  <data name="Property_AppSetting_UseProject" xml:space="preserve">
+    <value>Projektkezelés engedélyezése</value>
+  </data>
+  <data name="Property_FileProjectItemSetting_UseFavorite" xml:space="preserve">
+    <value>Kedvencek szűrő engedélyezése</value>
+  </data>
+  <data name="Property_FileProjectItemSetting_UseFavoritePath" xml:space="preserve">
+    <value>Kedvencek engedélyezése</value>
+  </data>
+  <data name="Property_FileProjectItemSetting_UseSeeLater" xml:space="preserve">
+    <value>Engedélyezze a későbbi megtekintést</value>
+  </data>
+  <data name="Property_FileProjectItemSetting_UseAreaTag" xml:space="preserve">
+    <value>Országjelzés engedélyezése</value>
+  </data>
+  <data name="Property_FileProjectItemSetting_UseArticulationTag" xml:space="preserve">
+    <value>Fokozásjelző engedélyezése</value>
+  </data>
+  <data name="Property_FileProjectItemSetting_UseExtension" xml:space="preserve">
+    <value>Fájlkiterjesztés engedélyezése</value>
+  </data>
+  <data name="Property_FileProjectItemSetting_UseFileType" xml:space="preserve">
+    <value>Fájltípus engedélyezése</value>
+  </data>
+  <data name="Property_FileProjectItemSetting_UseHistory" xml:space="preserve">
+    <value>Előzmények engedélyezése</value>
+  </data>
+  <data name="Property_FileProjectItemSetting_UseWatched" xml:space="preserve">
+    <value>Megtekintés engedélyezése</value>
+  </data>
+  <data name="Property_FileProjectItemSetting_UseScore" xml:space="preserve">
+    <value>Pontozás engedélyezése</value>
+  </data>
+  <data name="Property_FileProjectItemSetting_UseObjectTag" xml:space="preserve">
+    <value>Objektumjelölés engedélyezése</value>
+  </data>
+  <data name="Property_FileProjectItemSetting_UseOrderBox" xml:space="preserve">
+    <value>Rendező engedélyezése</value>
+  </data>
+  <data name="Property_FileProjectItemSetting_UsePixelFormat" xml:space="preserve">
+    <value>Pixel formátum engedélyezése</value>
+  </data>
 </root>

@@ -61,4 +61,19 @@
   <data name="Type_GlobalizationOptions" xml:space="preserve">
     <value>Nyelv beállítása</value>
   </data>
+  <data name="Type_GlobalizationOptions_GroupName" xml:space="preserve">
+    <value>Megjelenítési beállítások</value>
+  </data>
+  <data name="Type_GlobalizationOptions_Description" xml:space="preserve">
+    <value>Nyelvi beállítások információi</value>
+  </data>
+  <data name="Type_ShowGlobalizationViewCommand" xml:space="preserve">
+    <value>Nyelvi beállítások</value>
+  </data>
+  <data name="Type_ShowGlobalizationViewCommand_Description" xml:space="preserve">
+    <value>Nyelvbeállítások megjelenítése</value>
+  </data>
+  <data name="Property_GlobalizationOptions_CultureInfo" xml:space="preserve">
+    <value>Nyelv</value>
+  </data>
 </root>

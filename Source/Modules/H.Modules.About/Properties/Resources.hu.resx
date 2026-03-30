@@ -61,6 +61,42 @@
   <data name="Property_AboutOptions_Title" xml:space="preserve">
     <value>Termék címe</value>
   </data>
+  <data name="Property_AboutOptions_ProductName" xml:space="preserve">
+    <value>Termék neve</value>
+  </data>
+  <data name="Property_AboutOptions_ProductDescription" xml:space="preserve">
+    <value>Termékinformációk</value>
+  </data>
+  <data name="Property_AboutOptions_Company" xml:space="preserve">
+    <value>Céginformációk</value>
+  </data>
+  <data name="Property_AboutOptions_Culture" xml:space="preserve">
+    <value>Termékterület</value>
+  </data>
+  <data name="Property_AboutOptions_Trademark" xml:space="preserve">
+    <value>Védjegy</value>
+  </data>
+  <data name="Property_AboutOptions_Configuration" xml:space="preserve">
+    <value>Termékbeállítások</value>
+  </data>
+  <data name="Property_AboutOptions_Copyright" xml:space="preserve">
+    <value>Licencigazolás</value>
+  </data>
+  <data name="Property_AboutOptions_AssemblyVersion" xml:space="preserve">
+    <value>Verzió de ensamblado</value>
+  </data>
+  <data name="Property_AboutOptions_AssemblyVersion_Description" xml:space="preserve">
+    <value>Az assembly verziószáma, amely az assembly egyediségének és kompatibilitásának azonosítására szolgál.</value>
+  </data>
+  <data name="Property_AboutOptions_FileVersion" xml:space="preserve">
+    <value>Fájlverzió</value>
+  </data>
+  <data name="Property_AboutOptions_Privacy" xml:space="preserve">
+    <value>Adatvédelmi szabályzat</value>
+  </data>
+  <data name="Property_AboutOptions_Agreement" xml:space="preserve">
+    <value>Szolgáltatási szerződés</value>
+  </data>
   <data name="Type_AboutOptions" xml:space="preserve">
     <value>Diák</value>
   </data>
@@ -69,5 +105,23 @@
   </data>
   <data name="Type_AboutOptions_GroupName" xml:space="preserve">
     <value>Diák</value>
+  </data>
+  <data name="Type_ShowAboutCommand" xml:space="preserve">
+    <value>Névjegy</value>
+  </data>
+  <data name="Type_ShowAboutCommand_Description" xml:space="preserve">
+    <value>Névjegy oldal megjelenítése</value>
+  </data>
+  <data name="Type_ShowPrivacyCommand" xml:space="preserve">
+    <value>Adatvédelmi irányelvek</value>
+  </data>
+  <data name="Type_ShowPrivacyCommand_Description" xml:space="preserve">
+    <value>Rendszer adatvédelmi szabályzatának megtekintése</value>
+  </data>
+  <data name="Type_ShowAgreementCommand" xml:space="preserve">
+    <value>Szolgáltatási feltételek</value>
+  </data>
+  <data name="Type_ShowAgreementCommand_Description" xml:space="preserve">
+    <value>Rendszerszolgáltatási szerződés megtekintése</value>
   </data>
 </root>

@@ -61,4 +61,19 @@
   <data name="Type_SqliteSettable" xml:space="preserve">
     <value>Beállítások էջ</value>
   </data>
+  <data name="Type_SqliteSettable_GroupName" xml:space="preserve">
+    <value>Adatbeállítások</value>
+  </data>
+  <data name="Property_SqliteSettable_FilePath" xml:space="preserve">
+    <value>Adatbázis mappa elérési útja</value>
+  </data>
+  <data name="Property_SqliteSettable_FilePath_Description" xml:space="preserve">
+    <value>Az adatbázisban tárolt mappa elérési útja</value>
+  </data>
+  <data name="Property_SqliteSettable_InitialCatalog" xml:space="preserve">
+    <value>Adatbázis neve</value>
+  </data>
+  <data name="Property_SqliteSettable_InitialCatalog_Description" xml:space="preserve">
+    <value>Az adatbázisfájl neve</value>
+  </data>
 </root>
