@@ -61,4 +61,16 @@
   <data name="Type_Log4netOptions" xml:space="preserve">
     <value>Loggkonfiguration</value>
   </data>
+  <data name="Type_Log4netOptions_GroupName" xml:space="preserve">
+    <value>Systeminställningar</value>
+  </data>
+  <data name="Type_Log4netOptions_Description" xml:space="preserve">
+    <value>Inloggningssidans inställningsinformation</value>
+  </data>
+  <data name="Property_Log4netOptions_LogPath" xml:space="preserve">
+    <value>Loggsökväg</value>
+  </data>
+  <data name="Property_Log4netOptions_tempPath" xml:space="preserve">
+    <value>Cachelagringsplats</value>
+  </data>
 </root>

@@ -160,4 +160,61 @@
   <data name="Login" xml:space="preserve">
     <value>Logga in</value>
   </data>
+  <data name="Type_LoginOptions_GroupName" xml:space="preserve">
+    <value>Systeminställningar</value>
+  </data>
+  <data name="Type_LoginOptions_Description" xml:space="preserve">
+    <value>Inloggningssidans inställningsinformation</value>
+  </data>
+  <data name="Type_RegistorOptions_GroupName" xml:space="preserve">
+    <value>Systeminställningar</value>
+  </data>
+  <data name="Type_RegistorOptions_Description" xml:space="preserve">
+    <value>Registreringssidans inställningsinformation</value>
+  </data>
+  <data name="Property_LoginOptions_Product" xml:space="preserve">
+    <value>Inloggningstitel</value>
+  </data>
+  <data name="Property_LoginOptions_ProductFontSize" xml:space="preserve">
+    <value>Teckenstorlek</value>
+  </data>
+  <data name="Property_LoginOptions_AdminName" xml:space="preserve">
+    <value>Administratörskonto</value>
+  </data>
+  <data name="Property_LoginOptions_LastUserName" xml:space="preserve">
+    <value>Senast inloggade användare</value>
+  </data>
+  <data name="Property_LoginOptions_Remember" xml:space="preserve">
+    <value>Kom ihåg lösenord</value>
+  </data>
+  <data name="Property_LoginOptions_UseVisitor" xml:space="preserve">
+    <value>Aktivera gästläge</value>
+  </data>
+  <data name="Property_LoginOptions_UseVisitor_Description" xml:space="preserve">
+    <value>Om gästläge är aktiverat kan du gå till huvudfönstret även om inloggningen inte lyckas.</value>
+  </data>
+  <data name="Property_LoginOptions_UseLogoutRestart" xml:space="preserve">
+    <value>Logga ut och starta om</value>
+  </data>
+  <data name="Property_LoginOptions_UseLogoutRestart_Description" xml:space="preserve">
+    <value>Aktivera omstart av programmet efter utloggning</value>
+  </data>
+  <data name="Property_RegistorOptions_UseMail" xml:space="preserve">
+    <value>Aktivera registrering med e-post</value>
+  </data>
+  <data name="Property_RegistorOptions_UseMail_Description" xml:space="preserve">
+    <value>Aktivera registrering med e-post</value>
+  </data>
+  <data name="Property_RegistorOptions_ServiceAgreementUri" xml:space="preserve">
+    <value>Programlicens</value>
+  </data>
+  <data name="Property_RegistorOptions_PrivacypolicyUri" xml:space="preserve">
+    <value>Integritetspolicy</value>
+  </data>
+  <data name="Property_RegistorOptions_MailAccount" xml:space="preserve">
+    <value>E-postadress för att skicka verifieringskoden</value>
+  </data>
+  <data name="Property_RegistorOptions_Image" xml:space="preserve">
+    <value>Vänster bild</value>
+  </data>
 </root>

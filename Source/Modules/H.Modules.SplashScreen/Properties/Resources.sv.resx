@@ -61,4 +61,10 @@
   <data name="Type_SplashScreenOptions" xml:space="preserve">
     <value>Startsida</value>
   </data>
+  <data name="Type_SplashScreenOptions_GroupName" xml:space="preserve">
+    <value>Systeminställningar</value>
+  </data>
+  <data name="Type_SplashScreenOptions_Description" xml:space="preserve">
+    <value>Inställningar för startsida</value>
+  </data>
 </root>

@@ -61,4 +61,13 @@
   <data name="Type_StyleOptions" xml:space="preserve">
     <value>Kontrollstil</value>
   </data>
+  <data name="Type_StyleOptions_GroupName" xml:space="preserve">
+    <value>Visningsinställningar</value>
+  </data>
+  <data name="Type_StyleOptions_Description" xml:space="preserve">
+    <value>Information om inställning av kontrollstil</value>
+  </data>
+  <data name="Property_StyleOptions_StyleResource" xml:space="preserve">
+    <value>Kontrollstil</value>
+  </data>
 </root>

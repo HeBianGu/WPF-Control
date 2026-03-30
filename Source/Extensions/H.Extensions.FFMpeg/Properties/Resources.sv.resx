@@ -64,4 +64,22 @@
   <data name="Hello" xml:space="preserve">
     <value>Hej 2</value>
   </data>
+  <data name="Property_FFMpegOption_WorkingDirectory" xml:space="preserve">
+    <value>Arbetssökväg</value>
+  </data>
+  <data name="Property_FFMpegOption_UsingMultithreading" xml:space="preserve">
+    <value>Aktivera multitrådning</value>
+  </data>
+  <data name="Property_FFMpegOption_BinaryFolder" xml:space="preserve">
+    <value>exe-sökväg</value>
+  </data>
+  <data name="Property_FFMpegOption_TemporaryFilesFolder" xml:space="preserve">
+    <value>Cache-sökväg</value>
+  </data>
+  <data name="Property_FFMpegOption_FFMpegLogLevel" xml:space="preserve">
+    <value>Loggnivå</value>
+  </data>
+  <data name="Property_FFMpegOption_UseCache" xml:space="preserve">
+    <value>Aktivera cache</value>
+  </data>
 </root>

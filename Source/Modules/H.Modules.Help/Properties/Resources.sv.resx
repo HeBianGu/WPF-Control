@@ -61,4 +61,64 @@
   <data name="Type_SupportOptions" xml:space="preserve">
     <value>Teknisk support</value>
   </data>
+  <data name="Type_ReleaseVersionsOptions" xml:space="preserve">
+    <value>Versionsinformation</value>
+  </data>
+  <data name="Type_ReleaseVersionsOptions_GroupName" xml:space="preserve">
+    <value>Systeminställningar</value>
+  </data>
+  <data name="Type_ReleaseVersionsOptions_Description" xml:space="preserve">
+    <value>Visa versionsinformationen för programvaran</value>
+  </data>
+  <data name="Type_SupportOptions_GroupName" xml:space="preserve">
+    <value>Systeminställningar</value>
+  </data>
+  <data name="Type_SupportOptions_Description" xml:space="preserve">
+    <value>Visa programvarans tekniska support</value>
+  </data>
+  <data name="Type_WebsiteOptions" xml:space="preserve">
+    <value>Officiell webbplats</value>
+  </data>
+  <data name="Type_WebsiteOptions_GroupName" xml:space="preserve">
+    <value>Systeminställningar</value>
+  </data>
+  <data name="Type_WebsiteOptions_Description" xml:space="preserve">
+    <value>Besök den officiella webbplatsen</value>
+  </data>
+  <data name="Type_ContactOptions" xml:space="preserve">
+    <value>Kontaktuppgifter</value>
+  </data>
+  <data name="Type_ContactOptions_GroupName" xml:space="preserve">
+    <value>Systeminställningar</value>
+  </data>
+  <data name="Type_ContactOptions_Description" xml:space="preserve">
+    <value>På detta sätt kan du kontakta utvecklaren</value>
+  </data>
+  <data name="Property_ContactOptions_GitHub" xml:space="preserve">
+    <value>GitHub-adress</value>
+  </data>
+  <data name="Property_ContactOptions_GitHubIssue" xml:space="preserve">
+    <value>Ställ en fråga</value>
+  </data>
+  <data name="Property_ContactOptions_Email" xml:space="preserve">
+    <value>Skicka e-post</value>
+  </data>
+  <data name="Property_ContactOptions_QQ" xml:space="preserve">
+    <value>Lägg till QQ</value>
+  </data>
+  <data name="Property_ContactOptions_Podcast" xml:space="preserve">
+    <value>Podcastadress</value>
+  </data>
+  <data name="Property_ContactOptions_Blog" xml:space="preserve">
+    <value>Bloggadress</value>
+  </data>
+  <data name="Property_SupportOptions_Uri" xml:space="preserve">
+    <value>Adress</value>
+  </data>
+  <data name="Property_WebsiteOptions_Uri" xml:space="preserve">
+    <value>Adress</value>
+  </data>
+  <data name="Property_ReleaseVersionsOptions_Uri" xml:space="preserve">
+    <value>Adress</value>
+  </data>
 </root>

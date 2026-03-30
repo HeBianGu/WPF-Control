@@ -61,4 +61,34 @@
   <data name="Type_WindowSetting" xml:space="preserve">
     <value>Fönsterinställningar</value>
   </data>
+  <data name="Type_WindowSetting_GroupName" xml:space="preserve">
+    <value>Kontrollinställningar</value>
+  </data>
+  <data name="Type_WindowSetting_Description" xml:space="preserve">
+    <value>Ställ in fönsterparametrar</value>
+  </data>
+  <data name="Property_WindowSetting_BackImagePath" xml:space="preserve">
+    <value>Fönsterbakgrundsbild</value>
+  </data>
+  <data name="Property_WindowSetting_UseBackImage" xml:space="preserve">
+    <value>Aktivera bakgrundsbild för fönster</value>
+  </data>
+  <data name="Property_WindowSetting_Opacity" xml:space="preserve">
+    <value>Bildens genomskinlighet</value>
+  </data>
+  <data name="Property_WindowSetting_Stretch" xml:space="preserve">
+    <value>Bildsträckning</value>
+  </data>
+  <data name="Property_WindowSetting_UseNoticeOnMainWindowClose" xml:space="preserve">
+    <value>Huvudfönster stängningspåminnelse</value>
+  </data>
+  <data name="Property_WindowSetting_UseNoticeOnMainWindowClose_Description" xml:space="preserve">
+    <value>När huvudfönstret klickas för att stängas visas en fråga om fönstret ska stängas.</value>
+  </data>
+  <data name="Property_WindowSetting_UseSaveOnMainWindowClose" xml:space="preserve">
+    <value>Spara data när huvudfönstret stängs</value>
+  </data>
+  <data name="Property_WindowSetting_UseSaveOnMainWindowClose_Description" xml:space="preserve">
+    <value>När huvudfönstret klickar på stäng, stängs huvudfönstret och data sparas.</value>
+  </data>
 </root>
