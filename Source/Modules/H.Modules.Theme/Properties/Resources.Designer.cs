@@ -61,11 +61,110 @@ namespace H.Modules.Theme.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 背景配色.
+        /// </summary>
+        public static string Property_ThemeOptions_BackgroundResource {
+            get {
+                return ResourceManager.GetString("Property_ThemeOptions_BackgroundResource", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 配色.
+        /// </summary>
+        public static string Property_ThemeOptions_ColorResource {
+            get {
+                return ResourceManager.GetString("Property_ThemeOptions_ColorResource", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 字体.
+        /// </summary>
+        public static string Property_ThemeOptions_FontFamily {
+            get {
+                return ResourceManager.GetString("Property_ThemeOptions_FontFamily", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 字号.
+        /// </summary>
+        public static string Property_ThemeOptions_FontSize {
+            get {
+                return ResourceManager.GetString("Property_ThemeOptions_FontSize", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 图标字体.
+        /// </summary>
+        public static string Property_ThemeOptions_IconFontFamily {
+            get {
+                return ResourceManager.GetString("Property_ThemeOptions_IconFontFamily", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 切换明暗主题.
+        /// </summary>
+        public static string Property_ThemeOptions_IsDark {
+            get {
+                return ResourceManager.GetString("Property_ThemeOptions_IsDark", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 布局.
+        /// </summary>
+        public static string Property_ThemeOptions_Layout {
+            get {
+                return ResourceManager.GetString("Property_ThemeOptions_Layout", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 颜色主题.
+        /// </summary>
+        public static string Type_ShowColorThemeViewCommand {
+            get {
+                return ResourceManager.GetString("Type_ShowColorThemeViewCommand", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 显示设置颜色主题.
+        /// </summary>
+        public static string Type_ShowColorThemeViewCommand_Description {
+            get {
+                return ResourceManager.GetString("Type_ShowColorThemeViewCommand_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 主题设置.
         /// </summary>
         public static string Type_ThemeOptions {
             get {
                 return ResourceManager.GetString("Type_ThemeOptions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 主题设置设置的信息.
+        /// </summary>
+        public static string Type_ThemeOptions_Description {
+            get {
+                return ResourceManager.GetString("Type_ThemeOptions_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 显示设置.
+        /// </summary>
+        public static string Type_ThemeOptions_GroupName {
+            get {
+                return ResourceManager.GetString("Type_ThemeOptions_GroupName", resourceCulture);
             }
         }
     }

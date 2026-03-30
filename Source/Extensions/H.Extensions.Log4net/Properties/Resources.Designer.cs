@@ -61,11 +61,47 @@ namespace H.Extensions.Log4net.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 日志路径.
+        /// </summary>
+        public static string Property_Log4netOptions_LogPath {
+            get {
+                return ResourceManager.GetString("Property_Log4netOptions_LogPath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 缓存路径.
+        /// </summary>
+        public static string Property_Log4netOptions_tempPath {
+            get {
+                return ResourceManager.GetString("Property_Log4netOptions_tempPath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 日志配置.
         /// </summary>
         public static string Type_Log4netOptions {
             get {
                 return ResourceManager.GetString("Type_Log4netOptions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 登录页面设置的信息.
+        /// </summary>
+        public static string Type_Log4netOptions_Description {
+            get {
+                return ResourceManager.GetString("Type_Log4netOptions_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 系统设置.
+        /// </summary>
+        public static string Type_Log4netOptions_GroupName {
+            get {
+                return ResourceManager.GetString("Type_Log4netOptions_GroupName", resourceCulture);
             }
         }
     }

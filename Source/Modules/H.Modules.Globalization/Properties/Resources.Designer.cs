@@ -61,11 +61,56 @@ namespace H.Modules.Globalization.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 语言.
+        /// </summary>
+        public static string Property_GlobalizationOptions_CultureInfo {
+            get {
+                return ResourceManager.GetString("Property_GlobalizationOptions_CultureInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 语言设置.
         /// </summary>
         public static string Type_GlobalizationOptions {
             get {
                 return ResourceManager.GetString("Type_GlobalizationOptions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 语言设置设置的信息.
+        /// </summary>
+        public static string Type_GlobalizationOptions_Description {
+            get {
+                return ResourceManager.GetString("Type_GlobalizationOptions_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 显示设置.
+        /// </summary>
+        public static string Type_GlobalizationOptions_GroupName {
+            get {
+                return ResourceManager.GetString("Type_GlobalizationOptions_GroupName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 语言设置.
+        /// </summary>
+        public static string Type_ShowGlobalizationViewCommand {
+            get {
+                return ResourceManager.GetString("Type_ShowGlobalizationViewCommand", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 显示设置语言.
+        /// </summary>
+        public static string Type_ShowGlobalizationViewCommand_Description {
+            get {
+                return ResourceManager.GetString("Type_ShowGlobalizationViewCommand_Description", resourceCulture);
             }
         }
     }

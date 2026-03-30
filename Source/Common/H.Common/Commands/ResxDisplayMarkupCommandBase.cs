@@ -12,6 +12,7 @@ namespace H.Common.Commands;
 
 public abstract class ResxDisplayMarkupCommandBase : DisplayMarkupCommandBase
 {
+    const string resxFormat = "  <data name=\"{0}\" xml:space=\"preserve\">\r\n    <value>{1}</value>\r\n  </data>";
     public ResxDisplayMarkupCommandBase()
     {
         this.UpdateResx();
@@ -29,10 +30,10 @@ public abstract class ResxDisplayMarkupCommandBase : DisplayMarkupCommandBase
         var type = this.GetType();
         string key = $"Type_{type.Name}";
         var result = this.GetResourceManager(type)?.GetString(key);
-        if (result == null)
-        {
-            System.Diagnostics.Debug.WriteLine(key);
-        }
+#if DEBUG
+        if (result == null && this.Name != null)
+            this.WhiteLine(key, this.Name);
+#endif
         return result;
     }
 
@@ -41,11 +42,17 @@ public abstract class ResxDisplayMarkupCommandBase : DisplayMarkupCommandBase
         var type = this.GetType();
         string key = $"Type_{type.Name}_Description";
         var result = this.GetResourceManager(type)?.GetString(key);
-        if (result == null)
-        {
-            System.Diagnostics.Debug.WriteLine(key);
-        }
+#if DEBUG
+        if (result == null && this.Description != null)
+            this.WhiteLine(key, this.Description);
+#endif
         return result;
+    }
+
+    protected void WhiteLine(string key, string value)
+    {
+        string v = string.Format(resxFormat, key, value);
+        System.Diagnostics.Debug.WriteLine(v);
     }
 
     private ResourceManager _resourceManager;

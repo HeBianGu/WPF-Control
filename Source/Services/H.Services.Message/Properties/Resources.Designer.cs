@@ -160,6 +160,168 @@ namespace H.Services.Message.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 显示.
+        /// </summary>
+        public static string Type_ShowCommand {
+            get {
+                return ResourceManager.GetString("Type_ShowCommand", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 显示呈现页面.
+        /// </summary>
+        public static string Type_ShowCommand_Description {
+            get {
+                return ResourceManager.GetString("Type_ShowCommand_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 编辑.
+        /// </summary>
+        public static string Type_ShowEditCommand {
+            get {
+                return ResourceManager.GetString("Type_ShowEditCommand", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 显示弹窗消息.
+        /// </summary>
+        public static string Type_ShowEditCommand_Description {
+            get {
+                return ResourceManager.GetString("Type_ShowEditCommand_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 显示消息.
+        /// </summary>
+        public static string Type_ShowIocCommand {
+            get {
+                return ResourceManager.GetString("Type_ShowIocCommand", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 显示弹窗消息.
+        /// </summary>
+        public static string Type_ShowIocCommand_Description {
+            get {
+                return ResourceManager.GetString("Type_ShowIocCommand_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 显示消息.
+        /// </summary>
+        public static string Type_ShowMessageCommand {
+            get {
+                return ResourceManager.GetString("Type_ShowMessageCommand", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 显示弹窗消息.
+        /// </summary>
+        public static string Type_ShowMessageCommand_Description {
+            get {
+                return ResourceManager.GetString("Type_ShowMessageCommand_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 显示消息.
+        /// </summary>
+        public static string Type_ShowPercentCommand {
+            get {
+                return ResourceManager.GetString("Type_ShowPercentCommand", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 显示弹窗消息.
+        /// </summary>
+        public static string Type_ShowPercentCommand_Description {
+            get {
+                return ResourceManager.GetString("Type_ShowPercentCommand_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 显示消息.
+        /// </summary>
+        public static string Type_ShowStringCommand {
+            get {
+                return ResourceManager.GetString("Type_ShowStringCommand", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 显示弹窗消息.
+        /// </summary>
+        public static string Type_ShowStringCommand_Description {
+            get {
+                return ResourceManager.GetString("Type_ShowStringCommand_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 编辑.
+        /// </summary>
+        public static string Type_ShowTabEditCommand {
+            get {
+                return ResourceManager.GetString("Type_ShowTabEditCommand", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 显示多标签表单编辑数据.
+        /// </summary>
+        public static string Type_ShowTabEditCommand_Description {
+            get {
+                return ResourceManager.GetString("Type_ShowTabEditCommand_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 查看.
+        /// </summary>
+        public static string Type_ShowViewCommand {
+            get {
+                return ResourceManager.GetString("Type_ShowViewCommand", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 显示表单查看数据.
+        /// </summary>
+        public static string Type_ShowViewCommand_Description {
+            get {
+                return ResourceManager.GetString("Type_ShowViewCommand_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 显示消息.
+        /// </summary>
+        public static string Type_ShowWaitCommand {
+            get {
+                return ResourceManager.GetString("Type_ShowWaitCommand", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 显示弹窗消息.
+        /// </summary>
+        public static string Type_ShowWaitCommand_Description {
+            get {
+                return ResourceManager.GetString("Type_ShowWaitCommand_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 查看.
         /// </summary>
         public static string View {

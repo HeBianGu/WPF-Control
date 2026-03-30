@@ -63,9 +63,36 @@ namespace H.Modules.Style.Properties {
         /// <summary>
         ///   Looks up a localized string similar to 控件样式.
         /// </summary>
+        public static string Property_StyleOptions_StyleResource {
+            get {
+                return ResourceManager.GetString("Property_StyleOptions_StyleResource", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 控件样式.
+        /// </summary>
         public static string Type_StyleOptions {
             get {
                 return ResourceManager.GetString("Type_StyleOptions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 控件样式设置设置的信息.
+        /// </summary>
+        public static string Type_StyleOptions_Description {
+            get {
+                return ResourceManager.GetString("Type_StyleOptions_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 显示设置.
+        /// </summary>
+        public static string Type_StyleOptions_GroupName {
+            get {
+                return ResourceManager.GetString("Type_StyleOptions_GroupName", resourceCulture);
             }
         }
     }

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AppTitle" xml:space="preserve">
+    <value>多语言测试1</value>
+  </data>
+  <data name="Hello" xml:space="preserve">
+    <value>你好2</value>
+  </data>
+	<data name="Property_AppSetting_DisplayMode" xml:space="preserve">
+    <value>布局方式</value>
+  </data>
+	<data name="Property_AppSetting_ViewSizeMode" xml:space="preserve">
+    <value>缩率图尺寸</value>
+  </data>
+	<data name="Property_AppSetting_Stretch" xml:space="preserve">
+    <value>缩率图拉伸方式</value>
+  </data>
+	<data name="Property_AppSetting_UseProject" xml:space="preserve">
+    <value>启用工程管理</value>
+  </data>
+	<data name="Property_FileProjectItemSetting_UseFavorite" xml:space="preserve">
+    <value>启用喜欢过滤器</value>
+  </data>
+	<data name="Property_FileProjectItemSetting_UseFavoritePath" xml:space="preserve">
+    <value>启用收藏夹</value>
+  </data>
+	<data name="Property_FileProjectItemSetting_UseSeeLater" xml:space="preserve">
+    <value>启用稍后观看</value>
+  </data>
+	<data name="Property_FileProjectItemSetting_UseAreaTag" xml:space="preserve">
+    <value>启用国家标记</value>
+  </data>
+	<data name="Property_FileProjectItemSetting_UseArticulationTag" xml:space="preserve">
+    <value>启用清晰度标记</value>
+  </data>
+	<data name="Property_FileProjectItemSetting_UseExtension" xml:space="preserve">
+    <value>启用扩展名</value>
+  </data>
+	<data name="Property_FileProjectItemSetting_UseFileType" xml:space="preserve">
+    <value>启用文件类型</value>
+  </data>
+	<data name="Property_FileProjectItemSetting_UseHistory" xml:space="preserve">
+    <value>启用历史记录</value>
+  </data>
+	<data name="Property_FileProjectItemSetting_UseWatched" xml:space="preserve">
+    <value>启用观看</value>
+  </data>
+	<data name="Property_FileProjectItemSetting_UseScore" xml:space="preserve">
+    <value>启用评分</value>
+  </data>
+	<data name="Property_FileProjectItemSetting_UseObjectTag" xml:space="preserve">
+    <value>启用对象标记</value>
+  </data>
+	<data name="Property_FileProjectItemSetting_UseOrderBox" xml:space="preserve">
+    <value>启用排序器</value>
+  </data>
+	<data name="Property_FileProjectItemSetting_UsePixelFormat" xml:space="preserve">
+    <value>启用像素格式</value>
+  </data>
+</root>

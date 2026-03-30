@@ -68,5 +68,23 @@ namespace H.Modules.SplashScreen.Properties {
                 return ResourceManager.GetString("Type_SplashScreenOptions", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 启动页面设置信息.
+        /// </summary>
+        public static string Type_SplashScreenOptions_Description {
+            get {
+                return ResourceManager.GetString("Type_SplashScreenOptions_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 系统设置.
+        /// </summary>
+        public static string Type_SplashScreenOptions_GroupName {
+            get {
+                return ResourceManager.GetString("Type_SplashScreenOptions_GroupName", resourceCulture);
+            }
+        }
     }
 }

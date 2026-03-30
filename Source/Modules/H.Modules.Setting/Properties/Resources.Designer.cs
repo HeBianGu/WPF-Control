@@ -61,11 +61,272 @@ namespace H.Modules.Setting.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 设置管理员密码.
+        /// </summary>
+        public static string Property_SettingSecurityViewOption_Password {
+            get {
+                return ResourceManager.GetString("Property_SettingSecurityViewOption_Password", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 设置是否启用密码，启用后进入设置页面需要输入预设管理员密码.
+        /// </summary>
+        public static string Property_SettingSecurityViewOption_Password_Description {
+            get {
+                return ResourceManager.GetString("Property_SettingSecurityViewOption_Password_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 密码校验次数.
+        /// </summary>
+        public static string Property_SettingSecurityViewOption_PasswordCount {
+            get {
+                return ResourceManager.GetString("Property_SettingSecurityViewOption_PasswordCount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 密码输入错误次数超过密码校验次数不许再输入.
+        /// </summary>
+        public static string Property_SettingSecurityViewOption_PasswordCount_Description {
+            get {
+                return ResourceManager.GetString("Property_SettingSecurityViewOption_PasswordCount_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 记住密码.
+        /// </summary>
+        public static string Property_SettingSecurityViewOption_RememberPassword {
+            get {
+                return ResourceManager.GetString("Property_SettingSecurityViewOption_RememberPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 记住密码后下次打开设置页面自动进入.
+        /// </summary>
+        public static string Property_SettingSecurityViewOption_RememberPassword_Description {
+            get {
+                return ResourceManager.GetString("Property_SettingSecurityViewOption_RememberPassword_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 启用密码.
+        /// </summary>
+        public static string Property_SettingSecurityViewOption_UsePassword {
+            get {
+                return ResourceManager.GetString("Property_SettingSecurityViewOption_UsePassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 设置是否启用密码，启用后进入设置页面需要输入预设管理员密码.
+        /// </summary>
+        public static string Property_SettingSecurityViewOption_UsePassword_Description {
+            get {
+                return ResourceManager.GetString("Property_SettingSecurityViewOption_UsePassword_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 页面高度.
+        /// </summary>
+        public static string Property_SettingViewOptions_Height {
+            get {
+                return ResourceManager.GetString("Property_SettingViewOptions_Height", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 设置页面高度.
+        /// </summary>
+        public static string Property_SettingViewOptions_Height_Description {
+            get {
+                return ResourceManager.GetString("Property_SettingViewOptions_Height_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 页面边距.
+        /// </summary>
+        public static string Property_SettingViewOptions_Margin {
+            get {
+                return ResourceManager.GetString("Property_SettingViewOptions_Margin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 设置页面边距.
+        /// </summary>
+        public static string Property_SettingViewOptions_Margin_Description {
+            get {
+                return ResourceManager.GetString("Property_SettingViewOptions_Margin_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 最小高度.
+        /// </summary>
+        public static string Property_SettingViewOptions_MinHeight {
+            get {
+                return ResourceManager.GetString("Property_SettingViewOptions_MinHeight", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 设置页面最小高度.
+        /// </summary>
+        public static string Property_SettingViewOptions_MinHeight_Description {
+            get {
+                return ResourceManager.GetString("Property_SettingViewOptions_MinHeight_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 最小宽度.
+        /// </summary>
+        public static string Property_SettingViewOptions_MinWidth {
+            get {
+                return ResourceManager.GetString("Property_SettingViewOptions_MinWidth", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 设置页面最小宽度.
+        /// </summary>
+        public static string Property_SettingViewOptions_MinWidth_Description {
+            get {
+                return ResourceManager.GetString("Property_SettingViewOptions_MinWidth_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 导航最小宽度.
+        /// </summary>
+        public static string Property_SettingViewOptions_NavigationiTitleWidth {
+            get {
+                return ResourceManager.GetString("Property_SettingViewOptions_NavigationiTitleWidth", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 设置页面导航最小宽度.
+        /// </summary>
+        public static string Property_SettingViewOptions_NavigationiTitleWidth_Description {
+            get {
+                return ResourceManager.GetString("Property_SettingViewOptions_NavigationiTitleWidth_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 标题宽度.
+        /// </summary>
+        public static string Property_SettingViewOptions_TitleWidth {
+            get {
+                return ResourceManager.GetString("Property_SettingViewOptions_TitleWidth", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 设置页面标题宽度.
+        /// </summary>
+        public static string Property_SettingViewOptions_TitleWidth_Description {
+            get {
+                return ResourceManager.GetString("Property_SettingViewOptions_TitleWidth_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 启用恢复默认.
+        /// </summary>
+        public static string Property_SettingViewOptions_UseSetDefault {
+            get {
+                return ResourceManager.GetString("Property_SettingViewOptions_UseSetDefault", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 设置显示恢复默认按钮功能.
+        /// </summary>
+        public static string Property_SettingViewOptions_UseSetDefault_Description {
+            get {
+                return ResourceManager.GetString("Property_SettingViewOptions_UseSetDefault_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 页面宽度.
+        /// </summary>
+        public static string Property_SettingViewOptions_Width {
+            get {
+                return ResourceManager.GetString("Property_SettingViewOptions_Width", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 设置页面宽度.
+        /// </summary>
+        public static string Property_SettingViewOptions_Width_Description {
+            get {
+                return ResourceManager.GetString("Property_SettingViewOptions_Width_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 设置页面控制.
+        /// </summary>
+        public static string Type_SettingSecurityViewOption {
+            get {
+                return ResourceManager.GetString("Type_SettingSecurityViewOption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 安全设置.
+        /// </summary>
+        public static string Type_SettingSecurityViewOption_GroupName {
+            get {
+                return ResourceManager.GetString("Type_SettingSecurityViewOption_GroupName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 设置页面.
         /// </summary>
         public static string Type_SettingViewOptions {
             get {
                 return ResourceManager.GetString("Type_SettingViewOptions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 显示设置.
+        /// </summary>
+        public static string Type_SettingViewOptions_GroupName {
+            get {
+                return ResourceManager.GetString("Type_SettingViewOptions_GroupName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 设置.
+        /// </summary>
+        public static string Type_ShowSettingCommand {
+            get {
+                return ResourceManager.GetString("Type_ShowSettingCommand", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 显示系统设置页面.
+        /// </summary>
+        public static string Type_ShowSettingCommand_Description {
+            get {
+                return ResourceManager.GetString("Type_ShowSettingCommand_Description", resourceCulture);
             }
         }
     }

@@ -61,11 +61,164 @@ namespace H.Modules.Guide.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 控件样式.
+        ///   Looks up a localized string similar to 动画间隔.
+        /// </summary>
+        public static string Property_GuideOptions_AnimationDuration {
+            get {
+                return ResourceManager.GetString("Property_GuideOptions_AnimationDuration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 背景颜色.
+        /// </summary>
+        public static string Property_GuideOptions_CoverColor {
+            get {
+                return ResourceManager.GetString("Property_GuideOptions_CoverColor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 设置遮盖背景的颜色.
+        /// </summary>
+        public static string Property_GuideOptions_CoverColor_Description {
+            get {
+                return ResourceManager.GetString("Property_GuideOptions_CoverColor_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 透明度.
+        /// </summary>
+        public static string Property_GuideOptions_CoverOpacity {
+            get {
+                return ResourceManager.GetString("Property_GuideOptions_CoverOpacity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 设置遮盖背景的透明度.
+        /// </summary>
+        public static string Property_GuideOptions_CoverOpacity_Description {
+            get {
+                return ResourceManager.GetString("Property_GuideOptions_CoverOpacity_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 线条颜色.
+        /// </summary>
+        public static string Property_GuideOptions_Stroke {
+            get {
+                return ResourceManager.GetString("Property_GuideOptions_Stroke", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 线条虚线.
+        /// </summary>
+        public static string Property_GuideOptions_StrokeDashArray {
+            get {
+                return ResourceManager.GetString("Property_GuideOptions_StrokeDashArray", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 线条厚度.
+        /// </summary>
+        public static string Property_GuideOptions_StrokeThickness {
+            get {
+                return ResourceManager.GetString("Property_GuideOptions_StrokeThickness", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 详情宽度.
+        /// </summary>
+        public static string Property_GuideOptions_TextMaxWidth {
+            get {
+                return ResourceManager.GetString("Property_GuideOptions_TextMaxWidth", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 设置详情页面的最大宽度.
+        /// </summary>
+        public static string Property_GuideOptions_TextMaxWidth_Description {
+            get {
+                return ResourceManager.GetString("Property_GuideOptions_TextMaxWidth_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 自动启动.
+        /// </summary>
+        public static string Property_GuideOptions_UseOnLoad {
+            get {
+                return ResourceManager.GetString("Property_GuideOptions_UseOnLoad", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 启动时显示新手向导.
+        /// </summary>
+        public static string Property_GuideOptions_UseOnLoad_Description {
+            get {
+                return ResourceManager.GetString("Property_GuideOptions_UseOnLoad_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 向导页面.
         /// </summary>
         public static string Type_GuideOptions {
             get {
                 return ResourceManager.GetString("Type_GuideOptions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 设置向导页面信息.
+        /// </summary>
+        public static string Type_GuideOptions_Description {
+            get {
+                return ResourceManager.GetString("Type_GuideOptions_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 控件设置.
+        /// </summary>
+        public static string Type_GuideOptions_GroupName {
+            get {
+                return ResourceManager.GetString("Type_GuideOptions_GroupName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 设置页面控制.
+        /// </summary>
+        public static string Type_SettingSecurityViewOption {
+            get {
+                return ResourceManager.GetString("Type_SettingSecurityViewOption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 安全设置.
+        /// </summary>
+        public static string Type_SettingSecurityViewOption_GroupName {
+            get {
+                return ResourceManager.GetString("Type_SettingSecurityViewOption_GroupName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 显示设置.
+        /// </summary>
+        public static string Type_SettingViewOptions_GroupName {
+            get {
+                return ResourceManager.GetString("Type_SettingViewOptions_GroupName", resourceCulture);
             }
         }
     }

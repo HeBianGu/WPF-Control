@@ -61,11 +61,83 @@ namespace H.Modules.Feedback.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 主题设置.
+        ///   Looks up a localized string similar to 启用SSL.
+        /// </summary>
+        public static string Property_FeedbackOptions_EnableSsl {
+            get {
+                return ResourceManager.GetString("Property_FeedbackOptions_EnableSsl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 服务器.
+        /// </summary>
+        public static string Property_FeedbackOptions_Host {
+            get {
+                return ResourceManager.GetString("Property_FeedbackOptions_Host", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 启用HTML格式.
+        /// </summary>
+        public static string Property_FeedbackOptions_IsBodyHtml {
+            get {
+                return ResourceManager.GetString("Property_FeedbackOptions_IsBodyHtml", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 授权码.
+        /// </summary>
+        public static string Property_FeedbackOptions_Password {
+            get {
+                return ResourceManager.GetString("Property_FeedbackOptions_Password", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 端口号.
+        /// </summary>
+        public static string Property_FeedbackOptions_Port {
+            get {
+                return ResourceManager.GetString("Property_FeedbackOptions_Port", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 外发账号.
+        /// </summary>
+        public static string Property_FeedbackOptions_User {
+            get {
+                return ResourceManager.GetString("Property_FeedbackOptions_User", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 用户反馈设置.
         /// </summary>
         public static string Type_FeedbackOptions {
             get {
                 return ResourceManager.GetString("Type_FeedbackOptions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 用户反馈设置的信息.
+        /// </summary>
+        public static string Type_FeedbackOptions_Description {
+            get {
+                return ResourceManager.GetString("Type_FeedbackOptions_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 系统设置.
+        /// </summary>
+        public static string Type_FeedbackOptions_GroupName {
+            get {
+                return ResourceManager.GetString("Type_FeedbackOptions_GroupName", resourceCulture);
             }
         }
     }

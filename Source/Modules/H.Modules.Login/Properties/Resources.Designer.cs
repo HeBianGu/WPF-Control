@@ -259,6 +259,141 @@ namespace H.Modules.Login.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 管理员账号.
+        /// </summary>
+        public static string Property_LoginOptions_AdminName {
+            get {
+                return ResourceManager.GetString("Property_LoginOptions_AdminName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 上次登录用户.
+        /// </summary>
+        public static string Property_LoginOptions_LastUserName {
+            get {
+                return ResourceManager.GetString("Property_LoginOptions_LastUserName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 登录标题.
+        /// </summary>
+        public static string Property_LoginOptions_Product {
+            get {
+                return ResourceManager.GetString("Property_LoginOptions_Product", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 字体大小.
+        /// </summary>
+        public static string Property_LoginOptions_ProductFontSize {
+            get {
+                return ResourceManager.GetString("Property_LoginOptions_ProductFontSize", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 记住密码.
+        /// </summary>
+        public static string Property_LoginOptions_Remember {
+            get {
+                return ResourceManager.GetString("Property_LoginOptions_Remember", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 退出登录重启.
+        /// </summary>
+        public static string Property_LoginOptions_UseLogoutRestart {
+            get {
+                return ResourceManager.GetString("Property_LoginOptions_UseLogoutRestart", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 启用退出登录重启应用.
+        /// </summary>
+        public static string Property_LoginOptions_UseLogoutRestart_Description {
+            get {
+                return ResourceManager.GetString("Property_LoginOptions_UseLogoutRestart_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 启用访客.
+        /// </summary>
+        public static string Property_LoginOptions_UseVisitor {
+            get {
+                return ResourceManager.GetString("Property_LoginOptions_UseVisitor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 启用访客模式后登录不成功也可以进入主窗口.
+        /// </summary>
+        public static string Property_LoginOptions_UseVisitor_Description {
+            get {
+                return ResourceManager.GetString("Property_LoginOptions_UseVisitor_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 左侧图片.
+        /// </summary>
+        public static string Property_RegistorOptions_Image {
+            get {
+                return ResourceManager.GetString("Property_RegistorOptions_Image", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 发送验证码的邮箱.
+        /// </summary>
+        public static string Property_RegistorOptions_MailAccount {
+            get {
+                return ResourceManager.GetString("Property_RegistorOptions_MailAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 隐私策略.
+        /// </summary>
+        public static string Property_RegistorOptions_PrivacypolicyUri {
+            get {
+                return ResourceManager.GetString("Property_RegistorOptions_PrivacypolicyUri", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 应用许可.
+        /// </summary>
+        public static string Property_RegistorOptions_ServiceAgreementUri {
+            get {
+                return ResourceManager.GetString("Property_RegistorOptions_ServiceAgreementUri", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 启用邮箱注册.
+        /// </summary>
+        public static string Property_RegistorOptions_UseMail {
+            get {
+                return ResourceManager.GetString("Property_RegistorOptions_UseMail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 启用邮箱注册.
+        /// </summary>
+        public static string Property_RegistorOptions_UseMail_Description {
+            get {
+                return ResourceManager.GetString("Property_RegistorOptions_UseMail_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 注册.
         /// </summary>
         public static string Register {
@@ -331,11 +466,47 @@ namespace H.Modules.Login.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 登录页面设置的信息.
+        /// </summary>
+        public static string Type_LoginOptions_Description {
+            get {
+                return ResourceManager.GetString("Type_LoginOptions_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 系统设置.
+        /// </summary>
+        public static string Type_LoginOptions_GroupName {
+            get {
+                return ResourceManager.GetString("Type_LoginOptions_GroupName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 注册页面设置.
         /// </summary>
         public static string Type_RegistorOptions {
             get {
                 return ResourceManager.GetString("Type_RegistorOptions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 注册页面设置的信息.
+        /// </summary>
+        public static string Type_RegistorOptions_Description {
+            get {
+                return ResourceManager.GetString("Type_RegistorOptions_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 系统设置.
+        /// </summary>
+        public static string Type_RegistorOptions_GroupName {
+            get {
+                return ResourceManager.GetString("Type_RegistorOptions_GroupName", resourceCulture);
             }
         }
         

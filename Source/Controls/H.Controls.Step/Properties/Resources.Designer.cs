@@ -61,11 +61,38 @@ namespace H.Controls.Step.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 设置页面.
+        ///   Looks up a localized string similar to 显示消息.
         /// </summary>
-        public static string Type_SettingViewOptions {
+        public static string Type_ShowStepCommand {
             get {
-                return ResourceManager.GetString("Type_SettingViewOptions", resourceCulture);
+                return ResourceManager.GetString("Type_ShowStepCommand", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 显示弹窗消息.
+        /// </summary>
+        public static string Type_ShowStepCommand_Description {
+            get {
+                return ResourceManager.GetString("Type_ShowStepCommand_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 显示消息.
+        /// </summary>
+        public static string Type_ShowVerticalStepCommand {
+            get {
+                return ResourceManager.GetString("Type_ShowVerticalStepCommand", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 显示弹窗消息.
+        /// </summary>
+        public static string Type_ShowVerticalStepCommand_Description {
+            get {
+                return ResourceManager.GetString("Type_ShowVerticalStepCommand_Description", resourceCulture);
             }
         }
     }

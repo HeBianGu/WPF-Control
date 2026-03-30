@@ -12,6 +12,8 @@ namespace H.Extensions.Mvvm.ViewModels.Base;
 
 public abstract class ResxDisplayBindableBase : DisplayBindableBase
 {
+
+    const string resxFormat = "  <data name=\"{0}\" xml:space=\"preserve\">\r\n    <value>{1}</value>\r\n  </data>";
     public ResxDisplayBindableBase()
     {
         this.UpdateResx();
@@ -22,6 +24,8 @@ public abstract class ResxDisplayBindableBase : DisplayBindableBase
         string rname = this.GetResxName();
         string rgroup = this.GetResxGroupName();
         string rdesc = this.GetResxDescription();
+
+
         this.Name = rname ?? this.Name;
         this.GroupName = rgroup ?? this.GroupName;
         this.Description = rdesc ?? this.Description;
@@ -32,11 +36,17 @@ public abstract class ResxDisplayBindableBase : DisplayBindableBase
         var type = this.GetType();
         string key = $"Type_{type.Name}";
         var result = this.GetResourceManager(type)?.GetString(key);
-        if (result == null)
-        {
-            System.Diagnostics.Debug.WriteLine(key);
-        }
+#if DEBUG
+        if (result == null && this.Name != null)
+            this.WhiteLine(key, this.Name);
+#endif
         return result;
+    }
+
+    protected void WhiteLine(string key, string value)
+    {
+        string v = string.Format(resxFormat, key, value);
+        System.Diagnostics.Debug.WriteLine(v);
     }
 
     protected virtual string GetResxGroupName()
@@ -44,10 +54,10 @@ public abstract class ResxDisplayBindableBase : DisplayBindableBase
         var type = this.GetType();
         string key = $"Type_{type.Name}_GroupName";
         var result = this.GetResourceManager(type)?.GetString(key);
-        if (result == null)
-        {
-            System.Diagnostics.Debug.WriteLine(key);
-        }
+#if DEBUG
+        if (result == null && this.GroupName != null)
+            this.WhiteLine(key, this.GroupName);
+#endif
         return result;
     }
 
@@ -56,10 +66,10 @@ public abstract class ResxDisplayBindableBase : DisplayBindableBase
         var type = this.GetType();
         string key = $"Type_{type.Name}_Description";
         var result = this.GetResourceManager(type)?.GetString(key);
-        if (result == null)
-        {
-            System.Diagnostics.Debug.WriteLine(key);
-        }
+#if DEBUG
+        if (result == null && this.Description != null)
+            this.WhiteLine(key, this.Description);
+#endif
         return result;
     }
 

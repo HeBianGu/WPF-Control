@@ -61,6 +61,105 @@ namespace H.Modules.About.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 服务协议.
+        /// </summary>
+        public static string Property_AboutOptions_Agreement {
+            get {
+                return ResourceManager.GetString("Property_AboutOptions_Agreement", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 程序集版本.
+        /// </summary>
+        public static string Property_AboutOptions_AssemblyVersion {
+            get {
+                return ResourceManager.GetString("Property_AboutOptions_AssemblyVersion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 程序集的版本号，用于标识程序集的唯一性和兼容性.
+        /// </summary>
+        public static string Property_AboutOptions_AssemblyVersion_Description {
+            get {
+                return ResourceManager.GetString("Property_AboutOptions_AssemblyVersion_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 公司信息.
+        /// </summary>
+        public static string Property_AboutOptions_Company {
+            get {
+                return ResourceManager.GetString("Property_AboutOptions_Company", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 产品配置.
+        /// </summary>
+        public static string Property_AboutOptions_Configuration {
+            get {
+                return ResourceManager.GetString("Property_AboutOptions_Configuration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 许可证书.
+        /// </summary>
+        public static string Property_AboutOptions_Copyright {
+            get {
+                return ResourceManager.GetString("Property_AboutOptions_Copyright", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 产品区域.
+        /// </summary>
+        public static string Property_AboutOptions_Culture {
+            get {
+                return ResourceManager.GetString("Property_AboutOptions_Culture", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 文件版本.
+        /// </summary>
+        public static string Property_AboutOptions_FileVersion {
+            get {
+                return ResourceManager.GetString("Property_AboutOptions_FileVersion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 隐私政策.
+        /// </summary>
+        public static string Property_AboutOptions_Privacy {
+            get {
+                return ResourceManager.GetString("Property_AboutOptions_Privacy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 产品信息.
+        /// </summary>
+        public static string Property_AboutOptions_ProductDescription {
+            get {
+                return ResourceManager.GetString("Property_AboutOptions_ProductDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 产品名称.
+        /// </summary>
+        public static string Property_AboutOptions_ProductName {
+            get {
+                return ResourceManager.GetString("Property_AboutOptions_ProductName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 产品标题.
         /// </summary>
         public static string Property_AboutOptions_Title {
@@ -70,7 +169,16 @@ namespace H.Modules.About.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 学生.
+        ///   Looks up a localized string similar to 产品商标.
+        /// </summary>
+        public static string Property_AboutOptions_Trademark {
+            get {
+                return ResourceManager.GetString("Property_AboutOptions_Trademark", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 关于.
         /// </summary>
         public static string Type_AboutOptions {
             get {
@@ -79,7 +187,7 @@ namespace H.Modules.About.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 学生.
+        ///   Looks up a localized string similar to 配置关于相关参数.
         /// </summary>
         public static string Type_AboutOptions_Description {
             get {
@@ -88,11 +196,65 @@ namespace H.Modules.About.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 学生.
+        ///   Looks up a localized string similar to 系统设置.
         /// </summary>
         public static string Type_AboutOptions_GroupName {
             get {
                 return ResourceManager.GetString("Type_AboutOptions_GroupName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 关于.
+        /// </summary>
+        public static string Type_ShowAboutCommand {
+            get {
+                return ResourceManager.GetString("Type_ShowAboutCommand", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 显示关于页面.
+        /// </summary>
+        public static string Type_ShowAboutCommand_Description {
+            get {
+                return ResourceManager.GetString("Type_ShowAboutCommand_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 服务协议.
+        /// </summary>
+        public static string Type_ShowAgreementCommand {
+            get {
+                return ResourceManager.GetString("Type_ShowAgreementCommand", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 查看系统服务协议.
+        /// </summary>
+        public static string Type_ShowAgreementCommand_Description {
+            get {
+                return ResourceManager.GetString("Type_ShowAgreementCommand_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 隐私政策.
+        /// </summary>
+        public static string Type_ShowPrivacyCommand {
+            get {
+                return ResourceManager.GetString("Type_ShowPrivacyCommand", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 查看系统隐私政策.
+        /// </summary>
+        public static string Type_ShowPrivacyCommand_Description {
+            get {
+                return ResourceManager.GetString("Type_ShowPrivacyCommand_Description", resourceCulture);
             }
         }
     }

@@ -61,11 +61,191 @@ namespace H.Modules.Help.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 博客地址.
+        /// </summary>
+        public static string Property_ContactOptions_Blog {
+            get {
+                return ResourceManager.GetString("Property_ContactOptions_Blog", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 发送邮箱.
+        /// </summary>
+        public static string Property_ContactOptions_Email {
+            get {
+                return ResourceManager.GetString("Property_ContactOptions_Email", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to GitHub地址.
+        /// </summary>
+        public static string Property_ContactOptions_GitHub {
+            get {
+                return ResourceManager.GetString("Property_ContactOptions_GitHub", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 提出问题.
+        /// </summary>
+        public static string Property_ContactOptions_GitHubIssue {
+            get {
+                return ResourceManager.GetString("Property_ContactOptions_GitHubIssue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 播客地址.
+        /// </summary>
+        public static string Property_ContactOptions_Podcast {
+            get {
+                return ResourceManager.GetString("Property_ContactOptions_Podcast", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 添加QQ.
+        /// </summary>
+        public static string Property_ContactOptions_QQ {
+            get {
+                return ResourceManager.GetString("Property_ContactOptions_QQ", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 地址.
+        /// </summary>
+        public static string Property_ReleaseVersionsOptions_Uri {
+            get {
+                return ResourceManager.GetString("Property_ReleaseVersionsOptions_Uri", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 地址.
+        /// </summary>
+        public static string Property_SupportOptions_Uri {
+            get {
+                return ResourceManager.GetString("Property_SupportOptions_Uri", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 地址.
+        /// </summary>
+        public static string Property_WebsiteOptions_Uri {
+            get {
+                return ResourceManager.GetString("Property_WebsiteOptions_Uri", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 联系方式.
+        /// </summary>
+        public static string Type_ContactOptions {
+            get {
+                return ResourceManager.GetString("Type_ContactOptions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 通过此方式可以联系到开发者.
+        /// </summary>
+        public static string Type_ContactOptions_Description {
+            get {
+                return ResourceManager.GetString("Type_ContactOptions_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 系统设置.
+        /// </summary>
+        public static string Type_ContactOptions_GroupName {
+            get {
+                return ResourceManager.GetString("Type_ContactOptions_GroupName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 发行说明.
+        /// </summary>
+        public static string Type_ReleaseVersionsOptions {
+            get {
+                return ResourceManager.GetString("Type_ReleaseVersionsOptions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 查看软件发行说明.
+        /// </summary>
+        public static string Type_ReleaseVersionsOptions_Description {
+            get {
+                return ResourceManager.GetString("Type_ReleaseVersionsOptions_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 系统设置.
+        /// </summary>
+        public static string Type_ReleaseVersionsOptions_GroupName {
+            get {
+                return ResourceManager.GetString("Type_ReleaseVersionsOptions_GroupName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 技术支持.
         /// </summary>
         public static string Type_SupportOptions {
             get {
                 return ResourceManager.GetString("Type_SupportOptions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 查看软件技术支持.
+        /// </summary>
+        public static string Type_SupportOptions_Description {
+            get {
+                return ResourceManager.GetString("Type_SupportOptions_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 系统设置.
+        /// </summary>
+        public static string Type_SupportOptions_GroupName {
+            get {
+                return ResourceManager.GetString("Type_SupportOptions_GroupName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 官方网址.
+        /// </summary>
+        public static string Type_WebsiteOptions {
+            get {
+                return ResourceManager.GetString("Type_WebsiteOptions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 查看官方网址.
+        /// </summary>
+        public static string Type_WebsiteOptions_Description {
+            get {
+                return ResourceManager.GetString("Type_WebsiteOptions_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 系统设置.
+        /// </summary>
+        public static string Type_WebsiteOptions_GroupName {
+            get {
+                return ResourceManager.GetString("Type_WebsiteOptions_GroupName", resourceCulture);
             }
         }
     }

@@ -61,11 +61,101 @@ namespace H.Windows.Main.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 窗口背景图片.
+        /// </summary>
+        public static string Property_WindowSetting_BackImagePath {
+            get {
+                return ResourceManager.GetString("Property_WindowSetting_BackImagePath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 图片透明度.
+        /// </summary>
+        public static string Property_WindowSetting_Opacity {
+            get {
+                return ResourceManager.GetString("Property_WindowSetting_Opacity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 图片拉伸.
+        /// </summary>
+        public static string Property_WindowSetting_Stretch {
+            get {
+                return ResourceManager.GetString("Property_WindowSetting_Stretch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 启用窗口背景图片.
+        /// </summary>
+        public static string Property_WindowSetting_UseBackImage {
+            get {
+                return ResourceManager.GetString("Property_WindowSetting_UseBackImage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 主窗口关闭提示.
+        /// </summary>
+        public static string Property_WindowSetting_UseNoticeOnMainWindowClose {
+            get {
+                return ResourceManager.GetString("Property_WindowSetting_UseNoticeOnMainWindowClose", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 当主窗口点击关闭时会提示是否关闭窗口.
+        /// </summary>
+        public static string Property_WindowSetting_UseNoticeOnMainWindowClose_Description {
+            get {
+                return ResourceManager.GetString("Property_WindowSetting_UseNoticeOnMainWindowClose_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 主窗口关闭保存数据.
+        /// </summary>
+        public static string Property_WindowSetting_UseSaveOnMainWindowClose {
+            get {
+                return ResourceManager.GetString("Property_WindowSetting_UseSaveOnMainWindowClose", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 当主窗口点击关闭时主窗口关闭保存数据.
+        /// </summary>
+        public static string Property_WindowSetting_UseSaveOnMainWindowClose_Description {
+            get {
+                return ResourceManager.GetString("Property_WindowSetting_UseSaveOnMainWindowClose_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 窗口设置.
         /// </summary>
         public static string Type_WindowSetting {
             get {
                 return ResourceManager.GetString("Type_WindowSetting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 设置窗口参数.
+        /// </summary>
+        public static string Type_WindowSetting_Description {
+            get {
+                return ResourceManager.GetString("Type_WindowSetting_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 控件设置.
+        /// </summary>
+        public static string Type_WindowSetting_GroupName {
+            get {
+                return ResourceManager.GetString("Type_WindowSetting_GroupName", resourceCulture);
             }
         }
     }

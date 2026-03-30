@@ -69,10 +69,10 @@ public abstract class ObjectPropertyItemBase : ResxDisplayBindableBase, IPropert
         var type = this.Obj.GetType();
         string key = $"Property_{type.Name}_{this.PropertyInfo.Name}";
         var result = this.GetResourceManager(type)?.GetString(key);
-        if (result == null)
-        {
-            System.Diagnostics.Debug.WriteLine(key);
-        }
+#if DEBUG
+        if (result == null && this.Name != null)
+            this.WhiteLine(key, this.Name);
+#endif
         return result;
     }
 
@@ -83,8 +83,10 @@ public abstract class ObjectPropertyItemBase : ResxDisplayBindableBase, IPropert
         var type = this.Obj.GetType();
         string key = $"Property_{type.Name}_{this.PropertyInfo.Name}_GroupName";
         var result = this.GetResourceManager(type)?.GetString(key);
-        if (result == null)
-            System.Diagnostics.Debug.WriteLine(key);
+#if DEBUG
+        if (result == null && this.GroupName != null)
+            this.WhiteLine(key, this.GroupName);
+#endif
         return result;
 
     }
@@ -96,8 +98,10 @@ public abstract class ObjectPropertyItemBase : ResxDisplayBindableBase, IPropert
         var type = this.Obj.GetType();
         string key = $"Property_{type.Name}_{this.PropertyInfo.Name}_Description";
         var result = this.GetResourceManager(type)?.GetString(key);
-        if (result == null)
-            System.Diagnostics.Debug.WriteLine(key);
+#if DEBUG
+        if (result == null && this.Description != null)
+            this.WhiteLine(key, this.Description);
+#endif
         return result;
     }
 }
