@@ -64,4 +64,22 @@
   <data name="Hello" xml:space="preserve">
     <value>Hola 2</value>
   </data>
+  <data name="Property_FFMpegOption_WorkingDirectory" xml:space="preserve">
+    <value>Ruta de trabajo</value>
+  </data>
+  <data name="Property_FFMpegOption_UsingMultithreading" xml:space="preserve">
+    <value>Habilitar múltiples hilos</value>
+  </data>
+  <data name="Property_FFMpegOption_BinaryFolder" xml:space="preserve">
+    <value>Ruta del exe</value>
+  </data>
+  <data name="Property_FFMpegOption_TemporaryFilesFolder" xml:space="preserve">
+    <value>Ruta de caché</value>
+  </data>
+  <data name="Property_FFMpegOption_FFMpegLogLevel" xml:space="preserve">
+    <value>Nivel de registro</value>
+  </data>
+  <data name="Property_FFMpegOption_UseCache" xml:space="preserve">
+    <value>Habilitar caché</value>
+  </data>
 </root>

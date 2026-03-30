@@ -61,4 +61,64 @@
   <data name="Type_SupportOptions" xml:space="preserve">
     <value>Soporte técnico</value>
   </data>
+  <data name="Type_ReleaseVersionsOptions" xml:space="preserve">
+    <value>Notas de la versión</value>
+  </data>
+  <data name="Type_ReleaseVersionsOptions_GroupName" xml:space="preserve">
+    <value>Configuración del sistema</value>
+  </data>
+  <data name="Type_ReleaseVersionsOptions_Description" xml:space="preserve">
+    <value>Ver las notas de la versión del software</value>
+  </data>
+  <data name="Type_SupportOptions_GroupName" xml:space="preserve">
+    <value>Configuración del sistema</value>
+  </data>
+  <data name="Type_SupportOptions_Description" xml:space="preserve">
+    <value>Ver soporte técnico del software</value>
+  </data>
+  <data name="Type_WebsiteOptions" xml:space="preserve">
+    <value>Sitio web oficial</value>
+  </data>
+  <data name="Type_WebsiteOptions_GroupName" xml:space="preserve">
+    <value>Configuración del sistema</value>
+  </data>
+  <data name="Type_WebsiteOptions_Description" xml:space="preserve">
+    <value>Ver sitio web oficial</value>
+  </data>
+  <data name="Type_ContactOptions" xml:space="preserve">
+    <value>Información de contacto</value>
+  </data>
+  <data name="Type_ContactOptions_GroupName" xml:space="preserve">
+    <value>Configuración del sistema</value>
+  </data>
+  <data name="Type_ContactOptions_Description" xml:space="preserve">
+    <value>&lt;translate&gt;Puede contactar con el desarrollador de esta manera&lt;/translate&gt;</value>
+  </data>
+  <data name="Property_ContactOptions_GitHub" xml:space="preserve">
+    <value>Dirección de GitHub</value>
+  </data>
+  <data name="Property_ContactOptions_GitHubIssue" xml:space="preserve">
+    <value>hacer una pregunta</value>
+  </data>
+  <data name="Property_ContactOptions_Email" xml:space="preserve">
+    <value>correo electrónico de envío</value>
+  </data>
+  <data name="Property_ContactOptions_QQ" xml:space="preserve">
+    <value>Añadir QQ</value>
+  </data>
+  <data name="Property_ContactOptions_Podcast" xml:space="preserve">
+    <value>Dirección del podcast</value>
+  </data>
+  <data name="Property_ContactOptions_Blog" xml:space="preserve">
+    <value>Dirección del blog</value>
+  </data>
+  <data name="Property_SupportOptions_Uri" xml:space="preserve">
+    <value>Dirección</value>
+  </data>
+  <data name="Property_WebsiteOptions_Uri" xml:space="preserve">
+    <value>Dirección</value>
+  </data>
+  <data name="Property_ReleaseVersionsOptions_Uri" xml:space="preserve">
+    <value>Dirección</value>
+  </data>
 </root>

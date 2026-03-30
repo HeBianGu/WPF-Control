@@ -61,4 +61,16 @@
   <data name="Type_Log4netOptions" xml:space="preserve">
     <value>Configuración de registros</value>
   </data>
+  <data name="Type_Log4netOptions_GroupName" xml:space="preserve">
+    <value>Configuración del sistema</value>
+  </data>
+  <data name="Type_Log4netOptions_Description" xml:space="preserve">
+    <value>Información configurada en la página de inicio de sesión</value>
+  </data>
+  <data name="Property_Log4netOptions_LogPath" xml:space="preserve">
+    <value>Ruta del registro</value>
+  </data>
+  <data name="Property_Log4netOptions_tempPath" xml:space="preserve">
+    <value>Ruta de caché</value>
+  </data>
 </root>

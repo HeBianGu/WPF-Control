@@ -61,4 +61,34 @@
   <data name="Type_WindowSetting" xml:space="preserve">
     <value>Configuración de la ventana</value>
   </data>
+  <data name="Type_WindowSetting_GroupName" xml:space="preserve">
+    <value>Configuración de controles</value>
+  </data>
+  <data name="Type_WindowSetting_Description" xml:space="preserve">
+    <value>Configurar parámetros de la ventana</value>
+  </data>
+  <data name="Property_WindowSetting_BackImagePath" xml:space="preserve">
+    <value>Imagen de fondo de la ventana</value>
+  </data>
+  <data name="Property_WindowSetting_UseBackImage" xml:space="preserve">
+    <value>Activar imagen de fondo de la ventana</value>
+  </data>
+  <data name="Property_WindowSetting_Opacity" xml:space="preserve">
+    <value>Opacidad de la imagen</value>
+  </data>
+  <data name="Property_WindowSetting_Stretch" xml:space="preserve">
+    <value>Estiramiento de imagen</value>
+  </data>
+  <data name="Property_WindowSetting_UseNoticeOnMainWindowClose" xml:space="preserve">
+    <value>Aviso de cierre de la ventana principal</value>
+  </data>
+  <data name="Property_WindowSetting_UseNoticeOnMainWindowClose_Description" xml:space="preserve">
+    <value>Se mostrará un mensaje de confirmación para cerrar la ventana cuando se haga clic en cerrar en la ventana principal.</value>
+  </data>
+  <data name="Property_WindowSetting_UseSaveOnMainWindowClose" xml:space="preserve">
+    <value>Guardar datos al cerrar la ventana principal</value>
+  </data>
+  <data name="Property_WindowSetting_UseSaveOnMainWindowClose_Description" xml:space="preserve">
+    <value>Cuando se hace clic en cerrar en la ventana principal, la ventana principal se cierra y guarda los datos.</value>
+  </data>
 </root>

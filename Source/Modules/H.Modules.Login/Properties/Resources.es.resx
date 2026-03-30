@@ -160,4 +160,61 @@
   <data name="Login" xml:space="preserve">
     <value>Iniciar sesión</value>
   </data>
+  <data name="Type_LoginOptions_GroupName" xml:space="preserve">
+    <value>Configuración del sistema</value>
+  </data>
+  <data name="Type_LoginOptions_Description" xml:space="preserve">
+    <value>Información configurada en la página de inicio de sesión</value>
+  </data>
+  <data name="Type_RegistorOptions_GroupName" xml:space="preserve">
+    <value>Configuración del sistema</value>
+  </data>
+  <data name="Type_RegistorOptions_Description" xml:space="preserve">
+    <value>Información configurada en la página de registro</value>
+  </data>
+  <data name="Property_LoginOptions_Product" xml:space="preserve">
+    <value>Iniciar sesión</value>
+  </data>
+  <data name="Property_LoginOptions_ProductFontSize" xml:space="preserve">
+    <value>Tamaño de fuente</value>
+  </data>
+  <data name="Property_LoginOptions_AdminName" xml:space="preserve">
+    <value>Administrador</value>
+  </data>
+  <data name="Property_LoginOptions_LastUserName" xml:space="preserve">
+    <value>Último usuario que inició sesión</value>
+  </data>
+  <data name="Property_LoginOptions_Remember" xml:space="preserve">
+    <value>Recordar contraseña</value>
+  </data>
+  <data name="Property_LoginOptions_UseVisitor" xml:space="preserve">
+    <value>Habilitar invitado</value>
+  </data>
+  <data name="Property_LoginOptions_UseVisitor_Description" xml:space="preserve">
+    <value>Después de habilitar el modo invitado, se puede acceder a la ventana principal incluso si el inicio de sesión no es exitoso.</value>
+  </data>
+  <data name="Property_LoginOptions_UseLogoutRestart" xml:space="preserve">
+    <value>Cerrar sesión y reiniciar</value>
+  </data>
+  <data name="Property_LoginOptions_UseLogoutRestart_Description" xml:space="preserve">
+    <value>Habilitar cierre de sesión y reiniciar la aplicación</value>
+  </data>
+  <data name="Property_RegistorOptions_UseMail" xml:space="preserve">
+    <value>Habilitar registro por correo electrónico</value>
+  </data>
+  <data name="Property_RegistorOptions_UseMail_Description" xml:space="preserve">
+    <value>Habilitar registro por correo electrónico</value>
+  </data>
+  <data name="Property_RegistorOptions_ServiceAgreementUri" xml:space="preserve">
+    <value>Licencia de la aplicación</value>
+  </data>
+  <data name="Property_RegistorOptions_PrivacypolicyUri" xml:space="preserve">
+    <value>Política de privacidad</value>
+  </data>
+  <data name="Property_RegistorOptions_MailAccount" xml:space="preserve">
+    <value>Correo electrónico para enviar el código de verificación</value>
+  </data>
+  <data name="Property_RegistorOptions_Image" xml:space="preserve">
+    <value>Imagen izquierda</value>
+  </data>
 </root>
