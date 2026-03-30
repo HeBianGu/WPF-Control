@@ -64,4 +64,55 @@
   <data name="Hello" xml:space="preserve">
     <value>Salut 2</value>
   </data>
+  <data name="Property_AppSetting_DisplayMode" xml:space="preserve">
+    <value>Mod de aspect</value>
+  </data>
+  <data name="Property_AppSetting_ViewSizeMode" xml:space="preserve">
+    <value>Miniatură dimensiune</value>
+  </data>
+  <data name="Property_AppSetting_Stretch" xml:space="preserve">
+    <value>Mod de întindere al miniaturii</value>
+  </data>
+  <data name="Property_AppSetting_UseProject" xml:space="preserve">
+    <value>Activare gestionare proiecte</value>
+  </data>
+  <data name="Property_FileProjectItemSetting_UseFavorite" xml:space="preserve">
+    <value>Activează filtrul de favorite</value>
+  </data>
+  <data name="Property_FileProjectItemSetting_UseFavoritePath" xml:space="preserve">
+    <value>Activează favoritele</value>
+  </data>
+  <data name="Property_FileProjectItemSetting_UseSeeLater" xml:space="preserve">
+    <value>Activați „Vizionați mai târziu”</value>
+  </data>
+  <data name="Property_FileProjectItemSetting_UseAreaTag" xml:space="preserve">
+    <value>Activare indicator de țară</value>
+  </data>
+  <data name="Property_FileProjectItemSetting_UseArticulationTag" xml:space="preserve">
+    <value>Activează marcajul de claritate</value>
+  </data>
+  <data name="Property_FileProjectItemSetting_UseExtension" xml:space="preserve">
+    <value>Activare extensie</value>
+  </data>
+  <data name="Property_FileProjectItemSetting_UseFileType" xml:space="preserve">
+    <value>Activați tipul de fișier</value>
+  </data>
+  <data name="Property_FileProjectItemSetting_UseHistory" xml:space="preserve">
+    <value>Activare istoric</value>
+  </data>
+  <data name="Property_FileProjectItemSetting_UseWatched" xml:space="preserve">
+    <value>Activare vizionare</value>
+  </data>
+  <data name="Property_FileProjectItemSetting_UseScore" xml:space="preserve">
+    <value>Activare evaluare</value>
+  </data>
+  <data name="Property_FileProjectItemSetting_UseObjectTag" xml:space="preserve">
+    <value>Activare marcare obiect</value>
+  </data>
+  <data name="Property_FileProjectItemSetting_UseOrderBox" xml:space="preserve">
+    <value>Activare sorter</value>
+  </data>
+  <data name="Property_FileProjectItemSetting_UsePixelFormat" xml:space="preserve">
+    <value>Activare format pixel</value>
+  </data>
 </root>

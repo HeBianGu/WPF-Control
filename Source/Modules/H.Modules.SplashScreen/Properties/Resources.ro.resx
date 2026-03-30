@@ -61,4 +61,10 @@
   <data name="Type_SplashScreenOptions" xml:space="preserve">
     <value>Pagină de pornire</value>
   </data>
+  <data name="Type_SplashScreenOptions_GroupName" xml:space="preserve">
+    <value>Setări sistem</value>
+  </data>
+  <data name="Type_SplashScreenOptions_Description" xml:space="preserve">
+    <value>Setări informații pagină de pornire</value>
+  </data>
 </root>
