@@ -160,4 +160,61 @@
   <data name="Login" xml:space="preserve">
     <value>Entrar</value>
   </data>
+  <data name="Type_LoginOptions_GroupName" xml:space="preserve">
+    <value>Configurações do sistema</value>
+  </data>
+  <data name="Type_LoginOptions_Description" xml:space="preserve">
+    <value>Informações de configuração da página de login</value>
+  </data>
+  <data name="Type_RegistorOptions_GroupName" xml:space="preserve">
+    <value>Configurações do sistema</value>
+  </data>
+  <data name="Type_RegistorOptions_Description" xml:space="preserve">
+    <value>Informações definidas na página de registro</value>
+  </data>
+  <data name="Property_LoginOptions_Product" xml:space="preserve">
+    <value>Título de login</value>
+  </data>
+  <data name="Property_LoginOptions_ProductFontSize" xml:space="preserve">
+    <value>Tamanho da fonte</value>
+  </data>
+  <data name="Property_LoginOptions_AdminName" xml:space="preserve">
+    <value>Conta de administrador</value>
+  </data>
+  <data name="Property_LoginOptions_LastUserName" xml:space="preserve">
+    <value>Último usuário conectado</value>
+  </data>
+  <data name="Property_LoginOptions_Remember" xml:space="preserve">
+    <value>Lembrar a senha</value>
+  </data>
+  <data name="Property_LoginOptions_UseVisitor" xml:space="preserve">
+    <value>Ativar visitante</value>
+  </data>
+  <data name="Property_LoginOptions_UseVisitor_Description" xml:space="preserve">
+    <value>Ativar o modo visitante permite entrar na janela principal mesmo que o login não seja bem-sucedido.</value>
+  </data>
+  <data name="Property_LoginOptions_UseLogoutRestart" xml:space="preserve">
+    <value>Reiniciar após terminar sessão</value>
+  </data>
+  <data name="Property_LoginOptions_UseLogoutRestart_Description" xml:space="preserve">
+    <value>Ativar reiniciar o aplicativo ao terminar a sessão</value>
+  </data>
+  <data name="Property_RegistorOptions_UseMail" xml:space="preserve">
+    <value>Ativar registro por e-mail</value>
+  </data>
+  <data name="Property_RegistorOptions_UseMail_Description" xml:space="preserve">
+    <value>Ativar registro por e-mail</value>
+  </data>
+  <data name="Property_RegistorOptions_ServiceAgreementUri" xml:space="preserve">
+    <value>Licença do Aplicativo</value>
+  </data>
+  <data name="Property_RegistorOptions_PrivacypolicyUri" xml:space="preserve">
+    <value>Política de Privacidade</value>
+  </data>
+  <data name="Property_RegistorOptions_MailAccount" xml:space="preserve">
+    <value>Email para envio do código de verificação</value>
+  </data>
+  <data name="Property_RegistorOptions_Image" xml:space="preserve">
+    <value>Imagem à esquerda</value>
+  </data>
 </root>

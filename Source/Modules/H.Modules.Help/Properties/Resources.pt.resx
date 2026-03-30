@@ -61,4 +61,64 @@
   <data name="Type_SupportOptions" xml:space="preserve">
     <value>Suporte técnico</value>
   </data>
+  <data name="Type_ReleaseVersionsOptions" xml:space="preserve">
+    <value>Notas de Lançamento</value>
+  </data>
+  <data name="Type_ReleaseVersionsOptions_GroupName" xml:space="preserve">
+    <value>Configurações do sistema</value>
+  </data>
+  <data name="Type_ReleaseVersionsOptions_Description" xml:space="preserve">
+    <value>Ver notas de lançamento do software</value>
+  </data>
+  <data name="Type_SupportOptions_GroupName" xml:space="preserve">
+    <value>Configurações do sistema</value>
+  </data>
+  <data name="Type_SupportOptions_Description" xml:space="preserve">
+    <value>Ver suporte técnico do software</value>
+  </data>
+  <data name="Type_WebsiteOptions" xml:space="preserve">
+    <value>Site oficial</value>
+  </data>
+  <data name="Type_WebsiteOptions_GroupName" xml:space="preserve">
+    <value>Configurações do sistema</value>
+  </data>
+  <data name="Type_WebsiteOptions_Description" xml:space="preserve">
+    <value>Ver site oficial</value>
+  </data>
+  <data name="Type_ContactOptions" xml:space="preserve">
+    <value>Contato</value>
+  </data>
+  <data name="Type_ContactOptions_GroupName" xml:space="preserve">
+    <value>Configurações do sistema</value>
+  </data>
+  <data name="Type_ContactOptions_Description" xml:space="preserve">
+    <value>Pode contactar o desenvolvedor desta forma.</value>
+  </data>
+  <data name="Property_ContactOptions_GitHub" xml:space="preserve">
+    <value>Endereço do GitHub</value>
+  </data>
+  <data name="Property_ContactOptions_GitHubIssue" xml:space="preserve">
+    <value>Fazer uma pergunta</value>
+  </data>
+  <data name="Property_ContactOptions_Email" xml:space="preserve">
+    <value>Enviar e-mail</value>
+  </data>
+  <data name="Property_ContactOptions_QQ" xml:space="preserve">
+    <value>Adicionar QQ</value>
+  </data>
+  <data name="Property_ContactOptions_Podcast" xml:space="preserve">
+    <value>Endereço do podcast</value>
+  </data>
+  <data name="Property_ContactOptions_Blog" xml:space="preserve">
+    <value>Endereço do blog</value>
+  </data>
+  <data name="Property_SupportOptions_Uri" xml:space="preserve">
+    <value>Endereço</value>
+  </data>
+  <data name="Property_WebsiteOptions_Uri" xml:space="preserve">
+    <value>Endereço</value>
+  </data>
+  <data name="Property_ReleaseVersionsOptions_Uri" xml:space="preserve">
+    <value>Endereço</value>
+  </data>
 </root>

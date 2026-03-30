@@ -61,4 +61,34 @@
   <data name="Type_WindowSetting" xml:space="preserve">
     <value>Configurações da janela</value>
   </data>
+  <data name="Type_WindowSetting_GroupName" xml:space="preserve">
+    <value>Configurações do controle</value>
+  </data>
+  <data name="Type_WindowSetting_Description" xml:space="preserve">
+    <value>Definir parâmetros da janela</value>
+  </data>
+  <data name="Property_WindowSetting_BackImagePath" xml:space="preserve">
+    <value>Imagem de fundo da janela</value>
+  </data>
+  <data name="Property_WindowSetting_UseBackImage" xml:space="preserve">
+    <value>Ativar imagem de fundo da janela</value>
+  </data>
+  <data name="Property_WindowSetting_Opacity" xml:space="preserve">
+    <value>Opacidade da imagem</value>
+  </data>
+  <data name="Property_WindowSetting_Stretch" xml:space="preserve">
+    <value>Alongamento da imagem</value>
+  </data>
+  <data name="Property_WindowSetting_UseNoticeOnMainWindowClose" xml:space="preserve">
+    <value>Aviso de fechamento da janela principal</value>
+  </data>
+  <data name="Property_WindowSetting_UseNoticeOnMainWindowClose_Description" xml:space="preserve">
+    <value>Ao clicar para fechar a janela principal, será exibida uma mensagem perguntando se deseja fechar a janela.</value>
+  </data>
+  <data name="Property_WindowSetting_UseSaveOnMainWindowClose" xml:space="preserve">
+    <value>Salvar dados ao fechar a janela principal</value>
+  </data>
+  <data name="Property_WindowSetting_UseSaveOnMainWindowClose_Description" xml:space="preserve">
+    <value>Quando a janela principal for fechada ao clicar em “Fechar”, os dados serão guardados.</value>
+  </data>
 </root>

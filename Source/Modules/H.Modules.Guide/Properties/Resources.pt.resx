@@ -61,4 +61,55 @@
   <data name="Type_GuideOptions" xml:space="preserve">
     <value>Estilo de controle</value>
   </data>
+  <data name="Type_GuideOptions_GroupName" xml:space="preserve">
+    <value>Configurações do controle</value>
+  </data>
+  <data name="Type_GuideOptions_Description" xml:space="preserve">
+    <value>Configurar informações da página do assistente</value>
+  </data>
+  <data name="Type_SettingViewOptions_GroupName" xml:space="preserve">
+    <value>Configurações de exibição</value>
+  </data>
+  <data name="Type_SettingSecurityViewOption" xml:space="preserve">
+    <value>Controle da página de configurações</value>
+  </data>
+  <data name="Type_SettingSecurityViewOption_GroupName" xml:space="preserve">
+    <value>Configurações de segurança</value>
+  </data>
+  <data name="Property_GuideOptions_UseOnLoad" xml:space="preserve">
+    <value>Iniciar automaticamente</value>
+  </data>
+  <data name="Property_GuideOptions_UseOnLoad_Description" xml:space="preserve">
+    <value>Mostrar o assistente de configuração inicial ao iniciar</value>
+  </data>
+  <data name="Property_GuideOptions_TextMaxWidth" xml:space="preserve">
+    <value>Largura dos detalhes</value>
+  </data>
+  <data name="Property_GuideOptions_TextMaxWidth_Description" xml:space="preserve">
+    <value>Definir a largura máxima da página de detalhes de configuração</value>
+  </data>
+  <data name="Property_GuideOptions_CoverColor" xml:space="preserve">
+    <value>Cor de fundo</value>
+  </data>
+  <data name="Property_GuideOptions_CoverColor_Description" xml:space="preserve">
+    <value>Definir a cor de fundo da sobreposição</value>
+  </data>
+  <data name="Property_GuideOptions_CoverOpacity" xml:space="preserve">
+    <value>Opacidade</value>
+  </data>
+  <data name="Property_GuideOptions_CoverOpacity_Description" xml:space="preserve">
+    <value>Definir a transparência do fundo de sobreposição</value>
+  </data>
+  <data name="Property_GuideOptions_Stroke" xml:space="preserve">
+    <value>Cor da linha</value>
+  </data>
+  <data name="Property_GuideOptions_StrokeThickness" xml:space="preserve">
+    <value>Espessura da linha</value>
+  </data>
+  <data name="Property_GuideOptions_StrokeDashArray" xml:space="preserve">
+    <value>Linha tracejada</value>
+  </data>
+  <data name="Property_GuideOptions_AnimationDuration" xml:space="preserve">
+    <value>Intervalo da animação</value>
+  </data>
 </root>

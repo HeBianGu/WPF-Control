@@ -61,4 +61,28 @@
   <data name="Type_FeedbackOptions" xml:space="preserve">
     <value>Configurações de tema</value>
   </data>
+  <data name="Type_FeedbackOptions_GroupName" xml:space="preserve">
+    <value>Configurações do sistema</value>
+  </data>
+  <data name="Type_FeedbackOptions_Description" xml:space="preserve">
+    <value>Informações definidas pelo feedback do utilizador</value>
+  </data>
+  <data name="Property_FeedbackOptions_Host" xml:space="preserve">
+    <value>Servidor</value>
+  </data>
+  <data name="Property_FeedbackOptions_Port" xml:space="preserve">
+    <value>Número da porta</value>
+  </data>
+  <data name="Property_FeedbackOptions_EnableSsl" xml:space="preserve">
+    <value>Ativar SSL</value>
+  </data>
+  <data name="Property_FeedbackOptions_User" xml:space="preserve">
+    <value>Conta para envio externo</value>
+  </data>
+  <data name="Property_FeedbackOptions_Password" xml:space="preserve">
+    <value>Código de licença</value>
+  </data>
+  <data name="Property_FeedbackOptions_IsBodyHtml" xml:space="preserve">
+    <value>Ativar formato HTML</value>
+  </data>
 </root>
