@@ -136,4 +136,7 @@
   <data name="Property_SqliteSettable_InitialCatalog_Description" xml:space="preserve">
     <value>Nome do arquivo do banco de dados</value>
   </data>
+  <data name="DataBase" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
 </root>

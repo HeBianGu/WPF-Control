@@ -286,6 +286,15 @@ namespace H.Globalization.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 数据库.
+        /// </summary>
+        public static string Common_DataBase {
+            get {
+                return ResourceManager.GetString("Common_DataBase", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 默认.
         /// </summary>
         public static string Common_Default {

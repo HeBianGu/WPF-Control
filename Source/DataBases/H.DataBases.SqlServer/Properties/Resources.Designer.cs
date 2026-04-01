@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace H.DataBases.Sqlite.Properties {
+namespace H.DataBases.SqlServer.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace H.DataBases.Sqlite.Properties {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("H.DataBases.Sqlite.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("H.DataBases.SqlServer.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -66,60 +66,6 @@ namespace H.DataBases.Sqlite.Properties {
         public static string DataBase {
             get {
                 return ResourceManager.GetString("DataBase", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to 数据库文件夹路径.
-        /// </summary>
-        public static string Property_SqliteSettable_FilePath {
-            get {
-                return ResourceManager.GetString("Property_SqliteSettable_FilePath", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to 数据库保存的文件夹路径.
-        /// </summary>
-        public static string Property_SqliteSettable_FilePath_Description {
-            get {
-                return ResourceManager.GetString("Property_SqliteSettable_FilePath_Description", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to 数据库名称.
-        /// </summary>
-        public static string Property_SqliteSettable_InitialCatalog {
-            get {
-                return ResourceManager.GetString("Property_SqliteSettable_InitialCatalog", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to 数据库文件的名称.
-        /// </summary>
-        public static string Property_SqliteSettable_InitialCatalog_Description {
-            get {
-                return ResourceManager.GetString("Property_SqliteSettable_InitialCatalog_Description", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to 数据库配置.
-        /// </summary>
-        public static string Type_SqliteSettable {
-            get {
-                return ResourceManager.GetString("Type_SqliteSettable", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to 数据设置.
-        /// </summary>
-        public static string Type_SqliteSettable_GroupName {
-            get {
-                return ResourceManager.GetString("Type_SqliteSettable_GroupName", resourceCulture);
             }
         }
     }

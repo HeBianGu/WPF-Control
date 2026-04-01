@@ -934,4 +934,7 @@
   <data name="Window_Restore" xml:space="preserve">
     <value>Restore</value>
   </data>
+  <data name="Common_DataBase" xml:space="preserve">
+    <value>Database</value>
+  </data>
 </root>

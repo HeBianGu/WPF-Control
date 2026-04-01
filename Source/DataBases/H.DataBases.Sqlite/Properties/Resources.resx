@@ -135,4 +135,7 @@
   <data name="Property_SqliteSettable_InitialCatalog_Description" xml:space="preserve">
     <value>数据库文件的名称</value>
   </data>
+  <data name="DataBase" xml:space="preserve">
+    <value>数据库</value>
+  </data>
 </root>
