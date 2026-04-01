@@ -9,6 +9,7 @@
 global using H.Controls.Form.Provider;
 global using System.Collections;
 global using System.Windows.Threading;
+using H.Common;
 using H.Controls.Form.PropertyItems.Base;
 
 namespace H.Controls.Form;
@@ -969,8 +970,9 @@ public partial class Form
             if (!string.IsNullOrEmpty(this.UseGroupNames))
             {
                 DisplayAttribute display = item.GetCustomAttribute<DisplayAttribute>();
+                var resx = this.SelectObject.GetType().GetPropertyGroupNameResourceString(item.Name);
                 string[] array = this.UseGroupNames.Split(new char[] { ' ', ',' }, StringSplitOptions.RemoveEmptyEntries);
-                string[] array1 = display?.GroupName?.Split(new char[] { ' ', ',' }, StringSplitOptions.RemoveEmptyEntries);
+                string[] array1 = (resx ?? display?.GroupName)?.Split(new char[] { ' ', ',' }, StringSplitOptions.RemoveEmptyEntries);
                 if (array1 == null)
                 {
                     DisplayAttribute displayer = item.GetCustomAttribute<DisplayAttribute>();

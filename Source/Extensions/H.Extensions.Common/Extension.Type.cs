@@ -11,6 +11,7 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.DirectoryServices.ActiveDirectory;
 using System.Reflection;
+using System.Resources;
 using System.Windows;
 using System.Windows.Threading;
 
@@ -123,5 +124,4 @@ public static class TypeExtension
     {
         return Nullable.GetUnderlyingType(type) ?? type;
     }
-
 }
