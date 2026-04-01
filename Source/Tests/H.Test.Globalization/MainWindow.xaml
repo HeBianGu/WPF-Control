@@ -85,5 +85,19 @@
         <TabItem Header="基础控件">
             <DataGrid ItemsSource="{GetStudents Count=0}" />
         </TabItem>
+
+        <TabItem Header="枚举">
+            <ComboBox>
+                <ItemsControl.Resources>
+                    <DataTemplate DataType="{x:Type local:TestEnum}">
+                        <TextBlock Text="{Binding .,Converter={GetEnumResxConverter}}"/>
+                    </DataTemplate>
+                </ItemsControl.Resources>
+                <local:TestEnum>Default</local:TestEnum>
+                <local:TestEnum>First</local:TestEnum>
+                <local:TestEnum>None</local:TestEnum>
+                <local:TestEnum>Default</local:TestEnum>
+            </ComboBox>
+        </TabItem>
     </TabControl>
 </h:MainWindow>

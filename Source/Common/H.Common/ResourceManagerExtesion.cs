@@ -72,4 +72,24 @@ public static class ResourceManagerExtesion
         string v = string.Format(resxFormat, key, value);
         System.Diagnostics.Debug.WriteLine(v);
     }
+
+    public static string GetEnumNameResx(this Enum value, string def = null)
+    {
+        var type = value.GetType();
+        string key = $"Enum_{type.Name}_{value.ToString()}";
+        return type.GetResx(key, def);
+    }
+
+    public static string GetEnumGroupNameResx(this Enum value, string def = null)
+    {
+        var type = value.GetType();
+        string key = $"Enum_{type.Name}_{value.ToString()}_GroupName";
+        return type.GetResx(key, def);
+    }
+    public static string GetEnumDescriptionResx(this Enum value, string def = null)
+    {
+        var type = value.GetType();
+        string key = $"Enum_{type.Name}_{value.ToString()}_Description";
+        return type.GetResx(key, def);
+    }
 }

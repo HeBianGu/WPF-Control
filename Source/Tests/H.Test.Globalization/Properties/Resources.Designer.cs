@@ -70,6 +70,33 @@ namespace H.Test.Globalization.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 默认.
+        /// </summary>
+        public static string Enum_TestEnum_Default {
+            get {
+                return ResourceManager.GetString("Enum_TestEnum_Default", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 第一个.
+        /// </summary>
+        public static string Enum_TestEnum_First {
+            get {
+                return ResourceManager.GetString("Enum_TestEnum_First", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 无.
+        /// </summary>
+        public static string Enum_TestEnum_None {
+            get {
+                return ResourceManager.GetString("Enum_TestEnum_None", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 你好2.
         /// </summary>
         public static string Hello {

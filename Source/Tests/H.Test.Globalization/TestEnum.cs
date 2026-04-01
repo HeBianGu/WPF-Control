@@ -6,16 +6,18 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
+using H.Common;
+using H.ValueConverter;
 using System.Globalization;
 
-namespace H.ValueConverter;
+namespace H.Test.Globalization;
 
-public class GetWriteObjectConverter : MarkupValueConverterBase
+public enum TestEnum
 {
-    public override object Convert(object value, Type targetType, object parameter, CultureInfo culture)
-    {
-        System.Diagnostics.Debug.WriteLine(value);
-        return value;
-    }
+    [Display(Name = "默认")]
+    Default = 0,
+    [Display(Name = "无")]
+    None,
+    [Display(Name = "第一个")]
+    First
 }
-
