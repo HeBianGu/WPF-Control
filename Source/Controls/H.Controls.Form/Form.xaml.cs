@@ -970,7 +970,7 @@ public partial class Form
             if (!string.IsNullOrEmpty(this.UseGroupNames))
             {
                 DisplayAttribute display = item.GetCustomAttribute<DisplayAttribute>();
-                var resx = this.SelectObject.GetType().GetPropertyGroupNameResourceString(item.Name);
+                var resx = this.SelectObject.GetType().GetPropertyGroupNameResx(item.Name);
                 string[] array = this.UseGroupNames.Split(new char[] { ' ', ',' }, StringSplitOptions.RemoveEmptyEntries);
                 string[] array1 = (resx ?? display?.GroupName)?.Split(new char[] { ' ', ',' }, StringSplitOptions.RemoveEmptyEntries);
                 if (array1 == null)

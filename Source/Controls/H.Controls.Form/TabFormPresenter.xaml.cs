@@ -53,7 +53,7 @@ public class TabFormPresenter : FormPresenter
             {
                 if (d.GroupName == null)
                     continue;
-                var resx = this.SelectObject.GetType().GetPropertyGroupNameResourceString(p.Name);
+                var resx = this.SelectObject.GetType().GetPropertyGroupNameResx(p.Name);
                 var names = (resx ?? d.GroupName).Split(",".ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
                 foreach (var n in names)
                 {

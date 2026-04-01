@@ -6,6 +6,7 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
+using H.Common;
 using H.Mvvm.Commands;
 using System.Reflection;
 using System.Resources;
@@ -62,46 +63,23 @@ public abstract class ObjectPropertyItemBase : ResxDisplayBindableBase, IPropert
 
     public abstract void LoadValue();
 
-    protected override string GetResxName()
+    protected override void UpdateResx()
     {
-        if (this.Obj == null || this.PropertyInfo == null)
-            return null;
-        var type = this.Obj.GetType();
-        string key = $"Property_{type.Name}_{this.PropertyInfo.Name}";
-        var result = this.GetResourceManager(type)?.GetString(key);
-#if DEBUG
-        if (result == null && this.Name != null)
-            this.WhiteLine(key, this.Name);
-#endif
-        return result;
-    }
+        if (this.Obj == null)
+            return;
+        {
+            string rname = this.Obj.GetType().GetPropertyNameResx(this.PropertyInfo.Name, this.Name);
+            this.Name = rname ?? this.Name;
+        }
 
-    protected override string GetResxGroupName()
-    {
-        if (this.Obj == null || this.PropertyInfo == null)
-            return null;
-        var type = this.Obj.GetType();
-        string key = $"Property_{type.Name}_{this.PropertyInfo.Name}_GroupName";
-        var result = this.GetResourceManager(type)?.GetString(key);
-#if DEBUG
-        if (result == null && this.GroupName != null)
-            this.WhiteLine(key, this.GroupName);
-#endif
-        return result;
+        {
+            string rname = this.Obj.GetType().GetPropertyGroupNameResx(this.PropertyInfo.Name, this.GroupName);
+            this.GroupName = rname ?? this.GroupName;
+        }
 
-    }
-
-    protected override string GetResxDescription()
-    {
-        if (this.Obj == null || this.PropertyInfo == null)
-            return null;
-        var type = this.Obj.GetType();
-        string key = $"Property_{type.Name}_{this.PropertyInfo.Name}_Description";
-        var result = this.GetResourceManager(type)?.GetString(key);
-#if DEBUG
-        if (result == null && this.Description != null)
-            this.WhiteLine(key, this.Description);
-#endif
-        return result;
+        {
+            string rname = this.Obj.GetType().GetPropertyDescriptionResx(this.PropertyInfo.Name, this.Description);
+            this.Description = rname ?? this.Description;
+        }
     }
 }
