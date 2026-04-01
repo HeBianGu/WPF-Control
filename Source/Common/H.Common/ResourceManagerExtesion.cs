@@ -14,12 +14,12 @@ namespace H.Common;
 public static class ResourceManagerExtesion
 {
     const string resxFormat = "  <data name=\"{0}\" xml:space=\"preserve\">\r\n    <value>{1}</value>\r\n  </data>";
-    private static Dictionary<Type, ResourceManager> _cache = new Dictionary<Type, ResourceManager>();
+    private static Dictionary<Assembly, ResourceManager> _cache = new Dictionary<Assembly, ResourceManager>();
     public static ResourceManager GetResourceManager(this Type type)
     {
-        if (_cache.ContainsKey(type))
-            return _cache[type];
-        return _cache[type] = new ResourceManager($"{type.Assembly.GetName().Name}.Properties.Resources", type.Assembly);
+        if (_cache.ContainsKey(type.Assembly))
+            return _cache[type.Assembly];
+        return _cache[type.Assembly] = new ResourceManager($"{type.Assembly.GetName().Name}.Properties.Resources", type.Assembly);
     }
 
     public static string GetResx(this Type type, string key, string def = null)

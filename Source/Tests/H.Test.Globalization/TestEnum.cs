@@ -14,10 +14,10 @@ namespace H.Test.Globalization;
 
 public enum TestEnum
 {
-    [Display(Name = "默认")]
+    [Display(Name = "默认", GroupName = "分组", Description = "表示默认行为")]
     Default = 0,
-    [Display(Name = "无")]
+    [Display(Name = "无", GroupName = "分组", Description = "表示无行为")]
     None,
-    [Display(Name = "第一个")]
+    [Display(Name = "第一个", GroupName = "分组", Description = "表示第一个行为")]
     First
 }

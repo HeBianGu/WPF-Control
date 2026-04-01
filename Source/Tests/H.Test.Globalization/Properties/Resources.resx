@@ -30,4 +30,28 @@
 	<data name="Enum_TestEnum_Default" xml:space="preserve">
     <value>默认</value>
   </data>
+	<data name="Enum_TestEnum_Default_GroupName" xml:space="preserve">
+    <value>分组</value>
+  </data>
+	<data name="Enum_TestEnum_Default_Description" xml:space="preserve">
+    <value>表示默认行为</value>
+  </data>
+	<data name="Enum_TestEnum_First_GroupName" xml:space="preserve">
+    <value>分组</value>
+  </data>
+	<data name="Enum_TestEnum_First_Description" xml:space="preserve">
+    <value>表示第一个行为</value>
+  </data>
+	<data name="Enum_TestEnum_None_GroupName" xml:space="preserve">
+    <value>分组</value>
+  </data>
+	<data name="Enum_TestEnum_None_Description" xml:space="preserve">
+    <value>表示无行为</value>
+  </data>
+	<data name="Enum_TestEnum_Default_GroupName" xml:space="preserve">
+    <value>分组</value>
+  </data>
+	<data name="Enum_TestEnum_Default_Description" xml:space="preserve">
+    <value>表示默认行为</value>
+  </data>
 </root>

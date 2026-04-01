@@ -26,3 +26,35 @@ public class GetEnumResxConverter : MarkupValueConverterBase
         return DependencyProperty.UnsetValue;
     }
 }
+
+public class GetEnumGroupNameResxConverter : MarkupValueConverterBase
+{
+    public override object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+    {
+        if (value is Enum e)
+        {
+            var type = value.GetType();
+            FieldInfo fi = value.GetType().GetField(value.ToString());
+            string def = fi.GetCustomAttribute<DisplayAttribute>()?.GroupName;
+            var result = e.GetEnumGroupNameResx(def) ?? def;
+            return result;
+        }
+        return DependencyProperty.UnsetValue;
+    }
+}
+
+public class GetEnumDescriptionResxConverter : MarkupValueConverterBase
+{
+    public override object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+    {
+        if (value is Enum e)
+        {
+            var type = value.GetType();
+            FieldInfo fi = value.GetType().GetField(value.ToString());
+            string def = fi.GetCustomAttribute<DisplayAttribute>()?.Description;
+            var result = e.GetEnumDescriptionResx(def) ?? def;
+            return result;
+        }
+        return DependencyProperty.UnsetValue;
+    }
+}

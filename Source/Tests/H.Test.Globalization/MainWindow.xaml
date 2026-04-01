@@ -90,7 +90,13 @@
             <ComboBox>
                 <ItemsControl.Resources>
                     <DataTemplate DataType="{x:Type local:TestEnum}">
-                        <TextBlock Text="{Binding .,Converter={GetEnumResxConverter}}"/>
+                        <TextBlock>
+                            <Run Text="{Binding ., Converter={GetEnumResxConverter}}" />
+                            <Run Text="-" />
+                            <Run Text="{Binding ., Converter={GetEnumGroupNameResxConverter}}" />
+                            <Run Text="-" />
+                            <Run Text="{Binding ., Converter={GetEnumDescriptionResxConverter}}" />
+                        </TextBlock>
                     </DataTemplate>
                 </ItemsControl.Resources>
                 <local:TestEnum>Default</local:TestEnum>

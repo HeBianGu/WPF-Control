@@ -79,6 +79,24 @@ namespace H.Test.Globalization.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 表示默认行为.
+        /// </summary>
+        public static string Enum_TestEnum_Default_Description {
+            get {
+                return ResourceManager.GetString("Enum_TestEnum_Default_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 分组.
+        /// </summary>
+        public static string Enum_TestEnum_Default_GroupName {
+            get {
+                return ResourceManager.GetString("Enum_TestEnum_Default_GroupName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 第一个.
         /// </summary>
         public static string Enum_TestEnum_First {
@@ -88,11 +106,47 @@ namespace H.Test.Globalization.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 表示第一个行为.
+        /// </summary>
+        public static string Enum_TestEnum_First_Description {
+            get {
+                return ResourceManager.GetString("Enum_TestEnum_First_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 分组.
+        /// </summary>
+        public static string Enum_TestEnum_First_GroupName {
+            get {
+                return ResourceManager.GetString("Enum_TestEnum_First_GroupName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 无.
         /// </summary>
         public static string Enum_TestEnum_None {
             get {
                 return ResourceManager.GetString("Enum_TestEnum_None", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 表示无行为.
+        /// </summary>
+        public static string Enum_TestEnum_None_Description {
+            get {
+                return ResourceManager.GetString("Enum_TestEnum_None_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 分组.
+        /// </summary>
+        public static string Enum_TestEnum_None_GroupName {
+            get {
+                return ResourceManager.GetString("Enum_TestEnum_None_GroupName", resourceCulture);
             }
         }
         
