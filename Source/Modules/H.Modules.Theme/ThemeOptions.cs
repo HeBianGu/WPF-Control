@@ -41,7 +41,7 @@ public class ThemeOptions : IocOptionInstance<ThemeOptions>, ILoginedSplashLoada
         this.ColorResources.Add(new LightColorResource());
         this.ColorResources.Add(new DefaultColorResource());
         var fontFamilies = Fonts.SystemFontFamilies.ToList();
-        fontFamilies.Insert(0, new FontFamily("微软雅黑"));
+        fontFamilies.Insert(0, new FontFamily("Microsoft YaHei"));
         this.FontFamilys = fontFamilies;
 
         this.BackgroundResources.Add(new SolidColorBrushResource());

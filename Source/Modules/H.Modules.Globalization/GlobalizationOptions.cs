@@ -76,8 +76,11 @@ public class GlobalizationOptions : IocOptionInstance<GlobalizationOptions>, IGl
         //    new FrameworkPropertyMetadata(XmlLanguage.GetLanguage(culture.IetfLanguageTag)));
         Thread.CurrentThread.CurrentUICulture = culture;
         Thread.CurrentThread.CurrentCulture = culture;
-        Application.Current.Dispatcher.Thread.CurrentUICulture = culture;
-        Application.Current.Dispatcher.Thread.CurrentCulture = culture;
+        Application.Current.Dispatcher.Invoke(() =>
+        {
+            Application.Current.Dispatcher.Thread.CurrentUICulture = culture;
+            Application.Current.Dispatcher.Thread.CurrentCulture = culture;
+        });
     }
     [JsonIgnore]
     public IReadOnlyCollection<CultureInfo> SupportedCultureInfos { get; set; }
@@ -116,6 +119,7 @@ public class GlobalizationOptions : IocOptionInstance<GlobalizationOptions>, IGl
         var r = base.Load(out message);
         var find = this.SupportedCultureInfos.FirstOrDefault(x => x.Name == this.CultureInfoKey);
         this.CultureInfo = find ?? new CultureInfo("zh-Hans");
+        this.UpdateResx();
         return r;
     }
 
@@ -128,6 +132,7 @@ public class GlobalizationOptions : IocOptionInstance<GlobalizationOptions>, IGl
             var r = await IocMessage.ShowDialogMessage("语言修改需要重启软件才生效，是否立即重启?");
             if (r != true)
                 return;
+            this.Save(out string message);
             Application.Current.Shutdown();
         }
     }
@@ -136,10 +141,8 @@ public class GlobalizationOptions : IocOptionInstance<GlobalizationOptions>, IGl
     {
         base.LoadDefault();
         var systemRegionCulture = CultureInfo.CurrentCulture;
-        //var s = this.GetSupportedCultureInfos();
-        //var systemMatch = this.GetSupportedCultureInfos().FirstOrDefault(x => x.Name == systemRegionCulture.Name);
-        //this.CultureInfo = systemMatch ?? new CultureInfo("zh-Hans");
-        this.CultureInfo = systemRegionCulture;
+        var systemMatch = this.GetSupportedCultureInfos().FirstOrDefault(x => x.Name == systemRegionCulture.Name);
+        this.CultureInfo = systemMatch ?? new CultureInfo("zh-Hans");
 
     }
 }

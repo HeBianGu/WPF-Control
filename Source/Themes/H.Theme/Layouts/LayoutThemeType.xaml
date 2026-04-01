@@ -1,21 +1,22 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:l="clr-namespace:H.Themes.Layouts"
+                    xmlns:p="clr-namespace:H.Themes.Properties"
                     xmlns:local="clr-namespace:H.Themes">
     <DataTemplate DataType="{x:Type l:LayoutThemeType}">
         <TextBlock x:Name="tb_name" />
         <DataTemplate.Triggers>
             <DataTrigger Binding="{Binding}"
                          Value="Default">
-                <Setter TargetName="tb_name" Property="Text" Value="常规（推荐）" />
+                <Setter TargetName="tb_name" Property="Text" Value="{x:Static p:Resources.Enum_LayoutThemeType_Default}" />
             </DataTrigger>
             <DataTrigger Binding="{Binding}"
                          Value="Large">
-                <Setter TargetName="tb_name" Property="Text" Value="宽松" />
+                <Setter TargetName="tb_name" Property="Text" Value="{x:Static p:Resources.Enum_LayoutThemeType_Large}" />
             </DataTrigger>
             <DataTrigger Binding="{Binding}"
                          Value="Small">
-                <Setter TargetName="tb_name" Property="Text" Value="紧凑" />
+                <Setter TargetName="tb_name" Property="Text" Value="{x:Static p:Resources.Enum_LayoutThemeType_Small}" />
             </DataTrigger>
         </DataTemplate.Triggers>
     </DataTemplate>
