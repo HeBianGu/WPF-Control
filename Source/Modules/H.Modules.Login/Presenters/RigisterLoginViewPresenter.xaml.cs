@@ -162,7 +162,7 @@ public class RigisterLoginViewPresenter : LoginViewPresenter, ILoginViewPresente
             try
             {
                 s.IsBusy = true;
-                s.Message = string.Format(Properties.Resources.Format_Doing, Properties.Resources.ChangePassword);
+                s.Message = Properties.Resources.ChangingPassword;
                 Thread.Sleep(1000);
                 bool r = Ioc<IRegisterService>.Instance.ResetPassword(this.MailVerify.Mail, this.UserName, this.Forget.Password, out string message);
                 if (!r)
@@ -172,7 +172,7 @@ public class RigisterLoginViewPresenter : LoginViewPresenter, ILoginViewPresente
                     this.Forget.Message = message;
                     return false;
                 }
-                s.Message = string.Format(Properties.Resources.Format_Success, Properties.Resources.ChangePassword);
+                s.Message = Properties.Resources.ChangePasswordSuccess;
                 Thread.Sleep(1000);
                 return true;
             }
@@ -217,7 +217,7 @@ public class RigisterLoginViewPresenter : LoginViewPresenter, ILoginViewPresente
             try
             {
                 s.IsBusy = true;
-                s.Message = string.Format(Properties.Resources.Format_Doing, Properties.Resources.Register);
+                s.Message = Properties.Resources.Registering;
                 Thread.Sleep(1000);
                 bool r = Ioc<IRegisterService>.Instance.Register(this.MailVerify.Mail, this.Registor.UserName, this.Registor.Password, out string message);
                 if (!r)
@@ -227,7 +227,7 @@ public class RigisterLoginViewPresenter : LoginViewPresenter, ILoginViewPresente
                     this.Registor.Message = message;
                     return false;
                 }
-                s.Message = string.Format(Properties.Resources.Format_Success, Properties.Resources.Register);
+                s.Message = Properties.Resources.RegisterSuccess;
                 Thread.Sleep(1000);
                 return true;
             }

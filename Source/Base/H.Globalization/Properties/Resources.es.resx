@@ -117,44 +117,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Type_WindowSetting" xml:space="preserve">
-    <value>Configuració de la finestra</value>
-  </data>
-  <data name="Type_WindowSetting_GroupName" xml:space="preserve">
-    <value>Configuració del control</value>
-  </data>
-  <data name="Type_WindowSetting_Description" xml:space="preserve">
-    <value>Configura els paràmetres de la finestra</value>
-  </data>
-  <data name="Property_WindowSetting_BackImagePath" xml:space="preserve">
-    <value>Imatge de fons de la finestra</value>
-  </data>
-  <data name="Property_WindowSetting_UseBackImage" xml:space="preserve">
-    <value>Activa la imatge de fons de la finestra</value>
-  </data>
-  <data name="Property_WindowSetting_Opacity" xml:space="preserve">
-    <value>Opacitat de la imatge</value>
-  </data>
-  <data name="Property_WindowSetting_Stretch" xml:space="preserve">
-    <value>Estirament de la imatge</value>
-  </data>
-  <data name="Property_WindowSetting_UseNoticeOnMainWindowClose" xml:space="preserve">
-    <value>Avís de tancament de la finestra principal</value>
-  </data>
-  <data name="Property_WindowSetting_UseNoticeOnMainWindowClose_Description" xml:space="preserve">
-    <value>Quan es faci clic per tancar la finestra principal, es mostrarà un avís per confirmar si es vol tancar la finestra.</value>
-  </data>
-  <data name="Property_WindowSetting_UseSaveOnMainWindowClose" xml:space="preserve">
-    <value>Desa les dades en tancar la finestra principal</value>
-  </data>
-  <data name="Property_WindowSetting_UseSaveOnMainWindowClose_Description" xml:space="preserve">
-    <value>Quan es fa clic a tancar a la finestra principal, la finestra principal es tanca i desa les dades.</value>
-  </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="Message_MakesureExit" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
-  </data>
-  <data name="Message_Saving" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
+  <data name="Common_Account" xml:space="preserve">
+    <value>Cuenta</value>
   </data>
 </root>

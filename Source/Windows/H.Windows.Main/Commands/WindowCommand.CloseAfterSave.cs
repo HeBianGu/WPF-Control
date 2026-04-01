@@ -51,7 +51,7 @@ public class CloseAfterSaveWindowCommand : CloseWindowCommand
                     if (d?.IsCancel == true)
                         return null;
                     if (s != null)
-                        s.Value = "正在保存" + save.Name;
+                        s.Value = Properties.Resources.Message_Saving + save.Name;
                     var r = save.Save(out string message);
                     if (r == false && s != null)
                     {
@@ -74,7 +74,7 @@ public class CloseAfterSaveWindowCommand : CloseWindowCommand
                         SaveSplash(d, s);
                     if (d.IsCancel)
                         return false;
-                    s.Value = "正在保存系统设置";
+                    s.Value = Properties.Resources.Message_Saving;
                     var m = SaveSetting();
                     if (m != null)
                     {

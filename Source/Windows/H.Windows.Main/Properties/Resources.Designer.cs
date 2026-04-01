@@ -61,6 +61,24 @@ namespace H.Windows.Main.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 确认退出系统?.
+        /// </summary>
+        public static string Message_MakesureExit {
+            get {
+                return ResourceManager.GetString("Message_MakesureExit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 正在保存.
+        /// </summary>
+        public static string Message_Saving {
+            get {
+                return ResourceManager.GetString("Message_Saving", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 窗口背景图片.
         /// </summary>
         public static string Property_WindowSetting_BackImagePath {

@@ -25,7 +25,6 @@ public abstract class ResxDisplayBindableBase : DisplayBindableBase
         string rgroup = this.GetResxGroupName();
         string rdesc = this.GetResxDescription();
 
-
         this.Name = rname ?? this.Name;
         this.GroupName = rgroup ?? this.GroupName;
         this.Description = rdesc ?? this.Description;

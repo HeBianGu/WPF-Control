@@ -14,7 +14,7 @@ namespace H.Windows.Main.Commands;
 public class CloseWindowCommand : WindowCommandBase
 {
     public bool UseDialog { get; set; } = false;
-    public string Message { get; set; } = "确认退出系统?";
+    public string Message { get; set; } = Properties.Resources.Message_MakesureExit;
     public override async Task ExecuteAsync(object parameter)
     {
         if (parameter is Window window)

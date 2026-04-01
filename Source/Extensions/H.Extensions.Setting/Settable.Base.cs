@@ -27,6 +27,19 @@ public abstract class SettableBase : ResxDisplayBindableBase, ISettable, ILoadab
     {
         this.Version = this.GetType().Assembly.GetName().Version.ToString();
     }
+
+    [JsonIgnore]
+    [Browsable(false)]
+    public override string Name
+    {
+        get { return base.Name; }
+        set
+        {
+            base.Name = value;
+            RaisePropertyChanged();
+        }
+    }
+
     [XmlIgnore]
     [JsonIgnore]
     [Browsable(false)]

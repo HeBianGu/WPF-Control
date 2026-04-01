@@ -70,6 +70,15 @@ namespace H.Modules.Login.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 用户名不能为空.
+        /// </summary>
+        public static string AccountCannotBeNull {
+            get {
+                return ResourceManager.GetString("AccountCannotBeNull", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 账号登录.
         /// </summary>
         public static string AccountLogin {
@@ -115,6 +124,24 @@ namespace H.Modules.Login.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 密码修改成功.
+        /// </summary>
+        public static string ChangePasswordSuccess {
+            get {
+                return ResourceManager.GetString("ChangePasswordSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 正在修改密码.
+        /// </summary>
+        public static string ChangingPassword {
+            get {
+                return ResourceManager.GetString("ChangingPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 确认密码.
         /// </summary>
         public static string ConfirmationPassword {
@@ -147,24 +174,6 @@ namespace H.Modules.Login.Properties {
         public static string ForgetPassword {
             get {
                 return ResourceManager.GetString("ForgetPassword", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to 正在{0}....
-        /// </summary>
-        public static string Format_Doing {
-            get {
-                return ResourceManager.GetString("Format_Doing", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to {0}成功.
-        /// </summary>
-        public static string Format_Success {
-            get {
-                return ResourceManager.GetString("Format_Success", resourceCulture);
             }
         }
         
@@ -223,6 +232,33 @@ namespace H.Modules.Login.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 登录失败，用户名密码错误.
+        /// </summary>
+        public static string LoginError {
+            get {
+                return ResourceManager.GetString("LoginError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 正在登录.
+        /// </summary>
+        public static string Loginning {
+            get {
+                return ResourceManager.GetString("Loginning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 登录成功.
+        /// </summary>
+        public static string LoginSuccess {
+            get {
+                return ResourceManager.GetString("LoginSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 下一步.
         /// </summary>
         public static string Next {
@@ -237,6 +273,15 @@ namespace H.Modules.Login.Properties {
         public static string Password {
             get {
                 return ResourceManager.GetString("Password", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 密码不能为空.
+        /// </summary>
+        public static string PasswordCannotBeNull {
+            get {
+                return ResourceManager.GetString("PasswordCannotBeNull", resourceCulture);
             }
         }
         
@@ -412,11 +457,29 @@ namespace H.Modules.Login.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 正在注册.
+        /// </summary>
+        public static string Registering {
+            get {
+                return ResourceManager.GetString("Registering", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 立即注册.
         /// </summary>
         public static string RegisterNow {
             get {
                 return ResourceManager.GetString("RegisterNow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 注册成功.
+        /// </summary>
+        public static string RegisterSuccess {
+            get {
+                return ResourceManager.GetString("RegisterSuccess", resourceCulture);
             }
         }
         

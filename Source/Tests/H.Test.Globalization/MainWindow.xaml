@@ -45,7 +45,7 @@
         </TabItem>
         <TabItem Header="Notice">
             <UniformGrid>
-                <Button Command="{h:ShowInfoNoticeMessageCommand Message=我是Info消息}" Content="ShowInfo" />
+                <Button Command="{h:ShowInfoNoticeMessageCommand}" Content="ShowInfo" />
                 <Button Command="{h:ShowErrorNoticeMessageCommand Message=我是Error消息}" Content="ShowError" />
                 <Button Command="{h:ShowSuccessNoticeMessageCommand Message=我是Success消息}" Content="ShowSuccess" />
                 <Button Command="{h:ShowWarnNoticeMessageCommand Message=我是Warn消息}" Content="ShowWarn" />

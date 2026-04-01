@@ -16,5 +16,8 @@ namespace H.Modules.Globalization;
 [Display(Name = "语言设置", Description = "显示设置语言")]
 public class ShowGlobalizationViewCommand : ShowIocPresenterCommandBase<IGlobalizationViewPresenter>
 {
-
+    public ShowGlobalizationViewCommand()
+    {
+        this.VerticalContentAlignment = VerticalAlignment.Center;
+    }
 }

@@ -81,7 +81,7 @@ public class LoginViewPresenter : DisplayBindableBase, ILoginViewPresenter, IWin
                  try
                  {
                      s.IsBusy = true;
-                     s.Message = string.Format(Properties.Resources.Format_Doing, Properties.Resources.Login);
+                     s.Message = Properties.Resources.Loginning;
                      Thread.Sleep(1000);
                      bool r = Ioc<ILoginService>.Instance.Login(this.UserName, this.Password, out string message);
                      if (!r)
@@ -107,7 +107,7 @@ public class LoginViewPresenter : DisplayBindableBase, ILoginViewPresenter, IWin
                          s.Message = message;
                          Thread.Sleep(1000);
                      }
-                     s.Message = string.Format(Properties.Resources.Format_Success, Properties.Resources.Login);
+                     s.Message = Properties.Resources.LoginSuccess;
                      Thread.Sleep(1000);
                      return true;
                  }
