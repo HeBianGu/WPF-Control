@@ -79,15 +79,6 @@ namespace H.Services.Message.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 暂无数据.
-        /// </summary>
-        public static string DataGrid_WaterMark {
-            get {
-                return ResourceManager.GetString("DataGrid_WaterMark", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to 默认消息.
         /// </summary>
         public static string DefaultMessage {

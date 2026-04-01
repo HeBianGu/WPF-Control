@@ -48,7 +48,8 @@ public abstract partial class ApplicationBase : Application, IConfigureableAppli
         ServiceCollection sc = new ServiceCollection();
         this.ConfigureServices(sc);
         Ioc.Build(sc);
-        this.OnSetting();
+        //  Do ：在显示页面前需要加载多语言
+        Ioc.GetService<ILoadGlobalizationOptionsService>(false)?.Load(out string message);
     }
 
     protected virtual IAppPathServce CreateAppPathServce()
@@ -61,8 +62,6 @@ public abstract partial class ApplicationBase : Application, IConfigureableAppli
         this.Configure();
         this.OnSingleton(e);
         base.OnStartup(e);
-        //  Do ：在显示页面前需要加载多语言
-        Ioc.GetService<ILoadGlobalizationOptionsService>(false)?.Load(out string message);
         Window window = this.CreateMainWindow(e);
         window.Loaded += (s, e) =>
         {
@@ -475,22 +474,5 @@ public partial class ApplicationBase
 
     protected abstract Window CreateMainWindow(StartupEventArgs e);
 
-    /// <summary>
-    /// 加载注入的配置信息
-    /// </summary>
-    protected virtual void OnSetting()
-    {
-        //var sss=   Ioc.Services.GetType().GetFields(BindingFlags.NonPublic | BindingFlags.Static|bind);
-        ////  Do ：加载注入的ISetting
-        //{
-        //    var settings = Ioc.Services.GetServices<ISetting>();
-        //    IocSetting.Instance.Add(settings.ToArray());
-        //}
-        ////  Do ：加载Option中的ISetting
-        //{
-        //    var settings = Ioc.Services.GetServices(typeof(IOptions<>)).OfType<ISetting>();
-        //    IocSetting.Instance.Add(settings.ToArray());
-        //}
-        //ConcurrentDictionary<Type,Func<ServiceProviderEngine>>
-    }
+
 }

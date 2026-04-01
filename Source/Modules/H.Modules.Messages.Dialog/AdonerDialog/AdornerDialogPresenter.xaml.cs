@@ -18,6 +18,7 @@ global using System.Threading.Tasks;
 global using System.Windows;
 global using System.Windows.Documents;
 using H.Common.Interfaces;
+using H.Globalization.Properties;
 
 namespace H.Modules.Messages.Dialog
 {
@@ -34,7 +35,7 @@ namespace H.Modules.Messages.Dialog
             background.Freeze();
             this.Background = background;
         }
-        private string _title = Properties.Resources.DefaultTitle;
+        private string _title = Resources.Common_Prompt;
         public string Title
         {
             get { return _title; }

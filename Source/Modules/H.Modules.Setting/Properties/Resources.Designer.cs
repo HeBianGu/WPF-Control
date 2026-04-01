@@ -277,6 +277,24 @@ namespace H.Modules.Setting.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 恢复默认.
+        /// </summary>
+        public static string Type_SettingDefaultCommand {
+            get {
+                return ResourceManager.GetString("Type_SettingDefaultCommand", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 恢复系统设置默认数据.
+        /// </summary>
+        public static string Type_SettingDefaultCommand_Description {
+            get {
+                return ResourceManager.GetString("Type_SettingDefaultCommand_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 设置页面控制.
         /// </summary>
         public static string Type_SettingSecurityViewOption {

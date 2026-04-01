@@ -3,8 +3,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
     xmlns:h="https://github.com/HeBianGu"
-    xmlns:local="clr-namespace:H.Modules.Messages.Dialog"
-    xmlns:p="clr-namespace:H.Modules.Messages.Dialog.Properties">
+    xmlns:local="clr-namespace:H.Modules.Messages.Dialog">
     <DataTemplate DataType="{x:Type local:AdornerDialogPresenter}">
         <Grid
             HorizontalAlignment="Stretch"
@@ -86,7 +85,7 @@
                         HorizontalAlignment="Center"
                         Command="{local:SumitAdornerDialogCommand}"
                         CommandParameter="{Binding}"
-                        Content="{x:Static p:Resources.Sumit}"
+                        Content="{x:Static Resources.Dialog_Button_Ok}"
                         IsDefault="True"
                         Visibility="Collapsed" />
                     <Button
@@ -96,7 +95,7 @@
                         HorizontalAlignment="Center"
                         Command="{local:CancelAdornerDialogCommand}"
                         CommandParameter="{Binding}"
-                        Content="{x:Static p:Resources.Cancel}"
+                        Content="{x:Static Resources.Dialog_Button_Cancel}"
                         IsCancel="True"
                         Visibility="Collapsed" />
                 </StackPanel>

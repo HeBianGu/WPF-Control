@@ -286,6 +286,15 @@ namespace H.Globalization.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 默认.
+        /// </summary>
+        public static string Common_Default {
+            get {
+                return ResourceManager.GetString("Common_Default", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 删除.
         /// </summary>
         public static string Common_Delete {
@@ -781,6 +790,15 @@ namespace H.Globalization.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 提示.
+        /// </summary>
+        public static string Common_Prompt {
+            get {
+                return ResourceManager.GetString("Common_Prompt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 重做.
         /// </summary>
         public static string Common_Redo {
@@ -961,6 +979,15 @@ namespace H.Globalization.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 显示.
+        /// </summary>
+        public static string Common_Show {
+            get {
+                return ResourceManager.GetString("Common_Show", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 排序.
         /// </summary>
         public static string Common_Sort {
@@ -1056,6 +1083,15 @@ namespace H.Globalization.Properties {
         public static string Common_UserName {
             get {
                 return ResourceManager.GetString("Common_UserName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 查看.
+        /// </summary>
+        public static string Common_View {
+            get {
+                return ResourceManager.GetString("Common_View", resourceCulture);
             }
         }
         
@@ -2622,6 +2658,33 @@ namespace H.Globalization.Properties {
         public static string Validation_ValueRangeFormat {
             get {
                 return ResourceManager.GetString("Validation_ValueRangeFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 最大化.
+        /// </summary>
+        public static string Window_Maximize {
+            get {
+                return ResourceManager.GetString("Window_Maximize", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 最小化.
+        /// </summary>
+        public static string Window_Minimize {
+            get {
+                return ResourceManager.GetString("Window_Minimize", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 还原.
+        /// </summary>
+        public static string Window_Restore {
+            get {
+                return ResourceManager.GetString("Window_Restore", resourceCulture);
             }
         }
     }

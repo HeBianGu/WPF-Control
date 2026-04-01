@@ -14,7 +14,7 @@ namespace H.Modules.Setting.Commands;
 
 [Icon("\xE713")]
 [Display(Name = "恢复默认", Description = "恢复系统设置默认数据")]
-public class SettingDefaultCommand : DisplayMarkupCommandBase
+public class SettingDefaultCommand : ResxDisplayMarkupCommandBase
 {
     public override async Task ExecuteAsync(object parameter)
     {

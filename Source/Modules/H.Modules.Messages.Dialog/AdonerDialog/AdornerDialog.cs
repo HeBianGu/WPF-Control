@@ -6,6 +6,7 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
+using H.Globalization.Properties;
 using System.Reflection;
 
 namespace H.Modules.Messages.Dialog
@@ -18,7 +19,7 @@ namespace H.Modules.Messages.Dialog
             dialog.MinWidth = 100;
             dialog.CanSumit = canSumit;
             action?.Invoke(dialog);
-            dialog.Title = dialog.Title ?? presenter.GetType().GetCustomAttribute<DisplayAttribute>()?.Name ?? Properties.Resources.DefaultTitle;
+            dialog.Title = dialog.Title ?? presenter.GetType().GetCustomAttribute<DisplayAttribute>()?.Name ?? Resources.Common_Prompt;
             return await dialog.ShowDialog();
         }
 
@@ -31,7 +32,7 @@ namespace H.Modules.Messages.Dialog
             dialog.VerticalAlignment = System.Windows.VerticalAlignment.Center; dialog.HorizontalContentAlignment = System.Windows.HorizontalAlignment.Center;
             dialog.VerticalContentAlignment = System.Windows.VerticalAlignment.Center;
             action?.Invoke(dialog);
-            dialog.Title = dialog.Title ?? presenter.GetType().GetCustomAttribute<DisplayAttribute>()?.Name ?? Properties.Resources.DefaultTitle;
+            dialog.Title = dialog.Title ?? presenter.GetType().GetCustomAttribute<DisplayAttribute>()?.Name ?? Resources.Common_Prompt;
             T result = default;
 #pragma warning disable CS4014 // 由于此调用不会等待，因此在调用完成前将继续执行当前方法
             Task.Run(() =>
