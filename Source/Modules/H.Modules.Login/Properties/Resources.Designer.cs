@@ -286,6 +286,15 @@ namespace H.Modules.Login.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 两次输入的密码不匹配.
+        /// </summary>
+        public static string PasswordsNotMatch {
+            get {
+                return ResourceManager.GetString("PasswordsNotMatch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 上一步.
         /// </summary>
         public static string Previous {

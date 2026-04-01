@@ -6,15 +6,9 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
-using Microsoft.Extensions.Options;
+namespace H.Controls.Form.PropertyItems.Base;
 
-namespace H.Modules.Globalization;
-public class GlobalizationViewPresenter : IGlobalizationViewPresenter
+public interface IPropertyItemValueChanged
 {
-    private readonly IOptions<GlobalizationOptions> _options;
-    public GlobalizationViewPresenter(IOptions<GlobalizationOptions> options)
-    {
-        _options = options;
-    }
+    void OnPropertyVlaueChanged(string propertyName, object o, object n);
 }
-

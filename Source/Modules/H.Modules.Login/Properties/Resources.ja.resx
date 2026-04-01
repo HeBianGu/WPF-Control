@@ -106,12 +106,6 @@
   <data name="Agree" xml:space="preserve">
     <value>同意して読みました</value>
   </data>
-  <data name="Format_Doing" xml:space="preserve">
-    <value>{0} を処理しています...</value>
-  </data>
-  <data name="Format_Success" xml:space="preserve">
-    <value>{0} が成功しました</value>
-  </data>
   <data name="And" xml:space="preserve">
     <value>と</value>
   </data>
@@ -216,5 +210,32 @@
   </data>
   <data name="Property_RegistorOptions_Image" xml:space="preserve">
     <value>左側の画像</value>
+  </data>
+  <data name="AccountCannotBeNull" xml:space="preserve">
+    <value>ユーザー名は空にできません</value>
+  </data>
+  <data name="PasswordCannotBeNull" xml:space="preserve">
+    <value>パスワードは空にできません</value>
+  </data>
+  <data name="LoginSuccess" xml:space="preserve">
+    <value>ログイン成功</value>
+  </data>
+  <data name="LoginError" xml:space="preserve">
+    <value>ログインに失敗しました。ユーザー名またはパスワードが正しくありません。</value>
+  </data>
+  <data name="Loginning" xml:space="preserve">
+    <value>ログイン中</value>
+  </data>
+  <data name="ChangingPassword" xml:space="preserve">
+    <value>パスワードを変更中です</value>
+  </data>
+  <data name="ChangePasswordSuccess" xml:space="preserve">
+    <value>パスワードの変更に成功しました</value>
+  </data>
+  <data name="Registering" xml:space="preserve">
+    <value>登録中</value>
+  </data>
+  <data name="RegisterSuccess" xml:space="preserve">
+    <value>登録に成功しました</value>
   </data>
 </root>

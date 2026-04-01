@@ -148,4 +148,10 @@
   <data name="Property_SettingSecurityViewOption_PasswordCount_Description" xml:space="preserve">
     <value>パスワード入力エラー回数がパスワード認証回数を超えたため、これ以上入力できません。</value>
   </data>
+  <data name="Type_SettingDefaultCommand" xml:space="preserve">
+    <value>デフォルトに戻す</value>
+  </data>
+  <data name="Type_SettingDefaultCommand_Description" xml:space="preserve">
+    <value>システム設定のデフォルトデータを復元</value>
+  </data>
 </root>

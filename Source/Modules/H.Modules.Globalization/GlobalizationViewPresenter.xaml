@@ -36,9 +36,14 @@
             </ItemsControl.ItemTemplate>
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
-                    <UniformGrid Rows="8"/>
+                    <UniformGrid/>
                 </ItemsPanelTemplate>
             </ItemsControl.ItemsPanel>
+            <b:Interaction.Triggers>
+                <b:EventTrigger EventName="SelectionChanged">
+                    <b:InvokeCommandAction/>
+                </b:EventTrigger>
+            </b:Interaction.Triggers>
         </ListBox>
     </DataTemplate>
 </ResourceDictionary>

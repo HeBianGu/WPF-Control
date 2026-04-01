@@ -43,7 +43,7 @@ public class ObjectPropertyItem<T> : BindingVisiblablePropertyItemBase, IDataErr
 
     private void Notify_PropertyChanged(object sender, PropertyChangedEventArgs e)
     {
-        if (e.PropertyName == this.PropertyInfo.Name||string.IsNullOrEmpty(e.PropertyName))
+        if (e.PropertyName == this.PropertyInfo.Name || string.IsNullOrEmpty(e.PropertyName))
             this.LoadValue();
     }
 
@@ -91,6 +91,8 @@ public class ObjectPropertyItem<T> : BindingVisiblablePropertyItemBase, IDataErr
             try
             {
                 this.SetValue(value);
+                if (this.Obj is IPropertyItemValueChanged valueChanged)
+                    valueChanged?.OnPropertyVlaueChanged(this.PropertyInfo.Name, o, value);
             }
             catch (Exception ex)
             {

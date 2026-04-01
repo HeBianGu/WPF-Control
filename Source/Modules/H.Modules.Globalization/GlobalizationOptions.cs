@@ -10,11 +10,13 @@ using H.Common.Interfaces;
 using H.Controls.Form.Attributes;
 using H.Controls.Form.PropertyItem.Attribute;
 using H.Controls.Form.PropertyItem.ComboBoxPropertyItems;
+using H.Controls.Form.PropertyItems.Base;
 using H.Extensions.FontIcon;
 using H.Extensions.Mvvm.Commands;
 using H.Extensions.Setting;
 using H.Mvvm.Commands;
 using H.Services.AppPath;
+using H.Services.Message;
 using H.Services.Setting;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
@@ -23,6 +25,7 @@ using System.IO;
 using System.Reflection;
 using System.Text.Json.Serialization;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls.Primitives;
 using System.Windows.Data;
@@ -34,7 +37,7 @@ using System.Xml.Serialization;
 namespace H.Modules.Globalization;
 
 [Display(Name = "语言设置", GroupName = SettingGroupNames.GroupStyle, Description = "语言设置设置的信息")]
-public class GlobalizationOptions : IocOptionInstance<GlobalizationOptions>, IGlobalizationOptions
+public class GlobalizationOptions : IocOptionInstance<GlobalizationOptions>, IGlobalizationOptions, IPropertyItemValueChanged
 {
     public GlobalizationOptions()
     {
@@ -114,5 +117,29 @@ public class GlobalizationOptions : IocOptionInstance<GlobalizationOptions>, IGl
         var find = this.SupportedCultureInfos.FirstOrDefault(x => x.Name == this.CultureInfoKey);
         this.CultureInfo = find ?? new CultureInfo("zh-Hans");
         return r;
+    }
+
+    public async void OnPropertyVlaueChanged(string propertyName, object o, object n)
+    {
+        if (propertyName == nameof(CultureInfo))
+        {
+            if (o == null)
+                return;
+            var r = await IocMessage.ShowDialogMessage("语言修改需要重启软件才生效，是否立即重启?");
+            if (r != true)
+                return;
+            Application.Current.Shutdown();
+        }
+    }
+
+    public override void LoadDefault()
+    {
+        base.LoadDefault();
+        var systemRegionCulture = CultureInfo.CurrentCulture;
+        //var s = this.GetSupportedCultureInfos();
+        //var systemMatch = this.GetSupportedCultureInfos().FirstOrDefault(x => x.Name == systemRegionCulture.Name);
+        //this.CultureInfo = systemMatch ?? new CultureInfo("zh-Hans");
+        this.CultureInfo = systemRegionCulture;
+
     }
 }

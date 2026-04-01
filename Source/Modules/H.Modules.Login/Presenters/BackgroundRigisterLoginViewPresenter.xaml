@@ -394,7 +394,7 @@
                                 </Control>
 
                                 <TextBlock
-                                    Margin="0,5"
+                                    Margin="0,15"
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Bottom"
                                     DockPanel.Dock="Bottom"

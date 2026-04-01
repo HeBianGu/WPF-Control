@@ -65,7 +65,7 @@ public class Registor : BindableBase
     {
         if (string.IsNullOrEmpty(this.UserName))
         {
-            this.Message =  Properties.Resources.AccountCannotBeNull;
+            this.Message = Properties.Resources.AccountCannotBeNull;
             return false;
         }
 
@@ -77,7 +77,7 @@ public class Registor : BindableBase
 
         if (this.Password != this.VerifyPassword)
         {
-            this.Message = "两次输入的密码不匹配";
+            this.Message = Properties.Resources.PasswordsNotMatch;
             return false;
         }
         this.Message = null;
