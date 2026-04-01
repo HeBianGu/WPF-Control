@@ -148,4 +148,10 @@
   <data name="Property_SettingSecurityViewOption_PasswordCount_Description" xml:space="preserve">
     <value>密碼輸入錯誤次數超過密碼驗證次數，不允許再次輸入</value>
   </data>
+  <data name="Type_SettingDefaultCommand" xml:space="preserve">
+    <value>恢復預設</value>
+  </data>
+  <data name="Type_SettingDefaultCommand_Description" xml:space="preserve">
+    <value>還原系統設定預設資料</value>
+  </data>
 </root>

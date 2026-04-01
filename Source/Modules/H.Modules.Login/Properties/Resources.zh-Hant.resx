@@ -106,12 +106,6 @@
   <data name="Agree" xml:space="preserve">
     <value>我已閱讀並同意</value>
   </data>
-  <data name="Format_Doing" xml:space="preserve">
-    <value>正在{0}...</value>
-  </data>
-  <data name="Format_Success" xml:space="preserve">
-    <value>{0}成功</value>
-  </data>
   <data name="And" xml:space="preserve">
     <value>和</value>
   </data>
@@ -216,5 +210,32 @@
   </data>
   <data name="Property_RegistorOptions_Image" xml:space="preserve">
     <value>左側圖片</value>
+  </data>
+  <data name="AccountCannotBeNull" xml:space="preserve">
+    <value>使用者名稱不能為空</value>
+  </data>
+  <data name="PasswordCannotBeNull" xml:space="preserve">
+    <value>密碼不能為空</value>
+  </data>
+  <data name="LoginSuccess" xml:space="preserve">
+    <value>登入成功</value>
+  </data>
+  <data name="LoginError" xml:space="preserve">
+    <value>登入失敗，使用者名稱或密碼錯誤</value>
+  </data>
+  <data name="Loginning" xml:space="preserve">
+    <value>正在登入</value>
+  </data>
+  <data name="ChangingPassword" xml:space="preserve">
+    <value>正在修改密碼</value>
+  </data>
+  <data name="ChangePasswordSuccess" xml:space="preserve">
+    <value>密碼修改成功</value>
+  </data>
+  <data name="Registering" xml:space="preserve">
+    <value>正在註冊</value>
+  </data>
+  <data name="RegisterSuccess" xml:space="preserve">
+    <value>註冊成功</value>
   </data>
 </root>

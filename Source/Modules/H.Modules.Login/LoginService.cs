@@ -28,13 +28,13 @@ internal class LoginService : BindableBase, ILoginService
     {
         if (string.IsNullOrEmpty(name))
         {
-            message = "用户名不能为空";
+            message = Properties.Resources.AccountCannotBeNull;
             return false;
         }
 
         if (string.IsNullOrEmpty(password))
         {
-            message = "密码不能为空";
+            message = Properties.Resources.PasswordCannotBeNull;
             return false;
         }
 
@@ -42,13 +42,13 @@ internal class LoginService : BindableBase, ILoginService
         {
             Thread.Sleep(1000);
             this.User = new TestUser(name, password, "Test Name");
-            message = "登录成功";
+            message = Properties.Resources.LoginSuccess;
             return true;
         }
         else
         {
             Thread.Sleep(2000);
-            message = "登录失败，用户名密码错误";
+            message = Properties.Resources.LoginError;
             return false;
         }
 

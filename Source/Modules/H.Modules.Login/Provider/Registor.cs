@@ -65,13 +65,13 @@ public class Registor : BindableBase
     {
         if (string.IsNullOrEmpty(this.UserName))
         {
-            this.Message = "用户名不能为空";
+            this.Message =  Properties.Resources.AccountCannotBeNull;
             return false;
         }
 
         if (string.IsNullOrEmpty(this.Password))
         {
-            this.Message = "密码不能为空";
+            this.Message = Properties.Resources.PasswordCannotBeNull;
             return false;
         }
 
