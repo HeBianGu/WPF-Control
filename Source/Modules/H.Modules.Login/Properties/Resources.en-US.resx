@@ -106,12 +106,6 @@
   <data name="Agree" xml:space="preserve">
     <value>I have read and agree.</value>
   </data>
-  <data name="Format_Doing" xml:space="preserve">
-    <value>Loading {0}...</value>
-  </data>
-  <data name="Format_Success" xml:space="preserve">
-    <value>{0} succeeded</value>
-  </data>
   <data name="And" xml:space="preserve">
     <value>and</value>
   </data>
@@ -216,5 +210,32 @@
   </data>
   <data name="Property_RegistorOptions_Image" xml:space="preserve">
     <value>Left Image</value>
+  </data>
+  <data name="AccountCannotBeNull" xml:space="preserve">
+    <value>Username cannot be empty</value>
+  </data>
+  <data name="PasswordCannotBeNull" xml:space="preserve">
+    <value>Password cannot be empty.</value>
+  </data>
+  <data name="LoginSuccess" xml:space="preserve">
+    <value>Login successful</value>
+  </data>
+  <data name="LoginError" xml:space="preserve">
+    <value>Login failed. Incorrect username or password.</value>
+  </data>
+  <data name="Loginning" xml:space="preserve">
+    <value>Signing in</value>
+  </data>
+  <data name="ChangingPassword" xml:space="preserve">
+    <value>Changing password</value>
+  </data>
+  <data name="ChangePasswordSuccess" xml:space="preserve">
+    <value>Password changed successfully</value>
+  </data>
+  <data name="Registering" xml:space="preserve">
+    <value>Registering</value>
+  </data>
+  <data name="RegisterSuccess" xml:space="preserve">
+    <value>Registration successful</value>
   </data>
 </root>
