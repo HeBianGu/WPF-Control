@@ -17,20 +17,34 @@ public static class ResourceManagerExtesion
     private static Dictionary<Assembly, ResourceManager> _cache = new Dictionary<Assembly, ResourceManager>();
     public static ResourceManager GetResourceManager(this Type type)
     {
-        if (_cache.ContainsKey(type.Assembly))
-            return _cache[type.Assembly];
-        return _cache[type.Assembly] = new ResourceManager($"{type.Assembly.GetName().Name}.Properties.Resources", type.Assembly);
+        return type.Assembly.GetResourceManager();
     }
 
-    public static string GetResx(this Type type, string key, string def = null)
+    public static ResourceManager GetResourceManager(this Assembly assembly)
     {
-        var result = type.GetResourceManager().GetString(key);
+        if (_cache.ContainsKey(assembly))
+            return _cache[assembly];
+        return _cache[assembly] = new ResourceManager($"{assembly.GetName().Name}.Properties.Resources", assembly);
+    }
+
+    public static string GetResx(this Assembly assembly, string key, string def = null)
+    {
+        var result = assembly.GetResourceManager().GetString(key);
 #if DEBUG
         if (result == null && def != null)
             WhiteLine(key, def);
 #endif
         return result;
     }
+
+    public static string GetResx(this Type type, string key, string def = null)
+    {
+        var entryResult = Assembly.GetEntryAssembly().GetResourceManager().GetString(key);
+        if (entryResult != null)
+            return entryResult;
+        return type.Assembly.GetResx(key, def);
+    }
+
     public static string GetPropertyNameResx(this Type type, string propertyName, string def = null)
     {
         string key = $"Property_{type.Name}_{propertyName}";
@@ -91,5 +105,10 @@ public static class ResourceManagerExtesion
         var type = value.GetType();
         string key = $"Enum_{type.Name}_{value.ToString()}_Description";
         return type.GetResx(key, def);
+    }
+
+    public static string GetStringResx(this string def, Assembly assembly, string key)
+    {
+        return assembly.GetResx(key, def) ?? def;
     }
 }
