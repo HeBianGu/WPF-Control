@@ -123,4 +123,28 @@
 	<data name="Type_ShowOperationViewCommand_Description" xml:space="preserve">
     <value>应用此功能查看操作日志</value>
   </data>
+	<data name="Property_hi_dd_operation_UserName" xml:space="preserve">
+    <value>操作账号</value>
+  </data>
+	<data name="Property_hi_dd_operation_Method" xml:space="preserve">
+    <value>操作</value>
+  </data>
+	<data name="Property_hi_dd_operation_Title" xml:space="preserve">
+    <value>信息</value>
+  </data>
+	<data name="Property_hi_dd_operation_Message" xml:space="preserve">
+    <value>详情</value>
+  </data>
+	<data name="Property_hi_dd_operation_Type" xml:space="preserve">
+    <value>类型</value>
+  </data>
+	<data name="Property_hi_dd_operation_OperationType" xml:space="preserve">
+    <value>操作类型</value>
+  </data>
+	<data name="Property_hi_dd_operation_Result" xml:space="preserve">
+    <value>结果</value>
+  </data>
+	<data name="Property_hi_dd_operation_Time" xml:space="preserve">
+    <value>操作日期</value>
+  </data>
 </root>

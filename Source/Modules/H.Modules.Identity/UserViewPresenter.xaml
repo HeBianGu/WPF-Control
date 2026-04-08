@@ -3,6 +3,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:Behaviors="http://schemas.microsoft.com/xaml/behaviors"
     xmlns:h="https://github.com/HeBianGu"
+    xmlns:p="clr-namespace:H.Modules.Identity.Properties"
     xmlns:local="clr-namespace:H.Modules.Identity">
     <DataTemplate DataType="{x:Type local:UserViewPresenter}">
         <DockPanel MinWidth="900">
@@ -40,16 +41,16 @@
                     <DataGridTextColumn
                         Width="Auto"
                         Binding="{Binding Model.ID}"
-                        Header="唯一标识" />
+                        Header="{x:Static p:Resources.ID}" />
                     <DataGridTextColumn
                         Width="*"
                         Binding="{Binding Model.Name}"
-                        Header="用户名称" />
+                        Header="{x:Static p:Resources.UserName}" />
                     <DataGridTextColumn
                         Width="*"
                         Binding="{Binding Model.Account}"
-                        Header="登陆账号" />
-                    <DataGridTemplateColumn Width="*" Header="登陆密码">
+                        Header="{x:Static p:Resources.Account}" />
+                    <DataGridTemplateColumn Width="*" Header="{x:Static p:Resources.Password}">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <TextBlock Margin="0,5" Text="******" />
@@ -59,22 +60,22 @@
                     <DataGridTextColumn
                         Width="*"
                         Binding="{Binding Model.DisplayName}"
-                        Header="昵称" />
+                        Header="{x:Static p:Resources.DisplayName}" />
                     <DataGridCheckBoxColumn
                         Width="Auto"
                         Binding="{Binding Model.Enable}"
                         ElementStyle="{x:Null}"
-                        Header="启用/禁用"
+                        Header="{x:Static p:Resources.Enable}"
                         IsReadOnly="True" />
                     <DataGridTextColumn
                         Width="*"
                         Binding="{Binding Model.Mail}"
-                        Header="邮箱" />
+                        Header="{x:Static p:Resources.Mail}" />
                     <DataGridTextColumn
                         Width="*"
                         Binding="{Binding Model.Role}"
-                        Header="角色" />
-                    <DataGridTemplateColumn Width="*" Header="权限列表">
+                        Header="{x:Static p:Resources.Role}" />
+                    <DataGridTemplateColumn Width="*" Header="{x:Static p:Resources.Authors}">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <ItemsControl ItemsSource="{Binding Model.Role.Authors}">

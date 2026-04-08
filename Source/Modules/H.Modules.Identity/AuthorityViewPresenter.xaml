@@ -3,6 +3,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
     xmlns:h="https://github.com/HeBianGu"
+    xmlns:p="clr-namespace:H.Modules.Identity.Properties"
     xmlns:local="clr-namespace:H.Modules.Identity">
 
     <DataTemplate DataType="{x:Type local:AuthorityViewPresenter}">
@@ -23,11 +24,6 @@
                 </b:Interaction.Triggers>
                 <h:Cattach.CaptionRightTemplate>
                     <ControlTemplate>
-                        <!--<BulletDecorator VerticalAlignment="Center">
-                            <BulletDecorator.Bullet>
-                                <TextBlock VerticalAlignment="Center"
-                                           Text="搜索 " />
-                            </BulletDecorator.Bullet>-->
                         <h:TextFilterBox
                             x:Name="tfb1"
                             Width="200"
@@ -42,23 +38,22 @@
                                 </b:EventTrigger>
                             </b:Interaction.Triggers>
                         </h:TextFilterBox>
-                        <!--</BulletDecorator>-->
                     </ControlTemplate>
                 </h:Cattach.CaptionRightTemplate>
                 <DataGrid.Columns>
                     <DataGridTextColumn
                         Width="Auto"
                         Binding="{Binding Model.ID}"
-                        Header="唯一标识" />
+                        Header="{x:Static p:Resources.ID}" />
                     <DataGridTextColumn
                         Width="*"
                         Binding="{Binding Model.Name}"
-                        Header="权限名称" />
+                        Header="{x:Static p:Resources.AuthorName}" />
                     <DataGridTextColumn
                         Width="*"
                         Binding="{Binding Model.Code}"
-                        Header="权限编码" />
-                    <DataGridTemplateColumn Width="*" Header="角色列表">
+                        Header="{x:Static p:Resources.AuthorCode}" />
+                    <DataGridTemplateColumn Width="*" Header="{x:Static p:Resources.Roles}">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <ItemsControl ItemsSource="{Binding Model.Roles}">
@@ -72,7 +67,7 @@
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
 
-                    <DataGridTemplateColumn Width="*" Header="用户列表">
+                    <DataGridTemplateColumn Width="*" Header="{x:Static p:Resources.Users}">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <ItemsControl ItemsSource="{Binding Model.Roles}">

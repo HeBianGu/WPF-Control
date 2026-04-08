@@ -64,4 +64,28 @@
   <data name="Type_ShowOperationViewCommand_Description" xml:space="preserve">
     <value>Use this feature to view operation logs.</value>
   </data>
+  <data name="Property_hi_dd_operation_UserName" xml:space="preserve">
+    <value>Operating Account</value>
+  </data>
+  <data name="Property_hi_dd_operation_Method" xml:space="preserve">
+    <value>Action</value>
+  </data>
+  <data name="Property_hi_dd_operation_Title" xml:space="preserve">
+    <value>Information</value>
+  </data>
+  <data name="Property_hi_dd_operation_Message" xml:space="preserve">
+    <value>Details</value>
+  </data>
+  <data name="Property_hi_dd_operation_Type" xml:space="preserve">
+    <value>Type</value>
+  </data>
+  <data name="Property_hi_dd_operation_OperationType" xml:space="preserve">
+    <value>Operation Type</value>
+  </data>
+  <data name="Property_hi_dd_operation_Result" xml:space="preserve">
+    <value>Result</value>
+  </data>
+  <data name="Property_hi_dd_operation_Time" xml:space="preserve">
+    <value>Operation Date</value>
+  </data>
 </root>

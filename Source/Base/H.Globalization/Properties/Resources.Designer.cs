@@ -151,6 +151,15 @@ namespace H.Globalization.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 全选.
+        /// </summary>
+        public static string Common_CheckAll {
+            get {
+                return ResourceManager.GetString("Common_CheckAll", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 检查更新.
         /// </summary>
         public static string Common_CheckForUpdates {
@@ -309,6 +318,15 @@ namespace H.Globalization.Properties {
         public static string Common_Delete {
             get {
                 return ResourceManager.GetString("Common_Delete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 删除选中.
+        /// </summary>
+        public static string Common_DeleteCheckAll {
+            get {
+                return ResourceManager.GetString("Common_DeleteCheckAll", resourceCulture);
             }
         }
         

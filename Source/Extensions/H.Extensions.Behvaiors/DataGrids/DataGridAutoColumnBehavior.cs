@@ -6,6 +6,7 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
+using H.Common;
 using System.Reflection;
 using System.Windows.Threading;
 
@@ -177,7 +178,8 @@ public class DataGridAutoColumnBehavior : Behavior<DataGrid>
             DataGridColumnAttribute columnAttribute = p.GetCustomAttribute<DataGridColumnAttribute>();
             DataGridColumn column = columnAttribute == null ? GetDataGridColumn(p)
                 : columnAttribute.GetDataGridColumn(p);
-            column.Header = display?.Name ?? p.Name;
+            string name = display?.Name ?? p.Name;
+            column.Header = this.Type.GetPropertyNameResx(p.Name, name) ?? name;
             if (column is DataGridBoundColumn bound)
             {
                 Binding binding = new Binding();

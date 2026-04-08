@@ -996,4 +996,10 @@
   <data name="Common_DataBase" xml:space="preserve">
     <value>数据库</value>
   </data>
+  <data name="Common_CheckAll" xml:space="preserve">
+    <value>全选</value>
+  </data>
+  <data name="Common_DeleteCheckAll" xml:space="preserve">
+    <value>删除选中</value>
+  </data>
 </root>

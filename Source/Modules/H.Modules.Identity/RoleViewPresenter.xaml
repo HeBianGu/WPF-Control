@@ -2,6 +2,7 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
+    xmlns:p="clr-namespace:H.Modules.Identity.Properties"
     xmlns:h="https://github.com/HeBianGu"
     xmlns:local="clr-namespace:H.Modules.Identity">
     <DataTemplate DataType="{x:Type local:RoleViewPresenter}">
@@ -19,16 +20,16 @@
                     <DataGridTextColumn
                         Width="Auto"
                         Binding="{Binding Model.ID}"
-                        Header="唯一标识" />
+                        Header="{x:Static p:Resources.ID}" />
                     <DataGridTextColumn
                         Width="*"
                         Binding="{Binding Model.Name}"
-                        Header="角色名称" />
+                        Header="{x:Static p:Resources.RoleName}" />
                     <DataGridTextColumn
                         Width="*"
                         Binding="{Binding Model.Code}"
-                        Header="角色编码" />
-                    <DataGridTemplateColumn Width="*" Header="用户列表">
+                        Header="{x:Static p:Resources.RoleCode}" />
+                    <DataGridTemplateColumn Width="*" Header="{x:Static p:Resources.Users}">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <ItemsControl ItemsSource="{Binding Model.Users}">
@@ -43,7 +44,7 @@
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
 
-                    <DataGridTemplateColumn Width="*" Header="权限列表">
+                    <DataGridTemplateColumn Width="*" Header="{x:Static p:Resources.Authors}">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <ItemsControl ItemsSource="{Binding Model.Authors}">
@@ -61,7 +62,7 @@
                     <ControlTemplate>
                         <BulletDecorator VerticalAlignment="Center">
                             <BulletDecorator.Bullet>
-                                <TextBlock VerticalAlignment="Center" Text="搜索 " />
+                                <TextBlock VerticalAlignment="Center" Text="{x:Static p:Resources.Search}" />
                             </BulletDecorator.Bullet>
                             <h:TextFilterBox
                                 x:Name="tfb1"
@@ -95,7 +96,7 @@
         <DockPanel MinWidth="300">
             <BulletDecorator Margin="0,5" DockPanel.Dock="Top">
                 <BulletDecorator.Bullet>
-                    <TextBlock Text="角色名称" />
+                    <TextBlock Text="{x:Static p:Resources.RoleName}" />
                 </BulletDecorator.Bullet>
                 <TextBox Margin="5,0,0,0" Text="{Binding Model.Name}" />
             </BulletDecorator>

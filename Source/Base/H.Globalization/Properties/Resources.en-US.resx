@@ -937,4 +937,10 @@
   <data name="Common_DataBase" xml:space="preserve">
     <value>Database</value>
   </data>
+  <data name="Common_CheckAll" xml:space="preserve">
+    <value>Select All</value>
+  </data>
+  <data name="Common_DeleteCheckAll" xml:space="preserve">
+    <value>Delete Selected</value>
+  </data>
 </root>

@@ -61,6 +61,78 @@ namespace H.Modules.Operation.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 详情.
+        /// </summary>
+        public static string Property_hi_dd_operation_Message {
+            get {
+                return ResourceManager.GetString("Property_hi_dd_operation_Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 操作.
+        /// </summary>
+        public static string Property_hi_dd_operation_Method {
+            get {
+                return ResourceManager.GetString("Property_hi_dd_operation_Method", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 操作类型.
+        /// </summary>
+        public static string Property_hi_dd_operation_OperationType {
+            get {
+                return ResourceManager.GetString("Property_hi_dd_operation_OperationType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 结果.
+        /// </summary>
+        public static string Property_hi_dd_operation_Result {
+            get {
+                return ResourceManager.GetString("Property_hi_dd_operation_Result", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 操作日期.
+        /// </summary>
+        public static string Property_hi_dd_operation_Time {
+            get {
+                return ResourceManager.GetString("Property_hi_dd_operation_Time", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 信息.
+        /// </summary>
+        public static string Property_hi_dd_operation_Title {
+            get {
+                return ResourceManager.GetString("Property_hi_dd_operation_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 类型.
+        /// </summary>
+        public static string Property_hi_dd_operation_Type {
+            get {
+                return ResourceManager.GetString("Property_hi_dd_operation_Type", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 操作账号.
+        /// </summary>
+        public static string Property_hi_dd_operation_UserName {
+            get {
+                return ResourceManager.GetString("Property_hi_dd_operation_UserName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 操作日志.
         /// </summary>
         public static string Type_ShowOperationViewCommand {
