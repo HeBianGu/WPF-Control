@@ -79,7 +79,7 @@ namespace H.DataBases.SqlServer
         }
     }
 
-
+    [Display(Name = "数据库配置", GroupName = SettingGroupNames.GroupData)]
     public class SqlServerSettable : SqlServerSettable<SqlServerSettable>, ISqlServerOption
     {
 

@@ -16,7 +16,7 @@ public abstract class ShowMessageDialogCommandBase : ShowDialogCommandBase, ICom
 {
     protected ShowMessageDialogCommandBase()
     {
-        this.Name = Properties.Resources.ShowMessage;
+        this.Name = this.Name ?? Properties.Resources.ShowMessage;
     }
     public string Message { get; set; } = Properties.Resources.DefaultMessage;
 }

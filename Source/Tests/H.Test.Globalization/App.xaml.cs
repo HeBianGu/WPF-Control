@@ -38,7 +38,7 @@ public partial class App : ApplicationBase
         services.AddApplicationServices();
         services.AddIdentifyDefaultServices();
         services.AddGlobalization();
-
+        services.AddProject();
     }
 
     protected override Window CreateMainWindow(StartupEventArgs e)
@@ -55,5 +55,7 @@ public partial class App : ApplicationBase
         });
 
         app.UseApplicationOptions();
+        app.UseIdentifyDefaultOptions();
+        app.UseProjectOptions();
     }
 }

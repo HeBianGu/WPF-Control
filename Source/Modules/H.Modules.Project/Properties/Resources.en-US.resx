@@ -58,10 +58,67 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AppTitle" xml:space="preserve">
-    <value>Multilingual Test 1</value>
+  <data name="Type_ShowNewProjectCommand" xml:space="preserve">
+    <value>New Project</value>
   </data>
-  <data name="Hello" xml:space="preserve">
-    <value>Hello 2</value>
+  <data name="Type_ShowNewProjectCommand_Description" xml:space="preserve">
+    <value>Show New Project Page</value>
+  </data>
+  <data name="Type_ShowProjectsCommand" xml:space="preserve">
+    <value>Open Project</value>
+  </data>
+  <data name="Type_ShowProjectsCommand_Description" xml:space="preserve">
+    <value>Display the project list and select the project to open.</value>
+  </data>
+  <data name="Type_ShowEditProjectCommand" xml:space="preserve">
+    <value>Edit Project</value>
+  </data>
+  <data name="Type_ShowEditProjectCommand_Description" xml:space="preserve">
+    <value>Show the selected item's edit page</value>
+  </data>
+  <data name="Type_ShowSaveProjectCommand" xml:space="preserve">
+    <value>Save Project</value>
+  </data>
+  <data name="Type_ShowSaveProjectCommand_Description" xml:space="preserve">
+    <value>Save the currently selected wizard to the configuration file.</value>
+  </data>
+  <data name="Type_ShowCurrentProjectFileCommand" xml:space="preserve">
+    <value>Open Project File</value>
+  </data>
+  <data name="Type_ShowCurrentProjectFileCommand_Description" xml:space="preserve">
+    <value>Open the configuration file data of the current project in Notepad</value>
+  </data>
+  <data name="Property_ProjectItem_LoadDefaultCommand" xml:space="preserve">
+    <value>Restore Defaults</value>
+  </data>
+  <data name="Property_ProjectItem_Title" xml:space="preserve">
+    <value>Title</value>
+  </data>
+  <data name="Property_ProjectItem_IsFixed" xml:space="preserve">
+    <value>Fixed or not</value>
+  </data>
+  <data name="Property_ProjectItem_CreateTime" xml:space="preserve">
+    <value>Creation Time</value>
+  </data>
+  <data name="Property_ProjectItem_UpdateTime" xml:space="preserve">
+    <value>Modified Time</value>
+  </data>
+  <data name="Property_ProjectOptions_Extenstion" xml:space="preserve">
+    <value>File Extension</value>
+  </data>
+  <data name="Property_ProjectOptions_SaveMode" xml:space="preserve">
+    <value>When to Save</value>
+  </data>
+  <data name="Property_ProjectOptions_DefaultProjectName" xml:space="preserve">
+    <value>Default File Name</value>
+  </data>
+  <data name="Type_ProjectOptions" xml:space="preserve">
+    <value>Project Configuration</value>
+  </data>
+  <data name="Type_ProjectOptions_GroupName" xml:space="preserve">
+    <value>System Settings</value>
+  </data>
+  <data name="Type_ProjectOptions_Description" xml:space="preserve">
+    <value>Project Configuration Information</value>
   </data>
 </root>

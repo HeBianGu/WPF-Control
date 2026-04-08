@@ -61,6 +61,15 @@ namespace H.Modules.Theme.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 默认按钮.
+        /// </summary>
+        public static string DefaultButton {
+            get {
+                return ResourceManager.GetString("DefaultButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 背景配色.
         /// </summary>
         public static string Property_ThemeOptions_BackgroundResource {
@@ -120,6 +129,15 @@ namespace H.Modules.Theme.Properties {
         public static string Property_ThemeOptions_Layout {
             get {
                 return ResourceManager.GetString("Property_ThemeOptions_Layout", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 切换明暗主题.
+        /// </summary>
+        public static string SwitchTheme {
+            get {
+                return ResourceManager.GetString("SwitchTheme", resourceCulture);
             }
         }
         

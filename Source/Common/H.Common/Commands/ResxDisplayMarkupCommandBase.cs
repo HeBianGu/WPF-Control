@@ -18,8 +18,8 @@ public abstract class ResxDisplayMarkupCommandBase : DisplayMarkupCommandBase
     }
     protected void UpdateResx()
     {
-        string rname = this.GetType().GetNameResx(); ;
-        string rdesc = this.GetType().GetDescriptionResx();
+        string rname = this.GetType().GetNameResx(this.Name);
+        string rdesc = this.GetType().GetDescriptionResx(this.Description);
         this.Name = rname ?? this.Name;
         this.Description = rdesc ?? this.Description;
     }

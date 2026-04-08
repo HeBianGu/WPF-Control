@@ -61,20 +61,191 @@ namespace H.Modules.Project.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 多语言测试1.
+        ///   Looks up a localized string similar to 创建时间.
         /// </summary>
-        public static string AppTitle {
+        public static string Property_ProjectItem_CreateTime {
             get {
-                return ResourceManager.GetString("AppTitle", resourceCulture);
+                return ResourceManager.GetString("Property_ProjectItem_CreateTime", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 你好2.
+        ///   Looks up a localized string similar to 是否固定.
         /// </summary>
-        public static string Hello {
+        public static string Property_ProjectItem_IsFixed {
             get {
-                return ResourceManager.GetString("Hello", resourceCulture);
+                return ResourceManager.GetString("Property_ProjectItem_IsFixed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 恢复默认.
+        /// </summary>
+        public static string Property_ProjectItem_LoadDefaultCommand {
+            get {
+                return ResourceManager.GetString("Property_ProjectItem_LoadDefaultCommand", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 标题.
+        /// </summary>
+        public static string Property_ProjectItem_Title {
+            get {
+                return ResourceManager.GetString("Property_ProjectItem_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 修改时间.
+        /// </summary>
+        public static string Property_ProjectItem_UpdateTime {
+            get {
+                return ResourceManager.GetString("Property_ProjectItem_UpdateTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 默认文件名称.
+        /// </summary>
+        public static string Property_ProjectOptions_DefaultProjectName {
+            get {
+                return ResourceManager.GetString("Property_ProjectOptions_DefaultProjectName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 扩展名.
+        /// </summary>
+        public static string Property_ProjectOptions_Extenstion {
+            get {
+                return ResourceManager.GetString("Property_ProjectOptions_Extenstion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 保存的时机.
+        /// </summary>
+        public static string Property_ProjectOptions_SaveMode {
+            get {
+                return ResourceManager.GetString("Property_ProjectOptions_SaveMode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 工程配置.
+        /// </summary>
+        public static string Type_ProjectOptions {
+            get {
+                return ResourceManager.GetString("Type_ProjectOptions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 工程配置的信息.
+        /// </summary>
+        public static string Type_ProjectOptions_Description {
+            get {
+                return ResourceManager.GetString("Type_ProjectOptions_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 系统设置.
+        /// </summary>
+        public static string Type_ProjectOptions_GroupName {
+            get {
+                return ResourceManager.GetString("Type_ProjectOptions_GroupName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 打开项目文件.
+        /// </summary>
+        public static string Type_ShowCurrentProjectFileCommand {
+            get {
+                return ResourceManager.GetString("Type_ShowCurrentProjectFileCommand", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 用记事本打开当前项目的配置文件数据.
+        /// </summary>
+        public static string Type_ShowCurrentProjectFileCommand_Description {
+            get {
+                return ResourceManager.GetString("Type_ShowCurrentProjectFileCommand_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 编辑项目.
+        /// </summary>
+        public static string Type_ShowEditProjectCommand {
+            get {
+                return ResourceManager.GetString("Type_ShowEditProjectCommand", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 显示选中项目编辑页面.
+        /// </summary>
+        public static string Type_ShowEditProjectCommand_Description {
+            get {
+                return ResourceManager.GetString("Type_ShowEditProjectCommand_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 新建项目.
+        /// </summary>
+        public static string Type_ShowNewProjectCommand {
+            get {
+                return ResourceManager.GetString("Type_ShowNewProjectCommand", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 显示新建项目页面.
+        /// </summary>
+        public static string Type_ShowNewProjectCommand_Description {
+            get {
+                return ResourceManager.GetString("Type_ShowNewProjectCommand_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 打开项目.
+        /// </summary>
+        public static string Type_ShowProjectsCommand {
+            get {
+                return ResourceManager.GetString("Type_ShowProjectsCommand", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 显示项目列表，选择要打开的项目.
+        /// </summary>
+        public static string Type_ShowProjectsCommand_Description {
+            get {
+                return ResourceManager.GetString("Type_ShowProjectsCommand_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 保存项目.
+        /// </summary>
+        public static string Type_ShowSaveProjectCommand {
+            get {
+                return ResourceManager.GetString("Type_ShowSaveProjectCommand", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 保存当前选中向导到配置文件中.
+        /// </summary>
+        public static string Type_ShowSaveProjectCommand_Description {
+            get {
+                return ResourceManager.GetString("Type_ShowSaveProjectCommand_Description", resourceCulture);
             }
         }
     }

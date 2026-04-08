@@ -86,10 +86,12 @@ public abstract class SettableBase : ResxDisplayBindableBase, ISettable, ILoadab
         if (!this.HasFile())
         {
             message = "文件不存在:" + path;
+            this.UpdateResx();
             return true;
         }
         message = null;
         this.Load(path);
+        this.UpdateResx();
         return true;
     }
 

@@ -15,8 +15,53 @@
     <h:MainWindow.CaptionTempate>
         <ControlTemplate>
             <DockPanel LastChildFill="False" WindowChrome.IsHitTestVisibleInChrome="True">
-                <FontIconButton Command="{ShowSettingCommand}" Style="{DynamicResource {x:Static FontIconButtonKeys.Command}}" />
+                <Menu>
+                    <Menu.Resources>
+                        <Style BasedOn="{StaticResource {x:Static MenuItemKeys.BindCommand}}" TargetType="MenuItem" />
+                    </Menu.Resources>
+                    <MenuItem Header="身份认证">
+                        <MenuItem Command="{ShowUserViewCommand}" />
+                        <MenuItem Command="{ShowRoleViewCommand}" />
+                        <MenuItem Command="{ShowAuthorityViewCommand}" />
+                        <MenuItem Command="{ShowOperationViewCommand}" />
+                    </MenuItem>
+
+                    <MenuItem Background="Transparent" Header="文件">
+                        <MenuItem Command="{ShowNewProjectCommand}" />
+                        <MenuItem Command="{ShowProjectsCommand}" />
+                        <MenuItem Command="{ShowEditProjectCommand}" />
+                        <MenuItem Command="{ShowSaveProjectCommand}" />
+                        <MenuItem Command="{ShowCurrentProjectFileCommand}" />
+                        <MenuItem
+                            Cattach.Icon="{x:Static FontIcons.Calendar}"
+                            Header="最近的项目"
+                            ItemsSource="{Binding Source={x:Static IocProject.Instance}, Path=Collection}">
+                            <MenuItem.ItemContainerStyle>
+                                <Style TargetType="MenuItem">
+                                    <Setter Property="Command" Value="{ShowOpenProjectCommand}" />
+                                    <Setter Property="CommandParameter" Value="{Binding}" />
+                                    <Setter Property="Height" Value="50" />
+                                    <Setter Property="MinWidth" Value="400" />
+                                </Style>
+                            </MenuItem.ItemContainerStyle>
+                        </MenuItem>
+                        <Separator />
+                        <MenuItem
+                            Cattach.Icon="{x:Static FontIcons.PowerButton}"
+                            Command="{CloseAfterSaveWindowCommand}"
+                            CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"
+                            Header="退出" />
+                    </MenuItem>
+                </Menu>
                 <FontIconButton Command="{ShowGlobalizationViewCommand}" Style="{DynamicResource {x:Static FontIconButtonKeys.Command}}" />
+
+                <FontIconButton Command="{ShowSettingCommand}" Style="{DynamicResource {x:Static FontIconButtonKeys.Command}}" />
+                <ContentPresenter Content="{Ioc Type={x:Type h:ISwitchThemeViewPresenter}}" />
+                <Button Command="{ShowSettingCommand SwitchToType={x:Type h:IThemeOptions}}"
+                        Content="{Binding Source={x:Static h:ThemeOptions.Instance}, Path=ColorResource.Name}" />
+                <FontIconButton Command="{ShowColorThemeViewCommand}"
+                                FontFamily="{DynamicResource {x:Static SystemKeys.FontFamilyIcon}}"
+                                Style="{DynamicResource {x:Static FontIconButtonKeys.Command}}" />
             </DockPanel>
         </ControlTemplate>
     </h:MainWindow.CaptionTempate>
