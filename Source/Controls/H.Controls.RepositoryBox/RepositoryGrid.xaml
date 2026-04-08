@@ -85,7 +85,8 @@
             <Setter.Value>
                 <ControlTemplate>
                     <TextBlock Margin="10" DockPanel.Dock="Bottom">
-                        <Run Text=" 合计：" />
+                        <Run Text="{x:Static Resources.Common_Total}" />
+                         <Run Text="：" />
                         <Run Text="{Binding RelativeSource={RelativeSource AncestorType=DataGrid}, Path=ItemsSource.Count, Mode=OneWay}" />
                         <Run Text="/" />
                         <Run Text="{Binding Collection.Cache.Count, Mode=OneWay}" />

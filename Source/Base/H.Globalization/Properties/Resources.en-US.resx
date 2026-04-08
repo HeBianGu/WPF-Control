@@ -943,4 +943,7 @@
   <data name="Common_DeleteCheckAll" xml:space="preserve">
     <value>Delete Selected</value>
   </data>
+  <data name="Common_Total" xml:space="preserve">
+    <value>Total</value>
+  </data>
 </root>

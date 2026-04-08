@@ -1002,4 +1002,7 @@
   <data name="Common_DeleteCheckAll" xml:space="preserve">
     <value>删除选中</value>
   </data>
+  <data name="Common_Total" xml:space="preserve">
+    <value>合计</value>
+  </data>
 </root>

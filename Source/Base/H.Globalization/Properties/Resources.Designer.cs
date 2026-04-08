@@ -1060,6 +1060,15 @@ namespace H.Globalization.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 合计.
+        /// </summary>
+        public static string Common_Total {
+            get {
+                return ResourceManager.GetString("Common_Total", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 未授权.
         /// </summary>
         public static string Common_Unauthorized {
