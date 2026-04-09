@@ -6,6 +6,7 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
+using H.Common;
 using H.Common.Interfaces;
 using H.Controls.Form.Attributes;
 using H.Controls.Form.PropertyItem.Attribute;
@@ -129,7 +130,7 @@ public class GlobalizationOptions : IocOptionInstance<GlobalizationOptions>, IGl
         {
             if (o == null)
                 return;
-            var r = await IocMessage.ShowDialogMessage("语言修改需要重启软件才生效，是否立即重启?");
+            var r = await IocMessage.ShowDialogMessage("语言修改需要重启软件才生效，是否立即重启?".GetStringResx(this, "Message_NeedRestart"));
             if (r != true)
                 return;
             this.Save(out string message);

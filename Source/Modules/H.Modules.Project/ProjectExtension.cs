@@ -128,7 +128,7 @@ static partial class ProjectExtension
 
     public static async Task<bool?> ShowDeleteProject(this IProjectService projectService, IProjectItem project)
     {
-        var r = await IocMessage.Dialog.Show("确定要删除？");
+        var r = await IocMessage.Dialog.Show(Resources.Dialog_Message_ConfirmDelete);
         if (r != true)
             return r;
         await projectService.DeleteAsync(x => x == project);

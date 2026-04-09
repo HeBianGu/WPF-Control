@@ -16,6 +16,7 @@ global using System.ComponentModel.DataAnnotations;
 global using System.Diagnostics;
 global using System.IO;
 global using System.Net;
+using H.Common;
 
 namespace H.Modules.Upgrade;
 
@@ -85,10 +86,9 @@ internal class UpgradePresenter : BindableBase
             string savePath = System.IO.Path.Combine(save, fileName);
             if (File.Exists(savePath))
             {
-                bool? cr = await IocMessage.Dialog.Show("文件已存在，是否删除重新下载", x =>
+                bool? cr = await IocMessage.Dialog.Show("文件已存在，是否删除重新下载".GetStringResx(this, "Message_FileExists"), x =>
                 {
                     x.DialogButton = DialogButton.SumitAndCancel;
-                    x.Title = "提示";
                 });
                 if (cr != true)
                 {
@@ -155,10 +155,9 @@ internal class UpgradePresenter : BindableBase
     public bool ShowSetup(string savePath, out string message)
     {
         message = null;
-        bool? r = IocMessage.Dialog.Show("是否立即安装", x =>
+        bool? r = IocMessage.Dialog.Show("是否立即安装".GetStringResx(this, "Message_InstallNow"), x =>
         {
             x.DialogButton = DialogButton.SumitAndCancel;
-            x.Title = "提示";
         }).Result;
         if (r == false)
         {

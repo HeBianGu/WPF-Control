@@ -148,4 +148,10 @@
   <data name="Property_SettingSecurityViewOption_PasswordCount_Description" xml:space="preserve">
     <value>The number of incorrect password entries has exceeded the allowed verification attempts. Further input is not permitted.</value>
   </data>
+  <data name="Type_SettingDefaultCommand" xml:space="preserve">
+    <value>Ripristina predefinito</value>
+  </data>
+  <data name="Type_SettingDefaultCommand_Description" xml:space="preserve">
+    <value>Ripristina i dati predefiniti delle impostazioni di sistema</value>
+  </data>
 </root>

@@ -7,6 +7,7 @@
 // Licensed under the MIT License (the "License")
 
 using H.Controls.Form.PropertyItem.TextPropertyItems.Base;
+using H.Globalization.Properties;
 using H.Services.Message;
 using System.ComponentModel.DataAnnotations;
 using System.IO;
@@ -42,7 +43,7 @@ namespace H.Controls.Form.PropertyItem.TextPropertyItems
         [Display(Name = "删除")]
         public DisplayCommand ClearCommand => new DisplayCommand(async l =>
         {
-            bool? r = await IocMessage.ShowDialogMessage("删除文件无法恢复，确定删除?");
+            bool? r = await IocMessage.ShowDialogMessage(Resources.Dialog_Message_ConfirmDelete);
             if (r != true)
                 return;
             //try

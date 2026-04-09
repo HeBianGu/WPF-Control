@@ -98,7 +98,7 @@ namespace H.Modules.Identity
                 return;
             if (entity.ID == "{4360CE12-E5F4-4EA6-937C-9FDEA4DF06F6}")
             {
-                await IocMessage.ShowDialogMessage("管理员角色只读不可以编辑");
+                await IocMessage.ShowDialogMessage("管理员角色只读不可以编辑".GetStringResx(this, "Message_CannotEditAdmin"));
                 return;
             }
             await base.Delete(obj);
