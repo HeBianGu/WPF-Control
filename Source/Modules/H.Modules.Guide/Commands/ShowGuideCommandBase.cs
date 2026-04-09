@@ -12,7 +12,7 @@ using H.Services.Common.Guide;
 
 namespace H.Modules.Guide.Commands;
 
-public abstract class ShowGuideCommandBase : DisplayMarkupCommandBase
+public abstract class ShowGuideCommandBase : ResxDisplayMarkupCommandBase
 {
     public override async Task ExecuteAsync(object parameter)
     {

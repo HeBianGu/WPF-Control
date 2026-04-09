@@ -6,6 +6,9 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
+using H.Common;
+using H.Mvvm.Commands;
+using H.Services.Message;
 using Microsoft.Extensions.Options;
 
 namespace H.Modules.Globalization;
@@ -16,5 +19,13 @@ public class GlobalizationViewPresenter : IGlobalizationViewPresenter
     {
         _options = options;
     }
+
+
+    public RelayCommand SelectionChangedCommand => new RelayCommand(async x =>
+    {
+        if (x == null)
+            return;
+        await GlobalizationOptions.Instance.ShowShutDownAsync();
+    });
 }
 

@@ -14,7 +14,7 @@ namespace H.Modules.Guide.Commands;
 
 [Icon("\xE963")]
 [Display(Name = "新手向导", Description = "显示新手向导")]
-public class ShowGuideCommand : DisplayMarkupCommandBase
+public class ShowGuideCommand : ResxDisplayMarkupCommandBase
 {
     public override async Task ExecuteAsync(object parameter)
     {

@@ -130,12 +130,17 @@ public class GlobalizationOptions : IocOptionInstance<GlobalizationOptions>, IGl
         {
             if (o == null)
                 return;
-            var r = await IocMessage.ShowDialogMessage("语言修改需要重启软件才生效，是否立即重启?".GetStringResx(this, "Message_NeedRestart"));
-            if (r != true)
-                return;
-            this.Save(out string message);
-            Application.Current.Shutdown();
+            await this.ShowShutDownAsync();
         }
+    }
+
+    public async Task ShowShutDownAsync()
+    {
+        var r = await IocMessage.ShowDialogMessage("语言修改需要重启软件才生效，是否立即重启?".GetStringResx(this, "Message_NeedRestart"));
+        if (r != true)
+            return;
+        this.Save(out string message);
+        Application.Current.Shutdown();
     }
 
     public override void LoadDefault()

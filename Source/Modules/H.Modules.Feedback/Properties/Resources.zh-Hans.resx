@@ -85,4 +85,10 @@
   <data name="Property_FeedbackOptions_IsBodyHtml" xml:space="preserve">
     <value>启用HTML格式</value>
   </data>
+  <data name="Type_ShowFeedbackCommand" xml:space="preserve">
+    <value>用户反馈</value>
+  </data>
+  <data name="Type_ShowFeedbackCommand_Description" xml:space="preserve">
+    <value>显示用户反馈页面</value>
+  </data>
 </root>

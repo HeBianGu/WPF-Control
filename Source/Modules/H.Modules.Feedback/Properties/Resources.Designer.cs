@@ -140,5 +140,23 @@ namespace H.Modules.Feedback.Properties {
                 return ResourceManager.GetString("Type_FeedbackOptions_GroupName", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 用户反馈.
+        /// </summary>
+        public static string Type_ShowFeedbackCommand {
+            get {
+                return ResourceManager.GetString("Type_ShowFeedbackCommand", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 显示用户反馈页面.
+        /// </summary>
+        public static string Type_ShowFeedbackCommand_Description {
+            get {
+                return ResourceManager.GetString("Type_ShowFeedbackCommand_Description", resourceCulture);
+            }
+        }
     }
 }

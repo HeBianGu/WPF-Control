@@ -225,6 +225,24 @@ namespace H.Services.Message.Properties {
         /// <summary>
         ///   Looks up a localized string similar to 显示消息.
         /// </summary>
+        public static string Type_ShowNotImplementedCommand {
+            get {
+                return ResourceManager.GetString("Type_ShowNotImplementedCommand", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 显示弹窗消息.
+        /// </summary>
+        public static string Type_ShowNotImplementedCommand_Description {
+            get {
+                return ResourceManager.GetString("Type_ShowNotImplementedCommand_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 显示消息.
+        /// </summary>
         public static string Type_ShowPercentCommand {
             get {
                 return ResourceManager.GetString("Type_ShowPercentCommand", resourceCulture);

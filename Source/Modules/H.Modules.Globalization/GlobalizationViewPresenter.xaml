@@ -41,7 +41,7 @@
             </ItemsControl.ItemsPanel>
             <b:Interaction.Triggers>
                 <b:EventTrigger EventName="SelectionChanged">
-                    <b:InvokeCommandAction/>
+                    <b:InvokeCommandAction Command="{Binding SelectionChangedCommand}"/>
                 </b:EventTrigger>
             </b:Interaction.Triggers>
         </ListBox>

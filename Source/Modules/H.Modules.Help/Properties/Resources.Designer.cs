@@ -196,6 +196,186 @@ namespace H.Modules.Help.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 访问博客.
+        /// </summary>
+        public static string Type_ShowBlogContactCommand {
+            get {
+                return ResourceManager.GetString("Type_ShowBlogContactCommand", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 通过此方式联系到开发者.
+        /// </summary>
+        public static string Type_ShowBlogContactCommand_Description {
+            get {
+                return ResourceManager.GetString("Type_ShowBlogContactCommand_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 联系方式.
+        /// </summary>
+        public static string Type_ShowContactCommand {
+            get {
+                return ResourceManager.GetString("Type_ShowContactCommand", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 通过此方式联系到开发者.
+        /// </summary>
+        public static string Type_ShowContactCommand_Description {
+            get {
+                return ResourceManager.GetString("Type_ShowContactCommand_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 访问Github.
+        /// </summary>
+        public static string Type_ShowGithubContactCommand {
+            get {
+                return ResourceManager.GetString("Type_ShowGithubContactCommand", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 通过此方式联系到开发者.
+        /// </summary>
+        public static string Type_ShowGithubContactCommand_Description {
+            get {
+                return ResourceManager.GetString("Type_ShowGithubContactCommand_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 提出问题.
+        /// </summary>
+        public static string Type_ShowGitHubIssueContactCommand {
+            get {
+                return ResourceManager.GetString("Type_ShowGitHubIssueContactCommand", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 通过此方式向开源项目提出问题.
+        /// </summary>
+        public static string Type_ShowGitHubIssueContactCommand_Description {
+            get {
+                return ResourceManager.GetString("Type_ShowGitHubIssueContactCommand_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 访问播客.
+        /// </summary>
+        public static string Type_ShowPodcastContactCommand {
+            get {
+                return ResourceManager.GetString("Type_ShowPodcastContactCommand", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 通过此方式联系到开发者.
+        /// </summary>
+        public static string Type_ShowPodcastContactCommand_Description {
+            get {
+                return ResourceManager.GetString("Type_ShowPodcastContactCommand_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 添加QQ.
+        /// </summary>
+        public static string Type_ShowQQContactCommand {
+            get {
+                return ResourceManager.GetString("Type_ShowQQContactCommand", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 通过此方式联系到开发者.
+        /// </summary>
+        public static string Type_ShowQQContactCommand_Description {
+            get {
+                return ResourceManager.GetString("Type_ShowQQContactCommand_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 发行说明.
+        /// </summary>
+        public static string Type_ShowReleaseVersionsCommand {
+            get {
+                return ResourceManager.GetString("Type_ShowReleaseVersionsCommand", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 查看软件发行说明.
+        /// </summary>
+        public static string Type_ShowReleaseVersionsCommand_Description {
+            get {
+                return ResourceManager.GetString("Type_ShowReleaseVersionsCommand_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 发送邮件.
+        /// </summary>
+        public static string Type_ShowSendMailContactCommand {
+            get {
+                return ResourceManager.GetString("Type_ShowSendMailContactCommand", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 通过此方式联系到开发者.
+        /// </summary>
+        public static string Type_ShowSendMailContactCommand_Description {
+            get {
+                return ResourceManager.GetString("Type_ShowSendMailContactCommand_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 技术支持.
+        /// </summary>
+        public static string Type_ShowSupportCommand {
+            get {
+                return ResourceManager.GetString("Type_ShowSupportCommand", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 查看技术支持文档.
+        /// </summary>
+        public static string Type_ShowSupportCommand_Description {
+            get {
+                return ResourceManager.GetString("Type_ShowSupportCommand_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 官方网址.
+        /// </summary>
+        public static string Type_ShowWebSiteCommand {
+            get {
+                return ResourceManager.GetString("Type_ShowWebSiteCommand", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 查看官方网址.
+        /// </summary>
+        public static string Type_ShowWebSiteCommand_Description {
+            get {
+                return ResourceManager.GetString("Type_ShowWebSiteCommand_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 技术支持.
         /// </summary>
         public static string Type_SupportOptions {

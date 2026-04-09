@@ -121,4 +121,64 @@
   <data name="Property_ReleaseVersionsOptions_Uri" xml:space="preserve">
     <value>地址</value>
   </data>
+  <data name="Type_ShowReleaseVersionsCommand" xml:space="preserve">
+    <value>发行说明</value>
+  </data>
+  <data name="Type_ShowReleaseVersionsCommand_Description" xml:space="preserve">
+    <value>查看软件发行说明</value>
+  </data>
+  <data name="Type_ShowSupportCommand" xml:space="preserve">
+    <value>技术支持</value>
+  </data>
+  <data name="Type_ShowSupportCommand_Description" xml:space="preserve">
+    <value>查看技术支持文档</value>
+  </data>
+  <data name="Type_ShowWebSiteCommand" xml:space="preserve">
+    <value>官方网址</value>
+  </data>
+  <data name="Type_ShowWebSiteCommand_Description" xml:space="preserve">
+    <value>查看官方网址</value>
+  </data>
+  <data name="Type_ShowContactCommand" xml:space="preserve">
+    <value>联系方式</value>
+  </data>
+  <data name="Type_ShowContactCommand_Description" xml:space="preserve">
+    <value>通过此方式联系到开发者</value>
+  </data>
+  <data name="Type_ShowGithubContactCommand" xml:space="preserve">
+    <value>访问Github</value>
+  </data>
+  <data name="Type_ShowGithubContactCommand_Description" xml:space="preserve">
+    <value>通过此方式联系到开发者</value>
+  </data>
+  <data name="Type_ShowGitHubIssueContactCommand" xml:space="preserve">
+    <value>提出问题</value>
+  </data>
+  <data name="Type_ShowGitHubIssueContactCommand_Description" xml:space="preserve">
+    <value>通过此方式向开源项目提出问题</value>
+  </data>
+  <data name="Type_ShowQQContactCommand" xml:space="preserve">
+    <value>添加QQ</value>
+  </data>
+  <data name="Type_ShowQQContactCommand_Description" xml:space="preserve">
+    <value>通过此方式联系到开发者</value>
+  </data>
+  <data name="Type_ShowSendMailContactCommand" xml:space="preserve">
+    <value>发送邮件</value>
+  </data>
+  <data name="Type_ShowSendMailContactCommand_Description" xml:space="preserve">
+    <value>通过此方式联系到开发者</value>
+  </data>
+  <data name="Type_ShowBlogContactCommand" xml:space="preserve">
+    <value>访问博客</value>
+  </data>
+  <data name="Type_ShowBlogContactCommand_Description" xml:space="preserve">
+    <value>通过此方式联系到开发者</value>
+  </data>
+  <data name="Type_ShowPodcastContactCommand" xml:space="preserve">
+    <value>访问播客</value>
+  </data>
+  <data name="Type_ShowPodcastContactCommand_Description" xml:space="preserve">
+    <value>通过此方式联系到开发者</value>
+  </data>
 </root>

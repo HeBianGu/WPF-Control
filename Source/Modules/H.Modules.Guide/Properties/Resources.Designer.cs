@@ -221,5 +221,77 @@ namespace H.Modules.Guide.Properties {
                 return ResourceManager.GetString("Type_SettingViewOptions_GroupName", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 新手向导.
+        /// </summary>
+        public static string Type_ShowGuideCommand {
+            get {
+                return ResourceManager.GetString("Type_ShowGuideCommand", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 显示新手向导.
+        /// </summary>
+        public static string Type_ShowGuideCommand_Description {
+            get {
+                return ResourceManager.GetString("Type_ShowGuideCommand_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 功能列表.
+        /// </summary>
+        public static string Type_ShowGuideTreeCommand {
+            get {
+                return ResourceManager.GetString("Type_ShowGuideTreeCommand", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 显示版本功能列表.
+        /// </summary>
+        public static string Type_ShowGuideTreeCommand_Description {
+            get {
+                return ResourceManager.GetString("Type_ShowGuideTreeCommand_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 新增功能.
+        /// </summary>
+        public static string Type_ShowNewGuideCommand {
+            get {
+                return ResourceManager.GetString("Type_ShowNewGuideCommand", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 显示新增功能向导.
+        /// </summary>
+        public static string Type_ShowNewGuideCommand_Description {
+            get {
+                return ResourceManager.GetString("Type_ShowNewGuideCommand_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 新增功能列表.
+        /// </summary>
+        public static string Type_ShowNewGuideTreeCommand {
+            get {
+                return ResourceManager.GetString("Type_ShowNewGuideTreeCommand", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 显示版本功能列表.
+        /// </summary>
+        public static string Type_ShowNewGuideTreeCommand_Description {
+            get {
+                return ResourceManager.GetString("Type_ShowNewGuideTreeCommand_Description", resourceCulture);
+            }
+        }
     }
 }

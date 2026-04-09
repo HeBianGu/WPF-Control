@@ -10,6 +10,7 @@ using H.DataBases.Share;
 using H.Extensions.ApplicationBase;
 using H.Extensions.DataBase;
 using H.Extensions.FontIcon;
+using H.Modules.Guide;
 using H.Modules.Identity;
 using H.Modules.Login;
 using H.Modules.Operation;
@@ -39,6 +40,7 @@ public partial class App : ApplicationBase
         services.AddIdentifyDefaultServices();
         services.AddGlobalization();
         services.AddProject();
+        services.AddGuide();
     }
 
     protected override Window CreateMainWindow(StartupEventArgs e)
@@ -57,5 +59,6 @@ public partial class App : ApplicationBase
         app.UseApplicationOptions();
         app.UseIdentifyDefaultOptions();
         app.UseProjectOptions();
+        app.UseGuideOptions();
     }
 }

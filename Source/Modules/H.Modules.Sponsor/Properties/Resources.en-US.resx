@@ -58,37 +58,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Type_FeedbackOptions" xml:space="preserve">
-    <value>User Feedback Settings</value>
+  <data name="Type_ShowSponsorCommand" xml:space="preserve">
+    <value>Support Sponsorship</value>
   </data>
-  <data name="Type_FeedbackOptions_GroupName" xml:space="preserve">
-    <value>System Settings</value>
-  </data>
-  <data name="Type_FeedbackOptions_Description" xml:space="preserve">
-    <value>User Feedback Settings Information</value>
-  </data>
-  <data name="Property_FeedbackOptions_Host" xml:space="preserve">
-    <value>Server</value>
-  </data>
-  <data name="Property_FeedbackOptions_Port" xml:space="preserve">
-    <value>Port Number</value>
-  </data>
-  <data name="Property_FeedbackOptions_EnableSsl" xml:space="preserve">
-    <value>Enable SSL</value>
-  </data>
-  <data name="Property_FeedbackOptions_User" xml:space="preserve">
-    <value>External Account</value>
-  </data>
-  <data name="Property_FeedbackOptions_Password" xml:space="preserve">
-    <value>License Key</value>
-  </data>
-  <data name="Property_FeedbackOptions_IsBodyHtml" xml:space="preserve">
-    <value>Enable HTML Format</value>
-  </data>
-  <data name="Type_ShowFeedbackCommand" xml:space="preserve">
-    <value>User Feedback</value>
-  </data>
-  <data name="Type_ShowFeedbackCommand_Description" xml:space="preserve">
-    <value>Show User Feedback Page</value>
+  <data name="Type_ShowSponsorCommand_Description" xml:space="preserve">
+    <value>Support this feature with a sponsorship</value>
   </data>
 </root>

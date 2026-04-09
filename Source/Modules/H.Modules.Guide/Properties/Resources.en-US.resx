@@ -112,4 +112,28 @@
   <data name="Property_GuideOptions_AnimationDuration" xml:space="preserve">
     <value>Animation Interval</value>
   </data>
+  <data name="Type_ShowGuideCommand" xml:space="preserve">
+    <value>Getting Started</value>
+  </data>
+  <data name="Type_ShowGuideCommand_Description" xml:space="preserve">
+    <value>Show Getting Started Guide</value>
+  </data>
+  <data name="Type_ShowNewGuideCommand" xml:space="preserve">
+    <value>New Features</value>
+  </data>
+  <data name="Type_ShowNewGuideCommand_Description" xml:space="preserve">
+    <value>Show New Feature Wizard</value>
+  </data>
+  <data name="Type_ShowGuideTreeCommand" xml:space="preserve">
+    <value>Feature List</value>
+  </data>
+  <data name="Type_ShowGuideTreeCommand_Description" xml:space="preserve">
+    <value>Show version feature list</value>
+  </data>
+  <data name="Type_ShowNewGuideTreeCommand" xml:space="preserve">
+    <value>New Features List</value>
+  </data>
+  <data name="Type_ShowNewGuideTreeCommand_Description" xml:space="preserve">
+    <value>Display version feature list</value>
+  </data>
 </root>

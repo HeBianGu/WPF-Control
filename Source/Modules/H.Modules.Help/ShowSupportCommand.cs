@@ -18,7 +18,7 @@ namespace H.Modules.Help;
 
 [Icon(FontIcons.Group)]
 [Display(Name = "技术支持", Description = "查看技术支持文档")]
-public class ShowSupportCommand : DisplayMarkupCommandBase
+public class ShowSupportCommand : ResxDisplayMarkupCommandBase
 {
     public override Task ExecuteAsync(object parameter)
     {

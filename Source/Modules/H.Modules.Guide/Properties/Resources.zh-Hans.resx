@@ -112,4 +112,28 @@
   <data name="Property_GuideOptions_AnimationDuration" xml:space="preserve">
     <value>动画间隔</value>
   </data>
+  <data name="Type_ShowGuideCommand" xml:space="preserve">
+    <value>新手向导</value>
+  </data>
+  <data name="Type_ShowGuideCommand_Description" xml:space="preserve">
+    <value>显示新手向导</value>
+  </data>
+  <data name="Type_ShowNewGuideCommand" xml:space="preserve">
+    <value>新增功能</value>
+  </data>
+  <data name="Type_ShowNewGuideCommand_Description" xml:space="preserve">
+    <value>显示新增功能向导</value>
+  </data>
+  <data name="Type_ShowGuideTreeCommand" xml:space="preserve">
+    <value>功能列表</value>
+  </data>
+  <data name="Type_ShowGuideTreeCommand_Description" xml:space="preserve">
+    <value>显示版本功能列表</value>
+  </data>
+  <data name="Type_ShowNewGuideTreeCommand" xml:space="preserve">
+    <value>新增功能列表</value>
+  </data>
+  <data name="Type_ShowNewGuideTreeCommand_Description" xml:space="preserve">
+    <value>显示版本功能列表</value>
+  </data>
 </root>
