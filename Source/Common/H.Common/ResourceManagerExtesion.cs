@@ -59,7 +59,7 @@ public static class ResourceManagerExtesion
 
     public static string GetResx(this Type type, string key, string def = null)
     {
-        var entryResult = Assembly.GetEntryAssembly().GetResourceManager().GetString(key);
+        var entryResult = Assembly.GetEntryAssembly().GetResourceManager()?.GetString(key);
         if (entryResult != null)
             return entryResult;
         return type.Assembly.GetResx(key, def);
