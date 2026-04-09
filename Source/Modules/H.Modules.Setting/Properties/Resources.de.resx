@@ -148,4 +148,10 @@
   <data name="Property_SettingSecurityViewOption_PasswordCount_Description" xml:space="preserve">
     <value>Passworteingabefehleranzahl überschreitet die zulässige Anzahl der Passwortprüfungen, Eingabe nicht mehr erlaubt</value>
   </data>
+  <data name="Type_SettingDefaultCommand" xml:space="preserve">
+    <value>Standard wiederherstellen</value>
+  </data>
+  <data name="Type_SettingDefaultCommand_Description" xml:space="preserve">
+    <value>Standarddaten der Systemeinstellungen wiederherstellen</value>
+  </data>
 </root>

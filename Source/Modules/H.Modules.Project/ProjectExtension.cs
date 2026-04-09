@@ -8,6 +8,7 @@
 
 global using H.Services.Message.Dialog;
 global using H.Services.Project;
+using H.Globalization.Properties;
 using H.Services.Message.IODialog;
 using System;
 using System.Runtime.CompilerServices;
@@ -61,14 +62,14 @@ static partial class ProjectExtension
         }
         var r = await IocMessage.Form.ShowEdit(project, x =>
         {
-            x.Title = "新建项目";
+            x.Title = Resources.Common_Add;
             action?.Invoke(x);
         }, x =>
         {
             bool exist = projectService.Where(p => p.Title == x.Title).Count() > 0;
             if (exist)
             {
-                IocMessage.ShowSnackInfo($"项目名称已经存在<{x.Title}>");
+                IocMessage.ShowSnackInfo($"{Resources.Common_AlreadyExists}<{x.Title}>");
                 return false;
             }
             return true;

@@ -115,6 +115,15 @@ namespace H.Globalization.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 已存在.
+        /// </summary>
+        public static string Common_AlreadyExists {
+            get {
+                return ResourceManager.GetString("Common_AlreadyExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 应用.
         /// </summary>
         public static string Common_Apply {
@@ -511,6 +520,15 @@ namespace H.Globalization.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 输入密码.
+        /// </summary>
+        public static string Common_InputPassword {
+            get {
+                return ResourceManager.GetString("Common_InputPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 插入.
         /// </summary>
         public static string Common_Insert {
@@ -682,6 +700,15 @@ namespace H.Globalization.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 操作取消.
+        /// </summary>
+        public static string Common_OperationCancel {
+            get {
+                return ResourceManager.GetString("Common_OperationCancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 操作失败.
         /// </summary>
         public static string Common_OperationFailed {
@@ -732,6 +759,24 @@ namespace H.Globalization.Properties {
         public static string Common_Password {
             get {
                 return ResourceManager.GetString("Common_Password", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 密码错误.
+        /// </summary>
+        public static string Common_PasswordError {
+            get {
+                return ResourceManager.GetString("Common_PasswordError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 密码错误次数过多.
+        /// </summary>
+        public static string Common_PasswrodErrorTooMany {
+            get {
+                return ResourceManager.GetString("Common_PasswrodErrorTooMany", resourceCulture);
             }
         }
         

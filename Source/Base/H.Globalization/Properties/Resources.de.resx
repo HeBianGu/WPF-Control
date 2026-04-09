@@ -120,26 +120,906 @@
   <data name="Common_Account" xml:space="preserve">
     <value>Konto</value>
   </data>
+  <data name="Common_Ok" xml:space="preserve">
+    <value>Bestätigen</value>
+  </data>
+  <data name="Common_Cancel" xml:space="preserve">
+    <value>Abbrechen</value>
+  </data>
+  <data name="Common_Yes" xml:space="preserve">
+    <value>Ja</value>
+  </data>
+  <data name="Common_View" xml:space="preserve">
+    <value>Anzeigen</value>
+  </data>
+  <data name="Common_No" xml:space="preserve">
+    <value>Nein</value>
+  </data>
+  <data name="Common_Abort" xml:space="preserve">
+    <value>Abbrechen</value>
+  </data>
+  <data name="Common_Retry" xml:space="preserve">
+    <value>Erneut versuchen</value>
+  </data>
+  <data name="Common_Ignore" xml:space="preserve">
+    <value>Ignorieren</value>
+  </data>
+  <data name="Common_Apply" xml:space="preserve">
+    <value>Anwenden</value>
+  </data>
+  <data name="Common_Close" xml:space="preserve">
+    <value>Schließen</value>
+  </data>
+  <data name="Common_Prompt" xml:space="preserve">
+    <value>Hinweis</value>
+  </data>
+  <data name="Common_Exit" xml:space="preserve">
+    <value>Beenden</value>
+  </data>
+  <data name="Common_Back" xml:space="preserve">
+    <value>Zurück</value>
+  </data>
+  <data name="Common_Next" xml:space="preserve">
+    <value>Weiter</value>
+  </data>
+  <data name="Common_Show" xml:space="preserve">
+    <value>Anzeigen</value>
+  </data>
+  <data name="Common_Previous" xml:space="preserve">
+    <value>Zurück</value>
+  </data>
+  <data name="Common_Finish" xml:space="preserve">
+    <value>Fertig</value>
+  </data>
+  <data name="Common_Save" xml:space="preserve">
+    <value>Speichern</value>
+  </data>
+  <data name="Common_SaveAs" xml:space="preserve">
+    <value>Speichern unter</value>
+  </data>
+  <data name="Common_Open" xml:space="preserve">
+    <value>Öffnen</value>
+  </data>
+  <data name="Common_New" xml:space="preserve">
+    <value>Neu</value>
+  </data>
+  <data name="Common_Create" xml:space="preserve">
+    <value>Erstellen</value>
+  </data>
+  <data name="Common_Default" xml:space="preserve">
+    <value>Standard</value>
+  </data>
+  <data name="Common_Edit" xml:space="preserve">
+    <value>Bearbeiten</value>
+  </data>
+  <data name="Common_Delete" xml:space="preserve">
+    <value>Löschen</value>
+  </data>
+  <data name="Common_Remove" xml:space="preserve">
+    <value>Entfernen</value>
+  </data>
+  <data name="Common_Add" xml:space="preserve">
+    <value>Hinzufügen</value>
+  </data>
+  <data name="Common_Insert" xml:space="preserve">
+    <value>Einfügen</value>
+  </data>
+  <data name="Common_Update" xml:space="preserve">
+    <value>Aktualisieren</value>
+  </data>
+  <data name="Common_Rename" xml:space="preserve">
+    <value>Umbenennen</value>
+  </data>
+  <data name="Common_Import" xml:space="preserve">
+    <value>Importieren</value>
+  </data>
+  <data name="Common_Export" xml:space="preserve">
+    <value>Exportieren</value>
+  </data>
+  <data name="Common_Print" xml:space="preserve">
+    <value>Drucken</value>
+  </data>
+  <data name="Common_Preview" xml:space="preserve">
+    <value>Vorschau</value>
+  </data>
+  <data name="Common_Copy" xml:space="preserve">
+    <value>Kopieren</value>
+  </data>
+  <data name="Common_Cut" xml:space="preserve">
+    <value>Ausschneiden</value>
+  </data>
+  <data name="Common_Paste" xml:space="preserve">
+    <value>Einfügen</value>
+  </data>
+  <data name="Common_Undo" xml:space="preserve">
+    <value>Rückgängig</value>
+  </data>
+  <data name="Common_Redo" xml:space="preserve">
+    <value>Wiederholen</value>
+  </data>
+  <data name="Common_Search" xml:space="preserve">
+    <value>Suche</value>
+  </data>
+  <data name="Common_Find" xml:space="preserve">
+    <value>Suchen</value>
+  </data>
+  <data name="Common_FindNext" xml:space="preserve">
+    <value>Weitersuchen</value>
+  </data>
+  <data name="Common_Replace" xml:space="preserve">
+    <value>Ersetzen</value>
+  </data>
+  <data name="Common_Filter" xml:space="preserve">
+    <value>Filtern</value>
+  </data>
+  <data name="Common_Sort" xml:space="preserve">
+    <value>Sortieren</value>
+  </data>
+  <data name="Common_Refresh" xml:space="preserve">
+    <value>Aktualisieren</value>
+  </data>
+  <data name="Common_Clear" xml:space="preserve">
+    <value>Löschen</value>
+  </data>
+  <data name="Common_Reset" xml:space="preserve">
+    <value>Zurücksetzen</value>
+  </data>
+  <data name="Common_Select" xml:space="preserve">
+    <value>Auswählen</value>
+  </data>
+  <data name="Common_SelectAll" xml:space="preserve">
+    <value>Alles auswählen</value>
+  </data>
+  <data name="Common_DeselectAll" xml:space="preserve">
+    <value>Auswahl aufheben</value>
+  </data>
+  <data name="Common_InvertSelection" xml:space="preserve">
+    <value>Umkehren</value>
+  </data>
+  <data name="Common_Enable" xml:space="preserve">
+    <value>Aktivieren</value>
+  </data>
+  <data name="Common_Disable" xml:space="preserve">
+    <value>Deaktivieren</value>
+  </data>
+  <data name="Common_On" xml:space="preserve">
+    <value>Ein</value>
+  </data>
+  <data name="Common_Off" xml:space="preserve">
+    <value>Schließen</value>
+  </data>
+  <data name="Common_Loading" xml:space="preserve">
+    <value>Wird geladen...</value>
+  </data>
+  <data name="Common_PleaseWait" xml:space="preserve">
+    <value>Bitte warten...</value>
+  </data>
+  <data name="Common_Working" xml:space="preserve">
+    <value>Wird verarbeitet...</value>
+  </data>
+  <data name="Common_Connecting" xml:space="preserve">
+    <value>Verbindung wird hergestellt...</value>
+  </data>
+  <data name="Common_Disconnecting" xml:space="preserve">
+    <value>Verbindung wird getrennt...</value>
+  </data>
+  <data name="Common_Error" xml:space="preserve">
+    <value>Fehler</value>
+  </data>
+  <data name="Common_Warning" xml:space="preserve">
+    <value>Warnung</value>
+  </data>
+  <data name="Common_Information" xml:space="preserve">
+    <value>Hinweis</value>
+  </data>
+  <data name="Common_Success" xml:space="preserve">
+    <value>Erfolgreich</value>
+  </data>
+  <data name="Common_Failed" xml:space="preserve">
+    <value>Fehlgeschlagen</value>
+  </data>
+  <data name="Common_OperationSucceeded" xml:space="preserve">
+    <value>Vorgang erfolgreich abgeschloss en</value>
+  </data>
+  <data name="Common_OperationFailed" xml:space="preserve">
+    <value>Vorgang fehlgeschlagen</value>
+  </data>
+  <data name="Common_NotSupported" xml:space="preserve">
+    <value>Nicht unterstützt</value>
+  </data>
+  <data name="Common_NotImplemented" xml:space="preserve">
+    <value>Noch nicht implementiert</value>
+  </data>
+  <data name="Common_Confirm" xml:space="preserve">
+    <value>Bestätigen</value>
+  </data>
+  <data name="Common_Confirmation" xml:space="preserve">
+    <value>Bestätigungshinweis</value>
+  </data>
+  <data name="Common_AreYouSure" xml:space="preserve">
+    <value>Sind Sie sicher?</value>
+  </data>
+  <data name="Common_ConfirmDelete" xml:space="preserve">
+    <value>Möchten Sie wirklich löschen?</value>
+  </data>
+  <data name="Common_ConfirmExit" xml:space="preserve">
+    <value>Möchten Sie wirklich beenden?</value>
+  </data>
+  <data name="Common_ConfirmSaveChanges" xml:space="preserve">
+    <value>Änderungen speichern?</value>
+  </data>
+  <data name="Common_UnsavedChanges" xml:space="preserve">
+    <value>Sie haben ungespeicherte Änderungen</value>
+  </data>
+  <data name="Common_RequiredField" xml:space="preserve">
+    <value>Pflichtfeld</value>
+  </data>
+  <data name="Common_InvalidInput" xml:space="preserve">
+    <value>Ungültige Eingabe</value>
+  </data>
+  <data name="Common_InvalidFormat" xml:space="preserve">
+    <value>Format ist ungültig</value>
+  </data>
+  <data name="Common_OutOfRange" xml:space="preserve">
+    <value>Außerhalb des Bereichs</value>
+  </data>
+  <data name="Common_PleaseSelect" xml:space="preserve">
+    <value>Bitte auswählen</value>
+  </data>
+  <data name="Common_PleaseEnter" xml:space="preserve">
+    <value>Bitte eingeben</value>
+  </data>
+  <data name="Common_Login" xml:space="preserve">
+    <value>Anmelden</value>
+  </data>
+  <data name="Common_Logout" xml:space="preserve">
+    <value>Abmelden</value>
+  </data>
+  <data name="Common_Register" xml:space="preserve">
+    <value>Registrieren</value>
+  </data>
+  <data name="Common_UserName" xml:space="preserve">
+    <value>Benutzername</value>
+  </data>
+  <data name="Common_Password" xml:space="preserve">
+    <value>Passwort</value>
+  </data>
+  <data name="Common_ConfirmPassword" xml:space="preserve">
+    <value>Passwort bestätigen</value>
+  </data>
+  <data name="Common_ForgotPassword" xml:space="preserve">
+    <value>Passwort vergessen</value>
+  </data>
+  <data name="Common_Settings" xml:space="preserve">
+    <value>Einstellungen</value>
+  </data>
+  <data name="Common_Preferences" xml:space="preserve">
+    <value>Einstellungen</value>
+  </data>
+  <data name="Common_Options" xml:space="preserve">
+    <value>Optionen</value>
+  </data>
+  <data name="Common_About" xml:space="preserve">
+    <value>Über</value>
+  </data>
+  <data name="Common_Help" xml:space="preserve">
+    <value>Hilfe</value>
+  </data>
+  <data name="Common_CheckForUpdates" xml:space="preserve">
+    <value>Nach Updates suchen</value>
+  </data>
+  <data name="Common_NetworkError" xml:space="preserve">
+    <value>Netzwerkfehler</value>
+  </data>
+  <data name="Common_ServerError" xml:space="preserve">
+    <value>Serverfehler</value>
+  </data>
+  <data name="Common_Timeout" xml:space="preserve">
+    <value>Zeitüberschreitung bei der Anforderung</value>
+  </data>
+  <data name="Common_Unauthorized" xml:space="preserve">
+    <value>Nicht autorisiert</value>
+  </data>
+  <data name="Common_AccessDenied" xml:space="preserve">
+    <value>Zugriff verweigert</value>
+  </data>
+  <data name="Common_Download" xml:space="preserve">
+    <value>Herunterladen</value>
+  </data>
+  <data name="Common_Upload" xml:space="preserve">
+    <value>Hochladen</value>
+  </data>
+  <data name="Common_Start" xml:space="preserve">
+    <value>Starten</value>
+  </data>
+  <data name="Common_Stop" xml:space="preserve">
+    <value>Stopp</value>
+  </data>
+  <data name="Common_Pause" xml:space="preserve">
+    <value>Pause</value>
+  </data>
+  <data name="Common_Resume" xml:space="preserve">
+    <value>Weiter</value>
+  </data>
+  <data name="Common_CopySucceeded" xml:space="preserve">
+    <value>Erfolgreich kopiert</value>
+  </data>
+  <data name="Common_CopyFailed" xml:space="preserve">
+    <value>Kopieren fehlgeschlagen</value>
+  </data>
+  <data name="Common_SaveSucceeded" xml:space="preserve">
+    <value>Erfolgreich gespeichert</value>
+  </data>
+  <data name="Common_SaveFailed" xml:space="preserve">
+    <value>Speichern fehlgeschlagen</value>
+  </data>
+  <data name="Common_ItemsCountFormat" xml:space="preserve">
+    <value>Insgesamt {0} Elemente</value>
+  </data>
+  <data name="Common_SelectedCountFormat" xml:space="preserve">
+    <value>{0} Elemente ausgewählt</value>
+  </data>
+  <data name="Common_PageFormat" xml:space="preserve">
+    <value>Seite {0} / {1} Seiten</value>
+  </data>
+  <data name="Common_NoData" xml:space="preserve">
+    <value>Keine Daten verfügbar</value>
+  </data>
+  <data name="Common_Empty" xml:space="preserve">
+    <value>Leer</value>
+  </data>
+  <data name="Common_All" xml:space="preserve">
+    <value>Alle</value>
+  </data>
+  <data name="Menu_File" xml:space="preserve">
+    <value>Datei</value>
+  </data>
+  <data name="Menu_Edit" xml:space="preserve">
+    <value>Bearbeiten</value>
+  </data>
+  <data name="Menu_View" xml:space="preserve">
+    <value>Ansicht</value>
+  </data>
+  <data name="Menu_Tools" xml:space="preserve">
+    <value>Werkzeuge</value>
+  </data>
+  <data name="Menu_Window" xml:space="preserve">
+    <value>Fenster</value>
+  </data>
+  <data name="Menu_Help" xml:space="preserve">
+    <value>Hilfe</value>
+  </data>
+  <data name="Menu_New" xml:space="preserve">
+    <value>Neu</value>
+  </data>
+  <data name="Menu_Open" xml:space="preserve">
+    <value>Öffnen</value>
+  </data>
+  <data name="Menu_OpenRecent" xml:space="preserve">
+    <value>Zuletzt geöffnet</value>
+  </data>
+  <data name="Menu_Close" xml:space="preserve">
+    <value>Schließen</value>
+  </data>
+  <data name="Menu_CloseAll" xml:space="preserve">
+    <value>Alle schließen</value>
+  </data>
+  <data name="Menu_Save" xml:space="preserve">
+    <value>Speichern</value>
+  </data>
+  <data name="Menu_SaveAs" xml:space="preserve">
+    <value>Speichern unter</value>
+  </data>
+  <data name="Menu_SaveAll" xml:space="preserve">
+    <value>Alles speichern</value>
+  </data>
+  <data name="Menu_Import" xml:space="preserve">
+    <value>Importieren</value>
+  </data>
+  <data name="Menu_Export" xml:space="preserve">
+    <value>Exportieren</value>
+  </data>
+  <data name="Menu_Print" xml:space="preserve">
+    <value>Drucken</value>
+  </data>
+  <data name="Menu_PrintPreview" xml:space="preserve">
+    <value>Druckvorschau</value>
+  </data>
+  <data name="Menu_Exit" xml:space="preserve">
+    <value>Beenden</value>
+  </data>
+  <data name="Menu_Undo" xml:space="preserve">
+    <value>Rückgängig</value>
+  </data>
+  <data name="Menu_Redo" xml:space="preserve">
+    <value>Wiederholen</value>
+  </data>
+  <data name="Menu_Cut" xml:space="preserve">
+    <value>Ausschneiden</value>
+  </data>
+  <data name="Menu_Copy" xml:space="preserve">
+    <value>Kopieren</value>
+  </data>
+  <data name="Menu_Paste" xml:space="preserve">
+    <value>Einfügen</value>
+  </data>
+  <data name="Menu_Delete" xml:space="preserve">
+    <value>Löschen</value>
+  </data>
+  <data name="Menu_SelectAll" xml:space="preserve">
+    <value>Alles auswählen</value>
+  </data>
+  <data name="Menu_Find" xml:space="preserve">
+    <value>Suchen</value>
+  </data>
+  <data name="Menu_FindNext" xml:space="preserve">
+    <value>Weitersuchen</value>
+  </data>
+  <data name="Menu_Replace" xml:space="preserve">
+    <value>Ersetzen</value>
+  </data>
+  <data name="Menu_ZoomIn" xml:space="preserve">
+    <value>Vergrößern</value>
+  </data>
+  <data name="Menu_ZoomOut" xml:space="preserve">
+    <value>Verkleinern</value>
+  </data>
+  <data name="Menu_ResetZoom" xml:space="preserve">
+    <value>Zoom zurücksetzen</value>
+  </data>
+  <data name="Menu_FullScreen" xml:space="preserve">
+    <value>Vollbild</value>
+  </data>
+  <data name="Menu_ToggleSidebar" xml:space="preserve">
+    <value>Seitenleiste umschalten</value>
+  </data>
+  <data name="Menu_ToggleStatusBar" xml:space="preserve">
+    <value>Statusleiste umschalten</value>
+  </data>
+  <data name="Menu_Refresh" xml:space="preserve">
+    <value>Aktualisieren</value>
+  </data>
+  <data name="Menu_Settings" xml:space="preserve">
+    <value>Einstellungen</value>
+  </data>
+  <data name="Menu_Preferences" xml:space="preserve">
+    <value>Einstellungen</value>
+  </data>
+  <data name="Menu_CheckForUpdates" xml:space="preserve">
+    <value>Nach Updates suchen</value>
+  </data>
+  <data name="Menu_About" xml:space="preserve">
+    <value>Über</value>
+  </data>
+  <data name="Menu_Documentation" xml:space="preserve">
+    <value>Dokumentation</value>
+  </data>
+  <data name="Menu_Feedback" xml:space="preserve">
+    <value>Feedback</value>
+  </data>
+  <data name="Dialog_Title_Confirm" xml:space="preserve">
+    <value>Bestätigen</value>
+  </data>
+  <data name="Dialog_Title_Warning" xml:space="preserve">
+    <value>Warnung</value>
+  </data>
+  <data name="Dialog_Title_Error" xml:space="preserve">
+    <value>Fehler</value>
+  </data>
+  <data name="Dialog_Title_Information" xml:space="preserve">
+    <value>Hinweis</value>
+  </data>
+  <data name="Dialog_Title_Settings" xml:space="preserve">
+    <value>Einstellungen</value>
+  </data>
+  <data name="Dialog_Title_About" xml:space="preserve">
+    <value>Über</value>
+  </data>
+  <data name="Dialog_Button_Ok" xml:space="preserve">
+    <value>Bestätigen</value>
+  </data>
+  <data name="Dialog_Button_Cancel" xml:space="preserve">
+    <value>Abbrechen</value>
+  </data>
+  <data name="Dialog_Button_Yes" xml:space="preserve">
+    <value>Ja</value>
+  </data>
+  <data name="Dialog_Button_No" xml:space="preserve">
+    <value>Nein</value>
+  </data>
+  <data name="Dialog_Button_Apply" xml:space="preserve">
+    <value>Anwendung</value>
+  </data>
+  <data name="Dialog_Button_Close" xml:space="preserve">
+    <value>Schließen</value>
+  </data>
+  <data name="Dialog_Button_Retry" xml:space="preserve">
+    <value>Wiederholen</value>
+  </data>
+  <data name="Dialog_Button_Ignore" xml:space="preserve">
+    <value>Ignorieren</value>
+  </data>
+  <data name="Dialog_Message_AreYouSure" xml:space="preserve">
+    <value>Sind Sie sicher?</value>
+  </data>
+  <data name="Dialog_Message_ConfirmDelete" xml:space="preserve">
+    <value>Möchten Sie dies wirklich löschen? Dieser Vorgang kann nicht rückgängig gemacht werden.</value>
+  </data>
+  <data name="Dialog_Message_ConfirmExit" xml:space="preserve">
+    <value>Möchten Sie wirklich beenden?</value>
+  </data>
+  <data name="Dialog_Message_UnsavedChanges" xml:space="preserve">
+    <value>Sie haben ungespeicherte Änderungen. Möchten Sie diese speichern?</value>
+  </data>
+  <data name="Dialog_Message_OperationSucceeded" xml:space="preserve">
+    <value>Vorgang erfolgreich.</value>
+  </data>
+  <data name="Dialog_Message_OperationFailed" xml:space="preserve">
+    <value>Vorgang fehlgeschlagen.</value>
+  </data>
+  <data name="Dialog_Message_NotSupported" xml:space="preserve">
+    <value>Der aktuelle Vorgang wird nicht unterstützt.</value>
+  </data>
+  <data name="Dialog_File_OpenTitle" xml:space="preserve">
+    <value>Datei zum Öffnen auswählen</value>
+  </data>
+  <data name="Dialog_File_SaveTitle" xml:space="preserve">
+    <value>Speicherort auswählen</value>
+  </data>
+  <data name="Dialog_File_FolderTitle" xml:space="preserve">
+    <value>Ordner auswählen</value>
+  </data>
+  <data name="Dialog_File_OverwritePrompt" xml:space="preserve">
+    <value>Datei existiert bereits. Möchten Sie sie überschreiben?</value>
+  </data>
+  <data name="Validation_Required" xml:space="preserve">
+    <value>Dieser Eintrag ist erforderlich.</value>
+  </data>
+  <data name="Validation_Invalid" xml:space="preserve">
+    <value>Ungültige Eingabe.</value>
+  </data>
+  <data name="Validation_InvalidFormat" xml:space="preserve">
+    <value>Format ist nicht korrekt.</value>
+  </data>
+  <data name="Validation_OutOfRange" xml:space="preserve">
+    <value>Außerhalb des zulässigen Bereichs.</value>
+  </data>
+  <data name="Validation_MinLengthFormat" xml:space="preserve">
+    <value>Die Länge darf nicht kleiner als {0} sein.</value>
+  </data>
+  <data name="Validation_MaxLengthFormat" xml:space="preserve">
+    <value>Darf nicht länger als {0} sein.</value>
+  </data>
+  <data name="Validation_LengthRangeFormat" xml:space="preserve">
+    <value>Die Länge muss zwischen {0} und {1} liegen.</value>
+  </data>
+  <data name="Validation_MinValueFormat" xml:space="preserve">
+    <value>Darf nicht kleiner als {0} sein.</value>
+  </data>
+  <data name="Validation_MaxValueFormat" xml:space="preserve">
+    <value>Darf nicht größer als {0} sein.</value>
+  </data>
+  <data name="Validation_ValueRangeFormat" xml:space="preserve">
+    <value>Muss zwischen {0} und {1} liegen.</value>
+  </data>
+  <data name="Validation_InvalidEmail" xml:space="preserve">
+    <value>Ungültiges E-Mail-Format.</value>
+  </data>
+  <data name="Validation_InvalidPhone" xml:space="preserve">
+    <value>Das Telefonnummernformat ist ungültig.</value>
+  </data>
+  <data name="Validation_InvalidUrl" xml:space="preserve">
+    <value>URL-Format ist ungültig.</value>
+  </data>
+  <data name="Validation_InvalidIpAddress" xml:space="preserve">
+    <value>IP-Adresse ist ungültig.</value>
+  </data>
+  <data name="Validation_PasswordNotMatch" xml:space="preserve">
+    <value>Die zweimal eingegebenen Passwörter stimmen nicht überein.</value>
+  </data>
+  <data name="Validation_InvalidDate" xml:space="preserve">
+    <value>Ungültiges Datum.</value>
+  </data>
+  <data name="Validation_InvalidTime" xml:space="preserve">
+    <value>Ungültige Zeit.</value>
+  </data>
+  <data name="File_NewFile" xml:space="preserve">
+    <value>Neue Datei</value>
+  </data>
+  <data name="File_NewFolder" xml:space="preserve">
+    <value>Neuer Ordner</value>
+  </data>
+  <data name="File_OpenFile" xml:space="preserve">
+    <value>Datei öffnen</value>
+  </data>
+  <data name="File_OpenFolder" xml:space="preserve">
+    <value>Ordner öffnen</value>
+  </data>
+  <data name="File_SaveFile" xml:space="preserve">
+    <value>Datei speichern</value>
+  </data>
+  <data name="File_SaveAll" xml:space="preserve">
+    <value>Alle speichern</value>
+  </data>
+  <data name="File_Rename" xml:space="preserve">
+    <value>Umbenennen</value>
+  </data>
+  <data name="File_Copy" xml:space="preserve">
+    <value>Kopieren</value>
+  </data>
+  <data name="File_Move" xml:space="preserve">
+    <value>Verschieben</value>
+  </data>
+  <data name="File_Delete" xml:space="preserve">
+    <value>Löschen</value>
+  </data>
+  <data name="File_Restore" xml:space="preserve">
+    <value>Wiederherstellen</value>
+  </data>
+  <data name="File_Size" xml:space="preserve">
+    <value>Größe</value>
+  </data>
+  <data name="File_Type" xml:space="preserve">
+    <value>Typ
+</value>
+  </data>
+  <data name="File_Name" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="File_Path" xml:space="preserve">
+    <value>Pfad</value>
+  </data>
+  <data name="File_DateCreated" xml:space="preserve">
+    <value>Erstellungszeit</value>
+  </data>
+  <data name="File_DateModified" xml:space="preserve">
+    <value>Änderungszeit</value>
+  </data>
+  <data name="File_Error_NotFound" xml:space="preserve">
+    <value>Datei nicht gefunden.</value>
+  </data>
+  <data name="File_Error_FolderNotFound" xml:space="preserve">
+    <value>Ordner nicht gefunden.</value>
+  </data>
+  <data name="File_Error_AccessDenied" xml:space="preserve">
+    <value>Kein Zugriffsrecht.</value>
+  </data>
+  <data name="File_Error_InUse" xml:space="preserve">
+    <value>Datei wird gerade verwendet.</value>
+  </data>
+  <data name="File_Error_ReadFailed" xml:space="preserve">
+    <value>Lesen fehlgeschlagen.</value>
+  </data>
+  <data name="File_Error_WriteFailed" xml:space="preserve">
+    <value>Schreiben fehlgeschlagen.</value>
+  </data>
+  <data name="File_Error_InvalidPath" xml:space="preserve">
+    <value>Pfad ungültig.</value>
+  </data>
+  <data name="File_Error_AlreadyExists" xml:space="preserve">
+    <value>Es existiert bereits eine Datei oder ein Ordner mit demselben Namen.</value>
+  </data>
+  <data name="File_Filter_AllFiles" xml:space="preserve">
+    <value>Alle Dateien (*.*)</value>
+  </data>
+  <data name="Nav_Home" xml:space="preserve">
+    <value>Startseite</value>
+  </data>
+  <data name="Nav_Dashboard" xml:space="preserve">
+    <value>Instrumententafel</value>
+  </data>
+  <data name="Nav_Projects" xml:space="preserve">
+    <value>Projekt</value>
+  </data>
+  <data name="Nav_Favorites" xml:space="preserve">
+    <value>Favoriten</value>
+  </data>
+  <data name="Nav_Recent" xml:space="preserve">
+    <value>Zuletzt</value>
+  </data>
+  <data name="Nav_History" xml:space="preserve">
+    <value>Verlauf</value>
+  </data>
+  <data name="Nav_Settings" xml:space="preserve">
+    <value>Einstellungen</value>
+  </data>
+  <data name="Nav_Account" xml:space="preserve">
+    <value>Konto</value>
+  </data>
+  <data name="Nav_Profile" xml:space="preserve">
+    <value>Persönliche Informationen</value>
+  </data>
+  <data name="Nav_Security" xml:space="preserve">
+    <value>Sicherheit</value>
+  </data>
+  <data name="Nav_Notifications" xml:space="preserve">
+    <value>Benachrichtigung</value>
+  </data>
+  <data name="Nav_Back" xml:space="preserve">
+    <value>Zurück</value>
+  </data>
+  <data name="Nav_Next" xml:space="preserve">
+    <value>Nächster Schritt</value>
+  </data>
+  <data name="Nav_Previous" xml:space="preserve">
+    <value>Zurück</value>
+  </data>
+  <data name="Status_Ready" xml:space="preserve">
+    <value>Bereit</value>
+  </data>
+  <data name="Status_Loading" xml:space="preserve">
+    <value>Wird geladen...</value>
+  </data>
+  <data name="Status_Working" xml:space="preserve">
+    <value>Wird verarbeitet...</value>
+  </data>
+  <data name="Status_Saving" xml:space="preserve">
+    <value>Wird gespeichert...</value>
+  </data>
+  <data name="Status_Refreshing" xml:space="preserve">
+    <value>Wird aktualisiert...</value>
+  </data>
+  <data name="Status_Connecting" xml:space="preserve">
+    <value>Verbindung wird hergestellt...</value>
+  </data>
+  <data name="Status_Disconnecting" xml:space="preserve">
+    <value>Wird getrennt...</value>
+  </data>
+  <data name="Status_Connected" xml:space="preserve">
+    <value>Verbunden</value>
+  </data>
+  <data name="Status_Disconnected" xml:space="preserve">
+    <value>Nicht verbunden</value>
+  </data>
+  <data name="Status_Success" xml:space="preserve">
+    <value>Erfolg</value>
+  </data>
+  <data name="Status_Failed" xml:space="preserve">
+    <value>Fehlgeschlagen</value>
+  </data>
+  <data name="Status_Canceled" xml:space="preserve">
+    <value>Abgebrochen</value>
+  </data>
+  <data name="Status_Completed" xml:space="preserve">
+    <value>Abgeschlossen</value>
+  </data>
+  <data name="Status_Paused" xml:space="preserve">
+    <value>Pausiert</value>
+  </data>
+  <data name="Status_Stopped" xml:space="preserve">
+    <value>Gestoppt</value>
+  </data>
+  <data name="Status_NoData" xml:space="preserve">
+    <value>Keine Daten verfügbar</value>
+  </data>
+  <data name="Status_Empty" xml:space="preserve">
+    <value>Leer</value>
+  </data>
+  <data name="Status_ItemsCountFormat" xml:space="preserve">
+    <value>Insgesamt {0} Elemente</value>
+  </data>
+  <data name="Status_SelectedCountFormat" xml:space="preserve">
+    <value>{0} Elemente ausgewählt</value>
+  </data>
+  <data name="Permission_Title" xml:space="preserve">
+    <value>Berechtigung</value>
+  </data>
+  <data name="Permission_AccessDenied" xml:space="preserve">
+    <value>Zugriff verweigert.</value>
+  </data>
+  <data name="Permission_Unauthorized" xml:space="preserve">
+    <value>Nicht autorisiert.</value>
+  </data>
+  <data name="Permission_Insufficient" xml:space="preserve">
+    <value>Unzureichende Berechtigungen.</value>
+  </data>
+  <data name="Permission_Request" xml:space="preserve">
+    <value>Berechtigung anfordern</value>
+  </data>
+  <data name="Permission_Grant" xml:space="preserve">
+    <value>Gewähren</value>
+  </data>
+  <data name="Permission_Revoke" xml:space="preserve">
+    <value>Rückgängig</value>
+  </data>
+  <data name="Permission_AdminRequired" xml:space="preserve">
+    <value>Administratorrechte erforderlich.</value>
+  </data>
+  <data name="Permission_Read" xml:space="preserve">
+    <value>Laden</value>
+  </data>
+  <data name="Permission_Write" xml:space="preserve">
+    <value>Schreiben</value>
+  </data>
+  <data name="Permission_Execute" xml:space="preserve">
+    <value>Ausführen</value>
+  </data>
+  <data name="Permission_Delete" xml:space="preserve">
+    <value>Löschen</value>
+  </data>
+  <data name="Theme_Title" xml:space="preserve">
+    <value>Thema</value>
+  </data>
+  <data name="Theme_Light" xml:space="preserve">
+    <value>Hell</value>
+  </data>
+  <data name="Theme_Dark" xml:space="preserve">
+    <value>Dunkel</value>
+  </data>
+  <data name="Theme_System" xml:space="preserve">
+    <value>Dem System folgen</value>
+  </data>
+  <data name="Theme_Auto" xml:space="preserve">
+    <value>Automatisch</value>
+  </data>
+  <data name="Theme_AccentColor" xml:space="preserve">
+    <value>Akzentfarbe</value>
+  </data>
+  <data name="Theme_PrimaryColor" xml:space="preserve">
+    <value>Hauptfarbe</value>
+  </data>
+  <data name="Theme_Background" xml:space="preserve">
+    <value>Hintergrund</value>
+  </data>
+  <data name="Theme_Foreground" xml:space="preserve">
+    <value>Vordergrund</value>
+  </data>
+  <data name="Theme_Font" xml:space="preserve">
+    <value>Schriftart</value>
+  </data>
+  <data name="Theme_FontSize" xml:space="preserve">
+    <value>Schriftgröße</value>
+  </data>
+  <data name="Theme_CornerRadius" xml:space="preserve">
+    <value>Abgerundete Ecken</value>
+  </data>
+  <data name="Theme_Shadow" xml:space="preserve">
+    <value>Schatten</value>
+  </data>
+  <data name="Theme_Transparency" xml:space="preserve">
+    <value>Transparenz</value>
+  </data>
+  <data name="Theme_Apply" xml:space="preserve">
+    <value>Anwendungsthema</value>
+  </data>
+  <data name="Theme_Reset" xml:space="preserve">
+    <value>Standarddesign wiederherstellen</value>
+  </data>
+  <data name="Window_Maximize" xml:space="preserve">
+    <value>Maximieren</value>
+  </data>
+  <data name="Window_Minimize" xml:space="preserve">
+    <value>Minimieren</value>
+  </data>
+  <data name="Window_Restore" xml:space="preserve">
+    <value>Wiederherstellen</value>
+  </data>
+  <data name="Common_DataBase" xml:space="preserve">
+    <value>Datenbank</value>
+  </data>
+  <data name="Common_CheckAll" xml:space="preserve">
+    <value>Alles auswählen</value>
+  </data>
+  <data name="Common_DeleteCheckAll" xml:space="preserve">
+    <value>Ausgewählte löschen</value>
+  </data>
+  <data name="Common_Total" xml:space="preserve">
+    <value>Gesamt</value>
+  </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="Window_Maximize" type="System.Resources.ResXNullRef, System.Windows.Forms">
+  <data name="Common_OperationCancel" type="System.Resources.ResXNullRef, System.Windows.Forms">
     <value />
   </data>
-  <data name="Window_Minimize" type="System.Resources.ResXNullRef, System.Windows.Forms">
+  <data name="Common_AlreadyExists" type="System.Resources.ResXNullRef, System.Windows.Forms">
     <value />
   </data>
-  <data name="Window_Restore" type="System.Resources.ResXNullRef, System.Windows.Forms">
+  <data name="Common_PasswordError" type="System.Resources.ResXNullRef, System.Windows.Forms">
     <value />
   </data>
-  <data name="Common_DataBase" type="System.Resources.ResXNullRef, System.Windows.Forms">
+  <data name="Common_InputPassword" type="System.Resources.ResXNullRef, System.Windows.Forms">
     <value />
   </data>
-  <data name="Common_CheckAll" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
-  </data>
-  <data name="Common_DeleteCheckAll" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
-  </data>
-  <data name="Common_Total" type="System.Resources.ResXNullRef, System.Windows.Forms">
+  <data name="Common_PasswrodErrorTooMany" type="System.Resources.ResXNullRef, System.Windows.Forms">
     <value />
   </data>
 </root>

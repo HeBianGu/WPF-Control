@@ -148,4 +148,10 @@
   <data name="Property_SettingSecurityViewOption_PasswordCount_Description" xml:space="preserve">
     <value>Количество неверных вводов пароля превысило допустимое число проверок пароля, дальнейший ввод запрещён.</value>
   </data>
+  <data name="Type_SettingDefaultCommand" xml:space="preserve">
+    <value>Восстановить по умолчанию</value>
+  </data>
+  <data name="Type_SettingDefaultCommand_Description" xml:space="preserve">
+    <value>Восстановить значения по умолчанию системных настроек</value>
+  </data>
 </root>

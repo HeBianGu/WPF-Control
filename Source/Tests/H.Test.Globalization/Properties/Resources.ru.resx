@@ -64,4 +64,31 @@
   <data name="Hello" xml:space="preserve">
     <value>Привет 2</value>
   </data>
+  <data name="Enum_TestEnum_Default" xml:space="preserve">
+    <value>По умолчанию</value>
+  </data>
+  <data name="Enum_TestEnum_First" xml:space="preserve">
+    <value>Первый</value>
+  </data>
+  <data name="Enum_TestEnum_None" xml:space="preserve">
+    <value>Нет</value>
+  </data>
+  <data name="Enum_TestEnum_Default_GroupName" xml:space="preserve">
+    <value>Группа</value>
+  </data>
+  <data name="Enum_TestEnum_Default_Description" xml:space="preserve">
+    <value>Поведение по умолчанию</value>
+  </data>
+  <data name="Enum_TestEnum_First_GroupName" xml:space="preserve">
+    <value>Группа</value>
+  </data>
+  <data name="Enum_TestEnum_First_Description" xml:space="preserve">
+    <value>Обозначает первое действие</value>
+  </data>
+  <data name="Enum_TestEnum_None_GroupName" xml:space="preserve">
+    <value>Группа</value>
+  </data>
+  <data name="Enum_TestEnum_None_Description" xml:space="preserve">
+    <value>Нет действия</value>
+  </data>
 </root>

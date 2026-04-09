@@ -11,6 +11,7 @@ global using H.Services.Message.Dialog;
 global using System.Windows;
 global using System.Windows.Controls;
 global using System.Windows.Controls.Primitives;
+using H.Common;
 
 namespace H.Controls.OrderBox
 {
@@ -227,12 +228,12 @@ namespace H.Controls.OrderBox
             bool? r = await IocMessage.Dialog.Show(_propertyOrders, x =>
             {
                 x.DialogButton = DialogButton.Sumit;
-                x.Title = "数据排序器";
+                x.Title = "数据排序器".GetStringResx(this, "Title_OrderBox");
             });
             if (r == true)
             {
                 this.Save();
-                IocMessage.ShowSnackInfo("保存成功");
+                IocMessage.ShowSnackInfo(H.Globalization.Properties.Resources.Common_SaveSucceeded);
             }
         }
 

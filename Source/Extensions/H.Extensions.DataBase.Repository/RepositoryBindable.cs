@@ -78,7 +78,7 @@ namespace H.Extensions.DataBase.Repository
                         Ioc<IOperationService>.Instance?.Log<TEntity>($"新增", m.ID, OperationType.Add);
                 }
                 if (this.UseMessage)
-                    IocMessage.ShowSnackInfo("新增成功");
+                    IocMessage.ShowSnackInfo(H.Globalization.Properties.Resources.Common_OperationSucceeded);
                 return;
             }
             int r = await this.Repository?.InsertRangeAsync(ms);
@@ -86,12 +86,12 @@ namespace H.Extensions.DataBase.Repository
             {
                 this.Collection.Add(ms.Select(x => this.CreateSelectBindable(x)).ToArray());
                 if (this.UseMessage)
-                    IocMessage.ShowSnackInfo("新增成功");
+                    IocMessage.ShowSnackInfo(H.Globalization.Properties.Resources.Common_OperationSucceeded);
             }
             else
             {
                 if (this.UseMessage)
-                    IocMessage.ShowSnackInfo("新增失败,数据库保存错误");
+                    IocMessage.ShowSnackInfo(H.Globalization.Properties.Resources.Common_OperationFailed);
             }
 
             if (this.UseOperationLog)

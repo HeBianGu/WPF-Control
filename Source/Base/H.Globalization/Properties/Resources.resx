@@ -1005,4 +1005,19 @@
   <data name="Common_Total" xml:space="preserve">
     <value>合计</value>
   </data>
+  <data name="Common_OperationCancel" xml:space="preserve">
+    <value>操作取消</value>
+  </data>
+  <data name="Common_AlreadyExists" xml:space="preserve">
+    <value>已存在</value>
+  </data>
+  <data name="Common_PasswordError" xml:space="preserve">
+    <value>密码错误</value>
+  </data>
+  <data name="Common_InputPassword" xml:space="preserve">
+    <value>输入密码</value>
+  </data>
+  <data name="Common_PasswrodErrorTooMany" xml:space="preserve">
+    <value>密码错误次数过多</value>
+  </data>
 </root>

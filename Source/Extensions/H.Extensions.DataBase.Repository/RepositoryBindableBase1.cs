@@ -20,6 +20,7 @@ using H.Common.Attributes;
 using H.Extensions.Common;
 using H.Extensions.FontIcon;
 using H.Extensions.ObservableSource;
+using H.Globalization.Properties;
 using H.Services.Common;
 
 namespace H.Extensions.DataBase.Repository
@@ -376,10 +377,10 @@ namespace H.Extensions.DataBase.Repository
         public virtual async Task Add(object obj)
         {
             TEntity m = new TEntity();
-            bool? dialog = await IocMessage.Form.ShowEdit(this.GetAddModel(m), x => x.Title = "新增");
+            bool? dialog = await IocMessage.Form.ShowEdit(this.GetAddModel(m), x => x.Title = Resources.Common_Add);
             if (dialog != true)
             {
-                IocMessage.ShowSnackInfo("取消操作");
+                IocMessage.ShowSnackInfo(Resources.Common_OperationCancel);
                 return;
             }
             await this.Add(m);
@@ -409,7 +410,7 @@ namespace H.Extensions.DataBase.Repository
             bool? r = await IocMessage.Form.ShowEdit(this.GetEditModel(entity));
             if (r != true)
             {
-                IocMessage.ShowSnackInfo("取消操作");
+                IocMessage.ShowSnackInfo(Resources.Common_OperationCancel);
                 return;
             }
 
@@ -418,11 +419,11 @@ namespace H.Extensions.DataBase.Repository
             if (rs >= 0)
             {
                 if (this.UseMessage)
-                    IocMessage.ShowSnackInfo("保存成功");
+                    IocMessage.ShowSnackInfo(H.Globalization.Properties.Resources.Common_SaveSucceeded);
             }
             else
             {
-                IocMessage.ShowSnackInfo("保存失败，数据库保存错误");
+                IocMessage.ShowSnackInfo(H.Globalization.Properties.Resources.Common_SaveFailed);
             }
             if (this.UseOperationLog)
                 Ioc<IOperationService>.Instance?.Log<TEntity>($"编辑", entity.ID, OperationType.Update);
@@ -436,9 +437,8 @@ namespace H.Extensions.DataBase.Repository
 
             if (this.UseMessage)
             {
-                bool? result = await IocMessage.Dialog.Show("确定删除数据？", x =>
+                bool? result = await IocMessage.Dialog.Show(Resources.Dialog_Message_ConfirmDelete, x =>
                 {
-                    x.Title = "提示";
                     x.DialogButton = DialogButton.SumitAndCancel;
                 });
                 if (result != true)
@@ -450,17 +450,17 @@ namespace H.Extensions.DataBase.Repository
             if (r > 0)
             {
                 if (this.UseMessage)
-                    IocMessage.ShowSnackInfo("删除成功");
+                    IocMessage.ShowSnackInfo(H.Globalization.Properties.Resources.Common_OperationSucceeded);
                 TViewModel m = this.Collection.FirstOrDefault(x => x.Model == entity);
                 this.Collection.Remove(m);
                 this.Collection.SelectedItem = this.Collection.FirstOrDefault(x => true);
             }
             else
             {
-                IocMessage.ShowSnackInfo("删除失败,数据库保存错误");
+                IocMessage.ShowSnackInfo(H.Globalization.Properties.Resources.Common_OperationFailed);
             }
             if (this.UseOperationLog)
-                Ioc<IOperationService>.Instance?.Log<TEntity>($"新增", entity.ID, OperationType.Delete);
+                Ioc<IOperationService>.Instance?.Log<TEntity>($"删除", entity.ID, OperationType.Delete);
             this.OnCollectionChanged(obj);
         }
 
@@ -471,9 +471,8 @@ namespace H.Extensions.DataBase.Repository
 
         public virtual async Task Clear(object obj = null)
         {
-            bool? result = await IocMessage.Dialog.Show("确定删除数据？", x =>
+            bool? result = await IocMessage.Dialog.Show(Resources.Dialog_Message_ConfirmDelete, x =>
             {
-                x.Title = "提示";
                 x.DialogButton = DialogButton.SumitAndCancel;
             });
 
@@ -484,12 +483,12 @@ namespace H.Extensions.DataBase.Repository
             if (r > 0)
             {
                 if (this.UseMessage)
-                    IocMessage.ShowSnackInfo("清空成功");
+                    IocMessage.ShowSnackInfo(Resources.Common_OperationSucceeded);
                 this.Collection.Clear();
             }
             else
             {
-                IocMessage.ShowSnackInfo("清空失败,数据库保存错误");
+                IocMessage.ShowSnackInfo(Resources.Common_OperationFailed);
             }
             if (this.UseOperationLog)
                 Ioc<IOperationService>.Instance?.Log<TEntity>($"清空", null, OperationType.Delete);
@@ -513,11 +512,11 @@ namespace H.Extensions.DataBase.Repository
             if (r >= 0)
             {
                 if (this.UseMessage)
-                    IocMessage.ShowSnackInfo("保存成功");
+                    IocMessage.ShowSnackInfo(Resources.Common_SaveSucceeded);
             }
             else
             {
-                IocMessage.ShowSnackInfo("保存失败，数据库保存错误");
+                IocMessage.ShowSnackInfo(Resources.Common_SaveFailed);
             }
             return r;
         }
@@ -529,9 +528,8 @@ namespace H.Extensions.DataBase.Repository
 
         protected virtual async Task DeleteAllChecked(object obj)
         {
-            bool? result = await IocMessage.Dialog.Show("确定删除数据？", x =>
+            bool? result = await IocMessage.Dialog.Show(Resources.Dialog_Message_ConfirmDelete, x =>
             {
-                x.Title = "提示";
                 x.DialogButton = DialogButton.SumitAndCancel;
             });
             if (result != true)
@@ -546,12 +544,13 @@ namespace H.Extensions.DataBase.Repository
             int r = this.Repository == null ? 1 : await this.Repository.DeleteAsync(x => entities.Contains(x));
             if (r > 0)
             {
-                IocMessage.Snack?.ShowInfo($"删除成功,共计{entities.Count()}条");
+                //IocMessage.Snack?.ShowInfo($"删除成功,共计{entities.Count()}条");
+                IocMessage.ShowSnackInfo(Resources.Common_OperationSucceeded);
                 this.Collection.RemoveAll(x => entities.Contains(x.Model));
             }
             else
             {
-                IocMessage.ShowSnackInfo("删除失败,数据库保存错误");
+                IocMessage.ShowSnackInfo(Resources.Common_OperationFailed);
             }
             if (this.UseOperationLog)
                 foreach (TEntity item in entities)

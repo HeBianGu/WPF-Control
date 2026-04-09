@@ -9,7 +9,10 @@
 global using H.Presenters.Common;
 global using H.Services.Message.Dialog.Commands;
 global using System.Windows;
+using H.Common;
 using H.Extensions.FontIcon;
+using H.Globalization.Properties;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace H.Modules.Setting.Commands;
 
@@ -30,18 +33,18 @@ public class ShowSettingCommand : ShowDialogCommandBase
             {
                 x.Width = 300;
                 x.HorizontalContentAlignment = HorizontalAlignment.Stretch;
-                x.Title = "请输入密码";
+                x.Title = Resources.Common_InputPassword;
             }, () =>
             {
                 if (_count > SettingSecurityViewOption.Instance.PasswordCount)
                 {
-                    IocMessage.ShowSnackInfo($"密码错误次数超过{SettingSecurityViewOption.Instance.PasswordCount}次禁止输入");
+                    IocMessage.ShowSnackInfo(Resources.Common_PasswrodErrorTooMany);
                     return Task.FromResult(false);
                 }
                 if (p.Password != SettingSecurityViewOption.Instance.Password)
                 {
                     _count++;
-                    IocMessage.ShowSnackInfo($"密码错误[{_count}/{SettingSecurityViewOption.Instance.PasswordCount}]次");
+                    IocMessage.ShowSnackInfo($"{Resources.Common_PasswordError}[{_count}/{SettingSecurityViewOption.Instance.PasswordCount}]");
                     return Task.FromResult(false);
                 }
                 return Task.FromResult(true);

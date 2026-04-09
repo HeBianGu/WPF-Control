@@ -149,4 +149,10 @@
   <data name="Property_SettingSecurityViewOption_PasswordCount_Description" xml:space="preserve">
     <value>Le nombre de saisies de mot de passe incorrectes a dépassé la limite de vérification autorisée, toute nouvelle saisie est désormais interdite.</value>
   </data>
+  <data name="Type_SettingDefaultCommand" xml:space="preserve">
+    <value>Restaurer par défaut</value>
+  </data>
+  <data name="Type_SettingDefaultCommand_Description" xml:space="preserve">
+    <value>Restaurer les données par défaut des paramètres système</value>
+  </data>
 </root>

@@ -149,4 +149,9 @@ public static class ResourceManagerExtesion
     {
         return assembly.GetResx(key, def) ?? def;
     }
+
+    public static string GetStringResx(this string def, object assembly, string key)
+    {
+        return assembly.GetType().Assembly.GetResx(key, def) ?? def;
+    }
 }

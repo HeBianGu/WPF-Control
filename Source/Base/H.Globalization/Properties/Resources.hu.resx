@@ -1,64 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
-  <!-- 
-    Microsoft ResX Schema 
-    
-    Version 2.0
-    
-    The primary goals of this format is to allow a simple XML format 
-    that is mostly human readable. The generation and parsing of the 
-    various data types are done through the TypeConverter classes 
-    associated with the data types.
-    
-    Example:
-    
-    ... ado.net/XML headers & schema ...
-    <resheader name="resmimetype">text/microsoft-resx</resheader>
-    <resheader name="version">2.0</resheader>
-    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
-    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
-    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
-    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
-    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
-        <value>[base64 mime encoded serialized .NET Framework object]</value>
-    </data>
-    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
-        <comment>This is a comment</comment>
-    </data>
-                
-    There are any number of "resheader" rows that contain simple 
-    name/value pairs.
-    
-    Each data row contains a name, and value. The row also contains a 
-    type or mimetype. Type corresponds to a .NET class that support 
-    text/value conversion through the TypeConverter architecture. 
-    Classes that don't support this are serialized and stored with the 
-    mimetype set.
-    
-    The mimetype is used for serialized objects, and tells the 
-    ResXResourceReader how to depersist the object. This is currently not 
-    extensible. For a given mimetype the value must be set accordingly:
-    
-    Note - application/x-microsoft.net.object.binary.base64 is the format 
-    that the ResXResourceWriter will generate, however the reader can 
-    read any of the formats listed below.
-    
-    mimetype: application/x-microsoft.net.object.binary.base64
-    value   : The object must be serialized with 
-            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
-            : and then encoded with base64 encoding.
-    
-    mimetype: application/x-microsoft.net.object.soap.base64
-    value   : The object must be serialized with 
-            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
-            : and then encoded with base64 encoding.
-
-    mimetype: application/x-microsoft.net.object.bytearray.base64
-    value   : The object must be serialized into a byte array 
-            : using a System.ComponentModel.TypeConverter
-            : and then encoded with base64 encoding.
-    -->
   <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
@@ -112,34 +53,898 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Common_Account" xml:space="preserve">
     <value>Fiók</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="Window_Maximize" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
+  <data name="Common_Ok" xml:space="preserve">
+    <value>Megerősítés</value>
   </data>
-  <data name="Window_Minimize" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
+  <data name="Common_Cancel" xml:space="preserve">
+    <value>Mégse</value>
   </data>
-  <data name="Window_Restore" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
+  <data name="Common_Yes" xml:space="preserve">
+    <value>igen</value>
   </data>
-  <data name="Common_DataBase" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
+  <data name="Common_View" xml:space="preserve">
+    <value>Megtekintés</value>
   </data>
-  <data name="Common_CheckAll" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
+  <data name="Common_No" xml:space="preserve">
+    <value>Nem</value>
   </data>
-  <data name="Common_DeleteCheckAll" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
+  <data name="Common_Abort" xml:space="preserve">
+    <value>Megszakítás</value>
   </data>
-  <data name="Common_Total" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
+  <data name="Common_Retry" xml:space="preserve">
+    <value>Újrapróbálás</value>
+  </data>
+  <data name="Common_Ignore" xml:space="preserve">
+    <value>Figyelmen kívül hagyás</value>
+  </data>
+  <data name="Common_Apply" xml:space="preserve">
+    <value>Alkalmazás</value>
+  </data>
+  <data name="Common_Close" xml:space="preserve">
+    <value>Bezárás</value>
+  </data>
+  <data name="Common_Prompt" xml:space="preserve">
+    <value>Tipp</value>
+  </data>
+  <data name="Common_Exit" xml:space="preserve">
+    <value>Kilépés</value>
+  </data>
+  <data name="Common_Back" xml:space="preserve">
+    <value>Vissza</value>
+  </data>
+  <data name="Common_Next" xml:space="preserve">
+    <value>Következő ნაბიჯು</value>
+  </data>
+  <data name="Common_Show" xml:space="preserve">
+    <value>Megjelenítés</value>
+  </data>
+  <data name="Common_Previous" xml:space="preserve">
+    <value>Előző lépés</value>
+  </data>
+  <data name="Common_Finish" xml:space="preserve">
+    <value>Befejezve</value>
+  </data>
+  <data name="Common_Save" xml:space="preserve">
+    <value>Mentés</value>
+  </data>
+  <data name="Common_SaveAs" xml:space="preserve">
+    <value>Mentés másként</value>
+  </data>
+  <data name="Common_Open" xml:space="preserve">
+    <value>Megnyitás</value>
+  </data>
+  <data name="Common_New" xml:space="preserve">
+    <value>Új</value>
+  </data>
+  <data name="Common_Create" xml:space="preserve">
+    <value>Létrehozás</value>
+  </data>
+  <data name="Common_Default" xml:space="preserve">
+    <value>Alapértelmezett</value>
+  </data>
+  <data name="Common_Edit" xml:space="preserve">
+    <value>Szerkesztés</value>
+  </data>
+  <data name="Common_Delete" xml:space="preserve">
+    <value>Törlés</value>
+  </data>
+  <data name="Common_Remove" xml:space="preserve">
+    <value>Eltávolítás</value>
+  </data>
+  <data name="Common_Add" xml:space="preserve">
+    <value>Hozzáadás</value>
+  </data>
+  <data name="Common_Insert" xml:space="preserve">
+    <value>Beszúrás</value>
+  </data>
+  <data name="Common_Update" xml:space="preserve">
+    <value>Frissítés</value>
+  </data>
+  <data name="Common_Rename" xml:space="preserve">
+    <value>Átnevezés</value>
+  </data>
+  <data name="Common_Import" xml:space="preserve">
+    <value>Importálás</value>
+  </data>
+  <data name="Common_Export" xml:space="preserve">
+    <value>Export</value>
+  </data>
+  <data name="Common_Print" xml:space="preserve">
+    <value>Nyomtatás</value>
+  </data>
+  <data name="Common_Preview" xml:space="preserve">
+    <value>Előnézet</value>
+  </data>
+  <data name="Common_Copy" xml:space="preserve">
+    <value>Másolás</value>
+  </data>
+  <data name="Common_Cut" xml:space="preserve">
+    <value>Kivágás</value>
+  </data>
+  <data name="Common_Paste" xml:space="preserve">
+    <value>Beillesztés</value>
+  </data>
+  <data name="Common_Undo" xml:space="preserve">
+    <value>Visszavonás</value>
+  </data>
+  <data name="Common_Redo" xml:space="preserve">
+    <value>Újra կատարել</value>
+  </data>
+  <data name="Common_Search" xml:space="preserve">
+    <value>Keresés</value>
+  </data>
+  <data name="Common_Find" xml:space="preserve">
+    <value>Keresés</value>
+  </data>
+  <data name="Common_FindNext" xml:space="preserve">
+    <value>Következő keresése</value>
+  </data>
+  <data name="Common_Replace" xml:space="preserve">
+    <value>Csere</value>
+  </data>
+  <data name="Common_Filter" xml:space="preserve">
+    <value>Szűrés</value>
+  </data>
+  <data name="Common_Sort" xml:space="preserve">
+    <value>Rendezés</value>
+  </data>
+  <data name="Common_Refresh" xml:space="preserve">
+    <value>Frissítés</value>
+  </data>
+  <data name="Common_Clear" xml:space="preserve">
+    <value>Törlés</value>
+  </data>
+  <data name="Common_Reset" xml:space="preserve">
+    <value>Visszaállítás</value>
+  </data>
+  <data name="Common_Select" xml:space="preserve">
+    <value>Kiválasztás</value>
+  </data>
+  <data name="Common_SelectAll" xml:space="preserve">
+    <value>Összes kijelölése</value>
+  </data>
+  <data name="Common_DeselectAll" xml:space="preserve">
+    <value>Összes kijelölés megszüntetése</value>
+  </data>
+  <data name="Common_InvertSelection" xml:space="preserve">
+    <value>Fordított kijelölés</value>
+  </data>
+  <data name="Common_Enable" xml:space="preserve">
+    <value>Engedélyezés</value>
+  </data>
+  <data name="Common_Disable" xml:space="preserve">
+    <value>Letiltva</value>
+  </data>
+  <data name="Common_On" xml:space="preserve">
+    <value>Be打开</value>
+  </data>
+  <data name="Common_Off" xml:space="preserve">
+    <value>Kikapcsolva</value>
+  </data>
+  <data name="Common_Loading" xml:space="preserve">
+    <value>Betöltés...</value>
+  </data>
+  <data name="Common_PleaseWait" xml:space="preserve">
+    <value>Kérjük, várjon...</value>
+  </data>
+  <data name="Common_Working" xml:space="preserve">
+    <value>Feldolgozás...</value>
+  </data>
+  <data name="Common_Connecting" xml:space="preserve">
+    <value>Kapcsolódás...</value>
+  </data>
+  <data name="Common_Disconnecting" xml:space="preserve">
+    <value>Kapcsolat bontása...</value>
+  </data>
+  <data name="Common_Error" xml:space="preserve">
+    <value>Hiba</value>
+  </data>
+  <data name="Common_Warning" xml:space="preserve">
+    <value>Figyelmeztetés</value>
+  </data>
+  <data name="Common_Information" xml:space="preserve">
+    <value>Sugallat</value>
+  </data>
+  <data name="Common_Success" xml:space="preserve">
+    <value>Sikeres</value>
+  </data>
+  <data name="Common_Failed" xml:space="preserve">
+    <value>Sikertelen</value>
+  </data>
+  <data name="Common_OperationSucceeded" xml:space="preserve">
+    <value>Sikeres művelet</value>
+  </data>
+  <data name="Common_OperationFailed" xml:space="preserve">
+    <value>Művelet sikertelen</value>
+  </data>
+  <data name="Common_NotSupported" xml:space="preserve">
+    <value>Nem támogatott</value>
+  </data>
+  <data name="Common_NotImplemented" xml:space="preserve">
+    <value>Még nem valósult meg</value>
+  </data>
+  <data name="Common_Confirm" xml:space="preserve">
+    <value>Megerősítés</value>
+  </data>
+  <data name="Common_Confirmation" xml:space="preserve">
+    <value>Megerősítő üzenet</value>
+  </data>
+  <data name="Common_AreYouSure" xml:space="preserve">
+    <value>Biztos vagy benne?</value>
+  </data>
+  <data name="Common_ConfirmDelete" xml:space="preserve">
+    <value>Biztosan törölni szeretné?</value>
+  </data>
+  <data name="Common_ConfirmExit" xml:space="preserve">
+    <value>Biztosan ki szeretne lépni?</value>
+  </data>
+  <data name="Common_ConfirmSaveChanges" xml:space="preserve">
+    <value>Mentse a módosításokat?</value>
+  </data>
+  <data name="Common_UnsavedChanges" xml:space="preserve">
+    <value>Vannak nem mentett módosításaid</value>
+  </data>
+  <data name="Common_RequiredField" xml:space="preserve">
+    <value>Kötelező mező</value>
+  </data>
+  <data name="Common_InvalidInput" xml:space="preserve">
+    <value>Érvénytelen bemenet</value>
+  </data>
+  <data name="Common_InvalidFormat" xml:space="preserve">
+    <value>Hibás formátum</value>
+  </data>
+  <data name="Common_OutOfRange" xml:space="preserve">
+    <value>Határon kívül</value>
+  </data>
+  <data name="Common_PleaseSelect" xml:space="preserve">
+    <value>Kérjük, válasszon.</value>
+  </data>
+  <data name="Common_PleaseEnter" xml:space="preserve">
+    <value>Kérjük, adja meg</value>
+  </data>
+  <data name="Common_Login" xml:space="preserve">
+    <value>Bejelentkezés</value>
+  </data>
+  <data name="Common_Logout" xml:space="preserve">
+    <value>Kijelentkezés</value>
+  </data>
+  <data name="Common_Register" xml:space="preserve">
+    <value>Regisztráció</value>
+  </data>
+  <data name="Common_UserName" xml:space="preserve">
+    <value>Felhasználónév</value>
+  </data>
+  <data name="Common_Password" xml:space="preserve">
+    <value>Jelszó</value>
+  </data>
+  <data name="Common_ConfirmPassword" xml:space="preserve">
+    <value>Jelszó megerősítése</value>
+  </data>
+  <data name="Common_ForgotPassword" xml:space="preserve">
+    <value>Elfelejtett jelszó</value>
+  </data>
+  <data name="Common_Settings" xml:space="preserve">
+    <value>Beállítások</value>
+  </data>
+  <data name="Common_Preferences" xml:space="preserve">
+    <value>Beállítások</value>
+  </data>
+  <data name="Common_Options" xml:space="preserve">
+    <value>Beállítások</value>
+  </data>
+  <data name="Common_About" xml:space="preserve">
+    <value>Névjegy</value>
+  </data>
+  <data name="Common_Help" xml:space="preserve">
+    <value>Súgó</value>
+  </data>
+  <data name="Common_CheckForUpdates" xml:space="preserve">
+    <value>Frissítések ellenőrzése</value>
+  </data>
+  <data name="Common_NetworkError" xml:space="preserve">
+    <value>Hálózati hiba</value>
+  </data>
+  <data name="Common_ServerError" xml:space="preserve">
+    <value>Szerverhiba</value>
+  </data>
+  <data name="Common_Timeout" xml:space="preserve">
+    <value>Időtúllépés</value>
+  </data>
+  <data name="Common_Unauthorized" xml:space="preserve">
+    <value>Nincs engedélyezve</value>
+  </data>
+  <data name="Common_AccessDenied" xml:space="preserve">
+    <value>Hozzáférés megtagadva</value>
+  </data>
+  <data name="Common_Download" xml:space="preserve">
+    <value>Letöltés</value>
+  </data>
+  <data name="Common_Upload" xml:space="preserve">
+    <value>Feltöltés</value>
+  </data>
+  <data name="Common_Start" xml:space="preserve">
+    <value>Kezdés</value>
+  </data>
+  <data name="Common_Stop" xml:space="preserve">
+    <value>Megállítás</value>
+  </data>
+  <data name="Common_Pause" xml:space="preserve">
+    <value>Szüneteltetés</value>
+  </data>
+  <data name="Common_Resume" xml:space="preserve">
+    <value>Folytatás</value>
+  </data>
+  <data name="Common_CopySucceeded" xml:space="preserve">
+    <value>Sikeresen másolva</value>
+  </data>
+  <data name="Common_CopyFailed" xml:space="preserve">
+    <value>Másolás sikertelen</value>
+  </data>
+  <data name="Common_SaveSucceeded" xml:space="preserve">
+    <value>Sikeresen mentve</value>
+  </data>
+  <data name="Common_SaveFailed" xml:space="preserve">
+    <value>Mentés sikertelen</value>
+  </data>
+  <data name="Common_ItemsCountFormat" xml:space="preserve">
+    <value>Összesen {0} elem</value>
+  </data>
+  <data name="Common_SelectedCountFormat" xml:space="preserve">
+    <value>Kiválasztva {0} elem</value>
+  </data>
+  <data name="Common_PageFormat" xml:space="preserve">
+    <value>{0}. oldal / {1} oldal összesen</value>
+  </data>
+  <data name="Common_NoData" xml:space="preserve">
+    <value>Nincs adat</value>
+  </data>
+  <data name="Common_Empty" xml:space="preserve">
+    <value>Üres</value>
+  </data>
+  <data name="Common_All" xml:space="preserve">
+    <value>Összes</value>
+  </data>
+  <data name="Menu_File" xml:space="preserve">
+    <value>Fájl</value>
+  </data>
+  <data name="Menu_Edit" xml:space="preserve">
+    <value>Szerkesztés</value>
+  </data>
+  <data name="Menu_View" xml:space="preserve">
+    <value>Nézet</value>
+  </data>
+  <data name="Menu_Tools" xml:space="preserve">
+    <value>Eszközök</value>
+  </data>
+  <data name="Menu_Window" xml:space="preserve">
+    <value>Ablak</value>
+  </data>
+  <data name="Menu_Help" xml:space="preserve">
+    <value>Súgó</value>
+  </data>
+  <data name="Menu_New" xml:space="preserve">
+    <value>Új</value>
+  </data>
+  <data name="Menu_Open" xml:space="preserve">
+    <value>Megnyitás</value>
+  </data>
+  <data name="Menu_OpenRecent" xml:space="preserve">
+    <value>Legutóbb megnyitott</value>
+  </data>
+  <data name="Menu_Close" xml:space="preserve">
+    <value>Bezárás</value>
+  </data>
+  <data name="Menu_CloseAll" xml:space="preserve">
+    <value>Bezárás mindent</value>
+  </data>
+  <data name="Menu_Save" xml:space="preserve">
+    <value>Mentés</value>
+  </data>
+  <data name="Menu_SaveAs" xml:space="preserve">
+    <value>Mentés másként</value>
+  </data>
+  <data name="Menu_SaveAll" xml:space="preserve">
+    <value>Mindent mentése</value>
+  </data>
+  <data name="Menu_Import" xml:space="preserve">
+    <value>Importálás</value>
+  </data>
+  <data name="Menu_Export" xml:space="preserve">
+    <value>Export</value>
+  </data>
+  <data name="Menu_Print" xml:space="preserve">
+    <value>Nyomtatás</value>
+  </data>
+  <data name="Menu_PrintPreview" xml:space="preserve">
+    <value>Nyomtatási előnézet</value>
+  </data>
+  <data name="Menu_Exit" xml:space="preserve">
+    <value>Kilépés</value>
+  </data>
+  <data name="Menu_Undo" xml:space="preserve">
+    <value>Visszavonás</value>
+  </data>
+  <data name="Menu_Redo" xml:space="preserve">
+    <value>Újra végrehajtás</value>
+  </data>
+  <data name="Menu_Cut" xml:space="preserve">
+    <value>Kivágás</value>
+  </data>
+  <data name="Menu_Copy" xml:space="preserve">
+    <value>Másolás</value>
+  </data>
+  <data name="Menu_Paste" xml:space="preserve">
+    <value>Beillesztés</value>
+  </data>
+  <data name="Menu_Delete" xml:space="preserve">
+    <value>Törlés</value>
+  </data>
+  <data name="Menu_SelectAll" xml:space="preserve">
+    <value>Select All</value>
+  </data>
+  <data name="Menu_Find" xml:space="preserve">
+    <value>Keresés</value>
+  </data>
+  <data name="Menu_FindNext" xml:space="preserve">
+    <value>Következő keresése</value>
+  </data>
+  <data name="Menu_Replace" xml:space="preserve">
+    <value>Csere</value>
+  </data>
+  <data name="Menu_ZoomIn" xml:space="preserve">
+    <value>Nagyítás</value>
+  </data>
+  <data name="Menu_ZoomOut" xml:space="preserve">
+    <value>Kicsinyítés</value>
+  </data>
+  <data name="Menu_ResetZoom" xml:space="preserve">
+    <value>Nagyítás visszaállítása</value>
+  </data>
+  <data name="Menu_FullScreen" xml:space="preserve">
+    <value>Teljes képernyő</value>
+  </data>
+  <data name="Menu_ToggleSidebar" xml:space="preserve">
+    <value>Oldalsáv váltása</value>
+  </data>
+  <data name="Menu_ToggleStatusBar" xml:space="preserve">
+    <value>Átváltás állapotsorra</value>
+  </data>
+  <data name="Menu_Refresh" xml:space="preserve">
+    <value>Frissítés</value>
+  </data>
+  <data name="Menu_Settings" xml:space="preserve">
+    <value>Beállítások</value>
+  </data>
+  <data name="Menu_Preferences" xml:space="preserve">
+    <value>Beállítások</value>
+  </data>
+  <data name="Menu_CheckForUpdates" xml:space="preserve">
+    <value>Frissítések keresése</value>
+  </data>
+  <data name="Menu_About" xml:space="preserve">
+    <value>Névjegy</value>
+  </data>
+  <data name="Menu_Documentation" xml:space="preserve">
+    <value>Dokumentáció</value>
+  </data>
+  <data name="Menu_Feedback" xml:space="preserve">
+    <value>Visszajelzés</value>
+  </data>
+  <data name="Dialog_Title_Confirm" xml:space="preserve">
+    <value>Megerősítés</value>
+  </data>
+  <data name="Dialog_Title_Warning" xml:space="preserve">
+    <value>Figyelmeztetés</value>
+  </data>
+  <data name="Dialog_Title_Error" xml:space="preserve">
+    <value>Hiba</value>
+  </data>
+  <data name="Dialog_Title_Information" xml:space="preserve">
+    <value>Figyelmeztetés</value>
+  </data>
+  <data name="Dialog_Title_Settings" xml:space="preserve">
+    <value>Beállítások</value>
+  </data>
+  <data name="Dialog_Title_About" xml:space="preserve">
+    <value>Névjegy</value>
+  </data>
+  <data name="Dialog_Button_Ok" xml:space="preserve">
+    <value>Rendben</value>
+  </data>
+  <data name="Dialog_Button_Cancel" xml:space="preserve">
+    <value>Mégse</value>
+  </data>
+  <data name="Dialog_Button_Yes" xml:space="preserve">
+    <value>Igen</value>
+  </data>
+  <data name="Dialog_Button_No" xml:space="preserve">
+    <value>Nem</value>
+  </data>
+  <data name="Dialog_Button_Apply" xml:space="preserve">
+    <value>Alkalmazás</value>
+  </data>
+  <data name="Dialog_Button_Close" xml:space="preserve">
+    <value>Bezárás</value>
+  </data>
+  <data name="Dialog_Button_Retry" xml:space="preserve">
+    <value>Újra চেষ্টাിക്കുക</value>
+  </data>
+  <data name="Dialog_Button_Ignore" xml:space="preserve">
+    <value>Mellőzés</value>
+  </data>
+  <data name="Dialog_Message_AreYouSure" xml:space="preserve">
+    <value>Biztos vagy benne?</value>
+  </data>
+  <data name="Dialog_Message_ConfirmDelete" xml:space="preserve">
+    <value>Biztosan törölni szeretné? Ez a művelet nem vonható vissza.</value>
+  </data>
+  <data name="Dialog_Message_ConfirmExit" xml:space="preserve">
+    <value>Biztosan ki szeretne lépni?</value>
+  </data>
+  <data name="Dialog_Message_UnsavedChanges" xml:space="preserve">
+    <value>Vannak nem mentett módosításai, szeretné menteni?</value>
+  </data>
+  <data name="Dialog_Message_OperationSucceeded" xml:space="preserve">
+    <value>Művelet sikeres.</value>
+  </data>
+  <data name="Dialog_Message_OperationFailed" xml:space="preserve">
+    <value>Sikertelen művelet.</value>
+  </data>
+  <data name="Dialog_Message_NotSupported" xml:space="preserve">
+    <value>A jelenlegi művelet nem támogatott.</value>
+  </data>
+  <data name="Dialog_File_OpenTitle" xml:space="preserve">
+    <value>Megnyitandó fájl kiválasztása</value>
+  </data>
+  <data name="Dialog_File_SaveTitle" xml:space="preserve">
+    <value>Mentse a helyet</value>
+  </data>
+  <data name="Dialog_File_FolderTitle" xml:space="preserve">
+    <value>Mappa kiválasztása</value>
+  </data>
+  <data name="Dialog_File_OverwritePrompt" xml:space="preserve">
+    <value>A fájl már létezik. Felülírja?</value>
+  </data>
+  <data name="Validation_Required" xml:space="preserve">
+    <value>Ez a mező kötelező.</value>
+  </data>
+  <data name="Validation_Invalid" xml:space="preserve">
+    <value>Érvénytelen bevitel.</value>
+  </data>
+  <data name="Validation_InvalidFormat" xml:space="preserve">
+    <value>The format is incorrect.</value>
+  </data>
+  <data name="Validation_OutOfRange" xml:space="preserve">
+    <value>Outside the allowable range.</value>
+  </data>
+  <data name="Validation_MinLengthFormat" xml:space="preserve">
+    <value>A hossza nem lehet kevesebb, mint {0}.</value>
+  </data>
+  <data name="Validation_MaxLengthFormat" xml:space="preserve">
+    <value>A hossza nem haladhatja meg a következőt: {0}.</value>
+  </data>
+  <data name="Validation_LengthRangeFormat" xml:space="preserve">
+    <value>A hosszúságnak {0} és {1} között kell lennie.</value>
+  </data>
+  <data name="Validation_MinValueFormat" xml:space="preserve">
+    <value>Nem lehet kisebb, mint {0}.</value>
+  </data>
+  <data name="Validation_MaxValueFormat" xml:space="preserve">
+    <value>Nem lehet nagyobb, mint {0}.</value>
+  </data>
+  <data name="Validation_ValueRangeFormat" xml:space="preserve">
+    <value>Kötelező {0} és {1} között lennie.</value>
+  </data>
+  <data name="Validation_InvalidEmail" xml:space="preserve">
+    <value>Az e-mail cím formátuma helytelen.</value>
+  </data>
+  <data name="Validation_InvalidPhone" xml:space="preserve">
+    <value>A telefonszám formátuma helytelen.</value>
+  </data>
+  <data name="Validation_InvalidUrl" xml:space="preserve">
+    <value>Az URL formátuma helytelen.</value>
+  </data>
+  <data name="Validation_InvalidIpAddress" xml:space="preserve">
+    <value>IP-cím érvénytelen.</value>
+  </data>
+  <data name="Validation_PasswordNotMatch" xml:space="preserve">
+    <value>A két megadott jelszó nem egyezik.</value>
+  </data>
+  <data name="Validation_InvalidDate" xml:space="preserve">
+    <value>Érvénytelen dátum.</value>
+  </data>
+  <data name="Validation_InvalidTime" xml:space="preserve">
+    <value>Érvénytelen idő.</value>
+  </data>
+  <data name="File_NewFile" xml:space="preserve">
+    <value>Új fájl</value>
+  </data>
+  <data name="File_NewFolder" xml:space="preserve">
+    <value>Új mappa</value>
+  </data>
+  <data name="File_OpenFile" xml:space="preserve">
+    <value>Fájl megnyitása</value>
+  </data>
+  <data name="File_OpenFolder" xml:space="preserve">
+    <value>Mappa megnyitása</value>
+  </data>
+  <data name="File_SaveFile" xml:space="preserve">
+    <value>Fájl mentése</value>
+  </data>
+  <data name="File_SaveAll" xml:space="preserve">
+    <value>Minden mentése</value>
+  </data>
+  <data name="File_Rename" xml:space="preserve">
+    <value>Átnevezés</value>
+  </data>
+  <data name="File_Copy" xml:space="preserve">
+    <value>Másolás</value>
+  </data>
+  <data name="File_Move" xml:space="preserve">
+    <value>Mozgatás</value>
+  </data>
+  <data name="File_Delete" xml:space="preserve">
+    <value>Törlés</value>
+  </data>
+  <data name="File_Restore" xml:space="preserve">
+    <value>Visszaállítás</value>
+  </data>
+  <data name="File_Size" xml:space="preserve">
+    <value>Méret</value>
+  </data>
+  <data name="File_Type" xml:space="preserve">
+    <value>Típus</value>
+  </data>
+  <data name="File_Name" xml:space="preserve">
+    <value>Név</value>
+  </data>
+  <data name="File_Path" xml:space="preserve">
+    <value>Elérési út</value>
+  </data>
+  <data name="File_DateCreated" xml:space="preserve">
+    <value>Létrehozás ideje</value>
+  </data>
+  <data name="File_DateModified" xml:space="preserve">
+    <value>Módosítás ideje</value>
+  </data>
+  <data name="File_Error_NotFound" xml:space="preserve">
+    <value>Fájl nem található.</value>
+  </data>
+  <data name="File_Error_FolderNotFound" xml:space="preserve">
+    <value>Mappa non trovata.</value>
+  </data>
+  <data name="File_Error_AccessDenied" xml:space="preserve">
+    <value>Nincs jogosultság a hozzáféréshez.</value>
+  </data>
+  <data name="File_Error_InUse" xml:space="preserve">
+    <value>A fájl használatban van.</value>
+  </data>
+  <data name="File_Error_ReadFailed" xml:space="preserve">
+    <value>Sikertelen olvasás.</value>
+  </data>
+  <data name="File_Error_WriteFailed" xml:space="preserve">
+    <value>Sikertelen írás.</value>
+  </data>
+  <data name="File_Error_InvalidPath" xml:space="preserve">
+    <value>Az útvonal érvénytelen.</value>
+  </data>
+  <data name="File_Error_AlreadyExists" xml:space="preserve">
+    <value>Már létezik azonos nevű fájl vagy mappa.</value>
+  </data>
+  <data name="File_Filter_AllFiles" xml:space="preserve">
+    <value>Minden fájl (*.*)</value>
+  </data>
+  <data name="Nav_Home" xml:space="preserve">
+    <value>Főoldal</value>
+  </data>
+  <data name="Nav_Dashboard" xml:space="preserve">
+    <value>Műszerfal</value>
+  </data>
+  <data name="Nav_Projects" xml:space="preserve">
+    <value>Projekt</value>
+  </data>
+  <data name="Nav_Favorites" xml:space="preserve">
+    <value>Kedvencek</value>
+  </data>
+  <data name="Nav_Recent" xml:space="preserve">
+    <value>Legutóbbi</value>
+  </data>
+  <data name="Nav_History" xml:space="preserve">
+    <value>Előzmények</value>
+  </data>
+  <data name="Nav_Settings" xml:space="preserve">
+    <value>Beállítások</value>
+  </data>
+  <data name="Nav_Account" xml:space="preserve">
+    <value>Fiók</value>
+  </data>
+  <data name="Nav_Profile" xml:space="preserve">
+    <value>Személyes adatok</value>
+  </data>
+  <data name="Nav_Security" xml:space="preserve">
+    <value>Biztonság</value>
+  </data>
+  <data name="Nav_Notifications" xml:space="preserve">
+    <value>Értesítés</value>
+  </data>
+  <data name="Nav_Back" xml:space="preserve">
+    <value>Vissza</value>
+  </data>
+  <data name="Nav_Next" xml:space="preserve">
+    <value>Következő ნაბიჯ்</value>
+  </data>
+  <data name="Nav_Previous" xml:space="preserve">
+    <value>Előző lépés</value>
+  </data>
+  <data name="Status_Ready" xml:space="preserve">
+    <value>Kész მზად?</value>
+  </data>
+  <data name="Status_Loading" xml:space="preserve">
+    <value>Betöltés...</value>
+  </data>
+  <data name="Status_Working" xml:space="preserve">
+    <value>Feldolgozás...</value>
+  </data>
+  <data name="Status_Saving" xml:space="preserve">
+    <value>Mentés folyamatban...</value>
+  </data>
+  <data name="Status_Refreshing" xml:space="preserve">
+    <value>Frissítés...</value>
+  </data>
+  <data name="Status_Connecting" xml:space="preserve">
+    <value>Kapcsolódás...</value>
+  </data>
+  <data name="Status_Disconnecting" xml:space="preserve">
+    <value>Kapcsolat bontása...</value>
+  </data>
+  <data name="Status_Connected" xml:space="preserve">
+    <value>Csatlakoztatva</value>
+  </data>
+  <data name="Status_Disconnected" xml:space="preserve">
+    <value>Nincs csatlakoztatva</value>
+  </data>
+  <data name="Status_Success" xml:space="preserve">
+    <value>Sikeres</value>
+  </data>
+  <data name="Status_Failed" xml:space="preserve">
+    <value>Sikertelen</value>
+  </data>
+  <data name="Status_Canceled" xml:space="preserve">
+    <value>Megszakítva</value>
+  </data>
+  <data name="Status_Completed" xml:space="preserve">
+    <value>Kész
+</value>
+  </data>
+  <data name="Status_Paused" xml:space="preserve">
+    <value>Felfüggesztve</value>
+  </data>
+  <data name="Status_Stopped" xml:space="preserve">
+    <value>Leállítva</value>
+  </data>
+  <data name="Status_NoData" xml:space="preserve">
+    <value>Nincs adat</value>
+  </data>
+  <data name="Status_Empty" xml:space="preserve">
+    <value>Üres</value>
+  </data>
+  <data name="Status_ItemsCountFormat" xml:space="preserve">
+    <value>Összesen {0} elem</value>
+  </data>
+  <data name="Status_SelectedCountFormat" xml:space="preserve">
+    <value>Kijelölve: {0} elem</value>
+  </data>
+  <data name="Permission_Title" xml:space="preserve">
+    <value>Jogosultság</value>
+  </data>
+  <data name="Permission_AccessDenied" xml:space="preserve">
+    <value>Hozzáférés megtagadva.</value>
+  </data>
+  <data name="Permission_Unauthorized" xml:space="preserve">
+    <value>Nincs engedélyezve.</value>
+  </data>
+  <data name="Permission_Insufficient" xml:space="preserve">
+    <value>Nincs elegendő jogosultság.</value>
+  </data>
+  <data name="Permission_Request" xml:space="preserve">
+    <value>Jogosultság kérése</value>
+  </data>
+  <data name="Permission_Grant" xml:space="preserve">
+    <value>Felhatalmazás</value>
+  </data>
+  <data name="Permission_Revoke" xml:space="preserve">
+    <value>Visszavonás</value>
+  </data>
+  <data name="Permission_AdminRequired" xml:space="preserve">
+    <value>Rendszergazdai jogosultság szükséges.</value>
+  </data>
+  <data name="Permission_Read" xml:space="preserve">
+    <value>Olvasás</value>
+  </data>
+  <data name="Permission_Write" xml:space="preserve">
+    <value>Írás</value>
+  </data>
+  <data name="Permission_Execute" xml:space="preserve">
+    <value>Végrehajtás</value>
+  </data>
+  <data name="Permission_Delete" xml:space="preserve">
+    <value>Törlés</value>
+  </data>
+  <data name="Theme_Title" xml:space="preserve">
+    <value>Téma</value>
+  </data>
+  <data name="Theme_Light" xml:space="preserve">
+    <value>Világos</value>
+  </data>
+  <data name="Theme_Dark" xml:space="preserve">
+    <value>Sötét</value>
+  </data>
+  <data name="Theme_System" xml:space="preserve">
+    <value>Kövesse a rendszerbeállításokat</value>
+  </data>
+  <data name="Theme_Auto" xml:space="preserve">
+    <value>Automatikus</value>
+  </data>
+  <data name="Theme_AccentColor" xml:space="preserve">
+    <value>Kiemelőszín</value>
+  </data>
+  <data name="Theme_PrimaryColor" xml:space="preserve">
+    <value>Főszín</value>
+  </data>
+  <data name="Theme_Background" xml:space="preserve">
+    <value>Háttér</value>
+  </data>
+  <data name="Theme_Foreground" xml:space="preserve">
+    <value>Előtér</value>
+  </data>
+  <data name="Theme_Font" xml:space="preserve">
+    <value>Betűtípus</value>
+  </data>
+  <data name="Theme_FontSize" xml:space="preserve">
+    <value>Betűméret</value>
+  </data>
+  <data name="Theme_CornerRadius" xml:space="preserve">
+    <value>Lekerekített sarok</value>
+  </data>
+  <data name="Theme_Shadow" xml:space="preserve">
+    <value>Árnyék</value>
+  </data>
+  <data name="Theme_Transparency" xml:space="preserve">
+    <value>Átlátszóság</value>
+  </data>
+  <data name="Theme_Apply" xml:space="preserve">
+    <value>Alkalmazás témája</value>
+  </data>
+  <data name="Theme_Reset" xml:space="preserve">
+    <value>Alapértelmezett téma visszaállítása</value>
+  </data>
+  <data name="Window_Maximize" xml:space="preserve">
+    <value>Maximalizálás</value>
+  </data>
+  <data name="Window_Minimize" xml:space="preserve">
+    <value>Kis méretűre állítás</value>
+  </data>
+  <data name="Window_Restore" xml:space="preserve">
+    <value>Visszaállítás</value>
+  </data>
+  <data name="Common_DataBase" xml:space="preserve">
+    <value>Adatbázis</value>
+  </data>
+  <data name="Common_CheckAll" xml:space="preserve">
+    <value>Összes kijelölése</value>
+  </data>
+  <data name="Common_DeleteCheckAll" xml:space="preserve">
+    <value>Kijelöltek törlése</value>
+  </data>
+  <data name="Common_Total" xml:space="preserve">
+    <value>Összesen</value>
   </data>
 </root>

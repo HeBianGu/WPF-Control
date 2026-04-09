@@ -1,64 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
-  <!-- 
-    Microsoft ResX Schema 
-    
-    Version 2.0
-    
-    The primary goals of this format is to allow a simple XML format 
-    that is mostly human readable. The generation and parsing of the 
-    various data types are done through the TypeConverter classes 
-    associated with the data types.
-    
-    Example:
-    
-    ... ado.net/XML headers & schema ...
-    <resheader name="resmimetype">text/microsoft-resx</resheader>
-    <resheader name="version">2.0</resheader>
-    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
-    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
-    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
-    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
-    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
-        <value>[base64 mime encoded serialized .NET Framework object]</value>
-    </data>
-    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
-        <comment>This is a comment</comment>
-    </data>
-                
-    There are any number of "resheader" rows that contain simple 
-    name/value pairs.
-    
-    Each data row contains a name, and value. The row also contains a 
-    type or mimetype. Type corresponds to a .NET class that support 
-    text/value conversion through the TypeConverter architecture. 
-    Classes that don't support this are serialized and stored with the 
-    mimetype set.
-    
-    The mimetype is used for serialized objects, and tells the 
-    ResXResourceReader how to depersist the object. This is currently not 
-    extensible. For a given mimetype the value must be set accordingly:
-    
-    Note - application/x-microsoft.net.object.binary.base64 is the format 
-    that the ResXResourceWriter will generate, however the reader can 
-    read any of the formats listed below.
-    
-    mimetype: application/x-microsoft.net.object.binary.base64
-    value   : The object must be serialized with 
-            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
-            : and then encoded with base64 encoding.
-    
-    mimetype: application/x-microsoft.net.object.soap.base64
-    value   : The object must be serialized with 
-            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
-            : and then encoded with base64 encoding.
-
-    mimetype: application/x-microsoft.net.object.bytearray.base64
-    value   : The object must be serialized into a byte array 
-            : using a System.ComponentModel.TypeConverter
-            : and then encoded with base64 encoding.
-    -->
   <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
@@ -112,52 +53,496 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="Enum_ColorThemeType_Default" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
+  <data name="Enum_ColorThemeType_Default" xml:space="preserve">
+    <value>Allgemein</value>
   </data>
-  <data name="Enum_ColorThemeType_Dark" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
+  <data name="Enum_ColorThemeType_Dark" xml:space="preserve">
+    <value>Dunkel</value>
   </data>
-  <data name="Enum_ColorThemeType_Light" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
+  <data name="Enum_ColorThemeType_Light" xml:space="preserve">
+    <value>Hell
+</value>
   </data>
-  <data name="Enum_FontSizeThemeType_Large" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
+  <data name="Enum_FontSizeThemeType_Large" xml:space="preserve">
+    <value>Groß</value>
   </data>
-  <data name="Enum_LayoutThemeType_Large" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
+  <data name="Enum_LayoutThemeType_Large" xml:space="preserve">
+    <value>Locker</value>
   </data>
-  <data name="Enum_FontSizeThemeType_Small" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
+  <data name="Enum_FontSizeThemeType_Small" xml:space="preserve">
+    <value>Groß</value>
   </data>
-  <data name="Enum_LayoutThemeType_Small" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
+  <data name="Enum_LayoutThemeType_Small" xml:space="preserve">
+    <value>Kompakt</value>
   </data>
-  <data name="Enum_FontSizeThemeType_Default" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
+  <data name="Enum_FontSizeThemeType_Default" xml:space="preserve">
+    <value>Allgemein (empfohlen)</value>
   </data>
-  <data name="Enum_LayoutThemeType_Default" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
+  <data name="Enum_LayoutThemeType_Default" xml:space="preserve">
+    <value>Standard (empfohlen)</value>
   </data>
-  <data name="LinearGradientBrushResource" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
+  <data name="LinearGradientBrushResource" xml:space="preserve">
+    <value>Verlauf (empfohlen)</value>
   </data>
-  <data name="RadialGradientBrushResource" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
+  <data name="RadialGradientBrushResource" xml:space="preserve">
+    <value>Zentraler Farbverlauf</value>
   </data>
-  <data name="SolidColorBrushResource" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
+  <data name="SolidColorBrushResource" xml:space="preserve">
+    <value>Einfarbig (empfohlen)</value>
   </data>
-  <data name="DrawingBrushResource" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
+  <data name="DrawingBrushResource" xml:space="preserve">
+    <value>Pinsel</value>
   </data>
-  <data name="ImageBrushResource" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
+  <data name="ImageBrushResource" xml:space="preserve">
+    <value>Bildpinsel</value>
+  </data>
+  <data name="DarkColorResource" xml:space="preserve">
+    <value>Dunkel (empfohlen)</value>
+  </data>
+  <data name="DarkColorResource_GroupName" xml:space="preserve">
+    <value>Dringend empfohlen</value>
+  </data>
+  <data name="DarkColorResource_Prompt" xml:space="preserve">
+    <value>Dringend empfohlen</value>
+  </data>
+  <data name="DarkColorResource_Description" xml:space="preserve">
+    <value>Volltonfarbe</value>
+  </data>
+  <data name="LightColorResource" xml:space="preserve">
+    <value>Hell (empfohlen)</value>
+  </data>
+  <data name="LightColorResource_GroupName" xml:space="preserve">
+    <value>Dringend empfohlen</value>
+  </data>
+  <data name="LightColorResource_Prompt" xml:space="preserve">
+    <value>Dringend empfohlen</value>
+  </data>
+  <data name="LightColorResource_Description" xml:space="preserve">
+    <value>Volltonfarbe</value>
+  </data>
+  <data name="DefaultColorResource" xml:space="preserve">
+    <value>System (Langzeitunterstützung)</value>
+  </data>
+  <data name="DefaultColorResource_GroupName" xml:space="preserve">
+    <value>Volltonfarbe</value>
+  </data>
+  <data name="DefaultColorResource_Prompt" xml:space="preserve">
+    <value>Langzeitunterstützung</value>
+  </data>
+  <data name="DefaultColorResource_Description" xml:space="preserve">
+    <value>Einfarbig</value>
+  </data>
+  <data name="PurpleDarkColorResource" xml:space="preserve">
+    <value>Dunkellila (Langzeitunterstützung)</value>
+  </data>
+  <data name="PurpleDarkColorResource_GroupName" xml:space="preserve">
+    <value>Volltonfarbe</value>
+  </data>
+  <data name="PurpleDarkColorResource_Prompt" xml:space="preserve">
+    <value>Langzeitunterstützung</value>
+  </data>
+  <data name="PurpleDarkColorResource_Description" xml:space="preserve">
+    <value>Einfarbig</value>
+  </data>
+  <data name="PurpleLightColorResource" xml:space="preserve">
+    <value>Hellviolett (Langzeitunterstützung)</value>
+  </data>
+  <data name="PurpleLightColorResource_GroupName" xml:space="preserve">
+    <value>Einfarbig</value>
+  </data>
+  <data name="PurpleLightColorResource_Prompt" xml:space="preserve">
+    <value>Langzeitunterstützung</value>
+  </data>
+  <data name="PurpleLightColorResource_Description" xml:space="preserve">
+    <value>Einfarbig</value>
+  </data>
+  <data name="GrayDarkColorResource" xml:space="preserve">
+    <value>Dunkelgrau (empfohlen)</value>
+  </data>
+  <data name="GrayDarkColorResource_GroupName" xml:space="preserve">
+    <value>Dringend empfohlen</value>
+  </data>
+  <data name="GrayDarkColorResource_Prompt" xml:space="preserve">
+    <value>Dringend empfohlen</value>
+  </data>
+  <data name="GrayDarkColorResource_Description" xml:space="preserve">
+    <value>Volltonfarbe</value>
+  </data>
+  <data name="GrayLightColorResource" xml:space="preserve">
+    <value>Hellgrau (empfohlen)</value>
+  </data>
+  <data name="GrayLightColorResource_GroupName" xml:space="preserve">
+    <value>Dringend empfohlen</value>
+  </data>
+  <data name="GrayLightColorResource_Prompt" xml:space="preserve">
+    <value>Dringend empfohlen</value>
+  </data>
+  <data name="GrayLightColorResource_Description" xml:space="preserve">
+    <value>Einfarbig</value>
+  </data>
+  <data name="BlueDarkColorResource" xml:space="preserve">
+    <value>Dunkelblau (Langzeitunterstützung)</value>
+  </data>
+  <data name="BlueDarkColorResource_GroupName" xml:space="preserve">
+    <value>Einfarbig</value>
+  </data>
+  <data name="BlueDarkColorResource_Prompt" xml:space="preserve">
+    <value>Langzeitunterstützung</value>
+  </data>
+  <data name="BlueDarkColorResource_Description" xml:space="preserve">
+    <value>Volltonfarbe</value>
+  </data>
+  <data name="BlueLightColorResource" xml:space="preserve">
+    <value>Hellblau (Langzeitunterstützung)</value>
+  </data>
+  <data name="BlueLightColorResource_GroupName" xml:space="preserve">
+    <value>Volltonfarbe</value>
+  </data>
+  <data name="BlueLightColorResource_Prompt" xml:space="preserve">
+    <value>Langfristige Unterstützung</value>
+  </data>
+  <data name="BlueLightColorResource_Description" xml:space="preserve">
+    <value>Volltonfarbe</value>
+  </data>
+  <data name="AccentLightColorResource" xml:space="preserve">
+    <value>Helles Design (empfohlen)</value>
+  </data>
+  <data name="AccentLightColorResource_GroupName" xml:space="preserve">
+    <value>Dringend empfohlen</value>
+  </data>
+  <data name="AccentLightColorResource_Prompt" xml:space="preserve">
+    <value>Dringend empfohlen</value>
+  </data>
+  <data name="AccentLightColorResource_Description" xml:space="preserve">
+    <value>Einfarbig</value>
+  </data>
+  <data name="AccentDarkColorResource" xml:space="preserve">
+    <value>Dunkles Design (Langzeitunterstützung)</value>
+  </data>
+  <data name="AccentDarkColorResource_GroupName" xml:space="preserve">
+    <value>Volltonfarbe</value>
+  </data>
+  <data name="AccentDarkColorResource_Prompt" xml:space="preserve">
+    <value>Langzeitunterstützung</value>
+  </data>
+  <data name="AccentDarkColorResource_Description" xml:space="preserve">
+    <value>Einfarbig</value>
+  </data>
+  <data name="CopperColorResource" xml:space="preserve">
+    <value>Tiefkupfer (empfohlen)</value>
+  </data>
+  <data name="CopperColorResource_GroupName" xml:space="preserve">
+    <value>Dringend empfohlen</value>
+  </data>
+  <data name="CopperColorResource_Prompt" xml:space="preserve">
+    <value>Dringend empfohlen</value>
+  </data>
+  <data name="CopperColorResource_Description" xml:space="preserve">
+    <value>Einfarbig</value>
+  </data>
+  <data name="VintageFilmColorResource" xml:space="preserve">
+    <value>Retro-Filmstil (empfohlen)</value>
+  </data>
+  <data name="VintageFilmColorResource_GroupName" xml:space="preserve">
+    <value>Sanfter Retro-Stil</value>
+  </data>
+  <data name="VintageFilmColorResource_Prompt" xml:space="preserve">
+    <value>Dringend empfohlen</value>
+  </data>
+  <data name="VintageFilmColorResource_Description" xml:space="preserve">
+    <value>Warmer, verblassender Ton, geeignet für Fotografie- und künstlerische Anwendungen</value>
+  </data>
+  <data name="CyberpunkColorResource" xml:space="preserve">
+    <value>Cyberpunk-Stil</value>
+  </data>
+  <data name="CyberpunkColorResource_GroupName" xml:space="preserve">
+    <value>Dunkler Tech-Stil</value>
+  </data>
+  <data name="CyberpunkColorResource_Prompt" xml:space="preserve">
+    <value>Testversion</value>
+  </data>
+  <data name="CyberpunkColorResource_Description" xml:space="preserve">
+    <value>Neon-Kontrastfarben + dunkler Hintergrund, geeignet für Daten-Dashboards und technologische Anwendungen</value>
+  </data>
+  <data name="MineralColorResource" xml:space="preserve">
+    <value>Natürlicher Mineralstil (Langzeitunterstützung)</value>
+  </data>
+  <data name="MineralColorResource_GroupName" xml:space="preserve">
+    <value>Sanfter Retro-Stil</value>
+  </data>
+  <data name="MineralColorResource_Prompt" xml:space="preserve">
+    <value>Langzeitunterstützung</value>
+  </data>
+  <data name="MineralColorResource_Description" xml:space="preserve">
+    <value>Niedrig gesättigte Erdtöne, weich und natürlich, geeignet für Umwelt- und Gesundheitsanwendungen</value>
+  </data>
+  <data name="FuturismColorResource" xml:space="preserve">
+    <value>Zukünftiger Neonstil</value>
+  </data>
+  <data name="FuturismColorResource_GroupName" xml:space="preserve">
+    <value>Dunkler Tech-Stil</value>
+  </data>
+  <data name="FuturismColorResource_Prompt" xml:space="preserve">
+    <value>Versuch</value>
+  </data>
+  <data name="FuturismColorResource_Description" xml:space="preserve">
+    <value>Hochgesättigte Neonfarben + Deep-Space-Hintergrund, geeignet für Spiele und trendige Apps</value>
+  </data>
+  <data name="TechnologyBlueDarkColorResource" xml:space="preserve">
+    <value>Weltraum-Technologieblau (empfohlen)</value>
+  </data>
+  <data name="TechnologyBlueDarkColorResource_GroupName" xml:space="preserve">
+    <value>Dringend empfohlen</value>
+  </data>
+  <data name="TechnologyBlueDarkColorResource_Prompt" xml:space="preserve">
+    <value>Dringend empfohlen</value>
+  </data>
+  <data name="TechnologyBlueDarkColorResource_Description" xml:space="preserve">
+    <value>Volltonfarbe</value>
+  </data>
+  <data name="TechnologyPurpleColorResource" xml:space="preserve">
+    <value>Tiefraum-Technologie-Violett</value>
+  </data>
+  <data name="TechnologyPurpleColorResource_GroupName" xml:space="preserve">
+    <value>Dunkler Technologie-Stil</value>
+  </data>
+  <data name="TechnologyPurpleColorResource_Prompt" xml:space="preserve">
+    <value>Test</value>
+  </data>
+  <data name="TechnologyPurpleColorResource_Description" xml:space="preserve">
+    <value>Einfarbig</value>
+  </data>
+  <data name="FuturisticGreenDarkColorResource" xml:space="preserve">
+    <value>Futuristisches Grün</value>
+  </data>
+  <data name="FuturisticGreenDarkColorResource_GroupName" xml:space="preserve">
+    <value>Dunkler Tech-Stil</value>
+  </data>
+  <data name="FuturisticGreenDarkColorResource_Prompt" xml:space="preserve">
+    <value>Test</value>
+  </data>
+  <data name="FuturisticGreenDarkColorResource_Description" xml:space="preserve">
+    <value>Einfarbig</value>
+  </data>
+  <data name="AmberTerminalDarkColorResource" xml:space="preserve">
+    <value>Amber-Terminal-Stil</value>
+  </data>
+  <data name="AmberTerminalDarkColorResource_GroupName" xml:space="preserve">
+    <value>Dunkler Tech-Stil</value>
+  </data>
+  <data name="AmberTerminalDarkColorResource_Prompt" xml:space="preserve">
+    <value>Versuch</value>
+  </data>
+  <data name="AmberTerminalDarkColorResource_Description" xml:space="preserve">
+    <value>Volltonfarbe</value>
+  </data>
+  <data name="IndustrialDarkColorResource" xml:space="preserve">
+    <value>Dunkler Industriestil</value>
+  </data>
+  <data name="IndustrialDarkColorResource_GroupName" xml:space="preserve">
+    <value>Industrieller Stil</value>
+  </data>
+  <data name="IndustrialDarkColorResource_Prompt" xml:space="preserve">
+    <value>Test</value>
+  </data>
+  <data name="IndustrialDarkColorResource_Description" xml:space="preserve">
+    <value>Volltonfarbe</value>
+  </data>
+  <data name="AntDesignProColorResource" xml:space="preserve">
+    <value>Ant Design Pro</value>
+  </data>
+  <data name="AntDesignProColorResource_GroupName" xml:space="preserve">
+    <value>Frontend-Stil der Website</value>
+  </data>
+  <data name="AntDesignProColorResource_Prompt" xml:space="preserve">
+    <value>Versuch</value>
+  </data>
+  <data name="AntDesignProColorResource_Description" xml:space="preserve">
+    <value>Volltonfarbe</value>
+  </data>
+  <data name="BootstrapColorResource" xml:space="preserve">
+    <value>Bootstrap</value>
+  </data>
+  <data name="BootstrapColorResource_GroupName" xml:space="preserve">
+    <value>Website-Frontend-Stil</value>
+  </data>
+  <data name="BootstrapColorResource_Prompt" xml:space="preserve">
+    <value>Versuch</value>
+  </data>
+  <data name="BootstrapColorResource_Description" xml:space="preserve">
+    <value>Einfarbig</value>
+  </data>
+  <data name="LayUIColorResource" xml:space="preserve">
+    <value>LayUI</value>
+  </data>
+  <data name="LayUIColorResource_GroupName" xml:space="preserve">
+    <value>Website-Frontend-Stil</value>
+  </data>
+  <data name="LayUIColorResource_Prompt" xml:space="preserve">
+    <value>Versuch</value>
+  </data>
+  <data name="LayUIColorResource_Description" xml:space="preserve">
+    <value>Volltonfarbe</value>
+  </data>
+  <data name="WebLightUIColorResource" xml:space="preserve">
+    <value>Website-Frontend-Stil (empfohlen)</value>
+  </data>
+  <data name="WebLightUIColorResource_GroupName" xml:space="preserve">
+    <value>Starke Empfehlung</value>
+  </data>
+  <data name="WebLightUIColorResource_Prompt" xml:space="preserve">
+    <value>Stark empfohlen</value>
+  </data>
+  <data name="WebLightUIColorResource_Description" xml:space="preserve">
+    <value>Volltonfarbe</value>
+  </data>
+  <data name="WeUIColorResource" xml:space="preserve">
+    <value>WeUI</value>
+  </data>
+  <data name="WeUIColorResource_GroupName" xml:space="preserve">
+    <value>Frontend-Stil der Website</value>
+  </data>
+  <data name="WeUIColorResource_Prompt" xml:space="preserve">
+    <value>Versuch</value>
+  </data>
+  <data name="WeUIColorResource_Description" xml:space="preserve">
+    <value>Volltonfarbe</value>
+  </data>
+  <data name="ColorUIGAColorResource" xml:space="preserve">
+    <value>ColorUI-GA</value>
+  </data>
+  <data name="ColorUIGAColorResource_GroupName" xml:space="preserve">
+    <value>Website-Frontend-Stil</value>
+  </data>
+  <data name="ColorUIGAColorResource_Prompt" xml:space="preserve">
+    <value>Test</value>
+  </data>
+  <data name="ColorUIGAColorResource_Description" xml:space="preserve">
+    <value>Volltonfarbe</value>
+  </data>
+  <data name="FluentUIColorResource" xml:space="preserve">
+    <value>Fluent UI (Microsoft)</value>
+  </data>
+  <data name="FluentUIColorResource_GroupName" xml:space="preserve">
+    <value>Systemplattform</value>
+  </data>
+  <data name="FluentUIColorResource_Prompt" xml:space="preserve">
+    <value>Test</value>
+  </data>
+  <data name="FluentUIColorResource_Description" xml:space="preserve">
+    <value>Volltonfarbe</value>
+  </data>
+  <data name="MaterialDesignColorResource" xml:space="preserve">
+    <value>Material Design 3 (Google)</value>
+  </data>
+  <data name="MaterialDesignColorResource_GroupName" xml:space="preserve">
+    <value>Systemplattform</value>
+  </data>
+  <data name="MaterialDesignColorResource_Prompt" xml:space="preserve">
+    <value>Test</value>
+  </data>
+  <data name="MaterialDesignColorResource_Description" xml:space="preserve">
+    <value>Einfarbig</value>
+  </data>
+  <data name="AppleColorResource" xml:space="preserve">
+    <value>Apple (IOS)</value>
+  </data>
+  <data name="AppleColorResource_GroupName" xml:space="preserve">
+    <value>Systemplattform</value>
+  </data>
+  <data name="AppleColorResource_Prompt" xml:space="preserve">
+    <value>Versuch</value>
+  </data>
+  <data name="AppleColorResource_Description" xml:space="preserve">
+    <value>Einfarbig</value>
+  </data>
+  <data name="OracleDarkColorResource" xml:space="preserve">
+    <value>Oracle Dunkel</value>
+  </data>
+  <data name="OracleDarkColorResource_GroupName" xml:space="preserve">
+    <value>Volltonfarbe</value>
+  </data>
+  <data name="OracleDarkColorResource_Prompt" xml:space="preserve">
+    <value>Versuch</value>
+  </data>
+  <data name="OracleDarkColorResource_Description" xml:space="preserve">
+    <value>Einfarbig</value>
+  </data>
+  <data name="VikingDarkColorResource" xml:space="preserve">
+    <value>Viking Dunkel</value>
+  </data>
+  <data name="VikingDarkColorResource_GroupName" xml:space="preserve">
+    <value>Einfarbig</value>
+  </data>
+  <data name="VikingDarkColorResource_Prompt" xml:space="preserve">
+    <value>Versuch</value>
+  </data>
+  <data name="VikingDarkColorResource_Description" xml:space="preserve">
+    <value>Einfarbig</value>
+  </data>
+  <data name="ChambrayDarkColorResource" xml:space="preserve">
+    <value>Chambray Dunkel</value>
+  </data>
+  <data name="ChambrayDarkColorResource_GroupName" xml:space="preserve">
+    <value>Einfarbig</value>
+  </data>
+  <data name="ChambrayDarkColorResource_Prompt" xml:space="preserve">
+    <value>Test</value>
+  </data>
+  <data name="ChambrayDarkColorResource_Description" xml:space="preserve">
+    <value>Volltonfarbe</value>
+  </data>
+  <data name="TechnologyCyanColorResource" xml:space="preserve">
+    <value>Elektroskelett-Bestie Dunkelblau</value>
+  </data>
+  <data name="TechnologyCyanColorResource_GroupName" xml:space="preserve">
+    <value>Dunkler Tech-Stil</value>
+  </data>
+  <data name="TechnologyCyanColorResource_Prompt" xml:space="preserve">
+    <value>Test</value>
+  </data>
+  <data name="TechnologyCyanColorResource_Description" xml:space="preserve">
+    <value>Tiefgründig und geheimnisvoll, wie der Sternenhimmel der Nacht, regt zum Nachdenken an.</value>
+  </data>
+  <data name="TechnologyIndigoColorResource" xml:space="preserve">
+    <value>Sternenloses Indigo</value>
+  </data>
+  <data name="TechnologyIndigoColorResource_GroupName" xml:space="preserve">
+    <value>Dunkler Tech-Stil</value>
+  </data>
+  <data name="TechnologyIndigoColorResource_Prompt" xml:space="preserve">
+    <value>Versuch</value>
+  </data>
+  <data name="TechnologyIndigoColorResource_Description" xml:space="preserve">
+    <value>Tief und weit, wie das grenzenlose Universum, voller Unbekanntem und Entdeckungen</value>
+  </data>
+  <data name="TechnologySOIORColorResource" xml:space="preserve">
+    <value>Frühlingsbelebung (empfohlen)</value>
+  </data>
+  <data name="TechnologySOIORColorResource_GroupName" xml:space="preserve">
+    <value>Dringend empfohlen</value>
+  </data>
+  <data name="TechnologySOIORColorResource_Prompt" xml:space="preserve">
+    <value>Dringend empfohlen</value>
+  </data>
+  <data name="TechnologySOIORColorResource_Description" xml:space="preserve">
+    <value>Frisch und natürlich, wie der Duft des Frühlings, voller Leben und Vitalität</value>
+  </data>
+  <data name="TechnologyPinkColorResource" xml:space="preserve">
+    <value>Barbie-Morgendämmerungsrosa (Langzeitunterstützung)</value>
+  </data>
+  <data name="TechnologyPinkColorResource_GroupName" xml:space="preserve">
+    <value>Frischer natürlicher Stil</value>
+  </data>
+  <data name="TechnologyPinkColorResource_Prompt" xml:space="preserve">
+    <value>Langzeitunterstützung</value>
+  </data>
+  <data name="TechnologyPinkColorResource_Description" xml:space="preserve">
+    <value>Hell und voller Lebendigkeit, wie der erste Sonnenstrahl der Morgendämmerung, warm und voller Hoffnung</value>
   </data>
 </root>

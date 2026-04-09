@@ -148,4 +148,10 @@
   <data name="Property_SettingSecurityViewOption_PasswordCount_Description" xml:space="preserve">
     <value>A megadott számú hibás jelszóbevitel meghaladta az engedélyezett próbálkozások számát, további bevitel nem lehetséges.</value>
   </data>
+  <data name="Type_SettingDefaultCommand" xml:space="preserve">
+    <value>Visszaállítás alapértelmezettre</value>
+  </data>
+  <data name="Type_SettingDefaultCommand_Description" xml:space="preserve">
+    <value>Alapértelmezett rendszerbeállítások visszaállítása</value>
+  </data>
 </root>

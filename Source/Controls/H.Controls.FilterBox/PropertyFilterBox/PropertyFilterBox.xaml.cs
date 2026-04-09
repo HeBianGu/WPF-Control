@@ -9,6 +9,7 @@
 global using H.Services.Message;
 global using H.Services.Message.Dialog;
 global using System.Windows.Controls.Primitives;
+using H.Common;
 
 namespace H.Controls.FilterBox
 {
@@ -236,12 +237,12 @@ namespace H.Controls.FilterBox
             bool? r = await IocMessage.Dialog.Show(_propertyConfidtions, x =>
             {
                 x.DialogButton = DialogButton.Sumit;
-                x.Title = "数据过滤器";
+                x.Title = "数据过滤器".GetStringResx(this.GetType().Assembly, "Title_FilterBox");
             });
             if (r == true)
             {
                 Save();
-                IocMessage.ShowSnackInfo("保存成功");
+                IocMessage.ShowSnackInfo(H.Globalization.Properties.Resources.Common_SaveSucceeded);
             }
         }
 

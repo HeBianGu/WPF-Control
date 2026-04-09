@@ -149,4 +149,10 @@
   <data name="Property_SettingSecurityViewOption_PasswordCount_Description" xml:space="preserve">
     <value>La cantidad de intentos de contraseña incorrecta ha superado el número permitido de validaciones de contraseña y ya no se permite ingresar más.</value>
   </data>
+  <data name="Type_SettingDefaultCommand" xml:space="preserve">
+    <value>Restablecer valores predeterminados</value>
+  </data>
+  <data name="Type_SettingDefaultCommand_Description" xml:space="preserve">
+    <value>Restaurar los datos predeterminados de la configuración del sistema</value>
+  </data>
 </root>
