@@ -64,4 +64,31 @@
   <data name="Hello" xml:space="preserve">
     <value>안녕하세요2</value>
   </data>
+  <data name="Enum_TestEnum_Default" xml:space="preserve">
+    <value>기본값</value>
+  </data>
+  <data name="Enum_TestEnum_First" xml:space="preserve">
+    <value>첫 번째</value>
+  </data>
+  <data name="Enum_TestEnum_None" xml:space="preserve">
+    <value>없음</value>
+  </data>
+  <data name="Enum_TestEnum_Default_GroupName" xml:space="preserve">
+    <value>그룹</value>
+  </data>
+  <data name="Enum_TestEnum_Default_Description" xml:space="preserve">
+    <value>기본 동작을 나타냅니다</value>
+  </data>
+  <data name="Enum_TestEnum_First_GroupName" xml:space="preserve">
+    <value>그룹</value>
+  </data>
+  <data name="Enum_TestEnum_First_Description" xml:space="preserve">
+    <value>첫 번째 동작을 나타냅니다</value>
+  </data>
+  <data name="Enum_TestEnum_None_GroupName" xml:space="preserve">
+    <value>그룹</value>
+  </data>
+  <data name="Enum_TestEnum_None_Description" xml:space="preserve">
+    <value>동작 없음</value>
+  </data>
 </root>

@@ -238,4 +238,7 @@
   <data name="RegisterSuccess" xml:space="preserve">
     <value>註冊成功</value>
   </data>
+  <data name="PasswordsNotMatch" xml:space="preserve">
+    <value>兩次輸入的密碼不匹配</value>
+  </data>
 </root>

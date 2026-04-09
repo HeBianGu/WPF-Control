@@ -64,4 +64,31 @@
   <data name="Hello" xml:space="preserve">
     <value>こんにちは2</value>
   </data>
+  <data name="Enum_TestEnum_Default" xml:space="preserve">
+    <value>既定</value>
+  </data>
+  <data name="Enum_TestEnum_First" xml:space="preserve">
+    <value>最初の</value>
+  </data>
+  <data name="Enum_TestEnum_None" xml:space="preserve">
+    <value>なし</value>
+  </data>
+  <data name="Enum_TestEnum_Default_GroupName" xml:space="preserve">
+    <value>グループ</value>
+  </data>
+  <data name="Enum_TestEnum_Default_Description" xml:space="preserve">
+    <value>デフォルトの動作を示す</value>
+  </data>
+  <data name="Enum_TestEnum_First_GroupName" xml:space="preserve">
+    <value>グループ化</value>
+  </data>
+  <data name="Enum_TestEnum_First_Description" xml:space="preserve">
+    <value>最初の操作を表します</value>
+  </data>
+  <data name="Enum_TestEnum_None_GroupName" xml:space="preserve">
+    <value>グループ</value>
+  </data>
+  <data name="Enum_TestEnum_None_Description" xml:space="preserve">
+    <value>動作なし</value>
+  </data>
 </root>

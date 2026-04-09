@@ -238,4 +238,7 @@
   <data name="RegisterSuccess" xml:space="preserve">
     <value>登録に成功しました</value>
   </data>
+  <data name="PasswordsNotMatch" xml:space="preserve">
+    <value>入力したパスワードが一致しません</value>
+  </data>
 </root>
