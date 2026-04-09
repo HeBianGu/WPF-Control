@@ -8,6 +8,7 @@
 
 using System.Resources;
 using System.Runtime.CompilerServices;
+using System.Windows.Input;
 
 namespace H.Common;
 
@@ -15,21 +16,40 @@ public static class ResourceManagerExtesion
 {
     const string resxFormat = "  <data name=\"{0}\" xml:space=\"preserve\">\r\n    <value>{1}</value>\r\n  </data>";
     private static Dictionary<Assembly, ResourceManager> _cache = new Dictionary<Assembly, ResourceManager>();
-    public static ResourceManager GetResourceManager(this Type type)
-    {
-        return type.Assembly.GetResourceManager();
-    }
 
     public static ResourceManager GetResourceManager(this Assembly assembly)
     {
-        if (_cache.ContainsKey(assembly))
-            return _cache[assembly];
-        return _cache[assembly] = new ResourceManager($"{assembly.GetName().Name}.Properties.Resources", assembly);
+        assembly.TryGetResourceManager(out ResourceManager manager);
+        return manager;
+    }
+
+    public static bool TryGetResourceManager(this Assembly assembly, out ResourceManager manager)
+    {
+        if (_cache.TryGetValue(assembly, out manager))
+            return manager != null;
+
+        // 约定：{AssemblyName}.Properties.Resources
+        string baseName = $"{assembly.GetName().Name}.Properties.Resources";
+
+        // 探测：清单里是否存在对应的 .resources（不抛 MissingManifestResourceException）
+        string manifestName = baseName + ".resources";
+        bool exists = assembly.GetManifestResourceNames().Any(x => string.Equals(x, manifestName, StringComparison.Ordinal));
+
+        if (!exists)
+        {
+            manager = null;
+            return false;
+        }
+
+        manager = new ResourceManager(baseName, assembly);
+        _cache[assembly] = manager;
+        return true;
     }
 
     public static string GetResx(this Assembly assembly, string key, string def = null)
     {
-        var result = assembly.GetResourceManager().GetString(key);
+        string result = assembly.GetResourceManager()?.GetString(key);
+
 #if DEBUG
         if (result == null && def != null)
             WhiteLine(key, def);
@@ -47,20 +67,38 @@ public static class ResourceManagerExtesion
 
     public static string GetPropertyNameResx(this Type type, string propertyName, string def = null)
     {
-        string key = $"Property_{type.Name}_{propertyName}";
-        return type.GetResx(key, def);
+        for (Type ctype = type; ctype != null; ctype = ctype.BaseType)
+        {
+            string key = $"Property_{ctype.Name}_{propertyName}";
+            string result = ctype.GetResx(key, ctype == type ? def : null);
+            if (result != null)
+                return result;
+        }
+        return null;
     }
 
     public static string GetPropertyGroupNameResx(this Type type, string propertyName, string def = null)
     {
-        string key = $"Property_{type.Name}_{propertyName}_GroupName";
-        return type.GetResx(key, def);
+        for (Type ctype = type; ctype != null; ctype = ctype.BaseType)
+        {
+            string key = $"Property_{type.Name}_{propertyName}_GroupName";
+            string result = ctype.GetResx(key, ctype == type ? def : null);
+            if (result != null)
+                return result;
+        }
+        return null;
     }
 
     public static string GetPropertyDescriptionResx(this Type type, string propertyName, string def = null)
     {
-        string key = $"Property_{type.Name}_{propertyName}_Description";
-        return type.GetResx(key, def);
+        for (Type ctype = type; ctype != null; ctype = ctype.BaseType)
+        {
+            string key = $"Property_{type.Name}_{propertyName}_Description";
+            string result = ctype.GetResx(key, ctype == type ? def : null);
+            if (result != null)
+                return result;
+        }
+        return null;
     }
 
     public static string GetNameResx(this Type type, string def = null)

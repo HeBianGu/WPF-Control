@@ -6,7 +6,7 @@
     xmlns:p="clr-namespace:H.Modules.Identity.Properties"
     xmlns:local="clr-namespace:H.Modules.Identity">
     <DataTemplate DataType="{x:Type local:UserViewPresenter}">
-        <DockPanel MinWidth="900">
+        <DockPanel MinWidth="1100">
             <RepositoryGrid Type="{x:Type local:hi_dd_user}">
                 <h:Cattach.CaptionRightTemplate>
                     <ControlTemplate>

@@ -124,4 +124,31 @@
   <data name="Search" xml:space="preserve">
     <value>Search</value>
   </data>
+  <data name="Property_hi_dd_user_Name" xml:space="preserve">
+    <value>User Name</value>
+  </data>
+  <data name="Property_hi_dd_user_Account" xml:space="preserve">
+    <value>Login Account</value>
+  </data>
+  <data name="Property_hi_dd_user_Password" xml:space="preserve">
+    <value>Login Password</value>
+  </data>
+  <data name="Property_hi_dd_user_DisplayName" xml:space="preserve">
+    <value>Nickname</value>
+  </data>
+  <data name="Property_hi_dd_user_Enable" xml:space="preserve">
+    <value>Enable</value>
+  </data>
+  <data name="Property_hi_dd_user_Mail" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="Property_hi_dd_user_LastLoginTime" xml:space="preserve">
+    <value>Recent Login Time</value>
+  </data>
+  <data name="Property_hi_dd_user_LicenseDeadline" xml:space="preserve">
+    <value>License Expiration Time</value>
+  </data>
+  <data name="Property_hi_dd_user_Role" xml:space="preserve">
+    <value>Role</value>
+  </data>
 </root>

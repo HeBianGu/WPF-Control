@@ -5,8 +5,8 @@
     xmlns:h="https://github.com/HeBianGu"
     xmlns:local="clr-namespace:H.Controls.FilterBox">
     <Style BasedOn="{StaticResource {x:Static h:TextBoxKeys.Delete}}" TargetType="{x:Type local:TextFilterBox}">
-        <Setter Property="Cattach.Title" Value="搜索" />
-        <Setter Property="Cattach.Watermark" Value="输入搜索条件" />
-        <Setter Property="ToolTip" Value="输入搜索数据对数据进行搜索" />
+        <Setter Property="Cattach.Title" Value="{x:Static Resources.Common_Search}" />
+        <Setter Property="Cattach.Watermark" Value="{x:Static Resources.Common_Search}" />
+        <Setter Property="ToolTip" Value="{x:Static Resources.Common_Search}" />
     </Style>
 </ResourceDictionary>

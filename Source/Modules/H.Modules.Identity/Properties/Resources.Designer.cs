@@ -142,6 +142,87 @@ namespace H.Modules.Identity.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 登陆账号.
+        /// </summary>
+        public static string Property_hi_dd_user_Account {
+            get {
+                return ResourceManager.GetString("Property_hi_dd_user_Account", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 昵称.
+        /// </summary>
+        public static string Property_hi_dd_user_DisplayName {
+            get {
+                return ResourceManager.GetString("Property_hi_dd_user_DisplayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 启用.
+        /// </summary>
+        public static string Property_hi_dd_user_Enable {
+            get {
+                return ResourceManager.GetString("Property_hi_dd_user_Enable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 最近登录时间.
+        /// </summary>
+        public static string Property_hi_dd_user_LastLoginTime {
+            get {
+                return ResourceManager.GetString("Property_hi_dd_user_LastLoginTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 许可截止时间.
+        /// </summary>
+        public static string Property_hi_dd_user_LicenseDeadline {
+            get {
+                return ResourceManager.GetString("Property_hi_dd_user_LicenseDeadline", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 邮箱.
+        /// </summary>
+        public static string Property_hi_dd_user_Mail {
+            get {
+                return ResourceManager.GetString("Property_hi_dd_user_Mail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 用户名称.
+        /// </summary>
+        public static string Property_hi_dd_user_Name {
+            get {
+                return ResourceManager.GetString("Property_hi_dd_user_Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 登陆密码.
+        /// </summary>
+        public static string Property_hi_dd_user_Password {
+            get {
+                return ResourceManager.GetString("Property_hi_dd_user_Password", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 角色.
+        /// </summary>
+        public static string Property_hi_dd_user_Role {
+            get {
+                return ResourceManager.GetString("Property_hi_dd_user_Role", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 角色.
         /// </summary>
         public static string Role {

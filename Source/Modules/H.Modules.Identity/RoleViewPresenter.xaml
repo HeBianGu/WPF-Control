@@ -60,24 +60,19 @@
                 </DataGrid.Columns>
                 <h:Cattach.CaptionRightTemplate>
                     <ControlTemplate>
-                        <BulletDecorator VerticalAlignment="Center">
-                            <BulletDecorator.Bullet>
-                                <TextBlock VerticalAlignment="Center" Text="{x:Static p:Resources.Search}" />
-                            </BulletDecorator.Bullet>
-                            <h:TextFilterBox
+                        <TextFilterBox
                                 x:Name="tfb1"
                                 Width="200"
                                 DockPanel.Dock="Top">
-                                <b:Interaction.Triggers>
-                                    <b:EventTrigger EventName="FilterChanged">
-                                        <b:ChangePropertyAction
+                            <b:Interaction.Triggers>
+                                <b:EventTrigger EventName="FilterChanged">
+                                    <b:ChangePropertyAction
                                             PropertyName="Filter1"
                                             TargetObject="{Binding Collection}"
                                             Value="{Binding ElementName=tfb1, Path=Filter}" />
-                                    </b:EventTrigger>
-                                </b:Interaction.Triggers>
-                            </h:TextFilterBox>
-                        </BulletDecorator>
+                                </b:EventTrigger>
+                            </b:Interaction.Triggers>
+                        </TextFilterBox>
                     </ControlTemplate>
                 </h:Cattach.CaptionRightTemplate>
             </RepositoryGrid>

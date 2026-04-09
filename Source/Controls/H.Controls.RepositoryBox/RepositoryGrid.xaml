@@ -19,6 +19,7 @@
                         DockPanel.Dock="Top"
                         LastChildFill="False">
                         <Button
+                            Margin="1,0"
                             Command="{Binding AddCommand}"
                             Content="{x:Static Resources.Common_Add}"
                             Visibility="{Binding RelativeSource={RelativeSource AncestorType=local:RepositoryGrid}, Path=UseAdd, Converter={x:Static h:Converter.GetTrueToVisible}}" />
