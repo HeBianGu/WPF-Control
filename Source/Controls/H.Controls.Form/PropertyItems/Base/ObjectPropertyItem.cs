@@ -90,7 +90,10 @@ public class ObjectPropertyItem<T> : BindingVisiblablePropertyItemBase, IDataErr
                 return;
             try
             {
+                this.RemoveValueChanged();
                 this.SetValue(value);
+                this.AddValueChanged();
+                System.Diagnostics.Debug.WriteLine(this.PropertyInfo.Name);
                 if (this.Obj is IPropertyItemValueChanged valueChanged)
                     valueChanged?.OnPropertyVlaueChanged(this.PropertyInfo.Name, o, value);
             }
@@ -235,13 +238,22 @@ public class ObjectPropertyItem<T> : BindingVisiblablePropertyItemBase, IDataErr
     {
         //  ToDo：这部分需要测试是否会产生内存泄漏
         if (this.Obj is INotifyPropertyChanged notify)
-            notify.PropertyChanged += Notify_PropertyChanged;
+        {
+            PropertyChangedEventManager.RemoveHandler(notify, Notify_PropertyChanged, this.PropertyInfo.Name);
+            PropertyChangedEventManager.AddHandler(notify, Notify_PropertyChanged, this.PropertyInfo.Name);
+
+            //notify.PropertyChanged -= Notify_PropertyChanged;
+            //notify.PropertyChanged += Notify_PropertyChanged;
+        }
 
         if (this.Obj is DependencyObject dependencyObject)
         {
             DependencyPropertyDescriptor descriptor = DependencyPropertyDescriptor.FromName(this.PropertyInfo.Name, this.PropertyInfo.DeclaringType, this.PropertyInfo.DeclaringType);
             if (descriptor != null)
+            {
+                descriptor.RemoveValueChanged(dependencyObject, DependencyProperty_ValueChanged);
                 descriptor.AddValueChanged(dependencyObject, DependencyProperty_ValueChanged);
+            }
         }
     }
 
@@ -249,7 +261,10 @@ public class ObjectPropertyItem<T> : BindingVisiblablePropertyItemBase, IDataErr
     {
         //  ToDo：这部分需要测试是否会产生内存泄漏
         if (this.Obj is INotifyPropertyChanged notify)
-            notify.PropertyChanged -= Notify_PropertyChanged;
+        {
+            PropertyChangedEventManager.RemoveHandler(notify, Notify_PropertyChanged, this.PropertyInfo.Name);
+            //notify.PropertyChanged -= Notify_PropertyChanged;
+        }
 
         if (this.Obj is DependencyObject dependencyObject)
         {

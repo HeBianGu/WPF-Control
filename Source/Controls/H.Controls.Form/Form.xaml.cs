@@ -16,6 +16,19 @@ namespace H.Controls.Form;
 
 public partial class Form : ItemsControl, IFormOption
 {
+    public Form()
+    {
+        this.Unloaded += (s, e) =>
+        {
+            this.Clear();
+        };
+        this.Loaded += (s, e) =>
+        {
+            this.RefreshObject();
+        };
+    }
+
+
     static Form()
     {
         DefaultStyleKeyProperty.OverrideMetadata(typeof(Form), new FrameworkPropertyMetadata(typeof(Form)));
@@ -868,8 +881,18 @@ public partial class Form
 
         }));
 
+    private void Clear()
+    {
+        if (this.ItemsSource == null)
+            return;
+        foreach (var item in this.ItemsSource.OfType<IDisposable>())
+        {
+            item.Dispose();
+        }
+    }
     protected void RefreshObjectinternal()
     {
+        this.Clear();
         object o = this.SelectObject;
         if (o == null)
         {
