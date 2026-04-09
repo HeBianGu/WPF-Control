@@ -148,4 +148,10 @@
   <data name="Property_SettingSecurityViewOption_PasswordCount_Description" xml:space="preserve">
     <value>Wprowadzono błędne hasło zbyt wiele razy, dalsze wprowadzanie jest niedozwolone</value>
   </data>
+  <data name="Type_SettingDefaultCommand" xml:space="preserve">
+    <value>Przywróć domyślne</value>
+  </data>
+  <data name="Type_SettingDefaultCommand_Description" xml:space="preserve">
+    <value>Przywróć domyślne dane ustawień systemowych</value>
+  </data>
 </root>
