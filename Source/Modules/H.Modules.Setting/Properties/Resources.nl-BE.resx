@@ -148,4 +148,10 @@
   <data name="Property_SettingSecurityViewOption_PasswordCount_Description" xml:space="preserve">
     <value>Het aantal foutieve wachtwoordinvoeren heeft het maximale aantal toegestane validatiepogingen overschreden, verdere invoer is niet toegestaan.</value>
   </data>
+  <data name="Type_SettingDefaultCommand" xml:space="preserve">
+    <value>Standaardinstellingen herstellen</value>
+  </data>
+  <data name="Type_SettingDefaultCommand_Description" xml:space="preserve">
+    <value>Standaardgegevens van de systeeminstellingen herstellen</value>
+  </data>
 </root>

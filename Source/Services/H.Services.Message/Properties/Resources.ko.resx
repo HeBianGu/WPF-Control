@@ -145,4 +145,10 @@
   <data name="Type_ShowViewCommand_Description" xml:space="preserve">
     <value>양식 보기 데이터를 표시합니다</value>
   </data>
+  <data name="Type_ShowNotImplementedCommand" xml:space="preserve">
+    <value>메시지 표시</value>
+  </data>
+  <data name="Type_ShowNotImplementedCommand_Description" xml:space="preserve">
+    <value>팝업 메시지 표시</value>
+  </data>
 </root>

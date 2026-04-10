@@ -145,4 +145,10 @@
   <data name="Type_ShowViewCommand_Description" xml:space="preserve">
     <value>Mostra il modulo per visualizzare i dati</value>
   </data>
+  <data name="Type_ShowNotImplementedCommand" xml:space="preserve">
+    <value>Display Message</value>
+  </data>
+  <data name="Type_ShowNotImplementedCommand_Description" xml:space="preserve">
+    <value>Visualizza messaggio popup</value>
+  </data>
 </root>

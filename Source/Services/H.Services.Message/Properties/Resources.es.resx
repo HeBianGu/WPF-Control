@@ -145,4 +145,10 @@
   <data name="Type_ShowViewCommand_Description" xml:space="preserve">
     <value>Mostrar datos del formulario</value>
   </data>
+  <data name="Type_ShowNotImplementedCommand" xml:space="preserve">
+    <value>Mostrar mensaje</value>
+  </data>
+  <data name="Type_ShowNotImplementedCommand_Description" xml:space="preserve">
+    <value>Mostrar mensaje emergente</value>
+  </data>
 </root>

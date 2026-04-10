@@ -20,14 +20,9 @@
             </ListBox>
         </ScrollViewer>
         <Grid>
-            <ContentControl>
-                <b:Interaction.Behaviors>
-                    <h:DragOverHitTestAdornerBehavior AdornerDropErrorType="{x:Type h:ErrorAdorner}" AdornerType="{x:Type h:LineAdorner}" />
-                    <h:MouseOverHitTestAdornerBehavior AdornerType="{x:Type h:OverAdorner}" />
-                    <h:SelectedHitTestAdornerBehavior AdornerType="{x:Type h:SelectedControlTemplateAdorner}" IsHitTestVisible="True" />
-                </b:Interaction.Behaviors>
+            <DesignBox>
                 <h:FixedGridPresenter Columns="5" Rows="5" />
-            </ContentControl>
+            </DesignBox>
         </Grid>
     </DockPanel>
 </Window>

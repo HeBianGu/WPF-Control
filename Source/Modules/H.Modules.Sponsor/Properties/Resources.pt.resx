@@ -65,4 +65,10 @@
     <value>Apoie esta funcionalidade com uma contribuição
 </value>
   </data>
+  <data name="Type_SponsorPresenter" xml:space="preserve">
+    <value>Agradecemos o patrocínio e o apoio ao projeto de código aberto.</value>
+  </data>
+  <data name="Type_SponsorPresenter_Description" xml:space="preserve">
+    <value>Apoie esta funcionalidade com uma contribuição</value>
+  </data>
 </root>

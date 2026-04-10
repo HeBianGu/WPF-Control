@@ -113,4 +113,28 @@
   <data name="Property_GuideOptions_AnimationDuration" xml:space="preserve">
     <value>Интервал анимации</value>
   </data>
+  <data name="Type_ShowGuideCommand" xml:space="preserve">
+    <value>Мастер для начинающих</value>
+  </data>
+  <data name="Type_ShowGuideCommand_Description" xml:space="preserve">
+    <value>Показать руководство для новичков</value>
+  </data>
+  <data name="Type_ShowNewGuideCommand" xml:space="preserve">
+    <value>Новые функции</value>
+  </data>
+  <data name="Type_ShowNewGuideCommand_Description" xml:space="preserve">
+    <value>Показать мастер добавления новых функций</value>
+  </data>
+  <data name="Type_ShowGuideTreeCommand" xml:space="preserve">
+    <value>Список функций</value>
+  </data>
+  <data name="Type_ShowGuideTreeCommand_Description" xml:space="preserve">
+    <value>Показать список функций версии</value>
+  </data>
+  <data name="Type_ShowNewGuideTreeCommand" xml:space="preserve">
+    <value>Список новых функций</value>
+  </data>
+  <data name="Type_ShowNewGuideTreeCommand_Description" xml:space="preserve">
+    <value>Показать список функций версии</value>
+  </data>
 </root>

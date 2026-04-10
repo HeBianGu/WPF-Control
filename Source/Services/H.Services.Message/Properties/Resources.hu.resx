@@ -145,4 +145,10 @@
   <data name="Type_ShowViewCommand_Description" xml:space="preserve">
     <value>Űrlap megjelenítése az adatok megtekintéséhez</value>
   </data>
+  <data name="Type_ShowNotImplementedCommand" xml:space="preserve">
+    <value>Üzenet megjelenítése</value>
+  </data>
+  <data name="Type_ShowNotImplementedCommand_Description" xml:space="preserve">
+    <value>Megjelenő üzenetablak</value>
+  </data>
 </root>

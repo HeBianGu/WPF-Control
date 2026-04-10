@@ -64,4 +64,10 @@
   <data name="Type_ShowSponsorCommand_Description" xml:space="preserve">
     <value>Wesprzyj tę funkcję darowizną</value>
   </data>
+  <data name="Type_SponsorPresenter" xml:space="preserve">
+    <value>Dziękujemy za sponsoring i wsparcie projektu open source.</value>
+  </data>
+  <data name="Type_SponsorPresenter_Description" xml:space="preserve">
+    <value>Wesprzyj tę funkcję darowizną</value>
+  </data>
 </root>
