@@ -121,4 +121,64 @@
   <data name="Property_ReleaseVersionsOptions_Uri" xml:space="preserve">
     <value>Adress</value>
   </data>
+  <data name="Type_ShowReleaseVersionsCommand" xml:space="preserve">
+    <value>Versionsinformation</value>
+  </data>
+  <data name="Type_ShowReleaseVersionsCommand_Description" xml:space="preserve">
+    <value>Visa programmets versionsinformation</value>
+  </data>
+  <data name="Type_ShowSupportCommand" xml:space="preserve">
+    <value>Teknisk support</value>
+  </data>
+  <data name="Type_ShowSupportCommand_Description" xml:space="preserve">
+    <value>Visa teknisk supportdokumentation</value>
+  </data>
+  <data name="Type_ShowWebSiteCommand" xml:space="preserve">
+    <value>Officiell webbplats</value>
+  </data>
+  <data name="Type_ShowWebSiteCommand_Description" xml:space="preserve">
+    <value>Visa officiell webbplats</value>
+  </data>
+  <data name="Type_ShowContactCommand" xml:space="preserve">
+    <value>Kontaktinformation</value>
+  </data>
+  <data name="Type_ShowContactCommand_Description" xml:space="preserve">
+    <value>Kontakta utvecklaren på detta sätt</value>
+  </data>
+  <data name="Type_ShowGithubContactCommand" xml:space="preserve">
+    <value>Besök Github</value>
+  </data>
+  <data name="Type_ShowGithubContactCommand_Description" xml:space="preserve">
+    <value>Kontakta utvecklaren på detta sätt</value>
+  </data>
+  <data name="Type_ShowGitHubIssueContactCommand" xml:space="preserve">
+    <value>Ställ en fråga</value>
+  </data>
+  <data name="Type_ShowGitHubIssueContactCommand_Description" xml:space="preserve">
+    <value>通过 detta sätt ställa frågor till projekt med öppen källkod</value>
+  </data>
+  <data name="Type_ShowQQContactCommand" xml:space="preserve">
+    <value>Lägg till QQ</value>
+  </data>
+  <data name="Type_ShowQQContactCommand_Description" xml:space="preserve">
+    <value>Kontakta utvecklaren på detta sätt</value>
+  </data>
+  <data name="Type_ShowSendMailContactCommand" xml:space="preserve">
+    <value>Skicka e-post</value>
+  </data>
+  <data name="Type_ShowSendMailContactCommand_Description" xml:space="preserve">
+    <value>Kontakta utvecklaren via detta sätt</value>
+  </data>
+  <data name="Type_ShowBlogContactCommand" xml:space="preserve">
+    <value>Besök bloggen</value>
+  </data>
+  <data name="Type_ShowBlogContactCommand_Description" xml:space="preserve">
+    <value>Kontakta utvecklaren på detta sätt</value>
+  </data>
+  <data name="Type_ShowPodcastContactCommand" xml:space="preserve">
+    <value>Öppna podcast</value>
+  </data>
+  <data name="Type_ShowPodcastContactCommand_Description" xml:space="preserve">
+    <value>Kontakta utvecklaren på detta sätt</value>
+  </data>
 </root>

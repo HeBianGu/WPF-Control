@@ -10,7 +10,7 @@
         Height="450"
         Style="{StaticResource {x:Static WindowKeys.Default}}"
         mc:Ignorable="d">
-    <UniformGrid>
+    <UniformGrid Columns="4">
         <Button Command="{h:ShowCommand Presnter={GetStudent}}"
                 Content="Student" />
         <Button Command="{h:ShowCommand Presnter=String}"

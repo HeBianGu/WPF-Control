@@ -1,64 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
-  <!-- 
-    Microsoft ResX Schema 
-    
-    Version 2.0
-    
-    The primary goals of this format is to allow a simple XML format 
-    that is mostly human readable. The generation and parsing of the 
-    various data types are done through the TypeConverter classes 
-    associated with the data types.
-    
-    Example:
-    
-    ... ado.net/XML headers & schema ...
-    <resheader name="resmimetype">text/microsoft-resx</resheader>
-    <resheader name="version">2.0</resheader>
-    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
-    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
-    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
-    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
-    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
-        <value>[base64 mime encoded serialized .NET Framework object]</value>
-    </data>
-    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
-        <comment>This is a comment</comment>
-    </data>
-                
-    There are any number of "resheader" rows that contain simple 
-    name/value pairs.
-    
-    Each data row contains a name, and value. The row also contains a 
-    type or mimetype. Type corresponds to a .NET class that support 
-    text/value conversion through the TypeConverter architecture. 
-    Classes that don't support this are serialized and stored with the 
-    mimetype set.
-    
-    The mimetype is used for serialized objects, and tells the 
-    ResXResourceReader how to depersist the object. This is currently not 
-    extensible. For a given mimetype the value must be set accordingly:
-    
-    Note - application/x-microsoft.net.object.binary.base64 is the format 
-    that the ResXResourceWriter will generate, however the reader can 
-    read any of the formats listed below.
-    
-    mimetype: application/x-microsoft.net.object.binary.base64
-    value   : The object must be serialized with 
-            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
-            : and then encoded with base64 encoding.
-    
-    mimetype: application/x-microsoft.net.object.soap.base64
-    value   : The object must be serialized with 
-            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
-            : and then encoded with base64 encoding.
-
-    mimetype: application/x-microsoft.net.object.bytearray.base64
-    value   : The object must be serialized into a byte array 
-            : using a System.ComponentModel.TypeConverter
-            : and then encoded with base64 encoding.
-    -->
   <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
@@ -112,52 +53,915 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Common_Account" xml:space="preserve">
     <value>Účet</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="Window_Maximize" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
+  <data name="Common_Ok" xml:space="preserve">
+    <value>Potvrdit</value>
   </data>
-  <data name="Window_Minimize" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
+  <data name="Common_Cancel" xml:space="preserve">
+    <value>Zrušit</value>
   </data>
-  <data name="Window_Restore" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
+  <data name="Common_Yes" xml:space="preserve">
+    <value>Ano</value>
   </data>
-  <data name="Common_DataBase" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
+  <data name="Common_View" xml:space="preserve">
+    <value>Zobrazit</value>
   </data>
-  <data name="Common_CheckAll" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
+  <data name="Common_No" xml:space="preserve">
+    <value>Ne</value>
   </data>
-  <data name="Common_DeleteCheckAll" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
+  <data name="Common_Abort" xml:space="preserve">
+    <value>Přerušit</value>
   </data>
-  <data name="Common_Total" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
+  <data name="Common_Retry" xml:space="preserve">
+    <value>Opakovat</value>
   </data>
-  <data name="Common_OperationCancel" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
+  <data name="Common_Ignore" xml:space="preserve">
+    <value>Ignorovat</value>
   </data>
-  <data name="Common_AlreadyExists" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
+  <data name="Common_Apply" xml:space="preserve">
+    <value>Aplikace</value>
   </data>
-  <data name="Common_PasswordError" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
+  <data name="Common_Close" xml:space="preserve">
+    <value>Zavřít</value>
   </data>
-  <data name="Common_InputPassword" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
+  <data name="Common_Prompt" xml:space="preserve">
+    <value>Upozornění</value>
   </data>
-  <data name="Common_PasswrodErrorTooMany" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
+  <data name="Common_Exit" xml:space="preserve">
+    <value>Ukončit</value>
   </data>
-  <data name="Common_Skip" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
+  <data name="Common_Back" xml:space="preserve">
+    <value>Zpět</value>
+  </data>
+  <data name="Common_Next" xml:space="preserve">
+    <value>Další krok</value>
+  </data>
+  <data name="Common_Show" xml:space="preserve">
+    <value>Zobrazit</value>
+  </data>
+  <data name="Common_Previous" xml:space="preserve">
+    <value>Předchozí krok</value>
+  </data>
+  <data name="Common_Finish" xml:space="preserve">
+    <value>Dokončeno</value>
+  </data>
+  <data name="Common_Save" xml:space="preserve">
+    <value>Uložit</value>
+  </data>
+  <data name="Common_SaveAs" xml:space="preserve">
+    <value>Uložit jako</value>
+  </data>
+  <data name="Common_Open" xml:space="preserve">
+    <value>Otevřít</value>
+  </data>
+  <data name="Common_New" xml:space="preserve">
+    <value>Nový</value>
+  </data>
+  <data name="Common_Create" xml:space="preserve">
+    <value>Vytvořit</value>
+  </data>
+  <data name="Common_Default" xml:space="preserve">
+    <value>Výchozí</value>
+  </data>
+  <data name="Common_Edit" xml:space="preserve">
+    <value>Upravit</value>
+  </data>
+  <data name="Common_Delete" xml:space="preserve">
+    <value>Odstranit</value>
+  </data>
+  <data name="Common_Remove" xml:space="preserve">
+    <value>Odebrat</value>
+  </data>
+  <data name="Common_Add" xml:space="preserve">
+    <value>Přidat</value>
+  </data>
+  <data name="Common_Insert" xml:space="preserve">
+    <value>Vložit</value>
+  </data>
+  <data name="Common_Update" xml:space="preserve">
+    <value>Aktualizovat</value>
+  </data>
+  <data name="Common_Rename" xml:space="preserve">
+    <value>Přejmenovat</value>
+  </data>
+  <data name="Common_Import" xml:space="preserve">
+    <value>Importovat</value>
+  </data>
+  <data name="Common_Export" xml:space="preserve">
+    <value>Exportovat</value>
+  </data>
+  <data name="Common_Print" xml:space="preserve">
+    <value>Tisk</value>
+  </data>
+  <data name="Common_Preview" xml:space="preserve">
+    <value>Náhled</value>
+  </data>
+  <data name="Common_Copy" xml:space="preserve">
+    <value>Kopírovat</value>
+  </data>
+  <data name="Common_Cut" xml:space="preserve">
+    <value>Vyjmout</value>
+  </data>
+  <data name="Common_Paste" xml:space="preserve">
+    <value>Vložit</value>
+  </data>
+  <data name="Common_Undo" xml:space="preserve">
+    <value>Zpět</value>
+  </data>
+  <data name="Common_Redo" xml:space="preserve">
+    <value>Znovu##</value>
+  </data>
+  <data name="Common_Search" xml:space="preserve">
+    <value>Hledat</value>
+  </data>
+  <data name="Common_Find" xml:space="preserve">
+    <value>Najít</value>
+  </data>
+  <data name="Common_FindNext" xml:space="preserve">
+    <value>Najít další</value>
+  </data>
+  <data name="Common_Replace" xml:space="preserve">
+    <value>Nahradit</value>
+  </data>
+  <data name="Common_Filter" xml:space="preserve">
+    <value>Filtrovat</value>
+  </data>
+  <data name="Common_Sort" xml:space="preserve">
+    <value>Řazení</value>
+  </data>
+  <data name="Common_Refresh" xml:space="preserve">
+    <value>Obnovit</value>
+  </data>
+  <data name="Common_Clear" xml:space="preserve">
+    <value>Vymazat</value>
+  </data>
+  <data name="Common_Reset" xml:space="preserve">
+    <value>Resetovat</value>
+  </data>
+  <data name="Common_Select" xml:space="preserve">
+    <value>Vybrat</value>
+  </data>
+  <data name="Common_SelectAll" xml:space="preserve">
+    <value>Vybrat vše</value>
+  </data>
+  <data name="Common_DeselectAll" xml:space="preserve">
+    <value>Zrušit výběr všeho</value>
+  </data>
+  <data name="Common_InvertSelection" xml:space="preserve">
+    <value>Obrátit výběr</value>
+  </data>
+  <data name="Common_Enable" xml:space="preserve">
+    <value>Povolit</value>
+  </data>
+  <data name="Common_Disable" xml:space="preserve">
+    <value>Zakázat</value>
+  </data>
+  <data name="Common_On" xml:space="preserve">
+    <value>Zapnuto</value>
+  </data>
+  <data name="Common_Off" xml:space="preserve">
+    <value>Vypnout</value>
+  </data>
+  <data name="Common_Loading" xml:space="preserve">
+    <value>Načítání...</value>
+  </data>
+  <data name="Common_PleaseWait" xml:space="preserve">
+    <value>Prosím čekejte...</value>
+  </data>
+  <data name="Common_Working" xml:space="preserve">
+    <value>Zpracovává se...</value>
+  </data>
+  <data name="Common_Connecting" xml:space="preserve">
+    <value>Probíhá připojování...</value>
+  </data>
+  <data name="Common_Disconnecting" xml:space="preserve">
+    <value>Odpojování...</value>
+  </data>
+  <data name="Common_Error" xml:space="preserve">
+    <value>Chyba</value>
+  </data>
+  <data name="Common_Warning" xml:space="preserve">
+    <value>Varování</value>
+  </data>
+  <data name="Common_Information" xml:space="preserve">
+    <value>Nápověda</value>
+  </data>
+  <data name="Common_Success" xml:space="preserve">
+    <value>Úspěch</value>
+  </data>
+  <data name="Common_Failed" xml:space="preserve">
+    <value>Selhání</value>
+  </data>
+  <data name="Common_OperationSucceeded" xml:space="preserve">
+    <value>Operace byla úspěšná</value>
+  </data>
+  <data name="Common_OperationFailed" xml:space="preserve">
+    <value>Operace selhala</value>
+  </data>
+  <data name="Common_NotSupported" xml:space="preserve">
+    <value>Nepodporováno</value>
+  </data>
+  <data name="Common_NotImplemented" xml:space="preserve">
+    <value>Dosud není implementováno</value>
+  </data>
+  <data name="Common_Confirm" xml:space="preserve">
+    <value>Potvrdit</value>
+  </data>
+  <data name="Common_Confirmation" xml:space="preserve">
+    <value>Potvrzení upozornění</value>
+  </data>
+  <data name="Common_AreYouSure" xml:space="preserve">
+    <value>Jste si jistý?</value>
+  </data>
+  <data name="Common_ConfirmDelete" xml:space="preserve">
+    <value>Opravdu chcete odstranit?</value>
+  </data>
+  <data name="Common_ConfirmExit" xml:space="preserve">
+    <value>Opravdu chcete skončit?</value>
+  </data>
+  <data name="Common_ConfirmSaveChanges" xml:space="preserve">
+    <value>Uložit změny?</value>
+  </data>
+  <data name="Common_UnsavedChanges" xml:space="preserve">
+    <value>Máte neuložené změny</value>
+  </data>
+  <data name="Common_RequiredField" xml:space="preserve">
+    <value>Povinné pole</value>
+  </data>
+  <data name="Common_InvalidInput" xml:space="preserve">
+    <value>Neplatný vstup</value>
+  </data>
+  <data name="Common_InvalidFormat" xml:space="preserve">
+    <value>Nesprávný formát</value>
+  </data>
+  <data name="Common_OutOfRange" xml:space="preserve">
+    <value>Mimo rozsah</value>
+  </data>
+  <data name="Common_PleaseSelect" xml:space="preserve">
+    <value>Vyberte prosím</value>
+  </data>
+  <data name="Common_PleaseEnter" xml:space="preserve">
+    <value>Zadejte</value>
+  </data>
+  <data name="Common_Login" xml:space="preserve">
+    <value>Přihlášení</value>
+  </data>
+  <data name="Common_Logout" xml:space="preserve">
+    <value>Odhlásit se</value>
+  </data>
+  <data name="Common_Register" xml:space="preserve">
+    <value>Registrace</value>
+  </data>
+  <data name="Common_UserName" xml:space="preserve">
+    <value>Uživatelské jméno</value>
+  </data>
+  <data name="Common_Password" xml:space="preserve">
+    <value>Heslo</value>
+  </data>
+  <data name="Common_ConfirmPassword" xml:space="preserve">
+    <value>Potvrdit heslo</value>
+  </data>
+  <data name="Common_ForgotPassword" xml:space="preserve">
+    <value>Zapomenuté heslo</value>
+  </data>
+  <data name="Common_Settings" xml:space="preserve">
+    <value>Nastavení</value>
+  </data>
+  <data name="Common_Preferences" xml:space="preserve">
+    <value>Předvolby</value>
+  </data>
+  <data name="Common_Options" xml:space="preserve">
+    <value>Možnosti</value>
+  </data>
+  <data name="Common_About" xml:space="preserve">
+    <value>O aplikaci</value>
+  </data>
+  <data name="Common_Help" xml:space="preserve">
+    <value>Nápověda</value>
+  </data>
+  <data name="Common_CheckForUpdates" xml:space="preserve">
+    <value>Zkontrolovat aktualizace</value>
+  </data>
+  <data name="Common_NetworkError" xml:space="preserve">
+    <value>Síťová chyba</value>
+  </data>
+  <data name="Common_ServerError" xml:space="preserve">
+    <value>Chyba serveru</value>
+  </data>
+  <data name="Common_Timeout" xml:space="preserve">
+    <value>Časový limit požadavku vypršel</value>
+  </data>
+  <data name="Common_Unauthorized" xml:space="preserve">
+    <value>Neautorizováno</value>
+  </data>
+  <data name="Common_AccessDenied" xml:space="preserve">
+    <value>Přístup odepřen</value>
+  </data>
+  <data name="Common_Download" xml:space="preserve">
+    <value>Stáhnout</value>
+  </data>
+  <data name="Common_Upload" xml:space="preserve">
+    <value>Nahrát</value>
+  </data>
+  <data name="Common_Start" xml:space="preserve">
+    <value>Začít</value>
+  </data>
+  <data name="Common_Stop" xml:space="preserve">
+    <value>Zastavit</value>
+  </data>
+  <data name="Common_Pause" xml:space="preserve">
+    <value>Pozastavit</value>
+  </data>
+  <data name="Common_Resume" xml:space="preserve">
+    <value>Pokračovat</value>
+  </data>
+  <data name="Common_CopySucceeded" xml:space="preserve">
+    <value>Zkopírováno úspěšně</value>
+  </data>
+  <data name="Common_CopyFailed" xml:space="preserve">
+    <value>Kopírování se nezdařilo</value>
+  </data>
+  <data name="Common_SaveSucceeded" xml:space="preserve">
+    <value>Uložení bylo úspěšné</value>
+  </data>
+  <data name="Common_SaveFailed" xml:space="preserve">
+    <value>Uložení se nezdařilo</value>
+  </data>
+  <data name="Common_ItemsCountFormat" xml:space="preserve">
+    <value>Celkem {0} položek</value>
+  </data>
+  <data name="Common_SelectedCountFormat" xml:space="preserve">
+    <value>Vybráno {0} položek</value>
+  </data>
+  <data name="Common_PageFormat" xml:space="preserve">
+    <value>Stránka {0} z {1}</value>
+  </data>
+  <data name="Common_NoData" xml:space="preserve">
+    <value>Žádná data</value>
+  </data>
+  <data name="Common_Empty" xml:space="preserve">
+    <value>Prázdný</value>
+  </data>
+  <data name="Common_All" xml:space="preserve">
+    <value>Všechny</value>
+  </data>
+  <data name="Menu_File" xml:space="preserve">
+    <value>Soubor</value>
+  </data>
+  <data name="Menu_Edit" xml:space="preserve">
+    <value>Upravit</value>
+  </data>
+  <data name="Menu_View" xml:space="preserve">
+    <value>Zobrazení</value>
+  </data>
+  <data name="Menu_Tools" xml:space="preserve">
+    <value>Nástroje</value>
+  </data>
+  <data name="Menu_Window" xml:space="preserve">
+    <value>Okno</value>
+  </data>
+  <data name="Menu_Help" xml:space="preserve">
+    <value>Nápověda</value>
+  </data>
+  <data name="Menu_New" xml:space="preserve">
+    <value>Nový</value>
+  </data>
+  <data name="Menu_Open" xml:space="preserve">
+    <value>Otevřít</value>
+  </data>
+  <data name="Menu_OpenRecent" xml:space="preserve">
+    <value>Nedávno otevřené</value>
+  </data>
+  <data name="Menu_Close" xml:space="preserve">
+    <value>Zavřít</value>
+  </data>
+  <data name="Menu_CloseAll" xml:space="preserve">
+    <value>Zavřít vše</value>
+  </data>
+  <data name="Menu_Save" xml:space="preserve">
+    <value>Uložit</value>
+  </data>
+  <data name="Menu_SaveAs" xml:space="preserve">
+    <value>Uložit jako</value>
+  </data>
+  <data name="Menu_SaveAll" xml:space="preserve">
+    <value>Uložit vše</value>
+  </data>
+  <data name="Menu_Import" xml:space="preserve">
+    <value>Importovat</value>
+  </data>
+  <data name="Menu_Export" xml:space="preserve">
+    <value>Exportovat</value>
+  </data>
+  <data name="Menu_Print" xml:space="preserve">
+    <value>Tisk</value>
+  </data>
+  <data name="Menu_PrintPreview" xml:space="preserve">
+    <value>Náhled tisku</value>
+  </data>
+  <data name="Menu_Exit" xml:space="preserve">
+    <value>Ukončit</value>
+  </data>
+  <data name="Menu_Undo" xml:space="preserve">
+    <value>Zpět</value>
+  </data>
+  <data name="Menu_Redo" xml:space="preserve">
+    <value>Znovu##</value>
+  </data>
+  <data name="Menu_Cut" xml:space="preserve">
+    <value>Vyjmout</value>
+  </data>
+  <data name="Menu_Copy" xml:space="preserve">
+    <value>Kopírovat</value>
+  </data>
+  <data name="Menu_Paste" xml:space="preserve">
+    <value>Vložit</value>
+  </data>
+  <data name="Menu_Delete" xml:space="preserve">
+    <value>Smazat</value>
+  </data>
+  <data name="Menu_SelectAll" xml:space="preserve">
+    <value>Vybrat vše</value>
+  </data>
+  <data name="Menu_Find" xml:space="preserve">
+    <value>Hledat</value>
+  </data>
+  <data name="Menu_FindNext" xml:space="preserve">
+    <value>Najít další</value>
+  </data>
+  <data name="Menu_Replace" xml:space="preserve">
+    <value>Nahradit</value>
+  </data>
+  <data name="Menu_ZoomIn" xml:space="preserve">
+    <value>Zvětšit</value>
+  </data>
+  <data name="Menu_ZoomOut" xml:space="preserve">
+    <value>Zmenšit</value>
+  </data>
+  <data name="Menu_ResetZoom" xml:space="preserve">
+    <value>Obnovit přiblížení</value>
+  </data>
+  <data name="Menu_FullScreen" xml:space="preserve">
+    <value>Celá obrazovka</value>
+  </data>
+  <data name="Menu_ToggleSidebar" xml:space="preserve">
+    <value>Přepnout postranní panel</value>
+  </data>
+  <data name="Menu_ToggleStatusBar" xml:space="preserve">
+    <value>Přepnout stavový řádek</value>
+  </data>
+  <data name="Menu_Refresh" xml:space="preserve">
+    <value>Obnovit</value>
+  </data>
+  <data name="Menu_Settings" xml:space="preserve">
+    <value>Nastavení</value>
+  </data>
+  <data name="Menu_Preferences" xml:space="preserve">
+    <value>Předvolby</value>
+  </data>
+  <data name="Menu_CheckForUpdates" xml:space="preserve">
+    <value>Zkontrolovat aktualizace</value>
+  </data>
+  <data name="Menu_About" xml:space="preserve">
+    <value>O aplikaci</value>
+  </data>
+  <data name="Menu_Documentation" xml:space="preserve">
+    <value>Dokumenty</value>
+  </data>
+  <data name="Menu_Feedback" xml:space="preserve">
+    <value>Zpětná vazba</value>
+  </data>
+  <data name="Dialog_Title_Confirm" xml:space="preserve">
+    <value>Potvrdit</value>
+  </data>
+  <data name="Dialog_Title_Warning" xml:space="preserve">
+    <value>Varování</value>
+  </data>
+  <data name="Dialog_Title_Error" xml:space="preserve">
+    <value>Chyba</value>
+  </data>
+  <data name="Dialog_Title_Information" xml:space="preserve">
+    <value>Tip</value>
+  </data>
+  <data name="Dialog_Title_Settings" xml:space="preserve">
+    <value>Nastavení</value>
+  </data>
+  <data name="Dialog_Title_About" xml:space="preserve">
+    <value>O aplikaci</value>
+  </data>
+  <data name="Dialog_Button_Ok" xml:space="preserve">
+    <value>Potvrdit</value>
+  </data>
+  <data name="Dialog_Button_Cancel" xml:space="preserve">
+    <value>Zrušit</value>
+  </data>
+  <data name="Dialog_Button_Yes" xml:space="preserve">
+    <value>Ano</value>
+  </data>
+  <data name="Dialog_Button_No" xml:space="preserve">
+    <value>Ne</value>
+  </data>
+  <data name="Dialog_Button_Apply" xml:space="preserve">
+    <value>Aplikace</value>
+  </data>
+  <data name="Dialog_Button_Close" xml:space="preserve">
+    <value>Zavřít</value>
+  </data>
+  <data name="Dialog_Button_Retry" xml:space="preserve">
+    <value>Opakovat</value>
+  </data>
+  <data name="Dialog_Button_Ignore" xml:space="preserve">
+    <value>Ignorovat</value>
+  </data>
+  <data name="Dialog_Message_AreYouSure" xml:space="preserve">
+    <value>Jste si jistý?</value>
+  </data>
+  <data name="Dialog_Message_ConfirmDelete" xml:space="preserve">
+    <value>Opravdu chcete odstranit? Tuto akci nelze vrátit zpět.</value>
+  </data>
+  <data name="Dialog_Message_ConfirmExit" xml:space="preserve">
+    <value>Opravdu chcete ukončit?</value>
+  </data>
+  <data name="Dialog_Message_UnsavedChanges" xml:space="preserve">
+    <value>Máte neuložené změny. Chcete je uložit?</value>
+  </data>
+  <data name="Dialog_Message_OperationSucceeded" xml:space="preserve">
+    <value>Operace byla úspěšná.</value>
+  </data>
+  <data name="Dialog_Message_OperationFailed" xml:space="preserve">
+    <value>Operace se nezdařila.</value>
+  </data>
+  <data name="Dialog_Message_NotSupported" xml:space="preserve">
+    <value>Tato operace není podporována.</value>
+  </data>
+  <data name="Dialog_File_OpenTitle" xml:space="preserve">
+    <value>Vyberte soubor, který chcete otevřít.</value>
+  </data>
+  <data name="Dialog_File_SaveTitle" xml:space="preserve">
+    <value>Zvolte umístění pro uložení</value>
+  </data>
+  <data name="Dialog_File_FolderTitle" xml:space="preserve">
+    <value>Vybrat složku</value>
+  </data>
+  <data name="Dialog_File_OverwritePrompt" xml:space="preserve">
+    <value>Soubor již existuje. Chcete jej přepsat?</value>
+  </data>
+  <data name="Validation_Required" xml:space="preserve">
+    <value>Toto pole je povinné.</value>
+  </data>
+  <data name="Validation_Invalid" xml:space="preserve">
+    <value>Neplatný vstup.</value>
+  </data>
+  <data name="Validation_InvalidFormat" xml:space="preserve">
+    <value>Formát není správný.</value>
+  </data>
+  <data name="Validation_OutOfRange" xml:space="preserve">
+    <value>Překročen povolený rozsah.</value>
+  </data>
+  <data name="Validation_MinLengthFormat" xml:space="preserve">
+    <value>Délka nesmí být menší než {0}.</value>
+  </data>
+  <data name="Validation_MaxLengthFormat" xml:space="preserve">
+    <value>Délka nesmí překročit {0}.</value>
+  </data>
+  <data name="Validation_LengthRangeFormat" xml:space="preserve">
+    <value>Délka musí být mezi {0} a {1}.</value>
+  </data>
+  <data name="Validation_MinValueFormat" xml:space="preserve">
+    <value>Nesmí být menší než {0}.</value>
+  </data>
+  <data name="Validation_MaxValueFormat" xml:space="preserve">
+    <value>Nesmí být větší než {0}.</value>
+  </data>
+  <data name="Validation_ValueRangeFormat" xml:space="preserve">
+    <value>Musí být mezi {0} a {1}.</value>
+  </data>
+  <data name="Validation_InvalidEmail" xml:space="preserve">
+    <value>Neplatný formát e-mailu.</value>
+  </data>
+  <data name="Validation_InvalidPhone" xml:space="preserve">
+    <value>Formát telefonního čísla není správný.</value>
+  </data>
+  <data name="Validation_InvalidUrl" xml:space="preserve">
+    <value>URL má nesprávný formát.</value>
+  </data>
+  <data name="Validation_InvalidIpAddress" xml:space="preserve">
+    <value>IP adresa není platná.</value>
+  </data>
+  <data name="Validation_PasswordNotMatch" xml:space="preserve">
+    <value>Zadaná hesla se neshodují.</value>
+  </data>
+  <data name="Validation_InvalidDate" xml:space="preserve">
+    <value>Neplatné datum.</value>
+  </data>
+  <data name="Validation_InvalidTime" xml:space="preserve">
+    <value>Neplatný čas.</value>
+  </data>
+  <data name="File_NewFile" xml:space="preserve">
+    <value>Nový soubor</value>
+  </data>
+  <data name="File_NewFolder" xml:space="preserve">
+    <value>Nová složka</value>
+  </data>
+  <data name="File_OpenFile" xml:space="preserve">
+    <value>Otevřít soubor</value>
+  </data>
+  <data name="File_OpenFolder" xml:space="preserve">
+    <value>Otevřít složku</value>
+  </data>
+  <data name="File_SaveFile" xml:space="preserve">
+    <value>Uložit soubor</value>
+  </data>
+  <data name="File_SaveAll" xml:space="preserve">
+    <value>Uložit vše</value>
+  </data>
+  <data name="File_Rename" xml:space="preserve">
+    <value>Přejmenovat</value>
+  </data>
+  <data name="File_Copy" xml:space="preserve">
+    <value>Kopírovat</value>
+  </data>
+  <data name="File_Move" xml:space="preserve">
+    <value>Přesunout</value>
+  </data>
+  <data name="File_Delete" xml:space="preserve">
+    <value>Odstranit</value>
+  </data>
+  <data name="File_Restore" xml:space="preserve">
+    <value>Obnovit</value>
+  </data>
+  <data name="File_Size" xml:space="preserve">
+    <value>Velikost</value>
+  </data>
+  <data name="File_Type" xml:space="preserve">
+    <value>Typ</value>
+  </data>
+  <data name="File_Name" xml:space="preserve">
+    <value>Název</value>
+  </data>
+  <data name="File_Path" xml:space="preserve">
+    <value>Cesta</value>
+  </data>
+  <data name="File_DateCreated" xml:space="preserve">
+    <value>Čas vytvoření</value>
+  </data>
+  <data name="File_DateModified" xml:space="preserve">
+    <value>Čas změny</value>
+  </data>
+  <data name="File_Error_NotFound" xml:space="preserve">
+    <value>Soubor nebyl nalezen.</value>
+  </data>
+  <data name="File_Error_FolderNotFound" xml:space="preserve">
+    <value>Složka nebyla nalezena.</value>
+  </data>
+  <data name="File_Error_AccessDenied" xml:space="preserve">
+    <value>Nemáte oprávnění k přístupu.</value>
+  </data>
+  <data name="File_Error_InUse" xml:space="preserve">
+    <value>Soubor se právě používá.</value>
+  </data>
+  <data name="File_Error_ReadFailed" xml:space="preserve">
+    <value>Načtení se nezdařilo.</value>
+  </data>
+  <data name="File_Error_WriteFailed" xml:space="preserve">
+    <value>Zápis se nezdařil.</value>
+  </data>
+  <data name="File_Error_InvalidPath" xml:space="preserve">
+    <value>Neplatná cesta.</value>
+  </data>
+  <data name="File_Error_AlreadyExists" xml:space="preserve">
+    <value>Soubor nebo složka se stejným názvem již existuje.</value>
+  </data>
+  <data name="File_Filter_AllFiles" xml:space="preserve">
+    <value>Všechny soubory (*.*)</value>
+  </data>
+  <data name="Nav_Home" xml:space="preserve">
+    <value>Domovská stránka</value>
+  </data>
+  <data name="Nav_Dashboard" xml:space="preserve">
+    <value>Palubní deska</value>
+  </data>
+  <data name="Nav_Projects" xml:space="preserve">
+    <value>Projekt</value>
+  </data>
+  <data name="Nav_Favorites" xml:space="preserve">
+    <value>Oblíbené</value>
+  </data>
+  <data name="Nav_Recent" xml:space="preserve">
+    <value>Nedávno</value>
+  </data>
+  <data name="Nav_History" xml:space="preserve">
+    <value>Historie</value>
+  </data>
+  <data name="Nav_Settings" xml:space="preserve">
+    <value>Nastavení</value>
+  </data>
+  <data name="Nav_Account" xml:space="preserve">
+    <value>Účet</value>
+  </data>
+  <data name="Nav_Profile" xml:space="preserve">
+    <value>Osobní údaje</value>
+  </data>
+  <data name="Nav_Security" xml:space="preserve">
+    <value>Bezpečnost</value>
+  </data>
+  <data name="Nav_Notifications" xml:space="preserve">
+    <value>Oznámení</value>
+  </data>
+  <data name="Nav_Back" xml:space="preserve">
+    <value>Zpět</value>
+  </data>
+  <data name="Nav_Next" xml:space="preserve">
+    <value>Další krok</value>
+  </data>
+  <data name="Nav_Previous" xml:space="preserve">
+    <value>Předchozí krok</value>
+  </data>
+  <data name="Status_Ready" xml:space="preserve">
+    <value>Připraveno</value>
+  </data>
+  <data name="Status_Loading" xml:space="preserve">
+    <value>Načítání...</value>
+  </data>
+  <data name="Status_Working" xml:space="preserve">
+    <value>Zpracovává se...</value>
+  </data>
+  <data name="Status_Saving" xml:space="preserve">
+    <value>Ukládání...</value>
+  </data>
+  <data name="Status_Refreshing" xml:space="preserve">
+    <value>Obnovování...</value>
+  </data>
+  <data name="Status_Connecting" xml:space="preserve">
+    <value>Připojování...</value>
+  </data>
+  <data name="Status_Disconnecting" xml:space="preserve">
+    <value>Odpojování...</value>
+  </data>
+  <data name="Status_Connected" xml:space="preserve">
+    <value>Připojeno</value>
+  </data>
+  <data name="Status_Disconnected" xml:space="preserve">
+    <value>Nepřipojeno</value>
+  </data>
+  <data name="Status_Success" xml:space="preserve">
+    <value>Úspěch</value>
+  </data>
+  <data name="Status_Failed" xml:space="preserve">
+    <value>Selhalo</value>
+  </data>
+  <data name="Status_Canceled" xml:space="preserve">
+    <value>Zrušeno</value>
+  </data>
+  <data name="Status_Completed" xml:space="preserve">
+    <value>Dokončeno</value>
+  </data>
+  <data name="Status_Paused" xml:space="preserve">
+    <value>Pozastaveno</value>
+  </data>
+  <data name="Status_Stopped" xml:space="preserve">
+    <value>Zastaveno</value>
+  </data>
+  <data name="Status_NoData" xml:space="preserve">
+    <value>Žádná data</value>
+  </data>
+  <data name="Status_Empty" xml:space="preserve">
+    <value>Prázdné</value>
+  </data>
+  <data name="Status_ItemsCountFormat" xml:space="preserve">
+    <value>Celkem {0} položek</value>
+  </data>
+  <data name="Status_SelectedCountFormat" xml:space="preserve">
+    <value>Vybráno {0} položek</value>
+  </data>
+  <data name="Permission_Title" xml:space="preserve">
+    <value>Oprávnění</value>
+  </data>
+  <data name="Permission_AccessDenied" xml:space="preserve">
+    <value>Přístup odepřen.</value>
+  </data>
+  <data name="Permission_Unauthorized" xml:space="preserve">
+    <value>Neoprávněné.</value>
+  </data>
+  <data name="Permission_Insufficient" xml:space="preserve">
+    <value>Nedostatečná oprávnění.</value>
+  </data>
+  <data name="Permission_Request" xml:space="preserve">
+    <value>Požádat o oprávnění</value>
+  </data>
+  <data name="Permission_Grant" xml:space="preserve">
+    <value>Udĕlit</value>
+  </data>
+  <data name="Permission_Revoke" xml:space="preserve">
+    <value>Zpět</value>
+  </data>
+  <data name="Permission_AdminRequired" xml:space="preserve">
+    <value>Vyžaduje oprávnění správce.</value>
+  </data>
+  <data name="Permission_Read" xml:space="preserve">
+    <value>Číst</value>
+  </data>
+  <data name="Permission_Write" xml:space="preserve">
+    <value>Zapsat</value>
+  </data>
+  <data name="Permission_Execute" xml:space="preserve">
+    <value>Provést</value>
+  </data>
+  <data name="Permission_Delete" xml:space="preserve">
+    <value>Odstranit</value>
+  </data>
+  <data name="Theme_Title" xml:space="preserve">
+    <value>Téma</value>
+  </data>
+  <data name="Theme_Light" xml:space="preserve">
+    <value>Světlý</value>
+  </data>
+  <data name="Theme_Dark" xml:space="preserve">
+    <value>Tmavý</value>
+  </data>
+  <data name="Theme_System" xml:space="preserve">
+    <value>Podle systému</value>
+  </data>
+  <data name="Theme_Auto" xml:space="preserve">
+    <value>Automaticky</value>
+  </data>
+  <data name="Theme_AccentColor" xml:space="preserve">
+    <value>Akcentní barva</value>
+  </data>
+  <data name="Theme_PrimaryColor" xml:space="preserve">
+    <value>Hlavní barva</value>
+  </data>
+  <data name="Theme_Background" xml:space="preserve">
+    <value>Pozadí</value>
+  </data>
+  <data name="Theme_Foreground" xml:space="preserve">
+    <value>Popředí</value>
+  </data>
+  <data name="Theme_Font" xml:space="preserve">
+    <value>Písmo</value>
+  </data>
+  <data name="Theme_FontSize" xml:space="preserve">
+    <value>Velikost písma</value>
+  </data>
+  <data name="Theme_CornerRadius" xml:space="preserve">
+    <value>Zaoblené rohy</value>
+  </data>
+  <data name="Theme_Shadow" xml:space="preserve">
+    <value>Stín</value>
+  </data>
+  <data name="Theme_Transparency" xml:space="preserve">
+    <value>Průhlednost</value>
+  </data>
+  <data name="Theme_Apply" xml:space="preserve">
+    <value>Motiv aplikace</value>
+  </data>
+  <data name="Theme_Reset" xml:space="preserve">
+    <value>Obnovit výchozí motiv</value>
+  </data>
+  <data name="Window_Maximize" xml:space="preserve">
+    <value>Maximalizovat</value>
+  </data>
+  <data name="Window_Minimize" xml:space="preserve">
+    <value>Minimalizovat</value>
+  </data>
+  <data name="Window_Restore" xml:space="preserve">
+    <value>Obnovit</value>
+  </data>
+  <data name="Common_DataBase" xml:space="preserve">
+    <value>Databáze</value>
+  </data>
+  <data name="Common_CheckAll" xml:space="preserve">
+    <value>Vybrat vše</value>
+  </data>
+  <data name="Common_DeleteCheckAll" xml:space="preserve">
+    <value>Smazat vybrané</value>
+  </data>
+  <data name="Common_Total" xml:space="preserve">
+    <value>Celkem</value>
+  </data>
+  <data name="Common_OperationCancel" xml:space="preserve">
+    <value>Operace zrušena</value>
+  </data>
+  <data name="Common_AlreadyExists" xml:space="preserve">
+    <value>Již existuje</value>
+  </data>
+  <data name="Common_PasswordError" xml:space="preserve">
+    <value>Chybné heslo</value>
+  </data>
+  <data name="Common_InputPassword" xml:space="preserve">
+    <value>Zadejte heslo</value>
+  </data>
+  <data name="Common_PasswrodErrorTooMany" xml:space="preserve">
+    <value>Počet chybných pokusů o zadání hesla je příliš vysoký.</value>
+  </data>
+  <data name="Common_Skip" xml:space="preserve">
+    <value>Přeskočit</value>
   </data>
 </root>

@@ -148,4 +148,10 @@
   <data name="Property_SettingSecurityViewOption_PasswordCount_Description" xml:space="preserve">
     <value>Počet nesprávně zadaných hesel překročil povolený limit ověření hesla, další zadání není povoleno.</value>
   </data>
+  <data name="Type_SettingDefaultCommand" xml:space="preserve">
+    <value>Obnovit výchozí hodnoty</value>
+  </data>
+  <data name="Type_SettingDefaultCommand_Description" xml:space="preserve">
+    <value>Obnovit výchozí data nastavení systému</value>
+  </data>
 </root>

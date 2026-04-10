@@ -41,7 +41,6 @@
                                 <Border Margin="5">
                                     <ListBox
                                         h:Cattach.ItemMargin="0"
-                                        h:Cattach.UseClose="False"
                                         Background="{DynamicResource {x:Static h:BrushKeys.Background}}"
                                         ItemsSource="{Binding RelativeSource={RelativeSource AncestorType=h:Diagram}, Path=DataContext.NodeGroups[0]}">
                                         <ItemsControl.ItemContainerStyle>

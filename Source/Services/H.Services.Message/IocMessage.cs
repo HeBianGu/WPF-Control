@@ -8,6 +8,7 @@
 
 global using H.Services.Message.Form;
 global using H.Services.Message.TaskBar;
+using H.Services.Message.Properties;
 
 namespace H.Services.Message;
 
@@ -51,7 +52,7 @@ public static class IocMessage
                     x.MaxHeight = 800;
                     //if (x is Window window)
                     //    window.Topmost = true;
-                    x.Title = title;
+                    x.Title = string.IsNullOrEmpty(title) ? Resources.DefaultTitle : title;
                 });
             }
         }
@@ -61,7 +62,7 @@ public static class IocMessage
              {
                  x.DialogButton = dialogButton;
                  x.Padding = new Thickness(40);
-                 x.Title = title;
+                 x.Title = string.IsNullOrEmpty(title) ? Resources.DefaultTitle : title; ;
              });
         }
     }

@@ -1,64 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
-  <!-- 
-    Microsoft ResX Schema 
-    
-    Version 2.0
-    
-    The primary goals of this format is to allow a simple XML format 
-    that is mostly human readable. The generation and parsing of the 
-    various data types are done through the TypeConverter classes 
-    associated with the data types.
-    
-    Example:
-    
-    ... ado.net/XML headers & schema ...
-    <resheader name="resmimetype">text/microsoft-resx</resheader>
-    <resheader name="version">2.0</resheader>
-    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
-    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
-    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
-    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
-    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
-        <value>[base64 mime encoded serialized .NET Framework object]</value>
-    </data>
-    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
-        <comment>This is a comment</comment>
-    </data>
-                
-    There are any number of "resheader" rows that contain simple 
-    name/value pairs.
-    
-    Each data row contains a name, and value. The row also contains a 
-    type or mimetype. Type corresponds to a .NET class that support 
-    text/value conversion through the TypeConverter architecture. 
-    Classes that don't support this are serialized and stored with the 
-    mimetype set.
-    
-    The mimetype is used for serialized objects, and tells the 
-    ResXResourceReader how to depersist the object. This is currently not 
-    extensible. For a given mimetype the value must be set accordingly:
-    
-    Note - application/x-microsoft.net.object.binary.base64 is the format 
-    that the ResXResourceWriter will generate, however the reader can 
-    read any of the formats listed below.
-    
-    mimetype: application/x-microsoft.net.object.binary.base64
-    value   : The object must be serialized with 
-            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
-            : and then encoded with base64 encoding.
-    
-    mimetype: application/x-microsoft.net.object.soap.base64
-    value   : The object must be serialized with 
-            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
-            : and then encoded with base64 encoding.
-
-    mimetype: application/x-microsoft.net.object.bytearray.base64
-    value   : The object must be serialized into a byte array 
-            : using a System.ComponentModel.TypeConverter
-            : and then encoded with base64 encoding.
-    -->
   <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
@@ -112,52 +53,917 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Common_Account" xml:space="preserve">
     <value>Konto</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="Window_Maximize" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
+  <data name="Common_Ok" xml:space="preserve">
+    <value>Bekräfta</value>
   </data>
-  <data name="Window_Minimize" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
+  <data name="Common_Cancel" xml:space="preserve">
+    <value>Avbryt</value>
   </data>
-  <data name="Window_Restore" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
+  <data name="Common_Yes" xml:space="preserve">
+    <value>Ja</value>
   </data>
-  <data name="Common_DataBase" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
+  <data name="Common_View" xml:space="preserve">
+    <value>Visa</value>
   </data>
-  <data name="Common_CheckAll" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
+  <data name="Common_No" xml:space="preserve">
+    <value>Nej</value>
   </data>
-  <data name="Common_DeleteCheckAll" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
+  <data name="Common_Abort" xml:space="preserve">
+    <value>Avbryt</value>
   </data>
-  <data name="Common_Total" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
+  <data name="Common_Retry" xml:space="preserve">
+    <value>Försök igen</value>
   </data>
-  <data name="Common_OperationCancel" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
+  <data name="Common_Ignore" xml:space="preserve">
+    <value>Ignorera</value>
   </data>
-  <data name="Common_AlreadyExists" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
+  <data name="Common_Apply" xml:space="preserve">
+    <value>Program</value>
   </data>
-  <data name="Common_PasswordError" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
+  <data name="Common_Close" xml:space="preserve">
+    <value>Stäng</value>
   </data>
-  <data name="Common_InputPassword" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
+  <data name="Common_Prompt" xml:space="preserve">
+    <value>Meddelande</value>
   </data>
-  <data name="Common_PasswrodErrorTooMany" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
+  <data name="Common_Exit" xml:space="preserve">
+    <value>Avsluta</value>
   </data>
-  <data name="Common_Skip" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
+  <data name="Common_Back" xml:space="preserve">
+    <value>Tillbaka</value>
+  </data>
+  <data name="Common_Next" xml:space="preserve">
+    <value>Nästa steg</value>
+  </data>
+  <data name="Common_Show" xml:space="preserve">
+    <value>Visa</value>
+  </data>
+  <data name="Common_Previous" xml:space="preserve">
+    <value>Föregående steg</value>
+  </data>
+  <data name="Common_Finish" xml:space="preserve">
+    <value>Klar</value>
+  </data>
+  <data name="Common_Save" xml:space="preserve">
+    <value>Spara</value>
+  </data>
+  <data name="Common_SaveAs" xml:space="preserve">
+    <value>Spara som</value>
+  </data>
+  <data name="Common_Open" xml:space="preserve">
+    <value>Öppna</value>
+  </data>
+  <data name="Common_New" xml:space="preserve">
+    <value>Ny</value>
+  </data>
+  <data name="Common_Create" xml:space="preserve">
+    <value>Skapa</value>
+  </data>
+  <data name="Common_Default" xml:space="preserve">
+    <value>Standard</value>
+  </data>
+  <data name="Common_Edit" xml:space="preserve">
+    <value>Redigera</value>
+  </data>
+  <data name="Common_Delete" xml:space="preserve">
+    <value>Ta bort</value>
+  </data>
+  <data name="Common_Remove" xml:space="preserve">
+    <value>Ta bort</value>
+  </data>
+  <data name="Common_Add" xml:space="preserve">
+    <value>Lägg till</value>
+  </data>
+  <data name="Common_Insert" xml:space="preserve">
+    <value>Infoga</value>
+  </data>
+  <data name="Common_Update" xml:space="preserve">
+    <value>Uppdatera</value>
+  </data>
+  <data name="Common_Rename" xml:space="preserve">
+    <value>Byt namn</value>
+  </data>
+  <data name="Common_Import" xml:space="preserve">
+    <value>Importera</value>
+  </data>
+  <data name="Common_Export" xml:space="preserve">
+    <value>Exportera</value>
+  </data>
+  <data name="Common_Print" xml:space="preserve">
+    <value>Skriv ut</value>
+  </data>
+  <data name="Common_Preview" xml:space="preserve">
+    <value>Förhandsgranska</value>
+  </data>
+  <data name="Common_Copy" xml:space="preserve">
+    <value>Kopiera</value>
+  </data>
+  <data name="Common_Cut" xml:space="preserve">
+    <value>Klipp ut</value>
+  </data>
+  <data name="Common_Paste" xml:space="preserve">
+    <value>Klistra in</value>
+  </data>
+  <data name="Common_Undo" xml:space="preserve">
+    <value>Ångra</value>
+  </data>
+  <data name="Common_Redo" xml:space="preserve">
+    <value>Gör om</value>
+  </data>
+  <data name="Common_Search" xml:space="preserve">
+    <value>Sök</value>
+  </data>
+  <data name="Common_Find" xml:space="preserve">
+    <value>Sök</value>
+  </data>
+  <data name="Common_FindNext" xml:space="preserve">
+    <value>Sök nästa</value>
+  </data>
+  <data name="Common_Replace" xml:space="preserve">
+    <value>Ersätt</value>
+  </data>
+  <data name="Common_Filter" xml:space="preserve">
+    <value>Filtrera</value>
+  </data>
+  <data name="Common_Sort" xml:space="preserve">
+    <value>Sortering</value>
+  </data>
+  <data name="Common_Refresh" xml:space="preserve">
+    <value>Uppdatera</value>
+  </data>
+  <data name="Common_Clear" xml:space="preserve">
+    <value>Rensa</value>
+  </data>
+  <data name="Common_Reset" xml:space="preserve">
+    <value>Återställ</value>
+  </data>
+  <data name="Common_Select" xml:space="preserve">
+    <value>Välj</value>
+  </data>
+  <data name="Common_SelectAll" xml:space="preserve">
+    <value>Markera alla</value>
+  </data>
+  <data name="Common_DeselectAll" xml:space="preserve">
+    <value>Avmarkera alla</value>
+  </data>
+  <data name="Common_InvertSelection" xml:space="preserve">
+    <value>Omvänd markering</value>
+  </data>
+  <data name="Common_Enable" xml:space="preserve">
+    <value>Aktivera</value>
+  </data>
+  <data name="Common_Disable" xml:space="preserve">
+    <value>Inaktiverad</value>
+  </data>
+  <data name="Common_On" xml:space="preserve">
+    <value>På</value>
+  </data>
+  <data name="Common_Off" xml:space="preserve">
+    <value>Stäng</value>
+  </data>
+  <data name="Common_Loading" xml:space="preserve">
+    <value>Laddar...</value>
+  </data>
+  <data name="Common_PleaseWait" xml:space="preserve">
+    <value>Vänligen vänta...</value>
+  </data>
+  <data name="Common_Working" xml:space="preserve">
+    <value>Bearbetar...</value>
+  </data>
+  <data name="Common_Connecting" xml:space="preserve">
+    <value>Ansluter...</value>
+  </data>
+  <data name="Common_Disconnecting" xml:space="preserve">
+    <value>Kopplar från...</value>
+  </data>
+  <data name="Common_Error" xml:space="preserve">
+    <value>Fel</value>
+  </data>
+  <data name="Common_Warning" xml:space="preserve">
+    <value>Varning</value>
+  </data>
+  <data name="Common_Information" xml:space="preserve">
+    <value>Tips</value>
+  </data>
+  <data name="Common_Success" xml:space="preserve">
+    <value>Framgång</value>
+  </data>
+  <data name="Common_Failed" xml:space="preserve">
+    <value>Misslyckades</value>
+  </data>
+  <data name="Common_OperationSucceeded" xml:space="preserve">
+    <value>Operation successful</value>
+  </data>
+  <data name="Common_OperationFailed" xml:space="preserve">
+    <value>Operation failed</value>
+  </data>
+  <data name="Common_NotSupported" xml:space="preserve">
+    <value>Stöds inte</value>
+  </data>
+  <data name="Common_NotImplemented" xml:space="preserve">
+    <value>Inte implementerad</value>
+  </data>
+  <data name="Common_Confirm" xml:space="preserve">
+    <value>Bekräfta</value>
+  </data>
+  <data name="Common_Confirmation" xml:space="preserve">
+    <value>Bekräftelsemeddelande</value>
+  </data>
+  <data name="Common_AreYouSure" xml:space="preserve">
+    <value>Är du säker?</value>
+  </data>
+  <data name="Common_ConfirmDelete" xml:space="preserve">
+    <value>Är du säker på att du vill ta bort?</value>
+  </data>
+  <data name="Common_ConfirmExit" xml:space="preserve">
+    <value>Är du säker på att du vill avsluta?</value>
+  </data>
+  <data name="Common_ConfirmSaveChanges" xml:space="preserve">
+    <value>Spara ändringar?</value>
+  </data>
+  <data name="Common_UnsavedChanges" xml:space="preserve">
+    <value>Du har osparade ändringar</value>
+  </data>
+  <data name="Common_RequiredField" xml:space="preserve">
+    <value>Obligatorisk fält</value>
+  </data>
+  <data name="Common_InvalidInput" xml:space="preserve">
+    <value>Ogiltig inmatning</value>
+  </data>
+  <data name="Common_InvalidFormat" xml:space="preserve">
+    <value>Felaktigt format</value>
+  </data>
+  <data name="Common_OutOfRange" xml:space="preserve">
+    <value>Utanför intervallet</value>
+  </data>
+  <data name="Common_PleaseSelect" xml:space="preserve">
+    <value>Välj</value>
+  </data>
+  <data name="Common_PleaseEnter" xml:space="preserve">
+    <value>Ange请输入</value>
+  </data>
+  <data name="Common_Login" xml:space="preserve">
+    <value>Logga in</value>
+  </data>
+  <data name="Common_Logout" xml:space="preserve">
+    <value>Logga ut</value>
+  </data>
+  <data name="Common_Register" xml:space="preserve">
+    <value>Registrera</value>
+  </data>
+  <data name="Common_UserName" xml:space="preserve">
+    <value>Användarnamn</value>
+  </data>
+  <data name="Common_Password" xml:space="preserve">
+    <value>Lösenord</value>
+  </data>
+  <data name="Common_ConfirmPassword" xml:space="preserve">
+    <value>Bekräfta lösenord</value>
+  </data>
+  <data name="Common_ForgotPassword" xml:space="preserve">
+    <value>Glömt lösenord</value>
+  </data>
+  <data name="Common_Settings" xml:space="preserve">
+    <value>Inställningar</value>
+  </data>
+  <data name="Common_Preferences" xml:space="preserve">
+    <value>Inställningar</value>
+  </data>
+  <data name="Common_Options" xml:space="preserve">
+    <value>Alternativ</value>
+  </data>
+  <data name="Common_About" xml:space="preserve">
+    <value>Om</value>
+  </data>
+  <data name="Common_Help" xml:space="preserve">
+    <value>Hjälp</value>
+  </data>
+  <data name="Common_CheckForUpdates" xml:space="preserve">
+    <value>Kontrollera uppdateringar</value>
+  </data>
+  <data name="Common_NetworkError" xml:space="preserve">
+    <value>Nätverksfel</value>
+  </data>
+  <data name="Common_ServerError" xml:space="preserve">
+    <value>Serverfel
+</value>
+  </data>
+  <data name="Common_Timeout" xml:space="preserve">
+    <value>Begäran tog för lång tid</value>
+  </data>
+  <data name="Common_Unauthorized" xml:space="preserve">
+    <value>Obehörig</value>
+  </data>
+  <data name="Common_AccessDenied" xml:space="preserve">
+    <value>Åtkomst nekad</value>
+  </data>
+  <data name="Common_Download" xml:space="preserve">
+    <value>Ladda ner</value>
+  </data>
+  <data name="Common_Upload" xml:space="preserve">
+    <value>Ladda upp</value>
+  </data>
+  <data name="Common_Start" xml:space="preserve">
+    <value>Start</value>
+  </data>
+  <data name="Common_Stop" xml:space="preserve">
+    <value>Stoppa</value>
+  </data>
+  <data name="Common_Pause" xml:space="preserve">
+    <value>Pausa</value>
+  </data>
+  <data name="Common_Resume" xml:space="preserve">
+    <value>Fortsätt</value>
+  </data>
+  <data name="Common_CopySucceeded" xml:space="preserve">
+    <value>Kopieringen lyckades</value>
+  </data>
+  <data name="Common_CopyFailed" xml:space="preserve">
+    <value>Kopiering misslyckades</value>
+  </data>
+  <data name="Common_SaveSucceeded" xml:space="preserve">
+    <value>Sparades framgångsrikt</value>
+  </data>
+  <data name="Common_SaveFailed" xml:space="preserve">
+    <value>Spara misslyckades</value>
+  </data>
+  <data name="Common_ItemsCountFormat" xml:space="preserve">
+    <value>Totalt {0} objekt</value>
+  </data>
+  <data name="Common_SelectedCountFormat" xml:space="preserve">
+    <value>Valda {0} objekt</value>
+  </data>
+  <data name="Common_PageFormat" xml:space="preserve">
+    <value>Sida {0} av {1}</value>
+  </data>
+  <data name="Common_NoData" xml:space="preserve">
+    <value>Inga data</value>
+  </data>
+  <data name="Common_Empty" xml:space="preserve">
+    <value>Tom</value>
+  </data>
+  <data name="Common_All" xml:space="preserve">
+    <value>Alla</value>
+  </data>
+  <data name="Menu_File" xml:space="preserve">
+    <value>Fil</value>
+  </data>
+  <data name="Menu_Edit" xml:space="preserve">
+    <value>Redigera</value>
+  </data>
+  <data name="Menu_View" xml:space="preserve">
+    <value>Vy</value>
+  </data>
+  <data name="Menu_Tools" xml:space="preserve">
+    <value>Verktyg</value>
+  </data>
+  <data name="Menu_Window" xml:space="preserve">
+    <value>Fönster</value>
+  </data>
+  <data name="Menu_Help" xml:space="preserve">
+    <value>Hjälp</value>
+  </data>
+  <data name="Menu_New" xml:space="preserve">
+    <value>Ny】</value>
+  </data>
+  <data name="Menu_Open" xml:space="preserve">
+    <value>Öppna</value>
+  </data>
+  <data name="Menu_OpenRecent" xml:space="preserve">
+    <value>Öppnade nyligen</value>
+  </data>
+  <data name="Menu_Close" xml:space="preserve">
+    <value>Stäng</value>
+  </data>
+  <data name="Menu_CloseAll" xml:space="preserve">
+    <value>Stäng alla</value>
+  </data>
+  <data name="Menu_Save" xml:space="preserve">
+    <value>Spara</value>
+  </data>
+  <data name="Menu_SaveAs" xml:space="preserve">
+    <value>Spara som</value>
+  </data>
+  <data name="Menu_SaveAll" xml:space="preserve">
+    <value>Spara alla</value>
+  </data>
+  <data name="Menu_Import" xml:space="preserve">
+    <value>Importera</value>
+  </data>
+  <data name="Menu_Export" xml:space="preserve">
+    <value>Exportera</value>
+  </data>
+  <data name="Menu_Print" xml:space="preserve">
+    <value>Skriv ut</value>
+  </data>
+  <data name="Menu_PrintPreview" xml:space="preserve">
+    <value>Förhandsgranska utskrift</value>
+  </data>
+  <data name="Menu_Exit" xml:space="preserve">
+    <value>Avsluta</value>
+  </data>
+  <data name="Menu_Undo" xml:space="preserve">
+    <value>Ångra</value>
+  </data>
+  <data name="Menu_Redo" xml:space="preserve">
+    <value>Gör om</value>
+  </data>
+  <data name="Menu_Cut" xml:space="preserve">
+    <value>Klipp ut</value>
+  </data>
+  <data name="Menu_Copy" xml:space="preserve">
+    <value>Kopiera</value>
+  </data>
+  <data name="Menu_Paste" xml:space="preserve">
+    <value>Klistra in</value>
+  </data>
+  <data name="Menu_Delete" xml:space="preserve">
+    <value>Ta bort</value>
+  </data>
+  <data name="Menu_SelectAll" xml:space="preserve">
+    <value>Markera alla</value>
+  </data>
+  <data name="Menu_Find" xml:space="preserve">
+    <value>Sök</value>
+  </data>
+  <data name="Menu_FindNext" xml:space="preserve">
+    <value>Hitta nästa</value>
+  </data>
+  <data name="Menu_Replace" xml:space="preserve">
+    <value>Ersätt</value>
+  </data>
+  <data name="Menu_ZoomIn" xml:space="preserve">
+    <value>Zoom</value>
+  </data>
+  <data name="Menu_ZoomOut" xml:space="preserve">
+    <value>Minimera</value>
+  </data>
+  <data name="Menu_ResetZoom" xml:space="preserve">
+    <value>Återställ zoom</value>
+  </data>
+  <data name="Menu_FullScreen" xml:space="preserve">
+    <value>Helskärm</value>
+  </data>
+  <data name="Menu_ToggleSidebar" xml:space="preserve">
+    <value>Växla sidofältet</value>
+  </data>
+  <data name="Menu_ToggleStatusBar" xml:space="preserve">
+    <value>Växla statusfältet</value>
+  </data>
+  <data name="Menu_Refresh" xml:space="preserve">
+    <value>Uppdatera</value>
+  </data>
+  <data name="Menu_Settings" xml:space="preserve">
+    <value>Inställningar</value>
+  </data>
+  <data name="Menu_Preferences" xml:space="preserve">
+    <value>Inställningar</value>
+  </data>
+  <data name="Menu_CheckForUpdates" xml:space="preserve">
+    <value>Kontrollera uppdateringar</value>
+  </data>
+  <data name="Menu_About" xml:space="preserve">
+    <value>Om</value>
+  </data>
+  <data name="Menu_Documentation" xml:space="preserve">
+    <value>Dokument</value>
+  </data>
+  <data name="Menu_Feedback" xml:space="preserve">
+    <value>Feedback</value>
+  </data>
+  <data name="Dialog_Title_Confirm" xml:space="preserve">
+    <value>Bekräfta</value>
+  </data>
+  <data name="Dialog_Title_Warning" xml:space="preserve">
+    <value>Varning</value>
+  </data>
+  <data name="Dialog_Title_Error" xml:space="preserve">
+    <value>Fel</value>
+  </data>
+  <data name="Dialog_Title_Information" xml:space="preserve">
+    <value>Tips</value>
+  </data>
+  <data name="Dialog_Title_Settings" xml:space="preserve">
+    <value>Inställningar</value>
+  </data>
+  <data name="Dialog_Title_About" xml:space="preserve">
+    <value>Om</value>
+  </data>
+  <data name="Dialog_Button_Ok" xml:space="preserve">
+    <value>Bekräfta</value>
+  </data>
+  <data name="Dialog_Button_Cancel" xml:space="preserve">
+    <value>Avbryt</value>
+  </data>
+  <data name="Dialog_Button_Yes" xml:space="preserve">
+    <value>Ja</value>
+  </data>
+  <data name="Dialog_Button_No" xml:space="preserve">
+    <value>Nej</value>
+  </data>
+  <data name="Dialog_Button_Apply" xml:space="preserve">
+    <value>Program</value>
+  </data>
+  <data name="Dialog_Button_Close" xml:space="preserve">
+    <value>Stäng</value>
+  </data>
+  <data name="Dialog_Button_Retry" xml:space="preserve">
+    <value>Försök igen</value>
+  </data>
+  <data name="Dialog_Button_Ignore" xml:space="preserve">
+    <value>Ignorera</value>
+  </data>
+  <data name="Dialog_Message_AreYouSure" xml:space="preserve">
+    <value>Är du säker?</value>
+  </data>
+  <data name="Dialog_Message_ConfirmDelete" xml:space="preserve">
+    <value>Är du säker på att du vill ta bort detta? Denna åtgärd kan inte ångras.</value>
+  </data>
+  <data name="Dialog_Message_ConfirmExit" xml:space="preserve">
+    <value>Är du säker på att du vill avsluta?</value>
+  </data>
+  <data name="Dialog_Message_UnsavedChanges" xml:space="preserve">
+    <value>Du har osparade ändringar. Vill du spara dem?</value>
+  </data>
+  <data name="Dialog_Message_OperationSucceeded" xml:space="preserve">
+    <value>Åtgärden lyckades.</value>
+  </data>
+  <data name="Dialog_Message_OperationFailed" xml:space="preserve">
+    <value>Operation failed.</value>
+  </data>
+  <data name="Dialog_Message_NotSupported" xml:space="preserve">
+    <value>Nuvarande åtgärd stöds inte.</value>
+  </data>
+  <data name="Dialog_File_OpenTitle" xml:space="preserve">
+    <value>Välj filen som ska öppnas</value>
+  </data>
+  <data name="Dialog_File_SaveTitle" xml:space="preserve">
+    <value>Välj sparplats</value>
+  </data>
+  <data name="Dialog_File_FolderTitle" xml:space="preserve">
+    <value>Välj mapp</value>
+  </data>
+  <data name="Dialog_File_OverwritePrompt" xml:space="preserve">
+    <value>Filen finns redan, vill du skriva över den?</value>
+  </data>
+  <data name="Validation_Required" xml:space="preserve">
+    <value>Detta fält är obligatoriskt.</value>
+  </data>
+  <data name="Validation_Invalid" xml:space="preserve">
+    <value>Ogiltig inmatning.</value>
+  </data>
+  <data name="Validation_InvalidFormat" xml:space="preserve">
+    <value>Formatet är felaktigt.</value>
+  </data>
+  <data name="Validation_OutOfRange" xml:space="preserve">
+    <value>Utanför tillåtet område.</value>
+  </data>
+  <data name="Validation_MinLengthFormat" xml:space="preserve">
+    <value>Längden får inte vara mindre än {0}.</value>
+  </data>
+  <data name="Validation_MaxLengthFormat" xml:space="preserve">
+    <value>Längden får inte överstiga {0}.</value>
+  </data>
+  <data name="Validation_LengthRangeFormat" xml:space="preserve">
+    <value>Längden måste vara mellan {0} och {1}.</value>
+  </data>
+  <data name="Validation_MinValueFormat" xml:space="preserve">
+    <value>Får inte vara mindre än {0}.</value>
+  </data>
+  <data name="Validation_MaxValueFormat" xml:space="preserve">
+    <value>Får inte vara större än {0}.</value>
+  </data>
+  <data name="Validation_ValueRangeFormat" xml:space="preserve">
+    <value>Måste vara mellan {0} och {1}.</value>
+  </data>
+  <data name="Validation_InvalidEmail" xml:space="preserve">
+    <value>Felaktigt e-postformat.</value>
+  </data>
+  <data name="Validation_InvalidPhone" xml:space="preserve">
+    <value>Telefonnumrets format är felaktigt.</value>
+  </data>
+  <data name="Validation_InvalidUrl" xml:space="preserve">
+    <value>URL-formatet är felaktigt.</value>
+  </data>
+  <data name="Validation_InvalidIpAddress" xml:space="preserve">
+    <value>IP-adressen är ogiltig.</value>
+  </data>
+  <data name="Validation_PasswordNotMatch" xml:space="preserve">
+    <value>De två angivna lösenorden matchar inte.</value>
+  </data>
+  <data name="Validation_InvalidDate" xml:space="preserve">
+    <value>Ogiltigt datum.</value>
+  </data>
+  <data name="Validation_InvalidTime" xml:space="preserve">
+    <value>Ogiltig tid.</value>
+  </data>
+  <data name="File_NewFile" xml:space="preserve">
+    <value>Ny fil</value>
+  </data>
+  <data name="File_NewFolder" xml:space="preserve">
+    <value>Ny mapp</value>
+  </data>
+  <data name="File_OpenFile" xml:space="preserve">
+    <value>Öppna fil</value>
+  </data>
+  <data name="File_OpenFolder" xml:space="preserve">
+    <value>Öppna mapp</value>
+  </data>
+  <data name="File_SaveFile" xml:space="preserve">
+    <value>Spara fil</value>
+  </data>
+  <data name="File_SaveAll" xml:space="preserve">
+    <value>Spara alla</value>
+  </data>
+  <data name="File_Rename" xml:space="preserve">
+    <value>Byt namn</value>
+  </data>
+  <data name="File_Copy" xml:space="preserve">
+    <value>Kopiera</value>
+  </data>
+  <data name="File_Move" xml:space="preserve">
+    <value>Flytta</value>
+  </data>
+  <data name="File_Delete" xml:space="preserve">
+    <value>Ta bort</value>
+  </data>
+  <data name="File_Restore" xml:space="preserve">
+    <value>Återställ</value>
+  </data>
+  <data name="File_Size" xml:space="preserve">
+    <value>Storlek</value>
+  </data>
+  <data name="File_Type" xml:space="preserve">
+    <value>Typ</value>
+  </data>
+  <data name="File_Name" xml:space="preserve">
+    <value>Namn</value>
+  </data>
+  <data name="File_Path" xml:space="preserve">
+    <value>Sökväg</value>
+  </data>
+  <data name="File_DateCreated" xml:space="preserve">
+    <value>Skapad tid</value>
+  </data>
+  <data name="File_DateModified" xml:space="preserve">
+    <value>Ändringstid</value>
+  </data>
+  <data name="File_Error_NotFound" xml:space="preserve">
+    <value>Ingen fil hittades.</value>
+  </data>
+  <data name="File_Error_FolderNotFound" xml:space="preserve">
+    <value>Mappen hittades inte.</value>
+  </data>
+  <data name="File_Error_AccessDenied" xml:space="preserve">
+    <value>Ingen behörighet att komma åt.</value>
+  </data>
+  <data name="File_Error_InUse" xml:space="preserve">
+    <value>Filen används.</value>
+  </data>
+  <data name="File_Error_ReadFailed" xml:space="preserve">
+    <value>Misslyckades att läsa.</value>
+  </data>
+  <data name="File_Error_WriteFailed" xml:space="preserve">
+    <value>Skrivning misslyckades.</value>
+  </data>
+  <data name="File_Error_InvalidPath" xml:space="preserve">
+    <value>Ogiltig sökväg.</value>
+  </data>
+  <data name="File_Error_AlreadyExists" xml:space="preserve">
+    <value>Det finns redan en fil eller mapp med samma namn.</value>
+  </data>
+  <data name="File_Filter_AllFiles" xml:space="preserve">
+    <value>Alla filer (*.*)</value>
+  </data>
+  <data name="Nav_Home" xml:space="preserve">
+    <value>Hem
+</value>
+  </data>
+  <data name="Nav_Dashboard" xml:space="preserve">
+    <value>Instrumentpanel</value>
+  </data>
+  <data name="Nav_Projects" xml:space="preserve">
+    <value>Projekt</value>
+  </data>
+  <data name="Nav_Favorites" xml:space="preserve">
+    <value>Favorit</value>
+  </data>
+  <data name="Nav_Recent" xml:space="preserve">
+    <value>Senaste</value>
+  </data>
+  <data name="Nav_History" xml:space="preserve">
+    <value>Historik</value>
+  </data>
+  <data name="Nav_Settings" xml:space="preserve">
+    <value>Inställningar</value>
+  </data>
+  <data name="Nav_Account" xml:space="preserve">
+    <value>Konto</value>
+  </data>
+  <data name="Nav_Profile" xml:space="preserve">
+    <value>Personlig profil</value>
+  </data>
+  <data name="Nav_Security" xml:space="preserve">
+    <value>Säkerhet</value>
+  </data>
+  <data name="Nav_Notifications" xml:space="preserve">
+    <value>Meddelande</value>
+  </data>
+  <data name="Nav_Back" xml:space="preserve">
+    <value>Tillbaka</value>
+  </data>
+  <data name="Nav_Next" xml:space="preserve">
+    <value>Nästa steg</value>
+  </data>
+  <data name="Nav_Previous" xml:space="preserve">
+    <value>Föregående steg</value>
+  </data>
+  <data name="Status_Ready" xml:space="preserve">
+    <value>Klar</value>
+  </data>
+  <data name="Status_Loading" xml:space="preserve">
+    <value>Laddar...</value>
+  </data>
+  <data name="Status_Working" xml:space="preserve">
+    <value>Bearbetar...</value>
+  </data>
+  <data name="Status_Saving" xml:space="preserve">
+    <value>Sparar...</value>
+  </data>
+  <data name="Status_Refreshing" xml:space="preserve">
+    <value>Uppdaterar...</value>
+  </data>
+  <data name="Status_Connecting" xml:space="preserve">
+    <value>Ansluter...</value>
+  </data>
+  <data name="Status_Disconnecting" xml:space="preserve">
+    <value>Kopplar från...</value>
+  </data>
+  <data name="Status_Connected" xml:space="preserve">
+    <value>Ansluten</value>
+  </data>
+  <data name="Status_Disconnected" xml:space="preserve">
+    <value>Inte ansluten</value>
+  </data>
+  <data name="Status_Success" xml:space="preserve">
+    <value>Framgångsrik</value>
+  </data>
+  <data name="Status_Failed" xml:space="preserve">
+    <value>Misslyckades</value>
+  </data>
+  <data name="Status_Canceled" xml:space="preserve">
+    <value>Avbruten</value>
+  </data>
+  <data name="Status_Completed" xml:space="preserve">
+    <value>Slutförd</value>
+  </data>
+  <data name="Status_Paused" xml:space="preserve">
+    <value>Pausad</value>
+  </data>
+  <data name="Status_Stopped" xml:space="preserve">
+    <value>Stoppad</value>
+  </data>
+  <data name="Status_NoData" xml:space="preserve">
+    <value>Ingen data</value>
+  </data>
+  <data name="Status_Empty" xml:space="preserve">
+    <value>Tom</value>
+  </data>
+  <data name="Status_ItemsCountFormat" xml:space="preserve">
+    <value>Totalt {0} objekt</value>
+  </data>
+  <data name="Status_SelectedCountFormat" xml:space="preserve">
+    <value>Valt {0} objekt</value>
+  </data>
+  <data name="Permission_Title" xml:space="preserve">
+    <value>Behörighet</value>
+  </data>
+  <data name="Permission_AccessDenied" xml:space="preserve">
+    <value>Åtkomst nekad.</value>
+  </data>
+  <data name="Permission_Unauthorized" xml:space="preserve">
+    <value>Obehörig.</value>
+  </data>
+  <data name="Permission_Insufficient" xml:space="preserve">
+    <value>Otillräckliga behörigheter.</value>
+  </data>
+  <data name="Permission_Request" xml:space="preserve">
+    <value>Begär behörighet</value>
+  </data>
+  <data name="Permission_Grant" xml:space="preserve">
+    <value>Bevilja</value>
+  </data>
+  <data name="Permission_Revoke" xml:space="preserve">
+    <value>Ångra</value>
+  </data>
+  <data name="Permission_AdminRequired" xml:space="preserve">
+    <value>Administratörsbehörighet krävs.</value>
+  </data>
+  <data name="Permission_Read" xml:space="preserve">
+    <value>Läs</value>
+  </data>
+  <data name="Permission_Write" xml:space="preserve">
+    <value>Skriv in</value>
+  </data>
+  <data name="Permission_Execute" xml:space="preserve">
+    <value>Kör</value>
+  </data>
+  <data name="Permission_Delete" xml:space="preserve">
+    <value>Ta bort</value>
+  </data>
+  <data name="Theme_Title" xml:space="preserve">
+    <value>Tema</value>
+  </data>
+  <data name="Theme_Light" xml:space="preserve">
+    <value>Ljus</value>
+  </data>
+  <data name="Theme_Dark" xml:space="preserve">
+    <value>Mörk</value>
+  </data>
+  <data name="Theme_System" xml:space="preserve">
+    <value>Följ systemet</value>
+  </data>
+  <data name="Theme_Auto" xml:space="preserve">
+    <value>Automatisk</value>
+  </data>
+  <data name="Theme_AccentColor" xml:space="preserve">
+    <value>Accentfärg</value>
+  </data>
+  <data name="Theme_PrimaryColor" xml:space="preserve">
+    <value>Primärfärg</value>
+  </data>
+  <data name="Theme_Background" xml:space="preserve">
+    <value>Bakgrund</value>
+  </data>
+  <data name="Theme_Foreground" xml:space="preserve">
+    <value>Förgrund</value>
+  </data>
+  <data name="Theme_Font" xml:space="preserve">
+    <value>Typsnitt</value>
+  </data>
+  <data name="Theme_FontSize" xml:space="preserve">
+    <value>Teckenstorlek</value>
+  </data>
+  <data name="Theme_CornerRadius" xml:space="preserve">
+    <value>Avrundade hörn</value>
+  </data>
+  <data name="Theme_Shadow" xml:space="preserve">
+    <value>Skugga</value>
+  </data>
+  <data name="Theme_Transparency" xml:space="preserve">
+    <value>Genomskinlighet</value>
+  </data>
+  <data name="Theme_Apply" xml:space="preserve">
+    <value>Programtema</value>
+  </data>
+  <data name="Theme_Reset" xml:space="preserve">
+    <value>Återställ standardtema</value>
+  </data>
+  <data name="Window_Maximize" xml:space="preserve">
+    <value>Maximera</value>
+  </data>
+  <data name="Window_Minimize" xml:space="preserve">
+    <value>Minimera</value>
+  </data>
+  <data name="Window_Restore" xml:space="preserve">
+    <value>Återställ</value>
+  </data>
+  <data name="Common_DataBase" xml:space="preserve">
+    <value>Databas</value>
+  </data>
+  <data name="Common_CheckAll" xml:space="preserve">
+    <value>Markera alla</value>
+  </data>
+  <data name="Common_DeleteCheckAll" xml:space="preserve">
+    <value>Ta bort markerade</value>
+  </data>
+  <data name="Common_Total" xml:space="preserve">
+    <value>Totalt</value>
+  </data>
+  <data name="Common_OperationCancel" xml:space="preserve">
+    <value>Åtgärden avbröts</value>
+  </data>
+  <data name="Common_AlreadyExists" xml:space="preserve">
+    <value>Redan finns</value>
+  </data>
+  <data name="Common_PasswordError" xml:space="preserve">
+    <value>Lösenordet är felaktigt</value>
+  </data>
+  <data name="Common_InputPassword" xml:space="preserve">
+    <value>Ange lösenord</value>
+  </data>
+  <data name="Common_PasswrodErrorTooMany" xml:space="preserve">
+    <value>För många felaktiga lösenordsförsök</value>
+  </data>
+  <data name="Common_Skip" xml:space="preserve">
+    <value>Hoppa över</value>
   </data>
 </root>

@@ -64,4 +64,31 @@
   <data name="Hello" xml:space="preserve">
     <value>Hola2</value>
   </data>
+  <data name="Enum_TestEnum_Default" xml:space="preserve">
+    <value>Predeterminat</value>
+  </data>
+  <data name="Enum_TestEnum_First" xml:space="preserve">
+    <value>Primer</value>
+  </data>
+  <data name="Enum_TestEnum_None" xml:space="preserve">
+    <value>Cap</value>
+  </data>
+  <data name="Enum_TestEnum_Default_GroupName" xml:space="preserve">
+    <value>Grup</value>
+  </data>
+  <data name="Enum_TestEnum_Default_Description" xml:space="preserve">
+    <value>Indica el comportament per defecte</value>
+  </data>
+  <data name="Enum_TestEnum_First_GroupName" xml:space="preserve">
+    <value>Agrupació</value>
+  </data>
+  <data name="Enum_TestEnum_First_Description" xml:space="preserve">
+    <value>Indica el primer comportament</value>
+  </data>
+  <data name="Enum_TestEnum_None_GroupName" xml:space="preserve">
+    <value>Agrupació</value>
+  </data>
+  <data name="Enum_TestEnum_None_Description" xml:space="preserve">
+    <value>Sense comportament</value>
+  </data>
 </root>

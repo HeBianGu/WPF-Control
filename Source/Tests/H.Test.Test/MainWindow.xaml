@@ -110,13 +110,13 @@
                         <TabItem Header="Left">
                             <h:GridSplitterBox ID="Left">
                                 <Border>
-                                    <Grid Background="Red">
+                                    <Grid Background="{DynamicResource {x:Static BrushKeys.Red}}">
                                         <TextBlock FontSize="100"
                                                    Text="Center" />
                                     </Grid>
                                 </Border>
                                 <h:GridSplitterBox.MenuContent>
-                                    <Border Background="Yellow">
+                                    <Border Background="{DynamicResource {x:Static BrushKeys.Yellow}}">
                                         <TextBlock FontSize="100"
                                                    Text="Menu" />
                                     </Border>
@@ -128,13 +128,13 @@
                             <h:GridSplitterBox ID="right"
                                                Style="{DynamicResource {x:Static h:GridSplitterBox.RightKey}}">
                                 <Border>
-                                    <Grid Background="Red">
+                                    <Grid Background="{DynamicResource {x:Static BrushKeys.Red}}">
                                         <TextBlock FontSize="100"
                                                    Text="Center" />
                                     </Grid>
                                 </Border>
                                 <h:GridSplitterBox.MenuContent>
-                                    <Border Background="Yellow">
+                                    <Border Background="{DynamicResource {x:Static BrushKeys.Yellow}}">
                                         <TextBlock FontSize="100"
                                                    Text="Menu" />
                                     </Border>
@@ -145,14 +145,14 @@
                         <TabItem Header="top">
                             <h:GridSplitterBox ID="top"
                                                Style="{DynamicResource {x:Static h:GridSplitterBox.TopKey}}">
-                                <Border Background="Red">
+                                <Border Background="{DynamicResource {x:Static BrushKeys.Red}}">
                                     <Grid>
                                         <TextBlock FontSize="100"
                                                    Text="Center" />
                                     </Grid>
                                 </Border>
                                 <h:GridSplitterBox.MenuContent>
-                                    <Border Background="Yellow">
+                                    <Border Background="{DynamicResource {x:Static BrushKeys.Yellow}}">
                                         <TextBlock FontSize="100"
                                                    Text="Menu" />
                                     </Border>
@@ -161,17 +161,17 @@
                         </TabItem>
 
                         <TabItem Header="bottom">
-                            <h:GridSplitterBox Background="Green"
+                            <h:GridSplitterBox Background="{DynamicResource {x:Static BrushKeys.Green}}"
                                                ID="bottom"
                                                Style="{DynamicResource {x:Static h:GridSplitterBox.BottomKey}}">
-                                <Border Background="Red">
+                                <Border Background="{DynamicResource {x:Static BrushKeys.Red}}">
                                     <Grid>
                                         <TextBlock FontSize="100"
                                                    Text="Center" />
                                     </Grid>
                                 </Border>
                                 <h:GridSplitterBox.MenuContent>
-                                    <Border Background="Yellow">
+                                    <Border Background="{DynamicResource {x:Static BrushKeys.Yellow}}">
                                         <TextBlock FontSize="100"
                                                    Text="Menu" />
                                     </Border>
@@ -189,7 +189,7 @@
                                       ClipToBounds="True"
                                       FontSize="55"
                                       FontWeight="Black"
-                                      Foreground="Red"
+                                      Foreground="{DynamicResource {x:Static BrushKeys.Red}}"
                                       RepeatBehavior="5x"
                                       Text="我是用来测试跑马灯的文本"
                                       From="900"

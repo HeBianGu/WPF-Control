@@ -112,4 +112,28 @@
   <data name="Property_GuideOptions_AnimationDuration" xml:space="preserve">
     <value>Interval animace</value>
   </data>
+  <data name="Type_ShowGuideCommand" xml:space="preserve">
+    <value>Průvodce pro začátečníky</value>
+  </data>
+  <data name="Type_ShowGuideCommand_Description" xml:space="preserve">
+    <value>Zobrazit průvodce pro začátečníky</value>
+  </data>
+  <data name="Type_ShowNewGuideCommand" xml:space="preserve">
+    <value>Nová funkce</value>
+  </data>
+  <data name="Type_ShowNewGuideCommand_Description" xml:space="preserve">
+    <value>Zobrazit průvodce přidáním nových funkcí</value>
+  </data>
+  <data name="Type_ShowGuideTreeCommand" xml:space="preserve">
+    <value>Seznam funkcí</value>
+  </data>
+  <data name="Type_ShowGuideTreeCommand_Description" xml:space="preserve">
+    <value>Zobrazit seznam funkcí verze</value>
+  </data>
+  <data name="Type_ShowNewGuideTreeCommand" xml:space="preserve">
+    <value>Seznam nových funkcí</value>
+  </data>
+  <data name="Type_ShowNewGuideTreeCommand_Description" xml:space="preserve">
+    <value>Zobrazit seznam funkcí verze</value>
+  </data>
 </root>

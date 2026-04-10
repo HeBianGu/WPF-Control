@@ -148,4 +148,10 @@
   <data name="Property_SettingSecurityViewOption_PasswordCount_Description" xml:space="preserve">
     <value>Lösenordet har angetts fel fler gånger än det tillåtna antalet verifieringsförsök, och ytterligare inmatning är inte tillåten.</value>
   </data>
+  <data name="Type_SettingDefaultCommand" xml:space="preserve">
+    <value>Återställ standardvärden</value>
+  </data>
+  <data name="Type_SettingDefaultCommand_Description" xml:space="preserve">
+    <value>Återställ standarddata för systeminställningar</value>
+  </data>
 </root>

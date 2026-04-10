@@ -112,4 +112,28 @@
   <data name="Property_GuideOptions_AnimationDuration" xml:space="preserve">
     <value>Interval d'animació</value>
   </data>
+  <data name="Type_ShowGuideCommand" xml:space="preserve">
+    <value>Guia per a principiants</value>
+  </data>
+  <data name="Type_ShowGuideCommand_Description" xml:space="preserve">
+    <value>Mostra la guia per a principiants</value>
+  </data>
+  <data name="Type_ShowNewGuideCommand" xml:space="preserve">
+    <value>Nova funció</value>
+  </data>
+  <data name="Type_ShowNewGuideCommand_Description" xml:space="preserve">
+    <value>Mostra l'assistent de funcions noves</value>
+  </data>
+  <data name="Type_ShowGuideTreeCommand" xml:space="preserve">
+    <value>Llista de funcions</value>
+  </data>
+  <data name="Type_ShowGuideTreeCommand_Description" xml:space="preserve">
+    <value>Mostra la llista de funcions de la versió</value>
+  </data>
+  <data name="Type_ShowNewGuideTreeCommand" xml:space="preserve">
+    <value>Llista de noves funcions</value>
+  </data>
+  <data name="Type_ShowNewGuideTreeCommand_Description" xml:space="preserve">
+    <value>Mostra la llista de funcions de la versió</value>
+  </data>
 </root>

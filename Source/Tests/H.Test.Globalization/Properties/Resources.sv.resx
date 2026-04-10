@@ -64,4 +64,31 @@
   <data name="Hello" xml:space="preserve">
     <value>Hej 2</value>
   </data>
+  <data name="Enum_TestEnum_Default" xml:space="preserve">
+    <value>Standard</value>
+  </data>
+  <data name="Enum_TestEnum_First" xml:space="preserve">
+    <value>Första</value>
+  </data>
+  <data name="Enum_TestEnum_None" xml:space="preserve">
+    <value>Ingen</value>
+  </data>
+  <data name="Enum_TestEnum_Default_GroupName" xml:space="preserve">
+    <value>Grupp</value>
+  </data>
+  <data name="Enum_TestEnum_Default_Description" xml:space="preserve">
+    <value>表示 standard behavior</value>
+  </data>
+  <data name="Enum_TestEnum_First_GroupName" xml:space="preserve">
+    <value>Grupp</value>
+  </data>
+  <data name="Enum_TestEnum_First_Description" xml:space="preserve">
+    <value>Betecknar det första beteendet</value>
+  </data>
+  <data name="Enum_TestEnum_None_GroupName" xml:space="preserve">
+    <value>Gruppering</value>
+  </data>
+  <data name="Enum_TestEnum_None_Description" xml:space="preserve">
+    <value>Ingen beteende 표시as</value>
+  </data>
 </root>

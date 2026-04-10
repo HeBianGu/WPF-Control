@@ -53,7 +53,7 @@
                                                RenderOptions.EdgeMode="Aliased"
                                                SnapsToDevicePixels="False"
                                                Source="{TemplateBinding Image}"
-                                               Stretch="None" />
+                                               Stretch="Uniform" />
                                         <FontIconTextBlock HorizontalAlignment="Center"
                                                            VerticalAlignment="Center"
                                                            Text="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(h:Cattach.Icon)}" />

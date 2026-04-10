@@ -121,4 +121,64 @@
   <data name="Property_ReleaseVersionsOptions_Uri" xml:space="preserve">
     <value>Adresa</value>
   </data>
+  <data name="Type_ShowReleaseVersionsCommand" xml:space="preserve">
+    <value>Poznámky k verzi</value>
+  </data>
+  <data name="Type_ShowReleaseVersionsCommand_Description" xml:space="preserve">
+    <value>Zobrazit poznámky k vydání softwaru</value>
+  </data>
+  <data name="Type_ShowSupportCommand" xml:space="preserve">
+    <value>Technická podpora</value>
+  </data>
+  <data name="Type_ShowSupportCommand_Description" xml:space="preserve">
+    <value>Zobrazit dokumentaci technické podpory</value>
+  </data>
+  <data name="Type_ShowWebSiteCommand" xml:space="preserve">
+    <value>Oficiální webové stránky</value>
+  </data>
+  <data name="Type_ShowWebSiteCommand_Description" xml:space="preserve">
+    <value>Zobrazit oficiální webové stránky</value>
+  </data>
+  <data name="Type_ShowContactCommand" xml:space="preserve">
+    <value>Kontaktní údaje</value>
+  </data>
+  <data name="Type_ShowContactCommand_Description" xml:space="preserve">
+    <value>Kontaktujte vývojáře tímto způsobem</value>
+  </data>
+  <data name="Type_ShowGithubContactCommand" xml:space="preserve">
+    <value>Navštívit GitHub</value>
+  </data>
+  <data name="Type_ShowGithubContactCommand_Description" xml:space="preserve">
+    <value>Kontaktovat vývojáře tímto způsobem</value>
+  </data>
+  <data name="Type_ShowGitHubIssueContactCommand" xml:space="preserve">
+    <value>Položit otázku</value>
+  </data>
+  <data name="Type_ShowGitHubIssueContactCommand_Description" xml:space="preserve">
+    <value>Tímto způsobem položit otázku k open source projektu</value>
+  </data>
+  <data name="Type_ShowQQContactCommand" xml:space="preserve">
+    <value>Přidat QQ</value>
+  </data>
+  <data name="Type_ShowQQContactCommand_Description" xml:space="preserve">
+    <value>Kontaktovat vývojáře tímto způsobem</value>
+  </data>
+  <data name="Type_ShowSendMailContactCommand" xml:space="preserve">
+    <value>Odeslat e-mail</value>
+  </data>
+  <data name="Type_ShowSendMailContactCommand_Description" xml:space="preserve">
+    <value>Kontaktujte vývojáře tímto způsobem</value>
+  </data>
+  <data name="Type_ShowBlogContactCommand" xml:space="preserve">
+    <value>Navštívit blog</value>
+  </data>
+  <data name="Type_ShowBlogContactCommand_Description" xml:space="preserve">
+    <value>Kontaktujte vývojáře tímto způsobem</value>
+  </data>
+  <data name="Type_ShowPodcastContactCommand" xml:space="preserve">
+    <value>Navštívit podcast</value>
+  </data>
+  <data name="Type_ShowPodcastContactCommand_Description" xml:space="preserve">
+    <value>Kontaktujte vývojáře tímto způsobem</value>
+  </data>
 </root>

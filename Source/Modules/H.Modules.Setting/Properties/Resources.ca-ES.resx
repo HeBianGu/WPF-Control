@@ -148,4 +148,10 @@
   <data name="Property_SettingSecurityViewOption_PasswordCount_Description" xml:space="preserve">
     <value>S'ha superat el nombre d'intents incorrectes de contrasenya i no es permeten més entrades.</value>
   </data>
+  <data name="Type_SettingDefaultCommand" xml:space="preserve">
+    <value>Restableix per defecte</value>
+  </data>
+  <data name="Type_SettingDefaultCommand_Description" xml:space="preserve">
+    <value>Restaura les dades predeterminades de configuració del sistema</value>
+  </data>
 </root>

@@ -56,7 +56,7 @@ namespace H.Test.Identify
             services.AddBackgroundRigisterLoginViewPresenter();
             services.AddIdentityLoginService();
             services.AddIdentityRegisterService();
-            services.AddSplashScreen();
+            services.AddBackgroundSplashScreen();
             services.AddTheme();
         }
 

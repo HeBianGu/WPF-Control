@@ -64,4 +64,10 @@
   <data name="Type_ShowSponsorCommand_Description" xml:space="preserve">
     <value>应用此功能给予赞助支持</value>
   </data>
+  <data name="Type_SponsorPresenter" xml:space="preserve">
+    <value>感谢对开源项目的赞助和支持</value>
+  </data>
+  <data name="Type_SponsorPresenter_Description" xml:space="preserve">
+    <value>应用此功能给予赞助支持</value>
+  </data>
 </root>
