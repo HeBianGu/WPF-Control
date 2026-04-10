@@ -5,8 +5,8 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="H.ApplicationBases.Default" Version="1.0.5" />
-    <PackageReference Include="H.Data.Test" Version="1.0.5" />
-    <PackageReference Include="H.Windows.Main" Version="1.0.5" />
+    <PackageReference Include="H.ApplicationBases.Default" Version="1.2.0" />
+    <PackageReference Include="H.Data.Test" Version="1.2.0" />
+    <PackageReference Include="H.Windows.Main" Version="1.2.0" />
   </ItemGroup>
 </Project>
