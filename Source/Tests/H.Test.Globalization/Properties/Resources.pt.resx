@@ -64,4 +64,31 @@
   <data name="Hello" xml:space="preserve">
     <value>Olá 2</value>
   </data>
+  <data name="Enum_TestEnum_Default" xml:space="preserve">
+    <value>Padrão</value>
+  </data>
+  <data name="Enum_TestEnum_First" xml:space="preserve">
+    <value>Primeiro</value>
+  </data>
+  <data name="Enum_TestEnum_None" xml:space="preserve">
+    <value>Nenhum</value>
+  </data>
+  <data name="Enum_TestEnum_Default_GroupName" xml:space="preserve">
+    <value>Agrupar</value>
+  </data>
+  <data name="Enum_TestEnum_Default_Description" xml:space="preserve">
+    <value>Comportamento padrão</value>
+  </data>
+  <data name="Enum_TestEnum_First_GroupName" xml:space="preserve">
+    <value>Grupo</value>
+  </data>
+  <data name="Enum_TestEnum_First_Description" xml:space="preserve">
+    <value>Representa o primeiro comportamento</value>
+  </data>
+  <data name="Enum_TestEnum_None_GroupName" xml:space="preserve">
+    <value>Grupo</value>
+  </data>
+  <data name="Enum_TestEnum_None_Description" xml:space="preserve">
+    <value>Indica que não há comportamento</value>
+  </data>
 </root>

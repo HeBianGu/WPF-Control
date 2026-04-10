@@ -961,4 +961,7 @@
   <data name="Common_PasswrodErrorTooMany" xml:space="preserve">
     <value>Too many incorrect password attempts</value>
   </data>
+  <data name="Common_Skip" xml:space="preserve">
+    <value>Skip</value>
+  </data>
 </root>

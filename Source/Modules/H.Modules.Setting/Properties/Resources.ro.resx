@@ -148,4 +148,10 @@
   <data name="Property_SettingSecurityViewOption_PasswordCount_Description" xml:space="preserve">
     <value>Numărul de introduceri greșite ale parolei a depășit numărul permis de verificări ale parolei, introducerea nu mai este permisă.</value>
   </data>
+  <data name="Type_SettingDefaultCommand" xml:space="preserve">
+    <value>Restabiliți valorile implicite</value>
+  </data>
+  <data name="Type_SettingDefaultCommand_Description" xml:space="preserve">
+    <value>Restabiliți datele implicite ale setărilor sistemului</value>
+  </data>
 </root>

@@ -148,4 +148,10 @@
   <data name="Property_SettingSecurityViewOption_PasswordCount_Description" xml:space="preserve">
     <value>O número de tentativas com palavra-passe incorreta excedeu o limite de validação da palavra-passe. Não é permitido inserir novamente.</value>
   </data>
+  <data name="Type_SettingDefaultCommand" xml:space="preserve">
+    <value>Restaurar padrão</value>
+  </data>
+  <data name="Type_SettingDefaultCommand_Description" xml:space="preserve">
+    <value>Restaurar os dados padrão das configurações do sistema</value>
+  </data>
 </root>

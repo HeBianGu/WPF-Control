@@ -77,5 +77,23 @@ namespace H.Modules.Sponsor.Properties {
                 return ResourceManager.GetString("Type_ShowSponsorCommand_Description", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 感谢对开源项目的赞助和支持.
+        /// </summary>
+        public static string Type_SponsorPresenter {
+            get {
+                return ResourceManager.GetString("Type_SponsorPresenter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 应用此功能给予赞助支持.
+        /// </summary>
+        public static string Type_SponsorPresenter_Description {
+            get {
+                return ResourceManager.GetString("Type_SponsorPresenter_Description", resourceCulture);
+            }
+        }
     }
 }

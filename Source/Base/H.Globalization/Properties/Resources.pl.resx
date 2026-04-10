@@ -949,4 +949,22 @@
   <data name="Common_Total" xml:space="preserve">
     <value>Suma</value>
   </data>
+  <data name="Common_OperationCancel" xml:space="preserve">
+    <value>Anulowanie operacji</value>
+  </data>
+  <data name="Common_AlreadyExists" xml:space="preserve">
+    <value>już istnieje</value>
+  </data>
+  <data name="Common_PasswordError" xml:space="preserve">
+    <value>Nieprawidłowe hasło</value>
+  </data>
+  <data name="Common_InputPassword" xml:space="preserve">
+    <value>Wprowadź hasło</value>
+  </data>
+  <data name="Common_PasswrodErrorTooMany" xml:space="preserve">
+    <value>Zbyt wiele błędnych prób wprowadzenia hasła</value>
+  </data>
+  <data name="Common_Skip" xml:space="preserve">
+    <value>Pomiń</value>
+  </data>
 </root>

@@ -23,8 +23,6 @@ public class GlobalizationViewPresenter : IGlobalizationViewPresenter
 
     public RelayCommand SelectionChangedCommand => new RelayCommand(async x =>
     {
-        if (x == null)
-            return;
         await GlobalizationOptions.Instance.ShowShutDownAsync();
     });
 }

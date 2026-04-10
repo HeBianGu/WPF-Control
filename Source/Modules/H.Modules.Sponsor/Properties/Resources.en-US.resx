@@ -64,4 +64,10 @@
   <data name="Type_ShowSponsorCommand_Description" xml:space="preserve">
     <value>Support this feature with a sponsorship</value>
   </data>
+  <data name="Type_SponsorPresenter" xml:space="preserve">
+    <value>Thanks for sponsoring and supporting the open-source project.</value>
+  </data>
+  <data name="Type_SponsorPresenter_Description" xml:space="preserve">
+    <value>Support this feature with a sponsorship</value>
+  </data>
 </root>

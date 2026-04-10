@@ -91,4 +91,22 @@
   <data name="Type_ShowFeedbackCommand_Description" xml:space="preserve">
     <value>Show User Feedback Page</value>
   </data>
+  <data name="Feedback_Prompt" xml:space="preserve">
+    <value>Your feedback is what drives us to keep improving. Please let us know about any issues you encountered while using the product or share your valuable suggestions.</value>
+  </data>
+  <data name="Feedback_Confidentiality" xml:space="preserve">
+    <value>The information you submit is used to resolve your issue, and we will keep it strictly confidential.</value>
+  </data>
+  <data name="Feedback_Name" xml:space="preserve">
+    <value>Your Name</value>
+  </data>
+  <data name="Feedback_Contact" xml:space="preserve">
+    <value>Contact Information</value>
+  </data>
+  <data name="Feedback_Quesion" xml:space="preserve">
+    <value>Issue Description</value>
+  </data>
+  <data name="Feedback_AddFiles" xml:space="preserve">
+    <value>Add Attachment</value>
+  </data>
 </root>

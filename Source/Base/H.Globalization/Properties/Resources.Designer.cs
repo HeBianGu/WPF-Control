@@ -1060,6 +1060,15 @@ namespace H.Globalization.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 跳过.
+        /// </summary>
+        public static string Common_Skip {
+            get {
+                return ResourceManager.GetString("Common_Skip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 排序.
         /// </summary>
         public static string Common_Sort {

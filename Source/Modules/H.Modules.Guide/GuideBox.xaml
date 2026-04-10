@@ -45,15 +45,21 @@
                             <DockPanel DockPanel.Dock="Bottom">
                                 <Button
                                     HorizontalAlignment="Left"
-                                    Command="{x:Static local:GuideBox.SkipCommand}"
-                                    Content="跳过指南&gt;&gt;" />
+                                    Command="{x:Static local:GuideBox.SkipCommand}">
+                                    <Button.Content>
+                                        <TextBlock>
+                                            <Run Text="{x:Static Resources.Common_Skip}"/>
+                                            <Run Text="&gt;&gt;"/>
+                                        </TextBlock>
+                                    </Button.Content>
+                                </Button>
                                 <Button
                                     x:Name="bt_next"
                                     Margin="5,0"
                                     HorizontalAlignment="Left"
                                     Background="{DynamicResource {x:Static BrushKeys.Orange}}"
                                     Command="{x:Static local:GuideBox.NextCommand}"
-                                    Content="下一步"
+                                    Content="{x:Static Resources.Common_Next}"
                                     Foreground="White" />
                             </DockPanel>
 

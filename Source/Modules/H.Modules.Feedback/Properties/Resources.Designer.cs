@@ -61,6 +61,60 @@ namespace H.Modules.Feedback.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 添加附件.
+        /// </summary>
+        public static string Feedback_AddFiles {
+            get {
+                return ResourceManager.GetString("Feedback_AddFiles", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 您提交的信息用于解决您的问题，我们会严格保密。.
+        /// </summary>
+        public static string Feedback_Confidentiality {
+            get {
+                return ResourceManager.GetString("Feedback_Confidentiality", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 联系方式.
+        /// </summary>
+        public static string Feedback_Contact {
+            get {
+                return ResourceManager.GetString("Feedback_Contact", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 您的称呼.
+        /// </summary>
+        public static string Feedback_Name {
+            get {
+                return ResourceManager.GetString("Feedback_Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 您的意见是我们不断进步的动力，请留下您在使用中遇到的问题或提出宝贵的建议。.
+        /// </summary>
+        public static string Feedback_Prompt {
+            get {
+                return ResourceManager.GetString("Feedback_Prompt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 问题描述.
+        /// </summary>
+        public static string Feedback_Quesion {
+            get {
+                return ResourceManager.GetString("Feedback_Quesion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 启用SSL.
         /// </summary>
         public static string Property_FeedbackOptions_EnableSsl {
