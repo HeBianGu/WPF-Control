@@ -1,0 +1,244 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Type_LoginOptions" xml:space="preserve">
+    <value>Bejelentkezési oldal beállításai</value>
+  </data>
+  <data name="Type_RegistorOptions" xml:space="preserve">
+    <value>Regisztrációs oldal beállításai</value>
+  </data>
+  <data name="Register" xml:space="preserve">
+    <value>Regisztráció</value>
+  </data>
+  <data name="AccountLogin" xml:space="preserve">
+    <value>Fiókbejelentkezés</value>
+  </data>
+  <data name="InputAccount" xml:space="preserve">
+    <value>Adja meg a felhasználónevet</value>
+  </data>
+  <data name="Account" xml:space="preserve">
+    <value>Fiók</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>Jelszó</value>
+  </data>
+  <data name="InputPassword" xml:space="preserve">
+    <value>Adja meg a jelszót</value>
+  </data>
+  <data name="ConfirmationPassword" xml:space="preserve">
+    <value>Jelszó megerősítése</value>
+  </data>
+  <data name="ChangePassword" xml:space="preserve">
+    <value>Jelszó módosítása</value>
+  </data>
+  <data name="Change" xml:space="preserve">
+    <value>Módosítás</value>
+  </data>
+  <data name="RemenberPassword" xml:space="preserve">
+    <value>Jelszó megjegyzése</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>Következő ნაბიჯus</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>Előző lépés</value>
+  </data>
+  <data name="EmailVerification" xml:space="preserve">
+    <value>E-mail ellenőrzése</value>
+  </data>
+  <data name="Agree" xml:space="preserve">
+    <value>Elolvastam és elfogadom.</value>
+  </data>
+  <data name="And" xml:space="preserve">
+    <value>és</value>
+  </data>
+  <data name="ServiceAgreement" xml:space="preserve">
+    <value>Szolgáltatási szerződés</value>
+  </data>
+  <data name="LoginDirect" xml:space="preserve">
+    <value>Közvetlen bejelentkezés</value>
+  </data>
+  <data name="Privacypolicy" xml:space="preserve">
+    <value>Adatvédelmi szabályzat</value>
+  </data>
+  <data name="Invoking" xml:space="preserve">
+    <value>Végrehajtás. ..</value>
+  </data>
+  <data name="VerificationCode" xml:space="preserve">
+    <value>Ellenőrző kód</value>
+  </data>
+  <data name="VerificationCodeSended" xml:space="preserve">
+    <value>Ellenőrző kód elküldve.</value>
+  </data>
+  <data name="RegisterVerificationCode" xml:space="preserve">
+    <value>Regisztrációs ellenőrző kód</value>
+  </data>
+  <data name="GetVerificationCode" xml:space="preserve">
+    <value>Ellenőrző kód lekérése</value>
+  </data>
+  <data name="EmailAddress" xml:space="preserve">
+    <value>Email cím</value>
+  </data>
+  <data name="UserLogin" xml:space="preserve">
+    <value>Felhasználói bejelentkezés</value>
+  </data>
+  <data name="SendingEmail" xml:space="preserve">
+    <value>E-mail küldése</value>
+  </data>
+  <data name="RegisterNow" xml:space="preserve">
+    <value>Regisztráljon most</value>
+  </data>
+  <data name="RegisterAccount" xml:space="preserve">
+    <value>Fiók regisztrálása</value>
+  </data>
+  <data name="ForgetPassword" xml:space="preserve">
+    <value>Elfelejtett jelszó</value>
+  </data>
+  <data name="Login" xml:space="preserve">
+    <value>Bejelentkezés</value>
+  </data>
+  <data name="Type_LoginOptions_GroupName" xml:space="preserve">
+    <value>Rendszerbeállítások</value>
+  </data>
+  <data name="Type_LoginOptions_Description" xml:space="preserve">
+    <value>Bejelentkezési oldalon beállított információk</value>
+  </data>
+  <data name="Type_RegistorOptions_GroupName" xml:space="preserve">
+    <value>Rendszerbeállítások</value>
+  </data>
+  <data name="Type_RegistorOptions_Description" xml:space="preserve">
+    <value>A regisztrációs oldalon beállított információk</value>
+  </data>
+  <data name="Property_LoginOptions_Product" xml:space="preserve">
+    <value>Bejelentkezés címe</value>
+  </data>
+  <data name="Property_LoginOptions_ProductFontSize" xml:space="preserve">
+    <value>Betűméret</value>
+  </data>
+  <data name="Property_LoginOptions_AdminName" xml:space="preserve">
+    <value>Rendszergazdai fiók</value>
+  </data>
+  <data name="Property_LoginOptions_LastUserName" xml:space="preserve">
+    <value>Utolsó bejelentkezett felhasználó</value>
+  </data>
+  <data name="Property_LoginOptions_Remember" xml:space="preserve">
+    <value>Jelszó megjegyzése</value>
+  </data>
+  <data name="Property_LoginOptions_UseVisitor" xml:space="preserve">
+    <value>Vendég engedélyezése</value>
+  </data>
+  <data name="Property_LoginOptions_UseVisitor_Description" xml:space="preserve">
+    <value>A vendég mód engedélyezése után akkor is be lehet lépni a főablakba, ha a bejelentkezés nem sikeres.</value>
+  </data>
+  <data name="Property_LoginOptions_UseLogoutRestart" xml:space="preserve">
+    <value>Kijelentkezés és újraindítás</value>
+  </data>
+  <data name="Property_LoginOptions_UseLogoutRestart_Description" xml:space="preserve">
+    <value>Engedélyezze a kijelentkezést és az alkalmazás újraindítását</value>
+  </data>
+  <data name="Property_RegistorOptions_UseMail" xml:space="preserve">
+    <value>E-mailes regisztráció engedélyezése</value>
+  </data>
+  <data name="Property_RegistorOptions_UseMail_Description" xml:space="preserve">
+    <value>E-mailes regisztráció engedélyezése</value>
+  </data>
+  <data name="Property_RegistorOptions_ServiceAgreementUri" xml:space="preserve">
+    <value>Alkalmazáslicenc</value>
+  </data>
+  <data name="Property_RegistorOptions_PrivacypolicyUri" xml:space="preserve">
+    <value>Adatvédelmi irányelvek</value>
+  </data>
+  <data name="Property_RegistorOptions_MailAccount" xml:space="preserve">
+    <value>A hitelesítő kód küldésére szolgáló e-mail-cím</value>
+  </data>
+  <data name="Property_RegistorOptions_Image" xml:space="preserve">
+    <value>Bal oldali kép</value>
+  </data>
+  <data name="AccountCannotBeNull" xml:space="preserve">
+    <value>A felhasználónév nem lehet üres.</value>
+  </data>
+  <data name="PasswordCannotBeNull" xml:space="preserve">
+    <value>A jelszó nem lehet üres.</value>
+  </data>
+  <data name="LoginSuccess" xml:space="preserve">
+    <value>Sikeres bejelentkezés</value>
+  </data>
+  <data name="LoginError" xml:space="preserve">
+    <value>Sikertelen bejelentkezés, hibás felhasználónév vagy jelszó</value>
+  </data>
+  <data name="Loginning" xml:space="preserve">
+    <value>Bejelentkezés მიმდინარეობს</value>
+  </data>
+  <data name="ChangingPassword" xml:space="preserve">
+    <value>Jelszó módosítása</value>
+  </data>
+  <data name="ChangePasswordSuccess" xml:space="preserve">
+    <value>Jelszó sikeresen módosítva</value>
+  </data>
+  <data name="Registering" xml:space="preserve">
+    <value>Regisztráció folyamatban</value>
+  </data>
+  <data name="RegisterSuccess" xml:space="preserve">
+    <value>Sikeres regisztráció</value>
+  </data>
+  <data name="PasswordsNotMatch" xml:space="preserve">
+    <value>A két alkalommal megadott jelszó nem egyezik.</value>
+  </data>
+</root>

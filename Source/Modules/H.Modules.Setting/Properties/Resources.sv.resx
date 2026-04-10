@@ -1,0 +1,157 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Type_SettingViewOptions" xml:space="preserve">
+    <value>Inställningssida</value>
+  </data>
+  <data name="Type_ShowSettingCommand" xml:space="preserve">
+    <value>Inställningar</value>
+  </data>
+  <data name="Type_ShowSettingCommand_Description" xml:space="preserve">
+    <value>Visa sidan för systeminställningar</value>
+  </data>
+  <data name="Type_SettingViewOptions_GroupName" xml:space="preserve">
+    <value>Visningsinställningar</value>
+  </data>
+  <data name="Type_SettingSecurityViewOption" xml:space="preserve">
+    <value>Inställningssidkontroll</value>
+  </data>
+  <data name="Type_SettingSecurityViewOption_GroupName" xml:space="preserve">
+    <value>Säkerhetsinställningar</value>
+  </data>
+  <data name="Property_SettingViewOptions_Margin" xml:space="preserve">
+    <value>Sidmarginaler</value>
+  </data>
+  <data name="Property_SettingViewOptions_Margin_Description" xml:space="preserve">
+    <value>Ställ in sidmarginaler</value>
+  </data>
+  <data name="Property_SettingViewOptions_TitleWidth" xml:space="preserve">
+    <value>Rubrikbredd</value>
+  </data>
+  <data name="Property_SettingViewOptions_TitleWidth_Description" xml:space="preserve">
+    <value>Ställ in sidtitelns bredd</value>
+  </data>
+  <data name="Property_SettingViewOptions_NavigationiTitleWidth" xml:space="preserve">
+    <value>Minsta navigeringsbredd</value>
+  </data>
+  <data name="Property_SettingViewOptions_NavigationiTitleWidth_Description" xml:space="preserve">
+    <value>Ange minsta bredd för sidnavigering</value>
+  </data>
+  <data name="Property_SettingViewOptions_Width" xml:space="preserve">
+    <value>Sidbredd</value>
+  </data>
+  <data name="Property_SettingViewOptions_Width_Description" xml:space="preserve">
+    <value>Ställ in sidbredd</value>
+  </data>
+  <data name="Property_SettingViewOptions_MinWidth" xml:space="preserve">
+    <value>Minsta bredd</value>
+  </data>
+  <data name="Property_SettingViewOptions_MinWidth_Description" xml:space="preserve">
+    <value>Ange sidans minsta bredd</value>
+  </data>
+  <data name="Property_SettingViewOptions_Height" xml:space="preserve">
+    <value>Sidhöjd</value>
+  </data>
+  <data name="Property_SettingViewOptions_Height_Description" xml:space="preserve">
+    <value>Ställ in sidans höjd</value>
+  </data>
+  <data name="Property_SettingViewOptions_MinHeight" xml:space="preserve">
+    <value>Minsta höjd</value>
+  </data>
+  <data name="Property_SettingViewOptions_MinHeight_Description" xml:space="preserve">
+    <value>Ange minsta höjd för sidan</value>
+  </data>
+  <data name="Property_SettingViewOptions_UseSetDefault" xml:space="preserve">
+    <value>Aktivera återställning till standard</value>
+  </data>
+  <data name="Property_SettingViewOptions_UseSetDefault_Description" xml:space="preserve">
+    <value>Aktivera funktionen för att visa knappen Återställ standardinställningar</value>
+  </data>
+  <data name="Property_SettingSecurityViewOption_UsePassword" xml:space="preserve">
+    <value>Aktivera lösenord</value>
+  </data>
+  <data name="Property_SettingSecurityViewOption_UsePassword_Description" xml:space="preserve">
+    <value>Ange om lösenordsskydd ska aktiveras. När det är aktiverat krävs det förinställda administratörslösenordet för att öppna inställningssidan.</value>
+  </data>
+  <data name="Property_SettingSecurityViewOption_RememberPassword" xml:space="preserve">
+    <value>Kom ihåg lösenordet</value>
+  </data>
+  <data name="Property_SettingSecurityViewOption_RememberPassword_Description" xml:space="preserve">
+    <value>Kom ihåg lösenordet så att inställningssidan öppnas automatiskt nästa gång.</value>
+  </data>
+  <data name="Property_SettingSecurityViewOption_Password" xml:space="preserve">
+    <value>Ange administratörslösenord</value>
+  </data>
+  <data name="Property_SettingSecurityViewOption_Password_Description" xml:space="preserve">
+    <value>Ange om lösenordsskydd ska aktiveras. När det är aktiverat måste det förinställda administratörslösenordet anges för att öppna inställningssidan.</value>
+  </data>
+  <data name="Property_SettingSecurityViewOption_PasswordCount" xml:space="preserve">
+    <value>Antal lösenordsverifieringar</value>
+  </data>
+  <data name="Property_SettingSecurityViewOption_PasswordCount_Description" xml:space="preserve">
+    <value>Lösenordet har angetts fel fler gånger än det tillåtna antalet verifieringsförsök, och ytterligare inmatning är inte tillåten.</value>
+  </data>
+  <data name="Type_SettingDefaultCommand" xml:space="preserve">
+    <value>Återställ standardvärden</value>
+  </data>
+  <data name="Type_SettingDefaultCommand_Description" xml:space="preserve">
+    <value>Återställ standarddata för systeminställningar</value>
+  </data>
+</root>

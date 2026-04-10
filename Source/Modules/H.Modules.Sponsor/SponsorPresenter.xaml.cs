@@ -14,7 +14,7 @@ namespace H.Modules.Sponsor;
 
 [Icon("\xECC5")]
 [Display(Name = "感谢对开源项目的赞助和支持", Description = "应用此功能给予赞助支持")]
-internal class SponsorPresenter : DisplayBindableBase, ISponsorPresenter
+internal class SponsorPresenter : ResxDisplayBindableBase, ISponsorPresenter
 {
 
 }

@@ -16,6 +16,5 @@ public static class ProcessExtension
     public static void ShowProcess(this string uri)
     {
         Process.Start(new ProcessStartInfo(uri) { UseShellExecute = true });
-
     }
 }

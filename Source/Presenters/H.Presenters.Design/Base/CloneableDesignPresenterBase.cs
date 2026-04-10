@@ -10,10 +10,11 @@ global using H.Extensions.Common;
 global using H.Extensions.Mvvm.ViewModels.Base;
 global using System.Reflection;
 using H.Common.Interfaces;
+using H.Extensions.Mvvm.ViewModels;
 
 namespace H.Presenters.Design.Base;
 
-public abstract class CloneableDesignPresenterBase : DesignPresenterBase, ICloneable, ICloneable<CloneableDesignPresenterBase>, ICloneableDesignPresenter
+public abstract class CloneableDesignPresenterBase : DeletableDesignPresenterBase, ICloneable, ICloneableDesignPresenter
 {
     //public virtual object Clone()
     //{
@@ -23,19 +24,21 @@ public abstract class CloneableDesignPresenterBase : DesignPresenterBase, IClone
     //    //return JsonSerializer.Deserialize(txt, GetType());
     //}
 
-    public CloneableDesignPresenterBase Clone()
-    {
-        return ((ICloneable)this).Clone() as CloneableDesignPresenterBase;
-    }
-
     object ICloneable.Clone()
     {
-        return this.CloneBy(x => x.GetCustomAttribute<BrowsableAttribute>()?.Browsable != false);
+        return this.Clone();
     }
 
-    ICloneableDesignPresenter ICloneableDesignPresenter.Clone()
+    public virtual ICloneableDesignPresenter Clone()
     {
-        return this.Clone();
+        var result = this.CloneByDisplay() as ICloneableDesignPresenter;
+        if (result is IDisplayBindable display)
+        {
+            display.Name = this.Name;
+            display.Description = this.Description;
+            display.GroupName = this.GroupName;
+        }
+        return result;
     }
 }
 

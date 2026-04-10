@@ -1,0 +1,155 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Type_ShowUserViewCommand" xml:space="preserve">
+    <value>Gestionarea utilizatorilor</value>
+  </data>
+  <data name="Type_ShowUserViewCommand_Description" xml:space="preserve">
+    <value>Folosiți această funcție pentru gestionarea utilizatorilor</value>
+  </data>
+  <data name="Type_ShowRoleViewCommand" xml:space="preserve">
+    <value>Gestionarea rolurilor</value>
+  </data>
+  <data name="Type_ShowRoleViewCommand_Description" xml:space="preserve">
+    <value>Utilizați această funcție pentru gestionarea rolurilor</value>
+  </data>
+  <data name="Type_ShowAuthorityViewCommand" xml:space="preserve">
+    <value>Gestionarea permisiunilor</value>
+  </data>
+  <data name="Type_ShowAuthorityViewCommand_Description" xml:space="preserve">
+    <value>Utilizați această funcție pentru gestionarea permisiunilor</value>
+  </data>
+  <data name="ID" xml:space="preserve">
+    <value>Identificator unic</value>
+  </data>
+  <data name="UserName" xml:space="preserve">
+    <value>Nume utilizator</value>
+  </data>
+  <data name="Account" xml:space="preserve">
+    <value>Cont de autentificare</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>Parolă de conectare</value>
+  </data>
+  <data name="DisplayName" xml:space="preserve">
+    <value>Poreclă</value>
+  </data>
+  <data name="Enable" xml:space="preserve">
+    <value>Activare/Dezactivare</value>
+  </data>
+  <data name="Mail" xml:space="preserve">
+    <value>E-mail</value>
+  </data>
+  <data name="Role" xml:space="preserve">
+    <value>Rol</value>
+  </data>
+  <data name="Authors" xml:space="preserve">
+    <value>Listă de permisiuni</value>
+  </data>
+  <data name="AuthorName" xml:space="preserve">
+    <value>Denumirea permisiunii</value>
+  </data>
+  <data name="AuthorCode" xml:space="preserve">
+    <value>Cod de permisiune</value>
+  </data>
+  <data name="Roles" xml:space="preserve">
+    <value>Lista de roluri</value>
+  </data>
+  <data name="Users" xml:space="preserve">
+    <value>Lista de utilizatori</value>
+  </data>
+  <data name="RoleName" xml:space="preserve">
+    <value>Numele rolului</value>
+  </data>
+  <data name="RoleCode" xml:space="preserve">
+    <value>Codificarea rolului</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Căutare</value>
+  </data>
+  <data name="Property_hi_dd_user_Name" xml:space="preserve">
+    <value>Numele utilizatorului</value>
+  </data>
+  <data name="Property_hi_dd_user_Account" xml:space="preserve">
+    <value>Autentificare cont
+</value>
+  </data>
+  <data name="Property_hi_dd_user_Password" xml:space="preserve">
+    <value>Parolă de conectare</value>
+  </data>
+  <data name="Property_hi_dd_user_DisplayName" xml:space="preserve">
+    <value>Poreclă</value>
+  </data>
+  <data name="Property_hi_dd_user_Enable" xml:space="preserve">
+    <value>Activare</value>
+  </data>
+  <data name="Property_hi_dd_user_Mail" xml:space="preserve">
+    <value>E-mail</value>
+  </data>
+  <data name="Property_hi_dd_user_LastLoginTime" xml:space="preserve">
+    <value>Ultima dată de autentificare</value>
+  </data>
+  <data name="Property_hi_dd_user_LicenseDeadline" xml:space="preserve">
+    <value>Data expirării licenței</value>
+  </data>
+  <data name="Property_hi_dd_user_Role" xml:space="preserve">
+    <value>Rol￼</value>
+  </data>
+</root>

@@ -25,13 +25,17 @@
                                                       Height="Auto"
                                                       Background="{DynamicResource {x:Static h:BrushKeys.MouseOver}}"
                                                       BorderThickness="0"
+                                                      Cattach.Title="选择排序器"
                                                       CheckedGlyph="{x:Static FontIcons.Sort}"
                                                       DockPanel.Dock="Right"
+                                                      ToolTip="点击此按钮选择排序器"
                                                       UncheckedGlyph="{x:Static FontIcons.Sort}" />
                                 <Button x:Name="PART_Button"
                                         Height="Auto"
                                         Margin="1"
-                                        Content="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=PropertyOrders.SelectedItem.ID, FallbackValue=设置排序器}" />
+                                        Cattach.Title="设置排序器"
+                                        Content="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=PropertyOrders.SelectedItem.ID, FallbackValue=设置排序器}"
+                                        ToolTip="点击此按钮设置排序器" />
                             </DockPanel>
 
                             <Popup Height="Auto"

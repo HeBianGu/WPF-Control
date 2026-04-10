@@ -6,15 +6,19 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
+using System.Diagnostics;
 using System.IO;
 using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Threading;
 
 namespace H.Extensions.Common;
 
-public static class ImageExtention
+public static partial class ImageExtention
 {
     public static ImageEx ToImageEx(this string filePath) => new ImageEx(filePath);
 
@@ -28,6 +32,23 @@ public static class ImageExtention
         {
             encoder.Save(stream);
         }
+    }
+
+    public static (int width, int height) GetImageResolution(this string imagePath)
+    {
+        if (!imagePath.IsImage())
+            return (0, 0);
+        try
+        {
+            var bitmap = new BitmapImage();
+            bitmap.BeginInit();
+            bitmap.UriSource = new Uri(imagePath);
+            bitmap.CacheOption = BitmapCacheOption.OnLoad;
+            bitmap.CreateOptions = BitmapCreateOptions.IgnoreImageCache;
+            bitmap.EndInit();
+            return (bitmap.PixelWidth, bitmap.PixelHeight);
+        }
+        catch { return (0, 0); }
     }
 
     public static void ToCroppedSetClipboard(this BitmapSource bitmapSource, Int32Rect cropArea)
@@ -48,6 +69,17 @@ public static class ImageExtention
 
     public static MemoryStream ToCroppedImageStream(this BitmapSource bitmapSource, Int32Rect cropArea)
     {
+        if (cropArea.X < 0)
+            cropArea.X = 0;
+        if (cropArea.Y < 0)
+            cropArea.Y = 0;
+        if (cropArea.X + cropArea.Width > bitmapSource.PixelWidth)
+            cropArea.Width = bitmapSource.PixelWidth - cropArea.X;
+        if (cropArea.Y + cropArea.Height > bitmapSource.PixelHeight)
+            cropArea.Height = bitmapSource.PixelHeight - cropArea.Y;
+
+        if (cropArea.Width <= 0 || cropArea.Height <= 0)
+            return new MemoryStream();
         var croppedBitmap = new CroppedBitmap(bitmapSource, cropArea);
         var encoder = new JpegBitmapEncoder();
         encoder.Frames.Add(BitmapFrame.Create(croppedBitmap));
@@ -83,6 +115,164 @@ public static class ImageExtention
     }
 }
 
+public static partial class ImageExtention
+{
+    [DllImport("kernel32.dll", SetLastError = true, CharSet = CharSet.Auto)]
+    private static extern bool CreateHardLink(string lpFileName, string lpExistingFileName, IntPtr lpSecurityAttributes);
+
+    public static (bool success, string message) CreateHardLinkTo(this string sourcePath, string destinationPath)
+    {
+        try
+        {
+            // 1. 基本检查
+            if (!File.Exists(sourcePath))
+                return (false, "源文件不存在");
+
+            // 2. 文件系统检查
+            if (!IsFileSystemSupported(sourcePath))
+                return (false, "文件系统不支持硬链接");
+
+            // 3. 磁盘分区检查
+            var r = CanCreateHardLink(sourcePath, destinationPath);
+            if (!r.success)
+                return (false, r.message);
+
+            // 4. 目录准备
+            string destDir = Path.GetDirectoryName(destinationPath);
+            if (!Directory.Exists(destDir))
+            {
+                try
+                {
+                    Directory.CreateDirectory(destDir);
+                }
+                catch (Exception ex)
+                {
+                    return (false, $"创建目录失败: {ex.Message}");
+                }
+            }
+
+            // 5. 删除已存在的目标文件
+            if (File.Exists(destinationPath))
+            {
+                try
+                {
+                    File.Delete(destinationPath);
+                }
+                catch (Exception ex)
+                {
+                    return (false, $"删除已存在文件失败: {ex.Message}");
+                }
+            }
+
+            // 6. 创建硬链接
+            bool apiSuccess = CreateHardLink(destinationPath, sourcePath, IntPtr.Zero);
+
+            if (!apiSuccess)
+            {
+                int errorCode = Marshal.GetLastWin32Error();
+                string errorMsg = GetErrorMessage(errorCode);
+                return (false, $"API调用失败 (错误代码 {errorCode}): {errorMsg}");
+            }
+
+            // 7. 验证结果
+            if (!File.Exists(destinationPath))
+                return (false, "API调用成功但文件未创建");
+
+            // 8. 最终验证
+            return VerifyHardLink(sourcePath, destinationPath);
+        }
+        catch (Exception ex)
+        {
+            return (false, $"异常: {ex.Message}");
+        }
+    }
+
+    private static (bool success, string message) VerifyHardLink(string sourcePath, string destinationPath)
+    {
+        try
+        {
+            FileInfo sourceInfo = new FileInfo(sourcePath);
+            FileInfo destInfo = new FileInfo(destinationPath);
+
+            if (sourceInfo.Length != destInfo.Length)
+                return (false, "文件大小不匹配");
+
+            // 简单的内容验证（对于图片文件）
+            if (sourceInfo.Length > 0)
+            {
+                using (var sourceStream = File.OpenRead(sourcePath))
+                using (var destStream = File.OpenRead(destinationPath))
+                {
+                    if (sourceStream.Length != destStream.Length)
+                        return (false, "文件内容长度验证失败");
+                }
+            }
+
+            return (true, "硬链接创建并验证成功");
+        }
+        catch (Exception ex)
+        {
+            return (false, $"验证失败: {ex.Message}");
+        }
+    }
+
+    private static string GetErrorMessage(int errorCode)
+    {
+        return errorCode switch
+        {
+            5 => "拒绝访问 (ERROR_ACCESS_DENIED)",
+            80 => "文件已存在 (ERROR_FILE_EXISTS)",
+            183 => "文件已存在 (ERROR_ALREADY_EXISTS)",
+            17 => "目标文件系统不支持硬链接",
+            1327 => "需要提升的权限",
+            _ => $"未知错误: {errorCode}"
+        };
+    }
+
+    public static bool IsFileSystemSupported(string path)
+    {
+        try
+        {
+            DriveInfo drive = new DriveInfo(Path.GetPathRoot(path));
+            string fileSystem = drive.DriveFormat;
+            Console.WriteLine($"文件系统: {fileSystem}");
+
+            // NTFS 支持硬链接，FAT32、exFAT 不支持
+            bool supported = fileSystem.Equals("NTFS", StringComparison.OrdinalIgnoreCase);
+            Console.WriteLine($"支持硬链接: {supported}");
+
+            return supported;
+        }
+        catch
+        {
+            return false;
+        }
+    }
+    public static (bool success, string message) CanCreateHardLink(string sourcePath, string destinationPath)
+    {
+        try
+        {
+            DriveInfo sourceDrive = new DriveInfo(Path.GetPathRoot(sourcePath));
+            DriveInfo destDrive = new DriveInfo(Path.GetPathRoot(destinationPath));
+            bool sameDrive = sourceDrive.Name.Equals(destDrive.Name, StringComparison.OrdinalIgnoreCase);
+            Debug.WriteLine($"同磁盘分区: {sameDrive}");
+            if (!sameDrive)
+            {
+                string msg = $"错误: 硬链接不能跨磁盘分区创建!源分区: {sourceDrive.Name}, 目标分区: {destDrive.Name}";
+                Debug.WriteLine(msg);
+                Trace.Assert(false, msg);
+                return (false, msg);
+            }
+
+            return (true, null);
+        }
+        catch
+        {
+            return (false, "不能跨磁盘分区创建硬链接");
+        }
+    }
+}
+
 public class ImageEx
 {
     private static List<Tuple<string, int, int, BitmapImage>> _fileCache = new List<Tuple<string, int, int, BitmapImage>>();
@@ -92,7 +282,7 @@ public class ImageEx
         this.FullPath = fullPath;
     }
 
-    public void ClearCache()
+    public static void ClearCache()
     {
         _fileCache.Clear();
     }
@@ -126,7 +316,7 @@ public class ImageEx
 
         try
         {
-            using (FileStream filestream = File.Open(this.FullPath, FileMode.Open, FileAccess.ReadWrite, FileShare.ReadWrite))
+            using (FileStream filestream = File.Open(this.FullPath, FileMode.Open, FileAccess.Read, FileShare.Read))
             {
                 using (BinaryReader reader = new BinaryReader(filestream))
 
@@ -143,18 +333,20 @@ public class ImageEx
                         bitmapImage.DecodePixelHeight = decodePixelHeight;
                     bitmapImage.StreamSource = new MemoryStream(bytes);
                     bitmapImage.EndInit();
+                    // 立即加载而不是延迟
                     bitmapImage.CacheOption = BitmapCacheOption.OnLoad;
                     if (useCache)
                         _fileCache.Add(Tuple.Create(this.FullPath, decodePixelWidth, decodePixelHeight, bitmapImage));
+                    bitmapImage.Freeze();
                     return bitmapImage;
                 }
             }
         }
-        catch (Exception)
+        catch (Exception ex)
         {
+            System.Diagnostics.Trace.Assert(false, ex.Message);
             return null;
             //var result = new BitmapImage(new Uri(filePath, UriKind.Absolute));
-
             //if (decodePixelWidth > 0)
             //    result.DecodePixelWidth = decodePixelWidth;
             //if (decodePixelHeight > 0)
@@ -164,3 +356,119 @@ public class ImageEx
     }
 
 }
+
+
+[Obsolete("未验证")]
+public class AsyncImage : Image
+{
+    public AsyncImage()
+    {
+        this.Unloaded += (l, k) =>
+            {
+                _cts?.Cancel();
+            };
+    }
+    private CancellationTokenSource _cts;
+
+    public static readonly DependencyProperty UriSourceProperty =
+        DependencyProperty.Register(
+            nameof(UriSource),
+            typeof(string),
+            typeof(AsyncImage),
+            new PropertyMetadata(null, OnUriSourceChanged));
+
+    public string UriSource
+    {
+        get => (string)GetValue(UriSourceProperty);
+        set => SetValue(UriSourceProperty, value);
+    }
+
+    private static void OnUriSourceChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+    {
+        var ctrl = (AsyncImage)d;
+        ctrl.LoadAsync(e.NewValue as string);
+    }
+
+    private void LoadAsync(string uriOrPath)
+    {
+        // cancel previous load if any
+        _cts?.Cancel();
+        _cts = new CancellationTokenSource();
+        var token = _cts.Token;
+
+        // Clear or keep previous source (optional). Here we clear.
+        Source = null;
+
+        if (string.IsNullOrWhiteSpace(uriOrPath))
+            return;
+
+        Task.Run(() =>
+        {
+            try
+            {
+                token.ThrowIfCancellationRequested();
+
+                BitmapImage bmp = new BitmapImage();
+                bmp.BeginInit();
+
+                // Allow async download for HTTP(S). For local files, we'll use file stream.
+                bmp.CacheOption = BitmapCacheOption.OnDemand;
+                bmp.CreateOptions = BitmapCreateOptions.DelayCreation;
+
+                // Decide if it's a web uri or local file
+                if (IsWebUri(uriOrPath))
+                {
+                    bmp.UriSource = new Uri(uriOrPath, UriKind.Absolute);
+                }
+                else
+                {
+                    // Local file: load stream to avoid locking the file
+                    using (var fs = new FileStream(uriOrPath, FileMode.Open, FileAccess.Read, FileShare.Read))
+                    {
+                        bmp.CacheOption = BitmapCacheOption.OnLoad; // fully load into memory
+                        bmp.StreamSource = fs;
+                        bmp.EndInit();
+                        bmp.Freeze(); // freeze before leaving using
+                                      // marshal back
+                        if (!token.IsCancellationRequested)
+                        {
+                            Dispatcher.BeginInvoke(DispatcherPriority.Background, new Action(() =>
+                            {
+                                if (!token.IsCancellationRequested)
+                                    Source = bmp;
+                            }));
+                        }
+                        return;
+                    }
+                }
+
+                bmp.EndInit();
+                bmp.Freeze();
+
+                token.ThrowIfCancellationRequested();
+
+                Dispatcher.BeginInvoke(DispatcherPriority.Background, new Action(() =>
+                {
+                    if (!token.IsCancellationRequested)
+                        Source = bmp;
+                }));
+            }
+            catch
+            {
+                // swallow or log; keep UI responsive
+            }
+        }, token);
+    }
+
+    private static bool IsWebUri(string s)
+    {
+        if (string.IsNullOrEmpty(s)) return false;
+        Uri uri;
+        if (Uri.TryCreate(s, UriKind.Absolute, out uri))
+        {
+            return uri.Scheme == Uri.UriSchemeHttp || uri.Scheme == Uri.UriSchemeHttps;
+        }
+        return false;
+    }
+}
+

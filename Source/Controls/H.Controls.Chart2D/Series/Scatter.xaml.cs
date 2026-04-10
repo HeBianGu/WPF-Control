@@ -38,18 +38,13 @@ namespace H.Controls.Chart2D
         protected override void InitX()
         {
             base.InitX();
-
-            if (this.AlignmentCenter)
-            {
-                double span = (this.maxX - this.minX) / this.xAxis.Count;
-
-                this.maxX = this.maxX + (span / 2);
-
-                this.minX = this.minX - (span / 2);
-            }
+            if (!this.AlignmentCenter)
+                return;
+            double span = (this.maxX - this.minX) / this.xAxis.Count;
+            this.maxX = this.maxX + (span / 2);
+            this.minX = this.minX - (span / 2);
         }
 
-        /// <summary> 散点显示的最大数量 </summary>
         public int ShowCount
         {
             get { return (int)GetValue(ShowCountProperty); }
@@ -83,22 +78,16 @@ namespace H.Controls.Chart2D
         public override void Draw(Canvas canvas)
         {
             base.Draw(canvas);
-
-            if (this.xAxis.Count > this.ShowCount) return;
-
+            if (this.xAxis.Count > this.ShowCount)
+                return;
             for (int i = 0; i < this.xAxis.Count; i++)
             {
                 double x = this.xAxis[i];
-
                 double y = this.Data[i];
-
-                //  Do ：显示标记
                 Shape m = Activator.CreateInstance(this.MarkStyle.TargetType) as Shape;
-
                 if (m != null)
                 {
                     m.Style = this.MarkStyle;
-
                     if (this.xAxis.Count == 1)
                     {
                         Canvas.SetLeft(m, (this.ActualWidth / 2) - (m.ActualWidth / 2));
@@ -112,8 +101,6 @@ namespace H.Controls.Chart2D
                         Canvas.SetTop(m, this.GetY(y, this.ActualHeight) - (m.ActualHeight / 2));
                         this.Children.Add(m);
                     }
-
-
                     m.Tag = $"（{x.ToString("G4")}，{y.ToString("G4")}）";
                 }
             }
@@ -154,26 +141,19 @@ namespace H.Controls.Chart2D
         public override void Draw(Canvas canvas)
         {
             base.Draw(canvas);
-
-            if (this.MarkStyle == null) return;
-
+            if (this.MarkStyle == null)
+                return;
             for (int i = 0; i < this.Data.Count; i++)
             {
                 double x = this.Data[i][0];
-
                 double y = this.Data[i][1];
-
-                //  Do ：显示标记
                 Shape m = Activator.CreateInstance(this.MarkStyle.TargetType) as Shape;
-
                 if (m != null)
                 {
                     m.Style = this.MarkStyle;
-
                     Canvas.SetLeft(m, this.GetX(x, this.ActualWidth) - (m.ActualWidth / 2));
                     Canvas.SetTop(m, this.GetY(y, this.ActualHeight) - (m.ActualHeight / 2));
                     this.Children.Add(m);
-
                     m.Tag = $"（{x.ToString("G4")}，{y.ToString("G4")}）";
                 }
             }
@@ -214,34 +194,25 @@ namespace H.Controls.Chart2D
         public override void Draw(Canvas canvas)
         {
             base.Draw(canvas);
-
-            if (this.BubbleData == null) return;
-
-            if (this.Data == null) return;
-
-            if (this.xAxis == null) return;
-
+            if (this.BubbleData == null)
+                return;
+            if (this.Data == null)
+                return;
+            if (this.xAxis == null)
+                return;
             for (int i = 0; i < this.xAxis.Count; i++)
             {
                 double x = this.xAxis[i];
-
                 double y = this.Data[i];
-
                 double v = this.BubbleData[i];
-
-                //  Do ：显示标记
                 EllipseMarker m = Activator.CreateInstance(this.MarkStyle?.TargetType) as EllipseMarker;
-
                 if (m != null)
                 {
                     m.Style = this.MarkStyle;
-
                     m.Rect = new Rect(0, 0, v, v);
-
                     Canvas.SetLeft(m, this.GetX(x, this.ActualWidth));
                     Canvas.SetTop(m, this.GetY(y, this.ActualHeight));
                     this.Children.Add(m);
-
                     m.Tag = $"（{x.ToString("G4")}，{y.ToString("G4")}）";
                 }
             }
@@ -293,18 +264,13 @@ namespace H.Controls.Chart2D
                 Matrix matrix = new Matrix();
                 matrix.RotateAt(angle, center.X, center.Y);
                 Point end = matrix.Transform(start);
-                //  Do ：显示标记
                 Shape m = Activator.CreateInstance(this.MarkStyle.TargetType) as Shape;
-
                 if (m != null)
                 {
                     m.Style = this.MarkStyle;
-
                     Canvas.SetLeft(m, end.X - (m.ActualWidth / 2));
                     Canvas.SetTop(m, end.Y - (m.ActualHeight / 2));
-
                     this.Children.Add(m);
-
                     m.Tag = $"（{x.ToString("G4")}，{d.ToString("G4")}）";
                 }
             }
@@ -364,41 +330,25 @@ namespace H.Controls.Chart2D
         public override void Draw(Canvas canvas)
         {
             base.Draw(canvas);
-
             Point center = new Point(0, 0);
-
             for (int i = 0; i < this.Data.Count; i++)
             {
                 double x = this.yAxis[i];
-
                 double d = this.Data[i];
-
                 double v = this.BubbleData[i];
-
                 double angle = x;
-
                 Point start = new Point(this.GetX(d, this.Len), center.Y);
-
                 Matrix matrix = new Matrix();
-
                 matrix.RotateAt(angle, center.X, center.Y);
-
                 Point end = matrix.Transform(start);
-
-                //  Do ：显示标记
                 EllipseMarker m = Activator.CreateInstance(this.MarkStyle.TargetType) as EllipseMarker;
-
                 if (m != null)
                 {
                     m.Style = this.MarkStyle;
-
                     m.Rect = new Rect(0, 0, v, v);
-
                     Canvas.SetLeft(m, end.X);
                     Canvas.SetTop(m, end.Y);
-
                     this.Children.Add(m);
-
                     m.Tag = $"( {x.ToString("G4")} , {d.ToString("G4")} )";
                 }
             }

@@ -6,24 +6,26 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
+using H.Common.Interfaces.Where;
 using System.Windows.Input;
 
 namespace H.Common.Interfaces;
 
-public interface IDesignPresenter : ISelectable
+public interface IDesignPresenter : ISelectable, INameable
 {
     Brush Background { get; set; }
     Brush BorderBrush { get; set; }
     Thickness BorderThickness { get; set; }
     int Column { get; set; }
     int ColumnSpan { get; set; }
-    ICommand DeleteCommand { get; }
     double Height { get; set; }
     HorizontalAlignment HorizontalAlignment { get; set; }
     HorizontalAlignment HorizontalContentAlignment { get; set; }
     bool IsEnabled { get; set; }
     bool IsMouseOver { get; set; }
     bool IsVisible { get; set; }
+
+    bool IsHitTestVisible { get; set; }
     Thickness Margin { get; set; }
     double MinHeight { get; set; }
     double MinWidth { get; set; }

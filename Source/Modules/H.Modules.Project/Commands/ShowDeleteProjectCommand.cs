@@ -20,6 +20,8 @@ public class ShowDeleteProjectCommand : DisplayMarkupCommandBase
     }
     public override bool CanExecute(object parameter)
     {
-        return IocProject.Instance != null;
+        if (IocProject.Instance == null)
+            return false;
+        return IocProject.Instance.Current != parameter;
     }
 }

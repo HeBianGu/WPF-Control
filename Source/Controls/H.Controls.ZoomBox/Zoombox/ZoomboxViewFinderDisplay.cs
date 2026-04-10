@@ -1,4 +1,18 @@
-﻿
+﻿/*************************************************************************************
+
+   Extended WPF Toolkit
+
+   Copyright (C) 2007-2013 Xceed Software Inc.
+
+   This program is provided to you under the terms of the Microsoft Public
+   License (Ms-PL) as published at http://wpftoolkit.codeplex.com/license 
+
+   For more features, controls, and fast professional support,
+   pick up the Plus Edition at http://xceed.com/wpf_toolkit
+
+   Stay informed: follow @datagrid on Twitter or Like http://facebook.com/datagrids
+
+  ***********************************************************************************/
 using System;
 using System.Windows;
 using System.Windows.Media;
@@ -104,21 +118,48 @@ namespace H.Controls.ZoomBox
 
         #region ViewportPen Property
 
-        public static readonly DependencyProperty ViewportPenProperty =
-          DependencyProperty.Register("ViewportPen", typeof(Pen), typeof(ZoomboxViewFinderDisplay),
-            new FrameworkPropertyMetadata(new Pen(new SolidColorBrush(Color.FromArgb(0x80, 0x00, 0x00, 0x00)), 1d), FrameworkPropertyMetadataOptions.AffectsRender));
+        //public static readonly DependencyProperty ViewportPenProperty =
+        //  DependencyProperty.Register("ViewportPen", typeof(Pen), typeof(ZoomboxViewFinderDisplay),
+        //    new FrameworkPropertyMetadata(new Pen(new SolidColorBrush(Color.FromArgb(0x80, 0x00, 0x00, 0x00)), 1d), FrameworkPropertyMetadataOptions.AffectsRender));
 
-        public Pen ViewportPen
+        //public Pen ViewportPen
+        //{
+        //    get
+        //    {
+        //        return (Pen)this.GetValue(ZoomboxViewFinderDisplay.ViewportPenProperty);
+        //    }
+        //    set
+        //    {
+        //        this.SetValue(ZoomboxViewFinderDisplay.ViewportPenProperty, value);
+        //    }
+        //}
+
+
+        public Brush ViewportBorderBrush
         {
-            get
-            {
-                return (Pen)this.GetValue(ZoomboxViewFinderDisplay.ViewportPenProperty);
-            }
-            set
-            {
-                this.SetValue(ZoomboxViewFinderDisplay.ViewportPenProperty, value);
-            }
+            get { return (Brush)GetValue(ViewportBorderBrushProperty); }
+            set { SetValue(ViewportBorderBrushProperty, value); }
         }
+
+        public static readonly DependencyProperty ViewportBorderBrushProperty =
+            DependencyProperty.Register("ViewportBorderBrush", typeof(Brush), typeof(ZoomboxViewFinderDisplay), new FrameworkPropertyMetadata(Brushes.Black, (d, e) =>
+            {
+                ZoomboxViewFinderDisplay control = d as ZoomboxViewFinderDisplay;
+
+                if (control == null) return;
+
+                if (e.OldValue is Brush o)
+                {
+
+                }
+
+                if (e.NewValue is Brush n)
+                {
+
+                }
+
+            }));
+
 
         #endregion
 
@@ -255,7 +296,7 @@ namespace H.Controls.ZoomBox
                 dc.DrawRectangle(this.ShadowBrush, null, r4);
 
                 // draw the rectangle around the viewport region
-                dc.DrawRectangle(this.ViewportBrush, this.ViewportPen, this.ViewportRect);
+                dc.DrawRectangle(this.ViewportBrush, new Pen(this.ViewportBorderBrush,1), this.ViewportRect);
             }
             else
             {

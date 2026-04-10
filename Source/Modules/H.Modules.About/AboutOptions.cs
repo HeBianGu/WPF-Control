@@ -25,7 +25,8 @@ public class AboutOptions : IocOptionInstance<AboutOptions>, IAboutOptions
 {
     public AboutOptions()
     {
-        this._ProductName = Assembly.GetEntryAssembly().GetCustomAttribute<AssemblyTitleAttribute>()?.Title;
+        this._Title = Assembly.GetEntryAssembly().GetCustomAttribute<AssemblyTitleAttribute>()?.Title;
+        this._ProductName = Assembly.GetEntryAssembly().GetCustomAttribute<AssemblyProductAttribute>()?.Product;
         this._productDescription = Assembly.GetEntryAssembly().GetCustomAttribute<AssemblyDescriptionAttribute>()?.Description;
         this._company = Assembly.GetEntryAssembly().GetCustomAttribute<AssemblyCompanyAttribute>()?.Company;
         this._culture = Assembly.GetEntryAssembly().GetCustomAttribute<AssemblyCultureAttribute>()?.Culture;
@@ -36,6 +37,20 @@ public class AboutOptions : IocOptionInstance<AboutOptions>, IAboutOptions
         this._assemblyVersion = Assembly.GetEntryAssembly().GetName().Version.ToString();
         //this._assemblyVersion = Assembly.GetEntryAssembly().GetCustomAttribute<AssemblyVersionAttribute>()?.Version;
         this._fileVersion = Assembly.GetEntryAssembly().GetCustomAttribute<AssemblyFileVersionAttribute>()?.Version;
+    }
+
+    private string _Title;
+    [System.Text.Json.Serialization.JsonIgnore]
+    [System.Xml.Serialization.XmlIgnore]
+    [ReadOnly(true)]
+    [Display(Name = "产品标题")]
+    public string Title
+    {
+        get { return _Title; }
+        set
+        {
+            _Title = value;
+        }
     }
 
     private string _ProductName;

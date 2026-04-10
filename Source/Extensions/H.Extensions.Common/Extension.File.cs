@@ -6,6 +6,7 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
+using System.Collections.Generic;
 using System.IO;
 using System.Security.Cryptography;
 using System.Windows.Media;
@@ -131,6 +132,37 @@ public static partial class FileExtension
         return size;
     }
 
+    public static string[] GetFiles(this string folderPath, string searchPattern, SearchOption searchOption = SearchOption.TopDirectoryOnly)
+    {
+        if (!Directory.Exists(folderPath))
+            return new string[0];
+        return Directory.GetFiles(folderPath, searchPattern, searchOption);
+    }
+
+    public static string[] GetFiles(this string folderPath)
+    {
+        if (!Directory.Exists(folderPath))
+            return new string[0];
+        return Directory.GetFiles(folderPath);
+    }
+
+    public static string[] GetAllFiles(this string folderPath, string searchPattern)
+    {
+        if (!Directory.Exists(folderPath))
+            return new string[0];
+        return Directory.GetFiles(folderPath, searchPattern, SearchOption.AllDirectories);
+    }
+
+    public static IEnumerable<string> EnumerateFiles(this string folderPath, string searchPattern, SearchOption searchOption = SearchOption.TopDirectoryOnly)
+    {
+        return Directory.EnumerateFiles(folderPath, searchPattern, searchOption);
+    }
+
+    public static IEnumerable<string> EnumerateFiles(this string folderPath)
+    {
+        return Directory.EnumerateFiles(folderPath);
+    }
+
     //public void CopyDirectory()
     //{
     //    try
@@ -173,6 +205,16 @@ public static partial class FileExtension
     //}
 }
 
+public static class SearchPatterns
+{
+    public const string AllFiles = "*.*";
+    public const string TextFiles = "*.txt;*.log;*.md;*.xml;*.json;*.csv";
+    public const string ImageFiles = "*.jpg;*.jpeg;*.png;*.gif;*.bmp;*.tiff;*.svg;*.webp";
+    public const string VideoFiles = "*.mp4;*.avi;*.mkv;*.mov;*.wmv;*.flv;*.webm";
+    public const string AudioFiles = "*.mp3;*.wav;*.flac;*.aac;*.ogg;*.wma";
+    public const string DocumentFiles = "*.pdf;*.doc;*.docx;*.xls;*.xlsx;*.ppt;*.pptx";
+}
+
 public static partial class FileExtension
 {
     public static DirectoryEx ToDirectoryEx(this string folder) => new DirectoryEx(folder);
@@ -212,12 +254,12 @@ public class DirectoryEx
         }
         catch (UnauthorizedAccessException)
         {
-            //IocLog.Instance?.Error(ex);
+            //IocLog.Error(ex);
             logAction?.Invoke($"{sourceFolder}\r\nAccess Denied\r\n");
         }
         catch (Exception e)
         {
-            //IocLog.Instance?.Error(e);
+            //IocLog.Error(e);
             logAction?.Invoke($"{sourceFolder}\r\n{e.Message}\r\n");
         }
 
@@ -314,7 +356,7 @@ public class DirectoryEx
         }
     }
 
-    public List<string> GetAllFiles(Predicate<FileInfo> match = null)
+    public List<string> GetAllFiles(Predicate<FileInfo> match = null, Predicate<DirectoryInfo> matchFoder = null)
     {
         List<string> ss = new List<string>();
         if (!Directory.Exists(this.Folder))
@@ -325,6 +367,8 @@ public class DirectoryEx
             if (d is DirectoryInfo)
             {
                 DirectoryInfo dd = d as DirectoryInfo;
+                if (matchFoder?.Invoke(dd) == false)
+                    continue;
                 ss.AddRange(dd.FullName.ToDirectoryEx().GetAllFiles(match));
             }
             else if (d is FileInfo)

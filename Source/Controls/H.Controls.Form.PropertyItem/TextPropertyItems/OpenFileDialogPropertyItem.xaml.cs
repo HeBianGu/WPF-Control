@@ -13,6 +13,15 @@ using System.IO;
 
 namespace H.Controls.Form.PropertyItem.TextPropertyItems
 {
+    public class OpenFileDialogFilterAttribute : System.Attribute
+    {
+        public OpenFileDialogFilterAttribute(string filter)
+        {
+            this.Filter = filter;
+        }
+        public string Filter { get; set; }
+    }
+
     public class OpenFileDialogPropertyItem : CommandsTextPropertyItemBase
     {
         public OpenFileDialogPropertyItem(PropertyInfo property, object obj) : base(property, obj)
@@ -23,10 +32,13 @@ namespace H.Controls.Form.PropertyItem.TextPropertyItems
         [Display(Name = "浏览", Order = 2)]
         public DisplayCommand OpenCommand => new DisplayCommand(l =>
         {
+            var filter = this.PropertyInfo.GetCustomAttribute<OpenFileDialogFilterAttribute>();
             var r = IocMessage.IOFileDialog.ShowOpenFile(x =>
             {
                 if (File.Exists(this.Value))
-                    x.InitialDirectory = Path.GetDirectoryName(this.Value);
+                    x.InitialDirectory = Path.GetDirectoryName(this.Value).GetFullPath();
+                if (filter != null)
+                    x.Filter = filter.Filter;
             });
             if (!File.Exists(r))
                 return;
@@ -50,6 +62,24 @@ namespace H.Controls.Form.PropertyItem.TextPropertyItems
             if (!Directory.Exists(r))
                 return;
             this.Value = r;
+        })
+        { Name = "浏览" };
+    }
+
+    public class OpenFolderDialogAppDomainRelativePropertyItem : CommandsTextPropertyItemBase
+    {
+        public OpenFolderDialogAppDomainRelativePropertyItem(PropertyInfo property, object obj) : base(property, obj)
+        {
+
+        }
+
+        [Display(Name = "浏览", Order = 2)]
+        public DisplayCommand OpenCommand => new DisplayCommand(l =>
+        {
+            var r = IocMessage.IOFolderDialog.ShowOpenFolder();
+            if (!Directory.Exists(r))
+                return;
+            this.Value = r.GetAppDomainRelativePath();
         })
         { Name = "浏览" };
     }

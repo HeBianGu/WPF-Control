@@ -78,20 +78,6 @@ namespace H.Test.Theme
                 x.ColorResources.Add(new OracleDarkColorResource());
                 x.ColorResources.Add(new VikingDarkColorResource());
                 x.ColorResources.Add(new ChambrayDarkColorResource());
-                //x.ColorResources.Add(new IndustrialDarkColorResource());
-                //x.ColorResources.Add(new IndustrialDarkColorResource());
-                //x.ColorResources.Add(new IndustrialDarkColorResource());
-                //x.ColorResources.Add(new IndustrialDarkColorResource());
-                //x.ColorResources.Add(new IndustrialDarkColorResource());
-                //x.ColorResources.Add(new IndustrialDarkColorResource());
-                //x.ColorResources.Add(new IndustrialDarkColorResource());
-                //x.ColorResources.Add(new IndustrialDarkColorResource());
-                //x.ColorResources.Add(new IndustrialDarkColorResource());
-              
-                x.IconFontFamilys.Add(IconFontFamilys.SystemSegoeMDL2Asset);
-                x.IconFontFamilys.Add(IconFontFamilys.SystemSegoeFluentIcons);
-                x.IconFontFamilys.Add(IconFontFamilys.LocationSegoeMDL2Asset);
-                x.IconFontFamilys.Add(IconFontFamilys.LocationSegoeFluentIcons);
             });
 
             //app.UseWindowSetting(x =>

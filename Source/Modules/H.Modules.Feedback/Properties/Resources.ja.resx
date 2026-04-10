@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Type_FeedbackOptions" xml:space="preserve">
+    <value>ユーザーフィードバック設定</value>
+  </data>
+  <data name="Type_FeedbackOptions_GroupName" xml:space="preserve">
+    <value>システム設定</value>
+  </data>
+  <data name="Type_FeedbackOptions_Description" xml:space="preserve">
+    <value>ユーザーフィードバック設定の情報</value>
+  </data>
+  <data name="Property_FeedbackOptions_Host" xml:space="preserve">
+    <value>サーバー</value>
+  </data>
+  <data name="Property_FeedbackOptions_Port" xml:space="preserve">
+    <value>ポート番号</value>
+  </data>
+  <data name="Property_FeedbackOptions_EnableSsl" xml:space="preserve">
+    <value>SSLを有効にする</value>
+  </data>
+  <data name="Property_FeedbackOptions_User" xml:space="preserve">
+    <value>外部アカウント</value>
+  </data>
+  <data name="Property_FeedbackOptions_Password" xml:space="preserve">
+    <value>ライセンスコード</value>
+  </data>
+  <data name="Property_FeedbackOptions_IsBodyHtml" xml:space="preserve">
+    <value>HTML形式を有効にする</value>
+  </data>
+  <data name="Type_ShowFeedbackCommand" xml:space="preserve">
+    <value>ユーザーフィードバック</value>
+  </data>
+  <data name="Type_ShowFeedbackCommand_Description" xml:space="preserve">
+    <value>ユーザーフィードバックページを表示する</value>
+  </data>
+  <data name="Feedback_Prompt" xml:space="preserve">
+    <value>お客様のご意見は、私たちが絶えず改善を続けるための原動力です。ご利用中に発生した問題や、貴重なご提案をぜひお寄せください。</value>
+  </data>
+  <data name="Feedback_Confidentiality" xml:space="preserve">
+    <value>お客様が送信された情報は、問題の解決のために使用され、当社が厳重に機密として取り扱います。</value>
+  </data>
+  <data name="Feedback_Name" xml:space="preserve">
+    <value>お名前</value>
+  </data>
+  <data name="Feedback_Contact" xml:space="preserve">
+    <value>連絡先</value>
+  </data>
+  <data name="Feedback_Quesion" xml:space="preserve">
+    <value>問題の説明</value>
+  </data>
+  <data name="Feedback_AddFiles" xml:space="preserve">
+    <value>添付ファイルを追加</value>
+  </data>
+</root>

@@ -4,6 +4,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Common\H.Common\H.Common.csproj" />
+    <ProjectReference Include="..\..\Services\H.Services.Logger\H.Services.Logger.csproj" />
     <ProjectReference Include="..\H.Extensions.Common\H.Extensions.Common.csproj" />
   </ItemGroup>
 </Project>

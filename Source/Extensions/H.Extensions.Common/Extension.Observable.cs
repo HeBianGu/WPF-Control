@@ -15,7 +15,7 @@ namespace H.Extensions.Common;
 
 public static class ObservableExtension
 {
-    public static void OrderBy<TSource, TKey>(this Collection<TSource> source, Func<TSource, TKey> keySelector)
+    public static void SortBy<TSource, TKey>(this Collection<TSource> source, Func<TSource, TKey> keySelector)
     {
         List<TSource> sortedList = Enumerable.OrderBy(source, keySelector).ToList();
         source.Clear();
@@ -23,7 +23,7 @@ public static class ObservableExtension
             source.Add(sortedItem);
     }
 
-    public static void OrderBy<TSource, TKey>(this Collection<TSource> source, Func<TSource, TKey> keySelector, bool isdesc)
+    public static void SortBy<TSource, TKey>(this Collection<TSource> source, Func<TSource, TKey> keySelector, bool isdesc)
     {
         List<TSource> sortedList = isdesc ? source.OrderByDescending(keySelector).ToList() : Enumerable.OrderBy(source, keySelector).ToList();
         source.Clear();
@@ -31,7 +31,7 @@ public static class ObservableExtension
             source.Add(sortedItem);
     }
 
-    public static void OrderByDesc<TSource, TKey>(this Collection<TSource> source, Func<TSource, TKey> keySelector)
+    public static void SortByDesc<TSource, TKey>(this Collection<TSource> source, Func<TSource, TKey> keySelector)
     {
         List<TSource> sortedList = source.OrderByDescending(keySelector).ToList();
         source.Clear();
@@ -62,8 +62,13 @@ public static class ObservableExtension
         if (collection == null)
             return new ObservableCollection<T>();
         return new ObservableCollection<T>(collection);
-
     }
+
+    public static ObservableCollection<T> ToOfTypeObservable<T>(this object t)
+    {
+        return t.ToEnumerable().OfType<T>().ToObservable();
+    }
+
     /// <summary> 调用主线程执行Action </summary>
     public static void Invoke<T>(this ObservableCollection<T> collection, Action<ObservableCollection<T>> action)
     {
@@ -154,6 +159,15 @@ public static class ObservableExtension
             collection.Add(item);
         }
     }
+
+    public static void RemoveRange<T>(this ObservableCollection<T> collection, IEnumerable<T> ts)
+    {
+        foreach (T item in ts)
+        {
+            collection.Remove(item);
+        }
+    }
+
 
     public static void Replace<T>(this ObservableCollection<T> collection, T t, Predicate<T> predicate)
     {

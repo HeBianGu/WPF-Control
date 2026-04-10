@@ -12,7 +12,7 @@ using H.Controls.Adorner.Adorner;
 
 namespace H.Presenters.Design.Base;
 
-public abstract class DropAdornerDesignPresenterBase : CommandsDesignPresenterBase, IHitTestElementDrag, IHitTestElementDrop
+public abstract class DropAdornerDesignPresenterBase : CommandsDesignPresenterBase, IHitTestElementDragable, IHitTestElementDropable
 {
     public virtual Adorner GetDragAdorner(UIElement element)
     {
@@ -31,7 +31,7 @@ public abstract class DropAdornerDesignPresenterBase : CommandsDesignPresenterBa
 
     public virtual void Drop(UIElement element, DragEventArgs e)
     {
-        //IDragAdorner adorner = e.Data.GetData("DragGroup") as IDragAdorner;
+        //IDraggableAdorner adorner = e.Data.GetData("DragGroup") as IDraggableAdorner;
         //if (adorner.GetData() is ICloneable cloneable)
         //{
         //    object value = cloneable.Clone();

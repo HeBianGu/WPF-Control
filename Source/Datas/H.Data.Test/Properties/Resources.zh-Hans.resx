@@ -1,0 +1,151 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Property_Student_Name" xml:space="preserve">
+    <value>姓名</value>
+  </data>
+  <data name="Property_Student_Name_GroupName" xml:space="preserve">
+    <value>默认分组</value>
+  </data>
+  <data name="Property_Student_Name_Description" xml:space="preserve">
+    <value>学生的姓名</value>
+  </data>
+  <data name="Property_Student_Time" xml:space="preserve">
+    <value>时间</value>
+  </data>
+  <data name="Property_Student_Time_GroupName" xml:space="preserve">
+    <value>默认分组</value>
+  </data>
+  <data name="Property_Student_Time_Description" xml:space="preserve">
+    <value>学生的时间</value>
+  </data>
+  <data name="Type_Student" xml:space="preserve">
+    <value>学生</value>
+  </data>
+  <data name="Type_Student1" xml:space="preserve">
+    <value>学生</value>
+  </data>
+  <data name="Type_Student_Description" xml:space="preserve">
+    <value>学生</value>
+  </data>
+  <data name="Property_Student_Tag" xml:space="preserve">
+    <value>标签</value>
+  </data>
+  <data name="Property_Student_Tag_GroupName" xml:space="preserve">
+    <value>默认分组</value>
+  </data>
+  <data name="Property_Student_Tag_Description" xml:space="preserve">
+    <value>学生的标签</value>
+  </data>
+  <data name="Property_Student_Score" xml:space="preserve">
+    <value>分数</value>
+  </data>
+  <data name="Property_Student_Score_GroupName" xml:space="preserve">
+    <value>默认分组</value>
+  </data>
+  <data name="Property_Student_Score_Description" xml:space="preserve">
+    <value>学生的分数</value>
+  </data>
+  <data name="Property_Student_Age" xml:space="preserve">
+    <value>年龄</value>
+  </data>
+  <data name="Property_Student_Age_GroupName" xml:space="preserve">
+    <value>默认分组</value>
+  </data>
+  <data name="Property_Student_Age_Description" xml:space="preserve">
+    <value>学生的年龄</value>
+  </data>
+  <data name="Property_Student_IsEnbled" xml:space="preserve">
+    <value>可用</value>
+  </data>
+  <data name="Property_Student_IsEnbled_GroupName" xml:space="preserve">
+    <value>默认分组</value>
+  </data>
+  <data name="Property_Student_IsEnbled_Description" xml:space="preserve">
+    <value>学生的可用</value>
+  </data>
+  <data name="Property_Student_Emall" xml:space="preserve">
+    <value>邮箱</value>
+  </data>
+  <data name="Property_Student_Emall_GroupName" xml:space="preserve">
+    <value>默认分组</value>
+  </data>
+  <data name="Property_Student_Emall_Description" xml:space="preserve">
+    <value>学生的邮箱</value>
+  </data>
+  <data name="Property_Student_Address" xml:space="preserve">
+    <value>地址</value>
+  </data>
+  <data name="Property_Student_Address_GroupName" xml:space="preserve">
+    <value>默认分组</value>
+  </data>
+  <data name="Property_Student_Address_Description" xml:space="preserve">
+    <value>学生的地址</value>
+  </data>
+  <data name="Property_Student_Class" xml:space="preserve">
+    <value>班级</value>
+  </data>
+  <data name="Property_Student_Class_GroupName" xml:space="preserve">
+    <value>默认分组</value>
+  </data>
+  <data name="Property_Student_Class_Description" xml:space="preserve">
+    <value>学生的班级</value>
+  </data>
+</root>

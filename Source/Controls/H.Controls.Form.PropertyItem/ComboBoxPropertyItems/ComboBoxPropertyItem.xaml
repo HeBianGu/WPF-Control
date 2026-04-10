@@ -6,8 +6,9 @@
                   Cattach.ItemHeight="Auto"
                   Cattach.UseGuide="False"
                   DisplayMemberPath="{Binding DisplayMemberPath}"
+                  IsHitTestVisible="{Binding IsHitTestVisible}"
                   ItemsSource="{Binding Collection}"
-                  SelectedItem="{Binding Value}"
+                  SelectedValue="{Binding Value}"
                   SelectedValuePath="{Binding SelectedValuePath}" />
     </DataTemplate>
 </ResourceDictionary>

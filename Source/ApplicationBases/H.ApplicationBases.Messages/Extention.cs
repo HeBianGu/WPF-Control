@@ -16,7 +16,8 @@ namespace System
         {
             services.AddAdornerDialogMessage();
             //services.AddWindowDialogMessage();
-            services.AddWindowMessage();
+            //services.AddWindowMessage();
+            services.AddWindowTransparencyMessage();
             services.AddFormMessageService();
             services.AddNoticeMessage();
             services.AddSnackMessage();

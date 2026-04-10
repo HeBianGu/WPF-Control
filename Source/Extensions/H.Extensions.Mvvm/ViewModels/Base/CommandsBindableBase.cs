@@ -19,23 +19,33 @@ namespace H.Extensions.Mvvm.ViewModels.Base;
 /// <summary>
 /// 提供了创建命令的基类，用于绑定到视图模型。
 /// </summary>
-public abstract class CommandsBindableBase : Bindable
+public abstract class CommandsBindableBase : Bindable, ICommandsBindable
 {
     /// <summary>
     /// 初始化 <see cref="CommandsBindableBase"/> 类的新实例。
     /// </summary>
     public CommandsBindableBase()
     {
-        this.Commands = new ObservableCollection<ICommand>(this.CreateCommands().OrderBy(x => x.Order).OfType<ICommand>());
+        this.UpdateCommands();
     }
 
     /// <summary>
     /// 获取命令的集合。
     /// </summary>
     [Browsable(false)]
-    [System.Text.Json.Serialization.JsonIgnore]
-    [System.Xml.Serialization.XmlIgnore]
+    [JsonIgnore]
+    [XmlIgnore]
     public ObservableCollection<ICommand> Commands { get; } = new ObservableCollection<ICommand>();
+
+
+    protected void UpdateCommands()
+    {
+        this.Commands.Clear();
+        foreach (var item in this.CreateCommands().Where(x => x != null).OrderBy(x => x.Order).OfType<ICommand>())
+        {
+            this.Commands.Add(item);
+        }
+    }
 
     /// <summary>
     /// 创建命令的方法，派生类可以重写此方法以创建自定义命令。
@@ -43,8 +53,13 @@ public abstract class CommandsBindableBase : Bindable
     /// <returns>命令的集合。</returns>
     protected virtual IEnumerable<IDisplayCommand> CreateCommands()
     {
+        return this.CreateCommands(BindingFlags.Instance | BindingFlags.Static | BindingFlags.Public);
+    }
+
+    protected virtual IEnumerable<IDisplayCommand> CreateCommands(BindingFlags bindingAttr)
+    {
         Type type = this.GetType();
-        IEnumerable<PropertyInfo> cmdps = type.GetProperties().Where(x => typeof(IDisplayCommand).IsAssignableFrom(x.PropertyType));
+        IEnumerable<PropertyInfo> cmdps = type.GetProperties(bindingAttr).Where(x => typeof(IDisplayCommand).IsAssignableFrom(x.PropertyType));
         foreach (PropertyInfo cmdp in cmdps)
         {
             if (cmdp.CanRead == false)

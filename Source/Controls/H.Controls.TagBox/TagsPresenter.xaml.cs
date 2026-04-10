@@ -8,7 +8,9 @@
 
 namespace H.Controls.TagBox
 {
-    public class TagsPresenter : BindableBase
+    [Icon("\xE713")]
+    [Display(Name = "管理标签", Description = "显示管理标签页面")]
+    public class TagsPresenter : DisplayBindableBase
     {
         private ObservableCollection<ITag> _collection = new ObservableCollection<ITag>();
         /// <summary> 说明  </summary>

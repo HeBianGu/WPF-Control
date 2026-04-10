@@ -1,0 +1,154 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Type_ShowUserViewCommand" xml:space="preserve">
+    <value>Felhasználókezelés</value>
+  </data>
+  <data name="Type_ShowUserViewCommand_Description" xml:space="preserve">
+    <value>Alkalmazza ezt a funkciót a felhasználók kezeléséhez</value>
+  </data>
+  <data name="Type_ShowRoleViewCommand" xml:space="preserve">
+    <value>Szerepkör-kezelés</value>
+  </data>
+  <data name="Type_ShowRoleViewCommand_Description" xml:space="preserve">
+    <value>Use this feature to manage roles</value>
+  </data>
+  <data name="Type_ShowAuthorityViewCommand" xml:space="preserve">
+    <value>Jogosultságkezelés</value>
+  </data>
+  <data name="Type_ShowAuthorityViewCommand_Description" xml:space="preserve">
+    <value>Jogosultságkezelés alkalmazása ehhez a funkcióhoz</value>
+  </data>
+  <data name="ID" xml:space="preserve">
+    <value>Egyedi azonosító</value>
+  </data>
+  <data name="UserName" xml:space="preserve">
+    <value>Felhasználónév</value>
+  </data>
+  <data name="Account" xml:space="preserve">
+    <value>Bejelentkezési fiók</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>Bejelentkezési jelszó</value>
+  </data>
+  <data name="DisplayName" xml:space="preserve">
+    <value>Becenév</value>
+  </data>
+  <data name="Enable" xml:space="preserve">
+    <value>Engedélyezés/Letiltás</value>
+  </data>
+  <data name="Mail" xml:space="preserve">
+    <value>E-mail</value>
+  </data>
+  <data name="Role" xml:space="preserve">
+    <value>Szerep</value>
+  </data>
+  <data name="Authors" xml:space="preserve">
+    <value>Jogosultságlista</value>
+  </data>
+  <data name="AuthorName" xml:space="preserve">
+    <value>Jogosultság neve</value>
+  </data>
+  <data name="AuthorCode" xml:space="preserve">
+    <value>Engedélykód</value>
+  </data>
+  <data name="Roles" xml:space="preserve">
+    <value>Szereplők listája</value>
+  </data>
+  <data name="Users" xml:space="preserve">
+    <value>Felhasználói lista</value>
+  </data>
+  <data name="RoleName" xml:space="preserve">
+    <value>Szerep neve</value>
+  </data>
+  <data name="RoleCode" xml:space="preserve">
+    <value>Szerepkód</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Keresés</value>
+  </data>
+  <data name="Property_hi_dd_user_Name" xml:space="preserve">
+    <value>Felhasználónév</value>
+  </data>
+  <data name="Property_hi_dd_user_Account" xml:space="preserve">
+    <value>Bejelentkezési fiók</value>
+  </data>
+  <data name="Property_hi_dd_user_Password" xml:space="preserve">
+    <value>Bejelentkezési jelszó</value>
+  </data>
+  <data name="Property_hi_dd_user_DisplayName" xml:space="preserve">
+    <value>Becenév</value>
+  </data>
+  <data name="Property_hi_dd_user_Enable" xml:space="preserve">
+    <value>Engedélyezés</value>
+  </data>
+  <data name="Property_hi_dd_user_Mail" xml:space="preserve">
+    <value>E-mail</value>
+  </data>
+  <data name="Property_hi_dd_user_LastLoginTime" xml:space="preserve">
+    <value>Legutóbbi bejelentkezés ideje</value>
+  </data>
+  <data name="Property_hi_dd_user_LicenseDeadline" xml:space="preserve">
+    <value>Licenc lejárati ideje</value>
+  </data>
+  <data name="Property_hi_dd_user_Role" xml:space="preserve">
+    <value>Szerep</value>
+  </data>
+</root>

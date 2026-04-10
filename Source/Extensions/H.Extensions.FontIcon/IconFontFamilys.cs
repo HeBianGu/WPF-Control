@@ -6,6 +6,7 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
+using System;
 using System.IO;
 using System.Windows.Media;
 
@@ -17,21 +18,28 @@ public static class IconFontFamilys
 
     public static FontFamily SystemSegoeFluentIcons => new FontFamily("Segoe Fluent Icons");
 
-    //public static FontFamily SegoeMDL2Asset => new FontFamily(new Uri("pack://application:,,,/H.Extensions.FontIcon;component/Assets/SegMDL2.ttf"), "Segoe MDL2 Assets");
-    public static FontFamily LocationSegoeMDL2Asset
-    {
-        get
-        {
-            return Fonts.GetFontFamilies(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Assets/SegMDL2.ttf")).FirstOrDefault();
-        }
-    }
+    //public static FontFamily LocationSegoeMDL2Asset
+    //{
+    //    get
+    //    {
+    //        return Fonts.GetFontFamilies(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Assets/SegMDL2.ttf")).FirstOrDefault();
+    //    }
+    //}
 
-    public static FontFamily LocationSegoeFluentIcons
-    {
-        get
-        {
-            return Fonts.GetFontFamilies(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Assets/Segoe Fluent Icons.ttf")).FirstOrDefault();
-        }
-    }
+    //public static FontFamily LocationSegoeFluentIcons
+    //{
+    //    get
+    //    {
+    //        return Fonts.GetFontFamilies(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Assets/Segoe Fluent Icons.ttf")).FirstOrDefault();
+    //    }
+    //}
+
+    public static FontFamily ResourceSegoeMDL2Asset =>
+        new FontFamily(new Uri("pack://application:,,,/H.Extensions.FontIcon;component/Assets/SegMDL2.ttf", UriKind.Absolute),
+            "./#Segoe MDL2 Assets");
+
+    public static FontFamily ResourceSegoeFluentIcons =>
+        new FontFamily(new Uri("pack://application:,,,/H.Extensions.FontIcon;component/Assets/Segoe Fluent Icons.ttf", UriKind.Absolute),
+            "./#Segoe Fluent Icons");
 }
 

@@ -19,7 +19,7 @@ namespace H.Modules.Help;
 
 [Icon(FontIcons.Contact)]
 [Display(Name = "联系方式", Description = "通过此方式联系到开发者")]
-public class ShowContactCommand : DisplayMarkupCommandBase
+public class ShowContactCommand : ResxDisplayMarkupCommandBase
 {
     public override Task ExecuteAsync(object parameter)
     {

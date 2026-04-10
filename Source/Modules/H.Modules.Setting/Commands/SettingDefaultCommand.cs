@@ -9,16 +9,17 @@
 global using H.Common.Attributes;
 global using H.Common.Commands;
 global using System.ComponentModel.DataAnnotations;
+using H.Common;
 
 namespace H.Modules.Setting.Commands;
 
 [Icon("\xE713")]
 [Display(Name = "恢复默认", Description = "恢复系统设置默认数据")]
-public class SettingDefaultCommand : DisplayMarkupCommandBase
+public class SettingDefaultCommand : ResxDisplayMarkupCommandBase
 {
     public override async Task ExecuteAsync(object parameter)
     {
-        var r = await IocMessage.ShowDialogMessage("恢复默认数据会清空配置数据无法恢复，确认恢复默认配置？");
+        var r = await IocMessage.ShowDialogMessage("恢复默认数据会清空配置数据无法恢复，确认恢复默认配置？".GetStringResx(this, "Message_LoadDefaultCannotRestore"));
         if (r == false)
             return;
 

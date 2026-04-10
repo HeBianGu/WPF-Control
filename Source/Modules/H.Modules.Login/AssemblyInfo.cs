@@ -8,7 +8,6 @@
 
 global using H.Iocable;
 global using H.Services.Logger;
-using System.Windows;
 using System.Windows.Markup;
 
 [assembly: ThemeInfo(
@@ -29,6 +28,7 @@ using System.Windows.Markup;
 [assembly: XmlnsDefinition("https://github.com/HeBianGu", "H.Modules.Login")]
 [assembly: XmlnsPrefix("https://github.com/HeBianGu", "h")]
 
+[assembly: XmlnsDefinition("http://schemas.microsoft.com/winfx/2006/xaml/presentation", "H.Modules.Login.Presenters")]
 [assembly: XmlnsDefinition("http://schemas.microsoft.com/winfx/2006/xaml/presentation", "H.Modules.Login.Commands")]
 [assembly: XmlnsDefinition("http://schemas.microsoft.com/winfx/2006/xaml/presentation", "H.Modules.Login")]
 [assembly: XmlnsPrefix("http://schemas.microsoft.com/winfx/2006/xaml/presentation", "h")]

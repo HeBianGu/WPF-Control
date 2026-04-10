@@ -2,12 +2,9 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Base\H.Mvvm\H.Mvvm.csproj" />
   </ItemGroup>
+
   <ItemGroup>
-    <None Update="Assets\SegMDL2.ttf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="Assets\Segoe Fluent Icons.ttf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
+    <Resource Include="Assets\SegMDL2.ttf" />
+    <Resource Include="Assets\Segoe Fluent Icons.ttf" />
   </ItemGroup>
 </Project>

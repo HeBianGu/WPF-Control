@@ -6,19 +6,35 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
+using H.Extensions.FontIcon;
+
 namespace H.Presenters.Design.Presenter;
 
+[Icon(FontIcons.Calendar)]
 [Display(Name = "当前日期")]
-public class DateTimeNowPresenter : TitlePresenter
+public class DateTimeNowPresenter : TitlePresenter, IUpdateable
 {
     public DateTimeNowPresenter()
     {
         this.Title = "当前日期：";
-        this.Text = DateTime.Now.ToString(this.Format);
+        this.UpdateData();
+        Task.Run(async () =>
+        {
+            while (true)
+            {
+                await Task.Delay(1000);
+                this.UpdateData();
+            }
+        });
     }
     public override void LoadDefault()
     {
         base.LoadDefault();
+    }
+
+    public void UpdateData()
+    {
+        this.Text = DateTime.Now.ToString(this.Format);
     }
 
     private string _format = "yyyy-MM-dd HH:mm:ss";

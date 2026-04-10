@@ -12,7 +12,7 @@ using System.Reflection.Metadata;
 
 namespace H.Extensions.Command;
 
-[Icon("\xE77F")]
+[Icon("\ue74d")]
 [Display(Name = "删除", Description = "从列表中删除当前项目")]
 public class DeleteCommand : DisplayMarkupCommandBase
 {

@@ -49,8 +49,7 @@
                             Margin="5,0"
                             HorizontalAlignment="Right"
                             VerticalAlignment="Center"
-                            Content="{x:Static FontIcons.Cancel}"
-                            WindowChrome.IsHitTestVisibleInChrome="True">
+                            Content="{x:Static FontIcons.Cancel}">
                 <b:Interaction.Behaviors>
                     <h:ButtonRemoveItemBehavior />
                 </b:Interaction.Behaviors>

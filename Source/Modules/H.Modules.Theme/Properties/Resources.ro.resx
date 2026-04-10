@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Type_ThemeOptions" xml:space="preserve">
+    <value>Setări temă</value>
+  </data>
+  <data name="Type_ThemeOptions_GroupName" xml:space="preserve">
+    <value>Setări de afișare</value>
+  </data>
+  <data name="Type_ThemeOptions_Description" xml:space="preserve">
+    <value>Informații despre setările temei</value>
+  </data>
+  <data name="Property_ThemeOptions_FontSize" xml:space="preserve">
+    <value>Dimensiunea fontului</value>
+  </data>
+  <data name="Property_ThemeOptions_Layout" xml:space="preserve">
+    <value>Aspect
+</value>
+  </data>
+  <data name="Property_ThemeOptions_ColorResource" xml:space="preserve">
+    <value>Paletă</value>
+  </data>
+  <data name="Property_ThemeOptions_BackgroundResource" xml:space="preserve">
+    <value>Culoare de fundal</value>
+  </data>
+  <data name="Property_ThemeOptions_FontFamily" xml:space="preserve">
+    <value>Font</value>
+  </data>
+  <data name="Property_ThemeOptions_IconFontFamily" xml:space="preserve">
+    <value>Font pictogramă</value>
+  </data>
+  <data name="Property_ThemeOptions_IsDark" xml:space="preserve">
+    <value>Comută între tema luminoasă și întunecată</value>
+  </data>
+  <data name="Type_ShowColorThemeViewCommand" xml:space="preserve">
+    <value>Temă de culori</value>
+  </data>
+  <data name="Type_ShowColorThemeViewCommand_Description" xml:space="preserve">
+    <value>Afișează setările temei de culoare</value>
+  </data>
+  <data name="DefaultButton" xml:space="preserve">
+    <value>Buton implicit</value>
+  </data>
+  <data name="SwitchTheme" xml:space="preserve">
+    <value>Comutare între temă deschisă și închisă</value>
+  </data>
+</root>

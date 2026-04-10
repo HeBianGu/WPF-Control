@@ -6,6 +6,8 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
+using H.Common;
+using System.Resources;
 using System.Runtime.CompilerServices;
 
 namespace H.Controls.Form;
@@ -20,6 +22,8 @@ public class TabFormPresenter : FormPresenter
     {
         this.UpdateTabNames();
     }
+
+    public Dock TabStripPlacement { get; set; } = Dock.Top;
 
     public ObservableCollection<string> TabNames { get; set; } = new ObservableCollection<string>();
 
@@ -49,7 +53,8 @@ public class TabFormPresenter : FormPresenter
             {
                 if (d.GroupName == null)
                     continue;
-                var names = d.GroupName.Split(",".ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
+                var resx = this.SelectObject.GetType().GetPropertyGroupNameResx(p.Name);
+                var names = (resx ?? d.GroupName).Split(",".ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
                 foreach (var n in names)
                 {
                     yield return n;

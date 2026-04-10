@@ -1,5 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
   <ItemGroup>
+    <ProjectReference Include="..\..\Base\H.Globalization\H.Globalization.csproj" />
     <ProjectReference Include="..\..\Controls\H.Controls.Form.PropertyItem\H.Controls.Form.PropertyItem.csproj" />
     <ProjectReference Include="..\..\Controls\H.Controls.Form\H.Controls.Form.csproj" />
     <ProjectReference Include="..\..\Controls\H.Controls.NavigationBox\H.Controls.NavigationBox.csproj" />
@@ -9,6 +10,19 @@
     <ProjectReference Include="..\..\Presenters\H.Presenters.Common\H.Presenters.Common.csproj" />
     <ProjectReference Include="..\..\Services\H.Services.Identity\H.Services.Identity.csproj" />
     <ProjectReference Include="..\..\Styles\H.Style\H.Style.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
   </ItemGroup>
 
 </Project>

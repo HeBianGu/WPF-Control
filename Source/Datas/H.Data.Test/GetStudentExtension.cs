@@ -8,13 +8,12 @@
 
 using System.Windows.Markup;
 
-namespace H.Data.Test
+namespace H.Data.Test;
+
+public class GetStudentExtension : MarkupExtension
 {
-    public class GetStudentExtension : MarkupExtension
+    public override object ProvideValue(IServiceProvider serviceProvider)
     {
-        public override object ProvideValue(IServiceProvider serviceProvider)
-        {
-            return Student.Random();
-        }
+        return Student.Random();
     }
 }

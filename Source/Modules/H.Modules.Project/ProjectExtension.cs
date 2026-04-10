@@ -8,6 +8,11 @@
 
 global using H.Services.Message.Dialog;
 global using H.Services.Project;
+using H.Globalization.Properties;
+using H.Services.Message.IODialog;
+using System;
+using System.Runtime.CompilerServices;
+using System.Windows.Media.Animation;
 
 namespace H.Modules.Project;
 
@@ -51,16 +56,30 @@ static partial class ProjectExtension
         {
             project.Title = defalultName + (projectService.Where().Count() + 1).ToString();
         }
+        else
+        {
+            project.Title = project.Title + (projectService.Where().Count() + 1).ToString();
+        }
         var r = await IocMessage.Form.ShowEdit(project, x =>
         {
-            x.Title = "新建项目";
+            x.Title = Resources.Common_Add;
             action?.Invoke(x);
-        }, null, x => x.UseCommand = false);
+        }, x =>
+        {
+            bool exist = projectService.Where(p => p.Title == x.Title).Count() > 0;
+            if (exist)
+            {
+                IocMessage.ShowSnackInfo($"{Resources.Common_AlreadyExists}<{x.Title}>");
+                return false;
+            }
+            return true;
+        }, x => x.UseCommand = false);
         if (r != true)
             return r;
         projectService.Add(project);
         projectService.Current = project;
         project.Save(out string message);
+        projectService.ProjectAdded?.Invoke(project);
         return true;
     }
     public static async Task<bool?> ShowEidtProject(this IProjectService projectService, IProjectItem project, Action<IDialog> action = null)
@@ -70,6 +89,18 @@ static partial class ProjectExtension
             x.Title = "编辑项目";
             action?.Invoke(x);
         }, null, x =>
+        {
+            x.UseCommand = false;
+        });
+    }
+
+    public static async Task<bool?> ShowViewProject(this IProjectService projectService, IProjectItem project, Action<IDialog> action = null)
+    {
+        return await IocMessage.Form.ShowView(project, x =>
+        {
+            x.Title = "查看项目";
+            action?.Invoke(x);
+        }, x =>
         {
             x.UseCommand = false;
         });
@@ -97,10 +128,10 @@ static partial class ProjectExtension
 
     public static async Task<bool?> ShowDeleteProject(this IProjectService projectService, IProjectItem project)
     {
-        var r = await IocMessage.Dialog.Show("确定要删除？");
+        var r = await IocMessage.Dialog.Show(Resources.Dialog_Message_ConfirmDelete);
         if (r != true)
             return r;
-        projectService.Delete(x => x == project);
+        await projectService.DeleteAsync(x => x == project);
         return projectService.Save(out string message);
     }
 
@@ -132,7 +163,7 @@ static partial class ProjectExtension
         return r;
     }
 
-    public static async Task<bool?> ShowSaveProject(this IProjectService projectService)
+    public static async Task<bool?> ShowSaveProject(this IProjectService projectService, IProjectItem current)
     {
         string message = null;
         var c = projectService.Current;
@@ -149,6 +180,72 @@ static partial class ProjectExtension
         if (r == false && !string.IsNullOrEmpty(message))
             await IocMessage.ShowDialogMessage(message);
         return r;
+    }
+
+    public static bool ShowSaveToFile(this IProjectService projectService, IProjectItem current)
+    {
+        if (current == null)
+            return false;
+        if (current is ProjectItemBase project)
+        {
+            var filePath = project.GetFilePath();
+            if (!File.Exists(filePath))
+                return false;
+            var r = IocMessage.IOFileDialog.ShowSaveFile(x =>
+              {
+                  x.DefaultExt = filePath.GetExtension();
+                  x.DefaultFileName = filePath.GetFileName();
+              });
+            if (r == null)
+                return false;
+            File.Copy(filePath, r, true);
+        }
+        return true;
+    }
+
+    public static async Task<bool?> ShowOpenProjectFile(this IProjectService projectService)
+    {
+        var filter = $"项目文件(*{ProjectOptions.Instance.Extenstion})|*{ProjectOptions.Instance.Extenstion}";
+        var nfilePath = IocMessage.IOFileDialog.ShowOpenFile(x => x.Filter = filter);
+        if (!File.Exists(nfilePath))
+            return false;
+        string nname = Path.GetFileNameWithoutExtension(nfilePath);
+        var project = projectService.Create();
+        if (project == null)
+            return false;
+        project.Title = nname;
+        var r = await IocMessage.Form.ShowEdit(project, x =>
+        {
+            x.Title = "导入项目文件";
+        }, null, x => x.UseCommand = false);
+        if (r != true)
+            return r;
+        if (project is ProjectItemBase p)
+        {
+            var filePath = p.GetFilePath();
+            var folder = Path.GetDirectoryName(filePath);
+            if (!Directory.Exists(folder))
+                Directory.CreateDirectory(folder);
+            File.Copy(nfilePath, filePath, true);
+            projectService.Add(project);
+            projectService.Current = project;
+            project.Save(out string message);
+            projectService.ProjectAdded?.Invoke(project);
+            return File.Exists(filePath);
+        }
+        return false;
+    }
+
+    public static bool ShowCurrentProjectFile(this IProjectService projectService, IProjectItem current)
+    {
+        if (current == null)
+            return false;
+        if (current is ProjectItemBase project)
+        {
+            string p = project.GetFilePath();
+            Process.Start(new ProcessStartInfo("notepad", p) { UseShellExecute = true });
+        }
+        return true;
     }
 
     public static bool Contain(this IProjectService projectService, IProjectItem projectItem)

@@ -11,7 +11,7 @@ using System.Windows;
 
 namespace H.Themes.Colors.Web;
 [Display(Name = "网站前端风（推荐）", GroupName = "强力推荐", Description = "纯色", Order = 100, Prompt = "强力推荐")]
-public class WebLightUIColorResource : ColorResourceBase
+public class WebLightUIColorResource : ResxColorResourceBase
 {
     public override ResourceDictionary Resource => new ResourceDictionary()
     {

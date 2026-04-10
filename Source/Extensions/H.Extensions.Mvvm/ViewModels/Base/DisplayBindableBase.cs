@@ -10,6 +10,7 @@ using H.Mvvm.Commands;
 
 namespace H.Extensions.Mvvm.ViewModels.Base;
 
+
 /// <summary>
 /// 提供显示相关功能的可绑定基类。
 /// </summary>
@@ -121,8 +122,8 @@ public abstract class DisplayBindableBase : CommandsBindableBase, IDable, IDispl
     /// <summary>
     /// 获取或设置对象的分组名称。
     /// </summary>
-    [System.Text.Json.Serialization.JsonIgnore]
-    [System.Xml.Serialization.XmlIgnore]
+    [JsonIgnore]
+    [XmlIgnore]
     [Browsable(false)]
     public virtual string GroupName
     {
@@ -139,8 +140,8 @@ public abstract class DisplayBindableBase : CommandsBindableBase, IDable, IDispl
     /// <summary>
     /// 获取或设置对象的描述。
     /// </summary>
-    [System.Text.Json.Serialization.JsonIgnore]
-    [System.Xml.Serialization.XmlIgnore]
+    [JsonIgnore]
+    [XmlIgnore]
     [Browsable(false)]
     public virtual string Description
     {
@@ -157,8 +158,8 @@ public abstract class DisplayBindableBase : CommandsBindableBase, IDable, IDispl
     /// <summary>
     /// 获取或设置对象的顺序。
     /// </summary>
-    [System.Text.Json.Serialization.JsonIgnore]
-    [System.Xml.Serialization.XmlIgnore]
+    [JsonIgnore]
+    [XmlIgnore]
     [Browsable(false)]
     public virtual int Order
     {
@@ -186,7 +187,12 @@ public abstract class DisplayBindableBase : CommandsBindableBase, IDable, IDispl
     /// </summary>
     public virtual void LoadDefault()
     {
-        PropertyInfo[] ps = GetType().GetProperties();
+        this.LoadDefault(this);
+    }
+
+    public virtual void LoadDefault(object obj)
+    {
+        PropertyInfo[] ps = obj.GetType().GetProperties();
         foreach (PropertyInfo p in ps)
         {
             DefaultValueAttribute d = p.GetCustomAttribute<DefaultValueAttribute>();
@@ -195,11 +201,11 @@ public abstract class DisplayBindableBase : CommandsBindableBase, IDable, IDispl
             if (typeof(IConvertible).IsAssignableFrom(p.PropertyType))
             {
                 object value = Convert.ChangeType(d.Value, p.PropertyType);
-                p.SetValue(this, value);
+                p.SetValue(obj, value);
             }
             else
             {
-                p.SetValue(this, d.Value);
+                p.SetValue(obj, d.Value);
             }
         }
     }

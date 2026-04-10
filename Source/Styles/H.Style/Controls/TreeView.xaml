@@ -20,28 +20,43 @@
         <Setter Property="Cattach.CornerRadius" Value="{DynamicResource {x:Static LayoutKeys.CornerRadius}}" />
         <Setter Property="Background" Value="{DynamicResource {x:Static h:BrushKeys.Background}}" />
         <Setter Property="BorderBrush" Value="{DynamicResource {x:Static h:BrushKeys.BorderBrush}}" />
-        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="BorderThickness" Value="0" />
+        <!--  Guide  -->
+        <Setter Property="Cattach.UseGuide" Value="True" />
+        <!--<Setter Property="Cattach.GuideTitle" Value="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Header}" />-->
+        <Setter Property="Cattach.GuideData" Value="{Binding RelativeSource={RelativeSource Mode=Self}, Path=ToolTip}" />
+        <Setter Property="Cattach.GuideIcon" Value="{Binding RelativeSource={RelativeSource Mode=Self}, Path=(Cattach.Icon)}" />
+
+        <!--<Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource ListBorder}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Padding" Value="1"/>
+        <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+        <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto"/>
+        <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto"/>
+        <Setter Property="ScrollViewer.PanningMode" Value="Both"/>
+        <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>-->
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="TreeView">
-                    <Border Name="Border"
+                <ControlTemplate TargetType="{x:Type TreeView}">
+                    <Border x:Name="Bd"
+                            SnapsToDevicePixels="true"
                             Style="{StaticResource S.Border.TemplatedParent}">
-                        <DockPanel>
-                            <ContentControl DockPanel.Dock="Bottom"
-                                            Template="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(h:Cattach.BottomTemplate)}" />
-                            <ContentControl DockPanel.Dock="Top"
-                                            Template="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(h:Cattach.TopTemplate)}" />
-                            <ScrollViewer x:Name="_tv_scrollviewer_"
-                                          Padding="{TemplateBinding Padding}"
-                                          CanContentScroll="False"
-                                          Focusable="False">
-                                <ItemsPresenter />
-                            </ScrollViewer>
-                        </DockPanel>
+                        <ScrollViewer x:Name="_tv_scrollviewer_"
+                                      Padding="{TemplateBinding Padding}"
+                                      Background="{TemplateBinding Background}"
+                                      CanContentScroll="false"
+                                      Focusable="false"
+                                      HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}"
+                                      SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                      VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}">
+                            <ItemsPresenter />
+                        </ScrollViewer>
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsEnabled" Value="false">
-                            <Setter Property="Opacity" Value="0.6" />
+                            <Setter TargetName="Bd" Property="Background" Value="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" />
                         </Trigger>
                         <Trigger Property="VirtualizingPanel.IsVirtualizing" Value="true">
                             <Setter TargetName="_tv_scrollviewer_" Property="CanContentScroll" Value="true" />
@@ -50,6 +65,17 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+        <Style.Triggers>
+            <Trigger Property="VirtualizingPanel.IsVirtualizing" Value="true">
+                <Setter Property="ItemsPanel">
+                    <Setter.Value>
+                        <ItemsPanelTemplate>
+                            <VirtualizingStackPanel />
+                        </ItemsPanelTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+        </Style.Triggers>
     </Style>
 
     <local:GetFalseToHiddenConverter x:Key="GetFalseToHiddenConverter" />
@@ -146,19 +172,16 @@
                             <RowDefinition Height="Auto" />
                             <RowDefinition />
                         </Grid.RowDefinitions>
-
                         <Border x:Name="Bd"
                                 Grid.Column="0"
                                 Grid.ColumnSpan="3"
                                 Margin="-3000,0"
                                 Style="{StaticResource S.Border.TemplatedParent}" />
-
                         <ToggleButton x:Name="Expander"
                                       ClickMode="Press"
                                       Foreground="{TemplateBinding Foreground}"
                                       IsChecked="{Binding IsExpanded, RelativeSource={RelativeSource TemplatedParent}}"
                                       Style="{DynamicResource {x:Static local:ToggleButtonKeys.Tree}}" />
-
                         <Border Grid.Column="1"
                                 Grid.ColumnSpan="5"
                                 Height="{DynamicResource {x:Static LayoutKeys.ItemHeight}}"
@@ -168,7 +191,6 @@
                                               VerticalAlignment="Center"
                                               ContentSource="Header" />
                         </Border>
-
                         <ItemsPresenter x:Name="ItemsHost"
                                         Grid.Row="1"
                                         Grid.Column="1"

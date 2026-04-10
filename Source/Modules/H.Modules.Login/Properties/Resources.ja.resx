@@ -1,0 +1,244 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Type_LoginOptions" xml:space="preserve">
+    <value>ログインページ設定</value>
+  </data>
+  <data name="Type_RegistorOptions" xml:space="preserve">
+    <value>登録ページ設定</value>
+  </data>
+  <data name="Register" xml:space="preserve">
+    <value>登録</value>
+  </data>
+  <data name="AccountLogin" xml:space="preserve">
+    <value>アカウントログイン</value>
+  </data>
+  <data name="InputAccount" xml:space="preserve">
+    <value>ユーザー名を入力してください</value>
+  </data>
+  <data name="Account" xml:space="preserve">
+    <value>アカウント</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>パスワード</value>
+  </data>
+  <data name="InputPassword" xml:space="preserve">
+    <value>パスワードを入力してください</value>
+  </data>
+  <data name="ConfirmationPassword" xml:space="preserve">
+    <value>パスワードの確認</value>
+  </data>
+  <data name="ChangePassword" xml:space="preserve">
+    <value>パスワードを変更する</value>
+  </data>
+  <data name="Change" xml:space="preserve">
+    <value>修正</value>
+  </data>
+  <data name="RemenberPassword" xml:space="preserve">
+    <value>パスワードを記憶する</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>次へ</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>前一步</value>
+  </data>
+  <data name="EmailVerification" xml:space="preserve">
+    <value>メール認証</value>
+  </data>
+  <data name="Agree" xml:space="preserve">
+    <value>同意して読みました</value>
+  </data>
+  <data name="And" xml:space="preserve">
+    <value>と</value>
+  </data>
+  <data name="ServiceAgreement" xml:space="preserve">
+    <value>利用規約</value>
+  </data>
+  <data name="LoginDirect" xml:space="preserve">
+    <value>直接ログイン</value>
+  </data>
+  <data name="Privacypolicy" xml:space="preserve">
+    <value>プライバシーポリシー</value>
+  </data>
+  <data name="Invoking" xml:space="preserve">
+    <value>実行中...</value>
+  </data>
+  <data name="VerificationCode" xml:space="preserve">
+    <value>認証コード</value>
+  </data>
+  <data name="VerificationCodeSended" xml:space="preserve">
+    <value>認証コードを送信しました。</value>
+  </data>
+  <data name="RegisterVerificationCode" xml:space="preserve">
+    <value>登録認証コード</value>
+  </data>
+  <data name="GetVerificationCode" xml:space="preserve">
+    <value>認証コードを取得する</value>
+  </data>
+  <data name="EmailAddress" xml:space="preserve">
+    <value>メールアドレス</value>
+  </data>
+  <data name="UserLogin" xml:space="preserve">
+    <value>ユーザーログイン</value>
+  </data>
+  <data name="SendingEmail" xml:space="preserve">
+    <value>メール送信中</value>
+  </data>
+  <data name="RegisterNow" xml:space="preserve">
+    <value>今すぐ登録</value>
+  </data>
+  <data name="RegisterAccount" xml:space="preserve">
+    <value>アカウント登録</value>
+  </data>
+  <data name="ForgetPassword" xml:space="preserve">
+    <value>パスワードをお忘れですか？</value>
+  </data>
+  <data name="Login" xml:space="preserve">
+    <value>ログイン</value>
+  </data>
+  <data name="Type_LoginOptions_GroupName" xml:space="preserve">
+    <value>システム設定</value>
+  </data>
+  <data name="Type_LoginOptions_Description" xml:space="preserve">
+    <value>ログインページで設定された情報</value>
+  </data>
+  <data name="Type_RegistorOptions_GroupName" xml:space="preserve">
+    <value>システム設定</value>
+  </data>
+  <data name="Type_RegistorOptions_Description" xml:space="preserve">
+    <value>登録ページで設定した情報</value>
+  </data>
+  <data name="Property_LoginOptions_Product" xml:space="preserve">
+    <value>ログインタイトル</value>
+  </data>
+  <data name="Property_LoginOptions_ProductFontSize" xml:space="preserve">
+    <value>フォントサイズ</value>
+  </data>
+  <data name="Property_LoginOptions_AdminName" xml:space="preserve">
+    <value>管理者アカウント</value>
+  </data>
+  <data name="Property_LoginOptions_LastUserName" xml:space="preserve">
+    <value>前回ログインユーザー</value>
+  </data>
+  <data name="Property_LoginOptions_Remember" xml:space="preserve">
+    <value>パスワードを記憶する</value>
+  </data>
+  <data name="Property_LoginOptions_UseVisitor" xml:space="preserve">
+    <value>ゲストを有効にする</value>
+  </data>
+  <data name="Property_LoginOptions_UseVisitor_Description" xml:space="preserve">
+    <value>ゲストモードを有効にすると、ログインに成功しなくてもメインウィンドウに入ることができます。</value>
+  </data>
+  <data name="Property_LoginOptions_UseLogoutRestart" xml:space="preserve">
+    <value>ログアウトして再起動</value>
+  </data>
+  <data name="Property_LoginOptions_UseLogoutRestart_Description" xml:space="preserve">
+    <value>ログアウトを有効にしてアプリを再起動する</value>
+  </data>
+  <data name="Property_RegistorOptions_UseMail" xml:space="preserve">
+    <value>メールアドレス登録を有効にする</value>
+  </data>
+  <data name="Property_RegistorOptions_UseMail_Description" xml:space="preserve">
+    <value>メール登録を有効にする</value>
+  </data>
+  <data name="Property_RegistorOptions_ServiceAgreementUri" xml:space="preserve">
+    <value>アプリケーションライセンス</value>
+  </data>
+  <data name="Property_RegistorOptions_PrivacypolicyUri" xml:space="preserve">
+    <value>プライバシーポリシー</value>
+  </data>
+  <data name="Property_RegistorOptions_MailAccount" xml:space="preserve">
+    <value>验证码を送信するメールアドレス</value>
+  </data>
+  <data name="Property_RegistorOptions_Image" xml:space="preserve">
+    <value>左側の画像</value>
+  </data>
+  <data name="AccountCannotBeNull" xml:space="preserve">
+    <value>ユーザー名は空にできません</value>
+  </data>
+  <data name="PasswordCannotBeNull" xml:space="preserve">
+    <value>パスワードは空にできません</value>
+  </data>
+  <data name="LoginSuccess" xml:space="preserve">
+    <value>ログイン成功</value>
+  </data>
+  <data name="LoginError" xml:space="preserve">
+    <value>ログインに失敗しました。ユーザー名またはパスワードが正しくありません。</value>
+  </data>
+  <data name="Loginning" xml:space="preserve">
+    <value>ログイン中</value>
+  </data>
+  <data name="ChangingPassword" xml:space="preserve">
+    <value>パスワードを変更中です</value>
+  </data>
+  <data name="ChangePasswordSuccess" xml:space="preserve">
+    <value>パスワードの変更に成功しました</value>
+  </data>
+  <data name="Registering" xml:space="preserve">
+    <value>登録中</value>
+  </data>
+  <data name="RegisterSuccess" xml:space="preserve">
+    <value>登録に成功しました</value>
+  </data>
+  <data name="PasswordsNotMatch" xml:space="preserve">
+    <value>入力したパスワードが一致しません</value>
+  </data>
+</root>

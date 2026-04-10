@@ -17,6 +17,7 @@ global using System.Windows;
 global using System.Windows.Controls;
 global using System.Windows.Input;
 global using System.Windows.Media;
+using H.Controls.Diagram.Parts.Base;
 
 namespace H.Controls.Diagram;
 

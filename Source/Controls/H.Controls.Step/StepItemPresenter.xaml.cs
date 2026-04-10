@@ -10,6 +10,11 @@ using H.Mvvm.ViewModels.Base;
 
 namespace H.Controls.Step
 {
+    public class ActionStepItemPresenter : StepItemPresenter
+    {
+        public Func<IDialog, IStepPresenter, ActionStepItemPresenter, bool> Action { get; set; }
+    }
+
     public class StepItemPresenter : BindableBase, IStepItemPresenter
     {
         private string _displayName;

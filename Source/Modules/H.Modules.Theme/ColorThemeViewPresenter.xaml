@@ -2,6 +2,7 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
                     xmlns:componentmodel="clr-namespace:System.ComponentModel;assembly=WindowsBase"
+                    xmlns:p="clr-namespace:H.Modules.Theme.Properties"
                     xmlns:local="clr-namespace:H.Modules.Theme">
     <DataTemplate DataType="{x:Type local:ColorThemeViewPresenter}">
         <Grid>
@@ -86,7 +87,7 @@
                                             </TextBlock.Foreground>
                                         </TextBlock>
                                         <UniformGrid Rows="1">
-                                            <Button Content="默认按钮">
+                                            <Button Content="{x:Static p:Resources.DefaultButton}">
                                                 <Button.Foreground>
                                                     <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.CaptionForeground}}" />
                                                 </Button.Foreground>

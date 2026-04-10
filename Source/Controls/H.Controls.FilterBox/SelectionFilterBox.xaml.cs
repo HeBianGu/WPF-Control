@@ -230,7 +230,7 @@ namespace H.Controls.FilterBox
             }
             catch (Exception ex)
             {
-                IocLog.Instance?.Error(ex);
+                IocLog.Error(ex);
             }
         }
 
@@ -260,6 +260,8 @@ namespace H.Controls.FilterBox
                 if (!this.Type.IsAssignableFrom(model.GetType()))
                     continue;
                 object value = propertyInfo.GetValue(model);
+                //if (value == null)
+                //    continue;
                 if (items.Contains(value))
                     continue;
                 items.Add(value);

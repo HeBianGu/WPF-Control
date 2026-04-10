@@ -3,5 +3,6 @@
                     xmlns:local="clr-namespace:H.Modules.SplashScreen">
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/H.Modules.SplashScreen;component/SplashScreenViewPresenter.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Modules.SplashScreen;component/BackgroundSplashScreenViewPresenter.xaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

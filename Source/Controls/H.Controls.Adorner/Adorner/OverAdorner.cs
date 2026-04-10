@@ -13,6 +13,8 @@ public class OverAdorner : BorderAdorner
     public OverAdorner(UIElement adornedElement) : base(adornedElement)
     {
         this.Fill = new SolidColorBrush(Colors.LightSkyBlue) { Opacity = 0.1 };
+        this.Fill.Freeze();
         this.Pen = new Pen(new SolidColorBrush(Colors.SkyBlue), 1);
+        this.Pen.Freeze();
     }
 }

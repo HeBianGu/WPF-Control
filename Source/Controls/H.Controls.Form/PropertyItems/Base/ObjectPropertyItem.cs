@@ -43,7 +43,7 @@ public class ObjectPropertyItem<T> : BindingVisiblablePropertyItemBase, IDataErr
 
     private void Notify_PropertyChanged(object sender, PropertyChangedEventArgs e)
     {
-        if (e.PropertyName == this.PropertyInfo.Name)
+        if (e.PropertyName == this.PropertyInfo.Name || string.IsNullOrEmpty(e.PropertyName))
             this.LoadValue();
     }
 
@@ -90,11 +90,17 @@ public class ObjectPropertyItem<T> : BindingVisiblablePropertyItemBase, IDataErr
                 return;
             try
             {
+                this.RemoveValueChanged();
                 this.SetValue(value);
+                this.AddValueChanged();
+                System.Diagnostics.Debug.WriteLine(this.PropertyInfo.Name);
+                if (this.Obj is IPropertyItemValueChanged valueChanged)
+                    valueChanged?.OnPropertyVlaueChanged(this.PropertyInfo.Name, o, value);
             }
             catch (Exception ex)
             {
                 this.Message = ex.Message + $"[{this.PropertyInfo.PropertyType.Name}]";
+                //Trace.Assert(false, ex.Message);
                 return;
             }
 
@@ -190,6 +196,10 @@ public class ObjectPropertyItem<T> : BindingVisiblablePropertyItemBase, IDataErr
                     return instance.ConvertFrom(null, System.Globalization.CultureInfo.CurrentUICulture, value?.ToString());
             }
         }
+
+        TextValueConverterAttribute vc = this.PropertyInfo.GetCustomAttribute<TextValueConverterAttribute>();
+        if (vc?.ValueConverter != null)
+            return vc.ConvertBack(value);
         return value is IConvertible convertible ? Convert.ChangeType(value, this.PropertyInfo.PropertyType) : value;
     }
 
@@ -228,13 +238,22 @@ public class ObjectPropertyItem<T> : BindingVisiblablePropertyItemBase, IDataErr
     {
         //  ToDo：这部分需要测试是否会产生内存泄漏
         if (this.Obj is INotifyPropertyChanged notify)
-            notify.PropertyChanged += Notify_PropertyChanged;
+        {
+            PropertyChangedEventManager.RemoveHandler(notify, Notify_PropertyChanged, this.PropertyInfo.Name);
+            PropertyChangedEventManager.AddHandler(notify, Notify_PropertyChanged, this.PropertyInfo.Name);
+
+            //notify.PropertyChanged -= Notify_PropertyChanged;
+            //notify.PropertyChanged += Notify_PropertyChanged;
+        }
 
         if (this.Obj is DependencyObject dependencyObject)
         {
             DependencyPropertyDescriptor descriptor = DependencyPropertyDescriptor.FromName(this.PropertyInfo.Name, this.PropertyInfo.DeclaringType, this.PropertyInfo.DeclaringType);
             if (descriptor != null)
+            {
+                descriptor.RemoveValueChanged(dependencyObject, DependencyProperty_ValueChanged);
                 descriptor.AddValueChanged(dependencyObject, DependencyProperty_ValueChanged);
+            }
         }
     }
 
@@ -242,7 +261,10 @@ public class ObjectPropertyItem<T> : BindingVisiblablePropertyItemBase, IDataErr
     {
         //  ToDo：这部分需要测试是否会产生内存泄漏
         if (this.Obj is INotifyPropertyChanged notify)
-            notify.PropertyChanged -= Notify_PropertyChanged;
+        {
+            PropertyChangedEventManager.RemoveHandler(notify, Notify_PropertyChanged, this.PropertyInfo.Name);
+            //notify.PropertyChanged -= Notify_PropertyChanged;
+        }
 
         if (this.Obj is DependencyObject dependencyObject)
         {
@@ -258,6 +280,8 @@ public class ObjectPropertyItem<T> : BindingVisiblablePropertyItemBase, IDataErr
         get { return _message; }
         set
         {
+            if (_message == value)
+                return;
             _message = value;
             RaisePropertyChanged("Message");
         }

@@ -17,7 +17,7 @@ public interface IThemeOptions : IIconFontFamilysOptions, IColorThemeOptions
     IBackgroundResource BackgroundResource { get; set; }
     List<IBackgroundResource> BackgroundResources { get; }
     FontFamily FontFamily { get; set; }
-    List<FontFamily> FontFamilys { get; }
+    IReadOnlyList<FontFamily> FontFamilys { get; }
     FontSizeThemeType FontSize { get; set; }
     LayoutThemeType Layout { get; set; }
 }

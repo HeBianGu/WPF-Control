@@ -10,18 +10,19 @@ global using H.Common.Attributes;
 global using H.Styles;
 global using System.ComponentModel.DataAnnotations;
 global using System.Windows.Media;
+using H.Extensions.FontIcon;
 
 namespace H.Presenters.Design.Presenter;
 
-[Icon("\xEB9F")]
+[Icon(FontIcons.Photo)]
 [Display(Name = "图片")]
 public class ImagePresenter : CommandsDesignPresenterBase
 {
     public ImagePresenter()
     {
         this.ImageSource = LogoDataProvider.Logo;
-        this.Width = 200;
-        this.Height = 80;
+        this.MinWidth = 20;
+        this.MinHeight = 20;
     }
     private ImageSource _imageSource;
     [Display(Name = "图像资源", GroupName = "常用,数据")]

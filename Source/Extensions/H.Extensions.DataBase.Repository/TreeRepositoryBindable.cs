@@ -7,6 +7,7 @@
 // Licensed under the MIT License (the "License")
 
 using H.Extensions.Mvvm.ViewModels.Tree;
+using H.Globalization.Properties;
 using System.IO;
 
 namespace H.Extensions.DataBase.Repository
@@ -55,7 +56,7 @@ namespace H.Extensions.DataBase.Repository
             }
             catch (Exception ex)
             {
-                IocLog.Instance?.Error(ex);
+                IocLog.Error(ex);
                 IocMessage.Dialog.Show("加载数据错误:" + ex.Message);
             }
             finally
@@ -75,7 +76,7 @@ namespace H.Extensions.DataBase.Repository
                     else
                         this.SelectedTreeItem.Nodes.Add(new TreeNodeBase<TEntity>(m));
                 }
-                IocMessage.ShowSnackInfo("新增成功");
+                IocMessage.ShowSnackInfo(Resources.Common_OperationSucceeded);
                 return;
             }
             int r = await this.Repository?.InsertRangeAsync(ms);
@@ -88,11 +89,11 @@ namespace H.Extensions.DataBase.Repository
                     else
                         this.SelectedTreeItem.Nodes.Add(new TreeNodeBase<TEntity>(m));
                 }
-                IocMessage.ShowSnackInfo("新增成功");
+                IocMessage.ShowSnackInfo(Resources.Common_OperationSucceeded);
             }
             else
             {
-                IocMessage.ShowSnackInfo("新增失败,数据库保存错误");
+                IocMessage.ShowSnackInfo(Resources.Common_OperationFailed);
             }
         }
 
@@ -101,9 +102,8 @@ namespace H.Extensions.DataBase.Repository
             TreeNodeBase<TEntity> entity = obj as TreeNodeBase<TEntity>;
             if (entity == null)
                 return;
-            bool? result = await IocMessage.Dialog.Show("确定删除数据？", x =>
+            bool? result = await IocMessage.Dialog.Show(Resources.Dialog_Message_ConfirmDelete, x =>
             {
-                x.Title = "提示";
                 x.DialogButton = DialogButton.SumitAndCancel;
             });
             if (result != true)
@@ -119,7 +119,7 @@ namespace H.Extensions.DataBase.Repository
                 this.Collection.Remove(entity);
             else
                 entity.Parent.Nodes.Remove(entity);
-            IocMessage.ShowSnackInfo("删除成功");
+            IocMessage.ShowSnackInfo(Resources.Common_OperationSucceeded);
             this.SelectedTreeItem = this.Collection.FirstOrDefault(x => true);
             this.OnCollectionChanged(obj);
         }
@@ -135,10 +135,10 @@ namespace H.Extensions.DataBase.Repository
             TEntity m = new TEntity();
             if (this.SelectedTreeItem != null)
                 m.SetPath(this.SelectedTreeItem.Model.GetFullPath());
-            bool? dialog = await IocMessage.Form.ShowEdit(this.GetAddModel(m), x => x.Title = "新增");
+            bool? dialog = await IocMessage.Form.ShowEdit(this.GetAddModel(m), x => x.Title = Resources.Common_Add);
             if (dialog != true)
             {
-                IocMessage.ShowSnackInfo("取消操作");
+                IocMessage.ShowSnackInfo(Resources.Common_OperationCancel);
                 return;
             }
             await this.Add(m);

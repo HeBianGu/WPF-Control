@@ -1,4 +1,18 @@
-﻿
+﻿/*************************************************************************************
+
+   Extended WPF Toolkit
+
+   Copyright (C) 2007-2013 Xceed Software Inc.
+
+   This program is provided to you under the terms of the Microsoft Public
+   License (Ms-PL) as published at http://wpftoolkit.codeplex.com/license 
+
+   For more features, controls, and fast professional support,
+   pick up the Plus Edition at http://xceed.com/wpf_toolkit
+
+   Stay informed: follow @datagrid on Twitter or Like http://facebook.com/datagrids
+
+  ***********************************************************************************/
 using H.Common.Interfaces;
 using System;
 using System.Collections;
@@ -21,7 +35,7 @@ namespace H.Controls.ZoomBox
 {
     [TemplatePart(Name = PART_VerticalScrollBar, Type = typeof(ScrollBar))]
     [TemplatePart(Name = PART_HorizontalScrollBar, Type = typeof(ScrollBar))]
-    public sealed class Zoombox : ContentControl, IZoombox
+    public class Zoombox : ContentControl, IZoombox
     {
         private const string PART_VerticalScrollBar = "PART_VerticalScrollBar";
         private const string PART_HorizontalScrollBar = "PART_HorizontalScrollBar";
@@ -1929,9 +1943,13 @@ namespace H.Controls.ZoomBox
         {
             if (_content == null)
                 return;
-
+            var rect = new Rect(region.Location, region.Size);
+            if (rect.Width==0)
+                rect.Width = 1;
+            if (rect.Height == 0)
+                rect.Height = 1;
             // adjust the current scale and position
-            this.UpdateView(new ZoomboxView(region), true, true);
+            this.UpdateView(new ZoomboxView(rect), true, true);
         }
 
         public void ZoomTo(double scale)

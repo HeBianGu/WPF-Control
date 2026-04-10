@@ -12,7 +12,7 @@ public abstract class AdornerBase : System.Windows.Documents.Adorner
 {
     public AdornerBase(UIElement adornedElement) : base(adornedElement)
     {
-
+       
     }
 
     public static Pen GetPen(DependencyObject obj)

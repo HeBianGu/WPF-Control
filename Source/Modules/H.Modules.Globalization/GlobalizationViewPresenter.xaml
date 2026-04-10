@@ -1,0 +1,49 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
+    xmlns:componentmodel="clr-namespace:System.ComponentModel;assembly=WindowsBase"
+    xmlns:local="clr-namespace:H.Modules.Globalization">
+    <DataTemplate DataType="{x:Type local:GlobalizationViewPresenter}">
+        <ListBox
+            Cattach.ItemHeight="Auto"
+            ItemsSource="{Binding Source={x:Static local:GlobalizationOptions.Instance}, Path=SupportedCultureInfos}"
+            ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+            SelectedItem="{Binding Source={x:Static local:GlobalizationOptions.Instance}, Path=CultureInfo, Mode=TwoWay}">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Border
+                        Padding="5,2"
+                        BorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrush}}"
+                        BorderThickness="1"
+                        CornerRadius="2">
+                        <UniformGrid Columns="2">
+                            <TextBlock Margin="5">
+                                <Run Text="{Binding NativeName, Mode=OneWay}" />
+                            </TextBlock>
+                            <TextBlock Margin="5">
+                                <Run Text="{Binding Name, Mode=OneWay}" />
+                            </TextBlock>
+                            <TextBlock Margin="5">
+                                <Run Text="{Binding DisplayName, Mode=OneWay}" />
+                            </TextBlock>
+                            <TextBlock Margin="5">
+                                <Run Text="{Binding EnglishName, Mode=OneWay}" />
+                            </TextBlock>
+                        </UniformGrid>
+                    </Border>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <UniformGrid/>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <b:Interaction.Triggers>
+                <b:EventTrigger EventName="SelectionChanged">
+                    <b:InvokeCommandAction Command="{Binding SelectionChangedCommand}"/>
+                </b:EventTrigger>
+            </b:Interaction.Triggers>
+        </ListBox>
+    </DataTemplate>
+</ResourceDictionary>

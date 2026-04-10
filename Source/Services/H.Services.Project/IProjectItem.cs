@@ -6,6 +6,8 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
+using H.Common.Interfaces.Where;
+
 namespace H.Services.Project;
 
 public interface IProjectItem : ISaveable, ILoadable
@@ -13,7 +15,6 @@ public interface IProjectItem : ISaveable, ILoadable
     DateTime UpdateTime { get; set; }
     bool IsFixed { get; set; }
     string Title { get; set; }
-    string Path { get; set; }
     bool Close(out string message);
-    bool Delete(out string message);
+    Task<(bool success, string message)> DeleteAsync();
 }

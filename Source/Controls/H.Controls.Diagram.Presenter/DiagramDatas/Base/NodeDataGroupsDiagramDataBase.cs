@@ -18,12 +18,14 @@ public abstract class NodeDataGroupsDiagramDataBase : FlowableDiagramDataBase, I
         {
             Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.SystemIdle, new Action(() =>
             {
+                nodeGroup.IsVisible = !this.HiddenNodeGroupNames.Any(x => x == nodeGroup.Name);
                 this.NodeGroups.Add(nodeGroup);
             }));
         }
     }
+
     private ObservableCollection<INodeDataGroup> _nodeGroups = new ObservableCollection<INodeDataGroup>();
-    [System.Text.Json.Serialization.JsonIgnore]
+    [JsonIgnore]
     [XmlIgnore]
     public ObservableCollection<INodeDataGroup> NodeGroups
     {
@@ -35,8 +37,21 @@ public abstract class NodeDataGroupsDiagramDataBase : FlowableDiagramDataBase, I
         }
     }
 
+    public List<string> HiddenNodeGroupNames { get; set; } = new List<string>();
+
     protected virtual IEnumerable<INodeDataGroup> CreateNodeGroups()
     {
         return this.GetType().Assembly.GetInstances<INodeDataGroup>();
+    }
+
+    protected override void OnDeserialized()
+    {
+        base.OnDeserialized();
+    }
+
+    protected override void OnSerializing()
+    {
+        base.OnSerializing();
+        this.HiddenNodeGroupNames = this.NodeGroups.Where(x => !x.IsVisible).Select(x => x.Name).ToList(); ;
     }
 }

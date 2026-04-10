@@ -22,7 +22,7 @@ namespace H.DataBases.Share
 {
     public abstract class DbConnectServiceBase<TDbContext> : IDbConnectService where TDbContext : DbContext
     {
-        public string Name => "数据库";
+        public virtual string Name => "数据库";
         protected abstract IDbSettable GetSetting();
         protected virtual bool CanConnect(DbContext db, out string message)
         {
@@ -36,7 +36,7 @@ namespace H.DataBases.Share
             }
             catch (System.Exception ex)
             {
-                IocLog.Instance?.Error(ex);
+                IocLog.Error(ex);
                 message = ex.Message;
                 return false;
             }
@@ -93,7 +93,7 @@ namespace H.DataBases.Share
             }
             catch (Exception ex)
             {
-                IocLog.Instance?.Error(ex);
+                IocLog.Error(ex);
                 message = ex.Message;
                 return false;
             }

@@ -1,0 +1,154 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Type_ShowUserViewCommand" xml:space="preserve">
+    <value>Gestió d'usuaris</value>
+  </data>
+  <data name="Type_ShowUserViewCommand_Description" xml:space="preserve">
+    <value>Aplicar aquesta funció per a la gestió d’usuaris</value>
+  </data>
+  <data name="Type_ShowRoleViewCommand" xml:space="preserve">
+    <value>Gestió de rols</value>
+  </data>
+  <data name="Type_ShowRoleViewCommand_Description" xml:space="preserve">
+    <value>Utilitzeu aquesta funció per gestionar els rols</value>
+  </data>
+  <data name="Type_ShowAuthorityViewCommand" xml:space="preserve">
+    <value>Gestió de permisos</value>
+  </data>
+  <data name="Type_ShowAuthorityViewCommand_Description" xml:space="preserve">
+    <value>Aplica aquesta funció per a la gestió de permisos</value>
+  </data>
+  <data name="ID" xml:space="preserve">
+    <value>Identificador únic</value>
+  </data>
+  <data name="UserName" xml:space="preserve">
+    <value>Nom d'usuari</value>
+  </data>
+  <data name="Account" xml:space="preserve">
+    <value>Compte d’inici de sessió</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>Contrasenya d'inici de sessió</value>
+  </data>
+  <data name="DisplayName" xml:space="preserve">
+    <value>Sobrenom</value>
+  </data>
+  <data name="Enable" xml:space="preserve">
+    <value>Activa/Desactiva</value>
+  </data>
+  <data name="Mail" xml:space="preserve">
+    <value>Correu electrònic</value>
+  </data>
+  <data name="Role" xml:space="preserve">
+    <value>Rol</value>
+  </data>
+  <data name="Authors" xml:space="preserve">
+    <value>Llista de permisos</value>
+  </data>
+  <data name="AuthorName" xml:space="preserve">
+    <value>Nom del permís</value>
+  </data>
+  <data name="AuthorCode" xml:space="preserve">
+    <value>Codi de permís</value>
+  </data>
+  <data name="Roles" xml:space="preserve">
+    <value>Llista de rols</value>
+  </data>
+  <data name="Users" xml:space="preserve">
+    <value>Llista d'usuaris</value>
+  </data>
+  <data name="RoleName" xml:space="preserve">
+    <value>Nom del rol</value>
+  </data>
+  <data name="RoleCode" xml:space="preserve">
+    <value>Codi de rol</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Cercar</value>
+  </data>
+  <data name="Property_hi_dd_user_Name" xml:space="preserve">
+    <value>Nom d'usuari</value>
+  </data>
+  <data name="Property_hi_dd_user_Account" xml:space="preserve">
+    <value>Compte d'inici de sessió</value>
+  </data>
+  <data name="Property_hi_dd_user_Password" xml:space="preserve">
+    <value>Contrasenya d'inici de sessió</value>
+  </data>
+  <data name="Property_hi_dd_user_DisplayName" xml:space="preserve">
+    <value>Sobrenom</value>
+  </data>
+  <data name="Property_hi_dd_user_Enable" xml:space="preserve">
+    <value>Activat</value>
+  </data>
+  <data name="Property_hi_dd_user_Mail" xml:space="preserve">
+    <value>Correu electrònic</value>
+  </data>
+  <data name="Property_hi_dd_user_LastLoginTime" xml:space="preserve">
+    <value>Hora d'inici de sessió més recent</value>
+  </data>
+  <data name="Property_hi_dd_user_LicenseDeadline" xml:space="preserve">
+    <value>Data límit de la llicència</value>
+  </data>
+  <data name="Property_hi_dd_user_Role" xml:space="preserve">
+    <value>Rol</value>
+  </data>
+</root>

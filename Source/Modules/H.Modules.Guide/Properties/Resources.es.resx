@@ -1,0 +1,139 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Type_GuideOptions" xml:space="preserve">
+    <value>Página del asistente</value>
+  </data>
+  <data name="Type_GuideOptions_GroupName" xml:space="preserve">
+    <value>Configuración del control</value>
+  </data>
+  <data name="Type_GuideOptions_Description" xml:space="preserve">
+    <value>Configurar la información de la página del asistente</value>
+  </data>
+  <data name="Type_SettingViewOptions_GroupName" xml:space="preserve">
+    <value>Configuración de visualización</value>
+  </data>
+  <data name="Type_SettingSecurityViewOption" xml:space="preserve">
+    <value>Configuración del control de página</value>
+  </data>
+  <data name="Type_SettingSecurityViewOption_GroupName" xml:space="preserve">
+    <value>Configuración de seguridad</value>
+  </data>
+  <data name="Property_GuideOptions_UseOnLoad" xml:space="preserve">
+    <value>Inicio automático</value>
+  </data>
+  <data name="Property_GuideOptions_UseOnLoad_Description" xml:space="preserve">
+    <value>Mostrar el asistente de inicio al arrancar</value>
+  </data>
+  <data name="Property_GuideOptions_TextMaxWidth" xml:space="preserve">
+    <value>Ancho de detalles</value>
+  </data>
+  <data name="Property_GuideOptions_TextMaxWidth_Description" xml:space="preserve">
+    <value>Establecer el ancho máximo de la página de detalles</value>
+  </data>
+  <data name="Property_GuideOptions_CoverColor" xml:space="preserve">
+    <value>Color de fondo</value>
+  </data>
+  <data name="Property_GuideOptions_CoverColor_Description" xml:space="preserve">
+    <value>Establecer el color de fondo de la superposición</value>
+  </data>
+  <data name="Property_GuideOptions_CoverOpacity" xml:space="preserve">
+    <value>Opacidad</value>
+  </data>
+  <data name="Property_GuideOptions_CoverOpacity_Description" xml:space="preserve">
+    <value>Establecer la transparencia del fondo de la superposición</value>
+  </data>
+  <data name="Property_GuideOptions_Stroke" xml:space="preserve">
+    <value>Line color</value>
+  </data>
+  <data name="Property_GuideOptions_StrokeThickness" xml:space="preserve">
+    <value>Espesor de línea</value>
+  </data>
+  <data name="Property_GuideOptions_StrokeDashArray" xml:space="preserve">
+    <value>Línea discontinua</value>
+  </data>
+  <data name="Property_GuideOptions_AnimationDuration" xml:space="preserve">
+    <value>Intervalo de animación</value>
+  </data>
+  <data name="Type_ShowGuideCommand" xml:space="preserve">
+    <value>Guía para principiantes</value>
+  </data>
+  <data name="Type_ShowGuideCommand_Description" xml:space="preserve">
+    <value>Mostrar guía para principiantes</value>
+  </data>
+  <data name="Type_ShowNewGuideCommand" xml:space="preserve">
+    <value>Nueva función</value>
+  </data>
+  <data name="Type_ShowNewGuideCommand_Description" xml:space="preserve">
+    <value>Mostrar asistente de nuevas funciones</value>
+  </data>
+  <data name="Type_ShowGuideTreeCommand" xml:space="preserve">
+    <value>Lista de funciones</value>
+  </data>
+  <data name="Type_ShowGuideTreeCommand_Description" xml:space="preserve">
+    <value>Mostrar la lista de funciones de la versión</value>
+  </data>
+  <data name="Type_ShowNewGuideTreeCommand" xml:space="preserve">
+    <value>Lista de nuevas funciones</value>
+  </data>
+  <data name="Type_ShowNewGuideTreeCommand_Description" xml:space="preserve">
+    <value>Mostrar lista de funciones de la versión</value>
+  </data>
+</root>

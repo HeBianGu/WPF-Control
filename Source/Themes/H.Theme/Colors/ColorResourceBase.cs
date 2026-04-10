@@ -6,6 +6,9 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
+using System.Windows.Input;
+using System.Xml.Linq;
+
 namespace H.Themes.Colors;
 
 public abstract class ColorResourceBase : IColorResource
@@ -20,10 +23,12 @@ public abstract class ColorResourceBase : IColorResource
         this.Description = display?.Description ?? null;
     }
 
+
+
     public bool IsDark { get; set; }
-    public string Name { get; }
+    public string Name { get; protected set; }
     public abstract ResourceDictionary Resource { get; }
-    public string GroupName { get; }
+    public string GroupName { get; protected set; }
     public string Prompt { get; set; }
     public int Order { get; set; }
     public string Description { get; set; }

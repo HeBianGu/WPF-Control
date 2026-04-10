@@ -64,7 +64,7 @@ namespace H.Controls.PDF
                         });
                     }
                     this._renderer.OpenPdf(mem);
-                    this._renderer.Bookmarks.OrderBy(x => x.PageIndex);
+                    this._renderer.Bookmarks.SortBy(x => x.PageIndex);
                     this.Bookmarks = this._renderer.Bookmarks;
                     this.ShowBookmarks = this.Bookmarks?.Count > 0;
                 }; binding.CanExecute += (l, k) =>

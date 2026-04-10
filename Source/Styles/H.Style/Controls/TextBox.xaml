@@ -223,10 +223,12 @@
                                                       Height="Auto"
                                                       Margin="1"
                                                       Background="{x:Null}"
+                                                      Cattach.Title="{x:Static Resources.Common_Delete}"
                                                       Command="{local:DeleteTextCommandExtension}"
                                                       CommandParameter="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}}"
                                                       Content="&#xE711;"
-                                                      DockPanel.Dock="Right" />
+                                                      DockPanel.Dock="Right"
+                                                      ToolTip="{x:Static Resources.Common_Delete}" />
                                 <Grid Margin="{TemplateBinding Padding}">
                                     <ScrollViewer x:Name="PART_ContentHost" />
                                     <Control Template="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(Cattach.CenterTemplate)}" />

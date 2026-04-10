@@ -6,6 +6,8 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
+using System.DirectoryServices.ActiveDirectory;
+
 namespace H.Controls.Form.Provider;
 
 public static class PropertyInfoExtention
@@ -21,23 +23,23 @@ public static class PropertyInfoExtention
 
         if (typeof(ICommand).IsAssignableFrom(info.PropertyType))
             return new CommandPropertyItem(info, obj);
+        Type type = info.PropertyType;
 
-        //  Do ：日期格式使用日期控件
-        if (info.PropertyType == typeof(DateTime)) return new DateTimePropertyItem(info, obj);
-
-        //  Do ：日期格式使用日期控件
-        if (info.PropertyType == typeof(bool)) return new BoolPropertyItem(info, obj);
-        //  Do ：日期格式使用日期控件
-        if (info.PropertyType == typeof(bool?)) return new BoolNullablePropertyItem(info, obj);
-
-        //  Do ：枚举使用枚举类型
-        if (info.PropertyType.IsEnum) return new EnumPropertyItem(info, obj);
-
+        // 处理Nullable类型（未应用，需要设置时设置）
+        Type underlyingType = Nullable.GetUnderlyingType(type) ?? type;
+        if (type == typeof(DateTime))
+            return new DateTimePropertyItem(info, obj);
+        if (type == typeof(bool))
+            return new BoolPropertyItem(info, obj);
+        if (type == typeof(bool?))
+            return new BoolNullablePropertyItem(info, obj);
+        if (type.IsEnum)
+            return new EnumPropertyItem(info, obj);
         //  Do ：首先有TypeConverter的用TypeConverter
-        if (TextPropertyItem.IsTypeConverter(info)) return new TextPropertyItem(info, obj);
-
-        if (TextPropertyItem.IsIConvertible(info)) return new TextPropertyItem(info, obj);
-
+        if (TextPropertyItem.IsTypeConverter(info))
+            return new TextPropertyItem(info, obj);
+        if (TextPropertyItem.IsIConvertible(info))
+            return new TextPropertyItem(info, obj);
         //  Do ：其他基元类型
         else if (info.PropertyType.IsPrimitive || info.PropertyType == typeof(string)) return new TextPropertyItem(info, obj);
 
@@ -73,10 +75,13 @@ public static class PropertyInfoExtention
         return new ObjectPropertyItem<object>(info, obj);
     }
 
+    [Obsolete]
     public static IPropertyItem CreateByType(this PropertyInfo info, object obj)
     {
-        if (info.PropertyType == typeof(int)) return new TextPropertyItem(info, obj);
-        if (info.PropertyType == typeof(double)) return new TextPropertyItem(info, obj);
+        if (info.PropertyType == typeof(int))
+            return new TextPropertyItem(info, obj);
+        if (info.PropertyType == typeof(double))
+            return new TextPropertyItem(info, obj);
 
         //  Do ：日期格式使用日期控件
         if (info.PropertyType == typeof(DateTime)) return new DateTimePropertyItem(info, obj);
@@ -132,26 +137,43 @@ public static class PropertyInfoExtention
 
     public static IPropertyItem CreateView(this PropertyInfo info, object obj)
     {
-        PropertyItemAttribute editor = info.GetCustomAttribute<PropertyItemAttribute>();
-        if (editor?.Type != null)
+        IPropertyViewItem Create(Type type)
         {
-            if (typeof(IPropertyViewItem).IsAssignableFrom(editor.Type))
+            if (typeof(IPropertyViewItem).IsAssignableFrom(type))
             {
-                var r = Activator.CreateInstance(editor.Type, info, obj) as IPropertyViewItem;
+                var r = Activator.CreateInstance(type, info, obj) as IPropertyViewItem;
                 if (r is IHitTestPropertyViewItem hitTest)
                     hitTest.IsHitTestVisible = false;
+                if (r is ObjectPropertyItemBase objectPropertyItemBase)
+                    objectPropertyItemBase.ReadOnly = true;
                 return r;
             }
-
+            return null;
         }
 
-        return TextPropertyItem.IsTypeConverter(info)
-            ? new TextPropertyViewItem(info, obj)
-            : TextPropertyItem.IsIConvertible(info)
-            ? new TextPropertyViewItem(info, obj)
-            : info.PropertyType.IsClass && info.PropertyType != typeof(string)
-            ? new ObjectPropertyItem<object>(info, obj)
-            : new TextPropertyViewItem(info, obj);
+        {
+            PropertyViewItemAttribute editor = info.GetCustomAttribute<PropertyViewItemAttribute>();
+            var r = Create(editor?.Type);
+            if (r != null)
+                return r;
+        }
+
+        {
+            PropertyItemAttribute editor = info.GetCustomAttribute<PropertyItemAttribute>();
+            var r = Create(editor?.Type);
+            if (r != null)
+                return r;
+        }
+        //// 处理Nullable类型（未应用，需要设置时设置）
+        //Type underlyingType = Nullable.GetUnderlyingType(type) ?? type;
+        if (info.PropertyType.IsClass && info.PropertyType != typeof(string))
+            return new ObjectPropertyItem<object>(info, obj);
+        return new TextPropertyViewItem(info, obj);
+
+        //if (TextPropertyItem.IsTypeConverter(info))
+        //    return new TextPropertyViewItem(info, obj);
+        //if (TextPropertyItem.IsIConvertible(info))
+        //    return new TextPropertyViewItem(info, obj);
 
         //if (typeof(ICommand).IsAssignableFrom(info.PropertyType))
         //{

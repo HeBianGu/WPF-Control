@@ -7,12 +7,13 @@
 // Licensed under the MIT License (the "License")
 
 global using H.Extensions.DataBase;
-global using H.Services.Identity.Role;
 global using H.Services.Message;
 global using H.Services.Message.Dialog;
 global using H.Services.Setting;
+using H.Common;
 using H.Common.Attributes;
 using H.Extensions.FontIcon;
+using H.Globalization.Properties;
 
 namespace H.Modules.Identity
 {
@@ -44,11 +45,11 @@ namespace H.Modules.Identity
             bool? dialog = await IocMessage.Dialog.Show(roleViewModel, x =>
             {
                 x.DialogButton = DialogButton.Sumit;
-                x.Title = "新增";
+                x.Title = Resources.Common_Add;
             });
             if (dialog != true)
             {
-                IocMessage.ShowSnackInfo("取消操作");
+                IocMessage.ShowSnackInfo(Resources.Common_OperationCancel);
                 return;
             }
             await this.Add(m);
@@ -60,15 +61,20 @@ namespace H.Modules.Identity
             hi_dd_role entity = this.GetEntity(obj);
             if (entity == null)
                 return;
+            if (entity.ID == "{4360CE12-E5F4-4EA6-937C-9FDEA4DF06F6}")
+            {
+                await IocMessage.ShowDialogMessage("管理员角色只读不可以编辑".GetStringResx(this.GetType().Assembly, "Message_CannotEditAdmin"));
+                return;
+            }
             RoleEditPresenter roleViewModel = new RoleEditPresenter(entity);
             bool? r = await IocMessage.Dialog.Show(roleViewModel, x =>
             {
                 x.DialogButton = DialogButton.Sumit;
-                x.Title = "编辑";
+                x.Title = Resources.Common_Edit;
             });
             if (r != true)
             {
-                IocMessage.ShowSnackInfo("取消操作");
+                IocMessage.ShowSnackInfo(Resources.Common_OperationCancel);
                 return;
             }
 
@@ -77,12 +83,25 @@ namespace H.Modules.Identity
             if (rs > 0)
             {
                 if (this.UseMessage)
-                    IocMessage.ShowSnackInfo("保存成功");
+                    IocMessage.ShowSnackInfo(Resources.Common_SaveSucceeded);
             }
             else
             {
-                IocMessage.ShowSnackInfo("保存失败，数据库保存错误");
+                IocMessage.ShowSnackInfo(Resources.Common_SaveFailed);
             }
+        }
+
+        public override async Task Delete(object obj)
+        {
+            hi_dd_role entity = this.GetEntity(obj);
+            if (entity == null)
+                return;
+            if (entity.ID == "{4360CE12-E5F4-4EA6-937C-9FDEA4DF06F6}")
+            {
+                await IocMessage.ShowDialogMessage("管理员角色只读不可以编辑".GetStringResx(this, "Message_CannotEditAdmin"));
+                return;
+            }
+            await base.Delete(obj);
         }
     }
 

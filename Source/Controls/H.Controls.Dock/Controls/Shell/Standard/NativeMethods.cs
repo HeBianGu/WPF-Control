@@ -1,4 +1,12 @@
-﻿
+﻿/************************************************************************
+  AvalonDock
+
+  Copyright (C) 2007-2013 Xceed Software Inc.
+
+  This program is provided to you under the terms of the Microsoft Public
+  License (Ms-PL) as published at https://opensource.org/licenses/MS-PL
+************************************************************************/
+
 using Microsoft.Win32.SafeHandles;
 using System;
 using System.ComponentModel;
@@ -9,7 +17,7 @@ using System.Runtime.InteropServices;
 using System.Runtime.InteropServices.ComTypes;
 using System.Security.Permissions;
 using System.Text;
-
+using IDataObject = System.Runtime.InteropServices.ComTypes.IDataObject;
 using IStream = System.Runtime.InteropServices.ComTypes.IStream;
 
 namespace Standard

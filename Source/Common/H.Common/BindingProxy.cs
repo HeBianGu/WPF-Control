@@ -7,7 +7,6 @@
 // Licensed under the MIT License (the "License")
 
 namespace H.Common;
-
 public class BindingProxy : Freezable
 {
     protected override Freezable CreateInstanceCore()

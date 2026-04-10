@@ -3,7 +3,8 @@
                     xmlns:h="https://github.com/HeBianGu"
                     xmlns:local="clr-namespace:H.Controls.Form">
     <DataTemplate DataType="{x:Type local:TabFormPresenter}">
-        <TabControl ItemsSource="{Binding TabNames}">
+        <TabControl ItemsSource="{Binding TabNames}"
+                    TabStripPlacement="{Binding TabStripPlacement}">
             <TabControl.ItemTemplate>
                 <DataTemplate>
                     <TextBlock MinWidth="50"

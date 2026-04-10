@@ -6,6 +6,7 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
+using H.Extensions.FontIcon;
 using H.Mvvm.Commands;
 
 namespace H.Presenters.Common;
@@ -61,6 +62,8 @@ public static partial class DialogServiceExtension
     }
 }
 
+[Icon(FontIcons.CaretBottomRightSolidCenter8)]
+[Display(Name = "显示数据", Description = "显示显示数据")]
 public class ShowTreeViewCommand : ShowSourceCommandBase
 {
     public override async Task ExecuteAsync(object parameter)

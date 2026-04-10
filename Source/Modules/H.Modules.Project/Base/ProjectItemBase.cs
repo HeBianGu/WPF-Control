@@ -6,35 +6,30 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
+using H.Extensions.FontIcon;
+using H.Extensions.Mvvm.Commands;
 using System.IO;
+using System.Text.Json.Serialization;
+using System.Threading.Tasks;
 
 namespace H.Modules.Project.Base;
 
-public abstract class ProjectItemBase : CommandsBindableBase, IProjectItem
+[Icon(FontIcons.DateTime)]
+[Display(Name = "新建项目")]
+public abstract class ProjectItemBase : DisplayBindableBase, IProjectItem
 {
-    private string _title;
+    protected ProjectItemBase()
+    {
+        this.Path = this.GetFolderPath();
+    }
     [Required]
     [Display(Name = "标题", Order = 4)]
     public string Title
     {
-        get { return _title; }
+        get { return this.Name; }
         set
         {
-            _title = value;
-            RaisePropertyChanged();
-        }
-    }
-
-    private string _path;
-    [ReadOnly(true)]
-    [Browsable(false)]
-    [Display(Name = "工程文件路径", Order = 4)]
-    public string Path
-    {
-        get { return _path; }
-        set
-        {
-            _path = value;
+            this.Name = value;
             RaisePropertyChanged();
         }
     }
@@ -52,7 +47,6 @@ public abstract class ProjectItemBase : CommandsBindableBase, IProjectItem
     }
 
     private DateTime _createTime = DateTime.Now;
-    [Browsable(false)]
     [ReadOnly(true)]
     [Display(Name = "创建时间", Order = 4)]
     public DateTime CreateTime
@@ -66,7 +60,6 @@ public abstract class ProjectItemBase : CommandsBindableBase, IProjectItem
     }
 
     private DateTime _updateTime = DateTime.Now;
-    [Browsable(false)]
     [ReadOnly(true)]
     [Display(Name = "修改时间", Order = 4)]
     public DateTime UpdateTime
@@ -79,7 +72,19 @@ public abstract class ProjectItemBase : CommandsBindableBase, IProjectItem
         }
     }
 
-    public string Name => this.Title;
+    private string _path;
+    [Browsable(false)]
+    [JsonIgnore]
+    public string Path
+    {
+        get { return _path; }
+        set
+        {
+            _path = value;
+            RaisePropertyChanged();
+        }
+    }
+
 
     public virtual bool Save(out string message)
     {
@@ -88,6 +93,7 @@ public abstract class ProjectItemBase : CommandsBindableBase, IProjectItem
         if (data == null)
             return true;
         this.SaveToFile(data);
+        this.UpdateTime = DateTime.Now;
         return true;
     }
 
@@ -102,7 +108,7 @@ public abstract class ProjectItemBase : CommandsBindableBase, IProjectItem
         return true;
     }
 
-    protected virtual ISerializerService GetSerializer() => ProjectOptions.Instance.JsonSerializerService;
+    protected virtual ISerializerService GetSerializer() => new TextJsonSerializerService();
 
     protected virtual bool LoadFile<T>(out T value)
     {
@@ -129,35 +135,31 @@ public abstract class ProjectItemBase : CommandsBindableBase, IProjectItem
 
     public virtual string GetFilePath()
     {
-        string folder = this.GetPath();
+        string folder = this.GetFolderPath();
         return System.IO.Path.Combine(folder, this.Title + ProjectOptions.Instance.Extenstion);
     }
 
-    private string GetPath()
+    public virtual string GetFolderPath()
     {
-        if (string.IsNullOrEmpty(this.Path))
-            return ProjectOptions.Instance.DefaultProjectFolder;
-        return this.Path;
+        return AppPaths.Instance.UserProject;
     }
 
-    public virtual void Dispose()
+    public virtual Task<(bool success, string message)> DeleteAsync()
     {
-
-    }
-
-    public virtual bool Delete(out string message)
-    {
+        string message;
         bool r = this.Close(out message);
         if (r == false)
-            return false;
-        if (File.Exists(this.Path))
-            File.Delete(this.Path);
-        if (!string.IsNullOrEmpty(this.Path))
-        {
-            string find = this.GetFilePath();
-            if (File.Exists(find))
-                File.Delete(find);
-        }
-        return true;
+            return Task.FromResult((false, message));
+
+        var filePath = this.GetFilePath();
+        if (File.Exists(filePath))
+            File.Delete(filePath);
+        //if (!string.IsNullOrEmpty(filePath))
+        //{
+        //    string find = this.GetFilePath();
+        //    if (File.Exists(find))
+        //        File.Delete(find);
+        //}
+        return Task.FromResult((true, string.Empty));
     }
 }

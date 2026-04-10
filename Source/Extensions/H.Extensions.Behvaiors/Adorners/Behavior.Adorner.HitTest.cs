@@ -35,8 +35,6 @@ public abstract class HitTestAdornerBehavior : AdornerBehaviorBase
     }
 
     protected UIElement _preVisualHitElement = null;
-    //protected UIElement _visualHit = null;
-
     public static bool GetIsHitTest(DependencyObject obj)
     {
         return (bool)obj.GetValue(IsHitTestProperty);
@@ -68,47 +66,21 @@ public abstract class HitTestAdornerBehavior : AdornerBehaviorBase
             drop.RemoveDropAdorner(_preVisualHitElement);
     }
 
-    //HitTestResultBehavior HitTestCallBack(HitTestResult result)
-    //{
-    //    if (HitTestAdornerBehavior.GetIsHitTest(result.VisualHit))
-    //    {
-    //        return HitTestResultBehavior.Stop;
-    //    }
-    //    return HitTestResultBehavior.Continue;
-    //}
-
-    //HitTestFilterBehavior HitTestFilter(DependencyObject obj)
-    //{
-    //    Type type = obj.GetType();
-    //    if (type.Name == this.GetType().Name)
-    //        return HitTestFilterBehavior.ContinueSkipSelf;
-    //    if (HitTestAdornerBehavior.GetIsHitTest(obj))
-    //    {
-    //        _visualHit = obj as UIElement;
-    //    }
-
-    //    return HitTestFilterBehavior.Continue;
-    //}
-
     protected virtual void AddAdorner(UIElement elment)
     {
         if (_preVisualHitElement == elment)
             return;
         if (this.AdornerType == null)
             return;
-
         if (CheckAdorner(elment) == false)
             return;
-
         if (this.IsUse)
         {
             Adorner adorner = GetAdorner(elment);
             if (adorner == null)
                 return;
             adorner.IsHitTestVisible = this.IsHitTestVisible;
-
             System.Diagnostics.Debug.WriteLine("IsHitTestVisible:" + adorner.IsHitTestVisible);
-
             elment.AddAdorner(adorner);
         }
     }

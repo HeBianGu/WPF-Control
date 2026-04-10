@@ -12,6 +12,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using H.Extensions.DataBase;
+using H.Modules.Login;
 
 namespace H.Test.Identify
 {
@@ -51,10 +52,11 @@ namespace H.Test.Identify
             services.AddOperationViewPresenter();
 
             //  Do ：登录和注册页面
-            services.AddRegisterLoginViewPresenter();
+            //services.AddRegisterLoginViewPresenter();
+            services.AddBackgroundRigisterLoginViewPresenter();
             services.AddIdentityLoginService();
             services.AddIdentityRegisterService();
-            services.AddSplashScreen();
+            services.AddBackgroundSplashScreen();
             services.AddTheme();
         }
 

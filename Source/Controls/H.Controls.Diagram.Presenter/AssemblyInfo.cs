@@ -31,6 +31,7 @@ using System.Windows.Markup;
 [assembly: XmlnsDefinition("https://github.com/HeBianGu", "H.Controls.Diagram.Presenter")]
 [assembly: XmlnsPrefix("https://github.com/HeBianGu", "h")]
 
+[assembly: XmlnsDefinition("http://schemas.microsoft.com/winfx/2006/xaml/presentation", "H.Controls.Diagram.Presenter.Expressions")]
 [assembly: XmlnsDefinition("http://schemas.microsoft.com/winfx/2006/xaml/presentation", "H.Controls.Diagram.Presenter.Flowables")]
 [assembly: XmlnsDefinition("http://schemas.microsoft.com/winfx/2006/xaml/presentation", "H.Controls.Diagram.Presenter.DiagramDatas.Base")]
 [assembly: XmlnsDefinition("http://schemas.microsoft.com/winfx/2006/xaml/presentation", "H.Controls.Diagram.Presenter.DiagramDatas")]

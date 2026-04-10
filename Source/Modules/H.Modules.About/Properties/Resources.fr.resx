@@ -1,0 +1,127 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Property_AboutOptions_Title" xml:space="preserve">
+    <value>Titre du produit</value>
+  </data>
+  <data name="Property_AboutOptions_ProductName" xml:space="preserve">
+    <value>Nom du produit</value>
+  </data>
+  <data name="Property_AboutOptions_ProductDescription" xml:space="preserve">
+    <value>Informations sur le produit</value>
+  </data>
+  <data name="Property_AboutOptions_Company" xml:space="preserve">
+    <value>Informations sur l’entreprise</value>
+  </data>
+  <data name="Property_AboutOptions_Culture" xml:space="preserve">
+    <value>Zone de produit</value>
+  </data>
+  <data name="Property_AboutOptions_Trademark" xml:space="preserve">
+    <value>Marque du produit</value>
+  </data>
+  <data name="Property_AboutOptions_Configuration" xml:space="preserve">
+    <value>Configuration du produit</value>
+  </data>
+  <data name="Property_AboutOptions_Copyright" xml:space="preserve">
+    <value>Certificat de licence</value>
+  </data>
+  <data name="Property_AboutOptions_AssemblyVersion" xml:space="preserve">
+    <value>Version de l’assembly</value>
+  </data>
+  <data name="Property_AboutOptions_AssemblyVersion_Description" xml:space="preserve">
+    <value>Numéro de version de l’assembly, utilisé pour identifier son unicité et sa compatibilité</value>
+  </data>
+  <data name="Property_AboutOptions_FileVersion" xml:space="preserve">
+    <value>Version du fichier</value>
+  </data>
+  <data name="Property_AboutOptions_Privacy" xml:space="preserve">
+    <value>Politique de confidentialité</value>
+  </data>
+  <data name="Property_AboutOptions_Agreement" xml:space="preserve">
+    <value>Conditions d’utilisation</value>
+  </data>
+  <data name="Type_AboutOptions" xml:space="preserve">
+    <value>À propos</value>
+  </data>
+  <data name="Type_AboutOptions_Description" xml:space="preserve">
+    <value>Configurer les paramètres associés</value>
+  </data>
+  <data name="Type_AboutOptions_GroupName" xml:space="preserve">
+    <value>Paramètres système</value>
+  </data>
+  <data name="Type_ShowAboutCommand" xml:space="preserve">
+    <value>À propos</value>
+  </data>
+  <data name="Type_ShowAboutCommand_Description" xml:space="preserve">
+    <value>Afficher la page À propos</value>
+  </data>
+  <data name="Type_ShowPrivacyCommand" xml:space="preserve">
+    <value>Politique de confidentialité</value>
+  </data>
+  <data name="Type_ShowPrivacyCommand_Description" xml:space="preserve">
+    <value>Consulter la politique de confidentialité du système</value>
+  </data>
+  <data name="Type_ShowAgreementCommand" xml:space="preserve">
+    <value>Conditions de service</value>
+  </data>
+  <data name="Type_ShowAgreementCommand_Description" xml:space="preserve">
+    <value>Consulter le contrat de service système</value>
+  </data>
+</root>

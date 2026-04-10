@@ -24,11 +24,15 @@ public class DataGridColumnAttribute : Attribute, IDataGridColumn
     }
     public DataGridLength Width { get; set; } = DataGridLength.Auto;
     public Type Template { get; set; } = typeof(DataGridTextColumn);
-    public Type ConvertyType { get; set; }
+    public Type ValueConvertType { get; set; }
     /// <summary>
     /// "{0}.Property"
     /// </summary>
     public string PropertyPath { get; set; } = "{0}";
+    /// <summary>
+    /// "{0:F2}"
+    /// </summary>
+    public string StringFormat { get; set; }
     public virtual DataGridColumn GetDataGridColumn(PropertyInfo propertyInfo)
     {
         DataGridColumn dataGridColumn = Activator.CreateInstance(this.Template) as DataGridColumn;

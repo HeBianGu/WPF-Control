@@ -1,13 +1,16 @@
-﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:h="https://github.com/HeBianGu"
-                    xmlns:local="clr-namespace:H.Presenters.Design.Presenter"
-                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:c="clr-namespace:H.Presenters.Design.Controls"
+    xmlns:l="clr-namespace:H.Presenters.Design"
+    xmlns:local="clr-namespace:H.Presenters.Design.Presenter"
+    xmlns:sys="clr-namespace:System;assembly=mscorlib">
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/H.Presenters.Design;component/Presenter/PanelPresenter.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Presenters.Design;component/Controls/DefinitionGrid.xaml" />
     </ResourceDictionary.MergedDictionaries>
     <DataTemplate DataType="{x:Type local:DefinitionGridPresenter}">
-        <local:DesignBorder>
+        <c:DesignBorder AllowDrop="True" IsHitTestVisible="{Binding IsHitTestVisible}">
             <ItemsControl Style="{StaticResource S.ItemsControl.PanelPresenter}">
                 <ItemsControl.ItemContainerStyle>
                     <Style TargetType="ContentPresenter">
@@ -21,24 +24,96 @@
                 </ItemsControl.ItemContainerStyle>
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
-                        <local:DefinitionGrid Background="Transparent"
-                                              Columns="{Binding Columns}"
-                                              MinRowHeight="{Binding MinRowHeight}"
-                                              Rows="{Binding Rows}">
-                            <local:DefinitionGrid.GridLinePen>
-                                <Pen Brush="{Binding LineBrush}"
-                                     Thickness="{Binding LineThickness}" />
-                            </local:DefinitionGrid.GridLinePen>
-                            <h:BehvaiorAttach.Behaviors>
-                                <h:Behaviors>
-                                    <h:MouseOverAdornerBehavior AdornerType="{x:Type h:GridLineAdorner}" />
-                                </h:Behaviors>
-                            </h:BehvaiorAttach.Behaviors>
-                        </local:DefinitionGrid>
+                        <c:DefinitionGrid
+                            Background="Transparent"
+                            Columns="{Binding Columns}"
+                            MinRowHeight="{Binding MinRowHeight}"
+                            Rows="{Binding Rows}">
+                            <c:DefinitionGrid.Style>
+                                <Style BasedOn="{StaticResource {x:Static c:DefinitionGrid.DefaultKey}}" TargetType="{x:Type c:DefinitionGrid}">
+                                    <Setter Property="GridLinePen">
+                                        <Setter.Value>
+                                            <Pen Brush="{Binding LineBrush}" Thickness="{Binding LineThickness}" />
+                                        </Setter.Value>
+                                    </Setter>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=l:DesignBox}, Path=UseDesign, FallbackValue=true}" Value="true">
+                                            <Setter Property="BehvaiorAttach.Behaviors">
+                                                <Setter.Value>
+                                                    <Behaviors>
+                                                        <MouseOverAdornerBehavior AdornerType="{x:Type GridLineAdorner}" />
+                                                    </Behaviors>
+                                                </Setter.Value>
+                                            </Setter>
+                                        </DataTrigger>
+                                        <MultiDataTrigger>
+                                            <MultiDataTrigger.Conditions>
+                                                <Condition Binding="{Binding RelativeSource={RelativeSource AncestorType=l:DesignBox}, Path=UseDesign, FallbackValue={x:Null}}" Value="true" />
+                                                <Condition Binding="{Binding LineThickness}" Value="0" />
+                                            </MultiDataTrigger.Conditions>
+                                            <Setter Property="GridLinePen">
+                                                <Setter.Value>
+                                                    <Pen
+                                                        Brush="DeepSkyBlue"
+                                                        DashStyle="{x:Static DashStyles.Dash}"
+                                                        Thickness="1" />
+                                                </Setter.Value>
+                                            </Setter>
+                                        </MultiDataTrigger>
+                                        <MultiDataTrigger>
+                                            <MultiDataTrigger.Conditions>
+                                                <Condition Binding="{Binding RelativeSource={RelativeSource AncestorType=l:DesignBox}, Path=UseDesign, FallbackValue={x:Null}}" Value="true" />
+                                                <Condition Binding="{Binding LineBrush}" Value="{x:Null}" />
+                                            </MultiDataTrigger.Conditions>
+                                            <Setter Property="GridLinePen">
+                                                <Setter.Value>
+                                                    <Pen
+                                                        Brush="DeepSkyBlue"
+                                                        DashStyle="{x:Static DashStyles.Dash}"
+                                                        Thickness="1" />
+                                                </Setter.Value>
+                                            </Setter>
+                                        </MultiDataTrigger>
+
+                                        <MultiDataTrigger>
+                                            <MultiDataTrigger.Conditions>
+                                                <Condition Binding="{Binding RelativeSource={RelativeSource AncestorType=l:DesignBox}, Path=UseDesign, FallbackValue={x:Null}}" Value="false" />
+                                                <Condition Binding="{Binding LineBrush}" Value="{x:Null}" />
+                                            </MultiDataTrigger.Conditions>
+                                            <Setter Property="GridLinePen">
+                                                <Setter.Value>
+                                                    <Pen Brush="{DynamicResource {x:Static BrushKeys.BorderBrush}}" Thickness="{Binding LineThickness}" />
+                                                </Setter.Value>
+                                            </Setter>
+                                        </MultiDataTrigger>
+
+                                        <MultiDataTrigger>
+                                            <MultiDataTrigger.Conditions>
+                                                <Condition Binding="{Binding RelativeSource={RelativeSource AncestorType=l:DesignBox}, Path=UseDesign, FallbackValue={x:Null}}" Value="{x:Null}" />
+                                                <Condition Binding="{Binding LineBrush}" Value="{x:Null}" />
+                                            </MultiDataTrigger.Conditions>
+                                            <Setter Property="GridLinePen">
+                                                <Setter.Value>
+                                                    <Pen Brush="{DynamicResource {x:Static BrushKeys.BorderBrush}}" Thickness="{Binding LineThickness}" />
+                                                </Setter.Value>
+                                            </Setter>
+                                        </MultiDataTrigger>
+
+                                        <MultiDataTrigger>
+                                            <MultiDataTrigger.Conditions>
+                                                <Condition Binding="{Binding RelativeSource={RelativeSource AncestorType=l:DesignBox}, Path=UseDesign, FallbackValue={x:Null}}" Value="false" />
+                                                <Condition Binding="{Binding LineThickness}" Value="0" />
+                                            </MultiDataTrigger.Conditions>
+                                            <Setter Property="GridLinePen" Value="{x:Null}" />
+                                        </MultiDataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </c:DefinitionGrid.Style>
+                        </c:DefinitionGrid>
                     </ItemsPanelTemplate>
                 </ItemsControl.ItemsPanel>
             </ItemsControl>
-        </local:DesignBorder>
+        </c:DesignBorder>
     </DataTemplate>
 
 </ResourceDictionary>

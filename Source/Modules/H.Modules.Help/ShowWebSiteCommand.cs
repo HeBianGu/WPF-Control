@@ -18,7 +18,7 @@ namespace H.Modules.Help;
 
 [Icon(FontIcons.Home)]
 [Display(Name = "官方网址", Description = "查看官方网址")]
-public class ShowWebSiteCommand : DisplayMarkupCommandBase
+public class ShowWebSiteCommand : ResxDisplayMarkupCommandBase
 {
     public override Task ExecuteAsync(object parameter)
     {

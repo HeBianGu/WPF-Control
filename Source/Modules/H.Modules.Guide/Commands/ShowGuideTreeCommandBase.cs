@@ -13,7 +13,7 @@ using H.Services.Message;
 
 namespace H.Modules.Guide.Commands;
 
-public abstract class ShowGuideTreeCommandBase : DisplayMarkupCommandBase
+public abstract class ShowGuideTreeCommandBase : ResxDisplayMarkupCommandBase
 {
     public override async Task ExecuteAsync(object parameter)
     {

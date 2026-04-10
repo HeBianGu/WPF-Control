@@ -27,7 +27,7 @@ public static class FlowableDiagramDataExtension
         }
         catch (Exception ex)
         {
-            IocLog.Instance?.Error(ex);
+            IocLog.Error(ex);
             data.Message = ex.Message;
             return false;
 

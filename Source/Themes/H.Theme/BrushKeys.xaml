@@ -261,68 +261,6 @@
                      po:Freeze="True"
                      Color="{DynamicResource {x:Static local:ColorKeys.MenuForeground}}" />
 
-    <!--  System  -->
-    <!--<SolidColorBrush x:Key="{ComponentResourceKey ResourceId=S.Brush.Dialog.Cover, TypeInTargetAssembly={x:Type local:BrushKeys}}" Opacity="0.5" SolidColorBrush="#000000" />-->
-
-    <!--  DropShadowEffect  -->
-    <!--<DropShadowEffect x:Key="{ComponentResourceKey ResourceId=S.DropShadowEffect.Window,
-                                                   TypeInTargetAssembly={x:Type local:EffectShadowKeys}}"
-                      po:Freeze="True"
-                      BlurRadius="20"
-                      Direction="270"
-                      Opacity="0.8"
-                      RenderingBias="Performance"
-                      ShadowDepth="0"
-                      SolidColorBrush="#000000" />
-
-    <SolidColorBrush x:Key="{ComponentResourceKey ResourceId=S.EffectShadow.SolidColorBrush.Default, TypeInTargetAssembly={x:Type local:BrushKeys}}">#AA000000</SolidColorBrush>
-
-    <DropShadowEffect x:Key="{ComponentResourceKey ResourceId=S.EffectShadow.1,
-                                                   TypeInTargetAssembly={x:Type local:BrushKeys}}"
-                      po:Freeze="True"
-                      BlurRadius="5"
-                      Direction="270"
-                      Opacity=".42"
-                      RenderingBias="Performance"
-                      ShadowDepth="1"
-                      SolidColorBrush="{DynamicResource {x:Static local:EffectShadowKeys.SolidColorBrush}}" />
-    <DropShadowEffect x:Key="{ComponentResourceKey ResourceId=S.EffectShadow.2,
-                                                   TypeInTargetAssembly={x:Type local:BrushKeys}}"
-                      po:Freeze="True"
-                      BlurRadius="8"
-                      Direction="270"
-                      Opacity=".42"
-                      RenderingBias="Performance"
-                      ShadowDepth="1.5"
-                      SolidColorBrush="{DynamicResource {x:Static local:EffectShadowKeys.SolidColorBrush}}" />
-    <DropShadowEffect x:Key="{ComponentResourceKey ResourceId=S.EffectShadow.3,
-                                                   TypeInTargetAssembly={x:Type local:BrushKeys}}"
-                      po:Freeze="True"
-                      BlurRadius="14"
-                      Direction="270"
-                      Opacity=".42"
-                      RenderingBias="Performance"
-                      ShadowDepth="4.5"
-                      SolidColorBrush="{DynamicResource {x:Static local:EffectShadowKeys.SolidColorBrush}}" />
-    <DropShadowEffect x:Key="{ComponentResourceKey ResourceId=S.EffectShadow.4,
-                                                   TypeInTargetAssembly={x:Type local:BrushKeys}}"
-                      po:Freeze="True"
-                      BlurRadius="25"
-                      Direction="270"
-                      Opacity=".42"
-                      RenderingBias="Performance"
-                      ShadowDepth="8"
-                      SolidColorBrush="{DynamicResource {x:Static local:EffectShadowKeys.SolidColorBrush}}" />
-    <DropShadowEffect x:Key="{ComponentResourceKey ResourceId=S.EffectShadow.5,
-                                                   TypeInTargetAssembly={x:Type local:BrushKeys}}"
-                      po:Freeze="True"
-                      BlurRadius="35"
-                      Direction="270"
-                      Opacity=".42"
-                      RenderingBias="Performance"
-                      ShadowDepth="13"
-                      SolidColorBrush="{DynamicResource {x:Static local:EffectShadowKeys.SolidColorBrush}}" />-->
-
     <DrawingGroup x:Key="S.DrawingGroup.Tile">
         <GeometryDrawing Brush="{DynamicResource {x:Static local:BrushKeys.Dark0}}">
             <GeometryDrawing.Geometry>

@@ -1,0 +1,158 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Type_SettingViewOptions" xml:space="preserve">
+    <value>Página de configuración</value>
+  </data>
+  <data name="Type_ShowSettingCommand" xml:space="preserve">
+    <value>Configuración</value>
+  </data>
+  <data name="Type_ShowSettingCommand_Description" xml:space="preserve">
+    <value>Mostrar la página de configuración del sistema</value>
+  </data>
+  <data name="Type_SettingViewOptions_GroupName" xml:space="preserve">
+    <value>Configuración de visualización</value>
+  </data>
+  <data name="Type_SettingSecurityViewOption" xml:space="preserve">
+    <value>Configuración del control de página</value>
+  </data>
+  <data name="Type_SettingSecurityViewOption_GroupName" xml:space="preserve">
+    <value>Configuración de seguridad</value>
+  </data>
+  <data name="Property_SettingViewOptions_Margin" xml:space="preserve">
+    <value>Márgenes de página</value>
+  </data>
+  <data name="Property_SettingViewOptions_Margin_Description" xml:space="preserve">
+    <value>Configurar márgenes de página</value>
+  </data>
+  <data name="Property_SettingViewOptions_TitleWidth" xml:space="preserve">
+    <value>Title Width</value>
+  </data>
+  <data name="Property_SettingViewOptions_TitleWidth_Description" xml:space="preserve">
+    <value>Establecer el ancho del título de la página</value>
+  </data>
+  <data name="Property_SettingViewOptions_NavigationiTitleWidth" xml:space="preserve">
+    <value>Ancho mínimo de navegación</value>
+  </data>
+  <data name="Property_SettingViewOptions_NavigationiTitleWidth_Description" xml:space="preserve">
+    <value>Establecer el ancho mínimo de navegación de la página</value>
+  </data>
+  <data name="Property_SettingViewOptions_Width" xml:space="preserve">
+    <value>Ancho de página</value>
+  </data>
+  <data name="Property_SettingViewOptions_Width_Description" xml:space="preserve">
+    <value>Configurar el ancho de la página</value>
+  </data>
+  <data name="Property_SettingViewOptions_MinWidth" xml:space="preserve">
+    <value>Ancho mínimo</value>
+  </data>
+  <data name="Property_SettingViewOptions_MinWidth_Description" xml:space="preserve">
+    <value>Establecer el ancho mínimo de la página</value>
+  </data>
+  <data name="Property_SettingViewOptions_Height" xml:space="preserve">
+    <value>Altura de página</value>
+  </data>
+  <data name="Property_SettingViewOptions_Height_Description" xml:space="preserve">
+    <value>Establecer la altura de la página</value>
+  </data>
+  <data name="Property_SettingViewOptions_MinHeight" xml:space="preserve">
+    <value>Altura mínima</value>
+  </data>
+  <data name="Property_SettingViewOptions_MinHeight_Description" xml:space="preserve">
+    <value>Establecer la altura mínima de la página</value>
+  </data>
+  <data name="Property_SettingViewOptions_UseSetDefault" xml:space="preserve">
+    <value>Habilitar restaurar valores predeterminados</value>
+  </data>
+  <data name="Property_SettingViewOptions_UseSetDefault_Description" xml:space="preserve">
+    <value>Set up the functionality to display the Restore Default button</value>
+  </data>
+  <data name="Property_SettingSecurityViewOption_UsePassword" xml:space="preserve">
+    <value>Habilitar contraseña</value>
+  </data>
+  <data name="Property_SettingSecurityViewOption_UsePassword_Description" xml:space="preserve">
+    <value>Configura si se habilita la contraseña; una vez habilitada, será necesario introducir la contraseña de administrador preestablecida para acceder a la página de configuración.</value>
+  </data>
+  <data name="Property_SettingSecurityViewOption_RememberPassword" xml:space="preserve">
+    <value>Recordar contraseña</value>
+  </data>
+  <data name="Property_SettingSecurityViewOption_RememberPassword_Description" xml:space="preserve">
+    <value>Recordar contraseña y abrir automáticamente la página de configuración la próxima vez
+</value>
+  </data>
+  <data name="Property_SettingSecurityViewOption_Password" xml:space="preserve">
+    <value>Establecer contraseña de administrador</value>
+  </data>
+  <data name="Property_SettingSecurityViewOption_Password_Description" xml:space="preserve">
+    <value>Determina si se habilita la contraseña; una vez activada, será necesario introducir la contraseña de administrador preestablecida para acceder a la página de configuración.</value>
+  </data>
+  <data name="Property_SettingSecurityViewOption_PasswordCount" xml:space="preserve">
+    <value>Verificaciones de contraseña</value>
+  </data>
+  <data name="Property_SettingSecurityViewOption_PasswordCount_Description" xml:space="preserve">
+    <value>La cantidad de intentos de contraseña incorrecta ha superado el número permitido de validaciones de contraseña y ya no se permite ingresar más.</value>
+  </data>
+  <data name="Type_SettingDefaultCommand" xml:space="preserve">
+    <value>Restablecer valores predeterminados</value>
+  </data>
+  <data name="Type_SettingDefaultCommand_Description" xml:space="preserve">
+    <value>Restaurar los datos predeterminados de la configuración del sistema</value>
+  </data>
+</root>

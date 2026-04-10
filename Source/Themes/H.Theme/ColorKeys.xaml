@@ -65,5 +65,5 @@
 
     <!--  Menu  -->
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Menu.Background, TypeInTargetAssembly={x:Type local:ColorKeys}}">#1e293b</Color>
-    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Menu.Foreground, TypeInTargetAssembly={x:Type local:ColorKeys}}">#f8fafc</Color>
+    <Color x:Key="{ComponentResourceKey ResourceId=S.Color.DropShadowEffect, TypeInTargetAssembly={x:Type local:ColorKeys}}">#000000</Color>
 </ResourceDictionary>

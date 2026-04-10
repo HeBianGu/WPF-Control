@@ -31,7 +31,7 @@ public class XmlWebSerializerService : IWebXmlSerializerService
             catch (Exception ex)
             {
                 message = ex.Message;
-                IocLog.Instance?.Error(ex);
+                IocLog.Error(ex);
                 return default;
             }
         }

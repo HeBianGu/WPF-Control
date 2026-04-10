@@ -11,8 +11,8 @@
                            Background="{DynamicResource {x:Static h:BrushKeys.MouseOver}}">
                     <Button Command="{Binding RefreshCommand}"
                             Content="加载文件" />
-                    <ToggleButton Content="{x:Static h:Geometrys.Down}"
-                                  Style="{DynamicResource {x:Static h:ToggleButtonKeys.Geometry}}">
+                    <FontIconToggleButton Background="Transparent"
+                                          Content="{x:Static FontIcons.ChevronDownMed}">
                         <b:Interaction.Behaviors>
                             <h:MouseOverContextMenuBehavior />
                         </b:Interaction.Behaviors>
@@ -27,7 +27,7 @@
                                 </ItemsControl.ItemTemplate>
                             </ContextMenu>
                         </Control.ContextMenu>
-                    </ToggleButton>
+                    </FontIconToggleButton>
                 </DockPanel>
 
                 <DockPanel Margin="1,0"
@@ -35,9 +35,10 @@
                            Background="{DynamicResource {x:Static h:BrushKeys.MouseOver}}">
                     <Button Command="{Binding RefreshCommand}"
                             Content="更多操作" />
-                    <ToggleButton Cattach.CornerRadius="{DynamicResource {x:Static LayoutKeys.CornerRadius}}"
-                                  Content="{x:Static h:Geometrys.Down}"
-                                  Style="{DynamicResource {x:Static h:ToggleButtonKeys.Geometry}}">
+                    <FontIconToggleButton Background="Transparent"
+                                          Cattach.CornerRadius="{DynamicResource {x:Static LayoutKeys.CornerRadius}}"
+                                          CheckedGlyph="{x:Static FontIcons.ChevronDownMed}"
+                                          UncheckedGlyph="{x:Static FontIcons.ChevronDownMed}">
                         <b:Interaction.Behaviors>
                             <h:MouseOverContextMenuBehavior />
                         </b:Interaction.Behaviors>
@@ -51,7 +52,7 @@
                                 </ItemsControl.ItemTemplate>
                             </ContextMenu>
                         </Control.ContextMenu>
-                    </ToggleButton>
+                    </FontIconToggleButton>
                 </DockPanel>
 
                 <h:PropertyFilterBox Margin="1,0"

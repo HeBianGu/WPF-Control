@@ -1,48 +1,50 @@
-﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
-                    xmlns:h="https://github.com/HeBianGu"
-                    xmlns:ld="clr-namespace:H.Controls.Diagram.Presenter.DiagramDatas"
-                    xmlns:ldb="clr-namespace:H.Controls.Diagram.Presenter.DiagramDatas.Base"
-                    xmlns:local="clr-namespace:H.Controls.Diagram.Presenter"
-                    xmlns:system="clr-namespace:System;assembly=System.Runtime">
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
+    xmlns:h="https://github.com/HeBianGu"
+    xmlns:ld="clr-namespace:H.Controls.Diagram.Presenter.DiagramDatas"
+    xmlns:ldb="clr-namespace:H.Controls.Diagram.Presenter.DiagramDatas.Base"
+    xmlns:local="clr-namespace:H.Controls.Diagram.Presenter"
+    xmlns:system="clr-namespace:System;assembly=System.Runtime">
     <DataTemplate DataType="{x:Type ldb:DiagramDataBase}">
-        <h:Diagram x:Name="diagram"
-                   Width="{Binding Width}"
-                   Height="{Binding Height}"
-                   Padding="0"
-                   HorizontalAlignment="Stretch"
-                   VerticalAlignment="Stretch"
-                   HorizontalContentAlignment="Stretch"
-                   VerticalContentAlignment="Stretch"
-                   AllowDrop="True"
-                   BorderBrush="{DynamicResource {x:Static h:BrushKeys.ForegroundAssist}}"
-                   BorderThickness="2"
-                   DataSource="{Binding DataSource}"
-                   Layout="{Binding Layout}"
-                   LinkDrawer="{Binding LinkDrawer}"
-                   Message="{Binding Message, Mode=OneWayToSource}"
-                   UseAnimation="False">
+        <h:Diagram
+            x:Name="diagram"
+            Width="{Binding Width}"
+            Height="{Binding Height}"
+            Padding="0"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Stretch"
+            HorizontalContentAlignment="Stretch"
+            VerticalContentAlignment="Stretch"
+            AllowDrop="True"
+            BorderBrush="{DynamicResource {x:Static h:BrushKeys.ForegroundAssist}}"
+            BorderThickness="2"
+            DataSource="{Binding DataSource}"
+            Layout="{Binding Layout}"
+            LinkDrawer="{Binding LinkDrawer}"
+            Message="{Binding Message, Mode=OneWayToSource}"
+            UseAnimation="False">
             <Control.Resources>
-                <BindingProxy x:Key="Proxy"
-                              Data="{Binding ElementName=diagram}" />
+                <BindingProxy x:Key="Proxy" Data="{Binding ElementName=diagram}" />
             </Control.Resources>
             <Diagram.ContextMenu>
                 <ContextMenu>
                     <ContextMenu.Template>
                         <ControlTemplate>
-                            <ItemsControl Background="{DynamicResource {x:Static BrushKeys.Background}}"
-                                          BorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrush}}"
-                                          BorderThickness="1">
+                            <ItemsControl
+                                Background="{DynamicResource {x:Static BrushKeys.Background}}"
+                                BorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrush}}"
+                                BorderThickness="1">
                                 <ItemsControl.Resources>
                                     <DataTemplate DataType="{x:Type CommandBinding}">
-                                        <MenuItem Command="{Binding Command}"
-                                                  CommandTarget="{Binding Source={StaticResource Proxy}, Path=Data}"
-                                                  Header="{Binding Command.Text}" />
+                                        <MenuItem
+                                            Command="{Binding Command}"
+                                            CommandTarget="{Binding Source={StaticResource Proxy}, Path=Data}"
+                                            Header="{Binding Command.Text}" />
                                     </DataTemplate>
                                     <DataTemplate DataType="{x:Type DisplayCommand}">
-                                        <MenuItem CommandParameter="{Binding Source={StaticResource Proxy}, Path=Data}"
-                                                  Style="{DynamicResource {x:Static MenuItemKeys.BindCommand}}" />
+                                        <MenuItem CommandParameter="{Binding Source={StaticResource Proxy}, Path=Data}" Style="{DynamicResource {x:Static MenuItemKeys.BindCommand}}" />
                                     </DataTemplate>
                                 </ItemsControl.Resources>
                                 <ItemsControl.ItemsSource>
@@ -63,34 +65,27 @@
                 </ContextMenu>
             </Diagram.ContextMenu>
             <h:Diagram.Background>
-                <SolidColorBrush Opacity="0.02"
-                                 Color="Gray" />
+                <SolidColorBrush Opacity="0.02" Color="Gray" />
             </h:Diagram.Background>
             <b:Interaction.Triggers>
                 <b:EventTrigger EventName="ItemsChanged">
-                    <b:InvokeCommandAction Command="{Binding ItemsChangedCommand}"
-                                           PassEventArgsToCommand="True" />
+                    <b:InvokeCommandAction Command="{Binding ItemsChangedCommand}" PassEventArgsToCommand="True" />
                 </b:EventTrigger>
                 <b:EventTrigger EventName="AddNoded">
-                    <b:InvokeCommandAction Command="{Binding AddNodedCommand}"
-                                           PassEventArgsToCommand="True" />
+                    <b:InvokeCommandAction Command="{Binding AddNodedCommand}" PassEventArgsToCommand="True" />
                 </b:EventTrigger>
                 <b:EventTrigger EventName="SelectedPartChanged">
-                    <b:InvokeCommandAction Command="{Binding SelectedPartChangedCommand}"
-                                           PassEventArgsToCommand="True" />
+                    <b:InvokeCommandAction Command="{Binding SelectedPartChangedCommand}" PassEventArgsToCommand="True" />
                 </b:EventTrigger>
                 <b:EventTrigger EventName="MouseDoubleClick">
-                    <b:InvokeCommandAction Command="{Binding MouseDoubleClickCommand}"
-                                           PassEventArgsToCommand="True" />
+                    <b:InvokeCommandAction Command="{Binding MouseDoubleClickCommand}" PassEventArgsToCommand="True" />
                 </b:EventTrigger>
                 <b:EventTrigger EventName="Loaded">
-                    <b:InvokeCommandAction Command="{Binding LoadedCommand}"
-                                           PassEventArgsToCommand="True" />
+                    <b:InvokeCommandAction Command="{Binding LoadedCommand}" PassEventArgsToCommand="True" />
                 </b:EventTrigger>
             </b:Interaction.Triggers>
             <b:Interaction.Behaviors>
-                <DiagramDropTypeNodeDataBehavior NodeType="{Binding NodeType}"
-                                                 UseAutoAddLinkOnEnd="True" />
+                <DiagramDropTypeNodeDataBehavior NodeType="{Binding NodeType}" UseAutoAddLinkOnEnd="True" />
             </b:Interaction.Behaviors>
         </h:Diagram>
     </DataTemplate>

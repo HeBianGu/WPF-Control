@@ -8,7 +8,7 @@
 
 namespace H.Extensions.Mvvm.Commands;
 
-public interface IDisplayCommand
+public interface IDisplayCommand : ICommand
 {
     string Name { get; set; }
     string Icon { get; set; }

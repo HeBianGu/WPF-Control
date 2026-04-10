@@ -11,25 +11,25 @@ using H.Windows.Dialog;
 
 namespace H.Modules.Messages.Dialog
 {
-    public class WindowDialogMessageService : IDialogMessageService, IWindowDialogMessageService
+    public class WindowDialogMessageService<TDialogWindow> : IDialogMessageService, IWindowDialogMessageService where TDialogWindow : DialogWindow, new()
     {
         public async Task<bool?> Show(object presenter, Action<IDialog> builder = null, Func<Task<bool>> canSumit = null)
         {
             var data = presenter is string str ? new StringPresenter() { Value = str } : presenter;
-            bool? r = DialogWindow.ShowPresenter(data, builder, canSumit);
+            bool? r = DialogWindow.ShowPresenter<TDialogWindow>(data, builder, canSumit);
             return await Task.FromResult(r);
         }
 
         public async Task<T> ShowAction<P, T>(P presenter, Action<IDialog> builder = null, Func<IDialog, P, T> action = null)
         {
-            T r = DialogWindow.ShowAction(presenter, action, builder);
+            T r = DialogWindow.ShowAction<P, T, TDialogWindow>(presenter, action, builder);
             return await Task.FromResult(r);
         }
 
         public async Task<T> ShowPercent<T>(Func<IDialog, IPercentPresenter, T> action, Action<IDialog> build = null)
         {
             PercentPresenter p = new PercentPresenter();
-            var r = DialogWindow.ShowAction(p, action, x =>
+            var r = DialogWindow.ShowAction<IPercentPresenter, T, TDialogWindow>(p, action, x =>
             {
                 x.DialogButton = DialogButton.Cancel;
                 build?.Invoke(x);
@@ -40,7 +40,7 @@ namespace H.Modules.Messages.Dialog
         public async Task<T> ShowString<T>(Func<IDialog, IStringPresenter, T> action, Action<IDialog> build = null)
         {
             StringPresenter p = new StringPresenter();
-            T r = DialogWindow.ShowAction(p, action, x =>
+            T r = DialogWindow.ShowAction<IStringPresenter, T, TDialogWindow>(p, action, x =>
             {
                 x.HorizontalContentAlignment = HorizontalAlignment.Center;
                 x.DialogButton = DialogButton.Cancel;
@@ -52,7 +52,7 @@ namespace H.Modules.Messages.Dialog
         public async Task<T> ShowWait<T>(Func<IDialog, T> action, Action<IDialog> build = null)
         {
             WaitPresenter p = new WaitPresenter();
-            T r = DialogWindow.ShowAction(p, (d, p) => action.Invoke(d), x =>
+            T r = DialogWindow.ShowAction<WaitPresenter, T, TDialogWindow>(p, (d, p) => action.Invoke(d), x =>
             {
                 x.DialogButton = DialogButton.Cancel;
                 build?.Invoke(x);
@@ -80,5 +80,15 @@ namespace H.Modules.Messages.Dialog
                 return true;
             }, build);
         }
+    }
+
+    public class WindowDialogMessageService : WindowDialogMessageService<DialogWindow>
+    {
+
+    }
+
+    public class WindowTransparencyDialogMessageService : WindowDialogMessageService<TransparencyDialogWindow>
+    {
+
     }
 }

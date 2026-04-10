@@ -1,0 +1,184 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Type_SupportOptions" xml:space="preserve">
+    <value>Asistență tehnică</value>
+  </data>
+  <data name="Type_ReleaseVersionsOptions" xml:space="preserve">
+    <value>Note de lansare</value>
+  </data>
+  <data name="Type_ReleaseVersionsOptions_GroupName" xml:space="preserve">
+    <value>Setări sistem</value>
+  </data>
+  <data name="Type_ReleaseVersionsOptions_Description" xml:space="preserve">
+    <value>Consultați notele de lansare ale software-ului</value>
+  </data>
+  <data name="Type_SupportOptions_GroupName" xml:space="preserve">
+    <value>Setări sistem</value>
+  </data>
+  <data name="Type_SupportOptions_Description" xml:space="preserve">
+    <value>Vizualizați asistența tehnică a software-ului</value>
+  </data>
+  <data name="Type_WebsiteOptions" xml:space="preserve">
+    <value>Site oficial</value>
+  </data>
+  <data name="Type_WebsiteOptions_GroupName" xml:space="preserve">
+    <value>Setări sistem</value>
+  </data>
+  <data name="Type_WebsiteOptions_Description" xml:space="preserve">
+    <value>Vizualizați site-ul oficial</value>
+  </data>
+  <data name="Type_ContactOptions" xml:space="preserve">
+    <value>Date de contact</value>
+  </data>
+  <data name="Type_ContactOptions_GroupName" xml:space="preserve">
+    <value>Setări sistem</value>
+  </data>
+  <data name="Type_ContactOptions_Description" xml:space="preserve">
+    <value>Puteți contacta dezvoltatorul în acest mod.</value>
+  </data>
+  <data name="Property_ContactOptions_GitHub" xml:space="preserve">
+    <value>Adresă GitHub</value>
+  </data>
+  <data name="Property_ContactOptions_GitHubIssue" xml:space="preserve">
+    <value>Pune o întrebare</value>
+  </data>
+  <data name="Property_ContactOptions_Email" xml:space="preserve">
+    <value>Trimite e-mail</value>
+  </data>
+  <data name="Property_ContactOptions_QQ" xml:space="preserve">
+    <value>Adăugați QQ</value>
+  </data>
+  <data name="Property_ContactOptions_Podcast" xml:space="preserve">
+    <value>Adresă podcast</value>
+  </data>
+  <data name="Property_ContactOptions_Blog" xml:space="preserve">
+    <value>Adres blogului</value>
+  </data>
+  <data name="Property_SupportOptions_Uri" xml:space="preserve">
+    <value>Adresă</value>
+  </data>
+  <data name="Property_WebsiteOptions_Uri" xml:space="preserve">
+    <value>Adresă</value>
+  </data>
+  <data name="Property_ReleaseVersionsOptions_Uri" xml:space="preserve">
+    <value>Adres</value>
+  </data>
+  <data name="Type_ShowReleaseVersionsCommand" xml:space="preserve">
+    <value>Note de lansare</value>
+  </data>
+  <data name="Type_ShowReleaseVersionsCommand_Description" xml:space="preserve">
+    <value>Vizualizați notele de lansare ale software-ului</value>
+  </data>
+  <data name="Type_ShowSupportCommand" xml:space="preserve">
+    <value>Suport tehnic</value>
+  </data>
+  <data name="Type_ShowSupportCommand_Description" xml:space="preserve">
+    <value>Consultați documentația de asistență tehnică</value>
+  </data>
+  <data name="Type_ShowWebSiteCommand" xml:space="preserve">
+    <value>Site oficial</value>
+  </data>
+  <data name="Type_ShowWebSiteCommand_Description" xml:space="preserve">
+    <value>Vezi site-ul oficial</value>
+  </data>
+  <data name="Type_ShowContactCommand" xml:space="preserve">
+    <value>Date de contact</value>
+  </data>
+  <data name="Type_ShowContactCommand_Description" xml:space="preserve">
+    <value>Contactați dezvoltatorul în acest mod</value>
+  </data>
+  <data name="Type_ShowGithubContactCommand" xml:space="preserve">
+    <value>Accesați Github</value>
+  </data>
+  <data name="Type_ShowGithubContactCommand_Description" xml:space="preserve">
+    <value>Contactați dezvoltatorul în acest mod</value>
+  </data>
+  <data name="Type_ShowGitHubIssueContactCommand" xml:space="preserve">
+    <value>Pune o întrebare</value>
+  </data>
+  <data name="Type_ShowGitHubIssueContactCommand_Description" xml:space="preserve">
+    <value>Raportați probleme către proiectul open-source în acest mod</value>
+  </data>
+  <data name="Type_ShowQQContactCommand" xml:space="preserve">
+    <value>Adăugați QQ</value>
+  </data>
+  <data name="Type_ShowQQContactCommand_Description" xml:space="preserve">
+    <value>Contactați dezvoltatorul în acest mod</value>
+  </data>
+  <data name="Type_ShowSendMailContactCommand" xml:space="preserve">
+    <value>Trimite e-mail</value>
+  </data>
+  <data name="Type_ShowSendMailContactCommand_Description" xml:space="preserve">
+    <value>Contactați dezvoltatorul prin această metodă</value>
+  </data>
+  <data name="Type_ShowBlogContactCommand" xml:space="preserve">
+    <value>Accesați blogul</value>
+  </data>
+  <data name="Type_ShowBlogContactCommand_Description" xml:space="preserve">
+    <value>Contactați dezvoltatorul în acest mod</value>
+  </data>
+  <data name="Type_ShowPodcastContactCommand" xml:space="preserve">
+    <value>Accesează podcastul</value>
+  </data>
+  <data name="Type_ShowPodcastContactCommand_Description" xml:space="preserve">
+    <value>Contactați dezvoltatorul în acest mod</value>
+  </data>
+</root>

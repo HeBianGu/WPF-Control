@@ -10,8 +10,8 @@ using H.Common.Interfaces;
 
 namespace H.Presenters.Design.Base;
 
-public interface ICloneableDesignPresenter : IDesignPresenter
+public interface ICloneableDesignPresenter : IDesignPresenter,ICloneable<ICloneableDesignPresenter>, ICloneable
 {
-    ICloneableDesignPresenter Clone();
+   
 }
 

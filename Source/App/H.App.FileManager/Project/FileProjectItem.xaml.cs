@@ -127,22 +127,28 @@ namespace H.App.FileManager
             }
         }
 
-        public override bool Delete(out string message)
+        //public override bool Delete(out string message)
+        //{
+        //    //  Do ：这块需要释放数据库
+        //    //var r = this.Close(out message);
+        //    //if (r == false)
+        //    //    return false;
+        //    //if (System.IO.File.Exists(this.Path))
+        //    //    File.Delete(this.Path);
+        //    //if (!string.IsNullOrEmpty(this.Path))
+        //    //{
+        //    //    var find = this.GetFilePath();
+        //    //    if (System.IO.File.Exists(find))
+        //    //        File.Delete(find);
+        //    //}
+        //    message = null;
+        //    return true;
+        //}
+
+        public override Task<(bool success, string message)> DeleteAsync()
         {
-            //  Do ：这块需要释放数据库
-            //var r = this.Close(out message);
-            //if (r == false)
-            //    return false;
-            //if (System.IO.File.Exists(this.Path))
-            //    File.Delete(this.Path);
-            //if (!string.IsNullOrEmpty(this.Path))
-            //{
-            //    var find = this.GetFilePath();
-            //    if (System.IO.File.Exists(find))
-            //        File.Delete(find);
-            //}
-            message = null;
-            return true;
+            return Task.FromResult((true, string.Empty));
+            //return base.DeleteAsync();
         }
     }
 }

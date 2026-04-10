@@ -3,11 +3,13 @@
     <ProjectReference Include="..\..\Controls\H.Controls.Adorner\H.Controls.Adorner.csproj" />
     <ProjectReference Include="..\..\Extensions\H.Extensions.Behvaiors\H.Extensions.Behvaiors.csproj" />
     <ProjectReference Include="..\..\Extensions\H.Extensions.Common\H.Extensions.Common.csproj" />
+    <ProjectReference Include="..\..\Extensions\H.Extensions.FontIcon\H.Extensions.FontIcon.csproj" />
     <ProjectReference Include="..\..\Extensions\H.Extensions.Geometry\H.Extensions.Geometry.csproj" />
     <ProjectReference Include="..\..\Extensions\H.Extensions.TypeConverter\H.Extensions.TypeConverter.csproj" />
     <ProjectReference Include="..\..\Base\H.ValueConverter\H.ValueConverter.csproj" />
     <ProjectReference Include="..\..\Services\H.Services.Common\H.Services.Common.csproj" />
     <ProjectReference Include="..\..\Services\H.Services.Identity\H.Services.Identity.csproj" />
+    <ProjectReference Include="..\..\Services\H.Services.Message\H.Services.Message.csproj" />
     <ProjectReference Include="..\..\Styles\H.Style\H.Style.csproj" />
   </ItemGroup>
 </Project>

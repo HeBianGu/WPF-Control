@@ -16,8 +16,11 @@ global using System.ComponentModel;
 global using System.ComponentModel.DataAnnotations;
 global using System.Diagnostics;
 global using System.Windows.Threading;
+using H.Common.Attributes;
 using H.Extensions.Common;
+using H.Extensions.FontIcon;
 using H.Extensions.ObservableSource;
+using H.Globalization.Properties;
 using H.Services.Common;
 
 namespace H.Extensions.DataBase.Repository
@@ -117,52 +120,60 @@ namespace H.Extensions.DataBase.Repository
 
         #region - 命令 -
 
-        [Display(Name = "新增", GroupName = "操作")]
+        [Icon(FontIcons.Add)]
+        [Display(Name = "新增", GroupName = "操作,菜单栏")]
         public IDisplayCommand AddCommand => new DisplayCommand(async l => await Add(l));
 
-        [Display(Name = "编辑", GroupName = "操作")]
+        [Icon(FontIcons.Edit)]
+        [Display(Name = "编辑", GroupName = "操作,菜单栏")]
         public IDisplayCommand EditCommand => new DisplayCommand(async l => await Edit(l), l => this.GetEntity(l) != null);
 
-        [Display(Name = "编辑", GroupName = "操作")]
-        [Browsable(false)]
-        public IDisplayCommand EditTransactionCommand => new DisplayCommand(x =>
-        {
-            //if (e is TEntity project)
-            //{
-            //    bool r = await s.BeginEditAsync(() =>
-            //    {
-            //        if (project.ModelState(out List<string> message) == false)
-            //        {
-            //            IocMessage.Snack?.ShowInfo(message?.FirstOrDefault());
-            //            return false;
-            //        }
-            //        return true;
-            //    });
-            //    if (r)
-            //    {
-            //        if (this.Repository != null)
-            //            this.Repository.Save();
-            //    }
-            //    else
-            //    {
-            //        //  Do ：rollback
-            //    }
-            //}
-        });
+        //[Icon(FontIcons.Edit)]
+        //[Display(Name = "编辑", GroupName = "操作,菜单栏")]
+        //[Browsable(false)]
+        //public IDisplayCommand EditTransactionCommand => new DisplayCommand(x =>
+        //{
+        //    //if (e is TEntity project)
+        //    //{
+        //    //    bool r = await s.BeginEditAsync(() =>
+        //    //    {
+        //    //        if (project.ModelState(out List<string> message) == false)
+        //    //        {
+        //    //            IocMessage.Snack?.ShowInfo(message?.FirstOrDefault());
+        //    //            return false;
+        //    //        }
+        //    //        return true;
+        //    //    });
+        //    //    if (r)
+        //    //    {
+        //    //        if (this.Repository != null)
+        //    //            this.Repository.Save();
+        //    //    }
+        //    //    else
+        //    //    {
+        //    //        //  Do ：rollback
+        //    //    }
+        //    //}
+        //});
 
-        [Display(Name = "删除", GroupName = "操作")]
+        [Icon(FontIcons.Delete)]
+        [Display(Name = "删除", GroupName = "操作,菜单栏")]
         public IDisplayCommand DeleteCommand => new DisplayCommand(async l => await Delete(l), l => this.GetEntity(l) != null);
 
-        [Display(Name = "查看", GroupName = "操作")]
+        [Icon(FontIcons.View)]
+        [Display(Name = "查看", GroupName = "操作,菜单栏")]
         public IDisplayCommand ViewCommand => new DisplayCommand(async l => await View(l), l => this.GetEntity(l) != null);
 
-        [Display(Name = "清空", GroupName = "操作")]
+        [Icon(FontIcons.Clear)]
+        [Display(Name = "清空", GroupName = "操作,菜单栏")]
         public IDisplayCommand ClearCommand => new DisplayCommand(async l => await Clear(l), l => this.Collection != null && this.Collection.Count > 0);
 
-        [Display(Name = "保存", GroupName = "操作")]
+        [Icon(FontIcons.Save)]
+        [Display(Name = "保存", GroupName = "操作,菜单栏")]
         public IDisplayCommand SaveCommand => new DisplayCommand(async l => await this.Save());
 
-        [Display(Name = "导出", GroupName = "操作")]
+        [Icon(FontIcons.Export)]
+        [Display(Name = "导出", GroupName = "操作,菜单栏")]
         public IDisplayCommand ExportCommand => new DisplayCommand(async l =>
         {
             SaveFileDialog saveFileDialog = new SaveFileDialog();
@@ -179,7 +190,21 @@ namespace H.Extensions.DataBase.Repository
 
         }, l => this.Collection != null && this.Collection.Count > 0);
 
-        [Display(Name = "下一个", GroupName = "操作")]
+
+        [Icon(FontIcons.Previous)]
+        [Display(Name = "上一个", GroupName = "操作,菜单栏,工具栏")]
+        public IDisplayCommand PreviousCommand => new DisplayCommand(x =>
+        {
+            this.Previous();
+        }, x => this.Collection.Count > 0);
+
+        public virtual void Previous()
+        {
+            this.Collection.Previous();
+        }
+
+        [Icon(FontIcons.Next)]
+        [Display(Name = "下一个", GroupName = "操作,菜单栏,工具栏")]
         public IDisplayCommand NextCommand => new DisplayCommand(x =>
         {
             this.Next();
@@ -191,16 +216,6 @@ namespace H.Extensions.DataBase.Repository
             this.Collection.Next();
         }
 
-        [Display(Name = "上一个", GroupName = "操作")]
-        public IDisplayCommand PreviousCommand => new DisplayCommand(x =>
-        {
-            this.Previous();
-        }, x => this.Collection.Count > 0);
-
-        public virtual void Previous()
-        {
-            this.Collection.Previous();
-        }
         //public RelayCommand ImportCommand => new RelayCommand(async l =>
         //{
         //    OpenFileDialog openFileDialog = new OpenFileDialog();
@@ -215,7 +230,9 @@ namespace H.Extensions.DataBase.Repository
 
         //    await this.Import(openFileDialog.FileName);
         //}); 
-        [Display(Name = "全选", GroupName = "操作")]
+
+        [Icon(FontIcons.CheckboxComposite)]
+        [Display(Name = "全选", GroupName = "操作,菜单栏")]
         public IDisplayCommand CheckedAllCommand => new DisplayCommand(l =>
         {
             if (l is Boolean b)
@@ -230,14 +247,16 @@ namespace H.Extensions.DataBase.Repository
             }
         }, l => this.Collection != null && this.Collection.Count > 0);
 
-        [Display(Name = "取消选则", GroupName = "操作")]
+        [Icon(FontIcons.Checkbox)]
+        [Display(Name = "取消选则", GroupName = "操作,菜单栏")]
         public IDisplayCommand CheckedNoneCommand => new DisplayCommand(l =>
         {
             this.Collection.Foreach(K => K.IsSelected = false);
 
         }, l => this.Collection != null && this.Collection.Count > 0);
 
-        [Display(Name = "全选当前页", GroupName = "操作")]
+        [Icon(FontIcons.CheckboxComposite)]
+        [Display(Name = "全选当前页", GroupName = "操作,菜单栏")]
         public IDisplayCommand CheckedAllCurrentPageCommand => new DisplayCommand(l =>
         {
             if (l is Boolean b)
@@ -253,7 +272,8 @@ namespace H.Extensions.DataBase.Repository
             }
         }, l => this.Collection != null && this.Collection.Count > 0);
 
-        [Display(Name = "全选当前过滤器", GroupName = "操作")]
+        [Icon(FontIcons.CheckboxComposite)]
+        [Display(Name = "全选当前过滤器", GroupName = "操作,菜单栏")]
         public IDisplayCommand CheckedAllFilterSourceCommand => new DisplayCommand(l =>
         {
             if (l is Boolean b)
@@ -274,7 +294,8 @@ namespace H.Extensions.DataBase.Repository
             }
         }, l => this.Collection != null && this.Collection.Count > 0);
 
-        [Display(Name = "删除选中", GroupName = "操作")]
+        [Icon(FontIcons.Delete)]
+        [Display(Name = "删除选中", GroupName = "操作,菜单栏")]
         public IDisplayCommand DeleteCheckedCommand => new DisplayCommand(async l => await DeleteAllChecked(l), l => this.Collection.Any(k => k.IsSelected));
 
         //public RelayCommand PrintCommand => new RelayCommand(async (s, e) =>
@@ -288,7 +309,8 @@ namespace H.Extensions.DataBase.Repository
         //    return await MessageProxy.Printer.PrintTable(finds);
         //}
 
-        [Display(Name = "表格设置", GroupName = "操作")]
+        [Icon(FontIcons.GridView)]
+        [Display(Name = "表格设置", GroupName = "操作,菜单栏")]
         public IDisplayCommand GridSetCommand => new DisplayCommand(GridSet);
 
         protected void GridSet(object obj)
@@ -355,10 +377,10 @@ namespace H.Extensions.DataBase.Repository
         public virtual async Task Add(object obj)
         {
             TEntity m = new TEntity();
-            bool? dialog = await IocMessage.Form.ShowEdit(this.GetAddModel(m), x => x.Title = "新增");
+            bool? dialog = await IocMessage.Form.ShowEdit(this.GetAddModel(m), x => x.Title = Resources.Common_Add);
             if (dialog != true)
             {
-                IocMessage.ShowSnackInfo("取消操作");
+                IocMessage.ShowSnackInfo(Resources.Common_OperationCancel);
                 return;
             }
             await this.Add(m);
@@ -388,7 +410,7 @@ namespace H.Extensions.DataBase.Repository
             bool? r = await IocMessage.Form.ShowEdit(this.GetEditModel(entity));
             if (r != true)
             {
-                IocMessage.ShowSnackInfo("取消操作");
+                IocMessage.ShowSnackInfo(Resources.Common_OperationCancel);
                 return;
             }
 
@@ -397,11 +419,11 @@ namespace H.Extensions.DataBase.Repository
             if (rs >= 0)
             {
                 if (this.UseMessage)
-                    IocMessage.ShowSnackInfo("保存成功");
+                    IocMessage.ShowSnackInfo(H.Globalization.Properties.Resources.Common_SaveSucceeded);
             }
             else
             {
-                IocMessage.ShowSnackInfo("保存失败，数据库保存错误");
+                IocMessage.ShowSnackInfo(H.Globalization.Properties.Resources.Common_SaveFailed);
             }
             if (this.UseOperationLog)
                 Ioc<IOperationService>.Instance?.Log<TEntity>($"编辑", entity.ID, OperationType.Update);
@@ -415,9 +437,8 @@ namespace H.Extensions.DataBase.Repository
 
             if (this.UseMessage)
             {
-                bool? result = await IocMessage.Dialog.Show("确定删除数据？", x =>
+                bool? result = await IocMessage.Dialog.Show(Resources.Dialog_Message_ConfirmDelete, x =>
                 {
-                    x.Title = "提示";
                     x.DialogButton = DialogButton.SumitAndCancel;
                 });
                 if (result != true)
@@ -429,17 +450,17 @@ namespace H.Extensions.DataBase.Repository
             if (r > 0)
             {
                 if (this.UseMessage)
-                    IocMessage.ShowSnackInfo("删除成功");
+                    IocMessage.ShowSnackInfo(H.Globalization.Properties.Resources.Common_OperationSucceeded);
                 TViewModel m = this.Collection.FirstOrDefault(x => x.Model == entity);
                 this.Collection.Remove(m);
                 this.Collection.SelectedItem = this.Collection.FirstOrDefault(x => true);
             }
             else
             {
-                IocMessage.ShowSnackInfo("删除失败,数据库保存错误");
+                IocMessage.ShowSnackInfo(H.Globalization.Properties.Resources.Common_OperationFailed);
             }
             if (this.UseOperationLog)
-                Ioc<IOperationService>.Instance?.Log<TEntity>($"新增", entity.ID, OperationType.Delete);
+                Ioc<IOperationService>.Instance?.Log<TEntity>($"删除", entity.ID, OperationType.Delete);
             this.OnCollectionChanged(obj);
         }
 
@@ -450,9 +471,8 @@ namespace H.Extensions.DataBase.Repository
 
         public virtual async Task Clear(object obj = null)
         {
-            bool? result = await IocMessage.Dialog.Show("确定删除数据？", x =>
+            bool? result = await IocMessage.Dialog.Show(Resources.Dialog_Message_ConfirmDelete, x =>
             {
-                x.Title = "提示";
                 x.DialogButton = DialogButton.SumitAndCancel;
             });
 
@@ -463,12 +483,12 @@ namespace H.Extensions.DataBase.Repository
             if (r > 0)
             {
                 if (this.UseMessage)
-                    IocMessage.ShowSnackInfo("清空成功");
+                    IocMessage.ShowSnackInfo(Resources.Common_OperationSucceeded);
                 this.Collection.Clear();
             }
             else
             {
-                IocMessage.ShowSnackInfo("清空失败,数据库保存错误");
+                IocMessage.ShowSnackInfo(Resources.Common_OperationFailed);
             }
             if (this.UseOperationLog)
                 Ioc<IOperationService>.Instance?.Log<TEntity>($"清空", null, OperationType.Delete);
@@ -492,11 +512,11 @@ namespace H.Extensions.DataBase.Repository
             if (r >= 0)
             {
                 if (this.UseMessage)
-                    IocMessage.ShowSnackInfo("保存成功");
+                    IocMessage.ShowSnackInfo(Resources.Common_SaveSucceeded);
             }
             else
             {
-                IocMessage.ShowSnackInfo("保存失败，数据库保存错误");
+                IocMessage.ShowSnackInfo(Resources.Common_SaveFailed);
             }
             return r;
         }
@@ -508,9 +528,8 @@ namespace H.Extensions.DataBase.Repository
 
         protected virtual async Task DeleteAllChecked(object obj)
         {
-            bool? result = await IocMessage.Dialog.Show("确定删除数据？", x =>
+            bool? result = await IocMessage.Dialog.Show(Resources.Dialog_Message_ConfirmDelete, x =>
             {
-                x.Title = "提示";
                 x.DialogButton = DialogButton.SumitAndCancel;
             });
             if (result != true)
@@ -525,12 +544,13 @@ namespace H.Extensions.DataBase.Repository
             int r = this.Repository == null ? 1 : await this.Repository.DeleteAsync(x => entities.Contains(x));
             if (r > 0)
             {
-                IocMessage.Snack?.ShowInfo($"删除成功,共计{entities.Count()}条");
+                //IocMessage.Snack?.ShowInfo($"删除成功,共计{entities.Count()}条");
+                IocMessage.ShowSnackInfo(Resources.Common_OperationSucceeded);
                 this.Collection.RemoveAll(x => entities.Contains(x.Model));
             }
             else
             {
-                IocMessage.ShowSnackInfo("删除失败,数据库保存错误");
+                IocMessage.ShowSnackInfo(Resources.Common_OperationFailed);
             }
             if (this.UseOperationLog)
                 foreach (TEntity item in entities)

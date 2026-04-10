@@ -18,10 +18,10 @@
                     BorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrush}}"
                     BorderThickness="1"
                     CornerRadius="{DynamicResource {x:Static LayoutKeys.CornerRadius}}" />
-            <Border Grid.Column="0"
+            <!--<Border Grid.Column="0"
                     Margin="1"
                     Background="{DynamicResource {x:Static BrushKeys.Background}}"
-                    CornerRadius="2,0,0,2" />
+                    CornerRadius="2,0,0,2" />-->
             <Path x:Name="Arrow"
                   Grid.Column="1"
                   HorizontalAlignment="Center"

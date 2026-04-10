@@ -55,12 +55,12 @@ public class SettingDataService : LazyInstance<SettingDataService>, ISettingData
             {
                 var r = item.Load(out message);
                 if (!string.IsNullOrEmpty(message))
-                    IocLog.Instance?.Error(message);
+                    IocLog.Error(message);
             }
             catch (Exception ex)
             {
                 message = ex.Message;
-                IocLog.Instance?.Error(ex);
+                IocLog.Error(ex);
             }
         }
 
@@ -90,7 +90,7 @@ public class SettingDataService : LazyInstance<SettingDataService>, ISettingData
             }
             catch (Exception ex)
             {
-                IocLog.Instance?.Error(ex);
+                IocLog.Error(ex);
                 sb.AppendLine(ex.Message);
             }
         }

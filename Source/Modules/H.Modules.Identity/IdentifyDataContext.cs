@@ -8,11 +8,11 @@
 
 namespace H.Modules.Identity
 {
-    public class IdentifyDataContext : DbContext
+    public class IdentifyDataContext<TContext> : DbContext
+        where TContext : DbContext
     {
-        public IdentifyDataContext(DbContextOptions<IdentifyDataContext> options) : base(options)
+        public IdentifyDataContext(DbContextOptions<TContext> options) : base(options)
         {
-
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -24,7 +24,13 @@ namespace H.Modules.Identity
         public DbSet<hi_dd_user> hi_dd_users { get; set; }
         public DbSet<hi_dd_role> hi_dd_roles { get; set; }
         public DbSet<hi_dd_author> hi_dd_authors { get; set; }
+    }
 
+    public class IdentifyDataContext : IdentifyDataContext<IdentifyDataContext>
+    {
+        public IdentifyDataContext(DbContextOptions<IdentifyDataContext> options) : base(options)
+        {
+        }
     }
 }
 

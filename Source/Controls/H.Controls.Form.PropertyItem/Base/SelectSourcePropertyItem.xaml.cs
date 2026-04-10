@@ -6,7 +6,6 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
-global using H.Controls.Form.PropertyItem.Attribute.SourcePropertyItem;
 global using H.Controls.Form.PropertyItems.Base;
 global using H.Extensions.Common;
 global using System.Collections.Generic;
@@ -17,6 +16,29 @@ using H.Controls.Form.PropertyItem.Attribute;
 
 namespace H.Controls.Form.PropertyItem.Base
 {
+    public class SelectSourceItem<T>
+    {
+        public SelectSourceItem(T key, string value)
+        {
+            this.Key = key;
+            this.Value = value;
+        }
+        public T Key { get; set; }
+        public string Value { get; set; }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(this.Key);
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (obj is SelectSourceItem<T> item)
+                return this.Key.Equals(item.Key);
+            return false;
+        }
+    }
+
     public abstract class SelectSourcePropertyItem<T> : ObjectPropertyItem<T>, ISelectSourcePropertyItem
     {
         public SelectSourcePropertyItem(PropertyInfo property, object obj) : base(property, obj)
@@ -28,21 +50,17 @@ namespace H.Controls.Form.PropertyItem.Base
 
             this.DisplayMemberPath = property.GetCustomAttribute<DisplayMemberPathAttribute>()?.Path;
             this.SelectedValuePath = property.GetCustomAttribute<SelectedValuePathAttribute>()?.Path;
+
+            if (this.ReadOnly)
+                this.IsHitTestVisible = false;
         }
         protected virtual IEnumerable<T> CreateSource()
         {
-            SourcePropertyItemBaseAttribute attr = this.PropertyInfo.GetCustomAttribute<SourcePropertyItemBaseAttribute>();
-            if (attr == null)
-            {
-                Trace.Assert(false, "没有定义数据源");
-                yield break;
-            }
-            IEnumerable result = attr.GetSource(this.PropertyInfo, this.Obj);
-            foreach (object item in result)
-            {
-                if (item is T t)
-                    yield return t;
-            }
+            var source = this.PropertyInfo.GetCustomAttribute<GetSourceAttribute>();
+            if (source == null)
+                return null;
+            IEnumerable items = source.GetSource(this.PropertyInfo, this.Obj);
+            return items.OfType<T>();
         }
 
         private ObservableCollection<T> _collection = new ObservableCollection<T>();
@@ -55,8 +73,6 @@ namespace H.Controls.Form.PropertyItem.Base
                 RaisePropertyChanged();
             }
         }
-
-
 
         private string _selectedValuePath;
         public string SelectedValuePath

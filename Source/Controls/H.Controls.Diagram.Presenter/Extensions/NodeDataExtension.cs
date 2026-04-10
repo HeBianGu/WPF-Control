@@ -41,6 +41,20 @@ public static class NodeDataExtension
         }
     }
 
+    public static IEnumerable<INodeData> GetAllToNodeDatas(this INodeData node, IDiagramData diagramData)
+    {
+        var froms = node.GetToNodeDatas(diagramData);
+        foreach (var from in froms)
+        {
+            yield return from;
+            var finds = from.GetAllToNodeDatas(diagramData);
+            foreach (var find in finds)
+            {
+                yield return find;
+            }
+        }
+    }
+
     public static IEnumerable<INodeData> GetSelectedFromNodeDatas(this INodeData node, IDiagramData diagramData)
     {
         IEnumerable<INodeData> froms = null;

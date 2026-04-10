@@ -14,18 +14,13 @@ public interface IAppPathServce
     string AppPath { get; }
     string Cache { get; }
     string Company { get; set; }
-    string Component { get; }
     string Config { get; }
-    string ConfigExtention { get; set; }
     string Data { get; }
     string Default { get; }
     string Document { get; set; }
     string License { get; }
     string Log { get; }
-    string Module { get; }
     string Project { get; }
-    string Assets { get; }
-    string DefaultProjects { get; }
     string RegistryPath { get; }
     string Setting { get; }
     string Template { get; }

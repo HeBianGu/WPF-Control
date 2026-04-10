@@ -10,7 +10,7 @@ namespace H.Themes.Backgrounds;
 
 public class SolidColorBrushResource : IBackgroundResource
 {
-    public string Name => "纯色（推荐）";
+    public string Name => Properties.Resources.SolidColorBrushResource;
     public ResourceDictionary Resource => new ResourceDictionary()
     {
         Source = new Uri("pack://application:,,,/H.Theme;component/Backgrounds/Default.xaml")

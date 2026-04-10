@@ -18,7 +18,7 @@ namespace H.Modules.Help;
 
 [Icon(FontIcons.History)]
 [Display(Name = "发行说明", Description = "查看软件发行说明")]
-public class ShowReleaseVersionsCommand : DisplayMarkupCommandBase
+public class ShowReleaseVersionsCommand : ResxDisplayMarkupCommandBase
 {
     public override Task ExecuteAsync(object parameter)
     {

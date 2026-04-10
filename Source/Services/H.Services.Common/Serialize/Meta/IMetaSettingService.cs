@@ -10,6 +10,6 @@ namespace H.Services.Common.Serialize.Meta;
 
 public interface IMetaSettingService
 {
-    void Serilize(object setting, string id);
-    T Deserilize<T>(string id);
+    void Serilize(object setting, string id, string folderName = null);
+    T Deserilize<T>(string id, string folderName = null);
 }

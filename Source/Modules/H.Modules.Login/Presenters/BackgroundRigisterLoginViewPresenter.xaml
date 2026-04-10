@@ -1,0 +1,659 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
+    xmlns:h="https://github.com/HeBianGu"
+    xmlns:l="clr-namespace:H.Modules.Login"
+    xmlns:p="clr-namespace:H.Modules.Login.Properties"
+    xmlns:local="clr-namespace:H.Modules.Login.Presenters">
+    <DataTemplate DataType="{x:Type local:BackgroundRigisterLoginViewPresenter}">
+        <!--<DataTemplate.Resources>
+            <ResourceDictionary>
+                <ResourceDictionary.MergedDictionaries>
+                    <ResourceDictionary Source="pack://application:,,,/H.Theme;component/Colors/Light.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/H.Theme;component/BrushKeys.xaml" />
+                </ResourceDictionary.MergedDictionaries>
+            </ResourceDictionary>
+        </DataTemplate.Resources>-->
+        <Grid Width="900" Height="450">
+            <Border
+                Width="308"
+                Margin="51,21,51,31"
+                HorizontalAlignment="Right"
+                BorderThickness="1"
+                CornerRadius="5"
+                Style="{DynamicResource {x:Static BorderKeys.Effect}}" />
+            <Border
+                Width="310"
+                Margin="50,20,50,30"
+                HorizontalAlignment="Right"
+                Background="{DynamicResource {x:Static BrushKeys.Background}}"
+                CornerRadius="5">
+                <ListBox
+                    Grid.Column="1"
+                    VerticalAlignment="Center"
+                    ClipToBounds="True"
+                    Foreground="{DynamicResource {x:Static BrushKeys.Foreground}}"
+                    SelectedIndex="{Binding SelectedIndex}">
+                    <!--  登录页面  -->
+                    <StackPanel
+                        Margin="20"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Center">
+                        <Viewbox Margin="0,5" Height="50">
+                            <TextBlock
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Center"
+                                FontSize="24"
+                                Text="{x:Static ApplicationProvider.Product}" />
+                        </Viewbox>
+                        <TextBlock
+                            Margin="0,20"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            FontSize="15"
+                            FontWeight="ExtraBold"
+                            Foreground="{DynamicResource {x:Static BrushKeys.Accent}}"
+                            Text="{x:Static p:Resources.AccountLogin}" />
+                        <!--  用户名  -->
+                        <TextBox
+                            HorizontalAlignment="Stretch"
+                            Cattach.TitleBackground="{x:Null}"
+                            Cattach.Watermark="{x:Static p:Resources.InputAccount}"
+                            Style="{DynamicResource {x:Static TextBoxKeys.Delete}}"
+                            Text="{Binding UserName}">
+                            <Cattach.Title>
+                                <FontIconTextBlock FontSize="14" Text="{x:Static FontIcons.StatusCircleErrorX}" />
+                            </Cattach.Title>
+                        </TextBox>
+                        <!--  密码  -->
+                        <Control Margin="0,20,0,10">
+                            <Control.Template>
+                                <ControlTemplate>
+                                    <Grid>
+                                        <PasswordBox
+                                            x:Name="p"
+                                            Cattach.Password="{Binding Password, Mode=TwoWay}"
+                                            Cattach.TitleBackground="{x:Null}"
+                                            Cattach.Watermark="{x:Static p:Resources.InputPassword}"
+                                            Style="{DynamicResource {x:Static PasswordBoxKeys.Attach}}">
+                                            <Cattach.Title>
+                                                <FontIconTextBlock
+                                                    Margin="-2,0,0,0"
+                                                    FontSize="14"
+                                                    Text="{x:Static FontIcons.Lock}" />
+                                            </Cattach.Title>
+                                        </PasswordBox>
+                                        <TextBox
+                                            x:Name="t"
+                                            Cattach.TitleBackground="{x:Null}"
+                                            Cattach.Watermark="{x:Static p:Resources.InputPassword}"
+                                            Style="{DynamicResource {x:Static TextBoxKeys.Attach}}"
+                                            Text="{Binding Password, UpdateSourceTrigger=PropertyChanged}">
+                                            <Cattach.Title>
+                                                <FontIconTextBlock FontSize="14" Text="{x:Static FontIcons.Lock}" />
+                                            </Cattach.Title>
+                                        </TextBox>
+                                        <FontIconToggleButton
+                                            HorizontalAlignment="Right"
+                                            Background="Transparent"
+                                            BorderThickness="0"
+                                            CheckedGlyph="&#xE890;"
+                                            IsChecked="{Binding ShowPassword, Mode=TwoWay}"
+                                            UncheckedGlyph="&#xECE4;" />
+                                    </Grid>
+                                    <ControlTemplate.Triggers>
+                                        <DataTrigger Binding="{Binding ShowPassword}" Value="True">
+                                            <Setter TargetName="t" Property="Visibility" Value="Collapsed" />
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding ShowPassword}" Value="False">
+                                            <Setter TargetName="p" Property="Visibility" Value="Collapsed" />
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding Error, Converter={x:Static Converter.GetNullToCollapsed}}" Value="True">
+                                            <Setter TargetName="t" Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.Red}}" />
+                                            <Setter TargetName="p" Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.Red}}" />
+                                        </DataTrigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Control.Template>
+                        </Control>
+
+                        <!--  错误提示  -->
+                        <Control Margin="5">
+                            <Control.Template>
+                                <ControlTemplate>
+                                    <DockPanel x:Name="d_error">
+                                        <FontIconTextBlock Foreground="{DynamicResource {x:Static BrushKeys.Red}}" Text="&#xE783;" />
+                                        <TextBlock
+                                            Margin="2,0"
+                                            Foreground="{DynamicResource {x:Static BrushKeys.Red}}"
+                                            Text="{Binding Error}" />
+                                    </DockPanel>
+                                    <ControlTemplate.Triggers>
+                                        <DataTrigger Binding="{Binding Error}" Value="{x:Null}">
+                                            <Setter TargetName="d_error" Property="Visibility" Value="Hidden" />
+                                        </DataTrigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Control.Template>
+                        </Control>
+
+                        <Grid Height="{DynamicResource {x:Static LayoutKeys.ItemHeight}}" Margin="0,1">
+                            <CheckBox
+                                HorizontalAlignment="Right"
+                                Content="{x:Static p:Resources.RemenberPassword}"
+                                IsChecked="{Binding Source={x:Static LoginOptions.Instance}, Path=Remember}" />
+
+                            <Button
+                                Padding="0"
+                                HorizontalAlignment="Left"
+                                Background="Transparent"
+                                Command="{Binding GotoForgetCommand}"
+                                Content="{x:Static p:Resources.ForgetPassword}"
+                                Visibility="{Binding Source={x:Static RegistorOptions.Instance}, Path=UseMail, Converter={x:Static Converter.GetTrueToVisible}}" />
+                        </Grid>
+                        <h:ProgressButton
+                            HorizontalAlignment="Stretch"
+                            Command="{Binding LoginCommand}"
+                            CommandParameter="{Binding RelativeSource={RelativeSource AncestorType={x:Type h:IDialog}}}"
+                            Content="{x:Static p:Resources.Login}"
+                            IsDefault="True">
+                            <h:ProgressButton.Style>
+                                <Style BasedOn="{StaticResource {x:Static h:ProgressButton.CommandKey}}" TargetType="ProgressButton">
+                                    <Setter Property="Background" Value="{DynamicResource {x:Static BrushKeys.Accent}}" />
+                                    <Setter Property="Foreground" Value="{DynamicResource {x:Static BrushKeys.White}}" />
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="true">
+                                            <Setter Property="Background">
+                                                <Setter.Value>
+                                                    <SolidColorBrush Opacity="0.9" Color="{DynamicResource {x:Static ColorKeys.Accent}}" />
+                                                </Setter.Value>
+                                            </Setter>
+                                            <Setter Property="Foreground" Value="{DynamicResource {x:Static BrushKeys.White}}" />
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </h:ProgressButton.Style>
+                        </h:ProgressButton>
+
+                        <!--  立即注册  -->
+                        <Button
+                            Margin="0,5"
+                            Command="{Binding GotoMailCommand}"
+                            Content="{x:Static p:Resources.RegisterNow}"
+                            Style="{DynamicResource {x:Static ButtonKeys.Success}}" />
+                    </StackPanel>
+
+                    <!--  邮箱验证  -->
+                    <Grid>
+                        <StackPanel
+                            Margin="20"
+                            HorizontalAlignment="Stretch"
+                            VerticalAlignment="Center">
+                            <TextBlock
+                                Margin="0,0,0,20"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Top"
+                                FontSize="25"
+                                Text="{x:Static p:Resources.EmailVerification}" />
+                            <BulletDecorator Margin="0,2" VerticalAlignment="Center">
+                                <BulletDecorator.Bullet>
+                                    <TextBlock Width="80" Text="{x:Static p:Resources.EmailAddress}" />
+                                </BulletDecorator.Bullet>
+                                <TextBox Text="{Binding MailVerify.Mail, UpdateSourceTrigger=PropertyChanged}" />
+                            </BulletDecorator>
+
+                            <BulletDecorator Margin="0,2" VerticalAlignment="Center">
+                                <BulletDecorator.Bullet>
+                                    <TextBlock Width="80" Text="{x:Static p:Resources.VerificationCode}" />
+                                </BulletDecorator.Bullet>
+                                <DockPanel>
+                                    <ProgressButton
+                                        Command="{Binding GetVerifyCodeCommand}"
+                                        Content="{x:Static p:Resources.GetVerificationCode}"
+                                        DockPanel.Dock="Right"
+                                        Message="{x:Static p:Resources.SendingEmail}" />
+                                    <TextBox Text="{Binding MailVerify.InputCode, UpdateSourceTrigger=PropertyChanged}" />
+                                </DockPanel>
+                            </BulletDecorator>
+
+                            <TextBlock
+                                Margin="0,5,0,0"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Bottom"
+                                DockPanel.Dock="Bottom"
+                                Foreground="{DynamicResource {x:Static BrushKeys.Red}}"
+                                Text="{Binding MailVerify.Message}"
+                                TextWrapping="Wrap"
+                                ToolTip="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Text}" />
+
+                            <DockPanel Margin="0,2" LastChildFill="False">
+                                <CheckBox IsChecked="{Binding MailVerify.Agree}" />
+                                <TextBlock VerticalAlignment="Center">
+                                    <Run Text="{x:Static p:Resources.Agree}" />
+                                    <Hyperlink Command="{ProcessCommand}" CommandParameter="{Binding Source={x:Static l:RegistorOptions.Instance}, Path=ServiceAgreementUri}">
+                                        <TextBlock Text="{x:Static p:Resources.ServiceAgreement}" />
+                                    </Hyperlink>
+                                    <Run Text="{x:Static p:Resources.And}" />
+                                    <Hyperlink Command="{ProcessCommand}" CommandParameter="{Binding Source={x:Static l:RegistorOptions.Instance}, Path=PrivacypolicyUri}">
+                                        <TextBlock Text="{x:Static p:Resources.Privacypolicy}" />
+                                    </Hyperlink>
+                                </TextBlock>
+                            </DockPanel>
+
+                            <Button
+                                Grid.Row="4"
+                                Width="Auto"
+                                Margin="0,2"
+                                Cattach.BuzyText="{x:Static p:Resources.Invoking}"
+                                Command="{Binding GotoNextCommand}"
+                                Content="{x:Static p:Resources.Next}"
+                                Style="{DynamicResource {x:Static ButtonKeys.Accent}}" />
+
+                            <Button
+                                Margin="0,2"
+                                Command="{Binding GotoLoginCommand}"
+                                Content="{x:Static p:Resources.LoginDirect}"
+                                DockPanel.Dock="Bottom"
+                                Style="{DynamicResource {x:Static ButtonKeys.Success}}" />
+                        </StackPanel>
+                        <FontIconButton
+                            Margin="20"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Top"
+                            Command="{Binding GotoLoginCommand}"
+                            Content="{x:Static FontIcons.Back}" />
+                    </Grid>
+
+                    <!--  注册页面  -->
+                    <Grid>
+                        <StackPanel
+                            Margin="20"
+                            HorizontalAlignment="Stretch"
+                            VerticalAlignment="Center">
+                            <TextBlock
+                                Margin="0,0,0,20"
+                                HorizontalAlignment="Center"
+                                FontSize="25"
+                                Text="{x:Static p:Resources.RegisterAccount}" />
+                            <StackPanel>
+                                <TextBox
+                                    Margin="0,2"
+                                    HorizontalAlignment="Stretch"
+                                    Cattach.TitleBackground="{x:Null}"
+                                    Cattach.Watermark="{x:Static p:Resources.InputAccount}"
+                                    Style="{DynamicResource {x:Static TextBoxKeys.Delete}}"
+                                    Text="{Binding Registor.UserName, UpdateSourceTrigger=PropertyChanged}">
+                                    <Cattach.Title>
+                                        <FontIconTextBlock FontSize="14" Text="{x:Static FontIcons.StatusCircleErrorX}" />
+                                    </Cattach.Title>
+                                </TextBox>
+
+                                <!--  密码  -->
+                                <Control Margin="0,2">
+                                    <Control.Template>
+                                        <ControlTemplate>
+                                            <Grid>
+                                                <PasswordBox
+                                                    x:Name="p"
+                                                    Cattach.Password="{Binding Registor.Password, Mode=TwoWay}"
+                                                    Cattach.TitleBackground="{x:Null}"
+                                                    Cattach.Watermark="{x:Static p:Resources.InputPassword}"
+                                                    Style="{DynamicResource {x:Static PasswordBoxKeys.Attach}}">
+                                                    <Cattach.Title>
+                                                        <FontIconTextBlock
+                                                            Margin="-2,0,0,0"
+                                                            FontSize="14"
+                                                            Text="{x:Static FontIcons.Lock}" />
+                                                    </Cattach.Title>
+                                                </PasswordBox>
+                                                <TextBox
+                                                    x:Name="t"
+                                                    Cattach.TitleBackground="{x:Null}"
+                                                    Cattach.Watermark="{x:Static p:Resources.InputPassword}"
+                                                    Style="{DynamicResource {x:Static TextBoxKeys.Attach}}"
+                                                    Text="{Binding Registor.Password, UpdateSourceTrigger=PropertyChanged}">
+                                                    <Cattach.Title>
+                                                        <FontIconTextBlock FontSize="14" Text="{x:Static FontIcons.Lock}" />
+                                                    </Cattach.Title>
+                                                </TextBox>
+                                                <FontIconToggleButton
+                                                    HorizontalAlignment="Right"
+                                                    Background="Transparent"
+                                                    BorderThickness="0"
+                                                    CheckedGlyph="&#xE890;"
+                                                    IsChecked="{Binding ShowPassword, Mode=TwoWay}"
+                                                    UncheckedGlyph="&#xECE4;" />
+                                            </Grid>
+                                            <ControlTemplate.Triggers>
+                                                <DataTrigger Binding="{Binding ShowPassword}" Value="True">
+                                                    <Setter TargetName="t" Property="Visibility" Value="Collapsed" />
+                                                </DataTrigger>
+                                                <DataTrigger Binding="{Binding ShowPassword}" Value="False">
+                                                    <Setter TargetName="p" Property="Visibility" Value="Collapsed" />
+                                                </DataTrigger>
+                                                <DataTrigger Binding="{Binding Registor.Message, Converter={x:Static Converter.GetNullToCollapsed}}" Value="True">
+                                                    <Setter TargetName="t" Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.Red}}" />
+                                                    <Setter TargetName="p" Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.Red}}" />
+                                                </DataTrigger>
+                                            </ControlTemplate.Triggers>
+                                        </ControlTemplate>
+                                    </Control.Template>
+                                </Control>
+
+                                <!--  确认密码  -->
+                                <Control Margin="0,2">
+                                    <Control.Template>
+                                        <ControlTemplate>
+                                            <Grid>
+                                                <PasswordBox
+                                                    x:Name="p"
+                                                    Cattach.Password="{Binding Registor.VerifyPassword, Mode=TwoWay}"
+                                                    Cattach.TitleBackground="{x:Null}"
+                                                    Cattach.Watermark="{x:Static p:Resources.InputPassword}"
+                                                    Style="{DynamicResource {x:Static PasswordBoxKeys.Attach}}">
+                                                    <Cattach.Title>
+                                                        <FontIconTextBlock
+                                                            Margin="-2,0,0,0"
+                                                            FontSize="14"
+                                                            Text="{x:Static FontIcons.Lock}" />
+                                                    </Cattach.Title>
+                                                </PasswordBox>
+                                                <TextBox
+                                                    x:Name="t"
+                                                    Cattach.TitleBackground="{x:Null}"
+                                                    Cattach.Watermark="{x:Static p:Resources.InputPassword}"
+                                                    Style="{DynamicResource {x:Static TextBoxKeys.Attach}}"
+                                                    Text="{Binding Registor.VerifyPassword, UpdateSourceTrigger=PropertyChanged}">
+                                                    <Cattach.Title>
+                                                        <FontIconTextBlock FontSize="14" Text="{x:Static FontIcons.Lock}" />
+                                                    </Cattach.Title>
+                                                </TextBox>
+                                                <FontIconToggleButton
+                                                    HorizontalAlignment="Right"
+                                                    Background="Transparent"
+                                                    BorderThickness="0"
+                                                    CheckedGlyph="&#xE890;"
+                                                    IsChecked="{Binding ShowPassword, Mode=TwoWay}"
+                                                    UncheckedGlyph="&#xECE4;" />
+                                            </Grid>
+                                            <ControlTemplate.Triggers>
+                                                <DataTrigger Binding="{Binding ShowPassword}" Value="True">
+                                                    <Setter TargetName="t" Property="Visibility" Value="Collapsed" />
+                                                </DataTrigger>
+                                                <DataTrigger Binding="{Binding ShowPassword}" Value="False">
+                                                    <Setter TargetName="p" Property="Visibility" Value="Collapsed" />
+                                                </DataTrigger>
+                                                <DataTrigger Binding="{Binding Error, Converter={x:Static Converter.GetNullToCollapsed}}" Value="True">
+                                                    <Setter TargetName="t" Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.Red}}" />
+                                                    <Setter TargetName="p" Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.Red}}" />
+                                                </DataTrigger>
+                                            </ControlTemplate.Triggers>
+                                        </ControlTemplate>
+                                    </Control.Template>
+                                </Control>
+
+                                <TextBlock
+                                    Margin="0,15"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Bottom"
+                                    DockPanel.Dock="Bottom"
+                                    Foreground="{DynamicResource {x:Static BrushKeys.Red}}"
+                                    Text="{Binding Registor.Message}"
+                                    ToolTip="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Text}" />
+                                <Button
+                                    Width="Auto"
+                                    Margin="0,2"
+                                    Command="{Binding GotoLoginCommand}"
+                                    Content="{x:Static p:Resources.Previous}"
+                                    Visibility="{Binding Source={x:Static l:RegistorOptions.Instance}, Path=UseMail, Converter={x:Static Converter.GetTrueToVisible}}" />
+
+                                <ProgressButton
+                                    Margin="0,2"
+                                    HorizontalAlignment="Stretch"
+                                    Command="{Binding RegisterCommand}"
+                                    Content="{x:Static p:Resources.Register}">
+                                    <h:ProgressButton.Style>
+                                        <Style BasedOn="{StaticResource {x:Static h:ProgressButton.CommandKey}}" TargetType="ProgressButton">
+                                            <Setter Property="Background" Value="{DynamicResource {x:Static BrushKeys.Accent}}" />
+                                            <Setter Property="Foreground" Value="{DynamicResource {x:Static BrushKeys.White}}" />
+                                            <Style.Triggers>
+                                                <Trigger Property="IsMouseOver" Value="true">
+                                                    <Setter Property="Background">
+                                                        <Setter.Value>
+                                                            <SolidColorBrush Opacity="0.9" Color="{DynamicResource {x:Static ColorKeys.Accent}}" />
+                                                        </Setter.Value>
+                                                    </Setter>
+                                                    <Setter Property="Foreground" Value="{DynamicResource {x:Static BrushKeys.White}}" />
+                                                </Trigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </h:ProgressButton.Style>
+                                </ProgressButton>
+
+                                <Button
+                                    Margin="0,2"
+                                    Command="{Binding GotoLoginCommand}"
+                                    Content="{x:Static p:Resources.LoginDirect}"
+                                    DockPanel.Dock="Bottom"
+                                    Style="{DynamicResource {x:Static ButtonKeys.Success}}" />
+
+                            </StackPanel>
+                        </StackPanel>
+                        <FontIconButton
+                            Margin="20"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Top"
+                            Command="{Binding GotoLoginCommand}"
+                            Content="{x:Static FontIcons.Back}" />
+                    </Grid>
+
+                    <!--  修改密码  -->
+                    <Grid>
+                        <StackPanel
+                            Margin="20"
+                            HorizontalAlignment="Stretch"
+                            VerticalAlignment="Center">
+                            <TextBlock
+                                Margin="0,0,0,20"
+                                HorizontalAlignment="Center"
+                                FontSize="25"
+                                Text="{x:Static p:Resources.ChangePassword}" />
+
+                            <TextBox
+                                Margin="0,2"
+                                HorizontalAlignment="Stretch"
+                                Cattach.TitleBackground="{x:Null}"
+                                Cattach.Watermark="{x:Static p:Resources.InputAccount}"
+                                Style="{DynamicResource {x:Static TextBoxKeys.Delete}}"
+                                Text="{Binding UserName}">
+                                <Cattach.Title>
+                                    <FontIconTextBlock FontSize="14" Text="{x:Static FontIcons.StatusCircleErrorX}" />
+                                </Cattach.Title>
+                            </TextBox>
+
+                            <!--  密码  -->
+                            <Control Margin="0,2">
+                                <Control.Template>
+                                    <ControlTemplate>
+                                        <Grid>
+                                            <PasswordBox
+                                                x:Name="p"
+                                                Cattach.Password="{Binding Forget.Password, Mode=TwoWay}"
+                                                Cattach.TitleBackground="{x:Null}"
+                                                Cattach.Watermark="{x:Static p:Resources.InputPassword}"
+                                                Style="{DynamicResource {x:Static PasswordBoxKeys.Attach}}">
+                                                <Cattach.Title>
+                                                    <FontIconTextBlock
+                                                        Margin="-2,0,0,0"
+                                                        FontSize="14"
+                                                        Text="{x:Static FontIcons.Lock}" />
+                                                </Cattach.Title>
+                                            </PasswordBox>
+                                            <TextBox
+                                                x:Name="t"
+                                                Cattach.TitleBackground="{x:Null}"
+                                                Cattach.Watermark="{x:Static p:Resources.InputPassword}"
+                                                Style="{DynamicResource {x:Static TextBoxKeys.Attach}}"
+                                                Text="{Binding Forget.Password, UpdateSourceTrigger=PropertyChanged}">
+                                                <Cattach.Title>
+                                                    <FontIconTextBlock FontSize="14" Text="{x:Static FontIcons.Lock}" />
+                                                </Cattach.Title>
+                                            </TextBox>
+                                            <FontIconToggleButton
+                                                HorizontalAlignment="Right"
+                                                Background="Transparent"
+                                                BorderThickness="0"
+                                                CheckedGlyph="&#xE890;"
+                                                IsChecked="{Binding ShowPassword, Mode=TwoWay}"
+                                                UncheckedGlyph="&#xECE4;" />
+                                        </Grid>
+                                        <ControlTemplate.Triggers>
+                                            <DataTrigger Binding="{Binding ShowPassword}" Value="True">
+                                                <Setter TargetName="t" Property="Visibility" Value="Collapsed" />
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding ShowPassword}" Value="False">
+                                                <Setter TargetName="p" Property="Visibility" Value="Collapsed" />
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding Forget.Message, Converter={x:Static Converter.GetNullToCollapsed}}" Value="True">
+                                                <Setter TargetName="t" Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.Red}}" />
+                                                <Setter TargetName="p" Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.Red}}" />
+                                            </DataTrigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </Control.Template>
+                            </Control>
+
+                            <!--  确认密码  -->
+                            <Control Margin="0,2">
+                                <Control.Template>
+                                    <ControlTemplate>
+                                        <Grid>
+                                            <PasswordBox
+                                                x:Name="p"
+                                                Cattach.Password="{Binding Forget.VerifyPassword, Mode=TwoWay}"
+                                                Cattach.TitleBackground="{x:Null}"
+                                                Cattach.Watermark="{x:Static p:Resources.InputPassword}"
+                                                Style="{DynamicResource {x:Static PasswordBoxKeys.Attach}}">
+                                                <Cattach.Title>
+                                                    <FontIconTextBlock
+                                                        Margin="-2,0,0,0"
+                                                        FontSize="14"
+                                                        Text="{x:Static FontIcons.Lock}" />
+                                                </Cattach.Title>
+                                            </PasswordBox>
+                                            <TextBox
+                                                x:Name="t"
+                                                Cattach.TitleBackground="{x:Null}"
+                                                Cattach.Watermark="{x:Static p:Resources.InputPassword}"
+                                                Style="{DynamicResource {x:Static TextBoxKeys.Attach}}"
+                                                Text="{Binding Forget.VerifyPassword, UpdateSourceTrigger=PropertyChanged}">
+                                                <Cattach.Title>
+                                                    <FontIconTextBlock FontSize="14" Text="{x:Static FontIcons.Lock}" />
+                                                </Cattach.Title>
+                                            </TextBox>
+                                            <FontIconToggleButton
+                                                HorizontalAlignment="Right"
+                                                Background="Transparent"
+                                                BorderThickness="0"
+                                                CheckedGlyph="&#xE890;"
+                                                IsChecked="{Binding ShowPassword, Mode=TwoWay}"
+                                                UncheckedGlyph="&#xECE4;" />
+                                        </Grid>
+                                        <ControlTemplate.Triggers>
+                                            <DataTrigger Binding="{Binding ShowPassword}" Value="True">
+                                                <Setter TargetName="t" Property="Visibility" Value="Collapsed" />
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding ShowPassword}" Value="False">
+                                                <Setter TargetName="p" Property="Visibility" Value="Collapsed" />
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding Forget.Message, Converter={x:Static Converter.GetNullToCollapsed}}" Value="True">
+                                                <Setter TargetName="t" Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.Red}}" />
+                                                <Setter TargetName="p" Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.Red}}" />
+                                            </DataTrigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </Control.Template>
+                            </Control>
+
+                            <TextBlock
+                                Margin="0,5"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Bottom"
+                                DockPanel.Dock="Bottom"
+                                Foreground="{DynamicResource {x:Static BrushKeys.Red}}"
+                                Text="{Binding Forget.Message}"
+                                ToolTip="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Text}" />
+
+                            <ProgressButton
+                                Width="Auto"
+                                Margin="0,2"
+                                Command="{Binding ChangePasswordCommand}"
+                                Content="{x:Static p:Resources.Change}">
+                                <h:ProgressButton.Style>
+                                    <Style BasedOn="{StaticResource {x:Static h:ProgressButton.CommandKey}}" TargetType="ProgressButton">
+                                        <Setter Property="Background" Value="{DynamicResource {x:Static BrushKeys.Accent}}" />
+                                        <Setter Property="Foreground" Value="{DynamicResource {x:Static BrushKeys.White}}" />
+                                        <Style.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="true">
+                                                <Setter Property="Background">
+                                                    <Setter.Value>
+                                                        <SolidColorBrush Opacity="0.9" Color="{DynamicResource {x:Static ColorKeys.Accent}}" />
+                                                    </Setter.Value>
+                                                </Setter>
+                                                <Setter Property="Foreground" Value="{DynamicResource {x:Static BrushKeys.White}}" />
+                                            </Trigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </h:ProgressButton.Style>
+                            </ProgressButton>
+
+                            <Button
+                                Margin="0,2"
+                                Command="{Binding GotoLoginCommand}"
+                                Content="{x:Static p:Resources.LoginDirect}"
+                                DockPanel.Dock="Bottom"
+                                Style="{DynamicResource {x:Static ButtonKeys.Success}}" />
+
+                            <Button
+                                Width="Auto"
+                                Margin="0,2"
+                                Command="{Binding GotoMailCommand}"
+                                Content="{x:Static p:Resources.Previous}"
+                                Visibility="{Binding Source={x:Static l:RegistorOptions.Instance}, Path=UseMail, Converter={x:Static Converter.GetTrueToVisible}}" />
+
+                        </StackPanel>
+                        <FontIconButton
+                            Margin="20"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Top"
+                            Command="{Binding GotoLoginCommand}"
+                            Content="{x:Static FontIcons.Back}" />
+                    </Grid>
+                    <ListBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <Grid IsItemsHost="True" />
+                        </ItemsPanelTemplate>
+                    </ListBox.ItemsPanel>
+                    <ListBox.Template>
+                        <ControlTemplate TargetType="ListBox">
+                            <ItemsPresenter />
+                        </ControlTemplate>
+                    </ListBox.Template>
+                    <ListBox.ItemContainerStyle>
+                        <Style TargetType="ListBoxItem">
+                            <Setter Property="Visibility" Value="{Binding RelativeSource={RelativeSource Mode=Self}, Path=IsSelected, Converter={x:Static Converter.GetTrueToVisible}}" />
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="ListBoxItem">
+                                        <ContentPresenter />
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </ListBox.ItemContainerStyle>
+                </ListBox>
+            </Border>
+        </Grid>
+    </DataTemplate>
+</ResourceDictionary>

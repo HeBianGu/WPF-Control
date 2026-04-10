@@ -1,0 +1,968 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Common_Account" xml:space="preserve">
+    <value>Account</value>
+  </data>
+  <data name="Common_Ok" xml:space="preserve">
+    <value>Bevestigen</value>
+  </data>
+  <data name="Common_Cancel" xml:space="preserve">
+    <value>Annuleren</value>
+  </data>
+  <data name="Common_Yes" xml:space="preserve">
+    <value>Ja</value>
+  </data>
+  <data name="Common_View" xml:space="preserve">
+    <value>Bekijken</value>
+  </data>
+  <data name="Common_No" xml:space="preserve">
+    <value>Nee</value>
+  </data>
+  <data name="Common_Abort" xml:space="preserve">
+    <value>Annuleren</value>
+  </data>
+  <data name="Common_Retry" xml:space="preserve">
+    <value>Opnieuw</value>
+  </data>
+  <data name="Common_Ignore" xml:space="preserve">
+    <value>Negeren</value>
+  </data>
+  <data name="Common_Apply" xml:space="preserve">
+    <value>Toepassing</value>
+  </data>
+  <data name="Common_Close" xml:space="preserve">
+    <value>Sluiten</value>
+  </data>
+  <data name="Common_Prompt" xml:space="preserve">
+    <value>Melding</value>
+  </data>
+  <data name="Common_Exit" xml:space="preserve">
+    <value>Afsluiten</value>
+  </data>
+  <data name="Common_Back" xml:space="preserve">
+    <value>Terug</value>
+  </data>
+  <data name="Common_Next" xml:space="preserve">
+    <value>Volgende</value>
+  </data>
+  <data name="Common_Show" xml:space="preserve">
+    <value>Weergave</value>
+  </data>
+  <data name="Common_Previous" xml:space="preserve">
+    <value>Vorige stap</value>
+  </data>
+  <data name="Common_Finish" xml:space="preserve">
+    <value>Voltooid</value>
+  </data>
+  <data name="Common_Save" xml:space="preserve">
+    <value>Opslaan</value>
+  </data>
+  <data name="Common_SaveAs" xml:space="preserve">
+    <value>Opslaan als</value>
+  </data>
+  <data name="Common_Open" xml:space="preserve">
+    <value>Openen</value>
+  </data>
+  <data name="Common_New" xml:space="preserve">
+    <value>Nieuw</value>
+  </data>
+  <data name="Common_Create" xml:space="preserve">
+    <value>Aanmaken</value>
+  </data>
+  <data name="Common_Default" xml:space="preserve">
+    <value>Standaard</value>
+  </data>
+  <data name="Common_Edit" xml:space="preserve">
+    <value>Bewerken</value>
+  </data>
+  <data name="Common_Delete" xml:space="preserve">
+    <value>Verwijderen</value>
+  </data>
+  <data name="Common_Remove" xml:space="preserve">
+    <value>Verwijderen</value>
+  </data>
+  <data name="Common_Add" xml:space="preserve">
+    <value>Toevoegen</value>
+  </data>
+  <data name="Common_Insert" xml:space="preserve">
+    <value>Invoegen</value>
+  </data>
+  <data name="Common_Update" xml:space="preserve">
+    <value>Bijwerken</value>
+  </data>
+  <data name="Common_Rename" xml:space="preserve">
+    <value>Naam wijzigen</value>
+  </data>
+  <data name="Common_Import" xml:space="preserve">
+    <value>Importeren</value>
+  </data>
+  <data name="Common_Export" xml:space="preserve">
+    <value>Exporteren</value>
+  </data>
+  <data name="Common_Print" xml:space="preserve">
+    <value>Afdrukken</value>
+  </data>
+  <data name="Common_Preview" xml:space="preserve">
+    <value>Voorbeeld</value>
+  </data>
+  <data name="Common_Copy" xml:space="preserve">
+    <value>Kopiëren</value>
+  </data>
+  <data name="Common_Cut" xml:space="preserve">
+    <value>Knippen</value>
+  </data>
+  <data name="Common_Paste" xml:space="preserve">
+    <value>Plakken</value>
+  </data>
+  <data name="Common_Undo" xml:space="preserve">
+    <value>Ongedaan</value>
+  </data>
+  <data name="Common_Redo" xml:space="preserve">
+    <value>Opnieuw</value>
+  </data>
+  <data name="Common_Search" xml:space="preserve">
+    <value>Zoeken</value>
+  </data>
+  <data name="Common_Find" xml:space="preserve">
+    <value>Zoeken</value>
+  </data>
+  <data name="Common_FindNext" xml:space="preserve">
+    <value>Volgende zoeken</value>
+  </data>
+  <data name="Common_Replace" xml:space="preserve">
+    <value>Vervangen</value>
+  </data>
+  <data name="Common_Filter" xml:space="preserve">
+    <value>Filteren</value>
+  </data>
+  <data name="Common_Sort" xml:space="preserve">
+    <value>Sorteren</value>
+  </data>
+  <data name="Common_Refresh" xml:space="preserve">
+    <value>Vernieuwen</value>
+  </data>
+  <data name="Common_Clear" xml:space="preserve">
+    <value>Wissen</value>
+  </data>
+  <data name="Common_Reset" xml:space="preserve">
+    <value>Resetten</value>
+  </data>
+  <data name="Common_Select" xml:space="preserve">
+    <value>Selecteren</value>
+  </data>
+  <data name="Common_SelectAll" xml:space="preserve">
+    <value>Alles selecteren</value>
+  </data>
+  <data name="Common_DeselectAll" xml:space="preserve">
+    <value>Selectie opheffen</value>
+  </data>
+  <data name="Common_InvertSelection" xml:space="preserve">
+    <value>Omgekeerde selectie</value>
+  </data>
+  <data name="Common_Enable" xml:space="preserve">
+    <value>Inschakelen</value>
+  </data>
+  <data name="Common_Disable" xml:space="preserve">
+    <value>Uitgeschakeld</value>
+  </data>
+  <data name="Common_On" xml:space="preserve">
+    <value>Aan</value>
+  </data>
+  <data name="Common_Off" xml:space="preserve">
+    <value>Uit</value>
+  </data>
+  <data name="Common_Loading" xml:space="preserve">
+    <value>Bezig met laden...</value>
+  </data>
+  <data name="Common_PleaseWait" xml:space="preserve">
+    <value>Even geduld...</value>
+  </data>
+  <data name="Common_Working" xml:space="preserve">
+    <value>Bezig...</value>
+  </data>
+  <data name="Common_Connecting" xml:space="preserve">
+    <value>Bezig met verbinden...</value>
+  </data>
+  <data name="Common_Disconnecting" xml:space="preserve">
+    <value>Verbinding verbreken...</value>
+  </data>
+  <data name="Common_Error" xml:space="preserve">
+    <value>Fout</value>
+  </data>
+  <data name="Common_Warning" xml:space="preserve">
+    <value>Waarschuwing</value>
+  </data>
+  <data name="Common_Information" xml:space="preserve">
+    <value>Tip</value>
+  </data>
+  <data name="Common_Success" xml:space="preserve">
+    <value>Geslaagd</value>
+  </data>
+  <data name="Common_Failed" xml:space="preserve">
+    <value>Mislukt</value>
+  </data>
+  <data name="Common_OperationSucceeded" xml:space="preserve">
+    <value>Bewerking geslaagd</value>
+  </data>
+  <data name="Common_OperationFailed" xml:space="preserve">
+    <value>Operatie mislukt</value>
+  </data>
+  <data name="Common_NotSupported" xml:space="preserve">
+    <value>Niet ondersteund</value>
+  </data>
+  <data name="Common_NotImplemented" xml:space="preserve">
+    <value>Nog niet geïmplementeerd</value>
+  </data>
+  <data name="Common_Confirm" xml:space="preserve">
+    <value>Bevestigen</value>
+  </data>
+  <data name="Common_Confirmation" xml:space="preserve">
+    <value>Bevestiging提示</value>
+  </data>
+  <data name="Common_AreYouSure" xml:space="preserve">
+    <value>Weet u het zeker?</value>
+  </data>
+  <data name="Common_ConfirmDelete" xml:space="preserve">
+    <value>Weet u zeker dat u wilt verwijderen?</value>
+  </data>
+  <data name="Common_ConfirmExit" xml:space="preserve">
+    <value>Weet u zeker dat u wilt afsluiten?</value>
+  </data>
+  <data name="Common_ConfirmSaveChanges" xml:space="preserve">
+    <value>Wijzigingen opslaan?</value>
+  </data>
+  <data name="Common_UnsavedChanges" xml:space="preserve">
+    <value>Je hebt niet-opgeslagen wijzigingen</value>
+  </data>
+  <data name="Common_RequiredField" xml:space="preserve">
+    <value>Verplicht veld</value>
+  </data>
+  <data name="Common_InvalidInput" xml:space="preserve">
+    <value>Ongeldige invoer</value>
+  </data>
+  <data name="Common_InvalidFormat" xml:space="preserve">
+    <value>Ongeldig formaat</value>
+  </data>
+  <data name="Common_OutOfRange" xml:space="preserve">
+    <value>Buiten bereik</value>
+  </data>
+  <data name="Common_PleaseSelect" xml:space="preserve">
+    <value>Selecteer</value>
+  </data>
+  <data name="Common_PleaseEnter" xml:space="preserve">
+    <value>Voer in</value>
+  </data>
+  <data name="Common_Login" xml:space="preserve">
+    <value>Aanmelden</value>
+  </data>
+  <data name="Common_Logout" xml:space="preserve">
+    <value>Afmelden</value>
+  </data>
+  <data name="Common_Register" xml:space="preserve">
+    <value>Registreren</value>
+  </data>
+  <data name="Common_UserName" xml:space="preserve">
+    <value>Gebruikersnaam</value>
+  </data>
+  <data name="Common_Password" xml:space="preserve">
+    <value>Wachtwoord</value>
+  </data>
+  <data name="Common_ConfirmPassword" xml:space="preserve">
+    <value>Bevestig wachtwoord</value>
+  </data>
+  <data name="Common_ForgotPassword" xml:space="preserve">
+    <value>Wachtwoord vergeten</value>
+  </data>
+  <data name="Common_Settings" xml:space="preserve">
+    <value>Instellingen</value>
+  </data>
+  <data name="Common_Preferences" xml:space="preserve">
+    <value>Voorkeuren</value>
+  </data>
+  <data name="Common_Options" xml:space="preserve">
+    <value>Opties</value>
+  </data>
+  <data name="Common_About" xml:space="preserve">
+    <value>Over</value>
+  </data>
+  <data name="Common_Help" xml:space="preserve">
+    <value>Hulp</value>
+  </data>
+  <data name="Common_CheckForUpdates" xml:space="preserve">
+    <value>Controleren op updates</value>
+  </data>
+  <data name="Common_NetworkError" xml:space="preserve">
+    <value>Netwerkfout</value>
+  </data>
+  <data name="Common_ServerError" xml:space="preserve">
+    <value>Serverfout</value>
+  </data>
+  <data name="Common_Timeout" xml:space="preserve">
+    <value>Time-out van de aanvraag</value>
+  </data>
+  <data name="Common_Unauthorized" xml:space="preserve">
+    <value>Niet geautoriseerd</value>
+  </data>
+  <data name="Common_AccessDenied" xml:space="preserve">
+    <value>Toegang geweigerd</value>
+  </data>
+  <data name="Common_Download" xml:space="preserve">
+    <value>Downloaden</value>
+  </data>
+  <data name="Common_Upload" xml:space="preserve">
+    <value>Uploaden</value>
+  </data>
+  <data name="Common_Start" xml:space="preserve">
+    <value>Start</value>
+  </data>
+  <data name="Common_Stop" xml:space="preserve">
+    <value>Stoppen</value>
+  </data>
+  <data name="Common_Pause" xml:space="preserve">
+    <value>Pauzeren</value>
+  </data>
+  <data name="Common_Resume" xml:space="preserve">
+    <value>Doorgaan</value>
+  </data>
+  <data name="Common_CopySucceeded" xml:space="preserve">
+    <value>Gekopieerd succesvol</value>
+  </data>
+  <data name="Common_CopyFailed" xml:space="preserve">
+    <value>Kopiëren mislukt</value>
+  </data>
+  <data name="Common_SaveSucceeded" xml:space="preserve">
+    <value>Opgeslagen सफल չէ</value>
+  </data>
+  <data name="Common_SaveFailed" xml:space="preserve">
+    <value>Opslaan mislukt</value>
+  </data>
+  <data name="Common_ItemsCountFormat" xml:space="preserve">
+    <value>In totaal {0} items</value>
+  </data>
+  <data name="Common_SelectedCountFormat" xml:space="preserve">
+    <value>{0} items geselecteerd</value>
+  </data>
+  <data name="Common_PageFormat" xml:space="preserve">
+    <value>Pagina {0} van {1}</value>
+  </data>
+  <data name="Common_NoData" xml:space="preserve">
+    <value>Geen gegevens</value>
+  </data>
+  <data name="Common_Empty" xml:space="preserve">
+    <value>Leeg</value>
+  </data>
+  <data name="Common_All" xml:space="preserve">
+    <value>Alles</value>
+  </data>
+  <data name="Menu_File" xml:space="preserve">
+    <value>Bestand</value>
+  </data>
+  <data name="Menu_Edit" xml:space="preserve">
+    <value>Bewerken</value>
+  </data>
+  <data name="Menu_View" xml:space="preserve">
+    <value>Weergave</value>
+  </data>
+  <data name="Menu_Tools" xml:space="preserve">
+    <value>Hulpmiddelen</value>
+  </data>
+  <data name="Menu_Window" xml:space="preserve">
+    <value>Venster</value>
+  </data>
+  <data name="Menu_Help" xml:space="preserve">
+    <value>Help</value>
+  </data>
+  <data name="Menu_New" xml:space="preserve">
+    <value>Nieuw</value>
+  </data>
+  <data name="Menu_Open" xml:space="preserve">
+    <value>Open</value>
+  </data>
+  <data name="Menu_OpenRecent" xml:space="preserve">
+    <value>Recent geopend</value>
+  </data>
+  <data name="Menu_Close" xml:space="preserve">
+    <value>Sluiten</value>
+  </data>
+  <data name="Menu_CloseAll" xml:space="preserve">
+    <value>Alles sluiten</value>
+  </data>
+  <data name="Menu_Save" xml:space="preserve">
+    <value>Opslaan</value>
+  </data>
+  <data name="Menu_SaveAs" xml:space="preserve">
+    <value>Opslaan als</value>
+  </data>
+  <data name="Menu_SaveAll" xml:space="preserve">
+    <value>Alles opslaan</value>
+  </data>
+  <data name="Menu_Import" xml:space="preserve">
+    <value>Importeren</value>
+  </data>
+  <data name="Menu_Export" xml:space="preserve">
+    <value>Exporteren</value>
+  </data>
+  <data name="Menu_Print" xml:space="preserve">
+    <value>Afdrukken</value>
+  </data>
+  <data name="Menu_PrintPreview" xml:space="preserve">
+    <value>Afdrukvoorbeeld</value>
+  </data>
+  <data name="Menu_Exit" xml:space="preserve">
+    <value>Afsluiten</value>
+  </data>
+  <data name="Menu_Undo" xml:space="preserve">
+    <value>Ongedaan</value>
+  </data>
+  <data name="Menu_Redo" xml:space="preserve">
+    <value>Opnieuw</value>
+  </data>
+  <data name="Menu_Cut" xml:space="preserve">
+    <value>Knippen</value>
+  </data>
+  <data name="Menu_Copy" xml:space="preserve">
+    <value>Kopiëren</value>
+  </data>
+  <data name="Menu_Paste" xml:space="preserve">
+    <value>Plakken</value>
+  </data>
+  <data name="Menu_Delete" xml:space="preserve">
+    <value>Verwijderen</value>
+  </data>
+  <data name="Menu_SelectAll" xml:space="preserve">
+    <value>Alles selecteren</value>
+  </data>
+  <data name="Menu_Find" xml:space="preserve">
+    <value>Zoeken</value>
+  </data>
+  <data name="Menu_FindNext" xml:space="preserve">
+    <value>Volgende zoeken</value>
+  </data>
+  <data name="Menu_Replace" xml:space="preserve">
+    <value>Vervangen</value>
+  </data>
+  <data name="Menu_ZoomIn" xml:space="preserve">
+    <value>Vergroten</value>
+  </data>
+  <data name="Menu_ZoomOut" xml:space="preserve">
+    <value>Verkleinen</value>
+  </data>
+  <data name="Menu_ResetZoom" xml:space="preserve">
+    <value>Schaal herstellen</value>
+  </data>
+  <data name="Menu_FullScreen" xml:space="preserve">
+    <value>Volledig scherm</value>
+  </data>
+  <data name="Menu_ToggleSidebar" xml:space="preserve">
+    <value>Zijbalk wisselen</value>
+  </data>
+  <data name="Menu_ToggleStatusBar" xml:space="preserve">
+    <value>Schakel statusbalk in/uit</value>
+  </data>
+  <data name="Menu_Refresh" xml:space="preserve">
+    <value>Vernieuwen</value>
+  </data>
+  <data name="Menu_Settings" xml:space="preserve">
+    <value>Instellingen</value>
+  </data>
+  <data name="Menu_Preferences" xml:space="preserve">
+    <value>Voorkeuren</value>
+  </data>
+  <data name="Menu_CheckForUpdates" xml:space="preserve">
+    <value>Controleren op updates</value>
+  </data>
+  <data name="Menu_About" xml:space="preserve">
+    <value>Over</value>
+  </data>
+  <data name="Menu_Documentation" xml:space="preserve">
+    <value>Documentatie</value>
+  </data>
+  <data name="Menu_Feedback" xml:space="preserve">
+    <value>Feedback</value>
+  </data>
+  <data name="Dialog_Title_Confirm" xml:space="preserve">
+    <value>Bevestigen</value>
+  </data>
+  <data name="Dialog_Title_Warning" xml:space="preserve">
+    <value>Waarschuwing</value>
+  </data>
+  <data name="Dialog_Title_Error" xml:space="preserve">
+    <value>Fout</value>
+  </data>
+  <data name="Dialog_Title_Information" xml:space="preserve">
+    <value>Tip</value>
+  </data>
+  <data name="Dialog_Title_Settings" xml:space="preserve">
+    <value>Instellingen</value>
+  </data>
+  <data name="Dialog_Title_About" xml:space="preserve">
+    <value>Info</value>
+  </data>
+  <data name="Dialog_Button_Ok" xml:space="preserve">
+    <value>Bevestigen</value>
+  </data>
+  <data name="Dialog_Button_Cancel" xml:space="preserve">
+    <value>Annuleren</value>
+  </data>
+  <data name="Dialog_Button_Yes" xml:space="preserve">
+    <value>Ja</value>
+  </data>
+  <data name="Dialog_Button_No" xml:space="preserve">
+    <value>Nee</value>
+  </data>
+  <data name="Dialog_Button_Apply" xml:space="preserve">
+    <value>Toepassen</value>
+  </data>
+  <data name="Dialog_Button_Close" xml:space="preserve">
+    <value>Sluiten</value>
+  </data>
+  <data name="Dialog_Button_Retry" xml:space="preserve">
+    <value>Opnieuw</value>
+  </data>
+  <data name="Dialog_Button_Ignore" xml:space="preserve">
+    <value>Negeren</value>
+  </data>
+  <data name="Dialog_Message_AreYouSure" xml:space="preserve">
+    <value>Weet je het zeker?</value>
+  </data>
+  <data name="Dialog_Message_ConfirmDelete" xml:space="preserve">
+    <value>Weet u zeker dat u wilt verwijderen? Deze actie kan niet ongedaan worden gemaakt.</value>
+  </data>
+  <data name="Dialog_Message_ConfirmExit" xml:space="preserve">
+    <value>Weet u zeker dat u wilt afsluiten?</value>
+  </data>
+  <data name="Dialog_Message_UnsavedChanges" xml:space="preserve">
+    <value>U hebt niet-opgeslagen wijzigingen. Wilt u deze opslaan?</value>
+  </data>
+  <data name="Dialog_Message_OperationSucceeded" xml:space="preserve">
+    <value>Bewerking geslaagd.</value>
+  </data>
+  <data name="Dialog_Message_OperationFailed" xml:space="preserve">
+    <value>Bewerking mislukt.</value>
+  </data>
+  <data name="Dialog_Message_NotSupported" xml:space="preserve">
+    <value>De huidige bewerking wordt niet ondersteund.</value>
+  </data>
+  <data name="Dialog_File_OpenTitle" xml:space="preserve">
+    <value>Bestand selecteren om te openen</value>
+  </data>
+  <data name="Dialog_File_SaveTitle" xml:space="preserve">
+    <value>Opslaglocatie selecteren</value>
+  </data>
+  <data name="Dialog_File_FolderTitle" xml:space="preserve">
+    <value>Map selecteren</value>
+  </data>
+  <data name="Dialog_File_OverwritePrompt" xml:space="preserve">
+    <value>Bestand bestaat al, wilt u het overschrijven?</value>
+  </data>
+  <data name="Validation_Required" xml:space="preserve">
+    <value>Dit veld is verplicht.</value>
+  </data>
+  <data name="Validation_Invalid" xml:space="preserve">
+    <value>Ongeldige invoer.</value>
+  </data>
+  <data name="Validation_InvalidFormat" xml:space="preserve">
+    <value>Indeling is onjuist.</value>
+  </data>
+  <data name="Validation_OutOfRange" xml:space="preserve">
+    <value>Buiten het toegestane bereik.</value>
+  </data>
+  <data name="Validation_MinLengthFormat" xml:space="preserve">
+    <value>De lengte mag niet minder dan {0} zijn.</value>
+  </data>
+  <data name="Validation_MaxLengthFormat" xml:space="preserve">
+    <value>Lengte mag niet groter zijn dan {0}.</value>
+  </data>
+  <data name="Validation_LengthRangeFormat" xml:space="preserve">
+    <value>De lengte moet tussen {0} en {1} liggen.</value>
+  </data>
+  <data name="Validation_MinValueFormat" xml:space="preserve">
+    <value>Mag niet kleiner zijn dan {0}.</value>
+  </data>
+  <data name="Validation_MaxValueFormat" xml:space="preserve">
+    <value>Mag niet groter zijn dan {0}.</value>
+  </data>
+  <data name="Validation_ValueRangeFormat" xml:space="preserve">
+    <value>moet tussen {0} en {1} liggen.</value>
+  </data>
+  <data name="Validation_InvalidEmail" xml:space="preserve">
+    <value>E-mailadres heeft een onjuiste indeling.</value>
+  </data>
+  <data name="Validation_InvalidPhone" xml:space="preserve">
+    <value>Telefoonnummer heeft een onjuiste indeling.</value>
+  </data>
+  <data name="Validation_InvalidUrl" xml:space="preserve">
+    <value>URL-indeling is onjuist.</value>
+  </data>
+  <data name="Validation_InvalidIpAddress" xml:space="preserve">
+    <value>IP-adres is ongeldig.</value>
+  </data>
+  <data name="Validation_PasswordNotMatch" xml:space="preserve">
+    <value>De twee ingevoerde wachtwoorden komen niet overeen.</value>
+  </data>
+  <data name="Validation_InvalidDate" xml:space="preserve">
+    <value>Ongeldige datum.</value>
+  </data>
+  <data name="Validation_InvalidTime" xml:space="preserve">
+    <value>Ongeldige tijd.</value>
+  </data>
+  <data name="File_NewFile" xml:space="preserve">
+    <value>Nieuw bestand</value>
+  </data>
+  <data name="File_NewFolder" xml:space="preserve">
+    <value>Nieuwe map</value>
+  </data>
+  <data name="File_OpenFile" xml:space="preserve">
+    <value>Bestand openen</value>
+  </data>
+  <data name="File_OpenFolder" xml:space="preserve">
+    <value>Map openen</value>
+  </data>
+  <data name="File_SaveFile" xml:space="preserve">
+    <value>Bestand opslaan</value>
+  </data>
+  <data name="File_SaveAll" xml:space="preserve">
+    <value>Alles opslaan</value>
+  </data>
+  <data name="File_Rename" xml:space="preserve">
+    <value>Hernoemen</value>
+  </data>
+  <data name="File_Copy" xml:space="preserve">
+    <value>Kopiëren</value>
+  </data>
+  <data name="File_Move" xml:space="preserve">
+    <value>Verplaatsen</value>
+  </data>
+  <data name="File_Delete" xml:space="preserve">
+    <value>Verwijderen</value>
+  </data>
+  <data name="File_Restore" xml:space="preserve">
+    <value>Herstellen</value>
+  </data>
+  <data name="File_Size" xml:space="preserve">
+    <value>Grootte</value>
+  </data>
+  <data name="File_Type" xml:space="preserve">
+    <value>Type</value>
+  </data>
+  <data name="File_Name" xml:space="preserve">
+    <value>Naam</value>
+  </data>
+  <data name="File_Path" xml:space="preserve">
+    <value>Pad
+</value>
+  </data>
+  <data name="File_DateCreated" xml:space="preserve">
+    <value>Aanmaakdatum</value>
+  </data>
+  <data name="File_DateModified" xml:space="preserve">
+    <value>Wijzigingsdatum</value>
+  </data>
+  <data name="File_Error_NotFound" xml:space="preserve">
+    <value>Bestand niet gevonden.</value>
+  </data>
+  <data name="File_Error_FolderNotFound" xml:space="preserve">
+    <value>Map niet gevonden.</value>
+  </data>
+  <data name="File_Error_AccessDenied" xml:space="preserve">
+    <value>Geen toegang.</value>
+  </data>
+  <data name="File_Error_InUse" xml:space="preserve">
+    <value>Bestand is in gebruik.</value>
+  </data>
+  <data name="File_Error_ReadFailed" xml:space="preserve">
+    <value>Lezen mislukt.</value>
+  </data>
+  <data name="File_Error_WriteFailed" xml:space="preserve">
+    <value>Schrijven mislukt.</value>
+  </data>
+  <data name="File_Error_InvalidPath" xml:space="preserve">
+    <value>Ongeldig pad.</value>
+  </data>
+  <data name="File_Error_AlreadyExists" xml:space="preserve">
+    <value>Er bestaat al een bestand of map met dezelfde naam.</value>
+  </data>
+  <data name="File_Filter_AllFiles" xml:space="preserve">
+    <value>Alle bestanden (*.*)</value>
+  </data>
+  <data name="Nav_Home" xml:space="preserve">
+    <value>Startpagina</value>
+  </data>
+  <data name="Nav_Dashboard" xml:space="preserve">
+    <value>Dashboard</value>
+  </data>
+  <data name="Nav_Projects" xml:space="preserve">
+    <value>Project</value>
+  </data>
+  <data name="Nav_Favorites" xml:space="preserve">
+    <value>Favorieten</value>
+  </data>
+  <data name="Nav_Recent" xml:space="preserve">
+    <value>Recent</value>
+  </data>
+  <data name="Nav_History" xml:space="preserve">
+    <value>Geschiedenis</value>
+  </data>
+  <data name="Nav_Settings" xml:space="preserve">
+    <value>Instellingen</value>
+  </data>
+  <data name="Nav_Account" xml:space="preserve">
+    <value>Account</value>
+  </data>
+  <data name="Nav_Profile" xml:space="preserve">
+    <value>Persoonlijke gegevens</value>
+  </data>
+  <data name="Nav_Security" xml:space="preserve">
+    <value>Veiligheid</value>
+  </data>
+  <data name="Nav_Notifications" xml:space="preserve">
+    <value>Melding</value>
+  </data>
+  <data name="Nav_Back" xml:space="preserve">
+    <value>Terug</value>
+  </data>
+  <data name="Nav_Next" xml:space="preserve">
+    <value>Volgende</value>
+  </data>
+  <data name="Nav_Previous" xml:space="preserve">
+    <value>Vorige stap</value>
+  </data>
+  <data name="Status_Ready" xml:space="preserve">
+    <value>Gereed</value>
+  </data>
+  <data name="Status_Loading" xml:space="preserve">
+    <value>Bezig met laden...</value>
+  </data>
+  <data name="Status_Working" xml:space="preserve">
+    <value>Bezig...</value>
+  </data>
+  <data name="Status_Saving" xml:space="preserve">
+    <value>Bezig met opslaan...</value>
+  </data>
+  <data name="Status_Refreshing" xml:space="preserve">
+    <value>Bezig met vernieuwen...</value>
+  </data>
+  <data name="Status_Connecting" xml:space="preserve">
+    <value>Bezig met verbinden...</value>
+  </data>
+  <data name="Status_Disconnecting" xml:space="preserve">
+    <value>Verbinding wordt verbroken...</value>
+  </data>
+  <data name="Status_Connected" xml:space="preserve">
+    <value>Verbonden</value>
+  </data>
+  <data name="Status_Disconnected" xml:space="preserve">
+    <value>Niet verbonden</value>
+  </data>
+  <data name="Status_Success" xml:space="preserve">
+    <value>Geslaagd</value>
+  </data>
+  <data name="Status_Failed" xml:space="preserve">
+    <value>Mislukt</value>
+  </data>
+  <data name="Status_Canceled" xml:space="preserve">
+    <value>Geannuleerd</value>
+  </data>
+  <data name="Status_Completed" xml:space="preserve">
+    <value>Voltooid</value>
+  </data>
+  <data name="Status_Paused" xml:space="preserve">
+    <value>Gepauzeerd</value>
+  </data>
+  <data name="Status_Stopped" xml:space="preserve">
+    <value>Gestopt</value>
+  </data>
+  <data name="Status_NoData" xml:space="preserve">
+    <value>Geen gegevens beschikbaar</value>
+  </data>
+  <data name="Status_Empty" xml:space="preserve">
+    <value>Leeg</value>
+  </data>
+  <data name="Status_ItemsCountFormat" xml:space="preserve">
+    <value>Totaal {0} items</value>
+  </data>
+  <data name="Status_SelectedCountFormat" xml:space="preserve">
+    <value>{0} item(s) geselecteerd</value>
+  </data>
+  <data name="Permission_Title" xml:space="preserve">
+    <value>Machtigingen</value>
+  </data>
+  <data name="Permission_AccessDenied" xml:space="preserve">
+    <value>Toegang geweigerd.</value>
+  </data>
+  <data name="Permission_Unauthorized" xml:space="preserve">
+    <value>Niet geautoriseerd.</value>
+  </data>
+  <data name="Permission_Insufficient" xml:space="preserve">
+    <value>Onvoldoende rechten.</value>
+  </data>
+  <data name="Permission_Request" xml:space="preserve">
+    <value>Machtiging aanvragen</value>
+  </data>
+  <data name="Permission_Grant" xml:space="preserve">
+    <value>Toekennen</value>
+  </data>
+  <data name="Permission_Revoke" xml:space="preserve">
+    <value>Ongedaan</value>
+  </data>
+  <data name="Permission_AdminRequired" xml:space="preserve">
+    <value>Beheerdersrechten vereist.</value>
+  </data>
+  <data name="Permission_Read" xml:space="preserve">
+    <value>Lezen</value>
+  </data>
+  <data name="Permission_Write" xml:space="preserve">
+    <value>Schrijven</value>
+  </data>
+  <data name="Permission_Execute" xml:space="preserve">
+    <value>Uitvoeren</value>
+  </data>
+  <data name="Permission_Delete" xml:space="preserve">
+    <value>Verwijderen</value>
+  </data>
+  <data name="Theme_Title" xml:space="preserve">
+    <value>Thema</value>
+  </data>
+  <data name="Theme_Light" xml:space="preserve">
+    <value>Licht</value>
+  </data>
+  <data name="Theme_Dark" xml:space="preserve">
+    <value>Donker</value>
+  </data>
+  <data name="Theme_System" xml:space="preserve">
+    <value>Systeem volgen</value>
+  </data>
+  <data name="Theme_Auto" xml:space="preserve">
+    <value>Automatisch</value>
+  </data>
+  <data name="Theme_AccentColor" xml:space="preserve">
+    <value>Accentkleur</value>
+  </data>
+  <data name="Theme_PrimaryColor" xml:space="preserve">
+    <value>Hoofdkleur</value>
+  </data>
+  <data name="Theme_Background" xml:space="preserve">
+    <value>Achtergrond</value>
+  </data>
+  <data name="Theme_Foreground" xml:space="preserve">
+    <value>Voorgrond</value>
+  </data>
+  <data name="Theme_Font" xml:space="preserve">
+    <value>Lettertype</value>
+  </data>
+  <data name="Theme_FontSize" xml:space="preserve">
+    <value>Lettergrootte</value>
+  </data>
+  <data name="Theme_CornerRadius" xml:space="preserve">
+    <value>Afgeronde hoeken</value>
+  </data>
+  <data name="Theme_Shadow" xml:space="preserve">
+    <value>Schaduw</value>
+  </data>
+  <data name="Theme_Transparency" xml:space="preserve">
+    <value>Transparantie</value>
+  </data>
+  <data name="Theme_Apply" xml:space="preserve">
+    <value>Toepassingsthema</value>
+  </data>
+  <data name="Theme_Reset" xml:space="preserve">
+    <value>Standaardthema herstellen</value>
+  </data>
+  <data name="Window_Maximize" xml:space="preserve">
+    <value>Maximaliseren</value>
+  </data>
+  <data name="Window_Minimize" xml:space="preserve">
+    <value>Minimaliseren</value>
+  </data>
+  <data name="Window_Restore" xml:space="preserve">
+    <value>Herstellen</value>
+  </data>
+  <data name="Common_DataBase" xml:space="preserve">
+    <value>Databank</value>
+  </data>
+  <data name="Common_CheckAll" xml:space="preserve">
+    <value>Alles selecteren</value>
+  </data>
+  <data name="Common_DeleteCheckAll" xml:space="preserve">
+    <value>Verwijder selectie</value>
+  </data>
+  <data name="Common_Total" xml:space="preserve">
+    <value>Totaal</value>
+  </data>
+  <data name="Common_OperationCancel" xml:space="preserve">
+    <value>Bewerking geannuleerd</value>
+  </data>
+  <data name="Common_AlreadyExists" xml:space="preserve">
+    <value>Bestaat al</value>
+  </data>
+  <data name="Common_PasswordError" xml:space="preserve">
+    <value>Verkeerd wachtwoord</value>
+  </data>
+  <data name="Common_InputPassword" xml:space="preserve">
+    <value>Voer het wachtwoord in</value>
+  </data>
+  <data name="Common_PasswrodErrorTooMany" xml:space="preserve">
+    <value>Te veel foutieve wachtwoordpogingen</value>
+  </data>
+  <data name="Common_Skip" xml:space="preserve">
+    <value>Overslaan</value>
+  </data>
+</root>

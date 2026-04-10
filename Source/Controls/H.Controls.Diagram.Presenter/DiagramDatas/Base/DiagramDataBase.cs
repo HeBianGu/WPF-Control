@@ -12,7 +12,6 @@ global using H.Controls.Diagram.Layouts;
 global using H.Controls.Diagram.Layouts.Base;
 global using H.Controls.Diagram.LinkDrawers;
 global using H.Controls.Diagram.Presenter.NodeDatas.Card;
-global using H.Controls.Form.PropertyItem.Attribute.SourcePropertyItem;
 global using H.Controls.Form.PropertyItem.ComboBoxPropertyItems;
 global using H.Extensions.FontIcon;
 global using H.Extensions.Mvvm.Commands;
@@ -21,6 +20,10 @@ global using H.Services.Message;
 global using H.Services.Message.Dialog;
 global using System.Text.Json.Serialization;
 global using System.Windows.Input;
+using H.Controls.Diagram.Parts.Base;
+using H.Controls.Form.Attributes;
+using H.Controls.Form.PropertyItem.Attribute;
+using H.Themes.Backgrounds;
 namespace H.Controls.Diagram.Presenter.DiagramDatas.Base;
 
 public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
@@ -94,7 +97,8 @@ public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
     [System.Text.Json.Serialization.JsonIgnore]
     [XmlIgnore]
     [Display(Name = "连线样式", GroupName = "基础信息")]
-    [PropertyNameSourcePropertyItem(typeof(ComboBoxPropertyItem), nameof(LinkDrawers))]
+    [GetPropertyNameSource(nameof(LinkDrawers))]
+    [PropertyItem(typeof(ComboBoxPropertyItem))]
     public ILinkDrawer LinkDrawer
     {
         get { return _linkDrawer; }
@@ -136,7 +140,8 @@ public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
     private ILayout _layout = new LocationLayout();
     [JsonIgnore]
     [XmlIgnore]
-    [PropertyNameSourcePropertyItem(typeof(ComboBoxPropertyItem), nameof(Layouts))]
+    [GetPropertyNameSource(nameof(Layouts))]
+    [PropertyItem(typeof(ComboBoxPropertyItem))]
     [Display(Name = "布局方式", GroupName = "基础信息")]
     public ILayout Layout
     {
@@ -243,6 +248,7 @@ public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
         //{
         //    item.AligmentLayout();
         //}
+
         this.DataSource.Nodes.AligmentToNodesWithStartNode();
     }, x => this.DataSource.Nodes.Count > 0);
 
@@ -264,6 +270,8 @@ public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
                     p.LoadDefault();
                 }
             }
+
+
         }
 
         foreach (var item in this.Datas.LinkDatas.OfType<IDefaultable>())
@@ -311,6 +319,19 @@ public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
 
     }
 
+    public void Select(IPartData part)
+    {
+        var diagram = this.GetTargetElement<Diagram>();
+        if (diagram == null)
+            return;
+
+        diagram.Dispatcher.Invoke(() =>
+        {
+            var n = diagram.Nodes.FirstOrDefault(x => x.GetContent() == part);
+            diagram.SelectedPart = n;
+        });
+    }
+
     public RelayCommand MouseDoubleClickCommand => new RelayCommand(e =>
     {
         this.OnMouseDoubleClick(e);
@@ -329,6 +350,8 @@ public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
                 await IocMessage.ShowDialog(propertyPresenter, x =>
                 {
                     x.DialogButton = DialogButton.None;
+                    x.Background = null;
+                    x.UseDropShadowEffect = true;
                     if (showPropertyView is ITitleable title && title.Title != null)
                         x.Title = title.Title;
                     if (showPropertyView is INameable nameable && nameable.Name != null)
@@ -339,7 +362,7 @@ public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
             {
                 await IocMessage.Form?.ShowTabEdit(framework?.DataContext, x =>
                  {
-
+                    
                  }, null, x =>
                  {
                      x.TitleWidth = double.NaN;
@@ -431,7 +454,6 @@ public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
     protected virtual void OnDeserialized()
     {
         this.DataSource = this.CreateDataSource();
-
         foreach (var item in this.Datas.NodeDatas.OfType<IOnDiagramDeserialized>())
         {
             item.OnDiagramDeserialized();

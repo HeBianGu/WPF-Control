@@ -29,7 +29,6 @@ using H.Services.Setting;
 
 namespace H.DataBases.Share
 {
-    [Display(Name = "数据库配置", GroupName = SettingGroupNames.GroupData)]
     public abstract class DbSettableBase<T> : LazySettableInstance<T>, IDbSettable where T : new()
     {
         public abstract string GetConnect();
@@ -37,7 +36,7 @@ namespace H.DataBases.Share
         public override void LoadDefault()
         {
             base.LoadDefault();
-            this.ConfigPath = Path.Combine(AppPaths.Instance.Config, this.GetType().Name + AppPaths.Instance.ConfigExtention);
+            this.ConfigPath = Path.Combine(AppPaths.Instance.Config, this.GetType().Name + ".json");
         }
         protected override string GetDefaultPath()
         {

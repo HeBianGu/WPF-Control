@@ -8,7 +8,7 @@
 
 namespace H.Controls.Diagram.Presenter.NodeDatas.Base;
 
-public abstract class NodeData : NodeDataBase, ITemplate, ILinkDataCreator, IPortDataCreator
+public abstract class NodeData : NodeDataBase, ILinkDataCreator, IPortDataCreator
 {
     public NodeData()
     {
@@ -104,17 +104,23 @@ public abstract class NodeData : NodeDataBase, ITemplate, ILinkDataCreator, IPor
         IocMessage.Form?.ShowView(this);
     });
 
-    private bool _isTemplate = true;
-    [DefaultValue(true)]
-    public bool IsTemplate
-    {
-        get { return _isTemplate; }
-        set
-        {
-            _isTemplate = value;
-            RaisePropertyChanged();
-        }
-    }
+    //private bool _isTemplate = true;
+    //[DefaultValue(true)]
+    //public bool IsTemplate
+    //{
+    //    get { return _isTemplate; }
+    //    set
+    //    {
+    //        _isTemplate = value;
+    //        RaisePropertyChanged();
+    //    }
+    //}
+
+    //public override void LoadDefault()
+    //{
+    //    base.LoadDefault();
+    //    this.IsTemplate = false;
+    //}
 
     private double _height;
     [DefaultValue(60)]

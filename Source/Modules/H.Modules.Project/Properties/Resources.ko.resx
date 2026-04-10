@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Type_ShowNewProjectCommand" xml:space="preserve">
+    <value>새 프로젝트</value>
+  </data>
+  <data name="Type_ShowNewProjectCommand_Description" xml:space="preserve">
+    <value>새 프로젝트 페이지 표시</value>
+  </data>
+  <data name="Type_ShowProjectsCommand" xml:space="preserve">
+    <value>프로젝트 열기</value>
+  </data>
+  <data name="Type_ShowProjectsCommand_Description" xml:space="preserve">
+    <value>프로젝트 목록을 표시하고 열 프로젝트를 선택합니다.</value>
+  </data>
+  <data name="Type_ShowEditProjectCommand" xml:space="preserve">
+    <value>프로젝트 편집</value>
+  </data>
+  <data name="Type_ShowEditProjectCommand_Description" xml:space="preserve">
+    <value>선택한 항목 편집 페이지 표시</value>
+  </data>
+  <data name="Type_ShowSaveProjectCommand" xml:space="preserve">
+    <value>프로젝트 저장</value>
+  </data>
+  <data name="Type_ShowSaveProjectCommand_Description" xml:space="preserve">
+    <value>현재 선택된 마법사를 구성 파일에 저장합니다</value>
+  </data>
+  <data name="Type_ShowCurrentProjectFileCommand" xml:space="preserve">
+    <value>프로젝트 파일 열기</value>
+  </data>
+  <data name="Type_ShowCurrentProjectFileCommand_Description" xml:space="preserve">
+    <value>메모장으로 현재 프로젝트의 구성 파일 데이터를 엽니다</value>
+  </data>
+  <data name="Property_ProjectItem_LoadDefaultCommand" xml:space="preserve">
+    <value>기본값으로 복원</value>
+  </data>
+  <data name="Property_ProjectItem_Title" xml:space="preserve">
+    <value>제목</value>
+  </data>
+  <data name="Property_ProjectItem_IsFixed" xml:space="preserve">
+    <value>고정 여부</value>
+  </data>
+  <data name="Property_ProjectItem_CreateTime" xml:space="preserve">
+    <value>생성 시간</value>
+  </data>
+  <data name="Property_ProjectItem_UpdateTime" xml:space="preserve">
+    <value>수정 시간</value>
+  </data>
+  <data name="Property_ProjectOptions_Extenstion" xml:space="preserve">
+    <value>확장명</value>
+  </data>
+  <data name="Property_ProjectOptions_SaveMode" xml:space="preserve">
+    <value>저장 시점</value>
+  </data>
+  <data name="Property_ProjectOptions_DefaultProjectName" xml:space="preserve">
+    <value>기본 파일 이름</value>
+  </data>
+  <data name="Type_ProjectOptions" xml:space="preserve">
+    <value>프로젝트 구성</value>
+  </data>
+  <data name="Type_ProjectOptions_GroupName" xml:space="preserve">
+    <value>시스템 설정</value>
+  </data>
+  <data name="Type_ProjectOptions_Description" xml:space="preserve">
+    <value>프로젝트 구성 정보</value>
+  </data>
+</root>

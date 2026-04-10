@@ -14,5 +14,6 @@ public interface IDiagramData : ICloneable, IDable, INameable, IGroupable
     //void Clear();
     IList<INodeData> NodeDatas { get; }
     IList<ILinkData> LinkDatas { get; }
+    void Select(IPartData partData);
 }
 

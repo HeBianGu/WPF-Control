@@ -11,7 +11,7 @@ using System.Windows;
 
 namespace H.Themes.Colors.Accent;
 [Display(Name = "浅主题（推荐）", GroupName = "强力推荐", Description = "纯色", Order = 10, Prompt = "强力推荐")]
-public class AccentLightColorResource : ColorResourceBase
+public class AccentLightColorResource : ResxColorResourceBase
 {
     public AccentLightColorResource()
     {

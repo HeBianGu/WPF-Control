@@ -19,9 +19,7 @@ namespace H.Controls.Chart2D
             this.Loaded += (l, k) =>
               {
                   this.Draw(this);
-
               };
-
         }
     }
 
@@ -144,70 +142,41 @@ namespace H.Controls.Chart2D
         public override void Draw(Canvas canvas)
         {
             base.Draw(canvas);
-
             double total = 0;
 
             for (int i = 0; i < this.Data.Count; i++)
             {
                 bool use = this.DataBoolean.Count > i ? this.DataBoolean[i] : true;
-
-                if (!use) continue;
-
+                if (!use) 
+                    continue;
                 total += this.Data[i];
             }
-
-            //this.Data.Union
-
-            //double total = this.Data.Sum();
-
             double sum = 0;
-
             double min = Math.Min(this.ActualHeight, this.ActualWidth);
-
-            //  Do ：中心点
-            Point center = new Point(0, 0);
-
+            Point center = new Point(this.ActualWidth / 2, this.ActualHeight / 2);
             for (int i = 0; i < this.Data.Count; i++)
             {
                 bool use = this.DataBoolean.Count > i ? this.DataBoolean[i] : true;
-
-                //  Do ：半径
-                double len = this.Len == double.NaN ? min / 2 : this.Len;
-
+                double len = double.IsNaN(this.Len) ? min / 2 : this.Len;
                 double y = use ? this.Data[i] : 0;
-
                 double startAngle = 360 * sum / total;
-
                 double endAngle = 360 * (sum + y) / total;
-
                 sum = sum + y;
-
                 double max = len;
-
-                //半径跟随值变化
                 if (this.IsCustomized)
-                {
                     len = len * this.Data[i] / this.Data.Max();
-                }
-
-                //Point direction = new Point(0,0);
-
-                //  Do ：增加标记
                 {
-                    //  Do ：第二个点
-                    Point start = new Point(center.X - max - (max / 10), center.X);
+                    Point start = new Point(center.X - max - (max / 10), center.Y);
                     Matrix matrix = new Matrix();
                     matrix.RotateAt(((endAngle - startAngle) / 2) + startAngle, center.X, center.Y);
                     Point end = matrix.Transform(start);
 
-                    //  Do ：第一个点
-                    Point startFirst = new Point(center.X - len, center.X);
+                    Point startFirst = new Point(center.X - len, center.Y);
                     Matrix matrixFirst = new Matrix();
                     matrixFirst.RotateAt(((endAngle - startAngle) / 2) + startAngle, center.X, center.Y);
                     Point endFirst = matrixFirst.Transform(startFirst);
 
                     Path path = new Path();
-
                     path.Visibility = use ? Visibility.Visible : Visibility.Hidden;
                     path.Style = this.LineStyle;
                     if (this.Foreground.Count > i)
@@ -218,56 +187,32 @@ namespace H.Controls.Chart2D
                     pf.Segments.Add(new LineSegment(end, true));
 
                     double hlen = len / 8;
-
                     double endParam = end.X > center.X ? hlen : -hlen;
-
                     pf.Segments.Add(new LineSegment(new Point(end.X + endParam, end.Y), true));
-
                     PathGeometry pg = new PathGeometry(new List<PathFigure>() { pf });
-
                     path.Data = pg;
-
-
                     this.Children.Add(path);
-
-                    //  Do ：显示文本
                     Label t = new Label();
                     t.Content = this.xDisplay.Count > i ? this.xDisplay[i] : this.Data[i].ToString();
-
                     t.Visibility = use ? Visibility.Visible : Visibility.Hidden;
-
                     t.Style = this.LabelStyle;
-
                     t.Loaded += (o, e) =>
                     {
                         endParam = end.X > center.X ? hlen + (hlen / 2) : -hlen - t.ActualWidth - (hlen / 2);
-
                         Canvas.SetLeft(t, end.X + endParam);
                         Canvas.SetTop(t, end.Y - (t.ActualHeight / 2));
                     };
-
-
                     canvas.Children.Add(t);
                 }
 
-
-
-                //  Do ：增加扇形
                 {
                     ArcSegment arc = new ArcSegment();
-
                     Matrix matrix = new Matrix();
-
-                    Point p = new Point(center.X - len, center.X);
-
+                    Point p = new Point(center.X - len, center.Y);
                     matrix.RotateAt(startAngle, center.X, center.Y);
-
                     arc.Point = matrix.Transform(p);
-
                     Point start = arc.Point;
-
                     matrix = new Matrix();
-
                     Path path = new Path();
                     path.Style = this.PathStyle;
                     if (this.Foreground.Count > i)
@@ -276,7 +221,6 @@ namespace H.Controls.Chart2D
                     PathFigure pf = new PathFigure();
                     pf.StartPoint = center;
                     pf.Segments.Add(new LineSegment(start, true));
-
                     if (endAngle - startAngle > 180)
                     {
                         matrix.RotateAt((endAngle - startAngle) / 2, center.X, center.Y);
@@ -292,22 +236,14 @@ namespace H.Controls.Chart2D
                         matrix.RotateAt(endAngle - startAngle, center.X, center.Y);
                         Point end = matrix.Transform(start);
                         pf.Segments.Add(new ArcSegment(end, new Size(len, len), 0, false, SweepDirection.Clockwise, true));
-
                     }
-
-
                     pf.Segments.Add(new LineSegment(center, true));
                     pf.IsClosed = true;
-
                     PathGeometry pg = new PathGeometry(new List<PathFigure>() { pf });
-
                     path.Data = pg;
-
                     //  Do ：用于标识Legend显示信息
                     path.Tag = this.xDisplay.Count > i ? this.xDisplay[i] : this.Data[i].ToString();
-
                     path.Visibility = use ? Visibility.Visible : Visibility.Hidden;
-
                     this.Children.Add(path);
                 }
 

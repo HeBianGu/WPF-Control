@@ -13,6 +13,7 @@ global using System.Reflection;
 
 namespace H.Common.Commands;
 
+
 public abstract class DisplayMarkupCommandBase : AsyncMarkupCommandBase, IIconable, INameable, IDescriptionable
 {
     protected DisplayMarkupCommandBase()

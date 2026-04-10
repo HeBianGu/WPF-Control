@@ -19,29 +19,24 @@ public class LoadedAdornerBehavior : AdornerBehaviorBase
 
     private void AssociatedObject_Loaded(object sender, RoutedEventArgs e)
     {
-        Refresh();
+        this.UpdateAdorner();
     }
 
-    private void Refresh()
+    protected override void UpdateAdorner()
     {
-        if (this.AdornerType == null) return;
-
+        if (this.AssociatedObject == null)
+            return;
+        if (this.AdornerType == null)
+            return;
         if (this.AdornerVisual == null)
             this.AdornerVisual = this.AssociatedObject;
-
         AdornerLayer layer = AdornerLayer.GetAdornerLayer(this.AdornerVisual);
-        if (layer == null) return;
-
+        if (layer == null)
+            return;
         IEnumerable<Adorner> adorners = layer.GetAdorners(this.AdornerVisual as UIElement)?.Where(l => l.GetType() == this.AdornerType);
-
         if (adorners != null)
-        {
             foreach (Adorner item in adorners)
-            {
                 layer.Remove(item);
-            }
-        }
-
         if (this.IsUse)
         {
             Adorner adorner = Activator.CreateInstance(this.AdornerType, this.AssociatedObject) as Adorner;

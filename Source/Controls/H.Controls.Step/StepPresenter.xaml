@@ -3,15 +3,27 @@
                     xmlns:h="https://github.com/HeBianGu"
                     xmlns:local="clr-namespace:H.Controls.Step">
     <DataTemplate DataType="{x:Type local:StepPresenter}">
-        <local:Step ItemsSource="{Binding Collection}">
-            <ItemsControl.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <StackPanel HorizontalAlignment="Left"
-                                VerticalAlignment="Center"
-                                IsItemsHost="True"
-                                Orientation="{Binding Orientation}" />
-                </ItemsPanelTemplate>
-            </ItemsControl.ItemsPanel>
-        </local:Step>
+        <DockPanel>
+            <TextBlock MaxWidth="{Binding MaxWidth}"
+                       Margin="0,6"
+                       HorizontalAlignment="Left"
+                       DockPanel.Dock="Bottom"
+                       Text="{Binding Message}"
+                       ToolTip="{Binding Message}"
+                       TextTrimming="CharacterEllipsis" />
+            <local:Step x:Name="step"
+                        Padding="50,0"
+                        ClipToBounds="False"
+                        ItemsSource="{Binding Collection}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel HorizontalAlignment="Left"
+                                    VerticalAlignment="Center"
+                                    IsItemsHost="True"
+                                    Orientation="{Binding Orientation}" />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+            </local:Step>
+        </DockPanel>
     </DataTemplate>
 </ResourceDictionary>

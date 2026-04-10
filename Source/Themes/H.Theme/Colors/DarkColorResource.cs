@@ -6,10 +6,14 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
+using System.Globalization;
+using System.Resources;
+using System.Windows.Data;
+
 namespace H.Themes.Colors;
 
 [Display(Name = "深色（推荐）", GroupName = "强力推荐", Description = "纯色", Order = 10, Prompt = "强力推荐")]
-public class DarkColorResource : ColorResourceBase
+public class DarkColorResource : ResxColorResourceBase
 {
     public DarkColorResource()
     {

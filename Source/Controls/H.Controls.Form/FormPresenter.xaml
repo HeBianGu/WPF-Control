@@ -3,7 +3,9 @@
                     xmlns:h="https://github.com/HeBianGu"
                     xmlns:local="clr-namespace:H.Controls.Form">
     <DataTemplate DataType="{x:Type local:FormPresenter}">
-        <local:Form ExceptPropertyNames="{Binding ExceptPropertyNames}"
+        <local:Form Margin="{Binding Margin}"
+                    Padding="{Binding Padding}"
+                    ExceptPropertyNames="{Binding ExceptPropertyNames}"
                     IsHitTestVisible="{Binding IsHitTestVisible}"
                     SelectObject="{Binding SelectObject}"
                     TitleWidth="{Binding TitleWidth}"
@@ -30,6 +32,27 @@
                     UsePropertyView="{Binding UsePropertyView}"
                     UseString="{Binding UseString}"
                     UseTypeConverter="{Binding UseTypeConverter}"
-                    UseTypeConverterOnly="{Binding UseTypeConverterOnly}" />
+                    UseTypeConverterOnly="{Binding UseTypeConverterOnly}">
+            <ItemsControl.GroupStyle>
+                <GroupStyle>
+                    <GroupStyle.ContainerStyle>
+                        <Style TargetType="{x:Type GroupItem}">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type GroupItem}">
+                                        <GroupBox Padding="3,0"
+                                                  Header="{Binding Name}">
+                                            <GroupBox.Content>
+                                                <ItemsPresenter />
+                                            </GroupBox.Content>
+                                        </GroupBox>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </GroupStyle.ContainerStyle>
+                </GroupStyle>
+            </ItemsControl.GroupStyle>
+        </local:Form>
     </DataTemplate>
 </ResourceDictionary>

@@ -39,7 +39,7 @@
                                         TypeInTargetAssembly={x:Type lc:WindowKeys}}"
            BasedOn="{StaticResource {x:Static lc:WindowKeys.FontIconButton}}"
            TargetType="{x:Type lc:FontIconButton}">
-        <Setter Property="ToolTip" Value="最大化" />
+        <Setter Property="ToolTip" Value="{x:Static Resources.Window_Maximize}" />
         <Setter Property="FontSize" Value="10" />
         <Setter Property="Content" Value="&#xE922;" />
         <Style.Triggers>
@@ -58,7 +58,7 @@
                                         TypeInTargetAssembly={x:Type lc:WindowKeys}}"
            BasedOn="{StaticResource {x:Static lc:WindowKeys.FontIconButton}}"
            TargetType="{x:Type lc:FontIconButton}">
-        <Setter Property="ToolTip" Value="最小化" />
+        <Setter Property="ToolTip" Value="{x:Static Resources.Window_Minimize}" />
         <Setter Property="FontSize" Value="10" />
         <Setter Property="Content" Value="&#xE921;" />
     </Style>
@@ -67,7 +67,7 @@
                                         TypeInTargetAssembly={x:Type lc:WindowKeys}}"
            BasedOn="{StaticResource {x:Static lc:WindowKeys.FontIconButton}}"
            TargetType="{x:Type lc:FontIconButton}">
-        <Setter Property="ToolTip" Value="还原" />
+        <Setter Property="ToolTip" Value="{x:Static Resources.Window_Restore}" />
         <Setter Property="FontSize" Value="10" />
         <Setter Property="Content" Value="&#xE923;" />
         <Style.Triggers>
@@ -87,7 +87,7 @@
            BasedOn="{StaticResource {x:Static lc:WindowKeys.FontIconButton}}"
            TargetType="{x:Type lc:FontIconButton}">
         <Setter Property="FontSize" Value="10" />
-        <Setter Property="ToolTip" Value="关闭" />
+        <Setter Property="ToolTip" Value="{x:Static Resources.Common_Close}" />
         <Setter Property="Content" Value="&#xE8BB;" />
     </Style>
 

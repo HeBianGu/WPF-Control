@@ -237,6 +237,7 @@
                                         <FontIconButton x:Name="toggleMinimizeButton"
                                                         Command="odc:OutlookBar.CollapseCommand"
                                                         Content="{x:Static FontIcons.Pin}"
+                                                        ToolTip="显示/隐藏侧边栏"
                                                         DockPanel.Dock="Right" />
 
                                         <ContentControl DockPanel.Dock="Right"

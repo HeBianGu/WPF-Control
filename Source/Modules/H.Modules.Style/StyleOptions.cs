@@ -6,7 +6,8 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
-using H.Controls.Form.PropertyItem.Attribute.SourcePropertyItem;
+using H.Controls.Form.Attributes;
+using H.Controls.Form.PropertyItem.Attribute;
 using H.Controls.Form.PropertyItem.ComboBoxPropertyItems;
 using H.Extensions.Setting;
 using H.Services.Setting;
@@ -33,7 +34,8 @@ public class StyleOptions : IocOptionInstance<StyleOptions>, IStyleOptions
     private IStyleResource _styleResource;
     [JsonIgnore]
     [XmlIgnore]
-    [PropertyNameSourcePropertyItem(typeof(ComboBoxPropertyItem), nameof(StyleResources))]
+    [GetPropertyNameSource(nameof(StyleResources))]
+    [PropertyItem(typeof(ComboBoxPropertyItem))]
     [Display(Name = "控件样式")]
     public IStyleResource StyleResource
     {

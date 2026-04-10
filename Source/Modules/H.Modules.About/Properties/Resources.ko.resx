@@ -1,0 +1,127 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Property_AboutOptions_Title" xml:space="preserve">
+    <value>제품 제목</value>
+  </data>
+  <data name="Property_AboutOptions_ProductName" xml:space="preserve">
+    <value>제품명</value>
+  </data>
+  <data name="Property_AboutOptions_ProductDescription" xml:space="preserve">
+    <value>제품 정보</value>
+  </data>
+  <data name="Property_AboutOptions_Company" xml:space="preserve">
+    <value>회사 정보</value>
+  </data>
+  <data name="Property_AboutOptions_Culture" xml:space="preserve">
+    <value>제품 영역</value>
+  </data>
+  <data name="Property_AboutOptions_Trademark" xml:space="preserve">
+    <value>제품 상표</value>
+  </data>
+  <data name="Property_AboutOptions_Configuration" xml:space="preserve">
+    <value>제품 설정</value>
+  </data>
+  <data name="Property_AboutOptions_Copyright" xml:space="preserve">
+    <value>라이선스 증서</value>
+  </data>
+  <data name="Property_AboutOptions_AssemblyVersion" xml:space="preserve">
+    <value>어셈블리 버전</value>
+  </data>
+  <data name="Property_AboutOptions_AssemblyVersion_Description" xml:space="preserve">
+    <value>어셈블리의 버전 번호로, 어셈블리의 고유성과 호환성을 식별하는 데 사용됩니다.</value>
+  </data>
+  <data name="Property_AboutOptions_FileVersion" xml:space="preserve">
+    <value>파일 버전</value>
+  </data>
+  <data name="Property_AboutOptions_Privacy" xml:space="preserve">
+    <value>개인정보 처리방침</value>
+  </data>
+  <data name="Property_AboutOptions_Agreement" xml:space="preserve">
+    <value>서비스 약관</value>
+  </data>
+  <data name="Type_AboutOptions" xml:space="preserve">
+    <value>정보</value>
+  </data>
+  <data name="Type_AboutOptions_Description" xml:space="preserve">
+    <value>관련 매개변수 구성</value>
+  </data>
+  <data name="Type_AboutOptions_GroupName" xml:space="preserve">
+    <value>시스템 설정</value>
+  </data>
+  <data name="Type_ShowAboutCommand" xml:space="preserve">
+    <value>정보</value>
+  </data>
+  <data name="Type_ShowAboutCommand_Description" xml:space="preserve">
+    <value>정보 페이지 표시</value>
+  </data>
+  <data name="Type_ShowPrivacyCommand" xml:space="preserve">
+    <value>개인정보 처리방침</value>
+  </data>
+  <data name="Type_ShowPrivacyCommand_Description" xml:space="preserve">
+    <value>시스템 개인정보 처리방침 보기</value>
+  </data>
+  <data name="Type_ShowAgreementCommand" xml:space="preserve">
+    <value>서비스 약관</value>
+  </data>
+  <data name="Type_ShowAgreementCommand_Description" xml:space="preserve">
+    <value>시스템 서비스 약관 보기</value>
+  </data>
+</root>

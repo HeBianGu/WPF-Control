@@ -8,10 +8,12 @@
 
 global using System.ComponentModel;
 global using System.Windows;
+using H.Extensions.FontIcon;
 using H.Themes;
 
 namespace H.Presenters.Design.Presenter;
 
+[Icon(FontIcons.Font)]
 [Display(Name = "文本")]
 public class TextBlockPresenter : CommandsDesignPresenterBase, ITextData
 {
@@ -29,8 +31,8 @@ public class TextBlockPresenter : CommandsDesignPresenterBase, ITextData
         this.FontStretch = FontStretches.Normal;
         //this.Foreground = Application.Current.FindResource(BrushKeys.Foreground) as Brush;
         //this.Height = (double)Application.Current.FindResource(SystemKeys.ItemHeight);
-        this.Foreground = Brushes.Black;
-        this.Height = (double)Application.Current.FindResource(LayoutKeys.RowHeight);
+        //this.Foreground = (Brush)Application.Current.FindResource(BrushKeys.Foreground);
+        //this.Height = (double)Application.Current.FindResource(LayoutKeys.RowHeight);
         this.VerticalContentAlignment = VerticalAlignment.Center;
     }
     private string _text;

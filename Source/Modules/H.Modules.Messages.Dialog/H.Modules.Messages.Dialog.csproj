@@ -1,5 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <ItemGroup>
+    <ProjectReference Include="..\..\Base\H.Globalization\H.Globalization.csproj" />
     <ProjectReference Include="..\..\Controls\H.Controls.Adorner\H.Controls.Adorner.csproj" />
     <ProjectReference Include="..\..\Controls\H.Controls.Form\H.Controls.Form.csproj" />
     <ProjectReference Include="..\..\Base\H.Attach\H.Attach.csproj" />

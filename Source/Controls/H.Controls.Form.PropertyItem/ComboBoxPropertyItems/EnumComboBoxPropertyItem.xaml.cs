@@ -14,7 +14,7 @@ namespace H.Controls.Form.PropertyItem.ComboBoxPropertyItems
     {
         public EnumComboBoxPropertyItem(PropertyInfo property, object obj) : base(property, obj)
         {
-
+        
         }
 
         protected override IEnumerable<Enum> CreateSource()
@@ -29,4 +29,6 @@ namespace H.Controls.Form.PropertyItem.ComboBoxPropertyItems
             }
         }
     }
+
+
 }

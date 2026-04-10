@@ -6,25 +6,34 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
-global using H.Services.Serializable;
-global using System.Collections;
-global using System.ComponentModel.DataAnnotations;
 global using H.Common.Interfaces;
 global using H.Extensions.Common;
 global using H.Mvvm.ViewModels.Base;
 global using H.Services.AppPath;
+global using H.Services.Serializable;
 global using H.Services.Setting;
+global using System.Collections;
+global using System.ComponentModel.DataAnnotations;
 global using System.IO;
+using H.Extensions.FontIcon;
+using H.Extensions.Mvvm.Commands;
+using System.Reflection.Metadata;
+using System.Text.Json.Serialization;
 
 namespace H.Modules.Project;
 
 [Display(Name = "工程数据", GroupName = SettingGroupNames.GroupData)]
-public abstract class ProjectServiceBase<T> : BindableBase, IProjectService, IDataSource<T> where T : IProjectItem
+public abstract class ProjectServiceBase<T> : CommandsBindableBase, IProjectService, IDataSource<T> where T : IProjectItem
 {
     private readonly IOptions<ProjectOptions> _options;
     public ProjectServiceBase(IOptions<ProjectOptions> options)
     {
         _options = options;
+        this.ProjectAdded = x => this.OnProjectAdded(x); ;
+    }
+    protected virtual void OnProjectAdded(IProjectItem projectItem)
+    {
+
     }
 
     private IEnumerable<T> _collection = new ObservableCollection<T>();
@@ -42,8 +51,7 @@ public abstract class ProjectServiceBase<T> : BindableBase, IProjectService, IDa
     private IProjectItem _current;
 
     public event EventHandler CollectionChanged;
-    [System.Text.Json.Serialization.JsonIgnore]
-
+    [JsonIgnore]
     [System.Xml.Serialization.XmlIgnore]
     [Browsable(false)]
     public IProjectItem Current
@@ -64,7 +72,6 @@ public abstract class ProjectServiceBase<T> : BindableBase, IProjectService, IDa
     }
 
     [System.Text.Json.Serialization.JsonIgnore]
-
     [System.Xml.Serialization.XmlIgnore]
     [Browsable(false)]
     public Action<IProjectItem, IProjectItem> CurrentChanged { get; set; }
@@ -81,7 +88,7 @@ public abstract class ProjectServiceBase<T> : BindableBase, IProjectService, IDa
         return func == null ? this.Collection.OfType<IProjectItem>() : this.Collection.Where(x => func(x)).OfType<IProjectItem>();
     }
 
-    protected virtual ISerializerService GetSerializer() => ProjectOptions.Instance.JsonSerializerService;
+    protected virtual ISerializerService GetSerializer() => new TextJsonSerializerService();
     protected virtual void OnItemChanged()
     {
         if (this._options.Value.SaveMode == ProjectSaveMode.OnProjectChanged)
@@ -99,8 +106,9 @@ public abstract class ProjectServiceBase<T> : BindableBase, IProjectService, IDa
         }
         catch (Exception ex)
         {
+            Trace.Assert(false, ex.Message);
             message = ex.Message;
-            IocLog.Instance?.Error(ex);
+            IocLog.Error(ex);
             return false;
         }
     }
@@ -122,11 +130,11 @@ public abstract class ProjectServiceBase<T> : BindableBase, IProjectService, IDa
         }
     }
 
-    public virtual void Delete(params T[] ts)
+    public virtual async Task DeleteAsync(params T[] ts)
     {
         foreach (T item in ts)
         {
-            item.Delete(out string message);
+            await item.DeleteAsync();
             if (this.Collection is IList list)
                 list.Remove(item);
         }
@@ -142,10 +150,10 @@ public abstract class ProjectServiceBase<T> : BindableBase, IProjectService, IDa
         if (project is T t)
             this.Add(t);
     }
-    void IProjectService.Delete(Func<IProjectItem, bool> func)
+    async Task IProjectService.DeleteAsync(Func<IProjectItem, bool> func)
     {
         IEnumerable<T> ps = this.Collection.Where(x => func(x));
-        this.Delete(ps.ToArray());
+        await this.DeleteAsync(ps.ToArray());
     }
 
     private string _projectsPath => System.IO.Path.Combine(this.GetFolderPath(), "projects.json");
@@ -155,15 +163,14 @@ public abstract class ProjectServiceBase<T> : BindableBase, IProjectService, IDa
     public virtual bool Load(out string message)
     {
         message = string.Empty;
-        Projects<T> data = !File.Exists(this._projectsPath) ? this.LoadDefaultProjects() : this.GetSerializer().Load<Projects<T>>(this._projectsPath);
+        if (!File.Exists(this._projectsPath))
+            return true;
+        Projects<T> data = this.GetSerializer().Load<Projects<T>>(this._projectsPath);
         this.Clear();
         if (data != null)
         {
             var orders = data.Items.OrderByDescending(x => x.UpdateTime);
-            foreach (T item in orders)
-            {
-                this.Add(data.Items.ToArray());
-            }
+            this.Collection = orders.ToObservable();
             this.Current = orders.FirstOrDefault();
         }
         if (this.Current == null)
@@ -175,17 +182,6 @@ public abstract class ProjectServiceBase<T> : BindableBase, IProjectService, IDa
         return true;
     }
 
-    protected virtual Projects<T> LoadDefaultProjects()
-    {
-        string path = AppPaths.Instance.DefaultProjects;
-        string toPath = this.GetFolderPath();
-        path.ToDirectoryEx().BackupToDirectory(toPath);
-        Projects<T> data = this.GetSerializer().Load<Projects<T>>(this._projectsPath);
-        if (data == null)
-            return null;
-        return data;
-    }
-
     public void Clear()
     {
         if (this.Collection is IList list)
@@ -193,6 +189,60 @@ public abstract class ProjectServiceBase<T> : BindableBase, IProjectService, IDa
         this.Current = null;
     }
 
+    public void Delete(params T[] ts)
+    {
+        this.DeleteAsync(ts).Wait();
+    }
+
+    public (bool success, string message) LoadDefaultTemplate()
+    {
+        string path = AppDomianPaths.DefaultProjects;
+        if (!Directory.Exists(path))
+            return (false, "默认项目模版不存在");
+        if (File.Exists(_projectsPath))
+            return (false, "已存在项目");
+        string toPath = this.GetFolderPath();
+        path.ToDirectoryEx().BackupToDirectory(toPath);
+        return (true, null);
+    }
+
+    [JsonIgnore]
+    [Icon("\xE7C3")]
+    [Display(Name = "新建项目", GroupName = "菜单栏,工具栏,右键菜单", Description = "显示新建项目页面")]
+    public DisplayCommand ShowNewProjectCommand => new DisplayCommand(x =>
+    {
+        IocProject.Instance?.ShowNewProject();
+    });
+
+    [JsonIgnore]
+    [Icon(FontIcons.Edit)]
+    [Display(Name = "编辑项目", GroupName = "菜单栏,右键菜单", Description = "显示选中项目编辑页面")]
+    public DisplayCommand EditCommand => new DisplayCommand(x =>
+    {
+        IocProject.Instance?.ShowEidtProject(this.Current);
+    }, x => this.Current != null);
+
+    [JsonIgnore]
+    [Icon(FontIcons.Save)]
+    [Display(Name = "保存项目", GroupName = "菜单栏,工具栏,右键菜单", Description = "保存当前选中向导到配置文件中")]
+    public DisplayCommand ShowSaveProjectCommand => new DisplayCommand(x =>
+    {
+        IocProject.Instance?.ShowSaveProject(this.Current);
+    }, x => this.Current != null);
+
+    [JsonIgnore]
+    [Icon("\xE8E5")]
+    [Display(Name = "打开项目文件", GroupName = "菜单栏,右键菜单", Description = "用记事本打开当前项目的配置文件数据")]
+    public DisplayCommand ShowCurrentProjectFileCommand => new DisplayCommand(x =>
+    {
+        IocProject.Instance?.ShowCurrentProjectFile(this.Current);
+    }, x => this.Current != null);
+
+    [System.Text.Json.Serialization.JsonIgnore]
+    [System.Xml.Serialization.XmlIgnore]
+    [Browsable(false)]
+    public Action<IProjectItem> ProjectAdded { get; set; }
+    string INameable.Name { get => this.Name; set => throw new NotImplementedException(); }
 }
 
 public class Projects<T>

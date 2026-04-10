@@ -13,6 +13,11 @@ using H.Themes;
 
 namespace H.Presenters.Design.Base;
 
+public class BorderDefinitionPresenter : DesignPresenterBase
+{
+
+}
+
 public abstract class GridPresenterBase : PanelPresenterBase
 {
     public GridPresenterBase()
@@ -25,7 +30,8 @@ public abstract class GridPresenterBase : PanelPresenterBase
         base.LoadDefault();
         this.MinRowHeight = (double)Application.Current.FindResource(LayoutKeys.RowHeight);
     }
-    private Brush _lineBrush = Brushes.LightGray;
+    private Brush _lineBrush;
+    [DefaultValue(null)]
     [Display(Name = "网线颜色", GroupName = "常用,样式")]
     public Brush LineBrush
     {
@@ -37,7 +43,8 @@ public abstract class GridPresenterBase : PanelPresenterBase
         }
     }
 
-    private double _lineThickness = 1;
+    private double _lineThickness = 1.0;
+    [DefaultValue(1.0)]
     [Display(Name = "网线粗细", GroupName = "常用,样式")]
     public double LineThickness
     {
@@ -63,7 +70,7 @@ public abstract class GridPresenterBase : PanelPresenterBase
 
     public override void DragEnter(UIElement element, DragEventArgs e)
     {
-        //IDragAdorner adorner = e.Data.GetData("DragGroup") as IDragAdorner;
+        //IDraggableAdorner adorner = e.Data.GetData("DragGroup") as IDraggableAdorner;
         //if (adorner.GetData() is ICloneable cloneable)
         //{
         //    object value = cloneable.Clone();
@@ -85,14 +92,22 @@ public abstract class GridPresenterBase : PanelPresenterBase
 
     public override bool IsHitTest(UIElement element, DragEventArgs e)
     {
-        return element.GetContent() != _dropBackup;
+        if (this.IsHitTestVisible == false)
+            return false;
+        var current = element.GetContent();
+        if (current == _droppingDesignPresenter)
+            return false;
+        if (current is not PanelPresenterBase)
+            return false;
+        return !_droppingDesignPresenter.GetChildrenDesignPresenters().Contains(current);
     }
 
+    private BorderDefinitionPresenter _activeBorder = new BorderDefinitionPresenter();
     public override void DragOver(UIElement element, DragEventArgs e)
     {
         var p = e.GetPosition(element);
-        var grid = element.GetChild<Grid>();
-        if (_dropBackup == null)
+        var grid = element is Grid ? element as Grid : element.GetChild<Grid>();
+        if (_droppingDesignPresenter == null)
         {
             IDraggableAdorner adorner = e.Data.GetData("DragGroup") as IDraggableAdorner;
             if (adorner.GetData() is IDesignPresenter value)
@@ -102,23 +117,41 @@ public abstract class GridPresenterBase : PanelPresenterBase
                     value.Row = r;
                     value.Column = c;
                     value.Opacity = 0.5;
+                    value.IsHitTestVisible = false;
+                    _activeBorder.Row = r;
+                    _activeBorder.Column = c;
                 }
                 this.Presenters.Add(value);
-                _dropBackup = value;
+                this.Presenters.Add(this._activeBorder);
+                _droppingDesignPresenter = value;
             }
         }
         else
         {
             if (grid.HitTestRow(p, out int r) && grid.HitTestColumn(p, out int c))
             {
-                if (_dropBackup.Row == r && _dropBackup.Column == c)
+                if (_droppingDesignPresenter.Row == r && _droppingDesignPresenter.Column == c)
                     return;
-                _dropBackup.Row = r;
-                _dropBackup.Column = c;
+                _droppingDesignPresenter.Row = r;
+                _droppingDesignPresenter.Column = c;
+                _activeBorder.Row = r;
+                _activeBorder.Column = c;
                 //this.Presenters.Remove(_dropBackup);
                 //this.Presenters.Add(_dropBackup);
                 element.InvalidateVisual();
             }
         }
+    }
+
+    public override void Drop(UIElement element, DragEventArgs e)
+    {
+        this.Presenters.Remove(this._activeBorder);
+        base.Drop(element, e);
+    }
+
+    public override void DragLeave(UIElement element, DragEventArgs e)
+    {
+        this.Presenters.Remove(this._activeBorder);
+        base.DragLeave(element, e);
     }
 }

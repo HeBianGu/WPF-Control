@@ -117,7 +117,6 @@ namespace H.Controls.Chart2D
 
             }));
 
-
         public Brush MarkForeground
         {
             get { return (Brush)GetValue(MarkForegroundProperty); }
@@ -147,15 +146,11 @@ namespace H.Controls.Chart2D
         protected override void InitX()
         {
             base.InitX();
-
-            if (this.AlignmentCenter)
-            {
-                double span = (this.maxX - this.minX) / this.xAxis.Count;
-
-                this.maxX = this.maxX + (span / 2);
-
-                this.minX = this.minX - (span / 2);
-            }
+            if (!this.AlignmentCenter)
+                return;
+            double span = (this.maxX - this.minX) / this.xAxis.Count;
+            this.maxX = this.maxX + (span / 2);
+            this.minX = this.minX - (span / 2);
         }
 
 
@@ -204,46 +199,34 @@ namespace H.Controls.Chart2D
 
         protected Point GetPoint()
         {
-            if (this.MarkValueType == MarkValueType.Default) return this.Point;
-
+            if (this.MarkValueType == MarkValueType.Default) 
+                return this.Point;
             double span = this.AlignmentCenter ? (this.maxX - this.minX) / this.xAxis.Count : 0;
-
             double itemWidth = span * this.WidthPercent;
-
             double v = double.NaN;
-
             if (this.Data.Count == 0)
                 return new Point(0, 0);
-
             if (this.MarkValueType == MarkValueType.Max)
                 v = this.Data.Max();
-
             if (this.MarkValueType == MarkValueType.Min)
                 v = this.Data.Min();
-
             if (this.MarkValueType == MarkValueType.First)
                 v = this.Data.FirstOrDefault();
-
             if (this.MarkValueType == MarkValueType.Last)
                 v = this.Data.LastOrDefault();
-
             int index = this.Data.IndexOf(v);
-
             if (this.xAxis.Count <= index)
                 return new Point(0, 0);
-
             double x = this.xAxis[index];
-
             return new Point(x - (itemWidth / 2) + ((this.MulIndex + 0.5) * (itemWidth / this.MulCount)), v);
         }
 
         public virtual void DrawMark()
         {
             Point point = this.GetPoint();
-
-            //  Do ：显示文本
             Label t = new Label();
-            t.Content = point.Y.ToString("G3");
+            // Avoid scientific notation: use up to 3 decimal places (no exponent).
+            t.Content = point.Y.ToString("0.###");
             t.Style = this.LabelStyle;
             if (this.MarkForeground != null)
                 t.Foreground = this.MarkForeground;
@@ -260,10 +243,8 @@ namespace H.Controls.Chart2D
                     Canvas.SetTop(t, this.GetY(point.Y) - (t.ActualHeight * 1.2));
                 }
             };
-
             this.Children.Add(t);
         }
-
 
         public override void Draw(Canvas canvas)
         {
@@ -275,7 +256,13 @@ namespace H.Controls.Chart2D
 
     public enum MarkValueType
     {
-        Default = 0, Max, Min, First, Last, Drag, DragStepX
+        Default = 0, 
+        Max, 
+        Min, 
+        First, 
+        Last, 
+        Drag, 
+        DragStepX
     }
 
 }

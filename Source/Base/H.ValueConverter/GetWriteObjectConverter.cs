@@ -18,3 +18,4 @@ public class GetWriteObjectConverter : MarkupValueConverterBase
         return value;
     }
 }
+

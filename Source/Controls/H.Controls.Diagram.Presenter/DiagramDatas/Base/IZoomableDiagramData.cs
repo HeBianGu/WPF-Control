@@ -13,6 +13,7 @@ public interface IZoomableDiagramData
     //void PanToCenter();
     //void PanTo(Part part);
     //void ZoomTo(Part part);
-    //void ZoomToFit();
+    void ZoomToFit();
+    void ZoomTo(IPartData part);
     //void ZoomTo(Point point);
 }

@@ -10,6 +10,7 @@ using H.Attach;
 using H.Common.Interfaces;
 using H.Extensions.AppPath;
 using H.Services.AppPath;
+using H.Services.Common;
 using H.Services.Common.DataBase;
 using H.Services.Common.MainWindow;
 using H.Services.Common.Schedule;
@@ -20,10 +21,15 @@ using H.Services.Logger;
 using H.Services.Message;
 using H.Services.Message.Dialog;
 using H.Services.Setting;
+using System;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Reflection;
 using System.Text;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Media;
+using H.Extensions.ApplicationBase.Properties;
 
 namespace H.Extensions.ApplicationBase;
 
@@ -42,7 +48,8 @@ public abstract partial class ApplicationBase : Application, IConfigureableAppli
         ServiceCollection sc = new ServiceCollection();
         this.ConfigureServices(sc);
         Ioc.Build(sc);
-        this.OnSetting();
+        //  Do ：在显示页面前需要加载多语言
+        Ioc.GetService<ILoadGlobalizationOptionsService>(false)?.Load(out string message);
     }
 
     protected virtual IAppPathServce CreateAppPathServce()
@@ -177,7 +184,7 @@ public abstract partial class ApplicationBase : Application, IConfigureableAppli
         mutex = new Mutex(true, thisProc.ProcessName, out createdNew);
         if (!createdNew)
         {
-            this.ShowMessage("当前程序已经运行！");
+            this.ShowMessage(H.Extensions.ApplicationBase.Properties.Resources.Message_Singleton);
             this.Shutdown();
         }
     }
@@ -185,20 +192,9 @@ public abstract partial class ApplicationBase : Application, IConfigureableAppli
     #endregion
 
     public ILogService ILogger => Ioc.Services.GetService<ILogService>();
-    protected virtual async void ShowMessage(string message, string title = "提示")
+    protected virtual async void ShowMessage(string message, string title = null)
     {
         await IocMessage.ShowDialogMessage(message, title);
-        //MessageBox.Show(message);
-
-        //if (MessageProxy.Windower == null)
-        //{
-        //    MessageBox.Show("当前程序已经运行！");
-        //}
-        //else
-        //{
-        //    MessageProxy.Windower.ShowSumit("当前程序已经运行！");
-        //}
-
     }
 
     void ILoginableApplication.Login()
@@ -233,41 +229,42 @@ public partial class ApplicationBase
         this.Configure(bulder);
     }
 
-    //protected virtual IEnumerable<ISplashLoadable> GetSplashLoads()
-    //{
-    //    foreach (IDbConnectService item in Ioc.Services.GetServices<IDbConnectService>())
-    //    {
-    //        yield return item;
-    //    }
-
-    //    foreach (ISplashLoadable item in Ioc.Services.GetServices<ISplashLoadable>())
-    //    {
-    //        yield return item;
-    //    }
-    //}
-
     /// <summary>
     /// 加载启动页面
     /// </summary>
     protected virtual void OnSplashScreen(StartupEventArgs e)
     {
-        int sleep = 1000;
         ISplashScreenViewPresenter presenter = Ioc.Services.GetService<ISplashScreenViewPresenter>();
+        int sleep = presenter?.SleepMicroseconds ?? 100;
         //  Do ： 在显示页面前需要加载主题，否则主题会出现变化
         var tls = Ioc.GetService<ILoadThemeOptionsService>(false);
         tls?.Load(out string message);
         Func<IDialog, ISplashScreenViewPresenter, bool?> func = (c, s) =>
         {
-            if (c?.IsCancel != true)
+
+            int index = 0;
+            IEnumerable<ISplashLoadable> loads = Ioc.GetAssignableFromServices<ISplashLoadable>().Distinct();
+            IEnumerable<IDefaultTemplateable> templates = Ioc.GetAssignableFromServices<IDefaultTemplateable>().Distinct();
+            int total = loads.Count() + templates.Count() + 1;
             {
+                index++;
                 if (s != null)
-                    s.Message = "正在加载设置数据...";
+                    s.Message = $"[{index}/{total}]{H.Extensions.ApplicationBase.Properties.Resources.Message_LoadingSetting}...";
                 //  Do ：加载设置参数
                 string message = null;
                 var r = IocSetting.Instance?.Load(x =>
                 {
                     if (s != null)
-                        s.Message = $"正在加载设置<{x.Name}>数据...";
+                        s.Message = $"[{index}/{total}]{H.Extensions.ApplicationBase.Properties.Resources.Message_LoadingSetting}<{x.Name}>...";
+                    if (s is IDefaultTemplateable templateable)
+                    {
+                        templateable.LoadDefaultTemplate();
+                        //if (t.success)
+                        //{
+                        //    s.Message = $"[{index}/{total}]加载<{x.Name}>默认模板数据加载完成";
+                        //    Thread.Sleep(100);
+                        //}
+                    }
                 }, out message);
                 if (r == false)
                     s.Message = message;
@@ -275,8 +272,21 @@ public partial class ApplicationBase
             }
 
             {
-                int index = 0;
-                IEnumerable<ISplashLoadable> loads = Ioc.GetAssignableFromServices<ISplashLoadable>().Distinct();
+                index++;
+                foreach (IDefaultTemplateable item in templates)
+                {
+                    if (c?.IsCancel == true)
+                        return null;
+                    if (item == null)
+                        continue;
+                    if (s != null)
+                        s.Message = $"[{index}/{total}]{H.Extensions.ApplicationBase.Properties.Resources.Message_LoadingTempate}<{item.Name}>...";
+                    item.LoadDefaultTemplate();
+                }
+            }
+
+            {
+
                 foreach (ISplashLoadable load in loads)
                 {
                     if (c?.IsCancel == true)
@@ -286,7 +296,7 @@ public partial class ApplicationBase
                         continue;
                     index++;
                     if (s != null)
-                        s.Message = $"[{index}/{loads.Count()}]正在加载{load.Name}...";
+                        s.Message = $"[{index}/{total}]{H.Extensions.ApplicationBase.Properties.Resources.Message_Loading}{load.Name}...";
                     bool r = load.Load(out string message);
                     if (s != null && !string.IsNullOrEmpty(message) && !r)
                         s.Message = message;
@@ -300,7 +310,7 @@ public partial class ApplicationBase
             }
 
             if (s != null)
-                s.Message = "加载完成";
+                s.Message = H.Extensions.ApplicationBase.Properties.Resources.Message_LoadSuccess;
             Thread.Sleep(sleep);
             return true;
         };
@@ -312,30 +322,20 @@ public partial class ApplicationBase
                 {
                     x.DialogButton = DialogButton.None;
                     x.Title = Assembly.GetEntryAssembly().GetName().Version.ToString();
-                    x.Width = 500;
-                    x.Height = 300;
-                    if (x is Window w)
-                    {
-                        w.SizeToContent = SizeToContent.Manual;
-                        Cattach.SetCaptionBackground(w, null);
-                    }
                 }, func).Result;
             });
             if (r == false)
             {
-                IocLog.Instance?.Info("启动失败，程序退出");
+                IocLog.Info("启动失败，程序退出");
                 this.Shutdown();
                 return;
             }
         }
         else
         {
-            //bool r = IocSetting.Instance.Load(null, out string message);
-            //if (r == false)
-            //    IocMessage.Window.Show(message);
             bool? fr = func.Invoke(null, null);
             if (fr == false)
-                throw new ArgumentException("初始化数据异常，请看日志");
+                throw new ArgumentException(H.Extensions.ApplicationBase.Properties.Resources.Message_LoadException);
         }
     }
 
@@ -353,16 +353,10 @@ public partial class ApplicationBase
                 x.MinWidth = 400;
                 x.DialogButton = DialogButton.None;
                 x.Title = Assembly.GetEntryAssembly().GetName().Version.ToString();
-                if (x is Window w)
-                {
-                    w.SizeToContent = SizeToContent.WidthAndHeight;
-                    w.ShowInTaskbar = true;
-                    Cattach.SetCaptionBackground(w, null);
-                }
             }).Result;
             if (r == false)
             {
-                IocLog.Instance?.Info("登录失败程序退出");
+                IocLog.Info("登录失败程序退出");
                 this.Shutdown();
                 return;
             }
@@ -370,7 +364,9 @@ public partial class ApplicationBase
 
         {
 
-            int sleep = 1000;
+            int sleep = 100;
+
+
             ILoginedSplashViewPresenter presenter = Ioc.Services.GetService<ILoginedSplashViewPresenter>();
             //  Do ： 在显示页面前需要加载主题，否则主题会出现变化
             var tls = Ioc.GetService<ILoadThemeOptionsService>(false);
@@ -380,13 +376,13 @@ public partial class ApplicationBase
                 if (c?.IsCancel != true)
                 {
                     if (s != null)
-                        s.Message = "正在加载用户设置数据...";
+                        s.Message = $"{H.Extensions.ApplicationBase.Properties.Resources.Message_LoadException}...";
                     //  Do ：加载设置参数
                     string message = null;
                     var r = IocSetting.Instance?.LoadLoginedLoad(x =>
                     {
                         if (s != null)
-                            s.Message = $"正在加载设置<{x.Name}>数据...";
+                            s.Message = $"{H.Extensions.ApplicationBase.Properties.Resources.Message_LoadingSetting}<{x.Name}>...";
                         Thread.Sleep(20);
                     }, out message);
                     if (r == false)
@@ -394,7 +390,23 @@ public partial class ApplicationBase
                     Thread.Sleep(sleep);
                 }
 
+
+
                 IEnumerable<ILoginedSplashLoadable> loads = Ioc.GetAssignableFromServices<ISplashLoadable>().Distinct().OfType<ILoginedSplashLoadable>();
+
+                {
+                    IEnumerable<IDefaultTemplateable> templates = loads.OfType<IDefaultTemplateable>();
+                    foreach (IDefaultTemplateable item in templates)
+                    {
+                        if (c?.IsCancel == true)
+                            return null;
+                        if (item == null)
+                            continue;
+                        s.Message = $"{H.Extensions.ApplicationBase.Properties.Resources.Message_LoadingTempate}<{item.Name}>...";
+                        item.LoadDefaultTemplate();
+                    }
+                }
+
                 int index = 0;
                 foreach (ILoginedSplashLoadable load in loads)
                 {
@@ -405,7 +417,7 @@ public partial class ApplicationBase
                         continue;
                     index++;
                     if (s != null)
-                        s.Message = $"[{index}/{loads.Count()}]正在加载用户数据<{load.Name}>...";
+                        s.Message = $"[{index}/{loads.Count()}]{H.Extensions.ApplicationBase.Properties.Resources.Message_LoadingUser}<{load.Name}>...";
                     bool r = load.Load(out string message);
                     if (s != null && !string.IsNullOrEmpty(message))
                         s.Message = message;
@@ -417,7 +429,8 @@ public partial class ApplicationBase
                     Thread.Sleep(sleep);
                 }
                 if (s != null)
-                    s.Message = "用户数据加载完成";
+                    s.Message = H.Extensions.ApplicationBase.Properties.Resources.Message_LoadSuccess
+                ;
                 Thread.Sleep(sleep);
                 return true;
             };
@@ -429,25 +442,19 @@ public partial class ApplicationBase
                     {
                         x.DialogButton = DialogButton.None;
                         x.Title = Ioc<ILoginService>.Instance?.User?.Account;
-                        //x.Width = 500;
                         x.MinHeight = 0.0;
                         x.Height = double.NaN;
-                        if (x is Window w)
-                        {
-                            w.SizeToContent = SizeToContent.Height;
-                            Cattach.SetCaptionBackground(w, null);
-                        }
                     }, func).Result;
                 });
                 if (r == false)
                 {
-                    IocLog.Instance?.Info("加载用户数据异常");
+                    IocLog.Info("加载用户数据异常");
                     this.Shutdown();
                     return;
                 }
                 if (r == null)
                 {
-                    IocLog.Instance?.Info("用户取消登录加载用户数据操作");
+                    IocLog.Info("用户取消登录加载用户数据操作");
                     this.Shutdown();
                     return;
                 }
@@ -457,7 +464,7 @@ public partial class ApplicationBase
                 bool? fr = func.Invoke(null, null);
                 if (fr == false)
                 {
-                    IocLog.Instance?.Info("加载用户数据异常");
+                    IocLog.Info("加载用户数据异常");
                     this.Shutdown();
                     return;
                 }
@@ -467,25 +474,5 @@ public partial class ApplicationBase
 
     protected abstract Window CreateMainWindow(StartupEventArgs e);
 
-    /// <summary>
-    /// 加载注入的配置信息
-    /// </summary>
-    protected virtual void OnSetting()
-    {
-        //var sss=   Ioc.Services.GetType().GetFields(BindingFlags.NonPublic | BindingFlags.Static|bind);
 
-        ////  Do ：加载注入的ISetting
-        //{
-        //    var settings = Ioc.Services.GetServices<ISetting>();
-        //    IocSetting.Instance.Add(settings.ToArray());
-        //}
-        ////  Do ：加载Option中的ISetting
-        //{
-        //    var settings = Ioc.Services.GetServices(typeof(IOptions<>)).OfType<ISetting>();
-        //    IocSetting.Instance.Add(settings.ToArray());
-        //}
-        //ConcurrentDictionary<Type,Func<ServiceProviderEngine>>
-
-        //Microsoft.Extensions.DependencyInjection
-    }
 }

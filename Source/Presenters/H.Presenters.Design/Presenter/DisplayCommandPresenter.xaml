@@ -1,0 +1,24 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:c="clr-namespace:H.Presenters.Design.Controls"
+    xmlns:l="clr-namespace:H.Presenters.Design"
+    xmlns:local="clr-namespace:H.Presenters.Design.Presenter"
+    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <DataTemplate DataType="{x:Type local:DisplayCommandPresenter}">
+        <c:DesignBorder>
+            <Button Command="{Binding Command}">
+                <Button.Style>
+                    <Style BasedOn="{StaticResource {x:Static ButtonKeys.Command}}" TargetType="{x:Type Button}">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=l:DesignBox}, Path=UseDesign, FallbackValue=true}" Value="true">
+                                <Setter Property="IsEnabled" Value="False" />
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+        </c:DesignBorder>
+    </DataTemplate>
+</ResourceDictionary>

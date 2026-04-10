@@ -1,0 +1,245 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Type_LoginOptions" xml:space="preserve">
+    <value>로그인 페이지 설정</value>
+  </data>
+  <data name="Type_RegistorOptions" xml:space="preserve">
+    <value>등록 페이지 설정</value>
+  </data>
+  <data name="Register" xml:space="preserve">
+    <value>등록</value>
+  </data>
+  <data name="AccountLogin" xml:space="preserve">
+    <value>계정 로그인</value>
+  </data>
+  <data name="InputAccount" xml:space="preserve">
+    <value>사용자 이름을 입력하세요</value>
+  </data>
+  <data name="Account" xml:space="preserve">
+    <value>계정</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>비밀번호</value>
+  </data>
+  <data name="InputPassword" xml:space="preserve">
+    <value>비밀번호를 입력하세요</value>
+  </data>
+  <data name="ConfirmationPassword" xml:space="preserve">
+    <value>비밀번호 확인</value>
+  </data>
+  <data name="ChangePassword" xml:space="preserve">
+    <value>비밀번호 변경</value>
+  </data>
+  <data name="Change" xml:space="preserve">
+    <value>수정</value>
+  </data>
+  <data name="RemenberPassword" xml:space="preserve">
+    <value>비밀번호 기억하기</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>다음 단계</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>이전 단계</value>
+  </data>
+  <data name="EmailVerification" xml:space="preserve">
+    <value>이메일 인증</value>
+  </data>
+  <data name="Agree" xml:space="preserve">
+    <value>동의하며 이미 읽었습니다.</value>
+  </data>
+  <data name="And" xml:space="preserve">
+    <value>및</value>
+  </data>
+  <data name="ServiceAgreement" xml:space="preserve">
+    <value>서비스 약관</value>
+  </data>
+  <data name="LoginDirect" xml:space="preserve">
+    <value>바로 로그인</value>
+  </data>
+  <data name="Privacypolicy" xml:space="preserve">
+    <value>개인정보 처리방침</value>
+  </data>
+  <data name="Invoking" xml:space="preserve">
+    <value>실행 중...</value>
+  </data>
+  <data name="VerificationCode" xml:space="preserve">
+    <value>인증 코드</value>
+  </data>
+  <data name="VerificationCodeSended" xml:space="preserve">
+    <value>인증 코드가 전송되었습니다.</value>
+  </data>
+  <data name="RegisterVerificationCode" xml:space="preserve">
+    <value>가입 인증 코드</value>
+  </data>
+  <data name="GetVerificationCode" xml:space="preserve">
+    <value>인증 코드 받기</value>
+  </data>
+  <data name="EmailAddress" xml:space="preserve">
+    <value>이메일 주소</value>
+  </data>
+  <data name="UserLogin" xml:space="preserve">
+    <value>사용자 로그인</value>
+  </data>
+  <data name="SendingEmail" xml:space="preserve">
+    <value>메일 보내는 중</value>
+  </data>
+  <data name="RegisterNow" xml:space="preserve">
+    <value>즉시 가입하기</value>
+  </data>
+  <data name="RegisterAccount" xml:space="preserve">
+    <value>계정 등록</value>
+  </data>
+  <data name="ForgetPassword" xml:space="preserve">
+    <value>비밀번호를 잊으셨나요?</value>
+  </data>
+  <data name="Login" xml:space="preserve">
+    <value>로그인</value>
+  </data>
+  <data name="Type_LoginOptions_GroupName" xml:space="preserve">
+    <value>시스템 설정</value>
+  </data>
+  <data name="Type_LoginOptions_Description" xml:space="preserve">
+    <value>로그인 페이지 설정 정보</value>
+  </data>
+  <data name="Type_RegistorOptions_GroupName" xml:space="preserve">
+    <value>시스템 설정</value>
+  </data>
+  <data name="Type_RegistorOptions_Description" xml:space="preserve">
+    <value>등록 페이지 설정 정보</value>
+  </data>
+  <data name="Property_LoginOptions_Product" xml:space="preserve">
+    <value>로그인 제목</value>
+  </data>
+  <data name="Property_LoginOptions_ProductFontSize" xml:space="preserve">
+    <value>글꼴 크기</value>
+  </data>
+  <data name="Property_LoginOptions_AdminName" xml:space="preserve">
+    <value>관리자 계정</value>
+  </data>
+  <data name="Property_LoginOptions_LastUserName" xml:space="preserve">
+    <value>마지막 로그인 사용자</value>
+  </data>
+  <data name="Property_LoginOptions_Remember" xml:space="preserve">
+    <value>비밀번호 기억하기</value>
+  </data>
+  <data name="Property_LoginOptions_UseVisitor" xml:space="preserve">
+    <value>방문자 활성화</value>
+  </data>
+  <data name="Property_LoginOptions_UseVisitor_Description" xml:space="preserve">
+    <value>방문자 모드를 활성화하면 로그인에 실패해도 메인 창에 들어갈 수 있습니다.</value>
+  </data>
+  <data name="Property_LoginOptions_UseLogoutRestart" xml:space="preserve">
+    <value>로그아웃 후 재시작</value>
+  </data>
+  <data name="Property_LoginOptions_UseLogoutRestart_Description" xml:space="preserve">
+    <value>로그아웃 후 애플리케이션 다시 시작 활성화</value>
+  </data>
+  <data name="Property_RegistorOptions_UseMail" xml:space="preserve">
+    <value>이메일 등록 활성화</value>
+  </data>
+  <data name="Property_RegistorOptions_UseMail_Description" xml:space="preserve">
+    <value>이메일 가입 활성화</value>
+  </data>
+  <data name="Property_RegistorOptions_ServiceAgreementUri" xml:space="preserve">
+    <value>애플리케이션 라이선스</value>
+  </data>
+  <data name="Property_RegistorOptions_PrivacypolicyUri" xml:space="preserve">
+    <value>개인정보 처리방침</value>
+  </data>
+  <data name="Property_RegistorOptions_MailAccount" xml:space="preserve">
+    <value>인증 코드를 보내는 이메일</value>
+  </data>
+  <data name="Property_RegistorOptions_Image" xml:space="preserve">
+    <value>왼쪽 이미지</value>
+  </data>
+  <data name="AccountCannotBeNull" xml:space="preserve">
+    <value>사용자 이름은 비워둘 수 없습니다</value>
+  </data>
+  <data name="PasswordCannotBeNull" xml:space="preserve">
+    <value>비밀번호는 비워둘 수 없습니다</value>
+  </data>
+  <data name="LoginSuccess" xml:space="preserve">
+    <value>로그인 성공</value>
+  </data>
+  <data name="LoginError" xml:space="preserve">
+    <value>로그인에 실패했습니다. 사용자 이름 또는 비밀번호가 올바르지 않습니다.</value>
+  </data>
+  <data name="Loginning" xml:space="preserve">
+    <value>로그인 중</value>
+  </data>
+  <data name="ChangingPassword" xml:space="preserve">
+    <value>비밀번호를 변경하는 중입니다</value>
+  </data>
+  <data name="ChangePasswordSuccess" xml:space="preserve">
+    <value>비밀번호가 성공적으로 변경되었습니다.</value>
+  </data>
+  <data name="Registering" xml:space="preserve">
+    <value>등록 중
+</value>
+  </data>
+  <data name="RegisterSuccess" xml:space="preserve">
+    <value>등록 성공</value>
+  </data>
+  <data name="PasswordsNotMatch" xml:space="preserve">
+    <value>입력한 비밀번호가 서로 일치하지 않습니다</value>
+  </data>
+</root>

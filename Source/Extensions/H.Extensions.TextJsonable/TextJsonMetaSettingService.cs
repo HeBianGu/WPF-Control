@@ -14,18 +14,24 @@ namespace H.Extensions.TextJsonable;
 
 public class TextJsonMetaSettingService : JsonMetaSettingServiceBase
 {
-    public override T Deserilize<T>(string id)
+    public override T Deserilize<T>(string id, string folderName = null)
     {
-        if (!File.Exists(this.GetFilePath(typeof(T).Name, id)))
-            return default;
-        string txt = File.ReadAllText(this.GetFilePath(typeof(T).Name, id));
+        string path = this.GetFilePath(folderName ?? typeof(T).Name, id);
+        if (!File.Exists(path))
+        {
+            var defPath = this.GetDefaultTemplateFilePath(typeof(T).Name, id);
+            if (!File.Exists(defPath))
+                return default;
+            path = defPath;
+        }
+        string txt = File.ReadAllText(path);
         return (T)JsonSerializer.Deserialize(txt, typeof(T));
     }
 
-    public override void Serilize(object setting, string id)
+    public override void Serilize(object setting, string id, string folderName = null)
     {
         string txt = JsonSerializer.Serialize(setting);
-        File.WriteAllText(this.GetFilePath(setting.GetType().Name, id), txt);
+        File.WriteAllText(this.GetFilePath(folderName ?? setting.GetType().Name, id), txt);
     }
 
     protected string GetFilePath(string typeName, string id)
@@ -34,5 +40,11 @@ public class TextJsonMetaSettingService : JsonMetaSettingServiceBase
         if (!Directory.Exists(Path.GetDirectoryName(path)))
             Directory.CreateDirectory(Path.GetDirectoryName(path));
         return path;
+    }
+
+    private string GetDefaultTemplateFilePath(string typeName, string id)
+    {
+        var cache = Path.GetFileNameWithoutExtension(AppPaths.Instance.Cache);
+        return Path.Combine(AppDomianPaths.DefaultTemplates, cache, typeName, id + ".json");
     }
 }

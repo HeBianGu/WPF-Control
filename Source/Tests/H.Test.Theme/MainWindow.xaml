@@ -403,7 +403,7 @@
                     <FontIconTextBlock Text="&#xE701;" />
                     <TextBlock FontFamily="{DynamicResource {x:Static SystemKeys.FontFamilyIcon}}"
                                Text="&#xE706;" />
-                    <TextBlock FontFamily="{x:Static IconFontFamilys.LocationSegoeMDL2Asset}"
+                    <TextBlock FontFamily="{x:Static IconFontFamilys.ResourceSegoeMDL2Asset}"
                                Text="&#xE701;" />
                     <TextBlock FontFamily="{x:Static IconFontFamilys.SystemSegoeMDL2Asset}"
                                Text="&#xE701;" />
@@ -413,7 +413,7 @@
                                Text="&#xE701;" />
                     <TextBlock FontFamily="{x:Static IconFontFamilys.SystemSegoeFluentIcons}"
                                Text="&#xE706;" />
-                    <TextBlock FontFamily="{x:Static IconFontFamilys.LocationSegoeFluentIcons}"
+                    <TextBlock FontFamily="{x:Static IconFontFamilys.ResourceSegoeFluentIcons}"
                                Text="&#xE706;" />
                     <TextBlock FontFamily="pack://application:,,,/H.Extensions.FontIcon;component/Assets/Segoe Fluent Icons.ttf#Segoe Fluent Icons"
                                Text="&#xE706;" />

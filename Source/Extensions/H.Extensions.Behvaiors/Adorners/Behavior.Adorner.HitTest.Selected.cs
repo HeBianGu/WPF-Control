@@ -8,20 +8,20 @@
 
 #if NET
 #endif
+using H.Common.Interfaces;
+using H.Extensions.Common;
+
 namespace H.Extensions.Behvaiors.Adorners;
 
 public class SelectedHitTestAdornerBehavior : HitTestAdornerBehavior
 {
     public ObservableCollection<object> Parameters { get; } = new ObservableCollection<object>();
-
-    [Obsolete]
     public UIElement SelectedElement
     {
         get { return (UIElement)GetValue(SelectedElementProperty); }
         set { SetValue(SelectedElementProperty, value); }
     }
 
-    [Obsolete]
     public static readonly DependencyProperty SelectedElementProperty =
         DependencyProperty.Register("SelectedElement", typeof(UIElement), typeof(SelectedHitTestAdornerBehavior), new FrameworkPropertyMetadata(default(UIElement), FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, (d, e) =>
         {
@@ -37,14 +37,13 @@ public class SelectedHitTestAdornerBehavior : HitTestAdornerBehavior
             {
                 SetIsSelected(n, true);
                 control.AddAdorner(n);
-                //触发事件
                 control.OnSelectedChanged();
             }
-
             control._preVisualHitElement = e.NewValue as UIElement;
             control.OnSelectdElementChanged();
-
         }));
+
+
 
     protected virtual void OnSelectdElementChanged()
     {
@@ -89,30 +88,14 @@ public class SelectedHitTestAdornerBehavior : HitTestAdornerBehavior
         if (this.AdornerVisual == null)
             this.AdornerVisual = this.AssociatedObject;
         Point point = e.GetPosition(this.AssociatedObject);
-        var visualHitElement = this.AssociatedObject.HitTest<UIElement>(point, x => GetIsHitTest(x));
-        this.SelectedElement = visualHitElement;
-
-        //if (visualHitElement == null)
-        //{
-        //    this.Clear();
-        //    //if (this.SelectedElement != null)
-        //    //    SetIsSelected(_temp, false);
-
-        //    //this.SelectedElement = null;
-        //}
-        //else
-        //{
-        //    if (visualHitElement != this.SelectedElement)
-        //        this.Clear();
-        //    this.AddAdorner(visualHitElement);
-        //    //SelectedHitTestAdornerBehavior.SetIsSelected(visualHitElement, true);
-        //    this.SelectedElement = visualHitElement;
-
-        //}
-        //this._preVisualHitElement = visualHitElement;
+        this.SelectedElement = this.HitElement(point);
     }
 
-    [Obsolete("没效果")]
+    protected virtual UIElement HitElement(Point point)
+    {
+        return this.AssociatedObject.HitTest<UIElement>(point, x => GetIsHitTest(x));
+    }
+
     public static readonly RoutedEvent SelectedChanged =
         EventManager.RegisterRoutedEvent(
             "SelectedChanged",
@@ -120,7 +103,6 @@ public class SelectedHitTestAdornerBehavior : HitTestAdornerBehavior
             typeof(RoutedEventHandler),
             typeof(SelectedHitTestAdornerBehavior));
 
-    [Obsolete]
     public static void AddSelectedChangedHandler(DependencyObject d, RoutedEventHandler handler)
     {
         if (d is UIElement uiElement)
@@ -129,7 +111,6 @@ public class SelectedHitTestAdornerBehavior : HitTestAdornerBehavior
         }
     }
 
-    [Obsolete]
     public static void RemoveSelectedChangedHandler(DependencyObject d, RoutedEventHandler handler)
     {
         if (d is UIElement uiElement)
@@ -138,7 +119,6 @@ public class SelectedHitTestAdornerBehavior : HitTestAdornerBehavior
         }
     }
 
-    [Obsolete]
     public void OnSelectedChanged()
     {
         RoutedEventArgs args = new RoutedEventArgs(SelectedChanged, this.AssociatedObject);

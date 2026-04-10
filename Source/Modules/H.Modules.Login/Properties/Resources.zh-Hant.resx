@@ -1,0 +1,244 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Type_LoginOptions" xml:space="preserve">
+    <value>登入頁面設定</value>
+  </data>
+  <data name="Type_RegistorOptions" xml:space="preserve">
+    <value>註冊頁面設定</value>
+  </data>
+  <data name="Register" xml:space="preserve">
+    <value>註冊</value>
+  </data>
+  <data name="AccountLogin" xml:space="preserve">
+    <value>帳號登入</value>
+  </data>
+  <data name="InputAccount" xml:space="preserve">
+    <value>請輸入使用者名稱</value>
+  </data>
+  <data name="Account" xml:space="preserve">
+    <value>帳號</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>密碼</value>
+  </data>
+  <data name="InputPassword" xml:space="preserve">
+    <value>請輸入密碼</value>
+  </data>
+  <data name="ConfirmationPassword" xml:space="preserve">
+    <value>確認密碼</value>
+  </data>
+  <data name="ChangePassword" xml:space="preserve">
+    <value>修改密碼</value>
+  </data>
+  <data name="Change" xml:space="preserve">
+    <value>修改</value>
+  </data>
+  <data name="RemenberPassword" xml:space="preserve">
+    <value>記住密碼</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>下一步</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>上一步</value>
+  </data>
+  <data name="EmailVerification" xml:space="preserve">
+    <value>電子郵件驗證</value>
+  </data>
+  <data name="Agree" xml:space="preserve">
+    <value>我已閱讀並同意</value>
+  </data>
+  <data name="And" xml:space="preserve">
+    <value>和</value>
+  </data>
+  <data name="ServiceAgreement" xml:space="preserve">
+    <value>服務協議</value>
+  </data>
+  <data name="LoginDirect" xml:space="preserve">
+    <value>直接登入</value>
+  </data>
+  <data name="Privacypolicy" xml:space="preserve">
+    <value>隱私政策</value>
+  </data>
+  <data name="Invoking" xml:space="preserve">
+    <value>執行中...</value>
+  </data>
+  <data name="VerificationCode" xml:space="preserve">
+    <value>驗證碼</value>
+  </data>
+  <data name="VerificationCodeSended" xml:space="preserve">
+    <value>驗證碼已發送</value>
+  </data>
+  <data name="RegisterVerificationCode" xml:space="preserve">
+    <value>註冊驗證碼</value>
+  </data>
+  <data name="GetVerificationCode" xml:space="preserve">
+    <value>獲取驗證碼</value>
+  </data>
+  <data name="EmailAddress" xml:space="preserve">
+    <value>電子郵件地址</value>
+  </data>
+  <data name="UserLogin" xml:space="preserve">
+    <value>使用者登入</value>
+  </data>
+  <data name="SendingEmail" xml:space="preserve">
+    <value>傳送郵件中</value>
+  </data>
+  <data name="RegisterNow" xml:space="preserve">
+    <value>立即註冊</value>
+  </data>
+  <data name="RegisterAccount" xml:space="preserve">
+    <value>註冊帳號</value>
+  </data>
+  <data name="ForgetPassword" xml:space="preserve">
+    <value>忘記密碼</value>
+  </data>
+  <data name="Login" xml:space="preserve">
+    <value>登入</value>
+  </data>
+  <data name="Type_LoginOptions_GroupName" xml:space="preserve">
+    <value>系統設定</value>
+  </data>
+  <data name="Type_LoginOptions_Description" xml:space="preserve">
+    <value>登入頁面設定的資訊</value>
+  </data>
+  <data name="Type_RegistorOptions_GroupName" xml:space="preserve">
+    <value>系統設定</value>
+  </data>
+  <data name="Type_RegistorOptions_Description" xml:space="preserve">
+    <value>註冊頁面設定的資訊</value>
+  </data>
+  <data name="Property_LoginOptions_Product" xml:space="preserve">
+    <value>登入標題</value>
+  </data>
+  <data name="Property_LoginOptions_ProductFontSize" xml:space="preserve">
+    <value>字型大小</value>
+  </data>
+  <data name="Property_LoginOptions_AdminName" xml:space="preserve">
+    <value>管理員帳號</value>
+  </data>
+  <data name="Property_LoginOptions_LastUserName" xml:space="preserve">
+    <value>上次登入使用者</value>
+  </data>
+  <data name="Property_LoginOptions_Remember" xml:space="preserve">
+    <value>記住密碼</value>
+  </data>
+  <data name="Property_LoginOptions_UseVisitor" xml:space="preserve">
+    <value>啟用訪客</value>
+  </data>
+  <data name="Property_LoginOptions_UseVisitor_Description" xml:space="preserve">
+    <value>啟用訪客模式後，即使登入失敗也可以進入主視窗</value>
+  </data>
+  <data name="Property_LoginOptions_UseLogoutRestart" xml:space="preserve">
+    <value>退出登入重新啟動</value>
+  </data>
+  <data name="Property_LoginOptions_UseLogoutRestart_Description" xml:space="preserve">
+    <value>啟用登出後重新啟動應用程式</value>
+  </data>
+  <data name="Property_RegistorOptions_UseMail" xml:space="preserve">
+    <value>啟用郵箱註冊</value>
+  </data>
+  <data name="Property_RegistorOptions_UseMail_Description" xml:space="preserve">
+    <value>啟用電子郵件註冊</value>
+  </data>
+  <data name="Property_RegistorOptions_ServiceAgreementUri" xml:space="preserve">
+    <value>應用程式授權</value>
+  </data>
+  <data name="Property_RegistorOptions_PrivacypolicyUri" xml:space="preserve">
+    <value>隱私權政策</value>
+  </data>
+  <data name="Property_RegistorOptions_MailAccount" xml:space="preserve">
+    <value>發送驗證碼的電子郵箱</value>
+  </data>
+  <data name="Property_RegistorOptions_Image" xml:space="preserve">
+    <value>左側圖片</value>
+  </data>
+  <data name="AccountCannotBeNull" xml:space="preserve">
+    <value>使用者名稱不能為空</value>
+  </data>
+  <data name="PasswordCannotBeNull" xml:space="preserve">
+    <value>密碼不能為空</value>
+  </data>
+  <data name="LoginSuccess" xml:space="preserve">
+    <value>登入成功</value>
+  </data>
+  <data name="LoginError" xml:space="preserve">
+    <value>登入失敗，使用者名稱或密碼錯誤</value>
+  </data>
+  <data name="Loginning" xml:space="preserve">
+    <value>正在登入</value>
+  </data>
+  <data name="ChangingPassword" xml:space="preserve">
+    <value>正在修改密碼</value>
+  </data>
+  <data name="ChangePasswordSuccess" xml:space="preserve">
+    <value>密碼修改成功</value>
+  </data>
+  <data name="Registering" xml:space="preserve">
+    <value>正在註冊</value>
+  </data>
+  <data name="RegisterSuccess" xml:space="preserve">
+    <value>註冊成功</value>
+  </data>
+  <data name="PasswordsNotMatch" xml:space="preserve">
+    <value>兩次輸入的密碼不匹配</value>
+  </data>
+</root>

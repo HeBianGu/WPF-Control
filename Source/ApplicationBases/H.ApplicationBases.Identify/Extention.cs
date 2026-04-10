@@ -13,29 +13,34 @@ using H.Extensions.DataBase;
 using H.Modules.Identity;
 using H.Modules.Login;
 using H.Modules.Operation;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace System
 {
     public static class Extention
     {
+        public static void AddIdentifyDefaultServices(this IServiceCollection services, Action<IDefaultIndentifyOptions> options = null)
+        {
+            services.AddIdentifyDefaultServices<IdentifyDataContext>(options);
+        }
         /// <summary>
         /// 注册
         /// </summary>
         /// <param name="service"></param>
-        public static void AddIdentifyDefaultServices(this IServiceCollection services, Action<IDefaultIndentifyOptions> options = null)
+        public static void AddIdentifyDefaultServices<TContext>(this IServiceCollection services, Action<IDefaultIndentifyOptions> options = null) where TContext : DbContext
         {
             DefaultIndentifyOptions opt = new DefaultIndentifyOptions();
             options?.Invoke(opt);
             //  Do ：身份认证
-            services.AddDbContextBySetting<IdentifyDataContext>(opt.GetConfigOptions<Action<ISqliteSettable>>());
-            services.AddSingleton<IStringRepository<hi_dd_user>, DbContextRepository<IdentifyDataContext, hi_dd_user>>();
+            services.AddDbContextBySetting<TContext>(opt.GetConfigOptions<Action<ISqliteSettable>>());
+            services.AddSingleton<IStringRepository<hi_dd_user>, DbContextRepository<TContext, hi_dd_user>>();
             services.AddUserViewPresenter();
 
-            services.AddSingleton<IStringRepository<hi_dd_role>, DbContextRepository<IdentifyDataContext, hi_dd_role>>();
+            services.AddSingleton<IStringRepository<hi_dd_role>, DbContextRepository<TContext, hi_dd_role>>();
             services.AddRoleViewPresenter();
 
-            services.AddSingleton<IStringRepository<hi_dd_author>, DbContextRepository<IdentifyDataContext, hi_dd_author>>();
+            services.AddSingleton<IStringRepository<hi_dd_author>, DbContextRepository<TContext, hi_dd_author>>();
             services.AddAuthorityViewPresenter();
 
             //  Do ：操作日志
@@ -44,7 +49,7 @@ namespace System
             services.AddOperationViewPresenter();
 
             //  Do ：登录和注册页面
-            services.AddRegisterLoginViewPresenter(opt.GetConfigOptions<Action<ILoginOptions>>(), opt.GetConfigOptions<Action<IRegistorOptions>>());
+            services.AddBackgroundRigisterLoginViewPresenter(opt.GetConfigOptions<Action<ILoginOptions>>(), opt.GetConfigOptions<Action<IRegistorOptions>>());
             services.AddIdentityLoginService();
             services.AddIdentityRegisterService(opt.GetConfigOptions<Action<IIdentifyOptions>>());
         }

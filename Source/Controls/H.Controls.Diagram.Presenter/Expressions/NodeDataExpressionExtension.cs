@@ -25,6 +25,17 @@ public static class NodeDataExpressionExtension
         return expression.Path.GetPropertyDisplayName();
     }
 
+    public static string GetNodeDataPropertyName(this NodeDataExpression expression, IDiagramData diagramData)
+    {
+        var nodeData = expression.GetNodeData(diagramData);
+        if (nodeData == null)
+            return null;
+        var propertyDisplayName = expression.Path.GetPropertyDisplayName();
+        var properties = nodeData.GetType().GetProperties().Where(x => x.CanRead);
+        var find = properties.FirstOrDefault(x => x.GetCustomAttribute<DisplayAttribute>()?.Name == propertyDisplayName);
+        return find?.Name;
+    }
+
     public static int GetLevel(this NodeDataExpression expression)
     {
         return expression.Path.Split('.').Length;
@@ -125,6 +136,18 @@ public static class NodeDataExpressionExtension
         return true;
     }
 
+    public static INodeData GetNodeData(this NodeDataExpression expression, IDiagramData diagramData)
+    {
+        if (expression == null)
+            return null;
+        if (expression.IsDiagramData())
+            return null;
+        if (expression.GetLevel() < 2)
+            return null;
+        var text = expression.GetNodeDataText();
+        return diagramData.NodeDatas.OfType<ITextNodeData>().Where(x => x.Text == text).FirstOrDefault();
+    }
+
     public static bool TryGetRootExpressionValue(this NodeDataExpression expression, IDiagramData diagramData, out object value)
     {
         if (expression is IGetableNodeDataExpression getable)
@@ -132,19 +155,22 @@ public static class NodeDataExpressionExtension
         value = null;
         if (expression == null)
             return false;
-        var text = expression.GetNodeDataText();
-        var displayName = expression.GetPropertyDisplayName();
-        var nodeData = diagramData.NodeDatas.OfType<ITextNodeData>().Where(x => x.Text == text).FirstOrDefault();
+        //var text = expression.GetNodeDataText();
+        //var nodeData = diagramData.NodeDatas.OfType<ITextNodeData>().Where(x => x.Text == text).FirstOrDefault();
+        //if (nodeData == null)
+        //    return false;
+        var nodeData = expression.GetNodeData(diagramData);
         if (nodeData == null)
             return false;
+        var displayName = expression.GetPropertyDisplayName();
         return TryGetExpressionValue(displayName, nodeData, out value);
     }
 
-    public static IEnumerable<NodeDataExpression> GetExpressions(this IExpressionable expressionable, string groupName, string path = null)
+    public static IEnumerable<NodeDataExpression> GetExpressions(this IExpressionable expressionable, string groupName, string path = null, Predicate<object> predicate = null)
     {
-        return GetObjExpressions(expressionable, path, groupName);
+        return GetObjExpressions(expressionable, path, groupName, predicate);
     }
-    private static IEnumerable<NodeDataExpression> GetObjExpressions(object obj, string path, string groupName)
+    private static IEnumerable<NodeDataExpression> GetObjExpressions(object obj, string path, string groupName, Predicate<object> predicate = null)
     {
         var properties = obj.GetType().GetProperties().Where(x => x.CanRead);
         foreach (var property in properties)
@@ -172,11 +198,18 @@ public static class NodeDataExpressionExtension
             var value = property.GetValue(obj);
             if (value == null)
                 continue;
+            if (predicate?.Invoke(value) == false)
+                continue;
             var nes = GetObjExpressions(value, ne.Path, groupName);
             foreach (var item in nes)
             {
                 yield return item;
             }
         }
+    }
+
+    public static IEnumerable<NodeDataExpression> OfType<T>(this IEnumerable<NodeDataExpression> expressions)
+    {
+        return expressions.Where(x => x.Type == typeof(T).FullName);
     }
 }

@@ -90,7 +90,7 @@ public static class DiagramExtension
         diagram.LinkPort(nodeFromPort, toPort);
         NodeLayer.SetPosition(node, link.ToNode.Location);
         //node.GetToNodes().AligmentToNodes();
-        var tonodes = node.GetAllToNodes().ToList();
+        var tonodes = node.GetToNodes().ToList();
         Vector offset = NodeLayer.GetPosition(node) - NodeLayer.GetPosition(link.FromNode);
         foreach (var tonode in tonodes)
         {

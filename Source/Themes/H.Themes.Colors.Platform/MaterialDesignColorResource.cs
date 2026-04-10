@@ -11,7 +11,7 @@ using System.Windows;
 
 namespace H.Themes.Colors.Platform;
 [Display(Name = "Material Design 3 (Google)", GroupName = "系统平台", Description = "纯色", Order = 100, Prompt = "试验")]
-public class MaterialDesignColorResource : ColorResourceBase
+public class MaterialDesignColorResource : ResxColorResourceBase
 {
     public MaterialDesignColorResource()
     {

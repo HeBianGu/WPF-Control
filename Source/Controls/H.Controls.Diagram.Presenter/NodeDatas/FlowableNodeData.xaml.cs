@@ -211,7 +211,7 @@ public class FlowableNodeData : ExpressionNodeDataBase, IFlowableNodeData
             using (var stopwatch = new Stopwatchable(this))
             {
                 if (this.UseInfoLogger)
-                    IocLog.Instance?.Info($"正在执行<{this.GetType().Name}>:{this.Text}");
+                    IocLog.Info($"正在执行<{this.GetType().Name}>:{this.Text}");
                 IFlowableResult result = await InvokeAsync(previors, diagram);
                 if (result.State == FlowableResultState.Continue)
                 {
@@ -222,7 +222,7 @@ public class FlowableNodeData : ExpressionNodeDataBase, IFlowableNodeData
                 else
                 {
                     if (this.UseInfoLogger)
-                        IocLog.Instance?.Info(result.State == FlowableResultState.Error ? $"运行错误<{this.GetType().Name}>:{this.Text} {result.Message}" : $"执行完成<{this.GetType().Name}>:{this.Text} {result.Message}");
+                        IocLog.Info(result.State == FlowableResultState.Error ? $"运行错误<{this.GetType().Name}>:{this.Text} {result.Message}" : $"执行完成<{this.GetType().Name}>:{this.Text} {result.Message}");
                     this.State = result.ToState();
                     return result;
                 }
@@ -233,8 +233,8 @@ public class FlowableNodeData : ExpressionNodeDataBase, IFlowableNodeData
             this.State = FlowableState.Error;
             this.Exception = ex;
             this.Message = ex.Message;
-            IocLog.Instance?.Error($"执行错误<{this.GetType().Name}>:{this.Name} {this.Message}");
-            IocLog.Instance?.Error(ex);
+            IocLog.Error($"执行错误<{this.GetType().Name}>:{this.Name} {this.Message}");
+            IocLog.Error(ex);
             return this.Error(ex.Message);
         }
         finally

@@ -17,7 +17,6 @@ public abstract class IocOptionInstance<Setting> : SettableBase, IOptions<Settin
 
     [Browsable(false)]
     [System.Text.Json.Serialization.JsonIgnore]
-
     [System.Xml.Serialization.XmlIgnore]
     Setting IOptions<Setting>.Value
     {

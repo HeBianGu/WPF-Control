@@ -8,7 +8,7 @@
 
 namespace H.Presenters.Design.Presenter;
 
-[Display(Name = "FixedGrid")]
+[Display(Name = "固定网格布局")]
 public class FixedGridPresenter : GridPresenterBase
 {
     private int _rows = 6;

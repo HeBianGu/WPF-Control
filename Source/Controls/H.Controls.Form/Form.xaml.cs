@@ -9,12 +9,26 @@
 global using H.Controls.Form.Provider;
 global using System.Collections;
 global using System.Windows.Threading;
+using H.Common;
 using H.Controls.Form.PropertyItems.Base;
 
 namespace H.Controls.Form;
 
 public partial class Form : ItemsControl, IFormOption
 {
+    public Form()
+    {
+        this.Unloaded += (s, e) =>
+        {
+            this.Clear();
+        };
+        this.Loaded += (s, e) =>
+        {
+            this.RefreshObject();
+        };
+    }
+
+
     static Form()
     {
         DefaultStyleKeyProperty.OverrideMetadata(typeof(Form), new FrameworkPropertyMetadata(typeof(Form)));
@@ -867,8 +881,18 @@ public partial class Form
 
         }));
 
+    private void Clear()
+    {
+        if (this.ItemsSource == null)
+            return;
+        foreach (var item in this.ItemsSource.OfType<IDisposable>())
+        {
+            item.Dispose();
+        }
+    }
     protected void RefreshObjectinternal()
     {
+        this.Clear();
         object o = this.SelectObject;
         if (o == null)
         {
@@ -969,8 +993,9 @@ public partial class Form
             if (!string.IsNullOrEmpty(this.UseGroupNames))
             {
                 DisplayAttribute display = item.GetCustomAttribute<DisplayAttribute>();
+                var resx = this.SelectObject.GetType().GetPropertyGroupNameResx(item.Name);
                 string[] array = this.UseGroupNames.Split(new char[] { ' ', ',' }, StringSplitOptions.RemoveEmptyEntries);
-                string[] array1 = display?.GroupName?.Split(new char[] { ' ', ',' }, StringSplitOptions.RemoveEmptyEntries);
+                string[] array1 = (resx ?? display?.GroupName)?.Split(new char[] { ' ', ',' }, StringSplitOptions.RemoveEmptyEntries);
                 if (array1 == null)
                 {
                     DisplayAttribute displayer = item.GetCustomAttribute<DisplayAttribute>();

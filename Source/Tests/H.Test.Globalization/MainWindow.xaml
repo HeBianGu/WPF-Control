@@ -1,0 +1,185 @@
+﻿<h:MainWindow
+    x:Class="H.Test.Globalization.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:h="https://github.com/HeBianGu"
+    xmlns:local="clr-namespace:H.Test.Globalization"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:p="clr-namespace:H.Test.Globalization.Properties"
+    xmlns:system="clr-namespace:System;assembly=mscorlib"
+    Title="MainWindow"
+    Width="1100"
+    Height="650"
+    mc:Ignorable="d">
+    <h:MainWindow.CaptionTempate>
+        <ControlTemplate>
+            <DockPanel LastChildFill="False" WindowChrome.IsHitTestVisibleInChrome="True">
+                <Menu>
+                    <Menu.Resources>
+                        <Style BasedOn="{StaticResource {x:Static MenuItemKeys.BindCommand}}" TargetType="MenuItem" />
+                    </Menu.Resources>
+                    <MenuItem Header="身份认证">
+                        <MenuItem Command="{ShowUserViewCommand}" />
+                        <MenuItem Command="{ShowRoleViewCommand}" />
+                        <MenuItem Command="{ShowAuthorityViewCommand}" />
+                        <MenuItem Command="{ShowOperationViewCommand}" />
+                    </MenuItem>
+
+                    <MenuItem Background="Transparent" Header="文件">
+                        <MenuItem Command="{ShowNewProjectCommand}" />
+                        <MenuItem Command="{ShowProjectsCommand}" />
+                        <MenuItem Command="{ShowEditProjectCommand}" />
+                        <MenuItem Command="{ShowSaveProjectCommand}" />
+                        <MenuItem Command="{ShowCurrentProjectFileCommand}" />
+                        <MenuItem
+                            Cattach.Icon="{x:Static FontIcons.Calendar}"
+                            Header="最近的项目"
+                            ItemsSource="{Binding Source={x:Static IocProject.Instance}, Path=Collection}">
+                            <MenuItem.ItemContainerStyle>
+                                <Style TargetType="MenuItem">
+                                    <Setter Property="Command" Value="{ShowOpenProjectCommand}" />
+                                    <Setter Property="CommandParameter" Value="{Binding}" />
+                                    <Setter Property="Height" Value="50" />
+                                    <Setter Property="MinWidth" Value="400" />
+                                </Style>
+                            </MenuItem.ItemContainerStyle>
+                        </MenuItem>
+                        <Separator />
+                        <MenuItem
+                            Cattach.Icon="{x:Static FontIcons.PowerButton}"
+                            Command="{CloseAfterSaveWindowCommand}"
+                            CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"
+                            Header="退出" />
+                    </MenuItem>
+                    <MenuItem Header="帮助">
+                        <MenuItem Command="{ShowGuideCommand}" />
+                        <MenuItem Command="{ShowNewGuideCommand}" />
+                        <MenuItem Command="{ShowGuideTreeCommand}" />
+                        <MenuItem Command="{ShowNewGuideTreeCommand}" />
+                        <Separator />
+                        <MenuItem Command="{ShowNotImplementedCommand}"
+                        Header="检查更新" />
+                        <MenuItem Command="{ShowNotImplementedCommand}"
+                        Header="注册" />
+
+                        <MenuItem Command="{ShowReleaseVersionsCommand}" />
+                        <MenuItem Command="{ShowSupportCommand}" />
+                        <MenuItem Command="{ShowFeedbackCommand}" />
+                        <MenuItem Command="{ShowWebSiteCommand}" />
+                        <Separator />
+                        <MenuItem Command="{ShowContactCommand}">
+                            <MenuItem Command="{ShowGithubContactCommand}" />
+                            <MenuItem Command="{ShowGitHubIssueContactCommand}" />
+                            <MenuItem Command="{ShowQQContactCommand}" />
+                            <MenuItem Command="{ShowSendMailContactCommand}" />
+                            <MenuItem Command="{ShowBlogContactCommand}" />
+                            <MenuItem Command="{ShowPodcastContactCommand}" />
+                        </MenuItem>
+                        <MenuItem Command="{ShowPrivacyCommand}">
+                            <MenuItem Command="{ShowAgreementCommand}" />
+                            <MenuItem Command="{ShowPrivacyCommand}" />
+                        </MenuItem>
+                        <MenuItem Command="{ShowSponsorCommand}" />
+                        <MenuItem Command="{ShowAboutCommand}" />
+                    </MenuItem>
+                </Menu>
+                <FontIconButton Command="{ShowGlobalizationViewCommand}" Style="{DynamicResource {x:Static FontIconButtonKeys.Command}}" />
+
+                <FontIconButton Command="{ShowSettingCommand}" Style="{DynamicResource {x:Static FontIconButtonKeys.Command}}" />
+                <ContentPresenter Content="{Ioc Type={x:Type h:ISwitchThemeViewPresenter}}" />
+                <Button Command="{ShowSettingCommand SwitchToType={x:Type h:IThemeOptions}}"
+                        Content="{Binding Source={x:Static h:ThemeOptions.Instance}, Path=ColorResource.Name}" />
+                <FontIconButton Command="{ShowColorThemeViewCommand}"
+                                FontFamily="{DynamicResource {x:Static SystemKeys.FontFamilyIcon}}"
+                                Style="{DynamicResource {x:Static FontIconButtonKeys.Command}}" />
+            </DockPanel>
+        </ControlTemplate>
+    </h:MainWindow.CaptionTempate>
+    <TabControl>
+        <TabItem Header="Dialog">
+            <UniformGrid>
+                <Button Command="{ShowIocCommand Type={x:Type IAboutViewPresenter}}" Content="ShowIocCommand" />
+                <Button Command="{ShowMessageCommand Message=我是消息, Name=我是标题, Height=150, Width=300}" Content="ShowMessageCommand" />
+                <Button Command="{ShowCommand Presnter={h:GetStudent}}" Content="ShowCommand" />
+                <Button Command="{ShowPercentCommand}" Content="ShowPercentCommand" />
+                <Button Command="{ShowStringCommand}" Content="ShowStringCommand" />
+                <Button Command="{ShowWaitCommand}" Content="ShowWaitCommand" />
+                <Button Command="{ShowEditCommand Value={h:GetStudent}}" Content="ShowEditCommand" />
+                <Button Command="{ShowTabEditCommand Value={h:GetStudent}}" Content="ShowTabEditCommand" />
+                <Button Command="{ShowTabEditCommand Value={h:GetStudent}, TabNames=基础信息}" Content="ShowTabEditCommand-基础信息" />
+                <Button Command="{ShowViewCommand Value={h:GetStudent}}" Content="ShowViewCommand" />
+                <Button Click="Button_Click" Content="Predicate" />
+                <Button
+                    Command="{h:ShowAdornerDialogCommand}"
+                    CommandParameter="{h:GetStudent}"
+                    Content="内嵌弹窗" />
+                <Button Command="{h:ShowStepCommand Count=6}" Content="ShowStepCommand" />
+                <Button Command="{h:ShowVerticalStepCommand Count=36, StepLineWidth=40}" Content="ShowVerticalStepCommand" />
+
+            </UniformGrid>
+        </TabItem>
+        <TabItem Header="Notice">
+            <UniformGrid>
+                <Button Command="{h:ShowInfoNoticeMessageCommand}" Content="ShowInfo" />
+                <Button Command="{h:ShowErrorNoticeMessageCommand Message=我是Error消息}" Content="ShowError" />
+                <Button Command="{h:ShowSuccessNoticeMessageCommand Message=我是Success消息}" Content="ShowSuccess" />
+                <Button Command="{h:ShowWarnNoticeMessageCommand Message=我是Warn消息}" Content="ShowWarn" />
+                <Button Command="{h:ShowFatalNoticeMessageCommand Message=我是Fatal消息}" Content="ShowFatal" />
+                <Button Command="{h:ShowProgressNoticeMessageCommand Message=我是Progress消息}" Content="ShowProgress" />
+                <Button Command="{h:ShowStringNoticeMessageCommand Message=我是String消息}" Content="ShowString" />
+                <Button Command="{h:ShowDialogNoticeMessageCommand Message=我是Dialog消息}" Content="ShowDialog" />
+            </UniformGrid>
+        </TabItem>
+        <TabItem Header="Snack">
+            <UniformGrid>
+                <Button Command="{h:ShowInfoSnackMessageCommand Message=我是Info消息}" Content="ShowInfo" />
+                <Button Command="{h:ShowErrorSnackMessageCommand Message=我是Error消息}" Content="ShowError" />
+                <Button Command="{h:ShowSuccessSnackMessageCommand Message=我是Success消息}" Content="ShowSuccess" />
+                <Button Command="{h:ShowWarnSnackMessageCommand Message=我是Warn消息}" Content="ShowWarn" />
+                <Button Command="{h:ShowFatalSnackMessageCommand Message=我是Fatal消息}" Content="ShowFatal" />
+                <Button Command="{h:ShowProgressSnackMessageCommand Message=我是Progress消息}" Content="ShowProgress" />
+                <Button Command="{h:ShowStringSnackMessageCommand Message=我是String消息}" Content="ShowString" />
+                <Button Command="{h:ShowDialogSnackMessageCommand Message=我是Dialog消息}" Content="ShowDialog" />
+            </UniformGrid>
+        </TabItem>
+        <TabItem Header="CommandMessage">
+            <UniformGrid>
+                <Button Command="{h:AsyncMessageCommand Message=点击执行}" Content="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Command.Message}" />
+
+                <Button Command="{h:AsyncPercentCommand Value=0.0}" Content="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Command.Value}" />
+            </UniformGrid>
+        </TabItem>
+        <TabItem Header="动态切换">
+            <UniformGrid>
+                <Button Click="Button_Click" Content="{Binding Source={x:Static GlobalizationOptions.Instance}, Path=CultureInfo, IsAsync=True, Converter={GetGlobalizationValueConverter ResourcesType={x:Type p:Resources}, Key=AppTitle}}" />
+                <Button Click="Button_Click" Content="{GlobalizationBinding ResourcesType={x:Type p:Resources}, Key=AppTitle}" />
+                <Button Click="Button_Click" Content="{x:Static p:Resources.AppTitle}" />
+                <Button Command="{ShowEditCommand Value={GetStudent}}" Content="Form表单" />
+            </UniformGrid>
+        </TabItem>
+        <TabItem Header="基础控件">
+            <DataGrid ItemsSource="{GetStudents Count=0}" />
+        </TabItem>
+
+        <TabItem Header="枚举">
+            <ComboBox>
+                <ItemsControl.Resources>
+                    <DataTemplate DataType="{x:Type local:TestEnum}">
+                        <TextBlock>
+                            <Run Text="{Binding ., Converter={GetEnumResxConverter}}" />
+                            <Run Text="-" />
+                            <Run Text="{Binding ., Converter={GetEnumGroupNameResxConverter}}" />
+                            <Run Text="-" />
+                            <Run Text="{Binding ., Converter={GetEnumDescriptionResxConverter}}" />
+                        </TextBlock>
+                    </DataTemplate>
+                </ItemsControl.Resources>
+                <local:TestEnum>Default</local:TestEnum>
+                <local:TestEnum>First</local:TestEnum>
+                <local:TestEnum>None</local:TestEnum>
+                <local:TestEnum>Default</local:TestEnum>
+            </ComboBox>
+        </TabItem>
+    </TabControl>
+</h:MainWindow>

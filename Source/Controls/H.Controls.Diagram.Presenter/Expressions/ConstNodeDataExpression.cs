@@ -78,6 +78,6 @@ public class ConstNodeDataExpression<T> : NodeDataExpression, IGetableNodeDataEx
 
     public override int GetHashCode()
     {
-        return HashCode.Combine(this.Path.GetHashCode(), this.GroupName.GetHashCode(), this.Name.GetHashCode(), this.Value?.GetHashCode());
+        return HashCode.Combine(this.Path, this.GroupName, this.Name, this.Value);
     }
 }

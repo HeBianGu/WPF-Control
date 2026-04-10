@@ -1,0 +1,154 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="NotImplemented" xml:space="preserve">
+    <value>機能はまだ実装されていません。</value>
+  </data>
+  <data name="ShowString_Format" xml:space="preserve">
+    <value>データを読み込んでいます（{0}/100件目）</value>
+  </data>
+  <data name="View" xml:space="preserve">
+    <value>查看</value>
+  </data>
+  <data name="DefaultMessage" xml:space="preserve">
+    <value>既定のメッセージ</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>操作をキャンセルする</value>
+  </data>
+  <data name="DefaultTitle" xml:space="preserve">
+    <value>ヒント</value>
+  </data>
+  <data name="Success" xml:space="preserve">
+    <value>操作が完了しました。</value>
+  </data>
+  <data name="ShowMessage" xml:space="preserve">
+    <value>メッセージを表示する</value>
+  </data>
+  <data name="Close" xml:space="preserve">
+    <value>閉じる</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>編集</value>
+  </data>
+  <data name="Show" xml:space="preserve">
+    <value>表示</value>
+  </data>
+  <data name="Type_ShowIocCommand" xml:space="preserve">
+    <value>メッセージを表示</value>
+  </data>
+  <data name="Type_ShowIocCommand_Description" xml:space="preserve">
+    <value>ポップアップメッセージを表示する</value>
+  </data>
+  <data name="Type_ShowMessageCommand" xml:space="preserve">
+    <value>メッセージを表示</value>
+  </data>
+  <data name="Type_ShowMessageCommand_Description" xml:space="preserve">
+    <value>ポップアップメッセージを表示する</value>
+  </data>
+  <data name="Type_ShowCommand" xml:space="preserve">
+    <value>表示</value>
+  </data>
+  <data name="Type_ShowCommand_Description" xml:space="preserve">
+    <value>表示ページを表示する</value>
+  </data>
+  <data name="Type_ShowPercentCommand" xml:space="preserve">
+    <value>メッセージを表示</value>
+  </data>
+  <data name="Type_ShowPercentCommand_Description" xml:space="preserve">
+    <value>ポップアップメッセージを表示する</value>
+  </data>
+  <data name="Type_ShowStringCommand" xml:space="preserve">
+    <value>メッセージを表示</value>
+  </data>
+  <data name="Type_ShowStringCommand_Description" xml:space="preserve">
+    <value>ポップアップメッセージを表示する</value>
+  </data>
+  <data name="Type_ShowWaitCommand" xml:space="preserve">
+    <value>メッセージを表示</value>
+  </data>
+  <data name="Type_ShowWaitCommand_Description" xml:space="preserve">
+    <value>ポップアップメッセージを表示する</value>
+  </data>
+  <data name="Type_ShowEditCommand" xml:space="preserve">
+    <value>編集</value>
+  </data>
+  <data name="Type_ShowEditCommand_Description" xml:space="preserve">
+    <value>ポップアップメッセージを表示する</value>
+  </data>
+  <data name="Type_ShowTabEditCommand" xml:space="preserve">
+    <value>編集</value>
+  </data>
+  <data name="Type_ShowTabEditCommand_Description" xml:space="preserve">
+    <value>複数タブのフォームでデータを編集表示する</value>
+  </data>
+  <data name="Type_ShowViewCommand" xml:space="preserve">
+    <value>表示</value>
+  </data>
+  <data name="Type_ShowViewCommand_Description" xml:space="preserve">
+    <value>フォームを表示してデータを確認する</value>
+  </data>
+  <data name="Type_ShowNotImplementedCommand" xml:space="preserve">
+    <value>メッセージを表示</value>
+  </data>
+  <data name="Type_ShowNotImplementedCommand_Description" xml:space="preserve">
+    <value>ポップアップメッセージを表示する</value>
+  </data>
+</root>

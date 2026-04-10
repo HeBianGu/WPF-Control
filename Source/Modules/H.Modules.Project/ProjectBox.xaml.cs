@@ -36,6 +36,10 @@ public partial class ProjectBox : ListBox
                     await IocProject.Instance.ShowDeleteProject(project);
                 }
             };
+            commandBinding.CanExecute += (l, k) =>
+            {
+                k.CanExecute = IocProject.Instance.Current != k.Parameter;
+            };
             this.CommandBindings.Add(commandBinding);
         }
 

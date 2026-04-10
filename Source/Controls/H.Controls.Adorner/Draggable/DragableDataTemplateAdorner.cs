@@ -6,20 +6,25 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
+
 namespace H.Controls.Adorner.Draggable;
 
 public class DragableDataTemplateAdorner : DataTemplateAdorner, IDraggableAdorner
 {
+    private Pen _borderPen = null;
     private Point _location;
     public Point Offset { get; set; }
     public DraggableAdornerMode DropAdornerMode { get; set; }
+    public double BorderPadding { get; set; } = 2;
     public DragableDataTemplateAdorner(UIElement adornedElement, Point offset) : base(adornedElement)
     {
+        this._borderPen = this.CreateBorderPen();
         this.Offset = offset;
     }
 
     public DragableDataTemplateAdorner(UIElement adornedElement, object data, Point offset) : base(adornedElement, data)
     {
+        this._borderPen = this.CreateBorderPen();
         this.Offset = offset;
     }
 
@@ -37,6 +42,7 @@ public class DragableDataTemplateAdorner : DataTemplateAdorner, IDraggableAdorne
         point.Offset(-Offset.X, -Offset.Y);
         point.Offset(_location.X, _location.Y);
         this._contentPresenter.Arrange(new Rect(point, this._contentPresenter.DesiredSize));
+        this.InvalidateVisual();
 
     }
 
@@ -52,5 +58,23 @@ public class DragableDataTemplateAdorner : DataTemplateAdorner, IDraggableAdorne
     public object GetData()
     {
         return this._contentPresenter.Content;
+    }
+
+    protected virtual Pen CreateBorderPen()
+    {
+        var r = new Pen(new SolidColorBrush(Colors.LightSkyBlue), 2) { DashStyle = DashStyles.Dash };
+        r.Freeze();
+        return r;
+    }
+
+    protected override void OnRender(DrawingContext drawingContext)
+    {
+        base.OnRender(drawingContext);
+        Rect rect = new Rect(this.RenderSize);
+        rect.Offset(-Offset.X, -Offset.Y);
+        rect.Offset(_location.X, _location.Y);
+        if (this._borderPen == null)
+            return;
+        drawingContext.DrawRoundedRectangle(null, this._borderPen, rect.GetPadding(this.BorderPadding), 2, 2);
     }
 }

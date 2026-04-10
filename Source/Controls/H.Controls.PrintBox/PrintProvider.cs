@@ -14,6 +14,7 @@ using System.Windows.Media;
 
 namespace H.Controls.PrintBox
 {
+
     public static class PrintProvider
     {
         public static FixedDocument GetFixedDocument(FrameworkElement toPrint, PrintDialog printDialog, double margin = 20)

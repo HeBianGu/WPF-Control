@@ -1,31 +1,31 @@
-﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:h="https://github.com/HeBianGu"
-                    xmlns:local="clr-namespace:H.Controls.Chart2D"
-                    xmlns:system="clr-namespace:System;assembly=mscorlib">
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:h="https://github.com/HeBianGu"
+    xmlns:local="clr-namespace:H.Controls.Chart2D"
+    xmlns:system="clr-namespace:System;assembly=mscorlib">
 
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="../Provider/Layer.xaml" />
         <ResourceDictionary Source="../Marker/Marker.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <Style x:Key="{ComponentResourceKey ResourceId=S.MarkTip.Default,
-                                        TypeInTargetAssembly={x:Type local:MarkTip}}"
-           BasedOn="{StaticResource {x:Static h:Layer.DefaultKey}}"
-           TargetType="{x:Type local:MarkTip}">
+    <Style
+        x:Key="{ComponentResourceKey ResourceId=S.MarkTip.Default,
+                                     TypeInTargetAssembly={x:Type local:MarkTip}}"
+        BasedOn="{StaticResource {x:Static h:Layer.DefaultKey}}"
+        TargetType="{x:Type local:MarkTip}">
         <Setter Property="Data" Value="{Binding RelativeSource={RelativeSource AncestorType=local:Series}, Path=yDatas}" />
         <Setter Property="xAxis" Value="{Binding RelativeSource={RelativeSource AncestorType=local:Series}, Path=xDatas}" />
         <Setter Property="MarkStyle">
             <Setter.Value>
-                <Style BasedOn="{StaticResource {x:Static h:EllipseMarker.DefaultKey}}"
-                       TargetType="local:EllipseMarker">
+                <Style BasedOn="{StaticResource {x:Static h:EllipseMarker.DefaultKey}}" TargetType="local:EllipseMarker">
                     <Setter Property="StrokeThickness" Value="1" />
                     <Setter Property="Stroke" Value="{DynamicResource {x:Static h:BrushKeys.Orange}}" />
                     <Setter Property="Fill" Value="{DynamicResource {x:Static h:BrushKeys.Orange}}" />
                     <Setter Property="Rect">
                         <Setter.Value>
-                            <Rect Width="15"
-                                  Height="15" />
+                            <Rect Width="15" Height="15" />
                         </Setter.Value>
                     </Setter>
                 </Style>
@@ -57,17 +57,19 @@
                         <Setter.Value>
                             <ControlTemplate TargetType="Label">
                                 <Grid>
-                                    <Polygon HorizontalAlignment="Center"
-                                             VerticalAlignment="Center"
-                                             Fill="{Binding RelativeSource={RelativeSource AncestorType=local:MarkTip}, Path=Foreground}"
-                                             Points="8,0 16,16 8,32 0,16" />
+                                    <Polygon
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"
+                                        Fill="{Binding RelativeSource={RelativeSource AncestorType=local:MarkTip}, Path=Foreground}"
+                                        Points="8,0 16,16 8,32 0,16" />
 
-                                    <TextBlock Margin="160,-30,0,0"
-                                               HorizontalAlignment="Left"
-                                               VerticalAlignment="Center"
-                                               ClipToBounds="False"
-                                               Foreground="{TemplateBinding Foreground}"
-                                               Text="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=Content}" />
+                                    <TextBlock
+                                        Margin="160,-30,0,0"
+                                        HorizontalAlignment="Left"
+                                        VerticalAlignment="Center"
+                                        ClipToBounds="False"
+                                        Foreground="{TemplateBinding Foreground}"
+                                        Text="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=Content}" />
                                 </Grid>
                             </ControlTemplate>
                         </Setter.Value>
@@ -77,8 +79,7 @@
         </Setter>
     </Style>
 
-    <Style BasedOn="{StaticResource {x:Static h:MarkTip.DefaultKey}}"
-           TargetType="{x:Type local:MarkTip}" />
+    <Style BasedOn="{StaticResource {x:Static h:MarkTip.DefaultKey}}" TargetType="{x:Type local:MarkTip}" />
 
 
 </ResourceDictionary>

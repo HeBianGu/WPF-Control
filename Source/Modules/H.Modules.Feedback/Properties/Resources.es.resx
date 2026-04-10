@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Type_FeedbackOptions" xml:space="preserve">
+    <value>Configuración de comentarios de usuarios</value>
+  </data>
+  <data name="Type_FeedbackOptions_GroupName" xml:space="preserve">
+    <value>Configuración del sistema</value>
+  </data>
+  <data name="Type_FeedbackOptions_Description" xml:space="preserve">
+    <value>Información configurada para los comentarios de los usuarios</value>
+  </data>
+  <data name="Property_FeedbackOptions_Host" xml:space="preserve">
+    <value>Servidor</value>
+  </data>
+  <data name="Property_FeedbackOptions_Port" xml:space="preserve">
+    <value>Puerto del servidor</value>
+  </data>
+  <data name="Property_FeedbackOptions_EnableSsl" xml:space="preserve">
+    <value>Habilitar SSL</value>
+  </data>
+  <data name="Property_FeedbackOptions_User" xml:space="preserve">
+    <value>Cuenta de envío externo</value>
+  </data>
+  <data name="Property_FeedbackOptions_Password" xml:space="preserve">
+    <value>Licencia</value>
+  </data>
+  <data name="Property_FeedbackOptions_IsBodyHtml" xml:space="preserve">
+    <value>Habilitar formato HTML</value>
+  </data>
+  <data name="Type_ShowFeedbackCommand" xml:space="preserve">
+    <value>Comentarios de los usuarios</value>
+  </data>
+  <data name="Type_ShowFeedbackCommand_Description" xml:space="preserve">
+    <value>Mostrar la página de comentarios del usuario</value>
+  </data>
+  <data name="Feedback_Prompt" xml:space="preserve">
+    <value>Sus comentarios son la fuerza que nos impulsa a seguir mejorando. Por favor, déjenos los problemas que haya encontrado durante el uso o sus valiosas sugerencias.</value>
+  </data>
+  <data name="Feedback_Confidentiality" xml:space="preserve">
+    <value>La información que ha enviado se utilizará para resolver su problema y la mantendremos estrictamente confidencial.</value>
+  </data>
+  <data name="Feedback_Name" xml:space="preserve">
+    <value>Su nombre</value>
+  </data>
+  <data name="Feedback_Contact" xml:space="preserve">
+    <value>Información de contacto</value>
+  </data>
+  <data name="Feedback_Quesion" xml:space="preserve">
+    <value>Descripción del problema</value>
+  </data>
+  <data name="Feedback_AddFiles" xml:space="preserve">
+    <value>Agregar archivo adjunto</value>
+  </data>
+</root>

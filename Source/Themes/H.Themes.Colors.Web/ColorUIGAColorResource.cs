@@ -11,7 +11,7 @@ using System.Windows;
 
 namespace H.Themes.Colors.Web;
 [Display(Name = "ColorUI-GA", GroupName = "网站前端风", Description = "纯色", Order = 100, Prompt = "试验")]
-public class ColorUIGAColorResource : ColorResourceBase
+public class ColorUIGAColorResource : ResxColorResourceBase
 {
     public override ResourceDictionary Resource => new ResourceDictionary()
     {

@@ -7,452 +7,450 @@
 // Licensed under the MIT License (the "License")
 
 using H.Extensions.Mvvm.ViewModels.Tree;
-using System.Windows.Media;
 
-namespace H.Data.Test
+namespace H.Data.Test;
+
+public partial class TestBindable : TreeNodeBase<DateTime>
 {
-    public partial class TestBindable : TreeNodeBase<DateTime>
+    public TestBindable() : base(DateTime.Now)
     {
-        public TestBindable() : base(DateTime.Now)
+
+    }
+
+    public static TestBindables Randoms(int c = 100)
+    {
+        List<TestBindable> ss = Enumerable.Range(0, c).Select(x => new TestBindable()).ToList();
+        return new TestBindables(ss);
+    }
+
+    private static Random _random = new Random();
+
+    protected override void Init()
+    {
+        base.Init();
+        System.Reflection.PropertyInfo[] ps = this.GetType().GetProperties();
+        foreach (System.Reflection.PropertyInfo item in ps)
         {
-
-        }
-
-        public static TestBindables Randoms(int c = 100)
-        {
-            List<TestBindable> ss = Enumerable.Range(0, c).Select(x => new TestBindable()).ToList();
-            return new TestBindables(ss);
-        }
-
-        private static Random _random = new Random();
-
-        protected override void Init()
-        {
-            base.Init();
-            System.Reflection.PropertyInfo[] ps = this.GetType().GetProperties();
-            foreach (System.Reflection.PropertyInfo item in ps)
+            if (item.PropertyType == typeof(double))
             {
-                if (item.PropertyType == typeof(double))
+                if (item.CanWrite)
                 {
-                    if (item.CanWrite)
-                    {
-                        item.SetValue(this, Math.Round(_random.NextDouble() * 100, 2));
-                    }
+                    item.SetValue(this, Math.Round(_random.NextDouble() * 100, 2));
                 }
-                if (item.PropertyType == typeof(string))
+            }
+            if (item.PropertyType == typeof(string))
+            {
+                if (item.CanWrite)
                 {
-                    if (item.CanWrite)
-                    {
-                        item.SetValue(this, item.Name);
-                    }
+                    item.SetValue(this, item.Name);
                 }
             }
         }
+    }
 
-        private Brush _brush;
-        /// <summary> 说明  </summary>
-        public Brush Brush
+    private Brush _brush;
+    /// <summary> 说明  </summary>
+    public Brush Brush
+    {
+        get { return _brush; }
+        set
         {
-            get { return _brush; }
-            set
-            {
-                _brush = value;
-                RaisePropertyChanged();
-            }
+            _brush = value;
+            RaisePropertyChanged();
         }
+    }
 
-        private bool _bool1;
-        public bool Bool1
+    private bool _bool1;
+    public bool Bool1
+    {
+        get { return _bool1; }
+        set
         {
-            get { return _bool1; }
-            set
-            {
-                _bool1 = value;
-                RaisePropertyChanged();
-            }
+            _bool1 = value;
+            RaisePropertyChanged();
         }
+    }
 
-        private bool _bool2;
-        /// <summary> 说明  </summary>
-        public bool Bool2
+    private bool _bool2;
+    /// <summary> 说明  </summary>
+    public bool Bool2
+    {
+        get { return _bool2; }
+        set
         {
-            get { return _bool2; }
-            set
-            {
-                _bool2 = value;
-                RaisePropertyChanged();
-            }
+            _bool2 = value;
+            RaisePropertyChanged();
         }
+    }
 
-        private bool _bool3;
-        /// <summary> 说明  </summary>
-        public bool Bool3
+    private bool _bool3;
+    /// <summary> 说明  </summary>
+    public bool Bool3
+    {
+        get { return _bool3; }
+        set
         {
-            get { return _bool3; }
-            set
-            {
-                _bool3 = value;
-                RaisePropertyChanged();
-            }
+            _bool3 = value;
+            RaisePropertyChanged();
         }
+    }
 
-        private string _value;
-        /// <summary> 说明  </summary>
-        public new string Value
+    private string _value;
+    /// <summary> 说明  </summary>
+    public new string Value
+    {
+        get { return _value; }
+        set
         {
-            get { return _value; }
-            set
-            {
-                _value = value;
-                RaisePropertyChanged("Value");
-            }
+            _value = value;
+            RaisePropertyChanged("Value");
         }
+    }
 
-        private string _value1;
-        /// <summary> 说明  </summary>
-        public string Value1
+    private string _value1;
+    /// <summary> 说明  </summary>
+    public string Value1
+    {
+        get { return _value1; }
+        set
         {
-            get { return _value1; }
-            set
-            {
-                _value1 = value;
-                RaisePropertyChanged("Value1");
-            }
+            _value1 = value;
+            RaisePropertyChanged("Value1");
         }
+    }
 
-        private string _value2;
-        /// <summary> 说明  </summary>
-        public string Value2
+    private string _value2;
+    /// <summary> 说明  </summary>
+    public string Value2
+    {
+        get { return _value2; }
+        set
         {
-            get { return _value2; }
-            set
-            {
-                _value2 = value;
-                RaisePropertyChanged("Value2");
-            }
+            _value2 = value;
+            RaisePropertyChanged("Value2");
         }
+    }
 
-        private string _value3;
-        /// <summary> 说明  </summary>
-        public string Value3
+    private string _value3;
+    /// <summary> 说明  </summary>
+    public string Value3
+    {
+        get { return _value3; }
+        set
         {
-            get { return _value3; }
-            set
-            {
-                _value3 = value;
-                RaisePropertyChanged("Value3");
-            }
+            _value3 = value;
+            RaisePropertyChanged("Value3");
         }
+    }
 
-        private string _value4;
-        /// <summary> 说明  </summary>
-        public string Value4
+    private string _value4;
+    /// <summary> 说明  </summary>
+    public string Value4
+    {
+        get { return _value4; }
+        set
         {
-            get { return _value4; }
-            set
-            {
-                _value4 = value;
-                RaisePropertyChanged("Value4");
-            }
+            _value4 = value;
+            RaisePropertyChanged("Value4");
         }
+    }
 
-        private string _value5;
-        /// <summary> 说明  </summary>
-        public string Value5
+    private string _value5;
+    /// <summary> 说明  </summary>
+    public string Value5
+    {
+        get { return _value5; }
+        set
         {
-            get { return _value5; }
-            set
-            {
-                _value5 = value;
-                RaisePropertyChanged("Value5");
-            }
+            _value5 = value;
+            RaisePropertyChanged("Value5");
         }
+    }
 
-        private string _value6;
-        /// <summary> 说明  </summary>
-        public string Value6
+    private string _value6;
+    /// <summary> 说明  </summary>
+    public string Value6
+    {
+        get { return _value6; }
+        set
         {
-            get { return _value6; }
-            set
-            {
-                _value6 = value;
-                RaisePropertyChanged("Value6");
-            }
+            _value6 = value;
+            RaisePropertyChanged("Value6");
         }
+    }
 
-        private string _value7;
-        /// <summary> 说明  </summary>
-        public string Value7
+    private string _value7;
+    /// <summary> 说明  </summary>
+    public string Value7
+    {
+        get { return _value7; }
+        set
         {
-            get { return _value7; }
-            set
-            {
-                _value7 = value;
-                RaisePropertyChanged("Value7");
-            }
+            _value7 = value;
+            RaisePropertyChanged("Value7");
         }
+    }
 
-        private string _value9;
-        /// <summary> 说明  </summary>
-        public string Value9
+    private string _value9;
+    /// <summary> 说明  </summary>
+    public string Value9
+    {
+        get { return _value9; }
+        set
         {
-            get { return _value9; }
-            set
-            {
-                _value9 = value;
-                RaisePropertyChanged("Value9");
-            }
+            _value9 = value;
+            RaisePropertyChanged("Value9");
         }
+    }
 
-        private int _int1;
-        /// <summary> 说明  </summary>
-        public int Int1
+    private int _int1;
+    /// <summary> 说明  </summary>
+    public int Int1
+    {
+        get { return _int1; }
+        set
         {
-            get { return _int1; }
-            set
-            {
-                _int1 = value;
-                RaisePropertyChanged("Int1");
-            }
+            _int1 = value;
+            RaisePropertyChanged("Int1");
         }
+    }
 
-        private int _int2;
-        /// <summary> 说明  </summary>
-        public int Int2
+    private int _int2;
+    /// <summary> 说明  </summary>
+    public int Int2
+    {
+        get { return _int2; }
+        set
         {
-            get { return _int2; }
-            set
-            {
-                _int2 = value;
-                RaisePropertyChanged("Int2");
-            }
+            _int2 = value;
+            RaisePropertyChanged("Int2");
         }
+    }
 
-        private int _int3;
-        /// <summary> 说明  </summary>
-        public int Int3
+    private int _int3;
+    /// <summary> 说明  </summary>
+    public int Int3
+    {
+        get { return _int3; }
+        set
         {
-            get { return _int3; }
-            set
-            {
-                _int3 = value;
-                RaisePropertyChanged("Int3");
-            }
+            _int3 = value;
+            RaisePropertyChanged("Int3");
         }
+    }
 
-        private DateTime _datetime1;
-        /// <summary> 说明  </summary>
-        public DateTime DateTime1
+    private DateTime _datetime1;
+    /// <summary> 说明  </summary>
+    public DateTime DateTime1
+    {
+        get { return _datetime1; }
+        set
         {
-            get { return _datetime1; }
-            set
-            {
-                _datetime1 = value;
-                RaisePropertyChanged("DateTime1");
-            }
+            _datetime1 = value;
+            RaisePropertyChanged("DateTime1");
         }
+    }
 
-        private DateTime _datetime2;
-        /// <summary> 说明  </summary>
-        public DateTime DateTime2
+    private DateTime _datetime2;
+    /// <summary> 说明  </summary>
+    public DateTime DateTime2
+    {
+        get { return _datetime2; }
+        set
         {
-            get { return _datetime2; }
-            set
-            {
-                _datetime2 = value;
-                RaisePropertyChanged("DateTime2");
-            }
+            _datetime2 = value;
+            RaisePropertyChanged("DateTime2");
         }
+    }
 
-        private DateTime _datetime3;
-        /// <summary> 说明  </summary>
-        public DateTime DateTime3
+    private DateTime _datetime3;
+    /// <summary> 说明  </summary>
+    public DateTime DateTime3
+    {
+        get { return _datetime3; }
+        set
         {
-            get { return _datetime3; }
-            set
-            {
-                _datetime3 = value;
-                RaisePropertyChanged("DateTime3");
-            }
+            _datetime3 = value;
+            RaisePropertyChanged("DateTime3");
         }
+    }
 
-        private double _double1;
-        /// <summary> 说明  </summary>
-        public double Double1
+    private double _double1;
+    /// <summary> 说明  </summary>
+    public double Double1
+    {
+        get { return _double1; }
+        set
         {
-            get { return _double1; }
-            set
-            {
-                _double1 = value;
-                RaisePropertyChanged("Double1");
-            }
+            _double1 = value;
+            RaisePropertyChanged("Double1");
         }
+    }
 
-        private double _double2;
-        /// <summary> 说明  </summary>
-        public double Double2
+    private double _double2;
+    /// <summary> 说明  </summary>
+    public double Double2
+    {
+        get { return _double2; }
+        set
         {
-            get { return _double2; }
-            set
-            {
-                _double2 = value;
-                RaisePropertyChanged("Double2");
-            }
+            _double2 = value;
+            RaisePropertyChanged("Double2");
         }
-        private double _double3;
-        /// <summary> 说明  </summary>
-        public double Double3
+    }
+    private double _double3;
+    /// <summary> 说明  </summary>
+    public double Double3
+    {
+        get { return _double3; }
+        set
         {
-            get { return _double3; }
-            set
-            {
-                _double3 = value;
-                RaisePropertyChanged("Double3");
-            }
+            _double3 = value;
+            RaisePropertyChanged("Double3");
         }
-        private double _double4;
-        /// <summary> 说明  </summary>
-        public double Double4
+    }
+    private double _double4;
+    /// <summary> 说明  </summary>
+    public double Double4
+    {
+        get { return _double4; }
+        set
         {
-            get { return _double4; }
-            set
-            {
-                _double4 = value;
-                RaisePropertyChanged("Double4");
-            }
+            _double4 = value;
+            RaisePropertyChanged("Double4");
         }
-        private double _double5;
-        /// <summary> 说明  </summary>
-        public double Double5
+    }
+    private double _double5;
+    /// <summary> 说明  </summary>
+    public double Double5
+    {
+        get { return _double5; }
+        set
         {
-            get { return _double5; }
-            set
-            {
-                _double5 = value;
-                RaisePropertyChanged("Double5");
-            }
+            _double5 = value;
+            RaisePropertyChanged("Double5");
         }
-        private double _double6;
-        /// <summary> 说明  </summary>
-        public double Double6
+    }
+    private double _double6;
+    /// <summary> 说明  </summary>
+    public double Double6
+    {
+        get { return _double6; }
+        set
         {
-            get { return _double6; }
-            set
-            {
-                _double6 = value;
-                RaisePropertyChanged("Double6");
-            }
+            _double6 = value;
+            RaisePropertyChanged("Double6");
         }
-        private double _double7;
-        /// <summary> 说明  </summary>
-        public double Double7
+    }
+    private double _double7;
+    /// <summary> 说明  </summary>
+    public double Double7
+    {
+        get { return _double7; }
+        set
         {
-            get { return _double7; }
-            set
-            {
-                _double7 = value;
-                RaisePropertyChanged("Double7");
-            }
+            _double7 = value;
+            RaisePropertyChanged("Double7");
         }
-        private double _double8;
-        /// <summary> 说明  </summary>
-        public double Double8
+    }
+    private double _double8;
+    /// <summary> 说明  </summary>
+    public double Double8
+    {
+        get { return _double8; }
+        set
         {
-            get { return _double8; }
-            set
-            {
-                _double8 = value;
-                RaisePropertyChanged("Double8");
-            }
+            _double8 = value;
+            RaisePropertyChanged("Double8");
         }
-        private double _double9;
-        /// <summary> 说明  </summary>
-        public double Double9
+    }
+    private double _double9;
+    /// <summary> 说明  </summary>
+    public double Double9
+    {
+        get { return _double9; }
+        set
         {
-            get { return _double9; }
-            set
-            {
-                _double9 = value;
-                RaisePropertyChanged("Double9");
-            }
+            _double9 = value;
+            RaisePropertyChanged("Double9");
         }
-        private double _double10;
-        /// <summary> 说明  </summary>
-        public double Double10
+    }
+    private double _double10;
+    /// <summary> 说明  </summary>
+    public double Double10
+    {
+        get { return _double10; }
+        set
         {
-            get { return _double10; }
-            set
-            {
-                _double10 = value;
-                RaisePropertyChanged("Double10");
-            }
+            _double10 = value;
+            RaisePropertyChanged("Double10");
         }
-        private double _double11;
-        /// <summary> 说明  </summary>
-        public double Double11
+    }
+    private double _double11;
+    /// <summary> 说明  </summary>
+    public double Double11
+    {
+        get { return _double11; }
+        set
         {
-            get { return _double11; }
-            set
-            {
-                _double11 = value;
-                RaisePropertyChanged("Double11");
-            }
+            _double11 = value;
+            RaisePropertyChanged("Double11");
         }
-        private double _double12;
-        /// <summary> 说明  </summary>
-        public double Double12
+    }
+    private double _double12;
+    /// <summary> 说明  </summary>
+    public double Double12
+    {
+        get { return _double12; }
+        set
         {
-            get { return _double12; }
-            set
-            {
-                _double12 = value;
-                RaisePropertyChanged("Double12");
-            }
+            _double12 = value;
+            RaisePropertyChanged("Double12");
         }
-        private double _double13;
-        /// <summary> 说明  </summary>
-        public double Double13
+    }
+    private double _double13;
+    /// <summary> 说明  </summary>
+    public double Double13
+    {
+        get { return _double13; }
+        set
         {
-            get { return _double13; }
-            set
-            {
-                _double13 = value;
-                RaisePropertyChanged("Double13");
-            }
+            _double13 = value;
+            RaisePropertyChanged("Double13");
         }
-        private double _double14;
-        /// <summary> 说明  </summary>
-        public double Double14
+    }
+    private double _double14;
+    /// <summary> 说明  </summary>
+    public double Double14
+    {
+        get { return _double14; }
+        set
         {
-            get { return _double14; }
-            set
-            {
-                _double14 = value;
-                RaisePropertyChanged("Double14");
-            }
+            _double14 = value;
+            RaisePropertyChanged("Double14");
         }
-        private double _double15;
-        /// <summary> 说明  </summary>
-        public double Double15
+    }
+    private double _double15;
+    /// <summary> 说明  </summary>
+    public double Double15
+    {
+        get { return _double15; }
+        set
         {
-            get { return _double15; }
-            set
-            {
-                _double15 = value;
-                RaisePropertyChanged("Double15");
-            }
+            _double15 = value;
+            RaisePropertyChanged("Double15");
         }
+    }
 
-        private double _double16;
-        /// <summary> 说明  </summary>
-        public double Double16
+    private double _double16;
+    /// <summary> 说明  </summary>
+    public double Double16
+    {
+        get { return _double16; }
+        set
         {
-            get { return _double16; }
-            set
-            {
-                _double16 = value;
-                RaisePropertyChanged("Double16");
-            }
+            _double16 = value;
+            RaisePropertyChanged("Double16");
         }
     }
 }

@@ -6,6 +6,7 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
+using H.Controls.Form.PropertyItem.Attribute;
 using H.Controls.Form.PropertyItem.ComboBoxPropertyItems;
 using H.Controls.Form.PropertyItem.EnumerablePropertyItems;
 using System.ComponentModel.DataAnnotations;
@@ -36,39 +37,50 @@ namespace H.Controls.Form.PropertyItem
     {
 
         [Display(Name = "ComboBoxPropertyItem", Description = "演示应用PropertyItemAttribute自定义显示样式")]
-        [PropertyNameSourcePropertyItem(typeof(ComboBoxPropertyItem), nameof(SelectSource))]
+        [GetPropertyNameSource(nameof(SelectSource))]
+        [PropertyItem(typeof(ComboBoxPropertyItem))]
         public string SelectItem { get; set; }
 
         [Display(Name = "PresenterComboBoxPropertyItem", Description = "演示应用PropertyItemAttribute自定义显示样式")]
-        [PropertyNameSourcePropertyItem(typeof(PresenterComboBoxPropertyItem), nameof(ModelItemSource))]
+        [GetPropertyNameSource(nameof(ModelItemSource))]
+        [PropertyItem(typeof(PresenterComboBoxPropertyItem))]
         public DemoModelItem PresenterSelectItem { get; set; }
 
         [Display(Name = "FormComboBoxPropertyItem", Description = "演示应用PropertyItemAttribute自定义显示样式")]
-        [MethodNameSourcePropertyItem(typeof(PresenterComboBoxPropertyItem), nameof(GetModelItemSource))]
+        [GetMethodNameSource(nameof(GetModelItemSource))]
+        [PropertyItem(typeof(PresenterComboBoxPropertyItem))]
         public DemoModelItem FormSelectItem { get; set; }
 
-        [Display(Name = "EnumSourcePropertyItem", Description = "演示应用PropertyItemAttribute自定义显示样式")]
-        [EnumSourcePropertyItem(typeof(ComboBoxPropertyItem))]
+        [Display(Name = "EnumComboBoxPropertyItem", Description = "演示应用PropertyItemAttribute自定义显示样式")]
+        [PropertyItem(typeof(EnumComboBoxPropertyItem))]
         public HorizontalAlignment HorizontalAlignment { get; set; }
 
         [Display(Name = "EnumComboBoxPropertyItem", Description = "演示应用PropertyItemAttribute自定义显示样式")]
         [PropertyItem(typeof(EnumComboBoxPropertyItem))]
         public VerticalAlignment VerticalAlignment { get; set; }
+
+        [Display(Name = "GetFilesSource", Description = "演示应用PropertyItemAttribute自定义显示样式")]
+        [GetFilesSource("Assets")]
+        [PropertyItem(typeof(ComboBoxPropertyItem))]
+        public string SelectedFilePath { get; set; }
     }
 
     public class ListBoxPropertyItemDemoModel : SourcePropertyItemDemoModel
     {
 
         [Display(Name = "ListBoxPropertyItem", Description = "演示应用PropertyItemAttribute自定义显示样式")]
-        [PropertyNameSourcePropertyItem(typeof(ListBoxPropertyItem), nameof(SelectSource))]
+        [GetPropertyNameSource(nameof(SelectSource))]
+        [PropertyItem(typeof(ListBoxPropertyItem))]
         public string SelectItem { get; set; }
 
         [Display(Name = "MethodNameSourcePropertyItem", Description = "演示应用PropertyItemAttribute自定义显示样式")]
-        [MethodNameSourcePropertyItem(typeof(ListBoxPropertyItem), nameof(GetModelItemSource))]
+        [GetMethodNameSource(nameof(GetModelItemSource))]
+        [PropertyItem(typeof(ListBoxPropertyItem))]
         public DemoModelItem FormSelectItem { get; set; }
 
         [Display(Name = "EnumSourcePropertyItem", Description = "演示应用PropertyItemAttribute自定义显示样式")]
-        [EnumSourcePropertyItem(typeof(ListBoxPropertyItem))]
+        [GetEnumSource]
+        [PropertyItem(typeof(ListBoxPropertyItem))]
         public HorizontalAlignment HorizontalAlignment { get; set; }
     }
 
@@ -79,7 +91,8 @@ namespace H.Controls.Form.PropertyItem
             this.SelectItems = this.SelectSource.ToList();
         }
         [Display(Name = "MultiListBoxPropertyItem", Description = "演示应用PropertyItemAttribute自定义显示样式")]
-        [PropertyNameSourcePropertyItem(typeof(MultiListBoxPropertyItem), nameof(SelectSource))]
+        [GetPropertyNameSource(nameof(SelectSource))]
+        [PropertyItem(typeof(MultiListBoxPropertyItem))]
         public IList<string> SelectItems { get; set; }
     }
 

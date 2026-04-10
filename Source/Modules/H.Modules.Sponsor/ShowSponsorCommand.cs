@@ -16,7 +16,7 @@ namespace H.Modules.Sponsor;
 
 [Icon(FontIcons.QRCode)]
 [Display(Name = "赞助支持", Description = "应用此功能给予赞助支持")]
-public class ShowSponsorCommand : DisplayMarkupCommandBase
+public class ShowSponsorCommand : ResxDisplayMarkupCommandBase
 {
     public override bool CanExecute(object parameter)
     {

@@ -6,8 +6,11 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
+using H.Extensions.FontIcon;
+
 namespace H.Presenters.Design.Presenter;
 
+[Icon(FontIcons.Smartcard)]
 [Display(Name = "卡片")]
 public class CardPresenter : TitlePresenter
 {
@@ -23,13 +26,10 @@ public class CardPresenter : TitlePresenter
         this.FromColor = Colors.Orange;
         this.ToColor = Colors.OrangeRed;
         this.DropShadowEffectOpacity = 0.5;
-        this.Height = 80;
-        this.Width = 200;
-        this.Padding = new Thickness(10);
-        this.Margin = new Thickness(10);
+        this.Height = 90;
+        this.Width = 250;
         this.CornerRadius = new CornerRadius(5);
         this.Foreground = Brushes.White;
-        this.TitleForeground = Brushes.White;
         this.FontSize = 25;
         this.TitleFontSize = 15;
         this.HorizontalContentAlignment = HorizontalAlignment.Center;
@@ -94,5 +94,67 @@ public class CardPresenter : TitlePresenter
             _orientation = value;
             RaisePropertyChanged();
         }
+    }
+
+    public static CardPresenter Create(Action<CardPresenter> action = null)
+    {
+        var result = new CardPresenter();
+        action?.Invoke(result);
+        return result;
+    }
+
+
+    public static CardPresenter CreateBluePurple(Action<CardPresenter> action = null)
+    {
+        ColorConverter s_colorConverter = new ColorConverter();
+        var result = new CardPresenter();
+        result.FromColor = (Color)s_colorConverter.ConvertFromInvariantString("#FF5CFF");
+        result.ToColor = (Color)s_colorConverter.ConvertFromInvariantString("#7A5CFF");
+        return result;
+    }
+
+    public static CardPresenter CreateTealBlue(Action<CardPresenter> action = null)
+    {
+        ColorConverter s_colorConverter = new ColorConverter();
+        var result = new CardPresenter();
+        result.FromColor = (Color)s_colorConverter.ConvertFromInvariantString("#2DD4BF");
+        result.ToColor = (Color)s_colorConverter.ConvertFromInvariantString("#3B82F6");
+        return result;
+    }
+
+    public static CardPresenter CreatePinkPurple(Action<CardPresenter> action = null)
+    {
+        ColorConverter s_colorConverter = new ColorConverter();
+        var result = new CardPresenter();
+        result.FromColor = (Color)s_colorConverter.ConvertFromInvariantString("#F472B6");
+        result.ToColor = (Color)s_colorConverter.ConvertFromInvariantString("#A78BFA");
+        return result;
+    }
+
+    public static CardPresenter CreateSunsetOrangePink(Action<CardPresenter> action = null)
+    {
+        ColorConverter s_colorConverter = new ColorConverter();
+        var result = new CardPresenter();
+        result.FromColor = (Color)s_colorConverter.ConvertFromInvariantString("#FB923C");
+        result.ToColor = (Color)s_colorConverter.ConvertFromInvariantString("#F472B6");
+        return result;
+    }
+
+    public static CardPresenter CreateSlateNavy(Action<CardPresenter> action = null)
+    {
+        ColorConverter s_colorConverter = new ColorConverter();
+        var result = new CardPresenter();
+        result.FromColor = (Color)s_colorConverter.ConvertFromInvariantString("#64748B");
+        result.ToColor = (Color)s_colorConverter.ConvertFromInvariantString("#0F172A");
+        return result;
+    }
+
+    public static CardPresenter CreateBlackGold(Action<CardPresenter> action = null)
+    {
+        ColorConverter s_colorConverter = new ColorConverter();
+        var result = new CardPresenter();
+        result.FromColor = (Color)s_colorConverter.ConvertFromInvariantString("#111827");
+        result.ToColor = (Color)s_colorConverter.ConvertFromInvariantString("#F59E0B");
+        return result;
     }
 }

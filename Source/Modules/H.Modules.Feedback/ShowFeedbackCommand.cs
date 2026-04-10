@@ -18,7 +18,7 @@ namespace H.Modules.Feedback;
 
 [Icon("\xED15")]
 [Display(Name = "用户反馈", Description = "显示用户反馈页面")]
-public class ShowFeedbackCommand : DisplayMarkupCommandBase
+public class ShowFeedbackCommand : ResxDisplayMarkupCommandBase
 {
     public override async Task ExecuteAsync(object parameter)
     {

@@ -25,7 +25,6 @@ namespace H.Controls.Chart2D
         {
             this.MouseMove += MarkTip_MouseMove;
             this.MouseUp += MarkTip_MouseUp;
-
             //this.MouseLeave += MarkTip_MouseLeave;
         }
 
@@ -41,47 +40,35 @@ namespace H.Controls.Chart2D
 
         private void MarkTip_MouseMove(object sender, MouseEventArgs e)
         {
-            if (this.Marker == null) return;
-
+            if (this.Marker == null) 
+                return;
             bool b = ElementDragStateBehavior.GetIsDragging(this.Marker);
-
-            if (e.LeftButton == MouseButtonState.Released) return;
-
-            if (!b) return;
-
+            if (e.LeftButton == MouseButtonState.Released) 
+                return;
+            if (!b) 
+                return;
             Point position = e.GetPosition(this);
-
-            if (this.xAxis.Count == 0) return;
-
+            if (this.xAxis.Count == 0) 
+                return;
             double xValue = ((this.maxX - this.minX) * (position.X / this.ActualWidth)) + this.minX;
-
             double yValue = ((this.maxY - this.minY) * (position.Y / this.ActualHeight)) + this.minY;
-
-
             if (this.MarkTipType == MarkTipType.Step)
             {
                 double mx = this.xAxis.Min(l => Math.Abs(l - xValue));
                 double xFind = this.xAxis.FirstOrDefault(l => Math.Abs(l - xValue) == mx);
-
                 Canvas.SetLeft(this.Marker, this.GetX(xFind));
-
                 int index = this.xAxis.IndexOf(xFind);
-
                 if (this.Data.Count > index)
                 {
                     double data = this.Data[index];
-
                     Canvas.SetTop(this.Marker, this.GetY(data));
-
                     this.Marker.Content = $"({xFind.ToString("G3")},{data.ToString("G3")})";
                 }
                 else
                 {
                     double my = this.yAxis.Min(l => Math.Abs(l - yValue));
                     double yFind = this.yAxis.FirstOrDefault(l => Math.Abs(l - yValue) == my);
-
                     Canvas.SetBottom(this.Marker, this.GetY(yFind));
-
                     this.Marker.Content = $"({xFind.ToString("G3")},{yFind.ToString("G3")})";
                 }
             }
@@ -90,7 +77,6 @@ namespace H.Controls.Chart2D
 
                 Canvas.SetLeft(this.Marker, position.X);
                 Canvas.SetTop(this.Marker, position.Y);
-
                 this.Marker.Content = $"({position.X.ToString("G3")},{position.Y.ToString("G3")})";
             }
         }
@@ -99,22 +85,13 @@ namespace H.Controls.Chart2D
 
         public override void DrawMark()
         {
-            //  Do ：显示文本
             Label t = new Label();
-
             t.Style = this.LabelStyle;
-
-            //  Do ：增加拖拽行为
             BehaviorCollection bc = Interaction.GetBehaviors(t);
-
             bc.Add(new ElementDragStateBehavior());
-
             this.Marker = t;
-
             Point point = this.GetPoint();
-
             t.Content = $"({point.X.ToString("G3")},{point.Y.ToString("G3")})";
-
             t.Loaded += (o, e) =>
             {
                 if (this.xAxis.Count == 1)
@@ -129,10 +106,8 @@ namespace H.Controls.Chart2D
                     Canvas.SetTop(t, this.GetY(point.Y));
                 }
             };
-
             this.Children.Add(this.Marker);
         }
-
         public MarkTipType MarkTipType
         {
             get { return (MarkTipType)GetValue(MarkTipTypeProperty); }
@@ -201,6 +176,7 @@ namespace H.Controls.Chart2D
 
     public enum MarkTipType
     {
-        Step, MousePosition
+        Step, 
+        MousePosition
     }
 }

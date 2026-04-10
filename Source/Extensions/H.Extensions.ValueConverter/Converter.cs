@@ -6,13 +6,17 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
+using H.Common;
+using H.Extensions.Common;
 using System.Reflection;
+using System.Windows.Controls;
 
 namespace H.Extensions.ValueConverter;
 
 public static partial class ConverterEx
 {
     #region - Image -
+    [Obsolete("GetImagePixelDisplayConverter")]
     public static IValueConverter GetImagePixelDisplay => new ConverterBase<string, string>(x =>
     {
         if (x == null)
@@ -24,6 +28,7 @@ public static partial class ConverterEx
         return tuple.Item1 + "×" + tuple.Item2;
     });
 
+    [Obsolete("GetFileImageSourceInMemoryConverter")]
     public static IValueConverter GetFileImageSourceInMemory => new ConverterBase<string, int, ImageSource>((x, p) =>
     {
         if (x == null)
@@ -34,12 +39,17 @@ public static partial class ConverterEx
 
     #endregion
 
+    #region - ViewBox -
+    public static IValueConverter GetViewBoxScale => new ConverterBase<Viewbox, double>(x =>
+    {
+        return x.GetViewBoxScale();
+    });
+    #endregion
+
     #region - Directory -
     public static IValueConverter GetAllFile => new ConverterBase<string, List<string>>(x => x.ToDirectoryEx().GetAllFiles());
 
     #endregion
-
-
 
     public static IValueConverter GetCommands => new ConverterBase<object, IList<ICommand>>(x =>
     {

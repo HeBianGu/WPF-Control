@@ -5,10 +5,6 @@
 // QQ:908293466 Group:971261058 
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
-
-#if NET
-#endif
-
 using System.Windows;
 
 namespace H.Extensions.Common;
@@ -20,6 +16,11 @@ public static class RectExtenstion
         return new Point((rect.Left + rect.Right) / 2, (rect.Top + rect.Bottom) / 2);
     }
 
+    public static double GetArea(this Rect rect)
+    {
+        return rect.Width * rect.Height;
+    }
+
     public static Point GetTopCenter(this Rect rect)
     {
         return new Point(rect.Left + rect.Width / 2, rect.Top);
@@ -28,6 +29,23 @@ public static class RectExtenstion
     public static Point GetBottomCenter(this Rect rect)
     {
         return new Point(rect.Left + rect.Width / 2, rect.Bottom);
+    }
+
+    public static Rect GetPadding(this Rect rect, Thickness thickness)
+    {
+        if (rect.IsEmpty)
+            return rect;
+        return new Rect(rect.Left - thickness.Left, rect.Top - thickness.Top, rect.Width + thickness.Right + thickness.Left, rect.Height + thickness.Bottom + thickness.Top);
+    }
+
+    public static Rect GetPadding(this Rect rect, double padding)
+    {
+        return rect.GetPadding(new Thickness(padding));
+    }
+
+    public static Rect GetPadding(this Rect rect, double wpdding, double hpading)
+    {
+        return rect.GetPadding(new Thickness(wpdding, hpading, wpdding, hpading));
     }
 
     public static Point GetLeftCenter(this Rect rect)

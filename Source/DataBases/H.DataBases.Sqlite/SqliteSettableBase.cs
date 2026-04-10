@@ -13,6 +13,7 @@ using System.Data.Entity;
 #if NETCOREAPP
 #endif
 using H.DataBases.Share;
+using H.Extensions.Common;
 using H.Services.AppPath;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
@@ -55,9 +56,28 @@ namespace H.DataBases.Sqlite
 
         public override string GetConnect()
         {
+            return $"Data Source={this.GetDBFilePath()}";
+        }
+
+        public string GetDBFilePath()
+        {
             if (string.IsNullOrEmpty(this.FilePath))
-                return $"Data Source={this.InitialCatalog}";
-            return $"Data Source={Path.Combine(this.FilePath, this.InitialCatalog)}";
+                return this.InitialCatalog;
+            return Path.Combine(this.FilePath, this.InitialCatalog);
+        }
+
+        public override (bool success, string message) LoadDefaultTemplate()
+        {
+            string filePath = this.GetDBFilePath();
+            if (File.Exists(filePath))
+                return (false, null);
+            string defaultPath = filePath.ToDefaultTemplatePath(AppPaths.Instance.Data);
+            if (File.Exists(defaultPath))
+            {
+                File.Copy(defaultPath, filePath);
+                return (true, defaultPath);
+            }
+            return base.LoadDefaultTemplate();
         }
     }
 }

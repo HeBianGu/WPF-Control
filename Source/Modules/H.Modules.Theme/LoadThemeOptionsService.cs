@@ -21,7 +21,7 @@ public class LoadThemeOptionsService : ILoadThemeOptionsService
         catch (Exception ex)
         {
             message = ex.Message;
-            IocLog.Instance?.Error(ex);
+            IocLog.Error(ex);
             return false;
         }
     }

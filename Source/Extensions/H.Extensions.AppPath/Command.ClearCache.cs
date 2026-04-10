@@ -8,6 +8,7 @@
 
 global using H.Common.Attributes;
 global using H.Common.Commands;
+using H.Common;
 using H.Services.AppPath;
 using H.Services.Message;
 using System.ComponentModel.DataAnnotations;
@@ -23,7 +24,7 @@ public class ClearCacheDataCommand : DisplayMarkupCommandBase
         var r = AppPaths.Instance.ClearCache(out string message);
         if (r == false)
         {
-            await IocMessage.Dialog.Show(message, x => x.Title = "清空缓存失败");
+            await IocMessage.Dialog.Show(message, x => x.Title = "清空缓存失败".GetStringResx(this, "Message_ClearCacheFailed"));
             return;
         }
         await base.ExecuteAsync(parameter);

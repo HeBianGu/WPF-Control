@@ -60,6 +60,8 @@ namespace H.Controls.Chart2D
 
         private void DrawLine(Canvas canvas)
         {
+            if (this.yAxis.Count == 0)
+                return;
             Point center = new Point(0, 0);
 
             double angle = 360 / this.yAxis.Count;

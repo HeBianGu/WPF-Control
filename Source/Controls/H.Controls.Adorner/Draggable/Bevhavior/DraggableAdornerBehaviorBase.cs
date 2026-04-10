@@ -60,7 +60,6 @@ public abstract class DraggableAdornerBehaviorBase : Behavior<UIElement>
 
     protected override void OnAttached()
     {
-        this.AssociatedObject.AllowDrop = true;
         if (this.RoutingStrategy == RoutingStrategy.Bubble)
         {
             this.AssociatedObject.PreviewMouseDown += AssociatedObject_MouseDown;
@@ -108,7 +107,7 @@ public abstract class DraggableAdornerBehaviorBase : Behavior<UIElement>
             //    Point pos = lbl.PointFromScreen(GetMousePosition());
             //    adorner.UpdatePosition(pos);
             //}
-
+            // 修改拖动ContextMenu上的模板位置错位的问题，注意可能会引起Design的问题
             Point pos = this._adornerElement.PointFromScreen(GetMousePosition());
             adorner.UpdatePosition(pos);
         }
@@ -182,7 +181,6 @@ public abstract class DraggableAdornerBehaviorBase : Behavior<UIElement>
         FrameworkElement lbl = sender as FrameworkElement;
         var popup = lbl.GetParent<Popup>();
         this._adornerElement = popup != null ? popup.PlacementTarget : lbl;
-
         //PresentationSource source = PresentationSource.FromVisual(lbl);
         //if (source == null)
         //    this._adornerElement = Application.Current.MainWindow;

@@ -5,8 +5,7 @@
                     xmlns:local="clr-namespace:H.App.FileManager">
 
     <DataTemplate DataType="{x:Type local:MoreFileViewBase}">
-        <h:GridSplitterBox
-                           MenuMaxWidth="300"
+        <h:GridSplitterBox MenuMaxWidth="300"
                            MenuMinWidth="50"
                            MenuWidth="100"
                            Mode="Hidden"
@@ -73,12 +72,12 @@
                     </ListBox.Template>
                 </ListBox>
             </h:GridSplitterBox.MenuContent>
-            <h:GridSplitterBox.ToggleStyle>
+            <!--<h:GridSplitterBox.ToggleStyle>
                 <Style BasedOn="{StaticResource {x:Static h:GridSplitterBox.ToggleKey}}"
                        TargetType="ToggleButton">
                     <Setter Property="Grid.Row" Value="0" />
                 </Style>
-            </h:GridSplitterBox.ToggleStyle>
+            </h:GridSplitterBox.ToggleStyle>-->
             <DockPanel>
                 <TextBlock Margin="5"
                            HorizontalAlignment="Left"
@@ -102,15 +101,17 @@
                                     Command="{Binding PreviousCommand}" />
                     </Grid.InputBindings>
                     <ContentPresenter Content="{Binding SelectedItem}" />
-                    <Button HorizontalAlignment="Left"
-                            VerticalAlignment="Center"
-                            Command="{Binding PreviousCommand}"
-                            Content="上一个" />
+                    <FontIconButton HorizontalAlignment="Left"
+                                    VerticalAlignment="Center"
+                                    Command="{Binding PreviousCommand}"
+                                    Content="{x:Static FontIcons.Previous}"
+                                    ToolTip="上一个" />
 
-                    <Button HorizontalAlignment="Right"
-                            VerticalAlignment="Center"
-                            Command="{Binding NextCommand}"
-                            Content="下一个" />
+                    <FontIconButton HorizontalAlignment="Right"
+                                    VerticalAlignment="Center"
+                                    Command="{Binding NextCommand}"
+                                    Content="{x:Static FontIcons.Next}"
+                                    ToolTip="下一个" />
                 </Grid>
             </DockPanel>
         </h:GridSplitterBox>

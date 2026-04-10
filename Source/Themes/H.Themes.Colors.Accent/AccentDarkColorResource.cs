@@ -11,7 +11,7 @@ using System.Windows;
 
 namespace H.Themes.Colors.Accent;
 [Display(Name = "深主题（长期支持）", GroupName = "纯色", Description = "纯色", Order = 50, Prompt = "长期支持")]
-public class AccentDarkColorResource : ColorResourceBase
+public class AccentDarkColorResource : ResxColorResourceBase
 {
     public AccentDarkColorResource()
     {

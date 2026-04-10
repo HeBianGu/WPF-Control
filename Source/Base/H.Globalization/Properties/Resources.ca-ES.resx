@@ -1,0 +1,970 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Common_Account" xml:space="preserve">
+    <value>Compte</value>
+  </data>
+  <data name="Common_Ok" xml:space="preserve">
+    <value>D'acord</value>
+  </data>
+  <data name="Common_Cancel" xml:space="preserve">
+    <value>Cancel·la</value>
+  </data>
+  <data name="Common_Yes" xml:space="preserve">
+    <value>Sí</value>
+  </data>
+  <data name="Common_View" xml:space="preserve">
+    <value>Visualitza</value>
+  </data>
+  <data name="Common_No" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="Common_Abort" xml:space="preserve">
+    <value>Cancel·la</value>
+  </data>
+  <data name="Common_Retry" xml:space="preserve">
+    <value>Reintenta</value>
+  </data>
+  <data name="Common_Ignore" xml:space="preserve">
+    <value>Ignora</value>
+  </data>
+  <data name="Common_Apply" xml:space="preserve">
+    <value>Aplicació</value>
+  </data>
+  <data name="Common_Close" xml:space="preserve">
+    <value>Tanca</value>
+  </data>
+  <data name="Common_Prompt" xml:space="preserve">
+    <value>Suggeriment</value>
+  </data>
+  <data name="Common_Exit" xml:space="preserve">
+    <value>Sortir</value>
+  </data>
+  <data name="Common_Back" xml:space="preserve">
+    <value>Torna</value>
+  </data>
+  <data name="Common_Next" xml:space="preserve">
+    <value>Següent</value>
+  </data>
+  <data name="Common_Show" xml:space="preserve">
+    <value>Mostra</value>
+  </data>
+  <data name="Common_Previous" xml:space="preserve">
+    <value>Pas anterior</value>
+  </data>
+  <data name="Common_Finish" xml:space="preserve">
+    <value>Completat</value>
+  </data>
+  <data name="Common_Save" xml:space="preserve">
+    <value>Desa</value>
+  </data>
+  <data name="Common_SaveAs" xml:space="preserve">
+    <value>Desa com a</value>
+  </data>
+  <data name="Common_Open" xml:space="preserve">
+    <value>Obre</value>
+  </data>
+  <data name="Common_New" xml:space="preserve">
+    <value>Nou</value>
+  </data>
+  <data name="Common_Create" xml:space="preserve">
+    <value>Crear</value>
+  </data>
+  <data name="Common_Default" xml:space="preserve">
+    <value>Per defecte</value>
+  </data>
+  <data name="Common_Edit" xml:space="preserve">
+    <value>Edita</value>
+  </data>
+  <data name="Common_Delete" xml:space="preserve">
+    <value>Suprimeix</value>
+  </data>
+  <data name="Common_Remove" xml:space="preserve">
+    <value>Elimina</value>
+  </data>
+  <data name="Common_Add" xml:space="preserve">
+    <value>Afegeix</value>
+  </data>
+  <data name="Common_Insert" xml:space="preserve">
+    <value>Insereix</value>
+  </data>
+  <data name="Common_Update" xml:space="preserve">
+    <value>Actualitza</value>
+  </data>
+  <data name="Common_Rename" xml:space="preserve">
+    <value>Canvia el nom</value>
+  </data>
+  <data name="Common_Import" xml:space="preserve">
+    <value>Importar</value>
+  </data>
+  <data name="Common_Export" xml:space="preserve">
+    <value>Exporta</value>
+  </data>
+  <data name="Common_Print" xml:space="preserve">
+    <value>Imprimir</value>
+  </data>
+  <data name="Common_Preview" xml:space="preserve">
+    <value>Vista prèvia</value>
+  </data>
+  <data name="Common_Copy" xml:space="preserve">
+    <value>Copia</value>
+  </data>
+  <data name="Common_Cut" xml:space="preserve">
+    <value>Retalla</value>
+  </data>
+  <data name="Common_Paste" xml:space="preserve">
+    <value>Enganxa</value>
+  </data>
+  <data name="Common_Undo" xml:space="preserve">
+    <value>Desfés</value>
+  </data>
+  <data name="Common_Redo" xml:space="preserve">
+    <value>Refer
+</value>
+  </data>
+  <data name="Common_Search" xml:space="preserve">
+    <value>Cerca</value>
+  </data>
+  <data name="Common_Find" xml:space="preserve">
+    <value>Cerca</value>
+  </data>
+  <data name="Common_FindNext" xml:space="preserve">
+    <value>Cerca el següent</value>
+  </data>
+  <data name="Common_Replace" xml:space="preserve">
+    <value>Substituir</value>
+  </data>
+  <data name="Common_Filter" xml:space="preserve">
+    <value>Filtre</value>
+  </data>
+  <data name="Common_Sort" xml:space="preserve">
+    <value>Ordenar</value>
+  </data>
+  <data name="Common_Refresh" xml:space="preserve">
+    <value>Actualitza</value>
+  </data>
+  <data name="Common_Clear" xml:space="preserve">
+    <value>Neteja</value>
+  </data>
+  <data name="Common_Reset" xml:space="preserve">
+    <value>Restableix</value>
+  </data>
+  <data name="Common_Select" xml:space="preserve">
+    <value>Selecciona</value>
+  </data>
+  <data name="Common_SelectAll" xml:space="preserve">
+    <value>Selecciona-ho tot</value>
+  </data>
+  <data name="Common_DeselectAll" xml:space="preserve">
+    <value>Cancel·la la selecció total</value>
+  </data>
+  <data name="Common_InvertSelection" xml:space="preserve">
+    <value>Inverteix la selecció</value>
+  </data>
+  <data name="Common_Enable" xml:space="preserve">
+    <value>Activa</value>
+  </data>
+  <data name="Common_Disable" xml:space="preserve">
+    <value>Desactiva</value>
+  </data>
+  <data name="Common_On" xml:space="preserve">
+    <value>Obre</value>
+  </data>
+  <data name="Common_Off" xml:space="preserve">
+    <value>Tanca</value>
+  </data>
+  <data name="Common_Loading" xml:space="preserve">
+    <value>S'està carregant...</value>
+  </data>
+  <data name="Common_PleaseWait" xml:space="preserve">
+    <value>Espereu...</value>
+  </data>
+  <data name="Common_Working" xml:space="preserve">
+    <value>Processant...</value>
+  </data>
+  <data name="Common_Connecting" xml:space="preserve">
+    <value>S'està connectant...</value>
+  </data>
+  <data name="Common_Disconnecting" xml:space="preserve">
+    <value>S'està desconnectant...</value>
+  </data>
+  <data name="Common_Error" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="Common_Warning" xml:space="preserve">
+    <value>Avís</value>
+  </data>
+  <data name="Common_Information" xml:space="preserve">
+    <value>Consell</value>
+  </data>
+  <data name="Common_Success" xml:space="preserve">
+    <value>Èxit</value>
+  </data>
+  <data name="Common_Failed" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="Common_OperationSucceeded" xml:space="preserve">
+    <value>Operació correcta</value>
+  </data>
+  <data name="Common_OperationFailed" xml:space="preserve">
+    <value>Operació fallida</value>
+  </data>
+  <data name="Common_NotSupported" xml:space="preserve">
+    <value>No compatible.</value>
+  </data>
+  <data name="Common_NotImplemented" xml:space="preserve">
+    <value>Encara no implementat</value>
+  </data>
+  <data name="Common_Confirm" xml:space="preserve">
+    <value>Confirma</value>
+  </data>
+  <data name="Common_Confirmation" xml:space="preserve">
+    <value>Confirmació
+</value>
+  </data>
+  <data name="Common_AreYouSure" xml:space="preserve">
+    <value>N'estàs segur?</value>
+  </data>
+  <data name="Common_ConfirmDelete" xml:space="preserve">
+    <value>Esteu segur que voleu suprimir-ho?</value>
+  </data>
+  <data name="Common_ConfirmExit" xml:space="preserve">
+    <value>Esteu segur que voleu sortir?</value>
+  </data>
+  <data name="Common_ConfirmSaveChanges" xml:space="preserve">
+    <value>Deseu desar els canvis?</value>
+  </data>
+  <data name="Common_UnsavedChanges" xml:space="preserve">
+    <value>Tens canvis sense desar</value>
+  </data>
+  <data name="Common_RequiredField" xml:space="preserve">
+    <value>Obligatori</value>
+  </data>
+  <data name="Common_InvalidInput" xml:space="preserve">
+    <value>Entrada no vàlida</value>
+  </data>
+  <data name="Common_InvalidFormat" xml:space="preserve">
+    <value>Format incorrecte</value>
+  </data>
+  <data name="Common_OutOfRange" xml:space="preserve">
+    <value>Fora de l'interval</value>
+  </data>
+  <data name="Common_PleaseSelect" xml:space="preserve">
+    <value>Seleccioneu</value>
+  </data>
+  <data name="Common_PleaseEnter" xml:space="preserve">
+    <value>Introduïu</value>
+  </data>
+  <data name="Common_Login" xml:space="preserve">
+    <value>Inicia la sessió</value>
+  </data>
+  <data name="Common_Logout" xml:space="preserve">
+    <value>Tanca la sessió</value>
+  </data>
+  <data name="Common_Register" xml:space="preserve">
+    <value>Registre</value>
+  </data>
+  <data name="Common_UserName" xml:space="preserve">
+    <value>Nom d'usuari</value>
+  </data>
+  <data name="Common_Password" xml:space="preserve">
+    <value>Contrasenya</value>
+  </data>
+  <data name="Common_ConfirmPassword" xml:space="preserve">
+    <value>Confirma la contrasenya</value>
+  </data>
+  <data name="Common_ForgotPassword" xml:space="preserve">
+    <value>He oblidat la contrasenya</value>
+  </data>
+  <data name="Common_Settings" xml:space="preserve">
+    <value>Configuració</value>
+  </data>
+  <data name="Common_Preferences" xml:space="preserve">
+    <value>Preferències</value>
+  </data>
+  <data name="Common_Options" xml:space="preserve">
+    <value>Opció</value>
+  </data>
+  <data name="Common_About" xml:space="preserve">
+    <value>Quant a</value>
+  </data>
+  <data name="Common_Help" xml:space="preserve">
+    <value>Ajuda</value>
+  </data>
+  <data name="Common_CheckForUpdates" xml:space="preserve">
+    <value>Comprova les actualitzacions</value>
+  </data>
+  <data name="Common_NetworkError" xml:space="preserve">
+    <value>Error de xarxa</value>
+  </data>
+  <data name="Common_ServerError" xml:space="preserve">
+    <value>Error del servidor</value>
+  </data>
+  <data name="Common_Timeout" xml:space="preserve">
+    <value>Temps d’espera esgotat</value>
+  </data>
+  <data name="Common_Unauthorized" xml:space="preserve">
+    <value>No autoritzat</value>
+  </data>
+  <data name="Common_AccessDenied" xml:space="preserve">
+    <value>Accés denegat</value>
+  </data>
+  <data name="Common_Download" xml:space="preserve">
+    <value>Descarregar</value>
+  </data>
+  <data name="Common_Upload" xml:space="preserve">
+    <value>Puja</value>
+  </data>
+  <data name="Common_Start" xml:space="preserve">
+    <value>Començar</value>
+  </data>
+  <data name="Common_Stop" xml:space="preserve">
+    <value>Atura</value>
+  </data>
+  <data name="Common_Pause" xml:space="preserve">
+    <value>Pausa</value>
+  </data>
+  <data name="Common_Resume" xml:space="preserve">
+    <value>Continua</value>
+  </data>
+  <data name="Common_CopySucceeded" xml:space="preserve">
+    <value>Copiat correctament</value>
+  </data>
+  <data name="Common_CopyFailed" xml:space="preserve">
+    <value>No s'ha pogut copiar</value>
+  </data>
+  <data name="Common_SaveSucceeded" xml:space="preserve">
+    <value>S'ha desat correctament</value>
+  </data>
+  <data name="Common_SaveFailed" xml:space="preserve">
+    <value>Error en desar</value>
+  </data>
+  <data name="Common_ItemsCountFormat" xml:space="preserve">
+    <value>Total de {0} elements</value>
+  </data>
+  <data name="Common_SelectedCountFormat" xml:space="preserve">
+    <value>S'han seleccionat {0} elements</value>
+  </data>
+  <data name="Common_PageFormat" xml:space="preserve">
+    <value>Pàgina {0} de {1}</value>
+  </data>
+  <data name="Common_NoData" xml:space="preserve">
+    <value>No hi ha dades</value>
+  </data>
+  <data name="Common_Empty" xml:space="preserve">
+    <value>Buit</value>
+  </data>
+  <data name="Common_All" xml:space="preserve">
+    <value>Tot</value>
+  </data>
+  <data name="Menu_File" xml:space="preserve">
+    <value>Fitxer</value>
+  </data>
+  <data name="Menu_Edit" xml:space="preserve">
+    <value>Editar</value>
+  </data>
+  <data name="Menu_View" xml:space="preserve">
+    <value>Vista</value>
+  </data>
+  <data name="Menu_Tools" xml:space="preserve">
+    <value>Eines</value>
+  </data>
+  <data name="Menu_Window" xml:space="preserve">
+    <value>Finestra</value>
+  </data>
+  <data name="Menu_Help" xml:space="preserve">
+    <value>Ajuda</value>
+  </data>
+  <data name="Menu_New" xml:space="preserve">
+    <value>Nou</value>
+  </data>
+  <data name="Menu_Open" xml:space="preserve">
+    <value>Obre</value>
+  </data>
+  <data name="Menu_OpenRecent" xml:space="preserve">
+    <value>Obert recentment</value>
+  </data>
+  <data name="Menu_Close" xml:space="preserve">
+    <value>Tanca</value>
+  </data>
+  <data name="Menu_CloseAll" xml:space="preserve">
+    <value>Tanca-ho tot</value>
+  </data>
+  <data name="Menu_Save" xml:space="preserve">
+    <value>Desa</value>
+  </data>
+  <data name="Menu_SaveAs" xml:space="preserve">
+    <value>Desa com a</value>
+  </data>
+  <data name="Menu_SaveAll" xml:space="preserve">
+    <value>Desa-ho tot</value>
+  </data>
+  <data name="Menu_Import" xml:space="preserve">
+    <value>Importa</value>
+  </data>
+  <data name="Menu_Export" xml:space="preserve">
+    <value>Exporta</value>
+  </data>
+  <data name="Menu_Print" xml:space="preserve">
+    <value>Imprimir</value>
+  </data>
+  <data name="Menu_PrintPreview" xml:space="preserve">
+    <value>Vista prèvia d'impressió</value>
+  </data>
+  <data name="Menu_Exit" xml:space="preserve">
+    <value>Surtir</value>
+  </data>
+  <data name="Menu_Undo" xml:space="preserve">
+    <value>Desfés</value>
+  </data>
+  <data name="Menu_Redo" xml:space="preserve">
+    <value>Refer
+</value>
+  </data>
+  <data name="Menu_Cut" xml:space="preserve">
+    <value>Retalla</value>
+  </data>
+  <data name="Menu_Copy" xml:space="preserve">
+    <value>Copia</value>
+  </data>
+  <data name="Menu_Paste" xml:space="preserve">
+    <value>Enganxa</value>
+  </data>
+  <data name="Menu_Delete" xml:space="preserve">
+    <value>Suprimeix</value>
+  </data>
+  <data name="Menu_SelectAll" xml:space="preserve">
+    <value>Selecciona-ho tot</value>
+  </data>
+  <data name="Menu_Find" xml:space="preserve">
+    <value>Cerca</value>
+  </data>
+  <data name="Menu_FindNext" xml:space="preserve">
+    <value>Cerca el següent</value>
+  </data>
+  <data name="Menu_Replace" xml:space="preserve">
+    <value>Substitueix</value>
+  </data>
+  <data name="Menu_ZoomIn" xml:space="preserve">
+    <value>Amplia</value>
+  </data>
+  <data name="Menu_ZoomOut" xml:space="preserve">
+    <value>Redueix</value>
+  </data>
+  <data name="Menu_ResetZoom" xml:space="preserve">
+    <value>Restableix el zoom</value>
+  </data>
+  <data name="Menu_FullScreen" xml:space="preserve">
+    <value>Pantalla completa</value>
+  </data>
+  <data name="Menu_ToggleSidebar" xml:space="preserve">
+    <value>Canvia la barra lateral</value>
+  </data>
+  <data name="Menu_ToggleStatusBar" xml:space="preserve">
+    <value>Canvia la barra d'estat</value>
+  </data>
+  <data name="Menu_Refresh" xml:space="preserve">
+    <value>Actualitza</value>
+  </data>
+  <data name="Menu_Settings" xml:space="preserve">
+    <value>Configuració</value>
+  </data>
+  <data name="Menu_Preferences" xml:space="preserve">
+    <value>Preferències</value>
+  </data>
+  <data name="Menu_CheckForUpdates" xml:space="preserve">
+    <value>Comprovar actualitzacions</value>
+  </data>
+  <data name="Menu_About" xml:space="preserve">
+    <value>Quant a</value>
+  </data>
+  <data name="Menu_Documentation" xml:space="preserve">
+    <value>Documentació</value>
+  </data>
+  <data name="Menu_Feedback" xml:space="preserve">
+    <value>Comentaris</value>
+  </data>
+  <data name="Dialog_Title_Confirm" xml:space="preserve">
+    <value>Confirma</value>
+  </data>
+  <data name="Dialog_Title_Warning" xml:space="preserve">
+    <value>Avís</value>
+  </data>
+  <data name="Dialog_Title_Error" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="Dialog_Title_Information" xml:space="preserve">
+    <value>Avís</value>
+  </data>
+  <data name="Dialog_Title_Settings" xml:space="preserve">
+    <value>Configuració</value>
+  </data>
+  <data name="Dialog_Title_About" xml:space="preserve">
+    <value>Quant a</value>
+  </data>
+  <data name="Dialog_Button_Ok" xml:space="preserve">
+    <value>D'acord</value>
+  </data>
+  <data name="Dialog_Button_Cancel" xml:space="preserve">
+    <value>Cancel·la</value>
+  </data>
+  <data name="Dialog_Button_Yes" xml:space="preserve">
+    <value>Sí</value>
+  </data>
+  <data name="Dialog_Button_No" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="Dialog_Button_Apply" xml:space="preserve">
+    <value>Aplicació</value>
+  </data>
+  <data name="Dialog_Button_Close" xml:space="preserve">
+    <value>Tanca</value>
+  </data>
+  <data name="Dialog_Button_Retry" xml:space="preserve">
+    <value>Torna-ho a provar</value>
+  </data>
+  <data name="Dialog_Button_Ignore" xml:space="preserve">
+    <value>Ignora</value>
+  </data>
+  <data name="Dialog_Message_AreYouSure" xml:space="preserve">
+    <value>N'estàs segur?</value>
+  </data>
+  <data name="Dialog_Message_ConfirmDelete" xml:space="preserve">
+    <value>Segur que voleu suprimir-ho? Aquesta acció no es pot desfer.</value>
+  </data>
+  <data name="Dialog_Message_ConfirmExit" xml:space="preserve">
+    <value>Segur que voleu sortir?</value>
+  </data>
+  <data name="Dialog_Message_UnsavedChanges" xml:space="preserve">
+    <value>Tens canvis sense desar, vols desar-los?</value>
+  </data>
+  <data name="Dialog_Message_OperationSucceeded" xml:space="preserve">
+    <value>Operació correcta.</value>
+  </data>
+  <data name="Dialog_Message_OperationFailed" xml:space="preserve">
+    <value>Operació fallida.</value>
+  </data>
+  <data name="Dialog_Message_NotSupported" xml:space="preserve">
+    <value>L'operació actual no està admesa.</value>
+  </data>
+  <data name="Dialog_File_OpenTitle" xml:space="preserve">
+    <value>Seleccioneu el fitxer que voleu obrir</value>
+  </data>
+  <data name="Dialog_File_SaveTitle" xml:space="preserve">
+    <value>Selecciona la ubicación para guardar</value>
+  </data>
+  <data name="Dialog_File_FolderTitle" xml:space="preserve">
+    <value>Selecciona una carpeta</value>
+  </data>
+  <data name="Dialog_File_OverwritePrompt" xml:space="preserve">
+    <value>El fitxer ja existeix. El voleu substituir?</value>
+  </data>
+  <data name="Validation_Required" xml:space="preserve">
+    <value>Aquest camp és obligatori.</value>
+  </data>
+  <data name="Validation_Invalid" xml:space="preserve">
+    <value>Entrada no vàlida.</value>
+  </data>
+  <data name="Validation_InvalidFormat" xml:space="preserve">
+    <value>Format incorrecte.</value>
+  </data>
+  <data name="Validation_OutOfRange" xml:space="preserve">
+    <value>Fora del rang permès.</value>
+  </data>
+  <data name="Validation_MinLengthFormat" xml:space="preserve">
+    <value>La longitud no pot ser inferior a {0}.</value>
+  </data>
+  <data name="Validation_MaxLengthFormat" xml:space="preserve">
+    <value>La longitud no pot superar {0}.</value>
+  </data>
+  <data name="Validation_LengthRangeFormat" xml:space="preserve">
+    <value>La longitud ha de ser entre {0} i {1}.</value>
+  </data>
+  <data name="Validation_MinValueFormat" xml:space="preserve">
+    <value>No pot ser inferior a {0}.</value>
+  </data>
+  <data name="Validation_MaxValueFormat" xml:space="preserve">
+    <value>No pot ser superior a {0}.</value>
+  </data>
+  <data name="Validation_ValueRangeFormat" xml:space="preserve">
+    <value>Ha de ser entre {0} i {1}.</value>
+  </data>
+  <data name="Validation_InvalidEmail" xml:space="preserve">
+    <value>El format del correu electrònic no és correcte.</value>
+  </data>
+  <data name="Validation_InvalidPhone" xml:space="preserve">
+    <value>El format del número de telèfon no és correcte.</value>
+  </data>
+  <data name="Validation_InvalidUrl" xml:space="preserve">
+    <value>El format de l’URL no és correcte.</value>
+  </data>
+  <data name="Validation_InvalidIpAddress" xml:space="preserve">
+    <value>L'adreça IP no és vàlida.</value>
+  </data>
+  <data name="Validation_PasswordNotMatch" xml:space="preserve">
+    <value>Les dues contrasenyes introduïdes no coincideixen.</value>
+  </data>
+  <data name="Validation_InvalidDate" xml:space="preserve">
+    <value>Data no vàlida.</value>
+  </data>
+  <data name="Validation_InvalidTime" xml:space="preserve">
+    <value>Hora no vàlida.</value>
+  </data>
+  <data name="File_NewFile" xml:space="preserve">
+    <value>Fitxer nou</value>
+  </data>
+  <data name="File_NewFolder" xml:space="preserve">
+    <value>Crea una carpeta nova</value>
+  </data>
+  <data name="File_OpenFile" xml:space="preserve">
+    <value>Obre fitxer</value>
+  </data>
+  <data name="File_OpenFolder" xml:space="preserve">
+    <value>Obre la carpeta</value>
+  </data>
+  <data name="File_SaveFile" xml:space="preserve">
+    <value>Desa fitxer</value>
+  </data>
+  <data name="File_SaveAll" xml:space="preserve">
+    <value>Desa-ho tot</value>
+  </data>
+  <data name="File_Rename" xml:space="preserve">
+    <value>Canvia el nom</value>
+  </data>
+  <data name="File_Copy" xml:space="preserve">
+    <value>Copia</value>
+  </data>
+  <data name="File_Move" xml:space="preserve">
+    <value>Mou</value>
+  </data>
+  <data name="File_Delete" xml:space="preserve">
+    <value>Suprimeix</value>
+  </data>
+  <data name="File_Restore" xml:space="preserve">
+    <value>Restableix</value>
+  </data>
+  <data name="File_Size" xml:space="preserve">
+    <value>Mida</value>
+  </data>
+  <data name="File_Type" xml:space="preserve">
+    <value>Tipus</value>
+  </data>
+  <data name="File_Name" xml:space="preserve">
+    <value>Nom</value>
+  </data>
+  <data name="File_Path" xml:space="preserve">
+    <value>Camí</value>
+  </data>
+  <data name="File_DateCreated" xml:space="preserve">
+    <value>Hora de creació</value>
+  </data>
+  <data name="File_DateModified" xml:space="preserve">
+    <value>Hora de modificació</value>
+  </data>
+  <data name="File_Error_NotFound" xml:space="preserve">
+    <value>No s'ha trobat el fitxer.</value>
+  </data>
+  <data name="File_Error_FolderNotFound" xml:space="preserve">
+    <value>No s'ha trobat la carpeta.</value>
+  </data>
+  <data name="File_Error_AccessDenied" xml:space="preserve">
+    <value>Sense permís d'accés.</value>
+  </data>
+  <data name="File_Error_InUse" xml:space="preserve">
+    <value>El fitxer està en ús.</value>
+  </data>
+  <data name="File_Error_ReadFailed" xml:space="preserve">
+    <value>No s'ha pogut llegir.</value>
+  </data>
+  <data name="File_Error_WriteFailed" xml:space="preserve">
+    <value>Error d'escriptura.</value>
+  </data>
+  <data name="File_Error_InvalidPath" xml:space="preserve">
+    <value>El camí no és vàlid.</value>
+  </data>
+  <data name="File_Error_AlreadyExists" xml:space="preserve">
+    <value>Ja existeix un fitxer o una carpeta amb el mateix nom.</value>
+  </data>
+  <data name="File_Filter_AllFiles" xml:space="preserve">
+    <value>Tots els fitxers (*.*)</value>
+  </data>
+  <data name="Nav_Home" xml:space="preserve">
+    <value>Pàgina principal</value>
+  </data>
+  <data name="Nav_Dashboard" xml:space="preserve">
+    <value>Tauler d’instruments</value>
+  </data>
+  <data name="Nav_Projects" xml:space="preserve">
+    <value>Projecte</value>
+  </data>
+  <data name="Nav_Favorites" xml:space="preserve">
+    <value>Preferits</value>
+  </data>
+  <data name="Nav_Recent" xml:space="preserve">
+    <value>Recent</value>
+  </data>
+  <data name="Nav_History" xml:space="preserve">
+    <value>Historial</value>
+  </data>
+  <data name="Nav_Settings" xml:space="preserve">
+    <value>Configuració</value>
+  </data>
+  <data name="Nav_Account" xml:space="preserve">
+    <value>Compte</value>
+  </data>
+  <data name="Nav_Profile" xml:space="preserve">
+    <value>Perfil</value>
+  </data>
+  <data name="Nav_Security" xml:space="preserve">
+    <value>Seguretat</value>
+  </data>
+  <data name="Nav_Notifications" xml:space="preserve">
+    <value>Notificació</value>
+  </data>
+  <data name="Nav_Back" xml:space="preserve">
+    <value>Torna</value>
+  </data>
+  <data name="Nav_Next" xml:space="preserve">
+    <value>Següent</value>
+  </data>
+  <data name="Nav_Previous" xml:space="preserve">
+    <value>Pas anterior</value>
+  </data>
+  <data name="Status_Ready" xml:space="preserve">
+    <value>A punt</value>
+  </data>
+  <data name="Status_Loading" xml:space="preserve">
+    <value>S'està carregant...</value>
+  </data>
+  <data name="Status_Working" xml:space="preserve">
+    <value>S'està processant...</value>
+  </data>
+  <data name="Status_Saving" xml:space="preserve">
+    <value>S'està desant...</value>
+  </data>
+  <data name="Status_Refreshing" xml:space="preserve">
+    <value>S'està actualitzant...</value>
+  </data>
+  <data name="Status_Connecting" xml:space="preserve">
+    <value>S'està connectant...</value>
+  </data>
+  <data name="Status_Disconnecting" xml:space="preserve">
+    <value>S'està desconnectant...</value>
+  </data>
+  <data name="Status_Connected" xml:space="preserve">
+    <value>Connectat</value>
+  </data>
+  <data name="Status_Disconnected" xml:space="preserve">
+    <value>No connectat</value>
+  </data>
+  <data name="Status_Success" xml:space="preserve">
+    <value>Èxit</value>
+  </data>
+  <data name="Status_Failed" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="Status_Canceled" xml:space="preserve">
+    <value>Cancel·lat</value>
+  </data>
+  <data name="Status_Completed" xml:space="preserve">
+    <value>Completat</value>
+  </data>
+  <data name="Status_Paused" xml:space="preserve">
+    <value>En pausa</value>
+  </data>
+  <data name="Status_Stopped" xml:space="preserve">
+    <value>Aturat</value>
+  </data>
+  <data name="Status_NoData" xml:space="preserve">
+    <value>No hi ha dades</value>
+  </data>
+  <data name="Status_Empty" xml:space="preserve">
+    <value>Buit</value>
+  </data>
+  <data name="Status_ItemsCountFormat" xml:space="preserve">
+    <value>Total de {0} elements</value>
+  </data>
+  <data name="Status_SelectedCountFormat" xml:space="preserve">
+    <value>S'han seleccionat {0} elements</value>
+  </data>
+  <data name="Permission_Title" xml:space="preserve">
+    <value>Permisos</value>
+  </data>
+  <data name="Permission_AccessDenied" xml:space="preserve">
+    <value>Accés denegat.</value>
+  </data>
+  <data name="Permission_Unauthorized" xml:space="preserve">
+    <value>No autoritzat.</value>
+  </data>
+  <data name="Permission_Insufficient" xml:space="preserve">
+    <value>Permisos insuficients.</value>
+  </data>
+  <data name="Permission_Request" xml:space="preserve">
+    <value>Sol·licitar permisos</value>
+  </data>
+  <data name="Permission_Grant" xml:space="preserve">
+    <value>Concedir</value>
+  </data>
+  <data name="Permission_Revoke" xml:space="preserve">
+    <value>Desfer</value>
+  </data>
+  <data name="Permission_AdminRequired" xml:space="preserve">
+    <value>Es requereixen permisos d’administrador.</value>
+  </data>
+  <data name="Permission_Read" xml:space="preserve">
+    <value>Llegeix</value>
+  </data>
+  <data name="Permission_Write" xml:space="preserve">
+    <value>Escriure</value>
+  </data>
+  <data name="Permission_Execute" xml:space="preserve">
+    <value>Executa</value>
+  </data>
+  <data name="Permission_Delete" xml:space="preserve">
+    <value>Suprimeix</value>
+  </data>
+  <data name="Theme_Title" xml:space="preserve">
+    <value>Tema</value>
+  </data>
+  <data name="Theme_Light" xml:space="preserve">
+    <value>Clar</value>
+  </data>
+  <data name="Theme_Dark" xml:space="preserve">
+    <value>Fosc</value>
+  </data>
+  <data name="Theme_System" xml:space="preserve">
+    <value>Seguir el sistema</value>
+  </data>
+  <data name="Theme_Auto" xml:space="preserve">
+    <value>Automàtic</value>
+  </data>
+  <data name="Theme_AccentColor" xml:space="preserve">
+    <value>Color d’accent</value>
+  </data>
+  <data name="Theme_PrimaryColor" xml:space="preserve">
+    <value>Color principal</value>
+  </data>
+  <data name="Theme_Background" xml:space="preserve">
+    <value>Fons</value>
+  </data>
+  <data name="Theme_Foreground" xml:space="preserve">
+    <value>Primer pla</value>
+  </data>
+  <data name="Theme_Font" xml:space="preserve">
+    <value>Lletra</value>
+  </data>
+  <data name="Theme_FontSize" xml:space="preserve">
+    <value>Mida de la lletra</value>
+  </data>
+  <data name="Theme_CornerRadius" xml:space="preserve">
+    <value>Cantonades arrodonides</value>
+  </data>
+  <data name="Theme_Shadow" xml:space="preserve">
+    <value>Ombra</value>
+  </data>
+  <data name="Theme_Transparency" xml:space="preserve">
+    <value>Opacitat</value>
+  </data>
+  <data name="Theme_Apply" xml:space="preserve">
+    <value>Tema de l’aplicació</value>
+  </data>
+  <data name="Theme_Reset" xml:space="preserve">
+    <value>Restaura el tema predeterminat</value>
+  </data>
+  <data name="Window_Maximize" xml:space="preserve">
+    <value>Maximitza</value>
+  </data>
+  <data name="Window_Minimize" xml:space="preserve">
+    <value>Minimitza</value>
+  </data>
+  <data name="Window_Restore" xml:space="preserve">
+    <value>Restableix</value>
+  </data>
+  <data name="Common_DataBase" xml:space="preserve">
+    <value>Base de dades</value>
+  </data>
+  <data name="Common_CheckAll" xml:space="preserve">
+    <value>Seleccionar-ho tot</value>
+  </data>
+  <data name="Common_DeleteCheckAll" xml:space="preserve">
+    <value>Suprimeix la selecció</value>
+  </data>
+  <data name="Common_Total" xml:space="preserve">
+    <value>Total</value>
+  </data>
+  <data name="Common_OperationCancel" xml:space="preserve">
+    <value>Operació cancel·lada</value>
+  </data>
+  <data name="Common_AlreadyExists" xml:space="preserve">
+    <value>Ja existeix</value>
+  </data>
+  <data name="Common_PasswordError" xml:space="preserve">
+    <value>Contrasenya incorrecta</value>
+  </data>
+  <data name="Common_InputPassword" xml:space="preserve">
+    <value>Introdueix la contrasenya</value>
+  </data>
+  <data name="Common_PasswrodErrorTooMany" xml:space="preserve">
+    <value>Massa intents de contrasenya incorrecta</value>
+  </data>
+  <data name="Common_Skip" xml:space="preserve">
+    <value>Ometre</value>
+  </data>
+</root>

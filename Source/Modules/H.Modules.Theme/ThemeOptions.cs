@@ -7,7 +7,6 @@
 // Licensed under the MIT License (the "License")
 
 using H.Common.Interfaces;
-using H.Controls.Form.PropertyItem.Attribute.SourcePropertyItem;
 using H.Controls.Form.PropertyItem.ComboBoxPropertyItems;
 using H.Extensions.Setting;
 using H.Extensions.Mvvm.Commands;
@@ -28,9 +27,12 @@ using System.Windows.Media;
 using System.Xml.Serialization;
 using H.Mvvm.Commands;
 using System.Windows.Threading;
+using H.Controls.Form.PropertyItem.Attribute;
+using H.Controls.Form.Attributes;
+using H.Extensions.FontIcon;
 
 namespace H.Modules.Theme;
-[Display(Name = "主题设置", GroupName = SettingGroupNames.GroupStyle, Description = "登录页面设置的信息")]
+[Display(Name = "主题设置", GroupName = SettingGroupNames.GroupStyle, Description = "主题设置设置的信息")]
 public class ThemeOptions : IocOptionInstance<ThemeOptions>, ILoginedSplashLoadable, IThemeOptions
 {
     public ThemeOptions()
@@ -38,15 +40,23 @@ public class ThemeOptions : IocOptionInstance<ThemeOptions>, ILoginedSplashLoada
         this.ColorResources.Add(new DarkColorResource());
         this.ColorResources.Add(new LightColorResource());
         this.ColorResources.Add(new DefaultColorResource());
-        this.FontFamilys = Fonts.SystemFontFamilies.ToList();
-        //this.FontFamilys.Add(new FontFamily("微软雅黑"));
-        this.FontFamilys.Insert(0, new FontFamily("微软雅黑"));
+        var fontFamilies = Fonts.SystemFontFamilies.ToList();
+        fontFamilies.Insert(0, new FontFamily("Microsoft YaHei"));
+        this.FontFamilys = fontFamilies;
 
         this.BackgroundResources.Add(new SolidColorBrushResource());
         this.BackgroundResources.Add(new LinearGradientBrushResource());
         this.BackgroundResources.Add(new RadialGradientBrushResource());
         this.BackgroundResources.Add(new DrawingBrushResource());
         this.BackgroundResources.Add(new ImageBrushResource());
+
+        List<FontFamily> iconFontFamilys = new List<FontFamily>();
+        iconFontFamilys.Add(H.Extensions.FontIcon.IconFontFamilys.ResourceSegoeFluentIcons);
+        iconFontFamilys.Add(H.Extensions.FontIcon.IconFontFamilys.ResourceSegoeMDL2Asset);
+        iconFontFamilys.Add(H.Extensions.FontIcon.IconFontFamilys.SystemSegoeMDL2Asset);
+        iconFontFamilys.Add(H.Extensions.FontIcon.IconFontFamilys.SystemSegoeFluentIcons);
+        this.IconFontFamilys = iconFontFamilys;
+        this.IconFontFamily = this.IconFontFamilys.FirstOrDefault();
     }
 
     public override void LoadDefault()
@@ -85,7 +95,8 @@ public class ThemeOptions : IocOptionInstance<ThemeOptions>, ILoginedSplashLoada
     private IColorResource _colorResource;
     [JsonIgnore]
     [XmlIgnore]
-    [PropertyNameSourcePropertyItem(typeof(ComboBoxPropertyItem), nameof(ColorResources))]
+    [GetPropertyNameSource(nameof(ColorResources))]
+    [PropertyItem(typeof(ComboBoxPropertyItem))]
     [Display(Name = "配色")]
     public IColorResource ColorResource
     {
@@ -105,7 +116,8 @@ public class ThemeOptions : IocOptionInstance<ThemeOptions>, ILoginedSplashLoada
     private IBackgroundResource _backgroundResource;
     [JsonIgnore]
     [XmlIgnore]
-    [PropertyNameSourcePropertyItem(typeof(ComboBoxPropertyItem), nameof(BackgroundResources))]
+    [GetPropertyNameSource(nameof(BackgroundResources))]
+    [PropertyItem(typeof(ComboBoxPropertyItem))]
     [Display(Name = "背景配色")]
     public IBackgroundResource BackgroundResource
     {
@@ -123,7 +135,8 @@ public class ThemeOptions : IocOptionInstance<ThemeOptions>, ILoginedSplashLoada
     public List<IBackgroundResource> BackgroundResources { get; } = new List<IBackgroundResource>();
 
     private FontFamily _fontFamily;
-    [PropertyNameSourcePropertyItem(typeof(ComboBoxPropertyItem), nameof(FontFamilys))]
+    [GetPropertyNameSource(nameof(FontFamilys))]
+    [PropertyItem(typeof(ComboBoxPropertyItem))]
     [Display(Name = "字体")]
     [TypeConverter(typeof(FontFamilyConverter))]
     public FontFamily FontFamily
@@ -137,7 +150,10 @@ public class ThemeOptions : IocOptionInstance<ThemeOptions>, ILoginedSplashLoada
     }
 
     private FontFamily _iconFontFamily;
-    [PropertyNameSourcePropertyItem(typeof(ComboBoxPropertyItem), nameof(IconFontFamilys))]
+    [JsonIgnore]
+    [XmlIgnore]
+    [GetPropertyNameSource(nameof(IconFontFamilys))]
+    [PropertyItem(typeof(ComboBoxPropertyItem))]
     [Display(Name = "图标字体")]
     [TypeConverter(typeof(FontFamilyConverter))]
     public FontFamily IconFontFamily
@@ -153,13 +169,15 @@ public class ThemeOptions : IocOptionInstance<ThemeOptions>, ILoginedSplashLoada
     [JsonIgnore]
     [XmlIgnore]
     [Browsable(false)]
-    public List<FontFamily> FontFamilys { get; } = new List<FontFamily>();
+    public IReadOnlyList<FontFamily> FontFamilys { get; } = new List<FontFamily>();
 
     [JsonIgnore]
     [XmlIgnore]
     [Browsable(false)]
-    public List<FontFamily> IconFontFamilys { get; } = new List<FontFamily>();
+    public IReadOnlyList<FontFamily> IconFontFamilys { get; } = new List<FontFamily>();
 
+    [Browsable(false)]
+    public int IconFontFamilySelectedIndex { get; set; }
     [JsonIgnore]
     [XmlIgnore]
     public RelayCommand RefreshThemeCommand => new RelayCommand(x =>
@@ -244,6 +262,7 @@ public class ThemeOptions : IocOptionInstance<ThemeOptions>, ILoginedSplashLoada
     {
         this.ColorResourceSelectedIndex = this.ColorResources.IndexOf(this.ColorResource);
         this.BackgroundResourceSelectedIndex = this.BackgroundResources.IndexOf(this.BackgroundResource);
+        this.IconFontFamilySelectedIndex = this.IconFontFamilys.ToList().IndexOf(this.IconFontFamily);
         return base.Save(out message);
     }
 
@@ -259,7 +278,6 @@ public class ThemeOptions : IocOptionInstance<ThemeOptions>, ILoginedSplashLoada
             }
             if (this.BackgroundResource != null)
                 this.BackgroundResourceSelectedIndex = this.BackgroundResources.IndexOf(this.BackgroundResource);
-
         }
 
         if (this.ColorResourceSelectedIndex < 0 || this.ColorResourceSelectedIndex >= this.ColorResources.Count)
@@ -269,13 +287,18 @@ public class ThemeOptions : IocOptionInstance<ThemeOptions>, ILoginedSplashLoada
         if (this.BackgroundResourceSelectedIndex < 0 || this.BackgroundResourceSelectedIndex >= this.BackgroundResources.Count)
             this.BackgroundResourceSelectedIndex = 0;
         this.BackgroundResource = this.BackgroundResources[this.BackgroundResourceSelectedIndex];
-        this.RefreshTheme();
+        this.RefreshTheme(false);
+
+        if (this.IconFontFamilySelectedIndex < 0 || this.IconFontFamilySelectedIndex >= this.IconFontFamilys.Count)
+            this.IconFontFamilySelectedIndex = 0;
+        this.IconFontFamily = this.IconFontFamilys[this.IconFontFamilySelectedIndex];
+
         return r;
     }
 
-    private void RefreshTheme()
+    private void RefreshTheme(bool isDelay = true)
     {
-        this.DelayInvoke(() =>
+        Action action = () =>
         {
             //this.Color.ChangeThemeType();
             this.FontSize.ChangeFontSizeThemeType();
@@ -287,7 +310,11 @@ public class ThemeOptions : IocOptionInstance<ThemeOptions>, ILoginedSplashLoada
             this.RefreshBrushResourceDictionary();
             if (this.ColorResource != null)
                 this.IsDark = this.ColorResource.IsDark;
-        });
+        };
+        if (isDelay)
+            this.DelayInvoke(action);
+        else
+            action();
     }
 
     public void RefreshBrushResourceDictionary()
@@ -332,6 +359,6 @@ public class ThemeOptions : IocOptionInstance<ThemeOptions>, ILoginedSplashLoada
 
     protected override string GetDefaultFolder()
     {
-        return AppPaths.Instance.UserSetting;
+        return AppPaths.Instance.Setting;
     }
 }

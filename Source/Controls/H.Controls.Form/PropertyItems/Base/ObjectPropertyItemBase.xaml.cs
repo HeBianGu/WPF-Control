@@ -6,13 +6,16 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
+using H.Common;
 using H.Mvvm.Commands;
+using System.Reflection;
+using System.Resources;
+using System.Xml.Linq;
 
 namespace H.Controls.Form.PropertyItems.Base;
 
-public abstract class ObjectPropertyItemBase : DisplayBindableBase, IPropertyItem, IValueChangeable
+public abstract class ObjectPropertyItemBase : ResxDisplayBindableBase, IPropertyItem, IValueChangeable
 {
-
     public ObjectPropertyItemBase(PropertyInfo property, object obj)
     {
         this.PropertyInfo = property;
@@ -36,9 +39,9 @@ public abstract class ObjectPropertyItemBase : DisplayBindableBase, IPropertyIte
         BrowsableAttribute browsable = property.GetCustomAttribute<BrowsableAttribute>();
         this.Visibility = browsable == null || browsable.Browsable ? Visibility.Visible : Visibility.Collapsed;
         this.Icon = property.GetCustomAttribute<IconAttribute>()?.Icon;
+
+        this.UpdateResx();
     }
-
-
     public string TabGroup { get; set; }
     public PropertyInfo PropertyInfo { get; set; }
     public object Obj { get; set; }
@@ -60,4 +63,23 @@ public abstract class ObjectPropertyItemBase : DisplayBindableBase, IPropertyIte
 
     public abstract void LoadValue();
 
+    protected override void UpdateResx()
+    {
+        if (this.Obj == null)
+            return;
+        {
+            string rname = this.Obj.GetType().GetPropertyNameResx(this.PropertyInfo.Name, this.Name);
+            this.Name = rname ?? this.Name;
+        }
+
+        {
+            string rname = this.Obj.GetType().GetPropertyGroupNameResx(this.PropertyInfo.Name, this.GroupName);
+            this.GroupName = rname ?? this.GroupName;
+        }
+
+        {
+            string rname = this.Obj.GetType().GetPropertyDescriptionResx(this.PropertyInfo.Name, this.Description);
+            this.Description = rname ?? this.Description;
+        }
+    }
 }

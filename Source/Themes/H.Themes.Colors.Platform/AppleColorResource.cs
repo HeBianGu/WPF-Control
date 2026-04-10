@@ -11,7 +11,7 @@ using System.Windows;
 
 namespace H.Themes.Colors.Platform;
 [Display(Name = "Apple (IOS)", GroupName = "系统平台", Description = "纯色", Order = 100, Prompt = "试验")]
-public class AppleColorResource : ColorResourceBase
+public class AppleColorResource : ResxColorResourceBase
 {
     public AppleColorResource()
     {

@@ -15,7 +15,7 @@ public class NewtonsoftJsonSerializerService : IJsonSerializerService
 {
     public object DeserializeObject(string txt, Type type)
     {
-        return JsonConvert.DeserializeObject(txt, GetSerializerSettings());
+        return JsonConvert.DeserializeObject(txt, type, GetSerializerSettings());
     }
 
     public string SerializeObject<T>(T t)
@@ -23,11 +23,20 @@ public class NewtonsoftJsonSerializerService : IJsonSerializerService
         return JsonConvert.SerializeObject(t, GetSerializerSettings()); ;
     }
 
-    private JsonSerializerSettings GetSerializerSettings()
+    protected virtual JsonSerializerSettings GetSerializerSettings()
     {
         return NewtonsoftJsonOptions.Instance.JsonSerializerSettings;
     }
 }
+
+public class DefaultNewtonsoftJsonSerializerService : NewtonsoftJsonSerializerService
+{
+    protected override JsonSerializerSettings GetSerializerSettings()
+    {
+        return NewtonsoftJsonOptions.Instance.CreateDefaultSerializerSettings();
+    }
+}
+
 
 public static class NewtonsoftJsonSerializerServiceExtension
 {

@@ -9,6 +9,7 @@
 global using H.Services.Message;
 global using H.Services.Message.Dialog;
 global using H.Services.Setting;
+using H.Common;
 
 namespace H.Modules.Setting.Commands;
 
@@ -16,7 +17,7 @@ public class CancelSettingDataCommand : DialogCommandBase
 {
     public override async Task ExecuteAsync(object parameter)
     {
-        var r = await IocMessage.ShowDialogMessage("取消配置将不会保存，是否继续？");
+        var r = await IocMessage.ShowDialogMessage("取消配置将不会保存，是否继续？".GetStringResx(this, "Message_CancelCannotSave"));
         if (r == false)
             return;
         IocSetting.Instance.Load(null, out string message);

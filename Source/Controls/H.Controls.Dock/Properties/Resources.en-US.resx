@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Active_Files" xml:space="preserve">
+    <value>Active Files</value>
+  </data>
+  <data name="Active_ToolWindows" xml:space="preserve">
+    <value>Active Tool Windows</value>
+  </data>
+  <data name="Anchorable_AutoHide" xml:space="preserve">
+    <value>Auto Hide</value>
+  </data>
+  <data name="Anchorable_BtnAutoHide_Hint" xml:space="preserve">
+    <value>Auto Hide</value>
+  </data>
+  <data name="Anchorable_BtnClose_Hint" xml:space="preserve">
+    <value>Hide</value>
+  </data>
+  <data name="Anchorable_CxMenu_Hint" xml:space="preserve">
+    <value>Window Position</value>
+  </data>
+  <data name="Anchorable_Dock" xml:space="preserve">
+    <value>Dock</value>
+  </data>
+  <data name="Anchorable_DockAsDocument" xml:space="preserve">
+    <value>Dock as Tabbed Document</value>
+  </data>
+  <data name="Anchorable_Float" xml:space="preserve">
+    <value>Float</value>
+  </data>
+  <data name="Anchorable_Hide" xml:space="preserve">
+    <value>Hide</value>
+  </data>
+  <data name="Document_BtnPinned_Hint" xml:space="preserve">
+    <value>Toggle Pin status</value>
+  </data>
+  <data name="Document_Close" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="Document_CloseAll" xml:space="preserve">
+    <value>Close All</value>
+  </data>
+  <data name="Document_CloseAllButThis" xml:space="preserve">
+    <value>Close All But This</value>
+  </data>
+  <data name="Document_CxMenu_Hint" xml:space="preserve">
+    <value>Window Position</value>
+  </data>
+  <data name="Document_DockAsDocument" xml:space="preserve">
+    <value>Dock as Tabbed Document</value>
+  </data>
+  <data name="Document_Float" xml:space="preserve">
+    <value>Floating</value>
+  </data>
+  <data name="Document_MoveToNextTabGroup" xml:space="preserve">
+    <value>Move To Next Tab Group</value>
+  </data>
+  <data name="Document_MoveToPreviousTabGroup" xml:space="preserve">
+    <value>Move To Previous Tab Group</value>
+  </data>
+  <data name="Document_NewHorizontalTabGroup" xml:space="preserve">
+    <value>New Horizontal Tab Group</value>
+  </data>
+  <data name="Document_NewVerticalTabGroup" xml:space="preserve">
+    <value>New Vertical Tab Group</value>
+  </data>
+  <data name="Window_Maximize" xml:space="preserve">
+    <value>Maximize</value>
+  </data>
+  <data name="Window_Restore" xml:space="preserve">
+    <value>Restore</value>
+  </data>
+</root>

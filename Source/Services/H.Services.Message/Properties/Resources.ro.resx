@@ -1,0 +1,154 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="NotImplemented" xml:space="preserve">
+    <value>Funcționalitatea nu este încă implementată.</value>
+  </data>
+  <data name="ShowString_Format" xml:space="preserve">
+    <value>Se încarcă datele: elementul {0}/100.</value>
+  </data>
+  <data name="View" xml:space="preserve">
+    <value>Vizualizare</value>
+  </data>
+  <data name="DefaultMessage" xml:space="preserve">
+    <value>Mesaj implicit</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Anulare operațiunea</value>
+  </data>
+  <data name="DefaultTitle" xml:space="preserve">
+    <value>Indicație</value>
+  </data>
+  <data name="Success" xml:space="preserve">
+    <value>Operațiune finalizată</value>
+  </data>
+  <data name="ShowMessage" xml:space="preserve">
+    <value>Afișează mesajul</value>
+  </data>
+  <data name="Close" xml:space="preserve">
+    <value>Închideți</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>Editare</value>
+  </data>
+  <data name="Show" xml:space="preserve">
+    <value>Afișare</value>
+  </data>
+  <data name="Type_ShowIocCommand" xml:space="preserve">
+    <value>Afișează mesajul</value>
+  </data>
+  <data name="Type_ShowIocCommand_Description" xml:space="preserve">
+    <value>Afișează mesajul pop-up</value>
+  </data>
+  <data name="Type_ShowMessageCommand" xml:space="preserve">
+    <value>Afișați mesajul</value>
+  </data>
+  <data name="Type_ShowMessageCommand_Description" xml:space="preserve">
+    <value>Afișează mesajul pop-up</value>
+  </data>
+  <data name="Type_ShowCommand" xml:space="preserve">
+    <value>Afișare</value>
+  </data>
+  <data name="Type_ShowCommand_Description" xml:space="preserve">
+    <value>Afișează pagina de prezentare</value>
+  </data>
+  <data name="Type_ShowPercentCommand" xml:space="preserve">
+    <value>Afișează mesajul</value>
+  </data>
+  <data name="Type_ShowPercentCommand_Description" xml:space="preserve">
+    <value>Afișează mesajul popup</value>
+  </data>
+  <data name="Type_ShowStringCommand" xml:space="preserve">
+    <value>Afișare mesaj</value>
+  </data>
+  <data name="Type_ShowStringCommand_Description" xml:space="preserve">
+    <value>Afișează mesajul popup</value>
+  </data>
+  <data name="Type_ShowWaitCommand" xml:space="preserve">
+    <value>Afișează mesajul</value>
+  </data>
+  <data name="Type_ShowWaitCommand_Description" xml:space="preserve">
+    <value>Afișează mesajul pop-up</value>
+  </data>
+  <data name="Type_ShowEditCommand" xml:space="preserve">
+    <value>Editare</value>
+  </data>
+  <data name="Type_ShowEditCommand_Description" xml:space="preserve">
+    <value>Afișează mesajul popup</value>
+  </data>
+  <data name="Type_ShowTabEditCommand" xml:space="preserve">
+    <value>Editare</value>
+  </data>
+  <data name="Type_ShowTabEditCommand_Description" xml:space="preserve">
+    <value>Afișează formularul cu mai multe file pentru editarea datelor</value>
+  </data>
+  <data name="Type_ShowViewCommand" xml:space="preserve">
+    <value>Vizualizare</value>
+  </data>
+  <data name="Type_ShowViewCommand_Description" xml:space="preserve">
+    <value>Afișați datele formularului.</value>
+  </data>
+  <data name="Type_ShowNotImplementedCommand" xml:space="preserve">
+    <value>Afișare mesaj</value>
+  </data>
+  <data name="Type_ShowNotImplementedCommand_Description" xml:space="preserve">
+    <value>Afișați mesajul pop-up</value>
+  </data>
+</root>

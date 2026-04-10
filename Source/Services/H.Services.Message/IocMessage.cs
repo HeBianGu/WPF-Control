@@ -8,6 +8,7 @@
 
 global using H.Services.Message.Form;
 global using H.Services.Message.TaskBar;
+using H.Services.Message.Properties;
 
 namespace H.Services.Message;
 
@@ -26,7 +27,7 @@ public static class IocMessage
 
     public static IIOFolderDialogService IOFolderDialog => Ioc.GetService<IIOFolderDialogService>(throwIfNone: false);
 
-    public static async Task<bool?> ShowDialogMessage(string message, string title = "提示", DialogButton dialogButton = DialogButton.Sumit)
+    public static async Task<bool?> ShowDialogMessage(string message, string title = null, DialogButton dialogButton = DialogButton.Sumit)
     {
         if (Dialog == null || Application.Current.MainWindow == null || Application.Current.MainWindow.IsLoaded == false)
         {
@@ -51,7 +52,7 @@ public static class IocMessage
                     x.MaxHeight = 800;
                     //if (x is Window window)
                     //    window.Topmost = true;
-                    x.Title = title;
+                    x.Title = string.IsNullOrEmpty(title) ? Resources.DefaultTitle : title;
                 });
             }
         }
@@ -61,7 +62,7 @@ public static class IocMessage
              {
                  x.DialogButton = dialogButton;
                  x.Padding = new Thickness(40);
-                 x.Title = title;
+                 x.Title = string.IsNullOrEmpty(title) ? Resources.DefaultTitle : title; ;
              });
         }
     }
@@ -74,7 +75,7 @@ public static class IocMessage
                 ? new Window()
                 {
                     Content = presenter,
-                    Title = "提示",
+                    Title = Properties.Resources.DefaultTitle,
                     SizeToContent = SizeToContent.WidthAndHeight,
                     WindowStyle = WindowStyle.ToolWindow,
                     WindowStartupLocation = WindowStartupLocation.CenterScreen,
@@ -88,7 +89,7 @@ public static class IocMessage
         }
     }
 
-    public static async Task<bool?> ShowWindowMessage(string message, string title = "提示", DialogButton dialogButton = DialogButton.Sumit)
+    public static async Task<bool?> ShowWindowMessage(string message, string title = null, DialogButton dialogButton = DialogButton.Sumit)
     {
         if (Window == null)
         {

@@ -50,7 +50,7 @@ namespace H.App.FileManager
         public string Extend { get; set; }
 
         private long _size;
-        [DataGridColumn("Auto", ConvertyType = typeof(GetByteToSizeDisplayConverter))]
+        [DataGridColumn("Auto", ValueConvertType = typeof(GetByteToSizeDisplayConverter))]
         [ReadOnly(true)]
         [Display(Name = "大小")]
         [TypeConverter(typeof(SizeToDisplayTypeConverter))]

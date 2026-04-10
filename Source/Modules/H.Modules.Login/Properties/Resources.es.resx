@@ -1,0 +1,244 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Type_LoginOptions" xml:space="preserve">
+    <value>Configuración de la página de inicio de sesión</value>
+  </data>
+  <data name="Type_RegistorOptions" xml:space="preserve">
+    <value>Página de registro Configuración</value>
+  </data>
+  <data name="Register" xml:space="preserve">
+    <value>Registro</value>
+  </data>
+  <data name="AccountLogin" xml:space="preserve">
+    <value>Inicio de sesión de la cuenta</value>
+  </data>
+  <data name="InputAccount" xml:space="preserve">
+    <value>Introduzca el nombre de usuario</value>
+  </data>
+  <data name="Account" xml:space="preserve">
+    <value>Cuenta</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>Contraseña</value>
+  </data>
+  <data name="InputPassword" xml:space="preserve">
+    <value>Introduzca la contraseña</value>
+  </data>
+  <data name="ConfirmationPassword" xml:space="preserve">
+    <value>Confirmar contraseña</value>
+  </data>
+  <data name="ChangePassword" xml:space="preserve">
+    <value>Cambiar contraseña</value>
+  </data>
+  <data name="Change" xml:space="preserve">
+    <value>Modificar</value>
+  </data>
+  <data name="RemenberPassword" xml:space="preserve">
+    <value>Recordar contraseña</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>Siguiente ნაბიჯო</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>El paso anterior</value>
+  </data>
+  <data name="EmailVerification" xml:space="preserve">
+    <value>Verificación de correo electrónico</value>
+  </data>
+  <data name="Agree" xml:space="preserve">
+    <value>He leído y acepto.</value>
+  </data>
+  <data name="And" xml:space="preserve">
+    <value>y</value>
+  </data>
+  <data name="ServiceAgreement" xml:space="preserve">
+    <value>Términos de servicio</value>
+  </data>
+  <data name="LoginDirect" xml:space="preserve">
+    <value>Iniciar sesión مباشرة</value>
+  </data>
+  <data name="Privacypolicy" xml:space="preserve">
+    <value>Política de privacidad</value>
+  </data>
+  <data name="Invoking" xml:space="preserve">
+    <value>En ejecución...</value>
+  </data>
+  <data name="VerificationCode" xml:space="preserve">
+    <value>Código de verificación</value>
+  </data>
+  <data name="VerificationCodeSended" xml:space="preserve">
+    <value>Código de verificación enviado.</value>
+  </data>
+  <data name="RegisterVerificationCode" xml:space="preserve">
+    <value>Código de verificación de registro</value>
+  </data>
+  <data name="GetVerificationCode" xml:space="preserve">
+    <value>Obtener código de verificación</value>
+  </data>
+  <data name="EmailAddress" xml:space="preserve">
+    <value>Dirección de correo electrónico</value>
+  </data>
+  <data name="UserLogin" xml:space="preserve">
+    <value>Inicio de sesión de usuario</value>
+  </data>
+  <data name="SendingEmail" xml:space="preserve">
+    <value>Enviando correo electrónico</value>
+  </data>
+  <data name="RegisterNow" xml:space="preserve">
+    <value>Regístrate ahora</value>
+  </data>
+  <data name="RegisterAccount" xml:space="preserve">
+    <value>Registrar cuenta</value>
+  </data>
+  <data name="ForgetPassword" xml:space="preserve">
+    <value>Olvidé mi contraseña</value>
+  </data>
+  <data name="Login" xml:space="preserve">
+    <value>Iniciar sesión</value>
+  </data>
+  <data name="Type_LoginOptions_GroupName" xml:space="preserve">
+    <value>Configuración del sistema</value>
+  </data>
+  <data name="Type_LoginOptions_Description" xml:space="preserve">
+    <value>Información configurada en la página de inicio de sesión</value>
+  </data>
+  <data name="Type_RegistorOptions_GroupName" xml:space="preserve">
+    <value>Configuración del sistema</value>
+  </data>
+  <data name="Type_RegistorOptions_Description" xml:space="preserve">
+    <value>Información configurada en la página de registro</value>
+  </data>
+  <data name="Property_LoginOptions_Product" xml:space="preserve">
+    <value>Iniciar sesión</value>
+  </data>
+  <data name="Property_LoginOptions_ProductFontSize" xml:space="preserve">
+    <value>Tamaño de fuente</value>
+  </data>
+  <data name="Property_LoginOptions_AdminName" xml:space="preserve">
+    <value>Administrador</value>
+  </data>
+  <data name="Property_LoginOptions_LastUserName" xml:space="preserve">
+    <value>Último usuario que inició sesión</value>
+  </data>
+  <data name="Property_LoginOptions_Remember" xml:space="preserve">
+    <value>Recordar contraseña</value>
+  </data>
+  <data name="Property_LoginOptions_UseVisitor" xml:space="preserve">
+    <value>Habilitar invitado</value>
+  </data>
+  <data name="Property_LoginOptions_UseVisitor_Description" xml:space="preserve">
+    <value>Después de habilitar el modo invitado, se puede acceder a la ventana principal incluso si el inicio de sesión no es exitoso.</value>
+  </data>
+  <data name="Property_LoginOptions_UseLogoutRestart" xml:space="preserve">
+    <value>Cerrar sesión y reiniciar</value>
+  </data>
+  <data name="Property_LoginOptions_UseLogoutRestart_Description" xml:space="preserve">
+    <value>Habilitar cierre de sesión y reiniciar la aplicación</value>
+  </data>
+  <data name="Property_RegistorOptions_UseMail" xml:space="preserve">
+    <value>Habilitar registro por correo electrónico</value>
+  </data>
+  <data name="Property_RegistorOptions_UseMail_Description" xml:space="preserve">
+    <value>Habilitar registro por correo electrónico</value>
+  </data>
+  <data name="Property_RegistorOptions_ServiceAgreementUri" xml:space="preserve">
+    <value>Licencia de la aplicación</value>
+  </data>
+  <data name="Property_RegistorOptions_PrivacypolicyUri" xml:space="preserve">
+    <value>Política de privacidad</value>
+  </data>
+  <data name="Property_RegistorOptions_MailAccount" xml:space="preserve">
+    <value>Correo electrónico para enviar el código de verificación</value>
+  </data>
+  <data name="Property_RegistorOptions_Image" xml:space="preserve">
+    <value>Imagen izquierda</value>
+  </data>
+  <data name="AccountCannotBeNull" xml:space="preserve">
+    <value>El nombre de usuario no puede estar vacío</value>
+  </data>
+  <data name="PasswordCannotBeNull" xml:space="preserve">
+    <value>La contraseña no puede estar vacía.</value>
+  </data>
+  <data name="LoginSuccess" xml:space="preserve">
+    <value>Inicio de sesión correcto</value>
+  </data>
+  <data name="LoginError" xml:space="preserve">
+    <value>Error de inicio de sesión, nombre de usuario o contraseña incorrectos</value>
+  </data>
+  <data name="Loginning" xml:space="preserve">
+    <value>Iniciando sesión</value>
+  </data>
+  <data name="ChangingPassword" xml:space="preserve">
+    <value>Modificando la contraseña</value>
+  </data>
+  <data name="ChangePasswordSuccess" xml:space="preserve">
+    <value>Contraseña modificada correctamente</value>
+  </data>
+  <data name="Registering" xml:space="preserve">
+    <value>Registrando</value>
+  </data>
+  <data name="RegisterSuccess" xml:space="preserve">
+    <value>Registro exitoso</value>
+  </data>
+  <data name="PasswordsNotMatch" xml:space="preserve">
+    <value>Las contraseñas ingresadas dos veces no coinciden.</value>
+  </data>
+</root>

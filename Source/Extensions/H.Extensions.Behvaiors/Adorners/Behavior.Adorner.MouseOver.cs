@@ -25,27 +25,20 @@ public class MouseOverAdornerBehavior : AdornerBehaviorBase
 
     private void AssociatedObject_MouseLeave(object sender, MouseEventArgs e)
     {
-        System.Diagnostics.Debug.WriteLine("AssociatedObject_MouseLeave");
         ClearAdorner();
     }
 
     private void AssociatedObject_MouseEnter(object sender, MouseEventArgs e)
     {
-        System.Diagnostics.Debug.WriteLine("AssociatedObject_MouseEnter");
-
         if (this.AdornerType == null)
             return;
-
         if (this.AdornerVisual == null)
             this.AdornerVisual = this.AssociatedObject;
-
         if (_adorner != null)
             return;
-
         AdornerLayer layer = AdornerLayer.GetAdornerLayer(this.AssociatedObject);
         if (layer == null)
             return;
-
         IEnumerable<Adorner> adorners = layer.GetAdorners(this.AssociatedObject)?.Where(l => l.GetType() == this.AdornerType);
         if (adorners != null)
         {

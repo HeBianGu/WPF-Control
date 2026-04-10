@@ -29,7 +29,7 @@ public class SerializableModbusDataService : ModbusDataService, ISerializableMod
         catch (Exception ex)
         {
             message = ex.Message;
-            IocLog.Instance?.Error(ex);
+            IocLog.Error(ex);
             return true;
         }
     }
@@ -54,7 +54,7 @@ public class SerializableModbusDataService : ModbusDataService, ISerializableMod
         catch (Exception ex)
         {
             message = ex.Message;
-            IocLog.Instance?.Error(ex);
+            IocLog.Error(ex);
             return true;
         }
 

@@ -217,7 +217,7 @@
                                         TypeInTargetAssembly={x:Type local:DataGridRowHeaderKeys}}"
            TargetType="{x:Type DataGridRowHeader}">
         <Setter Property="Background" Value="{x:Null}" />
-        <Setter Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.BorderBrush}}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.BorderBrushAssist}}" />
         <Setter Property="BorderThickness" Value="1,0,1,1" />
         <Setter Property="Margin" Value="0" />
         <Setter Property="Template">
@@ -225,6 +225,7 @@
                 <ControlTemplate TargetType="{x:Type DataGridRowHeader}">
                     <Grid>
                         <Border Width="10"
+                                CornerRadius="1"
                                 Style="{StaticResource S.Border.TemplatedParent}">
                             <StackPanel Orientation="Horizontal">
                                 <ContentPresenter VerticalAlignment="Center"
@@ -332,11 +333,11 @@
                         <ContentPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
                                           Style="{StaticResource S.ContentPresenter.TemplatedParent}" />
                     </Border>
-                    <ControlTemplate.Triggers>
+                    <!--<ControlTemplate.Triggers>
                         <Trigger Property="IsFocused" Value="True">
                             <Setter TargetName="border" Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.BorderBrushTitle}}" />
                         </Trigger>
-                    </ControlTemplate.Triggers>
+                    </ControlTemplate.Triggers>-->
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
@@ -377,7 +378,7 @@
         <Setter Property="ScrollViewer.CanContentScroll" Value="true" />
         <Setter Property="ScrollViewer.PanningMode" Value="Both" />
         <Setter Property="Stylus.IsFlicksEnabled" Value="False" />
-        <Setter Property="Cattach.Watermark" Value="暂无数据"/>
+        <Setter Property="Cattach.Watermark" Value="{x:Static Resources.Common_NoData}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type DataGrid}">
@@ -462,7 +463,7 @@
                                                        HorizontalAlignment="Center"
                                                        VerticalAlignment="Center"
                                                        Opacity="0.5"
-                                                       Text="{Binding RelativeSource={RelativeSource Mode=TemplatedParent},Path=(Cattach.Watermark)}"
+                                                       Text="{Binding RelativeSource={RelativeSource AncestorType=DataGrid},Path=(Cattach.Watermark)}"
                                                        Visibility="Collapsed" />
                                         </Grid>
                                         <ControlTemplate.Triggers>

@@ -9,6 +9,7 @@
 using H.Common.Interfaces;
 using H.Common.Transitionable;
 using H.Services.Message.Dialog;
+using H.Styles.Controls;
 using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
@@ -22,6 +23,14 @@ public partial class DialogWindow : Window, IDialog
         this.Loaded += async (l, k) =>
         {//  ToDo：用动画显示
             await TransitionShow();
+        };
+
+        this.MouseDown += (s, e) =>
+        {
+            if (e.ChangedButton == MouseButton.Left)
+            {
+                this.DragMove();
+            }
         };
 
     }
@@ -99,6 +108,8 @@ public partial class DialogWindow : Window, IDialog
     }
 
     DataTemplate IDialog.PresenterTemplate { get => this.ContentTemplate; set => this.ContentTemplate = value; }
+    public bool UseActionAutoClose { get; set; } = true;
+    public bool UseDropShadowEffect { get; set; }
 
     public static readonly DependencyProperty FontIconProperty =
         DependencyProperty.Register("FontIcon", typeof(string), typeof(DialogWindow), new FrameworkPropertyMetadata("\xEA8F"));
@@ -134,7 +145,7 @@ public partial class DialogWindow : Window, IDialog
 
 public partial class DialogWindow : Window
 {
-    public static ResourceKey GetResourceKey(DialogButton dialogButton)
+    protected virtual ResourceKey GetResourceKey(DialogButton dialogButton)
     {
         switch (dialogButton)
         {
@@ -153,16 +164,23 @@ public partial class DialogWindow : Window
 
     public static bool? ShowPresenter(object presenter, Action<IDialog> action = null, Func<Task<bool>> canSumit = null)
     {
-        DialogWindow dialog = new DialogWindow();
+        return ShowPresenter<DialogWindow>(presenter, action, canSumit);
+    }
+
+    public static bool? ShowPresenter<T>(object presenter, Action<IDialog> action = null, Func<Task<bool>> canSumit = null) where T : DialogWindow, new()
+    {
+        T dialog = new T();
         dialog.Content = presenter;
         dialog.Width = 400;
         dialog.SizeToContent = SizeToContent.Height;
         dialog.CanSumit = canSumit;
         if (presenter is IIconable iconable && !string.IsNullOrEmpty(iconable.Icon))
             dialog.FontIcon = iconable.Icon;
+        if (presenter is IWindowInitable initable)
+            initable.InitWindow(dialog);
         action?.Invoke(dialog);
         dialog.Title = dialog.Title ?? presenter.GetType().GetCustomAttribute<DisplayAttribute>()?.Name ?? "提示";
-        ResourceKey key = GetResourceKey(dialog.DialogButton);
+        ResourceKey key = dialog.GetResourceKey(dialog.DialogButton);
         dialog.Style = Application.Current.FindResource(key) as Style;
         var owner = dialog.Owner ?? Application.Current.MainWindow;
         if (owner?.IsLoaded == true)
@@ -179,16 +197,18 @@ public partial class DialogWindow : Window
         return r;
     }
 
-    public static T ShowAction<P, T>(P presenter, Func<IDialog, P, T> func, Action<IDialog> action = null)
+    public static T ShowAction<P, T, TDialogWindow>(P presenter, Func<IDialog, P, T> func, Action<IDialog> action = null) where TDialogWindow : DialogWindow, new()
     {
-        DialogWindow dialog = new DialogWindow();
+        TDialogWindow dialog = new TDialogWindow();
         dialog.Content = presenter;
         dialog.Width = 500;
         dialog.MinHeight = 150;
         dialog.SizeToContent = SizeToContent.Height;
+        if (presenter is IWindowInitable initable)
+            initable.InitWindow(dialog);
         action?.Invoke(dialog);
         dialog.Title = dialog.Title ?? presenter.GetType().GetCustomAttribute<DisplayAttribute>()?.Name ?? "提示";
-        dialog.Style = Application.Current.FindResource(GetResourceKey(dialog.DialogButton)) as Style;
+        dialog.Style = Application.Current.FindResource(dialog.GetResourceKey(dialog.DialogButton)) as Style;
         var owner = dialog.Owner ?? Application.Current.MainWindow;
         if (owner?.IsLoaded == true)
         {
@@ -207,11 +227,14 @@ public partial class DialogWindow : Window
                 Task.Run(() =>
                 {
                     result = func.Invoke(dialog, presenter);
-                    dialog.Dispatcher.Invoke(() =>
+                    if (dialog.UseActionAutoClose)
                     {
-                        if (dialog.DialogResult == null)
-                            dialog.DialogResult = true;
-                    });
+                        dialog.Dispatcher.Invoke(() =>
+                        {
+                            if (dialog.DialogResult == null)
+                                dialog.DialogResult = true;
+                        });
+                    }
                 });
             }
         };

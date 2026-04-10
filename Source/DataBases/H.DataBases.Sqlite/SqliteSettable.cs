@@ -18,8 +18,17 @@ using System.ComponentModel.DataAnnotations;
 
 namespace H.DataBases.Sqlite
 {
+    [Display(Name = "数据库配置", GroupName = SettingGroupNames.GroupData)]
     public class SqliteSettable : SqliteSettableBase<SqliteSettable>, ISqliteSettable, IDbSettable
     {
+        public SqliteSettable()
+        {
+            this.Name = this.Name;
+        }
 
+        public override bool Load(out string message)
+        {
+            return base.Load(out message);
+        }
     }
 }

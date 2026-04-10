@@ -6,10 +6,14 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
+using H.Services.AppPath;
 using H.Services.Logger;
+using System.Diagnostics;
 using System.IO;
+using System.Runtime.CompilerServices;
 using System.Security.Cryptography;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace H.Extensions.Encryption.String;
 
@@ -42,7 +46,7 @@ public static class DESExtension
         }
         catch (Exception ex)
         {
-            IocLog.Instance?.Error(ex);
+            IocLog.Error(ex);
             return value;
         }
 
@@ -70,10 +74,11 @@ public static class DESExtension
         }
         catch (Exception ex)
         {
-            IocLog.Instance?.Error(ex);
+            IocLog.Error(ex);
             return value;
         }
 
     }
 
 }
+

@@ -1,24 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <ItemGroup>
-    <Compile Remove="DateTime\**" />
-    <Compile Remove="String\**" />
-    <EmbeddedResource Remove="DateTime\**" />
-    <EmbeddedResource Remove="String\**" />
-    <None Remove="DateTime\**" />
-    <None Remove="String\**" />
-    <Page Remove="DateTime\**" />
-    <Page Remove="String\**" />
-    <Resource Remove="DateTime\**" />
-    <Resource Remove="String\**" />
-  </ItemGroup>
-  <ItemGroup>
     <PackageReference Include="System.Drawing.Common" Version="7.0.0" />
   </ItemGroup>
-
   <ItemGroup>
     <ProjectReference Include="..\..\Base\H.ValueConverter\H.ValueConverter.csproj" />
     <ProjectReference Include="..\H.Extensions.Common\H.Extensions.Common.csproj" />
     <ProjectReference Include="..\H.Extensions.Validation\H.Extensions.Validation.csproj" />
   </ItemGroup>
-
 </Project>

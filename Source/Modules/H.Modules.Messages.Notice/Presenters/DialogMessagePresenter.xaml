@@ -41,8 +41,7 @@
                            VerticalAlignment="Center"
                            Text="{Binding Message}"
                            TextTrimming="CharacterEllipsis" />
-                <DockPanel LastChildFill="False"
-                           WindowChrome.IsHitTestVisibleInChrome="True">
+                <DockPanel LastChildFill="False">
                     <Button Height="Auto"
                             Margin="2,0"
                             Padding="5,3"
@@ -65,8 +64,7 @@
                             HorizontalAlignment="Right"
                             VerticalAlignment="Center"
                             Command="{Binding CloseCommand}"
-                            Content="{x:Static FontIcons.Cancel}"
-                            WindowChrome.IsHitTestVisibleInChrome="True" />
+                            Content="{x:Static FontIcons.Cancel}"/>
         </Grid>
     </DataTemplate>
 </ResourceDictionary>

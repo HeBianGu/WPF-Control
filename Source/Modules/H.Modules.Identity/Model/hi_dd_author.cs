@@ -6,13 +6,14 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
+using H.Services.Identity.Author;
 using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace H.Modules.Identity
 {
     [Display(Name = "权限管理")]
-    public class hi_dd_author : DbModelBase
+    public class hi_dd_author : DbModelBase, IAuthor
     {
         public hi_dd_author()
         {

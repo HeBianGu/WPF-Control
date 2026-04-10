@@ -1,0 +1,27 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:h="https://github.com/HeBianGu"
+    xmlns:local="clr-namespace:H.Controls.Chart2D.Presenter.Presenter">
+    <DataTemplate DataType="{x:Type local:PiePresenter}">
+        <DesignBorder>
+            <Chart
+                MinWidth="200"
+                Background="{x:Null}"
+                UseDrawOnce="False"
+                UseLegend="{Binding UseLegend}"
+                UseRefreshButton="False"
+                Visibility="{Binding IsVisible, Converter={x:Static Converter.GetTrueToVisible}}">
+                <Series>
+                    <Pie
+                        Data="{Binding Data}"
+                        Foreground="{Binding Foreground}"
+                        Len="{Binding Len}"
+                        TryFreeze="False"
+                        xDisplay="{Binding xDisplay}" />
+                </Series>
+                <PathLegend />
+            </Chart>
+        </DesignBorder>
+    </DataTemplate>
+</ResourceDictionary>

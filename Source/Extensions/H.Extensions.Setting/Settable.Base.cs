@@ -20,12 +20,32 @@ using System.Text.Json.Serialization;
 
 namespace H.Extensions.Setting;
 
-public abstract class SettableBase : DisplayBindableBase, ISettable, ILoadable, ISaveable, IDefaultable, IClearable
+public abstract class SettableBase : ResxDisplayBindableBase, ISettable, ILoadable,
+    ISaveable, IDefaultable, IClearable, IDefaultTemplateable
 {
+    protected SettableBase()
+    {
+        this.Version = this.GetType().Assembly.GetName().Version.ToString();
+    }
+
+    [JsonIgnore]
+    [Browsable(false)]
+    public override string Name
+    {
+        get { return base.Name; }
+        set
+        {
+            base.Name = value;
+            RaisePropertyChanged();
+        }
+    }
+
     [XmlIgnore]
     [JsonIgnore]
     [Browsable(false)]
     public bool IsVisibleInSetting { get; set; } = true;
+
+    public string Version { get; set; }
 
     public override void LoadDefault()
     {
@@ -66,11 +86,12 @@ public abstract class SettableBase : DisplayBindableBase, ISettable, ILoadable, 
         if (!this.HasFile())
         {
             message = "文件不存在:" + path;
-            IocLog.Instance?.Info(message);
+            this.UpdateResx();
             return true;
         }
         message = null;
         this.Load(path);
+        this.UpdateResx();
         return true;
     }
 
@@ -115,5 +136,26 @@ public abstract class SettableBase : DisplayBindableBase, ISettable, ILoadable, 
         var path = this.GetDefaultPath();
         if (File.Exists(path))
             File.Delete(path);
+    }
+
+    public virtual (bool success, string message) LoadDefaultTemplate()
+    {
+        var path = this.GetDefaultPath();
+        if (File.Exists(path))
+            return (false, "已存在配置文件:" + path);
+        string message;
+        var defPath = this.GetDefaultTemplatePath();
+        if (!File.Exists(defPath))
+        {
+            message = "默认模板文件文件不存在:" + defPath;
+            return (false, message);
+        }
+        File.Copy(defPath, this.GetDefaultPath());
+        return (true, defPath);
+    }
+
+    private string GetDefaultTemplatePath()
+    {
+        return Path.Combine(AppDomianPaths.DefaultTemplates, AppDomianPaths.DefaultSettings, this.GetType().Name + ".json");
     }
 }

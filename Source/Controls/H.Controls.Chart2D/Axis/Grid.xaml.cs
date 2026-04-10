@@ -101,9 +101,7 @@ namespace H.Controls.Chart2D
             for (int i = 0; i < this.yAxis.Count; i++)
             {
                 //if (i == 0) continue;
-
                 double item = this.yAxis[i];
-
                 System.Windows.Shapes.Line l = new System.Windows.Shapes.Line();
                 l.X1 = 0;
                 l.Y1 = 0;
@@ -111,25 +109,15 @@ namespace H.Controls.Chart2D
                 l.Height = 1;
                 l.Style = this.VerticalLineStyle;
                 l.X2 = this.ActualWidth;
-
-                //   l.MouseEnter +=(m, k) =>
-                //{
-                //    l.Stroke = Brushes.Red;
-
-                //};
-
-
                 Canvas.SetTop(l, this.GetY(item, this.ActualHeight));
-
                 this.Children.Add(l);
             }
 
             for (int i = 0; i < this.xAxis.Count; i++)
             {
-                if (i == 0) continue;
-
+                if (i == 0) 
+                    continue;
                 double item = this.xAxis[i];
-
                 System.Windows.Shapes.Line l = new System.Windows.Shapes.Line();
                 l.X1 = 0;
                 l.Y1 = 0;
@@ -158,9 +146,7 @@ namespace H.Controls.Chart2D
         public override void Draw(Canvas canvas)
         {
             base.Draw(canvas);
-
             this.DrawBorder(this);
-
             this.DrawCross(this);
         }
 

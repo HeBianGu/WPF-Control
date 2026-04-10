@@ -1,0 +1,969 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Common_Account" xml:space="preserve">
+    <value>アカウント</value>
+  </data>
+  <data name="Common_Ok" xml:space="preserve">
+    <value>確定</value>
+  </data>
+  <data name="Common_Cancel" xml:space="preserve">
+    <value>キャンセル</value>
+  </data>
+  <data name="Common_Yes" xml:space="preserve">
+    <value>はい</value>
+  </data>
+  <data name="Common_View" xml:space="preserve">
+    <value>表示</value>
+  </data>
+  <data name="Common_No" xml:space="preserve">
+    <value>いいえ</value>
+  </data>
+  <data name="Common_Abort" xml:space="preserve">
+    <value>中止</value>
+  </data>
+  <data name="Common_Retry" xml:space="preserve">
+    <value>再試行</value>
+  </data>
+  <data name="Common_Ignore" xml:space="preserve">
+    <value>無視</value>
+  </data>
+  <data name="Common_Apply" xml:space="preserve">
+    <value>適用</value>
+  </data>
+  <data name="Common_Close" xml:space="preserve">
+    <value>閉じる</value>
+  </data>
+  <data name="Common_Prompt" xml:space="preserve">
+    <value>ヒント</value>
+  </data>
+  <data name="Common_Exit" xml:space="preserve">
+    <value>終了</value>
+  </data>
+  <data name="Common_Back" xml:space="preserve">
+    <value>戻る</value>
+  </data>
+  <data name="Common_Next" xml:space="preserve">
+    <value>次へ</value>
+  </data>
+  <data name="Common_Show" xml:space="preserve">
+    <value>表示</value>
+  </data>
+  <data name="Common_Previous" xml:space="preserve">
+    <value>前へ</value>
+  </data>
+  <data name="Common_Finish" xml:space="preserve">
+    <value>完了</value>
+  </data>
+  <data name="Common_Save" xml:space="preserve">
+    <value>保存</value>
+  </data>
+  <data name="Common_SaveAs" xml:space="preserve">
+    <value>名前を付けて保存</value>
+  </data>
+  <data name="Common_Open" xml:space="preserve">
+    <value>開く</value>
+  </data>
+  <data name="Common_New" xml:space="preserve">
+    <value>新規作成</value>
+  </data>
+  <data name="Common_Create" xml:space="preserve">
+    <value>作成</value>
+  </data>
+  <data name="Common_Default" xml:space="preserve">
+    <value>デフォルト</value>
+  </data>
+  <data name="Common_Edit" xml:space="preserve">
+    <value>編集</value>
+  </data>
+  <data name="Common_Delete" xml:space="preserve">
+    <value>削除</value>
+  </data>
+  <data name="Common_Remove" xml:space="preserve">
+    <value>削除</value>
+  </data>
+  <data name="Common_Add" xml:space="preserve">
+    <value>追加</value>
+  </data>
+  <data name="Common_Insert" xml:space="preserve">
+    <value>挿入</value>
+  </data>
+  <data name="Common_Update" xml:space="preserve">
+    <value>更新</value>
+  </data>
+  <data name="Common_Rename" xml:space="preserve">
+    <value>名前の変更</value>
+  </data>
+  <data name="Common_Import" xml:space="preserve">
+    <value>インポート</value>
+  </data>
+  <data name="Common_Export" xml:space="preserve">
+    <value>エクスポート</value>
+  </data>
+  <data name="Common_Print" xml:space="preserve">
+    <value>印刷</value>
+  </data>
+  <data name="Common_Preview" xml:space="preserve">
+    <value>プレビュー</value>
+  </data>
+  <data name="Common_Copy" xml:space="preserve">
+    <value>コピー</value>
+  </data>
+  <data name="Common_Cut" xml:space="preserve">
+    <value>切り取り</value>
+  </data>
+  <data name="Common_Paste" xml:space="preserve">
+    <value>貼り付け</value>
+  </data>
+  <data name="Common_Undo" xml:space="preserve">
+    <value>元に戻す</value>
+  </data>
+  <data name="Common_Redo" xml:space="preserve">
+    <value>やり直す</value>
+  </data>
+  <data name="Common_Search" xml:space="preserve">
+    <value>検索</value>
+  </data>
+  <data name="Common_Find" xml:space="preserve">
+    <value>検索</value>
+  </data>
+  <data name="Common_FindNext" xml:space="preserve">
+    <value>次を検索</value>
+  </data>
+  <data name="Common_Replace" xml:space="preserve">
+    <value>置換</value>
+  </data>
+  <data name="Common_Filter" xml:space="preserve">
+    <value>絞り込み</value>
+  </data>
+  <data name="Common_Sort" xml:space="preserve">
+    <value>並べ替え</value>
+  </data>
+  <data name="Common_Refresh" xml:space="preserve">
+    <value>更新</value>
+  </data>
+  <data name="Common_Clear" xml:space="preserve">
+    <value>クリア</value>
+  </data>
+  <data name="Common_Reset" xml:space="preserve">
+    <value>リセット</value>
+  </data>
+  <data name="Common_Select" xml:space="preserve">
+    <value>選択</value>
+  </data>
+  <data name="Common_SelectAll" xml:space="preserve">
+    <value>すべて選択</value>
+  </data>
+  <data name="Common_DeselectAll" xml:space="preserve">
+    <value>すべての選択を解除</value>
+  </data>
+  <data name="Common_InvertSelection" xml:space="preserve">
+    <value>選択を反転</value>
+  </data>
+  <data name="Common_Enable" xml:space="preserve">
+    <value>有効化</value>
+  </data>
+  <data name="Common_Disable" xml:space="preserve">
+    <value>無効化</value>
+  </data>
+  <data name="Common_On" xml:space="preserve">
+    <value>オン</value>
+  </data>
+  <data name="Common_Off" xml:space="preserve">
+    <value>オフ</value>
+  </data>
+  <data name="Common_Loading" xml:space="preserve">
+    <value>読み込み中...</value>
+  </data>
+  <data name="Common_PleaseWait" xml:space="preserve">
+    <value>しばらくお待ちください...</value>
+  </data>
+  <data name="Common_Working" xml:space="preserve">
+    <value>処理中...</value>
+  </data>
+  <data name="Common_Connecting" xml:space="preserve">
+    <value>接続中...</value>
+  </data>
+  <data name="Common_Disconnecting" xml:space="preserve">
+    <value>切断中...</value>
+  </data>
+  <data name="Common_Error" xml:space="preserve">
+    <value>エラー</value>
+  </data>
+  <data name="Common_Warning" xml:space="preserve">
+    <value>警告</value>
+  </data>
+  <data name="Common_Information" xml:space="preserve">
+    <value>ヒント</value>
+  </data>
+  <data name="Common_Success" xml:space="preserve">
+    <value>成功</value>
+  </data>
+  <data name="Common_Failed" xml:space="preserve">
+    <value>失敗</value>
+  </data>
+  <data name="Common_OperationSucceeded" xml:space="preserve">
+    <value>操作が成功しました</value>
+  </data>
+  <data name="Common_OperationFailed" xml:space="preserve">
+    <value>操作に失敗しました</value>
+  </data>
+  <data name="Common_NotSupported" xml:space="preserve">
+    <value>サポートしていません</value>
+  </data>
+  <data name="Common_NotImplemented" xml:space="preserve">
+    <value>未実装</value>
+  </data>
+  <data name="Common_Confirm" xml:space="preserve">
+    <value>確認</value>
+  </data>
+  <data name="Common_Confirmation" xml:space="preserve">
+    <value>確認メッセージ</value>
+  </data>
+  <data name="Common_AreYouSure" xml:space="preserve">
+    <value>本当にいいですか？</value>
+  </data>
+  <data name="Common_ConfirmDelete" xml:space="preserve">
+    <value>削除してもよろしいですか？</value>
+  </data>
+  <data name="Common_ConfirmExit" xml:space="preserve">
+    <value>終了してもよろしいですか？</value>
+  </data>
+  <data name="Common_ConfirmSaveChanges" xml:space="preserve">
+    <value>変更を保存しますか？</value>
+  </data>
+  <data name="Common_UnsavedChanges" xml:space="preserve">
+    <value>保存されていない変更があります</value>
+  </data>
+  <data name="Common_RequiredField" xml:space="preserve">
+    <value>必須項目</value>
+  </data>
+  <data name="Common_InvalidInput" xml:space="preserve">
+    <value>無効な入力</value>
+  </data>
+  <data name="Common_InvalidFormat" xml:space="preserve">
+    <value>形式が正しくありません</value>
+  </data>
+  <data name="Common_OutOfRange" xml:space="preserve">
+    <value>範囲外</value>
+  </data>
+  <data name="Common_PleaseSelect" xml:space="preserve">
+    <value>選択してください</value>
+  </data>
+  <data name="Common_PleaseEnter" xml:space="preserve">
+    <value>入力してください</value>
+  </data>
+  <data name="Common_Login" xml:space="preserve">
+    <value>ログイン</value>
+  </data>
+  <data name="Common_Logout" xml:space="preserve">
+    <value>ログアウト</value>
+  </data>
+  <data name="Common_Register" xml:space="preserve">
+    <value>登録</value>
+  </data>
+  <data name="Common_UserName" xml:space="preserve">
+    <value>ユーザー名</value>
+  </data>
+  <data name="Common_Password" xml:space="preserve">
+    <value>パスワード</value>
+  </data>
+  <data name="Common_ConfirmPassword" xml:space="preserve">
+    <value>パスワードを確認してください</value>
+  </data>
+  <data name="Common_ForgotPassword" xml:space="preserve">
+    <value>パスワードを忘れた場合</value>
+  </data>
+  <data name="Common_Settings" xml:space="preserve">
+    <value>設定</value>
+  </data>
+  <data name="Common_Preferences" xml:space="preserve">
+    <value>設定</value>
+  </data>
+  <data name="Common_Options" xml:space="preserve">
+    <value>オプション</value>
+  </data>
+  <data name="Common_About" xml:space="preserve">
+    <value>について</value>
+  </data>
+  <data name="Common_Help" xml:space="preserve">
+    <value>ヘルプ</value>
+  </data>
+  <data name="Common_CheckForUpdates" xml:space="preserve">
+    <value>更新を確認</value>
+  </data>
+  <data name="Common_NetworkError" xml:space="preserve">
+    <value>ネットワークエラー</value>
+  </data>
+  <data name="Common_ServerError" xml:space="preserve">
+    <value>サーバーエラー</value>
+  </data>
+  <data name="Common_Timeout" xml:space="preserve">
+    <value>タイムアウトしました</value>
+  </data>
+  <data name="Common_Unauthorized" xml:space="preserve">
+    <value>未認証</value>
+  </data>
+  <data name="Common_AccessDenied" xml:space="preserve">
+    <value>アクセスが拒否されました</value>
+  </data>
+  <data name="Common_Download" xml:space="preserve">
+    <value>ダウンロード</value>
+  </data>
+  <data name="Common_Upload" xml:space="preserve">
+    <value>アップロード</value>
+  </data>
+  <data name="Common_Start" xml:space="preserve">
+    <value>開始</value>
+  </data>
+  <data name="Common_Stop" xml:space="preserve">
+    <value>停止</value>
+  </data>
+  <data name="Common_Pause" xml:space="preserve">
+    <value>一時停止</value>
+  </data>
+  <data name="Common_Resume" xml:space="preserve">
+    <value>続ける</value>
+  </data>
+  <data name="Common_CopySucceeded" xml:space="preserve">
+    <value>コピーに成功しました</value>
+  </data>
+  <data name="Common_CopyFailed" xml:space="preserve">
+    <value>コピーに失敗しました</value>
+  </data>
+  <data name="Common_SaveSucceeded" xml:space="preserve">
+    <value>保存に成功しました</value>
+  </data>
+  <data name="Common_SaveFailed" xml:space="preserve">
+    <value>保存に失敗しました</value>
+  </data>
+  <data name="Common_ItemsCountFormat" xml:space="preserve">
+    <value>合計 {0} 項</value>
+  </data>
+  <data name="Common_SelectedCountFormat" xml:space="preserve">
+    <value>{0} 項目を選択済み</value>
+  </data>
+  <data name="Common_PageFormat" xml:space="preserve">
+    <value>第 {0} ページ / 全 {1} ページ</value>
+  </data>
+  <data name="Common_NoData" xml:space="preserve">
+    <value>データがありません</value>
+  </data>
+  <data name="Common_Empty" xml:space="preserve">
+    <value>空白</value>
+  </data>
+  <data name="Common_All" xml:space="preserve">
+    <value>すべて</value>
+  </data>
+  <data name="Menu_File" xml:space="preserve">
+    <value>ファイル</value>
+  </data>
+  <data name="Menu_Edit" xml:space="preserve">
+    <value>編集</value>
+  </data>
+  <data name="Menu_View" xml:space="preserve">
+    <value>ビュー</value>
+  </data>
+  <data name="Menu_Tools" xml:space="preserve">
+    <value>ツール</value>
+  </data>
+  <data name="Menu_Window" xml:space="preserve">
+    <value>ウィンドウ</value>
+  </data>
+  <data name="Menu_Help" xml:space="preserve">
+    <value>ヘルプ</value>
+  </data>
+  <data name="Menu_New" xml:space="preserve">
+    <value>新規作成</value>
+  </data>
+  <data name="Menu_Open" xml:space="preserve">
+    <value>開く</value>
+  </data>
+  <data name="Menu_OpenRecent" xml:space="preserve">
+    <value>最近使った</value>
+  </data>
+  <data name="Menu_Close" xml:space="preserve">
+    <value>閉じる</value>
+  </data>
+  <data name="Menu_CloseAll" xml:space="preserve">
+    <value>すべて閉じる</value>
+  </data>
+  <data name="Menu_Save" xml:space="preserve">
+    <value>保存</value>
+  </data>
+  <data name="Menu_SaveAs" xml:space="preserve">
+    <value>名前を付けて保存</value>
+  </data>
+  <data name="Menu_SaveAll" xml:space="preserve">
+    <value>すべて保存</value>
+  </data>
+  <data name="Menu_Import" xml:space="preserve">
+    <value>インポート</value>
+  </data>
+  <data name="Menu_Export" xml:space="preserve">
+    <value>エクスポート</value>
+  </data>
+  <data name="Menu_Print" xml:space="preserve">
+    <value>印刷</value>
+  </data>
+  <data name="Menu_PrintPreview" xml:space="preserve">
+    <value>印刷プレビュー</value>
+  </data>
+  <data name="Menu_Exit" xml:space="preserve">
+    <value>終了</value>
+  </data>
+  <data name="Menu_Undo" xml:space="preserve">
+    <value>元に戻す</value>
+  </data>
+  <data name="Menu_Redo" xml:space="preserve">
+    <value>やり直す</value>
+  </data>
+  <data name="Menu_Cut" xml:space="preserve">
+    <value>切り取り</value>
+  </data>
+  <data name="Menu_Copy" xml:space="preserve">
+    <value>コピー</value>
+  </data>
+  <data name="Menu_Paste" xml:space="preserve">
+    <value>貼り付け</value>
+  </data>
+  <data name="Menu_Delete" xml:space="preserve">
+    <value>削除</value>
+  </data>
+  <data name="Menu_SelectAll" xml:space="preserve">
+    <value>すべて選択</value>
+  </data>
+  <data name="Menu_Find" xml:space="preserve">
+    <value>検索</value>
+  </data>
+  <data name="Menu_FindNext" xml:space="preserve">
+    <value>次を検索</value>
+  </data>
+  <data name="Menu_Replace" xml:space="preserve">
+    <value>置換</value>
+  </data>
+  <data name="Menu_ZoomIn" xml:space="preserve">
+    <value>拡大</value>
+  </data>
+  <data name="Menu_ZoomOut" xml:space="preserve">
+    <value>縮小</value>
+  </data>
+  <data name="Menu_ResetZoom" xml:space="preserve">
+    <value>ズームをリセット</value>
+  </data>
+  <data name="Menu_FullScreen" xml:space="preserve">
+    <value>全画面</value>
+  </data>
+  <data name="Menu_ToggleSidebar" xml:space="preserve">
+    <value>サイドバーを切り替える</value>
+  </data>
+  <data name="Menu_ToggleStatusBar" xml:space="preserve">
+    <value>ステータスバーを切り替える</value>
+  </data>
+  <data name="Menu_Refresh" xml:space="preserve">
+    <value>更新</value>
+  </data>
+  <data name="Menu_Settings" xml:space="preserve">
+    <value>設定</value>
+  </data>
+  <data name="Menu_Preferences" xml:space="preserve">
+    <value>設定</value>
+  </data>
+  <data name="Menu_CheckForUpdates" xml:space="preserve">
+    <value>更新を確認</value>
+  </data>
+  <data name="Menu_About" xml:space="preserve">
+    <value>について</value>
+  </data>
+  <data name="Menu_Documentation" xml:space="preserve">
+    <value>ドキュメント</value>
+  </data>
+  <data name="Menu_Feedback" xml:space="preserve">
+    <value>フィードバック</value>
+  </data>
+  <data name="Dialog_Title_Confirm" xml:space="preserve">
+    <value>確認</value>
+  </data>
+  <data name="Dialog_Title_Warning" xml:space="preserve">
+    <value>警告</value>
+  </data>
+  <data name="Dialog_Title_Error" xml:space="preserve">
+    <value>エラー</value>
+  </data>
+  <data name="Dialog_Title_Information" xml:space="preserve">
+    <value>ヒント</value>
+  </data>
+  <data name="Dialog_Title_Settings" xml:space="preserve">
+    <value>設定</value>
+  </data>
+  <data name="Dialog_Title_About" xml:space="preserve">
+    <value>概要</value>
+  </data>
+  <data name="Dialog_Button_Ok" xml:space="preserve">
+    <value>確定</value>
+  </data>
+  <data name="Dialog_Button_Cancel" xml:space="preserve">
+    <value>キャンセル</value>
+  </data>
+  <data name="Dialog_Button_Yes" xml:space="preserve">
+    <value>はい</value>
+  </data>
+  <data name="Dialog_Button_No" xml:space="preserve">
+    <value>いいえ</value>
+  </data>
+  <data name="Dialog_Button_Apply" xml:space="preserve">
+    <value>アプリケーション</value>
+  </data>
+  <data name="Dialog_Button_Close" xml:space="preserve">
+    <value>閉じる</value>
+  </data>
+  <data name="Dialog_Button_Retry" xml:space="preserve">
+    <value>再試行</value>
+  </data>
+  <data name="Dialog_Button_Ignore" xml:space="preserve">
+    <value>無視</value>
+  </data>
+  <data name="Dialog_Message_AreYouSure" xml:space="preserve">
+    <value>本当にいいですか？</value>
+  </data>
+  <data name="Dialog_Message_ConfirmDelete" xml:space="preserve">
+    <value>削除してもよろしいですか？この操作は元に戻せません。</value>
+  </data>
+  <data name="Dialog_Message_ConfirmExit" xml:space="preserve">
+    <value>終了してもよろしいですか？</value>
+  </data>
+  <data name="Dialog_Message_UnsavedChanges" xml:space="preserve">
+    <value>未保存の変更があります。保存しますか？</value>
+  </data>
+  <data name="Dialog_Message_OperationSucceeded" xml:space="preserve">
+    <value>操作が成功しました。</value>
+  </data>
+  <data name="Dialog_Message_OperationFailed" xml:space="preserve">
+    <value>操作に失敗しました。</value>
+  </data>
+  <data name="Dialog_Message_NotSupported" xml:space="preserve">
+    <value>現在の操作はサポートされていません。</value>
+  </data>
+  <data name="Dialog_File_OpenTitle" xml:space="preserve">
+    <value>開くファイルを選択してください</value>
+  </data>
+  <data name="Dialog_File_SaveTitle" xml:space="preserve">
+    <value>保存先を選択</value>
+  </data>
+  <data name="Dialog_File_FolderTitle" xml:space="preserve">
+    <value>フォルダーを選択</value>
+  </data>
+  <data name="Dialog_File_OverwritePrompt" xml:space="preserve">
+    <value>ファイルは既に存在します。上書きしますか？</value>
+  </data>
+  <data name="Validation_Required" xml:space="preserve">
+    <value>この項目は必須です。</value>
+  </data>
+  <data name="Validation_Invalid" xml:space="preserve">
+    <value>無効な入力です。</value>
+  </data>
+  <data name="Validation_InvalidFormat" xml:space="preserve">
+    <value>形式が正しくありません。</value>
+  </data>
+  <data name="Validation_OutOfRange" xml:space="preserve">
+    <value>許容範囲を超えています。</value>
+  </data>
+  <data name="Validation_MinLengthFormat" xml:space="preserve">
+    <value>長さは {0} 以上である必要があります。</value>
+  </data>
+  <data name="Validation_MaxLengthFormat" xml:space="preserve">
+    <value>長さは {0} を超えることはできません。</value>
+  </data>
+  <data name="Validation_LengthRangeFormat" xml:space="preserve">
+    <value>長さは {0} から {1} の間でなければなりません。</value>
+  </data>
+  <data name="Validation_MinValueFormat" xml:space="preserve">
+    <value>{0} 以上でなければなりません。</value>
+  </data>
+  <data name="Validation_MaxValueFormat" xml:space="preserve">
+    <value>{0} 以下でなければなりません。</value>
+  </data>
+  <data name="Validation_ValueRangeFormat" xml:space="preserve">
+    <value>{0} から {1} の間でなければなりません。</value>
+  </data>
+  <data name="Validation_InvalidEmail" xml:space="preserve">
+    <value>メールアドレスの形式が正しくありません。</value>
+  </data>
+  <data name="Validation_InvalidPhone" xml:space="preserve">
+    <value>電話番号の形式が正しくありません。</value>
+  </data>
+  <data name="Validation_InvalidUrl" xml:space="preserve">
+    <value>URL の形式が正しくありません。</value>
+  </data>
+  <data name="Validation_InvalidIpAddress" xml:space="preserve">
+    <value>IP アドレスが正しくありません。</value>
+  </data>
+  <data name="Validation_PasswordNotMatch" xml:space="preserve">
+    <value>入力したパスワードが一致しません。</value>
+  </data>
+  <data name="Validation_InvalidDate" xml:space="preserve">
+    <value>無効な日付です。</value>
+  </data>
+  <data name="Validation_InvalidTime" xml:space="preserve">
+    <value>無効な時刻です。</value>
+  </data>
+  <data name="File_NewFile" xml:space="preserve">
+    <value>新しいファイル
+</value>
+  </data>
+  <data name="File_NewFolder" xml:space="preserve">
+    <value>新しいフォルダー</value>
+  </data>
+  <data name="File_OpenFile" xml:space="preserve">
+    <value>ファイルを開く</value>
+  </data>
+  <data name="File_OpenFolder" xml:space="preserve">
+    <value>フォルダーを開く</value>
+  </data>
+  <data name="File_SaveFile" xml:space="preserve">
+    <value>ファイルを保存</value>
+  </data>
+  <data name="File_SaveAll" xml:space="preserve">
+    <value>すべて保存</value>
+  </data>
+  <data name="File_Rename" xml:space="preserve">
+    <value>名前の変更</value>
+  </data>
+  <data name="File_Copy" xml:space="preserve">
+    <value>コピー</value>
+  </data>
+  <data name="File_Move" xml:space="preserve">
+    <value>移動</value>
+  </data>
+  <data name="File_Delete" xml:space="preserve">
+    <value>削除</value>
+  </data>
+  <data name="File_Restore" xml:space="preserve">
+    <value>元に戻す</value>
+  </data>
+  <data name="File_Size" xml:space="preserve">
+    <value>サイズ</value>
+  </data>
+  <data name="File_Type" xml:space="preserve">
+    <value>種類</value>
+  </data>
+  <data name="File_Name" xml:space="preserve">
+    <value>名前</value>
+  </data>
+  <data name="File_Path" xml:space="preserve">
+    <value>パス</value>
+  </data>
+  <data name="File_DateCreated" xml:space="preserve">
+    <value>作成日時</value>
+  </data>
+  <data name="File_DateModified" xml:space="preserve">
+    <value>更新日時</value>
+  </data>
+  <data name="File_Error_NotFound" xml:space="preserve">
+    <value>ファイルが見つかりませんでした。</value>
+  </data>
+  <data name="File_Error_FolderNotFound" xml:space="preserve">
+    <value>フォルダーが見つかりません。</value>
+  </data>
+  <data name="File_Error_AccessDenied" xml:space="preserve">
+    <value>アクセス権限がありません。</value>
+  </data>
+  <data name="File_Error_InUse" xml:space="preserve">
+    <value>ファイルは使用中です。</value>
+  </data>
+  <data name="File_Error_ReadFailed" xml:space="preserve">
+    <value>読み込みに失敗しました。</value>
+  </data>
+  <data name="File_Error_WriteFailed" xml:space="preserve">
+    <value>書き込みに失敗しました。</value>
+  </data>
+  <data name="File_Error_InvalidPath" xml:space="preserve">
+    <value>無効なパスです。</value>
+  </data>
+  <data name="File_Error_AlreadyExists" xml:space="preserve">
+    <value>同名のファイルまたはフォルダーが既に存在します。</value>
+  </data>
+  <data name="File_Filter_AllFiles" xml:space="preserve">
+    <value>すべてのファイル (*.*)</value>
+  </data>
+  <data name="Nav_Home" xml:space="preserve">
+    <value>ホームページ</value>
+  </data>
+  <data name="Nav_Dashboard" xml:space="preserve">
+    <value>ダッシュボード</value>
+  </data>
+  <data name="Nav_Projects" xml:space="preserve">
+    <value>プロジェクト</value>
+  </data>
+  <data name="Nav_Favorites" xml:space="preserve">
+    <value>お気に入り</value>
+  </data>
+  <data name="Nav_Recent" xml:space="preserve">
+    <value>最近</value>
+  </data>
+  <data name="Nav_History" xml:space="preserve">
+    <value>履歴</value>
+  </data>
+  <data name="Nav_Settings" xml:space="preserve">
+    <value>設定</value>
+  </data>
+  <data name="Nav_Account" xml:space="preserve">
+    <value>アカウント</value>
+  </data>
+  <data name="Nav_Profile" xml:space="preserve">
+    <value>プロフィール</value>
+  </data>
+  <data name="Nav_Security" xml:space="preserve">
+    <value>安全</value>
+  </data>
+  <data name="Nav_Notifications" xml:space="preserve">
+    <value>通知</value>
+  </data>
+  <data name="Nav_Back" xml:space="preserve">
+    <value>戻る</value>
+  </data>
+  <data name="Nav_Next" xml:space="preserve">
+    <value>次へ</value>
+  </data>
+  <data name="Nav_Previous" xml:space="preserve">
+    <value>前へ</value>
+  </data>
+  <data name="Status_Ready" xml:space="preserve">
+    <value>準備完了</value>
+  </data>
+  <data name="Status_Loading" xml:space="preserve">
+    <value>読み込み中...</value>
+  </data>
+  <data name="Status_Working" xml:space="preserve">
+    <value>処理中...</value>
+  </data>
+  <data name="Status_Saving" xml:space="preserve">
+    <value>保存中...</value>
+  </data>
+  <data name="Status_Refreshing" xml:space="preserve">
+    <value>更新中...</value>
+  </data>
+  <data name="Status_Connecting" xml:space="preserve">
+    <value>接続中...</value>
+  </data>
+  <data name="Status_Disconnecting" xml:space="preserve">
+    <value>切断中...</value>
+  </data>
+  <data name="Status_Connected" xml:space="preserve">
+    <value>接続済み</value>
+  </data>
+  <data name="Status_Disconnected" xml:space="preserve">
+    <value>未接続</value>
+  </data>
+  <data name="Status_Success" xml:space="preserve">
+    <value>成功しました</value>
+  </data>
+  <data name="Status_Failed" xml:space="preserve">
+    <value>失敗</value>
+  </data>
+  <data name="Status_Canceled" xml:space="preserve">
+    <value>キャンセル済み</value>
+  </data>
+  <data name="Status_Completed" xml:space="preserve">
+    <value>完了</value>
+  </data>
+  <data name="Status_Paused" xml:space="preserve">
+    <value>一時停止中</value>
+  </data>
+  <data name="Status_Stopped" xml:space="preserve">
+    <value>停止しました</value>
+  </data>
+  <data name="Status_NoData" xml:space="preserve">
+    <value>データがありません</value>
+  </data>
+  <data name="Status_Empty" xml:space="preserve">
+    <value>空欄</value>
+  </data>
+  <data name="Status_ItemsCountFormat" xml:space="preserve">
+    <value>全 {0} 項</value>
+  </data>
+  <data name="Status_SelectedCountFormat" xml:space="preserve">
+    <value>{0} 項目を選択済み</value>
+  </data>
+  <data name="Permission_Title" xml:space="preserve">
+    <value>権限</value>
+  </data>
+  <data name="Permission_AccessDenied" xml:space="preserve">
+    <value>アクセスが拒否されました。</value>
+  </data>
+  <data name="Permission_Unauthorized" xml:space="preserve">
+    <value>未認証です。</value>
+  </data>
+  <data name="Permission_Insufficient" xml:space="preserve">
+    <value>権限が不足しています。</value>
+  </data>
+  <data name="Permission_Request" xml:space="preserve">
+    <value>権限を要求する</value>
+  </data>
+  <data name="Permission_Grant" xml:space="preserve">
+    <value>付与</value>
+  </data>
+  <data name="Permission_Revoke" xml:space="preserve">
+    <value>元に戻す</value>
+  </data>
+  <data name="Permission_AdminRequired" xml:space="preserve">
+    <value>管理者権限が必要です。</value>
+  </data>
+  <data name="Permission_Read" xml:space="preserve">
+    <value>読み込み</value>
+  </data>
+  <data name="Permission_Write" xml:space="preserve">
+    <value>書き込み</value>
+  </data>
+  <data name="Permission_Execute" xml:space="preserve">
+    <value>実行</value>
+  </data>
+  <data name="Permission_Delete" xml:space="preserve">
+    <value>削除</value>
+  </data>
+  <data name="Theme_Title" xml:space="preserve">
+    <value>テーマ</value>
+  </data>
+  <data name="Theme_Light" xml:space="preserve">
+    <value>ライト</value>
+  </data>
+  <data name="Theme_Dark" xml:space="preserve">
+    <value>ダーク</value>
+  </data>
+  <data name="Theme_System" xml:space="preserve">
+    <value>システムに従う</value>
+  </data>
+  <data name="Theme_Auto" xml:space="preserve">
+    <value>自動</value>
+  </data>
+  <data name="Theme_AccentColor" xml:space="preserve">
+    <value>アクセントカラー</value>
+  </data>
+  <data name="Theme_PrimaryColor" xml:space="preserve">
+    <value>メインカラー</value>
+  </data>
+  <data name="Theme_Background" xml:space="preserve">
+    <value>背景</value>
+  </data>
+  <data name="Theme_Foreground" xml:space="preserve">
+    <value>前景</value>
+  </data>
+  <data name="Theme_Font" xml:space="preserve">
+    <value>フォント</value>
+  </data>
+  <data name="Theme_FontSize" xml:space="preserve">
+    <value>フォントサイズ</value>
+  </data>
+  <data name="Theme_CornerRadius" xml:space="preserve">
+    <value>角丸</value>
+  </data>
+  <data name="Theme_Shadow" xml:space="preserve">
+    <value>影
+</value>
+  </data>
+  <data name="Theme_Transparency" xml:space="preserve">
+    <value>透明度</value>
+  </data>
+  <data name="Theme_Apply" xml:space="preserve">
+    <value>アプリテーマ</value>
+  </data>
+  <data name="Theme_Reset" xml:space="preserve">
+    <value>デフォルトテーマに戻す</value>
+  </data>
+  <data name="Window_Maximize" xml:space="preserve">
+    <value>最大化</value>
+  </data>
+  <data name="Window_Minimize" xml:space="preserve">
+    <value>最小化</value>
+  </data>
+  <data name="Window_Restore" xml:space="preserve">
+    <value>元に戻す</value>
+  </data>
+  <data name="Common_DataBase" xml:space="preserve">
+    <value>データベース</value>
+  </data>
+  <data name="Common_CheckAll" xml:space="preserve">
+    <value>すべて選択</value>
+  </data>
+  <data name="Common_DeleteCheckAll" xml:space="preserve">
+    <value>選択した項目を削除</value>
+  </data>
+  <data name="Common_Total" xml:space="preserve">
+    <value>合計</value>
+  </data>
+  <data name="Common_OperationCancel" xml:space="preserve">
+    <value>操作がキャンセルされました</value>
+  </data>
+  <data name="Common_AlreadyExists" xml:space="preserve">
+    <value>既に存在します</value>
+  </data>
+  <data name="Common_PasswordError" xml:space="preserve">
+    <value>パスワードが正しくありません</value>
+  </data>
+  <data name="Common_InputPassword" xml:space="preserve">
+    <value>パスワードを入力してください</value>
+  </data>
+  <data name="Common_PasswrodErrorTooMany" xml:space="preserve">
+    <value>パスワードの誤入力回数が多すぎます</value>
+  </data>
+  <data name="Common_Skip" xml:space="preserve">
+    <value>スキップ</value>
+  </data>
+</root>

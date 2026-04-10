@@ -14,10 +14,8 @@ namespace H.Controls.Form.PropertyItem.ComboBoxPropertyItems
     {
         public ComboBoxPropertyItem(PropertyInfo property, object obj) : base(property, obj)
         {
-
+           
         }
-
-       
     }
 
 }

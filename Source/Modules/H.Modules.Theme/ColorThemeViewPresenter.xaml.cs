@@ -16,16 +16,4 @@ public class ColorThemeViewPresenter : IColorThemeViewPresenter
     {
         _options = options;
     }
-
-    //private ObservableCollection<IColorResource> _collection = new ObservableCollection<IColorResource>();
-    ///// <summary> 说明  </summary>
-    //public ObservableCollection<IColorResource> Collection
-    //{
-    //    get { return _collection; }
-    //    set
-    //    {
-    //        _collection = value;
-    //    }
-    //}
-
 }

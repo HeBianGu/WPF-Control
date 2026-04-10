@@ -17,5 +17,22 @@ public class CommandsPropertyPresenter : DialogCommandsPresenter<TabFormPresente
     public CommandsPropertyPresenter(IDiagramableNodeData nodeData) : base(new TabFormPresenter(nodeData))
     {
         this.NodeData = nodeData;
+        this.UpdateCommands();
+    }
+
+    protected override IEnumerable<IDisplayCommand> CreateCommands()
+    {
+        if (this.NodeData is ICommandsBindable commands)
+        {
+            foreach (var item in commands.Commands.OfType<IDisplayCommand>())
+            {
+                if (item.GroupName.Split(',').Contains("快捷属性命令"))
+                    yield return item;
+            }
+        }
+        foreach (var item in base.CreateCommands())
+        {
+            yield return item;
+        }  
     }
 }

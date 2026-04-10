@@ -1,0 +1,967 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Common_Account" xml:space="preserve">
+    <value>帳號</value>
+  </data>
+  <data name="Common_Ok" xml:space="preserve">
+    <value>確定</value>
+  </data>
+  <data name="Common_Cancel" xml:space="preserve">
+    <value>取消</value>
+  </data>
+  <data name="Common_Yes" xml:space="preserve">
+    <value>是</value>
+  </data>
+  <data name="Common_View" xml:space="preserve">
+    <value>查看</value>
+  </data>
+  <data name="Common_No" xml:space="preserve">
+    <value>否</value>
+  </data>
+  <data name="Common_Abort" xml:space="preserve">
+    <value>中止</value>
+  </data>
+  <data name="Common_Retry" xml:space="preserve">
+    <value>重試</value>
+  </data>
+  <data name="Common_Ignore" xml:space="preserve">
+    <value>忽略</value>
+  </data>
+  <data name="Common_Apply" xml:space="preserve">
+    <value>應用</value>
+  </data>
+  <data name="Common_Close" xml:space="preserve">
+    <value>關閉</value>
+  </data>
+  <data name="Common_Prompt" xml:space="preserve">
+    <value>提示</value>
+  </data>
+  <data name="Common_Exit" xml:space="preserve">
+    <value>退出</value>
+  </data>
+  <data name="Common_Back" xml:space="preserve">
+    <value>返回</value>
+  </data>
+  <data name="Common_Next" xml:space="preserve">
+    <value>下一步</value>
+  </data>
+  <data name="Common_Show" xml:space="preserve">
+    <value>顯示</value>
+  </data>
+  <data name="Common_Previous" xml:space="preserve">
+    <value>上一步</value>
+  </data>
+  <data name="Common_Finish" xml:space="preserve">
+    <value>完成</value>
+  </data>
+  <data name="Common_Save" xml:space="preserve">
+    <value>儲存</value>
+  </data>
+  <data name="Common_SaveAs" xml:space="preserve">
+    <value>另存為</value>
+  </data>
+  <data name="Common_Open" xml:space="preserve">
+    <value>開啟</value>
+  </data>
+  <data name="Common_New" xml:space="preserve">
+    <value>新增</value>
+  </data>
+  <data name="Common_Create" xml:space="preserve">
+    <value>建立</value>
+  </data>
+  <data name="Common_Default" xml:space="preserve">
+    <value>預設</value>
+  </data>
+  <data name="Common_Edit" xml:space="preserve">
+    <value>編輯</value>
+  </data>
+  <data name="Common_Delete" xml:space="preserve">
+    <value>刪除</value>
+  </data>
+  <data name="Common_Remove" xml:space="preserve">
+    <value>移除</value>
+  </data>
+  <data name="Common_Add" xml:space="preserve">
+    <value>新增</value>
+  </data>
+  <data name="Common_Insert" xml:space="preserve">
+    <value>插入</value>
+  </data>
+  <data name="Common_Update" xml:space="preserve">
+    <value>更新</value>
+  </data>
+  <data name="Common_Rename" xml:space="preserve">
+    <value>重新命名</value>
+  </data>
+  <data name="Common_Import" xml:space="preserve">
+    <value>匯入</value>
+  </data>
+  <data name="Common_Export" xml:space="preserve">
+    <value>匯出</value>
+  </data>
+  <data name="Common_Print" xml:space="preserve">
+    <value>列印</value>
+  </data>
+  <data name="Common_Preview" xml:space="preserve">
+    <value>預覽</value>
+  </data>
+  <data name="Common_Copy" xml:space="preserve">
+    <value>複製</value>
+  </data>
+  <data name="Common_Cut" xml:space="preserve">
+    <value>剪下</value>
+  </data>
+  <data name="Common_Paste" xml:space="preserve">
+    <value>貼上</value>
+  </data>
+  <data name="Common_Undo" xml:space="preserve">
+    <value>復原</value>
+  </data>
+  <data name="Common_Redo" xml:space="preserve">
+    <value>重做</value>
+  </data>
+  <data name="Common_Search" xml:space="preserve">
+    <value>搜尋</value>
+  </data>
+  <data name="Common_Find" xml:space="preserve">
+    <value>查找</value>
+  </data>
+  <data name="Common_FindNext" xml:space="preserve">
+    <value>尋找下一個</value>
+  </data>
+  <data name="Common_Replace" xml:space="preserve">
+    <value>取代</value>
+  </data>
+  <data name="Common_Filter" xml:space="preserve">
+    <value>篩選</value>
+  </data>
+  <data name="Common_Sort" xml:space="preserve">
+    <value>排序</value>
+  </data>
+  <data name="Common_Refresh" xml:space="preserve">
+    <value>重新整理</value>
+  </data>
+  <data name="Common_Clear" xml:space="preserve">
+    <value>清除</value>
+  </data>
+  <data name="Common_Reset" xml:space="preserve">
+    <value>重設</value>
+  </data>
+  <data name="Common_Select" xml:space="preserve">
+    <value>選擇</value>
+  </data>
+  <data name="Common_SelectAll" xml:space="preserve">
+    <value>全選</value>
+  </data>
+  <data name="Common_DeselectAll" xml:space="preserve">
+    <value>取消全選</value>
+  </data>
+  <data name="Common_InvertSelection" xml:space="preserve">
+    <value>反向選取</value>
+  </data>
+  <data name="Common_Enable" xml:space="preserve">
+    <value>啟用</value>
+  </data>
+  <data name="Common_Disable" xml:space="preserve">
+    <value>停用</value>
+  </data>
+  <data name="Common_On" xml:space="preserve">
+    <value>開</value>
+  </data>
+  <data name="Common_Off" xml:space="preserve">
+    <value>關</value>
+  </data>
+  <data name="Common_Loading" xml:space="preserve">
+    <value>正在載入...</value>
+  </data>
+  <data name="Common_PleaseWait" xml:space="preserve">
+    <value>請稍候...</value>
+  </data>
+  <data name="Common_Working" xml:space="preserve">
+    <value>處理中...</value>
+  </data>
+  <data name="Common_Connecting" xml:space="preserve">
+    <value>正在連線...</value>
+  </data>
+  <data name="Common_Disconnecting" xml:space="preserve">
+    <value>正在斷開...</value>
+  </data>
+  <data name="Common_Error" xml:space="preserve">
+    <value>錯誤</value>
+  </data>
+  <data name="Common_Warning" xml:space="preserve">
+    <value>警告</value>
+  </data>
+  <data name="Common_Information" xml:space="preserve">
+    <value>提示</value>
+  </data>
+  <data name="Common_Success" xml:space="preserve">
+    <value>成功</value>
+  </data>
+  <data name="Common_Failed" xml:space="preserve">
+    <value>失敗</value>
+  </data>
+  <data name="Common_OperationSucceeded" xml:space="preserve">
+    <value>操作成功</value>
+  </data>
+  <data name="Common_OperationFailed" xml:space="preserve">
+    <value>操作失敗</value>
+  </data>
+  <data name="Common_NotSupported" xml:space="preserve">
+    <value>不支援</value>
+  </data>
+  <data name="Common_NotImplemented" xml:space="preserve">
+    <value>尚未實作</value>
+  </data>
+  <data name="Common_Confirm" xml:space="preserve">
+    <value>確認</value>
+  </data>
+  <data name="Common_Confirmation" xml:space="preserve">
+    <value>確認提示</value>
+  </data>
+  <data name="Common_AreYouSure" xml:space="preserve">
+    <value>你確定嗎？</value>
+  </data>
+  <data name="Common_ConfirmDelete" xml:space="preserve">
+    <value>確定要刪除嗎？</value>
+  </data>
+  <data name="Common_ConfirmExit" xml:space="preserve">
+    <value>確定要退出嗎？</value>
+  </data>
+  <data name="Common_ConfirmSaveChanges" xml:space="preserve">
+    <value>是否儲存變更？</value>
+  </data>
+  <data name="Common_UnsavedChanges" xml:space="preserve">
+    <value>你有尚未儲存的變更</value>
+  </data>
+  <data name="Common_RequiredField" xml:space="preserve">
+    <value>必填項</value>
+  </data>
+  <data name="Common_InvalidInput" xml:space="preserve">
+    <value>輸入無效</value>
+  </data>
+  <data name="Common_InvalidFormat" xml:space="preserve">
+    <value>格式不正確</value>
+  </data>
+  <data name="Common_OutOfRange" xml:space="preserve">
+    <value>超出範圍</value>
+  </data>
+  <data name="Common_PleaseSelect" xml:space="preserve">
+    <value>請選擇</value>
+  </data>
+  <data name="Common_PleaseEnter" xml:space="preserve">
+    <value>請輸入</value>
+  </data>
+  <data name="Common_Login" xml:space="preserve">
+    <value>登入</value>
+  </data>
+  <data name="Common_Logout" xml:space="preserve">
+    <value>登出</value>
+  </data>
+  <data name="Common_Register" xml:space="preserve">
+    <value>註冊</value>
+  </data>
+  <data name="Common_UserName" xml:space="preserve">
+    <value>使用者名稱</value>
+  </data>
+  <data name="Common_Password" xml:space="preserve">
+    <value>密碼</value>
+  </data>
+  <data name="Common_ConfirmPassword" xml:space="preserve">
+    <value>確認密碼</value>
+  </data>
+  <data name="Common_ForgotPassword" xml:space="preserve">
+    <value>忘記密碼</value>
+  </data>
+  <data name="Common_Settings" xml:space="preserve">
+    <value>設定</value>
+  </data>
+  <data name="Common_Preferences" xml:space="preserve">
+    <value>偏好設定</value>
+  </data>
+  <data name="Common_Options" xml:space="preserve">
+    <value>選項</value>
+  </data>
+  <data name="Common_About" xml:space="preserve">
+    <value>關於</value>
+  </data>
+  <data name="Common_Help" xml:space="preserve">
+    <value>幫助</value>
+  </data>
+  <data name="Common_CheckForUpdates" xml:space="preserve">
+    <value>檢查更新</value>
+  </data>
+  <data name="Common_NetworkError" xml:space="preserve">
+    <value>網路錯誤</value>
+  </data>
+  <data name="Common_ServerError" xml:space="preserve">
+    <value>伺服器錯誤</value>
+  </data>
+  <data name="Common_Timeout" xml:space="preserve">
+    <value>請求逾時</value>
+  </data>
+  <data name="Common_Unauthorized" xml:space="preserve">
+    <value>未授權</value>
+  </data>
+  <data name="Common_AccessDenied" xml:space="preserve">
+    <value>存取遭拒</value>
+  </data>
+  <data name="Common_Download" xml:space="preserve">
+    <value>下載</value>
+  </data>
+  <data name="Common_Upload" xml:space="preserve">
+    <value>上傳</value>
+  </data>
+  <data name="Common_Start" xml:space="preserve">
+    <value>開始</value>
+  </data>
+  <data name="Common_Stop" xml:space="preserve">
+    <value>停止</value>
+  </data>
+  <data name="Common_Pause" xml:space="preserve">
+    <value>暫停</value>
+  </data>
+  <data name="Common_Resume" xml:space="preserve">
+    <value>繼續</value>
+  </data>
+  <data name="Common_CopySucceeded" xml:space="preserve">
+    <value>複製成功</value>
+  </data>
+  <data name="Common_CopyFailed" xml:space="preserve">
+    <value>複製失敗</value>
+  </data>
+  <data name="Common_SaveSucceeded" xml:space="preserve">
+    <value>保存成功</value>
+  </data>
+  <data name="Common_SaveFailed" xml:space="preserve">
+    <value>保存失敗</value>
+  </data>
+  <data name="Common_ItemsCountFormat" xml:space="preserve">
+    <value>共 {0} 項</value>
+  </data>
+  <data name="Common_SelectedCountFormat" xml:space="preserve">
+    <value>已選擇 {0} 項</value>
+  </data>
+  <data name="Common_PageFormat" xml:space="preserve">
+    <value>第 {0} 頁 / 共 {1} 頁</value>
+  </data>
+  <data name="Common_NoData" xml:space="preserve">
+    <value>暫無資料</value>
+  </data>
+  <data name="Common_Empty" xml:space="preserve">
+    <value>空</value>
+  </data>
+  <data name="Common_All" xml:space="preserve">
+    <value>全部</value>
+  </data>
+  <data name="Menu_File" xml:space="preserve">
+    <value>檔案</value>
+  </data>
+  <data name="Menu_Edit" xml:space="preserve">
+    <value>編輯</value>
+  </data>
+  <data name="Menu_View" xml:space="preserve">
+    <value>檢視</value>
+  </data>
+  <data name="Menu_Tools" xml:space="preserve">
+    <value>工具</value>
+  </data>
+  <data name="Menu_Window" xml:space="preserve">
+    <value>視窗</value>
+  </data>
+  <data name="Menu_Help" xml:space="preserve">
+    <value>幫助</value>
+  </data>
+  <data name="Menu_New" xml:space="preserve">
+    <value>新增</value>
+  </data>
+  <data name="Menu_Open" xml:space="preserve">
+    <value>打開</value>
+  </data>
+  <data name="Menu_OpenRecent" xml:space="preserve">
+    <value>最近開啟</value>
+  </data>
+  <data name="Menu_Close" xml:space="preserve">
+    <value>關閉</value>
+  </data>
+  <data name="Menu_CloseAll" xml:space="preserve">
+    <value>全部關閉</value>
+  </data>
+  <data name="Menu_Save" xml:space="preserve">
+    <value>儲存</value>
+  </data>
+  <data name="Menu_SaveAs" xml:space="preserve">
+    <value>另存新檔</value>
+  </data>
+  <data name="Menu_SaveAll" xml:space="preserve">
+    <value>全部儲存</value>
+  </data>
+  <data name="Menu_Import" xml:space="preserve">
+    <value>匯入</value>
+  </data>
+  <data name="Menu_Export" xml:space="preserve">
+    <value>匯出</value>
+  </data>
+  <data name="Menu_Print" xml:space="preserve">
+    <value>列印</value>
+  </data>
+  <data name="Menu_PrintPreview" xml:space="preserve">
+    <value>列印預覽</value>
+  </data>
+  <data name="Menu_Exit" xml:space="preserve">
+    <value>退出</value>
+  </data>
+  <data name="Menu_Undo" xml:space="preserve">
+    <value>復原</value>
+  </data>
+  <data name="Menu_Redo" xml:space="preserve">
+    <value>重做</value>
+  </data>
+  <data name="Menu_Cut" xml:space="preserve">
+    <value>剪下</value>
+  </data>
+  <data name="Menu_Copy" xml:space="preserve">
+    <value>複製</value>
+  </data>
+  <data name="Menu_Paste" xml:space="preserve">
+    <value>貼上</value>
+  </data>
+  <data name="Menu_Delete" xml:space="preserve">
+    <value>刪除</value>
+  </data>
+  <data name="Menu_SelectAll" xml:space="preserve">
+    <value>全選</value>
+  </data>
+  <data name="Menu_Find" xml:space="preserve">
+    <value>查找</value>
+  </data>
+  <data name="Menu_FindNext" xml:space="preserve">
+    <value>尋找下一個</value>
+  </data>
+  <data name="Menu_Replace" xml:space="preserve">
+    <value>取代</value>
+  </data>
+  <data name="Menu_ZoomIn" xml:space="preserve">
+    <value>放大</value>
+  </data>
+  <data name="Menu_ZoomOut" xml:space="preserve">
+    <value>縮小</value>
+  </data>
+  <data name="Menu_ResetZoom" xml:space="preserve">
+    <value>重設縮放</value>
+  </data>
+  <data name="Menu_FullScreen" xml:space="preserve">
+    <value>全螢幕</value>
+  </data>
+  <data name="Menu_ToggleSidebar" xml:space="preserve">
+    <value>切換側邊欄</value>
+  </data>
+  <data name="Menu_ToggleStatusBar" xml:space="preserve">
+    <value>切換狀態列</value>
+  </data>
+  <data name="Menu_Refresh" xml:space="preserve">
+    <value>重新整理</value>
+  </data>
+  <data name="Menu_Settings" xml:space="preserve">
+    <value>設定</value>
+  </data>
+  <data name="Menu_Preferences" xml:space="preserve">
+    <value>偏好設定</value>
+  </data>
+  <data name="Menu_CheckForUpdates" xml:space="preserve">
+    <value>檢查更新</value>
+  </data>
+  <data name="Menu_About" xml:space="preserve">
+    <value>關於</value>
+  </data>
+  <data name="Menu_Documentation" xml:space="preserve">
+    <value>文件</value>
+  </data>
+  <data name="Menu_Feedback" xml:space="preserve">
+    <value>回饋</value>
+  </data>
+  <data name="Dialog_Title_Confirm" xml:space="preserve">
+    <value>確認</value>
+  </data>
+  <data name="Dialog_Title_Warning" xml:space="preserve">
+    <value>警告</value>
+  </data>
+  <data name="Dialog_Title_Error" xml:space="preserve">
+    <value>錯誤</value>
+  </data>
+  <data name="Dialog_Title_Information" xml:space="preserve">
+    <value>提示</value>
+  </data>
+  <data name="Dialog_Title_Settings" xml:space="preserve">
+    <value>設定</value>
+  </data>
+  <data name="Dialog_Title_About" xml:space="preserve">
+    <value>關於</value>
+  </data>
+  <data name="Dialog_Button_Ok" xml:space="preserve">
+    <value>確定</value>
+  </data>
+  <data name="Dialog_Button_Cancel" xml:space="preserve">
+    <value>取消</value>
+  </data>
+  <data name="Dialog_Button_Yes" xml:space="preserve">
+    <value>是</value>
+  </data>
+  <data name="Dialog_Button_No" xml:space="preserve">
+    <value>否</value>
+  </data>
+  <data name="Dialog_Button_Apply" xml:space="preserve">
+    <value>應用</value>
+  </data>
+  <data name="Dialog_Button_Close" xml:space="preserve">
+    <value>關閉</value>
+  </data>
+  <data name="Dialog_Button_Retry" xml:space="preserve">
+    <value>重試</value>
+  </data>
+  <data name="Dialog_Button_Ignore" xml:space="preserve">
+    <value>忽略</value>
+  </data>
+  <data name="Dialog_Message_AreYouSure" xml:space="preserve">
+    <value>你確定嗎？</value>
+  </data>
+  <data name="Dialog_Message_ConfirmDelete" xml:space="preserve">
+    <value>確定要刪除嗎？此操作無法復原。</value>
+  </data>
+  <data name="Dialog_Message_ConfirmExit" xml:space="preserve">
+    <value>確定要退出嗎？</value>
+  </data>
+  <data name="Dialog_Message_UnsavedChanges" xml:space="preserve">
+    <value>你有尚未儲存的變更，是否要儲存？</value>
+  </data>
+  <data name="Dialog_Message_OperationSucceeded" xml:space="preserve">
+    <value>操作成功。</value>
+  </data>
+  <data name="Dialog_Message_OperationFailed" xml:space="preserve">
+    <value>操作失敗。</value>
+  </data>
+  <data name="Dialog_Message_NotSupported" xml:space="preserve">
+    <value>目前的操作不受支援。</value>
+  </data>
+  <data name="Dialog_File_OpenTitle" xml:space="preserve">
+    <value>選擇要開啟的檔案</value>
+  </data>
+  <data name="Dialog_File_SaveTitle" xml:space="preserve">
+    <value>選擇儲存位置</value>
+  </data>
+  <data name="Dialog_File_FolderTitle" xml:space="preserve">
+    <value>選擇資料夾</value>
+  </data>
+  <data name="Dialog_File_OverwritePrompt" xml:space="preserve">
+    <value>檔案已存在，是否覆蓋？</value>
+  </data>
+  <data name="Validation_Required" xml:space="preserve">
+    <value>此項為必填項。</value>
+  </data>
+  <data name="Validation_Invalid" xml:space="preserve">
+    <value>輸入無效。</value>
+  </data>
+  <data name="Validation_InvalidFormat" xml:space="preserve">
+    <value>格式不正確。</value>
+  </data>
+  <data name="Validation_OutOfRange" xml:space="preserve">
+    <value>超出允許範圍。</value>
+  </data>
+  <data name="Validation_MinLengthFormat" xml:space="preserve">
+    <value>長度不能少於 {0}。</value>
+  </data>
+  <data name="Validation_MaxLengthFormat" xml:space="preserve">
+    <value>長度不能超過 {0}。</value>
+  </data>
+  <data name="Validation_LengthRangeFormat" xml:space="preserve">
+    <value>長度必須介於 {0} 到 {1} 之間。</value>
+  </data>
+  <data name="Validation_MinValueFormat" xml:space="preserve">
+    <value>不能小於 {0}。</value>
+  </data>
+  <data name="Validation_MaxValueFormat" xml:space="preserve">
+    <value>不能大於 {0}。</value>
+  </data>
+  <data name="Validation_ValueRangeFormat" xml:space="preserve">
+    <value>必須介於 {0} 到 {1} 之間。</value>
+  </data>
+  <data name="Validation_InvalidEmail" xml:space="preserve">
+    <value>電子郵件格式不正確。</value>
+  </data>
+  <data name="Validation_InvalidPhone" xml:space="preserve">
+    <value>電話號碼格式不正確。</value>
+  </data>
+  <data name="Validation_InvalidUrl" xml:space="preserve">
+    <value>URL 格式不正確。</value>
+  </data>
+  <data name="Validation_InvalidIpAddress" xml:space="preserve">
+    <value>IP 位址不合法。</value>
+  </data>
+  <data name="Validation_PasswordNotMatch" xml:space="preserve">
+    <value>兩次輸入的密碼不一致。</value>
+  </data>
+  <data name="Validation_InvalidDate" xml:space="preserve">
+    <value>日期無效。</value>
+  </data>
+  <data name="Validation_InvalidTime" xml:space="preserve">
+    <value>時間無效。</value>
+  </data>
+  <data name="File_NewFile" xml:space="preserve">
+    <value>新增檔案</value>
+  </data>
+  <data name="File_NewFolder" xml:space="preserve">
+    <value>新增資料夾</value>
+  </data>
+  <data name="File_OpenFile" xml:space="preserve">
+    <value>開啟檔案</value>
+  </data>
+  <data name="File_OpenFolder" xml:space="preserve">
+    <value>開啟資料夾</value>
+  </data>
+  <data name="File_SaveFile" xml:space="preserve">
+    <value>保存檔案</value>
+  </data>
+  <data name="File_SaveAll" xml:space="preserve">
+    <value>全部儲存</value>
+  </data>
+  <data name="File_Rename" xml:space="preserve">
+    <value>重新命名</value>
+  </data>
+  <data name="File_Copy" xml:space="preserve">
+    <value>複製</value>
+  </data>
+  <data name="File_Move" xml:space="preserve">
+    <value>移動</value>
+  </data>
+  <data name="File_Delete" xml:space="preserve">
+    <value>刪除</value>
+  </data>
+  <data name="File_Restore" xml:space="preserve">
+    <value>還原</value>
+  </data>
+  <data name="File_Size" xml:space="preserve">
+    <value>大小</value>
+  </data>
+  <data name="File_Type" xml:space="preserve">
+    <value>類型</value>
+  </data>
+  <data name="File_Name" xml:space="preserve">
+    <value>名稱</value>
+  </data>
+  <data name="File_Path" xml:space="preserve">
+    <value>路徑</value>
+  </data>
+  <data name="File_DateCreated" xml:space="preserve">
+    <value>建立時間</value>
+  </data>
+  <data name="File_DateModified" xml:space="preserve">
+    <value>修改時間</value>
+  </data>
+  <data name="File_Error_NotFound" xml:space="preserve">
+    <value>未找到檔案。</value>
+  </data>
+  <data name="File_Error_FolderNotFound" xml:space="preserve">
+    <value>找不到資料夾。</value>
+  </data>
+  <data name="File_Error_AccessDenied" xml:space="preserve">
+    <value>無權限存取。</value>
+  </data>
+  <data name="File_Error_InUse" xml:space="preserve">
+    <value>文件正在使用中。</value>
+  </data>
+  <data name="File_Error_ReadFailed" xml:space="preserve">
+    <value>讀取失敗。</value>
+  </data>
+  <data name="File_Error_WriteFailed" xml:space="preserve">
+    <value>寫入失敗。</value>
+  </data>
+  <data name="File_Error_InvalidPath" xml:space="preserve">
+    <value>路徑無效。</value>
+  </data>
+  <data name="File_Error_AlreadyExists" xml:space="preserve">
+    <value>已存在同名檔案或資料夾。</value>
+  </data>
+  <data name="File_Filter_AllFiles" xml:space="preserve">
+    <value>所有檔案 (*.*)</value>
+  </data>
+  <data name="Nav_Home" xml:space="preserve">
+    <value>首頁</value>
+  </data>
+  <data name="Nav_Dashboard" xml:space="preserve">
+    <value>儀表板</value>
+  </data>
+  <data name="Nav_Projects" xml:space="preserve">
+    <value>專案</value>
+  </data>
+  <data name="Nav_Favorites" xml:space="preserve">
+    <value>收藏</value>
+  </data>
+  <data name="Nav_Recent" xml:space="preserve">
+    <value>最近</value>
+  </data>
+  <data name="Nav_History" xml:space="preserve">
+    <value>歷史記錄</value>
+  </data>
+  <data name="Nav_Settings" xml:space="preserve">
+    <value>設定</value>
+  </data>
+  <data name="Nav_Account" xml:space="preserve">
+    <value>帳號</value>
+  </data>
+  <data name="Nav_Profile" xml:space="preserve">
+    <value>個人資料</value>
+  </data>
+  <data name="Nav_Security" xml:space="preserve">
+    <value>安全</value>
+  </data>
+  <data name="Nav_Notifications" xml:space="preserve">
+    <value>通知</value>
+  </data>
+  <data name="Nav_Back" xml:space="preserve">
+    <value>返回</value>
+  </data>
+  <data name="Nav_Next" xml:space="preserve">
+    <value>下一步</value>
+  </data>
+  <data name="Nav_Previous" xml:space="preserve">
+    <value>上一步</value>
+  </data>
+  <data name="Status_Ready" xml:space="preserve">
+    <value>就緒</value>
+  </data>
+  <data name="Status_Loading" xml:space="preserve">
+    <value>正在載入...</value>
+  </data>
+  <data name="Status_Working" xml:space="preserve">
+    <value>處理中...</value>
+  </data>
+  <data name="Status_Saving" xml:space="preserve">
+    <value>正在儲存...</value>
+  </data>
+  <data name="Status_Refreshing" xml:space="preserve">
+    <value>正在重新整理...</value>
+  </data>
+  <data name="Status_Connecting" xml:space="preserve">
+    <value>正在連接...</value>
+  </data>
+  <data name="Status_Disconnecting" xml:space="preserve">
+    <value>正在斷開...</value>
+  </data>
+  <data name="Status_Connected" xml:space="preserve">
+    <value>已連線</value>
+  </data>
+  <data name="Status_Disconnected" xml:space="preserve">
+    <value>未連接</value>
+  </data>
+  <data name="Status_Success" xml:space="preserve">
+    <value>成功</value>
+  </data>
+  <data name="Status_Failed" xml:space="preserve">
+    <value>失敗</value>
+  </data>
+  <data name="Status_Canceled" xml:space="preserve">
+    <value>已取消</value>
+  </data>
+  <data name="Status_Completed" xml:space="preserve">
+    <value>已完成</value>
+  </data>
+  <data name="Status_Paused" xml:space="preserve">
+    <value>已暫停</value>
+  </data>
+  <data name="Status_Stopped" xml:space="preserve">
+    <value>已停止</value>
+  </data>
+  <data name="Status_NoData" xml:space="preserve">
+    <value>暫無資料</value>
+  </data>
+  <data name="Status_Empty" xml:space="preserve">
+    <value>空</value>
+  </data>
+  <data name="Status_ItemsCountFormat" xml:space="preserve">
+    <value>共 {0} 項</value>
+  </data>
+  <data name="Status_SelectedCountFormat" xml:space="preserve">
+    <value>已選擇 {0} 項</value>
+  </data>
+  <data name="Permission_Title" xml:space="preserve">
+    <value>權限</value>
+  </data>
+  <data name="Permission_AccessDenied" xml:space="preserve">
+    <value>存取被拒絕。</value>
+  </data>
+  <data name="Permission_Unauthorized" xml:space="preserve">
+    <value>未授權。</value>
+  </data>
+  <data name="Permission_Insufficient" xml:space="preserve">
+    <value>權限不足。</value>
+  </data>
+  <data name="Permission_Request" xml:space="preserve">
+    <value>請求權限</value>
+  </data>
+  <data name="Permission_Grant" xml:space="preserve">
+    <value>授權</value>
+  </data>
+  <data name="Permission_Revoke" xml:space="preserve">
+    <value>復原</value>
+  </data>
+  <data name="Permission_AdminRequired" xml:space="preserve">
+    <value>需要系統管理員權限。</value>
+  </data>
+  <data name="Permission_Read" xml:space="preserve">
+    <value>讀取</value>
+  </data>
+  <data name="Permission_Write" xml:space="preserve">
+    <value>寫入</value>
+  </data>
+  <data name="Permission_Execute" xml:space="preserve">
+    <value>執行</value>
+  </data>
+  <data name="Permission_Delete" xml:space="preserve">
+    <value>刪除</value>
+  </data>
+  <data name="Theme_Title" xml:space="preserve">
+    <value>主題</value>
+  </data>
+  <data name="Theme_Light" xml:space="preserve">
+    <value>淺色</value>
+  </data>
+  <data name="Theme_Dark" xml:space="preserve">
+    <value>深色</value>
+  </data>
+  <data name="Theme_System" xml:space="preserve">
+    <value>跟隨系統</value>
+  </data>
+  <data name="Theme_Auto" xml:space="preserve">
+    <value>自動</value>
+  </data>
+  <data name="Theme_AccentColor" xml:space="preserve">
+    <value>強調色</value>
+  </data>
+  <data name="Theme_PrimaryColor" xml:space="preserve">
+    <value>主色</value>
+  </data>
+  <data name="Theme_Background" xml:space="preserve">
+    <value>背景</value>
+  </data>
+  <data name="Theme_Foreground" xml:space="preserve">
+    <value>前景</value>
+  </data>
+  <data name="Theme_Font" xml:space="preserve">
+    <value>字型</value>
+  </data>
+  <data name="Theme_FontSize" xml:space="preserve">
+    <value>字體大小</value>
+  </data>
+  <data name="Theme_CornerRadius" xml:space="preserve">
+    <value>圓角</value>
+  </data>
+  <data name="Theme_Shadow" xml:space="preserve">
+    <value>陰影</value>
+  </data>
+  <data name="Theme_Transparency" xml:space="preserve">
+    <value>透明度</value>
+  </data>
+  <data name="Theme_Apply" xml:space="preserve">
+    <value>應用主題</value>
+  </data>
+  <data name="Theme_Reset" xml:space="preserve">
+    <value>恢復預設主題</value>
+  </data>
+  <data name="Window_Maximize" xml:space="preserve">
+    <value>最大化</value>
+  </data>
+  <data name="Window_Minimize" xml:space="preserve">
+    <value>最小化</value>
+  </data>
+  <data name="Window_Restore" xml:space="preserve">
+    <value>還原</value>
+  </data>
+  <data name="Common_DataBase" xml:space="preserve">
+    <value>資料庫</value>
+  </data>
+  <data name="Common_CheckAll" xml:space="preserve">
+    <value>全選</value>
+  </data>
+  <data name="Common_DeleteCheckAll" xml:space="preserve">
+    <value>刪除選中</value>
+  </data>
+  <data name="Common_Total" xml:space="preserve">
+    <value>總計</value>
+  </data>
+  <data name="Common_OperationCancel" xml:space="preserve">
+    <value>操作取消</value>
+  </data>
+  <data name="Common_AlreadyExists" xml:space="preserve">
+    <value>已存在</value>
+  </data>
+  <data name="Common_PasswordError" xml:space="preserve">
+    <value>密碼錯誤</value>
+  </data>
+  <data name="Common_InputPassword" xml:space="preserve">
+    <value>輸入密碼</value>
+  </data>
+  <data name="Common_PasswrodErrorTooMany" xml:space="preserve">
+    <value>密碼錯誤次數過多</value>
+  </data>
+  <data name="Common_Skip" xml:space="preserve">
+    <value>略過</value>
+  </data>
+</root>

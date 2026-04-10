@@ -23,4 +23,55 @@ namespace H.Controls.TagBox
     {
 
     }
+
+    public static class TagExtension
+    {
+        public static ITag GetTagByName(this ITagService service, string tagName)
+        {
+            IEnumerable<ITag> tags = service.Collection.Where(x => x.GroupName == null);
+            return tags.FirstOrDefault(x => x.Name == tagName);
+        }
+
+
+        public static string ToUnCheckTagString(this string src, ITag tag)
+        {
+            return IocTagService.Instance.ConvertToUnCheck(src, tag);
+        }
+
+        public static string ToUnCheckTagString(this string src, string tagName)
+        {
+            var tag = IocTagService.Instance.GetTagByName(tagName);
+            return src.ToUnCheckTagString(tag);
+        }
+
+
+        public static string ToCheckTagString(this string src, ITag tag)
+        {
+            return IocTagService.Instance.ConvertToCheck(src, tag);
+        }
+
+        public static string ToCheckTagString(this string src, string tagName)
+        {
+            bool contain = src.ContainTag(tagName);
+            if (!contain)
+                return src.ToCheckTagString(tagName);
+            return src;
+        }
+
+        public static string TryToCheckTagString(this string src, string tagName)
+        {
+            var tag = IocTagService.Instance.GetTagByName(tagName);
+            return src.ToCheckTagString(tag);
+        }
+
+        public static bool ContainTag(this string src, ITag tag)
+        {
+            return IocTagService.Instance.ContainTag(src, tag);
+        }
+        public static bool ContainTag(this string src, string tagName)
+        {
+            var tag = IocTagService.Instance.GetTagByName(tagName);
+            return src.ContainTag(tag);
+        }
+    }
 }

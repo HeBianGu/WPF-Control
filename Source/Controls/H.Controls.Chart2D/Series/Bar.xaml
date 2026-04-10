@@ -1,17 +1,19 @@
-﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:h="https://github.com/HeBianGu"
-                    xmlns:local="clr-namespace:H.Controls.Chart2D"
-                    xmlns:system="clr-namespace:System;assembly=mscorlib">
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:h="https://github.com/HeBianGu"
+    xmlns:local="clr-namespace:H.Controls.Chart2D"
+    xmlns:system="clr-namespace:System;assembly=mscorlib">
 
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="../Provider/Layer.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <Style x:Key="{ComponentResourceKey ResourceId=S.BarBase.Default,
-                                        TypeInTargetAssembly={x:Type local:BarBase}}"
-           BasedOn="{StaticResource {x:Static h:Layer.DefaultKey}}"
-           TargetType="{x:Type local:BarBase}">
+    <Style
+        x:Key="{ComponentResourceKey ResourceId=S.BarBase.Default,
+                                     TypeInTargetAssembly={x:Type local:BarBase}}"
+        BasedOn="{StaticResource {x:Static h:Layer.DefaultKey}}"
+        TargetType="{x:Type local:BarBase}">
         <!--<Setter Property="MarkStyle" Value="{StaticResource {x:Static h:EllipseMarker.DefaultKey}}"/>-->
         <Setter Property="PathStyle">
             <Setter.Value>
@@ -48,7 +50,7 @@
                     <Setter Property="StrokeDashCap" Value="Round" />
                     <Setter Property="StrokeThickness" Value="1" />
                     <Setter Property="Stroke" Value="{Binding RelativeSource={RelativeSource AncestorType=local:Layer}, Path=Foreground}" />
-                    <Setter Property="RenderTransform">
+                    <!--<Setter Property="RenderTransform">
                         <Setter.Value>
                             <TransformGroup>
                                 <ScaleTransform />
@@ -58,7 +60,7 @@
                             </TransformGroup>
                         </Setter.Value>
                     </Setter>
-                    <Setter Property="RenderTransformOrigin" Value="0,1" />
+                    <Setter Property="RenderTransformOrigin" Value="0,1" />-->
                     <!--<Style.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter Property="Opacity" Value="1" />
@@ -77,26 +79,28 @@
                     </Style.Triggers>-->
 
 
-                    <Style.Triggers>
+                    <!--<Style.Triggers>
                         <EventTrigger RoutedEvent="MouseEnter">
                             <BeginStoryboard>
                                 <Storyboard>
-                                    <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)"
-                                                     From="1"
-                                                     To="1.5"
-                                                     Duration="00:00:02">
+                                    <DoubleAnimation
+                                        Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)"
+                                        From="1"
+                                        To="1.5"
+                                        Duration="00:00:02">
                                         <DoubleAnimation.EasingFunction>
-                                            <ElasticEase Oscillations="6"
-                                                         Springiness="10" />
+                                            <ElasticEase Oscillations="6" Springiness="10" />
                                         </DoubleAnimation.EasingFunction>
                                     </DoubleAnimation>
-                                    <!--<DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)"
+                    -->
+                    <!--<DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)"
                                                      From="1" To="1.1"
                                                      Duration="00:00:02">
                                         <DoubleAnimation.EasingFunction>
                                             <ElasticEase Oscillations="6" Springiness="10" />
                                         </DoubleAnimation.EasingFunction>
                                     </DoubleAnimation>-->
+                    <!--
                                 </Storyboard>
                             </BeginStoryboard>
                         </EventTrigger>
@@ -104,22 +108,24 @@
                         <EventTrigger RoutedEvent="MouseLeave">
                             <BeginStoryboard>
                                 <Storyboard>
-                                    <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)"
-                                                     From="1.5"
-                                                     To="1"
-                                                     Duration="00:00:02">
+                                    <DoubleAnimation
+                                        Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)"
+                                        From="1.5"
+                                        To="1"
+                                        Duration="00:00:02">
                                         <DoubleAnimation.EasingFunction>
-                                            <ElasticEase Oscillations="6"
-                                                         Springiness="10" />
+                                            <ElasticEase Oscillations="6" Springiness="10" />
                                         </DoubleAnimation.EasingFunction>
                                     </DoubleAnimation>
-                                    <!--<DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)"
+                    -->
+                    <!--<DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)"
                                                      From="1.1" To="1"
                                                      Duration="00:00:02">
                                         <DoubleAnimation.EasingFunction>
                                             <ElasticEase Oscillations="6" Springiness="10" />
                                         </DoubleAnimation.EasingFunction>
                                     </DoubleAnimation>-->
+                    <!--
                                 </Storyboard>
                             </BeginStoryboard>
                         </EventTrigger>
@@ -128,7 +134,7 @@
                             <Setter Property="StrokeThickness" Value="4" />
                             <Setter Property="Opacity" Value="1" />
                         </Trigger>
-                    </Style.Triggers>
+                    </Style.Triggers>-->
                 </Style>
             </Setter.Value>
         </Setter>
@@ -147,13 +153,13 @@
         <Setter Property="Timelines">
             <Setter.Value>
                 <local:Timelines>
-                    <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)"
-                                     From="0"
-                                     To="1"
-                                     Duration="00:00:02">
+                    <DoubleAnimation
+                        Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)"
+                        From="0"
+                        To="1"
+                        Duration="00:00:02">
                         <DoubleAnimation.EasingFunction>
-                            <ElasticEase Oscillations="6"
-                                         Springiness="10" />
+                            <ElasticEase Oscillations="6" Springiness="10" />
                         </DoubleAnimation.EasingFunction>
                     </DoubleAnimation>
                 </local:Timelines>
@@ -161,13 +167,13 @@
         </Setter>
     </Style>
 
-    <Style BasedOn="{StaticResource {x:Static h:BarBase.DefaultKey}}"
-           TargetType="{x:Type local:BarBase}" />
+    <Style BasedOn="{StaticResource {x:Static h:BarBase.DefaultKey}}" TargetType="{x:Type local:BarBase}" />
 
-    <Style x:Key="{ComponentResourceKey ResourceId=S.Bar.Single,
-                                        TypeInTargetAssembly={x:Type local:Bar}}"
-           BasedOn="{StaticResource {x:Static h:BarBase.DefaultKey}}"
-           TargetType="{x:Type local:Bar}">
+    <Style
+        x:Key="{ComponentResourceKey ResourceId=S.Bar.Single,
+                                     TypeInTargetAssembly={x:Type local:Bar}}"
+        BasedOn="{StaticResource {x:Static h:BarBase.DefaultKey}}"
+        TargetType="{x:Type local:Bar}">
         <Setter Property="IsUseAnimation" Value="False" />
         <Setter Property="PathStyle">
             <Setter.Value>
@@ -180,26 +186,25 @@
         <Setter Property="WidthPercent" Value="1" />
     </Style>
 
-    <Style x:Key="{ComponentResourceKey ResourceId=S.Bar.Default,
-                                        TypeInTargetAssembly={x:Type local:Bar}}"
-           BasedOn="{StaticResource {x:Static h:BarBase.DefaultKey}}"
-           TargetType="{x:Type local:Bar}" />
+    <Style
+        x:Key="{ComponentResourceKey ResourceId=S.Bar.Default,
+                                     TypeInTargetAssembly={x:Type local:Bar}}"
+        BasedOn="{StaticResource {x:Static h:BarBase.DefaultKey}}"
+        TargetType="{x:Type local:Bar}" />
 
-    <Style BasedOn="{StaticResource {x:Static h:Bar.DefaultKey}}"
-           TargetType="{x:Type local:Bar}" />
+    <Style BasedOn="{StaticResource {x:Static h:Bar.DefaultKey}}" TargetType="{x:Type local:Bar}" />
 
-    <Style x:Key="{ComponentResourceKey ResourceId=S.StackBarBase.Default,
-                                        TypeInTargetAssembly={x:Type local:StackBarBase}}"
-           BasedOn="{StaticResource {x:Static h:BarBase.DefaultKey}}"
-           TargetType="{x:Type local:StackBarBase}">
+    <Style
+        x:Key="{ComponentResourceKey ResourceId=S.StackBarBase.Default,
+                                     TypeInTargetAssembly={x:Type local:StackBarBase}}"
+        BasedOn="{StaticResource {x:Static h:BarBase.DefaultKey}}"
+        TargetType="{x:Type local:StackBarBase}">
         <Setter Property="xDisplay" Value="First,Second,Thrid,Forth,Fifth" />
     </Style>
 
-    <Style BasedOn="{StaticResource {x:Static h:StackBarBase.DefaultKey}}"
-           TargetType="{x:Type local:StackBar}" />
+    <Style BasedOn="{StaticResource {x:Static h:StackBarBase.DefaultKey}}" TargetType="{x:Type local:StackBar}" />
 
-    <Style BasedOn="{StaticResource {x:Static h:BarBase.DefaultKey}}"
-           TargetType="{x:Type local:yBar}">
+    <Style BasedOn="{StaticResource {x:Static h:BarBase.DefaultKey}}" TargetType="{x:Type local:yBar}">
         <Setter Property="PathStyle">
             <Setter.Value>
                 <Style TargetType="Path">
@@ -264,13 +269,13 @@
                                             <ElasticEase Oscillations="6" Springiness="10" />
                                         </DoubleAnimation.EasingFunction>
                                     </DoubleAnimation>-->
-                                    <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)"
-                                                     From="1"
-                                                     To="1.5"
-                                                     Duration="00:00:02">
+                                    <DoubleAnimation
+                                        Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)"
+                                        From="1"
+                                        To="1.5"
+                                        Duration="00:00:02">
                                         <DoubleAnimation.EasingFunction>
-                                            <ElasticEase Oscillations="6"
-                                                         Springiness="10" />
+                                            <ElasticEase Oscillations="6" Springiness="10" />
                                         </DoubleAnimation.EasingFunction>
                                     </DoubleAnimation>
                                 </Storyboard>
@@ -287,13 +292,13 @@
                                             <ElasticEase Oscillations="6" Springiness="10" />
                                         </DoubleAnimation.EasingFunction>
                                     </DoubleAnimation>-->
-                                    <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)"
-                                                     From="1.5"
-                                                     To="1"
-                                                     Duration="00:00:02">
+                                    <DoubleAnimation
+                                        Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)"
+                                        From="1.5"
+                                        To="1"
+                                        Duration="00:00:02">
                                         <DoubleAnimation.EasingFunction>
-                                            <ElasticEase Oscillations="6"
-                                                         Springiness="10" />
+                                            <ElasticEase Oscillations="6" Springiness="10" />
                                         </DoubleAnimation.EasingFunction>
                                     </DoubleAnimation>
                                 </Storyboard>
@@ -313,13 +318,13 @@
         <Setter Property="Timelines">
             <Setter.Value>
                 <local:Timelines>
-                    <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)"
-                                     From="0"
-                                     To="1"
-                                     Duration="00:00:02">
+                    <DoubleAnimation
+                        Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)"
+                        From="0"
+                        To="1"
+                        Duration="00:00:02">
                         <DoubleAnimation.EasingFunction>
-                            <ElasticEase Oscillations="6"
-                                         Springiness="10" />
+                            <ElasticEase Oscillations="6" Springiness="10" />
                         </DoubleAnimation.EasingFunction>
                     </DoubleAnimation>
                 </local:Timelines>
@@ -327,8 +332,7 @@
         </Setter>
     </Style>
 
-    <Style BasedOn="{StaticResource {x:Static h:StackBarBase.DefaultKey}}"
-           TargetType="{x:Type local:yStackBar}">
+    <Style BasedOn="{StaticResource {x:Static h:StackBarBase.DefaultKey}}" TargetType="{x:Type local:yStackBar}">
         <Setter Property="PathStyle">
             <Setter.Value>
                 <Style TargetType="Path">
@@ -377,13 +381,13 @@
         <Setter Property="Timelines">
             <Setter.Value>
                 <local:Timelines>
-                    <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)"
-                                     From="0"
-                                     To="1"
-                                     Duration="00:00:02">
+                    <DoubleAnimation
+                        Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)"
+                        From="0"
+                        To="1"
+                        Duration="00:00:02">
                         <DoubleAnimation.EasingFunction>
-                            <ElasticEase Oscillations="6"
-                                         Springiness="10" />
+                            <ElasticEase Oscillations="6" Springiness="10" />
                         </DoubleAnimation.EasingFunction>
                     </DoubleAnimation>
                 </local:Timelines>
@@ -391,8 +395,7 @@
         </Setter>
     </Style>
 
-    <Style BasedOn="{StaticResource {x:Static h:BarBase.DefaultKey}}"
-           TargetType="{x:Type local:yAnimationBar}">
+    <Style BasedOn="{StaticResource {x:Static h:BarBase.DefaultKey}}" TargetType="{x:Type local:yAnimationBar}">
         <Setter Property="yDisplay" Value="{Binding RelativeSource={RelativeSource AncestorType=local:Chart}, Path=yDisplay}" />
         <Setter Property="PathStyle">
             <Setter.Value>
@@ -442,13 +445,13 @@
         <Setter Property="Timelines">
             <Setter.Value>
                 <local:Timelines>
-                    <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)"
-                                     From="0"
-                                     To="1"
-                                     Duration="00:00:02">
+                    <DoubleAnimation
+                        Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)"
+                        From="0"
+                        To="1"
+                        Duration="00:00:02">
                         <DoubleAnimation.EasingFunction>
-                            <ElasticEase Oscillations="6"
-                                         Springiness="10" />
+                            <ElasticEase Oscillations="6" Springiness="10" />
                         </DoubleAnimation.EasingFunction>
                     </DoubleAnimation>
                 </local:Timelines>

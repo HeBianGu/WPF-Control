@@ -8,6 +8,7 @@
 
 global using H.Services.Message;
 using System.Printing;
+using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -24,10 +25,10 @@ namespace H.Controls.PrintBox
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(PrintBox), new FrameworkPropertyMetadata(typeof(PrintBox)));
         }
-        PrintDialog _printDialog = new PrintDialog();
+        private readonly PrintDialog _printDialog = new PrintDialog();
+        private readonly PrintCapabilities capabilities = null;
         public PrintBox()
         {
-            PrintCapabilities capabilities = null;
             try
             {
                 capabilities = _printDialog.PrintQueue.GetPrintCapabilities(_printDialog.PrintTicket);
@@ -46,15 +47,7 @@ namespace H.Controls.PrintBox
                 CommandBinding binding = new CommandBinding(PrintCommands.PrintView);
                 binding.Executed += (l, k) =>
                 {
-                    var fixedDoc = this.GetFixedDocument();
-                    DocumentViewPresenter presenter = new DocumentViewPresenter();
-                    presenter.Document = fixedDoc;
-                    IocMessage.Dialog.Show(presenter, x =>
-                    {
-                        x.Padding = new Thickness(50);
-                        x.Title = "打印预览";
-                    });
-
+                    this.ShowPrintView();
                 };
                 this.CommandBindings.Add(binding);
             }
@@ -62,11 +55,7 @@ namespace H.Controls.PrintBox
                 CommandBinding binding = new CommandBinding(PrintCommands.PrintSetting);
                 binding.Executed += (l, k) =>
                 {
-                    _printDialog.ShowDialog();
-                    this.PrintableAreaWidth = _printDialog.PrintableAreaWidth;
-                    this.PrintableAreaHeight = _printDialog.PrintableAreaHeight;
-                    this.ExtentWidth = capabilities.PageImageableArea.ExtentWidth;
-                    this.ExtentHeight = capabilities.PageImageableArea.ExtentHeight;
+                    this.ShowPrintSetting();
                 };
                 this.CommandBindings.Add(binding);
             }
@@ -74,10 +63,7 @@ namespace H.Controls.PrintBox
                 CommandBinding binding = new CommandBinding(PrintCommands.Print);
                 binding.Executed += (l, k) =>
                 {
-                    FixedDocument fixedDoc = this.GetFixedDocument();
-                    IocMessage.ShowSnackInfo("正在打印..");
-                    this._printDialog.PrintDocument(fixedDoc.DocumentPaginator, "打印");
-                    IocMessage.ShowSnackInfo("打印完成..");
+                    this.Print();
                 };
                 this.CommandBindings.Add(binding);
             }
@@ -93,26 +79,61 @@ namespace H.Controls.PrintBox
             //    };
             //    this.CommandBindings.Add(binding);
             //}
-            {
-                CommandBinding binding = new CommandBinding(PrintCommands.PageSize);
-                binding.Executed += async (l, k) =>
-                {
-                    var pageSize = new PagerSizeViewPresenter();
-                    //pageSize.SelectedPagerSizeData = pageSize.Collection.Where(x=>x.);
-                    var r = await IocMessage.Dialog.Show(pageSize);
-                    if (r == true)
-                    {
-                        var size = pageSize.GetSize();
-                        this.PrintableAreaWidth = size.Width;
-                        this.PrintableAreaHeight = size.Height;
-                    }
+            //{
+            //    CommandBinding binding = new CommandBinding(PrintCommands.PageSize);
+            //    binding.Executed += async (l, k) =>
+            //    {
+            //        await this.ShowPageSize();
+            //    };
+            //    this.CommandBindings.Add(binding);
+            //}
+        }
 
-                };
-                this.CommandBindings.Add(binding);
+        public async Task ShowPageSize()
+        {
+            var pageSize = new PagerSizeViewPresenter();
+            //pageSize.SelectedPagerSizeData = pageSize.Collection.Where(x=>x.);
+            var r = await IocMessage.Dialog.Show(pageSize);
+            if (r == true)
+            {
+                var size = pageSize.GetSize();
+                this.PrintableAreaWidth = size.Width;
+                this.PrintableAreaHeight = size.Height;
             }
         }
 
-        FixedDocument GetFixedDocument()
+        public void ShowPrintView()
+        {
+            var fixedDoc = this.GetFixedDocument();
+            DocumentViewPresenter presenter = new DocumentViewPresenter();
+            presenter.Document = fixedDoc;
+            IocMessage.Dialog.Show(presenter, x =>
+            {
+                x.Padding = new Thickness(2);
+                x.Title = "打印预览";
+            });
+        }
+
+
+        public void ShowPrintSetting()
+        {
+            _printDialog.ShowDialog();
+            this.PrintableAreaWidth = _printDialog.PrintableAreaWidth;
+            this.PrintableAreaHeight = _printDialog.PrintableAreaHeight;
+            this.ExtentWidth = capabilities.PageImageableArea.ExtentWidth;
+            this.ExtentHeight = capabilities.PageImageableArea.ExtentHeight;
+        }
+
+        public void Print()
+        {
+            FixedDocument fixedDoc = this.GetFixedDocument();
+            IocMessage.ShowSnackInfo("正在打印..");
+            this._printDialog.PrintDocument(fixedDoc.DocumentPaginator, "打印");
+            IocMessage.ShowSnackInfo("打印完成..");
+        }
+
+
+        private FixedDocument GetFixedDocument()
         {
             FixedDocument fixedDoc = new FixedDocument();
             foreach (var item in this.Items)
@@ -155,7 +176,10 @@ namespace H.Controls.PrintBox
 
         protected override DependencyObject GetContainerForItemOverride()
         {
-            return new PrintPage();
+            var result = new PrintPage();
+            if (this.ItemContainerStyle != null)
+                result.Style = this.ItemContainerStyle;
+            return result;
         }
 
         public double PrintableAreaWidth
@@ -256,7 +280,6 @@ namespace H.Controls.PrintBox
             private set { SetValue(PrintPageHeightProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty PrintPageHeightProperty =
             DependencyProperty.Register("PrintPageHeight", typeof(double), typeof(PrintBox), new FrameworkPropertyMetadata(default(double), (d, e) =>
             {

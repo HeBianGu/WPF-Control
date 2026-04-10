@@ -17,11 +17,10 @@ public class TextPropertyItem : ObjectPropertyItem<string>
         {
             this.TextWrapping = ta.TextWrapping;
             this.UseClear = ta.UseClear;
-
-            UnitAttribute unit = property.GetCustomAttribute<UnitAttribute>();
-            if (unit != null)
-                this.Unit = unit.Unit;
         }
+        UnitAttribute unit = property.GetCustomAttribute<UnitAttribute>();
+        if (unit != null)
+            this.Unit = unit.Unit;
     }
 
     public string Unit { get; set; }
@@ -51,7 +50,14 @@ public class TextPropertyItem : ObjectPropertyItem<string>
     protected override string GetValue()
     {
         object value = this.PropertyInfo.GetValue(this.Obj);
-        return value == null ? null : IsTypeConverter(this.PropertyInfo) ? TypeConverterToString(value) : (value?.ToString());
+        if (value == null)
+            return null;
+        TextValueConverterAttribute vc = this.PropertyInfo.GetCustomAttribute<TextValueConverterAttribute>();
+        if (vc?.ValueConverter != null)
+            return vc.Convert(value)?.ToString();
+        if (IsTypeConverter(this.PropertyInfo))
+            return TypeConverterToString(value);
+        return (value?.ToString());
     }
 
     public static bool IsIConvertible(PropertyInfo info)
@@ -68,7 +74,7 @@ public class TextPropertyItem : ObjectPropertyItem<string>
         return typeConvert != null;
     }
 
-    private string TypeConverterToString(object value)
+    protected string TypeConverterToString(object value)
     {
         TypeConverterAttribute propertyConvert = this.PropertyInfo.GetCustomAttribute<TypeConverterAttribute>();
         if (propertyConvert != null)
@@ -93,10 +99,23 @@ public class TextPropertyItem : ObjectPropertyItem<string>
         return value?.ToString();
     }
 
+
     protected override bool LoadDefaultValue(object obj, out string t)
     {
-        t = obj == null ? null : IsTypeConverter(this.PropertyInfo) ? TypeConverterToString(obj) : (obj?.ToString());
+        if (obj == null)
+            t = null;
+        TextValueConverterAttribute vc = this.PropertyInfo.GetCustomAttribute<TextValueConverterAttribute>();
+        if (vc?.ValueConverter != null)
+            t = vc.Convert(obj)?.ToString();
+        if (IsTypeConverter(this.PropertyInfo))
+            t = TypeConverterToString(obj);
+        t = obj?.ToString();
         return true;
+    }
+
+    protected override void SetValue(string value)
+    {
+        base.SetValue(value);
     }
 
     protected override bool CanSetDefault(object obj)

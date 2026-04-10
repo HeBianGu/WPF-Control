@@ -58,7 +58,7 @@ public abstract class ExpressionableDiagramDataBase : ZoomableDiagramDataBase, I
     });
 
 
-    public virtual IEnumerable<NodeDataExpression> GetExpressions()
+    public virtual IEnumerable<NodeDataExpression> GetExpressions(Predicate<object> predicate = null)
     {
         foreach (var item in Controls.Diagram.Presenter.Expressions.ConstNodeDataExpressions.GetDefaults().OfType<NodeDataExpression>())
         {

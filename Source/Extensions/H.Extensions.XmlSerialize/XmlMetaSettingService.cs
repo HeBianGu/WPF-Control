@@ -18,7 +18,7 @@ namespace H.Extensions.XmlSerialize
         private ISerializerService XmlSerializer => new XmlSerializerService();
 
         [Obsolete]
-        public T Deserilize<T>(string id)
+        public T Deserilize<T>(string id, string folderName = null)
         {
             string path = Path.Combine(AppPaths.Instance.Cache, typeof(T).Name, id + ".xml");
 
@@ -28,7 +28,7 @@ namespace H.Extensions.XmlSerialize
         }
 
         [Obsolete]
-        public void Serilize(object setting, string id)
+        public void Serilize(object setting, string id, string folderName = null)
         {
             Application.Current.Dispatcher.BeginInvoke(MetaSetting.Instance.DispatcherPriority, new Action(() =>
                        {

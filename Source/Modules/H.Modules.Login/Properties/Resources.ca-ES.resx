@@ -1,0 +1,244 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Type_LoginOptions" xml:space="preserve">
+    <value>Configuració de la pàgina d’inici de sessió</value>
+  </data>
+  <data name="Type_RegistorOptions" xml:space="preserve">
+    <value>Pàgina de configuració del registre</value>
+  </data>
+  <data name="Register" xml:space="preserve">
+    <value>Registre</value>
+  </data>
+  <data name="AccountLogin" xml:space="preserve">
+    <value>Inici de sessió del compte</value>
+  </data>
+  <data name="InputAccount" xml:space="preserve">
+    <value>Introduïu el nom d’usuari</value>
+  </data>
+  <data name="Account" xml:space="preserve">
+    <value>Compte</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>Contrasenya</value>
+  </data>
+  <data name="InputPassword" xml:space="preserve">
+    <value>Introduïu la contrasenya</value>
+  </data>
+  <data name="ConfirmationPassword" xml:space="preserve">
+    <value>Confirma la contrasenya</value>
+  </data>
+  <data name="ChangePassword" xml:space="preserve">
+    <value>Canviar la contrasenya</value>
+  </data>
+  <data name="Change" xml:space="preserve">
+    <value>Modifica</value>
+  </data>
+  <data name="RemenberPassword" xml:space="preserve">
+    <value>Recorda la contrasenya</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>Pas següent</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>Pas anterior</value>
+  </data>
+  <data name="EmailVerification" xml:space="preserve">
+    <value>Verificació del correu electrònic</value>
+  </data>
+  <data name="Agree" xml:space="preserve">
+    <value>He llegit i accepto.</value>
+  </data>
+  <data name="And" xml:space="preserve">
+    <value>i</value>
+  </data>
+  <data name="ServiceAgreement" xml:space="preserve">
+    <value>Acord de servei</value>
+  </data>
+  <data name="LoginDirect" xml:space="preserve">
+    <value>Inici de sessió directe</value>
+  </data>
+  <data name="Privacypolicy" xml:space="preserve">
+    <value>Política de privacitat</value>
+  </data>
+  <data name="Invoking" xml:space="preserve">
+    <value>En execució...</value>
+  </data>
+  <data name="VerificationCode" xml:space="preserve">
+    <value>Codi de verificació</value>
+  </data>
+  <data name="VerificationCodeSended" xml:space="preserve">
+    <value>El codi de verificació s’ha enviat.</value>
+  </data>
+  <data name="RegisterVerificationCode" xml:space="preserve">
+    <value>Codi de verificació de registre</value>
+  </data>
+  <data name="GetVerificationCode" xml:space="preserve">
+    <value>Obtenir codi de verificació</value>
+  </data>
+  <data name="EmailAddress" xml:space="preserve">
+    <value>Adreça electrònica</value>
+  </data>
+  <data name="UserLogin" xml:space="preserve">
+    <value>Inici de sessió de l'usuari</value>
+  </data>
+  <data name="SendingEmail" xml:space="preserve">
+    <value>Enviant correu electrònic</value>
+  </data>
+  <data name="RegisterNow" xml:space="preserve">
+    <value>Registra't ara</value>
+  </data>
+  <data name="RegisterAccount" xml:space="preserve">
+    <value>Registrar un compte</value>
+  </data>
+  <data name="ForgetPassword" xml:space="preserve">
+    <value>He oblidat la contrasenya</value>
+  </data>
+  <data name="Login" xml:space="preserve">
+    <value>Inicia la sessió</value>
+  </data>
+  <data name="Type_LoginOptions_GroupName" xml:space="preserve">
+    <value>Configuració del sistema</value>
+  </data>
+  <data name="Type_LoginOptions_Description" xml:space="preserve">
+    <value>Informació de configuració de la pàgina d'inici de sessió</value>
+  </data>
+  <data name="Type_RegistorOptions_GroupName" xml:space="preserve">
+    <value>Configuració del sistema</value>
+  </data>
+  <data name="Type_RegistorOptions_Description" xml:space="preserve">
+    <value>Informació configurada a la pàgina de registre</value>
+  </data>
+  <data name="Property_LoginOptions_Product" xml:space="preserve">
+    <value>Títol d'inici de sessió</value>
+  </data>
+  <data name="Property_LoginOptions_ProductFontSize" xml:space="preserve">
+    <value>Mida de la lletra</value>
+  </data>
+  <data name="Property_LoginOptions_AdminName" xml:space="preserve">
+    <value>Compte d'administrador</value>
+  </data>
+  <data name="Property_LoginOptions_LastUserName" xml:space="preserve">
+    <value>Darrer usuari que ha iniciat sessió</value>
+  </data>
+  <data name="Property_LoginOptions_Remember" xml:space="preserve">
+    <value>Recorda la contrasenya</value>
+  </data>
+  <data name="Property_LoginOptions_UseVisitor" xml:space="preserve">
+    <value>Activar convidat</value>
+  </data>
+  <data name="Property_LoginOptions_UseVisitor_Description" xml:space="preserve">
+    <value>Després d’activar el mode de convidat, es podrà entrar a la finestra principal encara que l’inici de sessió no sigui correcte.</value>
+  </data>
+  <data name="Property_LoginOptions_UseLogoutRestart" xml:space="preserve">
+    <value>Reinicia per tancar la sessió</value>
+  </data>
+  <data name="Property_LoginOptions_UseLogoutRestart_Description" xml:space="preserve">
+    <value>Activa el reinici de l'aplicació en tancar la sessió</value>
+  </data>
+  <data name="Property_RegistorOptions_UseMail" xml:space="preserve">
+    <value>Habilita el registre per correu electrònic</value>
+  </data>
+  <data name="Property_RegistorOptions_UseMail_Description" xml:space="preserve">
+    <value>Habilita el registre amb correu electrònic</value>
+  </data>
+  <data name="Property_RegistorOptions_ServiceAgreementUri" xml:space="preserve">
+    <value>Llicència d'aplicació</value>
+  </data>
+  <data name="Property_RegistorOptions_PrivacypolicyUri" xml:space="preserve">
+    <value>Política de privacitat</value>
+  </data>
+  <data name="Property_RegistorOptions_MailAccount" xml:space="preserve">
+    <value>Correu electrònic per enviar el codi de verificació</value>
+  </data>
+  <data name="Property_RegistorOptions_Image" xml:space="preserve">
+    <value>Imatge esquerra</value>
+  </data>
+  <data name="AccountCannotBeNull" xml:space="preserve">
+    <value>El nom d'usuari no pot estar buit</value>
+  </data>
+  <data name="PasswordCannotBeNull" xml:space="preserve">
+    <value>La contrasenya no pot estar buida</value>
+  </data>
+  <data name="LoginSuccess" xml:space="preserve">
+    <value>Inici de sessió correcte</value>
+  </data>
+  <data name="LoginError" xml:space="preserve">
+    <value>Error d'inici de sessió; el nom d'usuari o la contrasenya són incorrectes.</value>
+  </data>
+  <data name="Loginning" xml:space="preserve">
+    <value>S'està iniciant la sessió</value>
+  </data>
+  <data name="ChangingPassword" xml:space="preserve">
+    <value>S'està canviant la contrasenya</value>
+  </data>
+  <data name="ChangePasswordSuccess" xml:space="preserve">
+    <value>Contrasenya modificada correctament</value>
+  </data>
+  <data name="Registering" xml:space="preserve">
+    <value>S'està registrant</value>
+  </data>
+  <data name="RegisterSuccess" xml:space="preserve">
+    <value>Registre correcte</value>
+  </data>
+  <data name="PasswordsNotMatch" xml:space="preserve">
+    <value>Les dues contrasenyes introduïdes no coincideixen</value>
+  </data>
+</root>

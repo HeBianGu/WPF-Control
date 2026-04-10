@@ -7,13 +7,16 @@
 // Licensed under the MIT License (the "License")
 
 using System.Globalization;
+using System.Windows.Media.Imaging;
 
 namespace H.ValueConverter.Images;
 
 public class GetImageSourceFromFilePathConverter : MarkupValueConverterBase
 {
-    public int DecodePixel { get; set; } = 100;
+    private static List<Tuple<string, int, int, BitmapImage>> fileCache = new List<Tuple<string, int, int, BitmapImage>>();
 
+    public int DecodePixel { get; set; } = 100;
+    public bool UseCache { get; set; }
     public string RelativeRoot { get; set; } = AppDomain.CurrentDomain.BaseDirectory;
     public override object Convert(object value, Type targetType, object parameter, CultureInfo culture)
     {
@@ -27,6 +30,13 @@ public class GetImageSourceFromFilePathConverter : MarkupValueConverterBase
         {
             str = Path.Combine(this.RelativeRoot, str);
         }
+
+        if (this.UseCache)
+        {
+            Tuple<string, int, int, BitmapImage> find = fileCache.FirstOrDefault(k => k.Item1 == str && k.Item2 == DecodePixel && k.Item3 == DecodePixel);
+            if (find != null && find.Item4 != null)
+                return find.Item4;
+        }
         try
         {
             BitmapImage bitmap = new BitmapImage();
@@ -34,13 +44,23 @@ public class GetImageSourceFromFilePathConverter : MarkupValueConverterBase
             bitmap.UriSource = new Uri(str, UriKind.RelativeOrAbsolute);
             bitmap.DecodePixelWidth = this.DecodePixel;  // 设置图片宽度为 100 像素
                                                          //bitmap.DecodePixelHeight = this.DecodePixel; // 设置图片高度为 100 像素
-            bitmap.EndInit(); return bitmap;
+            bitmap.EndInit();
+            bitmap.CacheOption = BitmapCacheOption.OnLoad;
+            bitmap.Freeze();
+            System.Diagnostics.Debug.WriteLine("加载图像:" + str);
+            fileCache.Add(Tuple.Create(str, this.DecodePixel, this.DecodePixel, bitmap));
+            return bitmap;
         }
         catch (Exception)
         {
             return null;
         }
 
+    }
+
+    public static void Clear()
+    {
+        fileCache.Clear();
     }
 }
 
