@@ -4,7 +4,7 @@ cd /d "%~dp0"
 :: 查看标签
 git tag
 :: 创建标签
-git tag v1.0.5
+git tag v1.2.0
 :: 推送所有标签
 git push origin --tags
 pause
