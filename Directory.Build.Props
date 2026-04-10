@@ -2,8 +2,7 @@
 	<PropertyGroup>
 		<UseWPF>true</UseWPF>
 		<PackageIcon>logo.png</PackageIcon>
-		<!--<TargetFrameworks>net6.0-windows;net7.0-windows;</TargetFrameworks>
-    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>-->
+		<!--<TargetFrameworks>net6.0-windows;net7.0-windows;</TargetFrameworks>-->
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<TargetFrameworks>net8.0-windows</TargetFrameworks>
 		<ImplicitUsings>enable</ImplicitUsings>
