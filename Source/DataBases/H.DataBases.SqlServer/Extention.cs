@@ -43,7 +43,7 @@ namespace System
             services.AddDbContext<TDbContext>(x => x.UseSqlServer(connect));
             //IocSetting.Instance.Add(SqlServerSettable.Instance);
             services.AddSingleton<IDbConnectService, SqlServerDbConnectService<TDbContext>>();
-            services.AddSingleton<IDbDisconnectService, DbDisconnectService<TDbContext>>();
+            services.AddSingleton<IDbDisconnectService, SqlServerDbDisconnectService<TDbContext>>();
         }
 
         public static void UseSqlServer(this IApplicationBuilder service, Action<ISqlServerOption> action = null)

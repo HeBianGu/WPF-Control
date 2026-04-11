@@ -18,4 +18,9 @@ namespace H.DataBases.Sqlite
             return SqliteSettable.Instance;
         }
     }
+
+    public class SqliteDbDisconnectService<TDbContext> : DbDisconnectService<TDbContext> where TDbContext : DbContext
+    {
+        public override string Name => Properties.Resources.DataBase;
+    }
 }

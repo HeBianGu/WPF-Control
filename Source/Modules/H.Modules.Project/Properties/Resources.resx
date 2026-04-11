@@ -172,12 +172,12 @@
     <value>默认文件名称</value>
   </data>
   <data name="Type_ProjectOptions" xml:space="preserve">
-    <value>工程配置</value>
+    <value>项目配置</value>
   </data>
   <data name="Type_ProjectOptions_GroupName" xml:space="preserve">
     <value>系统设置</value>
   </data>
   <data name="Type_ProjectOptions_Description" xml:space="preserve">
-    <value>工程配置的信息</value>
+    <value>项目配置的信息</value>
   </data>
 </root>

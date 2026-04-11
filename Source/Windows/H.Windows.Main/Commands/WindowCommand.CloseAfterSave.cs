@@ -51,7 +51,7 @@ public class CloseAfterSaveWindowCommand : CloseWindowCommand
                     if (d?.IsCancel == true)
                         return null;
                     if (s != null)
-                        s.Value = Properties.Resources.Message_Saving + save.Name;
+                        s.Value = Properties.Resources.Message_Saving + " " + save.Name;
                     var r = save.Save(out string message);
                     if (r == false && s != null)
                     {

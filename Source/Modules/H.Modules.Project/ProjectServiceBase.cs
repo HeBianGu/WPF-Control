@@ -17,20 +17,22 @@ global using System.ComponentModel.DataAnnotations;
 global using System.IO;
 using H.Extensions.FontIcon;
 using H.Extensions.Mvvm.Commands;
+using H.Globalization.Properties;
 using System.Reflection.Metadata;
 using System.Text.Json.Serialization;
 
 namespace H.Modules.Project;
 
-[Display(Name = "工程数据", GroupName = SettingGroupNames.GroupData)]
+[Display(Name = "项目数据", GroupName = SettingGroupNames.GroupData)]
 public abstract class ProjectServiceBase<T> : CommandsBindableBase, IProjectService, IDataSource<T> where T : IProjectItem
 {
     private readonly IOptions<ProjectOptions> _options;
     public ProjectServiceBase(IOptions<ProjectOptions> options)
     {
         _options = options;
-        this.ProjectAdded = x => this.OnProjectAdded(x); ;
+        this.ProjectAdded = x => this.OnProjectAdded(x);
     }
+    public string Name => Resources.Nav_Projects;
     protected virtual void OnProjectAdded(IProjectItem projectItem)
     {
 
@@ -75,8 +77,6 @@ public abstract class ProjectServiceBase<T> : CommandsBindableBase, IProjectServ
     [System.Xml.Serialization.XmlIgnore]
     [Browsable(false)]
     public Action<IProjectItem, IProjectItem> CurrentChanged { get; set; }
-
-    public string Name => "项目数据";
 
     protected virtual void OnCurrentChanged(IProjectItem o, IProjectItem n)
     {

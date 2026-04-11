@@ -19,7 +19,7 @@ namespace H.DataBases.Share
 {
     public class DbDisconnectService : IDbDisconnectService
     {
-        public string Name => "数据库数据";
+        public virtual string Name => "数据库数据";
         public bool Save(out string message)
         {
             message = null;
@@ -32,7 +32,7 @@ namespace H.DataBases.Share
 
     public class DbDisconnectService<TDbContext> : IDbDisconnectService where TDbContext : DbContext
     {
-        public string Name => "数据库数据";
+        public virtual string Name => "数据库数据";
         public bool Save(out string message)
         {
             message = null;

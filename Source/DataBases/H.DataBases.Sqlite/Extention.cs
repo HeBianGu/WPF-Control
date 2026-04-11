@@ -43,7 +43,7 @@ namespace System
             //注册阶段不可以访问服务
             //IocSetting.Instance.Add(SqliteSettable.Instance);
             services.AddSingleton<IDbConnectService, SqliteDbConnectService<TDbContext>>();
-            services.AddSingleton<IDbDisconnectService, DbDisconnectService<TDbContext>>();
+            services.AddSingleton<IDbDisconnectService, SqliteDbDisconnectService<TDbContext>>();
         }
 
         public static void AddDbContextNewSetting<TDbContext>(this IServiceCollection services, Action<ISqliteSettable> action = null) where TDbContext : DbContext

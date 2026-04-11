@@ -26,4 +26,9 @@ namespace H.DataBases.SqlServer
         }
 
     }
+
+    public class SqlServerDbDisconnectService<TDbContext> : DbDisconnectService<TDbContext> where TDbContext : DbContext
+    {
+        public override string Name => Properties.Resources.DataBase;
+    }
 }
