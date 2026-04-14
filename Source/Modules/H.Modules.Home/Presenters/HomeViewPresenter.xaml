@@ -15,6 +15,7 @@
                 Margin="0,20"
                 HorizontalAlignment="Left"
                 DockPanel.Dock="Top"
+                Command="{ShowProjectsCommand}"
                 Style="{DynamicResource {x:Static ButtonKeys.Accent}}">
                 <Button.Content>
                     <DockPanel>

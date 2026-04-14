@@ -85,8 +85,10 @@ public abstract class ProjectItemBase : DisplayBindableBase, IProjectItem
         }
     }
 
+    [JsonIgnore]
     public virtual IProjectItemPresenter Presenter { get; }
-
+    
+    [JsonIgnore]
     public virtual IProjectItemThumbnailPresenter ThumbnailPresenter { get; }
 
     public virtual bool Save(out string message)

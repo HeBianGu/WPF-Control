@@ -10,11 +10,14 @@ namespace H.Modules.Project;
 
 public class GetProjectItemPresenterValueConverter : MarkupValueConverterBase
 {
+    public bool ReturnProjectItemOnNull { get; set; }
     public override object Convert(object value, Type targetType, object parameter, CultureInfo culture)
     {
         if (value is IProjectItem projectItem && projectItem.Presenter != null)
             return projectItem.Presenter;
-        return value;
+        if (this.ReturnProjectItemOnNull)
+            return value;
+        return null;
     }
 
 }
