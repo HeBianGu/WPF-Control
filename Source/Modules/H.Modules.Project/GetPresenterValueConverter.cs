@@ -8,10 +8,13 @@
 
 namespace H.Modules.Project;
 
-public interface IProjectOptions
+public class GetPresenterValueConverter : MarkupValueConverterBase
 {
-    string Extenstion { get; set; }
-    string DefaultProjectName { get; set; }
-    ProjectSaveMode SaveMode { get; set; }
-    bool UseOpenCurrentOnLoad { get; set; }
+    public override object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+    {
+        if (value is IProjectItem projectItem && projectItem.Presenter != null)
+            return projectItem.Presenter;
+        return value;
+    }
+
 }

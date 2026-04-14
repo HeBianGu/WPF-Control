@@ -60,4 +60,17 @@ public class ProjectOptions : IocOptionInstance<ProjectOptions>, IProjectOptions
             RaisePropertyChanged();
         }
     }
+
+    private bool _UseOpenCurrentOnLoad = true;
+    [DefaultValue(true)]
+    [Display(Name = "保存的时机")]
+    public bool UseOpenCurrentOnLoad
+    {
+        get { return _UseOpenCurrentOnLoad; }
+        set
+        {
+            _UseOpenCurrentOnLoad = value;
+            RaisePropertyChanged();
+        }
+    }
 }

@@ -17,4 +17,22 @@ public interface IProjectItem : ISaveable, ILoadable
     string Title { get; set; }
     bool Close(out string message);
     Task<(bool success, string message)> DeleteAsync();
+    IProjectItemPresenter Presenter { get; }
+    IProjectItemThumbnailPresenter ThumbnailPresenter { get; }
+}
+
+/// <summary>
+/// 主要视图显示
+/// </summary>
+public interface IProjectItemPresenter
+{
+    IProjectItem ProjectItem { get; }
+}
+
+/// <summary>
+/// 缩率图显示
+/// </summary>
+public interface IProjectItemThumbnailPresenter
+{
+    IProjectItem ProjectItem { get; }
 }

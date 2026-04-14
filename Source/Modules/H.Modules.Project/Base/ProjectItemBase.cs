@@ -85,6 +85,9 @@ public abstract class ProjectItemBase : DisplayBindableBase, IProjectItem
         }
     }
 
+    public virtual IProjectItemPresenter Presenter { get; }
+
+    public virtual IProjectItemThumbnailPresenter ThumbnailPresenter { get; }
 
     public virtual bool Save(out string message)
     {

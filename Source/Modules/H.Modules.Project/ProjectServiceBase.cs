@@ -19,6 +19,7 @@ using H.Extensions.FontIcon;
 using H.Extensions.Mvvm.Commands;
 using System.Reflection.Metadata;
 using System.Text.Json.Serialization;
+using System.Windows.Controls;
 
 namespace H.Modules.Project;
 
@@ -171,15 +172,22 @@ public abstract class ProjectServiceBase<T> : CommandsBindableBase, IProjectServ
         {
             var orders = data.Items.OrderByDescending(x => x.UpdateTime);
             this.Collection = orders.ToObservable();
-            this.Current = orders.FirstOrDefault();
         }
+        if (ProjectOptions.Instance.UseOpenCurrentOnLoad)
+            this.LoadCurrent();
+        return true;
+    }
+
+    protected virtual void LoadCurrent()
+    {
+        if (this.Collection != null)
+            this.Current = this.Collection.FirstOrDefault();
         if (this.Current == null)
         {
             this.Current = this.Create();
             if (string.IsNullOrEmpty(this.Current.Title))
                 this.Current.Title = ProjectOptions.Instance.DefaultProjectName + (this.Collection.Count() + 1).ToString();
         }
-        return true;
     }
 
     public void Clear()
