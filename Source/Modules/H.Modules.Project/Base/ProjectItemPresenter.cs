@@ -8,9 +8,9 @@
 
 namespace H.Modules.Project.Base;
 
-public class ProjectItemPresenter<T> : BindableBase, IProjectItemPresenter
+public abstract class ProjectItemBindableBase<T> : BindableBase where T : IProjectItem
 {
-    public ProjectItemPresenter(T projectItem)
+    public ProjectItemBindableBase(T projectItem)
     {
         this.ProjectItem = projectItem;
     }
@@ -24,6 +24,20 @@ public class ProjectItemPresenter<T> : BindableBase, IProjectItemPresenter
             RaisePropertyChanged();
         }
     }
+}
 
-    IProjectItem IProjectItemPresenter.ProjectItem => throw new NotImplementedException();
+public abstract class ProjectItemPresenter<T> : ProjectItemBindableBase<T>, IProjectItemPresenter where T : IProjectItem
+{
+    public ProjectItemPresenter(T projectItem) : base(projectItem)
+    {
+    }
+    IProjectItem IProjectItemPresenter.ProjectItem => this.ProjectItem;
+}
+
+public abstract class ProjectItemThumbnailPresenter<T> : ProjectItemBindableBase<T>, IProjectItemThumbnailPresenter where T : IProjectItem
+{
+    public ProjectItemThumbnailPresenter(T projectItem) : base(projectItem)
+    {
+    }
+    IProjectItem IProjectItemThumbnailPresenter.ProjectItem => this.ProjectItem;
 }

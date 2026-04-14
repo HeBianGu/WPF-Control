@@ -8,7 +8,7 @@
 
 namespace H.Modules.Project;
 
-public class GetPresenterValueConverter : MarkupValueConverterBase
+public class GetProjectItemPresenterValueConverter : MarkupValueConverterBase
 {
     public override object Convert(object value, Type targetType, object parameter, CultureInfo culture)
     {
