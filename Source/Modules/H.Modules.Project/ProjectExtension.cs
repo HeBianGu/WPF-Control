@@ -163,6 +163,7 @@ static partial class ProjectExtension
         return r;
     }
 
+
     public static async Task<bool?> ShowSaveProject(this IProjectService projectService, IProjectItem current)
     {
         string message = null;
@@ -181,6 +182,19 @@ static partial class ProjectExtension
             await IocMessage.ShowDialogMessage(message);
         return r;
     }
+
+    public static async Task<bool?> ShowCloseProject(this IProjectService projectService)
+    {
+        var current = projectService.Current;
+        if (current == null)
+            return false;
+        var r = await projectService.ShowSaveProject(current);
+        if (r != true)
+            return false;
+        projectService.Current = null;
+        return true;
+    }
+
 
     public static bool ShowSaveToFile(this IProjectService projectService, IProjectItem current)
     {

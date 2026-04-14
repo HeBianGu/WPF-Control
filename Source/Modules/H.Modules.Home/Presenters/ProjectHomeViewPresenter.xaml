@@ -3,19 +3,18 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
     xmlns:local="clr-namespace:H.Modules.Home.Presenters">
-    <DataTemplate DataType="{x:Type local:HomeViewPresenter}">
+    <DataTemplate DataType="{x:Type local:ProjectHomeViewPresenter}">
         <DockPanel Margin="20">
             <TextBlock
                 DockPanel.Dock="Top"
                 FontSize="30"
                 Text="欢迎试用AIDI" />
-            <!--  Command="{ShowProjectsCommand}"  -->
             <Button
                 Width="120"
                 Margin="0,20"
                 HorizontalAlignment="Left"
+                Command="{Binding ShowProjectCommand}"
                 DockPanel.Dock="Top"
-                Command="{ShowProjectsCommand}"
                 Style="{DynamicResource {x:Static ButtonKeys.Accent}}">
                 <Button.Content>
                     <DockPanel>
@@ -29,16 +28,22 @@
             </Button>
 
             <TabControl>
-                <TabItem Header="最近打开" Width="120" Cattach.CaptionHorizontalAlignment="Center">
+                <TabItem
+                    Width="120"
+                    Cattach.CaptionHorizontalAlignment="Center"
+                    Header="最近打开">
                     <ListBox
-                        Width="150"
                         Margin="2,0"
+                        Cattach.ItemHeight="Auto"
                         ItemsSource="{Binding Source={x:Static IocProject.Instance}, Path=Collection}" />
                 </TabItem>
-                <TabItem Header="示例项目" Width="120" Cattach.CaptionHorizontalAlignment="Center">
-                    <ListBox Cattach.ItemHeight="Auto"
-                        Width="150"
+                <TabItem
+                    Width="120"
+                    Cattach.CaptionHorizontalAlignment="Center"
+                    Header="示例项目">
+                    <ListBox
                         Margin="2,0"
+                        Cattach.ItemHeight="Auto"
                         ItemsSource="{Binding Source={x:Static IocProject.Instance}, Path=Collection}" />
                 </TabItem>
             </TabControl>

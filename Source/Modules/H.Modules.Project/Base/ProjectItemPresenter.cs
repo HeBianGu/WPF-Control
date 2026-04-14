@@ -6,6 +6,8 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
+using System.Text.Json.Serialization;
+
 namespace H.Modules.Project.Base;
 
 public abstract class ProjectItemBindableBase<T> : BindableBase where T : IProjectItem

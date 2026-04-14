@@ -8,6 +8,7 @@
 
 namespace H.Modules.Project;
 
+[Obsolete]
 public class GetProjectItemPresenterValueConverter : MarkupValueConverterBase
 {
     public bool ReturnProjectItemOnNull { get; set; }

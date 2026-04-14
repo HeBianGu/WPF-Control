@@ -32,6 +32,7 @@ public static class Extention
         services.AddOptions();
         services.TryAdd(ServiceDescriptor.Singleton<IProjectService, T>());
         services.TryAdd(ServiceDescriptor.Singleton<IProjectViewPresenter, ProjectViewPresenter>());
+        services.TryAdd(ServiceDescriptor.Singleton<IProjectDialogService, ProjectDialogService>());
         if (setupAction != null)
             services.Configure(new Action<ProjectOptions>(setupAction));
         return services;
