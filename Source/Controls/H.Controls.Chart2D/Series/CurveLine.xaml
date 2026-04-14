@@ -65,23 +65,23 @@
 
     <Style
         x:Key="{ComponentResourceKey ResourceId=S.Line.Default,
-                                     TypeInTargetAssembly={x:Type local:Line}}"
+                                     TypeInTargetAssembly={x:Type local:CurveLine}}"
         BasedOn="{StaticResource {x:Static h:LineBase.DefaultKey}}"
-        TargetType="{x:Type local:Line}" />
+        TargetType="{x:Type local:CurveLine}" />
 
     <Style
         x:Key="{ComponentResourceKey ResourceId=S.Line.AlignmentCenter,
-                                     TypeInTargetAssembly={x:Type local:Line}}"
-        BasedOn="{StaticResource {x:Static h:Line.DefaultKey}}"
-        TargetType="{x:Type local:Line}">
+                                     TypeInTargetAssembly={x:Type local:CurveLine}}"
+        BasedOn="{StaticResource {x:Static h:CurveLine.DefaultKey}}"
+        TargetType="{x:Type local:CurveLine}">
         <Setter Property="AlignmentCenter" Value="True" />
     </Style>
 
     <Style
         x:Key="{ComponentResourceKey ResourceId=S.Line.Single,
-                                     TypeInTargetAssembly={x:Type local:Line}}"
-        BasedOn="{StaticResource {x:Static h:Line.DefaultKey}}"
-        TargetType="{x:Type local:Line}">
+                                     TypeInTargetAssembly={x:Type local:CurveLine}}"
+        BasedOn="{StaticResource {x:Static h:CurveLine.DefaultKey}}"
+        TargetType="{x:Type local:CurveLine}">
         <Setter Property="IsUseAnimation" Value="False" />
         <Setter Property="PathStyle">
             <Setter.Value>
@@ -93,7 +93,7 @@
         </Setter>
     </Style>
 
-    <Style BasedOn="{StaticResource {x:Static h:Line.DefaultKey}}" TargetType="{x:Type local:Line}" />
+    <Style BasedOn="{StaticResource {x:Static h:CurveLine.DefaultKey}}" TargetType="{x:Type local:CurveLine}" />
 
     <Style
         x:Key="{ComponentResourceKey ResourceId=S.Area.Default,
@@ -212,7 +212,7 @@
     <Style
         x:Key="{ComponentResourceKey ResourceId=S.PolarLine.Default,
                                      TypeInTargetAssembly={x:Type local:PolarLine}}"
-        BasedOn="{StaticResource {x:Static h:Line.DefaultKey}}"
+        BasedOn="{StaticResource {x:Static h:CurveLine.DefaultKey}}"
         TargetType="{x:Type local:PolarLine}">
         <Setter Property="HorizontalAlignment" Value="Center" />
         <Setter Property="VerticalAlignment" Value="Center" />

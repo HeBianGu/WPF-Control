@@ -6,11 +6,11 @@
     <ResourceDictionary.MergedDictionaries>
         <!--<ResourceDictionary Source="pack://application:,,,/H.Controls.Chart2D;component/Themes/Generic.Default.xaml" />-->
 
-        <ResourceDictionary Source="pack://application:,,,/H.Controls.Chart2D;component/Axis/Grid.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Controls.Chart2D;component/Axis/GridLine.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Controls.Chart2D;component/Axis/Axis.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Controls.Chart2D;component/Axis/Polar.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Controls.Chart2D;component/Series/Series.xaml" />
-        <ResourceDictionary Source="pack://application:,,,/H.Controls.Chart2D;component/Series/Line.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Controls.Chart2D;component/Series/CurveLine.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Controls.Chart2D;component/Series/MarkLine.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Controls.Chart2D;component/Series/VisualMap.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Controls.Chart2D;component/Series/Scatter.xaml" />
