@@ -184,7 +184,7 @@ public abstract class ProjectServiceBase<T> : CommandsBindableBase, IProjectServ
 
     public void Clear()
     {
-        if (this.Collection is IList list)
+        if (this.Collection is IList list && list.Count > 0)
             list.Clear();
         this.Current = null;
     }
