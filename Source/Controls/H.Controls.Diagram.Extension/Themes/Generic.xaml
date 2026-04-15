@@ -25,7 +25,7 @@
                               Style="{StaticResource {x:Static h:Series.BarKey}}"
                               yDatas="{Binding LoginData.SeriesDatas[0].yDatas}" />
 
-                    <h:Series LineStyle="{StaticResource {x:Static h:Line.AlignmentCenterKey}}"
+                    <h:Series LineStyle="{StaticResource {x:Static h:CurveLine.AlignmentCenterKey}}"
                               ScatterStyle="{StaticResource {x:Static h:Scatter.AlignmentCenterKey}}"
                               Style="{StaticResource {x:Static h:Series.LineKey}}"
                               yDatas="{Binding LoginData.SeriesDatas[0].yDatas}">
