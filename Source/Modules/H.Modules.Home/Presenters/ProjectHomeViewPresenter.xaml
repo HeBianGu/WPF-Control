@@ -7,8 +7,9 @@
         <DockPanel Margin="20">
             <TextBlock
                 DockPanel.Dock="Top"
-                FontSize="30"
-                Text="欢迎试用AIDI" />
+                FontSize="30">
+                <Run Text="欢迎使用"/><Run Text="{x:Static ApplicationProvider.Product}"/>
+            </TextBlock>
             <Button
                 Width="120"
                 Margin="0,20"

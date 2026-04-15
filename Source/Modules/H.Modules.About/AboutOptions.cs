@@ -9,6 +9,7 @@
 using H.Common.Attributes;
 using H.Controls.Form.Attributes;
 using H.Controls.Form.PropertyItem.TextPropertyItems;
+using H.Extensions.Common;
 using H.Extensions.FontIcon;
 using H.Extensions.Setting;
 using H.Services.Setting;
@@ -25,18 +26,17 @@ public class AboutOptions : IocOptionInstance<AboutOptions>, IAboutOptions
 {
     public AboutOptions()
     {
-        this._Title = Assembly.GetEntryAssembly().GetCustomAttribute<AssemblyTitleAttribute>()?.Title;
-        this._ProductName = Assembly.GetEntryAssembly().GetCustomAttribute<AssemblyProductAttribute>()?.Product;
-        this._productDescription = Assembly.GetEntryAssembly().GetCustomAttribute<AssemblyDescriptionAttribute>()?.Description;
-        this._company = Assembly.GetEntryAssembly().GetCustomAttribute<AssemblyCompanyAttribute>()?.Company;
-        this._culture = Assembly.GetEntryAssembly().GetCustomAttribute<AssemblyCultureAttribute>()?.Culture;
-        this._trademark = Assembly.GetEntryAssembly().GetCustomAttribute<AssemblyTrademarkAttribute>()?.Trademark;
-        this._configuration = Assembly.GetEntryAssembly().GetCustomAttribute<AssemblyConfigurationAttribute>()?.Configuration;
-        this._copyright = Assembly.GetEntryAssembly().GetCustomAttribute<AssemblyCopyrightAttribute>()?.Copyright;
-        this._version = Assembly.GetEntryAssembly().GetName().Version.ToString();
-        this._assemblyVersion = Assembly.GetEntryAssembly().GetName().Version.ToString();
-        //this._assemblyVersion = Assembly.GetEntryAssembly().GetCustomAttribute<AssemblyVersionAttribute>()?.Version;
-        this._fileVersion = Assembly.GetEntryAssembly().GetCustomAttribute<AssemblyFileVersionAttribute>()?.Version;
+        this._Title = ApplicationProvider.Title;
+        this._ProductName = ApplicationProvider.Product;
+        this._productDescription = ApplicationProvider.Description;
+        this._company = ApplicationProvider.Company;
+        this._culture = ApplicationProvider.Culture;
+        this._trademark = ApplicationProvider.Trademark;
+        this._configuration = ApplicationProvider.Configuration;
+        this._copyright = ApplicationProvider.Copyright;
+        this._version = ApplicationProvider.Version;
+        this._assemblyVersion = ApplicationProvider.AssemblyVersion;
+        this._fileVersion = ApplicationProvider.FileVersion;
     }
 
     private string _Title;

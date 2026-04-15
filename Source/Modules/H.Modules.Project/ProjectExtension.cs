@@ -18,10 +18,11 @@ namespace H.Modules.Project;
 
 public static partial class ProjectExtension
 {
-    public static async Task<bool?> ShowProjectsDialog(this IProjectService projectService, Action<IDialog> action = null)
+    public static async Task<bool?> ShowProjectsDialog(this IProjectService projectService, Action<IProjectListViewPresenter> option = null, Action<IDialog> action = null)
     {
         ProjectListViewPresenter project = new ProjectListViewPresenter();
         project.SelectedItem = projectService.Current;
+        option?.Invoke(project);
         bool? r = await IocMessage.ShowDialog(project, x =>
         {
             x.Title = "选择工程";

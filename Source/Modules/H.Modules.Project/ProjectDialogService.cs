@@ -12,6 +12,6 @@ public class ProjectDialogService : IProjectDialogService
 {
     public async Task<bool?> ShowProjectsDialog()
     {
-        return await IocProject.Instance.ShowProjectsDialog();
+        return await IocProject.Instance.ShowProjectsDialog(x => x.UseAddProject = true);
     }
 }

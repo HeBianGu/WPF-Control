@@ -14,6 +14,6 @@ public class ShowProjectsCommand : ShowProjectCommandBase
 {
     public override async Task ExecuteAsync(object parameter)
     {
-        await IocProject.Instance.ShowProjectsDialog(x => this.Invoke(x));
+        await IocProject.Instance.ShowProjectsDialog(null, x => this.Invoke(x));
     }
 }
