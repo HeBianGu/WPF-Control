@@ -5,10 +5,8 @@
     xmlns:local="clr-namespace:H.Modules.Home.Presenters">
     <DataTemplate DataType="{x:Type local:ProjectHomeViewPresenter}">
         <DockPanel Margin="20">
-            <TextBlock
-                DockPanel.Dock="Top"
-                FontSize="30">
-                <Run Text="欢迎使用"/><Run Text="{x:Static ApplicationProvider.Product}"/>
+            <TextBlock DockPanel.Dock="Top" FontSize="30">
+                <Run Text="欢迎使用" /><Run Text="{x:Static ApplicationProvider.Product}" />
             </TextBlock>
             <Button
                 Width="120"
@@ -28,7 +26,7 @@
                 </Button.Content>
             </Button>
 
-            <TabControl>
+            <TabControl Cattach.ItemBorderThickness="1" Padding="5 8">
                 <TabItem
                     Width="120"
                     Cattach.CaptionHorizontalAlignment="Center"

@@ -8,24 +8,21 @@
     xmlns:p="clr-namespace:H.Modules.Project.Properties">
     <DataTemplate DataType="{x:Type local:ProjectListViewPresenter}">
         <DockPanel>
-            <DockPanel
-                Margin="2"
-                DockPanel.Dock="Top"
-                LastChildFill="False">
+            <DockPanel Margin="2" DockPanel.Dock="Top">
                 <Button
                     HorizontalAlignment="Right"
                     Command="{c:ShowNewProjectCommand}"
                     Content="{x:Static p:Resources.Type_ShowNewProjectCommand}"
+                    DockPanel.Dock="Right"
                     Visibility="{Binding UseAddProject, Converter={GetTrueToVisibleConverter}}" />
-
+                <TextBox
+                    Width="Auto"
+                    Margin="2"
+                    Cattach.Icon="{x:Static FontIcons.Search}"
+                    Style="{DynamicResource {x:Static TextBoxKeys.Delete}}" />
             </DockPanel>
-            <TextBox
-                Width="Auto"
-                Margin="2"
-                Cattach.Icon="{x:Static FontIcons.Search}"
-                DockPanel.Dock="Top"
-                Style="{DynamicResource {x:Static TextBoxKeys.Delete}}" />
-            <Border BorderThickness="1" BorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrush}}">
+
+            <Border BorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrush}}" BorderThickness="1">
                 <local:ProjectBox SelectedProject="{Binding SelectedItem, Mode=TwoWay}">
                     <ListBox.GroupStyle>
                         <GroupStyle>

@@ -166,9 +166,9 @@ public static partial class Converter
         return list;
     });
 
-    public static IValueConverter GetValueToList => new ConverterBase<object,IList>(x =>
+    public static IValueConverter GetValueToList => new ConverterBase<object, IList>(x =>
     {
-        var result= new List<object>();
+        var result = new List<object>();
         result.Add(x);
         return result;
     });
@@ -342,8 +342,15 @@ public static partial class Converter
         object first = x.FirstOrDefault();
         if (first == null)
             return Visibility.Collapsed;
-        bool SSS = x.All(l => l.Equals(first));
         return x.All(l => l.Equals(first)) ? Visibility.Visible : Visibility.Collapsed;
+    });
+
+    public static IMultiValueConverter GetAllEqualsToTrue => new MultiConverterBase<object, bool>(x =>
+    {
+        object first = x.FirstOrDefault();
+        if (first == null)
+            return false;
+        return x.All(l => l?.Equals(first) == true);
     });
 
     public static IMultiValueConverter GetComparableAllTrueToVisible => new MultiConverterBase<IComparable, Visibility>(x =>
