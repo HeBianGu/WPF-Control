@@ -144,7 +144,7 @@ static partial class ProjectExtension
         {
             x.Title = "正在打开工程...";
             project.UpdateTime = DateTime.Now;
-            Thread.Sleep(2000);
+            Thread.Sleep(500);
             return projectService.Save(out string message);
         });
         if (r == false && !string.IsNullOrEmpty(message))

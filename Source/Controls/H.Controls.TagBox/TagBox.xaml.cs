@@ -33,7 +33,6 @@ namespace H.Controls.TagBox
                 {
                     this.RefreshData();
                 });
-
             };
         }
 

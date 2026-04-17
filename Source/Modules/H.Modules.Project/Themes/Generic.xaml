@@ -8,5 +8,6 @@
         <ResourceDictionary Source="pack://application:,,,/H.Modules.Project;component/ProjectViewPresenter.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Modules.Project;component/ProjectListViewPresenter.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Modules.Project;component/ProjectItem.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Modules.Project;component/SelectProjectComboBox.xaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>
