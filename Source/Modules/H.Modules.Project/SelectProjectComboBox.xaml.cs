@@ -19,6 +19,8 @@ public class SelectProjectComboBox : ComboBox
     protected override async void OnSelectionChanged(SelectionChangedEventArgs e)
     {
         base.OnSelectionChanged(e);
+        if (!this.IsMouseCaptureWithin)
+            return;
         await IocProject.Instance.ShowOpenProject(this.SelectedItem as IProjectItem);
     }
 }

@@ -138,6 +138,8 @@ static partial class ProjectExtension
 
     public static async Task<bool?> ShowOpenProject(this IProjectService projectService, IProjectItem project)
     {
+        if (project == null)
+            return false;
         string message = null;
         projectService.Current = project;
         var r = await IocMessage.Dialog.ShowWait(x =>

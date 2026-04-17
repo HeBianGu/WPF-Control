@@ -24,4 +24,6 @@ public interface IProjectService : ISplashSave, ISplashLoadable, IDefaultTemplat
 public interface IProjectDialogService
 {
     Task<bool?> ShowProjectsDialog();
+
+    Task<bool?> ShowOpenProject(IProjectItem project);
 }

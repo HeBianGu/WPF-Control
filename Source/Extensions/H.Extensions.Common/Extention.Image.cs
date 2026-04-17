@@ -299,6 +299,14 @@ public class ImageEx
         return Tuple.Create(bmp.PixelWidth, bmp.PixelHeight);
     }
 
+    public string ToBase64String()
+    {
+        if (!File.Exists(this.FullPath) || this.FullPath.IsImage() == false)
+            return null;
+        byte[] imageBytes = File.ReadAllBytes(this.FullPath);
+        return Convert.ToBase64String(imageBytes);
+    }
+
     public ImageSource GetImageSource(int decodePixelWidth = 0, int decodePixelHeight = 0, bool useCache = true)
     {
         if (!File.Exists(this.FullPath))

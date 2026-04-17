@@ -10,6 +10,11 @@ namespace H.Modules.Project;
 
 public class ProjectDialogService : IProjectDialogService
 {
+    public async Task<bool?> ShowOpenProject(IProjectItem project)
+    {
+        return await IocProject.Instance.ShowOpenProject(project);
+    }
+
     public async Task<bool?> ShowProjectsDialog()
     {
         return await IocProject.Instance.ShowProjectsDialog(x => x.UseAddProject = true);

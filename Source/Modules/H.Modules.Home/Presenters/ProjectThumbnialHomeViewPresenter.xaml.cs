@@ -6,14 +6,17 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
-namespace H.Services.Project;
+using H.Iocable;
+using H.Modules.Home.Base;
+using H.Mvvm.Commands;
+using H.Services.Project;
+using Microsoft.Extensions.Options;
 
-public class ProjectSplashSaveService : IProjectSplashSaveService
+namespace H.Modules.Home.Presenters;
+public class ProjectThumbnialHomeViewPresenter : ProjectHomeViewPresenter
 {
-    public string Name => "保存项目";
-    public bool Save(out string message)
+    public ProjectThumbnialHomeViewPresenter(IOptions<HomeOptions> options) : base(options)
     {
-        message = null;
-        return IocProject.Instance.Current?.Save(out message) != false;
+
     }
 }
