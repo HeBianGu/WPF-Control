@@ -12,6 +12,7 @@ namespace H.Services.Project;
 
 public interface IProjectItem : ISaveable, ILoadable
 {
+    string ID { get; set; }
     DateTime UpdateTime { get; set; }
     bool IsFixed { get; set; }
     string Title { get; set; }

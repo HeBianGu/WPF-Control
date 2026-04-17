@@ -11,16 +11,16 @@ using System.Reflection;
 namespace H.Extensions.Common;
 public static class AssemblyExtension
 {
-    public static IEnumerable<T> GetInstances<T>(this Assembly assembly)
+    public static IEnumerable<T> GetInstances<T>(this Assembly assembly, params object[] args)
     {
         var types = assembly.GetTypes();
         types = types.Where(t => t.IsClass && !t.IsAbstract).ToArray();
         types = types.Where(t => typeof(T).IsAssignableFrom(t)).ToArray();
-        return types.Select(t => Activator.CreateInstance(t)).OfType<T>();
+        return types.Select(t => Activator.CreateInstance(t, args)).OfType<T>();
     }
 
-    public static IEnumerable<T> GetInstances<T>(this Type type)
+    public static IEnumerable<T> GetInstances<T>(this Type type, params object[] args)
     {
-        return type.Assembly.GetInstances<T>();
+        return type.Assembly.GetInstances<T>(args);
     }
 }
