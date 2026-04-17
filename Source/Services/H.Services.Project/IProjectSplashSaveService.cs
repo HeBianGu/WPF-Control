@@ -8,7 +8,7 @@
 
 namespace H.Services.Project;
 
-public class IocProject : Ioc<IProjectService>
+public interface IProjectSplashSaveService : ISplashSave
 {
 
 }

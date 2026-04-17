@@ -8,7 +8,11 @@
 
 namespace H.Services.Project;
 
-public class IocProject : Ioc<IProjectService>
+public class ProjectSplashSaveService : IProjectSplashSaveService
 {
-
+    public string Name => "保存项目";
+    public bool Save(out string message)
+    {
+        return IocProject.Instance.Current.Save(out message);
+    }
 }
