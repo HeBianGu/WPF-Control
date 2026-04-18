@@ -6,7 +6,9 @@
     <DataTemplate DataType="{x:Type local:ProjectThumbnialHomeViewPresenter}">
         <DockPanel Margin="20">
             <TextBlock DockPanel.Dock="Top" FontSize="30">
-                <Run Text="欢迎使用" /><Run Text="{x:Static ApplicationProvider.Product}" />
+                <Run Text="欢迎使用" />
+                <Run Text="-" />
+                <Run Text="{x:Static ApplicationProvider.Product}" />
             </TextBlock>
             <Button
                 Width="120"
