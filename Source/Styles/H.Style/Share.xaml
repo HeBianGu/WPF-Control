@@ -130,4 +130,22 @@
             </DataTrigger>
         </Style.Triggers>
     </Style>
+
+    <Style x:Key="S.FontIconTextBlock.Cattachable"
+           TargetType="{x:Type local:FontIconTextBlock}">
+        <Setter Property="Foreground" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=Foreground}" />
+        <Setter Property="Height" Value="{DynamicResource {x:Static LayoutKeys.IconHeight}}" />
+        <Setter Property="Width" Value="{DynamicResource {x:Static LayoutKeys.IconHeight}}" />
+        <Setter Property="HorizontalAlignment" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(Cattach.IconHorizontalAlignment)}" />
+        <Setter Property="VerticalAlignment" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(Cattach.IconVerticalAlignment)}" />
+        <Setter Property="Opacity" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(Cattach.IconOpacity)}" />
+        <Setter Property="Margin" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(Cattach.IconMargin)}" />
+        <Setter Property="TextBlock.FontSize" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(Cattach.IconSize)}" />
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(Cattach.Icon)}"
+                         Value="{x:Null}">
+                <Setter Property="Visibility" Value="Collapsed" />
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
 </ResourceDictionary>

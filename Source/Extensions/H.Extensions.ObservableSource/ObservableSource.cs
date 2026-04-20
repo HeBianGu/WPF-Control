@@ -23,6 +23,7 @@ public class ObservableSource<T> : Bindable, IObservableSource<T>
         {
             _cache = value;
             RaisePropertyChanged();
+            RaisePropertyChanged(nameof(Count));
         }
     }
     private ObservableCollection<T> _filterSource = new ObservableCollection<T>();

@@ -20,3 +20,10 @@ public interface IProjectService : ISplashSave, ISplashLoadable, IDefaultTemplat
     Action<IProjectItem, IProjectItem> CurrentChanged { get; set; }
     Action<IProjectItem> ProjectAdded { get; set; }
 }
+
+public interface IProjectDialogService
+{
+    Task<bool?> ShowProjectsDialog();
+
+    Task<bool?> ShowOpenProject(IProjectItem project);
+}

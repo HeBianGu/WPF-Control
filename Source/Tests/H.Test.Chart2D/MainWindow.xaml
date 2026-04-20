@@ -23,7 +23,7 @@
                                      xAxis="0,1,2,3,4,5,6,7,8,9,10,11"
                                      yAxis="0,1,2,3,4,5,6,7,8,9,10">
                                 <h:Series yDatas="5,4,3,4,5,8,9,7,1,2,4,6">
-                                    <h:Line />
+                                    <h:CurveLine />
                                     <h:Scatter>
                                         <h:Scatter.MarkStyle>
                                             <Style BasedOn="{StaticResource {x:Static h:EllipseMarker.DefaultKey}}"
@@ -57,7 +57,7 @@
                                         <GradientStop Offset="1" Color="Blue" />
                                     </LinearGradientBrush>
                                 </h:Series.Foreground>
-                                <h:Line />
+                                <h:CurveLine />
                                 <h:Scatter />
                             </h:Series>
                         </h:Chart>
@@ -78,7 +78,7 @@
                                         <GradientStop Offset="1" Color="Blue" />
                                     </LinearGradientBrush>
                                 </h:Series.Foreground>
-                                <h:Line />
+                                <h:CurveLine />
                                 <h:Scatter />
                             </h:Series>
                         </h:Chart>
@@ -92,12 +92,12 @@
                                  yAxis="0,1,2,3,4,5,6,7,8,9,10">
                             <h:Series Foreground="Blue"
                                       yDatas="5,4,3,4,5,8,9,7,1,2,4,6">
-                                <h:Line />
+                                <h:CurveLine />
                                 <h:Scatter />
                             </h:Series>
                             <h:Series Foreground="Red"
                                       yDatas="1,6,2,5,7,6,2,7,4,7,2,6">
-                                <h:Line />
+                                <h:CurveLine />
                                 <h:Scatter />
                             </h:Series>
                         </h:Chart>
@@ -116,7 +116,7 @@
                                         <GradientStop Offset="1" Color="Blue" />
                                     </LinearGradientBrush>
                                 </h:Series.Foreground>
-                                <h:Line />
+                                <h:CurveLine />
                                 <h:Scatter />
                                 <h:MarkLine Data="5.8" />
                             </h:Series>
@@ -136,7 +136,7 @@
                                         <GradientStop Offset="1" Color="Blue" />
                                     </LinearGradientBrush>
                                 </h:Series.Foreground>
-                                <h:Line />
+                                <h:CurveLine />
                                 <h:Scatter />
                                 <h:MarkLine Data="2.8,7.5"
                                             MarkBrushes="Blue,Red" />
@@ -161,7 +161,7 @@
                                         <GradientStop Offset="1" Color="Green" />
                                     </LinearGradientBrush>
                                 </h:Series.Foreground>
-                                <h:Line />
+                                <h:CurveLine />
                                 <h:Scatter />
                                 <h:VisualMap Data="2.5,7"
                                              Foreground="Red"
@@ -177,7 +177,7 @@
                                  xAxis="0,1,2,3,4,5,6,7,8,9,10,11"
                                  yAxis="0,1,2,3,4,5,6,7,8,9,10">
                             <h:Series yDatas="1,6,2,5,7,6,2,7,4,7,2,6">
-                                <h:Line />
+                                <h:CurveLine />
                                 <h:Scatter />
                                 <h:VisualMap Data="2.8,7.5"
                                              Opacity="0.2" />
@@ -201,7 +201,7 @@
                                 </Style>
                             </h:Chart.xAxisStyle>
                             <h:Series yDatas="5,4,3,4,5,8,9,7,1,2,4,6">
-                                <h:Line Style="{DynamicResource {x:Static h:Line.AlignmentCenterKey}}" />
+                                <h:CurveLine Style="{DynamicResource {x:Static h:CurveLine.AlignmentCenterKey}}" />
                                 <h:Scatter Style="{DynamicResource {x:Static h:Scatter.AlignmentCenterKey}}" />
                             </h:Series>
                         </h:Chart>
@@ -222,7 +222,7 @@
                             </h:Chart.xAxisStyle>
 
                             <h:Series yDatas="5,4,3,4,5,8,9,7,1,2,4,6">
-                                <h:Line Style="{DynamicResource {x:Static h:Line.AlignmentCenterKey}}" />
+                                <h:CurveLine Style="{DynamicResource {x:Static h:CurveLine.AlignmentCenterKey}}" />
                                 <h:Scatter Style="{DynamicResource {x:Static h:Scatter.AlignmentCenterKey}}" />
                             </h:Series>
                         </h:Chart>
@@ -245,7 +245,7 @@
 
                             <h:Series yDatas="5,4,3,4,5,8,9">
                                 &gt;
-                                <h:Line Style="{DynamicResource {x:Static h:Line.AlignmentCenterKey}}" />
+                                <h:CurveLine Style="{DynamicResource {x:Static h:CurveLine.AlignmentCenterKey}}" />
                                 <h:Scatter Style="{DynamicResource {x:Static h:Scatter.AlignmentCenterKey}}" />
                             </h:Series>
 

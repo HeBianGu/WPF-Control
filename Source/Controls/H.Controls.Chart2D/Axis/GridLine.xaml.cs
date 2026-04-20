@@ -6,15 +6,15 @@ using System.Windows.Controls;
 namespace H.Controls.Chart2D
 {
     /// <summary> 网格 </summary>
-    public class Grid : XyLayer
+    public class GridLine : XyLayer
     {
-        public static new ComponentResourceKey DefaultKey => new ComponentResourceKey(typeof(Grid), "S.Grid.Default");
-        public static ComponentResourceKey CrossKey => new ComponentResourceKey(typeof(Grid), "S.Grid.Cross");
-        public static ComponentResourceKey VerticalKey => new ComponentResourceKey(typeof(Grid), "S.Grid.Vertical");
+        public static new ComponentResourceKey DefaultKey => new ComponentResourceKey(typeof(GridLine), "S.GridLine.Default");
+        public static ComponentResourceKey CrossKey => new ComponentResourceKey(typeof(GridLine), "S.GridLine.Cross");
+        public static ComponentResourceKey VerticalKey => new ComponentResourceKey(typeof(GridLine), "S.GridLine.Vertical");
 
-        static Grid()
+        static GridLine()
         {
-            DefaultStyleKeyProperty.OverrideMetadata(typeof(Grid), new FrameworkPropertyMetadata(typeof(Grid)));
+            DefaultStyleKeyProperty.OverrideMetadata(typeof(GridLine), new FrameworkPropertyMetadata(typeof(Grid)));
         }
         public Style HorizontalLineStyle
         {
@@ -24,9 +24,9 @@ namespace H.Controls.Chart2D
 
 
         public static readonly DependencyProperty HorizontalLineStyleProperty =
-            DependencyProperty.Register("HorizontalLineStyle", typeof(Style), typeof(Grid), new PropertyMetadata(default(Style), (d, e) =>
+            DependencyProperty.Register("HorizontalLineStyle", typeof(Style), typeof(GridLine), new PropertyMetadata(default(Style), (d, e) =>
              {
-                 Grid control = d as Grid;
+                 GridLine control = d as GridLine;
 
                  if (control == null) return;
 
@@ -44,9 +44,9 @@ namespace H.Controls.Chart2D
 
 
         public static readonly DependencyProperty VerticalLineStyleProperty =
-            DependencyProperty.Register("VerticalLineStyle", typeof(Style), typeof(Grid), new PropertyMetadata(default(Style), (d, e) =>
+            DependencyProperty.Register("VerticalLineStyle", typeof(Style), typeof(GridLine), new PropertyMetadata(default(Style), (d, e) =>
              {
-                 Grid control = d as Grid;
+                 GridLine control = d as GridLine;
 
                  if (control == null) return;
 
@@ -149,23 +149,5 @@ namespace H.Controls.Chart2D
             this.DrawBorder(this);
             this.DrawCross(this);
         }
-
-        //protected override void InitX()
-        //{
-        //    if (this.xAxis.Count > 0)
-        //    {
-        //        this.minX = this.xAxis.Min();
-        //        this.maxX = this.xAxis.Max();
-        //    }
-        //}
-
-        //protected override void InitY()
-        //{
-        //    if (this.yAxis.Count > 0)
-        //    {
-        //        this.minY = this.yAxis.Min();
-        //        this.maxY = this.yAxis.Max();
-        //    }
-        //}
     }
 }

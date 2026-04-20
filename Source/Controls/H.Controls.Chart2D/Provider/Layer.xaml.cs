@@ -614,7 +614,7 @@ namespace H.Controls.Chart2D
         public static readonly DependencyProperty LineStyleProperty =
             DependencyProperty.Register("LineStyle", typeof(Style), typeof(XyLayer), new PropertyMetadata(default(Style), (d, e) =>
             {
-                Grid control = d as Grid;
+                XyLayer control = d as XyLayer;
 
                 if (control == null) return;
 

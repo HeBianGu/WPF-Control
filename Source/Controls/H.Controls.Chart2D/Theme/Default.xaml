@@ -3,12 +3,11 @@
                     xmlns:local="clr-namespace:H.Controls.Chart2D">
 
     <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="../Axis/Grid.xaml" />
+        <ResourceDictionary Source="../Axis/GridLine.xaml" />
         <ResourceDictionary Source="../Axis/Axis.xaml" />
         <ResourceDictionary Source="../Axis/Polar.xaml" />
-
         <ResourceDictionary Source="../Series/Series.xaml" />
-        <ResourceDictionary Source="../Series/Line.xaml" />
+        <ResourceDictionary Source="../Series/CurveLine.xaml" />
         <ResourceDictionary Source="../Series/MarkLine.xaml" />
         <ResourceDictionary Source="../Series/VisualMap.xaml" />
         <ResourceDictionary Source="../Series/Scatter.xaml" />
@@ -18,14 +17,10 @@
         <ResourceDictionary Source="../Series/FlagTip.xaml" />
         <ResourceDictionary Source="../Series/Title.xaml" />
         <ResourceDictionary Source="../Series/MarkTip.xaml" />
-
         <ResourceDictionary Source="../Legend/Legend.xaml" />
-
         <ResourceDictionary Source="../Provider/LayerGroup.xaml" />
         <ResourceDictionary Source="../Chart.xaml" />
-
         <ResourceDictionary Source="../GeoMap.xaml" />
-
         <ResourceDictionary Source="../Provider/ThumbToolBar.xaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

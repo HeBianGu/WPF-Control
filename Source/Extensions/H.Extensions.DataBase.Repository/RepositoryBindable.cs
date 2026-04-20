@@ -16,46 +16,11 @@ namespace H.Extensions.DataBase.Repository
     {
         public override void RefreshData(params string[] includes)
         {
-            //this.IsBusy = true;
-            //try
-            //{
             includes = includes ?? this.GetIncludes()?.ToArray();
             IEnumerable<SelectBindable<TEntity>> collection = includes == null ? this.Repository.GetList().Where(x => this.Where(x)).Select(x => this.CreateSelectBindable(x))
             : this.Repository.GetList(includes).Where(x => this.Where(x)).Select(x => this.CreateSelectBindable(x));
-            //this.Collection = collection.Select(x => new SelectViewModel<TEntity>(x)).ToObservable();
             this.Collection.Load(collection);
-            //}
-            //catch (Exception ex)
-            //{
-            //    Logger.Error(ex);
-            //    IocMessage.Dialog.Show("加载数据错误:" + ex.Message);
-            //}
-            //finally
-            //{
-            //    this.IsBusy = false;
-            //}
         }
-
-        //public override async void RefreshData(params string[] includes)
-        //{
-        //    using (var sp = Ioc.Services.CreateScope())
-        //    {
-        //        var repository = sp.ServiceProvider.GetRequiredService<IStringRepository<TEntity>>();
-        //        includes = includes ?? this.GetIncludes()?.ToArray();
-        //        IEnumerable<SelectViewModel<TEntity>> collection = null;
-        //        if (includes == null)
-        //        {
-        //            var datas = await repository.GetListAsync();
-        //            collection = datas.Select(x => new SelectViewModel<TEntity>(x));
-        //        }
-        //        else
-        //        {
-        //            var datas = await repository.GetListAsync(includes);
-        //            collection = datas.Select(x => new SelectViewModel<TEntity>(x));
-        //        }
-        //        this.Collection.Load(collection);
-        //    }
-        //}
 
         protected virtual bool Where(TEntity entity)
         {

@@ -18,10 +18,11 @@ namespace H.Modules.Project;
 
 public static partial class ProjectExtension
 {
-    public static async Task<bool?> ShowProjectsDialog(this IProjectService projectService, Action<IDialog> action = null)
+    public static async Task<bool?> ShowProjectsDialog(this IProjectService projectService, Action<IProjectListViewPresenter> option = null, Action<IDialog> action = null)
     {
         ProjectListViewPresenter project = new ProjectListViewPresenter();
         project.SelectedItem = projectService.Current;
+        option?.Invoke(project);
         bool? r = await IocMessage.ShowDialog(project, x =>
         {
             x.Title = "选择工程";
@@ -137,13 +138,15 @@ static partial class ProjectExtension
 
     public static async Task<bool?> ShowOpenProject(this IProjectService projectService, IProjectItem project)
     {
+        if (project == null)
+            return false;
         string message = null;
         projectService.Current = project;
         var r = await IocMessage.Dialog.ShowWait(x =>
         {
             x.Title = "正在打开工程...";
             project.UpdateTime = DateTime.Now;
-            Thread.Sleep(2000);
+            Thread.Sleep(500);
             return projectService.Save(out string message);
         });
         if (r == false && !string.IsNullOrEmpty(message))
@@ -163,6 +166,7 @@ static partial class ProjectExtension
         return r;
     }
 
+
     public static async Task<bool?> ShowSaveProject(this IProjectService projectService, IProjectItem current)
     {
         string message = null;
@@ -181,6 +185,19 @@ static partial class ProjectExtension
             await IocMessage.ShowDialogMessage(message);
         return r;
     }
+
+    public static async Task<bool?> ShowCloseProject(this IProjectService projectService)
+    {
+        var current = projectService.Current;
+        if (current == null)
+            return false;
+        var r = await projectService.ShowSaveProject(current);
+        if (r != true)
+            return false;
+        projectService.Current = null;
+        return true;
+    }
+
 
     public static bool ShowSaveToFile(this IProjectService projectService, IProjectItem current)
     {

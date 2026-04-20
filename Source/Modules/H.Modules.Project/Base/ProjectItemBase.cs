@@ -85,6 +85,26 @@ public abstract class ProjectItemBase : DisplayBindableBase, IProjectItem
         }
     }
 
+    [JsonIgnore]
+    public virtual IProjectItemPresenter Presenter { get; }
+
+    [JsonIgnore]
+    public virtual IProjectItemThumbnailPresenter ThumbnailPresenter { get; }
+
+    private string _ThumbnialBase64Image;
+    public string ThumbnialBase64Image
+    {
+        get { return _ThumbnialBase64Image; }
+        set
+        {
+            _ThumbnialBase64Image = value;
+            RaisePropertyChanged();
+        }
+    }
+
+    [Browsable(true)]
+    [Display(Name = "示例项目", Order = 5)]
+    public bool IsExample { get; set; }
 
     public virtual bool Save(out string message)
     {

@@ -11,8 +11,13 @@ using H.Extensions.FontIcon;
 
 namespace H.Modules.Project;
 
+public interface IProjectListViewPresenter
+{
+    bool UseAddProject { get; set; }
+}
+
 [Icon(FontIcons.List)]
-public class ProjectListViewPresenter : DisplayBindableBase
+public class ProjectListViewPresenter : DisplayBindableBase, IProjectListViewPresenter
 {
     private IProjectItem _selectedItem;
     public IProjectItem SelectedItem
@@ -24,4 +29,16 @@ public class ProjectListViewPresenter : DisplayBindableBase
             RaisePropertyChanged();
         }
     }
+
+    private bool _UseAddProject;
+    public bool UseAddProject
+    {
+        get { return _UseAddProject; }
+        set
+        {
+            _UseAddProject = value;
+            RaisePropertyChanged();
+        }
+    }
+
 }

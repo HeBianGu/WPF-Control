@@ -21,6 +21,7 @@ using H.Extensions.Common;
 using H.Extensions.FontIcon;
 using H.Extensions.ObservableSource;
 using H.Globalization.Properties;
+using H.Mvvm.Commands;
 using H.Services.Common;
 
 namespace H.Extensions.DataBase.Repository
@@ -56,15 +57,36 @@ namespace H.Extensions.DataBase.Repository
         public abstract void RefreshData(params string[] includes);
 
         #region - 属性 -
-        private bool _checkedAll;
-        public bool CheckedAll
+        private bool? _checkedAll = false;
+        public bool? CheckedAll
         {
             get { return _checkedAll; }
             set
             {
                 _checkedAll = value;
                 RaisePropertyChanged();
+                if (value.HasValue)
+                {
+                    this.Collection.Foreach(K => K.IsSelected = value.Value);
+                    this.UpdateCheckedAll();
+                }
             }
+        }
+
+        private void UpdateCheckedAll()
+        {
+            var all = this.Collection.FilterSource.All(x => x.IsSelected);
+            if (all)
+                _checkedAll = all;
+            else
+            {
+                var any = this.Collection.FilterSource.Any(x => x.IsSelected);
+                if (any)
+                    _checkedAll = null;
+                else
+                    _checkedAll = any;
+            }
+            RaisePropertyChanged(nameof(CheckedAll));
         }
 
         public Type ModelType => typeof(TEntity);
@@ -128,6 +150,10 @@ namespace H.Extensions.DataBase.Repository
         [Display(Name = "编辑", GroupName = "操作,菜单栏")]
         public IDisplayCommand EditCommand => new DisplayCommand(async l => await Edit(l), l => this.GetEntity(l) != null);
 
+        public RelayCommand UpdateCheckAllCommand => new RelayCommand(x =>
+        {
+            this.UpdateCheckedAll();
+        });
         //[Icon(FontIcons.Edit)]
         //[Display(Name = "编辑", GroupName = "操作,菜单栏")]
         //[Browsable(false)]
@@ -238,12 +264,12 @@ namespace H.Extensions.DataBase.Repository
             if (l is Boolean b)
             {
                 this.Collection.Foreach(K => K.IsSelected = b);
-                this.CheckedAll = b;
+                this.UpdateCheckedAll();
             }
             else
             {
                 this.Collection.Foreach(K => K.IsSelected = true);
-                this.CheckedAll = true;
+                this.UpdateCheckedAll();
             }
         }, l => this.Collection != null && this.Collection.Count > 0);
 
@@ -252,7 +278,7 @@ namespace H.Extensions.DataBase.Repository
         public IDisplayCommand CheckedNoneCommand => new DisplayCommand(l =>
         {
             this.Collection.Foreach(K => K.IsSelected = false);
-
+            this.UpdateCheckedAll();
         }, l => this.Collection != null && this.Collection.Count > 0);
 
         [Icon(FontIcons.CheckboxComposite)]

@@ -360,6 +360,7 @@
                 <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.AlternatingRowBackground}}" />
             </Setter.Value>
         </Setter>
+        <Setter Property="Cattach.CornerRadius" Value="{DynamicResource {x:Static LayoutKeys.CornerRadius}}" />
         <Setter Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.BorderBrushAssist}}" />
         <Setter Property="HorizontalGridLinesBrush" Value="{DynamicResource {x:Static BrushKeys.BorderBrushAssist}}" />
         <Setter Property="VerticalGridLinesBrush" Value="{DynamicResource {x:Static BrushKeys.BorderBrushAssist}}" />

@@ -18,7 +18,6 @@
         TargetType="{x:Type local:Pie}">
         <Setter Property="HorizontalAlignment" Value="Stretch" />
         <Setter Property="VerticalAlignment" Value="Stretch" />
-        <Setter Property="Len" Value="200" />
         <Setter Property="PathStyle">
             <Setter.Value>
                 <Style TargetType="Path">

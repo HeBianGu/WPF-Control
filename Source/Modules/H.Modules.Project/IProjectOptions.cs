@@ -13,4 +13,5 @@ public interface IProjectOptions
     string Extenstion { get; set; }
     string DefaultProjectName { get; set; }
     ProjectSaveMode SaveMode { get; set; }
+    bool UseOpenCurrentOnLoad { get; set; }
 }

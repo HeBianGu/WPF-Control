@@ -16,4 +16,6 @@ public class ListBoxKeys
 public class ListBoxItemKeys
 {
     public static ComponentResourceKey Default => new ComponentResourceKey(typeof(ListBoxItemKeys), "S.ListBoxItem.Default");
+    public static ComponentResourceKey Null => new ComponentResourceKey(typeof(ListBoxItemKeys), "S.ListBoxItem.Null");
+
 }

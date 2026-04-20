@@ -14,7 +14,7 @@ namespace H.Extensions.DataBase.Repository
     {
         RelayCommand LoadedCommand { get; }
         IDisplayCommand AddCommand { get; }
-        bool CheckedAll { get; set; }
+        bool? CheckedAll { get; set; }
         IDisplayCommand CheckedAllCommand { get; }
         IDisplayCommand ClearCommand { get; }
         IDisplayCommand DeleteCheckedCommand { get; }

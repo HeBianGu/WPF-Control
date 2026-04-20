@@ -9,6 +9,8 @@
 global using H.ValueConverter;
 global using System;
 global using System.Globalization;
+using H.Modules.Project.Base;
+using H.Services.Project;
 
 namespace H.Modules.Project;
 

@@ -33,7 +33,6 @@ namespace H.Controls.TagBox
                 {
                     this.RefreshData();
                 });
-
             };
         }
 
@@ -158,7 +157,7 @@ namespace H.Controls.TagBox
             var values = this.Tags.Split(TagOptions.Instance.SplitChars.ToCharArray());
             foreach (var value in values)
             {
-                var find = this.ItemsSource.OfType<ITag>().FirstOrDefault(x => x.Name == value);
+                var find = this.ItemsSource?.OfType<ITag>().FirstOrDefault(x => x.Name == value);
                 if (find == null)
                     continue;
                 this.SelectedItems.Add(find);
