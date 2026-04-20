@@ -5,5 +5,6 @@
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/H.Modules.Home;component/Presenters/ProjectHomeViewPresenter.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Modules.Home;component/Presenters/ProjectThumbnialHomeViewPresenter.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Modules.Home;component/HomeBox.xaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>
