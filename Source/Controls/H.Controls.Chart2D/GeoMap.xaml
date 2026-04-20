@@ -8,7 +8,7 @@
 
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="Axis/Axis.xaml" />
-        <ResourceDictionary Source="Axis/Grid.xaml" />
+        <ResourceDictionary Source="Axis/GridLine.xaml" />
         <ResourceDictionary Source="Provider/LayerGroup.xaml" />
     </ResourceDictionary.MergedDictionaries>
 

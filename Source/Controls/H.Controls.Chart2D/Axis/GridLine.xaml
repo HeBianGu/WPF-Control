@@ -10,10 +10,10 @@
     </ResourceDictionary.MergedDictionaries>
 
     <Style
-        x:Key="{ComponentResourceKey ResourceId=S.Grid.Default,
-                                     TypeInTargetAssembly={x:Type local:Grid}}"
+        x:Key="{ComponentResourceKey ResourceId=S.GridLine.Default,
+                                     TypeInTargetAssembly={x:Type local:GridLine}}"
         BasedOn="{StaticResource {x:Static h:XyLayer.DefaultKey}}"
-        TargetType="{x:Type local:Grid}">
+        TargetType="{x:Type local:GridLine}">
         <Setter Property="Opacity" Value="0.2" />
         <Setter Property="LineStyle">
             <Setter.Value>
@@ -42,10 +42,10 @@
     </Style>
 
     <Style
-        x:Key="{ComponentResourceKey ResourceId=S.Grid.Cross,
-                                     TypeInTargetAssembly={x:Type local:Grid}}"
-        BasedOn="{StaticResource {x:Static h:Grid.DefaultKey}}"
-        TargetType="{x:Type local:Grid}">
+        x:Key="{ComponentResourceKey ResourceId=S.GridLine.Cross,
+                                     TypeInTargetAssembly={x:Type local:GridLine}}"
+        BasedOn="{StaticResource {x:Static h:GridLine.DefaultKey}}"
+        TargetType="{x:Type local:GridLine}">
         <Setter Property="HorizontalLineStyle">
             <Setter.Value>
                 <Style TargetType="Line">
@@ -57,10 +57,10 @@
     </Style>
 
     <Style
-        x:Key="{ComponentResourceKey ResourceId=S.Grid.Vertical,
-                                     TypeInTargetAssembly={x:Type local:Grid}}"
-        BasedOn="{StaticResource {x:Static h:Grid.DefaultKey}}"
-        TargetType="{x:Type local:Grid}">
+        x:Key="{ComponentResourceKey ResourceId=S.GridLine.Vertical,
+                                     TypeInTargetAssembly={x:Type local:GridLine}}"
+        BasedOn="{StaticResource {x:Static local:GridLine.DefaultKey}}"
+        TargetType="{x:Type local:GridLine}">
         <Setter Property="HorizontalLineStyle">
             <Setter.Value>
                 <Style TargetType="Line">
@@ -79,7 +79,7 @@
         </Setter>
     </Style>
 
-    <Style BasedOn="{StaticResource {x:Static h:Grid.DefaultKey}}" TargetType="{x:Type local:Grid}" />
+    <Style BasedOn="{StaticResource {x:Static local:GridLine.DefaultKey}}" TargetType="{x:Type local:GridLine}" />
 
 </ResourceDictionary>
 

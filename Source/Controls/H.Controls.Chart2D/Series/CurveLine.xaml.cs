@@ -180,15 +180,15 @@ namespace H.Controls.Chart2D
         }
     }
 
-    public class Line : LineBase
+    public class CurveLine : LineBase
     {
-        public static new ComponentResourceKey DefaultKey => new ComponentResourceKey(typeof(Line), "S.Line.Default");
-        public static ComponentResourceKey AlignmentCenterKey => new ComponentResourceKey(typeof(Line), "S.Line.AlignmentCenter");
-        public static ComponentResourceKey SingleKey => new ComponentResourceKey(typeof(Line), "S.Line.Single");
+        public static new ComponentResourceKey DefaultKey => new ComponentResourceKey(typeof(CurveLine), "S.Line.Default");
+        public static ComponentResourceKey AlignmentCenterKey => new ComponentResourceKey(typeof(CurveLine), "S.Line.AlignmentCenter");
+        public static ComponentResourceKey SingleKey => new ComponentResourceKey(typeof(CurveLine), "S.Line.Single");
 
-        static Line()
+        static CurveLine()
         {
-            DefaultStyleKeyProperty.OverrideMetadata(typeof(Line), new FrameworkPropertyMetadata(typeof(Line)));
+            DefaultStyleKeyProperty.OverrideMetadata(typeof(CurveLine), new FrameworkPropertyMetadata(typeof(CurveLine)));
         }
 
         public override void Draw(Canvas canvas)
@@ -468,7 +468,7 @@ namespace H.Controls.Chart2D
         }
     }
 
-    public class PolarLine : Line
+    public class PolarLine : CurveLine
     {
         public static new ComponentResourceKey DefaultKey => new ComponentResourceKey(typeof(PolarLine), "S.PolarLine.Default");
         public static new ComponentResourceKey SingleKey => new ComponentResourceKey(typeof(PolarLine), "S.PolarLine.Single");
