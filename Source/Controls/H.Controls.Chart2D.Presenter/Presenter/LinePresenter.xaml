@@ -20,7 +20,7 @@
                 xDisplay="{Binding xDisplay}"
                 yAxis="{Binding yAxis}">
                 <Series DisplayName="{Binding Name}" yDatas="{Binding Data}">
-                    <h:Line />
+                    <CurveLine />
                     <Scatter />
                     <MarkPosition
                         Foreground="{DynamicResource {x:Static BrushKeys.Background}}"
@@ -100,7 +100,7 @@
                         Style="{DynamicResource {x:Static Area.SingleKey}}"
                         TryFreeze="False"
                         UseSmooth="False" />
-                    <h:Line Style="{DynamicResource {x:Static h:Line.SingleKey}}" TryFreeze="False" />
+                    <CurveLine Style="{DynamicResource {x:Static CurveLine.SingleKey}}" TryFreeze="False" />
 
                     <MarkPosition
                         Foreground="{DynamicResource {x:Static BrushKeys.Background}}"

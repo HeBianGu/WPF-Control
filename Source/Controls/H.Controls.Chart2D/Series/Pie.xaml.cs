@@ -137,6 +137,20 @@ namespace H.Controls.Chart2D
 
              }));
 
+        public bool UseLabel
+        {
+            get { return (bool)GetValue(UseLabelProperty); }
+            set { SetValue(UseLabelProperty, value); }
+        }
+
+        public static readonly DependencyProperty UseLabelProperty =
+            DependencyProperty.Register("UseLabel", typeof(bool), typeof(Pie), new FrameworkPropertyMetadata(true, (d, e) =>
+            {
+                Pie control = d as Pie;
+                if (control == null)
+                    return;
+                control.TryDraw();
+            }));
 
 
         public override void Draw(Canvas canvas)
@@ -147,7 +161,7 @@ namespace H.Controls.Chart2D
             for (int i = 0; i < this.Data.Count; i++)
             {
                 bool use = this.DataBoolean.Count > i ? this.DataBoolean[i] : true;
-                if (!use) 
+                if (!use)
                     continue;
                 total += this.Data[i];
             }
@@ -176,33 +190,36 @@ namespace H.Controls.Chart2D
                     matrixFirst.RotateAt(((endAngle - startAngle) / 2) + startAngle, center.X, center.Y);
                     Point endFirst = matrixFirst.Transform(startFirst);
 
-                    Path path = new Path();
-                    path.Visibility = use ? Visibility.Visible : Visibility.Hidden;
-                    path.Style = this.LineStyle;
-                    if (this.Foreground.Count > i)
-                        path.Stroke = new SolidColorBrush(this.Foreground[i]);
-
-                    PathFigure pf = new PathFigure();
-                    pf.StartPoint = endFirst;
-                    pf.Segments.Add(new LineSegment(end, true));
-
-                    double hlen = len / 8;
-                    double endParam = end.X > center.X ? hlen : -hlen;
-                    pf.Segments.Add(new LineSegment(new Point(end.X + endParam, end.Y), true));
-                    PathGeometry pg = new PathGeometry(new List<PathFigure>() { pf });
-                    path.Data = pg;
-                    this.Children.Add(path);
-                    Label t = new Label();
-                    t.Content = this.xDisplay.Count > i ? this.xDisplay[i] : this.Data[i].ToString();
-                    t.Visibility = use ? Visibility.Visible : Visibility.Hidden;
-                    t.Style = this.LabelStyle;
-                    t.Loaded += (o, e) =>
+                    if (this.UseLabel)
                     {
-                        endParam = end.X > center.X ? hlen + (hlen / 2) : -hlen - t.ActualWidth - (hlen / 2);
-                        Canvas.SetLeft(t, end.X + endParam);
-                        Canvas.SetTop(t, end.Y - (t.ActualHeight / 2));
-                    };
-                    canvas.Children.Add(t);
+                        Path path = new Path();
+                        path.Visibility = use ? Visibility.Visible : Visibility.Hidden;
+                        path.Style = this.LineStyle;
+                        if (this.Foreground.Count > i)
+                            path.Stroke = new SolidColorBrush(this.Foreground[i]);
+
+                        PathFigure pf = new PathFigure();
+                        pf.StartPoint = endFirst;
+                        pf.Segments.Add(new LineSegment(end, true));
+
+                        double hlen = len / 8;
+                        double endParam = end.X > center.X ? hlen : -hlen;
+                        pf.Segments.Add(new LineSegment(new Point(end.X + endParam, end.Y), true));
+                        PathGeometry pg = new PathGeometry(new List<PathFigure>() { pf });
+                        path.Data = pg;
+                        this.Children.Add(path);
+                        Label t = new Label();
+                        t.Content = this.xDisplay.Count > i ? this.xDisplay[i] : this.Data[i].ToString();
+                        t.Visibility = use ? Visibility.Visible : Visibility.Hidden;
+                        t.Style = this.LabelStyle;
+                        t.Loaded += (o, e) =>
+                        {
+                            endParam = end.X > center.X ? hlen + (hlen / 2) : -hlen - t.ActualWidth - (hlen / 2);
+                            Canvas.SetLeft(t, end.X + endParam);
+                            Canvas.SetTop(t, end.Y - (t.ActualHeight / 2));
+                        };
+                        canvas.Children.Add(t);
+                    }
                 }
 
                 {
@@ -252,8 +269,8 @@ namespace H.Controls.Chart2D
                 ellipse.Width = this.CircleLen * 2;
                 ellipse.Height = this.CircleLen * 2;
                 ellipse.Style = this.EllipseStyle;
-                Canvas.SetLeft(ellipse, -this.CircleLen);
-                Canvas.SetTop(ellipse, -this.CircleLen);
+                Canvas.SetLeft(ellipse, center.X - this.CircleLen);
+                Canvas.SetTop(ellipse, center.Y - this.CircleLen);
                 this.Children.Add(ellipse);
             }
         }
