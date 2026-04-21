@@ -17,8 +17,9 @@ namespace H.Extensions.DataBase.Repository
         public override void RefreshData(params string[] includes)
         {
             includes = includes ?? this.GetIncludes()?.ToArray();
-            IEnumerable<SelectBindable<TEntity>> collection = includes == null ? this.Repository.GetList().Where(x => this.Where(x)).Select(x => this.CreateSelectBindable(x))
-            : this.Repository.GetList(includes).Where(x => this.Where(x)).Select(x => this.CreateSelectBindable(x));
+            IEnumerable<SelectBindable<TEntity>> collection = includes == null
+                ? this.Repository.GetList().Where(x => this.Where(x)).Select(x => this.CreateSelectBindable(x))
+                : this.Repository.GetList(includes).Where(x => this.Where(x)).Select(x => this.CreateSelectBindable(x));
             this.Collection.Load(collection);
         }
 

@@ -21,33 +21,19 @@
                     <Condition Property="IsSelected" Value="true" />
                     <Condition Property="IsSelectionActive" Value="false" />
                 </MultiTrigger.Conditions>
-                <Setter Property="Background">
-                    <Setter.Value>
-                        <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Selected}}" />
-                    </Setter.Value>
-                </Setter>
+                <Setter Property="Background" Value="{DynamicResource {x:Static BrushKeys.Selected}}" />
             </MultiTrigger>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
                     <Condition Property="IsSelected" Value="true" />
                     <Condition Property="IsSelectionActive" Value="True" />
                 </MultiTrigger.Conditions>
-                <Setter Property="Background">
-                    <Setter.Value>
-                        <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Selected}}" />
-                    </Setter.Value>
-                </Setter>
+                <Setter Property="Background" Value="{DynamicResource {x:Static BrushKeys.Selected}}" />
                 <Setter Property="Foreground" Value="{DynamicResource {x:Static BrushKeys.ForegroundSelect}}" />
             </MultiTrigger>
-
             <Trigger Property="IsMouseDirectlyOver" Value="True">
-                <Setter Property="Background">
-                    <Setter.Value>
-                        <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.MouseOver}}" />
-                    </Setter.Value>
-                </Setter>
+                <Setter Property="Background" Value="{DynamicResource {x:Static BrushKeys.MouseOver}}" />
             </Trigger>
-
             <Trigger Property="IsEnabled" Value="false">
                 <Setter Property="Opacity" Value="0.6" />
             </Trigger>
@@ -141,7 +127,7 @@
                                     </Style>
                                 </ToggleButton.Style>
                             </ToggleButton>
-                            <TextBlock Width="{Binding RelativeSource={RelativeSource AncestorType=local:TreeLayoutBox}, Path=LineWidth}" />
+                            <TextBlock x:Name="tb_line" Width="{Binding RelativeSource={RelativeSource AncestorType=local:TreeLayoutBox}, Path=LineWidth}" />
                             <Border
                                 x:Name="Bd"
                                 MinHeight="{DynamicResource {x:Static h:LayoutKeys.ItemHeight}}"
@@ -170,6 +156,9 @@
                         <Trigger Property="IsExpanded" Value="True">
                             <Setter TargetName="ItemsHost" Property="Visibility" Value="Visible" />
                         </Trigger>
+                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Parent, Converter={x:Static h:Converter.GetObjType}}" Value="{x:Type TreeView}">
+                            <Setter TargetName="tb_line" Property="Visibility" Value="Collapsed" />
+                        </DataTrigger>
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
                                 <Condition Property="HasHeader" Value="false" />
@@ -216,7 +205,7 @@
         <Setter Property="Background" Value="{x:Null}" />
         <Setter Property="BorderBrush" Value="{x:Null}" />
         <Setter Property="ItemHeight" Value="{DynamicResource {x:Static LayoutKeys.ItemHeight}}" />
-        <Setter Property="ItemContainerStyle" Value="{DynamicResource {x:Static local:TreeLayoutItemKeys.VerticalKey}}"/>
+        <Setter Property="ItemContainerStyle" Value="{DynamicResource {x:Static local:TreeLayoutItemKeys.VerticalKey}}" />
     </Style>
 
     <Style
