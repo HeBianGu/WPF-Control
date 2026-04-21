@@ -96,12 +96,12 @@
                                          ItemsSource="{ClassTypeTreeDataProvider Type={x:Type FrameworkElement},
                                                                                  IsRecursion=True}" />
                     </TabItem>
-                    <TabItem Header="Horizontal">
+                    <!--<TabItem Header="Horizontal">
                         <h:TreeLayoutBox VerticalContentAlignment="Top"
                                          ItemsSource="{ClassTypeTreeDataProvider Type={x:Type FrameworkElement},
                                                                                  IsRecursion=True}"
                                          Style="{DynamicResource {x:Static h:TreeLayoutBox.HorizontalKey}}" />
-                    </TabItem>
+                    </TabItem>-->
                 </TabControl>
             </TabItem>
             <TabItem Header="GridSplitterBox">

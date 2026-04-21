@@ -1,14 +1,20 @@
-﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:h="https://github.com/HeBianGu"
-                    xmlns:local="clr-namespace:H.Controls.TreeLayoutBox"
-                    xmlns:system="clr-namespace:System;assembly=mscorlib">
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:h="https://github.com/HeBianGu"
+    xmlns:local="clr-namespace:H.Controls.TreeLayoutBox"
+    xmlns:system="clr-namespace:System;assembly=mscorlib">
 
-    <Style x:Key="S.TreeLayoutBox.TreeViewItem.Base"
-           BasedOn="{StaticResource {x:Type TreeViewItem}}"
-           TargetType="TreeViewItem">
-        <Setter Property="VerticalAlignment" Value="{Binding RelativeSource={RelativeSource AncestorType=TreeView}, Path=VerticalContentAlignment}" />
+    <Style x:Key="S.TreeLayoutBox.TreeViewItem.Base" TargetType="{x:Type local:TreeLayoutItem}">
+        <Setter Property="VerticalAlignment" Value="{Binding RelativeSource={RelativeSource AncestorType=local:TreeLayoutBox}, Path=VerticalContentAlignment}" />
         <Setter Property="Foreground" Value="{DynamicResource {x:Static h:BrushKeys.Foreground}}" />
+        <Setter Property="HorizontalContentAlignment" Value="{Binding RelativeSource={RelativeSource AncestorType=local:TreeLayoutBox}, Path=(Cattach.ItemHorizontalContentAlignment)}" />
+        <Setter Property="Padding" Value="{Binding RelativeSource={RelativeSource AncestorType=local:TreeLayoutBox}, Path=(Cattach.ItemPadding)}" />
+        <Setter Property="Margin" Value="{Binding RelativeSource={RelativeSource AncestorType=local:TreeLayoutBox}, Path=(Cattach.ItemMargin)}" />
+        <Setter Property="VerticalContentAlignment" Value="{Binding RelativeSource={RelativeSource AncestorType=local:TreeLayoutBox}, Path=(Cattach.ItemVerticalContentAlignment)}" />
+        <Setter Property="Background" Value="{Binding RelativeSource={RelativeSource AncestorType=local:TreeLayoutBox}, Path=(Cattach.ItemBackground)}" />
+        <Setter Property="BorderBrush" Value="{Binding RelativeSource={RelativeSource AncestorType=local:TreeLayoutBox}, Path=(Cattach.ItemBorderBrush)}" />
+        <Setter Property="BorderThickness" Value="{Binding RelativeSource={RelativeSource AncestorType=local:TreeLayoutBox}, Path=(Cattach.ItemBorderThickness)}" />
         <Style.Triggers>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
@@ -57,178 +63,170 @@
         </Style.Triggers>
     </Style>
 
-    <Style x:Key="S.TreeLayoutBox.Base"
-           BasedOn="{StaticResource {x:Type TreeView}}"
-           TargetType="{x:Type local:TreeLayoutBox}">
-        <Setter Property="Background" Value="{x:Null}" />
-        <Setter Property="BorderBrush" Value="{x:Null}" />
-        <Setter Property="ItemTemplate">
+    <Style
+        x:Key="{ComponentResourceKey ResourceId=S.TreeLayoutItem.Vertical,
+                                     TypeInTargetAssembly={x:Type local:TreeLayoutItemKeys}}"
+        BasedOn="{StaticResource S.TreeLayoutBox.TreeViewItem.Base}"
+        TargetType="{x:Type local:TreeLayoutItem}">
+        <Setter Property="Template">
             <Setter.Value>
-                <HierarchicalDataTemplate ItemsSource="{Binding Nodes}">
-                    <TextBlock VerticalAlignment="Center"
-                               Text="{Binding Model.Name}" />
-                </HierarchicalDataTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
-    <Style x:Key="{ComponentResourceKey ResourceId=S.TreeLayoutBox.Vertical,
-                                        TypeInTargetAssembly={x:Type local:TreeLayoutBox}}"
-           BasedOn="{StaticResource S.TreeLayoutBox.Base}"
-           TargetType="{x:Type local:TreeLayoutBox}">
-        <Setter Property="Background" Value="{x:Null}" />
-        <Setter Property="BorderBrush" Value="{x:Null}" />
-        <Setter Property="ItemContainerStyle">
-            <Setter.Value>
-                <Style BasedOn="{StaticResource S.TreeLayoutBox.TreeViewItem.Base}"
-                       TargetType="TreeViewItem">
-                    <Setter Property="VerticalAlignment" Value="{Binding RelativeSource={RelativeSource AncestorType=TreeView}, Path=VerticalContentAlignment}" />
-                    <Setter Property="Foreground" Value="{DynamicResource {x:Static h:BrushKeys.Foreground}}" />
-                    <Setter Property="Template">
-                        <Setter.Value>
-                            <ControlTemplate TargetType="{x:Type TreeViewItem}">
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="Auto"
-                                                          MinWidth="19" />
-                                        <ColumnDefinition Width="Auto"
-                                                          SharedSizeGroup="{Binding RelativeSource={RelativeSource AncestorType=TreeView}}" />
-                                        <ColumnDefinition Width="*" />
-                                    </Grid.ColumnDefinitions>
-                                    <Border x:Name="Border_Line"
-                                            Grid.Column="0"
-                                            Width="10"
-                                            HorizontalAlignment="Left"
-                                            BorderBrush="{DynamicResource {x:Static h:BrushKeys.Foreground}}"
-                                            BorderThickness="0.5,0.5,0,0.5" />
-                                    <DockPanel Grid.Column="0"
-                                               Grid.ColumnSpan="2"
-                                               Margin="1"
-                                               VerticalAlignment="{TemplateBinding VerticalAlignment}">
-                                        <ToggleButton x:Name="Expander"
-                                                      Grid.Column="2"
-                                                      Margin="5,0"
-                                                      ClickMode="Press"
-                                                      DockPanel.Dock="Right"
-                                                      Foreground="{TemplateBinding Foreground}"
-                                                      IsChecked="{Binding IsExpanded, RelativeSource={RelativeSource TemplatedParent}}">
-                                            <ToggleButton.Style>
-                                                <Style TargetType="ToggleButton">
-                                                    <Setter Property="Focusable" Value="False" />
-                                                    <Setter Property="Template">
-                                                        <Setter.Value>
-                                                            <ControlTemplate TargetType="ToggleButton">
-                                                                <Grid Width="10"
-                                                                      Height="10"
-                                                                      Background="Transparent">
-                                                                    <Path x:Name="Collapsed"
-                                                                          Margin="0"
-                                                                          HorizontalAlignment="Left"
-                                                                          VerticalAlignment="Center"
-                                                                          Data="M512 64.6C264.9 64.6 64.6 264.9 64.6 512c0 247.1 200.3 447.4 447.4 447.4S959.4 759.1 959.4 512c0-247.1-200.3-447.4-447.4-447.4z m233.9 524.8H589.4v156.5c0 43.2-35 78.3-78.3 78.3s-78.3-35-78.3-78.3V589.4H276.4c-43.2 0-78.3-35-78.3-78.3 0-43.2 35-78.2 78.3-78.2h156.5V276.4c0-43.2 35-78.3 78.3-78.3s78.3 35 78.3 78.3v156.5H746c43.2 0 78.3 35 78.3 78.2-0.1 43.2-35.2 78.3-78.4 78.3z"
-                                                                          Fill="{TemplateBinding Foreground}"
-                                                                          Stretch="Uniform" />
-                                                                    <Path x:Name="Expanded"
-                                                                          Margin="0"
-                                                                          HorizontalAlignment="Left"
-                                                                          VerticalAlignment="Center"
-                                                                          Data="M512 64.6C264.9 64.6 64.6 264.9 64.6 512c0 247.1 200.3 447.4 447.4 447.4S959.4 759.1 959.4 512c0-247.1-200.3-447.4-447.4-447.4z m312.2 446.2c0 43.3-35.1 78.3-78.3 78.3H276.5c-43.3 0-78.3-35.1-78.3-78.3 0-43.3 35.1-78.3 78.3-78.3h469.3c43.3-0.1 78.4 35 78.4 78.3z"
-                                                                          Fill="{TemplateBinding Foreground}"
-                                                                          Stretch="Uniform"
-                                                                          Visibility="Hidden" />
-                                                                    <VisualStateManager.VisualStateGroups>
-                                                                        <VisualStateGroup x:Name="CheckStates">
-                                                                            <VisualState x:Name="Checked">
-                                                                                <Storyboard>
-                                                                                    <ObjectAnimationUsingKeyFrames Storyboard.TargetName="Collapsed"
-                                                                                                                   Storyboard.TargetProperty="(UIElement.Visibility)">
-                                                                                        <DiscreteObjectKeyFrame KeyTime="0"
-                                                                                                                Value="{x:Static Visibility.Hidden}" />
-                                                                                    </ObjectAnimationUsingKeyFrames>
-                                                                                    <ObjectAnimationUsingKeyFrames Storyboard.TargetName="Expanded"
-                                                                                                                   Storyboard.TargetProperty="(UIElement.Visibility)">
-                                                                                        <DiscreteObjectKeyFrame KeyTime="0"
-                                                                                                                Value="{x:Static Visibility.Visible}" />
-                                                                                    </ObjectAnimationUsingKeyFrames>
-                                                                                </Storyboard>
-                                                                            </VisualState>
-                                                                            <VisualState x:Name="Unchecked" />
-                                                                            <VisualState x:Name="Indeterminate" />
-                                                                        </VisualStateGroup>
-                                                                    </VisualStateManager.VisualStateGroups>
-                                                                </Grid>
-                                                            </ControlTemplate>
-                                                        </Setter.Value>
-                                                    </Setter>
-                                                </Style>
-                                            </ToggleButton.Style>
-                                        </ToggleButton>
-                                        <Border x:Name="Bd"
-                                                Grid.Column="1"
-                                                Grid.ColumnSpan="1"
-                                                MinHeight="{DynamicResource {x:Static h:LayoutKeys.ItemHeight}}"
-                                                Padding="{TemplateBinding Padding}"
-                                                Background="{TemplateBinding Background}"
-                                                BorderBrush="{TemplateBinding BorderBrush}"
-                                                BorderThickness="{TemplateBinding BorderThickness}">
-                                            <ContentPresenter x:Name="PART_Header"
-                                                              Grid.Column="1"
-                                                              Margin="10,0"
-                                                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                                              VerticalAlignment="Center"
-                                                              ContentSource="Header" />
-                                        </Border>
-                                    </DockPanel>
-                                    <ItemsPresenter x:Name="ItemsHost"
-                                                    Grid.Row="0"
-                                                    Grid.Column="2"
-                                                    Grid.ColumnSpan="2"
-                                                    Visibility="Collapsed" />
-                                </Grid>
-                                <ControlTemplate.Triggers>
-                                    <Trigger Property="HasItems" Value="false">
-                                        <Setter TargetName="Expander" Property="Visibility" Value="Hidden" />
-                                    </Trigger>
-                                    <Trigger Property="IsExpanded" Value="True">
-                                        <Setter TargetName="ItemsHost" Property="Visibility" Value="Visible" />
-                                    </Trigger>
-                                    <!--<DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=Self},Converter={h:GetIsFirstItemInItemsControlConverter}}" Value="True">
-                                        <Setter TargetName="Border_Line" Property="Visibility" Value="Collapsed" />
-                                    </DataTrigger>-->
-                                    <DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Parent, Converter={x:Static h:Converter.GetObjType}}"
-                                                 Value="{x:Type TreeView}">
-                                        <Setter TargetName="Border_Line" Property="Visibility" Value="Collapsed" />
-                                    </DataTrigger>
-                                    <MultiTrigger>
-                                        <MultiTrigger.Conditions>
-                                            <Condition Property="HasHeader" Value="false" />
-                                            <Condition Property="Width" Value="Auto" />
-                                        </MultiTrigger.Conditions>
-                                        <Setter TargetName="PART_Header" Property="MinWidth" Value="75" />
-                                    </MultiTrigger>
-                                    <MultiTrigger>
-                                        <MultiTrigger.Conditions>
-                                            <Condition Property="HasHeader" Value="false" />
-                                            <Condition Property="Height" Value="Auto" />
-                                        </MultiTrigger.Conditions>
-                                        <Setter TargetName="PART_Header" Property="MinHeight" Value="19" />
-                                    </MultiTrigger>
-                                </ControlTemplate.Triggers>
-                            </ControlTemplate>
-                        </Setter.Value>
-                    </Setter>
-                </Style>
+                <ControlTemplate TargetType="{x:Type local:TreeLayoutItem}">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" MinWidth="19" />
+                            <ColumnDefinition Width="Auto" SharedSizeGroup="{Binding RelativeSource={RelativeSource AncestorType=TreeView}}" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <DockPanel
+                            Grid.Column="0"
+                            Grid.ColumnSpan="2"
+                            Margin="1"
+                            VerticalAlignment="{TemplateBinding VerticalAlignment}"
+                            Background="Transparent">
+                            <ToggleButton
+                                x:Name="Expander"
+                                Grid.Column="2"
+                                Margin="5,0"
+                                ClickMode="Press"
+                                DockPanel.Dock="Right"
+                                Foreground="{TemplateBinding Foreground}"
+                                IsChecked="{Binding IsExpanded, RelativeSource={RelativeSource TemplatedParent}}">
+                                <ToggleButton.Style>
+                                    <Style TargetType="ToggleButton">
+                                        <Setter Property="Focusable" Value="False" />
+                                        <Setter Property="Template">
+                                            <Setter.Value>
+                                                <ControlTemplate TargetType="ToggleButton">
+                                                    <Grid
+                                                        Width="10"
+                                                        Height="10"
+                                                        Background="Transparent">
+                                                        <Path
+                                                            x:Name="Collapsed"
+                                                            Margin="0"
+                                                            HorizontalAlignment="Left"
+                                                            VerticalAlignment="Center"
+                                                            Data="M512 64.6C264.9 64.6 64.6 264.9 64.6 512c0 247.1 200.3 447.4 447.4 447.4S959.4 759.1 959.4 512c0-247.1-200.3-447.4-447.4-447.4z m233.9 524.8H589.4v156.5c0 43.2-35 78.3-78.3 78.3s-78.3-35-78.3-78.3V589.4H276.4c-43.2 0-78.3-35-78.3-78.3 0-43.2 35-78.2 78.3-78.2h156.5V276.4c0-43.2 35-78.3 78.3-78.3s78.3 35 78.3 78.3v156.5H746c43.2 0 78.3 35 78.3 78.2-0.1 43.2-35.2 78.3-78.4 78.3z"
+                                                            Fill="{TemplateBinding Foreground}"
+                                                            Stretch="Uniform" />
+                                                        <Path
+                                                            x:Name="Expanded"
+                                                            Margin="0"
+                                                            HorizontalAlignment="Left"
+                                                            VerticalAlignment="Center"
+                                                            Data="M512 64.6C264.9 64.6 64.6 264.9 64.6 512c0 247.1 200.3 447.4 447.4 447.4S959.4 759.1 959.4 512c0-247.1-200.3-447.4-447.4-447.4z m312.2 446.2c0 43.3-35.1 78.3-78.3 78.3H276.5c-43.3 0-78.3-35.1-78.3-78.3 0-43.3 35.1-78.3 78.3-78.3h469.3c43.3-0.1 78.4 35 78.4 78.3z"
+                                                            Fill="{TemplateBinding Foreground}"
+                                                            Stretch="Uniform"
+                                                            Visibility="Hidden" />
+                                                        <VisualStateManager.VisualStateGroups>
+                                                            <VisualStateGroup x:Name="CheckStates">
+                                                                <VisualState x:Name="Checked">
+                                                                    <Storyboard>
+                                                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="Collapsed" Storyboard.TargetProperty="(UIElement.Visibility)">
+                                                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Hidden}" />
+                                                                        </ObjectAnimationUsingKeyFrames>
+                                                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="Expanded" Storyboard.TargetProperty="(UIElement.Visibility)">
+                                                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}" />
+                                                                        </ObjectAnimationUsingKeyFrames>
+                                                                    </Storyboard>
+                                                                </VisualState>
+                                                                <VisualState x:Name="Unchecked" />
+                                                                <VisualState x:Name="Indeterminate" />
+                                                            </VisualStateGroup>
+                                                        </VisualStateManager.VisualStateGroups>
+                                                    </Grid>
+                                                </ControlTemplate>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Style>
+                                </ToggleButton.Style>
+                            </ToggleButton>
+                            <TextBlock Width="{Binding RelativeSource={RelativeSource AncestorType=local:TreeLayoutBox}, Path=LineWidth}" />
+                            <Border
+                                x:Name="Bd"
+                                MinHeight="{DynamicResource {x:Static h:LayoutKeys.ItemHeight}}"
+                                Padding="{TemplateBinding Padding}"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}">
+                                <ContentPresenter
+                                    x:Name="PART_Header"
+                                    HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                    VerticalAlignment="Center"
+                                    ContentSource="Header" />
+                            </Border>
+                        </DockPanel>
+                        <ItemsPresenter
+                            x:Name="ItemsHost"
+                            Grid.Row="0"
+                            Grid.Column="2"
+                            Grid.ColumnSpan="2"
+                            Visibility="Collapsed" />
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="HasItems" Value="false">
+                            <Setter TargetName="Expander" Property="Visibility" Value="Hidden" />
+                        </Trigger>
+                        <Trigger Property="IsExpanded" Value="True">
+                            <Setter TargetName="ItemsHost" Property="Visibility" Value="Visible" />
+                        </Trigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="HasHeader" Value="false" />
+                                <Condition Property="Width" Value="Auto" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="PART_Header" Property="MinWidth" Value="75" />
+                        </MultiTrigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="HasHeader" Value="false" />
+                                <Condition Property="Height" Value="Auto" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="PART_Header" Property="MinHeight" Value="19" />
+                        </MultiTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
             </Setter.Value>
         </Setter>
     </Style>
 
-    <Style x:Key="{ComponentResourceKey ResourceId=S.TreeLayoutBox.Horizontal,
-                                        TypeInTargetAssembly={x:Type local:TreeLayoutBox}}"
-           BasedOn="{StaticResource S.TreeLayoutBox.Base}"
-           TargetType="{x:Type local:TreeLayoutBox}">
+    <Style
+        x:Key="S.TreeLayoutBox.Base"
+        BasedOn="{StaticResource {x:Type TreeView}}"
+        TargetType="{x:Type local:TreeLayoutBox}">
+        <Setter Property="Background" Value="{x:Null}" />
+        <Setter Property="BorderBrush" Value="{x:Null}" />
+        <Setter Property="LineStroke" Value="{DynamicResource {x:Static BrushKeys.BorderBrush}}" />
+        <Setter Property="LineStrokeThickness" Value="1" />
+
+        <Setter Property="ItemTemplate">
+            <Setter.Value>
+                <HierarchicalDataTemplate ItemsSource="{Binding Nodes}">
+                    <TextBlock VerticalAlignment="Center" Text="{Binding Model.Name}" />
+                </HierarchicalDataTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style
+        x:Key="{ComponentResourceKey ResourceId=S.TreeLayoutBox.Vertical,
+                                     TypeInTargetAssembly={x:Type local:TreeLayoutBoxKeys}}"
+        BasedOn="{StaticResource S.TreeLayoutBox.Base}"
+        TargetType="{x:Type local:TreeLayoutBox}">
+        <Setter Property="Background" Value="{x:Null}" />
+        <Setter Property="BorderBrush" Value="{x:Null}" />
+        <Setter Property="ItemHeight" Value="{DynamicResource {x:Static LayoutKeys.ItemHeight}}" />
+        <Setter Property="ItemContainerStyle" Value="{DynamicResource {x:Static local:TreeLayoutItemKeys.VerticalKey}}"/>
+    </Style>
+
+    <Style
+        x:Key="{ComponentResourceKey ResourceId=S.TreeLayoutBox.Horizontal,
+                                     TypeInTargetAssembly={x:Type local:TreeLayoutBoxKeys}}"
+        BasedOn="{StaticResource S.TreeLayoutBox.Base}"
+        TargetType="{x:Type local:TreeLayoutBox}">
         <Setter Property="ItemContainerStyle">
             <Setter.Value>
-                <Style BasedOn="{StaticResource S.TreeLayoutBox.TreeViewItem.Base}"
-                       TargetType="TreeViewItem">
+                <Style BasedOn="{StaticResource S.TreeLayoutBox.TreeViewItem.Base}" TargetType="TreeViewItem">
                     <Setter Property="HorizontalContentAlignment" Value="Center" />
                     <Setter Property="Foreground" Value="{DynamicResource {x:Static h:BrushKeys.Foreground}}" />
                     <Setter Property="Template">
@@ -236,66 +234,66 @@
                             <ControlTemplate TargetType="{x:Type TreeViewItem}">
                                 <Grid>
                                     <Grid.RowDefinitions>
-                                        <RowDefinition Height="Auto"
-                                                       MinHeight="19" />
-                                        <RowDefinition Height="Auto"
-                                                       SharedSizeGroup="{Binding RelativeSource={RelativeSource AncestorType=TreeView}}" />
+                                        <RowDefinition Height="Auto" MinHeight="19" />
+                                        <RowDefinition Height="Auto" SharedSizeGroup="{Binding RelativeSource={RelativeSource AncestorType=TreeView}}" />
                                         <RowDefinition Height="*" />
                                     </Grid.RowDefinitions>
-                                    <Border x:Name="Border_Line"
-                                            Grid.Row="0"
-                                            Height="10"
-                                            VerticalAlignment="Top"
-                                            BorderBrush="{DynamicResource {x:Static h:BrushKeys.Foreground}}"
-                                            BorderThickness="0.5,0.5,0.5,0" />
-                                    <DockPanel Grid.Row="0"
-                                               Grid.RowSpan="2"
-                                               Margin="1"
-                                               VerticalAlignment="{TemplateBinding VerticalAlignment}">
-                                        <ToggleButton x:Name="Expander"
-                                                      Grid.Column="2"
-                                                      Margin="0 5"
-                                                      ClickMode="Press"
-                                                      DockPanel.Dock="Bottom"
-                                                      Foreground="{TemplateBinding Foreground}"
-                                                      IsChecked="{Binding IsExpanded, RelativeSource={RelativeSource TemplatedParent}}">
+                                    <Border
+                                        x:Name="Border_Line"
+                                        Grid.Row="0"
+                                        Height="10"
+                                        VerticalAlignment="Top"
+                                        BorderBrush="{DynamicResource {x:Static h:BrushKeys.Foreground}}"
+                                        BorderThickness="0.5,0.5,0.5,0" />
+                                    <DockPanel
+                                        Grid.Row="0"
+                                        Grid.RowSpan="2"
+                                        Margin="1"
+                                        VerticalAlignment="{TemplateBinding VerticalAlignment}">
+                                        <ToggleButton
+                                            x:Name="Expander"
+                                            Grid.Column="2"
+                                            Margin="0,5"
+                                            ClickMode="Press"
+                                            DockPanel.Dock="Bottom"
+                                            Foreground="{TemplateBinding Foreground}"
+                                            IsChecked="{Binding IsExpanded, RelativeSource={RelativeSource TemplatedParent}}">
                                             <ToggleButton.Style>
                                                 <Style TargetType="ToggleButton">
                                                     <Setter Property="Focusable" Value="False" />
                                                     <Setter Property="Template">
                                                         <Setter.Value>
                                                             <ControlTemplate TargetType="ToggleButton">
-                                                                <Grid Width="10"
-                                                                      Height="10"
-                                                                      Background="Transparent">
-                                                                    <Path x:Name="Collapsed"
-                                                                          Margin="0"
-                                                                          HorizontalAlignment="Left"
-                                                                          VerticalAlignment="Center"
-                                                                          Data="M512 64.6C264.9 64.6 64.6 264.9 64.6 512c0 247.1 200.3 447.4 447.4 447.4S959.4 759.1 959.4 512c0-247.1-200.3-447.4-447.4-447.4z m233.9 524.8H589.4v156.5c0 43.2-35 78.3-78.3 78.3s-78.3-35-78.3-78.3V589.4H276.4c-43.2 0-78.3-35-78.3-78.3 0-43.2 35-78.2 78.3-78.2h156.5V276.4c0-43.2 35-78.3 78.3-78.3s78.3 35 78.3 78.3v156.5H746c43.2 0 78.3 35 78.3 78.2-0.1 43.2-35.2 78.3-78.4 78.3z"
-                                                                          Fill="{TemplateBinding Foreground}"
-                                                                          Stretch="Uniform" />
-                                                                    <Path x:Name="Expanded"
-                                                                          Margin="0"
-                                                                          HorizontalAlignment="Left"
-                                                                          VerticalAlignment="Center"
-                                                                          Data="M512 64.6C264.9 64.6 64.6 264.9 64.6 512c0 247.1 200.3 447.4 447.4 447.4S959.4 759.1 959.4 512c0-247.1-200.3-447.4-447.4-447.4z m312.2 446.2c0 43.3-35.1 78.3-78.3 78.3H276.5c-43.3 0-78.3-35.1-78.3-78.3 0-43.3 35.1-78.3 78.3-78.3h469.3c43.3-0.1 78.4 35 78.4 78.3z"
-                                                                          Fill="{TemplateBinding Foreground}"
-                                                                          Stretch="Uniform"
-                                                                          Visibility="Hidden" />
+                                                                <Grid
+                                                                    Width="10"
+                                                                    Height="10"
+                                                                    Background="Transparent">
+                                                                    <Path
+                                                                        x:Name="Collapsed"
+                                                                        Margin="0"
+                                                                        HorizontalAlignment="Left"
+                                                                        VerticalAlignment="Center"
+                                                                        Data="M512 64.6C264.9 64.6 64.6 264.9 64.6 512c0 247.1 200.3 447.4 447.4 447.4S959.4 759.1 959.4 512c0-247.1-200.3-447.4-447.4-447.4z m233.9 524.8H589.4v156.5c0 43.2-35 78.3-78.3 78.3s-78.3-35-78.3-78.3V589.4H276.4c-43.2 0-78.3-35-78.3-78.3 0-43.2 35-78.2 78.3-78.2h156.5V276.4c0-43.2 35-78.3 78.3-78.3s78.3 35 78.3 78.3v156.5H746c43.2 0 78.3 35 78.3 78.2-0.1 43.2-35.2 78.3-78.4 78.3z"
+                                                                        Fill="{TemplateBinding Foreground}"
+                                                                        Stretch="Uniform" />
+                                                                    <Path
+                                                                        x:Name="Expanded"
+                                                                        Margin="0"
+                                                                        HorizontalAlignment="Left"
+                                                                        VerticalAlignment="Center"
+                                                                        Data="M512 64.6C264.9 64.6 64.6 264.9 64.6 512c0 247.1 200.3 447.4 447.4 447.4S959.4 759.1 959.4 512c0-247.1-200.3-447.4-447.4-447.4z m312.2 446.2c0 43.3-35.1 78.3-78.3 78.3H276.5c-43.3 0-78.3-35.1-78.3-78.3 0-43.3 35.1-78.3 78.3-78.3h469.3c43.3-0.1 78.4 35 78.4 78.3z"
+                                                                        Fill="{TemplateBinding Foreground}"
+                                                                        Stretch="Uniform"
+                                                                        Visibility="Hidden" />
                                                                     <VisualStateManager.VisualStateGroups>
                                                                         <VisualStateGroup x:Name="CheckStates">
                                                                             <VisualState x:Name="Checked">
                                                                                 <Storyboard>
-                                                                                    <ObjectAnimationUsingKeyFrames Storyboard.TargetName="Collapsed"
-                                                                                                                   Storyboard.TargetProperty="(UIElement.Visibility)">
-                                                                                        <DiscreteObjectKeyFrame KeyTime="0"
-                                                                                                                Value="{x:Static Visibility.Hidden}" />
+                                                                                    <ObjectAnimationUsingKeyFrames Storyboard.TargetName="Collapsed" Storyboard.TargetProperty="(UIElement.Visibility)">
+                                                                                        <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Hidden}" />
                                                                                     </ObjectAnimationUsingKeyFrames>
-                                                                                    <ObjectAnimationUsingKeyFrames Storyboard.TargetName="Expanded"
-                                                                                                                   Storyboard.TargetProperty="(UIElement.Visibility)">
-                                                                                        <DiscreteObjectKeyFrame KeyTime="0"
-                                                                                                                Value="{x:Static Visibility.Visible}" />
+                                                                                    <ObjectAnimationUsingKeyFrames Storyboard.TargetName="Expanded" Storyboard.TargetProperty="(UIElement.Visibility)">
+                                                                                        <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}" />
                                                                                     </ObjectAnimationUsingKeyFrames>
                                                                                 </Storyboard>
                                                                             </VisualState>
@@ -310,26 +308,29 @@
                                                 </Style>
                                             </ToggleButton.Style>
                                         </ToggleButton>
-                                        <Border x:Name="Bd"
+                                        <Border
+                                            x:Name="Bd"
+                                            Grid.Column="1"
+                                            Grid.ColumnSpan="1"
+                                            MinHeight="{DynamicResource {x:Static h:LayoutKeys.ItemHeight}}"
+                                            Padding="{TemplateBinding Padding}"
+                                            Background="{TemplateBinding Background}"
+                                            BorderBrush="{TemplateBinding BorderBrush}"
+                                            BorderThickness="{TemplateBinding BorderThickness}">
+                                            <ContentPresenter
+                                                x:Name="PART_Header"
                                                 Grid.Column="1"
-                                                Grid.ColumnSpan="1"
-                                                MinHeight="{DynamicResource {x:Static h:LayoutKeys.ItemHeight}}"
-                                                Padding="{TemplateBinding Padding}"
-                                                Background="{TemplateBinding Background}"
-                                                BorderBrush="{TemplateBinding BorderBrush}"
-                                                BorderThickness="{TemplateBinding BorderThickness}">
-                                            <ContentPresenter x:Name="PART_Header"
-                                                              Grid.Column="1"
-                                                              Margin="10,0"
-                                                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                                              VerticalAlignment="Center"
-                                                              ContentSource="Header" />
+                                                Margin="10,0"
+                                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                VerticalAlignment="Center"
+                                                ContentSource="Header" />
                                         </Border>
                                     </DockPanel>
-                                    <ItemsPresenter x:Name="ItemsHost"
-                                                    Grid.Row="2"
-                                                    Grid.RowSpan="2"
-                                                    Visibility="Collapsed" />
+                                    <ItemsPresenter
+                                        x:Name="ItemsHost"
+                                        Grid.Row="2"
+                                        Grid.RowSpan="2"
+                                        Visibility="Collapsed" />
                                 </Grid>
                                 <ControlTemplate.Triggers>
                                     <Trigger Property="HasItems" Value="false">
@@ -341,8 +342,7 @@
                                     <!--<DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=Self},Converter={h:GetIsFirstItemInItemsControlConverter}}" Value="True">
                              <Setter TargetName="Border_Line" Property="Visibility" Value="Collapsed" />
                          </DataTrigger>-->
-                                    <DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Parent, Converter={x:Static h:Converter.GetObjType}}"
-                                                 Value="{x:Type TreeView}">
+                                    <DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Parent, Converter={x:Static h:Converter.GetObjType}}" Value="{x:Type TreeView}">
                                         <Setter TargetName="Border_Line" Property="Visibility" Value="Collapsed" />
                                     </DataTrigger>
                                     <MultiTrigger>
@@ -366,16 +366,15 @@
                     <Setter Property="ItemsPanel">
                         <Setter.Value>
                             <ItemsPanelTemplate>
-                                <StackPanel Orientation="Horizontal"/>
+                                <StackPanel Orientation="Horizontal" />
                             </ItemsPanelTemplate>
                         </Setter.Value>
                     </Setter>
                 </Style>
             </Setter.Value>
         </Setter>
-   
+
     </Style>
 
-    <Style BasedOn="{StaticResource {x:Static local:TreeLayoutBox.VerticalKey}}"
-           TargetType="{x:Type local:TreeLayoutBox}" />
+    <Style BasedOn="{StaticResource {x:Static local:TreeLayoutBoxKeys.Vertical}}" TargetType="{x:Type local:TreeLayoutBox}" />
 </ResourceDictionary>
