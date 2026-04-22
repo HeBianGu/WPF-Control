@@ -47,8 +47,23 @@
                 ItemsSource="{Binding Source={h:GetEnumGroupSource EnumType={x:Type local:FilterOperate}, GroupName=Int}}"
                 SelectedItem="{Binding Operate}"
                 Style="{DynamicResource {x:Static h:ComboBoxKeys.Default}}" />
-
             <TextBox Style="{DynamicResource {x:Static h:TextBoxKeys.Default}}" Text="{Binding Value}" />
+        </DockPanel>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type local:EnumPropertyFilter}">
+        <DockPanel>
+            <ComboBox
+                Width="120"
+                Margin="0,0,1,0"
+                ItemsSource="{Binding Source={h:GetEnumGroupSource EnumType={x:Type local:FilterOperate}, GroupName=Enum}}"
+                SelectedItem="{Binding Operate}"
+                Style="{DynamicResource {x:Static h:ComboBoxKeys.Default}}" />
+            <ComboBox
+                Margin="0,0,1,0"
+                ItemsSource="{Binding Collection}"
+                SelectedItem="{Binding SelectedEnum}"
+                Style="{DynamicResource {x:Static h:ComboBoxKeys.Default}}" />
         </DockPanel>
     </DataTemplate>
 

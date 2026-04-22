@@ -43,6 +43,10 @@ namespace H.Controls.FilterBox
             {
                 return new DateTimePropertyFilter(property);
             }
+            else if (property.PropertyType.IsEnum)
+            {
+                return new EnumPropertyFilter(property);
+            }
 
             throw new NotImplementedException($"{property.PropertyType.FullName} 类型没有实现，请先实现该类型方法");
         }

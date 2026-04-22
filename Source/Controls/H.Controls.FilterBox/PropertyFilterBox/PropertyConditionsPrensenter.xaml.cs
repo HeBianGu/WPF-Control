@@ -66,7 +66,11 @@ namespace H.Controls.FilterBox
 
         public PropertyConditionsPrensenter(Type modelTyle, Func<PropertyInfo, bool> predicate = null)
         {
-            ObservableCollection<PropertyInfo> ps = modelTyle.GetProperties().Where(x => x.PropertyType.IsPrimitive || x.PropertyType == typeof(DateTime) || x.PropertyType == typeof(string)).ToObservable();
+            ObservableCollection<PropertyInfo> ps = modelTyle.GetProperties().Where(x =>
+            x.PropertyType.IsPrimitive ||
+            x.PropertyType == typeof(DateTime) ||
+            x.PropertyType == typeof(string) ||
+            x.PropertyType.IsEnum).ToObservable();
             if (predicate != null)
                 this.Properties = ps.Where(predicate).ToObservable();
             else

@@ -128,7 +128,13 @@ namespace H.Controls.FilterBox
             {
                 _value = value;
                 RaisePropertyChanged("Value");
+                this.UpdateValue();
             }
+        }
+
+        protected virtual void UpdateValue()
+        {
+
         }
 
         private bool _isSelected = true;

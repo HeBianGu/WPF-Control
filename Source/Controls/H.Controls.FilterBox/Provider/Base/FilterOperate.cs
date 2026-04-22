@@ -13,9 +13,9 @@ namespace H.Controls.FilterBox
     [TypeConverter(typeof(DisplayEnumConverter))]
     public enum FilterOperate
     {
-        [Display(GroupName = "String,Double,Int,DateTime", Name = "等于")]
+        [Display(GroupName = "String,Double,Int,DateTime,Enum", Name = "等于")]
         Equals,
-        [Display(GroupName = "String,Double,Int,DateTime", Name = "不等于")]
+        [Display(GroupName = "String,Double,Int,DateTime,Enum", Name = "不等于")]
         UnEquals,
         [Display(GroupName = "String", Name = "包含")]
         Contain,

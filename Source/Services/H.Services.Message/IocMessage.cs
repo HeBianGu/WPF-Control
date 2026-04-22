@@ -9,6 +9,7 @@
 global using H.Services.Message.Form;
 global using H.Services.Message.TaskBar;
 using H.Services.Message.Properties;
+using System.Runtime.CompilerServices;
 
 namespace H.Services.Message;
 
@@ -29,7 +30,7 @@ public static class IocMessage
 
     public static async Task<bool?> ShowDialogMessage(string message, string title = null, DialogButton dialogButton = DialogButton.Sumit)
     {
-        if (Dialog == null || Application.Current.MainWindow == null || Application.Current.MainWindow.IsLoaded == false)
+        if (UseWindow())
         {
             if (Window == null)
             {
@@ -67,9 +68,14 @@ public static class IocMessage
         }
     }
 
+    private static bool UseWindow()
+    {
+        return Dialog == null || Application.Current.MainWindow == null || Application.Current.MainWindow.IsLoaded == false;
+    }
+
     public static async Task<bool?> ShowDialog(object presenter, Action<IDialog> builder = null)
     {
-        if (Dialog == null)
+        if (UseWindow())
         {
             return Window == null
                 ? new Window()

@@ -24,38 +24,23 @@ namespace H.Controls.FilterBox
         {
             PropertyInfo p = obj.GetType().GetProperty(this.PropertyName);
 
-            if (p == null || !p.CanRead) return false;
-
-            T v = (T)p.GetValue(obj);
-
-            if (this.Operate == FilterOperate.Equals)
-            {
-                return v.CompareTo(this.ConvertValue()) == 0;
-            }
-            else if (this.Operate == FilterOperate.UnEquals)
-            {
-                return v.CompareTo(this.ConvertValue()) != 0;
-            }
-            else if (this.Operate == FilterOperate.Greater)
-            {
-                return v.CompareTo(this.ConvertValue()) > 0;
-            }
-            else if (this.Operate == FilterOperate.Less)
-            {
-                return v.CompareTo(this.ConvertValue()) < 0;
-            }
-            else if (this.Operate == FilterOperate.GreaterAndEqual)
-            {
-                return v.CompareTo(this.ConvertValue()) >= 0;
-            }
-            else if (this.Operate == FilterOperate.LessAndEqual)
-            {
-                return v.CompareTo(this.ConvertValue()) <= 0;
-            }
-            else
-            {
+            if (p == null || !p.CanRead) 
                 return false;
-            }
+            T v = (T)p.GetValue(obj);
+            if (this.Operate == FilterOperate.Equals)
+                return v.CompareTo(this.ConvertValue()) == 0;
+            else if (this.Operate == FilterOperate.UnEquals)
+                return v.CompareTo(this.ConvertValue()) != 0;
+            else if (this.Operate == FilterOperate.Greater)
+                return v.CompareTo(this.ConvertValue()) > 0;
+            else if (this.Operate == FilterOperate.Less)
+                return v.CompareTo(this.ConvertValue()) < 0;
+            else if (this.Operate == FilterOperate.GreaterAndEqual)
+                return v.CompareTo(this.ConvertValue()) >= 0;
+            else if (this.Operate == FilterOperate.LessAndEqual)
+                return v.CompareTo(this.ConvertValue()) <= 0;
+            else
+                return false;
         }
 
         public virtual T ConvertValue()
