@@ -113,7 +113,7 @@ public static class IocMessage
         }
     }
 
-    public static async void ShowSnackInfo(string message)
+    public static async void ShowSnackInfo(string message = "操作成功")
     {
         if (Snack == null)
         {
@@ -125,7 +125,7 @@ public static class IocMessage
         }
     }
 
-    public static async void ShowNotifyInfo(string message)
+    public static async void ShowNotifyInfo(string message = "操作成功")
     {
         if (Snack == null)
         {

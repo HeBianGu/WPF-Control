@@ -11,6 +11,17 @@ using System.Windows.Media;
 
 namespace H.Extensions.Color;
 
+public static class TupleLinearGradientBrushes
+{
+    public static LinearGradientBrush BluePurple
+    {
+        get
+        {
+            return new LinearGradientBrush(TupleColors.BluePurple.Item1, TupleColors.BluePurple.Item2, 90);
+        }
+    }
+}
+
 public static class TupleColors
 {
     private static readonly ColorConverter s_colorConverter = new ColorConverter();

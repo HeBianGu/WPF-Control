@@ -62,4 +62,20 @@ public static class NoticeMessageServiceExtension
             service.ShowSuccess(message);
         });
     }
+
+    public static void ShowStringDemo(this INoticeMessageService service)
+    {
+        Func<INoticeItem, bool> action = x =>
+        {
+            for (int i = 0; i < 100; i++)
+            {
+                x.Message = $"{i}/100";
+                Thread.Sleep(20);
+            }
+            x.Message = $"100/100";
+            Thread.Sleep(1000);
+            return true;
+        };
+        IocMessage.Notify.ShowString(action);
+    }
 }
