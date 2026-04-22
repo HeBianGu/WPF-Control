@@ -1,0 +1,6 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+  <ItemGroup>
+    <ProjectReference Include="..\H.Controls.ZoomBox\H.Controls.ZoomBox.csproj" />
+    <ProjectReference Include="..\H.Controls.ShapeBox\H.Controls.ShapeBox.csproj" />
+  </ItemGroup>
+</Project>

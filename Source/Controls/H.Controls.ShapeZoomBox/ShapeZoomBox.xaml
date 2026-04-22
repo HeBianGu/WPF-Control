@@ -1,0 +1,22 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Behaviors="http://schemas.microsoft.com/xaml/behaviors"
+    xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
+    xmlns:h="https://github.com/HeBianGu"
+    xmlns:local="clr-namespace:H.Controls.ShapeZoomBox">
+    <Style BasedOn="{StaticResource {x:Type Zoombox}}" TargetType="{x:Type local:ShapeZoomBox}">
+        <Setter Property="Background" Value="{DynamicResource {x:Static BrushKeys.Tile25}}" />
+        <Setter Property="DragModifiers" Value="" />
+        <Setter Property="Focusable" Value="True" />
+        <Setter Property="IsTabStop" Value="True" />
+        <Setter Property="MinScale" Value="0.1" />
+        <Setter Property="NavigateOnPreview" Value="False" />
+        <Setter Property="RelativeZoomModifiers" Value="" />
+        <Setter Property="RenderOptions.BitmapScalingMode" Value="NearestNeighbor" />
+        <Setter Property="ViewStackIndex" Value="0" />
+        <Setter Property="ZoomOn" Value="Content" />
+        <Setter Property="UseShowViewFinder" Value="False" />
+        <Setter Property="IsAnimated" Value="False" />
+    </Style>
+</ResourceDictionary>
