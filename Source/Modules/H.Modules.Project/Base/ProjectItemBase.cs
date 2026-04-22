@@ -35,7 +35,7 @@ public abstract class ProjectItemBase : DisplayBindableBase, IProjectItem
     }
 
     private bool _isFixed;
-    [Display(Name = "是否固定", Order = 4)]
+    [Display(Name = "是否固定", Order = 9)]
     public bool IsFixed
     {
         get { return _isFixed; }
@@ -48,7 +48,7 @@ public abstract class ProjectItemBase : DisplayBindableBase, IProjectItem
 
     private DateTime _createTime = DateTime.Now;
     [ReadOnly(true)]
-    [Display(Name = "创建时间", Order = 4)]
+    [Display(Name = "创建时间", Order = 10)]
     public DateTime CreateTime
     {
         get { return _createTime; }
@@ -61,7 +61,7 @@ public abstract class ProjectItemBase : DisplayBindableBase, IProjectItem
 
     private DateTime _updateTime = DateTime.Now;
     [ReadOnly(true)]
-    [Display(Name = "修改时间", Order = 4)]
+    [Display(Name = "修改时间", Order = 11)]
     public DateTime UpdateTime
     {
         get { return _updateTime; }
@@ -103,7 +103,7 @@ public abstract class ProjectItemBase : DisplayBindableBase, IProjectItem
     }
 
     [Browsable(true)]
-    [Display(Name = "示例项目", Order = 5)]
+    [Display(Name = "示例项目", Order = 8)]
     public bool IsExample { get; set; }
 
     public virtual bool Save(out string message)
