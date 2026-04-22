@@ -29,7 +29,7 @@ namespace H.Controls.TagBox
         {
             IocTagService.Instance.CollectionChanged += (l, k) =>
             {
-                this.Dispatcher.Invoke(() =>
+                this.DelayInvoke(() =>
                 {
                     this.RefreshData();
                 });
@@ -42,7 +42,6 @@ namespace H.Controls.TagBox
             set { SetValue(SearchTextProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty SearchTextProperty =
             DependencyProperty.Register("SearchText", typeof(string), typeof(TagBox), new FrameworkPropertyMetadata(default(string), (d, e) =>
             {
@@ -73,7 +72,6 @@ namespace H.Controls.TagBox
             set { SetValue(GroupNameProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty GroupNameProperty =
             DependencyProperty.Register("GroupName", typeof(string), typeof(TagBox), new FrameworkPropertyMetadata(default(string), (d, e) =>
             {
@@ -110,19 +108,19 @@ namespace H.Controls.TagBox
 
             var tags = this.SelectedItems.OfType<ITag>();
             this._flag = true;
-            this.Tags = string.Join(",", tags.Select(x => x.Name));
+            this.SelectedTags = string.Join(",", tags.Select(x => x.Name));
             this.OnTagChanged();
             this._flag = false;
         }
 
-        public string Tags
+        public string SelectedTags
         {
-            get { return (string)GetValue(TagsProperty); }
-            set { SetValue(TagsProperty, value); }
+            get { return (string)GetValue(SelectedTagsProperty); }
+            set { SetValue(SelectedTagsProperty, value); }
         }
 
-        public static readonly DependencyProperty TagsProperty =
-            DependencyProperty.Register("Tags", typeof(string), typeof(TagBox), new FrameworkPropertyMetadata(string.Empty, // default value
+        public static readonly DependencyProperty SelectedTagsProperty =
+            DependencyProperty.Register("SelectedTags", typeof(string), typeof(TagBox), new FrameworkPropertyMetadata(string.Empty, // default value
                                        FrameworkPropertyMetadataOptions.BindsTwoWayByDefault | // Flags
                                            FrameworkPropertyMetadataOptions.Journal, (d, e) =>
             {
@@ -149,12 +147,12 @@ namespace H.Controls.TagBox
 
         private void RefreshSelection()
         {
-            if (this.Tags == null)
+            if (this.SelectedTags == null)
             {
                 this.SelectedItems.Clear();
                 return;
             }
-            var values = this.Tags.Split(TagOptions.Instance.SplitChars.ToCharArray());
+            var values = this.SelectedTags.Split(TagOptions.Instance.SplitChars.ToCharArray());
             foreach (var value in values)
             {
                 var find = this.ItemsSource?.OfType<ITag>().FirstOrDefault(x => x.Name == value);
