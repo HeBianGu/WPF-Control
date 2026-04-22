@@ -1,0 +1,61 @@
+﻿<ApplicationBase
+    x:Class="H.App.AIDI.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:lb="clr-namespace:H.App.AIDI.Base"
+    xmlns:local="clr-namespace:H.App.AIDI">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <!--<FontSizeTheme Type="Default" />
+                <LayoutTheme Type="Default" />
+                <ColorTheme Type="Dark" />
+                <ConciseStyle />-->
+                <!--ModuleTabPresenter-->
+                <ResourceDictionary Source="pack://application:,,,/H.App.AIDI;component/Presenters/LabelManagerTabPresenter.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/H.App.AIDI;component/Presenters/TrainManagerTabPresenter.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/H.App.AIDI;component/Presenters/EvaluationTabPresenter.xaml" />
+                <!--Project-->
+                <ResourceDictionary Source="pack://application:,,,/H.App.AIDI;component/Presenters/AIDIProjectItemPresenter.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/H.App.AIDI;component/Presenters/AIDIProjectItemThumbnailPresenter.xaml" />
+                <!--PagePresenter-->
+                <ResourceDictionary Source="pack://application:,,,/H.App.AIDI;component/Presenters/InputPagePresenter.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/H.App.AIDI;component/Presenters/ModuleViewPagePresenter.xaml" />
+
+                <!--ModulePresenter-->
+                <ResourceDictionary Source="pack://application:,,,/H.App.AIDI;component/Presenters/Modules/SegmentModulePresenter.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/H.App.AIDI;component/Presenters/Modules/DetectModulePresenter.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/H.App.AIDI;component/Presenters/ModulesSelectPresenter.xaml" />
+                <!--ComponentPresenter-->
+                <ResourceDictionary Source="pack://application:,,,/H.App.AIDI;component/Presenters/Components/ImageListComponentPresenter.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/H.App.AIDI;component/Presenters/Components/ImageIOComponentPresenter.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/H.App.AIDI;component/Presenters/Components/ImageViewComponentPresenter.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/H.App.AIDI;component/Presenters/Components/ModuleTabComponentPresenter.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/H.App.AIDI;component/Presenters/Components/TagManagerComponentPresenter.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/H.App.AIDI;component/Presenters/Components/PageTabComponentPresenter.xaml" />
+
+                <!--PageTabPresenter-->
+                <ResourceDictionary Source="pack://application:,,,/H.App.AIDI;component/Presenters/PageTabs/InputShowModePageTabPresenter.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/H.App.AIDI;component/Presenters/PageTabs/SegmentShowModePageTabPresenter.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/H.App.AIDI;component/Presenters/PageTabs/SegmentLabelingPageTabPresenter.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/H.App.AIDI;component/Presenters/PageTabs/SegmentKeyAreaingPageTabPresenter.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/H.App.AIDI;component/Presenters/PageTabs/ExceptAreaingPageTabPresenter.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/H.App.AIDI;component/Presenters/PageTabs/DetectShowModePageTabPresenter.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/H.App.AIDI;component/Presenters/PageTabs/DetectLabelingPageTabPresenter.xaml" />
+                <!--TrainingAssistant-->
+                <ResourceDictionary Source="pack://application:,,,/H.App.AIDI;component/Presenters/TrainingAssistantSelectPresenter.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/H.App.AIDI;component/Presenters/DataPartitioningTrainingAssistantItemPresenter.xaml" />
+
+            </ResourceDictionary.MergedDictionaries>
+            <DataTemplate DataType="{x:Type lb:PagePresenterBase}">
+                <Border>
+                    <TextBlock
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        FontSize="50"
+                        Text="未实现该功能" />
+                </Border>
+            </DataTemplate>
+        </ResourceDictionary>
+    </Application.Resources>
+</ApplicationBase>

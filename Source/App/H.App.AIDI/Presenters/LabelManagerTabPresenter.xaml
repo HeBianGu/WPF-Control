@@ -1,0 +1,124 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
+    xmlns:local="clr-namespace:H.App.AIDI.Presenters"
+    xmlns:m="clr-namespace:H.App.AIDI.Model">
+    <DataTemplate DataType="{x:Type local:LabelManagerTabPresenter}">
+        <TabControl Margin="5">
+            <TabItem
+                Width="150"
+                Cattach.CaptionHorizontalAlignment="Center"
+                Header="标签管理">
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <StackPanel>
+                        <Expander Header="标签管理" Style="{DynamicResource {x:Static ExpanderKeys.ToggleRight}}">
+                            <DockPanel>
+                                <TextBox
+                                    Margin="0,2"
+                                    Cattach.Watermark="输入标签名称按回车添加"
+                                    DockPanel.Dock="Top"
+                                    Style="{DynamicResource {x:Static TextBoxKeys.Delete}}"
+                                    Text="{Binding LabelName, UpdateSourceTrigger=PropertyChanged}">
+                                    <b:Interaction.Triggers>
+                                        <b:KeyTrigger Key="Return">
+                                            <b:InvokeCommandAction Command="{Binding AddLabelCommand}" />
+                                        </b:KeyTrigger>
+                                    </b:Interaction.Triggers>
+                                    <!--<Cattach.Attach>
+                                    <FontIconButton
+                                        Height="Auto"
+                                        Command="{Binding AddLabelCommand}"
+                                        Content="{x:Static FontIcons.Add}" />
+                                </Cattach.Attach>-->
+                                </TextBox>
+                                <ListBox
+                                    MinHeight="100"
+                                    BorderThickness="1"
+                                    DisplayMemberPath="LabelName"
+                                    ItemsSource="{Binding Source={x:Static IocProject.Instance}, Path=Current.Labels}"
+                                    SelectedItem="{Binding SelectedLabelItem}">
+                                    <ListBox.ContextMenu>
+                                        <ContextMenu ItemContainerStyle="{DynamicResource {x:Static MenuItemKeys.BindCommand}}" ItemsSource="{Binding Commands}" />
+                                    </ListBox.ContextMenu>
+                                </ListBox>
+                            </DockPanel>
+                        </Expander>
+                        <Expander
+                            Margin="0,2"
+                            Header="标注管理"
+                            Style="{DynamicResource {x:Static ExpanderKeys.ToggleRight}}">
+                            <DockPanel>
+                                <ComboBox
+                                    Margin="0,2"
+                                    DisplayMemberPath="Value"
+                                    DockPanel.Dock="Top"
+                                    SelectedIndex="0">
+                                    <TestBindable Value="当前图片" />
+                                </ComboBox>
+                                <Border
+                                    Margin="5"
+                                    Padding="10"
+                                    Background="{DynamicResource {x:Static BrushKeys.Dark0_1}}"
+                                    DockPanel.Dock="Bottom"
+                                    Style="{DynamicResource {x:Static BorderKeys.Background}}">
+                                    <Form SelectObject="{Binding SelectedLabelData}" />
+                                </Border>
+                                <UniformGrid DockPanel.Dock="Bottom" Rows="1">
+                                    <Button
+                                        Margin="5"
+                                        Command="{ShowNotImplementedCommand}"
+                                        Content="标注筛选" />
+                                    <Button
+                                        Margin="5"
+                                        Command="{ShowNotImplementedCommand}"
+                                        Content="标注分布" />
+                                </UniformGrid>
+                                <DataGrid
+                                    Height="250"
+                                    AutoGenerateColumns="False"
+                                    Cattach.CornerRadius="2"
+                                    ColumnWidth="Auto"
+                                    ItemsSource="{Binding LabelDatas}"
+                                    MinColumnWidth="80"
+                                    RowHeaderWidth="0"
+                                    ScrollViewer.HorizontalScrollBarVisibility="Auto"
+                                    SelectedItem="{Binding SelectedLabelData}">
+                                    <DataGrid.Columns>
+                                        <DataGridTemplateColumn MinWidth="0" Width="Auto" Header="序号">
+                                            <DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <TextBlock>
+                                                        <b:Interaction.Behaviors>
+                                                            <TextBlockIndexOfBebavior
+                                                                Format="{}{0}"
+                                                                Item="{Binding}"
+                                                                Source="{Binding RelativeSource={RelativeSource AncestorType=DataGrid}, Path=ItemsSource}" />
+                                                        </b:Interaction.Behaviors>
+                                                    </TextBlock>
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                        </DataGridTemplateColumn>
+                                        <DataGridTextColumn Binding="{Binding Type}" Header="类别" />
+                                        <DataGridTextColumn Binding="{Binding Image}" Header="图片" />
+                                        <DataGridTextColumn Binding="{Binding TypeProperty}" Header="类别属性" />
+                                        <DataGridTextColumn Binding="{Binding List}" Header="集合" />
+                                        <DataGridTextColumn Binding="{Binding Location}" Header="位置" />
+                                        <DataGridTextColumn Binding="{Binding Length}" Header="长边" />
+                                        <DataGridTextColumn Binding="{Binding Width}" Header="短边" />
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                            </DockPanel>
+                        </Expander>
+                    </StackPanel>
+                </ScrollViewer>
+            </TabItem>
+            <TabItem
+                Width="150"
+                Cattach.CaptionHorizontalAlignment="Center"
+                Header="Tag管理">
+                <ContentPresenter Content="{Binding TagManagerComponentPresenter}" />
+            </TabItem>
+        </TabControl>
+    </DataTemplate>
+</ResourceDictionary>

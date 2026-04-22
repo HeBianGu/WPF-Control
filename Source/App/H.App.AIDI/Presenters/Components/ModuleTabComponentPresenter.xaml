@@ -1,0 +1,47 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
+    xmlns:local="clr-namespace:H.App.AIDI.Presenters.Components"
+    xmlns:m="clr-namespace:H.App.AIDI.Model">
+    <DataTemplate DataType="{x:Type local:ModuleTabComponentPresenter}">
+        <DockPanel DockPanel.Dock="Right">
+            <ListBox
+                Cattach.ItemHeight="Auto"
+                Cattach.ItemPadding="0"
+                DockPanel.Dock="Right"
+                ItemsSource="{Binding TabModulePresenter.TabPresenters}"
+                SelectedItem="{Binding TabModulePresenter.SelectedTabPresenter}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <ItemsControl
+                            Width="{DynamicResource {x:Static LayoutKeys.ItemHeight}}"
+                            ItemsSource="{Binding Name}"
+                            TextBlock.TextAlignment="Center" />
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <UniformGrid Columns="1" />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemContainerStyle>
+                    <Style BasedOn="{StaticResource {x:Static ListBoxItemKeys.Default}}" TargetType="{x:Type ListBoxItem}">
+                        <Setter Property="BorderThickness" Value="1" />
+                        <Style.Triggers>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter Property="Background" Value="{DynamicResource {x:Static BrushKeys.Accent}}" />
+                                <Setter Property="Foreground" Value="{DynamicResource {x:Static BrushKeys.White}}" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </ItemsControl.ItemContainerStyle>
+            </ListBox>
+            <Separator
+                Margin="0"
+                DockPanel.Dock="Right"
+                Style="{DynamicResource {x:Static SeparatorKeys.Vertical}}" />
+            <ContentControl Content="{Binding TabModulePresenter.SelectedTabPresenter}" DockPanel.Dock="Right" />
+        </DockPanel>
+    </DataTemplate>
+</ResourceDictionary>

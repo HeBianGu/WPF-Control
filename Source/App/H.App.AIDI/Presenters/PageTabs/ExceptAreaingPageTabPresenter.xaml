@@ -1,0 +1,23 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
+    xmlns:local="clr-namespace:H.App.AIDI.Presenters.PageTabs"
+    xmlns:m="clr-namespace:H.App.AIDI.Model">
+    <DataTemplate DataType="{x:Type local:ExceptAreaingPageTabPresenter}">
+        <ItemsControl>
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Horizontal" />
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <FontIconButton Content="{x:Static FontIcons.PenPalette}" />
+            <FontIconButton Content="{x:Static FontIcons.Edit}" />
+            <FontIconButton Content="{x:Static FontIcons.InkingTool}" />
+            <FontIconButton Content="{x:Static FontIcons.CalligraphyPen}" />
+            <Separator Style="{DynamicResource {x:Static SeparatorKeys.Vertical}}"/>
+            <FontIconButton Content="{x:Static FontIcons.Undo}" />
+            <FontIconButton Content="{x:Static FontIcons.Redo}" />
+        </ItemsControl>
+    </DataTemplate>
+</ResourceDictionary>

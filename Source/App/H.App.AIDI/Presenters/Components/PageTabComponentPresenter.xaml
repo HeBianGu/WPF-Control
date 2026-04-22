@@ -1,0 +1,27 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
+    xmlns:local="clr-namespace:H.App.AIDI.Presenters.Components"
+    xmlns:m="clr-namespace:H.App.AIDI.Model">
+    <DataTemplate DataType="{x:Type local:PageTabComponentPresenter}">
+        <StackPanel Margin="2,2,0,0">
+            <FontIconToggleButton
+                BorderThickness="0"
+                Content="{x:Static FontIcons.Info}"
+                IsChecked="{Binding PagePresenter.ImageViewComponentPresenter.UseImageInfo}" />
+            <ListBox
+                Margin="0,1"
+                ItemsSource="{Binding PagePresenter.PageTabPresenters}"
+                Cattach.ItemHorizontalAlignment="Center"
+                Cattach.ItemHorizontalContentAlignment="Center"
+                SelectedItem="{Binding PagePresenter.SelectedPageTabPresenter}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <FontIconTextBlock HorizontalAlignment="Center" Text="{Binding Icon}" ToolTip="{Binding Name}" />
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ListBox>
+        </StackPanel>
+    </DataTemplate>
+</ResourceDictionary>

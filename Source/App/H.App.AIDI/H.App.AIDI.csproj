@@ -1,0 +1,51 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <ApplicationIcon>logo.ico</ApplicationIcon>
+    <GeneratePackageOnBuild>False</GeneratePackageOnBuild>
+    <Product>AI视觉算法训练平台</Product>
+    <Description>它的主要目的是帮助开发者和研究人员为深度学习模型标注训练工具</Description>
+    <AssemblyVersion>2.0.0</AssemblyVersion>
+    <FileVersion>2.0.0</FileVersion>
+    <Copyright>Copyright © HeBianGu 2026-2026</Copyright>
+    <Authors></Authors>
+    <PackageProjectUrl>https://github.com/HeBianGu</PackageProjectUrl>
+    <Title>AI视觉算法训练平台</Title>
+    <Version>2.0.0</Version>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Include="logo.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\ApplicationBases\H.ApplicationBases.Default\H.ApplicationBases.Default.csproj" />
+    <ProjectReference Include="..\..\Controls\H.Controls.Chart2D\H.Controls.Chart2D.csproj" />
+    <ProjectReference Include="..\..\Controls\H.Controls.FilterBox\H.Controls.FilterBox.csproj" />
+    <ProjectReference Include="..\..\Controls\H.Controls.OrderBox\H.Controls.OrderBox.csproj" />
+    <ProjectReference Include="..\..\Controls\H.Controls.TagBox\H.Controls.TagBox.csproj" />
+    <ProjectReference Include="..\..\Controls\H.Controls.TreeLayoutBox\H.Controls.TreeLayoutBox.csproj" />
+    <ProjectReference Include="..\..\Controls\H.Controls.ZoomBox.Extension\H.Controls.ZoomBox.Extension.csproj" />
+    <ProjectReference Include="..\..\DataBases\H.DataBases.Sqlite\H.DataBases.Sqlite.csproj" />
+    <ProjectReference Include="..\..\Datas\H.Data.Test\H.Data.Test.csproj" />
+    <ProjectReference Include="..\..\Extensions\H.Extensions.Color\H.Extensions.Color.csproj" />
+    <ProjectReference Include="..\..\Extensions\H.Extensions.DataBase.Repository\H.Extensions.DataBase.Repository.csproj" />
+    <ProjectReference Include="..\..\Modules\H.Modules.Home\H.Modules.Home.csproj" />
+    <ProjectReference Include="..\..\Modules\H.Modules.Project\H.Modules.Project.csproj" />
+    <ProjectReference Include="..\..\Windows\H.Windows.Main\H.Windows.Main.csproj" />
+    <ProjectReference Include="..\..\Presenters\H.Presenters.Design\H.Presenters.Design.csproj" />
+  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.16">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="8.0.16" />
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.1" />
+		<PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.77" />
+		<PackageReference Include="YamlDotNet" Version="16.3.0" />
+	</ItemGroup>
+	<ItemGroup>
+	  <Folder Include="Assets\" />
+	</ItemGroup>
+</Project>

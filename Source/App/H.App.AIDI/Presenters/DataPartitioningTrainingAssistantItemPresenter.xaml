@@ -1,0 +1,10 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
+    xmlns:componentmodel="clr-namespace:System.ComponentModel;assembly=WindowsBase"
+    xmlns:local="clr-namespace:H.App.AIDI.Presenters">
+    <DataTemplate DataType="{x:Type local:DataPartitioningTrainingAssistantItemPresenter}">
+        <Form SelectObject="{Binding DataPartitioningData}" MinWidth="300" />
+    </DataTemplate>
+</ResourceDictionary>

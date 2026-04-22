@@ -1,0 +1,374 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:H.App.AIDI.Presenters"
+    xmlns:sys="clr-namespace:System;assembly=System.Runtime">
+    <DataTemplate DataType="{x:Type local:EvaluationTabPresenter}">
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <StackPanel>
+                <StackPanel.Resources>
+                    <Style TargetType="TextBlock">
+                        <Setter Property="HorizontalAlignment" Value="Center" />
+                        <Setter Property="VerticalAlignment" Value="Center" />
+                    </Style>
+                </StackPanel.Resources>
+                <GroupBox Header="自动刷新">
+                    <Cattach.CaptionRightTemplate>
+                        <ControlTemplate>
+                            <CheckBox />
+                        </ControlTemplate>
+                    </Cattach.CaptionRightTemplate>
+                    <Button Margin="5" Content="刷新" />
+                </GroupBox>
+                <Expander Header="综合指标" Style="{DynamicResource {x:Static ExpanderKeys.ToggleRight}}">
+                    <StackPanel Margin="0,5">
+                        <LineGrid Height="120" LineStroke="{DynamicResource {x:Static BrushKeys.BorderBrush}}">
+                            <LineGrid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                            </LineGrid.ColumnDefinitions>
+                            <LineGrid.RowDefinitions>
+                                <RowDefinition />
+                                <RowDefinition />
+                                <RowDefinition />
+                            </LineGrid.RowDefinitions>
+                            <Border
+                                Grid.Row="1"
+                                Grid.RowSpan="5"
+                                Background="{DynamicResource {x:Static BrushKeys.BorderBrush}}"
+                                Opacity="0.5" />
+                            <Border
+                                Grid.ColumnSpan="5"
+                                Background="{DynamicResource {x:Static BrushKeys.BorderBrush}}"
+                                Opacity="0.5" />
+                            <TextBlock Grid.Row="1" Text="训练集" />
+                            <TextBlock Grid.Row="2" Text="测试集" />
+                            <TextBlock Grid.Column="1" Text="召回率" />
+                            <TextBlock Grid.Column="2" Text="精确率" />
+
+                            <TextBlock
+                                Grid.Row="1"
+                                Grid.Column="1"
+                                Text="0.95" />
+                            <TextBlock
+                                Grid.Row="2"
+                                Grid.Column="1"
+                                Text="0.93" />
+                            <TextBlock
+                                Grid.Row="1"
+                                Grid.Column="2"
+                                Text="0.94" />
+                            <TextBlock
+                                Grid.Row="2"
+                                Grid.Column="2"
+                                Text="0.86" />
+                        </LineGrid>
+
+                        <Grid Height="100" Margin="5">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition />
+                                <RowDefinition />
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
+
+                            <Chart Grid.RowSpan="3" Grid.Column="0">
+                                <Series>
+                                    <Pie
+                                        CircleLen="20"
+                                        Data="11.0,89.0"
+                                        Foreground="#FF67C23A,#FF4D4F"
+                                        IsCustomized="False"
+                                        TryFreeze="False"
+                                        UseLabel="False"
+                                        xDisplay="正确预判,错误预判" />
+                                </Series>
+                            </Chart>
+
+                            <TextBlock Grid.Column="1" VerticalAlignment="Bottom">
+                                <Run Foreground="{DynamicResource {x:Static BrushKeys.Green}}" Text="●" />
+                                <Run Text="正确预判" />
+                            </TextBlock>
+                            <TextBlock Grid.Column="2" VerticalAlignment="Bottom">
+                                <Run Foreground="{DynamicResource {x:Static BrushKeys.Red}}" Text="●" />
+                                <Run Text="错误预判" />
+                            </TextBlock>
+
+                            <TextBlock
+                                Grid.Row="1"
+                                Grid.Column="1"
+                                Text="89%" />
+                            <TextBlock
+                                Grid.Row="1"
+                                Grid.Column="2"
+                                Text="11%" />
+                        </Grid>
+                        <UniformGrid Margin="0,10" Rows="1">
+                            <TextBlock>
+                                <Run Text="总漏检缺陷数：" />
+                                <Run Text="0" />
+                            </TextBlock>
+                            <TextBlock>
+                                <Run Text="总过检缺陷数：" />
+                                <Run Text="1" />
+                            </TextBlock>
+                        </UniformGrid>
+                    </StackPanel>
+                </Expander>
+                <Expander Header="混淆矩阵" Style="{DynamicResource {x:Static ExpanderKeys.ToggleRight}}">
+                    <StackPanel Margin="0,5">
+                        <DockPanel HorizontalAlignment="Left">
+                            <ComboBox
+                                MinWidth="100"
+                                Margin="0,1"
+                                DisplayMemberPath="Value"
+                                SelectedIndex="0">
+                                <TestBindable Value="所有" />
+                            </ComboBox>
+                            <FontIconButton Content="{x:Static FontIcons.Add}" />
+                        </DockPanel>
+                        <DockPanel HorizontalAlignment="Left">
+                            <ComboBox
+                                MinWidth="100"
+                                Margin="0,1"
+                                DisplayMemberPath="Value"
+                                SelectedIndex="0">
+                                <TestBindable Value="图片级" />
+                            </ComboBox>
+                            <ComboBox
+                                MinWidth="100"
+                                Margin="1"
+                                DisplayMemberPath="Value"
+                                SelectedIndex="0">
+                                <TestBindable Value="概率矩阵" />
+                            </ComboBox>
+                        </DockPanel>
+
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
+                            <Border
+                                Grid.Column="1"
+                                Margin="0,5"
+                                Background="{DynamicResource {x:Static BrushKeys.BorderBrush}}"
+                                Style="{DynamicResource {x:Static BorderKeys.Background}}">
+                                <TextBlock Text="推理结果" />
+                            </Border>
+                            <Border
+                                Grid.Row="1"
+                                Margin="5,0"
+                                Background="{DynamicResource {x:Static BrushKeys.BorderBrush}}"
+                                Style="{DynamicResource {x:Static BorderKeys.Background}}">
+                                <Border.LayoutTransform>
+                                    <RotateTransform Angle="-90" />
+                                </Border.LayoutTransform>
+                                <TextBlock Text="人工标注" />
+                            </Border>
+                            <LineGrid
+                                Grid.Row="1"
+                                Grid.Column="1"
+                                Height="200"
+                                ClipToBounds="True"
+                                LineCornerRadius="{DynamicResource {x:Static LayoutKeys.CornerRadius}}"
+                                LineStroke="{DynamicResource {x:Static BrushKeys.BorderBrush}}">
+                                <LineGrid.ColumnDefinitions>
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                </LineGrid.ColumnDefinitions>
+                                <LineGrid.RowDefinitions>
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                </LineGrid.RowDefinitions>
+                                <Border
+                                    Grid.Row="1"
+                                    Grid.RowSpan="5"
+                                    Background="{DynamicResource {x:Static BrushKeys.BorderBrush}}"
+                                    Opacity="0.6" />
+                                <Border
+                                    Grid.ColumnSpan="5"
+                                    Background="{DynamicResource {x:Static BrushKeys.BorderBrush}}"
+                                    Opacity="0.6" />
+                                <TextBlock Grid.Row="1" Text="NG" />
+                                <TextBlock Grid.Row="2" Text="背景" />
+                                <TextBlock Grid.Row="3" Text="未标注" />
+                                <TextBlock Grid.Row="4" Text="总计" />
+
+                                <TextBlock Grid.Column="1" Text="NG" />
+                                <TextBlock Grid.Column="2" Text="背景" />
+                                <TextBlock Grid.Column="3" Text="总计" />
+
+                                <Border Grid.Row="1" Grid.Column="1">
+                                    <Border.Background>
+                                        <SolidColorBrush Opacity="0.4" Color="{DynamicResource {x:Static ColorKeys.Accent}}" />
+                                    </Border.Background>
+                                    <TextBlock Text="10" />
+                                </Border>
+                                <Border Grid.Row="2" Grid.Column="1">
+                                    <Border.Background>
+                                        <SolidColorBrush Opacity="0.4" Color="{DynamicResource {x:Static ColorKeys.Accent}}" />
+                                    </Border.Background>
+                                    <TextBlock Text="1" />
+                                </Border>
+                                <Border Grid.Row="3" Grid.Column="1">
+                                    <TextBlock Text="0" />
+                                </Border>
+                                <Border Grid.Row="4" Grid.Column="1">
+                                    <Border.Background>
+                                        <SolidColorBrush Opacity="0.4" Color="{DynamicResource {x:Static ColorKeys.Accent}}" />
+                                    </Border.Background>
+                                    <TextBlock Text="11" />
+                                </Border>
+                                <Border Grid.Row="1" Grid.Column="3">
+                                    <Border.Background>
+                                        <SolidColorBrush Opacity="0.4" Color="{DynamicResource {x:Static ColorKeys.Accent}}" />
+                                    </Border.Background>
+                                    <TextBlock Text="10" />
+                                </Border>
+                                <Border Grid.Row="2" Grid.Column="3">
+                                    <Border.Background>
+                                        <SolidColorBrush Opacity="0.4" Color="{DynamicResource {x:Static ColorKeys.Accent}}" />
+                                    </Border.Background>
+                                    <TextBlock Text="1" />
+                                </Border>
+                                <Border Grid.Row="3" Grid.Column="3">
+                                    <TextBlock Text="0" />
+                                </Border>
+                                <Border Grid.Row="4" Grid.Column="3">
+                                    <Border.Background>
+                                        <SolidColorBrush Opacity="0.4" Color="{DynamicResource {x:Static ColorKeys.Accent}}" />
+                                    </Border.Background>
+                                    <TextBlock Text="11" />
+                                </Border>
+                                <Border Grid.Row="1" Grid.Column="2">
+                                    <TextBlock Text="0" />
+                                </Border>
+                                <Border Grid.Row="2" Grid.Column="2">
+                                    <TextBlock Text="0" />
+                                </Border>
+                                <Border Grid.Row="3" Grid.Column="2">
+                                    <TextBlock Text="0" />
+                                </Border>
+                                <Border Grid.Row="4" Grid.Column="2">
+                                    <TextBlock Text="0" />
+                                </Border>
+                            </LineGrid>
+                        </Grid>
+                    </StackPanel>
+                </Expander>
+                <Expander Header="类别概览" Style="{DynamicResource {x:Static ExpanderKeys.ToggleRight}}">
+                    <LineGrid
+                        Height="80"
+                        Margin="0,5"
+                        LineStroke="{DynamicResource {x:Static BrushKeys.BorderBrush}}">
+                        <LineGrid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </LineGrid.ColumnDefinitions>
+                        <LineGrid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition />
+                        </LineGrid.RowDefinitions>
+                        <Border
+                            Grid.Row="1"
+                            Grid.RowSpan="5"
+                            Background="{DynamicResource {x:Static BrushKeys.BorderBrush}}"
+                            Opacity="0.5" />
+                        <Border
+                            Grid.ColumnSpan="5"
+                            Background="{DynamicResource {x:Static BrushKeys.BorderBrush}}"
+                            Opacity="0.5" />
+                        <TextBlock Grid.Row="1" Text="NG" />
+                        <TextBlock Grid.Column="1" Text="召回率" />
+                        <TextBlock Grid.Column="2" Text="精确率" />
+                        <TextBlock
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            Text="0.95" />
+                        <TextBlock
+                            Grid.Row="2"
+                            Grid.Column="2"
+                            Text="0.93" />
+                    </LineGrid>
+                </Expander>
+                <Expander Header="模型详情" Style="{DynamicResource {x:Static ExpanderKeys.ToggleRight}}">
+                    <LineGrid
+                        Height="160"
+                        Margin="0,5"
+                        LineStroke="{DynamicResource {x:Static BrushKeys.BorderBrush}}">
+                        <LineGrid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </LineGrid.ColumnDefinitions>
+                        <LineGrid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                        </LineGrid.RowDefinitions>
+                        <Border
+                            Grid.Row="0"
+                            Grid.RowSpan="5"
+                            Background="{DynamicResource {x:Static BrushKeys.BorderBrush}}"
+                            Opacity="0.5" />
+                        <TextBlock
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            Text="总训练耗时" />
+                        <TextBlock
+                            Grid.Row="1"
+                            Grid.RowSpan="2"
+                            Grid.Column="0"
+                            Text="单图测试耗时" />
+                        <TextBlock
+                            Grid.Row="3"
+                            Grid.Column="0"
+                            Text="单轮迭代耗时" />
+                        <TextBlock
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            Margin="5,0,0,0"
+                            HorizontalAlignment="Left"
+                            Text="36秒28毫秒" />
+                        <TextBlock
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            Margin="5,0,0,0"
+                            HorizontalAlignment="Left"
+                            Text="平均值：1.59毫秒" />
+                        <TextBlock
+                            Grid.Row="2"
+                            Grid.Column="1"
+                            Margin="5,0,0,0"
+                            HorizontalAlignment="Left"
+                            Text="最大值：2.07毫秒" />
+                        <TextBlock
+                            Grid.Row="3"
+                            Grid.Column="1"
+                            Text="平均值：95.86毫秒" />
+                    </LineGrid>
+                </Expander>
+                <UniformGrid Rows="1">
+                    <Button Margin="2" Content="训练过程曲线" />
+                    <Button Margin="2" Content="更多" />
+                </UniformGrid>
+            </StackPanel>
+        </ScrollViewer>
+    </DataTemplate>
+</ResourceDictionary>

@@ -1,0 +1,45 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
+    xmlns:componentmodel="clr-namespace:System.ComponentModel;assembly=WindowsBase"
+    xmlns:local="clr-namespace:H.App.AIDI.Presenters">
+    <DataTemplate DataType="{x:Type local:TrainingAssistantSelectPresenter}">
+        <DockPanel Width="600" Height="400">
+            <ListBox
+                Width="200"
+                Cattach.ItemBackground="{DynamicResource {x:Static BrushKeys.Dark0_1}}"
+                Cattach.ItemMargin="5"
+                ItemsSource="{Binding TrainingAssistantItemPresenters}"
+                ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                SelectedItem="{Binding SelectedTrainingAssistantItemPresenter}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <DockPanel>
+                            <FontIconTextBlock
+                                Margin="5"
+                                DockPanel.Dock="Left"
+                                Text="{Binding Icon}" />
+                            <TextBlock
+                                VerticalAlignment="Center"
+                                DockPanel.Dock="Bottom"
+                                Text="{Binding Name}" />
+                        </DockPanel>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ListBox>
+            <Border
+                Margin="5"
+                Background="{DynamicResource {x:Static BrushKeys.Dark0_1}}"
+                Style="{DynamicResource {x:Static BorderKeys.Background}}">
+                <TextBlock
+                    Margin="10"
+                    FontSize="{DynamicResource {x:Static FontSizeKeys.Header5}}"
+                    Foreground="{DynamicResource {x:Static BrushKeys.ForegroundTitle}}"
+                    LineHeight="20"
+                    Text="{Binding SelectedTrainingAssistantItemPresenter.Description}"
+                    TextWrapping="Wrap" />
+            </Border>
+        </DockPanel>
+    </DataTemplate>
+</ResourceDictionary>
