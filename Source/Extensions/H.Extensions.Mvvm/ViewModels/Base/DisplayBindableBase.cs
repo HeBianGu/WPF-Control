@@ -33,6 +33,7 @@ public abstract class DisplayBindableBase : CommandsBindableBase, IDable, IDispl
             if (od.HasValue)
                 this.Order = od.Value;
             this.ShortName = display.ShortName;
+            this.Prompt = display.Prompt;
         }
         IDAttribute id = type.GetCustomAttribute<IDAttribute>(true);
         this.ID = id?.ID ?? Guid.NewGuid().ToString();
@@ -52,7 +53,6 @@ public abstract class DisplayBindableBase : CommandsBindableBase, IDable, IDispl
     }
 
     private string _id;
-
     /// <summary>
     /// 获取或设置对象的唯一标识符。
     /// </summary>
@@ -68,7 +68,6 @@ public abstract class DisplayBindableBase : CommandsBindableBase, IDable, IDispl
     }
 
     private string _name;
-
     /// <summary>
     /// 获取或设置对象的名称。
     /// </summary>
@@ -104,8 +103,8 @@ public abstract class DisplayBindableBase : CommandsBindableBase, IDable, IDispl
     /// <summary>
     /// 获取或设置对象的简称。
     /// </summary>
-    [System.Text.Json.Serialization.JsonIgnore]
-    [System.Xml.Serialization.XmlIgnore]
+    [JsonIgnore]
+    [XmlIgnore]
     [Browsable(false)]
     public virtual string ShortName
     {
@@ -117,8 +116,23 @@ public abstract class DisplayBindableBase : CommandsBindableBase, IDable, IDispl
         }
     }
 
-    private string _groupName;
 
+    private string _Prompt;
+    [JsonIgnore]
+    [XmlIgnore]
+    [Browsable(false)]
+    public string Prompt
+    {
+        get { return _Prompt; }
+        set
+        {
+            _Prompt = value;
+            RaisePropertyChanged();
+        }
+    }
+
+
+    private string _groupName;
     /// <summary>
     /// 获取或设置对象的分组名称。
     /// </summary>
@@ -136,7 +150,6 @@ public abstract class DisplayBindableBase : CommandsBindableBase, IDable, IDispl
     }
 
     private string _description;
-
     /// <summary>
     /// 获取或设置对象的描述。
     /// </summary>
@@ -154,7 +167,6 @@ public abstract class DisplayBindableBase : CommandsBindableBase, IDable, IDispl
     }
 
     private int _order;
-
     /// <summary>
     /// 获取或设置对象的顺序。
     /// </summary>
