@@ -73,6 +73,11 @@ static partial class ProjectExtension
                 IocMessage.ShowSnackInfo($"{Resources.Common_AlreadyExists}<{x.Title}>");
                 return false;
             }
+            if (!x.ModelState(out List<string> errors))
+            {
+                IocMessage.ShowSnackInfo($"{errors.FirstOrDefault()}");
+                return false;
+            }
             return true;
         }, x => x.UseCommand = false);
         if (r != true)
