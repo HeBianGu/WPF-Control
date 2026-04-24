@@ -9,17 +9,21 @@
 using System.Windows.Shapes;
 
 namespace H.Controls.ShapeBox.Shapes.Base;
-public abstract class PointsShapeBase : TitleShapeBase, IBoundingBoxShape
+
+public interface IPointsShape : IBoundingBoxShape
+{
+    PointCollection Points { get; set; }
+}
+
+public abstract class PointsShapeBase : TitleShapeBase, IPointsShape
 {
     protected PointsShapeBase()
     {
-
+        this.Points = new PointCollection(); ;
     }
     protected PointsShapeBase(IEnumerable<Point> points)
     {
-        PointCollection ps = new PointCollection(points);
-        ps.Freeze();
-        this.Points = ps;
+        this.Points = new PointCollection(points);
     }
     [Display(Name = "坐标列表", GroupName = "数据", Order = -1)]
     public PointCollection Points { get; set; }
