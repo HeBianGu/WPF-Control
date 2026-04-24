@@ -7,10 +7,12 @@
 // Licensed under the MIT License (the "License")
 
 using H.Common.Attributes;
+using H.Extensions.Common;
 using H.Extensions.FontIcon;
+using System.Collections;
 namespace H.Modules.Messages.Notice
 {
-    [Icon(FontIcons.Refresh)]
+    [Icon(FontIcons.Sync)]
     [Display(Name = "进度条消息", Description = "这是一条进度条消息")]
     public class ProgressMessagePresenter : MessagePresenterBase, IPercentNoticeItem
     {
@@ -24,5 +26,20 @@ namespace H.Modules.Messages.Notice
                 RaisePropertyChanged();
             }
         }
+
+        public Func<Task<bool>> CanExecuteAsync { get; set; }
+        public RelayCommand CancelCommand => new RelayCommand(async x =>
+        {
+            var r = await this.CanExecuteAsync.Invoke();
+            if (r == false)
+                return;
+            if (x is FrameworkElement element)
+            {
+                if (element.GetParent<ItemsControl>().ItemsSource is IList list)
+                    list.Remove(this);
+            }
+        });
+
+        public bool IsCanceling { get; set; }
     }
 }

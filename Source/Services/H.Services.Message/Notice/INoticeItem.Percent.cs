@@ -11,4 +11,6 @@ namespace H.Services.Message.Notice;
 public interface IPercentNoticeItem : INoticeItem
 {
     double Value { get; set; }
+    Func<Task<bool>> CanExecuteAsync { get; set; }
+    bool IsCanceling { get; set; }
 }
