@@ -14,4 +14,10 @@ namespace H.Extensions.DataBase.Repository
     {
         IObservableSource<SelectBindable<TEntity>> Collection { get; set; }
     }
+
+    public interface IRepositoryBindable<TViewModel, TEntity> : IRepositoryBindableBase<TEntity>
+   where TEntity : StringEntityBase, new()
+    {
+        IObservableSource<TViewModel> Collection { get; set; }
+    }
 }

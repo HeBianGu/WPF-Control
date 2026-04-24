@@ -19,7 +19,8 @@ public class CrossShape : CommonShapeBase, IPreviewShape
     {
         var pen = base.GetPen(stroke, strokeThickness, view);
         pen.DashStyle = DashStyles.Dash;
-        pen.Freeze();
+        if (pen.CanFreeze)
+            pen.Freeze();
         return pen;
     }
     public override void MatrixDrawing(IView view, DrawingContext dc, Pen pen, Brush fill = null)

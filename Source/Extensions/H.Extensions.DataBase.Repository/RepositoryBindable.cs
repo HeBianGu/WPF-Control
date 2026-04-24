@@ -6,31 +6,15 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
+using H.Extensions.ObservableSource;
+
 namespace H.Extensions.DataBase.Repository
 {
-    /// <summary>
-    /// 直接对接模型的仓储基类
-    /// </summary>
-    /// <typeparam name="TEntity"></typeparam>
-    public class RepositoryBindable<TEntity> : RepositoryBindableBase<SelectBindable<TEntity>, TEntity>, IRepositoryBindable<TEntity> where TEntity : StringEntityBase, new()
+    public class RepositoryBindable<TViewModel, TEntity> : RepositoryBindableBase<TViewModel, TEntity>, IRepositoryBindable<TViewModel, TEntity> where TEntity : StringEntityBase, new() where TViewModel : SelectBindable<TEntity>
     {
-        public override void RefreshData(params string[] includes)
+        protected virtual TViewModel CreateSelectBindable(TEntity entity)
         {
-            includes = includes ?? this.GetIncludes()?.ToArray();
-            IEnumerable<SelectBindable<TEntity>> collection = includes == null
-                ? this.Repository.GetList().Where(x => this.Where(x)).Select(x => this.CreateSelectBindable(x))
-                : this.Repository.GetList(includes).Where(x => this.Where(x)).Select(x => this.CreateSelectBindable(x));
-            this.Collection.Load(collection);
-        }
-
-        protected virtual bool Where(TEntity entity)
-        {
-            return true;
-        }
-
-        protected virtual SelectBindable<TEntity> CreateSelectBindable(TEntity entity)
-        {
-            return new SelectBindable<TEntity>(entity);
+            return (TViewModel)Activator.CreateInstance(typeof(TViewModel), entity);
         }
 
         public override async Task Add(params TEntity[] ms)
@@ -65,6 +49,32 @@ namespace H.Extensions.DataBase.Repository
                 {
                     Ioc<IOperationService>.Instance?.Log<TEntity>($"新增", m.ID, OperationType.Add);
                 }
+        }
+        public override void RefreshData(params string[] includes)
+        {
+            includes = includes ?? this.GetIncludes()?.ToArray();
+            IEnumerable<TViewModel> collection = includes == null
+                ? this.Repository.GetList().Where(x => this.Where(x)).Select(x => this.CreateSelectBindable(x))
+                : this.Repository.GetList(includes).Where(x => this.Where(x)).Select(x => this.CreateSelectBindable(x));
+            this.Collection.Load(collection);
+        }
+        protected virtual bool Where(TEntity entity)
+        {
+            return true;
+        }
+
+
+    }
+
+    /// <summary>
+    /// 直接对接模型的仓储基类
+    /// </summary>
+    /// <typeparam name="TEntity"></typeparam>
+    public class RepositoryBindable<TEntity> : RepositoryBindable<SelectBindable<TEntity>, TEntity>, IRepositoryBindable<TEntity> where TEntity : StringEntityBase, new()
+    {
+        protected override SelectBindable<TEntity> CreateSelectBindable(TEntity entity)
+        {
+            return new SelectBindable<TEntity>(entity);
         }
     }
 }
