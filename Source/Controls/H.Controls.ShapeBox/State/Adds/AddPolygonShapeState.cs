@@ -18,7 +18,7 @@ public class AddPointsShapeState<T> : PointsClickAddShapeState<T> where T : IPoi
     }
     protected override void OnClick(Queue<Point> points)
     {
-        this.Shape.Points = new PointCollection(points);
+        this.Shape.Points = new Points(points);
         this.RefreshStateShapes();
     }
     protected override void OnPreviewMouseMove(Point p)
@@ -27,7 +27,7 @@ public class AddPointsShapeState<T> : PointsClickAddShapeState<T> where T : IPoi
             return;
         var points= _clickPoints.ToList();
         points.Add(p);
-        this.Shape.Points = new PointCollection(points);
+        this.Shape.Points = new Points(points);
         this.RefreshStateShapes();
     }
 
