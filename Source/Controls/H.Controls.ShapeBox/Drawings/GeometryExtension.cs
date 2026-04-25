@@ -17,7 +17,7 @@ public static class GeometryExtension
         StreamGeometry streamGeom = new StreamGeometry();
         using (StreamGeometryContext context = streamGeom.Open())
         {
-            context.BeginFigure(points.FirstOrDefault(), true, true);
+            context.BeginFigure(points.FirstOrDefault(), isFilled, isClosed);
             foreach (Point item in points)
             {
                 context.LineTo(item, true, true);

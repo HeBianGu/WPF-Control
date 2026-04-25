@@ -190,7 +190,10 @@ public class StateShapeBox : SelectShapeBox, IStateShapeView
         {
             if (shape == null)
                 continue;
-            shape.Draw(this, drawingContext, this.StateStroke, strokeThickness, this.StateFill);
+            if (shape is IStateShape stateShape)
+                stateShape.DrawState(this, drawingContext, this.StateStroke, strokeThickness, this.StateFill);
+            else
+                shape.Draw(this, drawingContext, this.StateStroke, strokeThickness, this.StateFill);
         }
     }
 }

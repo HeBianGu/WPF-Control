@@ -7,9 +7,9 @@
 // Licensed under the MIT License (the "License")
 
 using H.Controls.ShapeBox.Shapes.Handles;
-using System.Windows.Input;
 
 namespace H.Controls.ShapeBox.State.Adds.Base;
+
 public abstract class AddShapeState<T> : ShapeState<T> where T : IShape
 {
     private readonly IShapes _shapes;
@@ -25,38 +25,6 @@ public abstract class AddShapeState<T> : ShapeState<T> where T : IShape
 
     protected IShapes Shapes => this._shapes;
     public Queue<Point> _clickPoints = new Queue<Point>();
-    public override void MouseDown(object sender, MouseButtonEventArgs e)
-    {
-        base.MouseDown(sender, e);
-
-        if (this.CurrentHitHandle != null)
-            return;
-        if (e.ChangedButton == MouseButton.Right)
-        {
-            this.Cancel();
-            return;
-        }
-        if (e.ChangedButton != MouseButton.Left)
-            return;
-        var p = e.GetPosition(this.GetElementView());
-        this._clickPoints.Enqueue(p);
-        this.OnClick(this._clickPoints);
-    }
-
-    public override void MouseMove(object sender, MouseEventArgs e)
-    {
-        base.MouseMove(sender, e);
-        if (this.CurrentHitHandle != null)
-            return;
-        if (this._clickPoints == null)
-            return;
-        var p = e.GetPosition(sender as FrameworkElement);
-        this.OnPreviewMouseMove(p);
-    }
-
-    protected abstract void OnClick(Queue<Point> points);
-
-    protected abstract void OnPreviewMouseMove(Point p);
 
     protected virtual void Sumit()
     {

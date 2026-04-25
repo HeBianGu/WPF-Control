@@ -14,7 +14,7 @@ public interface IPreviewShape
     void DrawPreview(IView view, DrawingContext drawingContext, Brush stroke, double strokeThickness = 1, Brush fill = null);
 }
 
-public abstract class PreviewShapeBase : HandleShapeBase, IPreviewShape
+public abstract class PreviewShapeBase : StateShapeBase, IPreviewShape
 {
     public bool UseMousePosition { get; protected set; }
     public virtual void DrawPreview(IView view, DrawingContext drawingContext, Brush stroke, double strokeThickness = 1, Brush fill = null, double mousePotionsOffset = 0)

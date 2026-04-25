@@ -7,7 +7,7 @@
 // Licensed under the MIT License (the "License")
 
 namespace H.Controls.ShapeBox.State.Adds.Base;
-public abstract class OneClickAddShapeState<T> : AddShapeState<T> where T : IShape
+public abstract class OneClickAddShapeState<T> : AddClickShapeState<T> where T : IShape
 {
     public OneClickAddShapeState()
     {

@@ -8,35 +8,6 @@
 
 namespace H.Controls.ShapeBox.State.Adds;
 
-public class AddPointsShapeState<T> : PointsClickAddShapeState<T> where T : IPointsShape, new()
-{
-    public AddPointsShapeState()
-    {
-    }
-    public AddPointsShapeState(IShapes shapes) : base(shapes)
-    {
-    }
-    protected override void OnClick(Queue<Point> points)
-    {
-        this.Shape.Points = new Points(points);
-        this.RefreshStateShapes();
-    }
-    protected override void OnPreviewMouseMove(Point p)
-    {
-        if (_clickPoints.Count == 0)
-            return;
-        var points= _clickPoints.ToList();
-        points.Add(p);
-        this.Shape.Points = new Points(points);
-        this.RefreshStateShapes();
-    }
-
-    public override IShapeStyleSetting GetShapeStyleSetting()
-    {
-        return PolygonShapeStyleSetting.Instance;
-    }
-}
-
 public class AddPolygonShapeState : AddPointsShapeState<PolygonShape>
 {
     public AddPolygonShapeState()
