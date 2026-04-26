@@ -29,7 +29,14 @@ public abstract class ThumbShapeBase : ShapeBase, IThumbShape
     }
 }
 
-public abstract class ShapeBase : BindableBase, IShape
+public interface IStyleShape : IShape
+{
+    Brush Fill { get; set; }
+    Brush Stroke { get; set; }
+    double StrokeThickness { get; set; }
+}
+
+public abstract class ShapeBase : BindableBase, IShape, IStyleShape
 {
     [JsonIgnore]
     [DefaultValue(null)]

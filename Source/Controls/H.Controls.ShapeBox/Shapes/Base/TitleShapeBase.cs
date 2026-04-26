@@ -9,7 +9,13 @@
 using H.Controls.ShapeBox.Drawings;
 
 namespace H.Controls.ShapeBox.Shapes.Base;
-public abstract class TitleShapeBase : PreviewShapeBase
+
+public interface ITitleShape : IStyleShape
+{
+    string Title { get; set; }
+}
+
+public abstract class TitleShapeBase : PreviewShapeBase, ITitleShape
 {
     public string Title { get; set; }
 
