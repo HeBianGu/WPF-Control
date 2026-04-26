@@ -29,7 +29,7 @@ public class Points : ObservableCollection<Point>
 
     public static Points Parse(string s)
     {
-        var points = s.Split(';').Select(x =>
+        var points = s.Split(';',StringSplitOptions.RemoveEmptyEntries).Select(x =>
         {
             var xy = x.Split(',');
             return new Point(double.Parse(xy[0]), double.Parse(xy[1]));
