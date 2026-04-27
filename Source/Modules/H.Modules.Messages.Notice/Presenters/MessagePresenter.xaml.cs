@@ -12,7 +12,7 @@ namespace H.Modules.Messages.Notice
 {
     public abstract class MessagePresenterBase : DisplayBindableBase, INoticeItem
     {
-        public string Time { get; } = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+        public string Time { get; set; } = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
         private string _message;
         public string Message
         {

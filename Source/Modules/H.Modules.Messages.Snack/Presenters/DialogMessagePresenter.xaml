@@ -23,18 +23,6 @@
                 BorderBrush="{DynamicResource {x:Static h:BrushKeys.BorderBrush}}"
                 BorderThickness="1"
                 CornerRadius="{DynamicResource {x:Static LayoutKeys.CornerRadius}}" />
-            <!--<Grid Width="15"
-                  Height="15"
-                  Margin="10,5">
-                <Grid.Background>
-                    <DrawingBrush>
-                        <DrawingBrush.Drawing>
-                            <GeometryDrawing Brush="{DynamicResource {x:Static h:BrushKeys.Foreground}}"
-                                             Geometry="{Binding Geometry}" />
-                        </DrawingBrush.Drawing>
-                    </DrawingBrush>
-                </Grid.Background>
-            </Grid>-->
             <FontIconTextBlock
                 Margin="10,0"
                 FontSize="20"

@@ -11,5 +11,5 @@ namespace H.Services.Message.Notice;
 public interface INoticeItem
 {
     string Message { get; set; }
-    string Time { get; }
+    string Time { get; set; }
 }

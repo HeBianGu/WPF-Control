@@ -183,7 +183,10 @@ static partial class ProjectExtension
             Thread.Sleep(500);
             if (!projectService.Contain(c))
                 projectService.Add(c);
-            return projectService.Current.Save(out message);
+            //var r = projectService.Current.Save(out message);
+            //if (r != true)
+            //    return r;
+            return projectService.Save(out message);
 
         }, x => x.Title = $"正在保存<{c.Title}>...");
         if (r == false && !string.IsNullOrEmpty(message))

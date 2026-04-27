@@ -7,7 +7,8 @@
     <DataTemplate DataType="{x:Type local:ProgressMessagePresenter}">
         <Grid
             Width="350"
-            Height="80"
+            MinHeight="60"
+            MaxHeight="200"
             Margin="1"
             ToolTip="{Binding Message}">
             <Grid.ColumnDefinitions>
@@ -26,25 +27,26 @@
                 FontSize="20"
                 Foreground="{DynamicResource {x:Static BrushKeys.Accent}}"
                 Text="{Binding Icon}" />
-            <StackPanel
+            <DockPanel
                 Grid.Column="1"
                 VerticalAlignment="Center"
                 TextBlock.Foreground="{DynamicResource {x:Static h:BrushKeys.Foreground}}">
-                <TextBlock
-                    Margin="0,2"
-                    HorizontalAlignment="Left"
-                    Text="{Binding Message}"
-                    ToolTip="{Binding Message}"
-                    TextWrapping="Wrap"
-                    TextTrimming="CharacterEllipsis" />
                 <ProgressBar
-                    Height="2"
+                    Height="Auto"
                     Margin="0,5"
+                    DockPanel.Dock="Bottom"
                     Maximum="100.0"
                     Minimum="0.0"
                     Value="{Binding Value}" />
-                <TextBlock Text="{Binding Time}" />
-            </StackPanel>
+                <TextBlock DockPanel.Dock="Bottom" Text="{Binding Time}" />
+                <TextBlock
+                    Margin="0,5"
+                    HorizontalAlignment="Left"
+                    Text="{Binding Message}"
+                    TextWrapping="Wrap"
+                    ToolTip="{Binding Message}" />
+
+            </DockPanel>
             <FontIconButton
                 Grid.Column="2"
                 HorizontalAlignment="Right"
@@ -52,8 +54,7 @@
                 Command="{Binding CancelCommand}"
                 CommandParameter="{Binding}"
                 Content="{x:Static FontIcons.Cancel}"
-                WindowChrome.IsHitTestVisibleInChrome="True">
-            </FontIconButton>
+                WindowChrome.IsHitTestVisibleInChrome="True" />
         </Grid>
     </DataTemplate>
 </ResourceDictionary>

@@ -30,9 +30,13 @@ namespace H.Modules.Messages.Notice
         public Func<Task<bool>> CanExecuteAsync { get; set; }
         public RelayCommand CancelCommand => new RelayCommand(async x =>
         {
-            var r = await this.CanExecuteAsync.Invoke();
-            if (r == false)
-                return;
+            if (this.CanExecuteAsync != null)
+            {
+                var r = await this.CanExecuteAsync.Invoke();
+                if (r == false)
+                    return;
+            }
+
             if (x is FrameworkElement element)
             {
                 if (element.GetParent<ItemsControl>().ItemsSource is IList list)

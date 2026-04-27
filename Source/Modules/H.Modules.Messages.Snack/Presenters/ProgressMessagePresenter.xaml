@@ -37,7 +37,7 @@
                     Text="{Binding Message}"
                     TextTrimming="CharacterEllipsis" />
                 <ProgressBar
-                    Height="2"
+                    Height="Auto"
                     Margin="0,5"
                     Maximum="100.0"
                     Minimum="0.0"
