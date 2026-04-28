@@ -365,7 +365,7 @@ public class ShapeBox : FrameworkElement, IShapeView, IImageView
         this.DelayUpdateAll();
     }
 
-    private IEnumerable<IShape> GetShapes()
+    protected virtual IEnumerable<IShape> GetShapes()
     {
         if (this.Shape != null)
             yield return this.Shape;
@@ -377,7 +377,7 @@ public class ShapeBox : FrameworkElement, IShapeView, IImageView
             }
         }
     }
-    public void DrawShapes()
+    public virtual void DrawShapes()
     {
         using var drawingContext = this._shapeDrawingVisual.RenderOpen();
         var shapes = this.GetShapes()?.ToList();
