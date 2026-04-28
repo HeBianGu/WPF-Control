@@ -39,7 +39,7 @@
                                 CornerRadius="{DynamicResource {x:Static LayoutKeys.CornerRadius}}" />
                         <Border x:Name="PART_Indicator"
                                 Margin="5"
-                                HorizontalAlignment="Left"
+                                HorizontalAlignment="Left" ClipToBounds="True"
                                 Background="{TemplateBinding Foreground}"
                                 BorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrush}}"
                                 BorderThickness="0"

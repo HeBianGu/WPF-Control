@@ -10,7 +10,7 @@ using System.Windows.Media;
 
 namespace H.Extensions.Color;
 
-public static class ColorExtesion
+public static class ColorExtension
 {
     public static HexColorEx ToHexColorEx(this string hex) => new HexColorEx(hex);
 }

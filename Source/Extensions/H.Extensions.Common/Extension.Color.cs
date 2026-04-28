@@ -23,7 +23,8 @@ public static class ColorExtenstion
     {
         return hex.ToSolid(x =>
          {
-             if (x.CanFreeze) x.Freeze();
+             if (x.CanFreeze)
+                 x.Freeze();
              action?.Invoke(x);
          });
     }
@@ -33,5 +34,15 @@ public static class ColorExtenstion
         var brush = new SolidColorBrush(color);
         action?.Invoke(brush);
         return brush;
+    }
+
+    public static SolidColorBrush ToFreezeSolid(this Color color, Action<SolidColorBrush> action = null)
+    {
+        return color.ToSolid(x =>
+         {
+             if (x.CanFreeze)
+                 x.Freeze();
+             action?.Invoke(x);
+         });
     }
 }
