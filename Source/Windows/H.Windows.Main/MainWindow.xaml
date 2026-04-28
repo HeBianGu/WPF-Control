@@ -13,7 +13,7 @@
         <Setter Property="FontFamily" Value="{DynamicResource {x:Static SystemKeys.FontFamily}}" />
         <Setter Property="ResizeMode" Value="CanResizeWithGrip" />
         <Setter Property="BorderThickness" Value="0" />
-        <Setter Property="Title" Value="{x:Static ApplicationProvider.Product}"/>
+        <Setter Property="Title" Value="{x:Static ApplicationProvider.Product}" />
         <Setter Property="Cattach.CaptionBackground">
             <Setter.Value>
                 <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.CaptionBackground}}" />

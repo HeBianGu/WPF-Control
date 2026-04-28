@@ -255,6 +255,6 @@
             </Setter.Value>
         </Setter>
     </Style>
-    
+
     <Style BasedOn="{StaticResource {x:Static local:DialogKeys.Default}}" TargetType="{x:Type local:DialogWindow}" />
 </ResourceDictionary>

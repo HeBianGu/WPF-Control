@@ -14,8 +14,8 @@
                         <ContentPresenter x:Name="cp_project" Content="{Binding Source={x:Static IocProject.Instance}, Path=Current.Presenter}" />
                     </Grid>
                     <ControlTemplate.Triggers>
-                        <DataTrigger Binding="{Binding ElementName=cp_project,Path=Content,Converter={x:Static Converter.GetNullToFalse}}" Value="True">
-                            <Setter Property="Visibility" Value="Collapsed" TargetName="cp_home"/>
+                        <DataTrigger Binding="{Binding ElementName=cp_project, Path=Content, Converter={x:Static Converter.GetNullToFalse}}" Value="True">
+                            <Setter TargetName="cp_home" Property="Visibility" Value="Collapsed" />
                         </DataTrigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

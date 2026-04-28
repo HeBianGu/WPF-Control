@@ -25,7 +25,8 @@
         <Setter Property="Cattach.ItemBorderBrush" Value="{DynamicResource {x:Static BrushKeys.BorderBrush}}" />
         <Setter Property="Cattach.ItemBorderThickness" Value="0" />
 
-        <!--  Guide  --><!--
+        <!--  Guide  -->
+        <!--
         <Setter Property="Cattach.UseGuide" Value="True" />
         <Setter Property="Cattach.GuideTitle" Value="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Header}" />
         <Setter Property="Cattach.GuideData" Value="{Binding RelativeSource={RelativeSource Mode=Self}, Path=ToolTip}" />-->
@@ -62,9 +63,9 @@
                                 x:Name="contentPanel"
                                 Grid.Row="1"
                                 Grid.Column="0"
-                                CornerRadius="{Binding RelativeSource={RelativeSource AncestorType=TabControl}, Path=(Cattach.ItemCornerRadius)}"
                                 BorderBrush="{Binding RelativeSource={RelativeSource AncestorType=TabControl}, Path=(Cattach.ItemBorderBrush)}"
                                 BorderThickness="{Binding RelativeSource={RelativeSource AncestorType=TabControl}, Path=(Cattach.ItemBorderThickness)}"
+                                CornerRadius="{Binding RelativeSource={RelativeSource AncestorType=TabControl}, Path=(Cattach.ItemCornerRadius)}"
                                 KeyboardNavigation.DirectionalNavigation="Contained"
                                 KeyboardNavigation.TabIndex="2"
                                 KeyboardNavigation.TabNavigation="Local">

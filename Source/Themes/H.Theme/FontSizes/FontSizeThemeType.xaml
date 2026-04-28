@@ -1,22 +1,20 @@
-﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:f="clr-namespace:H.Themes.FontSizes"
-                    xmlns:c="clr-namespace:H.Themes.Colors"
-                    xmlns:p="clr-namespace:H.Themes.Properties"
-                    xmlns:local="clr-namespace:H.Themes">
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:c="clr-namespace:H.Themes.Colors"
+    xmlns:f="clr-namespace:H.Themes.FontSizes"
+    xmlns:local="clr-namespace:H.Themes"
+    xmlns:p="clr-namespace:H.Themes.Properties">
     <DataTemplate DataType="{x:Type f:FontSizeThemeType}">
-        <TextBlock x:Name="tb_name"/>
+        <TextBlock x:Name="tb_name" />
         <DataTemplate.Triggers>
-            <DataTrigger Binding="{Binding}"
-                         Value="Default">
+            <DataTrigger Binding="{Binding}" Value="Default">
                 <Setter TargetName="tb_name" Property="Text" Value="{x:Static p:Resources.Enum_FontSizeThemeType_Default}" />
             </DataTrigger>
-            <DataTrigger Binding="{Binding}"
-                         Value="Large">
+            <DataTrigger Binding="{Binding}" Value="Large">
                 <Setter TargetName="tb_name" Property="Text" Value="{x:Static p:Resources.Enum_FontSizeThemeType_Large}" />
             </DataTrigger>
-            <DataTrigger Binding="{Binding}"
-                         Value="Small">
+            <DataTrigger Binding="{Binding}" Value="Small">
                 <Setter TargetName="tb_name" Property="Text" Value="{x:Static p:Resources.Enum_FontSizeThemeType_Small}" />
             </DataTrigger>
         </DataTemplate.Triggers>

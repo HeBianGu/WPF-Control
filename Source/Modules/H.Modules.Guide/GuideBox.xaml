@@ -43,13 +43,11 @@
                     <Border>
                         <DockPanel>
                             <DockPanel DockPanel.Dock="Bottom">
-                                <Button
-                                    HorizontalAlignment="Left"
-                                    Command="{x:Static local:GuideBox.SkipCommand}">
+                                <Button HorizontalAlignment="Left" Command="{x:Static local:GuideBox.SkipCommand}">
                                     <Button.Content>
                                         <TextBlock>
-                                            <Run Text="{x:Static Resources.Common_Skip}"/>
-                                            <Run Text="&gt;&gt;"/>
+                                            <Run Text="{x:Static Resources.Common_Skip}" />
+                                            <Run Text="&gt;&gt;" />
                                         </TextBlock>
                                     </Button.Content>
                                 </Button>

@@ -1,12 +1,14 @@
-﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:h="https://github.com/HeBianGu"
-                    xmlns:local="clr-namespace:H.Controls.Form.PropertyItems">
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:h="https://github.com/HeBianGu"
+    xmlns:local="clr-namespace:H.Controls.Form.PropertyItems">
     <DataTemplate DataType="{x:Type local:EnumPropertyItem}">
-        <ComboBox Grid.Column="2"
-                  Cattach.UseGuide="False"
-                  IsHitTestVisible="{Binding ReadOnly, Converter={x:Static Converter.GetTrueToFalse}}"
-                  ItemsSource="{Binding PropertyInfo.PropertyType, Converter={x:Static h:Converter.GetEnumSource}}"
-                  SelectedItem="{Binding Value}" />
+        <ComboBox
+            Grid.Column="2"
+            Cattach.UseGuide="False"
+            IsHitTestVisible="{Binding ReadOnly, Converter={x:Static Converter.GetTrueToFalse}}"
+            ItemsSource="{Binding PropertyInfo.PropertyType, Converter={x:Static h:Converter.GetEnumSource}}"
+            SelectedItem="{Binding Value}" />
     </DataTemplate>
 </ResourceDictionary>
