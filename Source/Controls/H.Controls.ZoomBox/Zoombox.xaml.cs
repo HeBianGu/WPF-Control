@@ -13,6 +13,8 @@
    Stay informed: follow @datagrid on Twitter or Like http://facebook.com/datagrids
 
   ***********************************************************************************/
+
+// 2026/04/28 HeBianGu 增加鼠标滚轮拖动移动面板
 using H.Common.Interfaces;
 using System;
 using System.Collections;
@@ -1944,7 +1946,7 @@ namespace H.Controls.ZoomBox
             if (_content == null)
                 return;
             var rect = new Rect(region.Location, region.Size);
-            if (rect.Width==0)
+            if (rect.Width == 0)
                 rect.Width = 1;
             if (rect.Height == 0)
                 rect.Height = 1;
@@ -2724,7 +2726,13 @@ namespace H.Controls.ZoomBox
 
         private void ProcessMouseMove(MouseEventArgs e)
         {
-            if (e.MouseDevice.LeftButton != MouseButtonState.Pressed)
+            //if (e.MouseDevice.LeftButton != MouseButtonState.Pressed)
+            //    return;
+
+            bool isLeftDragging = e.MouseDevice.LeftButton == MouseButtonState.Pressed;
+            bool isMiddleDragging = this.UseMiddleButtonDrag && e.MouseDevice.MiddleButton == MouseButtonState.Pressed;
+
+            if (!isLeftDragging && !isMiddleDragging)
                 return;
 
             if (!this.IsDraggingContent && !this.IsSelectingRegion)
@@ -3733,6 +3741,11 @@ namespace H.Controls.ZoomBox
                 this.ProcessNavigationButton(e);
             }
 
+            if (this.DragOnPreview && !e.Handled && e.ChangedButton == MouseButton.Middle && _contentPresenter != null)
+            {
+                this.ProcessMouseMiddleButtonDown(e);
+            }
+
             base.OnPreviewMouseDown(e);
         }
 
@@ -3741,6 +3754,11 @@ namespace H.Controls.ZoomBox
             if (!this.NavigateOnPreview && !e.Handled)
             {
                 this.ProcessNavigationButton(e);
+            }
+
+            if (!this.DragOnPreview && !e.Handled && e.ChangedButton == MouseButton.Middle && _contentPresenter != null)
+            {
+                this.ProcessMouseMiddleButtonDown(e);
             }
 
             base.OnMouseDown(e);
@@ -4104,6 +4122,69 @@ namespace H.Controls.ZoomBox
 
             }));
 
+
+        public bool UseMiddleButtonDrag
+        {
+            get { return (bool)GetValue(UseMiddleButtonDragProperty); }
+            set { SetValue(UseMiddleButtonDragProperty, value); }
+        }
+
+        public static readonly DependencyProperty UseMiddleButtonDragProperty =
+            DependencyProperty.Register(
+                "UseMiddleButtonDrag",
+                typeof(bool),
+                typeof(Zoombox),
+                new FrameworkPropertyMetadata(false));
+
+        protected override void OnPreviewMouseUp(MouseButtonEventArgs e)
+        {
+            if (this.DragOnPreview && !e.Handled && e.ChangedButton == MouseButton.Middle && _contentPresenter != null)
+            {
+                this.ProcessMouseMiddleButtonUp(e);
+            }
+
+            base.OnPreviewMouseUp(e);
+        }
+
+        protected override void OnMouseUp(MouseButtonEventArgs e)
+        {
+            if (!this.DragOnPreview && !e.Handled && e.ChangedButton == MouseButton.Middle && _contentPresenter != null)
+            {
+                this.ProcessMouseMiddleButtonUp(e);
+            }
+
+            base.OnMouseUp(e);
+        }
+
+        private void ProcessMouseMiddleButtonDown(MouseButtonEventArgs e)
+        {
+            if (!this.UseMiddleButtonDrag)
+                return;
+
+            this.SetIsSelectingRegion(false);
+            this.SetIsDraggingContent(true);
+
+            _originPoint = e.GetPosition(this);
+            _contentPresenter.CaptureMouse();
+            e.Handled = true;
+
+            this.OnDrag(new DragDeltaEventArgs(0, 0), false);
+        }
+
+        private void ProcessMouseMiddleButtonUp(MouseButtonEventArgs e)
+        {
+            if (!this.IsDraggingContent)
+                return;
+
+            this.SetIsDraggingContent(false);
+            this.SetIsSelectingRegion(false);
+
+            _originPoint = new Point();
+            _contentPresenter.ReleaseMouseCapture();
+            e.Handled = true;
+
+            this.OnDrag(new DragDeltaEventArgs(0, 0), true);
+        }
     }
 
 }
