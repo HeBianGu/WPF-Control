@@ -62,9 +62,9 @@
                                 x:Name="contentPanel"
                                 Grid.Row="1"
                                 Grid.Column="0"
-                                CornerRadius="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(Cattach.ItemCornerRadius)}"
-                                BorderBrush="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(Cattach.ItemBorderBrush)}"
-                                BorderThickness="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(Cattach.ItemBorderThickness)}"
+                                CornerRadius="{Binding RelativeSource={RelativeSource AncestorType=TabControl}, Path=(Cattach.ItemCornerRadius)}"
+                                BorderBrush="{Binding RelativeSource={RelativeSource AncestorType=TabControl}, Path=(Cattach.ItemBorderBrush)}"
+                                BorderThickness="{Binding RelativeSource={RelativeSource AncestorType=TabControl}, Path=(Cattach.ItemBorderThickness)}"
                                 KeyboardNavigation.DirectionalNavigation="Contained"
                                 KeyboardNavigation.TabIndex="2"
                                 KeyboardNavigation.TabNavigation="Local">

@@ -130,6 +130,11 @@ public static class DrawingContextExtension
         return dc.DrawTextAt(text, point, brush, fontSize, x => new Vector(-x.Width / 2, -x.Height), fill, beforeAction);
     }
 
+    public static Rect DrawTextAtTopRight(this DrawingContext dc, string text, Point point, Brush brush, double fontSize = 10.0, Brush fill = null, Action<FormattedText, Rect> beforeAction = null)
+    {
+        return dc.DrawTextAt(text, point, brush, fontSize, x => new Vector(0, -x.Height), fill, beforeAction);
+    }
+
     public static Rect DrawTextAtTopLeft(this DrawingContext dc, string text, Point point, Brush brush, double fontSize = 10.0, Brush fill = null, Action<FormattedText, Rect> beforeAction = null)
     {
         return dc.DrawTextAt(text, point, brush, fontSize, x => new Vector(0, -x.Height), fill, beforeAction);
@@ -155,6 +160,17 @@ public static class DrawingContextExtension
     {
         return dc.DrawTextAt(text, point, brush, fontSize, x => new Vector(-x.Width / 2, 0), fill, beforeAction);
     }
+
+    public static Rect DrawTextAtBottomRight(this DrawingContext dc, string text, Point point, Brush brush, double fontSize = 10.0, Brush fill = null, Action<FormattedText, Rect> beforeAction = null)
+    {
+        return dc.DrawTextAt(text, point, brush, fontSize, x => new Vector(0, 0), fill, beforeAction);
+    }
+
+    public static Rect DrawTextAtBottomLeft(this DrawingContext dc, string text, Point point, Brush brush, double fontSize = 10.0, Brush fill = null, Action<FormattedText, Rect> beforeAction = null)
+    {
+        return dc.DrawTextAt(text, point, brush, fontSize, x => new Vector(-x.Width, 0), fill, beforeAction);
+    }
+
 
     public static Rect DrawTextAtRight(this DrawingContext dc, string text, Point point, Brush brush, double fontSize = 10.0, Brush fill = null, Action<FormattedText, Rect> beforeAction = null)
     {

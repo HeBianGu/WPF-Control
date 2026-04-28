@@ -22,11 +22,11 @@ public static class ColorExtenstion
     public static SolidColorBrush ToFreezeSolid(this string hex, Action<SolidColorBrush> action = null)
     {
         return hex.ToSolid(x =>
-         {
-             if (x.CanFreeze)
-                 x.Freeze();
-             action?.Invoke(x);
-         });
+        {
+            action?.Invoke(x);
+            if (x.CanFreeze)
+                x.Freeze();
+        });
     }
 
     public static SolidColorBrush ToSolid(this Color color, Action<SolidColorBrush> action = null)
@@ -39,10 +39,10 @@ public static class ColorExtenstion
     public static SolidColorBrush ToFreezeSolid(this Color color, Action<SolidColorBrush> action = null)
     {
         return color.ToSolid(x =>
-         {
-             if (x.CanFreeze)
-                 x.Freeze();
-             action?.Invoke(x);
-         });
+        {
+            action?.Invoke(x);
+            if (x.CanFreeze)
+                x.Freeze();
+        });
     }
 }
