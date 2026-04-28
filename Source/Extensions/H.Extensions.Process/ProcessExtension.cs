@@ -15,6 +15,8 @@ namespace H.Extensions.Process
 
         public static void StartProcess(this string uri)
         {
+            if (uri == null)
+                return;
             System.Diagnostics.Process.Start(new ProcessStartInfo(uri) { UseShellExecute = true });
         }
 
