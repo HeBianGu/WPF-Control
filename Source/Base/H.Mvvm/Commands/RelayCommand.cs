@@ -24,6 +24,10 @@ public class RelayCommand : CommandBase
     protected Action<object> _action;
     protected readonly Predicate<object> _canExecute;
 
+    public RelayCommand()
+    {
+
+    }
     public RelayCommand(Action<object> action)
     {
         _action = action;

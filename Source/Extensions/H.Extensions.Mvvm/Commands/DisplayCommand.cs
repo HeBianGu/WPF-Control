@@ -13,6 +13,10 @@ namespace H.Extensions.Mvvm.Commands;
 
 public class DisplayCommand : RelayCommand, IDisplayCommand, INotifyPropertyChanged
 {
+    public DisplayCommand()
+    {
+        
+    }
     public DisplayCommand(Action<object> action) : base(action)
     {
 
