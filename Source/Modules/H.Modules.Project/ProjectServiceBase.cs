@@ -102,7 +102,6 @@ public abstract class ProjectServiceBase<T> : CommandsBindableBase, IProjectServ
         try
         {
             this.GetSerializer().Save(this._projectsPath, new Projects<T>() { Items = this.Collection.ToList() });
-            this.Current?.Save(out message);
             return true;
         }
         catch (Exception ex)

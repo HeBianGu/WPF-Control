@@ -12,8 +12,16 @@ namespace H.Modules.Project.Commands;
 [Display(Name = "新建项目", Description = "显示新建项目页面")]
 public class ShowNewProjectCommand : ShowProjectCommandBase
 {
+    public bool AutoClose { get; set; } = true;
     public override async Task ExecuteAsync(object parameter)
     {
-        await IocProject.Instance.ShowNewProject(x => this.Invoke(x));
+        var r = await IocProject.Instance.ShowNewProject(x => this.Invoke(x));
+        if (r != true)
+            return;
+        if (parameter is FrameworkElement element && this.AutoClose)
+        {
+            var dialog = element.GetDialog();
+            dialog?.Close();
+        }
     }
 }

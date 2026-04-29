@@ -90,7 +90,7 @@ static partial class ProjectExtension
     }
     public static async Task<bool?> ShowEidtProject(this IProjectService projectService, IProjectItem project, Action<IDialog> action = null)
     {
-        return await IocMessage.Form.ShowEdit(project, x =>
+        var r = await IocMessage.Form.ShowEdit(project, x =>
         {
             x.Title = "编辑项目";
             action?.Invoke(x);
@@ -98,6 +98,9 @@ static partial class ProjectExtension
         {
             x.UseCommand = false;
         });
+        if (r == true)
+            projectService.Save(out string message);
+        return r;
     }
 
     public static async Task<bool?> ShowViewProject(this IProjectService projectService, IProjectItem project, Action<IDialog> action = null)

@@ -24,3 +24,14 @@ public interface IDialog : ILayoutable, ICancelable, ITransitionHostable
     bool UseActionAutoClose { get; set; }
     bool UseDropShadowEffect { get; set; }
 }
+
+public static class DialogExtension
+{
+    public static IDialog GetDialog(this FrameworkElement element)
+    {
+        if (element is IDialog)
+            return element as IDialog;
+        FrameworkElement parent = element.GetParent<FrameworkElement>(x => x?.DataContext is IDialog || x is IDialog);
+        return parent is IDialog dialog ? dialog : parent.DataContext as IDialog;
+    }
+}

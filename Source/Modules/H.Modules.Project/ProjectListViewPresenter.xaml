@@ -11,7 +11,8 @@
             <DockPanel Margin="2" DockPanel.Dock="Top">
                 <Button
                     HorizontalAlignment="Right"
-                    Command="{c:ShowNewProjectCommand}"
+                    Command="{c:ShowNewProjectCommand AutoClose=True}"
+                    CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self}}"
                     Content="{x:Static p:Resources.Type_ShowNewProjectCommand}"
                     DockPanel.Dock="Right"
                     Visibility="{Binding UseAddProject, Converter={GetTrueToVisibleConverter}}" />

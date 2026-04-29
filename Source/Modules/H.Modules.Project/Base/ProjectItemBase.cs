@@ -110,10 +110,15 @@ public abstract class ProjectItemBase : DisplayBindableBase, IProjectItem
     {
         message = null;
         object data = this.GetSaveFileData();
-        if (data == null)
+        if (data != null)
+        {
+            this.SaveToFile(data);
+            this.UpdateTime = DateTime.Now;
             return true;
+        }
         this.SaveToFile(data);
         this.UpdateTime = DateTime.Now;
+        IocProject.Instance?.Save(out message);
         return true;
     }
 
