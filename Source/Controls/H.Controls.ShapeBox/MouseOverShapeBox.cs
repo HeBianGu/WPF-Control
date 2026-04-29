@@ -126,7 +126,7 @@ public class MouseOverShapeBox : ShapeBox
         if (this.Shapes == null)
             return;
         Point point = e.GetPosition(this);
-        var finds = this.Shapes.OfType<IMouseOverShape>().Where(x => x.Hit(this, point));
+        var finds = this.GetShapes().OfType<IMouseOverShape>().Where(x => x.Hit(this, point));
         this.MouseOverShapes(finds.ToArray());
     }
 
