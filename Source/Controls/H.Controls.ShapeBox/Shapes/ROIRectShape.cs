@@ -31,7 +31,8 @@ public class ROIRectShape : PreviewShapeBase
     public bool UseText { get; set; } = true;
     [Display(Name = "启用背景", GroupName = "样式")]
     public bool UseBackground { get; set; }
-
+    [Display(Name = "背景透明度", GroupName = "样式")]
+    public double BackgroundOpacity { get; set; } = 0.2;
     public override void MatrixDrawing(IView view, DrawingContext dc, Pen pen, Brush fill = null)
     {
         if (this.Rect.IsEmpty)
@@ -41,7 +42,9 @@ public class ROIRectShape : PreviewShapeBase
             var boundingBox = new Rect(0, 0, view.Size.Width, view.Size.Height);
             var combine = new CombinedGeometry(GeometryCombineMode.Exclude, new RectangleGeometry(boundingBox), new RectangleGeometry(this.Rect));
             dc.PushClip(combine);
+            dc.PushOpacity(this.BackgroundOpacity);
             dc.DrawRoundedRectangle(fill, null, boundingBox, pen.Thickness, pen.Thickness);
+            dc.Pop();
             dc.Pop();
         }
         dc.DrawRoundedRectangle(null, pen, this.Rect, pen.Thickness, pen.Thickness);
