@@ -20,8 +20,14 @@ public interface IShapeStyleSetting
     void LoadBy(object r);
 }
 
+public interface IShapeStyleOption
+{
+    Brush Fill { get; set; }
+    Brush Stroke { get; set; }
+    double StrokeThickness { get; set; }
+}
 
-public class ShapeStyleSetting<T> : Settable<T>, IShapeStyleSetting where T : new()
+public class ShapeStyleSetting<T> : Settable<T>, IShapeStyleSetting, IShapeStyleOption where T : new()
 {
     [GetHightlightBrushesSource]
     [PropertyItem(typeof(BrushComboBoxPropertyItem))]

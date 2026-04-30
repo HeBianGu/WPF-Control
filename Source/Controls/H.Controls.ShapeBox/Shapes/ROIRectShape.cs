@@ -29,18 +29,22 @@ public class ROIRectShape : PreviewShapeBase
 
     [Display(Name = "启用文本", GroupName = "样式")]
     public bool UseText { get; set; } = true;
+    [Display(Name = "启用背景", GroupName = "样式")]
+    public bool UseBackground { get; set; }
 
     public override void MatrixDrawing(IView view, DrawingContext dc, Pen pen, Brush fill = null)
     {
         if (this.Rect.IsEmpty)
             return;
-        //var boundingBox = new Rect(0, 0, view.Size.Width, view.Size.Height);
-        //var combine = new CombinedGeometry(GeometryCombineMode.Exclude, new RectangleGeometry(boundingBox), new RectangleGeometry(this.Rect));
-        //dc.PushClip(combine);
-        //dc.DrawRoundedRectangle(fill, null, boundingBox, pen.Thickness, pen.Thickness);
-        //dc.Pop();
+        if (this.UseBackground)
+        {
+            var boundingBox = new Rect(0, 0, view.Size.Width, view.Size.Height);
+            var combine = new CombinedGeometry(GeometryCombineMode.Exclude, new RectangleGeometry(boundingBox), new RectangleGeometry(this.Rect));
+            dc.PushClip(combine);
+            dc.DrawRoundedRectangle(fill, null, boundingBox, pen.Thickness, pen.Thickness);
+            dc.Pop();
+        }
         dc.DrawRoundedRectangle(null, pen, this.Rect, pen.Thickness, pen.Thickness);
-
         var center = new Point(this.Rect.Left + this.Rect.Width / 2, this.Rect.Top + this.Rect.Height / 2);
 
         //if (this.UseCross)

@@ -12,15 +12,28 @@ using H.Services.Setting;
 namespace H.Controls.ShapeBox;
 public static class Extention
 {
+    public static void UseShapeBoxSetting(this IApplicationBuilder service)
+    {
+        service.UseShapeViewSetting();
+        service.UseStateShapeViewSetting();
+        service.UseSelectShapeViewSetting();
+        service.UsePreviewShapeViewSetting();
+        service.UseMouseOverShapeViewSetting();
+    }
     public static void UseShapeStyleOptions(this IApplicationBuilder service)
     {
-        service.AddSetting(ROIRectStateStyleSetting.Instance);
         service.AddSetting(RulerLineShapeStyleSetting.Instance);
         service.AddSetting(LineShapeStyleSetting.Instance);
         service.AddSetting(PointShapeStyleSetting.Instance);
         service.AddSetting(CircleShapeStyleSetting.Instance);
         service.AddSetting(CaliperShapeStyleSetting.Instance);
         service.AddSetting(PickPixelShapeStyleSetting.Instance);
+    }
+
+    public static void UseROIRectStateStyleSetting(this IApplicationBuilder service, Action<IROIRectStateStyleOption> action = null)
+    {
+        action?.Invoke(ROIRectStateStyleSetting.Instance);
+        service.AddSetting(ROIRectStateStyleSetting.Instance);
     }
 
     public static void UsePreviewShapeViewSetting(this IApplicationBuilder service, Action<PreviewShapeViewSetting> builder = null)
@@ -50,14 +63,4 @@ public static class Extention
         builder?.Invoke(MouseOverShapeViewSetting.Instance);
         service.AddSetting(MouseOverShapeViewSetting.Instance);
     }
-
-    public static void UseShapeBoxSetting(this IApplicationBuilder service)
-    {
-        service.UseShapeViewSetting();
-        service.UseStateShapeViewSetting();
-        service.UseSelectShapeViewSetting();
-        service.UsePreviewShapeViewSetting();
-        service.UseMouseOverShapeViewSetting();
-    }
-
 }

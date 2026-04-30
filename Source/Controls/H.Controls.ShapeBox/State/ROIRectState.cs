@@ -38,7 +38,7 @@ public class ROIRectState : PreviewShapeStateBase
     }
 
     private ROIRectShape _rOIRectShape = new ROIRectShape();
-    protected ROIRectShape ROIRectShape => this._rOIRectShape;
+    public ROIRectShape ROIRectShape => this._rOIRectShape;
 
     public override IShapeStyleSetting GetShapeStyleSetting()
     {
@@ -250,13 +250,16 @@ public class ROIRectState : PreviewShapeStateBase
             targetRect = new Rect(this._mouseDown.Value, to);
         }
         targetRect.Intersect(new Rect(0, 0, this.View.Size.Width, this.View.Size.Height));
+        var old = this._rOIRectShape.Rect;
         this._rOIRectShape.Rect = targetRect;
-        this.OnRectChanged();
+        this.OnRectChanged(old, targetRect);
     }
 
-    protected virtual void OnRectChanged()
+    public event Action<Rect, Rect> RectChanged;
+    protected virtual void OnRectChanged(Rect old, Rect n)
     {
         this.DrawStateShape(this._rOIRectShape);
+        this.RectChanged?.Invoke(old, n);
     }
 
     protected override void Clear()
@@ -309,12 +312,12 @@ public class RectCropableState : ROIRectState
     {
         this._rectCropable = rectCropable;
     }
-    public event Action<System.Windows.Rect, System.Windows.Rect> RectChanged;
-    protected override void OnRectChanged()
+    //public event Action<System.Windows.Rect, System.Windows.Rect> RectChanged;
+    protected override void OnRectChanged(Rect old, Rect n)
     {
-        base.OnRectChanged();
+        base.OnRectChanged(old, n);
         //this._rectCropable.OnRectChanged(this._rectCropable.Rect, this.ROIRectShape.Rect);
-        this.RectChanged?.Invoke(this._rectCropable.Rect, this.ROIRectShape.Rect);
+        //this.RectChanged?.Invoke(this._rectCropable.Rect, this.ROIRectShape.Rect);
         this.RefreshStateShapes();
     }
 

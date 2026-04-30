@@ -10,8 +10,16 @@ using H.Services.Setting;
 using System.ComponentModel;
 
 namespace H.Controls.ShapeBox.Settables;
+
+public interface IROIRectStateStyleOption : IShapeStyleOption
+{
+    double HandleLength { get; set; }
+    bool UseCross { get; set; }
+    bool UseText { get; set; }
+}
+
 [Display(Name = "ROI样式", GroupName = SettingGroupNames.GroupStyle, Description = "设置ROI样式信息")]
-public class ROIRectStateStyleSetting : ShapeStyleSetting<ROIRectStateStyleSetting>
+public class ROIRectStateStyleSetting : ShapeStyleSetting<ROIRectStateStyleSetting>, IROIRectStateStyleOption
 {
     [DefaultValue(6.0)]
     [Display(Name = "句柄长度", GroupName = "样式")]
@@ -22,6 +30,10 @@ public class ROIRectStateStyleSetting : ShapeStyleSetting<ROIRectStateStyleSetti
     [DefaultValue(true)]
     [Display(Name = "启用文本", GroupName = "样式")]
     public bool UseText { get; set; } = true;
+
+    [DefaultValue(true)]
+    [Display(Name = "启用背景", GroupName = "样式")]
+    public bool UseBackground { get; set; } = true;
 
     public ROIRectShape CreateROIRectShape()
     {
