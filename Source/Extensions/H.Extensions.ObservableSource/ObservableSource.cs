@@ -23,7 +23,7 @@ public class ObservableSource<T> : Bindable, IObservableSource<T>
         {
             _cache = value;
             RaisePropertyChanged();
-            RaisePropertyChanged(nameof(Count));
+            this.RaisePropertyChanged(nameof(Count));
         }
     }
     private ObservableCollection<T> _filterSource = new ObservableCollection<T>();
@@ -379,6 +379,7 @@ public class ObservableSource<T> : Bindable, IObservableSource<T>
         }
     }
 
+    public event Action RefreshPaged;
     public void RefreshPage(Action after = null)
     {
         Func<List<T>> func = () =>
@@ -424,8 +425,15 @@ public class ObservableSource<T> : Bindable, IObservableSource<T>
                 this.SelectedItem = func.Invoke().FirstOrDefault();
             else
                 after?.Invoke();
+            this.OnRefreshPaged();
         });
 
+    }
+
+    protected virtual void OnRefreshPaged()
+    {
+        this.RaisePropertyChanged(nameof(Count));
+        this.RefreshPaged?.Invoke();
     }
 
     public void Load(IEnumerable<T> source)

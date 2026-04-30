@@ -20,6 +20,8 @@ public interface IObservableSource<T> : IObservableSource
     void Add(params T[] value);
     void Clear();
     void Load(IEnumerable<T> source);
+
+    event Action RefreshPaged;
     void RefreshPage(Action after = null);
     void Remove(params T[] value);
     void RemoveAll(Func<T, bool> predicate);
