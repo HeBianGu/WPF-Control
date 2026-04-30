@@ -12,7 +12,7 @@ using System.Linq;
 using System.Windows.Input;
 
 namespace H.Controls.ShapeBox;
-public class MouseOverShapeBox : ShapeBox
+public class MouseOverShapeBox : ROIShapeBox
 {
     private DrawingVisual _MouseOverableShapeDrawingVisual = new DrawingVisual();
 

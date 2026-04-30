@@ -17,7 +17,6 @@ global using System.Windows.Media.Imaging;
 global using System.Windows.Threading;
 
 namespace H.Controls.ShapeBox;
-
 public class ShapeBox : FrameworkElement, IShapeView, IImageView
 {
     static ShapeBox()
@@ -143,12 +142,48 @@ public class ShapeBox : FrameworkElement, IShapeView, IImageView
 
     private void UpdateImage()
     {
-        this.Width = double.IsNaN(this.ImagePixelWidth) ? this.ImageSource?.Width ?? 0 : this.ImagePixelWidth;
-        this.Height = double.IsNaN(this.ImagePixelHeight) ? this.ImageSource?.Height ?? 0 : this.ImagePixelHeight;
+        this.UpdateSize();
+        this.UpdateDrawingVisualsTransform();
         this._imageDrawingVisual.ImageSource = this.ImageSource;
-        this._imageDrawingVisual.Width = this.Width;
-        this._imageDrawingVisual.Height = this.Height;
+        this._imageDrawingVisual.Width = this.GetImagePixelRenderWidth();
+        this._imageDrawingVisual.Height = this.GetImagePixelRenderHeight();
         this._imageDrawingVisual.Draw();
+    }
+
+    protected virtual Vector GetDrawingOffset()
+    {
+        return default;
+    }
+
+    protected virtual Vector GetShapeDrawingOffset()
+    {
+        return this.GetDrawingOffset();
+    }
+
+    private void UpdateDrawingVisualsTransform()
+    {
+        var offset = this.GetDrawingOffset();
+        Transform imageTransform = offset == default ? null : new TranslateTransform(offset.X, offset.Y);
+        var shapeOffset = this.GetShapeDrawingOffset();
+        Transform shapeTransform = shapeOffset == default ? null : new TranslateTransform(shapeOffset.X, shapeOffset.Y);
+        this._imageDrawingVisual.Transform = imageTransform;
+        this._shapeDrawingVisual.Transform = shapeTransform;
+    }
+
+    protected virtual void UpdateSize()
+    {
+        this.Width = this.GetImagePixelRenderWidth();
+        this.Height = this.GetImagePixelRenderHeight();
+    }
+
+    protected double GetImagePixelRenderWidth()
+    {
+        return double.IsNaN(this.ImagePixelWidth) ? this.ImageSource?.Width ?? 0 : this.ImagePixelWidth;
+    }
+
+    protected double GetImagePixelRenderHeight()
+    {
+        return double.IsNaN(this.ImagePixelHeight) ? this.ImageSource?.Height ?? 0 : this.ImagePixelHeight;
     }
 
     public Brush Stroke
@@ -379,6 +414,7 @@ public class ShapeBox : FrameworkElement, IShapeView, IImageView
     }
     public virtual void DrawShapes()
     {
+        this.UpdateDrawingVisualsTransform();
         using var drawingContext = this._shapeDrawingVisual.RenderOpen();
         var shapes = this.GetShapes()?.ToList();
         if (shapes == null || shapes.Count == 0)
@@ -411,9 +447,15 @@ public class ShapeBox : FrameworkElement, IShapeView, IImageView
 
     public Color PickColor(Point point)
     {
+        point = this.ToImagePoint(point);
         if (this.ImageSource is BitmapSource bitmapSource)
             return this.GetPixelColor(bitmapSource, (int)point.X, (int)point.Y);
         return default;
+    }
+
+    protected virtual Point ToImagePoint(Point point)
+    {
+        return point;
     }
 
     private Color GetPixelColor(BitmapSource bitmap, int x, int y)
