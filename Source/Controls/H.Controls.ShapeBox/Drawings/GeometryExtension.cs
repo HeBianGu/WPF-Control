@@ -26,6 +26,10 @@ public static class GeometryExtension
         return streamGeom;
     }
 
+    public static Rect ToBoundingBox(this IEnumerable<Point> points)
+    {
+        return points.ToGeometry().Bounds;
+    }
 
     public static bool IsZoreOrEmpty(this Rect rect)
     {
