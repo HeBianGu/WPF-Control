@@ -101,7 +101,7 @@
                                     ToolTip="{Binding Description}">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="Auto" SharedSizeGroup="Form" />
-                                        <ColumnDefinition Width="20" />
+                                        <ColumnDefinition x:Name="gd" Width="20" />
                                         <ColumnDefinition />
                                         <ColumnDefinition Width="Auto" />
                                     </Grid.ColumnDefinitions>
@@ -136,6 +136,7 @@
                                 <DataTemplate.Triggers>
                                     <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=local:Form}, Path=UsePropertyView}" Value="true">
                                         <Setter TargetName="btn_default" Property="Visibility" Value="Collapsed" />
+                                        <Setter TargetName="gd" Property="Width" Value="0" />
                                     </DataTrigger>
                                     <DataTrigger Binding="{Binding ElementName=btn_default, Path=IsEnabled}" Value="False">
                                         <Setter TargetName="btn_default" Property="Opacity" Value="0.2" />
