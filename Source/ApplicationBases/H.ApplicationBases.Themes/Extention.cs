@@ -66,6 +66,14 @@ namespace System
                 x.ColorResources.Add(new VintageFilmColorResource());
                 x.ColorResources.Add(new CyberpunkColorResource());
                 x.ColorResources.Add(new MineralColorResource());
+                x.ColorResources.Add(new ForestMistColorResource());
+                x.ColorResources.Add(new OceanBreezeColorResource());
+                x.ColorResources.Add(new MountainSlateColorResource());
+                x.ColorResources.Add(new MossGreenColorResource());
+                x.ColorResources.Add(new ClayWarmColorResource());
+                x.ColorResources.Add(new DesertSandColorResource());
+                x.ColorResources.Add(new LakeMorningColorResource());
+                x.ColorResources.Add(new RainyDayColorResource());
                 x.ColorResources.Add(new FuturismColorResource());
                 x.ColorResources.Add(new TechnologyBlueDarkColorResource());
                 x.ColorResources.Add(new TechnologyPurpleColorResource());
@@ -131,6 +139,19 @@ namespace System
                 x.ColorResources.Add(new FutureWhiteLightColorResource());
                 x.ColorResources.Add(new CircuitCyanLightColorResource());
                 x.ColorResources.Add(new RobotGrayLightColorResource());
+
+                x.ColorResources.Add(new AuroraCircuitDarkColorResource());
+                x.ColorResources.Add(new SynthwaveGridDarkColorResource());
+                x.ColorResources.Add(new QuantumSunsetDarkColorResource());
+                x.ColorResources.Add(new PlasmaStormDarkColorResource());
+                x.ColorResources.Add(new BioCircuitDarkColorResource());
+                x.ColorResources.Add(new IceFireCoreDarkColorResource());
+                x.ColorResources.Add(new NebulaOpsDarkColorResource());
+                x.ColorResources.Add(new SolarFlareDarkColorResource());
+                x.ColorResources.Add(new AuroraGlassLightColorResource());
+                x.ColorResources.Add(new NeonPastelLightColorResource());
+                x.ColorResources.Add(new QuantumLabLightColorResource());
+                x.ColorResources.Add(new HoloMintLightColorResource());
                 option?.Invoke(x);
             });
         }

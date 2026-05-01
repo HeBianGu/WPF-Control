@@ -14,10 +14,8 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ProgressBar}">
-                    <Grid
-                        MinWidth="200"
-                        MinHeight="14"
-                        Background="{TemplateBinding Background}">
+                    <Grid MinWidth="200" MinHeight="14">
+                        <Border Style="{StaticResource S.Border.TemplatedParent}" />
                         <Border
                             x:Name="PART_Track"
                             BorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrush}}"
