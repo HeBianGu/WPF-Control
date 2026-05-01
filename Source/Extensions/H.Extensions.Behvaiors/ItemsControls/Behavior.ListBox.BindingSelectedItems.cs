@@ -12,7 +12,6 @@ namespace H.Extensions.Behvaiors.ItemsControls;
 
 public class ListBoxBindingSelectedItemsBehavior : Behavior<ListBox>
 {
-
     public IList SelectedItems
     {
         get { return (IList)GetValue(SelectedItemsProperty); }

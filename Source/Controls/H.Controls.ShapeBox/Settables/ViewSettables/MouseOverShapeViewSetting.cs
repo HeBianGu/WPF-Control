@@ -12,7 +12,7 @@ using H.Services.Setting;
 
 namespace H.Controls.ShapeBox.Settables.ViewSettables;
 [Display(Name = "悬停绘制样式设置", GroupName = SettingGroupNames.GroupStyle, Description = "悬停绘制样式设置的信息")]
-public class MouseOverShapeViewSetting : DrawingStyleSettable<MouseOverShapeViewSetting>
+public class MouseOverShapeViewSetting : ShapeStyleSetting<MouseOverShapeViewSetting>
 {
     public override void LoadDefault()
     {

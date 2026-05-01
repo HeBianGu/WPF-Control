@@ -210,7 +210,7 @@ public class SelectShapeBox : MouseOverShapeBox, ISelectShapeBox
         if (selectedShapes == null || selectedShapes.Count() == 0)
             return;
         var strokeThickness = this.ToViewThickness(this.SelectStrokeThickness);
-        foreach (var item in selectedShapes.Where(x => this.Shapes.Contains(x)))
+        foreach (var item in selectedShapes.Where(x => this.Shapes?.Contains(x) == true))
         {
             item.DrawSelect(this, drawingContext, this.SelectStroke, strokeThickness, this.SelectFill);
         }

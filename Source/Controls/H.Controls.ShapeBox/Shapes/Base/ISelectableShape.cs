@@ -17,7 +17,8 @@ public abstract class SelectableShapeBase : MouseOverShapeBase, ISelectableShape
     public virtual void DrawSelect(IView view, DrawingContext drawingContext, Brush stroke, double strokeThickness = 1, Brush fill = null)
     {
         var pen = new Pen(stroke, strokeThickness) { StartLineCap = PenLineCap.Round, EndLineCap = PenLineCap.Round, LineJoin = PenLineJoin.Round };
-        pen.Freeze();
+        if (pen.CanFreeze)
+            pen.Freeze();
         this.Drawing(view, drawingContext, pen, fill);
     }
 }

@@ -11,7 +11,7 @@ using H.Services.Setting;
 
 namespace H.Controls.ShapeBox.Settables.ViewSettables;
 [Display(Name = "工具绘制样式设置", GroupName = SettingGroupNames.GroupStyle, Description = "绘制样式设置设置的信息")]
-public class StateShapeViewSetting : DrawingStyleSettable<StateShapeViewSetting>
+public class StateShapeViewSetting : ShapeStyleSetting<StateShapeViewSetting>
 {
     public override void LoadDefault()
     {
