@@ -98,6 +98,19 @@ namespace H.Test.Theme
                 x.ColorResources.Add(new LavenderLightColorResource());
                 x.ColorResources.Add(new RoseLightColorResource());
                 x.ColorResources.Add(new SandLightColorResource());
+
+                x.ColorResources.Add(new NordDarkColorResource());
+                x.ColorResources.Add(new DraculaDarkColorResource());
+                x.ColorResources.Add(new OceanAbyssDarkColorResource());
+                x.ColorResources.Add(new WineDarkColorResource());
+                x.ColorResources.Add(new ForestDarkColorResource());
+                x.ColorResources.Add(new TerminalGreenDarkColorResource());
+                x.ColorResources.Add(new PearlLightColorResource());
+                x.ColorResources.Add(new SkyLightColorResource());
+                x.ColorResources.Add(new SageLightColorResource());
+                x.ColorResources.Add(new PeachLightColorResource());
+                x.ColorResources.Add(new AquaLightColorResource());
+                x.ColorResources.Add(new CloudLightColorResource());
             });
 
             //app.UseWindowSetting(x =>
