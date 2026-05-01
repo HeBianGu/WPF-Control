@@ -13,6 +13,12 @@ public class ListBoxBringIntoSelectedItemBehavior : Behavior<ListBox>
     protected override void OnAttached()
     {
         this.AssociatedObject.SelectionChanged += this.AssociatedObject_SelectionChanged;
+        this.AssociatedObject.Loaded += this.AssociatedObject_Loaded;
+    }
+
+    private void AssociatedObject_Loaded(object sender, RoutedEventArgs e)
+    {
+        this.AssociatedObject.ScrollIntoView(this.AssociatedObject.SelectedItem);
     }
 
     private void AssociatedObject_SelectionChanged(object sender, SelectionChangedEventArgs e)

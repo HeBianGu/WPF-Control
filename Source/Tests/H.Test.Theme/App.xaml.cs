@@ -57,6 +57,8 @@ namespace H.Test.Theme
                 x.ColorResources.Add(new BlueLightColorResource());
                 x.ColorResources.Add(new AccentLightColorResource());
                 x.ColorResources.Add(new AccentDarkColorResource());
+                x.ColorResources.Add(new AccentDefaultLightColorResource());
+                x.ColorResources.Add(new AccentDefaultDarkColorResource());
                 x.ColorResources.Add(new CopperColorResource());
                 x.ColorResources.Add(new VintageFilmColorResource());
                 x.ColorResources.Add(new CyberpunkColorResource());

@@ -110,7 +110,7 @@ public static class ColorKeys
     /// <summary>
     /// 深色9
     /// </summary>
-    public static ComponentResourceKey Dark9 => new ComponentResourceKey(typeof(ColorKeys), "SS.Color.Dark.26");
+    public static ComponentResourceKey Dark9 => new ComponentResourceKey(typeof(ColorKeys), "S.Color.Dark.26");
 
     /// <summary>
     /// 深色8.5
@@ -130,7 +130,7 @@ public static class ColorKeys
     /// <summary>
     /// 深色7
     /// </summary>
-    public static ComponentResourceKey Dark7 => new ComponentResourceKey(typeof(ColorKeys), "SS.Color.Dark.22");
+    public static ComponentResourceKey Dark7 => new ComponentResourceKey(typeof(ColorKeys), "S.Color.Dark.22");
 
     /// <summary>
     /// 深色6.5
@@ -155,7 +155,7 @@ public static class ColorKeys
     /// <summary>
     /// 深色4.5
     /// </summary>
-    public static ComponentResourceKey Dark4_5 => new ComponentResourceKey(typeof(ColorKeys), "SS.Color.Dark.17");
+    public static ComponentResourceKey Dark4_5 => new ComponentResourceKey(typeof(ColorKeys), "S.Color.Dark.17");
 
     /// <summary>
     /// 深色4

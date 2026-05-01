@@ -10,15 +10,16 @@ using System.ComponentModel.DataAnnotations;
 using System.Windows;
 
 namespace H.Themes.Colors.Accent;
-[Display(Name = "深主题（长期支持）", GroupName = "纯色", Description = "纯色", Order = 50, Prompt = "长期支持")]
-public class AccentDarkColorResource : ResxColorResourceBase
+
+[Display(Name = "蓝色强调深色", GroupName = "强调色", Description = "蓝色强调的深色主题", Order = 50, Prompt = "长期支持")]
+public class AccentBlueDarkColorResource : ResxColorResourceBase
 {
-    public AccentDarkColorResource()
+    public AccentBlueDarkColorResource()
     {
-        this.IsDark = false;
+        this.IsDark = true;
     }
     public override ResourceDictionary Resource => new ResourceDictionary()
     {
-        Source = new Uri("pack://application:,,,/H.Themes.Colors.Accent;component/Dark.xaml")
+        Source = new Uri("pack://application:,,,/H.Themes.Colors.Accent;component/AccentDark.xaml")
     };
 }

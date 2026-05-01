@@ -6,19 +6,17 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
-using System.ComponentModel.DataAnnotations;
-using System.Windows;
+namespace H.Themes.Colors.Accent;
 
-namespace H.Themes.Colors.Gray;
-[Display(Name = "深灰色（推荐）", GroupName = "强力推荐", Description = "纯色", Order = 10, Prompt = "强力推荐")]
-public class GrayDarkColorResource : ResxColorResourceBase
+[Display(Name = "默认强调深色", GroupName = "强调色", Description = "跟随基础深色主题的默认强调配色", Order = 60, Prompt = "长期支持")]
+public class AccentDefaultDarkColorResource : ResxColorResourceBase
 {
-    public GrayDarkColorResource()
+    public AccentDefaultDarkColorResource()
     {
         this.IsDark = true;
     }
     public override ResourceDictionary Resource => new ResourceDictionary()
     {
-        Source = new Uri("pack://application:,,,/H.Themes.Colors.Gray;component/Dark.xaml")
+        Source = new Uri("pack://application:,,,/H.Themes.Colors.Accent;component/Dark.xaml")
     };
 }

@@ -58,8 +58,10 @@ namespace System
                 x.ColorResources.Add(new GrayLightColorResource());
                 x.ColorResources.Add(new BlueDarkColorResource());
                 x.ColorResources.Add(new BlueLightColorResource());
-                x.ColorResources.Add(new AccentLightColorResource());
-                x.ColorResources.Add(new AccentDarkColorResource());
+                x.ColorResources.Add(new AccentBlueLightColorResource());
+                x.ColorResources.Add(new AccentBlueDarkColorResource());
+                x.ColorResources.Add(new AccentDefaultLightColorResource());
+                x.ColorResources.Add(new AccentDefaultDarkColorResource());
                 x.ColorResources.Add(new CopperColorResource());
                 x.ColorResources.Add(new VintageFilmColorResource());
                 x.ColorResources.Add(new CyberpunkColorResource());

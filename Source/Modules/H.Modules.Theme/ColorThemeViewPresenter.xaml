@@ -22,6 +22,9 @@
                 ItemsSource="{Binding Source={StaticResource Source}}"
                 ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                 SelectedItem="{Binding Source={x:Static local:ThemeOptions.Instance}, Path=ColorResource, Mode=TwoWay}">
+                <b:Interaction.Behaviors>
+                    <ListBoxBringIntoSelectedItemBehavior />
+                </b:Interaction.Behaviors>
                 <ItemsControl.GroupStyle>
                     <GroupStyle>
                         <GroupStyle.Panel>

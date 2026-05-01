@@ -10,18 +10,26 @@ using System.Windows.Markup;
 
 namespace H.Themes.Colors.Accent;
 
-public class AccentLightThemeExtension : MarkupExtension
+public class AccentBlueLightThemeExtension : MarkupExtension
 {
     public override object ProvideValue(IServiceProvider serviceProvider)
     {
-        return new AccentLightColorResource().Resource;
+        return new AccentBlueLightColorResource().Resource;
     }
 }
 
-public class AccentDarkThemeExtension : MarkupExtension
+public class AccentBlueDarkThemeExtension : MarkupExtension
 {
     public override object ProvideValue(IServiceProvider serviceProvider)
     {
-        return new AccentDarkColorResource().Resource;
+        return new AccentBlueDarkColorResource().Resource;
     }
+}
+
+public class AccentLightThemeExtension : AccentBlueLightThemeExtension
+{
+}
+
+public class AccentDarkThemeExtension : AccentBlueDarkThemeExtension
+{
 }
