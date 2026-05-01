@@ -55,8 +55,8 @@ namespace H.Test.Theme
                 x.ColorResources.Add(new GrayLightColorResource());
                 x.ColorResources.Add(new BlueDarkColorResource());
                 x.ColorResources.Add(new BlueLightColorResource());
-                x.ColorResources.Add(new AccentLightColorResource());
-                x.ColorResources.Add(new AccentDarkColorResource());
+                x.ColorResources.Add(new AccentBlueLightColorResource());
+                x.ColorResources.Add(new AccentBlueDarkColorResource());
                 x.ColorResources.Add(new AccentDefaultLightColorResource());
                 x.ColorResources.Add(new AccentDefaultDarkColorResource());
                 x.ColorResources.Add(new CopperColorResource());
@@ -80,6 +80,24 @@ namespace H.Test.Theme
                 x.ColorResources.Add(new OracleDarkColorResource());
                 x.ColorResources.Add(new VikingDarkColorResource());
                 x.ColorResources.Add(new ChambrayDarkColorResource());
+
+
+                x.ColorResources.Add(new MidnightNavyDarkColorResource());
+                x.ColorResources.Add(new EmeraldDarkColorResource());
+                x.ColorResources.Add(new CrimsonDarkColorResource());
+                x.ColorResources.Add(new AmberDarkColorResource());
+                x.ColorResources.Add(new RoyalVioletDarkColorResource());
+                x.ColorResources.Add(new TealDarkColorResource());
+                x.ColorResources.Add(new GraphiteDarkColorResource());
+                x.ColorResources.Add(new CoffeeDarkColorResource());
+                x.ColorResources.Add(new CyberLimeDarkColorResource());
+                x.ColorResources.Add(new IndigoDarkColorResource());
+                x.ColorResources.Add(new ArcticLightColorResource());
+                x.ColorResources.Add(new MintLightColorResource());
+                x.ColorResources.Add(new CoralLightColorResource());
+                x.ColorResources.Add(new LavenderLightColorResource());
+                x.ColorResources.Add(new RoseLightColorResource());
+                x.ColorResources.Add(new SandLightColorResource());
             });
 
             //app.UseWindowSetting(x =>

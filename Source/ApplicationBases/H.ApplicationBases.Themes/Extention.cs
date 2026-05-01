@@ -92,6 +92,24 @@ namespace System
                 //x.ColorResources.Add(new IndustrialDarkColorResource());
                 //x.ColorResources.Add(new IndustrialDarkColorResource());
                 //x.ColorResources.Add(new IndustrialDarkColorResource());
+
+
+                x.ColorResources.Add(new MidnightNavyDarkColorResource());
+                x.ColorResources.Add(new EmeraldDarkColorResource());
+                x.ColorResources.Add(new CrimsonDarkColorResource());
+                x.ColorResources.Add(new AmberDarkColorResource());
+                x.ColorResources.Add(new RoyalVioletDarkColorResource());
+                x.ColorResources.Add(new TealDarkColorResource());
+                x.ColorResources.Add(new GraphiteDarkColorResource());
+                x.ColorResources.Add(new CoffeeDarkColorResource());
+                x.ColorResources.Add(new CyberLimeDarkColorResource());
+                x.ColorResources.Add(new IndigoDarkColorResource());
+                x.ColorResources.Add(new ArcticLightColorResource());
+                x.ColorResources.Add(new MintLightColorResource());
+                x.ColorResources.Add(new CoralLightColorResource());
+                x.ColorResources.Add(new LavenderLightColorResource());
+                x.ColorResources.Add(new RoseLightColorResource());
+                x.ColorResources.Add(new SandLightColorResource());
                 option?.Invoke(x);
             });
         }
