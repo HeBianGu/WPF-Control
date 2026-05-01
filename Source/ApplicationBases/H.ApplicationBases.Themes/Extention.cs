@@ -56,6 +56,16 @@ namespace System
                 x.ColorResources.Add(new PurpleLightColorResource());
                 x.ColorResources.Add(new GrayDarkColorResource());
                 x.ColorResources.Add(new GrayLightColorResource());
+                x.ColorResources.Add(new H.Themes.Colors.Dashboard.ChartOceanColorResource());
+                x.ColorResources.Add(new H.Themes.Colors.Dashboard.ChartCandyColorResource());
+                x.ColorResources.Add(new H.Themes.Colors.Dashboard.ChartScientificColorResource());
+                x.ColorResources.Add(new H.Themes.Colors.Dashboard.ChartTrafficColorResource());
+                x.ColorResources.Add(new H.Themes.Colors.Dashboard.ChartEnergyColorResource());
+                x.ColorResources.Add(new H.Themes.Colors.Dashboard.ChartThermalColorResource());
+                x.ColorResources.Add(new H.Themes.Colors.Dashboard.DashboardNightColorResource());
+                x.ColorResources.Add(new H.Themes.Colors.Dashboard.MonitorGreenColorResource());
+                x.ColorResources.Add(new H.Themes.Colors.Dashboard.MetricBlueColorResource());
+                x.ColorResources.Add(new H.Themes.Colors.Dashboard.AnalyticsPurpleColorResource());
                 x.ColorResources.Add(new BlueDarkColorResource());
                 x.ColorResources.Add(new BlueLightColorResource());
                 x.ColorResources.Add(new AccentBlueLightColorResource());

@@ -6,6 +6,7 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
+using H.Controls.ShapeBox.Presenters;
 using H.Extensions.Common;
 using System.Collections.Specialized;
 using System.Linq;
@@ -126,7 +127,8 @@ public class MouseOverShapeBox : ROIShapeBox
         if (this.Shapes == null)
             return;
         Point point = e.GetPosition(this);
-        var finds = this.GetShapes().OfType<IMouseOverShape>().Where(x => x.Hit(this, point));
+        var mouses = this.GetShapes().OfType<IMouseOverShape>();
+        var finds = mouses.Where(x => x.Hit(this, point));
         this.MouseOverShapes(finds.ToArray());
     }
 
@@ -145,15 +147,24 @@ public class MouseOverShapeBox : ROIShapeBox
         if (this._MouseOverShapes == null || this._MouseOverShapes.Count() == 0)
             return;
         var strokeThickness = this.ToViewThickness(this.MouseOverStrokeThickness);
-        foreach (var item in this._MouseOverShapes.Where(x => this.Shapes.Contains(x)))
+        var mouseOverShapes = this._MouseOverShapes.Where(x => this.Shapes.Contains(x));
+        foreach (var item in mouseOverShapes)
         {
             item.DrawMouseOver(this, drawingContext, this.MouseOverStroke, strokeThickness, this.MouseOverFill);
         }
+        var presenter = this.GetToolTipShapePresenter(mouseOverShapes);
+        if (presenter != null)
+            this.ToolTip = presenter;
     }
 
     protected override void ShapesCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
     {
         base.ShapesCollectionChanged(sender, e);
         this.Dispatcher.Invoke(() => this.DrawMouseOverableShapes());
+    }
+
+    protected virtual IToolTipShapePresenter GetToolTipShapePresenter(IEnumerable<IMouseOverShape> shapes)
+    {
+        return new ToolTipShapePresenter(shapes);
     }
 }

@@ -6,6 +6,8 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
+using H.Extensions.Common;
+
 namespace H.Controls.ShapeBox.Shapes.Base;
 
 public interface IMouseOverShape : IHitableShape
@@ -17,7 +19,15 @@ public abstract class MouseOverShapeBase : CommonShapeBase, IMouseOverShape
 {
     public virtual void DrawMouseOver(IView view, DrawingContext drawingContext, Brush stroke, double strokeThickness = 1, Brush fill = null)
     {
-        this.Draw(view, drawingContext, stroke, strokeThickness, fill);
+        var pen = new Pen(stroke, strokeThickness)
+        {
+            StartLineCap = PenLineCap.Round,
+            EndLineCap = PenLineCap.Round,
+            LineJoin = PenLineJoin.Round
+        };
+        if (pen.CanFreeze)
+            pen.Freeze();
+        this.Drawing(view, drawingContext, pen, fill);
     }
 
     public virtual bool Hit(IView view, Point point)

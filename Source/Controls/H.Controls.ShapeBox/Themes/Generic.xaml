@@ -6,5 +6,6 @@
     xmlns:system="clr-namespace:System;assembly=mscorlib">
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/H.Controls.ShapeBox;component/ShapeBox.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Controls.ShapeBox;component/Presenters/ToolTipShapePresenter.xaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>
