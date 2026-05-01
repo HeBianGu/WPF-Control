@@ -26,3 +26,11 @@ public class ShowShapeState<T> : ShapeState<T> where T : IShape
         this.DrawStateShape(this.Shape);
     }
 }
+
+public class CrossShapeShowState : ShowShapeState<CrossShape>
+{
+    protected override CrossShape CreateShape()
+    {
+        return new CrossShape();
+    }
+}

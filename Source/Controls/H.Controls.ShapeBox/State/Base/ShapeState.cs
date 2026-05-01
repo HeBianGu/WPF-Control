@@ -43,7 +43,8 @@ public abstract class ShapeState<T> : HandleShapeStateBase where T : IShape
     {
         if (this.Shape is IPreviewShape preview)
             yield return preview;
-        yield return this._crossPreviewShape;
+        foreach (var item in base.GetPreviewShapes())
+            yield return item;
     }
     public override void ScaleChanged()
     {
@@ -74,8 +75,6 @@ public abstract class ShapeState<T> : HandleShapeStateBase where T : IShape
     public override void MouseMove(object sender, MouseEventArgs e)
     {
         base.MouseMove(sender, e);
-        var p = e.GetPosition(sender as FrameworkElement);
-        this._crossPreviewShape.Point = p;
         this.RefreshStateShapes();
     }
 

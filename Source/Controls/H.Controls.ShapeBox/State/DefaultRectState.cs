@@ -9,6 +9,7 @@
 using System.Windows.Input;
 
 namespace H.Controls.ShapeBox.State;
+
 public class DefaultRectState : StateBase
 {
     private readonly ShapeBox _box;

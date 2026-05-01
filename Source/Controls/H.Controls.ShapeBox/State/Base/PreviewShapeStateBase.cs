@@ -11,7 +11,15 @@ using System.Windows.Input;
 namespace H.Controls.ShapeBox.State.Base;
 public abstract class PreviewShapeStateBase : ShowEditStateBase
 {
-    protected abstract IEnumerable<IPreviewShape> GetPreviewShapes();
+    private CrossShape _crossPreviewShape = new CrossShape();
+
+    public bool UseCrossPreviewShape { get; set; } = true;
+
+    protected virtual IEnumerable<IPreviewShape> GetPreviewShapes()
+    {
+        if (this.UseCrossPreviewShape)
+            yield return this._crossPreviewShape;
+    }
 
     protected virtual IPreviewShapeView GetPreviewShapeView()
     {
@@ -25,6 +33,8 @@ public abstract class PreviewShapeStateBase : ShowEditStateBase
 
     public override void MouseMove(object sender, MouseEventArgs e)
     {
+        var p = e.GetPosition(sender as FrameworkElement);
+        this._crossPreviewShape.Point = p;
         base.MouseMove(sender, e);
         this.DrawPreviewShape();
     }
