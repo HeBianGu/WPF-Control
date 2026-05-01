@@ -88,11 +88,6 @@ namespace System
                 x.ColorResources.Add(new TechnologyIndigoColorResource());
                 x.ColorResources.Add(new TechnologySOIORColorResource());
                 x.ColorResources.Add(new TechnologyPinkColorResource());
-                //x.ColorResources.Add(new IndustrialDarkColorResource());
-                //x.ColorResources.Add(new IndustrialDarkColorResource());
-                //x.ColorResources.Add(new IndustrialDarkColorResource());
-                //x.ColorResources.Add(new IndustrialDarkColorResource());
-
 
                 x.ColorResources.Add(new MidnightNavyDarkColorResource());
                 x.ColorResources.Add(new EmeraldDarkColorResource());
@@ -123,6 +118,19 @@ namespace System
                 x.ColorResources.Add(new PeachLightColorResource());
                 x.ColorResources.Add(new AquaLightColorResource());
                 x.ColorResources.Add(new CloudLightColorResource());
+
+                x.ColorResources.Add(new NeonCyanDarkColorResource());
+                x.ColorResources.Add(new QuantumPurpleDarkColorResource());
+                x.ColorResources.Add(new MatrixGreenDarkColorResource());
+                x.ColorResources.Add(new HologramBlueDarkColorResource());
+                x.ColorResources.Add(new StarshipOrangeDarkColorResource());
+                x.ColorResources.Add(new AIMagentaDarkColorResource());
+                x.ColorResources.Add(new DataCenterDarkColorResource());
+                x.ColorResources.Add(new LaserRedDarkColorResource());
+                x.ColorResources.Add(new LabBlueLightColorResource());
+                x.ColorResources.Add(new FutureWhiteLightColorResource());
+                x.ColorResources.Add(new CircuitCyanLightColorResource());
+                x.ColorResources.Add(new RobotGrayLightColorResource());
                 option?.Invoke(x);
             });
         }
