@@ -1,4 +1,4 @@
-﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Copyright (c) HeBianGu Authors. All Rights Reserved. 
 // Author: HeBianGu 
 // Github: https://github.com/HeBianGu/WPF-Control 
 // Document: https://hebiangu.github.io/WPF-Control-Docs  
@@ -26,7 +26,7 @@ namespace H.Themes.Colors.Copper;
 //<!-- 文字 -->
 //<Color x:Key="Vintage.Text">#4A3A2E</Color>
 //<Color x:Key="Vintage.TextLight">#8B7D6E</Color>
-[Display(Name = "复古胶片风（推荐）", GroupName = "柔和复古风", Description = "暖调褪色感，适合摄影、文艺类应用", Order = 100, Prompt = "强力推荐")]
+[Display(Name = "复古胶片", GroupName = "推荐主题", Description = "复古胶片推荐主题", Order = 101, Prompt = "推荐")]
 public class VintageFilmColorResource : ResxColorResourceBase
 {
     public VintageFilmColorResource()

@@ -1,4 +1,4 @@
-﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Copyright (c) HeBianGu Authors. All Rights Reserved. 
 // Author: HeBianGu 
 // Github: https://github.com/HeBianGu/WPF-Control 
 // Document: https://hebiangu.github.io/WPF-Control-Docs  
@@ -10,7 +10,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Windows;
 
 namespace H.Themes.Colors.Web;
-[Display(Name = "Bootstrap", GroupName = "网站前端风", Description = "纯色", Order = 100, Prompt = "试验")]
+[Display(Name = "Bootstrap 风格", GroupName = "平台风格", Description = "Bootstrap 风格主题", Order = 715, Prompt = "新增")]
 public class BootstrapColorResource : ResxColorResourceBase
 {
     public override ResourceDictionary Resource => new ResourceDictionary()

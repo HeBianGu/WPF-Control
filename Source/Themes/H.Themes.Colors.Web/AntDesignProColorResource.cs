@@ -1,4 +1,4 @@
-﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Copyright (c) HeBianGu Authors. All Rights Reserved. 
 // Author: HeBianGu 
 // Github: https://github.com/HeBianGu/WPF-Control 
 // Document: https://hebiangu.github.io/WPF-Control-Docs  
@@ -11,7 +11,7 @@ using System.Windows;
 
 namespace H.Themes.Colors.Web;
 
-[Display(Name = "Ant Design Pro", GroupName = "网站前端风", Description = "纯色", Order = 100, Prompt = "试验")]
+[Display(Name = "Ant Design Pro 风格", GroupName = "平台风格", Description = "Ant Design Pro 风格主题", Order = 714, Prompt = "新增")]
 public class AntDesignProColorResource : ResxColorResourceBase
 {
     public override ResourceDictionary Resource => new ResourceDictionary()

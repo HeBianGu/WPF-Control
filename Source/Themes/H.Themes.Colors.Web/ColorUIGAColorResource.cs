@@ -1,4 +1,4 @@
-﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Copyright (c) HeBianGu Authors. All Rights Reserved. 
 // Author: HeBianGu 
 // Github: https://github.com/HeBianGu/WPF-Control 
 // Document: https://hebiangu.github.io/WPF-Control-Docs  
@@ -10,7 +10,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Windows;
 
 namespace H.Themes.Colors.Web;
-[Display(Name = "ColorUI-GA", GroupName = "网站前端风", Description = "纯色", Order = 100, Prompt = "试验")]
+[Display(Name = "ColorUI 渐变风格", GroupName = "平台风格", Description = "ColorUI 渐变风格主题", Order = 719, Prompt = "新增")]
 public class ColorUIGAColorResource : ResxColorResourceBase
 {
     public override ResourceDictionary Resource => new ResourceDictionary()

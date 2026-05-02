@@ -1,4 +1,4 @@
-﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Copyright (c) HeBianGu Authors. All Rights Reserved. 
 // Author: HeBianGu 
 // Github: https://github.com/HeBianGu/WPF-Control 
 // Document: https://hebiangu.github.io/WPF-Control-Docs  
@@ -14,7 +14,7 @@ namespace H.Themes.Colors.Technology;
 /// <summary>
 /// 星际无线靛：深邃而广阔，如同无垠的宇宙，充满了未知与探索。
 /// </summary>
-[Display(Name = "星际无线靛", GroupName = "深色科技风", Description = "深邃而广阔，如同无垠的宇宙，充满了未知与探索", Order = 100, Prompt = "试验")]
+[Display(Name = "科技靛蓝", GroupName = "科技未来", Description = "科技靛蓝科技未来主题", Order = 416, Prompt = "新增")]
 public class TechnologyIndigoColorResource : ResxColorResourceBase
 {
     public TechnologyIndigoColorResource()

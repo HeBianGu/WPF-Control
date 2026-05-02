@@ -1,4 +1,4 @@
-﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Copyright (c) HeBianGu Authors. All Rights Reserved. 
 // Author: HeBianGu 
 // Github: https://github.com/HeBianGu/WPF-Control 
 // Document: https://hebiangu.github.io/WPF-Control-Docs  
@@ -14,7 +14,7 @@ namespace H.Themes.Colors.Technology;
 /// <summary>
 /// 芭比曙光粉：明亮而充满活力，如同晨曦中的第一缕阳光，温暖而希望。
 /// </summary>
-[Display(Name = "芭比曙光粉（长期支持）", GroupName = "清新自然风", Description = "明亮而充满活力，如同晨曦中的第一缕阳光，温暖而希望", Order = 10, Prompt = "长期支持")]
+[Display(Name = "科技粉", GroupName = "科技未来", Description = "科技粉科技未来主题", Order = 418, Prompt = "新增")]
 public class TechnologyPinkColorResource : ResxColorResourceBase
 {
     public TechnologyPinkColorResource()

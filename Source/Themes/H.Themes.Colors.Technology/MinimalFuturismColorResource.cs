@@ -1,4 +1,4 @@
-﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Copyright (c) HeBianGu Authors. All Rights Reserved. 
 // Author: HeBianGu 
 // Github: https://github.com/HeBianGu/WPF-Control 
 // Document: https://hebiangu.github.io/WPF-Control-Docs  
@@ -15,7 +15,7 @@ namespace H.Themes.Colors.Technology;
 //- ** 配色方案**：  
 //  `#FFFFFF` (纯白) | `#F2F2F2` (浅灰) | `#2D2D2D` (炭黑) | `#00C4FF` (科技蓝) | `#FF3E41` (警示红)  
 //- ** 特点**：干净简洁，突出功能感，适合App、智能设备界面。
-[Display(Name = "极简未来（Minimal Futurism）", GroupName = "深色科技风", Description = "干净简洁，突出功能感，适合App、智能设备界面", Order = 100, Prompt = "试验")]
+[Display(Name = "极简未来", GroupName = "科技未来", Description = "极简未来科技未来主题", Order = 414, Prompt = "新增")]
 public class MinimalFuturismColorResource : ResxColorResourceBase
 {
     public MinimalFuturismColorResource()

@@ -1,4 +1,4 @@
-﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Copyright (c) HeBianGu Authors. All Rights Reserved. 
 // Author: HeBianGu 
 // Github: https://github.com/HeBianGu/WPF-Control 
 // Document: https://hebiangu.github.io/WPF-Control-Docs  
@@ -26,7 +26,7 @@ namespace H.Themes.Colors.Technology;
 //<!-- 文字 -->
 //<Color x:Key="DarkTech.Text">#E0E0E0</Color>
 //<Color x:Key="DarkTech.TextDim">#8A8F9D</Color>
-[Display(Name = "赛博朋克风", GroupName = "深色科技风", Description = "霓虹对比色 + 深色背景，适合数据看板、科技感应用", Order = 100, Prompt = "试验")]
+[Display(Name = "赛博朋克", GroupName = "科技未来", Description = "赛博朋克科技未来主题", Order = 413, Prompt = "新增")]
 public class CyberpunkColorResource : ResxColorResourceBase
 {
     public CyberpunkColorResource()

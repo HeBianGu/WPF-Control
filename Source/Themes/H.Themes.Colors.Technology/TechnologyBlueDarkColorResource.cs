@@ -1,4 +1,4 @@
-﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Copyright (c) HeBianGu Authors. All Rights Reserved. 
 // Author: HeBianGu 
 // Github: https://github.com/HeBianGu/WPF-Control 
 // Document: https://hebiangu.github.io/WPF-Control-Docs  
@@ -11,7 +11,7 @@ using System.Windows;
 
 namespace H.Themes.Colors.Technology;
 
-[Display(Name = "深空科技蓝（推荐）", GroupName = "强力推荐", Description = "纯色", Order = 0, Prompt = "强力推荐")]
+[Display(Name = "深空科技蓝", GroupName = "科技未来", Description = "深空科技蓝科技未来主题", Order = 408, Prompt = "新增")]
 public class TechnologyBlueDarkColorResource : ResxColorResourceBase
 {
     public TechnologyBlueDarkColorResource()

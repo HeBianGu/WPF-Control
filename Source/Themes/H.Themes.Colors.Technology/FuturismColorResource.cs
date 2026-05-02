@@ -1,4 +1,4 @@
-﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Copyright (c) HeBianGu Authors. All Rights Reserved. 
 // Author: HeBianGu 
 // Github: https://github.com/HeBianGu/WPF-Control 
 // Document: https://hebiangu.github.io/WPF-Control-Docs  
@@ -25,7 +25,7 @@ namespace H.Themes.Colors.Technology;
 //<!-- 文字 -->
 //<Color x:Key="Neon.Text">#FFFFFF</Color>
 //<Color x:Key="Neon.TextGlow">#A0A0A0</Color> <!-- 发光弱化 -->
-[Display(Name = "未来荧光风", GroupName = "深色科技风", Description = "高饱和荧光色 + 深空背景，适合游戏、潮流应用 ", Order = 100, Prompt = "试验")]
+[Display(Name = "未来荧光", GroupName = "科技未来", Description = "未来荧光科技未来主题", Order = 412, Prompt = "新增")]
 public class FuturismColorResource : ResxColorResourceBase
 {
     public FuturismColorResource()

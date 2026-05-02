@@ -1,4 +1,4 @@
-﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Copyright (c) HeBianGu Authors. All Rights Reserved. 
 // Author: HeBianGu 
 // Github: https://github.com/HeBianGu/WPF-Control 
 // Document: https://hebiangu.github.io/WPF-Control-Docs  
@@ -10,7 +10,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Windows;
 
 namespace H.Themes.Colors.Accent;
-[Display(Name = "蓝色强调浅色", GroupName = "强调色", Description = "蓝色强调的浅色主题", Order = 10, Prompt = "推荐")]
+[Display(Name = "蓝色强调浅色", GroupName = "基础主题", Description = "蓝色强调浅色主题", Order = 11, Prompt = "推荐")]
 public class AccentBlueLightColorResource : ResxColorResourceBase
 {
     public AccentBlueLightColorResource()

@@ -11,7 +11,7 @@ using System.Windows;
 
 namespace H.Themes.Colors.Dashboard;
 
-[Display(Name = "热力洞察", GroupName = "混合配色", Description = "橙色、红色、黄色与冷蓝混合，适合热力图、风险图和密度分析", Order = 140, Prompt = "混合")]
+[Display(Name = "热力洞察", GroupName = "混合配色", Description = "橙色、红色、黄色与冷蓝混合，适合热力图、风险图和密度分析", Order = 1002, Prompt = "混合")]
 public class ThermalInsightColorResource : ResxColorResourceBase
 {
     public ThermalInsightColorResource() => this.IsDark = true;

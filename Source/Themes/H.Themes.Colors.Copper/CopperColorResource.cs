@@ -1,4 +1,4 @@
-﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Copyright (c) HeBianGu Authors. All Rights Reserved. 
 // Author: HeBianGu 
 // Github: https://github.com/HeBianGu/WPF-Control 
 // Document: https://hebiangu.github.io/WPF-Control-Docs  
@@ -10,7 +10,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Windows;
 
 namespace H.Themes.Colors.Copper;
-[Display(Name = "深铜色（推荐）", GroupName = "强力推荐", Description = "纯色", Order = 100, Prompt = "强力推荐")]
+[Display(Name = "深铜色", GroupName = "推荐主题", Description = "深铜色推荐主题", Order = 100, Prompt = "推荐")]
 public class CopperColorResource : ResxColorResourceBase
 {
     public CopperColorResource()

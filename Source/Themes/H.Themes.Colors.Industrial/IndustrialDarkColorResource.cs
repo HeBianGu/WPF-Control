@@ -10,7 +10,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Windows;
 
 namespace H.Themes.Colors.Industrial;
-[Display(Name = "暗黑工业风", GroupName = "生产工业风", Description = "纯色", Order = 100, Prompt = "试验")]
+[Display(Name = "暗黑工业", GroupName = "工业制造", Description = "暗黑工业制造主题", Order = 500, Prompt = "新增")]
 public class IndustrialDarkColorResource : ResxColorResourceBase
 {
     public IndustrialDarkColorResource()

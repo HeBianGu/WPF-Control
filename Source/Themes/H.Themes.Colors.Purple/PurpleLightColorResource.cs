@@ -10,7 +10,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Windows;
 
 namespace H.Themes.Colors.Purple;
-[Display(Name = "浅紫色（长期支持）", GroupName = "纯色", Description = "纯色", Order = 100, Prompt = "长期支持")]
+[Display(Name = "浅紫色", GroupName = "基础主题", Description = "基础浅紫色主题", Order = 5, Prompt = "推荐")]
 public class PurpleLightColorResource : ResxColorResourceBase
 {
     public PurpleLightColorResource()

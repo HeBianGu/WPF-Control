@@ -1,4 +1,4 @@
-﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Copyright (c) HeBianGu Authors. All Rights Reserved. 
 // Author: HeBianGu 
 // Github: https://github.com/HeBianGu/WPF-Control 
 // Document: https://hebiangu.github.io/WPF-Control-Docs  
@@ -10,7 +10,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Windows;
 
 namespace H.Themes.Colors.Solid;
-[Display(Name = "Oracle Dark", GroupName = "纯色", Description = "纯色", Order = 90, Prompt = "试验")]
+[Display(Name = "Oracle 深色", GroupName = "纯色主题", Description = "Oracle 深色纯色主题", Order = 178, Prompt = "新增")]
 public class OracleDarkColorResource : ResxColorResourceBase
 {
     public OracleDarkColorResource()

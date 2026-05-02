@@ -1,4 +1,4 @@
-﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Copyright (c) HeBianGu Authors. All Rights Reserved. 
 // Author: HeBianGu 
 // Github: https://github.com/HeBianGu/WPF-Control 
 // Document: https://hebiangu.github.io/WPF-Control-Docs  
@@ -10,7 +10,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Windows;
 
 namespace H.Themes.Colors.Platform;
-[Display(Name = "‌Fluent UI (Microsoft)", GroupName = "系统平台", Description = "纯色", Order = 100, Prompt = "试验")]
+[Display(Name = "Fluent UI 风格", GroupName = "平台风格", Description = "Fluent UI 系统平台风格主题", Order = 712, Prompt = "新增")]
 public class FluentUIColorResource : ResxColorResourceBase
 {
     public FluentUIColorResource()

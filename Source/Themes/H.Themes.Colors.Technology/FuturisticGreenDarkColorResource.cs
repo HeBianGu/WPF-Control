@@ -1,4 +1,4 @@
-﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Copyright (c) HeBianGu Authors. All Rights Reserved. 
 // Author: HeBianGu 
 // Github: https://github.com/HeBianGu/WPF-Control 
 // Document: https://hebiangu.github.io/WPF-Control-Docs  
@@ -10,7 +10,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Windows;
 
 namespace H.Themes.Colors.Technology;
-[Display(Name = "未来主义绿", GroupName = "深色科技风", Description = "纯色", Order = 100, Prompt = "试验")]
+[Display(Name = "未来主义绿", GroupName = "科技未来", Description = "未来主义绿科技未来主题", Order = 410, Prompt = "新增")]
 public class FuturisticGreenDarkColorResource : ResxColorResourceBase
 {
     public FuturisticGreenDarkColorResource()
