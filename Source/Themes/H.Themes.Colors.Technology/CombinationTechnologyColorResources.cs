@@ -11,84 +11,84 @@ using System.Windows;
 
 namespace H.Themes.Colors.Technology;
 
-[Display(Name = "¼«¹âµçÂ·", GroupName = "¿Æ¼¼×éºÏÉ«", Description = "À¶×ÏÇàÂÌ×éºÏµÄ¼«¹âµçÂ·ÉîÉ«Ö÷Ìâ", Order = 240, Prompt = "ÐÂÔö")]
+[Display(Name = "æžå…‰ç”µè·¯", GroupName = "ç§‘æŠ€ç»„åˆè‰²", Description = "è“ç´«é’ç»¿ç»„åˆçš„æžå…‰ç”µè·¯æ·±è‰²ä¸»é¢˜", Order = 240, Prompt = "æ–°å¢ž")]
 public class AuroraCircuitDarkColorResource : ResxColorResourceBase
 {
     public AuroraCircuitDarkColorResource() => this.IsDark = true;
     public override ResourceDictionary Resource => new ResourceDictionary() { Source = new Uri("pack://application:,,,/H.Themes.Colors.Technology;component/AuroraCircuitDark.xaml") };
 }
 
-[Display(Name = "ºÏ³É²¨Íø¸ñ", GroupName = "¿Æ¼¼×éºÏÉ«", Description = "×Ï·ÛÀ¶×éºÏµÄ Synthwave ÉîÉ«Ö÷Ìâ", Order = 241, Prompt = "ÐÂÔö")]
+[Display(Name = "åˆæˆæ³¢ç½‘æ ¼", GroupName = "ç§‘æŠ€ç»„åˆè‰²", Description = "ç´«ç²‰è“ç»„åˆçš„ Synthwave æ·±è‰²ä¸»é¢˜", Order = 241, Prompt = "æ–°å¢ž")]
 public class SynthwaveGridDarkColorResource : ResxColorResourceBase
 {
     public SynthwaveGridDarkColorResource() => this.IsDark = true;
     public override ResourceDictionary Resource => new ResourceDictionary() { Source = new Uri("pack://application:,,,/H.Themes.Colors.Technology;component/SynthwaveGridDark.xaml") };
 }
 
-[Display(Name = "Á¿×ÓÈÕÂä", GroupName = "¿Æ¼¼×éºÏÉ«", Description = "×Ï³ÈÃµºì×éºÏµÄÁ¿×ÓÈÕÂäÉîÉ«Ö÷Ìâ", Order = 242, Prompt = "ÐÂÔö")]
+[Display(Name = "é‡å­æ—¥è½", GroupName = "ç§‘æŠ€ç»„åˆè‰²", Description = "ç´«æ©™çŽ«çº¢ç»„åˆçš„é‡å­æ—¥è½æ·±è‰²ä¸»é¢˜", Order = 242, Prompt = "æ–°å¢ž")]
 public class QuantumSunsetDarkColorResource : ResxColorResourceBase
 {
     public QuantumSunsetDarkColorResource() => this.IsDark = true;
     public override ResourceDictionary Resource => new ResourceDictionary() { Source = new Uri("pack://application:,,,/H.Themes.Colors.Technology;component/QuantumSunsetDark.xaml") };
 }
 
-[Display(Name = "µÈÀë×Ó·ç±©", GroupName = "¿Æ¼¼×éºÏÉ«", Description = "À¶×ÏÇà×éºÏµÄµÈÀë×Ó·ç±©ÉîÉ«Ö÷Ìâ", Order = 243, Prompt = "ÐÂÔö")]
+[Display(Name = "ç­‰ç¦»å­é£Žæš´", GroupName = "ç§‘æŠ€ç»„åˆè‰²", Description = "è“ç´«é’ç»„åˆçš„ç­‰ç¦»å­é£Žæš´æ·±è‰²ä¸»é¢˜", Order = 243, Prompt = "æ–°å¢ž")]
 public class PlasmaStormDarkColorResource : ResxColorResourceBase
 {
     public PlasmaStormDarkColorResource() => this.IsDark = true;
     public override ResourceDictionary Resource => new ResourceDictionary() { Source = new Uri("pack://application:,,,/H.Themes.Colors.Technology;component/PlasmaStormDark.xaml") };
 }
 
-[Display(Name = "ÉúÎïµçÂ·", GroupName = "¿Æ¼¼×éºÏÉ«", Description = "ÂÌÉ«ÇàÉ«×éºÏµÄÉúÎï¿Æ¼¼ÉîÉ«Ö÷Ìâ", Order = 244, Prompt = "ÐÂÔö")]
+[Display(Name = "ç”Ÿç‰©ç”µè·¯", GroupName = "ç§‘æŠ€ç»„åˆè‰²", Description = "ç»¿è‰²é’è‰²ç»„åˆçš„ç”Ÿç‰©ç§‘æŠ€æ·±è‰²ä¸»é¢˜", Order = 244, Prompt = "æ–°å¢ž")]
 public class BioCircuitDarkColorResource : ResxColorResourceBase
 {
     public BioCircuitDarkColorResource() => this.IsDark = true;
     public override ResourceDictionary Resource => new ResourceDictionary() { Source = new Uri("pack://application:,,,/H.Themes.Colors.Technology;component/BioCircuitDark.xaml") };
 }
 
-[Display(Name = "±ù»ðºËÐÄ", GroupName = "¿Æ¼¼×éºÏÉ«", Description = "ÀäÀ¶ÓëÈÈ³È¶Ô±ÈµÄºËÐÄ·´Ó¦¶ÑÉîÉ«Ö÷Ìâ", Order = 245, Prompt = "ÐÂÔö")]
+[Display(Name = "å†°ç«æ ¸å¿ƒ", GroupName = "ç§‘æŠ€ç»„åˆè‰²", Description = "å†·è“ä¸Žçƒ­æ©™å¯¹æ¯”çš„æ ¸å¿ƒååº”å †æ·±è‰²ä¸»é¢˜", Order = 245, Prompt = "æ–°å¢ž")]
 public class IceFireCoreDarkColorResource : ResxColorResourceBase
 {
     public IceFireCoreDarkColorResource() => this.IsDark = true;
     public override ResourceDictionary Resource => new ResourceDictionary() { Source = new Uri("pack://application:,,,/H.Themes.Colors.Technology;component/IceFireCoreDark.xaml") };
 }
 
-[Display(Name = "ÐÇÔÆÖ¸»Ó", GroupName = "¿Æ¼¼×éºÏÉ«", Description = "À¶×ÏÐÇÔÆÓëÇàÉ«¸ßÁÁµÄÖ¸»Ó²ÕÉîÉ«Ö÷Ìâ", Order = 246, Prompt = "ÐÂÔö")]
+[Display(Name = "æ˜Ÿäº‘æŒ‡æŒ¥", GroupName = "ç§‘æŠ€ç»„åˆè‰²", Description = "è“ç´«æ˜Ÿäº‘ä¸Žé’è‰²é«˜äº®çš„æŒ‡æŒ¥èˆ±æ·±è‰²ä¸»é¢˜", Order = 246, Prompt = "æ–°å¢ž")]
 public class NebulaOpsDarkColorResource : ResxColorResourceBase
 {
     public NebulaOpsDarkColorResource() => this.IsDark = true;
     public override ResourceDictionary Resource => new ResourceDictionary() { Source = new Uri("pack://application:,,,/H.Themes.Colors.Technology;component/NebulaOpsDark.xaml") };
 }
 
-[Display(Name = "Ì«ÑôÒ«°ß", GroupName = "¿Æ¼¼×éºÏÉ«", Description = "³Èºì½ð×éºÏµÄÌ«ÑôÒ«°ßÉîÉ«Ö÷Ìâ", Order = 247, Prompt = "ÐÂÔö")]
+[Display(Name = "å¤ªé˜³è€€æ–‘", GroupName = "ç§‘æŠ€ç»„åˆè‰²", Description = "æ©™çº¢é‡‘ç»„åˆçš„å¤ªé˜³è€€æ–‘æ·±è‰²ä¸»é¢˜", Order = 247, Prompt = "æ–°å¢ž")]
 public class SolarFlareDarkColorResource : ResxColorResourceBase
 {
     public SolarFlareDarkColorResource() => this.IsDark = true;
     public override ResourceDictionary Resource => new ResourceDictionary() { Source = new Uri("pack://application:,,,/H.Themes.Colors.Technology;component/SolarFlareDark.xaml") };
 }
 
-[Display(Name = "¼«¹â²£Á§", GroupName = "¿Æ¼¼×éºÏÉ«", Description = "À¶×ÏÇà×éºÏµÄ²£Á§¸ÐÇ³É«¿Æ¼¼Ö÷Ìâ", Order = 260, Prompt = "ÐÂÔö")]
+[Display(Name = "æžå…‰çŽ»ç’ƒ", GroupName = "ç§‘æŠ€ç»„åˆè‰²", Description = "è“ç´«é’ç»„åˆçš„çŽ»ç’ƒæ„Ÿæµ…è‰²ç§‘æŠ€ä¸»é¢˜", Order = 260, Prompt = "æ–°å¢ž")]
 public class AuroraGlassLightColorResource : ResxColorResourceBase
 {
     public AuroraGlassLightColorResource() => this.IsDark = false;
     public override ResourceDictionary Resource => new ResourceDictionary() { Source = new Uri("pack://application:,,,/H.Themes.Colors.Technology;component/AuroraGlassLight.xaml") };
 }
 
-[Display(Name = "ÄÞºç·Û²Ê", GroupName = "¿Æ¼¼×éºÏÉ«", Description = "·ÛÀ¶×Ï×éºÏµÄÇ³É«ÄÞºçÖ÷Ìâ", Order = 261, Prompt = "ÐÂÔö")]
+[Display(Name = "éœ“è™¹ç²‰å½©", GroupName = "ç§‘æŠ€ç»„åˆè‰²", Description = "ç²‰è“ç´«ç»„åˆçš„æµ…è‰²éœ“è™¹ä¸»é¢˜", Order = 261, Prompt = "æ–°å¢ž")]
 public class NeonPastelLightColorResource : ResxColorResourceBase
 {
     public NeonPastelLightColorResource() => this.IsDark = false;
     public override ResourceDictionary Resource => new ResourceDictionary() { Source = new Uri("pack://application:,,,/H.Themes.Colors.Technology;component/NeonPastelLight.xaml") };
 }
 
-[Display(Name = "Á¿×ÓÊµÑéÊÒ", GroupName = "¿Æ¼¼×éºÏÉ«", Description = "À¶Çà×Ï×éºÏµÄÊµÑéÊÒÇ³É«Ö÷Ìâ", Order = 262, Prompt = "ÐÂÔö")]
+[Display(Name = "é‡å­å®žéªŒå®¤", GroupName = "ç§‘æŠ€ç»„åˆè‰²", Description = "è“é’ç´«ç»„åˆçš„å®žéªŒå®¤æµ…è‰²ä¸»é¢˜", Order = 262, Prompt = "æ–°å¢ž")]
 public class QuantumLabLightColorResource : ResxColorResourceBase
 {
     public QuantumLabLightColorResource() => this.IsDark = false;
     public override ResourceDictionary Resource => new ResourceDictionary() { Source = new Uri("pack://application:,,,/H.Themes.Colors.Technology;component/QuantumLabLight.xaml") };
 }
 
-[Display(Name = "È«Ï¢±¡ºÉ", GroupName = "¿Æ¼¼×éºÏÉ«", Description = "±¡ºÉÇàÓëÀ¶É«×éºÏµÄÈ«Ï¢Ç³É«Ö÷Ìâ", Order = 263, Prompt = "ÐÂÔö")]
+[Display(Name = "å…¨æ¯è–„è·", GroupName = "ç§‘æŠ€ç»„åˆè‰²", Description = "è–„è·é’ä¸Žè“è‰²ç»„åˆçš„å…¨æ¯æµ…è‰²ä¸»é¢˜", Order = 263, Prompt = "æ–°å¢ž")]
 public class HoloMintLightColorResource : ResxColorResourceBase
 {
     public HoloMintLightColorResource() => this.IsDark = false;

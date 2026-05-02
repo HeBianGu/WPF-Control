@@ -11,77 +11,77 @@ using System.Windows;
 
 namespace H.Themes.Colors.Platform;
 
-[Display(Name = "Modern Fluent", GroupName = "Æ½Ì¨·ç¸ñ", Description = "ÏÖ´ú Fluent ·ÕÎ§Ç³É«Ö÷Ìâ", Order = 200, Prompt = "ÐÂÔö")]
+[Display(Name = "Modern Fluent", GroupName = "å¹³å°é£Žæ ¼", Description = "çŽ°ä»£ Fluent æ°›å›´æµ…è‰²ä¸»é¢˜", Order = 200, Prompt = "æ–°å¢ž")]
 public class ModernFluentColorResource : ResxColorResourceBase
 {
     public ModernFluentColorResource() => this.IsDark = false;
     public override ResourceDictionary Resource => new ResourceDictionary() { Source = new Uri("pack://application:,,,/H.Themes.Colors.Platform;component/ModernFluent.xaml") };
 }
 
-[Display(Name = "Material Soft", GroupName = "Æ½Ì¨·ç¸ñ", Description = "ÈáºÍ Material ·ÕÎ§Ç³É«Ö÷Ìâ", Order = 201, Prompt = "ÐÂÔö")]
+[Display(Name = "Material Soft", GroupName = "å¹³å°é£Žæ ¼", Description = "æŸ”å’Œ Material æ°›å›´æµ…è‰²ä¸»é¢˜", Order = 201, Prompt = "æ–°å¢ž")]
 public class MaterialSoftColorResource : ResxColorResourceBase
 {
     public MaterialSoftColorResource() => this.IsDark = false;
     public override ResourceDictionary Resource => new ResourceDictionary() { Source = new Uri("pack://application:,,,/H.Themes.Colors.Platform;component/MaterialSoft.xaml") };
 }
 
-[Display(Name = "Cupertino Light", GroupName = "Æ½Ì¨·ç¸ñ", Description = "ÇåÍ¸ Cupertino ·ÕÎ§Ç³É«Ö÷Ìâ", Order = 202, Prompt = "ÐÂÔö")]
+[Display(Name = "Cupertino Light", GroupName = "å¹³å°é£Žæ ¼", Description = "æ¸…é€ Cupertino æ°›å›´æµ…è‰²ä¸»é¢˜", Order = 202, Prompt = "æ–°å¢ž")]
 public class CupertinoLightColorResource : ResxColorResourceBase
 {
     public CupertinoLightColorResource() => this.IsDark = false;
     public override ResourceDictionary Resource => new ResourceDictionary() { Source = new Uri("pack://application:,,,/H.Themes.Colors.Platform;component/CupertinoLight.xaml") };
 }
 
-[Display(Name = "Git Dark", GroupName = "Æ½Ì¨·ç¸ñ", Description = "´úÂëÍÐ¹ÜÆ½Ì¨·ÕÎ§ÉîÉ«Ö÷Ìâ", Order = 203, Prompt = "ÐÂÔö")]
+[Display(Name = "Git Dark", GroupName = "å¹³å°é£Žæ ¼", Description = "ä»£ç æ‰˜ç®¡å¹³å°æ°›å›´æ·±è‰²ä¸»é¢˜", Order = 203, Prompt = "æ–°å¢ž")]
 public class GitDarkColorResource : ResxColorResourceBase
 {
     public GitDarkColorResource() => this.IsDark = true;
     public override ResourceDictionary Resource => new ResourceDictionary() { Source = new Uri("pack://application:,,,/H.Themes.Colors.Platform;component/GitDark.xaml") };
 }
 
-[Display(Name = "Terminal Classic", GroupName = "Æ½Ì¨·ç¸ñ", Description = "¾­µäÖÕ¶ËºÚÂÌÖ÷Ìâ", Order = 204, Prompt = "ÐÂÔö")]
+[Display(Name = "Terminal Classic", GroupName = "å¹³å°é£Žæ ¼", Description = "ç»å…¸ç»ˆç«¯é»‘ç»¿ä¸»é¢˜", Order = 204, Prompt = "æ–°å¢ž")]
 public class TerminalClassicColorResource : ResxColorResourceBase
 {
     public TerminalClassicColorResource() => this.IsDark = true;
     public override ResourceDictionary Resource => new ResourceDictionary() { Source = new Uri("pack://application:,,,/H.Themes.Colors.Platform;component/TerminalClassic.xaml") };
 }
 
-[Display(Name = "Dashboard Blue", GroupName = "Æ½Ì¨·ç¸ñ", Description = "ÒÇ±íÅÌÀ¶É«Ç³É«Ö÷Ìâ", Order = 205, Prompt = "ÐÂÔö")]
+[Display(Name = "Dashboard Blue", GroupName = "å¹³å°é£Žæ ¼", Description = "ä»ªè¡¨ç›˜è“è‰²æµ…è‰²ä¸»é¢˜", Order = 205, Prompt = "æ–°å¢ž")]
 public class DashboardBlueColorResource : ResxColorResourceBase
 {
     public DashboardBlueColorResource() => this.IsDark = false;
     public override ResourceDictionary Resource => new ResourceDictionary() { Source = new Uri("pack://application:,,,/H.Themes.Colors.Platform;component/DashboardBlue.xaml") };
 }
 
-[Display(Name = "Cloud Console", GroupName = "Æ½Ì¨·ç¸ñ", Description = "ÔÆ¿ØÖÆÌ¨À¶»ÒÉîÉ«Ö÷Ìâ", Order = 206, Prompt = "ÐÂÔö")]
+[Display(Name = "Cloud Console", GroupName = "å¹³å°é£Žæ ¼", Description = "äº‘æŽ§åˆ¶å°è“ç°æ·±è‰²ä¸»é¢˜", Order = 206, Prompt = "æ–°å¢ž")]
 public class CloudConsoleColorResource : ResxColorResourceBase
 {
     public CloudConsoleColorResource() => this.IsDark = true;
     public override ResourceDictionary Resource => new ResourceDictionary() { Source = new Uri("pack://application:,,,/H.Themes.Colors.Platform;component/CloudConsole.xaml") };
 }
 
-[Display(Name = "IDE Blue Dark", GroupName = "Æ½Ì¨·ç¸ñ", Description = "IDE À¶ºÚÉîÉ«Ö÷Ìâ", Order = 207, Prompt = "ÐÂÔö")]
+[Display(Name = "IDE Blue Dark", GroupName = "å¹³å°é£Žæ ¼", Description = "IDE è“é»‘æ·±è‰²ä¸»é¢˜", Order = 207, Prompt = "æ–°å¢ž")]
 public class IDEBlueDarkColorResource : ResxColorResourceBase
 {
     public IDEBlueDarkColorResource() => this.IsDark = true;
     public override ResourceDictionary Resource => new ResourceDictionary() { Source = new Uri("pack://application:,,,/H.Themes.Colors.Platform;component/IDEBlueDark.xaml") };
 }
 
-[Display(Name = "Editor Dark Plus", GroupName = "Æ½Ì¨·ç¸ñ", Description = "±à¼­Æ÷ÉîÉ«ÔöÇ¿Ö÷Ìâ", Order = 208, Prompt = "ÐÂÔö")]
+[Display(Name = "Editor Dark Plus", GroupName = "å¹³å°é£Žæ ¼", Description = "ç¼–è¾‘å™¨æ·±è‰²å¢žå¼ºä¸»é¢˜", Order = 208, Prompt = "æ–°å¢ž")]
 public class EditorDarkPlusColorResource : ResxColorResourceBase
 {
     public EditorDarkPlusColorResource() => this.IsDark = true;
     public override ResourceDictionary Resource => new ResourceDictionary() { Source = new Uri("pack://application:,,,/H.Themes.Colors.Platform;component/EditorDarkPlus.xaml") };
 }
 
-[Display(Name = "Solarized Light", GroupName = "Æ½Ì¨·ç¸ñ", Description = "µÍ¶Ô±È Solarized Ç³É«Ö÷Ìâ", Order = 209, Prompt = "ÐÂÔö")]
+[Display(Name = "Solarized Light", GroupName = "å¹³å°é£Žæ ¼", Description = "ä½Žå¯¹æ¯” Solarized æµ…è‰²ä¸»é¢˜", Order = 209, Prompt = "æ–°å¢ž")]
 public class SolarizedLightColorResource : ResxColorResourceBase
 {
     public SolarizedLightColorResource() => this.IsDark = false;
     public override ResourceDictionary Resource => new ResourceDictionary() { Source = new Uri("pack://application:,,,/H.Themes.Colors.Platform;component/SolarizedLight.xaml") };
 }
 
-[Display(Name = "Solarized Dark", GroupName = "Æ½Ì¨·ç¸ñ", Description = "µÍ¶Ô±È Solarized ÉîÉ«Ö÷Ìâ", Order = 210, Prompt = "ÐÂÔö")]
+[Display(Name = "Solarized Dark", GroupName = "å¹³å°é£Žæ ¼", Description = "ä½Žå¯¹æ¯” Solarized æ·±è‰²ä¸»é¢˜", Order = 210, Prompt = "æ–°å¢ž")]
 public class SolarizedDarkColorResource : ResxColorResourceBase
 {
     public SolarizedDarkColorResource() => this.IsDark = true;
