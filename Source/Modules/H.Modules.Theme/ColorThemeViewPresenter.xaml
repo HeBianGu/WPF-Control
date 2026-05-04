@@ -37,9 +37,9 @@
                                 <Setter Property="Template">
                                     <Setter.Value>
                                         <ControlTemplate TargetType="{x:Type GroupItem}">
-                                            <GroupBox Header="{Binding Name}">
+                                            <Expander Header="{Binding Name}" Style="{DynamicResource {x:Static ExpanderKeys.ToggleRight}}">
                                                 <ItemsPresenter />
-                                            </GroupBox>
+                                            </Expander>
                                         </ControlTemplate>
                                     </Setter.Value>
                                 </Setter>

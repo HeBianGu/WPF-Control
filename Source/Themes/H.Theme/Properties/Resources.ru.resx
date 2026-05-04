@@ -1,5 +1,64 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
   <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
@@ -53,10 +112,10 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Enum_ColorThemeType_Default" xml:space="preserve">
     <value>Общие</value>
@@ -85,6 +144,12 @@
   <data name="Enum_LayoutThemeType_Default" xml:space="preserve">
     <value>Обычный (рекомендуется)</value>
   </data>
+  <data name="DrawingBrushResource" xml:space="preserve">
+    <value>Кисть</value>
+  </data>
+  <data name="ImageBrushResource" xml:space="preserve">
+    <value>Кисть изображения</value>
+  </data>
   <data name="LinearGradientBrushResource" xml:space="preserve">
     <value>Градиент (рекомендуется)</value>
   </data>
@@ -93,455 +158,5 @@
   </data>
   <data name="SolidColorBrushResource" xml:space="preserve">
     <value>Сплошной цвет (рекомендуется</value>
-  </data>
-  <data name="DrawingBrushResource" xml:space="preserve">
-    <value>Кисть</value>
-  </data>
-  <data name="ImageBrushResource" xml:space="preserve">
-    <value>Кисть изображения</value>
-  </data>
-  <data name="DarkColorResource" xml:space="preserve">
-    <value>Тёмная (рекомендуется)</value>
-  </data>
-  <data name="DarkColorResource_GroupName" xml:space="preserve">
-    <value>Настоятельно рекомендуется</value>
-  </data>
-  <data name="DarkColorResource_Prompt" xml:space="preserve">
-    <value>Настоятельно рекомендуется</value>
-  </data>
-  <data name="DarkColorResource_Description" xml:space="preserve">
-    <value>Сплошной цвет</value>
-  </data>
-  <data name="LightColorResource" xml:space="preserve">
-    <value>Светлая (рекомендуется)</value>
-  </data>
-  <data name="LightColorResource_GroupName" xml:space="preserve">
-    <value>Настоятельно рекомендуется</value>
-  </data>
-  <data name="LightColorResource_Prompt" xml:space="preserve">
-    <value>Настоятельно рекомендуется</value>
-  </data>
-  <data name="LightColorResource_Description" xml:space="preserve">
-    <value>Сплошной цвет</value>
-  </data>
-  <data name="DefaultColorResource" xml:space="preserve">
-    <value>Система (долгосрочная поддержка)</value>
-  </data>
-  <data name="DefaultColorResource_GroupName" xml:space="preserve">
-    <value>Сплошной цвет</value>
-  </data>
-  <data name="DefaultColorResource_Prompt" xml:space="preserve">
-    <value>Долгосрочная поддержка</value>
-  </data>
-  <data name="DefaultColorResource_Description" xml:space="preserve">
-    <value>Сплошной цвет</value>
-  </data>
-  <data name="PurpleDarkColorResource" xml:space="preserve">
-    <value>Тёмно-фиолетовый (долгосрочная поддержка)</value>
-  </data>
-  <data name="PurpleDarkColorResource_GroupName" xml:space="preserve">
-    <value>Сплошной цвет</value>
-  </data>
-  <data name="PurpleDarkColorResource_Prompt" xml:space="preserve">
-    <value>Долгосрочная поддержка</value>
-  </data>
-  <data name="PurpleDarkColorResource_Description" xml:space="preserve">
-    <value>Сплошной цвет</value>
-  </data>
-  <data name="PurpleLightColorResource" xml:space="preserve">
-    <value>Светло-фиолетовый (долгосрочная поддержка)</value>
-  </data>
-  <data name="PurpleLightColorResource_GroupName" xml:space="preserve">
-    <value>Сплошной цвет</value>
-  </data>
-  <data name="PurpleLightColorResource_Prompt" xml:space="preserve">
-    <value>Долгосрочная поддержка</value>
-  </data>
-  <data name="PurpleLightColorResource_Description" xml:space="preserve">
-    <value>Сплошной цвет</value>
-  </data>
-  <data name="GrayDarkColorResource" xml:space="preserve">
-    <value>Тёмно-серый (рекомендуется)</value>
-  </data>
-  <data name="GrayDarkColorResource_GroupName" xml:space="preserve">
-    <value>Настоятельно рекомендуется</value>
-  </data>
-  <data name="GrayDarkColorResource_Prompt" xml:space="preserve">
-    <value>Настоятельно рекомендуется</value>
-  </data>
-  <data name="GrayDarkColorResource_Description" xml:space="preserve">
-    <value>Сплошной цвет</value>
-  </data>
-  <data name="GrayLightColorResource" xml:space="preserve">
-    <value>Светло-серый (рекомендуется)</value>
-  </data>
-  <data name="GrayLightColorResource_GroupName" xml:space="preserve">
-    <value>Настоятельно рекомендуем</value>
-  </data>
-  <data name="GrayLightColorResource_Prompt" xml:space="preserve">
-    <value>Настоятельно рекомендуется</value>
-  </data>
-  <data name="GrayLightColorResource_Description" xml:space="preserve">
-    <value>Сплошной цвет</value>
-  </data>
-  <data name="BlueDarkColorResource" xml:space="preserve">
-    <value>Тёмно-синий (долгосрочная поддержка)</value>
-  </data>
-  <data name="BlueDarkColorResource_GroupName" xml:space="preserve">
-    <value>Сплошной цвет</value>
-  </data>
-  <data name="BlueDarkColorResource_Prompt" xml:space="preserve">
-    <value>Долгосрочная поддержка</value>
-  </data>
-  <data name="BlueDarkColorResource_Description" xml:space="preserve">
-    <value>Сплошной цвет</value>
-  </data>
-  <data name="BlueLightColorResource" xml:space="preserve">
-    <value>Светло-голубой (долгосрочная поддержка)</value>
-  </data>
-  <data name="BlueLightColorResource_GroupName" xml:space="preserve">
-    <value>Сплошной цвет</value>
-  </data>
-  <data name="BlueLightColorResource_Prompt" xml:space="preserve">
-    <value>Долгосрочная поддержка</value>
-  </data>
-  <data name="BlueLightColorResource_Description" xml:space="preserve">
-    <value>Сплошной цвет</value>
-  </data>
-  <data name="AccentLightColorResource" xml:space="preserve">
-    <value>Светлая тема (рекомендуется)</value>
-  </data>
-  <data name="AccentLightColorResource_GroupName" xml:space="preserve">
-    <value>Настоятельно рекомендуется</value>
-  </data>
-  <data name="AccentLightColorResource_Prompt" xml:space="preserve">
-    <value>Настоятельно рекомендуется</value>
-  </data>
-  <data name="AccentLightColorResource_Description" xml:space="preserve">
-    <value>Сплошной цвет</value>
-  </data>
-  <data name="AccentDarkColorResource" xml:space="preserve">
-    <value>Тёмная тема (долгосрочная поддержка)</value>
-  </data>
-  <data name="AccentDarkColorResource_GroupName" xml:space="preserve">
-    <value>Сплошной цвет</value>
-  </data>
-  <data name="AccentDarkColorResource_Prompt" xml:space="preserve">
-    <value>Долгосрочная поддержка</value>
-  </data>
-  <data name="AccentDarkColorResource_Description" xml:space="preserve">
-    <value>Сплошной цвет</value>
-  </data>
-  <data name="CopperColorResource" xml:space="preserve">
-    <value>Тёмно-медный (рекомендуется)</value>
-  </data>
-  <data name="CopperColorResource_GroupName" xml:space="preserve">
-    <value>Настоятельно рекомендуется</value>
-  </data>
-  <data name="CopperColorResource_Prompt" xml:space="preserve">
-    <value>Настоятельно рекомендуется</value>
-  </data>
-  <data name="CopperColorResource_Description" xml:space="preserve">
-    <value>Сплошной цвет</value>
-  </data>
-  <data name="VintageFilmColorResource" xml:space="preserve">
-    <value>Винтажный плёночный стиль (рекомендуется)</value>
-  </data>
-  <data name="VintageFilmColorResource_GroupName" xml:space="preserve">
-    <value>Мягкий ретро-стиль</value>
-  </data>
-  <data name="VintageFilmColorResource_Prompt" xml:space="preserve">
-    <value>Настоятельно рекомендуется</value>
-  </data>
-  <data name="VintageFilmColorResource_Description" xml:space="preserve">
-    <value>Тёплый выцветший тон, подходит для фото- и художественных приложений</value>
-  </data>
-  <data name="CyberpunkColorResource" xml:space="preserve">
-    <value>Киберпанк стиль</value>
-  </data>
-  <data name="CyberpunkColorResource_GroupName" xml:space="preserve">
-    <value>Тёмный технологичный стиль</value>
-  </data>
-  <data name="CyberpunkColorResource_Prompt" xml:space="preserve">
-    <value>Проверка</value>
-  </data>
-  <data name="CyberpunkColorResource_Description" xml:space="preserve">
-    <value>Неоновые контрастные цвета + тёмный фон, подходит для информационных панелей и приложений в технологичном стиле</value>
-  </data>
-  <data name="MineralColorResource" xml:space="preserve">
-    <value>Естественный минеральный стиль (долгосрочная поддержка)</value>
-  </data>
-  <data name="MineralColorResource_GroupName" xml:space="preserve">
-    <value>Мягкий винтажный стиль</value>
-  </data>
-  <data name="MineralColorResource_Prompt" xml:space="preserve">
-    <value>Долгосрочная поддержка</value>
-  </data>
-  <data name="MineralColorResource_Description" xml:space="preserve">
-    <value>Низконасыщенные землистые оттенки, мягкие и естественные, подходят для приложений в сфере экологии и здоровья</value>
-  </data>
-  <data name="FuturismColorResource" xml:space="preserve">
-    <value>Флуоресцентный стиль будущего</value>
-  </data>
-  <data name="FuturismColorResource_GroupName" xml:space="preserve">
-    <value>Тёмный технологичный стиль</value>
-  </data>
-  <data name="FuturismColorResource_Prompt" xml:space="preserve">
-    <value>Испытание</value>
-  </data>
-  <data name="FuturismColorResource_Description" xml:space="preserve">
-    <value>Высоконасыщенные флуоресцентные цвета + фон глубокого космоса, подходит для игр и трендовых приложений</value>
-  </data>
-  <data name="TechnologyBlueDarkColorResource" xml:space="preserve">
-    <value>Глубокий космический синий (рекомендуется)</value>
-  </data>
-  <data name="TechnologyBlueDarkColorResource_GroupName" xml:space="preserve">
-    <value>Настоятельно рекомендуется</value>
-  </data>
-  <data name="TechnologyBlueDarkColorResource_Prompt" xml:space="preserve">
-    <value>Настоятельно рекомендуется</value>
-  </data>
-  <data name="TechnologyBlueDarkColorResource_Description" xml:space="preserve">
-    <value>Сплошной цвет</value>
-  </data>
-  <data name="TechnologyPurpleColorResource" xml:space="preserve">
-    <value>Фиолетовый цвет Deep Space Technology</value>
-  </data>
-  <data name="TechnologyPurpleColorResource_GroupName" xml:space="preserve">
-    <value>Тёмный технологичный стиль</value>
-  </data>
-  <data name="TechnologyPurpleColorResource_Prompt" xml:space="preserve">
-    <value>Испытание</value>
-  </data>
-  <data name="TechnologyPurpleColorResource_Description" xml:space="preserve">
-    <value>Сплошной цвет</value>
-  </data>
-  <data name="FuturisticGreenDarkColorResource" xml:space="preserve">
-    <value>Футуристический зелёный</value>
-  </data>
-  <data name="FuturisticGreenDarkColorResource_GroupName" xml:space="preserve">
-    <value>Тёмный технологичный стиль</value>
-  </data>
-  <data name="FuturisticGreenDarkColorResource_Prompt" xml:space="preserve">
-    <value>Эксперимент</value>
-  </data>
-  <data name="FuturisticGreenDarkColorResource_Description" xml:space="preserve">
-    <value>Сплошной цвет</value>
-  </data>
-  <data name="AmberTerminalDarkColorResource" xml:space="preserve">
-    <value>Янтарный терминальный стиль</value>
-  </data>
-  <data name="AmberTerminalDarkColorResource_GroupName" xml:space="preserve">
-    <value>Технологичный тёмный стиль</value>
-  </data>
-  <data name="AmberTerminalDarkColorResource_Prompt" xml:space="preserve">
-    <value>Испытание</value>
-  </data>
-  <data name="AmberTerminalDarkColorResource_Description" xml:space="preserve">
-    <value>Сплошной цвет</value>
-  </data>
-  <data name="IndustrialDarkColorResource" xml:space="preserve">
-    <value>Тёмный индустриальный стиль</value>
-  </data>
-  <data name="IndustrialDarkColorResource_GroupName" xml:space="preserve">
-    <value>Промышленный стиль</value>
-  </data>
-  <data name="IndustrialDarkColorResource_Prompt" xml:space="preserve">
-    <value>испытание</value>
-  </data>
-  <data name="IndustrialDarkColorResource_Description" xml:space="preserve">
-    <value>Сплошной цвет</value>
-  </data>
-  <data name="AntDesignProColorResource" xml:space="preserve">
-    <value>Ant Design Pro</value>
-  </data>
-  <data name="AntDesignProColorResource_GroupName" xml:space="preserve">
-    <value>Веб-фронтенд стиль</value>
-  </data>
-  <data name="AntDesignProColorResource_Prompt" xml:space="preserve">
-    <value>Испытание</value>
-  </data>
-  <data name="AntDesignProColorResource_Description" xml:space="preserve">
-    <value>Сплошной цвет</value>
-  </data>
-  <data name="BootstrapColorResource" xml:space="preserve">
-    <value>Bootstrap</value>
-  </data>
-  <data name="BootstrapColorResource_GroupName" xml:space="preserve">
-    <value>Стиль фронтенда сайта</value>
-  </data>
-  <data name="BootstrapColorResource_Prompt" xml:space="preserve">
-    <value>Испытание</value>
-  </data>
-  <data name="BootstrapColorResource_Description" xml:space="preserve">
-    <value>Сплошной цвет</value>
-  </data>
-  <data name="LayUIColorResource" xml:space="preserve">
-    <value>LayUI</value>
-  </data>
-  <data name="LayUIColorResource_GroupName" xml:space="preserve">
-    <value>Веб-фронтенд стиль</value>
-  </data>
-  <data name="LayUIColorResource_Prompt" xml:space="preserve">
-    <value>Проверка</value>
-  </data>
-  <data name="LayUIColorResource_Description" xml:space="preserve">
-    <value>Сплошной цвет</value>
-  </data>
-  <data name="WebLightUIColorResource" xml:space="preserve">
-    <value>Веб-стиль фронтенда (рекомендуется)</value>
-  </data>
-  <data name="WebLightUIColorResource_GroupName" xml:space="preserve">
-    <value>Настоятельно рекомендуется</value>
-  </data>
-  <data name="WebLightUIColorResource_Prompt" xml:space="preserve">
-    <value>Настоятельно рекомендуется</value>
-  </data>
-  <data name="WebLightUIColorResource_Description" xml:space="preserve">
-    <value>Сплошной цвет</value>
-  </data>
-  <data name="WeUIColorResource" xml:space="preserve">
-    <value>WeUI</value>
-  </data>
-  <data name="WeUIColorResource_GroupName" xml:space="preserve">
-    <value>Стиль фронтенда сайта</value>
-  </data>
-  <data name="WeUIColorResource_Prompt" xml:space="preserve">
-    <value>Испытание</value>
-  </data>
-  <data name="WeUIColorResource_Description" xml:space="preserve">
-    <value>Сплошной цвет</value>
-  </data>
-  <data name="ColorUIGAColorResource" xml:space="preserve">
-    <value>ColorUI-GA</value>
-  </data>
-  <data name="ColorUIGAColorResource_GroupName" xml:space="preserve">
-    <value>Веб-фронтенд стиль</value>
-  </data>
-  <data name="ColorUIGAColorResource_Prompt" xml:space="preserve">
-    <value>Испытание</value>
-  </data>
-  <data name="ColorUIGAColorResource_Description" xml:space="preserve">
-    <value>Сплошной цвет</value>
-  </data>
-  <data name="FluentUIColorResource" xml:space="preserve">
-    <value>Fluent UI (Microsoft)</value>
-  </data>
-  <data name="FluentUIColorResource_GroupName" xml:space="preserve">
-    <value>Системная платформа</value>
-  </data>
-  <data name="FluentUIColorResource_Prompt" xml:space="preserve">
-    <value>Испытание</value>
-  </data>
-  <data name="FluentUIColorResource_Description" xml:space="preserve">
-    <value>Сплошной цвет</value>
-  </data>
-  <data name="MaterialDesignColorResource" xml:space="preserve">
-    <value>Материальный дизайн 3 (Google)</value>
-  </data>
-  <data name="MaterialDesignColorResource_GroupName" xml:space="preserve">
-    <value>Системная платформа</value>
-  </data>
-  <data name="MaterialDesignColorResource_Prompt" xml:space="preserve">
-    <value>Испытание</value>
-  </data>
-  <data name="MaterialDesignColorResource_Description" xml:space="preserve">
-    <value>Сплошной цвет</value>
-  </data>
-  <data name="AppleColorResource" xml:space="preserve">
-    <value>Apple (IOS)</value>
-  </data>
-  <data name="AppleColorResource_GroupName" xml:space="preserve">
-    <value>Системная платформа</value>
-  </data>
-  <data name="AppleColorResource_Prompt" xml:space="preserve">
-    <value>Эксперимент</value>
-  </data>
-  <data name="AppleColorResource_Description" xml:space="preserve">
-    <value>Сплошной цвет</value>
-  </data>
-  <data name="OracleDarkColorResource" xml:space="preserve">
-    <value>Оракул Тёмный</value>
-  </data>
-  <data name="OracleDarkColorResource_GroupName" xml:space="preserve">
-    <value>Сплошной цвет</value>
-  </data>
-  <data name="OracleDarkColorResource_Prompt" xml:space="preserve">
-    <value>Пробная версия</value>
-  </data>
-  <data name="OracleDarkColorResource_Description" xml:space="preserve">
-    <value>Сплошной цвет</value>
-  </data>
-  <data name="VikingDarkColorResource" xml:space="preserve">
-    <value>Викинг Тёмный</value>
-  </data>
-  <data name="VikingDarkColorResource_GroupName" xml:space="preserve">
-    <value>Сплошной цвет</value>
-  </data>
-  <data name="VikingDarkColorResource_Prompt" xml:space="preserve">
-    <value>Испытание</value>
-  </data>
-  <data name="VikingDarkColorResource_Description" xml:space="preserve">
-    <value>Сплошной цвет</value>
-  </data>
-  <data name="ChambrayDarkColorResource" xml:space="preserve">
-    <value>Шамбре тёмный</value>
-  </data>
-  <data name="ChambrayDarkColorResource_GroupName" xml:space="preserve">
-    <value>Сплошной цвет</value>
-  </data>
-  <data name="ChambrayDarkColorResource_Prompt" xml:space="preserve">
-    <value>Испытание</value>
-  </data>
-  <data name="ChambrayDarkColorResource_Description" xml:space="preserve">
-    <value>Сплошной цвет</value>
-  </data>
-  <data name="TechnologyCyanColorResource" xml:space="preserve">
-    <value>Электрический скелетный зверь тёмно-синий</value>
-  </data>
-  <data name="TechnologyCyanColorResource_GroupName" xml:space="preserve">
-    <value>Тёмный технологичный стиль</value>
-  </data>
-  <data name="TechnologyCyanColorResource_Prompt" xml:space="preserve">
-    <value>Проба</value>
-  </data>
-  <data name="TechnologyCyanColorResource_Description" xml:space="preserve">
-    <value>Глубокий и загадочный, словно ночное звёздное небо, побуждает к размышлениям.</value>
-  </data>
-  <data name="TechnologyIndigoColorResource" xml:space="preserve">
-    <value>Межзвёздный беспроводной индиго</value>
-  </data>
-  <data name="TechnologyIndigoColorResource_GroupName" xml:space="preserve">
-    <value>Тёмный технологичный стиль</value>
-  </data>
-  <data name="TechnologyIndigoColorResource_Prompt" xml:space="preserve">
-    <value>Проба</value>
-  </data>
-  <data name="TechnologyIndigoColorResource_Description" xml:space="preserve">
-    <value>Глубокий и необъятный, словно бескрайняя вселенная, наполненная неизвестностью и жаждой исследования.</value>
-  </data>
-  <data name="TechnologySOIORColorResource" xml:space="preserve">
-    <value>Весеннее пробуждение (рекомендуется)</value>
-  </data>
-  <data name="TechnologySOIORColorResource_GroupName" xml:space="preserve">
-    <value>Настоятельно рекомендуем</value>
-  </data>
-  <data name="TechnologySOIORColorResource_Prompt" xml:space="preserve">
-    <value>Настоятельно рекомендуем</value>
-  </data>
-  <data name="TechnologySOIORColorResource_Description" xml:space="preserve">
-    <value>Свежо и естественно, словно дыхание весны, наполнено жизнью и энергией</value>
-  </data>
-  <data name="TechnologyPinkColorResource" xml:space="preserve">
-    <value>Барби — розовый рассвет (долгосрочная поддержка)</value>
-  </data>
-  <data name="TechnologyPinkColorResource_GroupName" xml:space="preserve">
-    <value>Свежий природный стиль</value>
-  </data>
-  <data name="TechnologyPinkColorResource_Prompt" xml:space="preserve">
-    <value>Долгосрочная поддержка</value>
-  </data>
-  <data name="TechnologyPinkColorResource_Description" xml:space="preserve">
-    <value>Яркий и полный жизни, как первый луч солнца на рассвете, тёплый и полный надежды</value>
   </data>
 </root>

@@ -10,7 +10,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Windows;
 
 namespace H.Themes.Colors.Copper;
-[Display(Name = "深铜色", GroupName = "推荐主题", Description = "深铜色推荐主题", Order = 100, Prompt = "推荐")]
+[Display(Name = "深铜色", GroupName = "纯色主题", Description = "深铜色纯色主题", Order = 100, Prompt = "推荐")]
 public class CopperColorResource : ResxColorResourceBase
 {
     public CopperColorResource()

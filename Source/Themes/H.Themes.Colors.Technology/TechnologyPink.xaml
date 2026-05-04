@@ -1,7 +1,8 @@
-﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:local="clr-namespace:H.Themes.Colors.Technology"
-                    xmlns:po="http://schemas.microsoft.com/winfx/2006/xaml/presentation/options">
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:H.Themes.Colors.Technology"
+    xmlns:po="http://schemas.microsoft.com/winfx/2006/xaml/presentation/options">
 
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/H.Theme;component/Colors/Light.xaml" />
@@ -56,5 +57,5 @@
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.2, TypeInTargetAssembly={x:Type ColorKeys}}">#C2185B</Color>
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.1, TypeInTargetAssembly={x:Type ColorKeys}}">#D81B60</Color>
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Dark.0, TypeInTargetAssembly={x:Type ColorKeys}}">#E91E63</Color>-->
- 
+
 </ResourceDictionary>

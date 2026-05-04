@@ -26,7 +26,7 @@ namespace H.Themes.Colors.Copper;
 //<!-- 文字 -->
 //<Color x:Key="Vintage.Text">#4A3A2E</Color>
 //<Color x:Key="Vintage.TextLight">#8B7D6E</Color>
-[Display(Name = "复古胶片", GroupName = "推荐主题", Description = "复古胶片推荐主题", Order = 101, Prompt = "推荐")]
+[Display(Name = "复古胶片", GroupName = "纯色主题", Description = "复古胶片纯色主题", Order = 101, Prompt = "推荐")]
 public class VintageFilmColorResource : ResxColorResourceBase
 {
     public VintageFilmColorResource()

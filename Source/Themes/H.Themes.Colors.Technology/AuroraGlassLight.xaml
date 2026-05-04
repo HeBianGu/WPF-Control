@@ -1,5 +1,11 @@
-<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="clr-namespace:H.Themes.Colors.Technology" xmlns:po="http://schemas.microsoft.com/winfx/2006/xaml/presentation/options">
-    <ResourceDictionary.MergedDictionaries><ResourceDictionary Source="pack://application:,,,/H.Theme;component/Colors/Light.xaml" /></ResourceDictionary.MergedDictionaries>
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:H.Themes.Colors.Technology"
+    xmlns:po="http://schemas.microsoft.com/winfx/2006/xaml/presentation/options">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/H.Theme;component/Colors/Light.xaml" />
+    </ResourceDictionary.MergedDictionaries>
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.Accent, TypeInTargetAssembly={x:Type ColorKeys}}">#06B6D4</Color>
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.TextBackground, TypeInTargetAssembly={x:Type ColorKeys}}">#FAFEFF</Color>
     <Color x:Key="{ComponentResourceKey ResourceId=S.Color.RowIndex.BackGround, TypeInTargetAssembly={x:Type ColorKeys}}">#F0FDFA</Color>

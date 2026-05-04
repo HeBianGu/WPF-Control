@@ -49,6 +49,8 @@ namespace H.Test.Theme
             base.Configure(app);
             app.UseThemeOptions(x =>
             {
+                x.ColorResources.Add(new AccentDefaultLightColorResource());
+                x.ColorResources.Add(new AccentDefaultDarkColorResource());
                 x.ColorResources.Add(new PurpleDarkColorResource());
                 x.ColorResources.Add(new PurpleLightColorResource());
                 x.ColorResources.Add(new GrayDarkColorResource());
@@ -57,8 +59,6 @@ namespace H.Test.Theme
                 x.ColorResources.Add(new BlueLightColorResource());
                 x.ColorResources.Add(new AccentBlueLightColorResource());
                 x.ColorResources.Add(new AccentBlueDarkColorResource());
-                x.ColorResources.Add(new AccentDefaultLightColorResource());
-                x.ColorResources.Add(new AccentDefaultDarkColorResource());
                 x.ColorResources.Add(new CopperColorResource());
                 x.ColorResources.Add(new VintageFilmColorResource());
                 x.ColorResources.Add(new CyberpunkColorResource());
@@ -77,9 +77,6 @@ namespace H.Test.Theme
                 x.ColorResources.Add(new FluentUIColorResource());
                 x.ColorResources.Add(new MaterialDesignColorResource());
                 x.ColorResources.Add(new AppleColorResource());
-                x.ColorResources.Add(new OracleDarkColorResource());
-                x.ColorResources.Add(new VikingDarkColorResource());
-                x.ColorResources.Add(new ChambrayDarkColorResource());
 
 
                 x.ColorResources.Add(new MidnightNavyDarkColorResource());

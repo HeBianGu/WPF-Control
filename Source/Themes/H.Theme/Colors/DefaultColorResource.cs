@@ -7,7 +7,7 @@
 // Licensed under the MIT License (the "License")
 
 namespace H.Themes.Colors;
-[Display(Name = "系统（长期支持）", GroupName = "纯色", Description = "纯色", Order = 10, Prompt = "长期支持")]
+[Display(Name = "系统", GroupName = "基础主题", Description = "基础系统纯色资源主题", Order = 10, Prompt = "推荐")]
 public class DefaultColorResource : ResxColorResourceBase
 {
     public DefaultColorResource()
