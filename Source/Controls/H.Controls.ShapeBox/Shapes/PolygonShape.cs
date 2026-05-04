@@ -22,6 +22,11 @@ public class PolygonShape : PointsShapeBase
     {
 
     }
+
+    protected override double GetHandleViewSize()
+    {
+        return 100.0;
+    }
     public override void MatrixDrawing(IView view, DrawingContext drawingContext, Pen pen, Brush fill = null)
     {
         if (this.Points == null || this.Points.Count == 0)
