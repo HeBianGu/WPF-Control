@@ -6,31 +6,12 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
-using System.Windows.Input;
 
 namespace H.Controls.ShapeBox.State;
 
-public class SelectabPrviewShapeState : PreviewShapeStateBase
+public class DefaultPreviewShapeState : DeleteableSelectPrveiewShapeState
 {
-    public bool UseSelect { get; set; } = true;
-    public override void MouseDown(object sender, MouseButtonEventArgs e)
+    public DefaultPreviewShapeState(IDeletableShapes deletableShapes) : base(deletableShapes)
     {
-        base.MouseDown(sender, e);
-
-        if (this.View is ISelectShapeBox shapeBox && this.UseSelect)
-        {
-            Point point = e.GetPosition(this.GetElementView());
-            var mouses = this.GetShapes().OfType<ISelectableShape>();
-            var finds = mouses.Where(x => x.Hit(this.View, point));
-            if (finds.Any())
-                shapeBox.SelectShapes(finds.ToArray());
-            else
-                shapeBox.SelectShapes();
-        }
     }
-}
-
-public class DefaultPreviewShapeState : SelectabPrviewShapeState
-{
-
 }

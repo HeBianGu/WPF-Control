@@ -15,6 +15,10 @@ global using System.Windows;
 global using System.Windows.Media;
 global using System.Windows.Media.Imaging;
 global using System.Windows.Threading;
+using H.Attach;
+using H.Extensions.Mvvm.Commands;
+using H.Extensions.Mvvm.ViewModels.Base;
+using System.Windows.Input;
 
 namespace H.Controls.ShapeBox;
 public class ShapeBox : FrameworkElement, IShapeView, IImageView
@@ -465,5 +469,42 @@ public class ShapeBox : FrameworkElement, IShapeView, IImageView
         byte[] pixel = new byte[4];
         bitmap.CopyPixels(new Int32Rect(x, y, 1, 1), pixel, 4, 0);
         return Color.FromArgb(255, pixel[2], pixel[1], pixel[0]);
+    }
+
+    protected override void OnMouseUp(MouseButtonEventArgs e)
+    {
+        base.OnMouseUp(e);
+        if(e.ChangedButton != MouseButton.Right)
+            return;
+        Point point = e.GetPosition(this);
+        IShape shape = this.GetShapes()
+            .OfType<IMouseOverShape>()
+            .FirstOrDefault(x => x.Hit(this, point)) as IShape;
+        ContextMenu menu = new ContextMenu();
+        var commands = this.CreateContextMenuommands().Where(x => x.GroupName == "右键菜单").ToList();
+        foreach (var item in commands)
+        {
+            MenuItem menuItem = new MenuItem
+            {
+                Header = item.Name,
+                Command = item,
+                ToolTip = item.Description
+            };
+            Cattach.SetIcon(menuItem, item.Icon);
+            menu.Items.Add(menuItem);
+        }
+        menu.IsOpen = true;
+        e.Handled = true;
+    }
+
+    protected virtual IEnumerable<IDisplayCommand> CreateContextMenuommands()
+    {
+        if(this is ICommandsBindable bindable)
+        {
+            foreach (var item in bindable.Commands.OfType<IDisplayCommand>())
+            {
+                yield return item;
+            }
+        }
     }
 }

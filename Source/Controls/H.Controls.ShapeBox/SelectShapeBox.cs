@@ -7,11 +7,14 @@
 // Licensed under the MIT License (the "License")
 
 using H.Extensions.Common;
+using H.Extensions.Mvvm.Commands;
+using H.Extensions.Mvvm.ViewModels.Base;
 using System.Collections.Specialized;
 
 namespace H.Controls.ShapeBox;
 public interface ISelectShapeBox
 {
+    IReadOnlyCollection<ISelectableShape> SelectedShapes { get; }
     void SelectShapes(params ISelectableShape[] selectableShapes);
 }
 
@@ -156,6 +159,8 @@ public class SelectShapeBox : MouseOverShapeBox, ISelectShapeBox
         set { SetValue(SelectedShapeProperty, value); }
     }
 
+    IReadOnlyCollection<ISelectableShape> ISelectShapeBox.SelectedShapes => this.SelectedShapes;
+
     public static readonly DependencyProperty SelectedShapeProperty =
         DependencyProperty.Register("SelectedShape", typeof(ISelectableShape), typeof(SelectShapeBox), new FrameworkPropertyMetadata(default(ISelectableShape), (d, e) =>
         {
@@ -213,6 +218,21 @@ public class SelectShapeBox : MouseOverShapeBox, ISelectShapeBox
         foreach (var item in selectedShapes.Where(x => this.Shapes?.Contains(x) == true))
         {
             item.DrawSelect(this, drawingContext, this.SelectStroke, strokeThickness, this.SelectFill);
+        }
+    }
+
+    protected override IEnumerable<IDisplayCommand> CreateContextMenuommands()
+    {
+        foreach (var item in base.CreateContextMenuommands())
+        {
+            yield return item;
+        }
+        if (this.SelectedShape is ICommandsBindable bindable)
+        {
+            foreach (var item in bindable.Commands.OfType<IDisplayCommand>())
+            {
+                yield return item;
+            }
         }
     }
 }

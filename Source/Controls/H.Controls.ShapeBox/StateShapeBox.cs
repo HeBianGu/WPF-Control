@@ -7,6 +7,8 @@
 // Licensed under the MIT License (the "License")
 
 using H.Extensions.Common;
+using H.Extensions.Mvvm.Commands;
+using H.Extensions.Mvvm.ViewModels.Base;
 using System.Windows.Input;
 
 namespace H.Controls.ShapeBox;
@@ -194,6 +196,21 @@ public class StateShapeBox : SelectShapeBox, IStateShapeView
                 stateShape.DrawState(this, drawingContext, this.StateStroke, strokeThickness, this.StateFill);
             else
                 shape.Draw(this, drawingContext, this.StateStroke, strokeThickness, this.StateFill);
+        }
+    }
+
+    protected override IEnumerable<IDisplayCommand> CreateContextMenuommands()
+    {
+        foreach (var item in base.CreateContextMenuommands())
+        {
+            yield return item;
+        }
+        if (this.ViewState is ICommandsBindable bindable)
+        {
+            foreach (var item in bindable.Commands.OfType<IDisplayCommand>())
+            {
+                yield return item;
+            }
         }
     }
 }

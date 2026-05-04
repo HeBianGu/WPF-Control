@@ -7,6 +7,7 @@
 // Licensed under the MIT License (the "License")
 
 using H.Controls.ShapeBox.Shapes.Handles;
+using H.Extensions.Mvvm.Commands;
 
 namespace H.Controls.ShapeBox.State.Adds.Base;
 
@@ -33,11 +34,38 @@ public abstract class AddShapeState<T> : ShapeState<T> where T : IShape
         this.ClearStateShape();
     }
 
+
+
     public virtual void Cancel()
     {
         this.Clear();
         this.ClearStateShape();
     }
+
+    //protected virtual bool CanSumit()
+    //{
+    //    return true;
+    //}
+
+    //public virtual bool CanCancel()
+    //{
+    //    return true;
+    //}
+
+
+    //[Icon(FontIcons.Accept)]
+    //[Display(Name = "提交", GroupName = "右键菜单", Description = "提交当前操作")]
+    //public DisplayCommand SumitCommand => new DisplayCommand(x =>
+    //{
+    //    this.Sumit();
+    //}, x => this.CanSumit());
+
+    //[Icon(FontIcons.Back)]
+    //[Display(Name = "取消", GroupName = "右键菜单", Description = "取消当前操作")]
+    //public DisplayCommand CancelCommand => new DisplayCommand(x =>
+    //{
+    //    this.Cancel();
+    //}, x => this.CanCancel());
 
     protected override void Clear()
     {
@@ -72,7 +100,7 @@ public abstract class AddShapeState<T> : ShapeState<T> where T : IShape
         this.Shapes.DeleteShapes(deleteHandle.Owner);
     }
 
-    protected virtual IEnumerable<IShape> GetShapes()
+    protected override IEnumerable<IShape> GetShapes()
     {
         if (this._shapes == null)
             return Enumerable.Empty<IShape>();
