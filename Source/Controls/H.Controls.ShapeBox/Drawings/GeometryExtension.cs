@@ -26,7 +26,7 @@ public static class GeometryExtension
         return streamGeom;
     }
 
-    public static Rect ToBoundingBox(this IEnumerable<Point> points)
+    public static Rect GetBoundingBox(this IEnumerable<Point> points)
     {
         return points.ToGeometry().Bounds;
     }

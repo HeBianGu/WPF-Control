@@ -7,7 +7,8 @@
 // Licensed under the MIT License (the "License")
 
 namespace H.Controls.ShapeBox.Shapes.Base;
-public interface IShape
+
+public interface IBoundingBoxShape : IShape
 {
-    void Draw(IView view, DrawingContext drawingContext, Brush stroke, double strokeThickness = 1, Brush fill = null);
+    Rect BoundingBox { get; }
 }

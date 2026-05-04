@@ -26,7 +26,7 @@ public abstract class HandleShapeBase : SelectableShapeBase, IHandleShape
 
     public override void MatrixDrawing(IView view, DrawingContext dc, Pen pen, Brush fill = null)
     {
-        if (this.UseHandle)
+        if (this.CanHandle(view))
             this.DrawHandle(view, dc, pen, fill);
     }
     public virtual void DrawHandle(IView view, DrawingContext drawingContext, Pen pen, Brush fill = null)
@@ -36,6 +36,24 @@ public abstract class HandleShapeBase : SelectableShapeBase, IHandleShape
             item.Draw(view, drawingContext, pen, fill);
         }
     }
+    protected virtual bool CanHandle(IView view)
+    {
+        if (!this.UseHandle)
+            return false;
+        if (this is IBoundingBoxShape boundingBox)
+        {
+            if (boundingBox.BoundingBox.Width.ToView(view) < this.GetHandleViewSize() 
+                && boundingBox.BoundingBox.Height.ToView(view) < this.GetHandleViewSize())
+                return false;
+        }
+        return true;
+    }
+
+    protected virtual double GetHandleViewSize()
+    {
+        return 50;
+    }
+
 
     //public List<IHandle> Handles { get; set; }
 
@@ -46,9 +64,9 @@ public abstract class HandleShapeBase : SelectableShapeBase, IHandleShape
 
     public virtual IHandle HitIHandle(IView view, Point position)
     {
-        position = this.GetInvertMatrix().Transform(position);
-        if (this.UseHandle == false)
+        if (this.CanHandle(view) == false)
             return null;
+        position = this.GetInvertMatrix().Transform(position);
         foreach (var handle in this.CreateHandles())
         {
             if (handle.HitTestPoint(view, position))

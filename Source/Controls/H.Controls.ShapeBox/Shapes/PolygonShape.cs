@@ -6,6 +6,9 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
+using H.Controls.ShapeBox.Shapes.Handles;
+using H.Extensions.Common;
+using System.Windows.Input;
 using System.Windows.Media;
 
 namespace H.Controls.ShapeBox.Shapes;
@@ -49,5 +52,23 @@ public class PolygonShape : PointsShapeBase
             drawingContext.DrawPloygon(null, new SolidColorBrush(colorBrush.Color) { Opacity = 0.2 }, ps);
         else
             drawingContext.DrawPloygon(null, fill, ps);
+    }
+
+    protected override IEnumerable<IHandle> CreateHandles()
+    {
+        yield return new ActionCircleHandle(x =>
+        {
+            var center = this.Points.GetBoundingBox().GetCenter();
+            for (var i = 0; i < this.Points.Count; i++)
+            {
+                Vector vector = this.Points[i] - center;
+                this.Points[i] = x + vector;
+            }
+        }, this.Points.GetBoundingBox().GetCenter(), this);
+
+        for (var i = 0; i < this.Points.Count; i++)
+        {
+            yield return new ActionHandle(x => this.Points[i] = x, this.Points[i], this) { Cursor = Cursors.ScrollAll };
+        }
     }
 }
