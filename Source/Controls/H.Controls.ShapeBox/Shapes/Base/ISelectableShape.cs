@@ -7,7 +7,7 @@
 // Licensed under the MIT License (the "License")
 
 namespace H.Controls.ShapeBox.Shapes.Base;
-public interface ISelectableShape : IShape
+public interface ISelectableShape : IHitableShape
 {
     void DrawSelect(IView view, DrawingContext drawingContext, Brush stroke, double strokeThickness = 1, Brush fill = null);
 }

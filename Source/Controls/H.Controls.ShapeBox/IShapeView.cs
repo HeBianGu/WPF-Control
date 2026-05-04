@@ -11,4 +11,6 @@ namespace H.Controls.ShapeBox;
 public interface IShapeView : IView
 {
     void DrawShapes();
+
+    IEnumerable<IShape> GetShapes();
 }

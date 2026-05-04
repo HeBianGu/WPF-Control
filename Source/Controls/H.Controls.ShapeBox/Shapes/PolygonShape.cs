@@ -76,4 +76,10 @@ public class PolygonShape : PointsShapeBase
             yield return new ActionHandle(x => this.Points[i] = x, this.Points[i], this) { Cursor = Cursors.ScrollAll };
         }
     }
+
+    public override bool Hit(IView view, Point point)
+    {
+        double l = this.GetStrokeThickness(2.0, view);
+        return point.DistanceToPolygon(this.Points) < l / view.Scale;
+    }
 }

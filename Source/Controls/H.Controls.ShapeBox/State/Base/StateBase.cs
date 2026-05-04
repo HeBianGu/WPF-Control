@@ -85,6 +85,15 @@ public abstract class StateBase : DisplayBindableBase, IViewState
         yield break;
     }
 
+    protected virtual IEnumerable<IShape> GetShapes()
+    {
+        if(this.View is IShapeView shapeView)
+            foreach (var item in shapeView.GetShapes())
+            {
+                yield return item;
+            }
+    }
+
     private Cursor _cursor;
     public virtual Cursor Cursor
     {

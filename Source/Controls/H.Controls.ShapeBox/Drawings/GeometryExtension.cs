@@ -291,6 +291,46 @@ public static class GeometryExtension
         return best2 < double.PositiveInfinity ? Math.Sqrt(best2) : double.PositiveInfinity;
     }
 
+    public static double DistanceToPolygon(this Point point, IEnumerable<Point> points)
+    {
+        if (points is null) return double.PositiveInfinity;
+
+        IReadOnlyList<Point> list = points as IReadOnlyList<Point> ?? points.ToList();
+        if (list.Count == 0) return double.PositiveInfinity;
+        if (list.Count == 1) return point.DistanceToPoints(list);
+        if (list.Count == 2) return point.DistanceToSegment(list[0], list[1]);
+
+        double best = double.PositiveInfinity;
+        for (int i = 0; i < list.Count; i++)
+        {
+            Point start = list[i];
+            Point end = list[(i + 1) % list.Count];
+            double distance = point.DistanceToSegment(start, end);
+            if (distance < best) best = distance;
+        }
+
+        return best;
+
+    }
+
+    public static double DistanceToPolyLine(this Point point, IEnumerable<Point> points)
+    {
+        if (points is null) return double.PositiveInfinity;
+
+        IReadOnlyList<Point> list = points as IReadOnlyList<Point> ?? points.ToList();
+        if (list.Count == 0) return double.PositiveInfinity;
+        if (list.Count == 1) return point.DistanceToPoints(list);
+
+        double best = double.PositiveInfinity;
+        for (int i = 0; i < list.Count - 1; i++)
+        {
+            double distance = point.DistanceToSegment(list[i], list[i + 1]);
+            if (distance < best) best = distance;
+        }
+
+        return best;
+    }
+
     /// <summary>
     /// 尝试获取点在一组点中的最近点。
     /// 返回值：是否找到（集合非空）；输出最近点、索引与距离。
