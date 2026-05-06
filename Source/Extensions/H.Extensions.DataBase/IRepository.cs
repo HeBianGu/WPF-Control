@@ -33,6 +33,8 @@ public interface IRepository<TEntity, TPrimaryKey> : IRepository where TEntity :
     int Update(TEntity entity, bool autoSave = true);
     Task<int> InsertOrUpdateAsync(TEntity entity, bool autoSave = true);
     Task<int> DeleteAsync(TEntity entity, bool autoSave = true);
+
+    int DeleteRange(TEntity[] entitys, bool autoSave = true);
     int Delete(TEntity entity, bool autoSave = true);
     Task<int> ClearAsync(bool autoSave = true);
     int Clear(bool autoSave = true);

@@ -309,7 +309,15 @@ namespace H.DataBases.Share
 
             if (autoSave)
                 return _dbContext.SaveChanges();
+            return -1;
+        }
 
+        public int DeleteRange(TEntity[] entitys, bool autoSave = true)
+        {
+            _dbContext.Set<TEntity>().RemoveRange(entitys);
+
+            if (autoSave)
+                return _dbContext.SaveChanges();
             return -1;
         }
 

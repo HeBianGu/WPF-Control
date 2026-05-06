@@ -562,12 +562,12 @@ namespace H.Extensions.DataBase.Repository
                 return;
 
             List<TEntity> checks = this.Collection.Where(k => k.IsSelected).Select(x => x.Model)?.ToList();
-            await this.DeleteAll(checks);
+            this.DeleteAll(checks);
         }
 
-        protected async Task DeleteAll(IEnumerable<TEntity> entities)
+        protected void DeleteAll(IEnumerable<TEntity> entities)
         {
-            int r = this.Repository == null ? 1 : await this.Repository.DeleteAsync(x => entities.Contains(x));
+            int r = this.Repository == null ? 1 : this.Repository.DeleteRange(entities.ToArray());
             if (r > 0)
             {
                 //IocMessage.Snack?.ShowInfo($"删除成功,共计{entities.Count()}条");
