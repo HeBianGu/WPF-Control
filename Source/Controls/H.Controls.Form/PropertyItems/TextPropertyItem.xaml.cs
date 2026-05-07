@@ -6,6 +6,8 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
+using System.Windows.Data;
+
 namespace H.Controls.Form.PropertyItems;
 
 public class TextPropertyItem : ObjectPropertyItem<string>
@@ -57,6 +59,9 @@ public class TextPropertyItem : ObjectPropertyItem<string>
             return vc.Convert(value)?.ToString();
         if (IsTypeConverter(this.PropertyInfo))
             return TypeConverterToString(value);
+        var format = this.PropertyInfo.GetCustomAttribute<DisplayFormatAttribute>();
+        if (!string.IsNullOrWhiteSpace(format?.DataFormatString))
+            return string.Format(format.DataFormatString, value);
         return (value?.ToString());
     }
 

@@ -107,7 +107,7 @@ public class ROIShapeBox : ShapeBox
     }
 
     public static readonly DependencyProperty ROIStrokeThicknessProperty =
-        DependencyProperty.Register("ROIStrokeThickness", typeof(double), typeof(ROIShapeBox), new FrameworkPropertyMetadata(1.0, (d, e) =>
+        DependencyProperty.Register("ROIStrokeThickness", typeof(double), typeof(ROIShapeBox), new FrameworkPropertyMetadata(4.0, (d, e) =>
         {
             ROIShapeBox control = d as ROIShapeBox;
 
@@ -214,13 +214,20 @@ public class ROIShapeBox : ShapeBox
         return point;
     }
 
+    protected override void OnScaleChanged()
+    {
+        base.OnScaleChanged();
+        if (this.ROIStrokeThickness > 0)
+            this.DrawROI();
+    }
+
     public void DrawROI()
     {
         using var dc = this._ROIShapeDrawingVisual.RenderOpen();
         if (this.UseROI == false || this.ROI == default || this.ROI.IsEmpty)
             return;
         var roi = new Rect(0, 0, this.ROI.Width, this.ROI.Height);
-        var pen = this.ROIStroke.ToPen(x => x.Thickness = this.ROIStrokeThickness);
+        var pen = this.ROIStroke.ToPen(x => x.Thickness = this.ROIStrokeThickness.ToGeo(this));
         if (this.UseBackground)
         {
             var boundingBox = new Rect(-this.ROI.X, -this.ROI.Y, this.GetImagePixelRenderWidth(), this.GetImagePixelRenderHeight());
@@ -235,11 +242,12 @@ public class ROIShapeBox : ShapeBox
     private void DrawROIStroke(DrawingContext dc, Rect roi, double thickness)
     {
         var blackPen = new Pen(Brushes.White, thickness);
-        blackPen.DashStyle = new DashStyle(new double[] { 4, 4 }, 0);
+        var v = 4.0;
+        blackPen.DashStyle = new DashStyle(new double[] { v, v }, 0);
         blackPen.Freeze();
 
         var whitePen = new Pen(Brushes.Black, thickness);
-        whitePen.DashStyle = new DashStyle(new double[] { 4, 4 }, 4);
+        whitePen.DashStyle = new DashStyle(new double[] { v, v }, v);
         whitePen.Freeze();
 
         dc.DrawRoundedRectangle(null, blackPen, roi, thickness, thickness);

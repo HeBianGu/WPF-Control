@@ -15,10 +15,14 @@ public static class ViewExtension
 {
     public static double ToView(this double value, IView view)
     {
+        if (double.IsNaN(view.Scale))
+            return value;
         return value * view.Scale;
     }
     public static double ToGeo(this double value, IView view)
     {
+        if (double.IsNaN(view.Scale))
+            return value;
         return value / view.Scale;
     }
 

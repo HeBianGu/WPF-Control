@@ -33,7 +33,12 @@ public static class GeometryExtension
 
     public static bool IsZoreOrEmpty(this Rect rect)
     {
-        return rect.IsEmpty || rect.Size.IsEmpty || rect.Height == 0 || rect.Width == 0;
+        return rect.IsEmpty || rect.Size.IsZoreOrEmpty() || rect.Height == 0 || rect.Width == 0;
+    }
+
+    public static bool IsZoreOrEmpty(this Size size)
+    {
+        return size.IsEmpty || size.Height == 0 || size.Width == 0;
     }
 
     /// <summary>

@@ -90,6 +90,7 @@
         <Setter Property="ItemContainerStyle">
             <Setter.Value>
                 <Style TargetType="ContentPresenter">
+                    <Setter Property="Margin" Value="{Binding RelativeSource={RelativeSource AncestorType=ItemsControl}, Path=(Cattach.ItemMargin)}" />
                     <Setter Property="ContentTemplate">
                         <Setter.Value>
                             <DataTemplate>
@@ -130,7 +131,7 @@
                                             CornerRadius="0"
                                             Opacity="0.8" />
                                     </Button>
-                                    <ContentPresenter Grid.Column="2" Content="{Binding}" />
+                                    <ContentPresenter Margin="0 2" Grid.Column="2" Content="{Binding}" />
                                     <TextBlock Grid.Column="3" Style="{StaticResource S.TextBlock.Error}" />
                                 </Grid>
                                 <DataTemplate.Triggers>
