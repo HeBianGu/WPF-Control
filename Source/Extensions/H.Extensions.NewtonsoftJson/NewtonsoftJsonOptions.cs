@@ -8,6 +8,7 @@
 
 using H.Extensions.NewtonsoftJson.Jsonable;
 using H.Extensions.Setting;
+using H.Services.Logger;
 using H.Services.Setting;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
@@ -45,6 +46,16 @@ public class NewtonsoftJsonOptions : IocOptionInstance<NewtonsoftJsonOptions>, I
                 new EnumConverter(),
                 new DateTimeConverter(),
                 new JsonableJsonConverter() },//这部分序列化是会逻辑有问题用FilterBox测试
+            Error = (sender, args) =>
+            {
+                // 记录错误
+                IocLog.Error($"Json兼容错误: {args.ErrorContext.Path}");
+                IocLog.Error(args.ErrorContext.Error.Message);
+
+                // 标记为已处理，避免反序列化中断
+                args.ErrorContext.Handled = true;
+            },
+            //SerializationBinder = new CompatibleSerializationBinder(),
         };
         return setting;
     }
@@ -55,7 +66,27 @@ public class NewtonsoftJsonOptions : IocOptionInstance<NewtonsoftJsonOptions>, I
         setting.PreserveReferencesHandling = PreserveReferencesHandling.Objects;
         setting.ReferenceLoopHandling = ReferenceLoopHandling.Serialize;
         setting.TypeNameHandling = TypeNameHandling.All;
+
         return setting;
+    }
+}
+
+//如果旧 JSON 里有 $type，用 ISerializationBinder 做旧类型到新类型的映射；如果只是属性改名
+
+public sealed class CompatibleSerializationBinder : ISerializationBinder
+{
+    public Type BindToType(string assemblyName, string typeName)
+    {
+        //if (typeName == "Old.Namespace.OldClass")
+        //    return typeof(New.Namespace.NewClass);
+
+        return Type.GetType($"{typeName}, {assemblyName}");
+    }
+
+    public void BindToName(Type serializedType, out string assemblyName, out string typeName)
+    {
+        assemblyName = serializedType.Assembly.GetName().Name;
+        typeName = serializedType.FullName;
     }
 }
 
