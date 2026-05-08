@@ -31,7 +31,7 @@ namespace H.Test.RepositoryPresenter
             services.AddWindowMessage();
             services.AddDbContextBySetting<MyDataContext>();
             services.AddSingleton<IStringRepository<mbc_dv_image>, DbContextRepository<MyDataContext, mbc_dv_image>>();
-            services.AddSingleton<IRepositoryBindable<mbc_dv_image>, RepositoryBindable<mbc_dv_image>>();
+            services.AddSingleton<IObservableSourceRepositoryBindable<mbc_dv_image>, ObservableSourceRepositoryBindable<mbc_dv_image>>();
 
             services.AddFormMessageService();
         }

@@ -12,7 +12,7 @@ using System.IO;
 
 namespace H.Extensions.DataBase.Repository
 {
-    public class TreeRepositoryBindable<TEntity> : RepositoryBindableBase<TreeNodeBase<TEntity>, TEntity>, ITreeRepositoryBindable<TEntity> where TEntity : StringEntityBase, ITreePath, new()
+    public class TreeObservableSourceRepositoryBindable<TEntity> : ObservableSourceRepositoryBindableBase<TreeNodeBase<TEntity>, TEntity>, ITreeObservableSourceRepositoryBindable<TEntity> where TEntity : StringEntityBase, ITreePath, new()
     {
         private TreeNodeBase<TEntity> _selectedTreeItem;
         public TreeNodeBase<TEntity> SelectedTreeItem
@@ -27,7 +27,7 @@ namespace H.Extensions.DataBase.Repository
 
         public override void RefreshData(params string[] includes)
         {
-            this.Collection.SelectedItem = null;
+            this.ObservableSource.SelectedItem = null;
             this.IsBusy = true;
             try
             {
@@ -52,7 +52,7 @@ namespace H.Extensions.DataBase.Repository
                 {
                     builder.Invoke(root);
                 }
-                this.Collection.Load(rootVms);
+                this.ObservableSource.Load(rootVms);
             }
             catch (Exception ex)
             {
@@ -72,7 +72,7 @@ namespace H.Extensions.DataBase.Repository
                 foreach (TEntity m in ms)
                 {
                     if (this.SelectedTreeItem == null)
-                        this.Collection.Add(new TreeNodeBase<TEntity>(m));
+                        this.ObservableSource.Add(new TreeNodeBase<TEntity>(m));
                     else
                         this.SelectedTreeItem.Nodes.Add(new TreeNodeBase<TEntity>(m));
                 }
@@ -85,7 +85,7 @@ namespace H.Extensions.DataBase.Repository
                 foreach (TEntity m in ms)
                 {
                     if (this.SelectedTreeItem == null)
-                        this.Collection.Add(new TreeNodeBase<TEntity>(m));
+                        this.ObservableSource.Add(new TreeNodeBase<TEntity>(m));
                     else
                         this.SelectedTreeItem.Nodes.Add(new TreeNodeBase<TEntity>(m));
                 }
@@ -116,18 +116,18 @@ namespace H.Extensions.DataBase.Repository
                 await this.Repository.DeleteAsync(item.Model);
             }
             if (entity.Parent == null)
-                this.Collection.Remove(entity);
+                this.ObservableSource.Remove(entity);
             else
                 entity.Parent.Nodes.Remove(entity);
             IocMessage.ShowSnackInfo(Resources.Common_OperationSucceeded);
-            this.SelectedTreeItem = this.Collection.FirstOrDefault(x => true);
+            this.SelectedTreeItem = this.ObservableSource.FirstOrDefault(x => true);
             this.OnCollectionChanged(obj);
         }
 
         public override async Task Clear(object obj)
         {
             await base.Clear(obj);
-            this.SelectedTreeItem = this.Collection.FirstOrDefault(x => true);
+            this.SelectedTreeItem = this.ObservableSource.FirstOrDefault(x => true);
         }
 
         public override async Task Add(object obj)

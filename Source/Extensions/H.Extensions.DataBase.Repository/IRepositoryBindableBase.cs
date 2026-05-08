@@ -12,6 +12,7 @@ namespace H.Extensions.DataBase.Repository
 {
     public interface IRepositoryBindableBase<TEntity> : IRepositoryBindable where TEntity : StringEntityBase, new()
     {
+        IStringRepository<TEntity> Repository { get; }
         RelayCommand LoadedCommand { get; }
         IDisplayCommand AddCommand { get; }
         bool? CheckedAll { get; set; }
@@ -20,7 +21,6 @@ namespace H.Extensions.DataBase.Repository
         IDisplayCommand DeleteCheckedCommand { get; }
         IDisplayCommand DeleteCommand { get; }
         IDisplayCommand EditCommand { get; }
-        //RelayCommand EditTransactionCommand { get; }
         IDisplayCommand ExportCommand { get; }
         bool IsBusy { get; set; }
         bool UseMessage { get; set; }
@@ -28,7 +28,6 @@ namespace H.Extensions.DataBase.Repository
         Type ModelType { get; }
         IDisplayCommand NextCommand { get; }
         IDisplayCommand PreviousCommand { get; }
-        IStringRepository<TEntity> Repository { get; }
         IDisplayCommand SaveCommand { get; }
         IDisplayCommand ViewCommand { get; }
         IDisplayCommand GridSetCommand { get; }

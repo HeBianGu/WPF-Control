@@ -90,12 +90,12 @@
                          <Run Text="：" />
                         <Run Text="{Binding RelativeSource={RelativeSource AncestorType=DataGrid}, Path=ItemsSource.Count, Mode=OneWay}" />
                         <Run Text="/" />
-                        <Run Text="{Binding Collection.Cache.Count, Mode=OneWay}" />
+                        <Run Text="{Binding ObservableSource.Cache.Count, Mode=OneWay}" />
                     </TextBlock>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
-        <Setter Property="ItemsSource" Value="{Binding Collection.Source}" />
-        <Setter Property="SelectedItem" Value="{Binding Collection.SelectedItem}" />
+        <Setter Property="ItemsSource" Value="{Binding ObservableSource.Source}" />
+        <Setter Property="SelectedItem" Value="{Binding ObservableSource.SelectedItem}" />
     </Style>
 </ResourceDictionary>

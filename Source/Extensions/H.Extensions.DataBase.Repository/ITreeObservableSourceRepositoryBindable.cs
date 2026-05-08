@@ -11,9 +11,9 @@ using H.Extensions.Mvvm.ViewModels.Tree;
 
 namespace H.Extensions.DataBase.Repository
 {
-    public interface ITreeRepositoryBindable<TEntity> : IRepositoryBindableBase<TEntity> where TEntity : StringEntityBase, new()
+    public interface ITreeObservableSourceRepositoryBindable<TEntity> : IRepositoryBindableBase<TEntity> where TEntity : StringEntityBase, new()
     {
-        IObservableSource<TreeNodeBase<TEntity>> Collection { get; set; }
+        IObservableSource<TreeNodeBase<TEntity>> ObservableSource { get; set; }
         TreeNodeBase<TEntity> SelectedTreeItem { get; set; }
     }
 }

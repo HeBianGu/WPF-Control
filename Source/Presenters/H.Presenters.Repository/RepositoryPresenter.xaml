@@ -53,7 +53,7 @@
                                  Margin="5,0" />
                     </BulletDecorator>
                 </DockPanel>
-                <DataGrid ItemsSource="{Binding Collection.Source}" SelectedItem="{Binding Collection.SelectedItem}">
+                <DataGrid ItemsSource="{Binding ObservableSource.Source}" SelectedItem="{Binding ObservableSource.SelectedItem}">
                     <Behaviors:Interaction.Behaviors>
                         <h:DataGridAutoColumnBehavior BindingPath="Model.{0}"
                                                       DataGridLength="*"

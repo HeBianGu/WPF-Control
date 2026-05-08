@@ -6,11 +6,9 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
-using H.Extensions.ObservableSource;
-
 namespace H.Extensions.DataBase.Repository
 {
-    public class RepositoryBindable<TViewModel, TEntity> : RepositoryBindableBase<TViewModel, TEntity>, IRepositoryBindable<TViewModel, TEntity> where TEntity : StringEntityBase, new() where TViewModel : SelectBindable<TEntity>
+    public class ObservableSourceRepositoryBindable<TViewModel, TEntity> : ObservableSourceRepositoryBindableBase<TViewModel, TEntity>, IObservableSourceRepositoryBindable<TViewModel, TEntity> where TEntity : StringEntityBase, new() where TViewModel : SelectBindable<TEntity>
     {
         protected virtual TViewModel CreateSelectBindable(TEntity entity)
         {
@@ -23,7 +21,7 @@ namespace H.Extensions.DataBase.Repository
             {
                 foreach (TEntity m in ms)
                 {
-                    this.Collection.Add(this.CreateSelectBindable(m));
+                    this.ObservableSource.Add(this.CreateSelectBindable(m));
                     if (this.UseOperationLog)
                         Ioc<IOperationService>.Instance?.Log<TEntity>($"新增", m.ID, OperationType.Add);
                 }
@@ -34,7 +32,7 @@ namespace H.Extensions.DataBase.Repository
             int r = await this.Repository?.InsertRangeAsync(ms);
             if (r > 0)
             {
-                this.Collection.Add(ms.Select(x => this.CreateSelectBindable(x)).ToArray());
+                this.ObservableSource.Add(ms.Select(x => this.CreateSelectBindable(x)).ToArray());
                 if (this.UseMessage)
                     IocMessage.ShowSnackInfo(H.Globalization.Properties.Resources.Common_OperationSucceeded);
             }
@@ -56,7 +54,7 @@ namespace H.Extensions.DataBase.Repository
             IEnumerable<TViewModel> collection = includes == null
                 ? this.Repository.GetList().Where(x => this.Where(x)).Select(x => this.CreateSelectBindable(x))
                 : this.Repository.GetList(includes).Where(x => this.Where(x)).Select(x => this.CreateSelectBindable(x));
-            this.Collection.Load(collection);
+            this.ObservableSource.Load(collection);
         }
         protected virtual bool Where(TEntity entity)
         {
@@ -64,17 +62,5 @@ namespace H.Extensions.DataBase.Repository
         }
 
 
-    }
-
-    /// <summary>
-    /// 直接对接模型的仓储基类
-    /// </summary>
-    /// <typeparam name="TEntity"></typeparam>
-    public class RepositoryBindable<TEntity> : RepositoryBindable<SelectBindable<TEntity>, TEntity>, IRepositoryBindable<TEntity> where TEntity : StringEntityBase, new()
-    {
-        protected override SelectBindable<TEntity> CreateSelectBindable(TEntity entity)
-        {
-            return new SelectBindable<TEntity>(entity);
-        }
     }
 }

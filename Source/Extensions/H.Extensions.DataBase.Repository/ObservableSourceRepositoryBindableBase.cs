@@ -27,8 +27,21 @@ using H.Services.Common;
 namespace H.Extensions.DataBase.Repository
 {
 
-    public abstract class RepositoryBindableBase<TViewModel, TEntity> : RepositoryBindableBase, IRepositoryBindableBase<TEntity> where TEntity : StringEntityBase, new() where TViewModel : SelectBindable<TEntity>
+    public abstract class ObservableSourceRepositoryBindableBase<TViewModel, TEntity> : RepositoryBindableBase, IObservableSourceRepositoryBindable<TViewModel, TEntity> where TEntity : StringEntityBase, new() where TViewModel : SelectBindable<TEntity>
     {
+        public IStringRepository<TEntity> Repository => DbIoc.GetService<IStringRepository<TEntity>>();
+
+        private IObservableSource<TViewModel> _ObservableSource = new ObservableSource<TViewModel>();
+        public IObservableSource<TViewModel> ObservableSource
+        {
+            get { return _ObservableSource; }
+            set
+            {
+                _ObservableSource = value;
+                RaisePropertyChanged();
+            }
+        }
+
         protected virtual IEnumerable<string> GetIncludes()
         {
             return null;
@@ -67,7 +80,7 @@ namespace H.Extensions.DataBase.Repository
                 RaisePropertyChanged();
                 if (value.HasValue)
                 {
-                    this.Collection.Foreach(K => K.IsSelected = value.Value);
+                    this.ObservableSource.Foreach(K => K.IsSelected = value.Value);
                     this.UpdateCheckedAll();
                 }
             }
@@ -75,12 +88,12 @@ namespace H.Extensions.DataBase.Repository
 
         private void UpdateCheckedAll()
         {
-            var all = this.Collection.FilterSource.All(x => x.IsSelected);
+            var all = this.ObservableSource.FilterSource.All(x => x.IsSelected);
             if (all)
                 _checkedAll = all;
             else
             {
-                var any = this.Collection.FilterSource.Any(x => x.IsSelected);
+                var any = this.ObservableSource.FilterSource.Any(x => x.IsSelected);
                 if (any)
                     _checkedAll = null;
                 else
@@ -120,20 +133,6 @@ namespace H.Extensions.DataBase.Repository
             set
             {
                 _useoperationLog = value;
-                RaisePropertyChanged();
-            }
-        }
-
-        public IStringRepository<TEntity> Repository => DbIoc.GetService<IStringRepository<TEntity>>();
-        //public IStringRepository<TEntity> Repository => ServiceRegistry.Instance.GetAllAssignableFrom<IStringRepository<TEntity>>()?.FirstOrDefault();
-        private IObservableSource<TViewModel> _collection = new ObservableSource<TViewModel>();
-        /// <summary> 说明  </summary>
-        public IObservableSource<TViewModel> Collection
-        {
-            get { return _collection; }
-            set
-            {
-                _collection = value;
                 RaisePropertyChanged();
             }
         }
@@ -192,7 +191,7 @@ namespace H.Extensions.DataBase.Repository
 
         [Icon(FontIcons.Clear)]
         [Display(Name = "清空", GroupName = "操作,菜单栏")]
-        public IDisplayCommand ClearCommand => new DisplayCommand(async l => await Clear(l), l => this.Collection != null && this.Collection.Count > 0);
+        public IDisplayCommand ClearCommand => new DisplayCommand(async l => await Clear(l), l => this.ObservableSource != null && this.ObservableSource.Count > 0);
 
         [Icon(FontIcons.Save)]
         [Display(Name = "保存", GroupName = "操作,菜单栏")]
@@ -214,7 +213,7 @@ namespace H.Extensions.DataBase.Repository
 
             await this.Export(saveFileDialog.FileName);
 
-        }, l => this.Collection != null && this.Collection.Count > 0);
+        }, l => this.ObservableSource != null && this.ObservableSource.Count > 0);
 
 
         [Icon(FontIcons.Previous)]
@@ -222,11 +221,11 @@ namespace H.Extensions.DataBase.Repository
         public IDisplayCommand PreviousCommand => new DisplayCommand(x =>
         {
             this.Previous();
-        }, x => this.Collection.Count > 0);
+        }, x => this.ObservableSource.Count > 0);
 
         public virtual void Previous()
         {
-            this.Collection.Previous();
+            this.ObservableSource.Previous();
         }
 
         [Icon(FontIcons.Next)]
@@ -235,11 +234,11 @@ namespace H.Extensions.DataBase.Repository
         {
             this.Next();
 
-        }, x => this.Collection.Count > 0);
+        }, x => this.ObservableSource.Count > 0);
 
         public virtual void Next()
         {
-            this.Collection.Next();
+            this.ObservableSource.Next();
         }
 
         //public RelayCommand ImportCommand => new RelayCommand(async l =>
@@ -263,23 +262,23 @@ namespace H.Extensions.DataBase.Repository
         {
             if (l is Boolean b)
             {
-                this.Collection.Foreach(K => K.IsSelected = b);
+                this.ObservableSource.Foreach(K => K.IsSelected = b);
                 this.UpdateCheckedAll();
             }
             else
             {
-                this.Collection.Foreach(K => K.IsSelected = true);
+                this.ObservableSource.Foreach(K => K.IsSelected = true);
                 this.UpdateCheckedAll();
             }
-        }, l => this.Collection != null && this.Collection.Count > 0);
+        }, l => this.ObservableSource != null && this.ObservableSource.Count > 0);
 
         [Icon(FontIcons.Checkbox)]
         [Display(Name = "取消选则", GroupName = "操作,菜单栏")]
         public IDisplayCommand CheckedNoneCommand => new DisplayCommand(l =>
         {
-            this.Collection.Foreach(K => K.IsSelected = false);
+            this.ObservableSource.Foreach(K => K.IsSelected = false);
             this.UpdateCheckedAll();
-        }, l => this.Collection != null && this.Collection.Count > 0);
+        }, l => this.ObservableSource != null && this.ObservableSource.Count > 0);
 
         [Icon(FontIcons.CheckboxComposite)]
         [Display(Name = "全选当前页", GroupName = "操作,菜单栏")]
@@ -287,16 +286,16 @@ namespace H.Extensions.DataBase.Repository
         {
             if (l is Boolean b)
             {
-                this.Collection.Foreach(x => x.IsSelected = !b);
-                this.Collection.Source.Foreach(K => K.IsSelected = b);
+                this.ObservableSource.Foreach(x => x.IsSelected = !b);
+                this.ObservableSource.Source.Foreach(K => K.IsSelected = b);
 
             }
             else
             {
-                this.Collection.Foreach(x => x.IsSelected = false);
-                this.Collection.Source.Foreach(K => K.IsSelected = true);
+                this.ObservableSource.Foreach(x => x.IsSelected = false);
+                this.ObservableSource.Source.Foreach(K => K.IsSelected = true);
             }
-        }, l => this.Collection != null && this.Collection.Count > 0);
+        }, l => this.ObservableSource != null && this.ObservableSource.Count > 0);
 
         [Icon(FontIcons.CheckboxComposite)]
         [Display(Name = "全选当前过滤器", GroupName = "操作,菜单栏")]
@@ -304,25 +303,25 @@ namespace H.Extensions.DataBase.Repository
         {
             if (l is Boolean b)
             {
-                this.Collection.Foreach(x => x.IsSelected = !b);
-                foreach (var item in this.Collection.FilterSource)
+                this.ObservableSource.Foreach(x => x.IsSelected = !b);
+                foreach (var item in this.ObservableSource.FilterSource)
                 {
                     item.IsSelected = b;
                 }
             }
             else
             {
-                this.Collection.Foreach(x => x.IsSelected = false);
-                foreach (var item in this.Collection.FilterSource)
+                this.ObservableSource.Foreach(x => x.IsSelected = false);
+                foreach (var item in this.ObservableSource.FilterSource)
                 {
                     item.IsSelected = true;
                 }
             }
-        }, l => this.Collection != null && this.Collection.Count > 0);
+        }, l => this.ObservableSource != null && this.ObservableSource.Count > 0);
 
         [Icon(FontIcons.Delete)]
         [Display(Name = "删除选中", GroupName = "操作,菜单栏")]
-        public IDisplayCommand DeleteCheckedCommand => new DisplayCommand(async l => await DeleteAllChecked(l), l => this.Collection.Any(k => k.IsSelected));
+        public IDisplayCommand DeleteCheckedCommand => new DisplayCommand(async l => await DeleteAllChecked(l), l => this.ObservableSource.Any(k => k.IsSelected));
 
         //public RelayCommand PrintCommand => new RelayCommand(async (s, e) =>
         //{
@@ -353,7 +352,7 @@ namespace H.Extensions.DataBase.Repository
         public virtual async Task Export(string path)
         {
             Ioc.GetService<IOperationService>().Log<TEntity>($"导出");
-            IEnumerable<TEntity> collection = this.Collection.Select(x => x.Model);
+            IEnumerable<TEntity> collection = this.ObservableSource.Select(x => x.Model);
             string message = null;
             bool? r = Ioc<IExcelService>.Instance?.Export(collection, path, typeof(TEntity).Name, out message);
             if (r == false)
@@ -421,9 +420,9 @@ namespace H.Extensions.DataBase.Repository
                 return svm.Model;
             if (obj is TEntity entity)
                 return entity;
-            if (this.Collection.SelectedItem is SelectBindable<TEntity> ssvm)
+            if (this.ObservableSource.SelectedItem is SelectBindable<TEntity> ssvm)
                 return ssvm.Model;
-            if (this.Collection.SelectedItem is TEntity sentity)
+            if (this.ObservableSource.SelectedItem is TEntity sentity)
                 return sentity;
             return null;
         }
@@ -477,9 +476,9 @@ namespace H.Extensions.DataBase.Repository
             {
                 if (this.UseMessage)
                     IocMessage.ShowSnackInfo(H.Globalization.Properties.Resources.Common_OperationSucceeded);
-                TViewModel m = this.Collection.FirstOrDefault(x => x.Model == entity);
-                this.Collection.Remove(m);
-                this.Collection.SelectedItem = this.Collection.FirstOrDefault(x => true);
+                TViewModel m = this.ObservableSource.FirstOrDefault(x => x.Model == entity);
+                this.ObservableSource.Remove(m);
+                this.ObservableSource.SelectedItem = this.ObservableSource.FirstOrDefault(x => true);
             }
             else
             {
@@ -492,7 +491,7 @@ namespace H.Extensions.DataBase.Repository
 
         public virtual bool CanClear()
         {
-            return this._collection.Count > 0;
+            return this._ObservableSource.Count > 0;
         }
 
         public virtual async Task Clear(object obj = null)
@@ -510,7 +509,7 @@ namespace H.Extensions.DataBase.Repository
             {
                 if (this.UseMessage)
                     IocMessage.ShowSnackInfo(Resources.Common_OperationSucceeded);
-                this.Collection.Clear();
+                this.ObservableSource.Clear();
             }
             else
             {
@@ -561,7 +560,7 @@ namespace H.Extensions.DataBase.Repository
             if (result != true)
                 return;
 
-            List<TEntity> checks = this.Collection.Where(k => k.IsSelected).Select(x => x.Model)?.ToList();
+            List<TEntity> checks = this.ObservableSource.Where(k => k.IsSelected).Select(x => x.Model)?.ToList();
             this.DeleteAll(checks);
         }
 
@@ -572,7 +571,7 @@ namespace H.Extensions.DataBase.Repository
             {
                 //IocMessage.Snack?.ShowInfo($"删除成功,共计{entities.Count()}条");
                 IocMessage.ShowSnackInfo(Resources.Common_OperationSucceeded);
-                this.Collection.RemoveAll(x => entities.Contains(x.Model));
+                this.ObservableSource.RemoveAll(x => entities.Contains(x.Model));
             }
             else
             {

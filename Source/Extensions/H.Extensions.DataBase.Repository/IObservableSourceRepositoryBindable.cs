@@ -9,15 +9,9 @@
 using H.Extensions.ObservableSource;
 namespace H.Extensions.DataBase.Repository
 {
-    public interface IRepositoryBindable<TEntity> : IRepositoryBindableBase<TEntity>
+    public interface IObservableSourceRepositoryBindable<TEntity> : IRepositoryBindableBase<TEntity>
      where TEntity : StringEntityBase, new()
     {
-        IObservableSource<SelectBindable<TEntity>> Collection { get; set; }
-    }
-
-    public interface IRepositoryBindable<TViewModel, TEntity> : IRepositoryBindableBase<TEntity>
-   where TEntity : StringEntityBase, new()
-    {
-        IObservableSource<TViewModel> Collection { get; set; }
+        IObservableSource<SelectBindable<TEntity>> ObservableSource { get; }
     }
 }

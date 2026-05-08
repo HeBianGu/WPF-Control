@@ -36,7 +36,7 @@ namespace H.Modules.Identity
         }
     }
 
-    public class RoleRepositoryViewModel : RepositoryBindable<hi_dd_role>
+    public class RoleRepositoryViewModel : ObservableSourceRepositoryBindable<hi_dd_role>
     {
         public override async Task Add(object obj)
         {

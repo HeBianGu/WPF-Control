@@ -31,7 +31,6 @@ public interface IObservableSource<T> : IObservableSource
     void Foreach(Action<T> predicate);
     bool Any(Func<T, bool> predicate);
     IEnumerable<TResult> Select<TResult>(Func<T, TResult> predicate);
-
     void Next();
     void Previous();
     IFilterable Filter1 { get; set; }
