@@ -326,11 +326,11 @@ namespace H.Extensions.DataBase.Repository
         //public RelayCommand PrintCommand => new RelayCommand(async (s, e) =>
         //{
         //    await this.Print();
-        //}, (s, e) => this.Collection.Count > 0);
+        //}, (s, e) => this.ObservableSource.Count > 0);
 
         //protected virtual async Task<bool> Print()
         //{
-        //    var finds = this.Collection.Source.Select(x => x.Model);
+        //    var finds = this.ObservableSource.Source.Select(x => x.Model);
         //    return await MessageProxy.Printer.PrintTable(finds);
         //}
 
@@ -381,7 +381,7 @@ namespace H.Extensions.DataBase.Repository
         //    {
         //        var models = XmlSerialize.Instance.Load<ObservableCollection<T>>(path);
 
-        //        this.Collection.AddRange(models);
+        //        this.ObservableSource.AddRange(models);
         //    });
         //}
 
