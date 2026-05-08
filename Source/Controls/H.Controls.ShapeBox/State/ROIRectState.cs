@@ -34,11 +34,18 @@ public class ROIRectState : PreviewShapeStateBase
     private CrossShape _crossPreviewShape = new CrossShape();
     public ROIRectState()
     {
-        this._rOIRectShape = this.GetShapeStyleSetting()?.Create<ROIRectShape>() ?? new ROIRectShape();
+        this._rOIRectShape = this.CreateROIRectShape();
     }
 
-    private ROIRectShape _rOIRectShape = new ROIRectShape();
-    public ROIRectShape ROIRectShape => this._rOIRectShape;
+    private IROIRectShape _rOIRectShape = new ROIRectShape();
+    public IROIRectShape ROIRectShape => this._rOIRectShape;
+
+    protected virtual IROIRectShape CreateROIRectShape()
+
+    {
+        return this.GetShapeStyleSetting()?.Create<ROIRectShape>() ?? new ROIRectShape();
+    }
+
 
     public override IShapeStyleSetting GetShapeStyleSetting()
     {
@@ -47,6 +54,8 @@ public class ROIRectState : PreviewShapeStateBase
     public override void MouseLeave(object sender, MouseEventArgs e)
     {
         this.Clear();
+        this._crossPreviewShape.Point = new Point(-1, -1);
+        base.MouseLeave(sender, e);
     }
 
     public override void MouseUp(object sender, MouseButtonEventArgs e)
@@ -70,8 +79,6 @@ public class ROIRectState : PreviewShapeStateBase
             return;
         this.UpdateRect(p);
     }
-
-
 
     protected override void UpdateCursor(QueryCursorEventArgs e)
     {

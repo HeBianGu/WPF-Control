@@ -14,9 +14,7 @@ namespace H.Controls.ShapeBox.Shapes;
 public class CrossShape : CommonShapeBase, IPreviewShape
 {
     public Point Point { get; set; }
-
     public bool UseMousePosition => false;
-
     public bool UsePixel { get; set; } = true;
     public bool UseHEX { get; set; } = true;
     public bool UseRGB { get; set; } = true;
@@ -31,6 +29,8 @@ public class CrossShape : CommonShapeBase, IPreviewShape
     }
     public override void MatrixDrawing(IView view, DrawingContext dc, Pen pen, Brush fill = null)
     {
+        if (!view.Size.ToRect().Contains(this.Point))
+            return;
         dc.DrawLine(pen, new Point(0, Point.Y), new Point(view.Size.Width, Point.Y));
         dc.DrawLine(pen, new Point(Point.X, 0), new Point(Point.X, view.Size.Height));
         if (this.UsePixel || this.UseRGB || this.UseHEX)

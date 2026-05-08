@@ -10,7 +10,14 @@ using H.Extensions.TypeConverter;
 using System.ComponentModel;
 
 namespace H.Controls.ShapeBox.Shapes;
-public class ROIRectShape : PreviewShapeBase
+
+public interface IROIRectShape : IShape
+{
+    double HandleLength { get; set; }
+    Rect Rect { get; set; }
+}
+
+public class ROIRectShape : PreviewShapeBase, IROIRectShape
 {
     public ROIRectShape()
     {

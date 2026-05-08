@@ -89,7 +89,7 @@ public class RotatedRectShape : TitleShapeBase, IRotatedRectShape
         }
 
         if (this.UseAngle)
-            drawingContext.DrawArrowLine(rect.GetLeftCenter(), rect.GetRightCenter(), pen.Brush, 2 / view.Scale, 20 / view.Scale);
+            drawingContext.DrawArrowPolyLine(rect.GetLeftCenter(), rect.GetRightCenter(), pen.Brush, 2 / view.Scale, 20 / view.Scale);
 
         // 恢复变换
         drawingContext.Pop();

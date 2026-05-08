@@ -41,6 +41,11 @@ public static class GeometryExtension
         return size.IsEmpty || size.Height == 0 || size.Width == 0;
     }
 
+    public static Rect ToRect(this Size size)
+    {
+        return new Rect(size);
+    }
+
     /// <summary>
     /// 判断点是否在线段上（包括端点）
     /// </summary>

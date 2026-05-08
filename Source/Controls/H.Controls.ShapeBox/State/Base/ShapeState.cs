@@ -70,8 +70,6 @@ public abstract class ShapeState<T> : HandleShapeStateBase where T : IShape
         this.GetShapeStyleSetting()?.LoadBy(this.Shape);
     }
 
-
-    private CrossShape _crossPreviewShape = new CrossShape();
     public override void MouseMove(object sender, MouseEventArgs e)
     {
         base.MouseMove(sender, e);

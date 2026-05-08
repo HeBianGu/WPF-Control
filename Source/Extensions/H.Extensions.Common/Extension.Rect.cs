@@ -63,6 +63,12 @@ public static class RectExtenstion
         return new Rect(point.X - len, point.Y - len, 2 * len, 2 * len);
     }
 
+    public static Point ToOffset(this Point point, double offsetX, double offsetY)
+    {
+        point.Offset(offsetX, offsetY);
+        return point;
+    }
+
     /// <summary>
     /// 求投影向量
     /// </summary>

@@ -27,7 +27,7 @@ public class TextPropertyViewItem : TextPropertyItem, IPropertyViewItem
 
     protected override void SetValue(string value)
     {
-        
+
     }
 
     protected override string GetValue()

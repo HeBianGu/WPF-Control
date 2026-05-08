@@ -41,10 +41,51 @@ public static class DrawingContextExtension
     {
         dc.DrawPointStyleStype(PointStyleStype.Arrow, point, stroke, strokeThickness, wlen, hlen, angle);
     }
-
-    public static void DrawArrowLine(this DrawingContext dc, Point from, Point to, Brush stroke, double strokeThickness = 1, double len = 6, double arrowAngle = 30)
+    public static void DrawArrowPolygon(this DrawingContext dc, Point from, Point to, Brush stroke, Brush fill, double strokeThickness = 1, double len = 6, double arrowAngle = 30)
     {
-        var pen = new Pen(stroke, strokeThickness);
+        var pen = new Pen(stroke, strokeThickness)
+        {
+            LineJoin = PenLineJoin.Round,
+            StartLineCap = PenLineCap.Round,
+            EndLineCap = PenLineCap.Round,
+        };
+        if (pen.CanFreeze)
+            pen.Freeze();
+
+        dc.DrawLine(pen, from, to);
+
+        Vector vector = from - to;
+        if (vector.Length <= double.Epsilon)
+            return;
+
+        vector.Normalize();
+        Vector v1 = vector * len;
+        Vector v2 = vector * len;
+
+        RotateTransform rt1 = new RotateTransform(20);
+        RotateTransform rt2 = new RotateTransform(-20);
+
+        v1 = rt1.Value.Transform(v1);
+        v2 = rt2.Value.Transform(v2);
+
+        dc.DrawPloygon(pen, fill,
+            to,
+            to + v1,
+            to + v2);
+
+    }
+
+
+    public static void DrawArrowPolyLine(this DrawingContext dc, Point from, Point to, Brush stroke, double strokeThickness = 1, double len = 6, double arrowAngle = 30)
+    {
+        var pen = new Pen(stroke, strokeThickness)
+        {
+            LineJoin = PenLineJoin.Round,
+            StartLineCap = PenLineCap.Round,
+            EndLineCap = PenLineCap.Round,
+        };
+        if (pen.CanFreeze)
+            pen.Freeze();
         dc.DrawLine(pen, from, to);
 
         Vector vector = from - to;
@@ -184,6 +225,8 @@ public static class DrawingContextExtension
 
     private static FormattedText ToForematedText(this string text, Brush brush, double fontSize = 10.0)
     {
+        if (fontSize <= 0)
+            fontSize = 1;
         return new FormattedText(
                                   $"{text}",
                                   System.Globalization.CultureInfo.CurrentCulture,
