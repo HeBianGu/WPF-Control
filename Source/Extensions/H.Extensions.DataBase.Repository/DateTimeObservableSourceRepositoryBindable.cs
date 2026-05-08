@@ -16,12 +16,12 @@ namespace H.Extensions.DataBase.Repository
 
     public class DateTimeObservableSourceRepositoryBindable<TEntity> : ObservableSourceRepositoryBindable<TEntity>, IDateTimeObservableSourceRepositoryBindable where TEntity : DbModelBase, new()
     {
-        public override void RefreshData(params string[] includes)
+        public override void RefreshData(Action after = null, params string[] includes)
         {
             includes = includes ?? this.GetIncludes().ToArray();
             IEnumerable<SelectBindable<TEntity>> collection = includes == null ? this.Repository.GetList(x => x.CDATE > this.StartTime && x.CDATE < this.EndTime).Select(x => new SelectBindable<TEntity>(x))
             : this.Repository.GetList(includes).Select(x => new SelectBindable<TEntity>(x));
-            this.ObservableSource.Load(collection);
+            this.ObservableSource.Load(collection, after);
         }
 
         private DateTime _startTime = DateTime.Now.AddDays(-7).Date;

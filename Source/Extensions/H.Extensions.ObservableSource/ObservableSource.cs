@@ -8,6 +8,7 @@
 
 using H.Extensions.Common;
 using H.Mvvm.ViewModels.Base;
+using System.Diagnostics.Metrics;
 using System.Windows.Threading;
 
 namespace H.Extensions.ObservableSource;
@@ -380,6 +381,7 @@ public class ObservableSource<T> : Bindable, IObservableSource<T>
     }
 
     public event Action RefreshPaged;
+    private List<Action> afterCache = new List<Action>();
     public void RefreshPage(Action after = null)
     {
         Func<List<T>> func = () =>
@@ -417,15 +419,19 @@ public class ObservableSource<T> : Bindable, IObservableSource<T>
             this.TotalPage = this.Total % this.PageCount == 0 ? this.Total / this.PageCount : (this.Total / this.PageCount) + 1;
             return where.Skip(this.MinValue - 1).Take(this.PageCount).ToList();
         };
+
+        afterCache.Add(after);
         //this.Source = collection.ToObservable();
         this.DelayInvoke(this.Source, func, () =>
         {
-
             if (after == null)
                 this.SelectedItem = func.Invoke().FirstOrDefault();
             else
                 after?.Invoke();
+            foreach (var item in afterCache)
+                item?.Invoke();
             this.OnRefreshPaged();
+            afterCache.Clear();
         });
 
     }
@@ -436,10 +442,10 @@ public class ObservableSource<T> : Bindable, IObservableSource<T>
         this.RefreshPaged?.Invoke();
     }
 
-    public void Load(IEnumerable<T> source)
+    public void Load(IEnumerable<T> source, Action after = null)
     {
         this.Cache = source?.ToObservable();
-        this.RefreshPage();
+        this.RefreshPage(after);
     }
 
     public void Add(params T[] value)

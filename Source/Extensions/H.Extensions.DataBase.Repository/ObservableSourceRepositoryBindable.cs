@@ -48,13 +48,13 @@ namespace H.Extensions.DataBase.Repository
                     Ioc<IOperationService>.Instance?.Log<TEntity>($"新增", m.ID, OperationType.Add);
                 }
         }
-        public override void RefreshData(params string[] includes)
+        public override void RefreshData(Action after = null, params string[] includes)
         {
             includes = includes ?? this.GetIncludes()?.ToArray();
             IEnumerable<TViewModel> collection = includes == null
                 ? this.Repository.GetList().Where(x => this.Where(x)).Select(x => this.CreateSelectBindable(x))
                 : this.Repository.GetList(includes).Where(x => this.Where(x)).Select(x => this.CreateSelectBindable(x));
-            this.ObservableSource.Load(collection);
+            this.ObservableSource.Load(collection, after);
         }
         protected virtual bool Where(TEntity entity)
         {

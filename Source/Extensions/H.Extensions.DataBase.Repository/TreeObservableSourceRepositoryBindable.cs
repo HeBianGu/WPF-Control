@@ -25,7 +25,7 @@ namespace H.Extensions.DataBase.Repository
             }
         }
 
-        public override void RefreshData(params string[] includes)
+        public override void RefreshData(Action after = null, params string[] includes)
         {
             this.ObservableSource.SelectedItem = null;
             this.IsBusy = true;
@@ -52,7 +52,7 @@ namespace H.Extensions.DataBase.Repository
                 {
                     builder.Invoke(root);
                 }
-                this.ObservableSource.Load(rootVms);
+                this.ObservableSource.Load(rootVms, after);
             }
             catch (Exception ex)
             {

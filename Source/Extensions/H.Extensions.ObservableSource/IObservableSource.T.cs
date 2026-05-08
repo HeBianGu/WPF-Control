@@ -19,7 +19,7 @@ public interface IObservableSource<T> : IObservableSource
     ObservableCollection<T> FilterSource { get; set; }
     void Add(params T[] value);
     void Clear();
-    void Load(IEnumerable<T> source);
+    void Load(IEnumerable<T> source, Action after = null);
 
     event Action RefreshPaged;
     void RefreshPage(Action after = null);

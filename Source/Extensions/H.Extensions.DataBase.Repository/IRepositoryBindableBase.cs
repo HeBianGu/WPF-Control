@@ -39,7 +39,7 @@ namespace H.Extensions.DataBase.Repository
         Task Delete(object obj);
         Task Edit(object obj);
         Task Export(string path);
-        void RefreshData(params string[] includes);
+        void RefreshData(Action after = null, params string[] includes);
         Task<int> Save();
         Task View(object obj);
         void Next();

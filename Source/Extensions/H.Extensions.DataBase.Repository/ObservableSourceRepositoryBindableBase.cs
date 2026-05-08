@@ -67,7 +67,7 @@ namespace H.Extensions.DataBase.Repository
 
         }
 
-        public abstract void RefreshData(params string[] includes);
+        public abstract void RefreshData(Action after = null, params string[] includes);
 
         #region - 属性 -
         private bool? _checkedAll = false;
