@@ -103,6 +103,8 @@ public class InvokeDisplayCommand : DisplayCommand, IInvokeCommand
 
     public override bool CanExecute(object parameter)
     {
+        if (this.IsBusy)
+            return false;
         if (_canExecute != null)
             return _canExecute(parameter);
         return _canExecuteCommand != null ? _canExecuteCommand(this, parameter) : true;

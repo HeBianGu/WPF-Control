@@ -36,6 +36,8 @@ public class InvokeCommand : ICommand, INotifyPropertyChanged, IInvokeCommand
 
     public bool CanExecute(object parameter)
     {
+        if (this.IsBusy)
+            return false;
         if (_canExecute != null)
             return _canExecute(parameter);
 
