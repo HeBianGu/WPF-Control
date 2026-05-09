@@ -96,6 +96,8 @@ csharp_space_around_binary_operators = before_and_after
 csharp_indent_labels = one_less_than_current
 csharp_prefer_system_threading_lock = true:suggestion
 csharp_prefer_static_anonymous_function = true:suggestion
+csharp_style_prefer_implicitly_typed_lambda_expression = true:suggestion
+csharp_style_prefer_unbound_generic_type_in_nameof = true:suggestion
 
 [*.vb]
 #### ÃüÃûÑùÊ½ ####
