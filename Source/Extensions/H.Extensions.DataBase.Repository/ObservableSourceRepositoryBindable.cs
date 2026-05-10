@@ -17,6 +17,8 @@ namespace H.Extensions.DataBase.Repository
 
         public override async Task Add(params TEntity[] ms)
         {
+            if (ms.Length == 0)
+                return;
             if (this.Repository == null)
             {
                 foreach (TEntity m in ms)
