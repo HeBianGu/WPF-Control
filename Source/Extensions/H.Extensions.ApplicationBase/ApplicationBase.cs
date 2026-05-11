@@ -256,7 +256,7 @@ public partial class ApplicationBase
                 {
                     if (s != null)
                         s.Message = $"[{index}/{total}]{H.Extensions.ApplicationBase.Properties.Resources.Message_LoadingSetting}<{x.Name}>...";
-                    if (s is IDefaultTemplateable templateable)
+                    if (x is IDefaultTemplateable templateable)
                     {
                         templateable.LoadDefaultTemplate();
                         //if (t.success)
