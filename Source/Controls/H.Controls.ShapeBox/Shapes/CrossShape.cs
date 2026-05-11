@@ -6,6 +6,7 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
+using H.Extensions.Common;
 using System.Text;
 using System.Windows.Ink;
 using System.Windows.Media;
@@ -43,17 +44,22 @@ public class CrossShape : CommonShapeBase, IPreviewShape
         if (this.UsePixel)
             stringBuilder.AppendLine($"x:{(int)this.Point.X} y:{(int)this.Point.Y}");
 
+        Color pickColor = default;
         if (view is IImageView imageView && (this.UseHEX || this.UseRGB))
         {
-            var color = imageView.PickColor(this.Point);
+            pickColor = imageView.PickColor(this.Point);
             if (this.UseHEX)
-                stringBuilder.AppendLine(color.ToString());
+                stringBuilder.AppendLine(pickColor.ToString());
             if (this.UseRGB)
-                stringBuilder.AppendLine($"R:{color.R} G:{color.G} B:{color.B} A:{color.A}");
+                stringBuilder.AppendLine($"R:{pickColor.R} G:{pickColor.G} B:{pickColor.B} A:{pickColor.A}");
         }
         var rc = dc.DrawTextAt(stringBuilder.ToString(), this.Point, pen.Brush, 15 / view.Scale, null, 20 / view.Scale);
         if (fill != null)
             dc.DrawRoundedRectangle(fill, pen, new Rect(rc.Left, rc.Bottom, 20 / view.Scale, 10 / view.Scale), 1 / view.Scale, 1 / view.Scale);
+
+        if (pickColor != default)
+            dc.DrawRoundedRectangle(pickColor.ToSolid(), pen, new Rect(rc.Left, rc.Bottom, 20 / view.Scale, 10 / view.Scale), 1 / view.Scale, 1 / view.Scale);
+
     }
 
     public void DrawPreview(IView view, DrawingContext drawingContext, Brush stroke, double strokeThickness = 1, Brush fill = null, double offset = 0)
