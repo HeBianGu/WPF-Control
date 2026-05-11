@@ -6,8 +6,10 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
+using H.Extensions.Common;
 using System.Globalization;
 using System.Runtime.CompilerServices;
+using System.Windows.Media;
 using System.Windows.Shapes;
 
 namespace H.Controls.ShapeBox.Shapes.Base;
@@ -116,6 +118,11 @@ public abstract class PointsShapeBase : TitleShapeBase, IPointsShape
         if (this.UseCross)
             this.DrawingCross(view, dc, pen, fill);
         base.MatrixDrawing(view, dc, pen, fill);
+
+        var firstPoint = this.Points.FirstOrDefault();
+        if (firstPoint == default)
+            return;
+        this.DrawBackgroundTitle(view, dc, firstPoint, pen.Brush, 10 / view.Scale, 10 / view.Scale);
     }
 
     //protected override IEnumerable<IHandle> CreateHandles()

@@ -41,7 +41,6 @@ public class ROIRectState : PreviewShapeStateBase
     public IROIRectShape ROIRectShape => this._rOIRectShape;
 
     protected virtual IROIRectShape CreateROIRectShape()
-
     {
         return this.GetShapeStyleSetting()?.Create<ROIRectShape>() ?? new ROIRectShape();
     }

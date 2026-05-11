@@ -45,7 +45,7 @@ public class RectShape : TitleShapeBase, IRectShape, IBoundingBoxShape
         if (this.Rect.IsZoreOrEmpty())
             return;
         drawingContext.DrawRectangle(fill, pen, Rect);
-        this.DrawTitle(view, drawingContext, this.Rect.TopLeft, pen.Brush, 10 / view.Scale, 10 / view.Scale);
+        this.DrawBackgroundTitle(view, drawingContext, this.Rect.TopLeft, pen.Brush, 10 / view.Scale, 10 / view.Scale);
         if (this.UseDimension)
         {
             //var topCenter = this.Rect.GetTopCenter();
@@ -75,22 +75,6 @@ public class RectShape : TitleShapeBase, IRectShape, IBoundingBoxShape
         this.DrawPoint(view, drawingContext, rect.BottomRight, fill, strokeThickness);
     }
 
-    public override void DrawTitle(IView view, DrawingContext drawingContext, Point point, Brush brush, double fontsize = 10, double offset = 5)
-    {
-        if (string.IsNullOrEmpty(this.Title))
-            return;
-
-        var l = 4 / view.Scale;
-        point.Offset(l / 2, -l);
-        drawingContext.DrawTextAtTopLeft(this.Title, point, this.TitleForeground, fontsize, null, (f, r) =>
-        {
-            var fill = this.GetTitleBackground(brush);
-            var padding = 2 / view.Scale;
-            var rect = r.GetPadding(l / 2);
-            drawingContext.DrawRoundedRectangle(fill, null, rect, l / 2, l / 2);
-        });
-    }
-
     protected override IEnumerable<IHandle> CreateHandles()
     {
         yield return new ActionCircleHandle(x =>
@@ -106,5 +90,19 @@ public class RectShape : TitleShapeBase, IRectShape, IBoundingBoxShape
     {
         double l = this.GetStrokeThickness(2.0, view);
         return point.DistanceToRect(this.Rect) < l / view.Scale;
+    }
+
+    public override void DrawThumb(IView view, DrawingContext drawingContext, Brush stroke, double strokeThickness = 1, Brush fill = null)
+    {
+        if (this.Rect.IsZoreOrEmpty())
+            return;
+        stroke = this.GetStroke(stroke);
+        if (stroke is SolidColorBrush solid)
+        {
+            var f = new SolidColorBrush(solid.Color) { Opacity = 0.3 };
+            f.Freeze();
+            drawingContext.DrawRectangle(f, null, Rect);
+        }
+        //base.DrawThumb(view, drawingContext, stroke, strokeThickness, fill);
     }
 }

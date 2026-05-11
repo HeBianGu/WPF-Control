@@ -82,4 +82,17 @@ public class PolygonShape : PointsShapeBase
         double l = this.GetStrokeThickness(2.0, view);
         return point.DistanceToPolygon(this.Points) < l / view.Scale;
     }
+
+    public override void DrawThumb(IView view, DrawingContext drawingContext, Brush stroke, double strokeThickness = 1, Brush fill = null)
+    {
+        if (this.Points.Count == 0)
+            return;
+        stroke = this.GetStroke(stroke);
+        if (stroke is SolidColorBrush solid)
+        {
+            var f = solid.Color.ToFreezeSolid(x => x.Opacity = 0.3);
+            drawingContext.DrawPloygon(null, f, this.Points.ToArray());
+        }
+        //base.DrawThumb(view, drawingContext, stroke, strokeThickness, fill);
+    }
 }
