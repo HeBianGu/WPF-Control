@@ -34,6 +34,18 @@ public abstract class ProjectItemBase : DisplayBindableBase, IProjectItem
         }
     }
 
+    [Browsable(true)]
+    [Display(Name = "项目说明", Order = 5)]
+    public string ProjectDescription
+    {
+        get { return base.Description; }
+        set
+        {
+            base.Description = value;
+            RaisePropertyChanged();
+        }
+    }
+
     private bool _isFixed;
     [Display(Name = "是否固定", Order = 9)]
     public bool IsFixed
