@@ -7,9 +7,11 @@
 // Licensed under the MIT License (the "License")
 
 global using H.Modules.Project;
+using H.Extensions.FontIcon;
 
 namespace H.Modules.Project.Commands;
 
+[Icon(FontIcons.Delete)]
 [Display(Name = "删除项目", Description = "删除当前选中的项目")]
 public class ShowDeleteProjectCommand : DisplayMarkupCommandBase
 {

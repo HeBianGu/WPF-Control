@@ -20,11 +20,13 @@
                     Width="Auto"
                     Margin="2"
                     Cattach.Icon="{x:Static FontIcons.Search}"
-                    Style="{DynamicResource {x:Static TextBoxKeys.Delete}}" />
+                    Cattach.Watermark="{x:Static Resources.Common_Search}"
+                    Style="{DynamicResource {x:Static TextBoxKeys.Delete}}"
+                    Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}" />
             </DockPanel>
 
             <Border BorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrush}}" BorderThickness="1">
-                <local:ProjectBox SelectedProject="{Binding SelectedItem, Mode=TwoWay}">
+                <local:ProjectBox SearchText="{Binding SearchText}" SelectedProject="{Binding SelectedItem, Mode=TwoWay}">
                     <ListBox.GroupStyle>
                         <GroupStyle>
                             <GroupStyle.Panel>

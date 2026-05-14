@@ -41,4 +41,17 @@ public class ProjectListViewPresenter : DisplayBindableBase, IProjectListViewPre
         }
     }
 
+
+    private string _searchText;
+
+    public string SearchText
+    {
+        get { return _searchText; }
+        set
+        {
+            _searchText = value;
+            RaisePropertyChanged();
+        }
+    }
+
 }

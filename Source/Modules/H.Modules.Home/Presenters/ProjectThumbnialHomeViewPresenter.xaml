@@ -5,6 +5,9 @@
     xmlns:local="clr-namespace:H.Modules.Home.Presenters">
     <DataTemplate DataType="{x:Type local:ProjectThumbnialHomeViewPresenter}">
         <DockPanel Margin="20">
+            <DockPanel.Resources>
+                <BindingProxy x:Key="proxy" Data="{Binding}" />
+            </DockPanel.Resources>
             <TextBlock DockPanel.Dock="Top" FontSize="30">
                 <Run Text="欢迎使用" />
                 <Run Text="-" />
@@ -44,7 +47,16 @@
                         <Setter Property="ItemTemplate">
                             <Setter.Value>
                                 <DataTemplate>
-                                    <Border>
+                                    <Border Background="Transparent">
+                                        <Border.ContextMenu>
+                                            <ContextMenu ItemsSource="{Binding Source={StaticResource proxy}, Path=Data.Commands}">
+                                                <ItemsControl.ItemContainerStyle>
+                                                    <Style BasedOn="{StaticResource {x:Static MenuItemKeys.BindCommand}}" TargetType="MenuItem">
+                                                        <Setter Property="CommandParameter" Value="{Binding RelativeSource={RelativeSource AncestorType=ContextMenu}, Path=DataContext}" />
+                                                    </Style>
+                                                </ItemsControl.ItemContainerStyle>
+                                            </ContextMenu>
+                                        </Border.ContextMenu>
                                         <ContentPresenter Content="{Binding ThumbnailPresenter}" />
                                     </Border>
                                 </DataTemplate>

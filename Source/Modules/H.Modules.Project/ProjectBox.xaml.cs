@@ -90,6 +90,32 @@ public partial class ProjectBox : ListBox
         }
     }
 
+
+    public string SearchText
+    {
+        get { return (string)GetValue(SearchTextProperty); }
+        set { SetValue(SearchTextProperty, value); }
+    }
+
+    public static readonly DependencyProperty SearchTextProperty =
+        DependencyProperty.Register("SearchText", typeof(string), typeof(ProjectBox), new FrameworkPropertyMetadata(default(string), (d, e) =>
+        {
+            ProjectBox control = d as ProjectBox;
+
+            if (control == null) return;
+
+            if (e.OldValue is string o)
+            {
+
+            }
+
+            if (e.NewValue is string n)
+            {
+
+            }
+            control.Refresh();
+        }));
+
     public IEnumerable<IProjectItem> Projects
     {
         get { return (IEnumerable<IProjectItem>)GetValue(ProjectsProperty); }
@@ -120,7 +146,7 @@ public partial class ProjectBox : ListBox
 
     private void Config_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
     {
-        this?.Refresh();
+        this.Refresh();
     }
 
     public IProjectItem SelectedProject
@@ -161,7 +187,7 @@ public partial class ProjectBox : ListBox
     {
         IEnumerable<IProjectItem> projects = this.Dispatcher.Invoke(() =>
           {
-              return this.Projects;
+              return this.Projects.Where(x => string.IsNullOrEmpty(this.SearchText) || x.Title.Contains(this.SearchText));
           });
 
         if (projects == null)
