@@ -43,7 +43,4 @@
 			<PackagePath>\</PackagePath>
 		</None>
 	</ItemGroup>
-	<!--<ItemGroup>
-    <Resource Include="..\..\..\Document\logo.ico"/>
-  </ItemGroup>-->
 </Project>
