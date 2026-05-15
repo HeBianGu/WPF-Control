@@ -11,7 +11,7 @@ using System.ComponentModel;
 
 namespace H.Controls.ShapeBox.Shapes;
 
-public interface IROIRectShape : IShape
+public interface IROIRectShape : IStyleShape
 {
     double HandleLength { get; set; }
     Rect Rect { get; set; }

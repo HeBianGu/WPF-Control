@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+  <ItemGroup>
+    <ProjectReference Include="..\..\Base\H.MarkupExtension\H.MarkupExtension.csproj" />
+    <ProjectReference Include="..\..\Controls\H.Controls.Diagram.Presenter\H.Controls.Diagram.Presenter.csproj" />
+    <ProjectReference Include="..\..\Controls\H.Controls.ImageColorPicker\H.Controls.ImageColorPicker.csproj" />
+    <ProjectReference Include="..\..\Controls\H.Controls.ShapeZoomBox\H.Controls.ShapeZoomBox.csproj" />
+    <ProjectReference Include="..\..\Controls\H.Controls.ZoomBox.Extension\H.Controls.ZoomBox.Extension.csproj" />
+    <ProjectReference Include="..\..\Extensions\H.Extensions.Command\H.Extensions.Command.csproj" />
+    <ProjectReference Include="..\..\Extensions\H.Extensions.Common\H.Extensions.Common.csproj" />
+    <ProjectReference Include="..\..\Extensions\H.Extensions.Encryption\H.Extensions.Encryption.csproj" />
+    <ProjectReference Include="..\..\Extensions\H.Extensions.ValueConverter\H.Extensions.ValueConverter.csproj" />
+    <ProjectReference Include="..\..\Controls\H.Controls.Form.PropertyItem\H.Controls.Form.PropertyItem.csproj" />
+    <ProjectReference Include="..\..\Services\H.Services.Message\H.Services.Message.csproj" />
+  </ItemGroup>
+</Project>

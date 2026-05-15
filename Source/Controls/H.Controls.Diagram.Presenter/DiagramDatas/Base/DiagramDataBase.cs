@@ -189,14 +189,14 @@ public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
     }
 
     [Icon(FontIcons.EditMirrored)]
-    [Display(Name = "编辑面板", GroupName = "操作", Order = 0, Description = "点击此功能，编辑面板信息")]
+    [Display(Name = "编辑面板", GroupName = "操作,视图控制", Order = 0, Description = "点击此功能，编辑面板信息")]
     public virtual DisplayCommand EditCommand => new DisplayCommand(async e =>
     {
         await IocMessage.Form.ShowTabEdit(this);
     });
 
     [Icon(FontIcons.View)]
-    [Display(Name = "查看面板", GroupName = "操作", Order = 0, Description = "点击此功能，编辑查看面板信息")]
+    [Display(Name = "查看面板", GroupName = "操作,视图控制", Order = 0, Description = "点击此功能，编辑查看面板信息")]
     public virtual DisplayCommand ShowCommand => new DisplayCommand(async e =>
     {
         await IocMessage.Form.ShowTabEdit(this);
@@ -213,7 +213,7 @@ public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
     //}, x => x is Part);
 
     [Icon(FontIcons.DisconnectDrive)]
-    [Display(Name = "删除选中节点", GroupName = "操作", Order = 4, Description = "点击此功能，删除选中的所有节点")]
+    [Display(Name = "删除选中节点", GroupName = "操作,数据", Order = 4, Description = "点击此功能，删除选中的所有节点")]
     public virtual DisplayCommand DeleteCheckedCommand => new DisplayCommand(async e =>
     {
         await IocMessage.Dialog.ShowDeleteDialog(x =>
@@ -226,7 +226,7 @@ public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
     }, x => this.DataSource.Nodes.Where(x => x.IsSelected).Count() > 0);
 
     [Icon(FontIcons.Delete)]
-    [Display(Name = "清空节点", GroupName = "操作", Order = 5, Description = "点击此功能，删除所有节点、连线和端口")]
+    [Display(Name = "清空节点", GroupName = "操作,数据", Order = 5, Description = "点击此功能，删除所有节点、连线和端口")]
     public virtual DisplayCommand ClearCommand => new DisplayCommand(async e =>
     {
         await IocMessage.Dialog.ShowDeleteAllDialog(x =>
@@ -241,7 +241,7 @@ public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
 
     [Icon(FontIcons.AlignCenter)]
     [System.Text.Json.Serialization.JsonIgnore]
-    [Display(Name = "对齐节点", GroupName = "操作", Order = 5)]
+    [Display(Name = "对齐节点", GroupName = "操作,视图控制", Order = 5)]
     public virtual DisplayCommand AlignmentCommand => new DisplayCommand(e =>
     {
         //foreach (Node item in this.DataSource.Nodes)
@@ -362,7 +362,7 @@ public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
             {
                 await IocMessage.Form?.ShowTabEdit(framework?.DataContext, x =>
                  {
-                    
+
                  }, null, x =>
                  {
                      x.TitleWidth = double.NaN;

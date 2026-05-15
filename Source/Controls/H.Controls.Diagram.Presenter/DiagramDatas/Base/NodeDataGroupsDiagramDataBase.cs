@@ -14,7 +14,7 @@ public abstract class NodeDataGroupsDiagramDataBase : FlowableDiagramDataBase, I
     protected NodeDataGroupsDiagramDataBase()
     {
         ObservableCollection<INodeDataGroup> nodeGroups = this.CreateNodeGroups()?.ToObservable();
-        foreach (INodeDataGroup nodeGroup in nodeGroups)
+        foreach (INodeDataGroup nodeGroup in nodeGroups.Where(x => x.NodeDatas.Count > 0).OrderBy(x => x.Order))
         {
             Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.SystemIdle, new Action(() =>
             {

@@ -1,0 +1,8 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+ <ItemGroup>
+    <PackageReference Include="OpenCvSharp4.Windows" Version="4.13.0.20260222" />
+  </ItemGroup>
+ <ItemGroup>
+   <ProjectReference Include="..\H.Components.Vision\H.Components.Vision.csproj" />
+ </ItemGroup>
+</Project>

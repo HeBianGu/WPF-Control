@@ -1,0 +1,24 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
+    xmlns:h="https://github.com/HeBianGu"
+    xmlns:local="clr-namespace:H.Components.Vision.Presenters">
+
+    <DataTemplate DataType="{x:Type local:HelpPresenter}">
+        <DockPanel>
+            <TextBlock
+                Margin="5"
+                DockPanel.Dock="Top"
+                Text="{Binding Name}" />
+            <TextBlock Margin="5" ToolTip="{Binding Url}">
+                <Hyperlink
+                    Command="{ProcessCommand}"
+                    CommandParameter="{Binding Url}"
+                    NavigateUri="{Binding Url}">
+                    <Run Text="{Binding Content}" />
+                </Hyperlink>
+            </TextBlock>
+        </DockPanel>
+    </DataTemplate>
+</ResourceDictionary>

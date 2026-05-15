@@ -1,0 +1,66 @@
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
+
+namespace H.Components.Visions.OpenCV.NodeDatas.Filter;
+[Icon(FontIcons.InPrivate)]
+[Display(Name = "边缘保持器", GroupName = "滤波模块", Description = "在平滑图像的同时保留边缘信息的图像处理技术", Order = 30)]
+public class EdgePreservingFilter : OpenCVNodeDataBase, IBlurGroupableNodeData
+{
+    private EdgePreservingMethods _edgePreservingMethods = EdgePreservingMethods.RecursFilter;
+    [DefaultValue(EdgePreservingMethods.RecursFilter)]
+    [Display(Name = "Method", GroupName = VisionPropertyGroupNames.RunParameters)]
+    public EdgePreservingMethods EdgePreservingMethod
+    {
+        get { return _edgePreservingMethods; }
+        set
+        {
+            _edgePreservingMethods = value;
+            RaisePropertyChanged();
+        }
+    }
+
+    private float _sigmaS = 60f;
+    [PropertyItem(typeof(FloatSliderTextPropertyItem))]
+    [DefaultValue(60f)]
+    [Display(Name = "空间标准差", GroupName = VisionPropertyGroupNames.RunParameters, Description = "较大的 SigmaS 会使滤波核覆盖更广的区域，平滑效果更明显；较小的 SigmaS 则限制滤波核的作用范围，保留更多细节")]
+    [Range(0.0F, 200.0F)]
+    public float SigmaS
+    {
+        get { return _sigmaS; }
+        set
+        {
+            _sigmaS = value;
+            RaisePropertyChanged();
+            this.Invoke();
+        }
+    }
+
+    private float _sigmaR = 0.4f;
+    [PropertyItem(typeof(FloatSliderTextPropertyItem))]
+    [DefaultValue(0.4f)]
+    [Display(Name = "范围标准差", GroupName = VisionPropertyGroupNames.RunParameters, Description = "较大的 SigmaR 允许像素值差异较大的像素参与平滑，平滑效果更强；较小的 SigmaR 则更注重保留边缘，避免平滑边缘区域")]
+    [Range(0F, 1.0F)]
+    public float SigmaR
+    {
+        get { return _sigmaR; }
+        set
+        {
+            _sigmaR = value;
+            RaisePropertyChanged();
+            this.Invoke();
+        }
+    }
+
+    protected override FlowableResult<IMatImage> Invoke(Mat fromImage)
+    {
+        Mat src = fromImage;
+        Mat normconv = new Mat();
+        Cv2.EdgePreservingFilter(src, normconv, this.EdgePreservingMethod, this.SigmaS, this.SigmaR);
+        return this.OK(normconv);
+    }
+}

@@ -15,7 +15,7 @@ namespace H.Controls.Diagram.Presenter.DiagramDatas.Base;
 public abstract class ZoomableDiagramDataBase : DiagramDataBase, IZoomableDiagramData
 {
     [Icon(FontIcons.Zoom)]
-    [Display(Name = "缩放定位", GroupName = "操作", Order = 5)]
+    [Display(Name = "缩放定位", GroupName = "操作,视图控制", Order = 5)]
     public virtual DisplayCommand ZoomAllCommand => new DisplayCommand(e =>
     {
         this.GetTargetElement<Diagram>().ZoomToFit();

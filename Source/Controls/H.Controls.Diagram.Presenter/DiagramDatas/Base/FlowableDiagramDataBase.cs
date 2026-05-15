@@ -92,7 +92,7 @@ public abstract class FlowableDiagramDataBase : ExpressionableDiagramDataBase, I
         ////    part.IsSelected = true;
     }
     [Icon(FontIcons.Replay)]
-    [Display(Name = "开始", GroupName = "操作", Order = 0)]
+    [Display(Name = "开始", GroupName = "操作,流程控制", Order = 0)]
     public DisplayCommand StartCommand => new DisplayCommand(async e =>
     {
         await this.Start();
@@ -101,14 +101,14 @@ public abstract class FlowableDiagramDataBase : ExpressionableDiagramDataBase, I
     }, e => this.CanStart());
 
     [Icon(FontIcons.Location)]
-    [Display(Name = "停止", GroupName = "操作", Order = 0)]
+    [Display(Name = "停止", GroupName = "操作,流程控制", Order = 0)]
     public DisplayCommand StopCommand => new DisplayCommand(e =>
     {
         this.Stop();
     }, e => this.State.CanStop());
 
     [Icon(FontIcons.Refresh)]
-    [Display(Name = "重置", GroupName = "操作", Order = 0)]
+    [Display(Name = "重置", GroupName = "操作,流程控制", Order = 0)]
     public DisplayCommand ResetCommand => new DisplayCommand(e =>
     {
         this.Reset();
