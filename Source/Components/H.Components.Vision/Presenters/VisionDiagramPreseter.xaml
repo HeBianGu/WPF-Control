@@ -19,26 +19,41 @@
                         Style="{DynamicResource {x:Static BorderKeys.BorderBrush}}">
                         <ContentPresenter Content="{Binding DiagramData.SelectedPartData, Converter={local:GetVisionNodeDataImageViewPreseterValueConverter}}" />
                     </Border>
-                    <TabControl TabStripPlacement="Top">
-                        <TabItem Header="{x:Static VisionPropertyGroupNames.RunParameters}">
+                    <TabControl
+                        BorderThickness="1"
+                        ItemContainerStyle="{DynamicResource {x:Static TabItemKeys.Line}}"
+                        TabStripPlacement="Top">
+                        <TabItem
+                            Width="74"
+                            Cattach.CaptionHorizontalAlignment="Center"
+                            Header="{x:Static VisionPropertyGroupNames.RunParameters}">
                             <Form
                                 Margin="5"
                                 SelectObject="{Binding DiagramData.SelectedPartData}"
                                 UseGroupNames="{x:Static VisionPropertyGroupNames.RunParameters}" />
                         </TabItem>
-                        <TabItem Header="{x:Static VisionPropertyGroupNames.ResultParameters}">
+                        <TabItem
+                            Width="74"
+                            Cattach.CaptionHorizontalAlignment="Center"
+                            Header="{x:Static VisionPropertyGroupNames.ResultParameters}">
                             <Form
                                 Margin="5"
                                 SelectObject="{Binding DiagramData.SelectedPartData}"
                                 UseGroupNames="{x:Static VisionPropertyGroupNames.ResultParameters}" />
                         </TabItem>
-                        <TabItem Header="{x:Static VisionPropertyGroupNames.BaseParameters}">
+                        <TabItem
+                            Width="74"
+                            Cattach.CaptionHorizontalAlignment="Center"
+                            Header="{x:Static VisionPropertyGroupNames.BaseParameters}">
                             <Form
                                 Margin="5"
                                 SelectObject="{Binding DiagramData.SelectedPartData}"
                                 UseGroupNames="{x:Static VisionPropertyGroupNames.BaseParameters}" />
                         </TabItem>
-                        <TabItem Header="{x:Static VisionPropertyGroupNames.DisplayParameters}">
+                        <TabItem
+                            Width="74"
+                            Cattach.CaptionHorizontalAlignment="Center"
+                            Header="{x:Static VisionPropertyGroupNames.DisplayParameters}">
                             <Form
                                 Margin="5"
                                 SelectObject="{Binding DiagramData.SelectedPartData}"

@@ -8,8 +8,12 @@
 
 using H.Components.Vision.NodeGroups.TemplateMatchings;
 using H.Components.Vision.Presenters;
+using H.Components.Visions.OpenCV.Extensions;
 using H.Components.Visions.OpenCV.Presenters;
 using H.Extensions.Mvvm.Commands;
+using OpenCvSharp;
+using System.Linq;
+using static System.Formats.Asn1.AsnWriter;
 using Point = OpenCvSharp.Point;
 
 namespace H.VisionMaster.OpenCVs.TemplateMatch.NodeDatas;
@@ -190,7 +194,11 @@ public class ShapeTemplateMatch : MatchingNodeData<IMatImage>, ITemplateMatching
             return this.Error(fromImage.ToMatImage(), "无法从模板中提取有效轮廓");
 
         List<RotatedRect> rotatedRects = new List<RotatedRect>();
-        List<RotatedRectShape> resultShapes = new List<RotatedRectShape>();
+        List<IShape> resultShapes = new List<IShape>();
+        var resultImage = this.GetExpressionResultImage(fromImage).ToMatImage();
+        RotatedRectShape first = null;
+
+        List<Tuple<Point[], double>> filterContours = new List<Tuple<Point[], double>>();
         for (int i = 0; i < contours.Length; i++)
         {
             double area = Cv2.ContourArea(contours[i]);
@@ -198,23 +206,44 @@ public class ShapeTemplateMatch : MatchingNodeData<IMatImage>, ITemplateMatching
                 continue;
 
             double score = Cv2.MatchShapes(templateContour, contours[i], ShapeMatchMode, 0);
-            if (score <= MinScore)
-            {
-                RotatedRect rotatedRect = Cv2.MinAreaRect(contours[i]);
-                rotatedRects.Add(rotatedRect);
-                var shape = rotatedRect.ToRotatedRectShape(x =>
-                {
-                    x.UseAngle = this.UseShapeAngle;
-                    x.UseDimension = this.UseShapeDimension;
-                    x.UseTitle = this.UseShapeTitle;
-                });
-                shape.Title = $"分数: {score:F10}";
-                resultShapes.Add(shape);
-                //Cv2.DrawContours(resultImage, contours, i, Scalar.RandomColor(), 2);
-            }
+            if (score <= this.MinScore)
+                filterContours.Add(Tuple.Create(contours[i], score));
         }
 
-        var first = resultShapes.FirstOrDefault();
+
+
+
+        if (this.DetectDisplayMode == DetectDisplayMode.Default)
+        {
+            var shapes = filterContours.Select(x => x.Item1.ToPolygonShape(s => s.Title = this.Name + $"分数: {x.Item2:F10}"));
+            this.ResultPresenter = shapes.ToResultPresenter();
+            this.ResultShapes = shapes.OfType<IShape>().ToObservable();
+        }
+        else if (this.DetectDisplayMode == DetectDisplayMode.Dimension)
+        {
+            var shapes = filterContours.SelectMany(x => x.Item1.ToDimensionShapes());
+            this.ResultPresenter = shapes.ToResultPresenter();
+            this.ResultShapes = shapes.OfType<IShape>().ToObservable();
+        }
+        else if (this.DetectDisplayMode == DetectDisplayMode.RotatedRect)
+        {
+            var shapes = filterContours.Select(x => Cv2.MinAreaRect(x.Item1).ToRotatedRectShape(s =>
+            {
+                s.UseAngle = this.UseShapeAngle;
+                s.UseDimension = this.UseShapeDimension;
+                s.UseTitle = this.UseShapeTitle;
+                s.Title = $"分数: {x.Item2:F10}";
+            }));
+            this.ResultPresenter = shapes.ToResultPresenter();
+            this.ResultShapes = shapes.OfType<IShape>().ToObservable();
+            if (first == null)
+                first = shapes.FirstOrDefault();
+        }
+        else
+        {
+            Cv2.DrawContours(resultImage.Mat, contours, -1, Scalar.RandomColor(), 2);
+        }
+
         if (first != null)
         {
             var rectFlipResult = new RotatedRectFlipResult()
@@ -230,15 +259,13 @@ public class ShapeTemplateMatch : MatchingNodeData<IMatImage>, ITemplateMatching
             this.RectFlipResult = rectFlipResult;
         }
 
-        var resultImage = this.GetExpressionResultImage(fromImage).ToMatImage();
         this.MatchingCountResult = resultShapes.Count;
         this.Confidence = this.MinScore;
-        this.ResultShapes = resultShapes.OfType<IShape>().ToObservable();
         this.ResultImages = rotatedRects.ToResultImages(mat).ToList();
         this.FirstResultImage = this.ResultImages.FirstOrDefault()?.Image;
         if (resultShapes.Count == 0)
             return this.OK(resultImage, "未找到匹配的形状");
-        return this.OK(resultImage, resultShapes.ToResultPresenter(), $"成功找到 {resultShapes.Count} 个匹配项");
+        return this.OK(resultImage, $"成功找到 {resultShapes.Count} 个匹配项");
     }
 }
 

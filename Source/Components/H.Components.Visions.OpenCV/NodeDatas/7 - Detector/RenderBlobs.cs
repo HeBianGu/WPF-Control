@@ -144,7 +144,7 @@ public class RenderBlobs : OpenCVDetectorNodeDataBase, IDetectorGroupableNodeDat
         {
             this.ResultShapes = finds.SelectMany(x => x.Rect.ToWindowRect().ToDimensionShapes(x => x.Text = this.GetWorldDistance(x.Length))).OfType<IShape>().ToObservable();
         }
-        else if (this.DetectDisplayMode == DetectDisplayMode.Default)
+        else if (this.DetectDisplayMode == DetectDisplayMode.Default || this.DetectDisplayMode == DetectDisplayMode.RotatedRect)
         {
             this.ResultShapes = finds.Select(x => new RectShape(x.Rect.ToWindowRect())).OfType<IShape>().ToObservable();
         }

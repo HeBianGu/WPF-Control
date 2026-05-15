@@ -7,7 +7,6 @@
 // Licensed under the MIT License (the "License")
 
 using H.Components.Vision.Base;
-using H.Controls.Diagram.Presenter.DiagramDatas;
 using H.Extensions.Mvvm.ViewModels.Base;
 using H.ValueConverter;
 using System.Globalization;
@@ -43,7 +42,7 @@ public class GetVisionNodeDataImageViewPreseterValueConverter : MarkupValueConve
 {
     public override object Convert(object value, Type targetType, object parameter, CultureInfo culture)
     {
-        if(value is IVisionNodeData visionNodeData)
+        if (value is IVisionNodeData visionNodeData)
             return new VisionNodeDataImageViewPreseter(visionNodeData);
         return DependencyProperty.UnsetValue;
     }

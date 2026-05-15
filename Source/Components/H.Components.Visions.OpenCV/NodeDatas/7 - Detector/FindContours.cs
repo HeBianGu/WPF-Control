@@ -242,6 +242,18 @@ public class FindContours : OpenCVDetectorNodeDataBase, IDetectorGroupableNodeDa
                 this.ResultShapes = shapes.OfType<IShape>().ToObservable();
                 return this.OK(resultImage, shapes.ToResultPresenter());
             }
+            else if (this.DetectDisplayMode == DetectDisplayMode.RotatedRect)
+            {
+                var rotateRectShapes = contours.Select(x => Cv2.MinAreaRect(x).ToRotatedRectShape(s =>
+                {
+                    s.UseAngle = true;
+                    s.UseDimension = false;
+                    s.UseTitle = true;
+                    s.Title = this.Name + "- 最小外接矩形";
+                }));
+                this.ResultShapes = rotateRectShapes.OfType<IShape>().ToObservable();
+                return this.OK(resultImage, shapes.ToResultPresenter());
+            }
             else
             {
                 Cv2.DrawContours(resultImage.Mat, contours, this.ContourIdx, VisionSettings.Instance.OutputColor.ToScalar(), resultImage.Mat.ToThickness(), this.LineType, hierarchly, this.MaxLevel, this.DrawOffset);

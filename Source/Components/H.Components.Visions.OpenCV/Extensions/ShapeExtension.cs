@@ -37,6 +37,11 @@ public static class ShapeExtension
         return points?.Select(x => x.ToPoint()).ToPolygonShape(action);
     }
 
+    public static IEnumerable<DimensionShape> ToDimensionShapes(this IEnumerable<OpenCvSharp.Point> points, Action<DimensionShape> action = null)
+    {
+        return points?.Select(x => x.ToPoint()).ToDimensionShapes(action);
+    }
+
     public static ObservableCollection<IShape> ToShapeObservable(this IShape shape)
     {
         return shape.ToEnumerable().ToObservable();

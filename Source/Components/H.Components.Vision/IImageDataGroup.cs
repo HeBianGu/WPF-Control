@@ -8,6 +8,8 @@
 
 using H.Controls.Diagram.Presenter.DiagramDatas;
 
+namespace H.Components.Vision;
+
 public interface IImageDataGroup : INodeDataGroup
 {
 

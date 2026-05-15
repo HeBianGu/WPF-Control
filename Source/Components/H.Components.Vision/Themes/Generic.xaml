@@ -12,8 +12,27 @@
         <ResourceDictionary Source="pack://application:,,,/H.Components.Vision;component/Presenters/ShapeViewPropertyItem.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Components.Vision;component/Presenters/VisionDiagramPreseter.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Components.Vision;component/Presenters/VisionNodeDataImageViewPreseter.xaml" />
-        <!--ResultPresenters-->
+        <!--  ResultPresenters  -->
         <ResourceDictionary Source="pack://application:,,,/H.Components.Vision;component/Presenters/ResultPresenters/DataGridResultPresenter.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Components.Vision;component/Presenters/ResultPresenters/ValueResultPresenter.xaml" />
     </ResourceDictionary.MergedDictionaries>
+
+    <DataTemplate DataType="{x:Type local:DetectDisplayMode}">
+        <TextBlock x:Name="t" />
+        <DataTemplate.Triggers>
+            <DataTrigger Binding="{Binding}" Value="Default">
+                <Setter TargetName="t" Property="Text" Value="轮廓" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding}" Value="Dimension">
+                <Setter TargetName="t" Property="Text" Value="标尺" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding}" Value="Pixel">
+                <Setter TargetName="t" Property="Text" Value="像素" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding}" Value="RotatedRect">
+                <Setter TargetName="t" Property="Text" Value="最小外接矩形" />
+            </DataTrigger>
+        </DataTemplate.Triggers>
+    </DataTemplate>
+
 </ResourceDictionary>
