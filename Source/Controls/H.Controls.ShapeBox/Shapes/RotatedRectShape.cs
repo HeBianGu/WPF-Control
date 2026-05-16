@@ -14,11 +14,13 @@ using System.Windows.Input;
 using System.Windows.Media;
 
 namespace H.Controls.ShapeBox.Shapes;
-public interface IRotatedRectShape : IShape
+public interface IRotatedRectShape : IShape, ITitleShape, IBoundingBoxShape
 {
     double Angle { get; set; }
     Size Size { get; set; }
     Point Center { get; set; }
+
+    Point[] GetPoints();
 
 }
 public class RotatedRectShape : TitleShapeBase, IRotatedRectShape
@@ -51,6 +53,8 @@ public class RotatedRectShape : TitleShapeBase, IRotatedRectShape
 
     [Display(Name = "旋转角度", GroupName = "数据")]
     public double Angle { get; set; }
+
+    public Rect BoundingBox => this.GetBoundingRect();
 
     /// <summary>
     /// 获取在应用旋转前的轴对齐矩形

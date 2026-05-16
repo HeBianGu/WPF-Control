@@ -10,6 +10,5 @@ public enum DetectDisplayMode
 {
     Default = 0,
     Dimension = 1,
-    Pixel = 2,
-    RotatedRect = 3
+    Pixel = 2
 }

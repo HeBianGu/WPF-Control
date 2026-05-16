@@ -29,9 +29,6 @@
             <DataTrigger Binding="{Binding}" Value="Pixel">
                 <Setter TargetName="t" Property="Text" Value="像素" />
             </DataTrigger>
-            <DataTrigger Binding="{Binding}" Value="RotatedRect">
-                <Setter TargetName="t" Property="Text" Value="最小外接矩形" />
-            </DataTrigger>
         </DataTemplate.Triggers>
     </DataTemplate>
 

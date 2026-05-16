@@ -144,13 +144,13 @@ public class RenderBlobs : OpenCVDetectorNodeDataBase, IDetectorGroupableNodeDat
         {
             this.ResultShapes = finds.SelectMany(x => x.Rect.ToWindowRect().ToDimensionShapes(x => x.Text = this.GetWorldDistance(x.Length))).OfType<IShape>().ToObservable();
         }
-        else if (this.DetectDisplayMode == DetectDisplayMode.Default || this.DetectDisplayMode == DetectDisplayMode.RotatedRect)
+        else if (this.DetectDisplayMode == DetectDisplayMode.Default)
         {
             this.ResultShapes = finds.Select(x => new RectShape(x.Rect.ToWindowRect())).OfType<IShape>().ToObservable();
         }
         else
         {
-            var color = VisionSettings.Instance.OutputColor.ToScalar();
+            var color = VisionSettings.Instance.OutputColor.ToScalar();                                          
             foreach (ConnectedComponents.Blob blob in finds)
             {
                 resultImage.Mat.Rectangle(blob.Rect, color, resultImage.Mat.ToThickness());

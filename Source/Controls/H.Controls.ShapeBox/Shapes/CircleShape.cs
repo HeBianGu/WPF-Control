@@ -10,7 +10,14 @@ using H.Controls.ShapeBox.Shapes.Handles;
 using H.Extensions.Common;
 
 namespace H.Controls.ShapeBox.Shapes;
-public class CircleShape : TitleShapeBase, IBoundingBoxShape
+
+public interface ICircleShape : IBoundingBoxShape, ITitleShape
+{
+    Point Center { get; set; }
+    double Radius { get; set; }
+}
+
+public class CircleShape : TitleShapeBase, ICircleShape
 {
     public CircleShape()
     {

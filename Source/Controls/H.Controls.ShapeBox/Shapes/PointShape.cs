@@ -10,7 +10,13 @@ using H.Controls.ShapeBox.Shapes.Handles;
 using H.Extensions.Common;
 
 namespace H.Controls.ShapeBox.Shapes;
-public class PointShape : TitleShapeBase, IBoundingBoxShape
+
+public interface IPointShape : IBoundingBoxShape, ITitleShape
+{
+    Point Point { get; set; }
+}
+
+public class PointShape : TitleShapeBase, IPointShape
 {
     public PointShape()
     {

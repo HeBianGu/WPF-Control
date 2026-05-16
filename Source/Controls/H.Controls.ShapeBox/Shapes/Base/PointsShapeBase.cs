@@ -63,9 +63,11 @@ public class PointsTypeConverter : TypeConverter
     }
 }
 
-public interface IPointsShape : IBoundingBoxShape
+public interface IPointsShape : IBoundingBoxShape, ITitleShape
 {
     Points Points { get; set; }
+
+    double Area { get; }
 }
 
 public abstract class PointsShapeBase : TitleShapeBase, IPointsShape

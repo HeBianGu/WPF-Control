@@ -9,7 +9,13 @@
 using H.Common.Interfaces;
 
 namespace H.Controls.ShapeBox.Shapes;
-public class DimensionShape : FromToShapeBase, ITextable
+
+public interface IDimensionShape : IShape, ITextable, IFromToShape
+{
+
+}
+
+public class DimensionShape : FromToShapeBase, IDimensionShape
 {
     public DimensionShape()
     {

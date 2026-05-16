@@ -14,11 +14,11 @@ using System.Windows;
 using System.Windows.Input;
 
 namespace H.Controls.ShapeBox.Shapes;
-public interface IRectShape : IShape
+public interface IRectShape : IShape, ITitleShape, IBoundingBoxShape
 {
     Rect Rect { get; set; }
 }
-public class RectShape : TitleShapeBase, IRectShape, IBoundingBoxShape
+public class RectShape : TitleShapeBase, IRectShape
 {
     public RectShape()
     {

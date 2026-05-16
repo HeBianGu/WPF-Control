@@ -11,6 +11,8 @@ global using H.Controls.Diagram.Presenter.NodeDatas.Base;
 global using H.Mvvm.ViewModels.Base;
 using H.Components.Vision.Geometrys;
 using H.Components.Vision.Presenters.ResultPresenters;
+using H.Controls.ShapeBox.Shapes.Base;
+using System;
 
 namespace H.VisionMaster.ResultPresenter;
 
@@ -171,12 +173,12 @@ public static partial class ResultPresenterExtension
         return value.ToEnumerable().ToLineDataGridResultPresenter(x => value, x => name);
     }
 
-    public static IResultPresenter ToResultPresenter(this CircleShape value, string name)
+    public static IResultPresenter ToResultPresenter(this ICircleShape value)
     {
         return value.ToEnumerable().ToResultPresenter();
     }
 
-    public static IResultPresenter ToResultPresenter(this IEnumerable<CircleShape> value)
+    public static IResultPresenter ToResultPresenter(this IEnumerable<ICircleShape> value)
     {
         return value.Select(x => new CircleResultPresenterItem(x.Center, x.Radius) { Name = x.Title, Shape = x }).ToResultPresenter();
     }
@@ -185,51 +187,98 @@ public static partial class ResultPresenterExtension
     {
         return value.ToPointDataGridResultPresenter(x => x, nameSelector);
     }
-    public static IResultPresenter ToResultPresenter(this PointShape value)
+    public static IResultPresenter ToResultPresenter(this IPointShape value)
     {
         return value.ToEnumerable().ToResultPresenter();
     }
 
-    public static IResultPresenter ToResultPresenter(this IEnumerable<PointShape> value)
+    public static IResultPresenter ToResultPresenter(this IEnumerable<IPointShape> value)
     {
         return value.Select(x => new PointResultPresenterItem(x.Point) { Name = x.Title, Shape = x }).ToResultPresenter();
     }
 
-    public static IResultPresenter ToResultPresenter(this IEnumerable<RectShape> value)
+    public static IResultPresenter ToResultPresenter(this IEnumerable<IRectShape> value)
     {
         return value.Select(x => new RectangleResultPresenterItem(x.Rect) { Name = x.Title, Shape = x }).ToResultPresenter();
     }
 
-    public static IResultPresenter ToResultPresenter(this RectShape value)
+    public static IResultPresenter ToResultPresenter(this IRectShape value)
     {
         return value.ToEnumerable().ToResultPresenter();
     }
 
-    public static IResultPresenter ToResultPresenter(this IEnumerable<PointsShapeBase> value)
+    public static IResultPresenter ToResultPresenter(this IEnumerable<IPointsShape> value)
     {
         return value.Select(x => new PointsShapeResultPresenterItem(x) { Name = x.Title }).ToResultPresenter();
     }
 
-    public static IResultPresenter ToResultPresenter(this IEnumerable<RotatedRectShape> value)
+    public static IResultPresenter ToResultPresenter(this IRotatedRectShape value)
+    {
+        return value.ToEnumerable().ToResultPresenter();
+    }
+
+    public static IResultPresenter ToResultPresenter(this IEnumerable<IRotatedRectShape> value)
     {
         return value.Select(x => new RotatedRectShapeResultPresenterItem(x) { Name = x.Title }).ToResultPresenter();
     }
 
-    public static IResultPresenter ToResultPresenter(this PointsShapeBase value)
+    public static IResultPresenter ToResultPresenter(this IPointsShape value)
     {
         return value.ToEnumerable().ToResultPresenter();
     }
 
     public static IResultPresenter ToAutoResultPresenter(this IShape value, string name)
     {
-        if (value is PointShape pointShape)
+        if (value is IPointShape pointShape)
             return pointShape.ToResultPresenter();
-        if (value is LineShape lineShape)
+        if (value is IFromToShape lineShape)
             return lineShape.ToResultPresenter();
-        if (value is DimensionShape dimensionShape)
-            return dimensionShape.ToResultPresenter();
-        if (value is CircleShape circleShape)
-            return circleShape.ToResultPresenter(name);
+        if (value is ICircleShape circleShape)
+            return circleShape.ToResultPresenter();
+        if (value is IRectShape rectShape)
+            return rectShape.ToResultPresenter();
+        if (value is IRotatedRectShape rotatedRectShape)
+            return rotatedRectShape.ToResultPresenter();
+        if (value is IPointsShape pointsShape)
+            return pointsShape.ToResultPresenter();
+        Trace.Assert(false, "未找到合适的结果展示器");
         return null;
+    }
+
+    public static IResultPresenter ToAutoResultPresenter(this IEnumerable<IShape> shapes)
+    {
+        {
+            var cshapes = shapes.OfType<ICircleShape>();
+            if (cshapes.Count() > 0)
+                return cshapes.ToResultPresenter();
+        }
+        {
+            var cshapes = shapes.OfType<IRectShape>();
+            if (cshapes.Count() > 0)
+                return cshapes.ToResultPresenter();
+        }
+        {
+            var cshapes = shapes.OfType<IPointsShape>();
+            if (cshapes.Count() > 0)
+                return cshapes.ToResultPresenter();
+        }
+        {
+            var cshapes = shapes.OfType<IPointShape>();
+            if (cshapes.Count() > 0)
+                return cshapes.ToResultPresenter();
+        }
+        {
+            var cshapes = shapes.OfType<IFromToShape>();
+            if (cshapes.Count() > 0)
+                return cshapes.ToResultPresenter();
+        }
+        {
+            var cshapes = shapes.OfType<IRotatedRectShape>();
+            if (cshapes.Count() > 0)
+                return cshapes.ToResultPresenter();
+        }
+        Trace.Assert(false, "未找到合适的结果展示器");
+        return null;
+
     }
 }

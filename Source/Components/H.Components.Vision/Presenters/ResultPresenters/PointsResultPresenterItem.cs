@@ -12,8 +12,8 @@ namespace H.Components.Vision.Presenters.ResultPresenters;
 
 public class PointsShapeResultPresenterItem : ResultPresenterItemBase, IRectangleResultItem, IShapeResultPresenterItem
 {
-    private PointsShapeBase _shape;
-    public PointsShapeResultPresenterItem(PointsShapeBase shape)
+    private IPointsShape _shape;
+    public PointsShapeResultPresenterItem(IPointsShape shape)
     {
         this._shape = shape;
         this.Shape = shape;
