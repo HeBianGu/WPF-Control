@@ -35,8 +35,8 @@
                 </HierarchicalDataTemplate>
             </ItemsControl.ItemTemplate>
             <TreeView.ItemContainerStyle>
-                <Style TargetType="TreeViewItem" BasedOn="{StaticResource {x:Static TreeViewItemKeys.Default}}">
-                    <Setter Property="Visibility" Value="{Binding IsVisible,Converter={GetTrueToVisibleConverter}}"/>
+                <Style BasedOn="{StaticResource {x:Static TreeViewItemKeys.Default}}" TargetType="TreeViewItem">
+                    <Setter Property="Visibility" Value="{Binding IsVisible, Converter={GetTrueToVisibleConverter}}" />
                 </Style>
             </TreeView.ItemContainerStyle>
         </TreeView>

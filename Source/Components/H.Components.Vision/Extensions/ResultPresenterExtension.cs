@@ -277,7 +277,8 @@ public static partial class ResultPresenterExtension
             if (cshapes.Count() > 0)
                 return cshapes.ToResultPresenter();
         }
-        Trace.Assert(false, "未找到合适的结果展示器");
+        if (shapes.Count() > 0)
+            Trace.Assert(false, "未找到合适的结果展示器");
         return null;
 
     }

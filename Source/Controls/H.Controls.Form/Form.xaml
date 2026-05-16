@@ -131,7 +131,10 @@
                                             CornerRadius="0"
                                             Opacity="0.8" />
                                     </Button>
-                                    <ContentPresenter Margin="0 2" Grid.Column="2" Content="{Binding}" />
+                                    <ContentPresenter
+                                        Grid.Column="2"
+                                        Margin="0,2"
+                                        Content="{Binding}" />
                                     <TextBlock Grid.Column="3" Style="{StaticResource S.TextBlock.Error}" />
                                 </Grid>
                                 <DataTemplate.Triggers>

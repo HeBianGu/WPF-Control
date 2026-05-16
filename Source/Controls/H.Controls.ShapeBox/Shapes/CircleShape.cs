@@ -11,6 +11,7 @@ using H.Extensions.Common;
 
 namespace H.Controls.ShapeBox.Shapes;
 
+
 public interface ICircleShape : IBoundingBoxShape, ITitleShape
 {
     Point Center { get; set; }

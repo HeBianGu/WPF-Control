@@ -14,6 +14,10 @@ namespace H.Components.Visions.OpenCV.NodeDatas.Detector;
 [Display(Name = "轮廓查找", GroupName = "查找", Description = "二指图片的效果反转既黑色变白色，白色变黑色", Order = 21)]
 public class FindContours : OpenCVDetectorNodeDataBase, IDetectorGroupableNodeData
 {
+    public FindContours()
+    {
+        this.DetectDisplayMode = DetectDisplayMode.Default;
+    }
     private RetrievalModes _retrievalMode = RetrievalModes.Tree;
     [DefaultValue(RetrievalModes.Tree)]
     [Display(Name = "轮廓检索模式", GroupName = VisionPropertyGroupNames.RunParameters, Description = "设置轮廓的层级检索方式，如External、List、CComp、Tree等。影响返回的层级关系和数量。")]
@@ -220,172 +224,21 @@ public class FindContours : OpenCVDetectorNodeDataBase, IDetectorGroupableNodeDa
         if (this.CaliperShape is RectShape caliper)
             contours = contours.Where(x => x.All(k => caliper.Rect.Contains(k.ToPoint()))).ToArray();
 
-        if (this.DrawContourType == DrawContourType.DrawContours)
+        if (this.DetectDisplayMode == DetectDisplayMode.Dimension)
         {
-            var shapes = contours.Select(x => new PolygonShape(x.Select(x => x.ToPoint())) { Title = this.Name + "-轮廓" });
-
-            if (this.MaxArea > 0)
-                shapes = shapes.Where(x => x.Area < this.MaxArea);
-            if (this.MinArea > 0)
-                shapes = shapes.Where(x => x.Area > this.MinArea);
-            if (this.DetectDisplayMode == DetectDisplayMode.Dimension)
-            {
-                //  Do ：数据多性能有问题
-                //var shapes = contours.SelectMany(x => x.Select(x => x.ToPoint()).ToDimensionShapes(x => x.Text = this.GetWorldDistance(x.Length)));
-                //this.ResultShapes = shapes.OfType<IShape>().ToObservable();
-                //return this.OK(dst, shapes.ToResultPresenter());
-                this.ResultShapes = shapes.OfType<IShape>().ToObservable();
-                return this.OK(resultImage, shapes.ToResultPresenter());
-            }
-            else if (this.DetectDisplayMode == DetectDisplayMode.Default)
-            {
-                this.ResultShapes = shapes.OfType<IShape>().ToObservable();
-                return this.OK(resultImage, shapes.ToResultPresenter());
-            }
-            //else if (this.DetectDisplayMode == DetectDisplayMode)
-            //{
-            //    var rotateRectShapes = contours.Select(x => Cv2.MinAreaRect(x).ToRotatedRectShape(s =>
-            //    {
-            //        s.UseAngle = true;
-            //        s.UseDimension = false;
-            //        s.UseTitle = true;
-            //        s.Title = this.Name + "- 最小外接矩形";
-            //    }));
-            //    this.ResultShapes = rotateRectShapes.OfType<IShape>().ToObservable();
-            //    return this.OK(resultImage, shapes.ToResultPresenter());
-            //}
-            else
-            {
-                Cv2.DrawContours(resultImage.Mat, contours, this.ContourIdx, VisionSettings.Instance.OutputColor.ToScalar(), resultImage.Mat.ToThickness(), this.LineType, hierarchly, this.MaxLevel, this.DrawOffset);
-                return this.OK(resultImage, shapes.ToResultPresenter());
-            }
-
+            this.ResultShapes = contours.SelectMany(x => x.ToDimensionShapes(this.DrawContourType)).OfType<IShape>().ToObservable();
         }
-        if (this.DrawContourType == DrawContourType.ConvexHull)
+        else if (this.DetectDisplayMode == DetectDisplayMode.Default)
         {
-            if (this.DetectDisplayMode == DetectDisplayMode.Dimension)
-            {
-                var wrects = rects.Select(x => x.ToWindowRect());
-                var shapes = wrects.SelectMany(x => x.ToDimensionShapes(x => x.Text = this.GetWorldDistance(x.Length)));
-
-                this.ResultShapes = shapes.OfType<IShape>().ToObservable();
-                return this.OK(resultImage, shapes.ToResultPresenter());
-            }
-            else if (this.DetectDisplayMode == DetectDisplayMode.Default)
-            {
-                var shapes = rects.Select(x => new RectShape(x.ToWindowRect()) { Title = this.Name + "-凸包" });
-                this.ResultShapes = shapes.OfType<IShape>().ToObservable();
-                return this.OK(resultImage, shapes.ToResultPresenter());
-            }
-            else
-            {
-                var shapes = rects.Select(x => new RectShape(x.ToWindowRect()) { Title = this.Name + "-凸包" });
-                //foreach (OpenCvSharp.Point[] contour in contours)
-                //{
-                //    Cv2.ConvexHull(contours[0], contour);
-                //}
-                return this.OK(resultImage);
-            }
+            this.ResultShapes = contours.Select(x => x.ToShape(this.DrawContourType)).OfType<IShape>().ToObservable();
         }
-        if (this.DrawContourType == DrawContourType.BoundingRect)
+        else
         {
-            //IEnumerable<Rect> rects = contours.Select(x => Cv2.BoundingRect(x));
-            ////foreach (Rect rect in rects)
-            ////{
-            ////    Cv2.Rectangle(dst, rect.TopLeft, rect.BottomRight, VisionSettings.Instance.OutputColor.ToScalar(), dst.ToThickness(), this.LineType);
-            ////}
-
-            if (this.DetectDisplayMode == DetectDisplayMode.Dimension)
-            {
-                var shapes = rects.SelectMany(x => x.ToWindowRect().ToDimensionShapes(x => x.Text = this.GetWorldDistance(x.Length)));
-                this.ResultShapes = shapes.OfType<IShape>().ToObservable();
-                return this.OK(resultImage, shapes.ToResultPresenter());
-            }
-            else if (this.DetectDisplayMode == DetectDisplayMode.Default)
-            {
-                var shapes = rects.Select(x => new RectShape(x.ToWindowRect()) { Title = this.Name + "-外接矩形" });
-                this.ResultShapes = shapes.OfType<IShape>().ToObservable();
-                return this.OK(resultImage, shapes.ToResultPresenter());
-            }
-            else
-            {
-                var shapes = rects.Select(x => new RectShape(x.ToWindowRect()) { Title = this.Name + "-外接矩形" });
-                foreach (var rect in rects)
-                {
-                    Cv2.Rectangle(resultImage.Mat, rect.TopLeft, rect.BottomRight, VisionSettings.Instance.OutputColor.ToScalar(), resultImage.Mat.ToThickness(), this.LineType);
-                }
-                return this.OK(resultImage, shapes.ToResultPresenter());
-            }
-
+            Cv2.DrawContours(resultImage.Mat, contours, -1, Scalar.RandomColor(), 2);
         }
-        if (this.DrawContourType == DrawContourType.MinAreaRect)
-        {
-            IEnumerable<RotatedRect> rrects = contours.Select(x => Cv2.MinAreaRect(x));
 
-            if (this.MaxArea > 0)
-                rrects = rrects.Where(x => x.Size.Width * x.Size.Height < this.MaxArea);
-            if (this.MinArea > 0)
-                rrects = rrects.Where(x => x.Size.Width * x.Size.Height > this.MinArea);
-
-            //return this.Method(rrects.FirstOrDefault(), fromImage);
-
-            if (this.DetectDisplayMode == DetectDisplayMode.Dimension)
-            {
-                var shapes = rrects.SelectMany(x => x.Points().Select(x => x.ToPoint().ToPoint()).ToDimensionShapes(x => x.Text = this.GetWorldDistance(x.Length)));
-                this.ResultShapes = shapes.OfType<IShape>().ToObservable();
-                return this.OK(resultImage, shapes.ToResultPresenter());
-            }
-            else if (this.DetectDisplayMode == DetectDisplayMode.Default)
-            {
-                var shapes = rrects.Select(x => new PolygonShape(x.Points().Select(x => x.ToPoint().ToPoint())) { Title = this.Name + "-最小外接矩形" });
-                this.ResultShapes = shapes.OfType<IShape>().ToObservable();
-                return this.OK(resultImage, shapes.ToResultPresenter());
-            }
-            else
-            {
-                foreach (RotatedRect rect in rrects)
-                {
-                    Cv2.Rectangle(resultImage.Mat, rect.BoundingRect().TopLeft, rect.BoundingRect().BottomRight, VisionSettings.Instance.OutputColor.ToScalar(), resultImage.Mat.ToThickness(), this.LineType);
-                }
-                var shapes = rrects.Select(x => new PolygonShape(x.Points().Select(x => x.ToPoint().ToPoint())) { Title = this.Name + "-最小外接矩形" });
-                return this.OK(resultImage, shapes.ToResultPresenter());
-            }
-
-        }
-        if (this.DrawContourType == DrawContourType.ApproxPolyDP)
-        {
-            if (this.DetectDisplayMode == DetectDisplayMode.Dimension)
-            {
-                //  Do ：性能不太好先不用
-                //var shapes = contours.SelectMany(x => x.Select(x => x.ToPoint()).ToDimensionShapes(x => x.Text = this.GetWorldDistance(x.Length)));
-                //this.ResultShapes = shapes.OfType<IShape>().ToObservable();
-                //return this.OK(dst, shapes.ToResultPresenter());
-
-                var shapes = contours.Select(x => new PolygonShape(x.Select(x => x.ToPoint())) { Title = this.Name + "-近似多边形拟合" });
-
-                if (this.MaxArea > 0)
-                    shapes = shapes.Where(x => x.Area < this.MaxArea);
-                if (this.MinArea > 0)
-                    shapes = shapes.Where(x => x.Area > this.MinArea);
-
-                this.ResultShapes = shapes.OfType<IShape>().ToObservable();
-                return this.OK(resultImage, shapes.ToResultPresenter());
-            }
-            else if (this.DetectDisplayMode == DetectDisplayMode.Default)
-            {
-                var shapes = contours.Select(x => new PolygonShape(x.Select(x => x.ToPoint())) { Title = this.Name + "-近似多边形拟合" });
-                this.ResultShapes = shapes.OfType<IShape>().ToObservable();
-                return this.OK(resultImage, shapes.ToResultPresenter());
-            }
-            else
-            {
-                IEnumerable<OpenCvSharp.Point[]> points = contours.Select(x => Cv2.ApproxPolyDP(x, 20, true));
-                Cv2.DrawContours(resultImage.Mat, points, this.ContourIdx, VisionSettings.Instance.OutputColor.ToScalar(), resultImage.Mat.ToThickness(), this.LineType, hierarchly, this.MaxLevel, this.DrawOffset);
-                var shapes = contours.Select(x => new PolygonShape(x.Select(x => x.ToPoint())) { Title = this.Name + "-近似多边形拟合" });
-                return this.OK(resultImage, shapes.ToResultPresenter());
-            }
-        }
-        return this.OK(resultImage);
+        var resultPresenter = this.ResultShapes.ToAutoResultPresenter();
+        return this.OK(resultImage, resultPresenter);
     }
 
     public FlowableResult<IMatImage> Method(RotatedRect rr, Mat fromImage)
@@ -472,7 +325,7 @@ public enum DrawContourType
     BoundingRect,
     [Display(Name = "最小外接矩形")]
     MinAreaRect,
-    [Display(Name = "凸包")]
+    [Display(Name = "最小凸多边形")]
     ConvexHull,
     [Display(Name = "近似多边形拟合")]
     ApproxPolyDP,

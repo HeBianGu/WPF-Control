@@ -21,7 +21,7 @@
         <TextBlock x:Name="t" />
         <DataTemplate.Triggers>
             <DataTrigger Binding="{Binding}" Value="Default">
-                <Setter TargetName="t" Property="Text" Value="轮廓" />
+                <Setter TargetName="t" Property="Text" Value="默认" />
             </DataTrigger>
             <DataTrigger Binding="{Binding}" Value="Dimension">
                 <Setter TargetName="t" Property="Text" Value="标尺" />

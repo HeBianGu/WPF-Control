@@ -20,22 +20,35 @@ public static class ContourShapeExtension
     public static IShape ToShape(this OpenCvSharp.Point[] points, DrawContourType drawContourType, Action<ITitleShape> action = null)
     {
         if (drawContourType == DrawContourType.BoundingRect)
-            return points.ToBoundingRect().ToWindowRect().ToRectShape(action);
+            return points.ToBoundingRect().ToWindowRect().ToRectShape(x =>
+            {
+                x.Title = "外接矩形";
+                action?.Invoke(x);
+            });
         if (drawContourType == DrawContourType.MinAreaRect)
             return points.ToRotatedRect().ToRotatedRectShape(s =>
            {
                s.UseAngle = true;
                s.UseDimension = true;
                s.UseTitle = true;
+               s.Title = "最小外接矩形";
                action?.Invoke(s);
            });
         if (drawContourType == DrawContourType.ConvexHull)
-            points.ToConvexHull().ToPolygonShape(action);
+            return points.ToConvexHull().ToPolygonShape(x =>
+                  {
+                      x.Title = "最小凸多边形";
+                      action?.Invoke(x);
+                  });
         if (drawContourType == DrawContourType.ApproxPolyDP)
-            return points.ToApproxPolyDP().ToPolygonShape(action);
+            return points.ToApproxPolyDP().ToPolygonShape(x =>
+            {
+                x.Title = "近似轮廓";
+                action?.Invoke(x);
+            });
         if (drawContourType == DrawContourType.Circle)
-            return points.ToCircle().ToCircleShape(action);
-        return points.ToPolygonShape(action);
+            return points.ToCircle().ToCircleShape(x => { x.Title = "圆"; action?.Invoke(x); });
+        return points.ToPolygonShape(x => { x.Title = "轮廓"; action?.Invoke(x); });
     }
 
     public static IEnumerable<DimensionShape> ToDimensionShapes(this OpenCvSharp.Point[] points, DrawContourType drawContourType)

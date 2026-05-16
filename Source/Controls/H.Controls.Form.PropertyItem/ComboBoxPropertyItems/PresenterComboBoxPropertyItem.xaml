@@ -1,17 +1,19 @@
-﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:local="clr-namespace:H.Controls.Form.PropertyItem.ComboBoxPropertyItems">
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:H.Controls.Form.PropertyItem.ComboBoxPropertyItems">
     <DataTemplate DataType="{x:Type local:PresenterComboBoxPropertyItem}">
         <DockPanel>
-            <ComboBox Height="Auto"
-                      Cattach.ItemHeight="Auto"
-                      Cattach.UseGuide="False"
-                      DisplayMemberPath="{Binding DisplayMemberPath}"
-                      DockPanel.Dock="Top"
-                      IsHitTestVisible="{Binding IsHitTestVisible}"
-                      ItemsSource="{Binding Collection}"
-                      SelectedItem="{Binding Value}"
-                      SelectedValuePath="{Binding SelectedValuePath}" />
+            <ComboBox
+                Height="Auto"
+                Cattach.ItemHeight="Auto"
+                Cattach.UseGuide="False"
+                DisplayMemberPath="{Binding DisplayMemberPath}"
+                DockPanel.Dock="Top"
+                IsHitTestVisible="{Binding IsHitTestVisible}"
+                ItemsSource="{Binding Collection}"
+                SelectedItem="{Binding Value}"
+                SelectedValuePath="{Binding SelectedValuePath}" />
             <!--<local:Form Padding="0" SelectObject="{Binding Value}" />-->
             <ContentPresenter Content="{Binding Value}" />
         </DockPanel>
