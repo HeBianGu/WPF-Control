@@ -49,27 +49,40 @@ public static class ResultExtension
     {
         foreach (var item in rects)
         {
-            if (fromImage.IsValid() == false)
-                continue;
-            if (!fromImage.IsRoiInRange(item))
-                continue;
-            Mat mat = new Mat(fromImage, item);
-            yield return new VisionResultImage<IMatImage>() { Image = new MatImage(mat), Name = "Hello World" };
+            var result = item.ToResultImage(fromImage);
+            if (result != null)
+                yield return result;
         }
+    }
+
+    public static IVisionResultImage<IMatImage> ToResultImage(this OpenCvSharp.Rect rect, Mat fromImage)
+    {
+        if (fromImage.IsValid() == false)
+            return null;
+        if (!fromImage.IsRoiInRange(rect))
+            return null;
+        Mat mat = new Mat(fromImage, rect);
+        return new VisionResultImage<IMatImage>() { Image = new MatImage(mat), Name = "Hello World" };
     }
 
     public static IEnumerable<IVisionResultImage<IMatImage>> ToResultImages(this IEnumerable<RotatedRect> rects, Mat fromImage)
     {
         foreach (var item in rects)
         {
-            if (fromImage.IsValid() == false)
-                continue;
-            if (!fromImage.IsRotatedRectInRange(item))
-                continue;
-
-            Mat mat = fromImage.GetRotatedRectImage(item);
-            yield return new VisionResultImage<IMatImage>() { Image = new MatImage(mat), Name = "Hello World" };
+          var result = item.ToResultImage(fromImage);
+          if (result != null)
+              yield return result;
         }
+    }
+
+    public static IVisionResultImage<IMatImage> ToResultImage(this OpenCvSharp.RotatedRect rect, Mat fromImage)
+    {
+        if (fromImage.IsValid() == false)
+            return null;
+        if (!fromImage.IsRotatedRectInRange(rect))
+            return null;
+        Mat mat = fromImage.GetRotatedRectImage(rect);
+        return new VisionResultImage<IMatImage>() { Image = new MatImage(mat), Name = "Hello World" };
     }
 
     private static bool IsRotatedRectInRange(this Mat src, RotatedRect rect)

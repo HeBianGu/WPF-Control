@@ -256,6 +256,7 @@ public class ShapeTemplateMatch : MatchingNodeData<IMatImage>, ITemplateMatching
 
         this.MatchingCountResult = this.ResultShapes.Count;
         this.Confidence = this.MinScore;
+        this.ResultImages = whereContours.Select(x => x.Item1.ToResultImage(this.DrawContourType, fromImage.Mat)).ToList();
         this.FirstResultImage = this.ResultImages.FirstOrDefault()?.Image;
         if (this.ResultShapes.Count == 0)
             return this.OK(resultImage, resultPresenter, "未找到匹配的形状");

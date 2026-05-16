@@ -58,10 +58,23 @@ public static class ContourShapeExtension
         if (drawContourType == DrawContourType.MinAreaRect)
             return points.ToRotatedRect().ToDimensionShapes();
         if (drawContourType == DrawContourType.ConvexHull)
-            points.ToConvexHull().ToDimensionShapes();
+            return points.ToConvexHull().ToDimensionShapes();
         if (drawContourType == DrawContourType.ApproxPolyDP)
             return points.ToApproxPolyDP().ToDimensionShapes();
         return points.ToDimensionShapes();
+    }
+
+    public static IVisionResultImage<IMatImage> ToResultImage(this OpenCvSharp.Point[] points, DrawContourType drawContourType, Mat fromMat)
+    {
+        if (drawContourType == DrawContourType.BoundingRect)
+            return points.ToBoundingRect().ToResultImage(fromMat);
+        if (drawContourType == DrawContourType.MinAreaRect)
+            return points.ToRotatedRect().ToResultImage(fromMat);
+        if (drawContourType == DrawContourType.ConvexHull)
+            return points.ToConvexHull().ToBoundingRect().ToResultImage(fromMat);
+        if (drawContourType == DrawContourType.ApproxPolyDP)
+            return points.ToApproxPolyDP().ToBoundingRect().ToResultImage(fromMat);
+        return points.ToBoundingRect().ToResultImage(fromMat);
     }
 }
 
