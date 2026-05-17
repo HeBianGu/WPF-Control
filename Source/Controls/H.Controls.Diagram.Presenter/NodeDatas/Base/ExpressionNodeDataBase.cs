@@ -43,6 +43,8 @@ public abstract class ExpressionNodeDataBase : ShowPropertyViewNodeDataBase, IEx
     public IEnumerable<NodeDataExpression> GetUIntFromExpressions() => this.GetFromExpressions<uint>();
     public IEnumerable<NodeDataExpression> GetRectFromExpressions() => this.GetFromExpressions<Rect>();
     public IEnumerable<NodeDataExpression> GetPointFromExpressions() => this.GetFromExpressions<Point>();
+
+    public IEnumerable<NodeDataExpression> GetPointssFromExpressions() => this.GetFromExpressions<Point[][]>();
     public IEnumerable<NodeDataExpression> GetSizeFromExpressions() => this.GetFromExpressions<Size>();
     public virtual IEnumerable<NodeDataExpression> GetExpressions(Predicate<object> predicate = null)
     {

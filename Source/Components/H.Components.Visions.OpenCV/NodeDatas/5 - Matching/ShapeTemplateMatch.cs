@@ -195,22 +195,60 @@ public class ShapeTemplateMatch : MatchingNodeData<IMatImage>, ITemplateMatching
         }
     }
 
+    private System.Windows.Point[][] _ResultContours;
+    [Expressionable]
+    [PropertyItem(typeof(PointssShapeViewPropertyItem))]
+    [DefaultValue(null)]
+    [Display(Name = "轮廓结果数据", GroupName = VisionPropertyGroupNames.ResultParameters, Order = 4)]
+    public System.Windows.Point[][] ResultContours
+    {
+        get => _ResultContours;
+        set
+        {
+            _ResultContours = value;
+            RaisePropertyChanged();
+        }
+    }
+
+    private NodeDataExpression _FromContoursExpression;
+    [GetMethodNameSource(nameof(GetPointssFromExpressions))]
+    [PropertyItem(typeof(ExpressionComboBoxPropertyItem))]
+    [Display(Name = "输入轮廓数据", GroupName = VisionPropertyGroupNames.RunParameters, Description = "用来演示如何增加节点表达式参数")]
+    public NodeDataExpression FromContoursExpression
+    {
+        get { return _FromContoursExpression; }
+        set
+        {
+            _FromContoursExpression = value;
+            RaisePropertyChanged();
+        }
+    }
+
+    private System.Windows.Point[][] GetFromContours(System.Windows.Point[][] from = null)
+    {
+        if (this.TryGetExpressionValue(this.FromContoursExpression, out System.Windows.Point[][] image))
+            return image;
+        return from;
+    }
+
     protected override FlowableResult<IMatImage> Invoke(IMatImage fromImage)
     {
         var mat = fromImage.Mat;
         if (mat == null || mat.Empty())
             return this.Error(null, "输入图像为空");
-
-        if (TemplateContours == null || TemplateContours.Length == 0)
+        if (this.TemplateContours == null || this.TemplateContours.Length == 0)
             return this.Error(mat.ToMatImage(), "轮廓模板数据无效");
 
-        Cv2.FindContours(mat, out Point[][] contours, out _, RetrievalModes.Tree, ContourApproximationModes.ApproxNone);
+        var fromContours = this.GetFromContours();
+        if (fromContours == null)
+            return this.Error(fromImage.ToMatImage(), "未能获取输入轮廓数据");
+        var contours = fromContours.ToPointss();
+        ///Cv2.FindContours(mat, out Point[][] contours, out _, RetrievalModes.Tree, ContourApproximationModes.ApproxNone);
         var templateContour = TemplateContours.ToPointss().OrderByDescending(c => Cv2.ContourArea(c)).FirstOrDefault();
         if (templateContour == null)
             return this.Error(fromImage.ToMatImage(), "无法从模板中提取有效轮廓");
 
         var resultImage = this.GetExpressionResultImage(fromImage).ToMatImage();
-
 
         List<Tuple<Point[], double>> whereContours = new List<Tuple<Point[], double>>();
         for (int i = 0; i < contours.Length; i++)
@@ -253,7 +291,7 @@ public class ShapeTemplateMatch : MatchingNodeData<IMatImage>, ITemplateMatching
                 rectFlipResult = rectFlipResult with { IsFlippedVertical = false };
             this.RectFlipResult = rectFlipResult;
         }
-
+        this.ResultContours = whereContours.Select(x => x.Item1).ToArray().ToPointss();
         this.MatchingCountResult = this.ResultShapes.Count;
         this.Confidence = this.MinScore;
         this.ResultImages = whereContours.Select(x => x.Item1.ToResultImage(this.DrawContourType, fromImage.Mat)).ToList();

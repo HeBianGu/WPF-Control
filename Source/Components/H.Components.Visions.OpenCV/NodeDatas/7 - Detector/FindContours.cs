@@ -8,6 +8,7 @@
 
 using H.Controls.ShapeBox.Drawings;
 using H.Extensions.TypeConverter;
+using H.VisionMaster.OpenCVs.TemplateMatch.NodeDatas;
 
 namespace H.Components.Visions.OpenCV.NodeDatas.Detector;
 [Icon(FontIcons.LargeErase)]
@@ -186,13 +187,18 @@ public class FindContours : OpenCVDetectorNodeDataBase, IDetectorGroupableNodeDa
         }
     }
 
-    public override void Dispose()
+    private System.Windows.Point[][] _ResultContours;
+    [Expressionable]
+    [PropertyItem(typeof(PointssShapeViewPropertyItem))]
+    [DefaultValue(null)]
+    [Display(Name = "轮廓结果数据", GroupName = VisionPropertyGroupNames.ResultParameters, Order = 4)]
+    public System.Windows.Point[][] ResultContours
     {
-        base.Dispose();
-
-        foreach (var item in this.ResultImages)
+        get => _ResultContours;
+        set
         {
-            item.Image.Dispose();
+            _ResultContours = value;
+            RaisePropertyChanged();
         }
     }
 
@@ -236,7 +242,7 @@ public class FindContours : OpenCVDetectorNodeDataBase, IDetectorGroupableNodeDa
         {
             Cv2.DrawContours(resultImage.Mat, contours, -1, Scalar.RandomColor(), 2);
         }
-
+        this.ResultContours = contours.ToPointss();
         var resultPresenter = this.ResultShapes.ToAutoResultPresenter();
         return this.OK(resultImage, resultPresenter);
     }

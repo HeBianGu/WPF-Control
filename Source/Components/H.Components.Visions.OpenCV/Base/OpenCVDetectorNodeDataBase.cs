@@ -110,6 +110,17 @@ public abstract class OpenCVDetectorNodeDataBase : OpenCVNodeDataBase
     [Display(Name = "识别结果列表(0)", GroupName = VisionPropertyGroupNames.ResultParameters, Description = "当前流程运行完返回的图像结果中第一个")]
     public virtual IMatImage FirstResultImage { get; set; }
 
+
+    public override void Dispose()
+    {
+        base.Dispose();
+        foreach (var item in this.ResultImages)
+        {
+            item.Image.Dispose();
+        }
+        this.FirstResultImage?.Dispose();
+    }
+
     protected override IEnumerable<IViewState> CreateViewStates()
     {
         return base.CreateViewStates().Concat(new ShowShapeState<IShape>() { Shape = this.CaliperShape }.ToEnumerable());

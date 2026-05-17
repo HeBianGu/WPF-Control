@@ -155,5 +155,15 @@ public abstract class MatchingNodeData<T> : ROINodeData<T> where T : class, IVis
     [Expressionable]
     [Display(Name = "识别结果列表(0)", GroupName = VisionPropertyGroupNames.ResultParameters, Description = "当前流程运行完返回的图像结果中第一个")]
     public virtual T FirstResultImage { get; set; }
+
+    public override void Dispose()
+    {
+        base.Dispose();
+        foreach (var item in this.ResultImages)
+        {
+            item.Image.Dispose();
+        }
+        this.FirstResultImage?.Dispose();
+    }
 }
 
