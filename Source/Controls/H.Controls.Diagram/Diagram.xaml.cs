@@ -591,7 +591,6 @@ public partial class Diagram : ContentControl, IDiagram
     //  Do ：全部更新，性能慎用
     public void RefreshData()
     {
-
 #if DEBUG
         DateTime dateTime = DateTime.Now;
 #endif
@@ -668,7 +667,7 @@ public partial class Diagram : ContentControl, IDiagram
     {
         //Dock dock = Dock.Bottom;
         //List<Node> endNode = this.Nodes.Where(x => x.GetPorts(x => x.PortType == PortType.OutPut && x.Dock == dock && x.GetLinksOutOf().Count() == 0).Count > 0).ToList();
-       
+
         foreach (Node node in nodes)
         {
             //this.NodesSource.Add(node);

@@ -25,6 +25,24 @@ public static class OpenvCVExtension
         return new System.Windows.Rect(rect.Left, rect.Top, rect.Width, rect.Height);
     }
 
+    public static OpenCvSharp.Point[] ToPoints(this OpenCvSharp.Rect rect)
+    {
+      IEnumerable<OpenCvSharp.Point> ToPoints()
+        {
+            yield return new OpenCvSharp.Point(rect.Left, rect.Top);
+            yield return new OpenCvSharp.Point(rect.Right, rect.Top);
+            yield return new OpenCvSharp.Point(rect.Right, rect.Bottom);
+            yield return new OpenCvSharp.Point(rect.Left, rect.Bottom);
+        }
+         return ToPoints().ToArray();
+    }
+
+    public static OpenCvSharp.Point2f[] ToPoints(this OpenCvSharp.RotatedRect rect)
+    {
+        return Cv2.BoxPoints(rect);
+    }
+
+
     public static OpenCvSharp.Rect ToCVRect(this System.Windows.Rect rect)
     {
         return new OpenCvSharp.Rect((int)rect.Left, (int)rect.Top, (int)rect.Width, (int)rect.Height);
@@ -38,6 +56,34 @@ public static class OpenvCVExtension
     public static System.Windows.Rect ToWindowRect(this KeyPoint keyPoint)
     {
         return new System.Windows.Rect(keyPoint.Pt.X - keyPoint.Size / 2, keyPoint.Pt.Y - keyPoint.Size / 2, keyPoint.Size, keyPoint.Size);
+    }
+
+    public static System.Windows.Point[] ToPoints(this OpenCvSharp.Point[] points)
+    {
+        if (points is null)
+            return Array.Empty<System.Windows.Point>();
+
+        System.Windows.Point[] wpfPoints = new System.Windows.Point[points.Length];
+        for (int j = 0; j < points.Length; j++)
+        {
+            OpenCvSharp.Point p = points[j];
+            wpfPoints[j] = new System.Windows.Point(p.X, p.Y);
+        }
+        return wpfPoints;
+    }
+
+    public static OpenCvSharp.Point[] ToPoints(this System.Windows.Point[] points)
+    {
+        if (points is null)
+            return Array.Empty<OpenCvSharp.Point>();
+
+        OpenCvSharp.Point[] cvPoints = new OpenCvSharp.Point[points.Length];
+        for (int j = 0; j < points.Length; j++)
+        {
+            System.Windows.Point p = points[j];
+            cvPoints[j] = new OpenCvSharp.Point(p.X, p.Y);
+        }
+        return cvPoints;
     }
 
     public static System.Windows.Point[][] ToPointss(this OpenCvSharp.Point[][] points)
@@ -203,6 +249,11 @@ public static class OpenvCVExtension
     public static System.Windows.Point ToPoint(this OpenCvSharp.Point size)
     {
         return new System.Windows.Point(size.X, size.Y);
+    }
+
+    public static OpenCvSharp.Point2f ToPoint2F(this OpenCvSharp.Point size)
+    {
+        return new OpenCvSharp.Point2f(size.X, size.Y);
     }
 
     public static OpenCvSharp.Rect ToCVRect(this Int32Rect size)

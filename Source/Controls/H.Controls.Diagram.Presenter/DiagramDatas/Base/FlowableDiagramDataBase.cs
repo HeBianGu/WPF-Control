@@ -98,6 +98,7 @@ public abstract class FlowableDiagramDataBase : ExpressionableDiagramDataBase, I
         await this.Start();
         if (this.FlowableZoomMode != DiagramFlowableZoomMode.None)
             this.ZoomToFit();
+        IocMessage.ShowSnackInfo(this.Message);
     }, e => this.CanStart());
 
     [Icon(FontIcons.Location)]
@@ -120,6 +121,7 @@ public abstract class FlowableDiagramDataBase : ExpressionableDiagramDataBase, I
         if (start == null)
             return false;
         var r = await this.InvokeState(() => start.Start(this));
+        IocMessage.ShowSnackInfo(this.Message);
         return r;
     }
 

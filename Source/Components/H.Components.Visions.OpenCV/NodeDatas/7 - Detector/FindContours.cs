@@ -11,9 +11,12 @@ using H.Extensions.TypeConverter;
 using H.VisionMaster.OpenCVs.TemplateMatch.NodeDatas;
 
 namespace H.Components.Visions.OpenCV.NodeDatas.Detector;
+
+
+
 [Icon(FontIcons.LargeErase)]
 [Display(Name = "轮廓查找", GroupName = "查找", Description = "二指图片的效果反转既黑色变白色，白色变黑色", Order = 21)]
-public class FindContours : OpenCVDetectorNodeDataBase, IDetectorGroupableNodeData
+public class FindContours : OpenCVDetectorNodeDataBase, IDetectorGroupableNodeData, IContoursable
 {
     public FindContours()
     {
@@ -242,7 +245,7 @@ public class FindContours : OpenCVDetectorNodeDataBase, IDetectorGroupableNodeDa
         {
             Cv2.DrawContours(resultImage.Mat, contours, -1, Scalar.RandomColor(), 2);
         }
-        this.ResultContours = contours.ToPointss();
+        this.ResultContours = contours.Select(x=>x.ToPoints(this.DrawContourType)).ToArray().ToPointss();
         var resultPresenter = this.ResultShapes.ToAutoResultPresenter();
         return this.OK(resultImage, resultPresenter);
     }

@@ -12,6 +12,22 @@ public abstract class Part : ContentPresenter
 {
     public static RoutedUICommand DeleteCommand = new RoutedUICommand();
 
+    public Part()
+    {
+        CommandBinding binding = new CommandBinding(DeleteCommand, (l, k) =>
+        {
+            this.Delete();
+        });
+
+        this.CommandBindings.Add(binding);
+
+        this.MouseLeftButtonDown += Part_MouseLeftButtonDown;
+        this.Loaded += (l, k) =>
+        {
+            this._diagram = null;
+        };
+
+    }
     //public string Id { get; set; } = Guid.NewGuid().ToString(); 
     public Rect Bound { get; private set; }
 
@@ -38,22 +54,6 @@ public abstract class Part : ContentPresenter
         return _diagram == null ? (_diagram = this.GetParent<Diagram>()) : _diagram;
     }
 
-    public Part()
-    {
-        CommandBinding binding = new CommandBinding(DeleteCommand, (l, k) =>
-         {
-             this.Delete();
-         });
-
-        this.CommandBindings.Add(binding);
-
-        this.MouseLeftButtonDown += Part_MouseLeftButtonDown;
-        this.Loaded += (l, k) =>
-             {
-                 this._diagram = null;
-             };
-
-    }
 
     private void Part_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
     {

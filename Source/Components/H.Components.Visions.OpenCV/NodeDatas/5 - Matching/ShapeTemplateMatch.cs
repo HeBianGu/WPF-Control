@@ -26,7 +26,7 @@ namespace H.VisionMaster.OpenCVs.TemplateMatch.NodeDatas;
 [ThresholdFromNodeValidation]
 [Icon(FontIcons.Color)]
 [Display(Name = "轮廓匹配", GroupName = "模板匹配", Description = "使用形状匹配算法在图像中查找与模板相似的轮廓", Order = 3)]
-public class ShapeTemplateMatch : MatchingNodeData<IMatImage>, ITemplateMatchingGroupableNodeData, IRectCropable, IOpenCVNodeData
+public class ShapeTemplateMatch : MatchingNodeData<IMatImage>, ITemplateMatchingGroupableNodeData, IRectCropable, IOpenCVNodeData, IContoursable
 {
     private double _minScore = 0.3;
     [DefaultValue(0.3)]

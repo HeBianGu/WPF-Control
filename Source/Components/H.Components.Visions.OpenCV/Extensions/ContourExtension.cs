@@ -64,6 +64,19 @@ public static class ContourShapeExtension
         return points.ToDimensionShapes();
     }
 
+    public static OpenCvSharp.Point[] ToPoints(this OpenCvSharp.Point[] points, DrawContourType drawContourType)
+    {
+        if (drawContourType == DrawContourType.BoundingRect)
+            return points.ToBoundingRect().ToPoints();
+        if (drawContourType == DrawContourType.MinAreaRect)
+            return points.ToRotatedRect().ToPoints().Select(p => p.ToPoint()).ToArray();
+        if (drawContourType == DrawContourType.ConvexHull)
+            return points.ToConvexHull();
+        if (drawContourType == DrawContourType.ApproxPolyDP)
+            return points.ToApproxPolyDP();
+        return points;
+    }
+
     public static IVisionResultImage<IMatImage> ToResultImage(this OpenCvSharp.Point[] points, DrawContourType drawContourType, Mat fromMat)
     {
         if (drawContourType == DrawContourType.BoundingRect)
@@ -159,6 +172,11 @@ public static class ContourExtension
     public static double ToPointPolygonTest(this OpenCvSharp.Point[] points, Point2f pt, bool measureDist)
     {
         return Cv2.PointPolygonTest(points, pt, measureDist);
+    }
+
+    public static bool IsContain(this OpenCvSharp.Point[] points, Point2f pt)
+    {
+        return Cv2.PointPolygonTest(points, pt, false) >= 0;
     }
 
     /// <summary>

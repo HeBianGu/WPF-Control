@@ -55,7 +55,7 @@ public static class DiagramDataExtension
 
     public static IEnumerable<INodeData> GetEndNodeDatas(this IDiagramData diagramData)
     {
-        return diagramData.NodeDatas.Where(x => x.GetToNodeDatas(diagramData) == null);
+        return diagramData.NodeDatas.Where(x => !x.GetToNodeDatas(diagramData).Any());
     }
     public static IEnumerable<IPortData> GetPortDatas(this IDiagramData diagramData)
     {
