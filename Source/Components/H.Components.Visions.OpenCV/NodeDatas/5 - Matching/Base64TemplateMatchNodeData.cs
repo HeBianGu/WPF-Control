@@ -8,6 +8,7 @@
 
 using H.Components.Vision.NodeGroups.TemplateMatchings;
 using H.Components.Vision.Presenters;
+using H.Components.Visions.OpenCV.NodeDatas.Detector;
 using H.Components.Visions.OpenCV.Presenters;
 using H.Controls.ShapeBox.Drawings;
 using H.Extensions.Mvvm.Commands;
@@ -15,7 +16,7 @@ using H.Extensions.Mvvm.Commands;
 namespace H.VisionMaster.OpenCVs.TemplateMatch.NodeDatas;
 
 [Display(Name = "像素匹配", GroupName = "模板匹配", Description = "模板匹配对于简单的对象定位非常有效，但对于旋转、缩放或透视变换的对象可能效果不佳", Order = 0)]
-public class Base64TemplateMatchNodeData : MatchingNodeData<IMatImage>, ITemplateMatchingGroupableNodeData, IBase64MatchingNodeData, IOpenCVNodeData
+public class Base64TemplateMatchNodeData : MatchingNodeData<IMatImage>, ITemplateMatchingGroupableNodeData, IBase64MatchingNodeData, IOpenCVNodeData, IContoursable
 {
     private TemplateMatchModes _templateMatchModes = TemplateMatchModes.CCoeffNormed;
     [Display(Name = "匹配类型", GroupName = VisionPropertyGroupNames.RunParameters)]
@@ -42,6 +43,34 @@ public class Base64TemplateMatchNodeData : MatchingNodeData<IMatImage>, ITemplat
         }
     }
 
+    private System.Windows.Point[][] _ResultContours;
+    [Expressionable]
+    [PropertyItem(typeof(PointssShapeViewPropertyItem))]
+    [DefaultValue(null)]
+    [Display(Name = "轮廓结果数据", GroupName = VisionPropertyGroupNames.ResultParameters, Order = 4)]
+    public System.Windows.Point[][] ResultContours
+    {
+        get => _ResultContours;
+        set
+        {
+            _ResultContours = value;
+            RaisePropertyChanged();
+        }
+    }
+
+    private DrawContourType _drawContourType = DrawContourType.DrawContours;
+    [DefaultValue(DrawContourType.DrawContours)]
+    [Display(Name = "轮廓结果类型", GroupName = VisionPropertyGroupNames.RunParameters)]
+    public DrawContourType DrawContourType
+    {
+        get { return _drawContourType; }
+        set
+        {
+            _drawContourType = value;
+            RaisePropertyChanged();
+            this.Invoke();
+        }
+    }
     protected override FlowableResult<IMatImage> Invoke(IMatImage fromImage)
     {
         if (string.IsNullOrEmpty(this.Base64String))
@@ -77,7 +106,7 @@ public class Base64TemplateMatchNodeData : MatchingNodeData<IMatImage>, ITemplat
             Cv2.MinMaxLoc(result, out _, out double maxVal, out _, out OpenCvSharp.Point maxLoc);
 
             double threshold = 0.8;
-            Mat view = fromImage.Mat.Clone();
+            var resultImage = this.GetExpressionResultImage(src.ToMatImage()).ToMatImage();
 
             if (maxVal >= threshold)
             {
@@ -88,27 +117,42 @@ public class Base64TemplateMatchNodeData : MatchingNodeData<IMatImage>, ITemplat
 
                 var shapes = new RectShape(rect2F.ToWindowRect()) { Title = $"置信度：{Math.Round(maxVal, 2)}" }.ToEnumerable();
 
+                OpenCvSharp.Point[][] contours = new OpenCvSharp.Point[][] { rect2F.ToPoints() };
                 if (this.DetectDisplayMode == DetectDisplayMode.Dimension)
                 {
-                    var dimensionShapes = rect2F.ToWindowRect().ToDimensionShapes(x => x.Text = this.GetWorldDistance(x.Length));
-                    this.ResultShapes = dimensionShapes.OfType<IShape>().ToObservable();
+                    var dshapes = contours.SelectMany(x => x.ToDimensionShapes(this.DrawContourType));
+                    this.ResultShapes = dshapes.OfType<IShape>().ToObservable();
                 }
                 else if (this.DetectDisplayMode == DetectDisplayMode.Default)
                 {
-                    this.ResultShapes = shapes.OfType<IShape>().ToObservable();
+                    var dshapes = contours.Select(x => x.ToShape(this.DrawContourType)).OfType<IShape>().ToObservable();
+                    this.ResultShapes = dshapes.OfType<IShape>().ToObservable();
                 }
                 else
                 {
-                    Cv2.Rectangle(view, maxLoc, new OpenCvSharp.Point(maxLoc.X + template.Cols, maxLoc.Y + template.Rows), VisionSettings.Instance.OutputColor.ToScalar(), view.ToThickness());
+                    Cv2.DrawContours(resultImage.Mat, contours, -1, Scalar.RandomColor(), 2);
                 }
-
+                //if (this.DetectDisplayMode == DetectDisplayMode.Dimension)
+                //{
+                //    var dimensionShapes = rect2F.ToWindowRect().ToDimensionShapes(x => x.Text = this.GetWorldDistance(x.Length));
+                //    this.ResultShapes = dimensionShapes.OfType<IShape>().ToObservable();
+                //}
+                //else if (this.DetectDisplayMode == DetectDisplayMode.Default)
+                //{
+                //    this.ResultShapes = shapes.OfType<IShape>().ToObservable();
+                //}
+                //else
+                //{
+                //    Cv2.Rectangle(resultMat, maxLoc, new OpenCvSharp.Point(maxLoc.X + template.Cols, maxLoc.Y + template.Rows), VisionSettings.Instance.OutputColor.ToScalar(), resultMat.ToThickness());
+                //}
+                this.ResultContours = contours.ToPointss();
                 var resultPresenter = shapes.ToResultPresenter();
-                return this.OK(new MatImage(view), resultPresenter, this.MatchingCountResult.ToDetectSuccessMessage());
+                return this.OK(resultImage, resultPresenter, this.MatchingCountResult.ToDetectSuccessMessage());
             }
 
             this.MatchingCountResult = 0;
             this.Confidence = 0.0;
-            return this.OK(new MatImage(view), "没有匹配到模板");
+            return this.OK(resultImage, "没有匹配到模板");
         }
     }
 

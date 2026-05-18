@@ -14,6 +14,9 @@ public class ContentNodeData : WorkflowNodeBase
     protected override Geometry GetGeometry()
     {
         GeometryConverter converter = new GeometryConverter();
-        return converter.ConvertFromString("M80,0 80,0 A 35,35 0 0 1 80,60 L80,60 30,60 Q-30,30 30,0Z") as Geometry;
+        var r= converter.ConvertFromString("M80,0 80,0 A 35,35 0 0 1 80,60 L80,60 30,60 Q-30,30 30,0Z") as Geometry;
+        if (r.CanFreeze)
+            r.Freeze();
+        return r;
     }
 }

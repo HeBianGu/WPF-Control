@@ -4,74 +4,102 @@
     xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
     xmlns:local="clr-namespace:H.Components.Vision.Presenters">
     <DataTemplate DataType="{x:Type local:VisionNodeDataImageViewPreseter}">
-        <Zoombox
-            x:Name="zoomview1"
-            Background="{DynamicResource {x:Static BrushKeys.Tile25}}"
-            DragModifiers=""
-            Focusable="True"
-            IsTabStop="True"
-            MinScale="0.1"
-            NavigateOnPreview="False"
-            RelativeZoomModifiers=""
-            RenderOptions.BitmapScalingMode="NearestNeighbor"
-            Tag="Image"
-            UseMiddleButtonDrag="True"
-            ViewStackIndex="0"
-            ZoomOn="Content">
-            <b:Interaction.Behaviors>
-                <ZoomBoxFitOnLoadedBehavior />
-                <ZoomBoxFitOnSizeChangedBehavior />
-            </b:Interaction.Behaviors>
-            <Zoombox.ViewStack>
-                <ZoomboxView>Fit</ZoomboxView>
-            </Zoombox.ViewStack>
-            <b:Interaction.Triggers>
-                <MouseTrigger
-                    ClickCount="3"
-                    Mode="Right"
-                    MouseButton="Left"
-                    UseHandle="False">
-                    <b:InvokeCommandAction Command="{ShowZoomViewImageCommand}" CommandParameter="{Binding VisionNodeData.ResultImageSource}" />
-                </MouseTrigger>
-                <MouseTrigger
-                    ClickCount="3"
-                    Mode="Left"
-                    MouseButton="Left"
-                    UseHandle="False">
-                    <b:InvokeCommandAction Command="{ShowZoomViewImageCommand}" CommandParameter="{Binding VisionNodeData.ResultImageSource}" />
-
-                </MouseTrigger>
-                <b:EventTrigger EventName="MouseDoubleClick">
-                    <CallMethodActionEx MethodName="FitToBounds" TargetObject="{Binding ElementName=zoomview1}" />
-                </b:EventTrigger>
-            </b:Interaction.Triggers>
-            <PreviewShapeBox
-                x:Name="imageBox"
-                MinWidth="100"
-                MinHeight="100"
-                ImageSource="{Binding VisionNodeData.ResultImageSource}"
-                MouseOverStroke="{Binding Source={x:Static MouseOverShapeViewSetting.Instance}, Path=Stroke}"
-                MouseOverStrokeThickness="{Binding Source={x:Static MouseOverShapeViewSetting.Instance}, Path=StrokeThickness}"
-                PreviewStroke="{Binding Source={x:Static PreviewShapeViewSetting.Instance}, Path=Stroke}"
-                Scale="{Binding ElementName=zoomview1, Path=Scale}"
-                SelectStrokeThickness="{Binding Source={x:Static SelectShapeViewSetting.Instance}, Path=StrokeThickness}"
-                Shapes="{Binding VisionNodeData.ResultShapes}"
-                StateStroke="{Binding Source={x:Static StateShapeViewSetting.Instance}, Path=Stroke}"
-                StateStrokeThickness="{Binding Source={x:Static StateShapeViewSetting.Instance}, Path=StrokeThickness}"
-                Stroke="{Binding Source={x:Static ShapeViewSetting.Instance}, Path=Stroke}"
-                StrokeThickness="{Binding Source={x:Static ShapeViewSetting.Instance}, Path=StrokeThickness}"
-                ViewState="{Binding VisionNodeData.ViewState}">
+        <Grid>
+            <Zoombox
+                x:Name="zoomview1"
+                Background="{DynamicResource {x:Static BrushKeys.Tile25}}"
+                DragModifiers=""
+                Focusable="True"
+                IsTabStop="True"
+                MinScale="0.1"
+                NavigateOnPreview="False"
+                RelativeZoomModifiers=""
+                RenderOptions.BitmapScalingMode="NearestNeighbor"
+                Tag="Image"
+                UseMiddleButtonDrag="True"
+                ViewStackIndex="0"
+                ZoomOn="Content">
+                <b:Interaction.Behaviors>
+                    <ZoomBoxFitOnLoadedBehavior />
+                    <ZoomBoxFitOnSizeChangedBehavior />
+                </b:Interaction.Behaviors>
+                <Zoombox.ViewStack>
+                    <ZoomboxView>Fit</ZoomboxView>
+                </Zoombox.ViewStack>
                 <b:Interaction.Triggers>
-                    <b:EventTrigger EventName="SourceUpdated">
-                        <b:InvokeCommandAction Command="{Binding ImageSourceUpdatedCommand}" CommandParameter="{Binding ElementName=zoomview1}" />
-                        <CallMethodActionEx MethodName="FitToBounds" TargetObject="{Binding ElementName=zoomview1}" />
-                    </b:EventTrigger>
-                    <b:EventTrigger EventName="TargetUpdated">
-                        <b:InvokeCommandAction Command="{Binding ImageSourceUpdatedCommand}" CommandParameter="{Binding ElementName=zoomview1}" />
+                    <MouseTrigger
+                        ClickCount="3"
+                        Mode="Right"
+                        MouseButton="Left"
+                        UseHandle="False">
+                        <b:InvokeCommandAction Command="{ShowZoomViewImageCommand}" CommandParameter="{Binding VisionNodeData.ResultImageSource}" />
+                    </MouseTrigger>
+                    <MouseTrigger
+                        ClickCount="3"
+                        Mode="Left"
+                        MouseButton="Left"
+                        UseHandle="False">
+                        <b:InvokeCommandAction Command="{ShowZoomViewImageCommand}" CommandParameter="{Binding VisionNodeData.ResultImageSource}" />
+                    </MouseTrigger>
+                    <b:EventTrigger EventName="MouseDoubleClick">
                         <CallMethodActionEx MethodName="FitToBounds" TargetObject="{Binding ElementName=zoomview1}" />
                     </b:EventTrigger>
                 </b:Interaction.Triggers>
-            </PreviewShapeBox>
-        </Zoombox>
+                <PreviewShapeBox
+                    x:Name="imageBox"
+                    MinWidth="100"
+                    MinHeight="100"
+                    ImageSource="{Binding VisionNodeData.ResultImageSource}"
+                    MouseOverStroke="{Binding Source={x:Static MouseOverShapeViewSetting.Instance}, Path=Stroke}"
+                    MouseOverStrokeThickness="{Binding Source={x:Static MouseOverShapeViewSetting.Instance}, Path=StrokeThickness}"
+                    PreviewStroke="{Binding Source={x:Static PreviewShapeViewSetting.Instance}, Path=Stroke}"
+                    Scale="{Binding ElementName=zoomview1, Path=Scale}"
+                    SelectStrokeThickness="{Binding Source={x:Static SelectShapeViewSetting.Instance}, Path=StrokeThickness}"
+                    Shapes="{Binding VisionNodeData.ResultShapes}"
+                    StateStroke="{Binding Source={x:Static StateShapeViewSetting.Instance}, Path=Stroke}"
+                    StateStrokeThickness="{Binding Source={x:Static StateShapeViewSetting.Instance}, Path=StrokeThickness}"
+                    Stroke="{Binding Source={x:Static ShapeViewSetting.Instance}, Path=Stroke}"
+                    StrokeThickness="{Binding Source={x:Static ShapeViewSetting.Instance}, Path=StrokeThickness}"
+                    ViewState="{Binding VisionNodeData.ViewState}">
+                    <b:Interaction.Triggers>
+                        <b:EventTrigger EventName="SourceUpdated">
+                            <b:InvokeCommandAction Command="{Binding ImageSourceUpdatedCommand}" CommandParameter="{Binding ElementName=zoomview1}" />
+                            <CallMethodActionEx MethodName="FitToBounds" TargetObject="{Binding ElementName=zoomview1}" />
+                        </b:EventTrigger>
+                        <b:EventTrigger EventName="TargetUpdated">
+                            <b:InvokeCommandAction Command="{Binding ImageSourceUpdatedCommand}" CommandParameter="{Binding ElementName=zoomview1}" />
+                            <CallMethodActionEx MethodName="FitToBounds" TargetObject="{Binding ElementName=zoomview1}" />
+                        </b:EventTrigger>
+                    </b:Interaction.Triggers>
+                </PreviewShapeBox>
+            </Zoombox>
+            <ListBox
+                Margin="5"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Top"
+                Cattach.GuideAssemblyVersion="3.0.0.0"
+                Cattach.GuideData="1. 颜色吸管：支持拾取像素颜色用于后续规则或阈值设定。  2. 长度卡尺工具：辅助标定与尺寸估算。  3. 图像源比例尺绘制：支持实际尺寸视觉标注展示。"
+                Cattach.GuideTitle="制与辅助工具"
+                Cattach.UseGuide="True"
+                ItemsSource="{Binding VisionNodeData.ViewStates}"
+                SelectedItem="{Binding VisionNodeData.ViewState}">
+                <ItemsControl.Background>
+                    <SolidColorBrush Opacity="0.5" Color="{DynamicResource {x:Static ColorKeys.Background}}" />
+                </ItemsControl.Background>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <FontIconTextBlock
+                            Margin="5,0"
+                            Text="{Binding Icon}"
+                            ToolTip="{Binding Name}" />
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+                <b:Interaction.Triggers>
+                    <b:EventTrigger EventName="MouseDoubleClick">
+                        <b:InvokeCommandAction Command="{Binding VisionNodeData.ViewState.EditCommand}" />
+                    </b:EventTrigger>
+                </b:Interaction.Triggers>
+            </ListBox>
+        </Grid>
     </DataTemplate>
 </ResourceDictionary>

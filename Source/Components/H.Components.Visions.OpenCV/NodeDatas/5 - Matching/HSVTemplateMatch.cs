@@ -13,14 +13,8 @@ namespace H.VisionMaster.OpenCVs.TemplateMatch.NodeDatas;
 
 [Icon(FontIcons.Color)]
 [Display(Name = "颜色匹配", GroupName = "模板匹配", Description = "颜色匹配", Order = 0)]
-public class HSVTemplateMatch : RenderBlobs, ITemplateMatchingGroupableNodeData, IColorNodeData
+public class HSVTemplateMatch : FindContoursBase, ITemplateMatchingGroupableNodeData, IColorNodeData, IContoursable
 {
-    public override void LoadDefault()
-    {
-        base.LoadDefault();
-        this.UseRenderBlobs = false;
-    }
-
     private Color _Color = Colors.Green;
     [Display(Name = "设置主色", GroupName = VisionPropertyGroupNames.RunParameters, Description = "从图片提取颜色或手动设置色相")]
     public Color Color
@@ -82,10 +76,8 @@ public class HSVTemplateMatch : RenderBlobs, ITemplateMatchingGroupableNodeData,
         }
     }
 
-    protected override FlowableResult<IMatImage> Invoke(Mat fromImage)
+    protected override OpenCvSharp.Point[][] GetContours(Mat fromImage)
     {
-        if (fromImage.Channels() == 1)
-            return this.Error(fromImage.Clone(), "输入图像不能为灰度图像");
         Mat hsv = fromImage.ToHSVMat();
         Mat mask = new Mat();
         Tuple<Scalar, Scalar> range = this.Color.GetHSVRange(this.hRange, this.sRange, this.vRange);
@@ -93,10 +85,18 @@ public class HSVTemplateMatch : RenderBlobs, ITemplateMatchingGroupableNodeData,
         Scalar upperScalar = range.Item2;
         // 需要前序流程颜色处理 ColorConversionCodes.BGR2HSV)
         Cv2.InRange(hsv, lowerScalar, upperScalar, mask);
-        ////  Do ：反转黑白
-        //Cv2.BitwiseNot(mask, mask);
-        //this.ImageColorPickerPresenter.ImageSource = fromImage?.ToImageSource();
-        return this.InvokeMat(fromImage, mask, fromImage);
+
+        OpenCvSharp.Point[][] contours;
+        HierarchyIndex[] hierarchly;
+        Cv2.FindContours(mask, out contours, out hierarchly, this.RetrievalMode, this.ContourApproximationMode, this.Offset);
+        return contours;
+    }
+
+    protected override FlowableResult<IMatImage> Invoke(Mat fromImage)
+    {
+        if (fromImage.Channels() == 1)
+            return this.Error(fromImage.Clone(), "输入图像不能为灰度图像");
+        return base.Invoke(fromImage);
     }
 
     protected override IEnumerable<IViewState> CreateViewStates()

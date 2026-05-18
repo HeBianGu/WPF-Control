@@ -12,16 +12,13 @@ using H.VisionMaster.OpenCVs.TemplateMatch.NodeDatas;
 
 namespace H.Components.Visions.OpenCV.NodeDatas.Detector;
 
-
-
-[Icon(FontIcons.LargeErase)]
-[Display(Name = "轮廓查找", GroupName = "查找", Description = "二指图片的效果反转既黑色变白色，白色变黑色", Order = 21)]
-public class FindContours : OpenCVDetectorNodeDataBase, IDetectorGroupableNodeData, IContoursable
+public abstract class FindContoursBase : OpenCVDetectorNodeDataBase, IDetectorGroupableNodeData,IContoursable
 {
-    public FindContours()
+    public FindContoursBase()
     {
         this.DetectDisplayMode = DetectDisplayMode.Default;
     }
+
     private RetrievalModes _retrievalMode = RetrievalModes.Tree;
     [DefaultValue(RetrievalModes.Tree)]
     [Display(Name = "轮廓检索模式", GroupName = VisionPropertyGroupNames.RunParameters, Description = "设置轮廓的层级检索方式，如External、List、CComp、Tree等。影响返回的层级关系和数量。")]
@@ -122,7 +119,7 @@ public class FindContours : OpenCVDetectorNodeDataBase, IDetectorGroupableNodeDa
 
     private DrawContourType _drawContourType = DrawContourType.DrawContours;
     [DefaultValue(DrawContourType.DrawContours)]
-    [Display(Name = "识别轮廓类型", GroupName = VisionPropertyGroupNames.RunParameters)]
+    [Display(Name = "轮廓结果类型", GroupName = VisionPropertyGroupNames.RunParameters)]
     public DrawContourType DrawContourType
     {
         get { return _drawContourType; }
@@ -205,16 +202,12 @@ public class FindContours : OpenCVDetectorNodeDataBase, IDetectorGroupableNodeDa
         }
     }
 
+    protected abstract OpenCvSharp.Point[][] GetContours(Mat fromImage);
+
     protected override FlowableResult<IMatImage> Invoke(Mat fromImage)
     {
         var resultImage = this.GetExpressionResultImage(fromImage.ToMatImage()).ToMatImage();
-
-        OpenCvSharp.Point[][] contours;
-        HierarchyIndex[] hierarchly;
-        Cv2.FindContours(fromImage, out contours, out hierarchly, this.RetrievalMode, this.ContourApproximationMode, this.Offset);
-        //var dst = new Mat(this._srcFilePath, ImreadModes.Color);
-        //Mat dst = fromImage.Clone();
-
+        OpenCvSharp.Point[][] contours = this.GetContours(fromImage);
         if (this.MaxArea > 0)
             contours = contours.Where(x => x.ToContourArea() < this.MaxArea).ToArray();
         if (this.MinArea > 0)
@@ -222,11 +215,10 @@ public class FindContours : OpenCVDetectorNodeDataBase, IDetectorGroupableNodeDa
         IEnumerable<OpenCvSharp.Rect> rects = contours.Select(x => Cv2.BoundingRect(x));
         this.ResultImages = rects.ToResultImages(fromImage).ToList();
         this.FirstResultImage = this.ResultImages.FirstOrDefault()?.Image;
-
         this.MaxRotatedRect = contours.Length > 0 ? contours.Select(x => Cv2.MinAreaRect(x)).MaxBy(x =>
-         {
-             return x.Size.Width * x.Size.Height;
-         }) : default;
+        {
+            return x.Size.Width * x.Size.Height;
+        }) : default;
 
         if (this.CaliperShape is RectShape caliper)
             contours = contours.Where(x => x.All(k => caliper.Rect.Contains(k.ToPoint()))).ToArray();
@@ -246,6 +238,20 @@ public class FindContours : OpenCVDetectorNodeDataBase, IDetectorGroupableNodeDa
         this.ResultContours = contours.Select(x => x.ToPoints(this.DrawContourType)).ToArray().ToPointss();
         var resultPresenter = this.ResultShapes.ToAutoResultPresenter();
         return this.OK(resultImage, resultPresenter);
+    }
+}
+
+
+[Icon(FontIcons.LargeErase)]
+[Display(Name = "轮廓查找", GroupName = "查找", Description = "二指图片的效果反转既黑色变白色，白色变黑色", Order = 21)]
+public class FindContours : FindContoursBase
+{
+    protected override OpenCvSharp.Point[][] GetContours(Mat fromImage)
+    {
+        OpenCvSharp.Point[][] contours;
+        HierarchyIndex[] hierarchly;
+        Cv2.FindContours(fromImage, out contours, out hierarchly, this.RetrievalMode, this.ContourApproximationMode, this.Offset);
+        return contours;
     }
 
     public FlowableResult<IMatImage> Method(RotatedRect rr, Mat fromImage)

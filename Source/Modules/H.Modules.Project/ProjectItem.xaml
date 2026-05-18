@@ -43,9 +43,12 @@
                     ToolTip="{Binding Path}">
                     <TextBlock.Text>
                         <PriorityBinding>
-                            <Binding Path="ProjectDescription" TargetNullValue="暂无项目说明信息" IsAsync="False"/>
-                            <Binding Path="Path" IsAsync="True"/>
-                            <Binding Source="无"/>
+                            <Binding
+                                IsAsync="False"
+                                Path="ProjectDescription"
+                                TargetNullValue="暂无项目说明信息" />
+                            <Binding IsAsync="True" Path="Path" />
+                            <Binding Source="无" />
                         </PriorityBinding>
                     </TextBlock.Text>
                 </TextBlock>

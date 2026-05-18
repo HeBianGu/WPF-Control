@@ -9,7 +9,7 @@
                 <ContentPresenter Content="{Binding DiagramData.NodeGroups, Converter={GetNodeDataGroupsItemsControlPresenter}}" Visibility="{Binding RelativeSource={RelativeSource AncestorType=GroupBox}}" />
             </GroupBox>
             <GroupBox
-                Width="300"
+                Width="400"
                 DockPanel.Dock="Right"
                 Header="属性栏">
                 <DockPanel>

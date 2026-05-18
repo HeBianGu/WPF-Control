@@ -13,6 +13,9 @@ public class DelayNodeData : WorkflowNodeBase
     protected override Geometry GetGeometry()
     {
         GeometryConverter converter = new GeometryConverter();
-        return converter.ConvertFromString("M0,0 70,0 A 30,30 0 0 1 70,60 L70,60 0,60Z") as Geometry;
+        var r= converter.ConvertFromString("M0,0 70,0 A 30,30 0 0 1 70,60 L70,60 0,60Z") as Geometry;
+        if (r.CanFreeze)
+            r.Freeze();
+        return r;
     }
 }

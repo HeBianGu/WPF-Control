@@ -15,6 +15,9 @@ public class InputNodeData : WorkflowNodeBase
     protected override Geometry GetGeometry()
     {
         GeometryConverter converter = new GeometryConverter();
-        return converter.ConvertFromString("F1M0,20 100,0 100,60 0,60Z") as Geometry;
+        var r= converter.ConvertFromString("F1M0,20 100,0 100,60 0,60Z") as Geometry;
+        if (r.CanFreeze)
+            r.Freeze();
+        return r;
     }
 }

@@ -17,7 +17,10 @@ public static class GeometryFactory
     public static System.Windows.Media.Geometry Create(string data)
     {
         GeometryConverter converter = new GeometryConverter();
-        return converter.ConvertFromString(data) as System.Windows.Media.Geometry;
+        var r= converter.ConvertFromString(data) as System.Windows.Media.Geometry;
+        if (r.CanFreeze)
+            r.Freeze();
+        return r;
     }
 
     public static PathGeometry Create(Point start, bool isclose, params PathSegment[] segments)
@@ -35,6 +38,8 @@ public static class GeometryFactory
         {
             group.Children.Add(item);
         }
+        if (group.CanFreeze)
+            group.Freeze();
         return group;
     }
 
@@ -72,7 +77,10 @@ public static class GeometryFactory
     public static System.Windows.Media.Geometry Circle => CreateCircle();
     public static System.Windows.Media.Geometry CreateCircle(double len = 35)
     {
-        return new EllipseGeometry(new Point(len, len), len, len);
+        var geo= new EllipseGeometry(new Point(len, len), len, len);
+        if (geo.CanFreeze)
+            geo.Freeze();
+        return geo;
     }
     #endregion 
 
@@ -90,7 +98,10 @@ public static class GeometryFactory
 
     public static System.Windows.Media.Geometry CreateCornerRadius(double width = 70, double height = 60, double cornerRadius = 5)
     {
-        return new RectangleGeometry(new Rect(0, 0, width, height), cornerRadius, cornerRadius);
+        var  r= new RectangleGeometry(new Rect(0, 0, width, height), cornerRadius, cornerRadius);
+        if (r.CanFreeze)
+            r.Freeze();
+        return r;
     }
     #endregion
 

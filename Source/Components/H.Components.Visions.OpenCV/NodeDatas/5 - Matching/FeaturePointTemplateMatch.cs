@@ -8,6 +8,7 @@
 
 using H.Components.Vision.NodeGroups.TemplateMatchings;
 using H.Components.Vision.Presenters;
+using H.Components.Visions.OpenCV.NodeDatas.Detector;
 using H.Components.Visions.OpenCV.Presenters;
 using H.Controls.ShapeBox.Drawings;
 using H.Extensions.Mvvm.Commands;
@@ -20,7 +21,7 @@ namespace H.VisionMaster.OpenCVs.TemplateMatch.NodeDatas;
 /// </summary>
 [Icon(FontIcons.Search)]
 [Display(Name = "特征匹配", GroupName = "模板匹配", Description = "使用特征点匹配算法在图像中查找与模板相似的区域", Order = 4)]
-public class FeaturePointTemplateMatch : MatchingNodeData<IMatImage>, ITemplateMatchingGroupableNodeData, IRectCropable, IBase64MatchingNodeData, IOpenCVNodeData
+public class FeaturePointTemplateMatch : MatchingNodeData<IMatImage>, ITemplateMatchingGroupableNodeData, IRectCropable, IBase64MatchingNodeData, IOpenCVNodeData, IContoursable
 {
     private int _goodMatchesToKeep = 100;
     [DefaultValue(100)]
@@ -96,6 +97,35 @@ public class FeaturePointTemplateMatch : MatchingNodeData<IMatImage>, ITemplateM
         //return StarDetector.Create();
 
         //return SIFT.Create();
+    }
+
+    private System.Windows.Point[][] _ResultContours;
+    [Expressionable]
+    [PropertyItem(typeof(PointssShapeViewPropertyItem))]
+    [DefaultValue(null)]
+    [Display(Name = "轮廓结果数据", GroupName = VisionPropertyGroupNames.ResultParameters, Order = 4)]
+    public System.Windows.Point[][] ResultContours
+    {
+        get => _ResultContours;
+        set
+        {
+            _ResultContours = value;
+            RaisePropertyChanged();
+        }
+    }
+
+    private DrawContourType _drawContourType = DrawContourType.DrawContours;
+    [DefaultValue(DrawContourType.DrawContours)]
+    [Display(Name = "轮廓结果类型", GroupName = VisionPropertyGroupNames.RunParameters)]
+    public DrawContourType DrawContourType
+    {
+        get { return _drawContourType; }
+        set
+        {
+            _drawContourType = value;
+            RaisePropertyChanged();
+            this.Invoke();
+        }
     }
 
     protected override FlowableResult<IMatImage> Invoke(IMatImage fromImage)
@@ -221,9 +251,33 @@ public class FeaturePointTemplateMatch : MatchingNodeData<IMatImage>, ITemplateM
         Point2d[] transformedBounds = Cv2.PerspectiveTransform(templateBounds, homography);
         Point[] drawingPoints = transformedBounds.Select(p => (Point)p).ToArray();
         var shapes = dstPts.Select(x => x.ToPoint()).ToPointShapes(x => x.Title = "特征点").ToList();
-        this.ResultShapes = shapes.OfType<IShape>().ToObservable();
-        var boundShape = drawingPoints.ToPolygonShape();
-        this.ResultShapes.Add(boundShape);
+        List<IShape> resultShapes = new List<IShape>();
+        resultShapes.AddRange(shapes);
+
+
+        //OpenCvSharp.Point[][] contours;
+        //HierarchyIndex[] hierarchly;
+        //Cv2.FindContours(homography, out contours, out hierarchly, RetrievalModes.Tree, ContourApproximationModes.ApproxSimple);
+
+        Point[][] contours = new Point[][] { drawingPoints };
+        if (this.DetectDisplayMode == DetectDisplayMode.Dimension)
+        {
+            var dshapes = contours.SelectMany(x => x.ToDimensionShapes(this.DrawContourType));
+            resultShapes.AddRange(dshapes);
+        }
+        else if (this.DetectDisplayMode == DetectDisplayMode.Default)
+        {
+            var dshapes = contours.Select(x => x.ToShape(this.DrawContourType)).OfType<IShape>().ToObservable();
+            resultShapes.AddRange(dshapes);
+        }
+        else
+        {
+            Cv2.DrawContours(resultImage.Mat, contours, -1, Scalar.RandomColor(), 2);
+        }
+        //var boundShape = drawingPoints.ToPolygonShape();
+        //this.ResultShapes.Add(boundShape);
+        this.ResultContours = contours.ToPointss();
+        this.ResultShapes = resultShapes.ToObservable();
         return this.OK(resultImage, shapes.ToResultPresenter(), $"成功找到匹配项，匹配点:{goodMatches.Count}，内点:{inlierCount}");
     }
 }
