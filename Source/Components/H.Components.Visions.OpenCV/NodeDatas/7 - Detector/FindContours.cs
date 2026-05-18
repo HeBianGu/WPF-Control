@@ -215,20 +215,18 @@ public class FindContours : OpenCVDetectorNodeDataBase, IDetectorGroupableNodeDa
         //var dst = new Mat(this._srcFilePath, ImreadModes.Color);
         //Mat dst = fromImage.Clone();
 
-        IEnumerable<OpenCvSharp.Rect> rects = contours.Select(x => Cv2.BoundingRect(x));
-
         if (this.MaxArea > 0)
-            rects = rects.Where(x => x.Width * x.Height < this.MaxArea);
+            contours = contours.Where(x => x.ToContourArea() < this.MaxArea).ToArray();
         if (this.MinArea > 0)
-            rects = rects.Where(x => x.Width * x.Height > this.MinArea);
-
+            contours = contours.Where(x => x.ToContourArea() > this.MinArea).ToArray();
+        IEnumerable<OpenCvSharp.Rect> rects = contours.Select(x => Cv2.BoundingRect(x));
         this.ResultImages = rects.ToResultImages(fromImage).ToList();
         this.FirstResultImage = this.ResultImages.FirstOrDefault()?.Image;
 
-        this.MaxRotatedRect = contours.Select(x => Cv2.MinAreaRect(x)).MaxBy(x =>
+        this.MaxRotatedRect = contours.Length > 0 ? contours.Select(x => Cv2.MinAreaRect(x)).MaxBy(x =>
          {
              return x.Size.Width * x.Size.Height;
-         });
+         }) : default;
 
         if (this.CaliperShape is RectShape caliper)
             contours = contours.Where(x => x.All(k => caliper.Rect.Contains(k.ToPoint()))).ToArray();
@@ -245,7 +243,7 @@ public class FindContours : OpenCVDetectorNodeDataBase, IDetectorGroupableNodeDa
         {
             Cv2.DrawContours(resultImage.Mat, contours, -1, Scalar.RandomColor(), 2);
         }
-        this.ResultContours = contours.Select(x=>x.ToPoints(this.DrawContourType)).ToArray().ToPointss();
+        this.ResultContours = contours.Select(x => x.ToPoints(this.DrawContourType)).ToArray().ToPointss();
         var resultPresenter = this.ResultShapes.ToAutoResultPresenter();
         return this.OK(resultImage, resultPresenter);
     }

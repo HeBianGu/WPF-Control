@@ -10,6 +10,6 @@ namespace H.Components.Vision.Base;
 
 public interface ISrcFilesVisionNodeData<T> : ISrcVisionNodeData<T>, ISrcFilesNodeData
 {
-
+  
 }
 

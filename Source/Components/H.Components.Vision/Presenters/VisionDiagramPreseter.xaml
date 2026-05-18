@@ -24,7 +24,7 @@
                         ItemContainerStyle="{DynamicResource {x:Static TabItemKeys.Line}}"
                         TabStripPlacement="Top">
                         <TabItem
-                            Width="74"
+                            Width="73"
                             Cattach.CaptionHorizontalAlignment="Center"
                             Header="{x:Static VisionPropertyGroupNames.RunParameters}">
                             <Form
@@ -33,7 +33,7 @@
                                 UseGroupNames="{x:Static VisionPropertyGroupNames.RunParameters}" />
                         </TabItem>
                         <TabItem
-                            Width="74"
+                            Width="73"
                             Cattach.CaptionHorizontalAlignment="Center"
                             Header="{x:Static VisionPropertyGroupNames.ResultParameters}">
                             <Form
@@ -42,7 +42,7 @@
                                 UseGroupNames="{x:Static VisionPropertyGroupNames.ResultParameters}" />
                         </TabItem>
                         <TabItem
-                            Width="74"
+                            Width="73"
                             Cattach.CaptionHorizontalAlignment="Center"
                             Header="{x:Static VisionPropertyGroupNames.BaseParameters}">
                             <Form
@@ -51,7 +51,7 @@
                                 UseGroupNames="{x:Static VisionPropertyGroupNames.BaseParameters}" />
                         </TabItem>
                         <TabItem
-                            Width="74"
+                            Width="73"
                             Cattach.CaptionHorizontalAlignment="Center"
                             Header="{x:Static VisionPropertyGroupNames.DisplayParameters}">
                             <Form
