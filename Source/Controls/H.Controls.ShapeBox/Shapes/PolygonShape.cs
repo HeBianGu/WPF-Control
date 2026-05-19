@@ -90,7 +90,7 @@ public class PolygonShape : PointsShapeBase
         stroke = this.GetStroke(stroke);
         if (stroke is SolidColorBrush solid)
         {
-            var f = solid.Color.ToFreezeSolid(x => x.Opacity = 0.3);
+            var f = solid.Color.ToFreezeSolid(x => x.Opacity = 0.8);
             drawingContext.DrawPloygon(null, f, this.Points.ToArray());
         }
         //base.DrawThumb(view, drawingContext, stroke, strokeThickness, fill);

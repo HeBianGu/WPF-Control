@@ -99,7 +99,7 @@ public class RectShape : TitleShapeBase, IRectShape
         stroke = this.GetStroke(stroke);
         if (stroke is SolidColorBrush solid)
         {
-            var f = new SolidColorBrush(solid.Color) { Opacity = 0.3 };
+            var f = new SolidColorBrush(solid.Color) { Opacity = 0.8 };
             f.Freeze();
             drawingContext.DrawRectangle(f, null, Rect);
         }

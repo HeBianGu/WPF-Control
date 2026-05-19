@@ -417,6 +417,14 @@ public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
         this._datas = null;
     }
 
+    public void RebuildDataSource()
+    {
+        this.InvalidateDatas();
+        this.DataSource = this.CreateDataSource();
+        this.SelectedPartData = null;
+        //this.State = DiagramFlowableState.None;
+    }
+
     IList<INodeData> IDiagramData.NodeDatas => this.Datas.NodeDatas;
     IList<ILinkData> IDiagramData.LinkDatas => this.Datas.LinkDatas;
 
