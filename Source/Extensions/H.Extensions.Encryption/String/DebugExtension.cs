@@ -8,7 +8,7 @@
 
 using System.Diagnostics;
 
-namespace H.Extensions.Encryption.String;
+namespace System.Diagnostics;
 
 public static class DebugExtension
 {
