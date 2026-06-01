@@ -8,15 +8,15 @@
             Padding="0"
             Header="{Binding Name}"
             IsExpanded="False">
-            <ItemsControl ItemsSource="{Binding Value}">
+            <ItemsControl Grid.IsSharedSizeScope="True" ItemsSource="{Binding Value}">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
                         <Grid Visibility="{Binding Visibility}">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" SharedSizeGroup="Dictionary" />
                                 <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
-                            <TextBlock Text="{Binding Key}" />
+                            <TextBlock Margin="2 5" Text="{Binding Key}" />
                             <TextBlock
                                 Grid.Column="2"
                                 HorizontalAlignment="Left"
