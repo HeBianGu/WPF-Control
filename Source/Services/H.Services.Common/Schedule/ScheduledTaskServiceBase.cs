@@ -44,4 +44,10 @@ public abstract class ScheduledTaskServiceBase : IScheduledTaskService
     {
         _timer?.Stop();
     }
+
+    public void Dispose()
+    {
+        this.Stop();
+        _timer?.Dispose();
+    }
 }

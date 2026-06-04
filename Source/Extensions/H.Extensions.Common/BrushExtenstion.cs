@@ -9,7 +9,7 @@ using System.Windows.Media;
 
 namespace H.Extensions.Common;
 
-public static class BrushExtenstion
+    public static class BrushExtenstion
 {
     public static Pen ToPen(this Brush brush, Action<Pen> action = null)
     {

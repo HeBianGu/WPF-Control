@@ -155,7 +155,9 @@ public abstract partial class ApplicationBase : Application, IConfigureableAppli
     {
         try
         {
-            Ioc<IScheduledTaskService>.Instance?.Stop();
+            var disposes = Ioc.GetAssignableFromServices<IAppExitService>().Distinct();
+            foreach (var item in disposes)
+                item.Dispose();
             this.ILogger?.Info("系统退出");
             Ioc<IOperationService>.Instance?.Log<ApplicationBase>("系统推出");
         }

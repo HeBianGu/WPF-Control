@@ -52,5 +52,5 @@ public static class PathExtension
         string currentDir = AppDomain.CurrentDomain.BaseDirectory;
         return filePath.GetRelativeStartsWithPath(AppDomain.CurrentDomain.BaseDirectory);
     }
-   
+
 }

@@ -6,12 +6,11 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
-using H.Services.Common.SplashScreen;
+// Copyright © 2024 By HeBianGu(QQ:908293466) https://github.com/HeBianGu/WPF-Control
 
-namespace H.Services.Common.Schedule;
+namespace H.Services.Common.SplashScreen;
 
-public interface IScheduledTaskService : IAppExitService
+public interface IAppExitService : IDisposable
 {
-    void Start();
-    void Stop();
+
 }
