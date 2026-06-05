@@ -11,6 +11,7 @@
         <ResourceDictionary Source="pack://application:,,,/H.Controls.Form.PropertyItem;component/ComboBoxPropertyItems/PresenterComboBoxPropertyItem.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Controls.Form.PropertyItem;component/ComboBoxPropertyItems/BrushComboBoxPropertyItem.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Controls.Form.PropertyItem;component/ComboBoxPropertyItems/ColorComboBoxPropertyItem.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Controls.Form.PropertyItem;component/ComboBoxPropertyItems/GroupStyleComboBoxPropertyItem.xaml" />
 
         <ResourceDictionary Source="pack://application:,,,/H.Controls.Form.PropertyItem;component/ListBoxPropertyItems/ListBoxPropertyItem.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Controls.Form.PropertyItem;component/ListBoxPropertyItems/MultiListBoxPropertyItem.xaml" />
