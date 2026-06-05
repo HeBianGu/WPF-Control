@@ -1,0 +1,91 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
+                    xmlns:base="clr-namespace:H.Presenters.ParameterInfo.Base"
+                    xmlns:local="clr-namespace:H.Presenters.ParameterInfo.Presenters">
+
+    <DataTemplate DataType="{x:Type local:ParameterInfoPresenter}">
+        <Grid Margin="0,1"
+              Background="Transparent"
+              ToolTip="{Binding ParameterInfo.DisplayName}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition SharedSizeGroup="ParameterInfo" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <TextBlock Margin="2,0"
+                       VerticalAlignment="Center"
+                       Text="{Binding ParameterInfo.DisplayName}">
+                <TextBlock.ToolTip>
+                    <PriorityBinding>
+                        <Binding Path="ParameterInfo.Name" />
+                        <Binding Path="ParameterInfo.Description" />
+                        <Binding Path="ParameterInfo.DisplayName" />
+                    </PriorityBinding>
+                </TextBlock.ToolTip>
+            </TextBlock>
+            <Button x:Name="btn_default"
+                    Grid.Column="1"
+                    Height="Auto"
+                    Margin="2"
+                    Padding="0"
+                    VerticalAlignment="Center"
+                    Background="Transparent"
+                    Command="{Binding SetDefaultCommand}"
+                    ToolTip="恢复默认值"
+                    Visibility="{Binding UseSetDefault, Converter={x:Static Converter.GetTrueToVisible}}">
+                <Border Width="8"
+                        Height="8"
+                        Margin="2"
+                        Background="{DynamicResource {x:Static BrushKeys.BorderBrush}}"
+                        BorderBrush="{Binding RelativeSource={RelativeSource AncestorType=Button}, Path=Foreground}"
+                        BorderThickness="1"
+                        CornerRadius="0"
+                        Opacity="0.8" />
+            </Button>
+            <ContentPresenter Grid.Column="2"
+                              Content="{Binding}">
+                <ContentPresenter.ContentTemplateSelector>
+                    <base:ParameterInfoDataTemplateSelector>
+                        <base:ParameterInfoDataTemplateSelector.TextDataTemplate>
+                            <DataTemplate DataType="{x:Type local:ParameterInfoPresenter}">
+                                <TextBox Width="Auto"
+                                         HorizontalAlignment="Stretch"
+                                         HorizontalContentAlignment="Stretch"
+                                         IsReadOnly="{Binding IsReadOnly}"
+                                         Style="{DynamicResource {x:Static TextBoxKeys.Attach}}"
+                                         Text="{Binding CurrentValue}">
+                                    <Cattach.Attach>
+                                        <TextBlock Margin="1,0"
+                                                   VerticalAlignment="Center"
+                                                   Text="{Binding ParameterInfo.Unit}" />
+                                    </Cattach.Attach>
+                                </TextBox>
+                            </DataTemplate>
+                        </base:ParameterInfoDataTemplateSelector.TextDataTemplate>
+                        <base:ParameterInfoDataTemplateSelector.ComboBoxDataTemplate>
+                            <DataTemplate DataType="{x:Type local:ParameterInfoPresenter}">
+                                <ComboBox IsEnabled="{Binding IsReadOnly, Converter={GetTrueToFalseValueConverter}}"
+                                          ItemsSource="{Binding ParameterInfo.Options}"
+                                          SelectedItem="{Binding CurrentValue}" />
+                            </DataTemplate>
+                        </base:ParameterInfoDataTemplateSelector.ComboBoxDataTemplate>
+                        <base:ParameterInfoDataTemplateSelector.CheckBoxDataTemplate>
+                            <DataTemplate DataType="{x:Type local:ParameterInfoPresenter}">
+                                <CheckBox IsChecked="{Binding CurrentValue}"
+                                          IsEnabled="{Binding IsReadOnly, Converter={GetTrueToFalseValueConverter}}" />
+                            </DataTemplate>
+                        </base:ParameterInfoDataTemplateSelector.CheckBoxDataTemplate>
+                        <base:ParameterInfoDataTemplateSelector.CommandDataTemplate>
+                            <DataTemplate>
+                                <Button Command="{Binding ExecuteCommandCommand}"
+                                        Content="{Binding ParameterInfo.DisplayName}"
+                                        IsEnabled="{Binding IsReadOnly, Converter={GetTrueToFalseValueConverter}}" />
+                            </DataTemplate>
+                        </base:ParameterInfoDataTemplateSelector.CommandDataTemplate>
+                    </base:ParameterInfoDataTemplateSelector>
+                </ContentPresenter.ContentTemplateSelector>
+            </ContentPresenter>
+        </Grid>
+    </DataTemplate>
+</ResourceDictionary>

@@ -3,28 +3,27 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="clr-namespace:H.Presenters.Common">
     <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="pack://application:,,,/H.Presenters.Common;component/StringPresenter.xaml" />
-        <ResourceDictionary Source="pack://application:,,,/H.Presenters.Common;component/PercentPresenter.xaml" />
-        <ResourceDictionary Source="pack://application:,,,/H.Presenters.Common;component/WaitPresenter.xaml" />
-        <ResourceDictionary Source="pack://application:,,,/H.Presenters.Common;component/MessagePresenter.xaml" />
-        <ResourceDictionary Source="pack://application:,,,/H.Presenters.Common;component/TextBoxPresenter.xaml" />
-        <ResourceDictionary Source="pack://application:,,,/H.Presenters.Common;component/PasswordBoxPresenter.xaml" />
-        <ResourceDictionary Source="pack://application:,,,/H.Presenters.Common;component/FilePathTextBoxPresenter.xaml" />
-        <ResourceDictionary Source="pack://application:,,,/H.Presenters.Common;component/ImageFilePathPresenter.xaml" />
-        <ResourceDictionary Source="pack://application:,,,/H.Presenters.Common;component/ImageViewPresenter.xaml" />
-        <ResourceDictionary Source="pack://application:,,,/H.Presenters.Common;component/AddImageListPresenter.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Presenters.Common;component/Presenters/StringPresenter.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Presenters.Common;component/Presenters/PercentPresenter.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Presenters.Common;component/Presenters/WaitPresenter.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Presenters.Common;component/Presenters/MessagePresenter.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Presenters.Common;component/Presenters/TextBoxPresenter.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Presenters.Common;component/Presenters/PasswordBoxPresenter.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Presenters.Common;component/Presenters/FilePathTextBoxPresenter.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Presenters.Common;component/Presenters/ImageFilePathPresenter.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Presenters.Common;component/Presenters/ImageViewPresenter.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Presenters.Common;component/Presenters/AddImageListPresenter.xaml" />
 
-        <ResourceDictionary Source="pack://application:,,,/H.Presenters.Common;component/ListBoxPresenter.xaml" />
-        <ResourceDictionary Source="pack://application:,,,/H.Presenters.Common;component/ItemsControlPresenter.xaml" />
-        <ResourceDictionary Source="pack://application:,,,/H.Presenters.Common;component/DataGridPresenter.xaml" />
-        <ResourceDictionary Source="pack://application:,,,/H.Presenters.Common;component/TreeViewPresenter.xaml" />
-        <ResourceDictionary Source="pack://application:,,,/H.Presenters.Common;component/CommandsPresenter.xaml" />
-        <ResourceDictionary Source="pack://application:,,,/H.Presenters.Common;component/CommandsBindablePresenter.xaml" />
-        <ResourceDictionary Source="pack://application:,,,/H.Presenters.Common;component/AddImageFilePathPresenter.xaml" />
-        <ResourceDictionary Source="pack://application:,,,/H.Presenters.Common;component/FileInfoPresenter.xaml" />
-        <ResourceDictionary Source="pack://application:,,,/H.Presenters.Common;component/ExploreTreePresenter.xaml" />
-        <ResourceDictionary Source="pack://application:,,,/H.Presenters.Common;component/MetaSettingPresenter.xaml" />
-        <ResourceDictionary Source="pack://application:,,,/H.Presenters.Common;component/MetaSettingsPresenter.xaml" />
-        <ResourceDictionary Source="pack://application:,,,/H.Presenters.Common;component/ParameterInfoPresenter.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Presenters.Common;component/Presenters/ListBoxPresenter.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Presenters.Common;component/Presenters/ItemsControlPresenter.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Presenters.Common;component/Presenters/DataGridPresenter.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Presenters.Common;component/Presenters/TreeViewPresenter.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Presenters.Common;component/Presenters/CommandsPresenter.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Presenters.Common;component/Presenters/CommandsBindablePresenter.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Presenters.Common;component/Presenters/AddImageFilePathPresenter.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Presenters.Common;component/Presenters/FileInfoPresenter.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Presenters.Common;component/Presenters/ExploreTreePresenter.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Presenters.Common;component/Presenters/MetaSettingPresenter.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Presenters.Common;component/Presenters/MetaSettingsPresenter.xaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

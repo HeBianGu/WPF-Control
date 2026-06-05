@@ -7,7 +7,7 @@
 // Licensed under the MIT License (the "License")
 
 using H.Controls.Form;
-using H.Presenters.Common;
+using H.Presenters.Common.Presenters;
 
 namespace H.Controls.Diagram.Presenter;
 

@@ -8,6 +8,7 @@
 
 using H.Common.Interfaces;
 using H.Presenters.Common;
+using H.Presenters.Common.Presenters;
 
 namespace H.Modules.Messages.Dialog
 {
