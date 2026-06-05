@@ -121,7 +121,7 @@ public abstract class FlowableDiagramDataBase : ExpressionableDiagramDataBase, I
         if (start == null)
             return false;
         var r = await this.InvokeState(() => start.Start(this));
-        IocMessage.ShowSnackInfo(this.Message);
+        //IocMessage.ShowSnackInfo(this.Message);
         return r;
     }
 
