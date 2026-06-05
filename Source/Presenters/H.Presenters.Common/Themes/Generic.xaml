@@ -25,5 +25,6 @@
         <ResourceDictionary Source="pack://application:,,,/H.Presenters.Common;component/ExploreTreePresenter.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Presenters.Common;component/MetaSettingPresenter.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Presenters.Common;component/MetaSettingsPresenter.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Presenters.Common;component/ParameterInfoPresenter.xaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>
