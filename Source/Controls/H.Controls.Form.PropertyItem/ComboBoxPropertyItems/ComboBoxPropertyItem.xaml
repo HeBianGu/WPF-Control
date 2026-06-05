@@ -1,16 +1,29 @@
-﻿<ResourceDictionary
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="clr-namespace:H.Controls.Form.PropertyItem.ComboBoxPropertyItems">
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:H.Controls.Form.PropertyItem.ComboBoxPropertyItems">
     <DataTemplate DataType="{x:Type local:ComboBoxPropertyItem}">
-        <ComboBox
-            Height="Auto"
-            Cattach.ItemHeight="Auto"
-            Cattach.UseGuide="False"
-            DisplayMemberPath="{Binding DisplayMemberPath}"
-            IsHitTestVisible="{Binding IsHitTestVisible}"
-            ItemsSource="{Binding Collection}"
-            SelectedValue="{Binding Value}"
-            SelectedValuePath="{Binding SelectedValuePath}" />
+        <DockPanel>
+            <ItemsControl ItemsSource="{Binding Commands}" DockPanel.Dock="Right">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <FontIconButton Command="{Binding}"
+                                        Style="{DynamicResource {x:Static FontIconButtonKeys.Command}}" />
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Horizontal" />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+            </ItemsControl>
+            <ComboBox Height="Auto"
+                      Cattach.ItemHeight="Auto"
+                      Cattach.UseGuide="False"
+                      DisplayMemberPath="{Binding DisplayMemberPath}"
+                      IsHitTestVisible="{Binding IsHitTestVisible}"
+                      ItemsSource="{Binding Collection}"
+                      SelectedValue="{Binding Value}"
+                      SelectedValuePath="{Binding SelectedValuePath}" />
+        </DockPanel>
     </DataTemplate>
 </ResourceDictionary>
