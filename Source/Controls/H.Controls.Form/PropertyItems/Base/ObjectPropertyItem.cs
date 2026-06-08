@@ -172,6 +172,9 @@ public class ObjectPropertyItem<T> : BindingVisiblablePropertyItemBase, IDataErr
     {
         if (value == null)
             return null;
+        Type nullableType = Nullable.GetUnderlyingType(this.PropertyInfo.PropertyType);
+        if (nullableType != null && value is string text && string.IsNullOrWhiteSpace(text))
+            return null;
         if (value?.GetType() == this.PropertyInfo.PropertyType)
             return value;
 
@@ -200,7 +203,8 @@ public class ObjectPropertyItem<T> : BindingVisiblablePropertyItemBase, IDataErr
         TextValueConverterAttribute vc = this.PropertyInfo.GetCustomAttribute<TextValueConverterAttribute>();
         if (vc?.ValueConverter != null)
             return vc.ConvertBack(value);
-        return value is IConvertible convertible ? Convert.ChangeType(value, this.PropertyInfo.PropertyType) : value;
+        Type targetType = nullableType ?? this.PropertyInfo.PropertyType;
+        return value is IConvertible convertible ? Convert.ChangeType(value, targetType, System.Globalization.CultureInfo.CurrentUICulture) : value;
     }
 
     protected virtual void SetValue(T value)

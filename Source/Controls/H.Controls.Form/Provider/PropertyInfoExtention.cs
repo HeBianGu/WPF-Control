@@ -41,7 +41,11 @@ public static class PropertyInfoExtention
         if (TextPropertyItem.IsIConvertible(info))
             return new TextPropertyItem(info, obj);
         //  Do ：其他基元类型
-        else if (info.PropertyType.IsPrimitive || info.PropertyType == typeof(string)) return new TextPropertyItem(info, obj);
+        else if (info.PropertyType.IsPrimitive || info.PropertyType == typeof(string))
+            return new TextPropertyItem(info, obj);
+        else if (Nullable.GetUnderlyingType(type) != null)
+            return new TextPropertyItem(info, obj);
+
 
         //if (typeof(IEnumerable).IsAssignableFrom(info.PropertyType) && info.PropertyType.IsGenericType)
         //{

@@ -107,14 +107,14 @@ public class ParameterInfoPresenter : BindableBase, IParameterInfoPresenter
         get { return this.ParameterInfo.CurrentValue; }
         set
         {
-            var message = ValidateParameterValue(this.ParameterInfo, value);
+            var message = ValidateParameterValue(this.ParameterInfo, value, out object convertValue);
             if (message != null)
             {
                 this.Message = message;
                 IocMessage.Snack.ShowError(message);
                 return;
             }
-            var t = this._SetParameter.SetParameter(this.ParameterInfo.Name, value);
+            var t = this._SetParameter.SetParameter(this.ParameterInfo.Name, convertValue);
             if (!t.successed)
             {
                 this.Message = t.message;
@@ -122,14 +122,15 @@ public class ParameterInfoPresenter : BindableBase, IParameterInfoPresenter
                 return;
             }
             IocMessage.Snack.ShowSuccess(t.message ?? $"设置{this.ParameterInfo.DisplayName}成功");
-            this.ParameterInfo.CurrentValue = value;
+            this.ParameterInfo.CurrentValue = convertValue;
             RaisePropertyChanged();
         }
     }
 
 
-    private static string ValidateParameterValue(IParameterInfo parameterInfo, object value)
+    private static string ValidateParameterValue(IParameterInfo parameterInfo, object value, out object convertValue)
     {
+        convertValue = null;
         if (parameterInfo == null)
             return null;
 
@@ -144,29 +145,39 @@ public class ParameterInfoPresenter : BindableBase, IParameterInfoPresenter
                 if (integerValue != decimal.Truncate(integerValue))
                     return $"{displayName} 必须是整数";
 
+                convertValue = integerValue;
                 return ValidateRange(displayName, integerValue, parameterInfo.Minimum, parameterInfo.Maximum);
 
             case ParameterType.Float:
                 if (!TryConvertToDecimal(value, out decimal floatValue))
                     return $"{displayName} 必须是数字";
-
+                convertValue = floatValue;
                 return ValidateRange(displayName, floatValue, parameterInfo.Minimum, parameterInfo.Maximum);
 
             case ParameterType.Boolean:
                 if (value is bool)
                     return null;
-
-                return bool.TryParse(value.ToString(), out _) ? null : $"{displayName} 必须是布尔值";
+                if (bool.TryParse(value.ToString(), out _))
+                {
+                    convertValue = value;
+                    return null;
+                }
+                return $"{displayName} 必须是布尔值";
 
             case ParameterType.Enum:
                 if (parameterInfo.Options == null || parameterInfo.Options.Count == 0)
                     return null;
-
-                return parameterInfo.Options.Contains(value.ToString()) ? null : $"{displayName} 必须是有效选项";
+                if (parameterInfo.Options.Contains(value.ToString()))
+                {
+                    convertValue = value.ToString();
+                    return null;
+                }
+                return $"{displayName} 必须是有效选项";
 
             case ParameterType.String:
             case ParameterType.Command:
             default:
+                convertValue = value.ToString();
                 return null;
         }
     }

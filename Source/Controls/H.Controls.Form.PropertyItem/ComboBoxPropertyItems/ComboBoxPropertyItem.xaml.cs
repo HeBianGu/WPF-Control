@@ -31,7 +31,7 @@ namespace H.Controls.Form.PropertyItem.ComboBoxPropertyItems
         [Display(Name = "刷新数据源", GroupName = "操作")]
         public DisplayCommand RefreshSourceCommand => new DisplayCommand(x =>
         {
-            this.Collection = this.CreateSource()?.ToObservable();
+            this.RefreshSource();
             IocMessage.Snack.ShowSuccess("刷新数据成功");
         });
     }
