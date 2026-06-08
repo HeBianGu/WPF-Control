@@ -117,7 +117,7 @@ public static class DialogMessageExtension
     /// <param name="service">对话框消息服务</param>
     /// <param name="sumitAction">确定按钮点击后的操作</param>
     /// <returns>对话框的结果</returns>
-    public static async Task<bool?> ShowDeleteAllDialog(this IDialogMessageService service, Action<bool?> sumitAction)
+    public static async Task<bool?> ShowDeleteAllDialog(this IDialogMessageService service, Action<bool?> sumitAction = null)
     {
         return await service.ShowDialog("删除数据无法恢复，确定要全部删除？", sumitAction);
     }
@@ -128,7 +128,7 @@ public static class DialogMessageExtension
     /// <param name="service">对话框消息服务</param>
     /// <param name="sumitAction">确定按钮点击后的操作</param>
     /// <returns>对话框的结果</returns>
-    public static async Task<bool?> ShowDeleteDialog(this IDialogMessageService service, Action<bool?> sumitAction)
+    public static async Task<bool?> ShowDeleteDialog(this IDialogMessageService service, Action<bool?> sumitAction = null)
     {
         return await service.ShowDialog("删除数据无法恢复，确定要删除？", sumitAction);
     }

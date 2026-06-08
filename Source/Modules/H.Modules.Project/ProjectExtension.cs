@@ -271,7 +271,7 @@ static partial class ProjectExtension
         if (current is ProjectItemBase project)
         {
             string p = project.GetFilePath();
-            Process.Start(new ProcessStartInfo("notepad", p) { UseShellExecute = true });
+            Process.Start(new ProcessStartInfo(p) { UseShellExecute = true });
         }
         return true;
     }

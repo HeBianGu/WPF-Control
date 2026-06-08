@@ -139,7 +139,7 @@ public class ParameterInfoPresenter : BindableBase, IParameterInfoPresenter
         switch (parameterInfo.Type)
         {
             case ParameterType.Integer:
-                if (!TryConvertToDecimal(value, out decimal integerValue))
+                if (!TryConvertToInt(value, out int integerValue))
                     return $"{displayName} 必须是整数";
 
                 if (integerValue != decimal.Truncate(integerValue))
@@ -221,6 +221,37 @@ public class ParameterInfoPresenter : BindableBase, IParameterInfoPresenter
         {
             return decimal.TryParse(value.ToString(), System.Globalization.NumberStyles.Number, System.Globalization.CultureInfo.InvariantCulture, out result) ||
                    decimal.TryParse(value.ToString(), out result);
+        }
+    }
+
+    private static bool TryConvertToInt(object value, out int result)
+    {
+        result = default;
+
+        if (value == null)
+            return false;
+
+        try
+        {
+            if (value is int intValue)
+            {
+                result = intValue;
+                return true;
+            }
+
+            if (value is IConvertible convertible)
+            {
+                result = convertible.ToInt32(System.Globalization.CultureInfo.InvariantCulture);
+                return true;
+            }
+
+            return int.TryParse(value.ToString(), System.Globalization.NumberStyles.Number, System.Globalization.CultureInfo.InvariantCulture, out result) ||
+                   int.TryParse(value.ToString(), out result);
+        }
+        catch
+        {
+            return int.TryParse(value.ToString(), System.Globalization.NumberStyles.Number, System.Globalization.CultureInfo.InvariantCulture, out result) ||
+                   int.TryParse(value.ToString(), out result);
         }
     }
 }
