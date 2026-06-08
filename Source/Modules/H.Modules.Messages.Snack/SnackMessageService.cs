@@ -55,13 +55,7 @@ namespace H.Modules.Messages.Snack
             {
                 this._snackBox.Collection.Add(presenter);
             });
-
-          await Task.Delay(3000);
-
-            //await Task.Run(() =>
-            //{
-            //    Thread.Sleep(3000);
-            //});
+            await Task.Delay(3000);
             Application.Current.Dispatcher.Invoke(() =>
             {
                 this._snackBox.Collection.Remove(presenter);
