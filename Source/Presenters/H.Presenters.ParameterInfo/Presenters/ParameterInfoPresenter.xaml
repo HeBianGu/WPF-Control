@@ -56,8 +56,9 @@
                                          Style="{DynamicResource {x:Static TextBoxKeys.Attach}}"
                                          Text="{Binding CurrentValue}">
                                     <Cattach.Attach>
-                                        <TextBlock Margin="1,0"
+                                        <TextBlock Margin="2,0"
                                                    VerticalAlignment="Center"
+                                                   Foreground="{DynamicResource {x:Static BrushKeys.Foreground}}"
                                                    Text="{Binding ParameterInfo.Unit}" />
                                     </Cattach.Attach>
                                 </TextBox>

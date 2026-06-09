@@ -128,7 +128,7 @@
         <Setter Property="Cattach.TitleTemplate" Value="{x:Null}" />
         <Setter Property="Cattach.TitleMargin" Value="5 0" />
 
-        <Setter Property="Cattach.AttachForeground" Value="{x:Null}" />
+        <Setter Property="Cattach.AttachForeground" Value="{Binding RelativeSource={RelativeSource Mode=Self},Path=Foreground}" />
         <Setter Property="Cattach.AttachBackground" Value="{x:Null}" />
         <Setter Property="Cattach.AttachWidth" Value="Auto" />
         <Setter Property="Cattach.AttachHeight" Value="Auto" />

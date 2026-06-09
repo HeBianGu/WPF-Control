@@ -18,6 +18,7 @@ global using System.IO;
 using H.Extensions.FontIcon;
 using H.Extensions.Mvvm.Commands;
 using H.Globalization.Properties;
+using H.Services.Project;
 using System.Reflection.Metadata;
 using System.Text.Json.Serialization;
 using System.Windows.Controls;
@@ -28,6 +29,7 @@ namespace H.Modules.Project;
 public abstract class ProjectServiceBase<T> : CommandsBindableBase, IProjectService, IDataSource<T> where T : IProjectItem
 {
     private readonly IOptions<ProjectOptions> _options;
+    private bool _saving;
     public ProjectServiceBase(IOptions<ProjectOptions> options)
     {
         _options = options;
@@ -99,9 +101,18 @@ public abstract class ProjectServiceBase<T> : CommandsBindableBase, IProjectServ
     public virtual bool Save(out string message)
     {
         message = null;
+        if (this._saving)
+            return true;
         try
         {
+            this._saving = true;
             this.GetSerializer().Save(this._projectsPath, new Projects<T>() { Items = this.Collection.ToList() });
+            //foreach (T item in this.Collection)
+            //{
+            //    if (!item.Save(out message))
+            //        return false;
+            //}
+            this.Current?.Save(out message);
             return true;
         }
         catch (Exception ex)
@@ -110,6 +121,10 @@ public abstract class ProjectServiceBase<T> : CommandsBindableBase, IProjectServ
             message = ex.Message;
             IocLog.Error(ex);
             return false;
+        }
+        finally
+        {
+            this._saving = false;
         }
     }
 
