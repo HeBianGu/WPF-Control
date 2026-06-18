@@ -16,7 +16,7 @@ using System.Text.Json.Serialization;
 namespace H.App.AIDI.Base;
 public interface IRepositoryPresenter
 {
-    IRepositoryBindable<fm_dd_image> Repository { get; }
+    IObservableSourceRepositoryBindable<fm_dd_image> Repository { get; }
     void RefreshData();
 
     void ClearDatas();
@@ -29,7 +29,7 @@ public interface IRepositoryPresenter
 public abstract class RepositoryPresenterBase : DisplayBindableBase, IRepositoryPresenter
 {
     [JsonIgnore]
-    public IRepositoryBindable<fm_dd_image> Repository => Ioc.GetService<IRepositoryBindable<fm_dd_image>>();
+    public IObservableSourceRepositoryBindable<fm_dd_image> Repository => Ioc.GetService<IObservableSourceRepositoryBindable<fm_dd_image>>();
 
     public void RefreshData()
     {

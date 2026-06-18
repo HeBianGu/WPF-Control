@@ -11,45 +11,6 @@ using static System.Environment;
 
 namespace H.Extensions.Computer.ComputerSpecialFolders;
 
-[AttributeUsage(AttributeTargets.Class, Inherited = false, AllowMultiple = false)]
-public sealed class SpecialFolderInfoAttribute : Attribute
-{
-    readonly SpecialFolder _SpecialFolder;
-    public SpecialFolderInfoAttribute(SpecialFolder specialFolder)
-    {
-        this._SpecialFolder = specialFolder;
-    }
-
-    public SpecialFolder SpecialFolder
-    {
-        get { return _SpecialFolder; }
-    }
-}
-
-public interface IShowSpecialFolderCommand : IStartComputerProcessCommand
-{
-    SpecialFolder SpecialFolder { get; set; }
-}
-
-public abstract class ShowSpecialFolderCommandBase : StartComputerProcessCommandBase, IShowSpecialFolderCommand
-{
-    public ShowSpecialFolderCommandBase()
-    {
-        SpecialFolderInfoAttribute attribute = this.GetType().GetCustomAttributes(typeof(SpecialFolderInfoAttribute), false)
-            .OfType<SpecialFolderInfoAttribute>()
-            .FirstOrDefault();
-        if (attribute != null)
-            this.SpecialFolder = attribute.SpecialFolder;
-    }
-
-    public SpecialFolder SpecialFolder { get; set; }
-
-    protected override string GetFileName()
-    {
-        return Environment.GetFolderPath(this.SpecialFolder);
-    }
-}
-
 [Display(Name = "我的文档", Description = "显示我的文档", GroupName = "电脑特殊文件夹", Order = 0, ShortName = "My Documents", Prompt = "显示我的文档")]
 [SpecialFolderInfo(SpecialFolder.MyDocuments)]
 public class ShowMyDocumentsCommand : ShowSpecialFolderCommandBase

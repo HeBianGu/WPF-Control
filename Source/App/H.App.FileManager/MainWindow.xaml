@@ -152,7 +152,7 @@
                             <b:Interaction.Triggers>
                                 <b:EventTrigger EventName="FilterChanged">
                                     <b:ChangePropertyAction PropertyName="Filter11"
-                                                            TargetObject="{Binding Collection}"
+                                                            TargetObject="{Binding ObservableSource}"
                                                             Value="{Binding RelativeSource={RelativeSource AncestorType=h:FavoriteFilterBox}, Path=Filter}" />
                                 </b:EventTrigger>
                             </b:Interaction.Triggers>
@@ -177,7 +177,7 @@
                                         <b:Interaction.Triggers>
                                             <b:EventTrigger EventName="FilterChanged">
                                                 <b:ChangePropertyAction PropertyName="Filter1"
-                                                                        TargetObject="{Binding Collection}"
+                                                                        TargetObject="{Binding ObservableSource}"
                                                                         Value="{Binding RelativeSource={RelativeSource AncestorType=h:FilterBox}, Path=Filter}" />
                                             </b:EventTrigger>
                                         </b:Interaction.Triggers>
@@ -198,7 +198,7 @@
                                         <b:Interaction.Triggers>
                                             <b:EventTrigger EventName="FilterChanged">
                                                 <b:ChangePropertyAction PropertyName="Filter12"
-                                                                        TargetObject="{Binding Collection}"
+                                                                        TargetObject="{Binding ObservableSource}"
                                                                         Value="{Binding RelativeSource={RelativeSource AncestorType=h:FilterBox}, Path=Filter}" />
                                             </b:EventTrigger>
                                         </b:Interaction.Triggers>
@@ -220,7 +220,7 @@
                                         <b:Interaction.Triggers>
                                             <b:EventTrigger EventName="FilterChanged">
                                                 <b:ChangePropertyAction PropertyName="Filter2"
-                                                                        TargetObject="{Binding Collection}"
+                                                                        TargetObject="{Binding ObservableSource}"
                                                                         Value="{Binding RelativeSource={RelativeSource AncestorType=h:FilterBox}, Path=Filter}" />
                                             </b:EventTrigger>
                                         </b:Interaction.Triggers>
@@ -259,7 +259,7 @@
                                         <b:Interaction.Triggers>
                                             <b:EventTrigger EventName="FilterChanged">
                                                 <b:ChangePropertyAction PropertyName="Filter3"
-                                                                        TargetObject="{Binding Collection}"
+                                                                        TargetObject="{Binding ObservableSource}"
                                                                         Value="{Binding RelativeSource={RelativeSource AncestorType=h:FilterBox}, Path=Filter}" />
                                             </b:EventTrigger>
                                         </b:Interaction.Triggers>
@@ -284,7 +284,7 @@
                                         <b:Interaction.Triggers>
                                             <b:EventTrigger EventName="FilterChanged">
                                                 <b:ChangePropertyAction PropertyName="Filter4"
-                                                                        TargetObject="{Binding Collection}"
+                                                                        TargetObject="{Binding ObservableSource}"
                                                                         Value="{Binding RelativeSource={RelativeSource AncestorType=h:FilterBox}, Path=Filter}" />
                                             </b:EventTrigger>
                                         </b:Interaction.Triggers>
@@ -296,7 +296,7 @@
                                         <b:Interaction.Triggers>
                                             <b:EventTrigger EventName="FilterChanged">
                                                 <b:ChangePropertyAction PropertyName="Filter5"
-                                                                        TargetObject="{Binding Collection}"
+                                                                        TargetObject="{Binding ObservableSource}"
                                                                         Value="{Binding RelativeSource={RelativeSource AncestorType=h:TagFilterBox}, Path=Filter}" />
                                             </b:EventTrigger>
                                         </b:Interaction.Triggers>
@@ -309,7 +309,7 @@
                                         <b:Interaction.Triggers>
                                             <b:EventTrigger EventName="FilterChanged">
                                                 <b:ChangePropertyAction PropertyName="Filter6"
-                                                                        TargetObject="{Binding Collection}"
+                                                                        TargetObject="{Binding ObservableSource}"
                                                                         Value="{Binding RelativeSource={RelativeSource AncestorType=h:TagFilterBox}, Path=Filter}" />
                                             </b:EventTrigger>
                                         </b:Interaction.Triggers>
@@ -322,7 +322,7 @@
                                         <b:Interaction.Triggers>
                                             <b:EventTrigger EventName="FilterChanged">
                                                 <b:ChangePropertyAction PropertyName="Filter7"
-                                                                        TargetObject="{Binding Collection}"
+                                                                        TargetObject="{Binding ObservableSource}"
                                                                         Value="{Binding RelativeSource={RelativeSource AncestorType=h:TagFilterBox}, Path=Filter}" />
                                             </b:EventTrigger>
                                         </b:Interaction.Triggers>
@@ -333,7 +333,7 @@
                                     <h:SelectionFilterBox Margin="0,5"
                                                           HorizontalAlignment="Stretch"
                                                           HorizontalContentAlignment="Stretch"
-                                                          Datas="{Binding Collection.Cache, IsAsync=True}"
+                                                          Datas="{Binding ObservableSource.Cache, IsAsync=True}"
                                                           DisplayName="选择筛选器筛选出来的用户数量"
                                                           PropertyName="PixelFormat"
                                                           SelectionMode="Multiple"
@@ -341,7 +341,7 @@
                                         <b:Interaction.Triggers>
                                             <b:EventTrigger EventName="FilterChanged">
                                                 <b:ChangePropertyAction PropertyName="Filter8"
-                                                                        TargetObject="{Binding Collection}"
+                                                                        TargetObject="{Binding ObservableSource}"
                                                                         Value="{Binding RelativeSource={RelativeSource AncestorType=h:SelectionFilterBox}, Path=Filter}" />
                                             </b:EventTrigger>
                                         </b:Interaction.Triggers>
@@ -354,7 +354,7 @@
                                         <b:Interaction.Triggers>
                                             <b:EventTrigger EventName="FilterChanged">
                                                 <b:ChangePropertyAction PropertyName="Filter9"
-                                                                        TargetObject="{Binding Collection}"
+                                                                        TargetObject="{Binding ObservableSource}"
                                                                         Value="{Binding RelativeSource={RelativeSource AncestorType=h:TagFilterBox}, Path=Filter}" />
                                             </b:EventTrigger>
                                         </b:Interaction.Triggers>
@@ -365,7 +365,7 @@
                                     <h:SelectionFilterBox Margin="0,5"
                                                           HorizontalAlignment="Stretch"
                                                           HorizontalContentAlignment="Stretch"
-                                                          Datas="{Binding Collection.Cache, IsAsync=True}"
+                                                          Datas="{Binding ObservableSource.Cache, IsAsync=True}"
                                                           DisplayName="选择筛选器筛选出来的用户数量"
                                                           PropertyName="Extend"
                                                           SelectionMode="Multiple"
@@ -373,7 +373,7 @@
                                         <b:Interaction.Triggers>
                                             <b:EventTrigger EventName="FilterChanged">
                                                 <b:ChangePropertyAction PropertyName="Filter10"
-                                                                        TargetObject="{Binding Collection}"
+                                                                        TargetObject="{Binding ObservableSource}"
                                                                         Value="{Binding RelativeSource={RelativeSource AncestorType=h:SelectionFilterBox}, Path=Filter}" />
                                             </b:EventTrigger>
                                         </b:Interaction.Triggers>
@@ -389,7 +389,7 @@
                             <b:Interaction.Triggers>
                                 <b:EventTrigger EventName="OrderChanged">
                                     <b:ChangePropertyAction PropertyName="Order2"
-                                                            TargetObject="{Binding Collection}"
+                                                            TargetObject="{Binding ObservableSource}"
                                                             Value="{Binding RelativeSource={RelativeSource AncestorType=h:OrderBox}, Path=Order}" />
                                 </b:EventTrigger>
                             </b:Interaction.Triggers>
@@ -447,51 +447,55 @@
                           NavigationPaneText="{Binding RelativeSource={RelativeSource Mode=Self}, Path=SelectedSection.Header}"
                           ShowButtons="True">
                 <h:OutlookBar.Sections>
-                    <h:OutlookSection Header="详情" Cattach.Icon="{x:Static FontIcons.OpenFile}">
+                    <h:OutlookSection Cattach.Icon="{x:Static FontIcons.OpenFile}"
+                                      Header="详情">
                         <DockPanel>
                             <ContentPresenter Margin="5"
-                                              Content="{Binding Collection.SelectedItem.Model}"
+                                              Content="{Binding ObservableSource.SelectedItem.Model}"
                                               DockPanel.Dock="Top" />
                             <!--<Image Height="300"
                                    DockPanel.Dock="Top"
-                                   Source="{Binding Collection.SelectedItem.Model, Converter={local:GetFileToViewConverter}, ConverterParameter=300, IsAsync=True}" />-->
+                                   Source="{Binding ObservableSource.SelectedItem.Model, Converter={local:GetFileToViewConverter}, ConverterParameter=300, IsAsync=True}" />-->
                             <h:Form Foreground="{DynamicResource {x:Static h:BrushKeys.Foreground}}"
-                                    SelectObject="{Binding Collection.SelectedItem.Model, Mode=TwoWay}"
+                                    SelectObject="{Binding ObservableSource.SelectedItem.Model, Mode=TwoWay}"
                                     TitleWidth="50"
                                     UseNull="False"
                                     UsePropertyView="True" />
                         </DockPanel>
                     </h:OutlookSection>
-                    <h:OutlookSection Header="编辑" Cattach.Icon="{x:Static FontIcons.Edit}"> 
+                    <h:OutlookSection Cattach.Icon="{x:Static FontIcons.Edit}"
+                                      Header="编辑">
                         <h:Form Foreground="{DynamicResource {x:Static h:BrushKeys.Foreground}}"
-                                SelectObject="{Binding Collection.SelectedItem.Model, Mode=TwoWay}"
+                                SelectObject="{Binding ObservableSource.SelectedItem.Model, Mode=TwoWay}"
                                 TitleWidth="50" />
                     </h:OutlookSection>
-                    <h:OutlookSection Header="标签设置" Cattach.Icon="{x:Static FontIcons.Label}">
+                    <h:OutlookSection Cattach.Icon="{x:Static FontIcons.Label}"
+                                      Header="标签设置">
                         <StackPanel>
                             <GroupBox Header="默认">
-                                <h:TagBox Tags="{Binding Collection.SelectedItem.Model.Tags, Mode=TwoWay}" />
+                                <h:TagBox SelectedTags="{Binding ObservableSource.SelectedItem.Model.Tags, Mode=TwoWay}" />
                             </GroupBox>
                             <GroupBox Header="国家/区域"
                                       Visibility="{Binding Source={x:Static h:IocProject.Instance}, Path=Current.Setting.UseAreaTag, Converter={x:Static h:Converter.GetTrueToVisible}}">
                                 <h:TagBox GroupName="Area"
-                                          Tags="{Binding Collection.SelectedItem.Model.Area, Mode=TwoWay}" />
+                                          SelectedTags="{Binding ObservableSource.SelectedItem.Model.Area, Mode=TwoWay}" />
                             </GroupBox>
                             <GroupBox Header="对象"
                                       Visibility="{Binding Source={x:Static h:IocProject.Instance}, Path=Current.Setting.UseObjectTag, Converter={x:Static h:Converter.GetTrueToVisible}}">
                                 <h:TagBox GroupName="Object"
-                                          Tags="{Binding Collection.SelectedItem.Model.Object, Mode=TwoWay}" />
+                                          SelectedTags="{Binding ObservableSource.SelectedItem.Model.Object, Mode=TwoWay}" />
                             </GroupBox>
                             <GroupBox Header="清晰度"
                                       Visibility="{Binding Source={x:Static h:IocProject.Instance}, Path=Current.Setting.UseArticulationTag, Converter={x:Static h:Converter.GetTrueToVisible}}">
                                 <h:TagBox GroupName="Articulation"
-                                          Tags="{Binding Collection.SelectedItem.Model.Articulation, Mode=TwoWay}" />
+                                          SelectedTags="{Binding ObservableSource.SelectedItem.Model.Articulation, Mode=TwoWay}" />
                             </GroupBox>
                         </StackPanel>
                     </h:OutlookSection>
-                    <h:OutlookSection Header="收藏夹设置" Cattach.Icon="{x:Static FontIcons.FavoriteStarFill}"
+                    <h:OutlookSection Cattach.Icon="{x:Static FontIcons.FavoriteStarFill}"
+                                      Header="收藏夹设置"
                                       Visibility="{Binding Source={x:Static h:IocProject.Instance}, Path=Current.Setting.UseFavoritePath, Converter={x:Static h:Converter.GetTrueToVisible}}">
-                        <h:FavoriteBox SelectedFavoritePath="{Binding Collection.SelectedItem.Model.FavoritePath, Mode=TwoWay}" />
+                        <h:FavoriteBox SelectedFavoritePath="{Binding ObservableSource.SelectedItem.Model.FavoritePath, Mode=TwoWay}" />
                     </h:OutlookSection>
                 </h:OutlookBar.Sections>
             </h:OutlookBar>

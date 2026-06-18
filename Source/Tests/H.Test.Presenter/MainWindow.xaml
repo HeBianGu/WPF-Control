@@ -24,7 +24,7 @@
             </Button.CommandParameter>
         </Button>
 
-        <Button Command="{h:ShowPropertyTextBoxCommand PropertyName=Name}"
+        <Button Command="{ShowPropertyTextBoxCommand PropertyName=Name}"
                 CommandParameter="{GetStudent}"
                 Content="ShowPropertyTextBoxCommand" />
         <Button Command="{h:ShowCommand}"

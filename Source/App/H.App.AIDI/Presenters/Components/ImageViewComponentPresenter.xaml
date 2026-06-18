@@ -37,7 +37,7 @@
                         <CallMethodActionEx MethodName="FitToBounds" TargetObject="{Binding ElementName=zoomview}" />
                     </MouseTrigger>
                 </b:Interaction.Triggers>
-                <Image Source="{Binding Repository.Collection.SelectedItem.Model.Url}" />
+                <Image Source="{Binding Repository.ObservableSource.SelectedItem.Model.Url}" />
             </Zoombox>
             <Border
                 Width="300"
@@ -55,7 +55,7 @@
                             <TextBlock Text="导入路径：" />
                         </BulletDecorator.Bullet>
                         <TextBlock
-                            Text="{Binding Repository.Collection.SelectedItem.Model.Url}"
+                            Text="{Binding Repository.ObservableSource.SelectedItem.Model.Url}"
                             TextTrimming="WordEllipsis"
                             ToolTip="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Text}" />
                     </BulletDecorator>
@@ -65,7 +65,7 @@
                             <TextBlock Text="图像名称：" />
                         </BulletDecorator.Bullet>
                         <TextBlock TextTrimming="WordEllipsis" ToolTip="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Text}">
-                            <Run Text="{Binding Repository.Collection.SelectedItem.Model.Name}" /><Run Text="{Binding Repository.Collection.SelectedItem.Model.Extend}" />
+                            <Run Text="{Binding Repository.ObservableSource.SelectedItem.Model.Name}" /><Run Text="{Binding Repository.Collection.SelectedItem.Model.Extend}" />
                         </TextBlock>
                     </BulletDecorator>
 
@@ -73,14 +73,14 @@
                         <BulletDecorator.Bullet>
                             <TextBlock Text="原图信息：" />
                         </BulletDecorator.Bullet>
-                        <TextBlock Text="{Binding Repository.Collection.SelectedItem.Model.Aspect}" />
+                        <TextBlock Text="{Binding Repository.ObservableSource.SelectedItem.Model.Aspect}" />
                     </BulletDecorator>
 
                     <BulletDecorator Margin="5">
                         <BulletDecorator.Bullet>
                             <TextBlock Text="图像Tag：" />
                         </BulletDecorator.Bullet>
-                        <TextBlock Text="{Binding Repository.Collection.SelectedItem.Model.Tags}" />
+                        <TextBlock Text="{Binding Repository.ObservableSource.SelectedItem.Model.Tags}" />
                     </BulletDecorator>
 
                     <TextBlock Margin="5">

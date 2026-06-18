@@ -7,6 +7,7 @@
 // Licensed under the MIT License (the "License")
 
 using H.Presenters.Common;
+using H.Presenters.Common.Presenters;
 using H.Services.Message;
 using Quartz;
 using Quartz.Impl;

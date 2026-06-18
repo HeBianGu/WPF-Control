@@ -61,12 +61,12 @@
                     <b:Interaction.Triggers>
                         <b:EventTrigger EventName="FilterChanged">
                             <b:ChangePropertyAction PropertyName="Filter1"
-                                                    TargetObject="{Binding Collection}"
+                                                    TargetObject="{Binding ObservableSource}"
                                                     Value="{Binding RelativeSource={RelativeSource AncestorType=h:PropertyFilterBox}, Path=Filter}" />
                         </b:EventTrigger>
                         <b:EventTrigger EventName="Loaded">
                             <b:ChangePropertyAction PropertyName="Filter1"
-                                                    TargetObject="{Binding Collection}"
+                                                    TargetObject="{Binding ObservableSource}"
                                                     Value="{Binding RelativeSource={RelativeSource AncestorType=h:PropertyFilterBox}, Path=Filter}" />
                         </b:EventTrigger>
                     </b:Interaction.Triggers>
@@ -78,12 +78,12 @@
                     <b:Interaction.Triggers>
                         <b:EventTrigger EventName="OrderChanged">
                             <b:ChangePropertyAction PropertyName="Order1"
-                                                    TargetObject="{Binding Collection}"
+                                                    TargetObject="{Binding ObservableSource}"
                                                     Value="{Binding RelativeSource={RelativeSource AncestorType=h:PropertyOrderBox}, Path=Order}" />
                         </b:EventTrigger>
                         <b:EventTrigger EventName="Loaded">
                             <b:ChangePropertyAction PropertyName="Order1"
-                                                    TargetObject="{Binding Collection}"
+                                                    TargetObject="{Binding ObservableSource}"
                                                     Value="{Binding RelativeSource={RelativeSource AncestorType=h:PropertyOrderBox}, Path=Order}" />
                         </b:EventTrigger>
                     </b:Interaction.Triggers>
@@ -96,7 +96,7 @@
                     <b:Interaction.Triggers>
                         <b:EventTrigger EventName="FilterChanged">
                             <b:ChangePropertyAction PropertyName="Filter2"
-                                                    TargetObject="{Binding Collection}"
+                                                    TargetObject="{Binding ObservableSource}"
                                                     Value="{Binding ElementName=tfb, Path=Filter}" />
                         </b:EventTrigger>
                     </b:Interaction.Triggers>
@@ -109,14 +109,14 @@
                        DockPanel.Dock="Bottom">
                 <TextBlock VerticalAlignment="Center">
                     <Run Text=" 合计：" />
-                    <Run Text="{Binding Collection.FilterSource.Count, Mode=OneWay}" />
+                    <Run Text="{Binding ObservableSource.FilterSource.Count, Mode=OneWay}" />
                     <Run Text="/" />
-                    <Run Text="{Binding Collection.Cache.Count, Mode=OneWay}" />
+                    <Run Text="{Binding ObservableSource.Cache.Count, Mode=OneWay}" />
                 </TextBlock>
 
                 <h:PagerBox HorizontalAlignment="Right"
-                            MaxPageCount="{Binding Path=Collection.TotalPage, Mode=TwoWay}"
-                            PageIndex="{Binding Path=Collection.PageIndex, Mode=TwoWay}" />
+                            MaxPageCount="{Binding Path=ObservableSource.TotalPage, Mode=TwoWay}"
+                            PageIndex="{Binding Path=ObservableSource.PageIndex, Mode=TwoWay}" />
             </DockPanel>
 
             <Border Margin="0,1"
@@ -134,7 +134,7 @@
                             <Grid Background="Transparent">
                                 <Grid.ContextMenu>
                                     <ContextMenu IsOpen="True"
-                                                 ItemsSource="{Binding Collection.SelectedItem.Model, Converter={local:GetFileMenuItemConverter}}"
+                                                 ItemsSource="{Binding ObservableSource.SelectedItem.Model, Converter={local:GetFileMenuItemConverter}}"
                                                  StaysOpen="True">
                                         <ItemsControl.ItemTemplate>
                                             <HierarchicalDataTemplate ItemsSource="{Binding Nodes}">
@@ -154,8 +154,8 @@
                                     </ContextMenu>
                                 </Grid.ContextMenu>
                                 <DataGrid x:Name="dg"
-                                          ItemsSource="{Binding Collection.Source, IsAsync=True}"
-                                          SelectedItem="{Binding Collection.SelectedItem}"
+                                          ItemsSource="{Binding ObservableSource.Source, IsAsync=True}"
+                                          SelectedItem="{Binding ObservableSource.SelectedItem}"
                                           Visibility="Collapsed">
                                     <b:Interaction.Behaviors>
                                         <h:DataGridAutoColumnBehavior BindingPath="Model.{0}"
@@ -179,8 +179,8 @@
                                 <ListBox x:Name="lb"
                                          h:Cattach.ItemHeight="Auto"
                                          h:Cattach.ItemPadding="0"
-                                         ItemsSource="{Binding Collection.Source, IsAsync=True}"
-                                         SelectedItem="{Binding Collection.SelectedItem}"
+                                         ItemsSource="{Binding ObservableSource.Source, IsAsync=True}"
+                                         SelectedItem="{Binding ObservableSource.SelectedItem}"
                                          Visibility="Collapsed">
                                     <ItemsControl.ItemTemplate>
                                         <DataTemplate>
@@ -252,10 +252,10 @@
                                         <ListBox h:Cattach.ItemHeight="Auto"
                                                  Cattach.ItemBorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrush}}"
                                                  DockPanel.Dock="Left"
-                                                 ItemsSource="{Binding Collection.Source, IsAsync=True}"
+                                                 ItemsSource="{Binding ObservableSource.Source, IsAsync=True}"
                                                  ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                                                  ScrollViewer.VerticalScrollBarVisibility="Auto"
-                                                 SelectedItem="{Binding Collection.SelectedItem}">
+                                                 SelectedItem="{Binding ObservableSource.SelectedItem}">
                                             <b:Interaction.Triggers>
                                                 <b:EventTrigger EventName="SelectionChanged">
                                                     <b:InvokeCommandAction Command="{Binding SelectionChangedCommand}"
@@ -289,7 +289,7 @@
                                         </ListBox>
                                     </h:GridSplitterBox.MenuContent>
                                     <Grid Background="Transparent">
-                                        <ContentPresenter Content="{Binding Collection.SelectedItem.Model, Converter={local:GetFileToViewConverter}}" />
+                                        <ContentPresenter Content="{Binding ObservableSource.SelectedItem.Model, Converter={local:GetFileToViewConverter}}" />
                                     </Grid>
                                 </h:GridSplitterBox>
                             </Grid>

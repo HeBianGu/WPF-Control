@@ -68,7 +68,7 @@ public class AIDIProjectItem : ProjectItemBase, ITree
 
     public override bool Load(out string message)
     {
-        Ioc.GetService<IRepositoryBindable<fm_dd_image>>().RefreshData();
+        Ioc.GetService<IObservableSourceRepositoryBindable<fm_dd_image>>().RefreshData();
         ImageEx.ClearCache();
         var r = base.Load(out message);
         IocTagService.Instance.Load(out message);
@@ -77,7 +77,7 @@ public class AIDIProjectItem : ProjectItemBase, ITree
 
     public override bool Save(out string message)
     {
-        var filePath = this.InputPagePresenter.Repository.Collection.SelectedItem?.Model.Url;
+        var filePath = this.InputPagePresenter.Repository.ObservableSource.SelectedItem?.Model.Url;
         if (File.Exists(filePath))
             this.ThumbnialBase64Image = filePath.ToImageEx().ToBase64String();
         return base.Save(out message);

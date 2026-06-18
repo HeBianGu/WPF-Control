@@ -12,7 +12,7 @@ namespace H.App.FileManager
     {
         public override object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if (DbIoc.GetService<IRepositoryBindable<fm_dd_file>>() is FileRepositoryBindable vm)
+            if (DbIoc.GetService<IObservableSourceRepositoryBindable<fm_dd_file>>() is FileRepositoryBindable vm)
             {
                 List<TreeNodeBase<ICommand>> result = new List<TreeNodeBase<ICommand>>();
                 if (value is fm_dd_video video)

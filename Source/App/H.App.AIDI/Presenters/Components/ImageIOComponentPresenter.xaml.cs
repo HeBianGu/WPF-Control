@@ -54,7 +54,7 @@ public class ImageIOComponentPresenter : RepositoryPresenterBase
                 fm_dd_image image = file.ToImageEntity();
                 image.ProjectID = IocProject.Instance.Current.ID;
                 image.PageID = this._pagePresenter.ID;
-                if (this.Repository.Collection.FirstOrDefault(k => k.Model.Url.GetFullPath() == file) == null)
+                if (this.Repository.ObservableSource.FirstOrDefault(k => k.Model.Url.GetFullPath() == file) == null)
                     dbFiles.Add(image);
                 x.Value = $"[{index}/{files.Count}] {file}";
             }

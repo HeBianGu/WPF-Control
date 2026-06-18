@@ -60,7 +60,7 @@ namespace H.App.FileManager
         protected virtual IEnumerable<IFileView> CreateMore()
         {
             List<IFileView> mores = new List<IFileView>();
-            IEnumerable<fm_dd_file> files = FileRepositoryBindable.Instance.Collection.Select(x => x.Model);
+            IEnumerable<fm_dd_file> files = FileRepositoryBindable.Instance.ObservableSource.Select(x => x.Model);
 
             var t = this.Model;
             var filtToView = Ioc.GetService<IFileToViewService>();

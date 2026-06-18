@@ -10,8 +10,6 @@ using H.Common.Commands;
 using System.Diagnostics;
 
 namespace H.Extensions.Computer.Base;
-
-
 public abstract class StartComputerProcessCommandBase : DisplayMarkupCommandBase, IStartComputerProcessCommand
 {
     public override void Execute(object parameter)

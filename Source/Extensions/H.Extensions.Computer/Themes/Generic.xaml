@@ -9,6 +9,5 @@
         <ResourceDictionary Source="pack://application:,,,/H.Extensions.Computer;component/ComputerProcesses/SpecialFolderInfoPresenter.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Extensions.Computer;component/ComputerPerformanceCounters/PerformanceCountersPresenter.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Extensions.Computer;component/ComputerPerformanceCounters/PerformanceCounterValuePresenter.xaml" />
-
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

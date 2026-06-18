@@ -14,7 +14,7 @@ namespace H.App.FileManager
     //        //List<VideoView> moreVideos = new List<VideoView>();
     //        //this.SelectedItem = new VideoView(t);
     //        //moreVideos.Add(this.SelectedItem);
-    //        //IEnumerable<fm_dd_video> videos = FileRepositoryViewModel.Instance.Collection.Select(x => x.Model).OfType<fm_dd_video>().Where(x => x != t);
+    //        //IEnumerable<fm_dd_video> videos = FileRepositoryViewModel.Instance.ObservableSource.Select(x => x.Model).OfType<fm_dd_video>().Where(x => x != t);
     //        //if (videos.Count() == 0)
     //        //    return;
     //        //{

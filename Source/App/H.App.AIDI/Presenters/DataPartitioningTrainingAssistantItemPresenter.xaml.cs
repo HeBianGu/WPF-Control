@@ -35,7 +35,7 @@ public class DataPartitioningTrainingAssistantItemPresenter : TrainingAssistantI
         if (ratio < 0 || ratio > 100)
             return (false, "比例必须在 0 到 100 之间");
 
-        List<fm_dd_image> images = modulePresenter.Repository.Collection.Source
+        List<fm_dd_image> images = modulePresenter.Repository.ObservableSource.Source
             .Where(x => x.Model.PageID == modulePresenter.ID)
             .Select(x => x.Model)
             .ToList();

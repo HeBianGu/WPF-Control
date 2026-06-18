@@ -26,7 +26,7 @@ public class ModuleViewPagePresenter : ModuleViewPagePresenterBase
     {
         await IocMessage.Dialog.ShowWait(x =>
          {
-             var images = this.Repository.Collection.Where(l => this.Where(l.Model)).Select(x => x.Model).ToList();
+             var images = this.Repository.ObservableSource.Where(l => this.Where(l.Model)).Select(x => x.Model).ToList();
              var clones = images.Select(x =>
              {
                  var r = x.CloneData();

@@ -50,11 +50,11 @@ namespace H.App.FileManager
         public ObservableCollection<FavoriteItem> FavoriteItems { get; set; } = new ObservableCollection<FavoriteItem>();
 
 
-        private IRepositoryBindable<fm_dd_file> _file = new RepositoryBindable<fm_dd_file>();
+        private IObservableSourceRepositoryBindable<fm_dd_file> _file = new ObservableSourceRepositoryBindable<fm_dd_file>();
         [JsonIgnore]
         [XmlIgnore]
         [Browsable(false)]
-        public IRepositoryBindable<fm_dd_file> File
+        public IObservableSourceRepositoryBindable<fm_dd_file> File
         {
             get { return _file; }
             set
@@ -80,7 +80,7 @@ namespace H.App.FileManager
                     x.UseLazyLoadingProxies().UseSqlite(con);
                 });
                 dx.AddSingleton<IStringRepository<fm_dd_file>, DbContextRepository<DataContext, fm_dd_file>>();
-                dx.AddSingleton<IRepositoryBindable<fm_dd_file>, FileRepositoryBindable>();
+                dx.AddSingleton<IObservableSourceRepositoryBindable<fm_dd_file>, FileRepositoryBindable>();
             });
 
             if (!Directory.Exists(System.IO.Path.GetDirectoryName(this.GetFilePath())))
@@ -89,7 +89,7 @@ namespace H.App.FileManager
             DataContext find = DbIoc.Services.GetService<DataContext>();
             find.Database.Migrate();
             //  Do ：刷新数据
-            this.File = DbIoc.GetService<IRepositoryBindable<fm_dd_file>>();
+            this.File = DbIoc.GetService<IObservableSourceRepositoryBindable<fm_dd_file>>();
             this.File.RefreshData();
             IocTagService.Instance.Load(out message);
             IocFavoriteService.Instance.Load(out message);

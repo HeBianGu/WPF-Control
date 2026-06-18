@@ -35,7 +35,7 @@ public partial class App : ApplicationBase
 
         services.AddDbContextBySetting<AIDIDataContext>();
         services.AddSingleton<IStringRepository<fm_dd_image>, DbContextRepository<AIDIDataContext, fm_dd_image>>();
-        services.AddSingleton<IRepositoryBindable<fm_dd_image>, AIDIRepositoryBindable>();
+        services.AddSingleton<IObservableSourceRepositoryBindable<fm_dd_image>, AIDIRepositoryBindable>();
     }
 
     protected override void Configure(IApplicationBuilder app)

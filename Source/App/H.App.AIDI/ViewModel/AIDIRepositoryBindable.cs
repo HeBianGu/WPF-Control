@@ -11,7 +11,7 @@ using H.Extensions.DataBase.Repository;
 using H.Services.Project;
 
 namespace H.App.AIDI.ViewModel;
-public class AIDIRepositoryBindable : RepositoryBindable<fm_dd_image>
+public class AIDIRepositoryBindable : ObservableSourceRepositoryBindable<fm_dd_image>
 {
     protected override bool Where(fm_dd_image entity)
     {
