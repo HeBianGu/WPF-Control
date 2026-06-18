@@ -13,8 +13,7 @@ global using System.Reflection;
 
 namespace H.Common.Commands;
 
-
-public abstract class DisplayMarkupCommandBase : AsyncMarkupCommandBase, IIconable, INameable, IDescriptionable
+public abstract class DisplayMarkupCommandBase : AsyncMarkupCommandBase, IIconable, INameable, IDescriptionable, IGroupable, IOrderable
 {
     protected DisplayMarkupCommandBase()
     {
@@ -23,6 +22,8 @@ public abstract class DisplayMarkupCommandBase : AsyncMarkupCommandBase, IIconab
         {
             this.Name = d.Name;
             this.Description = d.Description;
+            this.GroupName = d?.GroupName;
+            this.Order = d?.GetOrder() ?? 0;
         }
 
         IconAttribute icon = this.GetType().GetCustomAttribute<IconAttribute>();
@@ -31,4 +32,6 @@ public abstract class DisplayMarkupCommandBase : AsyncMarkupCommandBase, IIconab
     public string Name { get; set; }
     public string Icon { get; set; }
     public string Description { get; set; }
+    public string GroupName { get; set; }
+    public int Order { get; set; }
 }
