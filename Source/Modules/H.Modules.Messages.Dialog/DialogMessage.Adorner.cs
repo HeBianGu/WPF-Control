@@ -14,7 +14,7 @@ namespace H.Modules.Messages.Dialog
 {
     public class AdornerDialogMessageService : IDialogMessageService, IAdornerDialogMessageService
     {
-        public async Task<bool?> Show(object presenter, Action<IDialog> builder = null, Func<Task<bool>> canSumit = null)
+        public virtual async Task<bool?> Show(object presenter, Action<IDialog> builder = null, Func<Task<bool>> canSumit = null)
         {
             var data = presenter is string str ? new StringPresenter() { Value = str } : presenter;
             return await AdornerDialog.ShowPresenter(data, x =>
@@ -46,15 +46,15 @@ namespace H.Modules.Messages.Dialog
             }, canSumit);
         }
 
-        public async Task<T> ShowAction<P, T>(P presenter, Action<IDialog> builder = null, Func<IDialog, P, T> action = null)
+        public virtual async Task<T> ShowAction<P, T>(P presenter, Action<IDialog> builder = null, Func<IDialog, P, T> action = null)
         {
             return await AdornerDialog.ShowAction(presenter, action, builder);
         }
 
-        public async Task<T> ShowPercent<T>(Func<IDialog, IPercentPresenter, T> action, Action<IDialog> build = null)
+        public virtual async Task<T> ShowPercent<T>(Func<IDialog, IPercentPresenter, T> action, Action<IDialog> build = null)
         {
             PercentPresenter p = new PercentPresenter();
-            return await AdornerDialog.ShowAction(p, action, x =>
+            return await this.ShowAction(p, x =>
             {
                 x.DialogButton = DialogButton.Cancel;
                 x.HorizontalContentAlignment = HorizontalAlignment.Stretch;
@@ -62,23 +62,23 @@ namespace H.Modules.Messages.Dialog
                 x.VerticalAlignment = VerticalAlignment.Center;
                 x.Width = 400;
                 build?.Invoke(x);
-            });
+            }, action);
         }
 
-        public async Task<T> ShowString<T>(Func<IDialog, IStringPresenter, T> action, Action<IDialog> build = null)
+        public virtual async Task<T> ShowString<T>(Func<IDialog, IStringPresenter, T> action, Action<IDialog> build = null)
         {
             StringPresenter p = new StringPresenter();
-            return await AdornerDialog.ShowAction(p, action, x =>
+            return await this.ShowAction(p, x =>
             {
                 x.DialogButton = DialogButton.Cancel;
                 x.HorizontalContentAlignment = HorizontalAlignment.Center;
                 x.Padding = new Thickness(20);
                 x.MinWidth = 300;
                 build?.Invoke(x);
-            });
+            }, action);
         }
 
-        public async Task<bool> ShowForeach<T>(Func<IEnumerable<T>> list, Func<T, Tuple<bool, string>> itemAction, Action<IDialog> build = null)
+        public virtual async Task<bool> ShowForeach<T>(Func<IEnumerable<T>> list, Func<T, Tuple<bool, string>> itemAction, Action<IDialog> build = null)
         {
             return await this.ShowString<bool>((d, m) =>
              {
@@ -99,9 +99,9 @@ namespace H.Modules.Messages.Dialog
              }, build);
         }
 
-        public async Task<T> ShowWait<T>(Func<IDialog, T> action, Action<IDialog> build = null)
+        public virtual async Task<T> ShowWait<T>(Func<IDialog, T> action, Action<IDialog> build = null)
         {
-            return await AdornerDialog.ShowAction(new WaitPresenter(), (d, p) => action.Invoke(d), x =>
+            return await this.ShowAction(new WaitPresenter(), x =>
             {
                 x.DialogButton = DialogButton.Cancel;
                 x.HorizontalAlignment = HorizontalAlignment.Center;
@@ -110,29 +110,7 @@ namespace H.Modules.Messages.Dialog
                 x.VerticalContentAlignment = VerticalAlignment.Center;
                 x.Width = 400;
                 build?.Invoke(x);
-            });
-        }
-    }
-
-    public static class LayoutableExtension
-    {
-        public static void CopyFrom(this ILayoutable layoutable, IDesignPresenter from)
-        {
-            layoutable.HorizontalAlignment = from.HorizontalAlignment;
-            layoutable.VerticalAlignment = from.VerticalAlignment;
-            layoutable.HorizontalContentAlignment = from.HorizontalContentAlignment;
-            layoutable.VerticalContentAlignment = from.VerticalContentAlignment;
-            layoutable.Height = from.Height;
-            layoutable.Width = from.Width;
-            layoutable.Padding = from.Padding;
-            layoutable.Margin = from.Margin;
-            layoutable.MinWidth = from.MinWidth;
-            layoutable.MinHeight = from.MinHeight;
-            layoutable.BorderBrush = from.BorderBrush;
-            layoutable.BorderThickness = from.BorderThickness;
-            layoutable.Background = from.Background;
-            layoutable.IsEnabled = from.IsEnabled;
-            layoutable.Opacity = from.Opacity;
+            }, (d, p) => action.Invoke(d));
         }
     }
 }

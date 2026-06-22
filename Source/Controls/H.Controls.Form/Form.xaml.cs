@@ -1044,9 +1044,6 @@ public partial class Form
                     continue;
                 }
             }
-
-            //System.Diagnostics.Debug.WriteLine($"PropertyGrid {o.GetType()} - {item.Name} - {item.PropertyType} - {item.GetValue(o)}");
-
             IPropertyItem from = this.CreatePropertyItem(item, o);
             if (from is IValueChangeable changeable)
             {
