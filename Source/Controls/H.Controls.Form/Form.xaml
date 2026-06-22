@@ -142,6 +142,10 @@
                                         <Setter TargetName="btn_default" Property="Visibility" Value="Collapsed" />
                                         <Setter TargetName="gd" Property="Width" Value="0" />
                                     </DataTrigger>
+                                    <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=local:Form}, Path=UseSetDefault}" Value="false">
+                                        <Setter TargetName="btn_default" Property="Visibility" Value="Collapsed" />
+                                        <Setter TargetName="gd" Property="Width" Value="0" />
+                                    </DataTrigger>
                                     <DataTrigger Binding="{Binding ElementName=btn_default, Path=IsEnabled}" Value="False">
                                         <Setter TargetName="btn_default" Property="Opacity" Value="0.2" />
                                     </DataTrigger>

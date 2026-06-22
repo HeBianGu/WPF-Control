@@ -188,7 +188,7 @@ public abstract class DisplayBindableBase : CommandsBindableBase, IDable, IDispl
     /// </summary>
     [JsonIgnore]
     [XmlIgnore]
-    [Display(Name = "恢复默认")]
+    //[Display(Name = "恢复默认")]
     public virtual RelayCommand LoadDefaultCommand => new RelayCommand(x =>
     {
         LoadDefault();

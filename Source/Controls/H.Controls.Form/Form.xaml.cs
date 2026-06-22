@@ -63,6 +63,33 @@ public partial class Form : ItemsControl, IFormOption
         return true;
     }
 
+
+    public bool UseSetDefault
+    {
+        get { return (bool)GetValue(UseSetDefaultProperty); }
+        set { SetValue(UseSetDefaultProperty, value); }
+    }
+
+    public static readonly DependencyProperty UseSetDefaultProperty =
+        DependencyProperty.Register("UseSetDefault", typeof(bool), typeof(Form), new FrameworkPropertyMetadata(true, (d, e) =>
+        {
+            Form control = d as Form;
+
+            if (control == null) return;
+
+            if (e.OldValue is bool o)
+            {
+
+            }
+
+            if (e.NewValue is bool n)
+            {
+
+            }
+
+        }));
+
+
     public bool UseDisplayOnly
     {
         get { return (bool)GetValue(UseDisplayOnlyProperty); }
