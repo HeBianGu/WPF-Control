@@ -13,6 +13,8 @@ WPF控件和皮肤库
 [![Stargazers over time](https://starchart.cc/HeBianGu/WPF-Control.svg)](https://starchart.cc/HeBianGu/WPF-Control)
 
 ## 开发文档
+本地开发文档：[docs/development-guide.md](docs/development-guide.md)
+
 https://hebiangu.github.io/WPF-Control-Docs/
 
 ## 推荐学习官方文档
