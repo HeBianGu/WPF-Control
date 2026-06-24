@@ -8,12 +8,16 @@
 
 namespace H.Controls.Diagram.Presenter.Expressions;
 
-public interface INodeDataExpression
+public interface IDataExpression
 {
     string GroupName { get; set; }
     string Name { get; set; }
-    string Path { get; set; }
     string Type { get; set; }
+}
+
+public interface INodeDataExpression : IDataExpression
+{
+    string Path { get; set; }
 }
 
 public class NodeDataExpression : INodeDataExpression
