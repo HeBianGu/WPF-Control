@@ -36,4 +36,27 @@ namespace H.Controls.Form.PropertyItem.ComboBoxPropertyItems
         });
     }
 
+    public class NameKey
+    {
+        public string ID { get; set; }
+        public string Name { get; set; }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(this.ID, this.Name);
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (obj is NameKey infoWrapper)
+                return this.ID.Equals(infoWrapper.ID) && this.Name.Equals(infoWrapper.Name);
+            return false;
+        }
+
+        public override string ToString()
+        {
+            return $"{this.Name}";
+        }
+    }
+
 }
