@@ -39,6 +39,8 @@ public abstract class ExpressionNodeDataBase : ShowPropertyViewNodeDataBase, IEx
     public IEnumerable<NodeDataExpression> GetDoubleFromExpressions() => this.GetFromExpressions<double>();
     public IEnumerable<NodeDataExpression> GetFloatFromExpressions() => this.GetFromExpressions<float>();
     public IEnumerable<NodeDataExpression> GetStringFromExpressions() => this.GetFromExpressions<string>();
+
+    public IEnumerable<NodeDataExpression> GetPrimitiveFromExpressions() => this.GetFromExpressions<string>().Concat(this.GetFromExpressions<float>()).Concat(this.GetFromExpressions<double>()).Concat(this.GetFromExpressions<int>());
     public IEnumerable<NodeDataExpression> GetBoolFromExpressions() => this.GetFromExpressions<bool>();
     public IEnumerable<NodeDataExpression> GetUIntFromExpressions() => this.GetFromExpressions<uint>();
     public IEnumerable<NodeDataExpression> GetRectFromExpressions() => this.GetFromExpressions<Rect>();

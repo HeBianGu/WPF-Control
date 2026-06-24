@@ -57,7 +57,7 @@ public static class NodeFactory
         {
             NodeDataGroup nodeGroup = new NodeDataGroup();
             nodeGroup.Name = group.Key;
-            nodeGroup.NodeDatas.AddRange(group);
+            nodeGroup.Datas.AddRange(group);
             yield return nodeGroup;
         }
     }

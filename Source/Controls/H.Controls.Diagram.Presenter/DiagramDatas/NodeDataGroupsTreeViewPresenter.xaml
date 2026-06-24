@@ -9,7 +9,7 @@
     <DataTemplate DataType="{x:Type ld:NodeDataGroupsTreeViewPresenter}">
         <TreeView ItemsSource="{Binding NodeDataGroups}">
             <ItemsControl.ItemTemplate>
-                <HierarchicalDataTemplate ItemsSource="{Binding NodeDatas}">
+                <HierarchicalDataTemplate ItemsSource="{Binding Datas}">
                     <DockPanel Background="Transparent">
                         <b:Interaction.Behaviors>
                             <DraggableDataTemplateAdornerBehavior />

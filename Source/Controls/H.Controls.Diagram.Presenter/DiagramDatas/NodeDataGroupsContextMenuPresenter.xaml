@@ -31,7 +31,7 @@
                                                     </ControlTemplate>
                                                 </Cattach.CaptionRightTemplate>-->
                                                 <Border.Resources>
-                                                    <CollectionViewSource x:Key="GroupedNodeDatas" Source="{Binding NodeDatas}">
+                                                    <CollectionViewSource x:Key="GroupedNodeDatas" Source="{Binding Datas}">
                                                         <CollectionViewSource.GroupDescriptions>
                                                             <PropertyGroupDescription PropertyName="GroupName" />
                                                         </CollectionViewSource.GroupDescriptions>

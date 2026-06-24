@@ -8,23 +8,22 @@
 
 namespace H.Extensions.Mvvm.ViewModels.Base;
 
-//  ToDo：这部分放哪里
 public abstract class GroupDisplayBindableBase<T> : DisplayBindableBase
 {
     public GroupDisplayBindableBase()
     {
-        this.NodeDatas = new ObservableCollection<T>(this.CreateNodeDatas());
+        this.Datas = new ObservableCollection<T>(this.CreateDatas());
     }
-    private ObservableCollection<T> _nodeDatas = new ObservableCollection<T>();
-    public ObservableCollection<T> NodeDatas
+    private ObservableCollection<T> _Datas = new ObservableCollection<T>();
+    public ObservableCollection<T> Datas
     {
-        get { return _nodeDatas; }
+        get { return _Datas; }
         set
         {
-            _nodeDatas = value;
+            _Datas = value;
             RaisePropertyChanged();
         }
     }
 
-    protected abstract IEnumerable<T> CreateNodeDatas();
+    protected abstract IEnumerable<T> CreateDatas();
 }

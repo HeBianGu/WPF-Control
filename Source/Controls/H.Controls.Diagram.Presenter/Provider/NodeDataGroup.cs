@@ -10,7 +10,7 @@ namespace H.Controls.Diagram.Presenter.Provider;
 
 public class NodeDataGroup : NodeDataGroupBase
 {
-    protected override IEnumerable<INodeData> CreateNodeDatas()
+    protected override IEnumerable<INodeData> CreateDatas()
     {
         return Enumerable.Empty<INodeData>();
     }

@@ -27,7 +27,7 @@
                                     </Grid>
                                 </ControlTemplate>
                             </h:Cattach.CaptionRightTemplate>
-                            <ItemsControl ItemsSource="{Binding NodeDatas}">
+                            <ItemsControl ItemsSource="{Binding Datas}">
                                 <ItemsControl.ItemsPanel>
                                     <ItemsPanelTemplate>
                                         <WrapPanel HorizontalAlignment="Center" />
