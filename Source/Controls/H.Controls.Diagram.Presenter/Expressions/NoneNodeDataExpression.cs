@@ -8,19 +8,19 @@
 
 namespace H.Controls.Diagram.Presenter.Expressions;
 
-public class NoneNodeDataExpression : NodeDataExpression, IGetableNodeDataExpression
+public class NoneNodeDataExpression : ExpressionKey
 {
     public NoneNodeDataExpression()
     {
-        this.Path = "继承";
-        this.Type = typeof(string).FullName;
         this.GroupName = "默认";
         this.Name = "继承";
     }
 
-    public bool TryGetExpressionValue(IDiagramData diagramData, out object value)
-    {
-        value = null;
-        return false;
-    }
+    public override string DisplayName => $"{this.Name}";
+
+    //public bool TryGetExpressionValue(IDiagramData diagramData, out object value)
+    //{
+    //    value = null;
+    //    return false;
+    //}
 }

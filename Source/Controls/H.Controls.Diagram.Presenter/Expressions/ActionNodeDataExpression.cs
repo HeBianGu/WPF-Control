@@ -8,16 +8,16 @@
 
 namespace H.Controls.Diagram.Presenter.Expressions;
 
-public class ActionNodeDataExpression : NodeDataExpression, IGetableNodeDataExpression
+public class ActionNodeDataExpression : ExpressionKey
 {
     private Func<object> _action;
     public ActionNodeDataExpression(Func<object> action)
     {
         this._action = action;
     }
-    public bool TryGetExpressionValue(IDiagramData diagramData, out object value)
-    {
-        value = this._action?.Invoke();
-        return true;
-    }
+    //public bool TryGetExpressionValue(IDiagramData diagramData, out object value)
+    //{
+    //    value = this._action?.Invoke();
+    //    return true;
+    //}
 }

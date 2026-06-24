@@ -14,8 +14,8 @@ namespace H.Controls.Diagram.Presenter.Expressions;
 [Display(Name = "全局变量", GroupName = SettingGroupNames.GroupData, Order = 0)]
 public class ConstNodeDataExpressionsPresenter : DisplayBindableBase
 {
-    private ObservableCollection<IConstNodeDataExpression> _ConstNodeDataExpressions = new ObservableCollection<IConstNodeDataExpression>();
-    public ObservableCollection<IConstNodeDataExpression> ConstNodeDataExpressions
+    private ObservableCollection<IConstExpressionKey> _ConstNodeDataExpressions = new ObservableCollection<IConstExpressionKey>();
+    public ObservableCollection<IConstExpressionKey> ConstNodeDataExpressions
     {
         get { return _ConstNodeDataExpressions; }
         set
@@ -26,9 +26,9 @@ public class ConstNodeDataExpressionsPresenter : DisplayBindableBase
     }
 
 
-    private IConstNodeDataExpression _SelectedItem;
+    private IConstExpressionKey _SelectedItem;
 
-    public IConstNodeDataExpression SelectedItem
+    public IConstExpressionKey SelectedItem
     {
         get { return _SelectedItem; }
         set
@@ -48,12 +48,12 @@ public class ConstNodeDataExpressionsPresenter : DisplayBindableBase
         if (r != true)
             return;
 
-        IConstNodeDataExpression expression = this.Create(typeSelector.ConstType);
+        IConstExpressionKey expression = this.Create(typeSelector.ConstType);
         r = await IocMessage.Form.ShowEdit(expression);
         if (r != true)
             return;
         expression.GroupName = this.DefaultGroupName;
-        expression.UpdatePath();
+        //expression.UpdatePath();
         this.ConstNodeDataExpressions.Add(expression);
     });
 
@@ -68,13 +68,13 @@ public class ConstNodeDataExpressionsPresenter : DisplayBindableBase
         this.ConstNodeDataExpressions.Remove(this.SelectedItem);
     }, x => this.SelectedItem != null);
 
-    public IConstNodeDataExpression Create(ConstType constType)
+    public IConstExpressionKey Create(ConstType constType)
     {
         if (constType == ConstType.Int32)
-            return new ConstNodeDataExpression<int>(0, this.DefaultGroupName) { Name = "默认名称" };
+            return new ConstExpressionKey<int>(0, this.DefaultGroupName) { Name = "默认名称" };
         if (constType == ConstType.Double)
-            return new ConstNodeDataExpression<double>(0.0, this.DefaultGroupName) { Name = "默认名称" };
-        return new ConstNodeDataExpression<string>(null, this.DefaultGroupName) { Name = "默认名称" };
+            return new ConstExpressionKey<double>(0.0, this.DefaultGroupName) { Name = "默认名称" };
+        return new ConstExpressionKey<string>(null, this.DefaultGroupName) { Name = "默认名称" };
     }
 }
 

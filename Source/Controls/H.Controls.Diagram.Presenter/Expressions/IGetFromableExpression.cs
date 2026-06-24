@@ -17,7 +17,20 @@
 
 namespace H.Controls.Diagram.Presenter.Expressions;
 
-public interface IGetableNodeDataExpression
+public interface IGetFromExpressionsable
 {
-    bool TryGetExpressionValue(IDiagramData diagramData, out object value);
+    IEnumerable<IExpressionKey> GetFromExpressions<T>();
+}
+
+public static class GetableExpressionExtensions
+{
+    public static (bool success, T value) GetExpressionValue<T>(this IGetFromExpressionsable getableExpression, IExpressionKey expressionKey)
+    {
+        var r = getableExpression.GetFromExpressions<T>().FirstOrDefault(x => x.Equals(expressionKey));
+        if (r == null)
+            return (false, default);
+        if (r.Value is T tValue)
+            return (true, tValue);
+        return (false, default);
+    }
 }

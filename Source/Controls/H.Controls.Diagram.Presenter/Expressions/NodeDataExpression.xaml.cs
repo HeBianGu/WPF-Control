@@ -8,35 +8,68 @@
 
 namespace H.Controls.Diagram.Presenter.Expressions;
 
-public interface IDataExpression
+public interface IExpressionKey
 {
-    string GroupName { get; set; }
+    /// <summary>
+    /// 唯一名称
+    /// </summary>
     string Name { get; set; }
-    string Type { get; set; }
+    /// <summary>
+    /// 分组名称
+    /// </summary>
+    string GroupName { get; set; }
+    /// <summary>
+    /// 数据类型
+    /// </summary>
+    string DataType { get; set; }
+
+    object Value { get; set; }
 }
 
-public interface INodeDataExpression : IDataExpression
+public class ExpressionKey : IExpressionKey
 {
-    string Path { get; set; }
-}
-
-public class NodeDataExpression : INodeDataExpression
-{
-    public string Path { get; set; }
-    public string Type { get; set; }
     public string GroupName { get; set; }
-    [Required]
-    [Display(Name = "属性名称")]
     public string Name { get; set; }
+    public string DataType { get; set; }
+    public virtual string DisplayName => $"{this.GroupName}.{this.Name}";
+    [JsonIgnore]
+    public object Value { get; set; }
+
     public override bool Equals(object obj)
     {
-        if (obj is NodeDataExpression expression)
-            return this.Path == expression.Path && this.GroupName == expression.GroupName && this.Name == expression.Name;
+        if (obj is IExpressionKey expression)
+            return this.Name == expression.Name && this.GroupName == expression.GroupName && this.DataType == expression.DataType;
         return false;
     }
 
     public override int GetHashCode()
     {
-        return HashCode.Combine(this.Path, this.GroupName, this.Name);
+        return HashCode.Combine(this.Name, this.GroupName, this.DataType);
     }
 }
+
+//public interface INodeDataExpressionKey : IExpressionKey
+//{
+//    string Path { get; set; }
+//}
+
+//public class ExpressionKey : INodeDataExpressionKey
+//{
+//    public string Path { get; set; }
+//    public string Type { get; set; }
+//    public string GroupName { get; set; }
+//    [Required]
+//    [Display(Name = "属性名称")]
+//    public string Name { get; set; }
+//    public override bool Equals(object obj)
+//    {
+//        if (obj is ExpressionKey expression)
+//            return this.Path == expression.Path && this.GroupName == expression.GroupName && this.Name == expression.Name;
+//        return false;
+//    }
+
+//    public override int GetHashCode()
+//    {
+//        return HashCode.Combine(this.Path, this.GroupName, this.Name);
+//    }
+//}

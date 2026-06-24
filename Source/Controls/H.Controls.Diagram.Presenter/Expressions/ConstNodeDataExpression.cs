@@ -8,24 +8,23 @@
 
 namespace H.Controls.Diagram.Presenter.Expressions;
 
-public interface IConstNodeDataExpression : INodeDataExpression
+public interface IConstExpressionKey : IExpressionKey
 {
-    object Value { get; }
-    void UpdatePath();
+
 }
 
 // 这里的静态资源是单例，不可以用在默认值，会有冲突
 internal static class ConstNodeDataExpressions
 {
-    public static ConstNodeDataExpression<string> Empty { get; } = new ConstNodeDataExpression<string>(string.Empty, "默认");
+    public static ConstExpressionKey<string> Empty { get; } = new ConstExpressionKey<string>(string.Empty, "默认");
     //public static ConstNodeDataExpression<string> Null { get; } = new ConstNodeDataExpression<string>(null, "默认", "无");
-    public static ConstNodeDataExpression<int> IntZore { get; } = new ConstNodeDataExpression<int>(0, "默认");
-    public static ConstNodeDataExpression<double> DoubleZore { get; } = new ConstNodeDataExpression<double>(0.0, "默认");
-    public static ConstNodeDataExpression<float> FloatZore { get; } = new ConstNodeDataExpression<float>(0.0f, "默认");
-    public static ConstNodeDataExpression<bool> True { get; } = new ConstNodeDataExpression<bool>(true, "默认");
-    public static ConstNodeDataExpression<bool> False { get; } = new ConstNodeDataExpression<bool>(false, "默认");
+    public static ConstExpressionKey<int> IntZore { get; } = new ConstExpressionKey<int>(0, "默认");
+    public static ConstExpressionKey<double> DoubleZore { get; } = new ConstExpressionKey<double>(0.0, "默认");
+    public static ConstExpressionKey<float> FloatZore { get; } = new ConstExpressionKey<float>(0.0f, "默认");
+    public static ConstExpressionKey<bool> True { get; } = new ConstExpressionKey<bool>(true, "默认");
+    public static ConstExpressionKey<bool> False { get; } = new ConstExpressionKey<bool>(false, "默认");
 
-    public static IEnumerable<IConstNodeDataExpression> GetDefaults()
+    public static IEnumerable<IConstExpressionKey> GetDefaults()
     {
         yield return Empty;
         yield return True;
@@ -36,48 +35,19 @@ internal static class ConstNodeDataExpressions
     }
 }
 
-public class ConstNodeDataExpression<T> : NodeDataExpression, IGetableNodeDataExpression, IConstNodeDataExpression
+public class ConstExpressionKey<T> : ExpressionKey, IConstExpressionKey
 {
-    public ConstNodeDataExpression()
+    public ConstExpressionKey()
     {
 
     }
-    public ConstNodeDataExpression(T value, string groupName)
+    public ConstExpressionKey(T value, string groupName)
     {
-        this.Value = value;
-        this.Type = typeof(T).FullName;
+        this.CurrentValue = value;
         this.GroupName = groupName;
         this.Name = typeof(T).Name;
-        this.UpdatePath();
     }
 
-    public void UpdatePath()
-    {
-        this.Path = $"[{this.GroupName}].[{this.Name}]='{this.Value?.ToString()}'";
-    }
     [Display(Name = "值")]
-    public T Value { get; set; }
-
-    object IConstNodeDataExpression.Value => this.Value;
-
-    public bool TryGetExpressionValue(IDiagramData diagramData, out object value)
-    {
-        value = this.Value;
-        return true;
-    }
-
-    public override bool Equals(object obj)
-    {
-        if (obj is ConstNodeDataExpression<T> expression)
-            return this.Path == expression.Path
-                && this.GroupName == expression.GroupName
-                && this.Name == expression.Name
-                && this.Value?.Equals(expression.Value) == true;
-        return false;
-    }
-
-    public override int GetHashCode()
-    {
-        return HashCode.Combine(this.Path, this.GroupName, this.Name, this.Value);
-    }
+    public T CurrentValue { get; set; }
 }

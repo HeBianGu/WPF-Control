@@ -34,8 +34,8 @@ public abstract class ExpressionableDiagramDataBase : ZoomableDiagramDataBase, I
     [Display(Name = "示例：自定义字符串", Description = "用来演示如何增加节点表达式参数")]
     public string StringValue { get; set; } = "Hello World";
 
-    private ObservableCollection<IConstNodeDataExpression> _ConstNodeDataExpressions = new ObservableCollection<IConstNodeDataExpression>();
-    public ObservableCollection<IConstNodeDataExpression> ConstNodeDataExpressions
+    private ObservableCollection<IConstExpressionKey> _ConstNodeDataExpressions = new ObservableCollection<IConstExpressionKey>();
+    public ObservableCollection<IConstExpressionKey> ConstNodeDataExpressions
     {
         get { return _ConstNodeDataExpressions; }
         set
@@ -58,30 +58,25 @@ public abstract class ExpressionableDiagramDataBase : ZoomableDiagramDataBase, I
     });
 
 
-    public virtual IEnumerable<NodeDataExpression> GetExpressions(Predicate<object> predicate = null)
+    public virtual IEnumerable<IExpressionKey> GetExpressions(Predicate<object> predicate = null)
     {
-        foreach (var item in Controls.Diagram.Presenter.Expressions.ConstNodeDataExpressions.GetDefaults().OfType<NodeDataExpression>())
+        foreach (var item in Controls.Diagram.Presenter.Expressions.ConstNodeDataExpressions.GetDefaults().OfType<IExpressionKey>())
         {
             yield return item;
         }
-        yield return new ConstNodeDataExpression<string>("Hello World", this.Name);
-        yield return new ConstNodeDataExpression<int>(10, this.Name);
-        yield return new ConstNodeDataExpression<double>(3.14, this.Name);
+        yield return new ConstExpressionKey<string>("Hello World", this.Name);
+        yield return new ConstExpressionKey<int>(10, this.Name);
+        yield return new ConstExpressionKey<double>(3.14, this.Name);
 
-        foreach (var item in this.ConstNodeDataExpressions.OfType<NodeDataExpression>())
+        foreach (var item in this.ConstNodeDataExpressions.OfType<IExpressionKey>())
         {
             yield return item;
         }
 
-        foreach (var item in this.GetExpressions(this.Name))
+        foreach (var item in this.GetPropertyInfoExpressions(this.Name))
         {
             yield return item;
         }
-    }
-
-    public virtual bool TryGetExpressionValue(NodeDataExpression expression, out object value)
-    {
-        return expression.TryGetExpressionValue(this, out value);
     }
 
     #endregion

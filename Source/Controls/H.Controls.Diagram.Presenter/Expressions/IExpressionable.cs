@@ -22,14 +22,36 @@ public interface IExpressionable
     /// <summary>
     /// 获取表达式
     /// </summary>
-    IEnumerable<NodeDataExpression> GetExpressions(Predicate<object> predicate = null);
-    /// <summary>
-    /// 尝试获取表达式值
-    /// </summary>
-    bool TryGetExpressionValue(NodeDataExpression expression, out object value);
+    IEnumerable<IExpressionKey> GetExpressions(Predicate<object> predicate = null);
+    ///// <summary>
+    ///// 尝试获取表达式值
+    ///// </summary>
+    //bool TryGetExpressionValue(IExpressionKey expression, out object value);
 }
 
 public interface IDefaultValueExpressionable
 {
-    IEnumerable<NodeDataExpression> GetDefaultValueExpressions(Predicate<object> predicate = null);
+    IEnumerable<IExpressionKey> GetDefaultValueExpressions(Predicate<object> predicate = null);
 }
+
+//public static class ExpressionableExtension
+//{
+//    public static (bool success, T value) GetExpressionValue<T>(this IExpressionable expressionable, IExpressionKey expressionKey)
+//    {
+//        var r = expressionable.GetExpressionValue(expressionKey);
+//        if (!r.success)
+//            return (false, default);
+//        if (r.value is T tValue)
+//            return (true, tValue);
+//        return (false, default);
+//    }
+
+//    public static (bool success, object value) GetExpressionValue(this IExpressionable expressionable, IExpressionKey expressionKey)
+//    {
+//        var key = expressionable.GetExpressions().FirstOrDefault(x => x == expressionKey);
+//        if (key == null)
+//            return (false, default);
+//        return (true, key.Value);
+//    }
+
+//}

@@ -16,11 +16,11 @@ public interface IExpressionNodeData : ITextNodeData, IExpressionable, IDefaultV
 
 }
 
-public abstract class ExpressionNodeDataBase : ShowPropertyViewNodeDataBase, IExpressionNodeData
+public abstract class ExpressionNodeDataBase : ShowPropertyViewNodeDataBase, IExpressionNodeData, IGetFromExpressionsable
 {
-    public IEnumerable<NodeDataExpression> GetFromExpressions<T>()
+    public IEnumerable<IExpressionKey> GetFromExpressions<T>()
     {
-        List<NodeDataExpression> result = new List<NodeDataExpression>();
+        List<IExpressionKey> result = new List<IExpressionKey>();
         if (this is IDefaultValueExpressionable defaultValueExpressionable)
         {
             var defaults = defaultValueExpressionable.GetDefaultValueExpressions();
@@ -31,50 +31,56 @@ public abstract class ExpressionNodeDataBase : ShowPropertyViewNodeDataBase, IEx
             result.AddRange(expressionable.GetExpressions());
         }
         var allfrom = this.AllFromNodeDatas.OfType<IExpressionNodeData>().OrderBy(x => x.Text).SelectMany(x => x.GetExpressions());
-        result = result.Concat(allfrom).Where(x => x.Type == typeof(T).FullName).ToList();
+        result = result.Concat(allfrom).Where(x => x.DataType == typeof(T).FullName).ToList();
         return result;
     }
 
-    public IEnumerable<NodeDataExpression> GetIntFromExpressions() => this.GetFromExpressions<int>();
-    public IEnumerable<NodeDataExpression> GetDoubleFromExpressions() => this.GetFromExpressions<double>();
-    public IEnumerable<NodeDataExpression> GetFloatFromExpressions() => this.GetFromExpressions<float>();
-    public IEnumerable<NodeDataExpression> GetStringFromExpressions() => this.GetFromExpressions<string>();
+    public IEnumerable<IExpressionKey> GetIntFromExpressions() => this.GetFromExpressions<int>();
+    public IEnumerable<IExpressionKey> GetDoubleFromExpressions() => this.GetFromExpressions<double>();
+    public IEnumerable<IExpressionKey> GetFloatFromExpressions() => this.GetFromExpressions<float>();
+    public IEnumerable<IExpressionKey> GetStringFromExpressions() => this.GetFromExpressions<string>();
 
-    public IEnumerable<NodeDataExpression> GetPrimitiveFromExpressions() => this.GetFromExpressions<string>().Concat(this.GetFromExpressions<float>()).Concat(this.GetFromExpressions<double>()).Concat(this.GetFromExpressions<int>());
-    public IEnumerable<NodeDataExpression> GetBoolFromExpressions() => this.GetFromExpressions<bool>();
-    public IEnumerable<NodeDataExpression> GetUIntFromExpressions() => this.GetFromExpressions<uint>();
-    public IEnumerable<NodeDataExpression> GetRectFromExpressions() => this.GetFromExpressions<Rect>();
-    public IEnumerable<NodeDataExpression> GetPointFromExpressions() => this.GetFromExpressions<Point>();
+    public IEnumerable<IExpressionKey> GetPrimitiveFromExpressions() => this.GetFromExpressions<string>().Concat(this.GetFromExpressions<float>()).Concat(this.GetFromExpressions<double>()).Concat(this.GetFromExpressions<int>());
+    public IEnumerable<IExpressionKey> GetBoolFromExpressions() => this.GetFromExpressions<bool>();
+    public IEnumerable<IExpressionKey> GetUIntFromExpressions() => this.GetFromExpressions<uint>();
+    public IEnumerable<IExpressionKey> GetRectFromExpressions() => this.GetFromExpressions<Rect>();
+    public IEnumerable<IExpressionKey> GetPointFromExpressions() => this.GetFromExpressions<Point>();
 
-    public IEnumerable<NodeDataExpression> GetPointssFromExpressions() => this.GetFromExpressions<Point[][]>();
-    public IEnumerable<NodeDataExpression> GetSizeFromExpressions() => this.GetFromExpressions<Size>();
-    public virtual IEnumerable<NodeDataExpression> GetExpressions(Predicate<object> predicate = null)
+    public IEnumerable<IExpressionKey> GetPointssFromExpressions() => this.GetFromExpressions<Point[][]>();
+    public IEnumerable<IExpressionKey> GetSizeFromExpressions() => this.GetFromExpressions<Size>();
+    public virtual IEnumerable<IExpressionKey> GetExpressions(Predicate<object> predicate = null)
     {
-        return this.GetExpressions(this.Text, this.Text, predicate);
+        return this.GetPropertyInfoExpressions(this.Text, predicate);
     }
 
-    public virtual bool TryGetExpressionValue<T>(NodeDataExpression expression, out T value)
-    {
-        value = default;
-        if (expression == null)
-            return false;
-        if (this.TryGetExpressionValue(expression, out object objValue))
-        {
-            if (objValue is T tValue)
-            {
-                value = tValue;
-                return true;
-            }
-        }
-        return false;
-    }
+    //public virtual (bool success, T value) GetExpressionValue<T>(IExpressionKey expressionKey)
+    //{
+    //    var r = this.GetFromExpressions<T>().FirstOrDefault(x => x.Equals(expressionKey));
+    //    if (r == null)
+    //        return (false, default);
+    //    if (r.Value is T tValue)
+    //        return (true, tValue);
+    //    return (false, default);
+    //}
 
-    public virtual bool TryGetExpressionValue(NodeDataExpression expression, out object value)
-    {
-        return expression.TryGetExpressionValue(this.DiagramData, out value);
-    }
+    //public virtual bool TryGetExpressionValue<T>(IExpressionKey expression, out T value)
+    //{
+    //    value = default;
+    //    var key = this.GetExpressions().FirstOrDefault(x => x == expression);
+    //    if (key.Value is T tValue)
+    //    {
+    //        value = tValue;
+    //        return true;
+    //    }
+    //    return false;
+    //}
 
-    public virtual IEnumerable<NodeDataExpression> GetDefaultValueExpressions(Predicate<object> predicate = null)
+    //public virtual bool TryGetExpressionValue(ExpressionKey expression, out object value)
+    //{
+    //    return expression.TryGetExpressionValue(this.DiagramData, out value);
+    //}
+
+    public virtual IEnumerable<IExpressionKey> GetDefaultValueExpressions(Predicate<object> predicate = null)
     {
         yield break;
     }
