@@ -13,7 +13,17 @@ namespace H.Modules.Messages.Snack
 {
     public abstract class MessagePresenterBase : DisplayBindableBase, ISnackItem
     {
-        public string Time { get; } = DateTime.Now.ToString("HH:mm:ss");
+        private string _Time = DateTime.Now.ToString("HH:mm:ss");
+        public string Time
+        {
+            get { return _Time; }
+            set
+            {
+                _Time = value;
+                RaisePropertyChanged();
+            }
+        }
+
         private string _message;
         public string Message
         {

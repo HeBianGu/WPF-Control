@@ -189,7 +189,7 @@
         TargetType="{x:Type ComboBoxItem}">
         <Setter Property="SnapsToDevicePixels" Value="true" />
         <Setter Property="Height" Value="{Binding RelativeSource={RelativeSource AncestorType=ComboBox}, Path=(Cattach.ItemHeight)}" />
-        <Setter Property="MinHeight" Value="{DynamicResource {x:Static LayoutKeys.ItemHeight}}" />
+        <Setter Property="MinHeight" Value="{Binding RelativeSource={RelativeSource AncestorType=ComboBox}, Path=(Cattach.ItemMinHeight)}" />
         <Setter Property="HorizontalContentAlignment" Value="{Binding RelativeSource={RelativeSource AncestorType=ComboBox}, Path=(Cattach.ItemHorizontalContentAlignment)}" />
         <Setter Property="Padding" Value="{Binding RelativeSource={RelativeSource AncestorType=ComboBox}, Path=(Cattach.ItemPadding)}" />
         <Setter Property="Margin" Value="{Binding RelativeSource={RelativeSource AncestorType=ComboBox}, Path=(Cattach.ItemMargin)}" />

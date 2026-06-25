@@ -66,7 +66,7 @@ public class FlowableDiagramTemplateNodeData : TitleCardNodeData
     {
         if (this.Template.Diagram is IFlowableDiagramData flowable)
         {
-            bool? r = await flowable.Start();
+            bool? r = await flowable.StartAsync();
             this.Message = flowable.Message;
             return r == true ? this.OK(flowable.Message) : this.Error(flowable.Message);
         }

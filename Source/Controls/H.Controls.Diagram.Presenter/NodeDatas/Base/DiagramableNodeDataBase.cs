@@ -38,6 +38,6 @@ public abstract class DiagramableNodeDataBase : TextNodeData, IDiagramableNodeDa
     protected void StartDiagram()
     {
         if (this.DiagramData is IFlowableDiagramData flowable && flowable.State.CanStart())
-            flowable.Start();
+            flowable.StartAsync();
     }
 }

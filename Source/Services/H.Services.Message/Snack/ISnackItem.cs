@@ -11,5 +11,5 @@ namespace H.Services.Message.Snack;
 public interface ISnackItem
 {
     string Message { get; set; }
-    string Time { get; }
+    string Time { get; set; }
 }

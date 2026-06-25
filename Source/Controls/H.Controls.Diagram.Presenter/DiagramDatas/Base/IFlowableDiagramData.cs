@@ -13,5 +13,5 @@ public interface IFlowableDiagramData : IDiagramData, IMessageable, IPartDataInv
 {
     DiagramFlowableMode FlowableMode { get; set; }
     DiagramFlowableState State { get; set; }
-    Task<bool?> Start();
+    Task<bool?> StartAsync();
 }

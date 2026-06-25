@@ -46,12 +46,11 @@ namespace H.Modules.Messages.Notice
         public async void ShowInfo(string message)
         {
             this.CheckValid();
+            var find = this._noticeBox.Collection.OfType<InfoMessagePresenter>().LastOrDefault(x => x.Message == message);
+            if (find != null)
+                this._noticeBox.Collection.Remove(find);
             InfoMessagePresenter presenter = new InfoMessagePresenter() { Message = message };
             this._noticeBox.Collection.Add(presenter);
-            //await Task.Run(() =>
-            //{
-            //    Thread.Sleep(3000);
-            //});
             await Task.Delay(3000);
             this._noticeBox.Collection.Remove(presenter);
         }
@@ -59,6 +58,10 @@ namespace H.Modules.Messages.Notice
         public void ShowError(string message)
         {
             this.CheckValid();
+            var find = this._noticeBox.Collection.OfType<ErrorMessagePresenter>().LastOrDefault(x => x.Message == message);
+            if (find != null)
+                if (find != null)
+                    this._noticeBox.Collection.Remove(find);
             this._noticeBox.Collection.Add(new ErrorMessagePresenter() { Message = message });
         }
         public void Show(INoticeItem message)
@@ -70,6 +73,9 @@ namespace H.Modules.Messages.Notice
         public void ShowFatal(string message)
         {
             this.CheckValid();
+            var find = this._noticeBox.Collection.OfType<FatalMessagePresenter>().LastOrDefault(x => x.Message == message);
+            if (find != null)
+                this._noticeBox.Collection.Remove(find);
             this._noticeBox.Collection.Add(new FatalMessagePresenter() { Message = message });
         }
 
@@ -106,12 +112,11 @@ namespace H.Modules.Messages.Notice
         public async void ShowSuccess(string message)
         {
             this.CheckValid();
+            var find = this._noticeBox.Collection.OfType<SuccessMessagePresenter>().LastOrDefault(x => x.Message == message);
+            if (find != null)
+                this._noticeBox.Collection.Remove(find);
             SuccessMessagePresenter presenter = new SuccessMessagePresenter() { Message = message };
             this._noticeBox.Collection.Add(presenter);
-            //await Task.Run(() =>
-            // {
-            //     Thread.Sleep(3000);
-            // });
             await Task.Delay(3000);
             this._noticeBox.Collection.Remove(presenter);
         }
@@ -119,8 +124,10 @@ namespace H.Modules.Messages.Notice
         public void ShowWarn(string message)
         {
             this.CheckValid();
+            var find = this._noticeBox.Collection.OfType<WarnMessagePresenter>().LastOrDefault(x => x.Message == message);
+            if (find != null)
+                this._noticeBox.Collection.Remove(find);
             this._noticeBox.Collection.Add(new WarnMessagePresenter() { Message = message });
-
         }
     }
 }

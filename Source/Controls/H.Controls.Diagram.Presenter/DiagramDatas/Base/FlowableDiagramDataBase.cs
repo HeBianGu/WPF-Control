@@ -95,7 +95,7 @@ public abstract class FlowableDiagramDataBase : ExpressionableDiagramDataBase, I
     [Display(Name = "开始", GroupName = "操作,流程控制", Order = 0)]
     public DisplayCommand StartCommand => new DisplayCommand(async e =>
     {
-        await this.Start();
+        await this.StartAsync();
         if (this.FlowableZoomMode != DiagramFlowableZoomMode.None)
             this.ZoomToFit();
         IocMessage.ShowSnackInfo(this.Message);
@@ -106,36 +106,51 @@ public abstract class FlowableDiagramDataBase : ExpressionableDiagramDataBase, I
     public DisplayCommand StopCommand => new DisplayCommand(e =>
     {
         this.Stop();
+        IocMessage.ShowSnackInfo("已停止");
     }, e => this.State.CanStop());
 
-    [Icon(FontIcons.Refresh)]
+    [Icon(FontIcons.ResetDrive)]
     [Display(Name = "重置", GroupName = "操作,流程控制", Order = 0)]
     public DisplayCommand ResetCommand => new DisplayCommand(e =>
     {
         this.Reset();
     }, e => this.State.CanReset());
 
-    public virtual async Task<bool?> Start()
+    public virtual async Task<bool?> StartAsync()
     {
-        var start = await this.GetStartNodeData();
-        if (start == null)
+        var starts = this.GetStartNodeDatas().OfType<IFlowableNodeData>();
+        if (starts == null || !starts.Any())
             return false;
-        var r = await this.InvokeState(() => start.Start(this));
-        //IocMessage.ShowSnackInfo(this.Message);
+        return await this.InvokeState(this.InvokeStartNodeDatasAsync);
+    }
+
+    protected virtual async Task<bool?> InvokeStartNodeDatasAsync()
+    {
+        var starts = this.GetStartNodeDatas().OfType<IFlowableNodeData>();
+        if (starts == null || !starts.Any())
+            return false;
+        bool r = true;
+        foreach (var item in starts)
+        {
+            var cr = await item.Start(this);
+            if (cr == false)
+                r = false;
+        }
         return r;
     }
 
-    protected virtual async Task<IFlowableNodeData> GetStartNodeData()
-    {
-        var start = await this.TryGetStartNodeData<IFlowableNodeData>();
-        if (start == null)
-        {
-            this.Message = "未运行";
-            IocMessage.ShowNotifyInfo(this.Message);
-            return null;
-        }
-        return start;
-    }
+
+    //protected virtual async Task<IFlowableNodeData> GetStartNodeData()
+    //{
+    //    var start = await this.TryGetStartNodeData<IFlowableNodeData>();
+    //    if (start == null)
+    //    {
+    //        this.Message = "未运行";
+    //        IocMessage.ShowNotifyInfo(this.Message);
+    //        return null;
+    //    }
+    //    return start;
+    //}
 
     protected virtual bool CanStart()
     {

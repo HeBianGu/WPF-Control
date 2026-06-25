@@ -50,6 +50,9 @@ namespace H.Modules.Messages.Snack
         {
             if (this.CheckValid() == false)
                 return;
+            var find = this._snackBox.Collection.OfType<InfoMessagePresenter>().LastOrDefault(x => x.Message == message);
+            if (find != null)
+                this._snackBox.Collection.Remove(find);
             InfoMessagePresenter presenter = new InfoMessagePresenter() { Message = message };
             Application.Current.Dispatcher.Invoke(() =>
             {
@@ -66,6 +69,9 @@ namespace H.Modules.Messages.Snack
         {
             if (this.CheckValid() == false)
                 return;
+            var find = this._snackBox.Collection.OfType<ErrorMessagePresenter>().LastOrDefault(x => x.Message == message);
+            if (find != null)
+                this._snackBox.Collection.Remove(find);
             this._snackBox.Collection.Add(new ErrorMessagePresenter() { Message = message });
         }
         public void Show(ISnackItem message)
@@ -79,6 +85,9 @@ namespace H.Modules.Messages.Snack
         {
             if (this.CheckValid() == false)
                 return;
+            var find = this._snackBox.Collection.OfType<FatalMessagePresenter>().LastOrDefault(x => x.Message == message);
+            if (find != null)
+                this._snackBox.Collection.Remove(find);
             this._snackBox.Collection.Add(new FatalMessagePresenter() { Message = message });
         }
 
@@ -119,12 +128,11 @@ namespace H.Modules.Messages.Snack
         {
             if (this.CheckValid() == false)
                 return;
+            var find = this._snackBox.Collection.OfType<SuccessMessagePresenter>().LastOrDefault(x => x.Message == message);
+            if (find != null)
+                this._snackBox.Collection.Remove(find);
             SuccessMessagePresenter presenter = new SuccessMessagePresenter() { Message = message };
             this._snackBox.Collection.Add(presenter);
-            //await Task.Run(() =>
-            // {
-            //     Thread.Sleep(3000);
-            // });
             await Task.Delay(3000);
             this._snackBox.Collection.Remove(presenter);
         }
@@ -133,8 +141,10 @@ namespace H.Modules.Messages.Snack
         {
             if (this.CheckValid() == false)
                 return;
+            var find = this._snackBox.Collection.OfType<WarnMessagePresenter>().LastOrDefault(x => x.Message == message);
+            if (find != null)
+                this._snackBox.Collection.Remove(find);
             this._snackBox.Collection.Add(new WarnMessagePresenter() { Message = message });
-
         }
     }
 }
