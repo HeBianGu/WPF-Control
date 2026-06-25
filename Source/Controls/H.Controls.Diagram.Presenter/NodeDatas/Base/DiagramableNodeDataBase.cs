@@ -34,4 +34,10 @@ public abstract class DiagramableNodeDataBase : TextNodeData, IDiagramableNodeDa
     [JsonIgnore]
     [Browsable(false)]
     public IEnumerable<INodeData> ToNodeDatas => this.GetToNodeDatas();
+
+    protected void StartDiagram()
+    {
+        if (this.DiagramData is IFlowableDiagramData flowable && flowable.State.CanStart())
+            flowable.Start();
+    }
 }

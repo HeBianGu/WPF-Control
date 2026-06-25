@@ -11,12 +11,12 @@ using System;
 
 namespace H.Controls.Diagram.Presenter.NodeDatas.Base;
 
-public interface IExpressionNodeData : ITextNodeData, IExpressionable, IDefaultValueExpressionable, INodeData
+public interface IExpressionNodeData : ITextNodeData, IExpressionable, IDefaultValueExpressionable, INodeData, IFromExpressionSource
 {
 
 }
 
-public abstract class ExpressionNodeDataBase : ShowPropertyViewNodeDataBase, IExpressionNodeData, IGetFromExpressionsable
+public abstract class ExpressionNodeDataBase : ShowPropertyViewNodeDataBase, IExpressionNodeData
 {
     public IEnumerable<IExpressionKey> GetFromExpressions<T>()
     {
