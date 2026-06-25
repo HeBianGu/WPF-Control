@@ -540,7 +540,7 @@ public partial class Diagram : ContentControl, IDiagram
         matrix.ScaleAt(scale, scale, center.X, center.Y);
         rect.Transform(matrix);
         IZoombox zoombox = this.GetParent<DependencyObject>(x => x is IZoombox) as IZoombox;
-        zoombox.ZoomTo(rect);
+        zoombox?.ZoomTo(rect);
     }
 
     public void ZoomTo(Part part, double scale = 1.8)
