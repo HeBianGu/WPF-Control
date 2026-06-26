@@ -107,7 +107,12 @@ public abstract class FlowableDiagramDataBase : ExpressionableDiagramDataBase, I
     {
         this.Stop();
         IocMessage.ShowSnackInfo("已停止");
-    }, e => this.State.CanStop());
+    }, e => this.CanStop());
+
+    protected virtual bool CanStop()
+    {
+        return this.State.CanStop();
+    }
 
     [Icon(FontIcons.ResetDrive)]
     [Display(Name = "重置", GroupName = "操作,流程控制", Order = 0)]
