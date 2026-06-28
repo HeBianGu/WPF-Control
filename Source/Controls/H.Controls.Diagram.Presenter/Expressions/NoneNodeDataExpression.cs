@@ -12,6 +12,8 @@ public class NoneNodeDataExpression : ExpressionKey
 {
     public NoneNodeDataExpression()
     {
+        this.NameID = "ACD2A328-C668-4787-B96B-6644358B1560";
+        this.GroupNameID = "C9A0D7B5-3F8E-4D1A-BB2C-6F3E5A1B2D3E";
         this.GroupName = "默认";
         this.Name = "继承";
     }

@@ -28,23 +28,37 @@ public interface IExpressionKey
 
 public class ExpressionKey : IExpressionKey
 {
-    public string GroupName { get; set; }
+    /// <summary>
+    /// 显示名称ID
+    /// </summary>
+    [Required]
+    public string NameID { get; set; }
+    /// <summary>
+    /// 显示名称
+    /// </summary>
+    [JsonIgnore]
     public string Name { get; set; }
+    [Required]
+    public string GroupNameID { get; set; }
+    [JsonIgnore]
+    public string GroupName { get; set; }
+    [Required]
     public string DataType { get; set; }
+    [JsonIgnore]
     public virtual string DisplayName => $"{this.GroupName}.{this.Name}";
     [JsonIgnore]
     public object Value { get; set; }
 
     public override bool Equals(object obj)
     {
-        if (obj is IExpressionKey expression)
-            return this.Name == expression.Name && this.GroupName == expression.GroupName && this.DataType == expression.DataType;
+        if (obj is ExpressionKey expression)
+            return this.NameID == expression.NameID && this.GroupNameID == expression.GroupNameID && this.DataType == expression.DataType;
         return false;
     }
 
     public override int GetHashCode()
     {
-        return HashCode.Combine(this.Name, this.GroupName, this.DataType);
+        return HashCode.Combine(this.NameID, this.GroupNameID, this.DataType);
     }
 }
 
