@@ -16,7 +16,6 @@
 // Licensed under the MIT License (the "License")
 
 using H.Mvvm.Commands.Base;
-using System.Windows.Input;
 
 namespace H.Mvvm.Commands;
 
@@ -42,7 +41,6 @@ public class RelayCommand : CommandBase
     {
         if (_action != null)
             _action(parameter);
-        CommandManager.InvalidateRequerySuggested();
     }
 
     public override bool CanExecute(object parameter)
