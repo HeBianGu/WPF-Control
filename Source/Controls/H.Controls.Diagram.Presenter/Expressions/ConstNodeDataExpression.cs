@@ -46,8 +46,6 @@ public class ConstExpressionKey<T> : ExpressionKey, IConstExpressionKey
         this.CurrentValue = value;
         this.GroupName = groupName;
         this.Name = typeof(T).Name;
-        this.NameID = this.Name;
-        this.GroupNameID = this.GroupName;
     }
 
     [Display(Name = "值")]

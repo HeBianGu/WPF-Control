@@ -166,11 +166,11 @@ public static class NodeDataExpressionExtension
     //    return TryGetExpressionValue(displayName, nodeData, out value);
     //}
 
-    public static IEnumerable<IExpressionKey> GetPropertyInfoExpressions(this IExpressionable expressionable, string groupNameID, string groupName, Predicate<object> predicate = null)
+    public static IEnumerable<IExpressionKey> GetPropertyInfoExpressions(this IExpressionable expressionable, string groupName, Predicate<object> predicate = null)
     {
-        return GetObjExpressions(expressionable, groupNameID, groupName, predicate);
+        return GetObjExpressions(expressionable, groupName, predicate);
     }
-    private static IEnumerable<IExpressionKey> GetObjExpressions(object obj, string groupNameID, string groupName, Predicate<object> predicate = null)
+    private static IEnumerable<IExpressionKey> GetObjExpressions(object obj, string groupName, Predicate<object> predicate = null)
     {
         var properties = obj.GetType().GetProperties().Where(x => x.CanRead);
         foreach (var property in properties)
@@ -184,11 +184,9 @@ public static class NodeDataExpressionExtension
             //string np = string.IsNullOrEmpty(path) ? $"[{display.Name}]" : $"[{path.TrimStart('[').TrimEnd(']')}].[{display.Name}]";
             var ne = new ExpressionKey()
             {
-                GroupNameID = groupNameID,
                 GroupName = groupName,
                 DataType = property.PropertyType.FullName,
                 Name = display.Name,
-                NameID = property.Name,
                 Value = property.GetValue(obj)
             };
             yield return ne;
@@ -202,7 +200,7 @@ public static class NodeDataExpressionExtension
                 continue;
             if (predicate?.Invoke(value) == false)
                 continue;
-            var nes = GetObjExpressions(value, groupNameID, groupName, predicate);
+            var nes = GetObjExpressions(value, groupName, predicate);
             foreach (var item in nes)
             {
                 yield return item;

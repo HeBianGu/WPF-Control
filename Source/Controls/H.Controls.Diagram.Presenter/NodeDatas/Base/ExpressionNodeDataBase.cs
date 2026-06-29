@@ -50,7 +50,7 @@ public abstract class ExpressionNodeDataBase : ShowPropertyViewNodeDataBase, IEx
     public IEnumerable<IExpressionKey> GetSizeFromExpressions() => this.GetFromExpressions<Size>();
     public virtual IEnumerable<IExpressionKey> GetExpressions(Predicate<object> predicate = null)
     {
-        return this.GetPropertyInfoExpressions(this.ID, this.Text, predicate);
+        return this.GetPropertyInfoExpressions(this.Text, predicate);
     }
 
     //public virtual (bool success, T value) GetExpressionValue<T>(IExpressionKey expressionKey)

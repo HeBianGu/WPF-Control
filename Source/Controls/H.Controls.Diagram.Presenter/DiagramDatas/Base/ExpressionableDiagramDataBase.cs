@@ -73,7 +73,7 @@ public abstract class ExpressionableDiagramDataBase : ZoomableDiagramDataBase, I
             yield return item;
         }
 
-        foreach (var item in this.GetPropertyInfoExpressions(this.ID, this.Name))
+        foreach (var item in this.GetPropertyInfoExpressions(this.Name))
         {
             yield return item;
         }
