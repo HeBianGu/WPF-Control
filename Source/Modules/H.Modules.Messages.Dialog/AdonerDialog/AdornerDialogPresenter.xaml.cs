@@ -19,6 +19,7 @@ global using System.Windows;
 global using System.Windows.Documents;
 using H.Common.Interfaces;
 using H.Globalization.Properties;
+using H.Services.Logger;
 
 namespace H.Modules.Messages.Dialog
 {
@@ -51,6 +52,7 @@ namespace H.Modules.Messages.Dialog
         private ManualResetEvent _waitHandle = new ManualResetEvent(false);
         public async Task<bool?> ShowDialog(UIElement owner = null)
         {
+            IocLog.Info(this.Title);
             UIElement child = PresenterAdorner.GetAdonerElement(owner);
             AdornerLayer layer = AdornerLayer.GetAdornerLayer(child);
             PresenterAdorner adorner = new PresenterAdorner(child, this);

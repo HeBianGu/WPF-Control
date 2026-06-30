@@ -8,6 +8,7 @@
 
 using H.Common.Interfaces;
 using H.Common.Transitionable;
+using H.Services.Logger;
 using H.Services.Message.Dialog;
 using H.Styles.Controls;
 using System.ComponentModel;
@@ -192,7 +193,7 @@ public partial class DialogWindow : Window
         {
             dialog.WindowStartupLocation = WindowStartupLocation.CenterScreen;
         }
-
+        IocLog.Info(dialog.Title);
         bool? r = dialog.ShowDialog();
         return r;
     }
@@ -238,6 +239,7 @@ public partial class DialogWindow : Window
                 });
             }
         };
+        IocLog.Info(dialog.Title);
         dialog.ShowDialog();
         return result;
     }

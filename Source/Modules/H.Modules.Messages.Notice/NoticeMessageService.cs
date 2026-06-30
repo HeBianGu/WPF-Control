@@ -7,6 +7,7 @@
 // Licensed under the MIT License (the "License")
 
 global using H.Controls.Adorner.Adorner;
+using H.Services.Logger;
 using System.Windows;
 using System.Windows.Documents;
 
@@ -45,6 +46,7 @@ namespace H.Modules.Messages.Notice
 
         public async void ShowInfo(string message)
         {
+            IocLog.Info(message);
             this.CheckValid();
             var find = this._noticeBox.Collection.OfType<InfoMessagePresenter>().LastOrDefault(x => x.Message == message);
             if (find != null)
@@ -57,6 +59,7 @@ namespace H.Modules.Messages.Notice
 
         public void ShowError(string message)
         {
+            IocLog.Info(message);
             this.CheckValid();
             var find = this._noticeBox.Collection.OfType<ErrorMessagePresenter>().LastOrDefault(x => x.Message == message);
             if (find != null)
@@ -66,12 +69,14 @@ namespace H.Modules.Messages.Notice
         }
         public void Show(INoticeItem message)
         {
+            IocLog.Info(message.Message);
             this.CheckValid();
             this._noticeBox.Collection.Add(message);
         }
 
         public void ShowFatal(string message)
         {
+            IocLog.Info(message);
             this.CheckValid();
             var find = this._noticeBox.Collection.OfType<FatalMessagePresenter>().LastOrDefault(x => x.Message == message);
             if (find != null)
@@ -81,6 +86,7 @@ namespace H.Modules.Messages.Notice
 
         public async Task<bool?> ShowDialog(string message)
         {
+            IocLog.Info(message);
             this.CheckValid();
             DialogMessagePresenter dialog = new DialogMessagePresenter() { Message = message };
             this._noticeBox.Collection.Add(dialog);
@@ -111,6 +117,7 @@ namespace H.Modules.Messages.Notice
 
         public async void ShowSuccess(string message)
         {
+            IocLog.Info(message);
             this.CheckValid();
             var find = this._noticeBox.Collection.OfType<SuccessMessagePresenter>().LastOrDefault(x => x.Message == message);
             if (find != null)
@@ -123,6 +130,7 @@ namespace H.Modules.Messages.Notice
 
         public void ShowWarn(string message)
         {
+            IocLog.Info(message);
             this.CheckValid();
             var find = this._noticeBox.Collection.OfType<WarnMessagePresenter>().LastOrDefault(x => x.Message == message);
             if (find != null)

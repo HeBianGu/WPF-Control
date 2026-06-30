@@ -8,6 +8,7 @@
 
 global using H.Controls.Adorner.Adorner;
 global using H.Services.Message.Snack;
+using H.Services.Logger;
 using System.Windows;
 using System.Windows.Documents;
 
@@ -48,6 +49,7 @@ namespace H.Modules.Messages.Snack
 
         public async void ShowInfo(string message)
         {
+            IocLog.Info(message);
             if (this.CheckValid() == false)
                 return;
             var find = this._snackBox.Collection.OfType<InfoMessagePresenter>().LastOrDefault(x => x.Message == message);
@@ -67,6 +69,7 @@ namespace H.Modules.Messages.Snack
 
         public void ShowError(string message)
         {
+            IocLog.Info(message);
             if (this.CheckValid() == false)
                 return;
             var find = this._snackBox.Collection.OfType<ErrorMessagePresenter>().LastOrDefault(x => x.Message == message);
@@ -76,6 +79,7 @@ namespace H.Modules.Messages.Snack
         }
         public void Show(ISnackItem message)
         {
+            IocLog.Info(message.Message);
             if (this.CheckValid() == false)
                 return;
             this._snackBox.Collection.Add(message);
@@ -83,6 +87,7 @@ namespace H.Modules.Messages.Snack
 
         public void ShowFatal(string message)
         {
+            IocLog.Info(message);
             if (this.CheckValid() == false)
                 return;
             var find = this._snackBox.Collection.OfType<FatalMessagePresenter>().LastOrDefault(x => x.Message == message);
@@ -93,6 +98,7 @@ namespace H.Modules.Messages.Snack
 
         public async Task<bool?> ShowDialog(string message)
         {
+            IocLog.Info(message);
             if (this.CheckValid() == false)
                 return false;
             DialogMessagePresenter dialog = new DialogMessagePresenter() { Message = message };
@@ -126,6 +132,7 @@ namespace H.Modules.Messages.Snack
 
         public async void ShowSuccess(string message)
         {
+            IocLog.Info(message);
             if (this.CheckValid() == false)
                 return;
             var find = this._snackBox.Collection.OfType<SuccessMessagePresenter>().LastOrDefault(x => x.Message == message);
@@ -139,6 +146,7 @@ namespace H.Modules.Messages.Snack
 
         public void ShowWarn(string message)
         {
+            IocLog.Info(message);
             if (this.CheckValid() == false)
                 return;
             var find = this._snackBox.Collection.OfType<WarnMessagePresenter>().LastOrDefault(x => x.Message == message);

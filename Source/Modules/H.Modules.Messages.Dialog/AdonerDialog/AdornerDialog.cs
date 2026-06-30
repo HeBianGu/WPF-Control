@@ -7,6 +7,7 @@
 // Licensed under the MIT License (the "License")
 
 using H.Globalization.Properties;
+using H.Services.Logger;
 using System.Reflection;
 
 namespace H.Modules.Messages.Dialog
