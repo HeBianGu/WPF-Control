@@ -133,7 +133,7 @@
     <value>Volné</value>
   </data>
   <data name="Enum_FontSizeThemeType_Small" xml:space="preserve">
-    <value>Velký</value>
+    <value>Malý</value>
   </data>
   <data name="Enum_LayoutThemeType_Small" xml:space="preserve">
     <value>Kompaktní</value>

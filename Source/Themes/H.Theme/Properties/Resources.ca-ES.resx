@@ -133,7 +133,7 @@
     <value>Flexible</value>
   </data>
   <data name="Enum_FontSizeThemeType_Small" xml:space="preserve">
-    <value>Gran</value>
+    <value>Pequeño</value>
   </data>
   <data name="Enum_LayoutThemeType_Small" xml:space="preserve">
     <value>Compacte</value>

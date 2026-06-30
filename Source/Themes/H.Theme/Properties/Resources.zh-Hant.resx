@@ -133,7 +133,7 @@
     <value>寬鬆</value>
   </data>
   <data name="Enum_FontSizeThemeType_Small" xml:space="preserve">
-    <value>大</value>
+    <value>小</value>
   </data>
   <data name="Enum_LayoutThemeType_Small" xml:space="preserve">
     <value>緊湊</value>

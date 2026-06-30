@@ -9,6 +9,7 @@
     <ProjectReference Include="..\..\Services\H.Services.Operation\H.Services.Operation.csproj" />
     <ProjectReference Include="..\..\Services\H.Services.Setting\H.Services.Setting.csproj" />
     <ProjectReference Include="..\H.Extensions.AppPath\H.Extensions.AppPath.csproj" />
+    <ProjectReference Include="..\H.Extensions.Common\H.Extensions.Common.csproj" />
   </ItemGroup>
   <ItemGroup>
     <Compile Update="Properties\Resources.Designer.cs">

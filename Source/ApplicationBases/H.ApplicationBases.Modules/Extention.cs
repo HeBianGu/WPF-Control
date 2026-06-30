@@ -31,32 +31,32 @@ namespace System
         {
             DefaultModuleOptions opt = new DefaultModuleOptions();
             options?.Invoke(opt);
-            services.AddAbout(opt.GetConfigOptions<Action<IAboutOptions>>());
-            services.AddGuide(opt.GetConfigOptions<Action<IGuideOptions>>());
-            services.AddBackgroundSplashScreen(opt.GetConfigOptions<Action<ISplashScreenOptions>>());
-            services.AddSetting(opt.GetConfigOptions<Action<ISettingViewOptions>>());
-            services.AddReleaseVersions(opt.GetConfigOptions<Action<IReleaseVersionsOptions>>());
-            services.AddSupport(opt.GetConfigOptions<Action<ISupportOptions>>());
-            services.AddWebsite(opt.GetConfigOptions<Action<IWebsiteOptions>>());
+            services.AddAbout(opt.GetConfigOptions<IAboutOptions>());
+            services.AddGuide(opt.GetConfigOptions<IGuideOptions>());
+            services.AddBackgroundSplashScreen(opt.GetConfigOptions<ISplashScreenOptions>());
+            services.AddSetting(opt.GetConfigOptions<ISettingViewOptions>());
+            services.AddReleaseVersions(opt.GetConfigOptions<IReleaseVersionsOptions>());
+            services.AddSupport(opt.GetConfigOptions<ISupportOptions>());
+            services.AddWebsite(opt.GetConfigOptions<IWebsiteOptions>());
             services.AddSponsor();
-            services.AddContact(opt.GetConfigOptions<Action<IContactOptions>>());
-            services.AddFeedBack(opt.GetConfigOptions<Action<IFeedbackOptions>>());
+            services.AddContact(opt.GetConfigOptions<IContactOptions>());
+            services.AddFeedBack(opt.GetConfigOptions<IFeedbackOptions>());
         }
 
         public static void UseDefaultModuleOptions(this IApplicationBuilder app, Action<IDefaultModuleOptions> options = null)
         {
             DefaultModuleOptions opt = new DefaultModuleOptions();
             options?.Invoke(opt);
-            app.UseAboutOptions(opt.GetConfigOptions<Action<IAboutOptions>>());
-            app.UseSplashScreenOptions(opt.GetConfigOptions<Action<ISplashScreenOptions>>());
-            app.UseGuideOptions(opt.GetConfigOptions<Action<IGuideOptions>>());
-            app.UseSettingViewOptions(opt.GetConfigOptions<Action<ISettingViewOptions>>());
-            app.UseSettingSecurityOptions(opt.GetConfigOptions<Action<ISettingSecurityViewOption>>());
-            app.UseReleaseVersions(opt.GetConfigOptions<Action<IReleaseVersionsOptions>>());
-            app.UseSupport(opt.GetConfigOptions<Action<ISupportOptions>>());
-            app.UseWebsite(opt.GetConfigOptions<Action<IWebsiteOptions>>());
-            app.UseContact(opt.GetConfigOptions<Action<IContactOptions>>());
-            app.UseFeedBackOptions(opt.GetConfigOptions<Action<IFeedbackOptions>>());
+            app.UseAboutOptions(opt.GetConfigOptions<IAboutOptions>());
+            app.UseSplashScreenOptions(opt.GetConfigOptions<ISplashScreenOptions>());
+            app.UseGuideOptions(opt.GetConfigOptions<IGuideOptions>());
+            app.UseSettingViewOptions(opt.GetConfigOptions<ISettingViewOptions>());
+            app.UseSettingSecurityOptions(opt.GetConfigOptions<ISettingSecurityViewOption>());
+            app.UseReleaseVersions(opt.GetConfigOptions<IReleaseVersionsOptions>());
+            app.UseSupport(opt.GetConfigOptions<ISupportOptions>());
+            app.UseWebsite(opt.GetConfigOptions<IWebsiteOptions>());
+            app.UseContact(opt.GetConfigOptions<IContactOptions>());
+            app.UseFeedBackOptions(opt.GetConfigOptions<IFeedbackOptions>());
         }
     }
 }

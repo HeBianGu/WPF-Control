@@ -75,7 +75,7 @@
                                     </TextBox>
                                     <FontIconToggleButton HorizontalAlignment="Right"
                                                           Background="Transparent"
-                                                          BorderThickness="0"
+                                                          BorderThickness="0" Foreground="Red"
                                                           CheckedGlyph="&#xE890;"
                                                           IsChecked="{Binding ShowPassword, Mode=TwoWay}"
                                                           UncheckedGlyph="&#xECE4;" />

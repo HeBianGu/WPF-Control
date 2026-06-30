@@ -24,8 +24,8 @@ namespace System
             DefaultApplicationOptions opt = new DefaultApplicationOptions();
             options?.Invoke(opt);
             services.AddDefaultMessages();
-            services.AddDefaultModuleServices(opt.GetConfigOptions<Action<IDefaultModuleOptions>>());
-            services.AddDefaultThemeServices(opt.GetConfigOptions<Action<IDefaultThemeOptions>>());
+            services.AddDefaultModuleServices(opt.GetConfigOptions<IDefaultModuleOptions>());
+            services.AddDefaultThemeServices(opt.GetConfigOptions<IDefaultThemeOptions>());
             services.AddLog4net();
         }
 
@@ -34,8 +34,8 @@ namespace System
             DefaultApplicationOptions opt = new DefaultApplicationOptions();
             options?.Invoke(opt);
             app.UseStyleOptions();
-            app.UseDefaultModuleOptions(opt.GetConfigOptions<Action<IDefaultModuleOptions>>());
-            app.UseDefaultThemeOptions(opt.GetConfigOptions<Action<IDefaultThemeOptions>>());
+            app.UseDefaultModuleOptions(opt.GetConfigOptions<IDefaultModuleOptions>());
+            app.UseDefaultThemeOptions(opt.GetConfigOptions<IDefaultThemeOptions>());
 
             app.UseAddLog4netOptions();
         }

@@ -33,7 +33,7 @@ namespace System
             DefaultIndentifyOptions opt = new DefaultIndentifyOptions();
             options?.Invoke(opt);
             //  Do ：身份认证
-            services.AddDbContextBySetting<TContext>(opt.GetConfigOptions<Action<ISqliteSettable>>());
+            services.AddDbContextBySetting<TContext>(opt.GetConfigOptions<ISqliteSettable>());
             services.AddSingleton<IStringRepository<hi_dd_user>, DbContextRepository<TContext, hi_dd_user>>();
             services.AddUserViewPresenter();
 
@@ -44,22 +44,22 @@ namespace System
             services.AddAuthorityViewPresenter();
 
             //  Do ：操作日志
-            services.AddDbContextBySetting<OperationDataContext>(opt.GetConfigOptions<Action<ISqliteSettable>>());
+            services.AddDbContextBySetting<OperationDataContext>(opt.GetConfigOptions<ISqliteSettable>());
             services.AddSingleton<IStringRepository<hi_dd_operation>, DbContextRepository<OperationDataContext, hi_dd_operation>>();
             services.AddOperationViewPresenter();
 
             //  Do ：登录和注册页面
-            services.AddBackgroundRigisterLoginViewPresenter(opt.GetConfigOptions<Action<ILoginOptions>>(), opt.GetConfigOptions<Action<IRegistorOptions>>());
+            services.AddBackgroundRigisterLoginViewPresenter(opt.GetConfigOptions<ILoginOptions>(), opt.GetConfigOptions<IRegistorOptions>());
             services.AddIdentityLoginService();
-            services.AddIdentityRegisterService(opt.GetConfigOptions<Action<IIdentifyOptions>>());
+            services.AddIdentityRegisterService(opt.GetConfigOptions<IIdentifyOptions>());
         }
 
         public static void UseIdentifyDefaultOptions(this IApplicationBuilder app, Action<IDefaultIndentifyOptions> options = null)
         {
             DefaultIndentifyOptions opt = new DefaultIndentifyOptions();
             options?.Invoke(opt);
-            app.UseLoginOptions(opt.GetConfigOptions<Action<ILoginOptions>>());
-            app.UseRegistorOptions(opt.GetConfigOptions<Action<IRegistorOptions>>());
+            app.UseLoginOptions(opt.GetConfigOptions<ILoginOptions>());
+            app.UseRegistorOptions(opt.GetConfigOptions<IRegistorOptions>());
             app.UseSqlite();
         }
     }

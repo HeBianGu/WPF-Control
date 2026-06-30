@@ -33,7 +33,7 @@ using H.Extensions.FontIcon;
 
 namespace H.Modules.Theme;
 [Display(Name = "主题设置", GroupName = SettingGroupNames.GroupStyle, Description = "主题设置设置的信息")]
-public class ThemeOptions : IocOptionInstance<ThemeOptions>, ILoginedSplashLoadable, IThemeOptions
+public class ThemeOptions : IocOptionInstance<ThemeOptions>, ILoginedSplashLoadable, IThemeOptions, IIconFontFamilysOptions, IColorThemeOptions
 {
     public ThemeOptions()
     {

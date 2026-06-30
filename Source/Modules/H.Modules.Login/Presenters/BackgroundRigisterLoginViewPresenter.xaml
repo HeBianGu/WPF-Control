@@ -67,7 +67,7 @@
                             </Cattach.Title>
                         </TextBox>
                         <!--  密码  -->
-                        <Control Margin="0,20,0,10">
+                        <Control Margin="0,10,0,10">
                             <Control.Template>
                                 <ControlTemplate>
                                     <Grid>
@@ -119,7 +119,7 @@
                         </Control>
 
                         <!--  错误提示  -->
-                        <Control Margin="5">
+                        <Control Margin="5 0">
                             <Control.Template>
                                 <ControlTemplate>
                                     <DockPanel x:Name="d_error">

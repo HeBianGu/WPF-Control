@@ -30,6 +30,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using H.Extensions.ApplicationBase.Properties;
+using H.Extensions.Common;
 
 namespace H.Extensions.ApplicationBase;
 
@@ -54,7 +55,11 @@ public abstract partial class ApplicationBase : Application, IConfigureableAppli
 
     protected virtual IAppPathServce CreateAppPathServce()
     {
-        return new AppPathServce();
+        return new AppPathServce()
+        {
+            Version = ApplicationProvider.Version,
+            Company = ApplicationProvider.Company ?? "HeBianGu",
+        };
     }
 
     protected override void OnStartup(StartupEventArgs e)

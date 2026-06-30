@@ -35,7 +35,7 @@ public class UpgradeOptions : IocOptionInstance<UpgradeOptions>, IUpgradeOptions
         }
     }
 
-    private string _SavePath = AppPaths.Instance.Version;
+    private string _SavePath = AppPaths.Instance.Cache;
     [Display(Name = "更新文件保存位置")]
     public string SavePath
     {

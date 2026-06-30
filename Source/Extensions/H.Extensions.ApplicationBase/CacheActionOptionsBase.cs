@@ -11,9 +11,9 @@ namespace H.Extensions.ApplicationBase;
 public abstract class CacheActionOptionsBase
 {
     protected List<object> CacheActionOptions { get; } = new List<object>();
-    public T GetConfigOptions<T>()
+    public Action<T> GetConfigOptions<T>()
     {
-        return this.CacheActionOptions.OfType<T>().FirstOrDefault();
+        return this.CacheActionOptions.Where(x => x.GetType() == typeof(Action<T>)).FirstOrDefault() as Action<T>;
     }
 
     protected void ConfigOptions<T>(Action<T> action)

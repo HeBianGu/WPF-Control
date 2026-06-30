@@ -37,16 +37,17 @@ namespace System
             option?.Invoke(opt);
             //services.AddSwitchThemeViewPresenter(opt.GetConfigOptions<Action<ISwitchThemeOptions>>());
             //services.AddLoadThemeOptionsService(opt.GetConfigOptions<Action<IThemeOptions>>());
-            services.AddTheme(opt.GetConfigOptions<Action<IThemeOptions>>());
-            services.AddColorThemeViewPresenter(opt.GetConfigOptions<Action<IColorThemeOptions>>());
+            services.AddTheme(opt.GetConfigOptions<IThemeOptions>());
+            services.AddColorThemeViewPresenter(opt.GetConfigOptions<IColorThemeOptions>());
         }
 
         public static void UseDefaultThemeOptions(this IApplicationBuilder app, Action<IDefaultThemeOptions> option = null)
         {
             DefaultThemeOptions opt = new DefaultThemeOptions();
             option?.Invoke(opt);
-            app.UseDefaultColorResources(opt.GetConfigOptions<Action<IColorThemeOptions>>());
-            app.UseDefaultIconFontFamilys(opt.GetConfigOptions<Action<IIconFontFamilysOptions>>());
+            app.UseDefaultColorResources(opt.GetConfigOptions<IColorThemeOptions>());
+            app.UseDefaultIconFontFamilys(opt.GetConfigOptions<IIconFontFamilysOptions>());
+            app.UseThemeOptions(opt.GetConfigOptions<IThemeOptions>());
         }
 
         public static void UseDefaultColorResources(this IApplicationBuilder app, Action<IColorThemeOptions> option = null)

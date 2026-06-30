@@ -134,7 +134,7 @@
     <value>Locker</value>
   </data>
   <data name="Enum_FontSizeThemeType_Small" xml:space="preserve">
-    <value>Groß</value>
+    <value>Klein</value>
   </data>
   <data name="Enum_LayoutThemeType_Small" xml:space="preserve">
     <value>Kompakt</value>

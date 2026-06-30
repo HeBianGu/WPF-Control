@@ -69,7 +69,7 @@ public class AppPathServce : Lazy<AppPathServce>, IAppPathServce
         {
             if (string.IsNullOrEmpty(this.Version))
                 return Path.Combine(this.Document, this.Company, this.AppName, nameof(this.Default));
-            return Path.Combine(this.Document, this.Company, this.AppName, nameof(this.Default), this.Version);
+            return Path.Combine(this.Document, this.Company, this.AppName, this.Version, nameof(this.Default));
         }
     }
 
@@ -119,7 +119,7 @@ public class AppPathServce : Lazy<AppPathServce>, IAppPathServce
     /// </summary>
     public virtual string Cache => Path.Combine(this.Default, nameof(this.Cache));
 
-    public virtual string Version { get; }
+    public virtual string Version { get; set; }
     #endregion
 
     #region - 登录用户目录 -
