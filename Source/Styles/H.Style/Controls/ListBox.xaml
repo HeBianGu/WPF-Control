@@ -36,6 +36,7 @@
         <Setter Property="Cattach.ItemBorderThickness" Value="0" />
         <Setter Property="Cattach.ItemBorderBrush" Value="Transparent" />
         <Setter Property="Cattach.Watermark" Value="{x:Static Resources.Common_NoData}" />
+        <Setter Property="Cattach.UseWatermark" Value="False"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="ListBox">
@@ -58,15 +59,13 @@
                         </Grid>
                     </Border>
                     <ControlTemplate.Triggers>
-                        <Trigger Property="HasItems" Value="False">
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding RelativeSource={RelativeSource Mode=Self}, Path=(Cattach.UseWatermark)}" Value="True"/>
+                                <Condition Binding="{Binding RelativeSource={RelativeSource Mode=Self}, Path=HasItems}" Value="False" />
+                            </MultiDataTrigger.Conditions>
                             <Setter TargetName="t_message" Property="Visibility" Value="Visible" />
-                        </Trigger>
-                        
-                        <!--这个设置了始终是隐藏了，后面处理-->
-                        <!--<DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(Cattach.Watermark)}"
-                                     Value="{x:Null}">
-                            <Setter TargetName="t_message" Property="Visibility" Value="Collapsed" />
-                        </DataTrigger>-->
+                        </MultiDataTrigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>

@@ -18,6 +18,19 @@ namespace H.Attach;
 
 public static partial class Cattach
 {
+    public static bool GetUseWatermark(DependencyObject obj)
+    {
+        return (bool)obj.GetValue(UseWatermarkProperty);
+    }
+
+    public static void SetUseWatermark(DependencyObject obj, bool value)
+    {
+        obj.SetValue(UseWatermarkProperty, value);
+    }
+
+    public static readonly DependencyProperty UseWatermarkProperty =
+        DependencyProperty.RegisterAttached("UseWatermark", typeof(bool), typeof(Cattach), new PropertyMetadata(default(bool)));
+
     public static readonly DependencyProperty WatermarkProperty = DependencyProperty.RegisterAttached(
         "Watermark", typeof(string), typeof(Cattach), new FrameworkPropertyMetadata(""));
 
@@ -245,7 +258,7 @@ public static partial class Cattach
     {
         if (d is FrameworkElement element && e.NewValue is ResourceDictionary newResources)
         {
-            element.Resources = newResources; 
+            element.Resources = newResources;
         }
     }
 }
