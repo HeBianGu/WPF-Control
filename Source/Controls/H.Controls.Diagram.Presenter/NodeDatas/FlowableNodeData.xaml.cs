@@ -156,6 +156,12 @@ public class FlowableNodeData : ExpressionNodeDataBase, IFlowableNodeData
         return new FlowableResult(message) { State = FlowableResultState.Error };
     }
 
+    protected virtual IFlowableResult Continue(string message = "运行错误")
+    {
+        this.Message = message;
+        return new FlowableResult(message) { State = FlowableResultState.Continue };
+    }
+
     //[Browsable(false)]
     //[Icon(FontIcons.Play)]
     //[Display(Name = "执行")]
