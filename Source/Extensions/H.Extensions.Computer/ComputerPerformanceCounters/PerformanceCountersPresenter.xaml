@@ -2,6 +2,13 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:H.Extensions.Computer.ComputerPerformanceCounters">
     <DataTemplate DataType="{x:Type local:PerformanceCountersPresenter}">
-        <ListBox ItemsSource="{Binding PerformanceCounterPresenters}" />
+        <ListBox Grid.IsSharedSizeScope="True"
+                 ItemsSource="{Binding PerformanceCounterPresenters}">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <UniformGrid Columns="3"/>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+        </ListBox>
     </DataTemplate>
 </ResourceDictionary>

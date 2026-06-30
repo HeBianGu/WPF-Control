@@ -18,4 +18,14 @@ public static class NameExtenstion
                 return candidate;
         }
     }
+
+    public static string GetIndexSafeName(this IEnumerable<string> names, string formatName)
+    {
+        for (int i = 1; ; i++)
+        {
+            string candidate = formatName + i.ToString();
+            if (!names.Contains(candidate))
+                return candidate;
+        }
+    }
 }

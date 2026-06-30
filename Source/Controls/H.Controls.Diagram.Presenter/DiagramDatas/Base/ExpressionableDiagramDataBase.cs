@@ -46,12 +46,13 @@ public abstract class ExpressionableDiagramDataBase : ZoomableDiagramDataBase, I
     }
 
     [Icon(FontIcons.Globe)]
-    [Display(Name = "全局变量设置", GroupName = "操作", Order = 0)]
+    [Display(Name = "流程局部变量", GroupName = "操作", Order = 0)]
     public DisplayCommand ShowConstExpressionsCommand => new DisplayCommand(async x =>
     {
         ConstNodeDataExpressionsPresenter constNodeDataExpressionsPresenter = new ConstNodeDataExpressionsPresenter();
+        constNodeDataExpressionsPresenter.DefaultGroupName = "流程局部变量";
         constNodeDataExpressionsPresenter.ConstNodeDataExpressions = this.ConstNodeDataExpressions;
-        var r = await IocMessage.Dialog.Show(constNodeDataExpressionsPresenter);
+        var r = await IocMessage.Dialog.Show(constNodeDataExpressionsPresenter, x => x.Title = "流程局部变量");
         if (r != true)
             return;
         this.ConstNodeDataExpressions = constNodeDataExpressionsPresenter.ConstNodeDataExpressions;
@@ -60,15 +61,15 @@ public abstract class ExpressionableDiagramDataBase : ZoomableDiagramDataBase, I
 
     public virtual IEnumerable<IExpressionKey> GetExpressions(Predicate<object> predicate = null)
     {
-        foreach (var item in Controls.Diagram.Presenter.Expressions.ConstNodeDataExpressions.GetDefaults().OfType<IExpressionKey>())
-        {
-            yield return item;
-        }
-        yield return new ConstExpressionKey<string>("Hello World", this.Name);
-        yield return new ConstExpressionKey<int>(10, this.Name);
-        yield return new ConstExpressionKey<double>(3.14, this.Name);
+        //foreach (var item in Controls.Diagram.Presenter.Expressions.ConstNodeDataExpressions.GetDefaults().OfType<IExpressionKey>())
+        //{
+        //    yield return item;
+        //}
+        //yield return new ConstExpressionKey<string>("Hello World", this.Name);
+        //yield return new ConstExpressionKey<int>(10, this.Name);
+        //yield return new ConstExpressionKey<double>(3.14, this.Name);
 
-        foreach (var item in this.ConstNodeDataExpressions.OfType<IExpressionKey>())
+        foreach (var item in this.ConstNodeDataExpressions)
         {
             yield return item;
         }

@@ -14,7 +14,7 @@ public interface IConstExpressionKey : IExpressionKey
 }
 
 // 这里的静态资源是单例，不可以用在默认值，会有冲突
-internal static class ConstNodeDataExpressions
+public static class ConstNodeDataExpressions
 {
     public static ConstExpressionKey<string> Empty { get; } = new ConstExpressionKey<string>(string.Empty, "默认");
     //public static ConstNodeDataExpression<string> Null { get; } = new ConstNodeDataExpression<string>(null, "默认", "无");
@@ -45,7 +45,7 @@ public class ConstExpressionKey<T> : ExpressionKey, IConstExpressionKey
     {
         this.CurrentValue = value;
         this.GroupName = groupName;
-        this.Name = typeof(T).Name;
+        this.DataType = typeof(T).FullName;
     }
 
     [Display(Name = "值")]

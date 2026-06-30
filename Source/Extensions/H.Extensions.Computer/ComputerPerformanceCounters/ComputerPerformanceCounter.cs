@@ -187,17 +187,29 @@ public abstract class PerformanceCounterPresenterBase : DisplayBindableBase, IPe
         return string.Format(this.DisplayFormat, value);
     }
 
+
+    private bool _IsError;
+    public bool IsError
+    {
+        get { return _IsError; }
+        set
+        {
+            _IsError = value;
+            RaisePropertyChanged();
+        }
+    }
+
+
     protected virtual bool CheckValue(float value)
     {
         if (this.UseAlarm == false)
             return true;
         string v = this.ConvertToValue(value);
-
         if (value > this.MaxValue)
         {
             Application.Current.Dispatcher.Invoke(() =>
             {
-                IocMessage.ShowSnackInfo($"{this.Name}参数值过高:{v}");
+                IocMessage.ShowSnackInfo($"{this.Name}参数值过高");
             });
             return false;
         }
@@ -205,7 +217,7 @@ public abstract class PerformanceCounterPresenterBase : DisplayBindableBase, IPe
         {
             Application.Current.Dispatcher.Invoke(() =>
             {
-                IocMessage.ShowSnackInfo($"{this.Name}参数值过低:{v}");
+                IocMessage.ShowSnackInfo($"{this.Name}参数值过低");
             });
             return false;
         }
@@ -215,7 +227,7 @@ public abstract class PerformanceCounterPresenterBase : DisplayBindableBase, IPe
     protected virtual string ConvertToValues(IEnumerable<float> values)
     {
         float sum = values.Sum(x => x);
-        this.CheckValue(sum);
+        this.IsError = !this.CheckValue(sum);
         return ConvertToValue(sum);
     }
     public void Start()
@@ -242,29 +254,29 @@ public abstract class PerformanceCounterPresenterBase : DisplayBindableBase, IPe
 }
 
 
-public class PerformanceCounterValuePresenter : PerformanceCounterPresenterBase
-{
-    public PerformanceCounterValuePresenter(string categoryName, string instanceName, string counterName) : base(categoryName, instanceName, counterName)
-    {
+//public class PerformanceCounterValuePresenter : PerformanceCounterPresenterBase
+//{
+//    public PerformanceCounterValuePresenter(string categoryName, string instanceName, string counterName) : base(categoryName, instanceName, counterName)
+//    {
 
-    }
+//    }
 
-    protected override string ConvertToValue(float value)
-    {
-        return Value = string.Format(this.DisplayFormat, value);
-    }
+//    protected override string ConvertToValue(float value)
+//    {
+//        return Value = string.Format(this.DisplayFormat, value);
+//    }
 
-    private string _value;
-    public string Value
-    {
-        get { return _value; }
-        private set
-        {
-            _value = value;
-            RaisePropertyChanged();
-        }
-    }
-}
+//    private string _value;
+//    public string Value
+//    {
+//        get { return _value; }
+//        private set
+//        {
+//            _value = value;
+//            RaisePropertyChanged();
+//        }
+//    }
+//}
 
 
 
@@ -272,7 +284,11 @@ public class PerformanceCounterValuePresenter : PerformanceCounterPresenterBase
 [PerformanceCounterInfo(CategoryName = PerformanceCounterCategoryNames.Processor, CounterName = PerformanceCounterNames.ProcessorTimePercent, InstanceName = InstanceCounterNames.Total, DisplayFormat = "{0:f2} %")]
 public class CpuCounter : PerformanceCounterValuePresenterBase
 {
-
+    public CpuCounter()
+    {
+        this.UseAlarm = true;
+        this.MaxValue = 90.0f;
+    }
 }
 
 [Display(Name = "CPU用户时间", GroupName = "CPU")]
@@ -377,9 +393,14 @@ public class RamCounter : PerformanceCounterSizeValuePresenterBase
     }
 }
 
-[Display(Name = "内存使用率", GroupName = "内存")]
+[Display(Name = "内存使用率", GroupName = "内存", Order = -1)]
 public class MemoryUsageCounter : PerformanceCounterValuePresenterBase
 {
+    public MemoryUsageCounter()
+    {
+        this.UseAlarm = true;
+        this.MaxValue = 90.0f;
+    }
     public override string NextValue()
     {
         if (!OperatingSystem.IsWindows())
@@ -389,7 +410,8 @@ public class MemoryUsageCounter : PerformanceCounterValuePresenterBase
         if (!GlobalMemoryStatusEx(status) || status.ullTotalPhys == 0)
             return Value = string.Empty;
 
-        double value = (status.ullTotalPhys - status.ullAvailPhys) * 100.0 / status.ullTotalPhys;
+        float value = (status.ullTotalPhys - status.ullAvailPhys) * 100.0f / status.ullTotalPhys;
+        this.IsError = !this.CheckValue(value);
         return Value = $"{value:f2} %";
     }
 

@@ -7,7 +7,6 @@
 // Licensed under the MIT License (the "License")
 
 using H.Controls.Diagram.Presenter.Expressions;
-using System;
 
 namespace H.Controls.Diagram.Presenter.NodeDatas.Base;
 
@@ -26,6 +25,7 @@ public abstract class ExpressionNodeDataBase : ShowPropertyViewNodeDataBase, IEx
             var defaults = defaultValueExpressionable.GetDefaultValueExpressions();
             result = result.Concat(defaults).ToList();
         }
+
         if (this.DiagramData is IExpressionable expressionable)
         {
             result.AddRange(expressionable.GetExpressions());

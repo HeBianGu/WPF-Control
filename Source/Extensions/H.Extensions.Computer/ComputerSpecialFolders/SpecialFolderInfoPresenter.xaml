@@ -12,7 +12,8 @@
                         <TextBlock Text="{Binding CpuUsage}" Margin="0,0,10,0" />
                     </StackPanel>
                 </DataTemplate>
-                <!--<ListBox.GroupStyle>
+            </ItemsControl.ItemTemplate>
+            <!--<ListBox.GroupStyle>
                 <GroupStyle>
                     <GroupStyle.HeaderTemplate>
                         <DataTemplate>

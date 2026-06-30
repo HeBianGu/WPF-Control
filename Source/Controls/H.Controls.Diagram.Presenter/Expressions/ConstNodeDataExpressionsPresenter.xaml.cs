@@ -49,7 +49,15 @@ public class ConstNodeDataExpressionsPresenter : DisplayBindableBase
             return;
 
         IConstExpressionKey expression = this.Create(typeSelector.ConstType);
-        r = await IocMessage.Form.ShowEdit(expression);
+        r = await IocMessage.Form.ShowEdit(expression, x =>
+        {
+            if (this.ConstNodeDataExpressions.Any(x => x.Name == expression.Name))
+            {
+                IocMessage.Snack.ShowError("名称重复，请修改名称");
+                return false;
+            }
+            return true;
+        });
         if (r != true)
             return;
         expression.GroupName = this.DefaultGroupName;
@@ -59,22 +67,34 @@ public class ConstNodeDataExpressionsPresenter : DisplayBindableBase
 
     public RelayCommand EditCommand => new RelayCommand(async x =>
     {
-        await IocMessage.Form.ShowEdit(this.SelectedItem);
+        await IocMessage.Form.ShowEdit(this.SelectedItem, x =>
+        {
+            if (this.ConstNodeDataExpressions.Any(y => y.Name == this.SelectedItem.Name && y != this.SelectedItem))
+            {
+                IocMessage.Snack.ShowError("名称重复，请修改名称");
+                return false;
+            }
+            return true;
+        });
     }, x => this.SelectedItem != null);
 
 
-    public RelayCommand DeleteCommand => new RelayCommand(x =>
+    public RelayCommand DeleteCommand => new RelayCommand(async x =>
     {
+        var r = await IocMessage.Dialog.ShowDeleteDialog();
+        if (r != true)
+            return;
         this.ConstNodeDataExpressions.Remove(this.SelectedItem);
     }, x => this.SelectedItem != null);
 
     public IConstExpressionKey Create(ConstType constType)
     {
+        var name = this.ConstNodeDataExpressions.Select(x => x.Name).GetIndexSafeName("默认名称");
         if (constType == ConstType.Int32)
-            return new ConstExpressionKey<int>(0, this.DefaultGroupName) { Name = "默认名称" };
+            return new ConstExpressionKey<int>(0, this.DefaultGroupName) { Name = name };
         if (constType == ConstType.Double)
-            return new ConstExpressionKey<double>(0.0, this.DefaultGroupName) { Name = "默认名称" };
-        return new ConstExpressionKey<string>(null, this.DefaultGroupName) { Name = "默认名称" };
+            return new ConstExpressionKey<double>(0.0, this.DefaultGroupName) { Name = name };
+        return new ConstExpressionKey<string>(null, this.DefaultGroupName) { Name = name };
     }
 }
 

@@ -343,6 +343,8 @@ public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
         {
             if (framework?.DataContext == null)
                 return;
+            if (framework.DataContext == this)
+                return;
 
             if (framework?.DataContext is IDiagramShowPropertyView showPropertyView)
             {

@@ -28,7 +28,10 @@ public interface IExpressionKey
 
 public class ExpressionKey : IExpressionKey
 {
+    [ReadOnly(true)]
+    [Display(Name = "分组")]
     public string GroupName { get; set; }
+    [Display(Name = "名称")]
     public string Name { get; set; }
     public string DataType { get; set; }
     public virtual string DisplayName => $"{this.GroupName}.{this.Name}";

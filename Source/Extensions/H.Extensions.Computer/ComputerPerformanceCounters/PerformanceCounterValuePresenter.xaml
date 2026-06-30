@@ -1,7 +1,27 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:H.Extensions.Computer.ComputerPerformanceCounters">
-  <DataTemplate DataType="{x:Type local:ManagementObjectsPresenter}">
-      <ListBox ItemsSource="{Binding ManagementObjectPresenters}" />
-  </DataTemplate>
+    <DataTemplate DataType="{x:Type local:PerformanceCounterValuePresenterBase}">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition SharedSizeGroup="PerformanceCounterValuePresenter" />
+                <ColumnDefinition MinWidth="150"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Column="0"
+                       Text="{Binding Name}" />
+            <TextBlock Grid.Column="1"
+                       Margin="5,0"
+                       Text="{Binding Value}" FontWeight="Normal">
+                <TextBlock.Style>
+                    <Style TargetType="TextBlock">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding IsError}" Value="True">
+                                <Setter Property="Foreground" Value="{DynamicResource {x:Static BrushKeys.Red}}"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBlock.Style>
+            </TextBlock>
+        </Grid>
+    </DataTemplate>
 </ResourceDictionary>

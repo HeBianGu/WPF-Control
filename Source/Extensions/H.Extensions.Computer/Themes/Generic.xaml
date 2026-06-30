@@ -6,7 +6,7 @@
         <ResourceDictionary Source="pack://application:,,,/H.Extensions.Computer;component/ComputerManagementObjects/ManagementObjectPresenter.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Extensions.Computer;component/ComputerManagementObjects/ManagementObjectsPresenter.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Extensions.Computer;component/ComputerSpecialFolders/SpecialFolderInfoPresenter.xaml" />
-        <ResourceDictionary Source="pack://application:,,,/H.Extensions.Computer;component/ComputerProcesses/SpecialFolderInfoPresenter.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Extensions.Computer;component/ComputerProcesses/ComputerProcessInfoPresenter.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Extensions.Computer;component/ComputerPerformanceCounters/PerformanceCountersPresenter.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Extensions.Computer;component/ComputerPerformanceCounters/PerformanceCounterValuePresenter.xaml" />
     </ResourceDictionary.MergedDictionaries>
