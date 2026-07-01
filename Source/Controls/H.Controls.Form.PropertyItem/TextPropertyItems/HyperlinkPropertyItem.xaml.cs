@@ -6,18 +6,17 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
-namespace H.Controls.Form.PropertyItem.TextPropertyItems
+namespace H.Controls.Form.PropertyItem.TextPropertyItems;
+
+public class HyperlinkPropertyItem : TextPropertyViewItem
 {
-    public class HyperlinkPropertyItem : TextPropertyViewItem
+    public HyperlinkPropertyItem(PropertyInfo property, object obj) : base(property, obj)
     {
-        public HyperlinkPropertyItem(PropertyInfo property, object obj) : base(property, obj)
-        {
 
-        }
-
-        public RelayCommand ProcessCommand => new RelayCommand(x =>
-        {
-            Process.Start(new ProcessStartInfo(this.Value) { UseShellExecute = true });
-        });
     }
+
+    public RelayCommand ProcessCommand => new RelayCommand(x =>
+    {
+        Process.Start(new ProcessStartInfo(this.Value) { UseShellExecute = true });
+    });
 }

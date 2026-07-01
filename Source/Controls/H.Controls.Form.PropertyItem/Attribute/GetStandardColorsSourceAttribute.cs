@@ -6,22 +6,21 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
-namespace H.Controls.Form.PropertyItem.Attribute
+namespace H.Controls.Form.PropertyItem.Attribute;
+
+public class GetStandardColorsSourceAttribute : GetSourceAttribute
 {
-    public class GetStandardColorsSourceAttribute : GetSourceAttribute
+    public override IEnumerable GetSource(PropertyInfo propertyInfo, object obj)
     {
-        public override IEnumerable GetSource(PropertyInfo propertyInfo, object obj)
-        {
-            yield return Colors.Transparent;
-            yield return Colors.White;
-            yield return Colors.Gray;
-            yield return Colors.Black;
-            yield return Colors.Red;
-            yield return Colors.Green;
-            yield return Colors.Blue;
-            yield return Colors.Yellow;
-            yield return Colors.Orange;
-            yield return Colors.Purple;
-        }
+        yield return Colors.Transparent;
+        yield return Colors.White;
+        yield return Colors.Gray;
+        yield return Colors.Black;
+        yield return Colors.Red;
+        yield return Colors.Green;
+        yield return Colors.Blue;
+        yield return Colors.Yellow;
+        yield return Colors.Orange;
+        yield return Colors.Purple;
     }
 }

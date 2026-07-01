@@ -6,25 +6,24 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
-namespace H.Controls.Form.PropertyItem.Attribute
+namespace H.Controls.Form.PropertyItem.Attribute;
+
+public class GetMethodNameSourceAttribute : GetSourceAttribute
 {
-    public class GetMethodNameSourceAttribute : GetSourceAttribute
+    private MethodInfo _sourceMethodInfo;
+    public GetMethodNameSourceAttribute(string methodName)
     {
-        private MethodInfo _sourceMethodInfo;
-        public GetMethodNameSourceAttribute(string methodName)
-        {
-            this.MethodName = methodName;
-        }
+        this.MethodName = methodName;
+    }
 
-        public string MethodName { get; set; }
+    public string MethodName { get; set; }
 
-        public override IEnumerable GetSource(PropertyInfo propertyInfo, object obj)
-        {
-            if (_sourceMethodInfo == null)
-                _sourceMethodInfo = obj.GetType().GetMethod(this.MethodName);
-            if (_sourceMethodInfo.Invoke(obj, null) is IEnumerable objects)
-                return objects;
-            return null;
-        }
+    public override IEnumerable GetSource(PropertyInfo propertyInfo, object obj)
+    {
+        if (_sourceMethodInfo == null)
+            _sourceMethodInfo = obj.GetType().GetMethod(this.MethodName);
+        if (_sourceMethodInfo.Invoke(obj, null) is IEnumerable objects)
+            return objects;
+        return null;
     }
 }

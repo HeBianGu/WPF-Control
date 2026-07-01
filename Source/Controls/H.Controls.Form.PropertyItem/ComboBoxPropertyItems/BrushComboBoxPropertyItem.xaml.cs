@@ -8,28 +8,27 @@
 
 using H.Controls.Form.PropertyItem.Base;
 
-namespace H.Controls.Form.PropertyItem.ComboBoxPropertyItems
+namespace H.Controls.Form.PropertyItem.ComboBoxPropertyItems;
+
+public class BrushComboBoxPropertyItem : SelectSourcePropertyItem<SolidColorBrush>
 {
-    public class BrushComboBoxPropertyItem : SelectSourcePropertyItem<SolidColorBrush>
+    public BrushComboBoxPropertyItem(PropertyInfo property, object obj) : base(property, obj)
     {
-        public BrushComboBoxPropertyItem(PropertyInfo property, object obj) : base(property, obj)
-        {
 
-        }
+    }
 
-        protected override IEnumerable<SolidColorBrush> CreateSource()
-        {
-            var source = base.CreateSource();
-            var all = source ?? typeof(Brushes).GetProperties().Select(x => x.GetValue(null)).OfType<SolidColorBrush>();
-            if (!all.Contains(this.Value))
-                yield return this.Value;
-            foreach (var item in all)
-                yield return item;
-        }
+    protected override IEnumerable<SolidColorBrush> CreateSource()
+    {
+        var source = base.CreateSource();
+        var all = source ?? typeof(Brushes).GetProperties().Select(x => x.GetValue(null)).OfType<SolidColorBrush>();
+        if (!all.Contains(this.Value))
+            yield return this.Value;
+        foreach (var item in all)
+            yield return item;
+    }
 
-        protected override void SetValue(SolidColorBrush value)
-        {
-            this.PropertyInfo.SetValue(this.Obj, value);
-        }
+    protected override void SetValue(SolidColorBrush value)
+    {
+        this.PropertyInfo.SetValue(this.Obj, value);
     }
 }

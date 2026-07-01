@@ -7,7 +7,6 @@
 // Licensed under the MIT License (the "License")
 
 global using H.Iocable;
-using System.Windows;
 using System.Windows.Markup;
 
 [assembly: ThemeInfo(

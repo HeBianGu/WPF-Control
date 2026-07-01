@@ -6,13 +6,12 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
-namespace H.Controls.Form.PropertyItem.Attribute
+namespace H.Controls.Form.PropertyItem.Attribute;
+
+public class GetColorsSourceAttribute : GetSourceAttribute
 {
-    public class GetColorsSourceAttribute : GetSourceAttribute
+    public override IEnumerable GetSource(PropertyInfo propertyInfo, object obj)
     {
-        public override IEnumerable GetSource(PropertyInfo propertyInfo, object obj)
-        {
-            return typeof(Colors).GetProperties().Select(x => x.GetValue(null)).OfType<Color>();
-        }
+        return typeof(Colors).GetProperties().Select(x => x.GetValue(null)).OfType<Color>();
     }
 }

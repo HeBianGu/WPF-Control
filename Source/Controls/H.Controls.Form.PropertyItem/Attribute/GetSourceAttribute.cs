@@ -6,10 +6,9 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
-namespace H.Controls.Form.PropertyItem.Attribute
+namespace H.Controls.Form.PropertyItem.Attribute;
+
+public abstract class GetSourceAttribute : System.Attribute, IGetSource
 {
-    public abstract class GetSourceAttribute : System.Attribute, IGetSource
-    {
-        public abstract IEnumerable GetSource(PropertyInfo propertyInfo, object obj);
-    }
+    public abstract IEnumerable GetSource(PropertyInfo propertyInfo, object obj);
 }

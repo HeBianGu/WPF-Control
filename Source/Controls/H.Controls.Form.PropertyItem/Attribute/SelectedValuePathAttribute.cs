@@ -6,17 +6,16 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
-namespace H.Controls.Form.PropertyItem.Attribute
-{
-    [AttributeUsage(AttributeTargets.Property, Inherited = true, AllowMultiple = false)]
-    public class SelectedValuePathAttribute : System.Attribute
-    {
-        public SelectedValuePathAttribute(string path)
-        {
-            this.Path = path;
-        }
-        public string Path { get; }
-    }
+namespace H.Controls.Form.PropertyItem.Attribute;
 
-    
+[AttributeUsage(AttributeTargets.Property, Inherited = true, AllowMultiple = false)]
+public class SelectedValuePathAttribute : System.Attribute
+{
+    public SelectedValuePathAttribute(string path)
+    {
+        this.Path = path;
+    }
+    public string Path { get; }
 }
+
+

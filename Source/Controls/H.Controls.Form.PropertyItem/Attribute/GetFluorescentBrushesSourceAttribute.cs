@@ -6,18 +6,17 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
-namespace H.Controls.Form.PropertyItem.Attribute
+namespace H.Controls.Form.PropertyItem.Attribute;
+
+// 荧光色
+public class GetFluorescentBrushesSourceAttribute : GetSourceAttribute
 {
-    // 荧光色
-    public class GetFluorescentBrushesSourceAttribute : GetSourceAttribute
+    public override IEnumerable GetSource(PropertyInfo propertyInfo, object obj)
     {
-        public override IEnumerable GetSource(PropertyInfo propertyInfo, object obj)
-        {
-            yield return Brushes.Lime;          // #FF00FF00 - 荧光绿
-            yield return Brushes.Cyan;          // #FF00FFFF - 荧光青
-            yield return Brushes.Magenta;       // #FFFF00FF - 荧光紫红
-            yield return Brushes.Yellow;        // #FFFFFF00 - 荧光黄
-            yield return Brushes.Chartreuse;    // #FF7FFF00 - 黄绿色
-        }
+        yield return Brushes.Lime;          // #FF00FF00 - 荧光绿
+        yield return Brushes.Cyan;          // #FF00FFFF - 荧光青
+        yield return Brushes.Magenta;       // #FFFF00FF - 荧光紫红
+        yield return Brushes.Yellow;        // #FFFFFF00 - 荧光黄
+        yield return Brushes.Chartreuse;    // #FF7FFF00 - 黄绿色
     }
 }

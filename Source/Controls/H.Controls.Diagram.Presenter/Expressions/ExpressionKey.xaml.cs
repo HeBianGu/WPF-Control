@@ -12,6 +12,7 @@ using System.Windows.Input;
 
 namespace H.Controls.Diagram.Presenter.Expressions;
 
+[TypeConverter(typeof(ExpressionKeyTypeConverter))]
 public interface IExpressionKey
 {
     /// <summary>
@@ -30,7 +31,6 @@ public interface IExpressionKey
     object Value { get; set; }
 }
 
-[TypeConverter(typeof(ExpressionKeyTypeConverter))]
 public class ExpressionKey : BindableBase, IExpressionKey
 {
     private string _GroupName;

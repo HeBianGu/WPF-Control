@@ -6,13 +6,12 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
-namespace H.Controls.Form.PropertyItem.EnumerablePropertyItems
-{
-    public class EnumerablePropertyItem : ObjectPropertyItem<IEnumerable<object>>
-    {
-        public EnumerablePropertyItem(PropertyInfo property, object obj) : base(property, obj)
-        {
+namespace H.Controls.Form.PropertyItem.EnumerablePropertyItems;
 
-        }
+public class EnumerablePropertyItem : ObjectPropertyItem<IEnumerable<object>>
+{
+    public EnumerablePropertyItem(PropertyInfo property, object obj) : base(property, obj)
+    {
+
     }
 }

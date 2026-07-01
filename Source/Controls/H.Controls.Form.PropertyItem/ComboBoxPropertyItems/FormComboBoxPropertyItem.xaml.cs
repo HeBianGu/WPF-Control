@@ -8,13 +8,12 @@
 
 using H.Controls.Form.PropertyItem.Base;
 
-namespace H.Controls.Form.PropertyItem.ComboBoxPropertyItems
-{
-    public class FormComboBoxPropertyItem : SelectSourcePropertyItem<object>, IHitTestPropertyViewItem
-    {
-        public FormComboBoxPropertyItem(PropertyInfo property, object obj) : base(property, obj)
-        {
+namespace H.Controls.Form.PropertyItem.ComboBoxPropertyItems;
 
-        }
+public class FormComboBoxPropertyItem : SelectSourcePropertyItem<object>, IHitTestPropertyViewItem
+{
+    public FormComboBoxPropertyItem(PropertyInfo property, object obj) : base(property, obj)
+    {
+
     }
 }

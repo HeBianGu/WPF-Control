@@ -8,28 +8,27 @@
 
 using System.IO;
 
-namespace H.Controls.Form.PropertyItem.Attribute
+namespace H.Controls.Form.PropertyItem.Attribute;
+
+public class GetFilesSourceAttribute : GetSourceAttribute
 {
-    public class GetFilesSourceAttribute : GetSourceAttribute
+    public GetFilesSourceAttribute(string folderPath)
     {
-        public GetFilesSourceAttribute(string folderPath)
-        {
-            this.FolderPath = folderPath;
-        }
+        this.FolderPath = folderPath;
+    }
 
-        public string FolderPath { get; set; }
-        public SearchOption SearchOption { get; set; } = SearchOption.TopDirectoryOnly;
-        public string SearchPattern { get; set; } = SearchPatterns.AllFiles;
+    public string FolderPath { get; set; }
+    public SearchOption SearchOption { get; set; } = SearchOption.TopDirectoryOnly;
+    public string SearchPattern { get; set; } = SearchPatterns.AllFiles;
 
-        public bool UseFullPath { get; set; } = true;
-        public override IEnumerable GetSource(PropertyInfo propertyInfo, object obj)
-        {
-            if (this.FolderPath == null)
-                return null;
-            var results = this.FolderPath.GetFiles(this.SearchPattern, this.SearchOption);
-            if (this.UseFullPath)
-                return results.Select(x => x.GetFullPath());
-            return results;
-        }
+    public bool UseFullPath { get; set; } = true;
+    public override IEnumerable GetSource(PropertyInfo propertyInfo, object obj)
+    {
+        if (this.FolderPath == null)
+            return null;
+        var results = this.FolderPath.GetFiles(this.SearchPattern, this.SearchOption);
+        if (this.UseFullPath)
+            return results.Select(x => x.GetFullPath());
+        return results;
     }
 }

@@ -11,29 +11,27 @@ using H.Controls.Form.PropertyItem.Base;
 using H.Extensions.FontIcon;
 using H.Services.Message;
 
-namespace H.Controls.Form.PropertyItem.ComboBoxPropertyItems
+namespace H.Controls.Form.PropertyItem.ComboBoxPropertyItems;
+
+public class GroupStyleComboBoxPropertyItem : SelectSourcePropertyItem<object>, IHitTestPropertyViewItem
 {
-    public class GroupStyleComboBoxPropertyItem : SelectSourcePropertyItem<object>, IHitTestPropertyViewItem
+    public GroupStyleComboBoxPropertyItem(PropertyInfo property, object obj) : base(property, obj)
     {
-        public GroupStyleComboBoxPropertyItem(PropertyInfo property, object obj) : base(property, obj)
-        {
 
-        }
+    }
+}
+
+public class RefreshGroupStyleComboBoxPropertyItem : GroupStyleComboBoxPropertyItem
+{
+    public RefreshGroupStyleComboBoxPropertyItem(PropertyInfo property, object obj) : base(property, obj)
+    {
     }
 
-    public class RefreshGroupStyleComboBoxPropertyItem : GroupStyleComboBoxPropertyItem
+    [Icon(FontIcons.Sync)]
+    [Display(Name = "刷新数据源", GroupName = "操作")]
+    public DisplayCommand RefreshSourceCommand => new DisplayCommand(x =>
     {
-        public RefreshGroupStyleComboBoxPropertyItem(PropertyInfo property, object obj) : base(property, obj)
-        {
-        }
-
-        [Icon(FontIcons.Sync)]
-        [Display(Name = "刷新数据源", GroupName = "操作")]
-        public DisplayCommand RefreshSourceCommand => new DisplayCommand(x =>
-        {
-            this.Collection = this.CreateSource()?.ToObservable();
-            IocMessage.Snack.ShowSuccess($"刷新数据完成：共计{this.Collection.Count}条数据");
-        });
-    }
-
+        this.Collection = this.CreateSource()?.ToObservable();
+        IocMessage.Snack.ShowSuccess($"刷新数据完成：共计{this.Collection.Count}条数据");
+    });
 }

@@ -6,21 +6,6 @@
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/H.Style;component/Share.xaml" />
     </ResourceDictionary.MergedDictionaries>
-    <!--<Style x:Key="FocusVisual">
-        <Setter Property="Control.Template">
-            <Setter.Value>
-                <ControlTemplate>
-                    <Rectangle Margin="2"
-                               SnapsToDevicePixels="true"
-                               Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"
-                               StrokeDashArray="1 2"
-                               StrokeThickness="1" />
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>-->
-    <!--<SolidColorBrush x:Key="TextBox.Static.Background"
-                     Color="#FFFFFFFF" />-->
     <Style x:Key="ComboBoxEditableTextBox"
            TargetType="{x:Type TextBox}">
         <Setter Property="OverridesDefaultStyle" Value="true" />

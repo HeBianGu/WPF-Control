@@ -6,22 +6,21 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
-namespace H.Controls.Form.PropertyItem.Attribute
+namespace H.Controls.Form.PropertyItem.Attribute;
+
+public class GetStandardBrushesSourceAttribute : GetSourceAttribute
 {
-    public class GetStandardBrushesSourceAttribute : GetSourceAttribute
+    public override IEnumerable GetSource(PropertyInfo propertyInfo, object obj)
     {
-        public override IEnumerable GetSource(PropertyInfo propertyInfo, object obj)
-        {
-            yield return Brushes.Transparent;
-            yield return Brushes.White;
-            yield return Brushes.Gray;
-            yield return Brushes.Black;
-            yield return Brushes.Red;
-            yield return Brushes.Green;
-            yield return Brushes.Blue;
-            yield return Brushes.Yellow;
-            yield return Brushes.Orange;
-            yield return Brushes.Purple;
-        }
+        yield return Brushes.Transparent;
+        yield return Brushes.White;
+        yield return Brushes.Gray;
+        yield return Brushes.Black;
+        yield return Brushes.Red;
+        yield return Brushes.Green;
+        yield return Brushes.Blue;
+        yield return Brushes.Yellow;
+        yield return Brushes.Orange;
+        yield return Brushes.Purple;
     }
 }

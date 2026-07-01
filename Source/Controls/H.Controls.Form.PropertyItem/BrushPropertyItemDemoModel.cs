@@ -9,26 +9,25 @@
 using H.Controls.Form.PropertyItem.Attribute;
 using H.Controls.Form.PropertyItem.ComboBoxPropertyItems;
 
-namespace H.Controls.Form.PropertyItem
+namespace H.Controls.Form.PropertyItem;
+
+public class BrushPropertyItemDemoModel
 {
-    public class BrushPropertyItemDemoModel
-    {
-        [Display(Name = "BrushesPropertyItem", Description = "演示应用BrushesComboBoxPropertyItem自定义显示样式")]
-        [PropertyItem(typeof(BrushComboBoxPropertyItem))]
-        public Brush Brush { get; set; } = Brushes.Red;
+    [Display(Name = "BrushesPropertyItem", Description = "演示应用BrushesComboBoxPropertyItem自定义显示样式")]
+    [PropertyItem(typeof(BrushComboBoxPropertyItem))]
+    public Brush Brush { get; set; } = Brushes.Red;
 
-        [Display(Name = "GetStandardBrushesSource", Description = "演示应用StandardBrushesComboBoxPropertyItem自定义显示样式")]
-        [GetStandardBrushesSource]
-        [PropertyItem(typeof(BrushComboBoxPropertyItem))]
-        public Brush Standard { get; set; } = Brushes.Red;
+    [Display(Name = "GetStandardBrushesSource", Description = "演示应用StandardBrushesComboBoxPropertyItem自定义显示样式")]
+    [GetStandardBrushesSource]
+    [PropertyItem(typeof(BrushComboBoxPropertyItem))]
+    public Brush Standard { get; set; } = Brushes.Red;
 
-        [Display(Name = "ColorComboBoxPropertyItem", Description = "演示应用BrushesComboBoxPropertyItem自定义显示样式")]
-        [PropertyItem(typeof(ColorComboBoxPropertyItem))]
-        public Color Color { get; set; } = Colors.Red;
+    [Display(Name = "ColorComboBoxPropertyItem", Description = "演示应用BrushesComboBoxPropertyItem自定义显示样式")]
+    [PropertyItem(typeof(ColorComboBoxPropertyItem))]
+    public Color Color { get; set; } = Colors.Red;
 
-        [Display(Name = "GetStandardColorsSource", Description = "演示应用BrushesComboBoxPropertyItem自定义显示样式")]
-        [GetStandardColorsSource]
-        [PropertyItem(typeof(ColorComboBoxPropertyItem))]
-        public Color StandardColor { get; set; } = Colors.Red;
-    }
+    [Display(Name = "GetStandardColorsSource", Description = "演示应用BrushesComboBoxPropertyItem自定义显示样式")]
+    [GetStandardColorsSource]
+    [PropertyItem(typeof(ColorComboBoxPropertyItem))]
+    public Color StandardColor { get; set; } = Colors.Red;
 }

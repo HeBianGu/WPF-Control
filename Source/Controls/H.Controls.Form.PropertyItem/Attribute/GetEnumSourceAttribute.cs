@@ -6,16 +6,15 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
-namespace H.Controls.Form.PropertyItem.Attribute
+namespace H.Controls.Form.PropertyItem.Attribute;
+
+public class GetEnumSourceAttribute : GetSourceAttribute
 {
-    public class GetEnumSourceAttribute : GetSourceAttribute
+    public override IEnumerable GetSource(PropertyInfo propertyInfo, object obj)
     {
-        public override IEnumerable GetSource(PropertyInfo propertyInfo, object obj)
-        {
-            if (propertyInfo.PropertyType.IsEnum == false)
-                return null;
-            Array result = propertyInfo.PropertyType.GetEnumValues();
-            return result;
-        }
+        if (propertyInfo.PropertyType.IsEnum == false)
+            return null;
+        Array result = propertyInfo.PropertyType.GetEnumValues();
+        return result;
     }
 }

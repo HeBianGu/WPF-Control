@@ -6,14 +6,12 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
-namespace H.Controls.Form.PropertyItem.TextPropertyItems
+namespace H.Controls.Form.PropertyItem.TextPropertyItems;
+
+public class PasswordTextPropertyItem : TextPropertyItem
 {
-    public class PasswordTextPropertyItem : TextPropertyItem
+    public PasswordTextPropertyItem(PropertyInfo property, object obj) : base(property, obj)
     {
-        public PasswordTextPropertyItem(PropertyInfo property, object obj) : base(property, obj)
-        {
 
-        }
     }
-
 }

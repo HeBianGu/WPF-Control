@@ -114,7 +114,8 @@ public class TextPropertyItem : ObjectPropertyItem<string>
             t = vc.Convert(obj)?.ToString();
         if (IsTypeConverter(this.PropertyInfo))
             t = TypeConverterToString(obj);
-        t = obj?.ToString();
+        else
+            t = obj?.ToString();
         return true;
     }
 

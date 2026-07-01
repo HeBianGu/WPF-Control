@@ -6,23 +6,22 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
-namespace H.Controls.Form.PropertyItem.Attribute
+namespace H.Controls.Form.PropertyItem.Attribute;
+
+public class GetPropertyNameSourceAttribute : GetSourceAttribute
 {
-    public class GetPropertyNameSourceAttribute : GetSourceAttribute
+    private PropertyInfo _sourcePropertyInfo;
+    public GetPropertyNameSourceAttribute(string propertyName)
     {
-        private PropertyInfo _sourcePropertyInfo;
-        public GetPropertyNameSourceAttribute(string propertyName)
-        {
-            this.PropertyName = propertyName;
-        }
+        this.PropertyName = propertyName;
+    }
 
-        public string PropertyName { get; set; }
+    public string PropertyName { get; set; }
 
-        public override IEnumerable GetSource(PropertyInfo propertyInfo, object obj)
-        {
-            if (_sourcePropertyInfo == null)
-                _sourcePropertyInfo = obj.GetType().GetProperty(this.PropertyName);
-            return _sourcePropertyInfo.GetValue(obj) as IEnumerable;
-        }
+    public override IEnumerable GetSource(PropertyInfo propertyInfo, object obj)
+    {
+        if (_sourcePropertyInfo == null)
+            _sourcePropertyInfo = obj.GetType().GetProperty(this.PropertyName);
+        return _sourcePropertyInfo.GetValue(obj) as IEnumerable;
     }
 }

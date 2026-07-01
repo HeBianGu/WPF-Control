@@ -7,10 +7,7 @@
 // Licensed under the MIT License (the "License")
 
 using H.ValueConverter;
-using System.ComponentModel.DataAnnotations;
 using System.Globalization;
-using System.Windows;
-using System.Windows.Data;
 
 namespace H.Controls.Form.PropertyItem.TextPropertyItems;
 

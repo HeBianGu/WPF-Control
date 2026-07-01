@@ -15,7 +15,7 @@ public interface IInheritanceExpressionKey : IExpressionKey
 
 public class InheritanceExpressionKey : ExpressionKey, IInheritanceExpressionKey
 {
-    public const string NAME = "InheritanceExpressionKey";
+    public const string NAME = "继承";
     public InheritanceExpressionKey()
     {
         this.GroupName = "默认";

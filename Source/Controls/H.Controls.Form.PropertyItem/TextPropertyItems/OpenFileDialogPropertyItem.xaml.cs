@@ -8,79 +8,77 @@
 
 using H.Controls.Form.PropertyItem.TextPropertyItems.Base;
 using H.Services.Message;
-using System.ComponentModel.DataAnnotations;
 using System.IO;
 
-namespace H.Controls.Form.PropertyItem.TextPropertyItems
+namespace H.Controls.Form.PropertyItem.TextPropertyItems;
+
+public class OpenFileDialogFilterAttribute : System.Attribute
 {
-    public class OpenFileDialogFilterAttribute : System.Attribute
+    public OpenFileDialogFilterAttribute(string filter)
     {
-        public OpenFileDialogFilterAttribute(string filter)
-        {
-            this.Filter = filter;
-        }
-        public string Filter { get; set; }
+        this.Filter = filter;
+    }
+    public string Filter { get; set; }
+}
+
+public class OpenFileDialogPropertyItem : CommandsTextPropertyItemBase
+{
+    public OpenFileDialogPropertyItem(PropertyInfo property, object obj) : base(property, obj)
+    {
+
     }
 
-    public class OpenFileDialogPropertyItem : CommandsTextPropertyItemBase
+    [Display(Name = "浏览", Order = 2)]
+    public DisplayCommand OpenCommand => new DisplayCommand(l =>
     {
-        public OpenFileDialogPropertyItem(PropertyInfo property, object obj) : base(property, obj)
+        var filter = this.PropertyInfo.GetCustomAttribute<OpenFileDialogFilterAttribute>();
+        var r = IocMessage.IOFileDialog.ShowOpenFile(x =>
         {
+            if (File.Exists(this.Value))
+                x.InitialDirectory = Path.GetDirectoryName(this.Value).GetFullPath();
+            if (filter != null)
+                x.Filter = filter.Filter;
+        });
+        if (!File.Exists(r))
+            return;
+        this.Value = r;
+    })
+    { Name = "浏览" };
+}
 
-        }
 
-        [Display(Name = "浏览", Order = 2)]
-        public DisplayCommand OpenCommand => new DisplayCommand(l =>
-        {
-            var filter = this.PropertyInfo.GetCustomAttribute<OpenFileDialogFilterAttribute>();
-            var r = IocMessage.IOFileDialog.ShowOpenFile(x =>
-            {
-                if (File.Exists(this.Value))
-                    x.InitialDirectory = Path.GetDirectoryName(this.Value).GetFullPath();
-                if (filter != null)
-                    x.Filter = filter.Filter;
-            });
-            if (!File.Exists(r))
-                return;
-            this.Value = r;
-        })
-        { Name = "浏览" };
+public class OpenFolderDialogPropertyItem : CommandsTextPropertyItemBase
+{
+    public OpenFolderDialogPropertyItem(PropertyInfo property, object obj) : base(property, obj)
+    {
+
     }
 
-
-    public class OpenFolderDialogPropertyItem : CommandsTextPropertyItemBase
+    [Display(Name = "浏览", Order = 2)]
+    public DisplayCommand OpenCommand => new DisplayCommand(l =>
     {
-        public OpenFolderDialogPropertyItem(PropertyInfo property, object obj) : base(property, obj)
-        {
+        var r = IocMessage.IOFolderDialog.ShowOpenFolder();
+        if (!Directory.Exists(r))
+            return;
+        this.Value = r;
+    })
+    { Name = "浏览" };
+}
 
-        }
+public class OpenFolderDialogAppDomainRelativePropertyItem : CommandsTextPropertyItemBase
+{
+    public OpenFolderDialogAppDomainRelativePropertyItem(PropertyInfo property, object obj) : base(property, obj)
+    {
 
-        [Display(Name = "浏览", Order = 2)]
-        public DisplayCommand OpenCommand => new DisplayCommand(l =>
-        {
-            var r = IocMessage.IOFolderDialog.ShowOpenFolder();
-            if (!Directory.Exists(r))
-                return;
-            this.Value = r;
-        })
-        { Name = "浏览" };
     }
 
-    public class OpenFolderDialogAppDomainRelativePropertyItem : CommandsTextPropertyItemBase
+    [Display(Name = "浏览", Order = 2)]
+    public DisplayCommand OpenCommand => new DisplayCommand(l =>
     {
-        public OpenFolderDialogAppDomainRelativePropertyItem(PropertyInfo property, object obj) : base(property, obj)
-        {
-
-        }
-
-        [Display(Name = "浏览", Order = 2)]
-        public DisplayCommand OpenCommand => new DisplayCommand(l =>
-        {
-            var r = IocMessage.IOFolderDialog.ShowOpenFolder();
-            if (!Directory.Exists(r))
-                return;
-            this.Value = r.GetAppDomainRelativePath();
-        })
-        { Name = "浏览" };
-    }
+        var r = IocMessage.IOFolderDialog.ShowOpenFolder();
+        if (!Directory.Exists(r))
+            return;
+        this.Value = r.GetAppDomainRelativePath();
+    })
+    { Name = "浏览" };
 }

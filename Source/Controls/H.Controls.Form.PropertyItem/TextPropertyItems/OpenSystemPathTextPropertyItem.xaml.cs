@@ -6,17 +6,16 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
-namespace H.Controls.Form.PropertyItem.TextPropertyItems
-{
-    public class OpenSystemPathTextPropertyItem : OpenDeleteSystemPathTextPropertyItem
-    {
-        public OpenSystemPathTextPropertyItem(PropertyInfo property, object obj) : base(property, obj)
-        {
+namespace H.Controls.Form.PropertyItem.TextPropertyItems;
 
-        }
-        protected override IEnumerable<IDisplayCommand> CreateCommands()
-        {
-            yield return this.OpenCommand;
-        }
+public class OpenSystemPathTextPropertyItem : OpenDeleteSystemPathTextPropertyItem
+{
+    public OpenSystemPathTextPropertyItem(PropertyInfo property, object obj) : base(property, obj)
+    {
+
+    }
+    protected override IEnumerable<IDisplayCommand> CreateCommands()
+    {
+        yield return this.OpenCommand;
     }
 }

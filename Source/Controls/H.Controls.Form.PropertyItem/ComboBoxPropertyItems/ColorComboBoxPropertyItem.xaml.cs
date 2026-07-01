@@ -8,23 +8,22 @@
 
 using H.Controls.Form.PropertyItem.Base;
 
-namespace H.Controls.Form.PropertyItem.ComboBoxPropertyItems
+namespace H.Controls.Form.PropertyItem.ComboBoxPropertyItems;
+
+public class ColorComboBoxPropertyItem : SelectSourcePropertyItem<Color>
 {
-    public class ColorComboBoxPropertyItem : SelectSourcePropertyItem<Color>
+    public ColorComboBoxPropertyItem(PropertyInfo property, object obj) : base(property, obj)
     {
-        public ColorComboBoxPropertyItem(PropertyInfo property, object obj) : base(property, obj)
-        {
 
-        }
+    }
 
-        protected override IEnumerable<Color> CreateSource()
-        {
-            var source = base.CreateSource();
-            var all = source ?? typeof(Colors).GetProperties().Select(x => x.GetValue(null)).OfType<Color>();
-            if (!all.Contains(this.Value))
-                yield return this.Value;
-            foreach (var item in all)
-                yield return item;
-        }
+    protected override IEnumerable<Color> CreateSource()
+    {
+        var source = base.CreateSource();
+        var all = source ?? typeof(Colors).GetProperties().Select(x => x.GetValue(null)).OfType<Color>();
+        if (!all.Contains(this.Value))
+            yield return this.Value;
+        foreach (var item in all)
+            yield return item;
     }
 }

@@ -6,14 +6,11 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
-using System.Windows.Media;
+namespace H.Controls.Form.PropertyItem.PropertyItems;
 
-namespace H.Controls.Form.PropertyItem.PropertyItems
+public class ColorPropertyItem : ObjectPropertyItem<Color>
 {
-    public class ColorPropertyItem : ObjectPropertyItem<Color>
+    public ColorPropertyItem(PropertyInfo property, object obj) : base(property, obj)
     {
-        public ColorPropertyItem(PropertyInfo property, object obj) : base(property, obj)
-        {
-        }
     }
 }
