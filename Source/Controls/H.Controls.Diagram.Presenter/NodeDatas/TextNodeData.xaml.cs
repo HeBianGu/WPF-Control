@@ -10,7 +10,7 @@ global using H.Common.Interfaces;
 global using H.Controls.Diagram.Presenter.NodeDatas.Base;
 namespace H.Controls.Diagram.Presenter.NodeDatas;
 
-public interface ITextNodeData : INodeData, ITextable
+public interface ITextNodeData : INodeData, ITextable, IIndexable
 {
     FontFamily FontFamily { get; set; }
     double FontSize { get; set; }
@@ -37,6 +37,8 @@ public class TextNodeData : PortableNodeData, ITextNodeData
         this.FontWeight = FontWeights.Normal;
         this.FontStretch = FontStretches.Normal;
     }
+
+    public int Index { get; set; }
 
     private string _text;
     [Display(Name = "文本", GroupName = "常用")]

@@ -294,18 +294,24 @@ public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
     public RelayCommand AddNodedCommand => new RelayCommand(x =>
     {
         if (x is RoutedEventArgs<IEnumerable<Node>> args)
-        {
-            foreach (var item in args.Entity.Select(x => x.GetContent()).OfType<IDiagramableNodeData>())
-            {
-                item.DiagramData = this;
-            }
-
-            foreach (var item in args.Entity.Select(x => x.GetContent()).OfType<ITextNodeData>())
-            {
-                item.Text = this.Datas.NodeDatas.Count + " " + item.Text;
-            }
-        }
+            this.OnAddNoded(args.Entity);
     });
+
+    protected virtual void OnAddNoded(IEnumerable<Node> nodes)
+    {
+        foreach (var item in nodes.Select(x => x.GetContent()).OfType<IDiagramableNodeData>())
+        {
+            item.DiagramData = this;
+        }
+        var nodedatas = this.Datas.NodeDatas.OfType<ITextNodeData>();
+        foreach (var item in nodes.Select(x => x.GetContent()).OfType<ITextNodeData>())
+        {
+            var indexs = nodedatas.Select(x => x.Index);
+            item.Index = indexs.GetSafeIndex();
+            var sametypes = this.Datas.NodeDatas.OfType<ITextNodeData>().Where(x => x.GetType() == item.GetType()).Select(x => x.Text);
+            item.Text = item.Text.GetIndexSafeName(sametypes);
+        }
+    }
 
     public RelayCommand SelectedPartChangedCommand => new RelayCommand(e =>
     {
