@@ -26,13 +26,34 @@ public interface IExpressionKey
     object Value { get; set; }
 }
 
-public class ExpressionKey : IExpressionKey
+public class ExpressionKey : BindableBase, IExpressionKey
 {
+    private string _GroupName;
     [ReadOnly(true)]
     [Display(Name = "分组")]
-    public string GroupName { get; set; }
+    public string GroupName
+    {
+        get { return _GroupName; }
+        set
+        {
+            _GroupName = value;
+            RaisePropertyChanged();
+        }
+    }
+    private string _Name;
     [Display(Name = "名称")]
-    public string Name { get; set; }
+    public string Name
+    {
+        get { return _Name; }
+        set
+        {
+            _Name = value;
+            RaisePropertyChanged();
+        }
+    }
+
+    [Display(Name = "注释")]
+    public string Description { get; set; }
     public string DataType { get; set; }
     public virtual string DisplayName => $"{this.GroupName}.{this.Name}";
     [JsonIgnore]

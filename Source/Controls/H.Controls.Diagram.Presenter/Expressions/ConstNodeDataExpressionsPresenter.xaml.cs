@@ -22,6 +22,7 @@ public class ConstNodeDataExpressionsPresenter : DisplayBindableBase
         {
             _ConstNodeDataExpressions = value;
             RaisePropertyChanged();
+            this.UpdateSearch();
         }
     }
 
@@ -37,6 +38,36 @@ public class ConstNodeDataExpressionsPresenter : DisplayBindableBase
             RaisePropertyChanged();
         }
     }
+
+    private string _SearchText;
+    public string SearchText
+    {
+        get { return _SearchText; }
+        set
+        {
+            _SearchText = value;
+            RaisePropertyChanged();
+            this.UpdateSearch();
+        }
+    }
+
+    private ObservableCollection<IConstExpressionKey> _SearchedConstNodeDataExpressions = new ObservableCollection<IConstExpressionKey>();
+    public ObservableCollection<IConstExpressionKey> SearchedConstNodeDataExpressions
+    {
+        get { return _SearchedConstNodeDataExpressions; }
+        set
+        {
+            _SearchedConstNodeDataExpressions = value;
+            RaisePropertyChanged();
+        }
+    }
+
+
+    public void UpdateSearch()
+    {
+        this.SearchedConstNodeDataExpressions = this.ConstNodeDataExpressions.Where(x => string.IsNullOrWhiteSpace(this.SearchText) || x.Name.Contains(this.SearchText)).ToObservable();
+    }
+
 
 
     public string DefaultGroupName { get; set; } = "全局变量";
@@ -63,33 +94,43 @@ public class ConstNodeDataExpressionsPresenter : DisplayBindableBase
         expression.GroupName = this.DefaultGroupName;
         //expression.UpdatePath();
         this.ConstNodeDataExpressions.Add(expression);
+        this.UpdateSearch();
     });
 
     public RelayCommand EditCommand => new RelayCommand(async x =>
     {
-        await IocMessage.Form.ShowEdit(this.SelectedItem, x =>
+        if (x is IConstExpressionKey constExpressionKey)
         {
-            if (this.ConstNodeDataExpressions.Any(y => y.Name == this.SelectedItem.Name && y != this.SelectedItem))
+            await IocMessage.Form.ShowEdit(constExpressionKey, x =>
             {
-                IocMessage.Snack.ShowError("名称重复，请修改名称");
-                return false;
-            }
-            return true;
-        });
-    }, x => this.SelectedItem != null);
+                if (this.ConstNodeDataExpressions.Any(y => y.Name == constExpressionKey.Name && y != constExpressionKey))
+                {
+                    IocMessage.Snack.ShowError("名称重复，请修改名称");
+                    return false;
+                }
+                this.UpdateSearch();
+                return true;
+            });
+        }
+
+    }, x => x is IConstExpressionKey);
 
 
     public RelayCommand DeleteCommand => new RelayCommand(async x =>
     {
-        var r = await IocMessage.Dialog.ShowDeleteDialog();
-        if (r != true)
-            return;
-        this.ConstNodeDataExpressions.Remove(this.SelectedItem);
-    }, x => this.SelectedItem != null);
+        if (x is IConstExpressionKey constExpressionKey)
+        {
+            var r = await IocMessage.Dialog.ShowDeleteDialog();
+            if (r != true)
+                return;
+            this.ConstNodeDataExpressions.Remove(constExpressionKey);
+            this.UpdateSearch();
+        }
+    }, x => x is IConstExpressionKey);
 
     public IConstExpressionKey Create(ConstType constType)
     {
-        var name = this.ConstNodeDataExpressions.Select(x => x.Name).GetIndexSafeName("默认名称");
+        var name = this.ConstNodeDataExpressions.Select(x => x.Name).GetIndexSafeName("var");
         if (constType == ConstType.Int32)
             return new ConstExpressionKey<int>(0, this.DefaultGroupName) { Name = name };
         if (constType == ConstType.Double)

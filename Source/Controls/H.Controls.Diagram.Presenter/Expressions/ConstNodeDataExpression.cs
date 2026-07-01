@@ -48,6 +48,6 @@ public class ConstExpressionKey<T> : ExpressionKey, IConstExpressionKey
         this.DataType = typeof(T).FullName;
     }
 
-    [Display(Name = "值")]
+    [Display(Name = "当前值")]
     public T CurrentValue { get; set; }
 }
