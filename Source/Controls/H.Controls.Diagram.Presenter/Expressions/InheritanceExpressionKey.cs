@@ -8,15 +8,21 @@
 
 namespace H.Controls.Diagram.Presenter.Expressions;
 
-public class NoneNodeDataExpression : ExpressionKey
+public interface IInheritanceExpressionKey : IExpressionKey
 {
-    public NoneNodeDataExpression()
+
+}
+
+public class InheritanceExpressionKey : ExpressionKey, IInheritanceExpressionKey
+{
+    public const string NAME = "InheritanceExpressionKey";
+    public InheritanceExpressionKey()
     {
         this.GroupName = "默认";
         this.Name = "继承";
     }
 
-    public override string DisplayName => $"{this.Name}";
+    //public override string DisplayName => $"{this.Name}";
 
     //public bool TryGetExpressionValue(IDiagramData diagramData, out object value)
     //{

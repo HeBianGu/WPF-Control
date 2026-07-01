@@ -16,6 +16,7 @@
                       Padding="5,0"
                       Cattach.ItemHeight="Auto"
                       Cattach.UseGuide="False"
+                      IsEditable="True"
                       DisplayMemberPath="{Binding DisplayMemberPath}"
                       ItemsSource="{Binding Source={StaticResource GroupedNodeDatas}}"
                       SelectedItem="{Binding Value}"

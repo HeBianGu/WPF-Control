@@ -6,6 +6,8 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
+using System.Globalization;
+
 namespace H.Controls.Diagram.Presenter.Expressions;
 
 public interface IConstExpressionKey : IExpressionKey
@@ -50,4 +52,8 @@ public class ConstExpressionKey<T> : ExpressionKey, IConstExpressionKey
 
     [Display(Name = "当前值")]
     public T CurrentValue { get; set; }
+
+    public override object Value { get => this.CurrentValue; set => this.CurrentValue = (T)value; }
 }
+
+
