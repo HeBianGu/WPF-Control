@@ -14,7 +14,7 @@ namespace H.Controls.Form.PropertyItem.TextPropertyItems;
 /// <summary>
 /// 支持输入文本和选择参数两种方式，输入文本的TypeConverter需要包含在集合中
 /// </summary>
-public class ComboBoxTextPropertyItem : TextPropertyItem
+public class ComboBoxTextPropertyItem : TextPropertyItem, ISelectSourcePropertyItem
 {
     public ComboBoxTextPropertyItem(PropertyInfo property, object obj) : base(property, obj)
     {
@@ -72,6 +72,11 @@ public class ComboBoxTextPropertyItem : TextPropertyItem
     protected override void SetValue(string value)
     {
         base.SetValue(value);
+    }
+
+    public void RefreshSource()
+    {
+        this.Collection = this.CreateSource().ToObservable();
     }
 
     public RelayCommand MouseDoubleClickCommand => new RelayCommand(x =>
