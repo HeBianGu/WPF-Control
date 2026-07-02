@@ -26,6 +26,12 @@ public static class GetableExpressionExtensions
 {
     public static (bool success, T value) GetExpressionValue<T>(this IFromExpressionSource getableExpression, IExpressionKey expressionKey)
     {
+        if (expressionKey is IInputStringExpressionKey primitiveExpression)
+        {
+            var (success, value) = primitiveExpression.TryParse<T>();
+            if (success)
+                return (true, value);
+        }
         var r = getableExpression.GetFromExpressions<T>().FirstOrDefault(x => x.Equals(expressionKey));
         if (r == null)
             return (false, default);

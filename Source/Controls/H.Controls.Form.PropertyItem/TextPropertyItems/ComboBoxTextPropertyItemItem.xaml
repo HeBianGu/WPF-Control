@@ -2,7 +2,7 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
                     xmlns:local="clr-namespace:H.Controls.Form.PropertyItem.TextPropertyItems">
-    <DataTemplate DataType="{x:Type local:ComboBoxTextPropertyItemItem}">
+    <DataTemplate DataType="{x:Type local:ComboBoxTextPropertyItem}">
         <Border>
             <Grid>
                 <TextBox Height="Auto"

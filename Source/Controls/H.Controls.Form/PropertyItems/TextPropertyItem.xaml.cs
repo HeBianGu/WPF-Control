@@ -123,9 +123,4 @@ public class TextPropertyItem : ObjectPropertyItem<string>
     {
         base.SetValue(value);
     }
-
-    protected override bool CanSetDefault(object obj)
-    {
-        return base.CanSetDefault(obj);
-    }
 }

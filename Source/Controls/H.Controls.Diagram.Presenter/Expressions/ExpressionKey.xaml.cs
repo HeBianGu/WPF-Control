@@ -67,17 +67,22 @@ public class ExpressionKey : BindableBase, IExpressionKey
     public override bool Equals(object obj)
     {
         if (obj is IExpressionKey expression)
-            return this.Name == expression.Name && this.GroupName == expression.GroupName && this.DataType == expression.DataType;
+            return this.Name == expression.Name && this.GroupName == expression.GroupName;
         return false;
     }
 
     public override int GetHashCode()
     {
-        return HashCode.Combine(this.Name, this.GroupName, this.DataType);
+        return HashCode.Combine(this.Name, this.GroupName);
     }
 }
 
-public class PrimitiveExpressionKey : ExpressionKey
+public interface IInputStringExpressionKey : IConstExpressionKey
+{
+    (bool success, T value) TryParse<T>();
+}
+
+public class InputStringExpressionKey : ExpressionKey, IInputStringExpressionKey
 {
     public override bool Equals(object obj)
     {
@@ -90,12 +95,21 @@ public class PrimitiveExpressionKey : ExpressionKey
     {
         return HashCode.Combine(this.Value);
     }
+
+    public (bool success, T value) TryParse<T>()
+    {
+        var r = this.Value.TryChangeType<T>(out T result);
+        return (r, result);
+    }
 }
 public class ExpressionKeyTypeConverter : TypeConverter
 {
     public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
     {
-        return base.CanConvertFrom(context, sourceType);
+        if (sourceType == typeof(string))
+            return true;
+        var r = base.CanConvertFrom(context, sourceType);
+        return r;
     }
     public override object ConvertFrom(ITypeDescriptorContext context, CultureInfo culture, object value)
     {
@@ -103,6 +117,8 @@ public class ExpressionKeyTypeConverter : TypeConverter
         {
             if (str == InheritanceExpressionKey.NAME)
                 return new InheritanceExpressionKey();
+            if (double.TryParse(str, out double dvalue))
+                return new InputStringExpressionKey() { Value = str };
             var arr = str.Split('.');
             if (arr.Length == 2)
             {
@@ -110,7 +126,7 @@ public class ExpressionKeyTypeConverter : TypeConverter
             }
             else
             {
-                return new PrimitiveExpressionKey() { Value = str };
+                return new InputStringExpressionKey() { Value = str };
             }
         }
         return base.ConvertFrom(context, culture, value);
@@ -119,7 +135,7 @@ public class ExpressionKeyTypeConverter : TypeConverter
     {
         if (destinationType == typeof(string))
         {
-            if (value is PrimitiveExpressionKey primitiveExpressionKey)
+            if (value is InputStringExpressionKey primitiveExpressionKey)
             {
                 return $"{primitiveExpressionKey.Value}";
             }

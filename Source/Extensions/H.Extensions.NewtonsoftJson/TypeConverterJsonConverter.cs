@@ -53,6 +53,10 @@ public class TypeConverterJsonConverter : JsonConverter
 {
     TypeConverter CreateTypeConverter(Type objectType)
     {
+        //if(objectType.Name.StartsWith("IEx"))
+        //{
+
+        //}
         var result = TypeDescriptor.GetConverter(objectType);
         return result.GetType() == typeof(TypeConverter) ? null : result;
     }

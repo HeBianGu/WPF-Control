@@ -168,7 +168,7 @@ public class ObjectPropertyItem<T> : BindingVisiblablePropertyItemBase, IDataErr
         }
     }
 
-    private object ConverToObject(T value)
+    protected object ConverToObject(T value)
     {
         if (value == null)
             return null;

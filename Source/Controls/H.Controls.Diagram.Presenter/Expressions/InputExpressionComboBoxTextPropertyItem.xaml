@@ -2,7 +2,7 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
                     xmlns:le="clr-namespace:H.Controls.Diagram.Presenter.Expressions">
-    <DataTemplate DataType="{x:Type le:ExpressionComboBoxPropertyItem}">
+    <DataTemplate DataType="{x:Type le:InputExpressionComboBoxTextPropertyItem}">
         <Border>
             <Border.Resources>
                 <CollectionViewSource x:Key="GroupedNodeDatas"
@@ -28,6 +28,7 @@
                                                   Background="Transparent"
                                                   BorderThickness="0"
                                                   CheckedGlyph="{x:Static FontIcons.ChevronDown}"
+                                                  DockPanel.Dock="Right"
                                                   UncheckedGlyph="{x:Static FontIcons.Link}" />
                             <FontIconButton x:Name="btn_delete"
                                             Width="Auto"
@@ -38,7 +39,6 @@
                                             Command="{DeleteTextCommandExtension}"
                                             CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=TextBox}}"
                                             Content="{x:Static FontIcons.Clear}"
-                                            DockPanel.Dock="Right"
                                             ToolTip="{x:Static Resources.Common_Delete}" />
                         </DockPanel>
                     </Cattach.Attach>
@@ -57,6 +57,17 @@
                         <ListBox MinWidth="200"
                                  Margin="5"
                                  ItemsSource="{Binding Source={StaticResource GroupedNodeDatas}}">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <DockPanel>
+                                        <TextBlock VerticalAlignment="Center">
+                                            <Run Text="{Binding Name}" />
+                                            <Run Text="-" />
+                                        </TextBlock>
+                                        <ContentPresenter Margin="5 0" Content="{Binding Value}"/>
+                                    </DockPanel>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
                             <ItemsControl.GroupStyle>
                                 <GroupStyle>
                                     <GroupStyle.Panel>

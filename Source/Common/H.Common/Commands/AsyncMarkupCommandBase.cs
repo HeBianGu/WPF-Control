@@ -6,6 +6,8 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
+using System.Windows.Input;
+
 namespace H.Common.Commands;
 
 public abstract class AsyncMarkupCommandBase : MarkupCommandBase
@@ -17,7 +19,7 @@ public abstract class AsyncMarkupCommandBase : MarkupCommandBase
         try
         {
             await this.ExecuteAsync(parameter);
-
+            CommandManager.InvalidateRequerySuggested();
         }
         catch (Exception)
         {

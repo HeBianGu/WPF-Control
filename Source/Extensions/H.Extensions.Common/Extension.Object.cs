@@ -257,6 +257,11 @@ public static class ObjectExtension
         }
 
         bool r = obj.TryChangeType(typeof(T), out object robject);
+        if (!r)
+        {
+            result = default;
+            return false;
+        }
         result = (T)robject;
         return r;
     }
@@ -264,13 +269,25 @@ public static class ObjectExtension
     public static bool TryChangeType(this object obj, Type rType, out object result)
     {
         result = null;
+        if (obj == null)
+        {
+            result = default;
+            return false;
+        }
         Type type = obj.GetType();
         if (typeof(IConvertible).IsAssignableFrom(rType) && typeof(IConvertible).IsAssignableFrom(type))
         {
             if (string.IsNullOrEmpty(obj.ToString()))
                 return false;
-            result = Convert.ChangeType(obj, rType);
-            return true;
+            try
+            {
+                result = Convert.ChangeType(obj, rType);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
         }
 
         TypeConverterAttribute tConvert = rType.GetCustomAttribute<TypeConverterAttribute>();
