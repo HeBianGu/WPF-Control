@@ -10,77 +10,52 @@ using H.Controls.Diagram.Presenter.Expressions;
 
 namespace H.Controls.Diagram.Presenter.NodeDatas.Base;
 
-public interface IExpressionNodeData : ITextNodeData, IExpressionable, IDefaultValueExpressionable, INodeData, IFromExpressionSource
+public interface IExpressionNodeData : ITextNodeData, IGetExpressionsable, IDefaultValueExpressionable, INodeData, IGetExpressionKeysable
 {
 
 }
 
 public abstract class ExpressionNodeDataBase : ShowPropertyViewNodeDataBase, IExpressionNodeData
 {
-    public IEnumerable<IExpressionKey> GetFromExpressions<T>()
+    public IEnumerable<IExpression> GetFromExpressions()
     {
-        List<IExpressionKey> result = new List<IExpressionKey>();
+        List<IExpression> result = new List<IExpression>();
         if (this is IDefaultValueExpressionable defaultValueExpressionable)
         {
             var defaults = defaultValueExpressionable.GetDefaultValueExpressions();
-            result = result.Concat(defaults).ToList();
+            foreach (var item in defaults)
+                yield return item;
         }
 
-        if (this.DiagramData is IExpressionable expressionable)
+        if (this.DiagramData is IGetExpressionsable expressionable)
         {
-            result.AddRange(expressionable.GetExpressions());
+            foreach (var item in expressionable.GetExpressions())
+                yield return item;
         }
         var allfrom = this.AllFromNodeDatas.OfType<IExpressionNodeData>().OrderBy(x => x.Text).SelectMany(x => x.GetExpressions());
-        result = result.Concat(allfrom).Where(x => x.DataType == typeof(T).FullName).ToList();
-        return result;
+        foreach (var item in allfrom)
+            yield return item;
     }
 
-    public IEnumerable<IExpressionKey> GetIntFromExpressions() => this.GetFromExpressions<int>();
-    public IEnumerable<IExpressionKey> GetDoubleFromExpressions() => this.GetFromExpressions<double>();
-    public IEnumerable<IExpressionKey> GetFloatFromExpressions() => this.GetFromExpressions<float>();
-    public IEnumerable<IExpressionKey> GetStringFromExpressions() => this.GetFromExpressions<string>();
+    public IEnumerable<IExpressionKey> GetIntFromExpressionKeys() => this.GetFromExpressionKeys<int>();
+    public IEnumerable<IExpressionKey> GetDoubleFromExpressionKeys() => this.GetFromExpressionKeys<double>();
+    public IEnumerable<IExpressionKey> GetFloatFromExpressionKeys() => this.GetFromExpressionKeys<float>();
+    public IEnumerable<IExpressionKey> GetStringFromExpressionKeys() => this.GetFromExpressionKeys<string>();
 
-    public IEnumerable<IExpressionKey> GetPrimitiveFromExpressions() => this.GetFromExpressions<string>().Concat(this.GetFromExpressions<float>()).Concat(this.GetFromExpressions<double>()).Concat(this.GetFromExpressions<int>());
-    public IEnumerable<IExpressionKey> GetBoolFromExpressions() => this.GetFromExpressions<bool>();
-    public IEnumerable<IExpressionKey> GetUIntFromExpressions() => this.GetFromExpressions<uint>();
-    public IEnumerable<IExpressionKey> GetRectFromExpressions() => this.GetFromExpressions<Rect>();
-    public IEnumerable<IExpressionKey> GetPointFromExpressions() => this.GetFromExpressions<Point>();
+    public IEnumerable<IExpressionKey> GetPrimitiveFromExpressionKeys() => this.GetFromExpressionKeys<string>().Concat(this.GetFromExpressionKeys<float>()).Concat(this.GetFromExpressionKeys<double>()).Concat(this.GetFromExpressionKeys<int>());
+    public IEnumerable<IExpressionKey> GetBoolFromExpressionKeys() => this.GetFromExpressionKeys<bool>();
+    public IEnumerable<IExpressionKey> GetUIntFromExpressionKeys() => this.GetFromExpressionKeys<uint>();
+    public IEnumerable<IExpressionKey> GetRectFromExpressionKeys() => this.GetFromExpressionKeys<Rect>();
+    public IEnumerable<IExpressionKey> GetPointFromExpressionKeys() => this.GetFromExpressionKeys<Point>();
 
-    public IEnumerable<IExpressionKey> GetPointssFromExpressions() => this.GetFromExpressions<Point[][]>();
-    public IEnumerable<IExpressionKey> GetSizeFromExpressions() => this.GetFromExpressions<Size>();
-    public virtual IEnumerable<IExpressionKey> GetExpressions(Predicate<object> predicate = null)
+    public IEnumerable<IExpressionKey> GetPointssFromExpressionKeys() => this.GetFromExpressionKeys<Point[][]>();
+    public IEnumerable<IExpressionKey> GetSizeFromExpressionKeys() => this.GetFromExpressionKeys<Size>();
+    public virtual IEnumerable<IExpression> GetExpressions(Predicate<object> predicate = null)
     {
         return this.GetPropertyInfoExpressions(this.Text, predicate);
     }
 
-    //public virtual (bool success, T value) GetExpressionValue<T>(IExpressionKey expressionKey)
-    //{
-    //    var r = this.GetFromExpressions<T>().FirstOrDefault(x => x.Equals(expressionKey));
-    //    if (r == null)
-    //        return (false, default);
-    //    if (r.Value is T tValue)
-    //        return (true, tValue);
-    //    return (false, default);
-    //}
-
-    //public virtual bool TryGetExpressionValue<T>(IExpressionKey expression, out T value)
-    //{
-    //    value = default;
-    //    var key = this.GetExpressions().FirstOrDefault(x => x == expression);
-    //    if (key.Value is T tValue)
-    //    {
-    //        value = tValue;
-    //        return true;
-    //    }
-    //    return false;
-    //}
-
-    //public virtual bool TryGetExpressionValue(ExpressionKey expression, out object value)
-    //{
-    //    return expression.TryGetExpressionValue(this.DiagramData, out value);
-    //}
-
-    public virtual IEnumerable<IExpressionKey> GetDefaultValueExpressions(Predicate<object> predicate = null)
+    public virtual IEnumerable<IExpression> GetDefaultValueExpressions(Predicate<object> predicate = null)
     {
         yield break;
     }

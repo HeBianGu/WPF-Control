@@ -14,6 +14,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.Diagnostics;
 using System.Text.Json.Serialization;
 
 namespace H.Extensions.NewtonsoftJson;
@@ -48,6 +49,7 @@ public class NewtonsoftJsonOptions : IocOptionInstance<NewtonsoftJsonOptions>, I
                 new JsonableJsonConverter() },//这部分序列化是会逻辑有问题用FilterBox测试
             Error = (sender, args) =>
             {
+                Trace.Assert(false);
                 // 记录错误
                 IocLog.Error($"Json兼容错误: {args.ErrorContext.Path}");
                 IocLog.Error(args.ErrorContext.Error.Message);

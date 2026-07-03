@@ -6,6 +6,7 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
+using H.Services.Serializable;
 using System.Globalization;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
@@ -23,12 +24,61 @@ public interface IExpressionKey
     /// 分组名称
     /// </summary>
     string GroupName { get; set; }
+}
+
+public interface IExpression
+{
+    /// <summary>
+    /// 唯一名称
+    /// </summary>
+    string Name { get; set; }
+    /// <summary>
+    /// 分组名称
+    /// </summary>
+    string GroupName { get; set; }
     /// <summary>
     /// 数据类型
     /// </summary>
     string DataType { get; set; }
 
     object Value { get; set; }
+
+    IExpressionKey ToKey();
+}
+
+public class Expression : BindableBase, IExpression
+{
+    private string _GroupName;
+    [ReadOnly(true)]
+    [Display(Name = "分组")]
+    public string GroupName
+    {
+        get { return _GroupName; }
+        set
+        {
+            _GroupName = value;
+            RaisePropertyChanged();
+        }
+    }
+    private string _Name;
+    [Display(Name = "名称")]
+    public string Name
+    {
+        get { return _Name; }
+        set
+        {
+            _Name = value;
+            RaisePropertyChanged();
+        }
+    }
+    public string DataType { get; set; }
+    [JsonIgnore]
+    public virtual object Value { get; set; }
+
+    public virtual IExpressionKey ToKey()
+    {
+        return new ExpressionKey() { GroupName = this.GroupName, Name = this.Name };
+    }
 }
 
 public class ExpressionKey : BindableBase, IExpressionKey
@@ -57,12 +107,8 @@ public class ExpressionKey : BindableBase, IExpressionKey
         }
     }
 
-    [Display(Name = "注释")]
-    public string Description { get; set; }
-    public string DataType { get; set; }
     public virtual string DisplayName => $"{this.GroupName}.{this.Name}";
-    [JsonIgnore]
-    public virtual object Value { get; set; }
+
 
     public override bool Equals(object obj)
     {
@@ -77,16 +123,18 @@ public class ExpressionKey : BindableBase, IExpressionKey
     }
 }
 
-public interface IInputStringExpressionKey : IConstExpressionKey
+public interface IInputStringExpressionKey : IExpressionKey
 {
+    object Value { get; set; }
     (bool success, T value) TryParse<T>();
 }
 
 public class InputStringExpressionKey : ExpressionKey, IInputStringExpressionKey
 {
+    public object Value { get; set; }
     public override bool Equals(object obj)
     {
-        if (obj is IExpressionKey expression)
+        if (obj is IInputStringExpressionKey expression)
             return this.Value == expression.Value;
         return false;
     }
@@ -102,6 +150,8 @@ public class InputStringExpressionKey : ExpressionKey, IInputStringExpressionKey
         return (r, result);
     }
 }
+
+[IgnoreTypeConverterJsonConverter]
 public class ExpressionKeyTypeConverter : TypeConverter
 {
     public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)

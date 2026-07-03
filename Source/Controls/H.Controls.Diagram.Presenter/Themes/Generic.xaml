@@ -34,6 +34,6 @@
         <!--<ResourceDictionary Source="pack://application:,,,/H.Controls.Diagram.Presenter;component/CommandsPropertyPresenter.xaml" />-->
         <ResourceDictionary Source="pack://application:,,,/H.Controls.Diagram.Presenter;component/Expressions/ExpressionKey.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Controls.Diagram.Presenter;component/Expressions/InputExpressionComboBoxTextPropertyItem.xaml" />
-        <ResourceDictionary Source="pack://application:,,,/H.Controls.Diagram.Presenter;component/Expressions/ConstNodeDataExpressionsPresenter.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Controls.Diagram.Presenter;component/Expressions/VarExpressionsPresenter.xaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

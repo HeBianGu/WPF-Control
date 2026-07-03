@@ -12,24 +12,22 @@ namespace H.Controls.Diagram.Presenter.Expressions;
 
 [Icon(FontIcons.Globe)]
 [Display(Name = "全局变量", GroupName = SettingGroupNames.GroupData, Order = 0)]
-public class ConstNodeDataExpressionsPresenter : DisplayBindableBase
+public class VarExpressionsPresenter : DisplayBindableBase
 {
-    private ObservableCollection<IConstExpressionKey> _ConstNodeDataExpressions = new ObservableCollection<IConstExpressionKey>();
-    public ObservableCollection<IConstExpressionKey> ConstNodeDataExpressions
+    private ObservableCollection<IVarExpression> _VarExpressions = new ObservableCollection<IVarExpression>();
+    public ObservableCollection<IVarExpression> VarExpressions
     {
-        get { return _ConstNodeDataExpressions; }
+        get { return _VarExpressions; }
         set
         {
-            _ConstNodeDataExpressions = value;
+            _VarExpressions = value;
             RaisePropertyChanged();
             this.UpdateSearch();
         }
     }
 
-
-    private IConstExpressionKey _SelectedItem;
-
-    public IConstExpressionKey SelectedItem
+    private IVarExpression _SelectedItem;
+    public IVarExpression SelectedItem
     {
         get { return _SelectedItem; }
         set
@@ -51,13 +49,13 @@ public class ConstNodeDataExpressionsPresenter : DisplayBindableBase
         }
     }
 
-    private ObservableCollection<IConstExpressionKey> _SearchedConstNodeDataExpressions = new ObservableCollection<IConstExpressionKey>();
-    public ObservableCollection<IConstExpressionKey> SearchedConstNodeDataExpressions
+    private ObservableCollection<IVarExpression> _SearchedVarExpressions = new ObservableCollection<IVarExpression>();
+    public ObservableCollection<IVarExpression> SearchedVarExpressions
     {
-        get { return _SearchedConstNodeDataExpressions; }
+        get { return _SearchedVarExpressions; }
         set
         {
-            _SearchedConstNodeDataExpressions = value;
+            _SearchedVarExpressions = value;
             RaisePropertyChanged();
         }
     }
@@ -65,10 +63,8 @@ public class ConstNodeDataExpressionsPresenter : DisplayBindableBase
 
     public void UpdateSearch()
     {
-        this.SearchedConstNodeDataExpressions = this.ConstNodeDataExpressions.Where(x => string.IsNullOrWhiteSpace(this.SearchText) || x.Name.Contains(this.SearchText)).ToObservable();
+        this.SearchedVarExpressions = this.VarExpressions.Where(x => string.IsNullOrWhiteSpace(this.SearchText) || x.Name.Contains(this.SearchText)).ToObservable();
     }
-
-
 
     public string DefaultGroupName { get; set; } = "全局变量";
 
@@ -79,10 +75,10 @@ public class ConstNodeDataExpressionsPresenter : DisplayBindableBase
         if (r != true)
             return;
 
-        IConstExpressionKey expression = this.Create(typeSelector.ConstType);
+        IVarExpression expression = this.Create(typeSelector.ConstType);
         r = await IocMessage.Form.ShowEdit(expression, x =>
         {
-            if (this.ConstNodeDataExpressions.Any(x => x.Name == expression.Name))
+            if (this.VarExpressions.Any(x => x.Name == expression.Name))
             {
                 IocMessage.Snack.ShowError("名称重复，请修改名称");
                 return false;
@@ -93,17 +89,17 @@ public class ConstNodeDataExpressionsPresenter : DisplayBindableBase
             return;
         expression.GroupName = this.DefaultGroupName;
         //expression.UpdatePath();
-        this.ConstNodeDataExpressions.Add(expression);
+        this.VarExpressions.Add(expression);
         this.UpdateSearch();
     });
 
     public RelayCommand EditCommand => new RelayCommand(async x =>
     {
-        if (x is IConstExpressionKey constExpressionKey)
+        if (x is IVarExpression constExpressionKey)
         {
             await IocMessage.Form.ShowEdit(constExpressionKey, x =>
             {
-                if (this.ConstNodeDataExpressions.Any(y => y.Name == constExpressionKey.Name && y != constExpressionKey))
+                if (this.VarExpressions.Any(y => y.Name == constExpressionKey.Name && y != constExpressionKey))
                 {
                     IocMessage.Snack.ShowError("名称重复，请修改名称");
                     return false;
@@ -113,29 +109,29 @@ public class ConstNodeDataExpressionsPresenter : DisplayBindableBase
             });
         }
 
-    }, x => x is IConstExpressionKey);
+    }, x => x is IVarExpression);
 
 
     public RelayCommand DeleteCommand => new RelayCommand(async x =>
     {
-        if (x is IConstExpressionKey constExpressionKey)
+        if (x is IVarExpression constExpressionKey)
         {
             var r = await IocMessage.Dialog.ShowDeleteDialog();
             if (r != true)
                 return;
-            this.ConstNodeDataExpressions.Remove(constExpressionKey);
+            this.VarExpressions.Remove(constExpressionKey);
             this.UpdateSearch();
         }
-    }, x => x is IConstExpressionKey);
+    }, x => x is IVarExpression);
 
-    public IConstExpressionKey Create(ConstType constType)
+    public IVarExpression Create(ConstType constType)
     {
-        var name = this.ConstNodeDataExpressions.Select(x => x.Name).GetIndexSafeName("var");
+        var name = this.VarExpressions.Select(x => x.Name).GetIndexSafeName("var");
         if (constType == ConstType.Int32)
-            return new ConstExpressionKey<int>(0, this.DefaultGroupName) { Name = name };
+            return new VarExpression<int>(0, this.DefaultGroupName) { Name = name };
         if (constType == ConstType.Double)
-            return new ConstExpressionKey<double>(0.0, this.DefaultGroupName) { Name = name };
-        return new ConstExpressionKey<string>(null, this.DefaultGroupName) { Name = name };
+            return new VarExpression<double>(0.0, this.DefaultGroupName) { Name = name };
+        return new VarExpression<string>(null, this.DefaultGroupName) { Name = name };
     }
 }
 

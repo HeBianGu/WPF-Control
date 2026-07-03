@@ -6,59 +6,66 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
+using H.Services.Serializable;
 using Newtonsoft.Json;
 using System.ComponentModel;
+using System.Reflection;
 using System.Windows;
 using System.Windows.Threading;
 
 namespace H.Extensions.NewtonsoftJson;
 
-public class TypeConverterJsonConverter<T> : JsonConverter where T : TypeConverter
-{
-    T CreateTypeConverter()
-    {
-        return Activator.CreateInstance<T>();
-    }
-    public override bool CanConvert(Type objectType)
-    {
-        TypeConverter converter = CreateTypeConverter();
-        return converter != null && converter.CanConvertFrom(typeof(string)) && converter.CanConvertTo(typeof(string));
-    }
+//public class TypeConverterJsonConverter<T> : JsonConverter where T : TypeConverter
+//{
+//    T CreateTypeConverter()
+//    {
+//        return Activator.CreateInstance<T>();
+//    }
+//    public override bool CanConvert(Type objectType)
+//    {
+//        TypeConverter converter = CreateTypeConverter();
+//        return converter != null && converter.CanConvertFrom(typeof(string)) && converter.CanConvertTo(typeof(string));
+//    }
 
-    public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
-    {
-        if (reader.TokenType == JsonToken.Null)
-        {
-            return null;
-        }
+//    public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
+//    {
+//        if (reader.TokenType == JsonToken.Null)
+//        {
+//            return null;
+//        }
 
-        TypeConverter converter = CreateTypeConverter();
-        return converter.ConvertFromInvariantString((string)reader.Value);
-    }
+//        TypeConverter converter = CreateTypeConverter();
+//        return converter.ConvertFromInvariantString((string)reader.Value);
+//    }
 
-    public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
-    {
-        if (value == null)
-        {
-            writer.WriteNull();
-            return;
-        }
-        TypeConverter converter = CreateTypeConverter();
-        writer.WriteValue(converter.ConvertToInvariantString(value));
-    }
+//    public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
+//    {
+//        if (value == null)
+//        {
+//            writer.WriteNull();
+//            return;
+//        }
+//        TypeConverter converter = CreateTypeConverter();
+//        writer.WriteValue(converter.ConvertToInvariantString(value));
+//    }
 
-}
+//}
 
 public class TypeConverterJsonConverter : JsonConverter
 {
     TypeConverter CreateTypeConverter(Type objectType)
     {
-        //if(objectType.Name.StartsWith("IEx"))
-        //{
-
-        //}
         var result = TypeDescriptor.GetConverter(objectType);
-        return result.GetType() == typeof(TypeConverter) ? null : result;
+        var converterType = result.GetType();
+
+        //if (converterType.Name.StartsWith("ExpressionKeyTypeConverter"))
+        //{
+        //    return null;
+        //}
+
+        if (converterType.GetCustomAttribute<IgnoreTypeConverterJsonConverterAttribute>() != null)
+            return null;
+        return converterType == typeof(TypeConverter) ? null : result;
     }
     public override bool CanConvert(Type objectType)
     {
@@ -66,19 +73,20 @@ public class TypeConverterJsonConverter : JsonConverter
             return false;
         if (objectType.IsEnum)
             return false;
-        //if (!objectType.IsClass)
-        //    return false;
-        //return true;
+        if (objectType == typeof(string))
+            return false;
+        if (objectType == typeof(DateTime))
+            return false;
         TypeConverter converter = CreateTypeConverter(objectType);
-        return converter != null && converter.CanConvertFrom(typeof(string)) && converter.CanConvertTo(typeof(string));
+        if (converter == null)
+            return false;
+        return converter.CanConvertFrom(typeof(string)) && converter.CanConvertTo(typeof(string));
     }
 
     public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
     {
         if (reader.TokenType == JsonToken.Null)
-        {
             return null;
-        }
         TypeConverter converter = CreateTypeConverter(objectType);
         if (reader?.Value is string str && converter != null)
         {
@@ -99,8 +107,10 @@ public class TypeConverterJsonConverter : JsonConverter
         }
         TypeConverter converter = CreateTypeConverter(value.GetType());
         if (converter == null)
+        {
             writer.WriteValue(value);
-
+            return;
+        }
         //if (value is Freezable freezable && freezable.IsFrozen)
         //{
         //    writer.WriteValue(converter.ConvertToInvariantString(value));

@@ -17,14 +17,14 @@
 
 namespace H.Controls.Diagram.Presenter.Expressions;
 
-public interface IFromExpressionSource
+public interface IGetExpressionKeysable
 {
-    IEnumerable<IExpressionKey> GetFromExpressions<T>();
+    IEnumerable<IExpression> GetFromExpressions();
 }
 
-public static class GetableExpressionExtensions
+public static class IGetExpressionKeysableExtensions
 {
-    public static (bool success, T value) GetExpressionValue<T>(this IFromExpressionSource getableExpression, IExpressionKey expressionKey)
+    public static (bool success, T value) GetExpressionValue<T>(this IGetExpressionKeysable getableExpression, IExpressionKey expressionKey)
     {
         if (expressionKey is IInputStringExpressionKey primitiveExpression)
         {
@@ -32,25 +32,50 @@ public static class GetableExpressionExtensions
             if (success)
                 return (true, value);
         }
-        var r = getableExpression.GetFromExpressions<T>().FirstOrDefault(x => x.Equals(expressionKey));
-        if (r == null)
+        var r = getableExpression.GetExpressionValue(expressionKey);
+        if (!r.success)
             return (false, default);
-        if (r.Value is T tValue)
+        if (r.value is T tValue)
             return (true, tValue);
         return (false, default);
     }
 
-    public static IEnumerable<IExpressionKey> GetIntFromExpressions(this IFromExpressionSource getableExpression) => getableExpression.GetFromExpressions<int>();
-    public static IEnumerable<IExpressionKey> GetDoubleFromExpressions(this IFromExpressionSource getableExpression) => getableExpression.GetFromExpressions<double>();
-    public static IEnumerable<IExpressionKey> GetFloatFromExpressions(this IFromExpressionSource getableExpression) => getableExpression.GetFromExpressions<float>();
-    public static IEnumerable<IExpressionKey> GetStringFromExpressions(this IFromExpressionSource getableExpression) => getableExpression.GetFromExpressions<string>();
+    public static (bool success, object value) GetExpressionValue(this IGetExpressionKeysable getableExpression, IExpressionKey expressionKey)
+    {
+        if (expressionKey is IInputStringExpressionKey primitiveExpression)
+            return (true, primitiveExpression.Value);
+        var r = getableExpression.GetFromExpression(expressionKey);
+        return (true, r.Value);
+    }
 
-    public static IEnumerable<IExpressionKey> GetPrimitiveFromExpressions(this IFromExpressionSource getableExpression) => getableExpression.GetFromExpressions<string>().Concat(getableExpression.GetFromExpressions<float>()).Concat(getableExpression.GetFromExpressions<double>()).Concat(getableExpression.GetFromExpressions<int>());
-    public static IEnumerable<IExpressionKey> GetBoolFromExpressions(this IFromExpressionSource getableExpression) => getableExpression.GetFromExpressions<bool>();
-    public static IEnumerable<IExpressionKey> GetUIntFromExpressions(this IFromExpressionSource getableExpression) => getableExpression.GetFromExpressions<uint>();
-    public static IEnumerable<IExpressionKey> GetRectFromExpressions(this IFromExpressionSource getableExpression) => getableExpression.GetFromExpressions<Rect>();
-    public static IEnumerable<IExpressionKey> GetPointFromExpressions(this IFromExpressionSource getableExpression) => getableExpression.GetFromExpressions<Point>();
+    public static IEnumerable<IExpression> GetFromExpressions(this IGetExpressionKeysable getableExpression, IExpressionKey expressionKey)
+    {
+        return getableExpression.GetFromExpressions().Where(x => x.ToKey().Equals(expressionKey));
+    }
 
-    public static IEnumerable<IExpressionKey> GetPointssFromExpressions(this IFromExpressionSource getableExpression) => getableExpression.GetFromExpressions<Point[][]>();
-    public static IEnumerable<IExpressionKey> GetSizeFromExpressions(this IFromExpressionSource getableExpression) => getableExpression.GetFromExpressions<Size>();
+    public static IExpression GetFromExpression(this IGetExpressionKeysable getableExpression, IExpressionKey expressionKey)
+    {
+        return getableExpression.GetFromExpressions(expressionKey).FirstOrDefault();
+    }
+
+    public static IEnumerable<IExpressionKey> GetFromExpressionKeys(this IGetExpressionKeysable getableExpression, Predicate<IExpression> predicate = null)
+    {
+        return getableExpression.GetFromExpressions().Where(x => predicate == null || predicate(x)).Select(x => x.ToKey());
+    }
+
+    public static IEnumerable<IExpressionKey> GetFromExpressionKeys<T>(this IGetExpressionKeysable getableExpression) => getableExpression.GetFromExpressionKeys(x => x.DataType == typeof(T).FullName);
+
+    public static IEnumerable<IExpressionKey> GetIntFromExpressionKeys(this IGetExpressionKeysable getableExpression) => getableExpression.GetFromExpressionKeys<int>();
+    public static IEnumerable<IExpressionKey> GetDoubleFromExpressionKeys(this IGetExpressionKeysable getableExpression) => getableExpression.GetFromExpressionKeys<double>();
+    public static IEnumerable<IExpressionKey> GetFloatFromExpressionKeys(this IGetExpressionKeysable getableExpression) => getableExpression.GetFromExpressionKeys<float>();
+    public static IEnumerable<IExpressionKey> GetStringFromExpressionKeys(this IGetExpressionKeysable getableExpression) => getableExpression.GetFromExpressionKeys<string>();
+
+    public static IEnumerable<IExpressionKey> GetPrimitiveFromExpressionKeys(this IGetExpressionKeysable getableExpression) => getableExpression.GetFromExpressionKeys<string>().Concat(getableExpression.GetFromExpressionKeys<float>()).Concat(getableExpression.GetFromExpressionKeys<double>()).Concat(getableExpression.GetFromExpressionKeys<int>());
+    public static IEnumerable<IExpressionKey> GetBoolFromExpressionKeys(this IGetExpressionKeysable getableExpression) => getableExpression.GetFromExpressionKeys<bool>();
+    public static IEnumerable<IExpressionKey> GetUIntFromExpressionKeys(this IGetExpressionKeysable getableExpression) => getableExpression.GetFromExpressionKeys<uint>();
+    public static IEnumerable<IExpressionKey> GetRectFromExpressionKeys(this IGetExpressionKeysable getableExpression) => getableExpression.GetFromExpressionKeys<Rect>();
+    public static IEnumerable<IExpressionKey> GetPointFromExpressionKeys(this IGetExpressionKeysable getableExpression) => getableExpression.GetFromExpressionKeys<Point>();
+
+    public static IEnumerable<IExpressionKey> GetPointssFromExpressionKeys(this IGetExpressionKeysable getableExpression) => getableExpression.GetFromExpressionKeys<Point[][]>();
+    public static IEnumerable<IExpressionKey> GetSizeFromExpressioKeyns(this IGetExpressionKeysable getableExpression) => getableExpression.GetFromExpressionKeys<Size>();
 }

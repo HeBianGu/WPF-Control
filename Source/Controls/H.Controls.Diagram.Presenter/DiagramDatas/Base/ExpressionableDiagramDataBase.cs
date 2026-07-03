@@ -10,7 +10,7 @@ using H.Controls.Diagram.Presenter.Expressions;
 
 namespace H.Controls.Diagram.Presenter.DiagramDatas.Base;
 
-public abstract class ExpressionableDiagramDataBase : ZoomableDiagramDataBase, IExpressionable
+public abstract class ExpressionableDiagramDataBase : ZoomableDiagramDataBase, IGetExpressionsable
 {
     #region - 节点表达式添加方式示例 -
 
@@ -34,32 +34,32 @@ public abstract class ExpressionableDiagramDataBase : ZoomableDiagramDataBase, I
     [Display(Name = "示例：自定义字符串", Description = "用来演示如何增加节点表达式参数")]
     public string StringValue { get; set; } = "Hello World";
 
-    private ObservableCollection<IConstExpressionKey> _ConstNodeDataExpressions = new ObservableCollection<IConstExpressionKey>();
-    public ObservableCollection<IConstExpressionKey> ConstNodeDataExpressions
+    private ObservableCollection<IVarExpression> _VarExpressions = new ObservableCollection<IVarExpression>();
+    public ObservableCollection<IVarExpression> VarExpressions
     {
-        get { return _ConstNodeDataExpressions; }
+        get { return _VarExpressions; }
         set
         {
-            _ConstNodeDataExpressions = value;
+            _VarExpressions = value;
             RaisePropertyChanged();
         }
     }
 
     [Icon(FontIcons.Globe)]
     [Display(Name = "流程局部变量", GroupName = "操作", Order = 0)]
-    public DisplayCommand ShowConstExpressionsCommand => new DisplayCommand(async x =>
+    public DisplayCommand ShowVarExpressionKeysCommand => new DisplayCommand(async x =>
     {
-        ConstNodeDataExpressionsPresenter constNodeDataExpressionsPresenter = new ConstNodeDataExpressionsPresenter();
-        constNodeDataExpressionsPresenter.DefaultGroupName = "流程局部变量";
-        constNodeDataExpressionsPresenter.ConstNodeDataExpressions = this.ConstNodeDataExpressions;
-        var r = await IocMessage.Dialog.Show(constNodeDataExpressionsPresenter, x => x.Title = "流程局部变量");
+        VarExpressionsPresenter varExpressionsPresenter = new VarExpressionsPresenter();
+        varExpressionsPresenter.DefaultGroupName = "流程局部变量";
+        varExpressionsPresenter.VarExpressions = this.VarExpressions;
+        var r = await IocMessage.Dialog.Show(varExpressionsPresenter, x => x.Title = "流程局部变量");
         if (r != true)
             return;
-        this.ConstNodeDataExpressions = constNodeDataExpressionsPresenter.ConstNodeDataExpressions;
+        this.VarExpressions = varExpressionsPresenter.VarExpressions;
     });
 
 
-    public virtual IEnumerable<IExpressionKey> GetExpressions(Predicate<object> predicate = null)
+    public virtual IEnumerable<IExpression> GetExpressions(Predicate<object> predicate = null)
     {
         //foreach (var item in Controls.Diagram.Presenter.Expressions.ConstNodeDataExpressions.GetDefaults().OfType<IExpressionKey>())
         //{
@@ -69,7 +69,7 @@ public abstract class ExpressionableDiagramDataBase : ZoomableDiagramDataBase, I
         //yield return new ConstExpressionKey<int>(10, this.Name);
         //yield return new ConstExpressionKey<double>(3.14, this.Name);
 
-        foreach (var item in this.ConstNodeDataExpressions)
+        foreach (var item in this.VarExpressions)
         {
             yield return item;
         }

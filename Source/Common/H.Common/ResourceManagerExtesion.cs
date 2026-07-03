@@ -50,10 +50,10 @@ public static class ResourceManagerExtesion
     {
         string result = assembly.GetResourceManager()?.GetString(key);
 
-#if DEBUG
-        if (result == null && def != null)
-            WhiteLine(key, def);
-#endif
+//#if DEBUG
+//        if (result == null && def != null)
+//            WhiteLine(key, def);
+//#endif
         return result;
     }
 

@@ -62,9 +62,8 @@
                                     <DockPanel>
                                         <TextBlock VerticalAlignment="Center">
                                             <Run Text="{Binding Name}" />
-                                            <Run Text="-" />
                                         </TextBlock>
-                                        <ContentPresenter Margin="5 0" Content="{Binding Value}"/>
+                                        <!--<ContentPresenter Margin="5 0" Content="{Binding Value}"/>-->
                                     </DockPanel>
                                 </DataTemplate>
                             </ItemsControl.ItemTemplate>

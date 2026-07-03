@@ -97,6 +97,9 @@ public class TypeConverterJsonConverter : JsonConverter<object>
     private TypeConverter CreateTypeConverter(Type objectType)
     {
         TypeConverter result = TypeDescriptor.GetConverter(objectType);
+        var converterType = result.GetType();
+        if (converterType.GetCustomAttribute<IgnoreTypeConverterJsonConverterAttribute>() != null)
+            return null;
         return result.GetType() == typeof(TypeConverter) ? null : result;
     }
     public override bool CanConvert(Type objectType)
@@ -105,11 +108,14 @@ public class TypeConverterJsonConverter : JsonConverter<object>
             return false;
         if (objectType.IsEnum)
             return false;
-        //if (!objectType.IsClass)
-        //    return false;
-        // 检查是否存在能够转换到字符串和从字符串转换回来的 TypeConverter
+        if (objectType == typeof(string))
+            return false;
+        if (objectType == typeof(DateTime))
+            return false;
         TypeConverter converter = CreateTypeConverter(objectType);
-        return converter != null && converter.CanConvertFrom(typeof(string)) && converter.CanConvertTo(typeof(string));
+        if (converter == null)
+            return false;
+        return converter.CanConvertFrom(typeof(string)) && converter.CanConvertTo(typeof(string));
     }
 
     public override object Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)

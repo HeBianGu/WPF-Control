@@ -2,7 +2,7 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
                     xmlns:le="clr-namespace:H.Controls.Diagram.Presenter.Expressions">
-    <DataTemplate DataType="{x:Type le:ConstNodeDataExpressionsPresenter}">
+    <DataTemplate DataType="{x:Type le:VarExpressionsPresenter}">
         <Border MinWidth="400">
             <DockPanel>
                 <DockPanel DockPanel.Dock="Top"
@@ -20,7 +20,7 @@
                              Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}" />
                 </DockPanel>
                 <DataGrid AutoGenerateColumns="False"
-                          ItemsSource="{Binding SearchedConstNodeDataExpressions}"
+                          ItemsSource="{Binding SearchedVarExpressions}"
                           RowHeaderWidth="0"
                           SelectedItem="{Binding SelectedItem}">
                     <DataGrid.Columns>

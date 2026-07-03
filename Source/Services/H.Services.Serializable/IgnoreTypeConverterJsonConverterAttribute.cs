@@ -6,15 +6,10 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
-using System.Text.Json;
-
 namespace H.Services.Serializable;
 
-public class JsonCloneService : ICloneService
+[System.AttributeUsage(AttributeTargets.Interface | AttributeTargets.Class, Inherited = false, AllowMultiple = false)]
+public sealed class IgnoreTypeConverterJsonConverterAttribute : Attribute
 {
-    public object Clone(object o)
-    {
-        string txt = JsonSerializer.Serialize(o);
-        return JsonSerializer.Deserialize(txt, o.GetType());
-    }
+
 }

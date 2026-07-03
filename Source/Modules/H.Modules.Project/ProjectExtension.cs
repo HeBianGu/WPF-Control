@@ -8,6 +8,7 @@
 
 global using H.Services.Message.Dialog;
 global using H.Services.Project;
+using H.Extensions.Common;
 using H.Globalization.Properties;
 using H.Services.Message.IODialog;
 using System;
@@ -55,11 +56,13 @@ static partial class ProjectExtension
             return false;
         if (string.IsNullOrEmpty(project.Title))
         {
-            project.Title = defalultName + (projectService.Where().Count() + 1).ToString();
+            string name = defalultName.GetIndexSafeName(projectService.Where().Select(x => x.Title));
+            project.Title = name;
         }
         else
         {
-            project.Title = project.Title + (projectService.Where().Count() + 1).ToString();
+            string name = project.Title.GetIndexSafeName(projectService.Where().Select(x => x.Title));
+            project.Title = name;
         }
         var r = await IocMessage.Form.ShowEdit(project, x =>
         {
