@@ -77,7 +77,6 @@ public class FormPresenter : DisplayBindableBase, IFormOption
     public bool UseEnumerator { get; set; } = true;
     public bool UseGroup { get; set; }
     public string UseGroupNames { get; set; }
-    public IComparer<string> GroupOrderComparer { get; set; }
     public bool UseInterface { get; set; } = true;
     public bool UseNull { get; set; } = true;
     public bool UseOrder { get; set; } = true;

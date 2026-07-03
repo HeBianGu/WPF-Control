@@ -25,12 +25,14 @@ public abstract class ObjectPropertyItemBase : ResxDisplayBindableBase, IPropert
         if (display != null)
         {
             this.Name = display == null ? property.Name : display.Name;
-            this.TabGroup = display?.Prompt;
+            this.Tab = display?.Prompt;
             this.GroupName = display?.GroupName;
             this.Description = display?.Description;
             this.Order = display == null ? 999 : display.GetOrder().HasValue ? display.GetOrder().Value : 999;
         }
 
+        TabAttribute tab = property.GetCustomAttribute<TabAttribute>();
+        this.Tab = tab?.Tab;
         ReadOnlyAttribute readyOnly = property.GetCustomAttribute<ReadOnlyAttribute>();
         this.ReadOnly = readyOnly?.IsReadOnly == true;
         if (!this.PropertyInfo.CanWrite)
@@ -42,7 +44,7 @@ public abstract class ObjectPropertyItemBase : ResxDisplayBindableBase, IPropert
 
         this.UpdateResx();
     }
-    public string TabGroup { get; set; }
+    public string Tab { get; set; }
     public PropertyInfo PropertyInfo { get; set; }
     public object Obj { get; set; }
     public bool ReadOnly { get; set; }

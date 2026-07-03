@@ -25,10 +25,9 @@ namespace H.Modules.Messages.Form
             return await this.ShowEdit<T, StaticFormPresenter>(value, action, match, option, owner);
         }
 
-        public async Task<bool?> ShowTabEdit<T>(T value, Action<IDialog> action = null, Predicate<T> match = null, Action<IFormOption> option = null, Window owner = null)
+        public async Task<bool?> ShowTabEdit<T>(T value, Action<IDialog> action = null, Predicate<T> match = null, Action<ITabFormOption> option = null, Window owner = null)
         {
-
-            Action<IFormOption> toption = x =>
+            Action<ITabFormOption> toption = x =>
             {
                 option?.Invoke(x);
                 if (x is TabFormPresenter tab)

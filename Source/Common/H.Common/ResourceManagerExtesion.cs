@@ -89,6 +89,20 @@ public static class ResourceManagerExtesion
         return null;
     }
 
+
+
+    public static string GetPropertyTabNameResx(this Type type, string propertyName, string def = null)
+    {
+        for (Type ctype = type; ctype != null; ctype = ctype.BaseType)
+        {
+            string key = $"Property_{type.Name}_{propertyName}_TabName";
+            string result = ctype.GetResx(key, ctype == type ? def : null);
+            if (result != null)
+                return result;
+        }
+        return null;
+    }
+
     public static string GetPropertyDescriptionResx(this Type type, string propertyName, string def = null)
     {
         for (Type ctype = type; ctype != null; ctype = ctype.BaseType)

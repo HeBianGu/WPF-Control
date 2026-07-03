@@ -27,7 +27,6 @@ public interface IFormOption
     bool UseEnumerator { get; set; }
     bool UseGroup { get; set; }
     string UseGroupNames { get; set; }
-    IComparer<string> GroupOrderComparer { get; set; }
     bool UseInterface { get; set; }
     bool UseNull { get; set; }
     bool UseOrder { get; set; }
@@ -47,5 +46,12 @@ public interface IFormOption
     HorizontalAlignment HorizontalAlignment { get; set; }
     VerticalAlignment VerticalAlignment { get; set; }
     bool IsHitTestVisible { get; set; }
+}
 
+public interface ITabFormOption : IFormOption
+{
+    Dock TabStripPlacement { get; set; }
+    bool UseTabAttribute { get; set; }
+    string UseTabNames { get; set; }
+    IComparer<string> TabOrderComparer { get; set; }
 }

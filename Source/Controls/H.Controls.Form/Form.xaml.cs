@@ -389,7 +389,6 @@ public partial class Form : ItemsControl, IFormOption
              {
                  control.RefreshObject();
              }
-
          }));
 
     public bool UseOrderByName
@@ -719,6 +718,33 @@ public partial class Form : ItemsControl, IFormOption
              control.RefreshObject();
          }));
 
+
+    public string UseTabNames
+    {
+        get { return (string)GetValue(UseTabNamesProperty); }
+        set { SetValue(UseTabNamesProperty, value); }
+    }
+
+    public static readonly DependencyProperty UseTabNamesProperty =
+        DependencyProperty.Register("UseTabNames", typeof(string), typeof(Form), new FrameworkPropertyMetadata(default(string), (d, e) =>
+        {
+            Form control = d as Form;
+
+            if (control == null) return;
+
+            if (e.OldValue is string o)
+            {
+
+            }
+
+            if (e.NewValue is string n)
+            {
+
+            }
+            control.RefreshObject();
+        }));
+
+
     public IComparer<string> GroupOrderComparer
     {
         get { return (IComparer<string>)GetValue(GroupOrderComparerProperty); }
@@ -1028,24 +1054,26 @@ public partial class Form
                     DisplayAttribute displayer = item.GetCustomAttribute<DisplayAttribute>();
                     array1 = displayer?.GroupName?.Split(new char[] { ' ', ',' }, StringSplitOptions.RemoveEmptyEntries);
                 }
-
                 if (array1 == null)
                     continue;
-
-                if (array1.Count() > 1)
-                {
-
-                }
-
                 if (array.Intersect(array1).Count() == 0)
-                {
                     continue;
-                    //var displayer = item.GetCustomAttribute<DisplayerAttribute>();
-                    //if (!array.Contains(displayer?.GroupName))
-                    //{
-                    //    continue;
-                    //}
+            }
+            if (!string.IsNullOrEmpty(this.UseTabNames))
+            {
+                TabAttribute display = item.GetCustomAttribute<TabAttribute>();
+                var resx = this.SelectObject.GetType().GetPropertyGroupNameResx(item.Name);
+                string[] array = this.UseTabNames.Split(new char[] { ' ', ',' }, StringSplitOptions.RemoveEmptyEntries);
+                string[] array1 = (resx ?? display?.Tab)?.Split(new char[] { ' ', ',' }, StringSplitOptions.RemoveEmptyEntries);
+                if (array1 == null)
+                {
+                    TabAttribute displayer = item.GetCustomAttribute<TabAttribute>();
+                    array1 = displayer?.Tab?.Split(new char[] { ' ', ',' }, StringSplitOptions.RemoveEmptyEntries);
                 }
+                if (array1 == null)
+                    continue;
+                if (array.Intersect(array1).Count() == 0)
+                    continue;
             }
 
             if (this.UseDisplayOnly)
@@ -1108,6 +1136,8 @@ public partial class Form
 
         if (this.UseGroup)
         {
+            if (this.ItemsSource.OfType<IPropertyItem>().GroupBy(x => x.GroupName).Count() < 2)
+                return;
             ICollectionView view = CollectionViewSource.GetDefaultView(this.ItemsSource);
             view.GroupDescriptions.Add(new PropertyGroupDescription("GroupName"));
         }
