@@ -20,10 +20,8 @@ global using H.Services.Message;
 global using H.Services.Message.Dialog;
 global using System.Text.Json.Serialization;
 global using System.Windows.Input;
-using H.Controls.Diagram.Parts.Base;
 using H.Controls.Form.Attributes;
 using H.Controls.Form.PropertyItem.Attribute;
-using H.Themes.Backgrounds;
 namespace H.Controls.Diagram.Presenter.DiagramDatas.Base;
 
 public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData

@@ -8,7 +8,6 @@
 
 global using H.Controls.Diagram.Layers;
 global using H.Controls.Diagram.Parts.Base;
-using H.Controls.Diagram.Parts;
 
 namespace H.Controls.Diagram.Presenter.DiagramDatas.Base;
 

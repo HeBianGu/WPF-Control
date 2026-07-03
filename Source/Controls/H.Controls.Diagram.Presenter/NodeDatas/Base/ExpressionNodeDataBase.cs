@@ -10,7 +10,7 @@ using H.Controls.Diagram.Presenter.Expressions;
 
 namespace H.Controls.Diagram.Presenter.NodeDatas.Base;
 
-public interface IExpressionNodeData : ITextNodeData, IGetExpressionsable, IDefaultValueExpressionable, INodeData, IGetExpressionKeysable
+public interface IExpressionNodeData : ITextNodeData, IGetExpressionsable, IDefaultValueExpressionable, INodeData, IGetFromExpressionKeysable
 {
 
 }

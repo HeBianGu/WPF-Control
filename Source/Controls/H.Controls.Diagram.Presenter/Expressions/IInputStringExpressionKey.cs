@@ -8,17 +8,9 @@
 
 namespace H.Controls.Diagram.Presenter.Expressions;
 
-public interface IInheritanceExpressionKey : IExpressionKey
+public interface IInputStringExpressionKey : IExpressionKey
 {
-
+    object Value { get; set; }
+    (bool success, T value) TryParse<T>();
 }
 
-public class InheritanceExpressionKey : ExpressionKey, IInheritanceExpressionKey
-{
-    public const string NAME = "继承";
-    public InheritanceExpressionKey()
-    {
-        this.GroupName = "默认";
-        this.Name = "继承";
-    }
-}

@@ -122,7 +122,7 @@ public class ComboBoxTextPropertyItem<T> : ComboBoxTextPropertyItem
         }
         else
         {
-            error = $"[{this.Name}]不是有效的{typeof(T).Name}";
+            error = $"[{this.Name}]不是有效的{typeof(T).Name}并且在数据源中无法找到匹配项";
             return false;
         }
     }

@@ -31,8 +31,6 @@
         <ResourceDictionary Source="pack://application:,,,/H.Controls.Diagram.Presenter;component/Flowables/DiagramFlowableZoomMode.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Controls.Diagram.Presenter;component/Flowables/FlowableInvokeMode.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Controls.Diagram.Presenter;component/Flowables/DiagramFlowableMode.xaml" />
-        <!--<ResourceDictionary Source="pack://application:,,,/H.Controls.Diagram.Presenter;component/CommandsPropertyPresenter.xaml" />-->
-        <ResourceDictionary Source="pack://application:,,,/H.Controls.Diagram.Presenter;component/Expressions/ExpressionKey.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Controls.Diagram.Presenter;component/Expressions/InputExpressionComboBoxTextPropertyItem.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Controls.Diagram.Presenter;component/Expressions/VarExpressionsPresenter.xaml" />
     </ResourceDictionary.MergedDictionaries>

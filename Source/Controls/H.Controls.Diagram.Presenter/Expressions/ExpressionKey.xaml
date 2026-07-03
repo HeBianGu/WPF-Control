@@ -1,8 +1,0 @@
-﻿<ResourceDictionary
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:le="clr-namespace:H.Controls.Diagram.Presenter.Expressions">
-    <!--<DataTemplate DataType="{x:Type le:ExpressionKey}">
-        <TextBlock Text="{Binding DisplayName}" />
-    </DataTemplate>-->
-</ResourceDictionary>

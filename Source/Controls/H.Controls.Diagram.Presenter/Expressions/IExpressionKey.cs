@@ -8,17 +8,16 @@
 
 namespace H.Controls.Diagram.Presenter.Expressions;
 
-public interface IInheritanceExpressionKey : IExpressionKey
+[TypeConverter(typeof(ExpressionKeyTypeConverter))]
+public interface IExpressionKey
 {
-
+    /// <summary>
+    /// 唯一名称
+    /// </summary>
+    string Name { get; set; }
+    /// <summary>
+    /// 分组名称
+    /// </summary>
+    string GroupName { get; set; }
 }
 
-public class InheritanceExpressionKey : ExpressionKey, IInheritanceExpressionKey
-{
-    public const string NAME = "继承";
-    public InheritanceExpressionKey()
-    {
-        this.GroupName = "默认";
-        this.Name = "继承";
-    }
-}

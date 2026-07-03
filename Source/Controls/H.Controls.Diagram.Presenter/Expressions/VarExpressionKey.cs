@@ -6,8 +6,6 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
-using System.Globalization;
-
 namespace H.Controls.Diagram.Presenter.Expressions;
 
 public interface IVarExpression : IExpression
@@ -33,11 +31,6 @@ public class VarExpression<T> : Expression, IVarExpression
 
     [Display(Name = "当前值")]
     public T CurrentValue { get; set; }
-
-    //public override IExpressionKey ToKey()
-    //{
-    //    return new VarExpressionKey() { Name = this.Name, GroupName = this.GroupName };
-    //}
 }
 
 

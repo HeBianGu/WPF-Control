@@ -33,6 +33,6 @@ public class CommandsPropertyPresenter : DialogCommandsPresenter<TabFormPresente
         foreach (var item in base.CreateCommands())
         {
             yield return item;
-        }  
+        }
     }
 }
