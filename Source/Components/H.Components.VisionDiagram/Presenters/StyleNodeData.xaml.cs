@@ -1,0 +1,138 @@
+﻿// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
+
+using H.Components.VisionDiagram.Base;
+using H.Components.VisionDiagram.NodeDatas;
+using H.Controls.Diagram.Presenter.LinkDatas;
+using H.Controls.Diagram.Presenter.PortDatas;
+
+namespace H.Components.VisionDiagram.Presenters;
+public abstract class StyleNodeDataBase : ResultImageSourceNodeDataBase
+{
+    [JsonIgnore]
+    [Tab(VisionTabNames.DisplayParameters)]
+    [Display(Name = "模块标题", GroupName = VisionTabNames.DisplayParameters)]
+    public string Title
+    {
+        get { return base.Text; }
+        set
+        {
+            base.Text = value;
+            RaisePropertyChanged();
+        }
+    }
+
+    private double _flagLength;
+    [DefaultValue(10)]
+    [Display(Name = "标签宽度", GroupName = "样式")]
+    public double FlagLength
+    {
+        get { return _flagLength; }
+        set
+        {
+            _flagLength = value;
+            RaisePropertyChanged();
+        }
+    }
+
+    public override void LoadDefault()
+    {
+        base.LoadDefault();
+        this.Width = 150;
+        this.Height = 40;
+        this.CornerRadius = 4.0;
+        //this.Fill = Brushes.White;
+    }
+
+    protected override void InitPortDatas()
+    {
+        List<IPortData> ds = this.CreatePortDatas().ToList();
+        //foreach (IPortData item in ds)
+        //{
+        //    item.BuildTextData();
+        //}
+        this._defaultPortDatas = ds.ToList();
+        this.PortDatas = ds.ToList();
+    }
+
+    //protected override IEnumerable<IPortData> CreatePortDatas()
+    //{
+    //    {
+    //        IPortData port = CreatePortData();
+    //        port.Dock = Dock.Top;
+    //        port.PortType = PortType.Input;
+    //        yield return port;
+    //    }
+    //    {
+    //        IPortData port = CreatePortData();
+    //        port.Dock = Dock.Bottom;
+    //        port.PortType = PortType.OutPut;
+    //        yield return port;
+    //    }
+    //}
+
+    protected override IEnumerable<IPortData> CreatePortDatas()
+    {
+        {
+            IPortData port = CreatePortData();
+            port.Dock = Dock.Top;
+            port.PortType = PortType.Input;
+            yield return port;
+        }
+        {
+            IPortData port = CreatePortData();
+            port.Dock = Dock.Bottom;
+            port.PortType = PortType.OutPut;
+            yield return port;
+        }
+
+        {
+            IPortData port = CreatePortData();
+            port.Dock = Dock.Left;
+            port.PortType = PortType.Input;
+            yield return port;
+        }
+        {
+            IPortData port = CreatePortData();
+            port.Dock = Dock.Right;
+            port.PortType = PortType.OutPut;
+            yield return port;
+        }
+    }
+
+    public override IFlowablePortData CreatePortData()
+    {
+        return new OpenCVFlowablePortData(this.ID, PortType.Both);
+    }
+
+    public class OpenCVFlowablePortData : FlowablePortData
+    {
+        public OpenCVFlowablePortData(string nodeID, PortType portType) : base(nodeID, portType)
+        {
+            //this.Fill = Brushes.White;
+        }
+        public override ILinkData CreateLinkData()
+        {
+            return new FlowableLinkData()
+            {
+                FromNodeID = this.NodeID,
+                FromPortID = this.ID,
+                Text = this.Text ?? this.Name ?? this.Description,
+                //Stroke = Brushes.Orange,
+
+            };
+        }
+
+        public override void LoadDefault()
+        {
+            base.LoadDefault();
+            this.Width = 6;
+            this.Height = 6;
+        }
+    }
+}
