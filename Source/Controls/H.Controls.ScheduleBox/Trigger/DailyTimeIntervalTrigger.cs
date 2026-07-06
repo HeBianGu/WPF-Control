@@ -58,7 +58,7 @@ namespace H.Controls.ScheduleBox
         }
 
         private DayOfWeeks _dayOfWeeks = new DayOfWeeks();
-        [Property(UsePresenter = true)]
+        [UsePropertyPresenter]
         [Display(Name = "重复")]
         public DayOfWeeks DayOfWeeks
         {

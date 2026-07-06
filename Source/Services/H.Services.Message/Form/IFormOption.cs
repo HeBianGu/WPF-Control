@@ -32,7 +32,6 @@ public interface IFormOption
     bool UseOrder { get; set; }
     bool UseOrderByName { get; set; }
     bool UseOrderByType { get; set; }
-    bool UsePresenter { get; set; }
     bool UsePrimitive { get; set; }
     string UsePropertyNames { get; set; }
     bool UsePropertyView { get; set; }

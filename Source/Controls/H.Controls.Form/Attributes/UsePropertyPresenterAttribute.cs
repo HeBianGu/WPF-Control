@@ -9,7 +9,7 @@
 namespace H.Controls.Form.Attributes;
 
 [AttributeUsage(AttributeTargets.Property, Inherited = true, AllowMultiple = false)]
-public class PropertyAttribute : Attribute
+public class UsePropertyPresenterAttribute : Attribute
 {
-    public bool UsePresenter { get; set; }
+
 }

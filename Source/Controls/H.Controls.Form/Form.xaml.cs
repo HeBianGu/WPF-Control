@@ -215,31 +215,6 @@ public partial class Form : ItemsControl, IFormOption
               control.RefreshObject();
           }));
 
-    public bool UsePresenter
-    {
-        get { return (bool)GetValue(UsePresenterProperty); }
-        set { SetValue(UsePresenterProperty, value); }
-    }
-
-    public static readonly DependencyProperty UsePresenterProperty =
-        DependencyProperty.Register("UsePresenter", typeof(bool), typeof(Form), new FrameworkPropertyMetadata(default(bool), (d, e) =>
-         {
-             Form control = d as Form;
-
-             if (control == null) return;
-
-             if (e.OldValue is bool o)
-             {
-
-             }
-
-             if (e.NewValue is bool n)
-             {
-
-             }
-             control.RefreshObject();
-         }));
-
     public bool UseEnumerator
     {
         get { return (bool)GetValue(UseEnumeratorProperty); }
@@ -1147,18 +1122,8 @@ public partial class Form
     {
         if (propertyInfo.PropertyType.IsClass && propertyInfo.PropertyType != typeof(string))
         {
-            bool? current = propertyInfo.GetCustomAttribute<PropertyAttribute>()?.UsePresenter;
-            if (this.UsePresenter && current != false)
-            {
+            if (propertyInfo.GetCustomAttribute<UsePropertyPresenterAttribute>() != null)
                 return new PresenterPropertyItem(propertyInfo, obj);
-            }
-            else
-            {
-                if (current == true)
-                {
-                    return new PresenterPropertyItem(propertyInfo, obj);
-                }
-            }
         }
 
         return this.UsePropertyView ? propertyInfo.CreateView(obj) : propertyInfo.Create(obj);

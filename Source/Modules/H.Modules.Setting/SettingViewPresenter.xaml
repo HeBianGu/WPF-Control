@@ -109,7 +109,6 @@
                                                 UseOrder="{Binding Source={x:Static local:SettingViewOptions.Instance}, Path=FormOption.UseOrder}"
                                                 UseOrderByName="{Binding Source={x:Static local:SettingViewOptions.Instance}, Path=FormOption.UseOrderByName}"
                                                 UseOrderByType="{Binding Source={x:Static local:SettingViewOptions.Instance}, Path=FormOption.UseOrderByType}"
-                                                UsePresenter="{Binding Source={x:Static local:SettingViewOptions.Instance}, Path=FormOption.UsePresenter}"
                                                 UsePrimitive="{Binding Source={x:Static local:SettingViewOptions.Instance}, Path=FormOption.UsePrimitive}"
                                                 UsePropertyView="{Binding Source={x:Static local:SettingViewOptions.Instance}, Path=FormOption.UsePropertyView}"
                                                 UseString="{Binding Source={x:Static local:SettingViewOptions.Instance}, Path=FormOption.UseString}"

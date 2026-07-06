@@ -6,6 +6,7 @@
     <DataTemplate DataType="{x:Type p:FormPropertyItem}">
         <local:Form
             Margin="0,0,0,1"
+            Grid.IsSharedSizeScope="False"
             MessageWidth="{Binding RelativeSource={RelativeSource AncestorType=local:Form}, Path=UseBoolen}"
             SelectObject="{Binding Value}"
             TitleWidth="{Binding RelativeSource={RelativeSource AncestorType=local:Form}, Path=TitleWidth}"
@@ -21,7 +22,6 @@
             UseGroupNames="{Binding RelativeSource={RelativeSource AncestorType=local:Form}, Path=UseGroupNames}"
             UseInterface="{Binding RelativeSource={RelativeSource AncestorType=local:Form}, Path=UseInterface}"
             UseNull="{Binding RelativeSource={RelativeSource AncestorType=local:Form}, Path=UseNull}"
-            UsePresenter="{Binding RelativeSource={RelativeSource AncestorType=local:Form}, Path=UsePresenter}"
             UsePrimitive="{Binding RelativeSource={RelativeSource AncestorType=local:Form}, Path=UsePrimitive}"
             UsePropertyNames="{Binding RelativeSource={RelativeSource AncestorType=local:Form}, Path=UsePropertyNames}"
             UsePropertyView="{Binding RelativeSource={RelativeSource AncestorType=local:Form}, Path=UsePropertyView}"

@@ -25,7 +25,6 @@
             UseOrder="{Binding UseOrder}"
             UseOrderByName="{Binding UseOrderByName}"
             UseOrderByType="{Binding UseOrderByType}"
-            UsePresenter="{Binding UsePresenter}"
             UsePrimitive="{Binding UsePrimitive}"
             UsePropertyNames="{Binding UsePropertyNames}"
             UsePropertyView="{Binding UsePropertyView}"

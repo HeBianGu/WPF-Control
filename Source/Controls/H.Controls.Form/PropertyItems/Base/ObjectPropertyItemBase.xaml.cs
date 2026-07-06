@@ -42,6 +42,8 @@ public abstract class ObjectPropertyItemBase : ResxDisplayBindableBase, IPropert
         this.Visibility = browsable == null || browsable.Browsable ? Visibility.Visible : Visibility.Collapsed;
         this.Icon = property.GetCustomAttribute<IconAttribute>()?.Icon;
 
+        PropertyStyleAttribute propertyStyle = property.GetCustomAttribute<PropertyStyleAttribute>();
+        this.UseTitle = propertyStyle?.UseTitle ?? true;
         this.UpdateResx();
     }
     public string Tab { get; set; }
@@ -62,6 +64,18 @@ public abstract class ObjectPropertyItemBase : ResxDisplayBindableBase, IPropert
             RaisePropertyChanged();
         }
     }
+
+    private bool _UseTitle = true;
+    public bool UseTitle
+    {
+        get { return _UseTitle; }
+        set
+        {
+            _UseTitle = value;
+            RaisePropertyChanged();
+        }
+    }
+
 
     public abstract void LoadValue();
 
