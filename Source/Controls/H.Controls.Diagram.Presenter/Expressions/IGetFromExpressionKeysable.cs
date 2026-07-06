@@ -32,6 +32,7 @@ public static class IGetFromExpressionKeysableExtensions
             if (success)
                 return (true, value);
         }
+
         var r = getableExpression.GetExpressionValue(expressionKey);
         if (!r.success)
             return (false, default);
@@ -44,7 +45,11 @@ public static class IGetFromExpressionKeysableExtensions
     {
         if (expressionKey is IInputStringExpressionKey primitiveExpression)
             return (true, primitiveExpression.Value);
+        if (expressionKey == null)
+            return (false, default);
         var r = getableExpression.GetFromExpression(expressionKey);
+        if(r==null)
+            return (false, default);
         return (true, r.Value);
     }
 

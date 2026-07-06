@@ -31,6 +31,8 @@ public class VarExpression<T> : Expression, IVarExpression
 
     [Display(Name = "当前值")]
     public T CurrentValue { get; set; }
+
+    public override object Value { get => this.CurrentValue; set => this.CurrentValue = (T)value; }
 }
 
 
