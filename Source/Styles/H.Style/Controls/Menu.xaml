@@ -16,6 +16,7 @@
                     <Border
                         Background="{TemplateBinding Background}"
                         BorderBrush="{TemplateBinding BorderBrush}"
+                        CornerRadius="{DynamicResource {x:Static LayoutKeys.CornerRadius}}"
                         BorderThickness="{TemplateBinding BorderThickness}">
                         <StackPanel
                             ClipToBounds="True"

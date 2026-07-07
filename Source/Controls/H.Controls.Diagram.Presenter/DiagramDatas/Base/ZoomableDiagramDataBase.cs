@@ -13,12 +13,12 @@ namespace H.Controls.Diagram.Presenter.DiagramDatas.Base;
 
 public abstract class ZoomableDiagramDataBase : DiagramDataBase, IZoomableDiagramData
 {
-    [Icon(FontIcons.Zoom)]
-    [Display(Name = "缩放定位", GroupName = "操作,视图控制", Order = 5)]
+    [Icon(FontIcons.FitPage)]
+    [Display(Name = "缩放定位", GroupName = $"{DiagramDataCommandGroupNames.QuickAccessToolbar},{DiagramDataCommandGroupNames.ViewControl}", Order = 5)]
     public virtual DisplayCommand ZoomAllCommand => new DisplayCommand(e =>
     {
         this.GetTargetElement<Diagram>().ZoomToFit();
-    }, x => this.GetTargetElement<Diagram>() != null);
+    }, x => this.GetTargetElement<Diagram>() != null && this.DataSource.Nodes.Count() > 0);
 
     protected override void Loaded(object obj)
     {

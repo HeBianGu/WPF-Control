@@ -41,7 +41,7 @@ public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
 
     private string _name;
     [Browsable(true)]
-    [Display(Name = "名称", Order = 0, GroupName = "基础信息")]
+    [Display(Name = "名称", Order = 0, GroupName = DiagramDataPropertyGroupNames.BaseData)]
     public override string Name
     {
         get { return _name; }
@@ -54,7 +54,7 @@ public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
 
     private double _width;
     [DefaultValue(2000.0)]
-    [Display(Name = "面板宽度", GroupName = "基础信息", Order = 0)]
+    [Display(Name = "面板宽度", GroupName = DiagramDataPropertyGroupNames.BaseData, Order = 0)]
     public double Width
     {
         get { return _width; }
@@ -67,7 +67,7 @@ public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
 
     private double _height;
     [DefaultValue(1300.0)]
-    [Display(Name = "面板高度", GroupName = "基础信息", Order = 0)]
+    [Display(Name = "面板高度", GroupName = DiagramDataPropertyGroupNames.BaseData, Order = 0)]
     public double Height
     {
         get { return _height; }
@@ -94,7 +94,7 @@ public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
     private ILinkDrawer _linkDrawer = new BrokenLinkDrawer();
     [System.Text.Json.Serialization.JsonIgnore]
     [XmlIgnore]
-    [Display(Name = "连线样式", GroupName = "基础信息")]
+    [Display(Name = "连线样式", GroupName = DiagramDataPropertyGroupNames.BaseData)]
     [GetPropertyNameSource(nameof(LinkDrawers))]
     [PropertyItem(typeof(ComboBoxPropertyItem))]
     public ILinkDrawer LinkDrawer
@@ -140,7 +140,7 @@ public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
     [XmlIgnore]
     [GetPropertyNameSource(nameof(Layouts))]
     [PropertyItem(typeof(ComboBoxPropertyItem))]
-    [Display(Name = "布局方式", GroupName = "基础信息")]
+    [Display(Name = "布局方式", GroupName = DiagramDataPropertyGroupNames.BaseData)]
     public ILayout Layout
     {
         get { return _layout; }
@@ -187,14 +187,14 @@ public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
     }
 
     [Icon(FontIcons.EditMirrored)]
-    [Display(Name = "编辑面板", GroupName = "操作,视图控制", Order = 0, Description = "点击此功能，编辑面板信息")]
+    [Display(Name = "编辑面板", GroupName = DiagramDataCommandGroupNames.ViewControl, Order = 0, Description = "点击此功能，编辑面板信息")]
     public virtual DisplayCommand EditCommand => new DisplayCommand(async e =>
     {
         await IocMessage.Form.ShowTabEdit(this);
     });
 
     [Icon(FontIcons.View)]
-    [Display(Name = "查看面板", GroupName = "操作,视图控制", Order = 0, Description = "点击此功能，编辑查看面板信息")]
+    [Display(Name = "查看面板", GroupName = DiagramDataCommandGroupNames.ViewControl, Order = 0, Description = "点击此功能，编辑查看面板信息")]
     public virtual DisplayCommand ShowCommand => new DisplayCommand(async e =>
     {
         await IocMessage.Form.ShowTabEdit(this);
@@ -210,8 +210,8 @@ public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
     //    });
     //}, x => x is Part);
 
-    [Icon(FontIcons.DisconnectDrive)]
-    [Display(Name = "删除选中节点", GroupName = "操作,数据", Order = 4, Description = "点击此功能，删除选中的所有节点")]
+    [Icon(FontIcons.Delete)]
+    [Display(Name = "删除选中节点", GroupName = $"{DiagramDataCommandGroupNames.QuickAccessToolbar},{DiagramDataCommandGroupNames.ViewControl}", Order = 4, Description = "点击此功能，删除选中的所有节点")]
     public virtual DisplayCommand DeleteCheckedCommand => new DisplayCommand(async e =>
     {
         await IocMessage.Dialog.ShowDeleteDialog(x =>
@@ -223,8 +223,8 @@ public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
         });
     }, x => this.DataSource.Nodes.Where(x => x.IsSelected).Count() > 0);
 
-    [Icon(FontIcons.Delete)]
-    [Display(Name = "清空节点", GroupName = "操作,数据", Order = 5, Description = "点击此功能，删除所有节点、连线和端口")]
+    [Icon(FontIcons.Clear)]
+    [Display(Name = "清空节点", GroupName = $"{DiagramDataCommandGroupNames.QuickAccessToolbar},{DiagramDataCommandGroupNames.ViewControl}", Order = 5, Description = "点击此功能，删除所有节点、连线和端口")]
     public virtual DisplayCommand ClearCommand => new DisplayCommand(async e =>
     {
         await IocMessage.Dialog.ShowDeleteAllDialog(x =>
@@ -237,9 +237,9 @@ public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
         });
     }, x => this.DataSource.Nodes.Count > 0);
 
-    [Icon(FontIcons.AlignCenter)]
-    [System.Text.Json.Serialization.JsonIgnore]
-    [Display(Name = "对齐节点", GroupName = "操作,视图控制", Order = 5)]
+    [Icon(FontIcons.Flow)]
+    [JsonIgnore]
+    [Display(Name = "对齐节点", GroupName = $"{DiagramDataCommandGroupNames.QuickAccessToolbar},{DiagramDataCommandGroupNames.ViewControl}", Order = 5)]
     public virtual DisplayCommand AlignmentCommand => new DisplayCommand(e =>
     {
         //foreach (Node item in this.DataSource.Nodes)
@@ -253,7 +253,7 @@ public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
 
     [Icon(FontIcons.Color)]
     [System.Text.Json.Serialization.JsonIgnore]
-    [Display(Name = "恢复默认样式", GroupName = "操作", Order = 5)]
+    [Display(Name = "恢复默认样式", GroupName = DiagramDataCommandGroupNames.ViewControl, Order = 5)]
     public virtual DisplayCommand LoadNodeDefaultCommand => new DisplayCommand(e =>
     {
         foreach (var item in this.Datas.NodeDatas)

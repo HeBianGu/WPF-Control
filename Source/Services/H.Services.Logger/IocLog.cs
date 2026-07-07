@@ -7,7 +7,6 @@
 // Licensed under the MIT License (the "License")
 
 using H.Iocable;
-using System.Runtime.CompilerServices;
 
 namespace H.Services.Logger;
 
@@ -19,6 +18,7 @@ public class IocLog : Ioc<ILogService>
     /// <param name="messages">要记录的日志消息。</param>
     public static void Debug(params string[] messages)
     {
+        AppLogger.Log(messages, LogType.Debug);
         Instance.Debug(messages);
     }
 
@@ -28,6 +28,7 @@ public class IocLog : Ioc<ILogService>
     /// <param name="messages">要记录的日志消息。</param>
     public static void Error(params Exception[] messages)
     {
+        AppLogger.Log(messages, LogType.Error);
         Instance?.Error(messages);
     }
 
@@ -37,6 +38,7 @@ public class IocLog : Ioc<ILogService>
     /// <param name="messages">要记录的日志消息。</param>
     public static void Error(params string[] messages)
     {
+        AppLogger.Log(messages, LogType.Error);
         Instance?.Error(messages);
     }
 
@@ -46,6 +48,7 @@ public class IocLog : Ioc<ILogService>
     /// <param name="messages">要记录的日志消息。</param>
     public static void Fatal(params string[] messages)
     {
+        AppLogger.Log(messages, LogType.Fatal);
         Instance?.Fatal(messages);
     }
 
@@ -55,6 +58,7 @@ public class IocLog : Ioc<ILogService>
     /// <param name="messages">要记录的日志消息。</param>
     public static void Fatal(params Exception[] messages)
     {
+        AppLogger.Log(messages, LogType.Fatal);
         Instance?.Fatal(messages);
     }
 
@@ -64,6 +68,7 @@ public class IocLog : Ioc<ILogService>
     /// <param name="messages">要记录的日志消息。</param>
     public static void Info(params string[] messages)
     {
+        AppLogger.Log(messages, LogType.Info);
         Instance?.Info(messages);
     }
 
@@ -73,6 +78,7 @@ public class IocLog : Ioc<ILogService>
     /// <param name="messages">要记录的日志消息。</param>
     public static void Trace(params string[] messages)
     {
+        AppLogger.Log(messages, LogType.Info);
         Instance?.Trace(messages);
     }
 
@@ -82,6 +88,7 @@ public class IocLog : Ioc<ILogService>
     /// <param name="messages">要记录的日志消息。</param>
     public static void Warn(params string[] messages)
     {
+        AppLogger.Log(messages, LogType.Warn);
         Instance?.Warn(messages);
     }
 }

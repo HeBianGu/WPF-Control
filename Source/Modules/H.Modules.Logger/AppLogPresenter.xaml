@@ -1,0 +1,77 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
+                    xmlns:componentmodel="clr-namespace:System.ComponentModel;assembly=WindowsBase"
+                    xmlns:local="clr-namespace:H.Modules.Logger">
+    <DataTemplate DataType="{x:Type local:AppLogPresenter}">
+        <DataGrid AutoGenerateColumns="False"
+                  IsReadOnly="True"
+                  ItemsSource="{Binding Messages}"
+                  RowHeaderWidth="0"
+                  ScrollViewer.CanContentScroll="True"
+                  SelectedItem="{Binding SelectedMessage}">
+            <DataGrid.Columns>
+                <DataGridTemplateColumn Width="Auto"
+                                        Header="序号">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock HorizontalAlignment="Center">
+                                <b:Interaction.Behaviors>
+                                    <TextBlockIndexOfBebavior Format="{}{0}"
+                                                              Item="{Binding}"
+                                                              Source="{Binding RelativeSource={RelativeSource AncestorType=DataGrid}, Path=ItemsSource}" />
+                                </b:Interaction.Behaviors>
+                            </TextBlock>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn Width="Auto"
+                                    MinWidth="90"
+                                    Binding="{Binding Time, StringFormat={}{0:yyyy-MM-dd HH:mm:ss}}"
+                                    Header="时间" />
+                <DataGridTextColumn Width="Auto"
+                                    MinWidth="60"
+                                    Binding="{Binding Level}"
+                                    Header="类型" />
+                <DataGridTemplateColumn Header="日志">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <DockPanel>
+                                <FontIconTextBlock x:Name="txt"
+                                                   Margin="5,0"
+                                                   Text="{x:Static FontIcons.Info}" />
+                                <TextBlock VerticalAlignment="Center"
+                                           TextWrapping="Wrap"
+                                           ToolTip="{Binding Message}">
+                                    <Run Text="{Binding Message}" />
+                                </TextBlock>
+                            </DockPanel>
+                            <DataTemplate.Triggers>
+                                <DataTrigger Binding="{Binding Level}"
+                                             Value="Error">
+                                    <Setter TargetName="txt" Property="Foreground" Value="{DynamicResource {x:Static BrushKeys.Red}}" />
+                                    <Setter TargetName="txt" Property="Text" Value="{x:Static FontIcons.Error}" />
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding Level}"
+                                             Value="Info">
+                                    <Setter TargetName="txt" Property="Foreground" Value="{DynamicResource {x:Static BrushKeys.Green}}" />
+                                    <Setter TargetName="txt" Property="Text" Value="{x:Static FontIcons.Completed}" />
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding Level}"
+                                             Value="Warn">
+                                    <Setter TargetName="txt" Property="Foreground" Value="{DynamicResource {x:Static BrushKeys.Orange}}" />
+                                    <Setter TargetName="txt" Property="Text" Value="{x:Static FontIcons.OverwriteWordsFillKorean}" />
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding Level}"
+                                             Value="Fatal">
+                                    <Setter TargetName="txt" Property="Foreground" Value="{DynamicResource {x:Static BrushKeys.Purple}}" />
+                                    <Setter TargetName="txt" Property="Text" Value="{x:Static FontIcons.DefenderApp}" />
+                                </DataTrigger>
+                            </DataTemplate.Triggers>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </DataTemplate>
+</ResourceDictionary>

@@ -46,7 +46,7 @@ public abstract class ExpressionableDiagramDataBase : ZoomableDiagramDataBase, I
     }
 
     [Icon(FontIcons.Globe)]
-    [Display(Name = "流程局部变量", GroupName = "操作", Order = 0)]
+    [Display(Name = "流程局部变量", GroupName = DiagramDataCommandGroupNames.DataConfiguration, Order = 0)]
     public DisplayCommand ShowVarExpressionKeysCommand => new DisplayCommand(async x =>
     {
         VarExpressionsPresenter varExpressionsPresenter = new VarExpressionsPresenter();

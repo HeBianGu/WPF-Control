@@ -27,6 +27,7 @@ namespace System
             services.AddDefaultModuleServices(opt.GetConfigOptions<IDefaultModuleOptions>());
             services.AddDefaultThemeServices(opt.GetConfigOptions<IDefaultThemeOptions>());
             services.AddLog4net();
+            services.AddAppLog();
         }
 
         public static void UseApplicationOptions(this IApplicationBuilder app, Action<IDefaultApplicationOptions> options = null)
@@ -36,8 +37,8 @@ namespace System
             app.UseStyleOptions();
             app.UseDefaultModuleOptions(opt.GetConfigOptions<IDefaultModuleOptions>());
             app.UseDefaultThemeOptions(opt.GetConfigOptions<IDefaultThemeOptions>());
-
-            app.UseAddLog4netOptions();
+            app.UseLog4netOptions();
+            app.UseAppLogOptions();
         }
     }
 }

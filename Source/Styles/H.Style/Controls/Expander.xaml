@@ -12,7 +12,7 @@
             Background="Transparent"
             BorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrush}}"
             BorderThickness="0"
-            CornerRadius="2,0,0,0">
+            CornerRadius="{DynamicResource {x:Static LayoutKeys.CornerRadius}}">
             <Grid>
                 <Path
                     x:Name="CollapsedArrow"

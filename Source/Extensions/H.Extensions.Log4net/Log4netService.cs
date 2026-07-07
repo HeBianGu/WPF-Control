@@ -103,6 +103,8 @@ public class Log4netService : ILogService
 
     public virtual void Debug(params string[] messages)
     {
+        if (Log4netOptions.Instance.LogType > LogType.Debug)
+            return;
         foreach (string item in messages)
         {
             this.Logger.Debug(item);
@@ -111,6 +113,8 @@ public class Log4netService : ILogService
 
     public virtual void Error(params string[] messages)
     {
+        if (Log4netOptions.Instance.LogType > LogType.Error)
+            return;
         foreach (string item in messages)
         {
             this.Logger.Error(item);
@@ -119,6 +123,8 @@ public class Log4netService : ILogService
 
     public virtual void Fatal(params string[] messages)
     {
+        if (Log4netOptions.Instance.LogType > LogType.Fatal)
+            return;
         foreach (string item in messages)
         {
             this.Logger.Fatal(item);
@@ -127,6 +133,8 @@ public class Log4netService : ILogService
 
     public virtual void Fatal(params Exception[] messages)
     {
+        if (Log4netOptions.Instance.LogType > LogType.Fatal)
+            return;
         foreach (Exception item in messages)
         {
             this.Logger.Fatal(item.Message, item);
@@ -135,6 +143,8 @@ public class Log4netService : ILogService
 
     public virtual void Trace(params string[] messages)
     {
+        if (Log4netOptions.Instance.LogType > LogType.Debug)
+            return;
         foreach (string item in messages)
         {
             this.Logger.Debug(item);
@@ -143,6 +153,8 @@ public class Log4netService : ILogService
 
     public virtual void Warn(params string[] messages)
     {
+        if (Log4netOptions.Instance.LogType > LogType.Warn)
+            return;
         foreach (string item in messages)
         {
             this.Logger.Warn(item);
@@ -151,6 +163,8 @@ public class Log4netService : ILogService
 
     public virtual void Error(params Exception[] messages)
     {
+        if (Log4netOptions.Instance.LogType > LogType.Error)
+            return;
         foreach (Exception item in messages)
         {
             this.Logger.Error(item);
@@ -159,6 +173,8 @@ public class Log4netService : ILogService
 
     public virtual void Info(params string[] messages)
     {
+        if (Log4netOptions.Instance.LogType > LogType.Info)
+            return;
         foreach (string item in messages)
         {
             this.Logger.Info(item);

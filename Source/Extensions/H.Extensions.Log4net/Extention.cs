@@ -28,7 +28,7 @@ public static class Extention
         return services;
     }
 
-    public static IApplicationBuilder UseAddLog4netOptions(this IApplicationBuilder builder, Action<ILog4netOptions> option = null)
+    public static IApplicationBuilder UseLog4netOptions(this IApplicationBuilder builder, Action<ILog4netOptions> option = null)
     {
         IocSetting.Instance.Add(Log4netOptions.Instance);
         option?.Invoke(Log4netOptions.Instance);

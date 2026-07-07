@@ -14,3 +14,25 @@ public interface IIOFileDialogService
     string ShowSaveFile(Action<IIOSaveFileDialogOption> optionAction);
 }
 
+
+//public static class IOFileDialogServiceExtension
+//{
+
+//    public static string ShowSaveFileToJson(this IIOFileDialogService service, Action<IIOSaveFileDialogOption> optionAction = null)
+//    {
+//        return service.ShowSaveFile(x =>
+//        {
+//            x.Filter = IIOSaveFileDialogOption.defaultJsonFilter;
+//            optionAction?.Invoke(x);
+//        });
+//    }
+
+//    public static string ShowSaveFileToTxt(this IIOFileDialogService service, Action<IIOSaveFileDialogOption> optionAction = null)
+//    {
+//        return service.ShowSaveFile(x =>
+//        {
+//            x.Filter = IIOSaveFileDialogOption.defaultTextFilter;
+//            optionAction?.Invoke(x);
+//        });
+//    }
+//}

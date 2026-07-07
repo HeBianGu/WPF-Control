@@ -16,7 +16,11 @@
                 Style="{DynamicResource {x:Static TextBoxKeys.Attach}}"
                 Text="{Binding Value, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
                 TextWrapping="{Binding TextWrapping}"
-                ToolTip="{Binding Message}" />
+                ToolTip="{Binding Message}" >
+                <Cattach.Attach>
+                    <TextBlock Text="{Binding Unit}" VerticalAlignment="Center" Margin="5 0"/>
+                </Cattach.Attach>
+            </TextBox>
             <Popup
                 Width="{Binding ElementName=tb, Path=ActualWidth, Mode=OneWay}"
                 IsOpen="{Binding ElementName=tb, Path=IsKeyboardFocused, Mode=OneWay}"

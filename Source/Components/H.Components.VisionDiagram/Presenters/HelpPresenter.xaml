@@ -5,7 +5,7 @@
     <DataTemplate DataType="{x:Type local:HelpPresenter}">
         <DockPanel>
             <TextBlock Margin="5"
-                       DockPanel.Dock="Top"
+                       DockPanel.Dock="Left"
                        Text="{Binding Name}" />
             <TextBlock Margin="5"
                        ToolTip="{Binding Url}">

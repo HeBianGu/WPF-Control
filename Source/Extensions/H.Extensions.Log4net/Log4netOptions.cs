@@ -10,6 +10,7 @@ using H.Common.Attributes;
 using H.Extensions.Setting;
 using H.Services.AppPath;
 using H.Services.Setting;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
 namespace H.Extensions.Log4net;
@@ -44,6 +45,19 @@ public class Log4netOptions : IocOptionInstance<Log4netOptions>, ILog4netOptions
         set
         {
             _tempPath = value;
+            RaisePropertyChanged();
+        }
+    }
+
+    private LogType _LogType = LogType.Info;
+    [DefaultValue(LogType.Info)]
+    [Display(Name = "日志记录级别")]
+    public LogType LogType
+    {
+        get { return _LogType; }
+        set
+        {
+            _LogType = value;
             RaisePropertyChanged();
         }
     }

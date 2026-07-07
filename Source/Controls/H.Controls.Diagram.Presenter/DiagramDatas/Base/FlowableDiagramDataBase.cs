@@ -9,10 +9,13 @@
 global using H.Controls.Diagram.Datas;
 using H.Controls.Diagram.Presenter.Extensions;
 namespace H.Controls.Diagram.Presenter.DiagramDatas.Base;
+
 public abstract class FlowableDiagramDataBase : ExpressionableDiagramDataBase, IFlowableDiagramData
 {
     private DiagramFlowableState _state = DiagramFlowableState.None;
     [JsonIgnore]
+    [ReadOnly(true)]
+    [Display(Name = "流程状态", Order = 0, GroupName = DiagramDataPropertyGroupNames.FlowControl)]
     public DiagramFlowableState State
     {
         get { return _state; }
@@ -24,7 +27,7 @@ public abstract class FlowableDiagramDataBase : ExpressionableDiagramDataBase, I
     }
 
     private DiagramFlowableMode _flowableMode = DiagramFlowableMode.Node;
-    [Display(Name = "运行模式", Order = 0, GroupName = "数据")]
+    [Display(Name = "运行模式", Order = 0, GroupName = DiagramDataPropertyGroupNames.FlowControl)]
     public DiagramFlowableMode FlowableMode
     {
         get { return _flowableMode; }
@@ -36,7 +39,7 @@ public abstract class FlowableDiagramDataBase : ExpressionableDiagramDataBase, I
     }
 
     private DiagramFlowableZoomMode _flowableZoomMode = DiagramFlowableZoomMode.None;
-    [Display(Name = "自动缩放", GroupName = "数据", Description = "执行时节点自动缩放")]
+    [Display(Name = "自动缩放", GroupName = DiagramDataPropertyGroupNames.BaseData, Description = "执行时节点自动缩放")]
     public DiagramFlowableZoomMode FlowableZoomMode
     {
         get { return _flowableZoomMode; }
@@ -48,7 +51,7 @@ public abstract class FlowableDiagramDataBase : ExpressionableDiagramDataBase, I
     }
 
     private bool _useFlowableSelectToRunning = false;
-    [Display(Name = "自动选中", GroupName = "数据", Description = "执行时节点自动选中节点")]
+    [Display(Name = "自动选中", GroupName = DiagramDataPropertyGroupNames.FlowControl, Description = "执行时节点自动选中节点")]
     public bool UseFlowableSelectToRunning
     {
         get { return _useFlowableSelectToRunning; }
@@ -93,7 +96,7 @@ public abstract class FlowableDiagramDataBase : ExpressionableDiagramDataBase, I
         ////    part.IsSelected = true;
     }
     [Icon(FontIcons.Replay)]
-    [Display(Name = "开始", GroupName = "操作,流程控制", Order = 0)]
+    [Display(Name = "开始", GroupName = DiagramDataCommandGroupNames.FlowControl, Order = 0)]
     public DisplayCommand StartCommand => new DisplayCommand(async e =>
     {
         await this.StartAsync();
@@ -103,7 +106,7 @@ public abstract class FlowableDiagramDataBase : ExpressionableDiagramDataBase, I
     }, e => this.CanStart());
 
     [Icon(FontIcons.Location)]
-    [Display(Name = "停止", GroupName = "操作,流程控制", Order = 0)]
+    [Display(Name = "停止", GroupName = DiagramDataCommandGroupNames.FlowControl, Order = 0)]
     public DisplayCommand StopCommand => new DisplayCommand(e =>
     {
         this.Stop();
@@ -117,7 +120,7 @@ public abstract class FlowableDiagramDataBase : ExpressionableDiagramDataBase, I
 
 
     [Icon(FontIcons.ResetDrive)]
-    [Display(Name = "重置", GroupName = "操作,流程控制", Order = 0)]
+    [Display(Name = "重置", GroupName = DiagramDataCommandGroupNames.FlowControl, Order = 0)]
     public DisplayCommand ResetCommand => new DisplayCommand(e =>
     {
         this.Reset();

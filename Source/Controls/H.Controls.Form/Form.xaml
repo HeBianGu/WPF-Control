@@ -94,8 +94,13 @@
                         <Grid Margin="0,0.5"
                               Cattach.GuideData="{Binding Description}"
                               Cattach.GuideTitle="{Binding Name}"
-                              Cattach.UseGuide="True"
-                              ToolTip="{Binding Description}">
+                              Cattach.UseGuide="True">
+                            <Grid.ToolTip>
+                                <PriorityBinding>
+                                    <Binding Path="Description"/>
+                                    <Binding Path="Name"/>
+                                </PriorityBinding>
+                            </Grid.ToolTip>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition x:Name="gt"
                                                   Width="Auto"

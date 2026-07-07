@@ -47,3 +47,4 @@ public class BorderClipCornerRadiusBehavior : Behavior<Border>
         this.AssociatedObject.Clip = new RectangleGeometry(rect, radius, radius);
     }
 }
+

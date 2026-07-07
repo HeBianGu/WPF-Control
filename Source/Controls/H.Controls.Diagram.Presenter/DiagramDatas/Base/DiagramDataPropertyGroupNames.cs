@@ -6,13 +6,11 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
-namespace H.Services.Logger;
+namespace H.Controls.Diagram.Presenter.DiagramDatas.Base;
 
-public enum LogType
+public static class DiagramDataPropertyGroupNames
 {
-    Debug = 0,
-    Info,
-    Error,
-    Warn,
-    Fatal
+    public const string BaseData = "基础信息";
+    public const string FlowData = "流程数据";
+    public const string FlowControl = "流程控制";
 }
