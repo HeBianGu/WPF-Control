@@ -6,6 +6,7 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
+using H.Controls.ShapeBox.Base;
 using H.Controls.ShapeBox.Shapes.Handles;
 using H.Extensions.Common;
 using H.Extensions.TypeConverter;
@@ -14,6 +15,7 @@ using System.Windows;
 using System.Windows.Input;
 
 namespace H.Controls.ShapeBox.Shapes;
+
 public interface IRectShape : IShape, ITitleShape, IBoundingBoxShape
 {
     Rect Rect { get; set; }
@@ -29,13 +31,13 @@ public class RectShape : TitleShapeBase, IRectShape
         this.Rect = rect;
     }
 
-    [Display(Name = "启用交线", GroupName = "样式")]
+    [Display(Name = "启用交线", GroupName = ShapePropertyGroupNames.StyleGroup)]
     public bool UseCross { get; set; } = false;
-    [Display(Name = "启用标尺", GroupName = "样式")]
+    [Display(Name = "启用标尺", GroupName = ShapePropertyGroupNames.StyleGroup)]
     public bool UseDimension { get; set; } = false;
 
     [TypeConverter(typeof(Round2RectConverter))]
-    [Display(Name = "矩形范围", GroupName = "数据")]
+    [Display(Name = "矩形范围", GroupName = ShapePropertyGroupNames.DataGroup)]
     public Rect Rect { get; set; }
 
     Rect IBoundingBoxShape.BoundingBox => this.Rect;

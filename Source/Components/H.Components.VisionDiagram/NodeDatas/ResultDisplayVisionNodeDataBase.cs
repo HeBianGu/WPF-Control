@@ -166,10 +166,17 @@ public abstract class ResultDisplayVisionNodeDataBase<T> : VisionNodeData<T> whe
     public override IFlowableResult Invoke(IFlowableLinkData previors, IFlowableDiagramData diagram)
     {
         var r = base.Invoke(previors, diagram);
-
         var t = this.GetExpressionValue(this.TextFormatExpression);
         if (t.success)
+        {
             this.TextDisplayResult = t.value?.ToString();
+            var textShape = this.TestVisionResultDisplay.ToTextShape(this.TextDisplayResult, x =>
+            {
+                x.TextForeground = r.State == FlowableResultState.OK ? this.TestVisionResultDisplay.OKColor.ToFreezeSolid()
+                : this.TestVisionResultDisplay.NGColor.ToFreezeSolid();
+            });
+            this.ResultShapes.Add(textShape);
+        }
         return r;
     }
 }

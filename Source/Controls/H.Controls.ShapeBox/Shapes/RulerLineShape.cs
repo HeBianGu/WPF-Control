@@ -6,6 +6,8 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
+using H.Controls.ShapeBox.Base;
+
 namespace H.Controls.ShapeBox.Shapes;
 public class RulerLineShape : DimensionShape
 {
@@ -19,13 +21,13 @@ public class RulerLineShape : DimensionShape
         this.From = start;
         this.To = end;
     }
-    [Display(Name = "主卡尺数量", GroupName = "样式")]
+    [Display(Name = "主卡尺数量", GroupName = ShapePropertyGroupNames.StyleGroup)]
     public int MajorRularCount { get; set; } = 10;
 
-    [Display(Name = "次卡尺数量", GroupName = "样式")]
+    [Display(Name = "次卡尺数量", GroupName = ShapePropertyGroupNames.StyleGroup)]
     public int MinorRularCount { get; set; } = 5;
 
-    [Display(Name = "卡尺位移", GroupName = "样式")]
+    [Display(Name = "卡尺位移", GroupName = ShapePropertyGroupNames.StyleGroup)]
     public double MajorOffset { get; set; } = 20.0;
 
     public override void MatrixDrawing(IView view, DrawingContext drawingContext, Pen pen, Brush fill = null)

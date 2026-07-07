@@ -6,6 +6,7 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
+using H.Controls.ShapeBox.Base;
 using H.Mvvm.ViewModels.Base;
 using System.ComponentModel;
 using System.Text.Json.Serialization;
@@ -40,16 +41,16 @@ public abstract class ShapeBase : BindableBase, IShape, IStyleShape
 {
     [JsonIgnore]
     [DefaultValue(null)]
-    [Display(Name = "线条颜色", GroupName = "样式")]
+    [Display(Name = "线条颜色", GroupName = ShapePropertyGroupNames.StyleGroup)]
     public Brush Stroke { get; set; }
     [JsonIgnore]
     [DefaultValue(-1)]
-    [Display(Name = "线条粗细", GroupName = "样式")]
+    [Display(Name = "线条粗细", GroupName = ShapePropertyGroupNames.StyleGroup)]
     public double StrokeThickness { get; set; } = -1;
 
     [JsonIgnore]
     [DefaultValue(null)]
-    [Display(Name = "填充色", GroupName = "样式")]
+    [Display(Name = "填充色", GroupName = ShapePropertyGroupNames.StyleGroup)]
     public Brush Fill { get; set; }
     public virtual void Draw(IView view, DrawingContext drawingContext, Brush stroke, double strokeThickness = 1, Brush fill = null)
     {

@@ -7,6 +7,7 @@
 // Licensed under the MIT License (the "License")
 
 using H.Common.Interfaces;
+using H.Controls.ShapeBox.Base;
 using H.Controls.ShapeBox.Shapes.Base;
 
 namespace H.Controls.ShapeBox.Shapes;
@@ -24,22 +25,22 @@ public class AngleShape : PreviewShapeBase, ITextable
         this.Point2 = point2;
     }
 
-    [Display(Name = "顶点", GroupName = "数据", Order = -1)]
+    [Display(Name = "顶点", GroupName = ShapePropertyGroupNames.DataGroup, Order = -1)]
     public Point Vertex { get; set; }
 
-    [Display(Name = "边1点", GroupName = "数据", Order = -1)]
+    [Display(Name = "边1点", GroupName = ShapePropertyGroupNames.DataGroup, Order = -1)]
     public Point Point1 { get; set; }
 
-    [Display(Name = "边2点", GroupName = "数据", Order = -1)]
+    [Display(Name = "边2点", GroupName = ShapePropertyGroupNames.DataGroup, Order = -1)]
     public Point Point2 { get; set; }
 
-    [Display(Name = "显示文本", GroupName = "样式")]
+    [Display(Name = "显示文本", GroupName = ShapePropertyGroupNames.StyleGroup)]
     public string Text { get; set; }
 
-    [Display(Name = "弧半径", GroupName = "样式")]
+    [Display(Name = "弧半径", GroupName = ShapePropertyGroupNames.StyleGroup)]
     public double Radius { get; set; } = 30;
 
-    [Display(Name = "显示辅助边", GroupName = "样式")]
+    [Display(Name = "显示辅助边", GroupName = ShapePropertyGroupNames.StyleGroup)]
     public bool ShowSides { get; set; } = true;
 
     public override void MatrixDrawing(IView view, DrawingContext drawingContext, Pen pen, Brush fill = null)

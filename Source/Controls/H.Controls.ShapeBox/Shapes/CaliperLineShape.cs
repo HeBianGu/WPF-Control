@@ -9,6 +9,7 @@
 using H.Controls.Form.Attributes;
 using H.Controls.Form.PropertyItem.Attribute;
 using H.Controls.Form.PropertyItem.ComboBoxPropertyItems;
+using H.Controls.ShapeBox.Base;
 using H.Controls.ShapeBox.Shapes.Handles;
 
 namespace H.Controls.ShapeBox.Shapes;
@@ -26,14 +27,14 @@ public class CaliperLineShape : LineShape
         this.To = end;
     }
 
-    [Display(Name = "卡尺数量", GroupName = "数据")]
+    [Display(Name = "卡尺数量", GroupName = ShapePropertyGroupNames.DataGroup)]
     public int CaliperCount { get; set; }
-    [Display(Name = "偏移位置", GroupName = "数据")]
+    [Display(Name = "偏移位置", GroupName = ShapePropertyGroupNames.DataGroup)]
     public double Offset { get; set; } = 10.0;
 
     [GetHightlightBrushesSource]
     [PropertyItem(typeof(BrushComboBoxPropertyItem))]
-    [Display(Name = "卡尺颜色", GroupName = "数据")]
+    [Display(Name = "卡尺颜色", GroupName = ShapePropertyGroupNames.DataGroup)]
     public Brush MinorStroke { get; set; } = Brushes.LightBlue;
 
     public override void MatrixDrawing(IView view, DrawingContext drawingContext, Point normalToPoint, Pen pen, Brush fill = null)

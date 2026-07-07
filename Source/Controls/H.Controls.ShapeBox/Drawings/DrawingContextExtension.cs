@@ -223,7 +223,7 @@ public static class DrawingContextExtension
         return dc.DrawTextAt(text, point, brush, fontSize, x => new Vector(-x.Width, -x.Height / 2), fill, beforeAction);
     }
 
-    private static FormattedText ToForematedText(this string text, Brush brush, double fontSize = 10.0)
+    public static FormattedText ToForematedText(this string text, Brush brush, double fontSize = 10.0)
     {
         if (fontSize <= 0)
             fontSize = 1;

@@ -47,7 +47,8 @@ public abstract class FlowableDiagramDataBase : ExpressionableDiagramDataBase, I
         }
     }
 
-    private bool _useFlowableSelectToRunning = true;
+    private bool _useFlowableSelectToRunning = false;
+    [Display(Name = "自动选中", GroupName = "数据", Description = "执行时节点自动选中节点")]
     public bool UseFlowableSelectToRunning
     {
         get { return _useFlowableSelectToRunning; }

@@ -6,6 +6,7 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
+using H.Controls.ShapeBox.Base;
 using H.Services.Setting;
 using System.ComponentModel;
 
@@ -13,10 +14,10 @@ namespace H.Controls.ShapeBox.Settables;
 public class CircleShapeStyleSetting<T> : ShapeStyleSetting<T> where T : new()
 {
     [DefaultValue(false)]
-    [Display(Name = "启用交线", GroupName = "样式")]
+    [Display(Name = "启用交线", GroupName = ShapePropertyGroupNames.StyleGroup)]
     public bool UseCross { get; set; } = false;
     [DefaultValue(true)]
-    [Display(Name = "启用标尺", GroupName = "样式")]
+    [Display(Name = "启用标尺", GroupName = ShapePropertyGroupNames.StyleGroup)]
     public bool UseDimension { get; set; } = true;
 }
 

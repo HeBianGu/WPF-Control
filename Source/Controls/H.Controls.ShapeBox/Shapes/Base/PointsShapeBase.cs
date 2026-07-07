@@ -6,6 +6,7 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
+using H.Controls.ShapeBox.Base;
 using H.Extensions.Common;
 using System.Globalization;
 using System.Runtime.CompilerServices;
@@ -80,9 +81,9 @@ public abstract class PointsShapeBase : TitleShapeBase, IPointsShape
     {
         this.Points = new Points(points);
     }
-    [Display(Name = "坐标列表", GroupName = "数据", Order = -1)]
+    [Display(Name = "坐标列表", GroupName = ShapePropertyGroupNames.DataGroup, Order = -1)]
     public Points Points { get; set; }
-    [Display(Name = "启用交线", GroupName = "样式")]
+    [Display(Name = "启用交线", GroupName = ShapePropertyGroupNames.StyleGroup)]
     public bool UseCross { get; set; } = false;
 
     public Rect BoundingBox

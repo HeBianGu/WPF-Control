@@ -6,6 +6,7 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
+using H.Controls.ShapeBox.Base;
 using H.Services.Setting;
 using System.ComponentModel;
 
@@ -22,17 +23,17 @@ public interface IROIRectStateStyleOption : IShapeStyleOption
 public class ROIRectStateStyleSetting : ShapeStyleSetting<ROIRectStateStyleSetting>, IROIRectStateStyleOption
 {
     [DefaultValue(6.0)]
-    [Display(Name = "句柄长度", GroupName = "样式")]
+    [Display(Name = "句柄长度", GroupName = ShapePropertyGroupNames.StyleGroup)]
     public double HandleLength { get; set; } = 6.0;
     [DefaultValue(true)]
-    [Display(Name = "启用交线", GroupName = "样式")]
+    [Display(Name = "启用交线", GroupName = ShapePropertyGroupNames.StyleGroup)]
     public bool UseCross { get; set; } = true;
     [DefaultValue(true)]
-    [Display(Name = "启用文本", GroupName = "样式")]
+    [Display(Name = "启用文本", GroupName = ShapePropertyGroupNames.StyleGroup)]
     public bool UseText { get; set; } = true;
 
     [DefaultValue(true)]
-    [Display(Name = "启用背景", GroupName = "样式")]
+    [Display(Name = "启用背景", GroupName = ShapePropertyGroupNames.StyleGroup)]
     public bool UseBackground { get; set; } = true;
 
     public ROIRectShape CreateROIRectShape()

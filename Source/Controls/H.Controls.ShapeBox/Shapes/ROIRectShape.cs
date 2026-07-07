@@ -6,6 +6,7 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
+using H.Controls.ShapeBox.Base;
 using H.Extensions.TypeConverter;
 using System.ComponentModel;
 
@@ -25,20 +26,20 @@ public class ROIRectShape : PreviewShapeBase, IROIRectShape
         this.Fill.Freeze();
     }
     [TypeConverter(typeof(Round2RectConverter))]
-    [Display(Name = "ROI范围", GroupName = "数据")]
+    [Display(Name = "ROI范围", GroupName = ShapePropertyGroupNames.DataGroup)]
     public Rect Rect { get; set; }
 
-    [Display(Name = "句柄长度", GroupName = "样式")]
+    [Display(Name = "句柄长度", GroupName = ShapePropertyGroupNames.StyleGroup)]
     public double HandleLength { get; set; } = 6.0;
 
-    [Display(Name = "启用交线", GroupName = "样式")]
+    [Display(Name = "启用交线", GroupName = ShapePropertyGroupNames.StyleGroup)]
     public bool UseCross { get; set; } = true;
 
-    [Display(Name = "启用文本", GroupName = "样式")]
+    [Display(Name = "启用文本", GroupName = ShapePropertyGroupNames.StyleGroup)]
     public bool UseText { get; set; } = true;
-    [Display(Name = "启用背景", GroupName = "样式")]
+    [Display(Name = "启用背景", GroupName = ShapePropertyGroupNames.StyleGroup)]
     public bool UseBackground { get; set; }
-    [Display(Name = "背景透明度", GroupName = "样式")]
+    [Display(Name = "背景透明度", GroupName = ShapePropertyGroupNames.StyleGroup)]
     public double BackgroundOpacity { get; set; } = 0.2;
     public override void MatrixDrawing(IView view, DrawingContext dc, Pen pen, Brush fill = null)
     {

@@ -9,6 +9,7 @@
 using H.Controls.Form.Attributes;
 using H.Controls.Form.PropertyItem.Attribute;
 using H.Controls.Form.PropertyItem.ComboBoxPropertyItems;
+using H.Controls.ShapeBox.Base;
 using H.Extensions.Setting;
 using System.ComponentModel;
 
@@ -32,16 +33,16 @@ public class ShapeStyleSetting<T> : Settable<T>, IShapeStyleSetting, IShapeStyle
     [GetHightlightBrushesSource]
     [PropertyItem(typeof(BrushComboBoxPropertyItem))]
     [DefaultValue(null)]
-    [Display(Name = "线条颜色", GroupName = "样式")]
+    [Display(Name = "线条颜色", GroupName = ShapePropertyGroupNames.StyleGroup)]
     public Brush Stroke { get; set; }
     [DefaultValue(-1)]
-    [Display(Name = "线条粗细", GroupName = "样式")]
+    [Display(Name = "线条粗细", GroupName = ShapePropertyGroupNames.StyleGroup)]
     public double StrokeThickness { get; set; } = -1;
 
     [GetStandardBrushesSourceAttribute]
     [PropertyItem(typeof(BrushComboBoxPropertyItem))]
     [DefaultValue(null)]
-    [Display(Name = "填充色", GroupName = "样式")]
+    [Display(Name = "填充色", GroupName = ShapePropertyGroupNames.StyleGroup)]
     public Brush Fill { get; set; }
 
     public R Create<R>() where R : new()

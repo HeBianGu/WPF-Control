@@ -9,6 +9,7 @@
 using H.Controls.Form.Attributes;
 using H.Controls.Form.PropertyItem.Attribute;
 using H.Controls.Form.PropertyItem.ComboBoxPropertyItems;
+using H.Controls.ShapeBox.Base;
 using H.Services.Setting;
 
 namespace H.Controls.ShapeBox.Settables;
@@ -16,7 +17,7 @@ public class CaliperShapeStyleSetting<T> : ShapeStyleSetting<T> where T : new()
 {
     [GetHightlightBrushesSource]
     [PropertyItem(typeof(BrushComboBoxPropertyItem))]
-    [Display(Name = "卡尺颜色", GroupName = "数据")]
+    [Display(Name = "卡尺颜色", GroupName = ShapePropertyGroupNames.DataGroup)]
     public Brush MinorStroke { get; set; } = Brushes.LightBlue;
 }
 

@@ -6,6 +6,7 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
+using H.Controls.ShapeBox.Base;
 using H.Controls.ShapeBox.Shapes.Handles;
 
 namespace H.Controls.ShapeBox.Shapes.Base;
@@ -20,9 +21,9 @@ public abstract class FromToShapeBase : PreviewShapeBase, IFromToShape
         this.From = from;
         this.To = to;
     }
-    [Display(Name = "起始坐标", GroupName = "数据", Order = -1)]
+    [Display(Name = "起始坐标", GroupName = ShapePropertyGroupNames.DataGroup, Order = -1)]
     public Point From { get; set; }
-    [Display(Name = "终止坐标", GroupName = "数据", Order = -1)]
+    [Display(Name = "终止坐标", GroupName = ShapePropertyGroupNames.DataGroup, Order = -1)]
     public Point To { get; set; }
 
     public double Angle => this.CalculateAngle(this.From.X, this.From.Y, this.To.X, this.To.Y);

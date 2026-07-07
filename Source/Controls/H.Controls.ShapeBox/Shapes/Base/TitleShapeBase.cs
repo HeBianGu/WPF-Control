@@ -6,6 +6,7 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
+using H.Controls.ShapeBox.Base;
 using H.Controls.ShapeBox.Drawings;
 using H.Extensions.Common;
 
@@ -20,7 +21,7 @@ public abstract class TitleShapeBase : PreviewShapeBase, ITitleShape
 {
     public string Title { get; set; }
 
-    [Display(Name = "启用标题", GroupName = "样式")]
+    [Display(Name = "启用标题", GroupName = ShapePropertyGroupNames.StyleGroup)]
     public bool UseTitle { get; set; } = true;
     public Brush TitleForeground { get; set; } = Brushes.Black;
     public Brush TitleBackground { get; set; }

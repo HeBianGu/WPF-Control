@@ -6,6 +6,7 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
+using H.Controls.ShapeBox.Base;
 using H.Controls.ShapeBox.Shapes.Handles;
 using H.Extensions.Common;
 using H.Extensions.TypeConverter;
@@ -36,22 +37,22 @@ public class RotatedRectShape : TitleShapeBase, IRotatedRectShape
         this.Angle = angle;
     }
 
-    [Display(Name = "启用交线", GroupName = "样式")]
+    [Display(Name = "启用交线", GroupName = ShapePropertyGroupNames.StyleGroup)]
     public bool UseCross { get; set; } = false;
 
-    [Display(Name = "启用角度", GroupName = "样式")]
+    [Display(Name = "启用角度", GroupName = ShapePropertyGroupNames.StyleGroup)]
     public bool UseAngle { get; set; } = true;
 
-    [Display(Name = "启用标尺", GroupName = "样式")]
+    [Display(Name = "启用标尺", GroupName = ShapePropertyGroupNames.StyleGroup)]
     public bool UseDimension { get; set; } = false;
 
-    [Display(Name = "中心点", GroupName = "数据")]
+    [Display(Name = "中心点", GroupName = ShapePropertyGroupNames.DataGroup)]
     public Point Center { get; set; }
 
-    [Display(Name = "尺寸", GroupName = "数据")]
+    [Display(Name = "尺寸", GroupName = ShapePropertyGroupNames.DataGroup)]
     public Size Size { get; set; }
 
-    [Display(Name = "旋转角度", GroupName = "数据")]
+    [Display(Name = "旋转角度", GroupName = ShapePropertyGroupNames.DataGroup)]
     public double Angle { get; set; }
 
     public Rect BoundingBox => this.GetBoundingRect();

@@ -7,6 +7,7 @@
 // Licensed under the MIT License (the "License")
 
 using H.Common.Interfaces;
+using H.Controls.ShapeBox.Base;
 
 namespace H.Controls.ShapeBox.Shapes;
 
@@ -27,7 +28,7 @@ public class DimensionShape : FromToShapeBase, IDimensionShape
         this.To = to;
     }
 
-    [Display(Name = "显示文本", GroupName = "样式")]
+    [Display(Name = "显示文本", GroupName = ShapePropertyGroupNames.StyleGroup)]
     public string Text { get; set; }
 
     public override void MatrixDrawing(IView view, DrawingContext drawingContext, Point normalToPoint, Pen pen, Brush fill = null)

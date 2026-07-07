@@ -43,4 +43,16 @@ public static class ShapeExtension
         return r;
     }
 
+    public static TextShape ToTextShape(this TextVisionResultDisplay textVisionResultDisplay, string text, Action<TextShape> action = null)
+    {
+        var r = new TextShape
+        {
+            Text = text,
+            FontSize = textVisionResultDisplay.FontSize,
+            Position = new Point(textVisionResultDisplay.X, textVisionResultDisplay.Y)
+        };
+        action?.Invoke(r);
+        return r;
+    }
+
 }

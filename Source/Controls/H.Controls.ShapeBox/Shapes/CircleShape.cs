@@ -6,6 +6,7 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
+using H.Controls.ShapeBox.Base;
 using H.Controls.ShapeBox.Shapes.Handles;
 using H.Extensions.Common;
 
@@ -31,13 +32,13 @@ public class CircleShape : TitleShapeBase, ICircleShape
         this.UseTitle = false;
     }
 
-    [Display(Name = "中心坐标", GroupName = "数据")]
+    [Display(Name = "中心坐标", GroupName = ShapePropertyGroupNames.DataGroup)]
     public Point Center { get; set; }
-    [Display(Name = "半径", GroupName = "数据")]
+    [Display(Name = "半径", GroupName = ShapePropertyGroupNames.DataGroup)]
     public double Radius { get; set; }
-    [Display(Name = "启用交线", GroupName = "样式")]
+    [Display(Name = "启用交线", GroupName = ShapePropertyGroupNames.StyleGroup)]
     public bool UseCross { get; set; } = false;
-    [Display(Name = "启用标尺", GroupName = "样式")]
+    [Display(Name = "启用标尺", GroupName = ShapePropertyGroupNames.StyleGroup)]
     public bool UseDimension { get; set; } = true;
     public string DimensionText { get; set; }
     public Rect BoundingBox => this.Center.ToRect(this.Radius);

@@ -6,6 +6,7 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
+using H.Controls.ShapeBox.Base;
 using H.Controls.ShapeBox.Shapes.Handles;
 using H.Extensions.Common;
 
@@ -27,10 +28,10 @@ public class PointShape : TitleShapeBase, IPointShape
         this.Point = center;
     }
 
-    [Display(Name = "点坐标", GroupName = "数据")]
+    [Display(Name = "点坐标", GroupName = ShapePropertyGroupNames.DataGroup)]
     public Point Point { get; set; }
 
-    [Display(Name = "启用交线", GroupName = "样式")]
+    [Display(Name = "启用交线", GroupName = ShapePropertyGroupNames.StyleGroup)]
     public bool UseCross { get; set; } = true;
 
     public Rect BoundingBox => this.Point.ToRect(1);

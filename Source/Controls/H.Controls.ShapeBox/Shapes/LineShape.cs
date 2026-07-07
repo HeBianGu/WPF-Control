@@ -6,6 +6,8 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
+using H.Controls.ShapeBox.Base;
+
 namespace H.Controls.ShapeBox.Shapes;
 public interface IFromToShape : IShape
 {
@@ -24,9 +26,9 @@ public class LineShape : FromToShapeBase, IFromToShape
         this.From = from;
         this.To = to;
     }
-    [Display(Name = "启用文本", GroupName = "样式")]
+    [Display(Name = "启用文本", GroupName = ShapePropertyGroupNames.StyleGroup)]
     public bool UseText { get; set; } = false;
-    [Display(Name = "端点样式", GroupName = "样式")]
+    [Display(Name = "端点样式", GroupName = ShapePropertyGroupNames.StyleGroup)]
     public PointStyleStype PointStyleStype { get; set; } = PointStyleStype.None;
 
     public override void MatrixDrawing(IView view, DrawingContext drawingContext, Point normalToPoint, Pen pen, Brush fill = null)

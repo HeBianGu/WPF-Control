@@ -9,6 +9,7 @@
 using H.Controls.Form.Attributes;
 using H.Controls.Form.PropertyItem.Attribute;
 using H.Controls.Form.PropertyItem.ComboBoxPropertyItems;
+using H.Controls.ShapeBox.Base;
 using H.Controls.ShapeBox.Geometrys;
 using H.Controls.ShapeBox.Shapes.Handles;
 using System.Windows.Input;
@@ -27,18 +28,18 @@ public class CaliperCircleShape : PreviewShapeBase
         this.FromRadius = radius;
     }
 
-    [Display(Name = "中心坐标", GroupName = "数据")]
+    [Display(Name = "中心坐标", GroupName = ShapePropertyGroupNames.DataGroup)]
     public Point Center { get; set; }
-    [Display(Name = "起始半径", GroupName = "数据")]
+    [Display(Name = "起始半径", GroupName = ShapePropertyGroupNames.DataGroup)]
     public double FromRadius { get; set; }
-    [Display(Name = "终止半径", GroupName = "数据")]
+    [Display(Name = "终止半径", GroupName = ShapePropertyGroupNames.DataGroup)]
     public double ToRadius { get; set; }
-    [Display(Name = "卡尺数量", GroupName = "数据")]
+    [Display(Name = "卡尺数量", GroupName = ShapePropertyGroupNames.DataGroup)]
     public int CaliperCount { get; set; } = 36;
 
     [GetHightlightBrushesSource]
     [PropertyItem(typeof(BrushComboBoxPropertyItem))]
-    [Display(Name = "卡尺颜色", GroupName = "数据")]
+    [Display(Name = "卡尺颜色", GroupName = ShapePropertyGroupNames.DataGroup)]
     public Brush MinorStroke { get; set; } = Brushes.LightBlue;
 
     public override void MatrixDrawing(IView view, DrawingContext drawingContext, Pen pen, Brush fill = null)
