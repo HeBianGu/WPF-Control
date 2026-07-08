@@ -14,7 +14,7 @@ public interface ICameraCaptureNodeData
 }
 
 [Icon(FontIcons.Webcam2)]
-[Display(Name = "摄像头", GroupName = "数据源", Description = "降噪成黑白色", Order = 10)]
+[Display(Name = "摄像头", GroupName = "视频采集", Description = "降噪成黑白色", Order = 10)]
 public class CameraCaptureNodeData : VideoCaptureNodeDataBase, ISrcImageGroupableNodeData, ICameraCaptureNodeData
 {
     public CameraCaptureNodeData()
