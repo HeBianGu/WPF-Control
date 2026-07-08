@@ -37,6 +37,7 @@ public abstract class PreviewShapeStateBase : ShowEditStateBase
         this._crossPreviewShape.Point = p;
         base.MouseMove(sender, e);
         this.DrawPreviewShape();
+        this.Message = this._crossPreviewShape.Message;
     }
 
     protected void DrawPreviewShape()

@@ -6,13 +6,26 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
+using H.Common.Interfaces;
 using H.Extensions.Mvvm.ViewModels.Base;
 using System.Windows.Input;
 
 namespace H.Controls.ShapeBox.State.Base;
-public abstract class StateBase : DisplayBindableBase, IViewState
+public abstract class StateBase : DisplayBindableBase, IViewState, IMessageable
 {
     public IView View { get; set; }
+
+    private string _Message;
+    public string Message
+    {
+        get { return _Message; }
+        set
+        {
+            _Message = value;
+            RaisePropertyChanged();
+        }
+    }
+
     public virtual void MouseLeave(object sender, MouseEventArgs e)
     {
 
@@ -87,7 +100,7 @@ public abstract class StateBase : DisplayBindableBase, IViewState
 
     protected virtual IEnumerable<IShape> GetShapes()
     {
-        if(this.View is IShapeView shapeView)
+        if (this.View is IShapeView shapeView)
             foreach (var item in shapeView.GetShapes())
             {
                 yield return item;

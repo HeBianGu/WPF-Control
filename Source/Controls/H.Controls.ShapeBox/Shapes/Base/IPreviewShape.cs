@@ -7,6 +7,7 @@
 // Licensed under the MIT License (the "License")
 
 namespace H.Controls.ShapeBox.Shapes.Base;
+
 public interface IPreviewShape
 {
     void DrawPreview(IView view, DrawingContext drawingContext, Brush stroke, double strokeThickness = 1, Brush fill = null, double mousePotionsOffset = 0);

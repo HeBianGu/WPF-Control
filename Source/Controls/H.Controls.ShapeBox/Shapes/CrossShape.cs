@@ -6,19 +6,30 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
+using H.Common.Interfaces;
 using H.Extensions.Common;
 using System.Text;
 using System.Windows.Ink;
 using System.Windows.Media;
 
 namespace H.Controls.ShapeBox.Shapes;
-public class CrossShape : CommonShapeBase, IPreviewShape
+public class CrossShape : CommonShapeBase, IPreviewShape, IMessageable
 {
     public Point Point { get; set; }
     public bool UseMousePosition => false;
     public bool UsePixel { get; set; } = true;
     public bool UseHEX { get; set; } = true;
     public bool UseRGB { get; set; } = true;
+    private string _Message;
+    public string Message
+    {
+        get { return _Message; }
+        set
+        {
+            _Message = value;
+            RaisePropertyChanged();
+        }
+    }
 
     protected override Pen GetPen(Brush stroke, double strokeThickness, IView view)
     {
@@ -45,7 +56,10 @@ public class CrossShape : CommonShapeBase, IPreviewShape
             stringBuilder.AppendLine($"x:{(int)this.Point.X} y:{(int)this.Point.Y}");
 
         Color pickColor = default;
-        if (view is IImageView imageView && (this.UseHEX || this.UseRGB))
+        IImageView imageView = view as IImageView;
+        if (imageView == null)
+            return;
+        if (this.UseHEX || this.UseRGB)
         {
             pickColor = imageView.PickColor(this.Point);
             if (this.UseHEX)
@@ -59,7 +73,7 @@ public class CrossShape : CommonShapeBase, IPreviewShape
 
         if (pickColor != default)
             dc.DrawRoundedRectangle(pickColor.ToSolid(), pen, new Rect(rc.Left, rc.Bottom, 20 / view.Scale, 10 / view.Scale), 1 / view.Scale, 1 / view.Scale);
-
+        this.Message = $"{imageView.ImageWidth}*{imageView.ImageHeight} R:{pickColor.R} G:{pickColor.G} B:{pickColor.B} A:{pickColor.A} x:{(int)this.Point.X} y:{(int)this.Point.Y} ";
     }
 
     public void DrawPreview(IView view, DrawingContext drawingContext, Brush stroke, double strokeThickness = 1, Brush fill = null, double offset = 0)

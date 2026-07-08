@@ -357,6 +357,10 @@ public class ShapeBox : FrameworkElement, IShapeView, IImageView
         set { SetValue(ShapeProperty, value); }
     }
 
+    double IImageView.ImageWidth => this.ImageSource == null ? 0 : this.ImageSource.Width;
+
+    double IImageView.ImageHeight => this.ImageSource == null ? 0 : this.ImageSource.Height;
+
     public static readonly DependencyProperty ShapeProperty =
         DependencyProperty.Register("Shape", typeof(IShape), typeof(ShapeBox), new FrameworkPropertyMetadata(default(IShape), (d, e) =>
         {
@@ -474,7 +478,7 @@ public class ShapeBox : FrameworkElement, IShapeView, IImageView
     protected override void OnMouseUp(MouseButtonEventArgs e)
     {
         base.OnMouseUp(e);
-        if(e.ChangedButton != MouseButton.Right)
+        if (e.ChangedButton != MouseButton.Right)
             return;
         Point point = e.GetPosition(this);
         IShape shape = this.GetShapes()
@@ -499,7 +503,7 @@ public class ShapeBox : FrameworkElement, IShapeView, IImageView
 
     protected virtual IEnumerable<IDisplayCommand> CreateContextMenuommands()
     {
-        if(this is ICommandsBindable bindable)
+        if (this is ICommandsBindable bindable)
         {
             foreach (var item in bindable.Commands.OfType<IDisplayCommand>())
             {

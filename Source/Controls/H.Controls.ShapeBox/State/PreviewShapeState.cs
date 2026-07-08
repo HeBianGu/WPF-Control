@@ -6,10 +6,10 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
-namespace H.Controls.ShapeBox;
-public interface IImageView : IView
+namespace H.Controls.ShapeBox.State;
+[Icon(FontIcons.Click)]
+[Display(Name = "无")]
+public class PreviewShapeState : PreviewShapeStateBase
 {
-    double ImageWidth { get; }
-    double ImageHeight { get; }
-    Color PickColor(Point point);
+
 }

@@ -54,7 +54,7 @@ public abstract class StateNodeDataBase : StyleNodeDataBase
 
     protected virtual IViewState GetDefaultViewState()
     {
-        return new NoneState();
+        return new PreviewShapeState();
     }
 
     protected virtual IEnumerable<IViewState> CreateViewStates()
