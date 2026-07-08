@@ -73,7 +73,7 @@ public class CrossShape : CommonShapeBase, IPreviewShape, IMessageable
 
         if (pickColor != default)
             dc.DrawRoundedRectangle(pickColor.ToSolid(), pen, new Rect(rc.Left, rc.Bottom, 20 / view.Scale, 10 / view.Scale), 1 / view.Scale, 1 / view.Scale);
-        this.Message = $"{imageView.ImageWidth}*{imageView.ImageHeight} R:{pickColor.R} G:{pickColor.G} B:{pickColor.B} A:{pickColor.A} x:{(int)this.Point.X} y:{(int)this.Point.Y} ";
+        this.Message = $"R:{pickColor.R} G:{pickColor.G} B:{pickColor.B} A:{pickColor.A} x:{(int)this.Point.X} y:{(int)this.Point.Y} {imageView.ImageWidth}*{imageView.ImageHeight}";
     }
 
     public void DrawPreview(IView view, DrawingContext drawingContext, Brush stroke, double strokeThickness = 1, Brush fill = null, double offset = 0)
