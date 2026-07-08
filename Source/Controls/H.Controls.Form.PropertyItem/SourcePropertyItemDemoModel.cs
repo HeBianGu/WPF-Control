@@ -50,6 +50,12 @@ public class ComboBoxPropertyItemDemoModel : SourcePropertyItemDemoModel
     [PropertyItem(typeof(PresenterComboBoxPropertyItem))]
     public DemoModelItem FormSelectItem { get; set; }
 
+    [Display(Name = "DisplayMemberPath-Name", Description = "演示应用PropertyItemAttribute自定义显示样式")]
+    [DisplayMemberPath("Name")]
+    [GetMethodNameSource(nameof(GetModelItemSource))]
+    [PropertyItem(typeof(PresenterComboBoxPropertyItem))]
+    public DemoModelItem FormSelectItem1 { get; set; }
+
     [Display(Name = "EnumComboBoxPropertyItem", Description = "演示应用PropertyItemAttribute自定义显示样式")]
     [PropertyItem(typeof(EnumComboBoxPropertyItem))]
     public HorizontalAlignment HorizontalAlignment { get; set; }

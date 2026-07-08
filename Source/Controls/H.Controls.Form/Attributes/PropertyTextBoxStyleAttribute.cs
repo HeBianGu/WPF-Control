@@ -8,7 +8,7 @@
 
 namespace H.Controls.Form.Attributes;
 
-public class TextBoxAttribute : Attribute
+public class PropertyTextBoxStyleAttribute : Attribute
 {
     //public TextBoxAttribute(TextWrapping textWrapping)
     //{

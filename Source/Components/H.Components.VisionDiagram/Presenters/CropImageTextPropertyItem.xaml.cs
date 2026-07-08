@@ -14,7 +14,7 @@ public class CropImageTextPropertyItem : TextPropertyItem
 {
     public CropImageTextPropertyItem(PropertyInfo property, object obj) : base(property, obj)
     {
-        TextBoxAttribute ta = property.GetCustomAttribute<TextBoxAttribute>();
+        var ta = property.GetCustomAttribute<PropertyTextBoxStyleAttribute>();
         if (ta != null)
         {
             this.TextWrapping = ta.TextWrapping;

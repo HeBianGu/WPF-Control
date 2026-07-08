@@ -14,7 +14,7 @@ public class TextPropertyItem : ObjectPropertyItem<string>
 {
     public TextPropertyItem(PropertyInfo property, object obj) : base(property, obj)
     {
-        TextBoxAttribute ta = property.GetCustomAttribute<TextBoxAttribute>();
+        PropertyTextBoxStyleAttribute ta = property.GetCustomAttribute<PropertyTextBoxStyleAttribute>();
         if (ta != null)
         {
             this.TextWrapping = ta.TextWrapping;
