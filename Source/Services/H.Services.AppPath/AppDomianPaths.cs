@@ -16,6 +16,7 @@ public static class AppDomianPaths
     public static string DefaultSettings => Path.Combine(DefaultTemplates, "Setting");
     public static string Modules => "Modules";
     public static string Components => "Components";
+    public static string Plugin => "Plugins";
     public static string Versions => "Versions";
 }
 

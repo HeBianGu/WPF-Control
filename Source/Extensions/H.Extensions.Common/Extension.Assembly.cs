@@ -6,7 +6,9 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
+using System.IO;
 using System.Reflection;
+using System.Runtime.CompilerServices;
 
 namespace H.Extensions.Common;
 public static class AssemblyExtension
@@ -23,4 +25,31 @@ public static class AssemblyExtension
     {
         return type.Assembly.GetInstances<T>(args);
     }
+
+
+    public static IEnumerable<Assembly> GetAssemblies(this string dllFolderPath, SearchOption searchOption = SearchOption.AllDirectories)
+    {
+        var puginPath = dllFolderPath;
+        var dlls = puginPath.GetFiles("*.dll", searchOption);
+        foreach (var dll in dlls)
+        {
+            var assembly = Assembly.LoadFrom(dll);
+            if (assembly == null)
+                continue;
+            yield return assembly;
+        }
+    }
+
+    public static IEnumerable<T> GetInstances<T>(this string dllFolderPath, Predicate<Assembly> predicate = null)
+    {
+        var where = dllFolderPath.GetAssemblies().Where(x => predicate?.Invoke(x) != false);
+        foreach (var item in where)
+        {
+            foreach (var instance in item.GetInstances<T>())
+            {
+                yield return instance;
+            }
+        }
+    }
+
 }
