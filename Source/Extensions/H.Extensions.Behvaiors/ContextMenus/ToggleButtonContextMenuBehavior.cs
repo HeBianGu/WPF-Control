@@ -20,7 +20,8 @@ public class ToggleButtonContextMenuBehavior : Behavior<ToggleButton>
     {
         this.AssociatedObject.Checked -= AssociatedObject_Checked;
         this.AssociatedObject.Unchecked -= AssociatedObject_Unchecked;
-        this.AssociatedObject.ContextMenu.Closed -= ContextMenu_Closed;
+        if (this.AssociatedObject.ContextMenu != null)
+            this.AssociatedObject.ContextMenu.Closed -= ContextMenu_Closed;
     }
 
     private void AssociatedObject_Loaded(object sender, RoutedEventArgs e)

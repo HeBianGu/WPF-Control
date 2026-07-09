@@ -63,7 +63,7 @@ public class ProjectOptions : IocOptionInstance<ProjectOptions>, IProjectOptions
 
     private bool _UseOpenCurrentOnLoad = true;
     [DefaultValue(true)]
-    [Display(Name = "保存的时机")]
+    [Display(Name = "自动加载项目", Description = "应用程序启动时自动加载上次选择的项目")]
     public bool UseOpenCurrentOnLoad
     {
         get { return _UseOpenCurrentOnLoad; }

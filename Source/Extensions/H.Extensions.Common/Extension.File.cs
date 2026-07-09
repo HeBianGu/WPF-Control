@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Security.Cryptography;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
 
 namespace H.Extensions.Common;
 
@@ -39,8 +40,26 @@ public static partial class FileExtension
     public static ImageSource ToImageSource(this string filePath)
     {
         if (filePath.IsImage())
-            return filePath.ToByTypeConverter<ImageSource>();
+        {
+            var r = filePath.ToByTypeConverter<ImageSource>();
+            r.Freeze();
+            return r;
+        }
         return null;
+    }
+
+    public static BitmapSource ToImageSourceFreeze(this string path)
+    {
+        var bmp = new BitmapImage();
+        bmp.BeginInit();
+        bmp.UriSource = new Uri(path, UriKind.RelativeOrAbsolute);
+        // Force sync load so the bitmap is fully available and can be frozen
+        bmp.CacheOption = BitmapCacheOption.OnLoad;
+        bmp.CreateOptions = BitmapCreateOptions.PreservePixelFormat;
+        bmp.EndInit();
+        if (bmp.CanFreeze) 
+            bmp.Freeze();
+        return bmp;
     }
 
     public static IEnumerable<string> GetAllVedios(this string foldPath)

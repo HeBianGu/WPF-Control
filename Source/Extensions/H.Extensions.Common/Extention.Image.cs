@@ -113,6 +113,43 @@ public static partial class ImageExtention
         ImageSourceConverter converter = new ImageSourceConverter();
         return converter.ConvertFromInvariantString(filePath) as ImageSource;
     }
+
+    public static string ToBase64(this BitmapSource bitmap, BitmapEncoder encoder = null)
+    {
+        if (bitmap is null) 
+            throw new ArgumentNullException(nameof(bitmap));
+
+        // Ensure the source is freezable and frozen for thread-safety when encoding off the UI thread
+        BitmapSource bmp = bitmap;
+        if (!bmp.IsFrozen)
+        {
+            bmp = (BitmapSource)bmp.Clone();
+            bmp.Freeze();
+        }
+
+        encoder ??= new PngBitmapEncoder();
+        encoder.Frames.Clear();
+        encoder.Frames.Add(BitmapFrame.Create(bmp));
+
+        using var ms = new MemoryStream();
+        encoder.Save(ms);
+        return Convert.ToBase64String(ms.ToArray());
+    }
+
+    /// <summary>
+    /// Convenience: PNG Base64
+    /// </summary>
+    public static string ToBase64Png(this BitmapSource bitmap) =>
+        bitmap.ToBase64(new PngBitmapEncoder());
+
+    /// <summary>
+    /// Convenience: JPEG Base64 with quality (1-100).
+    /// </summary>
+    public static string ToBase64Jpeg(this BitmapSource bitmap, int quality = 90)
+    {
+        var enc = new JpegBitmapEncoder { QualityLevel = Math.Clamp(quality, 1, 100) };
+        return bitmap.ToBase64(enc);
+    }
 }
 
 public static partial class ImageExtention

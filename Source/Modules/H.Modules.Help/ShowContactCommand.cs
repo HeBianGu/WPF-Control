@@ -10,9 +10,12 @@
 
 using H.Common.Attributes;
 using H.Common.Commands;
+using H.Extensions.Common;
 using H.Extensions.FontIcon;
 using H.Modules.Help.Base;
 using H.Modules.Help.Contact;
+using H.Presenters.Common.Presenters;
+using H.Services.Message;
 using System.ComponentModel.DataAnnotations;
 
 namespace H.Modules.Help;
@@ -63,6 +66,19 @@ public class ShowQQContactCommand : ShowContactCommand
     {
         ContactOptions.Instance.QQ.ShowProcess();
         return Task.CompletedTask;
+    }
+}
+
+[Icon(FontIcons.Contact)]
+[Display(Name = "QQ", Description = "通过此方式联系到开发者")]
+public class ShowQQCommand : AsyncMarkupCommandBase
+{
+    public override async Task ExecuteAsync(object parameter)
+    {
+        await IocMessage.Dialog.ShowImageSource(x =>
+        {
+            x.ImageSource = "pack://application:,,,/H.Modules.Help;component/Assets/QQ.jpg".ToImageSource();
+        });
     }
 }
 
