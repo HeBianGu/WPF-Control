@@ -9,6 +9,7 @@
 using H.Components.VisionDiagrams.OpenCV.NodeDatas.Src;
 
 namespace H.Components.VisionDiagrams.OpenCV.Base;
+
 [Icon(FontIcons.Camera)]
 public abstract class VideoCaptureNodeDataBase : OpenCVSrcFilesNodeDataBase, IVideoCaptureNodeData
 {

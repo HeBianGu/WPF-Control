@@ -29,18 +29,6 @@
                                                                            Text="{Binding Icon}" />
                                                     </ControlTemplate>
                                                 </Cattach.CaptionRightTemplate>
-                                                <!--<GroupBox.HeaderTemplate>
-                                                    <DataTemplate>
-                                                        <DockPanel>
-                                                            <FontIconTextBlock Margin="5,0"
-                                                                               Text="{Binding Icon}" />
-                                                            <TextBlock Margin="5,0"
-                                                                       FontWeight="Black"
-                                                                       Foreground="{DynamicResource {x:Static BrushKeys.ForegroundTitle}}"
-                                                                       Text="{Binding Name}" />
-                                                        </DockPanel>
-                                                    </DataTemplate>
-                                                </GroupBox.HeaderTemplate>-->
                                                 <GroupBox.Resources>
                                                     <CollectionViewSource x:Key="GroupedNodeDatas"
                                                                           Source="{Binding Datas}">
@@ -49,68 +37,70 @@
                                                         </CollectionViewSource.GroupDescriptions>
                                                     </CollectionViewSource>
                                                 </GroupBox.Resources>
-                                                <ItemsControl ItemsSource="{Binding Source={StaticResource GroupedNodeDatas}}">
-                                                    <ItemsControl.ItemsPanel>
-                                                        <ItemsPanelTemplate>
-                                                            <UniformGrid Columns="2" />
-                                                        </ItemsPanelTemplate>
-                                                    </ItemsControl.ItemsPanel>
-                                                    <ItemsControl.ItemTemplate>
-                                                        <DataTemplate>
-                                                            <ContentPresenter Content="{Binding}">
-                                                                <ContentPresenter.ToolTip>
-                                                                    <ToolTip>
-                                                                        <TextBlock>
-                                                                            <Run Text="{Binding Name}" />
-                                                                            <Run Text=":" />
-                                                                            <Run Text="{Binding Description}" />
-                                                                        </TextBlock>
-                                                                    </ToolTip>
-                                                                </ContentPresenter.ToolTip>
-                                                                <b:Interaction.Behaviors>
-                                                                    <DraggableDataTemplateAdornerBehavior />
-                                                                </b:Interaction.Behaviors>
-                                                            </ContentPresenter>
-                                                        </DataTemplate>
-                                                    </ItemsControl.ItemTemplate>
-                                                    <ItemsControl.GroupStyle>
-                                                        <GroupStyle>
-                                                            <GroupStyle.ContainerStyle>
-                                                                <Style TargetType="{x:Type GroupItem}">
-                                                                    <Setter Property="Template">
-                                                                        <Setter.Value>
-                                                                            <ControlTemplate TargetType="{x:Type GroupItem}">
-                                                                                <GroupBox Header="{Binding}"
-                                                                                          Style="{DynamicResource {x:Static GroupBoxKeys.AccentLine}}">
-                                                                                    <GroupBox.HeaderTemplate>
-                                                                                        <DataTemplate>
-                                                                                            <DockPanel>
-                                                                                                <FontIconTextBlock Margin="5,0"
-                                                                                                                   Text="{Binding RelativeSource={RelativeSource AncestorType=ItemsControl}, Path=DataContext.Icon}" />
-                                                                                                <TextBlock>
-                                                                                                    <Run Text="{Binding Name, Mode=OneWay}" />
+                                                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                                                    <ItemsControl ItemsSource="{Binding Source={StaticResource GroupedNodeDatas}}">
+                                                        <ItemsControl.ItemsPanel>
+                                                            <ItemsPanelTemplate>
+                                                                <UniformGrid Columns="2" />
+                                                            </ItemsPanelTemplate>
+                                                        </ItemsControl.ItemsPanel>
+                                                        <ItemsControl.ItemTemplate>
+                                                            <DataTemplate>
+                                                                <ContentPresenter Content="{Binding}">
+                                                                    <ContentPresenter.ToolTip>
+                                                                        <ToolTip>
+                                                                            <TextBlock>
+                                                                                <Run Text="{Binding Name}" />
+                                                                                <Run Text=":" />
+                                                                                <Run Text="{Binding Description}" />
+                                                                            </TextBlock>
+                                                                        </ToolTip>
+                                                                    </ContentPresenter.ToolTip>
+                                                                    <b:Interaction.Behaviors>
+                                                                        <DraggableDataTemplateAdornerBehavior />
+                                                                    </b:Interaction.Behaviors>
+                                                                </ContentPresenter>
+                                                            </DataTemplate>
+                                                        </ItemsControl.ItemTemplate>
+                                                        <ItemsControl.GroupStyle>
+                                                            <GroupStyle>
+                                                                <GroupStyle.ContainerStyle>
+                                                                    <Style TargetType="{x:Type GroupItem}">
+                                                                        <Setter Property="Template">
+                                                                            <Setter.Value>
+                                                                                <ControlTemplate TargetType="{x:Type GroupItem}">
+                                                                                    <GroupBox Header="{Binding}"
+                                                                                              Style="{DynamicResource {x:Static GroupBoxKeys.AccentLine}}">
+                                                                                        <GroupBox.HeaderTemplate>
+                                                                                            <DataTemplate>
+                                                                                                <DockPanel>
+                                                                                                    <FontIconTextBlock Margin="5,0"
+                                                                                                                       Text="{Binding RelativeSource={RelativeSource AncestorType=ItemsControl}, Path=DataContext.Icon}" />
+                                                                                                    <TextBlock>
+                                                                                                        <Run Text="{Binding Name, Mode=OneWay}" />
+                                                                                                    </TextBlock>
+                                                                                                </DockPanel>
+                                                                                            </DataTemplate>
+                                                                                        </GroupBox.HeaderTemplate>
+                                                                                        <Cattach.CaptionRightTemplate>
+                                                                                            <ControlTemplate>
+                                                                                                <TextBlock Margin="5,0"
+                                                                                                           VerticalAlignment="Center">
+                                                                                                    <Run Text="[" /> <Run Text="{Binding Items.Count, Mode=OneWay}" /><Run Text=" ]" />
                                                                                                 </TextBlock>
-                                                                                            </DockPanel>
-                                                                                        </DataTemplate>
-                                                                                    </GroupBox.HeaderTemplate>
-                                                                                    <Cattach.CaptionRightTemplate>
-                                                                                        <ControlTemplate>
-                                                                                            <TextBlock Margin="5,0"
-                                                                                                       VerticalAlignment="Center">
-                                                                                                <Run Text="[" /> <Run Text="{Binding Items.Count, Mode=OneWay}" /><Run Text=" ]" />
-                                                                                            </TextBlock>
-                                                                                        </ControlTemplate>
-                                                                                    </Cattach.CaptionRightTemplate>
-                                                                                    <ItemsPresenter />
-                                                                                </GroupBox>
-                                                                            </ControlTemplate>
-                                                                        </Setter.Value>
-                                                                    </Setter>
-                                                                </Style>
-                                                            </GroupStyle.ContainerStyle>
-                                                        </GroupStyle>
-                                                    </ItemsControl.GroupStyle>
-                                                </ItemsControl>
+                                                                                            </ControlTemplate>
+                                                                                        </Cattach.CaptionRightTemplate>
+                                                                                        <ItemsPresenter />
+                                                                                    </GroupBox>
+                                                                                </ControlTemplate>
+                                                                            </Setter.Value>
+                                                                        </Setter>
+                                                                    </Style>
+                                                                </GroupStyle.ContainerStyle>
+                                                            </GroupStyle>
+                                                        </ItemsControl.GroupStyle>
+                                                    </ItemsControl>
+                                                </ScrollViewer>
                                             </GroupBox>
                                         </ControlTemplate>
                                     </ContextMenu.Template>

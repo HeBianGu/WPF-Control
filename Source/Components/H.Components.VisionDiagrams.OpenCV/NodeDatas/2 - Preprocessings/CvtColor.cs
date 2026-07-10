@@ -8,7 +8,7 @@
 
 namespace H.Components.VisionDiagrams.OpenCV.NodeDatas.Basic;
 [Icon(FontIcons.Color)]
-[Display(Name = "色彩变换", GroupName = "基础函数", Description = "设置图片颜色", Order = 2)]
+[Display(Name = "颜色转换", GroupName = "基础函数", Description = "设置图片颜色", Order = 2)]
 public class CvtColor : OpenCVNodeDataBase, IPreprocessingGroupableNodeData
 {
     private ColorConversionCodes _colorConversionCode = ColorConversionCodes.BGR2GRAY;
