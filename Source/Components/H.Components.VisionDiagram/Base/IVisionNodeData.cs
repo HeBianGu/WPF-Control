@@ -7,10 +7,12 @@
 // Licensed under the MIT License (the "License")
 
 global using H.Components.VisionDiagram.NodeDatas;
+using H.Common.Interfaces;
+using H.Common.Interfaces.Where;
 
 namespace H.Components.VisionDiagram.Base;
 
-public interface IVisionNodeData : IFlowableNodeData, IResultPresenterNodeData, IResultImageSourceNodeData, IHelpNodeData
+public interface IVisionNodeData : IFlowableNodeData, IResultPresenterNodeData, IResultImageSourceNodeData, IHelpNodeData, IOrderable
 {
     bool UseInvokedPart { get; set; }
 }
