@@ -8,7 +8,7 @@
                 Command="{Binding ProcessCommand}"
                 Foreground="{DynamicResource {x:Static BrushKeys.Foreground}}"
                 NavigateUri="{Binding Value}">
-                <Run Text="{Binding Name}" />
+                <Run Text="{Binding Value}" />
             </Hyperlink>
         </TextBlock>
     </DataTemplate>
