@@ -10,8 +10,9 @@ global using H.Common.Interfaces;
 global using H.Controls.Diagram.Presenter.NodeDatas.Base;
 namespace H.Controls.Diagram.Presenter.NodeDatas;
 
-public interface ITextNodeData : INodeData, ITextable, IIndexable
+public interface ITextNodeData : INodeData, ITextable
 {
+    int? Index { get; set; }
     FontFamily FontFamily { get; set; }
     double FontSize { get; set; }
     FontStretch FontStretch { get; set; }
@@ -38,7 +39,16 @@ public class TextNodeData : PortableNodeData, ITextNodeData
         this.FontStretch = FontStretches.Normal;
     }
 
-    public int Index { get; set; }
+    private int? _Index;
+    public int? Index
+    {
+        get { return _Index; }
+        set
+        {
+            _Index = value;
+            RaisePropertyChanged();
+        }
+    }
 
     private string _text;
     [Display(Name = "文本", GroupName = "常用")]

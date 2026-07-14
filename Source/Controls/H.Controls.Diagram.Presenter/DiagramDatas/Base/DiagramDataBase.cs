@@ -304,7 +304,7 @@ public abstract class DiagramDataBase : DisplayBindableBase, IDiagramData
         var nodedatas = this.Datas.NodeDatas.OfType<ITextNodeData>();
         foreach (var item in nodes.Select(x => x.GetContent()).OfType<ITextNodeData>())
         {
-            var indexs = nodedatas.Select(x => x.Index);
+            var indexs = nodedatas.Where(x => x.Index.HasValue).Select(x => x.Index.Value);
             item.Index = indexs.GetSafeIndex();
             var sametypes = this.Datas.NodeDatas.OfType<ITextNodeData>().Where(x => x.GetType() == item.GetType()).Select(x => x.Text);
             item.Text = item.Text.GetIndexSafeName(sametypes);
