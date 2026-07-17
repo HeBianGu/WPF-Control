@@ -22,6 +22,7 @@ public interface ITextNodeData : INodeData, ITextable
     Thickness TextMargin { get; set; }
 }
 
+[DebuggerDisplay("TextNodeData:{Text}")]
 public class TextNodeData : PortableNodeData, ITextNodeData
 {
     public TextNodeData()
