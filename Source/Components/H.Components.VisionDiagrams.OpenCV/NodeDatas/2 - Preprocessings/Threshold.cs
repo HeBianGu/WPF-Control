@@ -8,7 +8,7 @@
 
 namespace H.Components.VisionDiagrams.OpenCV.NodeDatas.Basic;
 [Icon(FontIcons.Color)]
-[Display(Name = "二值化", GroupName = "基础函数", Description = "降噪成黑白色", Order = 3)]
+[Display(Name = "图像二值化", GroupName = "基础函数", Description = "降噪成黑白色", Order = 3)]
 public class Threshold : OpenCVNodeDataBase, IPreprocessingGroupableNodeData, IThresholdNodeData
 {
     private double _thresh = 125.0;
