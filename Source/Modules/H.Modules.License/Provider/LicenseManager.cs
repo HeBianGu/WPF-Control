@@ -18,9 +18,7 @@ namespace H.Modules.License
         public Tuple<string, string> GetPK()
         {
             RSAHelper.RSAKey keyPair = RSAHelper.GetRASKey();
-
             return Tuple.Create(keyPair.PublicKey, keyPair.PrivateKey);
-
         }
 
         public string Encrypt(string source, string key)

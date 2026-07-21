@@ -69,7 +69,9 @@ namespace H.Modules.License
             int start, index;
             byte[] idArry = new byte[HostIDLength];
 
-            string hwInfo = "CPU:" + cpuId() + ";HDD:" + diskId() + ";MAC:" + macId();
+            //string hwInfo = "CPU:" + cpuId() + ";HDD:" + diskId() + ";MAC:" + macId();
+            // 去掉网络控制
+            string hwInfo = "CPU:" + cpuId() + ";HDD:" + diskId();
 #if NETCOREAPP3_1||NET5_0||NET6_0||NET7_0||NET8_0
             SHA256 sha = SHA256.Create();
 #else
