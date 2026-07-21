@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <ItemGroup>
-    <PackageReference Include="Platform.Runtime" Version="1.0.13" />
+    <PackageReference Include="Platform.Runtime" Version="1.0.14" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Base\H.Attach\H.Attach.csproj" />

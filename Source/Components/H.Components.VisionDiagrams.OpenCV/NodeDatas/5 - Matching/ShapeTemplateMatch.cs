@@ -355,17 +355,33 @@ public class ShapeTemplateMatch : MatchingNodeData<IMatImage>, ITemplateMatching
             throw new ArgumentException("轮廓点数量不足。", nameof(contour));
 
         var minAreaRect = Cv2.MinAreaRect(contour);
-        //  ToDo：我需要的是在minAreaRect各个边方向找到一个标准的方向作为主轴，
-
         return minAreaRect;
-        var direction = GetContourDirection(contour);
-        var width = Math.Max(minAreaRect.Size.Width, minAreaRect.Size.Height);
-        var height = Math.Min(minAreaRect.Size.Width, minAreaRect.Size.Height);
+        var contourDirection = GetContourDirection(contour);
+        var points = minAreaRect.Points();
+        var axis = Enumerable.Range(0, points.Length)
+            .Select(index =>
+            {
+                var from = points[index];
+                var to = points[(index + 1) % points.Length];
+                var dx = to.X - from.X;
+                var dy = to.Y - from.Y;
+                var angle = (Math.Atan2(dy, dx) * 180.0 / Math.PI + 360.0) % 360.0;
+                var difference = Math.Abs((angle - contourDirection + 540.0) % 360.0 - 180.0);
+                return new { Index = index, Angle = angle, Length = Math.Sqrt(dx * dx + dy * dy), Difference = difference };
+            })
+            .OrderBy(x => x.Difference)
+            .First();
+
+        var perpendicularFrom = points[(axis.Index + 1) % points.Length];
+        var perpendicularTo = points[(axis.Index + 2) % points.Length];
+        var perpendicularX = perpendicularTo.X - perpendicularFrom.X;
+        var perpendicularY = perpendicularTo.Y - perpendicularFrom.Y;
+        var perpendicularLength = Math.Sqrt(perpendicularX * perpendicularX + perpendicularY * perpendicularY);
 
         return new RotatedRect(
             minAreaRect.Center,
-            new Size2f(width, height),
-            (float)direction);
+            new Size2f((float)axis.Length, (float)perpendicularLength),
+            (float)axis.Angle);
     }
 }
 
