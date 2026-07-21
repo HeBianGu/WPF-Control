@@ -156,6 +156,14 @@ public static class DrawingContextExtension
         dc.DrawPoints(pen, fill, true, true, points);
     }
 
+    public static void DrawPoints(this DrawingContext dc, Pen pen, Brush fill = null, double radius = 3, params Point[] points)
+    {
+        foreach (var item in points)
+        {
+            dc.DrawCircle(item, pen, radius, fill);
+        }
+    }
+
     public static Rect DrawTextAt(this DrawingContext dc, string text, Point point, Brush brush, double fontSize = 10.0, Brush fill = null, double offset = 5, Action<FormattedText, Rect> beforeAction = null)
     {
         return dc.DrawTextAt(text, point, brush, fontSize, x => new Vector(offset, offset), fill, beforeAction);

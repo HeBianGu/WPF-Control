@@ -147,46 +147,77 @@ public class ShapeTemplateMatch : MatchingNodeData<IMatImage>, ITemplateMatching
     }
 
 
-    // 运行参数：自动翻转控制
-    private bool _autoFlipHorizontal = true;
-    [Tab(VisionTabNames.RunParameters)]
-    [Display(Name = "自动水平翻转", GroupName = VisionTabNames.RunParameters, Description = "根据左右质量分布自动翻转图像")]
-    public bool AutoFlipHorizontal
-    {
-        get => _autoFlipHorizontal;
-        set { _autoFlipHorizontal = value; RaisePropertyChanged(); }
-    }
+    //// 运行参数：自动翻转控制
+    //private bool _autoFlipHorizontal = true;
+    //[Tab(VisionTabNames.RunParameters)]
+    //[Display(Name = "自动水平翻转", GroupName = VisionTabNames.RunParameters, Description = "根据左右质量分布自动翻转图像")]
+    //public bool AutoFlipHorizontal
+    //{
+    //    get => _autoFlipHorizontal;
+    //    set { _autoFlipHorizontal = value; RaisePropertyChanged(); }
+    //}
 
-    private bool _autoFlipVertical = true;
-    [Tab(VisionTabNames.RunParameters)]
-    [Display(Name = "自动垂直翻转", GroupName = VisionTabNames.RunParameters, Description = "根据上下质量分布自动翻转图像")]
-    public bool AutoFlipVertical
-    {
-        get => _autoFlipVertical;
-        set { _autoFlipVertical = value; RaisePropertyChanged(); }
-    }
+    //private bool _autoFlipVertical = true;
+    //[Tab(VisionTabNames.RunParameters)]
+    //[Display(Name = "自动垂直翻转", GroupName = VisionTabNames.RunParameters, Description = "根据上下质量分布自动翻转图像")]
+    //public bool AutoFlipVertical
+    //{
+    //    get => _autoFlipVertical;
+    //    set { _autoFlipVertical = value; RaisePropertyChanged(); }
+    //}
 
-    private double _flipSensitivity = 0.01;
-    [DefaultValue(0.01)]
-    [Tab(VisionTabNames.RunParameters)]
-    [Display(Name = "翻转敏感度", GroupName = VisionTabNames.RunParameters, Description = "左右/上下质量差异比例超过阈值触发翻转，范围[0,0.01]")]
-    public double FlipSensitivity
-    {
-        get => _flipSensitivity;
-        set { _flipSensitivity = Math.Clamp(value, 0.0, 0.01); RaisePropertyChanged(); }
-    }
+    //private double _flipSensitivity = 0.01;
+    //[DefaultValue(0.01)]
+    //[Tab(VisionTabNames.RunParameters)]
+    //[Display(Name = "翻转敏感度", GroupName = VisionTabNames.RunParameters, Description = "左右/上下质量差异比例超过阈值触发翻转，范围[0,0.01]")]
+    //public double FlipSensitivity
+    //{
+    //    get => _flipSensitivity;
+    //    set { _flipSensitivity = Math.Clamp(value, 0.0, 0.01); RaisePropertyChanged(); }
+    //}
 
-    // 输出结果（聚合）
-    private RotatedRectFlipResult _rectFlipResult;
+    //// 输出结果（聚合）
+    //private RotatedRectFlipResult _rectFlipResult;
+    //[ReadOnly(true)]
+    //[Expressionable]
+    //[Tab(VisionTabNames.ResultParameters)]
+    //[Display(Name = "翻转校正结果", GroupName = VisionTabNames.ResultParameters, Description = "前景最小外接矩形与翻转判定的统一结果")]
+    //public RotatedRectFlipResult RectFlipResult
+    //{
+    //    get => _rectFlipResult;
+    //    set { _rectFlipResult = value; RaisePropertyChanged(); }
+    //}
+
+    private System.Windows.Point _matchPointResult;
     [ReadOnly(true)]
     [Expressionable]
     [Tab(VisionTabNames.ResultParameters)]
-    [Display(Name = "翻转校正结果", GroupName = VisionTabNames.ResultParameters, Description = "前景最小外接矩形与翻转判定的统一结果")]
-    public RotatedRectFlipResult RectFlipResult
+    [Display(Name = "匹配点", GroupName = VisionTabNames.ResultParameters, Description = "模板匹配匹配到的第一个中心点")]
+    public System.Windows.Point MatchPointResult
     {
-        get => _rectFlipResult;
-        set { _rectFlipResult = value; RaisePropertyChanged(); }
+        get => _matchPointResult;
+        set
+        {
+            _matchPointResult = value;
+            RaisePropertyChanged();
+        }
     }
+
+    private double _matchAngleResult;
+    [ReadOnly(true)]
+    [Expressionable]
+    [Tab(VisionTabNames.ResultParameters)]
+    [Display(Name = "角度", GroupName = VisionTabNames.ResultParameters, Description = "模板匹配匹配到的第一个角度")]
+    public double MatchAngleResult
+    {
+        get => _matchAngleResult;
+        set
+        {
+            _matchAngleResult = value;
+            RaisePropertyChanged();
+        }
+    }
+
 
     protected override FlowableResult<IMatImage> Invoke(IMatImage fromImage)
     {
@@ -203,7 +234,7 @@ public class ShapeTemplateMatch : MatchingNodeData<IMatImage>, ITemplateMatching
             return this.Error(fromImage.ToMatImage(), "无法从模板中提取有效轮廓");
 
         List<RotatedRect> rotatedRects = new List<RotatedRect>();
-        List<RotatedRectShape> resultShapes = new List<RotatedRectShape>();
+        List<IShape> resultShapes = new List<IShape>();
         for (int i = 0; i < contours.Length; i++)
         {
             double area = Cv2.ContourArea(contours[i]);
@@ -213,7 +244,7 @@ public class ShapeTemplateMatch : MatchingNodeData<IMatImage>, ITemplateMatching
             double score = Cv2.MatchShapes(templateContour, contours[i], ShapeMatchMode, 0);
             if (score <= MinScore)
             {
-                RotatedRect rotatedRect = Cv2.MinAreaRect(contours[i]);
+                RotatedRect rotatedRect = GetStandardRotatedRect(contours[i]);
                 rotatedRects.Add(rotatedRect);
                 var shape = rotatedRect.ToRotatedRectShape(x =>
                 {
@@ -223,25 +254,30 @@ public class ShapeTemplateMatch : MatchingNodeData<IMatImage>, ITemplateMatching
                 });
                 shape.Title = $"分数: {score:F10}";
                 resultShapes.Add(shape);
+
+                PointsShape pointsShape = new PointsShape(contours[i].Select(p => new System.Windows.Point(p.X, p.Y)).ToArray());
+                resultShapes.Add(pointsShape);
                 //Cv2.DrawContours(resultImage, contours, i, Scalar.RandomColor(), 2);
+                this.MatchPointResult = GetContourCenter(contours[i]);
+                this.MatchAngleResult = GetContourDirection(contours[i]);
             }
         }
 
-        var first = resultShapes.FirstOrDefault();
-        if (first != null)
-        {
-            var rectFlipResult = new RotatedRectFlipResult()
-            {
-                RotatedRectResult = new RotatedRect(first.Center.ToCVPoint(), first.Size.ToCVSize(), (float)first.Angle),
-                IsFlippedHorizontal = this.AutoFlipHorizontal,
-                IsFlippedVertical = this.AutoFlipVertical
-            };
-            if (!this.AutoFlipHorizontal)
-                rectFlipResult = rectFlipResult with { IsFlippedHorizontal = false };
-            if (!this.AutoFlipVertical)
-                rectFlipResult = rectFlipResult with { IsFlippedVertical = false };
-            this.RectFlipResult = rectFlipResult;
-        }
+        //var first = resultShapes.FirstOrDefault();
+        //if (first != null)
+        //{
+        //    //var rectFlipResult = new RotatedRectFlipResult()
+        //    //{
+        //    //    RotatedRectResult = new RotatedRect(first.Center.ToCVPoint(), first.Size.ToCVSize(), (float)first.Angle),
+        //    //    IsFlippedHorizontal = this.AutoFlipHorizontal,
+        //    //    IsFlippedVertical = this.AutoFlipVertical
+        //    //};
+        //    //if (!this.AutoFlipHorizontal)
+        //    //    rectFlipResult = rectFlipResult with { IsFlippedHorizontal = false };
+        //    //if (!this.AutoFlipVertical)
+        //    //    rectFlipResult = rectFlipResult with { IsFlippedVertical = false };
+        //    //this.RectFlipResult = rectFlipResult;
+        //}
 
         var resultImage = this.GetExpressionResultImage(fromImage).ToMatImage();
         this.MatchingCountResult = resultShapes.Count;
@@ -251,7 +287,85 @@ public class ShapeTemplateMatch : MatchingNodeData<IMatImage>, ITemplateMatching
         this.FirstResultImage = this.ResultImages.FirstOrDefault()?.Image;
         if (resultShapes.Count == 0)
             return this.OK(resultImage, "未找到匹配的形状");
-        return this.OK(resultImage, resultShapes.ToResultPresenter(), $"成功找到 {resultShapes.Count} 个匹配项");
+        return this.OK(resultImage, resultShapes.OfType<RotatedRectShape>().ToResultPresenter(), $"成功找到 {resultShapes.Count} 个匹配项");
+    }
+
+
+    public static System.Windows.Point GetContourCenter(OpenCvSharp.Point[] contour)
+    {
+        if (contour == null || contour.Length < 3)
+            throw new ArgumentException("轮廓点数量不足。", nameof(contour));
+
+        var moments = Cv2.Moments(contour);
+        if (Math.Abs(moments.M00) < double.Epsilon)
+            throw new InvalidOperationException("轮廓面积为零，无法计算中心点。");
+
+        return new System.Windows.Point(
+            moments.M10 / moments.M00,
+            moments.M01 / moments.M00);
+    }
+
+    public static double GetContourDirection(OpenCvSharp.Point[] contour)
+    {
+        if (contour == null || contour.Length < 3)
+            throw new ArgumentException("轮廓点数量不足。", nameof(contour));
+
+        var center = GetContourCenter(contour);
+        double centerX = center.X;
+        double centerY = center.Y;
+
+        double xx = 0;
+        double yy = 0;
+        double xy = 0;
+
+        foreach (var point in contour)
+        {
+            var x = point.X - centerX;
+            var y = point.Y - centerY;
+
+            xx += x * x;
+            yy += y * y;
+            xy += x * y;
+        }
+
+        // 主轴角度，范围约为 [-90°, 90°]。
+        var angle = 0.5 * Math.Atan2(2 * xy, xx - yy);
+        var axisX = Math.Cos(angle);
+        var axisY = Math.Sin(angle);
+
+        // 三阶投影矩：用于确定主轴的正方向。
+        double skewness = 0;
+        foreach (var point in contour)
+        {
+            var projection = (point.X - centerX) * axisX + (point.Y - centerY) * axisY;
+            skewness += projection * projection * projection;
+        }
+
+        // 令轮廓“更长/更突出的尾部”指向主轴正方向。
+        if (skewness < 0)
+            angle += Math.PI;
+
+        var degree = angle * 180.0 / Math.PI;
+        return (degree + 360.0) % 360.0;
+    }
+
+    public static RotatedRect GetStandardRotatedRect(OpenCvSharp.Point[] contour)
+    {
+        if (contour == null || contour.Length < 3)
+            throw new ArgumentException("轮廓点数量不足。", nameof(contour));
+
+        var minAreaRect = Cv2.MinAreaRect(contour);
+        //  ToDo：我需要的是在minAreaRect各个边方向找到一个标准的方向作为主轴，
+
+        return minAreaRect;
+        var direction = GetContourDirection(contour);
+        var width = Math.Max(minAreaRect.Size.Width, minAreaRect.Size.Height);
+        var height = Math.Min(minAreaRect.Size.Width, minAreaRect.Size.Height);
+
+        return new RotatedRect(
+            minAreaRect.Center,
+            new Size2f(width, height),
+            (float)direction);
     }
 }
 

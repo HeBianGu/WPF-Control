@@ -8,6 +8,7 @@
 
 namespace H.Components.VisionDiagram.Base;
 
+
 public enum DetectDisplayMode
 {
     Default = 0,

@@ -10,6 +10,8 @@ using H.Controls.Form.PropertyItem.Attribute;
 using H.Controls.Form.PropertyItem.ComboBoxPropertyItems;
 
 namespace H.Components.VisionDiagram.NodeDatas.Measures;
+
+
 //  ToDo：增加线圆测量，圆圆测量（最远距离，最近距离，圆心距离，圆心最远距离等）
 
 public abstract class MeasureNodeDataBase<T> : ROINodeData<T> where T : class, IVisionImage

@@ -36,7 +36,7 @@ public abstract class ExpressionNodeDataBase : ShowPropertyViewNodeDataBase, IEx
         foreach (var item in allfrom)
             yield return item;
     }
-
+  
     public IEnumerable<IExpressionKey> GetIntFromExpressionKeys() => this.GetFromExpressionKeys<int>();
     public IEnumerable<IExpressionKey> GetDoubleFromExpressionKeys() => this.GetFromExpressionKeys<double>();
     public IEnumerable<IExpressionKey> GetFloatFromExpressionKeys() => this.GetFromExpressionKeys<float>();

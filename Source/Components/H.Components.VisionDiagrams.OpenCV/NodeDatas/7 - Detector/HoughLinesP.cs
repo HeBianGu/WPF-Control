@@ -10,6 +10,8 @@ global using H.Components.VisionDiagram.Extensions;
 global using H.Components.VisionDiagrams.OpenCV.Extensions;
 global using H.Controls.ShapeBox.Shapes;
 global using H.Controls.ShapeBox.Shapes.Base;
+using H.Controls.Form.PropertyItem.Attribute;
+using H.Controls.ShapeBox;
 
 namespace H.Components.VisionDiagrams.OpenCV.NodeDatas.Detector;
 //需要检测实际图像中的有限长度线段
@@ -115,9 +117,54 @@ public class HoughLinesP : HoughLinesBase, IDetectorGroupableNodeData
         }
     }
 
+
+    private bool _UsePositionCorrection = true;
+    [Tab(VisionTabNames.RunParameters)]
+    [DefaultValue(true)]
+    [Display(Name = "位置修正", GroupName = "位置修正")]
+    public bool UsePositionCorrection
+    {
+        get { return _UsePositionCorrection; }
+        set
+        {
+            _UsePositionCorrection = value;
+            RaisePropertyChanged();
+        }
+    }
+
+    private IExpressionKey _PositionCorrectionInfo;
+    [Tab(VisionTabNames.RunParameters)]
+    [GetMethodNameSource(nameof(GetFromPositionCorrectionInfoExpressionKeys))]
+    [PropertyItem(typeof(InputExpressionComboBoxTextPropertyItem))]
+    [Display(Name = "修正信息", GroupName = "位置修正")]
+    public IExpressionKey PositionCorrectionInfo
+    {
+        get { return _PositionCorrectionInfo; }
+        set
+        {
+            _PositionCorrectionInfo = value;
+            RaisePropertyChanged();
+        }
+    }
+
+    public IEnumerable<IExpressionKey> GetFromPositionCorrectionInfoExpressionKeys() => this.GetFromExpressionKeys<PositionCorrectionInfo>();
+
+
     protected override FlowableResult<IMatImage> Invoke(Mat fromImage)
     {
         var resultImage = this.GetExpressionResultImage(fromImage.ToMatImage()).ToMatImage();
+        if (this.UsePositionCorrection)
+        {
+            if (this.PositionCorrectionInfo == null)
+                return this.Error(resultImage, "位置修正信息不能为空");
+
+            var positionCorrectionInfo = this.PositionCorrectionInfo.GetValue<PositionCorrectionInfo>(this);
+            if (!positionCorrectionInfo.success)
+                return this.Error(resultImage, "位置修正信息无效");
+            if (this.CaliperShape is PositionCorrectionCaliperLineShape caliper)
+                caliper.PositionCorrectionInfo = positionCorrectionInfo.value;
+        }
+
         LineSegmentPoint[] lines = Cv2.HoughLinesP(fromImage, Rho, Math.PI / Theta, Threshold, MinLineLength, MaxLineGap);
         lines = this.GetTargetLines(lines).ToArray();
 
@@ -160,6 +207,41 @@ public enum LineSearchType
     Caliper
 }
 
+public class PositionCorrectionCaliperLineShape : CaliperLineShape
+{
+    public PositionCorrectionCaliperLineShape()
+    {
+
+    }
+    public PositionCorrectionCaliperLineShape(System.Windows.Point from, System.Windows.Point to) : base(from, to)
+    {
+
+    }
+
+    public PositionCorrectionInfo PositionCorrectionInfo { get; set; }
+
+    //protected override Matrix GetMatrix()
+    //{
+    //    Matrix matrix1 = new Matrix();
+    //    matrix1.Translate(150, 50);
+    //    return Matrix.Multiply(base.GetMatrix(), matrix1);
+    //    var matrix = this.PositionCorrectionInfo.ToMatrix();
+    //    matrix.Invert();
+    //    return Matrix.Multiply(base.GetMatrix(), matrix);
+    //}
+
+    public override void MatrixDrawing(IView view, DrawingContext drawingContext, Pen pen, Brush fill = null)
+    {
+        var matrix = this.PositionCorrectionInfo.ToMatrix();
+        matrix.Invert();
+        //Matrix matrix1 = new Matrix();
+        //matrix1.Translate(150, 50);
+        drawingContext.PushTransform(new MatrixTransform(matrix));
+        base.MatrixDrawing(view, drawingContext, pen, fill);
+        drawingContext.Pop();
+    }
+}
+
 public abstract class HoughLinesBase : OpenCVDetectorNodeDataBase
 {
     private VisionLine _ResultVisionLine;
@@ -179,7 +261,7 @@ public abstract class HoughLinesBase : OpenCVDetectorNodeDataBase
     protected override IShape CreateCaliperShape(Mat fromImage)
     {
         var min = fromImage.Width / 4;
-        return new CaliperLineShape()
+        return new PositionCorrectionCaliperLineShape()
         {
             From = new System.Windows.Point(min, fromImage.Height / 2),
             To = new System.Windows.Point(min * 3, fromImage.Height / 2)
@@ -217,7 +299,6 @@ public abstract class HoughLinesBase : OpenCVDetectorNodeDataBase
             this.Invoke();
         }
     }
-
     public IEnumerable<LineSegmentPoint> GetTargetLines(IEnumerable<LineSegmentPoint> lines)
     {
         if (this.TargetAngle > 0)

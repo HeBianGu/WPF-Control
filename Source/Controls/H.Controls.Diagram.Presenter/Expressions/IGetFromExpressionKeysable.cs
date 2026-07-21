@@ -48,9 +48,19 @@ public static class IGetFromExpressionKeysableExtensions
         if (expressionKey == null)
             return (false, default);
         var r = getableExpression.GetFromExpression(expressionKey);
-        if(r==null)
+        if (r == null)
             return (false, default);
         return (true, r.Value);
+    }
+
+    public static (bool success, object value) GetValue(this IExpressionKey expressionKey, IGetFromExpressionKeysable getableExpression)
+    {
+        return getableExpression.GetExpressionValue(expressionKey);
+    }
+
+    public static (bool success, T value) GetValue<T>(this IExpressionKey expressionKey, IGetFromExpressionKeysable getableExpression)
+    {
+        return getableExpression.GetExpressionValue<T>(expressionKey);
     }
 
     public static IEnumerable<IExpression> GetFromExpressions(this IGetFromExpressionKeysable getableExpression, IExpressionKey expressionKey)

@@ -33,6 +33,7 @@ public class Repeat : OpenCVNodeDataBase, IPreprocessingGroupableNodeData
     //}
 
     private IExpressionKey _nyIntExpression;
+    [Tab(VisionTabNames.RunParameters)]
     [GetMethodNameSource(nameof(GetIntFromExpressionKeys))]
     [PropertyItem(typeof(InputExpressionComboBoxTextPropertyItem<int>))]
     [Display(Name = "Y重复个数", GroupName = VisionTabNames.RunParameters)]
@@ -48,6 +49,7 @@ public class Repeat : OpenCVNodeDataBase, IPreprocessingGroupableNodeData
     }
 
     private IExpressionKey _nxIntExpression;
+    [Tab(VisionTabNames.RunParameters)]
     [GetMethodNameSource(nameof(GetIntFromExpressionKeys))]
     [PropertyItem(typeof(InputExpressionComboBoxTextPropertyItem<int>))]
     [Display(Name = "X重复个数", GroupName = VisionTabNames.RunParameters)]

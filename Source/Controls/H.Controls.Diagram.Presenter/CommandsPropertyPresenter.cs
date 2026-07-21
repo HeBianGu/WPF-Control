@@ -26,6 +26,8 @@ public class CommandsPropertyPresenter : DialogCommandsPresenter<TabFormPresente
         {
             foreach (var item in commands.Commands.OfType<IDisplayCommand>())
             {
+                if (item.GroupName == null)
+                    continue;
                 if (item.GroupName.Split(',').Contains("快捷属性命令"))
                     yield return item;
             }
