@@ -1,7 +1,7 @@
 # Theme 主题系统二次开发文档
 
 **适用项目：** `H.Theme`、`H.Modules.Theme`、`H.ApplicationBases.Themes`、`H.Themes.Colors.*`  
-**核心类型：** `ThemeOptions`、`ColorResourceBase`、`IColorResource`、`ColorKeys`、`BrushKeys`、`SystemKeys`、`ThemeTypeExtension`  
+**核心类型：** `ThemeOptions`、`ColorResourceBase`、`IColorResource`、`ColorKeys`、`BrushKeys`、`LayoutKeys`、`FontSizeKeys`、`SystemKeys`、`ThemeTypeExtension`  
 **相关能力：** 颜色主题、背景主题、字号主题、布局主题、字体切换、图标字体切换、动态资源替换、`ComponentResourceKey` 资源键
 
 本文介绍 WPF-Control 中 Theme 主题系统的详细使用方式，重点说明主题注册、主题切换、自定义主题资源，以及如何使用 `ComponentResourceKey` 定义和引用资源。
@@ -319,6 +319,219 @@ Foreground="{StaticResource {x:Static h:BrushKeys.Foreground}}"
 ```
 
 `StaticResource` 在加载时解析，后续主题切换通常不会自动更新。
+
+### 8.5 `BrushKeys` 完整语义
+
+`BrushKeys` 提供可直接赋给 `Background`、`Foreground`、`BorderBrush`、`Fill`、`Stroke` 等属性的 `Brush` 资源。它与 `ColorKeys` 的区别是：
+
+```text
+ColorKeys  → Color
+BrushKeys  → Brush（通常是引用 ColorKeys 的 SolidColorBrush）
+```
+
+业务控件一般优先使用 `BrushKeys`：
+
+```xaml
+<Border
+    Background="{DynamicResource {x:Static h:BrushKeys.CaptionBackground}}"
+    BorderBrush="{DynamicResource {x:Static h:BrushKeys.BorderBrush}}">
+    <TextBlock
+        Foreground="{DynamicResource {x:Static h:BrushKeys.Foreground}}"
+        Text="主题文本" />
+</Border>
+```
+
+#### 8.5.1 背景类 Key
+
+| Key | ResourceId | 意义与推荐用途 | 当前状态 |
+|---|---|---|---|
+| `CaptionBackground` | `S.Brush.CaptionBackground` | 标题栏、分组标题、卡片标题或强调区域的背景。 | 可用。 |
+| `Background` | `S.Brush.TextBackground` | 控件和内容区域的通用背景。 | 静态 Key 存在，但 `BrushKeys.xaml` 中对应画刷当前被注释；使用前确认所选主题是否另行提供。 |
+| `BackgroundDisabled` | `S.Brush.TextBackground.Disabled` | 禁用状态背景。 | `[Obsolete]`，默认画刷字典未定义，不建议新代码使用。 |
+| `AlternatingRowBackground` | `S.Brush.RowIndex.BackGround` | `DataGrid`、列表、表格偶数/奇数交替行背景。 | 可用。 |
+
+交替行示例：
+
+```xaml
+<DataGrid
+    AlternatingRowBackground="{DynamicResource {x:Static h:BrushKeys.AlternatingRowBackground}}"
+    AlternationCount="2" />
+```
+
+#### 8.5.2 前景和交互状态 Key
+
+| Key | ResourceId | 意义与推荐用途 | 当前状态 |
+|---|---|---|---|
+| `CaptionForeground` | `S.Brush.CaptionForeground` | 标题栏或标题背景上的文字、图标前景。 | 可用。 |
+| `Foreground` | `S.Brush.TextForeground` | 正文、普通标签和默认图标前景。 | 可用。 |
+| `ForegroundTitle` | `S.Brush.TextForeground.Title` | 页面标题、分组标题、重点标题文字。 | 可用。 |
+| `ForegroundSelect` | `S.Brush.TextForeground.Select` | 选中项上的文字或图标前景，应与 `Selected` 搭配保证对比度。 | 可用。 |
+| `MouseOver` | `S.Brush.TextMouseOver` | 鼠标悬停时的背景或浅层交互高亮，不是普通正文前景。 | 可用。 |
+| `Selected` | `S.Brush.TextSelected` | 选中、按下或激活项的背景。 | 可用。 |
+| `ForegroundAssist` | `S.Brush.TextForeground.Assist` | 次要说明、占位提示、辅助文字、弱化图标。 | 可用。 |
+| `ForegroundLink` | `S.Brush.TextForeground.Link` | `Hyperlink`、可点击文字和导航入口。 | 可用。 |
+
+状态样式示例：
+
+```xaml
+<Style TargetType="ListBoxItem">
+    <Setter Property="Foreground" Value="{DynamicResource {x:Static h:BrushKeys.Foreground}}" />
+    <Style.Triggers>
+        <Trigger Property="IsMouseOver" Value="True">
+            <Setter Property="Background" Value="{DynamicResource {x:Static h:BrushKeys.MouseOver}}" />
+        </Trigger>
+        <Trigger Property="IsSelected" Value="True">
+            <Setter Property="Background" Value="{DynamicResource {x:Static h:BrushKeys.Selected}}" />
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static h:BrushKeys.ForegroundSelect}}" />
+        </Trigger>
+    </Style.Triggers>
+</Style>
+```
+
+#### 8.5.3 白色及透明度前景 Key
+
+| Key | 意义 | 当前状态 |
+|---|---|---|
+| `ForegroundWhite` | 纯白前景。 | `[Obsolete]`，默认定义被注释。新代码使用 `White` 或语义化前景。 |
+| `ForegroundWhiteOpacity9` | 90% 不透明白色前景。 | `[Obsolete]`，默认定义被注释。 |
+| `ForegroundWhiteOpacity8` | 80% 不透明白色前景。 | `[Obsolete]`，默认定义被注释。 |
+| `ForegroundWhiteOpacity7` | 70% 不透明白色前景。 | `[Obsolete]`，默认定义被注释。 |
+| `ForegroundWhiteOpacity6` | 60% 不透明白色前景。 | `[Obsolete]`，默认定义被注释。 |
+| `ForegroundWhiteOpacity5` | 50% 不透明白色前景。 | 未标记 `[Obsolete]`，但默认定义同样被注释，使用前必须自行提供资源。 |
+| `ForegroundWhiteOpacity4` | 40% 不透明白色前景。 | `[Obsolete]`，默认定义被注释。 |
+| `ForegroundWhiteOpacity3` | 30% 不透明白色前景。 | `[Obsolete]`，默认定义被注释。 |
+| `ForegroundWhiteOpacity2` | 20% 不透明白色前景。 | `[Obsolete]`，默认定义被注释。 |
+| `ForegroundWhiteOpacity1` | 10% 不透明白色前景。 | `[Obsolete]`，默认定义被注释。 |
+
+这些 Key 保留主要是为了兼容旧样式。新代码应优先使用 `CaptionForeground`、`Foreground`、`ForegroundAssist` 等语义 Key，让深色和浅色主题自行决定颜色。
+
+#### 8.5.4 边框 Key
+
+| Key | ResourceId | 意义与推荐用途 | 当前状态 |
+|---|---|---|---|
+| `BorderBrush` | `S.Brush.TextBorderBrush` | 输入框、按钮、卡片、分隔区域的默认边框。 | 可用。 |
+| `BorderBrushTitle` | `S.Brush.TextBorderBrush.Title` | 标题区域、重点分组或较明显的边界。 | 可用。 |
+| `BorderBrushAssist` | `S.Brush.TextBorderBrush.Assist` | 辅助分隔线、弱边框和次要区域边界。 | 可用。 |
+| `BorderBrushDisabled` | `S.Brush.TextBorderBrush.Disabled` | 禁用控件边框。 | `[Obsolete]`，默认画刷字典未定义。 |
+
+边框强弱建议：
+
+```text
+BorderBrushTitle  → 较强调
+BorderBrush       → 常规
+BorderBrushAssist → 较弱
+```
+
+实际明暗关系由当前颜色主题决定，不应在业务代码中假设具体 RGB 值。
+
+#### 8.5.5 强调色 Key
+
+| Key | ResourceId | 意义与推荐用途 |
+|---|---|---|
+| `Accent` | `S.Brush.Accent` | 当前主题主强调色，用于主按钮、焦点、选中标识、进度和关键链接。 |
+
+```xaml
+<Button
+    Background="{DynamicResource {x:Static h:BrushKeys.Accent}}"
+    Foreground="{DynamicResource {x:Static h:BrushKeys.ForegroundSelect}}"
+    Content="确定" />
+```
+
+#### 8.5.6 中性明暗阶梯 Key
+
+`Dark*` 是一组连续中性色阶。默认浅色资源中，`Dark10` 位于较深端，`Dark0` 位于最浅端；不同颜色主题可以替换其实际颜色。
+
+| Key | ResourceId | 色阶位置和推荐用途 |
+|---|---|---|
+| `Dark10` | `S.Brush.Dark.10` | 最深端；高对比文字、深色遮罩或深色结构。 |
+| `Dark9_5` | `S.Brush.Dark.9.5` | `Dark10` 与 `Dark9` 之间的半级。 |
+| `Dark9` | `S.Brush.Dark.9` | 很深的中性色。 |
+| `Dark8_5` | `S.Brush.Dark.8.5` | `Dark9` 与 `Dark8` 之间的半级。 |
+| `Dark8` | `S.Brush.Dark.8` | 深色背景或深色边界。 |
+| `Dark7_5` | `S.Brush.Dark.7.5` | `Dark8` 与 `Dark7` 之间的半级。 |
+| `Dark7` | `S.Brush.Dark.7` | 较深中性色。 |
+| `Dark6_5` | `S.Brush.Dark.6.5` | `Dark7` 与 `Dark6` 之间的半级。 |
+| `Dark6` | `S.Brush.Dark.6` | 中深色结构、图标或文字。 |
+| `Dark5_5` | `S.Brush.Dark.5.5` | `Dark6` 与 `Dark5` 之间的半级。 |
+| `Dark5` | `S.Brush.Dark.5` | 中间偏深的中性色。 |
+| `Dark4_5` | `S.Brush.Dark.4.5` | `Dark5` 与 `Dark4` 之间的半级。 |
+| `Dark4` | `S.Brush.Dark.4` | 中间中性色。 |
+| `Dark3_5` | `S.Brush.Dark.3.5` | `Dark4` 与 `Dark3` 之间的半级。 |
+| `Dark3` | `S.Brush.Dark.3` | 中间偏浅的中性色。 |
+| `Dark2_5` | `S.Brush.Dark.2.5` | `Dark3` 与 `Dark2` 之间的半级。 |
+| `Dark2` | `S.Brush.Dark.2` | 较浅边框或表面。 |
+| `Dark1_5` | `S.Brush.Dark.1.5` | `Dark2` 与 `Dark1` 之间的半级。 |
+| `Dark1` | `S.Brush.Dark.1` | 浅色边界或次级表面。 |
+| `Dark0_9` | `S.Brush.Dark.0.9` | 浅色阶第 9 级。 |
+| `Dark0_8` | `S.Brush.Dark.0.8` | 浅色阶第 8 级。 |
+| `Dark0_7` | `S.Brush.Dark.0.7` | 浅色阶第 7 级。 |
+| `Dark0_6` | `S.Brush.Dark.0.6` | 浅色阶第 6 级。 |
+| `Dark0_5` | `S.Brush.Dark.0.5` | 浅色阶中间值。 |
+| `Dark0_4` | `S.Brush.Dark.0.4` | 很浅的结构色。 |
+| `Dark0_3` | `S.Brush.Dark.0.3` | 很浅的边框或表面色。 |
+| `Dark0_2` | `S.Brush.Dark.0.2` | 接近背景的浅色。 |
+| `Dark0_1` | `S.Brush.Dark.0.1` | 极浅的交替或网格表面。 |
+| `Dark0` | `S.Brush.Dark.0` | 最浅端；默认主题中接近白色。 |
+
+色阶适合绘图、网格、层级背景和需要精细灰阶的控件。常规业务文本、边框和交互状态仍应优先使用语义 Key，以获得更稳定的主题适配。
+
+#### 8.5.7 固定色名 Key
+
+| Key | 意义与推荐用途 | 当前状态 |
+|---|---|---|
+| `LightGray` | 浅灰色，适合非关键背景或占位区域。 | 可用。 |
+| `LightGrayOpacity5` | 50% 浅灰色。 | `[Obsolete]`，默认画刷字典未定义。 |
+| `Gray` | 灰色，适合中性状态。 | 可用。 |
+| `GrayOpacity5` | 50% 灰色。 | `[Obsolete]`，默认画刷字典未定义；其 ResourceId 还保留历史尾逗号。 |
+| `Black` | 框架定义的黑/深色，不保证等于 `#000000`。 | 可用。 |
+| `Orange` | 警告、提醒、待处理状态。 | 可用。 |
+| `Red` | 错误、危险、删除、失败状态。 | 可用。 |
+| `Green` | 成功、通过、正常、在线状态。 | 可用。 |
+| `Yellow` | 提醒、高亮、注意状态。 | 可用。 |
+| `Blue` | 信息、普通链接或蓝色业务标识。 | 可用。 |
+| `Purple` | 紫色分类或业务状态。 | 可用。 |
+| `Brown` | 棕色分类或业务状态。 | 可用。 |
+| `LightBlue` | 浅蓝信息背景或弱提示。 | 可用。 |
+| `Pink` | 粉色分类或业务状态。 | 可用。 |
+| `White` | 固定白色，默认定义为 `#FFFFFF`。 | 可用。 |
+
+固定色名 Key 主要用于具有固定颜色语义的状态。若颜色需要跟随品牌主题，应使用 `Accent` 或其他语义 Key。
+
+#### 8.5.8 系统、透明纹理和菜单 Key
+
+| Key | ResourceId | 意义与推荐用途 | 当前状态 |
+|---|---|---|---|
+| `DialogCover` | `S.Brush.Dialog.Cover` | 模态对话框背后的遮罩层。 | 静态 Key 存在，但默认 `BrushKeys.xaml` 未定义；需由消息/主题模块或应用提供。 |
+| `Tranparent` | `S.Brush.Tranparent` | 名称保留历史拼写；当前实际是小尺寸棋盘格 `DrawingBrush`，用于表示透明区域，并非 `Brushes.Transparent`。 | 可用。 |
+| `Tile` | `S.Brush.Tile` | 较大棋盘格平铺背景，默认 Viewport 为 `25 × 25`。 | 可用。 |
+| `Tile25` | `S.Brush.Tile.25` | 更密集的棋盘格平铺背景，当前 Viewport 为 `12 × 12`。 | 可用。 |
+| `MenuBackground` | `S.Brush.Menu.Background` | 菜单、侧边菜单或导航区域背景。 | 画刷定义可用，所选颜色主题还需提供 `ColorKeys.MenuBackground`。 |
+| `MenuForeground` | `S.Brush.Menu.Foreground` | 菜单、侧边菜单或导航区域文字与图标前景。 | 画刷定义可用，所选颜色主题还需提供 `ColorKeys.MenuForeground`。 |
+
+透明棋盘格示例：
+
+```xaml
+<Border
+    Width="120"
+    Height="80"
+    Background="{DynamicResource {x:Static h:BrushKeys.Tranparent}}" />
+```
+
+如果需要真正透明的画刷，应直接使用：
+
+```xaml
+Background="Transparent"
+```
+
+#### 8.5.9 Key 存在不代表默认资源一定存在
+
+`BrushKeys.xaml.cs` 是公开 Key 清单，而 `BrushKeys.xaml` 是默认资源实现。部分兼容 Key 已废弃、被注释或需要其他模块提供。使用非主流 Key 前可检查：
+
+```csharp
+Brush brush = Application.Current.TryFindResource(BrushKeys.DialogCover) as Brush;
+```
+
+自定义主题应至少完整提供应用实际使用的 Key。缺少动态资源通常不会在编译期报错，而会在运行时表现为属性没有得到预期画刷。
 
 ---
 
@@ -653,9 +866,153 @@ public class LayoutThemeExtension : MarkupExtension
 切换：
 
 ```csharp
-ThemeOptions.Instance.Layout = LayoutThemeType.Compact;
+ThemeOptions.Instance.Layout = LayoutThemeType.Small;
 ThemeOptions.Instance.RefreshThemeCommand.Execute(null);
 ```
+
+### 13.3 `LayoutKeys` 完整说明
+
+`LayoutKeys` 统一描述控件高度、间距和圆角，资源值类型不完全相同：
+
+| Key | ResourceId | 资源类型 | 意义与推荐用途 |
+|---|---|---|---|
+| `WindowCaptionHeight` | `S.Layout.WindowCaptionHeight` | `Double` | 自定义窗口标题栏高度、标题栏按钮高度。 |
+| `ItemHeight` | `S.Layout.ItemHeight` | `Double` | 普通按钮、输入框、菜单项、列表项的统一交互高度。 |
+| `IconHeight` | `S.Layout.IconHeight` | `Double` | 普通图标的建议宽高。 |
+| `RowHeight` | `S.Layout.RowHeight` | `Double` | `DataGridRow`、表格行或较高列表行的高度。 |
+| `CornerRadius` | `S.Layout.CornerRadius` | `CornerRadius` | 按钮、输入框、卡片和弹层的统一圆角。 |
+| `Padding` | `S.Layout.Padding` | `Thickness` | 控件内部内容留白。 |
+| `Margin` | `S.Layout.Margin` | `Thickness` | 相邻控件之间的外部间距。 |
+
+使用示例：
+
+```xaml
+<Button
+    Height="{DynamicResource {x:Static h:LayoutKeys.ItemHeight}}"
+    Margin="{DynamicResource {x:Static h:LayoutKeys.Margin}}"
+    Padding="{DynamicResource {x:Static h:LayoutKeys.Padding}}"
+    Content="保存" />
+```
+
+```xaml
+<Border
+    CornerRadius="{DynamicResource {x:Static h:LayoutKeys.CornerRadius}}">
+    <Image
+        Width="{DynamicResource {x:Static h:LayoutKeys.IconHeight}}"
+        Height="{DynamicResource {x:Static h:LayoutKeys.IconHeight}}" />
+</Border>
+```
+
+不要把 `CornerRadius` 或 `Thickness` Key 用在要求 `Double` 的属性上。资源类型不匹配会导致 XAML 运行时错误或属性无法设置。
+
+### 13.4 三套 `LayoutThemeType` 的实际值
+
+| Key | `Small` 紧凑 | `Default` 常规 | `Large` 宽松 |
+|---|---:|---:|---:|
+| `WindowCaptionHeight` | `40` | `45` | `50` |
+| `ItemHeight` | `30` | `35` | `40` |
+| `IconHeight` | `15` | `18` | `20` |
+| `RowHeight` | `35` | `40` | `45` |
+| `CornerRadius` | `1` | `2` | `4` |
+| `Padding` | `2 0` | `5 0` | `10 0` |
+| `Margin` | `2 1` | `5 3` | `10 6` |
+
+切换时框架会替换：
+
+```text
+Default → /H.Theme;component/LayoutKeys.xaml
+Large   → /H.Theme;component/Layouts/Large.xaml
+Small   → /H.Theme;component/Layouts/Small.xaml
+```
+
+控件只有使用 `DynamicResource` 引用 `LayoutKeys`，才能在切换后自动采用新尺寸。
+
+### 13.5 `FontSizeKeys` 完整说明
+
+`FontSizeKeys` 的资源类型都是 `Double`：
+
+| Key | ResourceId | 意义与推荐用途 |
+|---|---|---|
+| `Default` | `S.FontSize.Default` | 正文、表单、按钮、菜单和普通控件默认字号。 |
+| `Header` | `S.FontSize.Header` | 普通标题或分组标题，比默认正文略大。 |
+| `Header1` | `S.FontSize.Header.1` | 最大一级标题，适合页面主标题。 |
+| `Header2` | `S.FontSize.Header.2` | 二级标题。 |
+| `Header3` | `S.FontSize.Header.3` | 三级标题或大号强调文本。 |
+| `Header4` | `S.FontSize.Header.4` | 四级标题或卡片主标题。 |
+| `Header5` | `S.FontSize.Header.5` | 五级标题；默认主题中与 `Header` 同为 `14`。 |
+| `Header6` | `S.FontSize.Header.6` | 六级标题；默认主题中与正文同为 `12`。 |
+| `Header7` | `S.FontSize.Header.7` | 小号辅助文本。 |
+| `Header8` | `S.FontSize.Header.8` | 更小的标注文字。 |
+| `Header9` | `S.FontSize.Header.9` | 最小字号层级，只适合特殊缩略标注。 |
+| `Icon` | `S.FontSize.Icon` | 字体图标字号，不等同于 `LayoutKeys.IconHeight`。 |
+
+标题编号越小，字号越大：
+
+```text
+Header1 > Header2 > ... > Header9
+```
+
+使用示例：
+
+```xaml
+<StackPanel>
+    <TextBlock
+        FontSize="{DynamicResource {x:Static h:FontSizeKeys.Header1}}"
+        Text="页面标题" />
+    <TextBlock
+        FontSize="{DynamicResource {x:Static h:FontSizeKeys.Header4}}"
+        Text="卡片标题" />
+    <TextBlock
+        FontSize="{DynamicResource {x:Static h:FontSizeKeys.Default}}"
+        Text="正文内容" />
+    <TextBlock
+        FontFamily="{DynamicResource {x:Static h:SystemKeys.FontFamilyIcon}}"
+        FontSize="{DynamicResource {x:Static h:FontSizeKeys.Icon}}"
+        Text="&#xE8B7;" />
+</StackPanel>
+```
+
+### 13.6 三套 `FontSizeThemeType` 的实际值
+
+| Key | `Small` | `Default` | `Large` |
+|---|---:|---:|---:|
+| `Default` | `10` | `12` | `14` |
+| `Header` | `12` | `14` | `16` |
+| `Header1` | `20` | `22` | `24` |
+| `Header2` | `18` | `20` | `22` |
+| `Header3` | `16` | `18` | `20` |
+| `Header4` | `14` | `16` | `18` |
+| `Header5` | `12` | `14` | `16` |
+| `Header6` | `10` | `12` | `14` |
+| `Header7` | `8` | `10` | `12` |
+| `Header8` | `6` | `8` | `10` |
+| `Header9` | `4` | `6` | `8` |
+| `Icon` | `16` | `16` | `20` |
+
+注意：
+
+- `Small` 的 `Header9 = 4` 非常小，不适合普通可读文本。
+- `Small` 与 `Default` 的 `Icon` 都是 `16`，只有 `Large` 提升到 `20`。
+- 字体图标为了清晰，优先使用字体推荐的离散字号；框架默认注释建议 `16、20、24、32、40、48、64`。
+- `FontSizeKeys.Icon` 控制字体图标字号，`LayoutKeys.IconHeight` 控制布局占用尺寸，两者可以同时使用。
+
+### 13.7 在控件默认样式中统一应用
+
+```xaml
+<Style TargetType="TextBlock">
+    <Setter Property="FontSize" Value="{DynamicResource {x:Static h:FontSizeKeys.Default}}" />
+    <Setter Property="Foreground" Value="{DynamicResource {x:Static h:BrushKeys.Foreground}}" />
+</Style>
+
+<Style TargetType="Button">
+    <Setter Property="Height" Value="{DynamicResource {x:Static h:LayoutKeys.ItemHeight}}" />
+    <Setter Property="Padding" Value="{DynamicResource {x:Static h:LayoutKeys.Padding}}" />
+    <Setter Property="Margin" Value="{DynamicResource {x:Static h:LayoutKeys.Margin}}" />
+    <Setter Property="FontSize" Value="{DynamicResource {x:Static h:FontSizeKeys.Default}}" />
+</Style>
+```
+
+这样切换字号和布局主题时，业务页面无需逐个修改控件属性。
 
 ---
 
