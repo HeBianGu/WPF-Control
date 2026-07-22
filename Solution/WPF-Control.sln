@@ -264,24 +264,6 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".sln", ".sln", "{8C583732-150E-4428-B5AC-815FBE168F78}"
 	ProjectSection(SolutionItems) = preProject
 		..\.editorconfig = ..\.editorconfig
-		..\docs\development-guide-applicationbase.md = ..\docs\development-guide-applicationbase.md
-		..\docs\development-guide-apppaths.md = ..\docs\development-guide-apppaths.md
-		..\docs\development-guide-contentpresenter-datatemplate.md = ..\docs\development-guide-contentpresenter-datatemplate.md
-		..\docs\development-guide-database.md = ..\docs\development-guide-database.md
-		..\docs\development-guide-diagram.md = ..\docs\development-guide-diagram.md
-		..\docs\development-guide-form.md = ..\docs\development-guide-form.md
-		..\docs\development-guide-globalization.md = ..\docs\development-guide-globalization.md
-		..\docs\development-guide-iconfont.md = ..\docs\development-guide-iconfont.md
-		..\docs\development-guide-identity.md = ..\docs\development-guide-identity.md
-		..\docs\development-guide-ioc.md = ..\docs\development-guide-ioc.md
-		..\docs\development-guide-login.md = ..\docs\development-guide-login.md
-		..\docs\development-guide-message.md = ..\docs\development-guide-message.md
-		..\docs\development-guide-newtonsoftjson.md = ..\docs\development-guide-newtonsoftjson.md
-		..\docs\development-guide-project.md = ..\docs\development-guide-project.md
-		..\docs\development-guide-setting.md = ..\docs\development-guide-setting.md
-		..\docs\development-guide-splashscreen.md = ..\docs\development-guide-splashscreen.md
-		..\docs\development-guide-theme.md = ..\docs\development-guide-theme.md
-		..\docs\development-guide.md = ..\docs\development-guide.md
 		..\Directory.Build.Props = ..\Directory.Build.Props
 		..\Key.snk = ..\Key.snk
 		..\LICENSE = ..\LICENSE
@@ -475,6 +457,28 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H.Themes.Colors.Office", "..\Source\Themes\H.Themes.Colors.Office\H.Themes.Colors.Office.csproj", "{DA2513C1-B3C9-9B29-C13A-D83FBA4A3F41}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H.Modules.Logger", "..\..\WPF-License\Source\WPF-Control\Source\Modules\H.Modules.Logger\H.Modules.Logger.csproj", "{16F3FBF3-7C6D-AF53-6343-0436E41A5981}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+	ProjectSection(SolutionItems) = preProject
+		..\docs\development-guide-applicationbase.md = ..\docs\development-guide-applicationbase.md
+		..\docs\development-guide-apppaths.md = ..\docs\development-guide-apppaths.md
+		..\docs\development-guide-contentpresenter-datatemplate.md = ..\docs\development-guide-contentpresenter-datatemplate.md
+		..\docs\development-guide-database.md = ..\docs\development-guide-database.md
+		..\docs\development-guide-diagram.md = ..\docs\development-guide-diagram.md
+		..\docs\development-guide-form.md = ..\docs\development-guide-form.md
+		..\docs\development-guide-globalization.md = ..\docs\development-guide-globalization.md
+		..\docs\development-guide-iconfont.md = ..\docs\development-guide-iconfont.md
+		..\docs\development-guide-identity.md = ..\docs\development-guide-identity.md
+		..\docs\development-guide-ioc.md = ..\docs\development-guide-ioc.md
+		..\docs\development-guide-login.md = ..\docs\development-guide-login.md
+		..\docs\development-guide-message.md = ..\docs\development-guide-message.md
+		..\docs\development-guide-newtonsoftjson.md = ..\docs\development-guide-newtonsoftjson.md
+		..\docs\development-guide-project.md = ..\docs\development-guide-project.md
+		..\docs\development-guide-setting.md = ..\docs\development-guide-setting.md
+		..\docs\development-guide-splashscreen.md = ..\docs\development-guide-splashscreen.md
+		..\docs\development-guide-theme.md = ..\docs\development-guide-theme.md
+		..\docs\development-guide.md = ..\docs\development-guide.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -4633,6 +4637,7 @@ Global
 		{853488EF-5C62-16A5-C91D-5B89FE71206C} = {64C710EF-95D0-4811-A72E-58B2AC79E2B8}
 		{DA2513C1-B3C9-9B29-C13A-D83FBA4A3F41} = {64C710EF-95D0-4811-A72E-58B2AC79E2B8}
 		{16F3FBF3-7C6D-AF53-6343-0436E41A5981} = {27F6EA0F-3811-4403-9599-3B436A5EC502}
+		{02EA681E-C7D8-13C7-8484-4AC65E1B71E8} = {8C583732-150E-4428-B5AC-815FBE168F78}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DF825C3D-F4F4-4E62-BBFF-B42A5E81112F}
