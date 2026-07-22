@@ -276,6 +276,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".sln", ".sln", "{8C583732-1
 		..\docs\development-guide-ioc.md = ..\docs\development-guide-ioc.md
 		..\docs\development-guide-login.md = ..\docs\development-guide-login.md
 		..\docs\development-guide-message.md = ..\docs\development-guide-message.md
+		..\docs\development-guide-newtonsoftjson.md = ..\docs\development-guide-newtonsoftjson.md
 		..\docs\development-guide-project.md = ..\docs\development-guide-project.md
 		..\docs\development-guide-setting.md = ..\docs\development-guide-setting.md
 		..\docs\development-guide-splashscreen.md = ..\docs\development-guide-splashscreen.md
