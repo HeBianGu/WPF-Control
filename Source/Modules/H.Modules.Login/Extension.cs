@@ -68,8 +68,13 @@ public static class Extension
 
     public static IServiceCollection AddTestLoginService(this IServiceCollection services, Action<ILoginOptions> setupAction = null)
     {
+        return services.AddLoginService<LoginService>();
+    }
+
+    public static IServiceCollection AddLoginService<T>(this IServiceCollection services, Action<ILoginOptions> setupAction = null) where T : class, ILoginService
+    {
         services.AddOptions();
-        services.TryAdd(ServiceDescriptor.Singleton<ILoginService, LoginService>());
+        services.TryAdd(ServiceDescriptor.Singleton<ILoginService, T>());
         if (setupAction != null)
             services.Configure(new Action<LoginOptions>(setupAction));
         return services;
@@ -77,8 +82,13 @@ public static class Extension
 
     public static IServiceCollection AddTestRegistorService(this IServiceCollection services, Action<IRegistorOptions> setupAction = null)
     {
+        return services.AddRegistorService<RegisterService>();
+    }
+
+    public static IServiceCollection AddRegistorService<T>(this IServiceCollection services, Action<IRegistorOptions> setupAction = null) where T : class, IRegisterService
+    {
         services.AddOptions();
-        services.TryAdd(ServiceDescriptor.Singleton<IRegisterService, RegisterService>());
+        services.TryAdd(ServiceDescriptor.Singleton<IRegisterService, T>());
         if (setupAction != null)
             services.Configure(new Action<RegistorOptions>(setupAction));
         return services;
