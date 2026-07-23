@@ -15,7 +15,7 @@
             <Border Width="310"
                     Margin="50,20,50,30"
                     HorizontalAlignment="Right"
-                    Background="White"
+                    Background="{DynamicResource {x:Static BrushKeys.Background}}"
                     CornerRadius="5">
                 <!--  登录页面  -->
                 <StackPanel x:Name="g_login"
@@ -26,7 +26,7 @@
                         <TextBlock HorizontalAlignment="Left"
                                    VerticalAlignment="Center"
                                    FontSize="24"
-                                   Foreground="Black"
+                                   Foreground="{DynamicResource {x:Static BrushKeys.Foreground}}"
                                    Text="{x:Static ApplicationProvider.Product}" />
                     </Viewbox>
                     <TextBlock Margin="0,20"
@@ -75,7 +75,7 @@
                                     </TextBox>
                                     <FontIconToggleButton HorizontalAlignment="Right"
                                                           Background="Transparent"
-                                                          BorderThickness="0" Foreground="Red"
+                                                          BorderThickness="0"
                                                           CheckedGlyph="&#xE890;"
                                                           IsChecked="{Binding ShowPassword, Mode=TwoWay}"
                                                           UncheckedGlyph="&#xECE4;" />
