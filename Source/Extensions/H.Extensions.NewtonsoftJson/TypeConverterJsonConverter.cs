@@ -58,13 +58,8 @@ public class TypeConverterJsonConverter : JsonConverter
         var result = TypeDescriptor.GetConverter(objectType);
         var converterType = result.GetType();
 
-        //if (converterType.Name.StartsWith("ExpressionKeyTypeConverter"))
-        //{
+        //if (converterType.GetCustomAttribute<IgnoreTypeConverterJsonConverterAttribute>() != null)
         //    return null;
-        //}
-
-        if (converterType.GetCustomAttribute<IgnoreTypeConverterJsonConverterAttribute>() != null)
-            return null;
         return converterType == typeof(TypeConverter) ? null : result;
     }
     public override bool CanConvert(Type objectType)

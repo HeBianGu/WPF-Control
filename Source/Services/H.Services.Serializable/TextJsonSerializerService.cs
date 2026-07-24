@@ -97,9 +97,9 @@ public class TypeConverterJsonConverter : JsonConverter<object>
     private TypeConverter CreateTypeConverter(Type objectType)
     {
         TypeConverter result = TypeDescriptor.GetConverter(objectType);
-        var converterType = result.GetType();
-        if (converterType.GetCustomAttribute<IgnoreTypeConverterJsonConverterAttribute>() != null)
-            return null;
+        //var converterType = result.GetType();
+        //if (converterType.GetCustomAttribute<IgnoreTypeConverterJsonConverterAttribute>() != null)
+        //    return null;
         return result.GetType() == typeof(TypeConverter) ? null : result;
     }
     public override bool CanConvert(Type objectType)

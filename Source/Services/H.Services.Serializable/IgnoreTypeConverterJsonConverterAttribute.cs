@@ -8,8 +8,8 @@
 
 namespace H.Services.Serializable;
 
-[System.AttributeUsage(AttributeTargets.Interface | AttributeTargets.Class, Inherited = false, AllowMultiple = false)]
-public sealed class IgnoreTypeConverterJsonConverterAttribute : Attribute
-{
+//[System.AttributeUsage(AttributeTargets.Interface | AttributeTargets.Class, Inherited = false, AllowMultiple = false)]
+//public sealed class IgnoreTypeConverterJsonConverterAttribute : Attribute
+//{
 
-}
+//}
