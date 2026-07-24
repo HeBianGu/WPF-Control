@@ -88,11 +88,11 @@ public class Base64TemplateMatchNodeData : MatchingNodeData<IMatImage>, ITemplat
                 this.MatchingCountResult = 1;
                 this.Confidence = maxVal;
 
-                var shapes = new RectShape(rect2F.ToWindowRect()) { Title = $"置信度：{Math.Round(maxVal, 2)}" }.ToEnumerable();
+                var shapes = new RectShape(rect2F.ToWindowRect()) { Title = $"置信度：{Math.Round(maxVal, 2)}" }.ToEnumerable().ToList();
 
                 if (this.DetectDisplayMode == DetectDisplayMode.Dimension)
                 {
-                    var dimensionShapes = rect2F.ToWindowRect().ToDimensionShapes(x => x.Text = this.GetWorldDistance(x.Length));
+                    var dimensionShapes = rect2F.ToWindowRect().ToDimensionShapes(x => x.Text = this.GetWorldDistance(x.Length)).ToList();
                     this.ResultShapes = dimensionShapes.OfType<IShape>().ToObservable();
                 }
                 else if (this.DetectDisplayMode == DetectDisplayMode.Default)

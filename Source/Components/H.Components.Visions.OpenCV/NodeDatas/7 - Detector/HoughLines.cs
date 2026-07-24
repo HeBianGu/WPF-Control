@@ -123,7 +123,7 @@ public class HoughLines : HoughLinesBase, IDetectorGroupableNodeData
             this.ResultVisionLine = new VisionLine(lines[0].Item1.ToPoint(), lines[0].Item2.ToPoint());
         this.ResultShapes = shapes.OfType<IShape>().ToObservable();
         this.MatchingCountResult = lines.Count();
-        Controls.Diagram.Presenter.NodeDatas.Base.IResultPresenter resultPresenter = shapes.ToResultPresenter();
+        var resultPresenter = shapes.ToResultPresenter();
         return this.OK(resultImage, resultPresenter, this.MatchingCountResult.ToDetectSuccessMessage());
     }
 }

@@ -76,7 +76,7 @@ public class QRCode : OpenCVDetectorNodeDataBase, IDetectorGroupableNodeData
                     PolygonShape polygonShape = new PolygonShape(points.Select(x => x.ToPoint().ToPoint())) { Title = "解码结果: " + data };
                     if (this.DetectDisplayMode == DetectDisplayMode.Dimension)
                     {
-                        var shapes = points.Select(x => x.ToPoint().ToPoint()).ToDimensionShapes(x => x.Text = this.GetWorldDistance(x.Length));
+                        var shapes = points.Select(x => x.ToPoint().ToPoint()).ToDimensionShapes(x => x.Text = this.GetWorldDistance(x.Length)).ToList();
                         this.ResultShapes = shapes.OfType<IShape>().ToObservable();
                     }
                     else if (this.DetectDisplayMode == DetectDisplayMode.Default)

@@ -150,7 +150,7 @@ public class RenderBlobs : OpenCVDetectorNodeDataBase, IDetectorGroupableNodeDat
         }
         else
         {
-            var color = VisionSettings.Instance.OutputColor.ToScalar();                                          
+            var color = VisionSettings.Instance.OutputColor.ToScalar();
             foreach (ConnectedComponents.Blob blob in finds)
             {
                 resultImage.Mat.Rectangle(blob.Rect, color, resultImage.Mat.ToThickness());
@@ -158,8 +158,7 @@ public class RenderBlobs : OpenCVDetectorNodeDataBase, IDetectorGroupableNodeDat
         }
         this.ResultImages = finds.Select(x => x.Rect).ToResultImages(fromMat).ToList();
         this.FirstResultImage = this.ResultImages.FirstOrDefault()?.Image;
-        var resultPresenter = finds.ToResultPresenter();
-        return this.OK(resultImage, resultPresenter, this.MatchingCountResult.ToDetectSuccessMessage());
+        return this.OK(resultImage, this.ResultShapes.ToAutoResultPresenter(), this.MatchingCountResult.ToDetectSuccessMessage());
     }
 
     protected override FlowableResult<IMatImage> Invoke(Mat fromImage)

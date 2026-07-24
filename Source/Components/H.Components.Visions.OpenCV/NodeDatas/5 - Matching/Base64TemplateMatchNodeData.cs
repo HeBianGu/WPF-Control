@@ -120,7 +120,7 @@ public class Base64TemplateMatchNodeData : MatchingNodeData<IMatImage>, ITemplat
                 OpenCvSharp.Point[][] contours = new OpenCvSharp.Point[][] { rect2F.ToPoints() };
                 if (this.DetectDisplayMode == DetectDisplayMode.Dimension)
                 {
-                    var dshapes = contours.SelectMany(x => x.ToDimensionShapes(this.DrawContourType));
+                    var dshapes = contours.SelectMany(x => x.ToDimensionShapes(this.DrawContourType)).ToList();
                     this.ResultShapes = dshapes.OfType<IShape>().ToObservable();
                 }
                 else if (this.DetectDisplayMode == DetectDisplayMode.Default)

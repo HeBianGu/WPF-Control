@@ -233,12 +233,12 @@ public class FindContours : OpenCVDetectorNodeDataBase, IDetectorGroupableNodeDa
 
         if (this.DrawContourType == DrawContourType.DrawContours)
         {
-            var shapes = contours.Select(x => new PolygonShape(x.Select(x => x.ToPoint())) { Title = this.Name + "-轮廓" });
+            var shapes = contours.Select(x => new PolygonShape(x.Select(x => x.ToPoint())) { Title = this.Name + "-轮廓" }).ToList();
 
             if (this.MaxArea > 0)
-                shapes = shapes.Where(x => x.Area < this.MaxArea);
+                shapes = shapes.Where(x => x.Area < this.MaxArea).ToList();
             if (this.MinArea > 0)
-                shapes = shapes.Where(x => x.Area > this.MinArea);
+                shapes = shapes.Where(x => x.Area > this.MinArea).ToList();
             if (this.DetectDisplayMode == DetectDisplayMode.Dimension)
             {
                 //  Do ：数据多性能有问题
@@ -265,20 +265,20 @@ public class FindContours : OpenCVDetectorNodeDataBase, IDetectorGroupableNodeDa
             if (this.DetectDisplayMode == DetectDisplayMode.Dimension)
             {
                 var wrects = rects.Select(x => x.ToWindowRect());
-                var shapes = wrects.SelectMany(x => x.ToDimensionShapes(x => x.Text = this.GetWorldDistance(x.Length)));
+                var shapes = wrects.SelectMany(x => x.ToDimensionShapes(x => x.Text = this.GetWorldDistance(x.Length))).ToList();
 
                 this.ResultShapes = shapes.OfType<IShape>().ToObservable();
                 return this.OK(resultImage, shapes.ToResultPresenter());
             }
             else if (this.DetectDisplayMode == DetectDisplayMode.Default)
             {
-                var shapes = rects.Select(x => new RectShape(x.ToWindowRect()) { Title = this.Name + "-凸包" });
+                var shapes = rects.Select(x => new RectShape(x.ToWindowRect()) { Title = this.Name + "-凸包" }).ToList();
                 this.ResultShapes = shapes.OfType<IShape>().ToObservable();
                 return this.OK(resultImage, shapes.ToResultPresenter());
             }
             else
             {
-                var shapes = rects.Select(x => new RectShape(x.ToWindowRect()) { Title = this.Name + "-凸包" });
+                var shapes = rects.Select(x => new RectShape(x.ToWindowRect()) { Title = this.Name + "-凸包" }).ToList();
                 //foreach (OpenCvSharp.Point[] contour in contours)
                 //{
                 //    Cv2.ConvexHull(contours[0], contour);
@@ -296,19 +296,19 @@ public class FindContours : OpenCVDetectorNodeDataBase, IDetectorGroupableNodeDa
 
             if (this.DetectDisplayMode == DetectDisplayMode.Dimension)
             {
-                var shapes = rects.SelectMany(x => x.ToWindowRect().ToDimensionShapes(x => x.Text = this.GetWorldDistance(x.Length)));
+                var shapes = rects.SelectMany(x => x.ToWindowRect().ToDimensionShapes(x => x.Text = this.GetWorldDistance(x.Length))).ToList();
                 this.ResultShapes = shapes.OfType<IShape>().ToObservable();
                 return this.OK(resultImage, shapes.ToResultPresenter());
             }
             else if (this.DetectDisplayMode == DetectDisplayMode.Default)
             {
-                var shapes = rects.Select(x => new RectShape(x.ToWindowRect()) { Title = this.Name + "-外接矩形" });
+                var shapes = rects.Select(x => new RectShape(x.ToWindowRect()) { Title = this.Name + "-外接矩形" }).ToList();
                 this.ResultShapes = shapes.OfType<IShape>().ToObservable();
                 return this.OK(resultImage, shapes.ToResultPresenter());
             }
             else
             {
-                var shapes = rects.Select(x => new RectShape(x.ToWindowRect()) { Title = this.Name + "-外接矩形" });
+                var shapes = rects.Select(x => new RectShape(x.ToWindowRect()) { Title = this.Name + "-外接矩形" }).ToList();
                 foreach (var rect in rects)
                 {
                     Cv2.Rectangle(resultImage.Mat, rect.TopLeft, rect.BottomRight, VisionSettings.Instance.OutputColor.ToScalar(), resultImage.Mat.ToThickness(), this.LineType);
@@ -330,13 +330,13 @@ public class FindContours : OpenCVDetectorNodeDataBase, IDetectorGroupableNodeDa
 
             if (this.DetectDisplayMode == DetectDisplayMode.Dimension)
             {
-                var shapes = rrects.SelectMany(x => x.Points().Select(x => x.ToPoint().ToPoint()).ToDimensionShapes(x => x.Text = this.GetWorldDistance(x.Length)));
+                var shapes = rrects.SelectMany(x => x.Points().Select(x => x.ToPoint().ToPoint()).ToDimensionShapes(x => x.Text = this.GetWorldDistance(x.Length))).ToList();
                 this.ResultShapes = shapes.OfType<IShape>().ToObservable();
                 return this.OK(resultImage, shapes.ToResultPresenter());
             }
             else if (this.DetectDisplayMode == DetectDisplayMode.Default)
             {
-                var shapes = rrects.Select(x => new PolygonShape(x.Points().Select(x => x.ToPoint().ToPoint())) { Title = this.Name + "-最小外接矩形" });
+                var shapes = rrects.Select(x => new PolygonShape(x.Points().Select(x => x.ToPoint().ToPoint())) { Title = this.Name + "-最小外接矩形" }).ToList();
                 this.ResultShapes = shapes.OfType<IShape>().ToObservable();
                 return this.OK(resultImage, shapes.ToResultPresenter());
             }
@@ -346,7 +346,7 @@ public class FindContours : OpenCVDetectorNodeDataBase, IDetectorGroupableNodeDa
                 {
                     Cv2.Rectangle(resultImage.Mat, rect.BoundingRect().TopLeft, rect.BoundingRect().BottomRight, VisionSettings.Instance.OutputColor.ToScalar(), resultImage.Mat.ToThickness(), this.LineType);
                 }
-                var shapes = rrects.Select(x => new PolygonShape(x.Points().Select(x => x.ToPoint().ToPoint())) { Title = this.Name + "-最小外接矩形" });
+                var shapes = rrects.Select(x => new PolygonShape(x.Points().Select(x => x.ToPoint().ToPoint())) { Title = this.Name + "-最小外接矩形" }).ToList();
                 return this.OK(resultImage, shapes.ToResultPresenter());
             }
 
@@ -360,19 +360,19 @@ public class FindContours : OpenCVDetectorNodeDataBase, IDetectorGroupableNodeDa
                 //this.ResultShapes = shapes.OfType<IShape>().ToObservable();
                 //return this.OK(dst, shapes.ToResultPresenter());
 
-                var shapes = contours.Select(x => new PolygonShape(x.Select(x => x.ToPoint())) { Title = this.Name + "-近似多边形拟合" });
+                var shapes = contours.Select(x => new PolygonShape(x.Select(x => x.ToPoint())) { Title = this.Name + "-近似多边形拟合" }).ToList();
 
                 if (this.MaxArea > 0)
-                    shapes = shapes.Where(x => x.Area < this.MaxArea);
+                    shapes = shapes.Where(x => x.Area < this.MaxArea).ToList();
                 if (this.MinArea > 0)
-                    shapes = shapes.Where(x => x.Area > this.MinArea);
+                    shapes = shapes.Where(x => x.Area > this.MinArea).ToList();
 
                 this.ResultShapes = shapes.OfType<IShape>().ToObservable();
                 return this.OK(resultImage, shapes.ToResultPresenter());
             }
             else if (this.DetectDisplayMode == DetectDisplayMode.Default)
             {
-                var shapes = contours.Select(x => new PolygonShape(x.Select(x => x.ToPoint())) { Title = this.Name + "-近似多边形拟合" });
+                var shapes = contours.Select(x => new PolygonShape(x.Select(x => x.ToPoint())) { Title = this.Name + "-近似多边形拟合" }).ToList();
                 this.ResultShapes = shapes.OfType<IShape>().ToObservable();
                 return this.OK(resultImage, shapes.ToResultPresenter());
             }
