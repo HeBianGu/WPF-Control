@@ -134,6 +134,6 @@ public class CornerHarris : PointDetectorNodeDataBase, IDetectorGroupableNodeDat
         var shapes = pts.Select(x => new PointShape(x.ToPoint().ToPoint())).ToList();
         this.MatchingCountResult = pts.Count;
         this.ResultShapes = shapes.OfType<IShape>().ToObservable();
-        return this.OK(resultImage);
+        return this.OK(resultImage, shapes.ToResultPresenter());
     }
 }

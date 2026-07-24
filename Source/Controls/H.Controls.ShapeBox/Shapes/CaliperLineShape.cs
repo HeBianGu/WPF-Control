@@ -85,7 +85,7 @@ public class CaliperLineShape : LineShape
         return this.Contains(from) && this.Contains(to);
     }
 
-    public bool Contains(Point from)
+    public virtual bool Contains(Point from)
     {
         Matrix matrix = this.GetInvertMatrix();
         from = matrix.Transform(from);

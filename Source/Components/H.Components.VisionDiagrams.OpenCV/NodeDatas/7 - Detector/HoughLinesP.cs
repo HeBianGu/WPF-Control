@@ -10,8 +10,10 @@ global using H.Components.VisionDiagram.Extensions;
 global using H.Components.VisionDiagrams.OpenCV.Extensions;
 global using H.Controls.ShapeBox.Shapes;
 global using H.Controls.ShapeBox.Shapes.Base;
+using H.Components.VisionDiagram.Base;
 using H.Controls.Form.PropertyItem.Attribute;
 using H.Controls.ShapeBox;
+using H.Controls.ShapeBox.Shapes.Handles;
 
 namespace H.Components.VisionDiagrams.OpenCV.NodeDatas.Detector;
 //需要检测实际图像中的有限长度线段
@@ -153,6 +155,7 @@ public class HoughLinesP : HoughLinesBase, IDetectorGroupableNodeData
     protected override FlowableResult<IMatImage> Invoke(Mat fromImage)
     {
         var resultImage = this.GetExpressionResultImage(fromImage.ToMatImage()).ToMatImage();
+        List<IShape> resultShapes = new List<IShape>();
         if (this.UsePositionCorrection)
         {
             if (this.PositionCorrectionInfo == null)
@@ -163,6 +166,12 @@ public class HoughLinesP : HoughLinesBase, IDetectorGroupableNodeData
                 return this.Error(resultImage, "位置修正信息无效");
             if (this.CaliperShape is PositionCorrectionCaliperLineShape caliper)
                 caliper.PositionCorrectionInfo = positionCorrectionInfo.value;
+            resultShapes.AddRange(positionCorrectionInfo.value.ToPointShapes());
+        }
+        else
+        {
+            if (this.CaliperShape is PositionCorrectionCaliperLineShape caliper)
+                caliper.PositionCorrectionInfo = default;
         }
 
         LineSegmentPoint[] lines = Cv2.HoughLinesP(fromImage, Rho, Math.PI / Theta, Threshold, MinLineLength, MaxLineGap);
@@ -179,8 +188,9 @@ public class HoughLinesP : HoughLinesBase, IDetectorGroupableNodeData
         if (lines.Length > 0)
             this.ResultVisionLine = lines[0].ToVisionLine();
 
-        var shapes = lines.Select(x => x.ToVisionLine().ToDimensionShape(x => x.Text = this.GetWorldDistance(x.Length)));
-        this.ResultShapes = shapes.OfType<IShape>().ToObservable();
+        var shapes = lines.Select(x => x.ToVisionLine().ToDimensionShape(x => x.Text = this.GetWorldDistance(x.Length))).ToList();
+        resultShapes.AddRange(shapes);
+        this.ResultShapes = resultShapes.ToObservable();
         this.MatchingCountResult = lines.Length;
         var resultPresenter = shapes.ToResultPresenter();
         return this.OK(resultImage, resultPresenter, this.MatchingCountResult.ToDetectSuccessMessage());
@@ -239,6 +249,25 @@ public class PositionCorrectionCaliperLineShape : CaliperLineShape
         drawingContext.PushTransform(new MatrixTransform(matrix));
         base.MatrixDrawing(view, drawingContext, pen, fill);
         drawingContext.Pop();
+    }
+
+    public override IHandle HitIHandle(IView view, System.Windows.Point position)
+    {
+        return base.HitIHandle(view, position);
+    }
+
+    protected override bool CanHandle(IView view)
+    {
+        var matrix = this.PositionCorrectionInfo.ToMatrix();
+        if (matrix.IsIdentity == false)
+            return false;
+        return base.CanHandle(view);
+    }
+
+    public override bool Contains(System.Windows.Point from)
+    {
+        var cpoint = this.PositionCorrectionInfo.ToReferencePoint(from);
+        return base.Contains(cpoint);
     }
 }
 

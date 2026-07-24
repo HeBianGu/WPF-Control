@@ -11,6 +11,7 @@ using H.Components.VisionDiagrams.OpenCV;
 using H.Components.VisionDiagrams.OpenCV.Presenters;
 using H.Controls.ShapeBox.State;
 using H.Extensions.Mvvm.Commands;
+using System.Text.Json.Serialization;
 using Point = OpenCvSharp.Point;
 
 namespace H.VisionMaster.OpenCVs.TemplateMatch.NodeDatas;
@@ -218,6 +219,22 @@ public class ShapeTemplateMatch : MatchingNodeData<IMatImage>, ITemplateMatching
         }
     }
 
+    private System.Windows.Point[] _matchContourResult;
+    [JsonIgnore]
+    [ReadOnly(true)]
+    [Expressionable]
+    [Tab(VisionTabNames.ResultParameters)]
+    [Display(Name = "匹配轮廓", GroupName = VisionTabNames.ResultParameters, Description = "根据模板轮廓、匹配中心点和匹配角度生成的轮廓")]
+    public System.Windows.Point[] MatchContourResult
+    {
+        get => _matchContourResult;
+        set
+        {
+            _matchContourResult = value;
+            RaisePropertyChanged();
+        }
+    }
+
 
     protected override FlowableResult<IMatImage> Invoke(IMatImage fromImage)
     {
@@ -233,8 +250,13 @@ public class ShapeTemplateMatch : MatchingNodeData<IMatImage>, ITemplateMatching
         if (templateContour == null)
             return this.Error(fromImage.ToMatImage(), "无法从模板中提取有效轮廓");
 
+        //var templateCenter = GetContourCenter(templateContour);
+        //var templateAngle = GetContourDirection(templateContour);
+
         List<RotatedRect> rotatedRects = new List<RotatedRect>();
         List<IShape> resultShapes = new List<IShape>();
+        int matchingCount = 0;
+        this.MatchContourResult = null;
         for (int i = 0; i < contours.Length; i++)
         {
             double area = Cv2.ContourArea(contours[i]);
@@ -244,8 +266,10 @@ public class ShapeTemplateMatch : MatchingNodeData<IMatImage>, ITemplateMatching
             double score = Cv2.MatchShapes(templateContour, contours[i], ShapeMatchMode, 0);
             if (score <= MinScore)
             {
+                //RotatedRect rotatedRect = Cv2.MinAreaRect(contours[i]);
                 RotatedRect rotatedRect = GetStandardRotatedRect(contours[i]);
                 rotatedRects.Add(rotatedRect);
+                matchingCount++;
                 var shape = rotatedRect.ToRotatedRectShape(x =>
                 {
                     x.UseAngle = this.UseShapeAngle;
@@ -255,11 +279,25 @@ public class ShapeTemplateMatch : MatchingNodeData<IMatImage>, ITemplateMatching
                 shape.Title = $"分数: {score:F10}";
                 resultShapes.Add(shape);
 
-                PointsShape pointsShape = new PointsShape(contours[i].Select(p => new System.Windows.Point(p.X, p.Y)).ToArray());
-                resultShapes.Add(pointsShape);
+                var matchCenter = rotatedRect.Center.ToPoint();
+                var matchAngle = rotatedRect.Angle;
+                //var matchCenter = GetContourCenter(contours[i]);
+                //var matchAngle = GetContourDirection(contours[i]);
+                //var matchContour = GetOrientedBoxByMoments(contours[i], out Point matchCenter, out double matchAngle);
+                //var contourShape = contours[i].ToPointsShape();
+                //contourShape.Title = $"分数: {score:F10}";
+                //resultShapes.Add(contourShape);
+                //var ss = Cv2.MinAreaRect(contours[i]);
+                //resultShapes.Add(matchContour.ToPolygonShape());
+
+                // 单值结果保持第一个（最佳遍历顺序）匹配，避免被后续匹配覆盖。
+                if (matchingCount == 1)
+                {
+                    this.MatchPointResult = matchCenter.ToPoint();
+                    this.MatchAngleResult = matchAngle;
+                    this.MatchContourResult = contours[i].Select(p => new System.Windows.Point(p.X, p.Y)).ToArray();
+                }
                 //Cv2.DrawContours(resultImage, contours, i, Scalar.RandomColor(), 2);
-                this.MatchPointResult = GetContourCenter(contours[i]);
-                this.MatchAngleResult = GetContourDirection(contours[i]);
             }
         }
 
@@ -280,16 +318,102 @@ public class ShapeTemplateMatch : MatchingNodeData<IMatImage>, ITemplateMatching
         //}
 
         var resultImage = this.GetExpressionResultImage(fromImage).ToMatImage();
-        this.MatchingCountResult = resultShapes.Count;
+        this.MatchingCountResult = matchingCount;
         this.Confidence = this.MinScore;
         this.ResultShapes = resultShapes.OfType<IShape>().ToObservable();
         this.ResultImages = rotatedRects.ToResultImages(mat).ToList();
         this.FirstResultImage = this.ResultImages.FirstOrDefault()?.Image;
-        if (resultShapes.Count == 0)
-            return this.OK(resultImage, "未找到匹配的形状");
-        return this.OK(resultImage, resultShapes.OfType<RotatedRectShape>().ToResultPresenter(), $"成功找到 {resultShapes.Count} 个匹配项");
+        if (matchingCount == 0)
+            return this.Error(resultImage, "未找到匹配的形状");
+        return this.OK(resultImage, resultShapes.OfType<RotatedRectShape>().ToResultPresenter(), $"成功找到 {matchingCount} 个匹配项");
     }
 
+    [Obsolete]
+    public static Point[] GetOrientedBoxByMoments(OpenCvSharp.Point[] contour, out Point center, out double angle)
+    {
+        // 1. 计算图像矩
+        Moments moments = Cv2.Moments(contour);
+        if (moments.M00 == 0)
+        {
+            center = new Point(0, 0);
+            angle = 0;
+            return Array.Empty<Point>();
+        }
+
+        // 2. 计算中心点
+        double cx = moments.M10 / moments.M00;
+        double cy = moments.M01 / moments.M00;
+        center = new Point((int)cx, (int)cy);
+
+        // 3. 计算主轴角度
+        double mu20 = moments.Mu20;
+        double mu02 = moments.Mu02;
+        double mu11 = moments.Mu11;
+        double angleRad = 0.5 * Math.Atan2(2 * mu11, (mu20 - mu02));
+        angle = angleRad * 180.0 / Math.PI;
+        // 4. 计算轮廓在主轴方向上的长度
+        // 将轮廓点投影到主轴和副轴方向，找到最大范围
+        double cosA = Math.Cos(angleRad);
+        double sinA = Math.Sin(angleRad);
+
+        double minProj = double.MaxValue, maxProj = double.MinValue;
+        double minPerp = double.MaxValue, maxPerp = double.MinValue;
+
+        foreach (var point in contour)
+        {
+            // 相对于中心点的偏移
+            double dx = point.X - cx;
+            double dy = point.Y - cy;
+
+            // 投影到主轴方向
+            double proj = dx * cosA + dy * sinA;
+            // 投影到垂直方向
+            double perp = -dx * sinA + dy * cosA;
+
+            minProj = Math.Min(minProj, proj);
+            maxProj = Math.Max(maxProj, proj);
+            minPerp = Math.Min(minPerp, perp);
+            maxPerp = Math.Max(maxPerp, perp);
+        }
+
+        // 5. 计算矩形半长和半宽
+        double halfLength = Math.Max(Math.Abs(maxProj), Math.Abs(minProj));
+        double halfWidth = Math.Max(Math.Abs(maxPerp), Math.Abs(minPerp));
+
+        // 6. 构造旋转矩形的四个顶点
+        Point2f[] rectPoints = new Point2f[4];
+        rectPoints[0] = new Point2f(
+            (float)(cx + halfLength * cosA - halfWidth * sinA),
+            (float)(cy + halfLength * sinA + halfWidth * cosA)
+        );
+        rectPoints[1] = new Point2f(
+            (float)(cx + halfLength * cosA + halfWidth * sinA),
+            (float)(cy + halfLength * sinA - halfWidth * cosA)
+        );
+        rectPoints[2] = new Point2f(
+            (float)(cx - halfLength * cosA + halfWidth * sinA),
+            (float)(cy - halfLength * sinA - halfWidth * cosA)
+        );
+        rectPoints[3] = new Point2f(
+            (float)(cx - halfLength * cosA - halfWidth * sinA),
+            (float)(cy - halfLength * sinA + halfWidth * cosA)
+        );
+
+        // 7. 绘制外边框
+        Point[] pts = rectPoints.Select(p => new Point((int)p.X, (int)p.Y)).ToArray();
+
+        return pts;
+
+        //Cv2.Polylines(image, new[] { pts }, true, new Scalar(0, 255, 0), 2);
+
+        //// 可选：绘制主轴方向线
+        //int lineLen = (int)(halfLength * 1.5);
+        //Cv2.Line(image,
+        //    new Point((int)cx, (int)cy),
+        //    new Point((int)(cx + lineLen * cosA), (int)(cy + lineLen * sinA)),
+        //    new Scalar(255, 0, 0), 2
+        //);
+    }
 
     public static System.Windows.Point GetContourCenter(OpenCvSharp.Point[] contour)
     {
@@ -353,10 +477,8 @@ public class ShapeTemplateMatch : MatchingNodeData<IMatImage>, ITemplateMatching
     {
         if (contour == null || contour.Length < 3)
             throw new ArgumentException("轮廓点数量不足。", nameof(contour));
-
-        var minAreaRect = Cv2.MinAreaRect(contour);
-        return minAreaRect;
         var contourDirection = GetContourDirection(contour);
+        var minAreaRect = Cv2.MinAreaRect(contour);
         var points = minAreaRect.Points();
         var axis = Enumerable.Range(0, points.Length)
             .Select(index =>

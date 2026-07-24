@@ -12,8 +12,8 @@ using H.Controls.ShapeBox.Shapes.Base;
 namespace H.Components.VisionDiagram.ResultPresenters;
 public class RotatedRectShapeResultPresenterItem : ResultPresenterItemBase, IRectangleResultItem, IShapeResultPresenterItem
 {
-    private RotatedRectShape _shape;
-    public RotatedRectShapeResultPresenterItem(RotatedRectShape shape)
+    private IRotatedRectShape _shape;
+    public RotatedRectShapeResultPresenterItem(IRotatedRectShape shape)
     {
         this._shape = shape;
         this.Shape = shape;
@@ -30,7 +30,7 @@ public class RotatedRectShapeResultPresenterItem : ResultPresenterItemBase, IRec
     [Browsable(false)]
     public IShape Shape { get; set; }
     [Browsable(false)]
-    public Rect Rect => this._shape.GetBoundingRect();
+    public Rect Rect => this._shape.BoundingBox;
 
     private double _x;
     [DataGridColumn("*", StringFormat = "{0:F2} px")]

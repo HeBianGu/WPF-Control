@@ -6,6 +6,9 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
+using H.Controls.ShapeBox.Shapes;
+using H.Controls.ShapeBox.Shapes.Base;
+
 namespace H.Components.VisionDiagram.Base;
 
 /// <summary>
@@ -40,5 +43,34 @@ public static class PositionCorrectionInfoExtension
             positionCorrectionInfo.ReferencePoint.X - positionCorrectionInfo.InvokePoint.X * cos + positionCorrectionInfo.InvokePoint.Y * sin,
             positionCorrectionInfo.ReferencePoint.Y - positionCorrectionInfo.InvokePoint.X * sin - positionCorrectionInfo.InvokePoint.Y * cos);
 
+    }
+
+
+    public static PointShape ToReferencePointShape(this PositionCorrectionInfo positionCorrectionInfo)
+    {
+        return new PointShape(positionCorrectionInfo.ReferencePoint)
+        {
+            Stroke = Brushes.Chartreuse,
+            UseCross = true,
+            CrossAngle = positionCorrectionInfo.ReferenceAngle,
+            Title = $"基准角度: {positionCorrectionInfo.ReferenceAngle.ToString("F2")}"
+        };
+    }
+
+    public static PointShape ToInvokePointPointShape(this PositionCorrectionInfo positionCorrectionInfo)
+    {
+        return new PointShape(positionCorrectionInfo.InvokePoint)
+        {
+            Stroke = Brushes.Red,
+            UseCross = true,
+            CrossAngle = positionCorrectionInfo.InvokeAngle,
+            Title = $"运行角度: {positionCorrectionInfo.InvokeAngle.ToString("F2")}"
+        };
+    }
+
+    public static IEnumerable<PointShape> ToPointShapes(this PositionCorrectionInfo positionCorrectionInfo)
+    {
+        yield return positionCorrectionInfo.ToInvokePointPointShape();
+        yield return positionCorrectionInfo.ToReferencePointShape();
     }
 }

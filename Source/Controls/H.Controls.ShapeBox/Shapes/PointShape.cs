@@ -36,10 +36,13 @@ public class PointShape : TitleShapeBase, IPointShape
 
     public Rect BoundingBox => this.Point.ToRect(1);
 
+    [Display(Name = "交线角度", GroupName = ShapePropertyGroupNames.StyleGroup)]
+    public double CrossAngle { get; set; }
+
     public override void MatrixDrawing(IView view, DrawingContext drawingContext, Pen pen, Brush fill = null)
     {
         if (this.UseCross)
-            this.DrawCross(view, drawingContext, this.Point, pen, 45);
+            this.DrawCross(view, drawingContext, this.Point, pen, this.CrossAngle);
         this.DrawPoint(view, drawingContext, this.Point, fill);
         base.MatrixDrawing(view, drawingContext, pen, fill);
     }

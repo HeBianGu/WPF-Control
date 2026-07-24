@@ -73,7 +73,7 @@ public class LineResultPresenterItem : ResultPresenterItemBase, ILineResultItem,
             RaisePropertyChanged();
         }
     }
-
+    [ReadOnly(true)]
     [DataGridColumn("*", StringFormat = "{0:F2}°")]
     [Display(Name = "角度", GroupName = "基础信息")]
     public double Angle => this.CalculateAngle(this.Start.X, this.Start.Y, this.End.X, this.End.Y);

@@ -80,6 +80,13 @@ public static class ShapeExtension
         return r;
     }
 
+    public static PointsShape ToPointsShape(this IEnumerable<Point> points, Action<PointsShape> action = null)
+    {
+        var r = new PointsShape(points);
+        action?.Invoke(r);
+        return r;
+    }
+
     public static IEnumerable<PointShape> ToPointShapes(this IEnumerable<Point> points, Action<PointShape> action = null)
     {
         foreach (var item in points)

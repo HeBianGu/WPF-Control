@@ -148,11 +148,15 @@ public class RenderBlobs : OpenCVDetectorNodeDataBase, IDetectorGroupableNodeDat
         this.MatchingCountResult = finds.Count;
         if (this.DetectDisplayMode == DetectDisplayMode.Dimension)
         {
-            this.ResultShapes = finds.SelectMany(x => x.Rect.ToWindowRect().ToDimensionShapes(x => x.Text = this.GetWorldDistance(x.Length))).OfType<IShape>().ToObservable();
+            var shapes = finds.SelectMany(x => x.Rect.ToWindowRect().ToDimensionShapes(l => l.Text = this.GetWorldDistance(l.Length))).ToList();
+            this.ResultShapes = shapes.OfType<IShape>().ToObservable();
+            this.ResultPresenter = shapes.ToResultPresenter();
         }
         else if (this.DetectDisplayMode == DetectDisplayMode.Default)
         {
-            this.ResultShapes = finds.Select(x => new RectShape(x.Rect.ToWindowRect())).OfType<IShape>().ToObservable();
+            var shapes = finds.Select(x => new RectShape(x.Rect.ToWindowRect()) { Title = "标记" + x.Label }).ToList();
+            this.ResultShapes = shapes.OfType<IShape>().ToObservable();
+            this.ResultPresenter = shapes.ToResultPresenter();
         }
         else
         {
@@ -161,11 +165,11 @@ public class RenderBlobs : OpenCVDetectorNodeDataBase, IDetectorGroupableNodeDat
             {
                 resultImage.Mat.Rectangle(blob.Rect, color, resultImage.Mat.ToThickness());
             }
+            this.ResultPresenter = finds.ToResultPresenter();
         }
         this.ResultImages = finds.Select(x => x.Rect).ToResultImages(fromMat).ToList();
         this.FirstResultImage = this.ResultImages.FirstOrDefault()?.Image;
-        var resultPresenter = finds.ToResultPresenter();
-        return this.OK(resultImage, resultPresenter, this.MatchingCountResult.ToDetectSuccessMessage());
+        return this.OK(resultImage, this.MatchingCountResult.ToDetectSuccessMessage());
     }
 
     protected override FlowableResult<IMatImage> Invoke(Mat fromImage)

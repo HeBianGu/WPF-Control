@@ -50,12 +50,12 @@ public static partial class ResultPresenterExtension
         return value.ToEnumerable().ToLineDataGridResultPresenter(x => value, x => name);
     }
 
-    public static IResultPresenter ToResultPresenter(this CircleShape value, string name)
+    public static IResultPresenter ToResultPresenter(this ICircleShape value, string name)
     {
         return value.ToEnumerable().ToResultPresenter();
     }
 
-    public static IResultPresenter ToResultPresenter(this IEnumerable<CircleShape> value)
+    public static IResultPresenter ToResultPresenter(this IEnumerable<ICircleShape> value)
     {
         return value.Select(x => new CircleResultPresenterItem(x.Center, x.Radius) { Name = x.Title, Shape = x }).ToResultPresenter();
     }
@@ -64,17 +64,17 @@ public static partial class ResultPresenterExtension
     {
         return value.ToPointDataGridResultPresenter(x => x, nameSelector);
     }
-    public static IResultPresenter ToResultPresenter(this PointShape value)
+    public static IResultPresenter ToResultPresenter(this IPointShape value)
     {
         return value.ToEnumerable().ToResultPresenter();
     }
 
-    public static IResultPresenter ToResultPresenter(this IEnumerable<PointShape> value)
+    public static IResultPresenter ToResultPresenter(this IEnumerable<IPointShape> value)
     {
         return value.Select(x => new PointResultPresenterItem(x.Point) { Name = x.Title, Shape = x }).ToResultPresenter();
     }
 
-    public static IResultPresenter ToResultPresenter(this IEnumerable<RectShape> value)
+    public static IResultPresenter ToResultPresenter(this IEnumerable<IRectShape> value)
     {
         return value.Select(x => new RectangleResultPresenterItem(x.Rect) { Name = x.Title, Shape = x }).ToResultPresenter();
     }
@@ -84,17 +84,17 @@ public static partial class ResultPresenterExtension
         return value.ToEnumerable().ToResultPresenter();
     }
 
-    public static IResultPresenter ToResultPresenter(this IEnumerable<PointsShapeBase> value)
+    public static IResultPresenter ToResultPresenter(this IEnumerable<IPointsShape> value)
     {
         return value.Select(x => new PointsShapeResultPresenterItem(x) { Name = x.Title }).ToResultPresenter();
     }
 
-    public static IResultPresenter ToResultPresenter(this IEnumerable<RotatedRectShape> value)
+    public static IResultPresenter ToResultPresenter(this IEnumerable<IRotatedRectShape> value)
     {
         return value.Select(x => new RotatedRectShapeResultPresenterItem(x) { Name = x.Title }).ToResultPresenter();
     }
 
-    public static IResultPresenter ToResultPresenter(this PointsShapeBase value)
+    public static IResultPresenter ToResultPresenter(this IPointsShape value)
     {
         return value.ToEnumerable().ToResultPresenter();
     }

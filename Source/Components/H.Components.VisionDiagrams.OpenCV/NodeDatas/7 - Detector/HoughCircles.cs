@@ -209,7 +209,7 @@ public class HoughCircles : OpenCVDetectorNodeDataBase, IDetectorGroupableNodeDa
             if (this.GetScalerNodeData() is IScalerNodeData scaler)
                 r.DimensionText = scaler.GetWorldDistance(x.Radius);
             return r;
-        });
+        }).ToList();
 
         if (this.DetectDisplayMode == DetectDisplayMode.Dimension)
         {
