@@ -21,9 +21,38 @@ namespace H.VisionMaster.OpenCVs.TemplateMatch.NodeDatas;
 /// </summary>
 [ThresholdFromNodeValidation]
 [Icon(FontIcons.Color)]
-[Display(Name = "轮廓匹配", GroupName = "模板匹配", Description = "使用形状匹配算法在图像中查找与模板相似的轮廓", Order = 3)]
+[Display(Name = "单轮廓匹配", GroupName = "模板匹配", Description = "使用形状匹配算法在图像中查找与模板相似的轮廓", Order = 3)]
 public class ShapeTemplateMatch : MatchingNodeData<IMatImage>, ITemplateMatchingGroupableNodeData, IRectCropable, IOpenCVNodeData
 {
+    private RetrievalModes _retrievalMode = RetrievalModes.Tree;
+    [DefaultValue(RetrievalModes.Tree)]
+    [Tab(VisionTabNames.RunParameters)]
+    [Display(Name = "轮廓检索模式", GroupName = VisionTabNames.RunParameters, Description = "设置轮廓的层级检索方式，如External、List、CComp、Tree等。影响返回的层级关系和数量。")]
+    public RetrievalModes RetrievalMode
+    {
+        get { return _retrievalMode; }
+        set
+        {
+            _retrievalMode = value;
+            RaisePropertyChanged();
+            this.Invoke();
+        }
+    }
+
+    private ContourApproximationModes _contourApproximationModes = ContourApproximationModes.ApproxNone;
+    [DefaultValue(ContourApproximationModes.ApproxNone)]
+    [Tab(VisionTabNames.RunParameters)]
+    [Display(Name = "轮廓近似模式", GroupName = VisionTabNames.RunParameters, Description = "设置轮廓点的近似策略，如None、Simple(多边形简化)、TC89L1、TC89KCOS。影响点数量与形状平滑度。")]
+    public ContourApproximationModes ContourApproximationMode
+    {
+        get { return _contourApproximationModes; }
+        set
+        {
+            _contourApproximationModes = value;
+            RaisePropertyChanged();
+            this.Invoke();
+        }
+    }
     private double _minScore = 0.3;
     [DefaultValue(0.3)]
     [PropertyItem(typeof(DoubleSliderTextPropertyItem))]
@@ -245,7 +274,7 @@ public class ShapeTemplateMatch : MatchingNodeData<IMatImage>, ITemplateMatching
         if (TemplateContours == null || TemplateContours.Length == 0)
             return this.Error(mat.ToMatImage(), "轮廓模板数据无效");
 
-        Cv2.FindContours(mat, out Point[][] contours, out _, RetrievalModes.Tree, ContourApproximationModes.ApproxNone);
+        Cv2.FindContours(mat, out Point[][] contours, out _, this.RetrievalMode, this.ContourApproximationMode);
         var templateContour = TemplateContours.ToPointss().OrderByDescending(c => Cv2.ContourArea(c)).FirstOrDefault();
         if (templateContour == null)
             return this.Error(fromImage.ToMatImage(), "无法从模板中提取有效轮廓");
