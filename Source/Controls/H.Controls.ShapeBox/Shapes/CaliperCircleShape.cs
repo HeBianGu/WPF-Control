@@ -84,7 +84,7 @@ public class CaliperCircleShape : PreviewShapeBase
         this.DrawPoint(view, drawingContext, c + new Vector(r, 0), fill, strokeThickness);
     }
 
-    public bool Contains(Point point, double radius)
+    public virtual bool Contains(Point point, double radius)
     {
         Circle outcirle = new Circle(this.Center.X, this.Center.Y, this.ToRadius);
         Circle innercirle = new Circle(this.Center.X, this.Center.Y, this.FromRadius - (this.ToRadius - this.FromRadius));

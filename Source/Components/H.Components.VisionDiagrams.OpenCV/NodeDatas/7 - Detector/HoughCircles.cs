@@ -7,6 +7,9 @@
 // Licensed under the MIT License (the "License")
 
 using H.Controls.Diagram.Presenter.NodeDatas.Base;
+using H.Controls.Form.PropertyItem.Attribute;
+using H.Controls.ShapeBox;
+using H.Controls.ShapeBox.Shapes.Handles;
 
 namespace H.Components.VisionDiagrams.OpenCV.NodeDatas.Detector;
 [Icon(FontIcons.LargeErase)]
@@ -173,10 +176,44 @@ public class HoughCircles : OpenCVDetectorNodeDataBase, IDetectorGroupableNodeDa
             this.Invoke();
         }
     }
+
+
+    private bool _UsePositionCorrection = true;
+    [Tab(VisionTabNames.RunParameters)]
+    [DefaultValue(true)]
+    [Display(Name = "位置修正", GroupName = "位置修正")]
+    public bool UsePositionCorrection
+    {
+        get { return _UsePositionCorrection; }
+        set
+        {
+            _UsePositionCorrection = value;
+            RaisePropertyChanged();
+        }
+    }
+
+    private IExpressionKey _PositionCorrectionInfo;
+    [Tab(VisionTabNames.RunParameters)]
+    [GetMethodNameSource(nameof(GetFromPositionCorrectionInfoExpressionKeys))]
+    [PropertyItem(typeof(InputExpressionComboBoxTextPropertyItem))]
+    [Display(Name = "修正信息", GroupName = "位置修正")]
+    public IExpressionKey PositionCorrectionInfo
+    {
+        get { return _PositionCorrectionInfo; }
+        set
+        {
+            _PositionCorrectionInfo = value;
+            RaisePropertyChanged();
+        }
+    }
+
+    public IEnumerable<IExpressionKey> GetFromPositionCorrectionInfoExpressionKeys() => this.GetFromExpressionKeys<PositionCorrectionInfo>();
+
+
     protected override IShape CreateCaliperShape(Mat fromImage)
     {
         var min = Math.Min(fromImage.Width, fromImage.Height) / 4;
-        return new CaliperCircleShape()
+        return new PositionCorrectionCaliperCircleShape()
         {
             Center = new System.Windows.Point(min * 2, min * 2),
             FromRadius = min,
@@ -190,8 +227,26 @@ public class HoughCircles : OpenCVDetectorNodeDataBase, IDetectorGroupableNodeDa
         CircleSegment[] circles = Cv2.HoughCircles(gray, this.HoughModes, this.dp, this.minDist, this.param1, this.param2, this.minRadius, this.maxRadius);
         var resultImage = this.GetExpressionResultImage(fromImage.ToMatImage()).ToMatImage();
         var color = VisionSettings.Instance.OutputColor.ToScalar();
+        List<IShape> resultShapes = new List<IShape>();
+        if (this.UsePositionCorrection)
+        {
+            if (this.PositionCorrectionInfo == null)
+                return this.Error(resultImage, "位置修正信息不能为空");
 
-        var caliper = this.CaliperShape as CaliperCircleShape;
+            var positionCorrectionInfo = this.PositionCorrectionInfo.GetValue<PositionCorrectionInfo>(this);
+            if (!positionCorrectionInfo.success)
+                return this.Error(resultImage, "位置修正信息无效");
+            if (this.CaliperShape is PositionCorrectionCaliperCircleShape caliper1)
+                caliper1.PositionCorrectionInfo = positionCorrectionInfo.value;
+            resultShapes.AddRange(positionCorrectionInfo.value.ToPointShapes());
+        }
+        else
+        {
+            if (this.CaliperShape is PositionCorrectionCaliperCircleShape caliper1)
+                caliper1.PositionCorrectionInfo = default;
+        }
+
+        var caliper = this.CaliperShape as PositionCorrectionCaliperCircleShape;
         circles = this.CircleType switch
         {
             CircleSearchType.All => circles,
@@ -213,11 +268,11 @@ public class HoughCircles : OpenCVDetectorNodeDataBase, IDetectorGroupableNodeDa
 
         if (this.DetectDisplayMode == DetectDisplayMode.Dimension)
         {
-            this.ResultShapes = shapes.OfType<IShape>().ToObservable();
+            resultShapes.AddRange(shapes);
         }
         else if (this.DetectDisplayMode == DetectDisplayMode.Default)
         {
-            this.ResultShapes = shapes.OfType<IShape>().ToObservable();
+            resultShapes.AddRange(shapes);
         }
         else
         {
@@ -229,6 +284,7 @@ public class HoughCircles : OpenCVDetectorNodeDataBase, IDetectorGroupableNodeDa
                 Cv2.Circle(resultImage.Mat, circle.Center.ToCVPoint(), (int)circle.Radius, color, resultImage.Mat.ToThickness());
             }
         }
+        this.ResultShapes = resultShapes.ToObservable();
         this.ResultImages = shapes.Select(x => x.BoundingBox.ToCVRect()).ToResultImages(resultImage.Mat).ToList();
         this.FirstResultImage = this.ResultImages.FirstOrDefault()?.Image;
         this.MatchingCountResult = circles.Count();
@@ -236,6 +292,47 @@ public class HoughCircles : OpenCVDetectorNodeDataBase, IDetectorGroupableNodeDa
         this.ResultVisionCircle = new VisionCircle(first.Center.ToPoint().ToPoint(), first.Radius);
         IResultPresenter resultPresenter = shapes.ToResultPresenter();
         return this.OK(resultImage, resultPresenter, this.MatchingCountResult.ToDetectSuccessMessage());
+    }
+}
+
+public class PositionCorrectionCaliperCircleShape : CaliperCircleShape
+{
+    public PositionCorrectionCaliperCircleShape()
+    {
+
+    }
+
+    public PositionCorrectionCaliperCircleShape(System.Windows.Point center, double radius) : base()
+    {
+
+    }
+    public PositionCorrectionInfo PositionCorrectionInfo { get; set; }
+    public override void MatrixDrawing(IView view, DrawingContext drawingContext, Pen pen, Brush fill = null)
+    {
+        var matrix = this.PositionCorrectionInfo.ToMatrix();
+        matrix.Invert();
+        drawingContext.PushTransform(new MatrixTransform(matrix));
+        base.MatrixDrawing(view, drawingContext, pen, fill);
+        drawingContext.Pop();
+    }
+
+    public override IHandle HitIHandle(IView view, System.Windows.Point position)
+    {
+        return base.HitIHandle(view, position);
+    }
+
+    protected override bool CanHandle(IView view)
+    {
+        var matrix = this.PositionCorrectionInfo.ToMatrix();
+        if (matrix.IsIdentity == false)
+            return false;
+        return base.CanHandle(view);
+    }
+
+    public override bool Contains(System.Windows.Point point, double radius)
+    {
+        var cpoint = this.PositionCorrectionInfo.ToReferencePoint(point);
+        return base.Contains(cpoint, radius);
     }
 }
 
