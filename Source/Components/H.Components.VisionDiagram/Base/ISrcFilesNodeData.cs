@@ -49,6 +49,16 @@ public enum SrcFileLoopMode
 
 public class SrcFilePathData : BindableBase
 {
+    public SrcFilePathData()
+    {
+        
+
+    }
+
+    public SrcFilePathData(string srcFilePath)
+    {
+        this.SrcFilePath = srcFilePath;
+    }
     private string _SrcFilePath;
     public string SrcFilePath
     {
