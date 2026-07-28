@@ -24,3 +24,8 @@ public interface ISrcImageGroupableNodeData : INodeData, IDisplayBindable
 {
 
 }
+
+public interface ISrcVideoFilesNodeData
+{
+
+}

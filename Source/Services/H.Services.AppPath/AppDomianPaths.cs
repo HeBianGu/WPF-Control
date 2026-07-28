@@ -28,4 +28,9 @@ public static class AppDomianPathExtensions
         var folderName = Path.GetFileNameWithoutExtension(relativePath);
         return Path.Combine(AppDomain.CurrentDomain.BaseDirectory, AppDomianPaths.DefaultTemplates, folderName, rpath);
     }
+
+    public static string ToBaseDirectoryAbsolutePath(this string relativePath)
+    {
+        return Path.Combine(AppDomain.CurrentDomain.BaseDirectory, relativePath);
+    }
 }

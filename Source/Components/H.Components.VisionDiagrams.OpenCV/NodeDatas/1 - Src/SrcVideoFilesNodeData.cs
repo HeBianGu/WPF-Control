@@ -18,7 +18,7 @@ public interface IVideoFlowable
 
 [Icon(FontIcons.Video)]
 [Display(Name = "本地视频源", GroupName = "视频采集", Description = "降噪成黑白色", Order = 100)]
-public class SrcVideoFilesNodeData : VideoCaptureNodeDataBase, ISrcImageGroupableNodeData
+public class SrcVideoFilesNodeData : VideoCaptureNodeDataBase, ISrcImageGroupableNodeData, ISrcVideoFilesNodeData
 {
     public SrcVideoFilesNodeData()
     {
