@@ -69,12 +69,13 @@ public static class MatExtension
     {
         if (!mat.IsValid())
             return null;
-        return Application.Current?.Dispatcher.Invoke(() =>
-        {
-            var r = mat.ToWriteableBitmap();
+        //return Application.Current?.Dispatcher.Invoke(() =>
+        //{
+        var r = mat.ToWriteableBitmap();
+        if (r.CanFreeze)
             r.Freeze();
-            return r;
-        });
+        return r;
+        //});
         //return mat.ToBitmapSource();
     }
 
