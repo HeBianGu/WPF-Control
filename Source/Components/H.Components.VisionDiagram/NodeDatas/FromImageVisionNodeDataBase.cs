@@ -8,6 +8,7 @@
 
 using H.Components.VisionDiagram.Base;
 using H.Controls.Form.PropertyItem.Attribute;
+using H.Iocable;
 
 namespace H.Components.VisionDiagram.NodeDatas;
 public abstract class FromImageVisionNodeDataBase<T> : ResultDisplayVisionNodeDataBase<T> where T : class, IVisionImage
@@ -36,9 +37,10 @@ public abstract class FromImageVisionNodeDataBase<T> : ResultDisplayVisionNodeDa
         }
     }
 
-    protected override FlowableResult<T> Invoke(IStartVisionNodeData<T> srcImageNodeData, IVisionNodeData<T> from, IFlowableDiagramData diagram)
+    protected override FlowableResult<T> Invoke(IStartVisionNodeData srcImageNodeData, IVisionNodeData from, IFlowableDiagramData diagram)
     {
-        T fromImage = this.GetExpressionFromImage(from?.ResultImage);
+        var resultImage = this.GetVisionImage(from);
+        T fromImage = this.GetExpressionFromImage(resultImage);
         if (from == srcImageNodeData)
             return this.Invoke(srcImageNodeData, from, fromImage, diagram);
         if (!this.IsFromImageValid(fromImage))
@@ -59,7 +61,7 @@ public abstract class FromImageVisionNodeDataBase<T> : ResultDisplayVisionNodeDa
         return from;
     }
 
-    protected virtual FlowableResult<T> Invoke(IStartVisionNodeData<T> srcImageNodeData, IVisionNodeData<T> from, T fromImage, IFlowableDiagramData diagram)
+    protected virtual FlowableResult<T> Invoke(IStartVisionNodeData srcImageNodeData, IVisionNodeData from, T fromImage, IFlowableDiagramData diagram)
     {
         return this.Invoke(fromImage);
     }

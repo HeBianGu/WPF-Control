@@ -15,6 +15,7 @@ namespace H.Components.VisionDiagram.Base;
 public interface IVisionNodeData : IFlowableNodeData, IResultPresenterNodeData, IResultImageSourceNodeData, IHelpNodeData, IOrderable
 {
     bool UseInvokedPart { get; set; }
+    IVisionImage VisionImage { get; }
 }
 
 public interface IVideoCaptureNodeData : IVisionNodeData

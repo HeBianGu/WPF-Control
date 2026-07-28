@@ -27,15 +27,16 @@ public abstract class WaitFromVisionNodeData<T> : ScalerSelectableVisionNodeData
         }
     }
 
-    private List<IVisionNodeData<T>> _waitFromCache = new List<IVisionNodeData<T>>();
-    protected override FlowableResult<T> Invoke(IStartVisionNodeData<T> srcImageNodeData, IVisionNodeData<T> from, IFlowableDiagramData diagram)
+    private List<IVisionNodeData> _waitFromCache = new List<IVisionNodeData>();
+    protected override FlowableResult<T> Invoke(IStartVisionNodeData srcImageNodeData, IVisionNodeData from, IFlowableDiagramData diagram)
     {
         if (this.UseWaitFrom)
         {
             int count = this.FromNodeDatas.Count();
             this._waitFromCache.Add(from);
+            var vimage = this.GetVisionImage(from);
             if (count > 1 && this._waitFromCache.Count < count)
-                return this.Continue(from.ResultImage, "启用等待输入,等待所有输入节点执行完毕");
+                return this.Continue(vimage, "启用等待输入,等待所有输入节点执行完毕");
             else
             {
                 this._waitFromCache.Clear();

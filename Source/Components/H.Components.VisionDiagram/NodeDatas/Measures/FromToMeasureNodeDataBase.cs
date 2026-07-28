@@ -54,7 +54,7 @@ public abstract class FromToMeasureNodeDataBase<T, FromT, ToT> : MeasureNodeData
     public IEnumerable<IExpressionKey> GetToNodeDataExpressions() => this.GetFromExpressionKeys<ToT>();
 
 
-    protected override FlowableResult<T> Invoke(IStartVisionNodeData<T> srcImageNodeData, IVisionNodeData<T> from, T fromImage, IFlowableDiagramData diagram)
+    protected override FlowableResult<T> Invoke(IStartVisionNodeData srcImageNodeData, IVisionNodeData from, T fromImage, IFlowableDiagramData diagram)
     {
         var fromExpression = this.GetFromExpression();
         if (fromExpression == null)

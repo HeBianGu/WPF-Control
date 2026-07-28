@@ -6,12 +6,12 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
-using H.Components.VisionDiagram.Base;
 using H.Components.VisionDiagram.DiagramData;
 using H.Controls.Diagram.Presenter.Extensions;
+using H.Iocable;
 
 namespace H.Components.VisionDiagram.NodeDatas;
-public abstract class VisionNodeData<T> : DemoNodeDataBase, IVisionNodeData<T> where T : IVisionImage
+public abstract class VisionNodeData<T> : DemoNodeDataBase, IVisionNodeData<T> where T : class, IVisionImage
 {
     ~VisionNodeData()
     {
@@ -39,13 +39,22 @@ public abstract class VisionNodeData<T> : DemoNodeDataBase, IVisionNodeData<T> w
         }
     }
 
+    IVisionImage IVisionNodeData.VisionImage => this.ResultImage;
+
     public override IFlowableResult Invoke(IFlowableLinkData previors, IFlowableDiagramData diagram)
     {
         this.InvokeTotal++;
         base.Invoke(previors, diagram);
-        IStartVisionNodeData<T> srcData = diagram.GetStartNodeDatas().OfType<IStartVisionNodeData<T>>().FirstOrDefault();
-        IVisionNodeData<T> fromData = this.GetFromNodeData<IVisionNodeData<T>>(diagram, previors);
+        IStartVisionNodeData srcData = diagram.GetStartNodeDatas().OfType<IStartVisionNodeData>().FirstOrDefault();
+        IVisionNodeData fromData = this.GetFromNodeData<IVisionNodeData>(diagram, previors);
         return this.InvokeAction(() => this.Invoke(srcData, fromData ?? srcData, this.DiagramData as IFlowableDiagramData));
+    }
+
+    protected T GetVisionImage(IVisionNodeData from)
+    {
+        var converter = Ioc.GetService<IVisionImageConverterService>();
+        var resultImage = converter.Convert<T>(from?.VisionImage);
+        return resultImage;
     }
 
     public override async Task<IFlowableResult> TryInvokeAsync(IFlowableLinkData previors, IFlowableDiagramData diagram)
@@ -72,7 +81,7 @@ public abstract class VisionNodeData<T> : DemoNodeDataBase, IVisionNodeData<T> w
             return;
         if (this.DiagramData is IFlowableDiagramData flowable && flowable.State == DiagramFlowableState.Running)
             return;
-        ISrcVisionNodeData<T> srcData = this.DiagramData.GetStartNodeDatas().OfType<ISrcVisionNodeData<T>>().FirstOrDefault();
+        IStartVisionNodeData srcData = this.DiagramData.GetStartNodeDatas().OfType<IStartVisionNodeData>().FirstOrDefault();
         INodeData from = this.FromNodeDatas.FirstOrDefault();
         if (this.FromNodeDatas.Count() == 0)
             from = this;
@@ -114,7 +123,7 @@ public abstract class VisionNodeData<T> : DemoNodeDataBase, IVisionNodeData<T> w
         return result;
     }
 
-    protected abstract FlowableResult<T> Invoke(IStartVisionNodeData<T> srcImageNodeData, IVisionNodeData<T> from, IFlowableDiagramData diagram);
+    protected abstract FlowableResult<T> Invoke(IStartVisionNodeData srcImageNodeData, IVisionNodeData from, IFlowableDiagramData diagram);
 
     public override void Dispose()
     {

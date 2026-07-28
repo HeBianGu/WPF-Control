@@ -16,16 +16,17 @@ namespace H.Components.VisionDiagram.NodeDatas;
 public abstract class WaitAllParallelNodeData<T> : WaitFromVisionNodeData<T> where T : class, IVisionImage
 {
     private int _resultCount = 0;
-    protected virtual void OnParallelFromNodeDataInvoke(IStartVisionNodeData<T> srcImageNodeData, IVisionNodeData<T> from, IFlowableDiagramData diagram)
+    protected virtual void OnParallelFromNodeDataInvoke(IStartVisionNodeData srcImageNodeData, IVisionNodeData from, IFlowableDiagramData diagram)
     {
 
     }
-    protected virtual FlowableResult<T> OnAllFrommParallelsInvoked(IStartVisionNodeData<T> srcImageNodeData, IVisionNodeData<T> from, IFlowableDiagramData diagram)
+    protected virtual FlowableResult<T> OnAllFrommParallelsInvoked(IStartVisionNodeData srcImageNodeData, IVisionNodeData from, IFlowableDiagramData diagram)
     {
-        return this.OK(from.ResultImage);
+        var viimage = this.GetVisionImage(from);
+        return this.OK(viimage);
     }
 
-    protected override FlowableResult<T> Invoke(IStartVisionNodeData<T> srcImageNodeData, IVisionNodeData<T> from, IFlowableDiagramData diagram)
+    protected override FlowableResult<T> Invoke(IStartVisionNodeData srcImageNodeData, IVisionNodeData from, IFlowableDiagramData diagram)
     {
         this.OnParallelFromNodeDataInvoke(srcImageNodeData, from, diagram);
         this._resultCount++;
@@ -38,7 +39,8 @@ public abstract class WaitAllParallelNodeData<T> : WaitFromVisionNodeData<T> whe
         }
         else
         {
-            return this.Continue(from.ResultImage);
+            var vimage = this.GetVisionImage(from);
+            return this.Continue(vimage);
         }
     }
 }

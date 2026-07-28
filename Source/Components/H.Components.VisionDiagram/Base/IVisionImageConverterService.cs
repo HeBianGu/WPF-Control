@@ -6,16 +6,10 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
-using H.Components.VisionDiagram.NodeDatas;
-
 namespace H.Components.VisionDiagram.Base;
 
-public interface IStartVisionNodeData : IVisionNodeData
+public interface IVisionImageConverterService
 {
-}
-
-public interface IStartVisionNodeData<T> : IVisionNodeData<T>, IScalerNodeData, INinePointCalibrationNodeData, IStartVisionNodeData
-{
-
+    T Convert<T>(IVisionImage image) where T : class, IVisionImage;
 }
 

@@ -129,7 +129,7 @@ public abstract class OpenCVDetectorNodeDataBase : OpenCVNodeDataBase
         return rectShape;
     }
 
-    protected override FlowableResult<IMatImage> Invoke(IStartVisionNodeData<IMatImage> srcImageNodeData, IVisionNodeData<IMatImage> from, IMatImage fromImage, IFlowableDiagramData diagram)
+    protected override FlowableResult<IMatImage> Invoke(IStartVisionNodeData srcImageNodeData, IVisionNodeData from, IMatImage fromImage, IFlowableDiagramData diagram)
     {
         if (this.CaliperShape == null)
             this.CaliperShape = this.CreateCaliperShape(fromImage.Mat);
