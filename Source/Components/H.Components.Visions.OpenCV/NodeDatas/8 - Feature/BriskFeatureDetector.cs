@@ -70,7 +70,7 @@ public class BriskFeatureDetector : FeatureOpenCVNodeDataBase
 
     protected override FlowableResult<IMatImage> Invoke(Mat fromImage)
     {
-        using Mat gray = fromImage.CvtColor(ColorConversionCodes.BGR2GRAY);
+        using Mat gray = fromImage.ToGrayMat();
         Mat dst = fromImage.Clone();
         using BRISK brisk = BRISK.Create(Threshold, Octaves);
         KeyPoint[] keypoints = brisk.Detect(gray);

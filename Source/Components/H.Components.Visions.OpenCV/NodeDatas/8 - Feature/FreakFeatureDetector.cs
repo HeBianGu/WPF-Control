@@ -183,7 +183,7 @@ public class FreakFeatureDetector : FeatureOpenCVNodeDataBase
 
     protected override FlowableResult<IMatImage> Invoke(Mat fromImage)
     {
-        using Mat gray = fromImage.CvtColor(ColorConversionCodes.BGR2GRAY);
+        using Mat gray = fromImage.ToGrayMat();
         Mat dst = fromImage.Clone();
         // ORB
         using ORB orb = ORB.Create(this.nFeatures, this.ScaleFactor, this.nLevels, this.EdgeThreshold, this.FirstLevel, this.WtaK, this.ScoreType, this.PatchSize, this.FastThreshold);

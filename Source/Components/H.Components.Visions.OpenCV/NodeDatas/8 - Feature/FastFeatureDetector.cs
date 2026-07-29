@@ -59,9 +59,9 @@ public class FastFeatureDetector : FeatureOpenCVNodeDataBase
     {
         Mat imgSrc = fromImage;
         //using Mat imgSrc = new Mat(ImagePath.Lenna, ImreadModes.Color);
-        using Mat imgGray = new Mat();
+        using Mat imgGray = imgSrc.ToGrayMat();
         Mat dst = imgSrc.Clone();
-        Cv2.CvtColor(imgSrc, imgGray, ColorConversionCodes.BGR2GRAY, 0);
+        //Cv2.CvtColor(imgSrc, imgGray, ColorConversionCodes.BGR2GRAY, 0);
         KeyPoint[] keypoints = Cv2.FAST(imgGray, 50, true);
         foreach (KeyPoint kp in keypoints)
         {

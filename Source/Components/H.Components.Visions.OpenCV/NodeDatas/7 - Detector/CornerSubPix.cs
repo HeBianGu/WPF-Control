@@ -163,11 +163,11 @@ public class CornerSubPix : PointDetectorNodeDataBase, IDetectorGroupableNodeDat
     protected override FlowableResult<IMatImage> Invoke(Mat fromImage)
     {
         var resultImage = this.GetExpressionResultImage(fromImage.ToMatImage()).ToMatImage();
-        Mat gray = new Mat();
-        if (fromImage.Channels() == 3 || fromImage.Channels() == 4)
-            Cv2.CvtColor(fromImage, gray, ColorConversionCodes.BGR2GRAY);
-        else
-            gray = fromImage.Clone();
+        Mat gray = fromImage.ToGrayMat();
+        //if (fromImage.Channels() == 3 || fromImage.Channels() == 4)
+        //    Cv2.CvtColor(fromImage, gray, ColorConversionCodes.BGR2GRAY);
+        //else
+        //    gray = fromImage.Clone();
 
         using Mat gray8 = new Mat();
         gray.ConvertTo(gray8, MatType.CV_8U);

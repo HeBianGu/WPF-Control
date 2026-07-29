@@ -96,12 +96,19 @@ public static class MatExtension
 
     public static Mat ToGrayMat(this Mat mat)
     {
-        var grayTemplate = new Mat();
-        if (mat.Channels() > 1)
-            Cv2.CvtColor(mat, grayTemplate, ColorConversionCodes.BGR2GRAY);
-        else
-            mat.CopyTo(grayTemplate);
-        return grayTemplate;
+        //var grayTemplate = new Mat();
+        //if (mat.Channels() > 1)
+        //    Cv2.CvtColor(mat, grayTemplate, ColorConversionCodes.BGR2GRAY);
+        //else
+        //    mat.CopyTo(grayTemplate);
+        Mat result = mat.Channels() switch
+        {
+            1 => mat.Clone(),
+            3 => mat.CvtColor(ColorConversionCodes.BGR2GRAY),
+            4 => mat.CvtColor(ColorConversionCodes.BGRA2GRAY),
+            _ => throw new NotSupportedException($"不支持{mat.Channels()}通道图像")
+        };
+        return result;
     }
 
     public static Mat ToHSVMat(this Mat mat)
