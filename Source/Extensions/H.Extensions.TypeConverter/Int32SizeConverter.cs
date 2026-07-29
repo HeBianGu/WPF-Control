@@ -8,11 +8,10 @@
 
 using System.ComponentModel;
 using System.Globalization;
-using System.Windows;
 
 namespace H.Extensions.TypeConverter
 {
-    public class Round2RectConverter : System.ComponentModel.TypeConverter
+    public class Int32SizeConverter : System.ComponentModel.TypeConverter
     {
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
         {
@@ -29,17 +28,17 @@ namespace H.Extensions.TypeConverter
             if (value is string strValue)
             {
                 if (string.IsNullOrEmpty(strValue))
-                    return System.Windows.Rect.Empty;
+                    return System.Windows.Size.Empty;
                 string[] parts = strValue.Split(',');
-                if (parts.Length == 4)
+                if (parts.Length == 2)
                 {
-                    if (double.TryParse(parts[0], out double x) &&
-                        double.TryParse(parts[1], out double y) &&
-                        double.TryParse(parts[2], out double width) &&
-                        double.TryParse(parts[3], out double height))
+                    if (int.TryParse(parts[0], out int x) &&
+                        int.TryParse(parts[1], out int y))
                     {
-                        return new System.Windows.Rect(x, y, width, height);
+                        return new System.Windows.Size((int)x, (int)y);
                     }
+                    else
+                        throw new ArgumentException("不是有效整型参数");
                 }
             }
             return base.ConvertFrom(context, culture, value);
@@ -47,15 +46,11 @@ namespace H.Extensions.TypeConverter
 
         public override object ConvertTo(ITypeDescriptorContext context, CultureInfo culture, object value, Type destinationType)
         {
-            if (destinationType == typeof(string) && value is System.Windows.Rect rect)
+            if (destinationType == typeof(string) && value is System.Windows.Size size)
             {
-                if (rect.IsEmpty)
+                if (size.IsEmpty)
                     return "";
-                double x = Math.Round(rect.X, 2);
-                double y = Math.Round(rect.Y, 2);
-                double width = Math.Round(rect.Width, 2);
-                double height = Math.Round(rect.Height, 2);
-                return $"{x},{y},{width},{height}";
+                return $"{(int)size.Width},{(int)size.Height}";
             }
             return base.ConvertTo(context, culture, value, destinationType);
         }

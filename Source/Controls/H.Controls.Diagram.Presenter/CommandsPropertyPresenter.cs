@@ -28,7 +28,7 @@ public class CommandsPropertyPresenter : DialogCommandsPresenter<TabFormPresente
             {
                 if (item.GroupName == null)
                     continue;
-                if (item.GroupName.Split(',').Contains("快捷属性命令"))
+                if (item.GroupName.Split(',').Contains(CommandGroupNames.QuickAccessToolbar))
                     yield return item;
             }
         }
