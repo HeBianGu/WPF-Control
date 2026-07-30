@@ -74,6 +74,11 @@ public static partial class ResultPresenterExtension
         return value.Select(x => new PointResultPresenterItem(x.Point) { Name = x.Title, Shape = x }).ToResultPresenter();
     }
 
+    public static IResultPresenter ToResultPresenter(this IEnumerable<ITextShape> value)
+    {
+        return value.Select(x => new PointResultPresenterItem(x.Position) { Name = x.Text, Shape = x }).ToResultPresenter();
+    }
+
     public static IResultPresenter ToResultPresenter(this IEnumerable<IRectShape> value)
     {
         return value.Select(x => new RectangleResultPresenterItem(x.Rect) { Name = x.Title, Shape = x }).ToResultPresenter();

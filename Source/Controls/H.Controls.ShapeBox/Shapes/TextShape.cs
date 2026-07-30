@@ -11,7 +11,7 @@ using H.Extensions.Common;
 
 namespace H.Controls.ShapeBox.Shapes;
 
-public interface ITextShape
+public interface ITextShape : IShape
 {
     Rect BoundingBox { get; }
     double FontSize { get; set; }
@@ -25,6 +25,15 @@ public interface ITextShape
 
 public class TextShape : PreviewShapeBase, IBoundingBoxShape, ITextShape
 {
+    public TextShape()
+    {
+
+    }
+
+    public TextShape(Point position)
+    {
+        this.Position = position;
+    }
     private string _Text;
     [Display(Name = "文本内容", GroupName = ShapePropertyGroupNames.DataGroup)]
     public string Text
