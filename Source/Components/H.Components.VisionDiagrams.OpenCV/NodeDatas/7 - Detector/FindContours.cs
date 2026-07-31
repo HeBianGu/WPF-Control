@@ -209,20 +209,17 @@ public class FindContours : OpenCVDetectorNodeDataBase, IDetectorGroupableNodeDa
 
         OpenCvSharp.Point[][] contours;
         HierarchyIndex[] hierarchly;
-        Cv2.FindContours(fromImage, out contours, out hierarchly, this.RetrievalMode, this.ContourApproximationMode, this.Offset);
+        var binaryImage = fromImage.ToBinaryThresholdMat();
+        Cv2.FindContours(binaryImage, out contours, out hierarchly, this.RetrievalMode, this.ContourApproximationMode, this.Offset);
         //var dst = new Mat(this._srcFilePath, ImreadModes.Color);
         //Mat dst = fromImage.Clone();
-
         IEnumerable<OpenCvSharp.Rect> rects = contours.Select(x => Cv2.BoundingRect(x));
-
         if (this.MaxArea > 0)
             rects = rects.Where(x => x.Width * x.Height < this.MaxArea);
         if (this.MinArea > 0)
             rects = rects.Where(x => x.Width * x.Height > this.MinArea);
-
         this.ResultImages = rects.ToResultImages(fromImage).ToList();
         this.FirstResultImage = this.ResultImages.FirstOrDefault()?.Image;
-
         this.MaxRotatedRect = contours.Select(x => Cv2.MinAreaRect(x)).MaxBy(x =>
          {
              return x.Size.Width * x.Size.Height;

@@ -94,7 +94,8 @@ public class HoughLines : HoughLinesBase, IDetectorGroupableNodeData
     protected override FlowableResult<IMatImage> Invoke(Mat fromImage)
     {
         var resultImage = this.GetExpressionResultImage(fromImage.ToMatImage()).ToMatImage();
-        LineSegmentPolar[] segStd = Cv2.HoughLines(fromImage, Rho, Math.PI / Theta, Threshold, Srn, Stn);
+        var binaryImage = fromImage.ToBinaryThresholdMat();
+        LineSegmentPolar[] segStd = Cv2.HoughLines(binaryImage, Rho, Math.PI / Theta, Threshold, Srn, Stn);
         int limit = Math.Min(segStd.Length, 10);
         List<Tuple<OpenCvSharp.Point, OpenCvSharp.Point>> lines = new List<Tuple<OpenCvSharp.Point, OpenCvSharp.Point>>();
         var color = VisionSettings.Instance.OutputColor.ToScalar();

@@ -223,7 +223,7 @@ public class HoughCircles : OpenCVDetectorNodeDataBase, IDetectorGroupableNodeDa
 
     protected override FlowableResult<IMatImage> Invoke(Mat fromImage)
     {
-        Mat gray = fromImage;
+        Mat gray = fromImage.ToGrayMat();
         CircleSegment[] circles = Cv2.HoughCircles(gray, this.HoughModes, this.dp, this.minDist, this.param1, this.param2, this.minRadius, this.maxRadius);
         var resultImage = this.GetExpressionResultImage(fromImage.ToMatImage()).ToMatImage();
         var color = VisionSettings.Instance.OutputColor.ToScalar();
@@ -232,7 +232,6 @@ public class HoughCircles : OpenCVDetectorNodeDataBase, IDetectorGroupableNodeDa
         {
             if (this.PositionCorrectionInfo == null)
                 return this.Error(resultImage, "位置修正信息不能为空");
-
             var positionCorrectionInfo = this.PositionCorrectionInfo.GetValue<PositionCorrectionInfo>(this);
             if (!positionCorrectionInfo.success)
                 return this.Error(resultImage, "位置修正信息无效");

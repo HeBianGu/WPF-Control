@@ -97,21 +97,46 @@ public static class MatExtension
 
     public static Mat ToGrayMat(this Mat mat)
     {
+        if (mat.Channels() <= 1)
+            return mat;
         var grayTemplate = new Mat();
-        if (mat.Channels() > 1)
-            Cv2.CvtColor(mat, grayTemplate, ColorConversionCodes.BGR2GRAY);
-        else
-            mat.CopyTo(grayTemplate);
+        Cv2.CvtColor(mat, grayTemplate, ColorConversionCodes.BGR2GRAY);
         return grayTemplate;
+    }
+
+    public static bool IsBinaryThresholdMat(this Mat image, byte foregroundValue = 255)
+    {
+        ArgumentNullException.ThrowIfNull(image);
+        if (image.Empty() || image.Channels() != 1)
+            return false;
+        if (image.Depth() != MatType.CV_8U)
+            return false;
+        using Mat intermediate = new Mat();
+        // 检查是否存在 1 ～ foregroundValue - 1 的中间灰度。
+        Cv2.InRange(
+            image,
+            new Scalar(1),
+            new Scalar(foregroundValue - 1),
+            intermediate);
+        return Cv2.CountNonZero(intermediate) == 0;
+    }
+
+    public static Mat ToBinaryThresholdMat(this Mat mat, double thresh = 120, double maxval = 255, ThresholdTypes thresholdType = ThresholdTypes.Binary)
+    {
+        var gray = mat.ToGrayMat();
+        if (gray.IsBinaryThresholdMat())
+            return gray;
+        using Mat binary = new Mat();
+        Cv2.Threshold(gray, binary, thresh, maxval, thresholdType);
+        return binary;
     }
 
     public static Mat ToHSVMat(this Mat mat)
     {
+        if (mat.Channels() <= 1)
+            return mat;
         var grayTemplate = new Mat();
-        if (mat.Channels() > 1)
-            Cv2.CvtColor(mat, grayTemplate, ColorConversionCodes.BGR2HSV);
-        else
-            mat.CopyTo(grayTemplate);
+        Cv2.CvtColor(mat, grayTemplate, ColorConversionCodes.BGR2HSV);
         return grayTemplate;
     }
 

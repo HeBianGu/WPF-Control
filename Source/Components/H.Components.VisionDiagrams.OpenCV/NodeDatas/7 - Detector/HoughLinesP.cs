@@ -174,7 +174,8 @@ public class HoughLinesP : HoughLinesBase, IDetectorGroupableNodeData
                 caliper.PositionCorrectionInfo = default;
         }
 
-        LineSegmentPoint[] lines = Cv2.HoughLinesP(fromImage, Rho, Math.PI / Theta, Threshold, MinLineLength, MaxLineGap);
+        var binaryImage = fromImage.ToBinaryThresholdMat();
+        LineSegmentPoint[] lines = Cv2.HoughLinesP(binaryImage, Rho, Math.PI / Theta, Threshold, MinLineLength, MaxLineGap);
         lines = this.GetTargetLines(lines).ToArray();
 
         lines = this.SearchType switch
