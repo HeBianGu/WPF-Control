@@ -23,7 +23,7 @@ public interface ITextShape : IShape
     bool UseScale { get; set; }
 }
 
-public class TextShape : PreviewShapeBase, IBoundingBoxShape, ITextShape
+public class TextShape : PreviewShapeBase, IBoundingBoxShape, ITextShape, ITitleShape
 {
     public TextShape()
     {
@@ -34,6 +34,19 @@ public class TextShape : PreviewShapeBase, IBoundingBoxShape, ITextShape
     {
         this.Position = position;
     }
+
+
+    private string _Title;
+    public string Title
+    {
+        get { return _Title; }
+        set
+        {
+            _Title = value;
+            RaisePropertyChanged();
+        }
+    }
+
     private string _Text;
     [Display(Name = "文本内容", GroupName = ShapePropertyGroupNames.DataGroup)]
     public string Text
