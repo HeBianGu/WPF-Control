@@ -11,7 +11,7 @@ global using H.Extensions.Mvvm.ViewModels.Base;
 namespace H.Controls.Diagram.Presenter.DiagramDatas.Base;
 
 [Icon("\xE722")]
-public abstract class NodeDataGroupBase : GroupDisplayBindableBase<INodeData>, INodeDataGroup
+public abstract class AssemblyVisionNodeDataGroup : GroupDisplayBindableBase<INodeData>, INodeDataGroup
 {
     private bool _IsVisible = true;
     public bool IsVisible

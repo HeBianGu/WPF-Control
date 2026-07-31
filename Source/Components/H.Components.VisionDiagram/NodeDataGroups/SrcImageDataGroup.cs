@@ -12,7 +12,7 @@ namespace H.Components.VisionDiagram.NodeDataGroups;
 
 [Icon(FontIcons.Camera)]
 [Display(Name = "图像数据源", Description = "设置输入图像", Order = 10000)]
-public class SrcImageDataGroup : NodeDataGroupBase, IImageDataGroup
+public class SrcImageDataGroup : AssemblyVisionNodeDataGroup, IImageDataGroup
 {
     protected override IEnumerable<INodeData> CreateDatas()
     {

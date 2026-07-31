@@ -8,7 +8,8 @@
 
 namespace H.Controls.Diagram.Presenter.DiagramDatas.Base;
 
-public class AssemblyNodeDataGroup<T> : NodeDataGroupBase where T : INodeData
+
+public class AssemblyNodeDataGroup<T> : AssemblyVisionNodeDataGroup where T : INodeData
 {
     protected virtual IEnumerable<T> CreateAssemblyNodeDatas()
     {

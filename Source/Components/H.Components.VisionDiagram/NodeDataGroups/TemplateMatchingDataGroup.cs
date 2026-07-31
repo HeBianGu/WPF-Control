@@ -17,7 +17,7 @@ public interface ITemplateMatchingDataGroup : INodeDataGroup
 }
 [Icon(FontIcons.GotoToday)]
 [Display(Name = "模板匹配", Description = "图像处理的基础检测", Order = 10600)]
-public class TemplateMatchingDataGroup : NodeDataGroupBase, IImageDataGroup, ITemplateMatchingDataGroup
+public class TemplateMatchingDataGroup : AssemblyVisionNodeDataGroup, IImageDataGroup, ITemplateMatchingDataGroup
 {
     protected override IEnumerable<INodeData> CreateDatas()
     {

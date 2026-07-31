@@ -18,7 +18,7 @@ public interface IRectificationGroupableNodeData : INodeData, IDisplayBindable
 
 [Icon(FontIcons.Rotate)]
 [Display(Name = "图像校正模块", Description = "校正图像的对象", Order = 10300)]
-public class RectificationDataGroup : NodeDataGroupBase, IImageDataGroup
+public class RectificationDataGroup : AssemblyVisionNodeDataGroup, IImageDataGroup
 {
     protected override IEnumerable<INodeData> CreateNodeDatas()
     {

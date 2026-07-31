@@ -8,7 +8,7 @@
 
 namespace H.Controls.Diagram.Presenter.Provider;
 
-public class NodeDataGroup : NodeDataGroupBase
+public class NodeDataGroup : AssemblyVisionNodeDataGroup
 {
     protected override IEnumerable<INodeData> CreateDatas()
     {

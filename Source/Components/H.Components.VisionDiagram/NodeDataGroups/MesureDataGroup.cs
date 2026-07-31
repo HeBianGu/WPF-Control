@@ -17,7 +17,7 @@ public interface IMesureGroupableNodeData : INodeData, IDisplayBindable
 
 [Icon(FontIcons.Design)]
 [Display(Name = "测量", Description = "测量图像对象", Order = 10700)]
-public class MesureDataGroup : NodeDataGroupBase, IImageDataGroup
+public class MesureDataGroup : AssemblyVisionNodeDataGroup, IImageDataGroup
 {
     protected override IEnumerable<INodeData> CreateDatas()
     {

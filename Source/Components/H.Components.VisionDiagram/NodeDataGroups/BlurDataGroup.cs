@@ -17,7 +17,7 @@ public interface IBlurGroupableNodeData : INodeData, IDisplayBindable
 
 [Icon(FontIcons.InPrivate)]
 [Display(Name = "滤波模块", Description = "对图像进行滤波，降噪，模糊处理", Order = 10200)]
-public class BlurDataGroup : NodeDataGroupBase, IImageDataGroup
+public class BlurDataGroup : AssemblyVisionNodeDataGroup, IImageDataGroup
 {
     protected override IEnumerable<INodeData> CreateDatas()
     {

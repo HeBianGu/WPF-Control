@@ -15,7 +15,7 @@ public interface IFromToShape : IShape
     Point To { get; set; }
 }
 
-public class LineShape : FromToShapeBase, IFromToShape
+public class LineShape : FromToShapeBase, IFromToShape, ITitleShape
 {
     public LineShape()
     {
@@ -30,6 +30,7 @@ public class LineShape : FromToShapeBase, IFromToShape
     public bool UseText { get; set; } = false;
     [Display(Name = "端点样式", GroupName = ShapePropertyGroupNames.StyleGroup)]
     public PointStyleStype PointStyleStype { get; set; } = PointStyleStype.None;
+    public string Title { get; set; }
 
     public override void MatrixDrawing(IView view, DrawingContext drawingContext, Point normalToPoint, Pen pen, Brush fill = null)
     {
@@ -41,6 +42,7 @@ public class LineShape : FromToShapeBase, IFromToShape
         if (this.UseText)
         {
             double length = (this.From - normalToPoint).Length;
+            var txt = this.Title ?? length.ToString("F2");
             drawingContext.DrawTextAtTopCenter(length.ToString("F2"), normalToCenter, pen.Brush, 15.0 / view.Scale);
         }
     }

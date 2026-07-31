@@ -17,7 +17,7 @@ public interface IPreprocessingGroupableNodeData : INodeData, IDisplayBindable
 
 [Icon(FontIcons.Color)]
 [Display(Name = "图像预处理模块", Description = "对图像进行预处理操作", Order = 10100)]
-public class PreprocessingDataGroup : NodeDataGroupBase, IImageDataGroup
+public class PreprocessingDataGroup : AssemblyVisionNodeDataGroup, IImageDataGroup
 {
     protected override IEnumerable<INodeData> CreateNodeDatas()
     {

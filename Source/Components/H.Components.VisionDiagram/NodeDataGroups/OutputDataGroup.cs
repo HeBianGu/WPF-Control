@@ -17,7 +17,7 @@ public interface IOutputGroupableNodeData : INodeData, IDisplayBindable
 
 [Icon(FontIcons.Ethernet)]
 [Display(Name = "结果输出", Description = "输出流程处理结果", Order = 10900)]
-public class OutputDataGroup : NodeDataGroupBase, IImageDataGroup
+public class OutputDataGroup : AssemblyVisionNodeDataGroup, IImageDataGroup
 {
     protected override IEnumerable<INodeData> CreateDatas()
     {

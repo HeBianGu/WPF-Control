@@ -17,7 +17,7 @@ public interface IDetectorGroupableNodeData : INodeData, IDisplayBindable
 
 [Icon(FontIcons.Search)]
 [Display(Name = "对象识别模块", Description = "识别图像中的对象", Order = 10600)]
-public class DetectorDataGroup : NodeDataGroupBase, IImageDataGroup
+public class DetectorDataGroup : AssemblyVisionNodeDataGroup, IImageDataGroup
 {
     protected override IEnumerable<INodeData> CreateNodeDatas()
     {
