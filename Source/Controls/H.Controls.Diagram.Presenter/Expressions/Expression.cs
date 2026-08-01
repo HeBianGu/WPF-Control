@@ -39,7 +39,7 @@ public class Expression : BindableBase, IExpression
 
     public virtual IExpressionKey ToKey()
     {
-        return new ExpressionKey() { GroupName = this.GroupName, Name = this.Name };
+        return new ExpressionKey() { GroupName = this.GroupName, Name = this.Name, DisplayValue = this.Value };
     }
 }
 

@@ -63,7 +63,10 @@
                                         <TextBlock VerticalAlignment="Center">
                                             <Run Text="{Binding Name}" />
                                         </TextBlock>
-                                        <!--<ContentPresenter Margin="5 0" Content="{Binding Value}"/>-->
+                                        <TextBlock Margin="5,0"
+                                                   Text="=" VerticalAlignment="Center"/>
+                                        <ContentPresenter Margin="0,0"
+                                                          Content="{Binding DisplayValue, FallbackValue=无效值,TargetNullValue=无}" />
                                     </DockPanel>
                                 </DataTemplate>
                             </ItemsControl.ItemTemplate>

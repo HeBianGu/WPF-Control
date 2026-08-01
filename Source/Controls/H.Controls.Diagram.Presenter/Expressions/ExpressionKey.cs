@@ -34,6 +34,23 @@ public class ExpressionKey : BindableBase, IExpressionKey
         }
     }
 
+    private object _DisplayValue;
+    /// <summary>
+    /// 上一次运行结果值，主要用于表达式的显示参考，不参与表达式的计算，不需要持久化保存
+    /// </summary>
+    [JsonIgnore]
+    [Display(Name = "结果值")]
+    public object DisplayValue
+    {
+        get { return _DisplayValue; }
+        set
+        {
+            _DisplayValue = value;
+            RaisePropertyChanged();
+        }
+    }
+
+
     public virtual string DisplayName => $"{this.GroupName}.{this.Name}";
 
 
