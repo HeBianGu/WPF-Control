@@ -8,7 +8,7 @@
 
 using System.Globalization;
 
-namespace H.Controls.Diagram.Presenter.DiagramDatas;
+namespace H.Controls.Diagram.Presenter.NodeDataGroups;
 public class NodeDataGroupsContextMenuPresenter : DisplayBindableBase
 {
     public NodeDataGroupsContextMenuPresenter(IEnumerable<INodeDataGroup> nodeDataGroups)

@@ -6,12 +6,13 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
+global using H.ValueConverter;
 using System.Globalization;
 
-namespace H.Controls.Diagram.Presenter.DiagramDatas;
-public class NodeDataGroupsTreeViewPresenter : DisplayBindableBase
+namespace H.Controls.Diagram.Presenter.NodeDataGroups;
+public class NodeDataGroupsItemsControlPresenter : DisplayBindableBase
 {
-    public NodeDataGroupsTreeViewPresenter(IEnumerable<INodeDataGroup> nodeDataGroups)
+    public NodeDataGroupsItemsControlPresenter(IEnumerable<INodeDataGroup> nodeDataGroups)
     {
         this._nodeDataGroups = nodeDataGroups;
     }
@@ -28,12 +29,12 @@ public class NodeDataGroupsTreeViewPresenter : DisplayBindableBase
     }
 }
 
-public class GetNodeDataGroupsTreeViewPresenter : MarkupValueConverterBase
+public class GetNodeDataGroupsItemsControlPresenter : MarkupValueConverterBase
 {
     public override object Convert(object value, Type targetType, object parameter, CultureInfo culture)
     {
         if (value is IEnumerable<INodeDataGroup> nodegroups)
-            return new NodeDataGroupsTreeViewPresenter(nodegroups);
+            return new NodeDataGroupsItemsControlPresenter(nodegroups);
         return null;
     }
 }

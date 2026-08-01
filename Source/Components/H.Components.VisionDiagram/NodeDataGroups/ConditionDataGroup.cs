@@ -7,6 +7,7 @@
 // Licensed under the MIT License (the "License")
 
 using H.Common.Interfaces;
+using H.Controls.Diagram.Presenter.NodeDataGroups;
 
 namespace H.Components.VisionDiagram.NodeDataGroups;
 
@@ -17,7 +18,7 @@ public interface IConditionGroupableNodeData : INodeData, IOrderable
 
 [Icon(FontIcons.Dial6)]
 [Display(Name = "逻辑", Description = "对图像进行条件判断选择执行对应路径", Order = 10500)]
-public class ConditionDataGroup : AssemblyVisionNodeDataGroup, IImageDataGroup
+public class ConditionDataGroup : AssemblyNodeDataGroupBase, IImageDataGroup
 {
     protected override IEnumerable<INodeData> CreateDatas()
     {

@@ -8,7 +8,7 @@
 
 global using H.Extensions.Mvvm.ViewModels;
 
-namespace H.Controls.Diagram.Presenter.DiagramDatas;
+namespace H.Controls.Diagram.Presenter.NodeDataGroups;
 
 public interface INodeDataGroup : IDisplayBindable
 {

@@ -6,6 +6,7 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
+using H.Controls.Diagram.Presenter.NodeDataGroups;
 using H.Extensions.Mvvm.ViewModels;
 
 namespace H.Components.Vision.NodeGroups.Others;
@@ -17,7 +18,7 @@ public interface IOtherGroupableNodeData : INodeData, IDisplayBindable
 
 [Icon(FontIcons.More)]
 [Display(Name = "其他模块", Description = "图像处理的其他算法", Order = 10900)]
-public class OtherDataGroup : AssemblyVisionNodeDataGroup, IImageDataGroup
+public class OtherDataGroup : AssemblyNodeDataGroupBase, IImageDataGroup
 {
     protected override IEnumerable<INodeData> CreateNodeDatas()
     {

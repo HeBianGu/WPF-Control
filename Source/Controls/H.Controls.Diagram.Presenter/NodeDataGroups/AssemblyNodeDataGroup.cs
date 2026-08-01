@@ -6,25 +6,12 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
-global using H.Extensions.Mvvm.ViewModels.Base;
+namespace H.Controls.Diagram.Presenter.NodeDataGroups;
 
-namespace H.Controls.Diagram.Presenter.DiagramDatas.Base;
 
-[Icon("\xE722")]
-public abstract class AssemblyVisionNodeDataGroup : GroupDisplayBindableBase<INodeData>, INodeDataGroup
+public class AssemblyNodeDataGroup<T> : AssemblyNodeDataGroupBase where T : INodeData
 {
-    private bool _IsVisible = true;
-    public bool IsVisible
-    {
-        get { return _IsVisible; }
-        set
-        {
-            _IsVisible = value;
-            RaisePropertyChanged();
-        }
-    }
-
-    protected virtual IEnumerable<T> CreateAssemblyNodeDatas<T>()
+    protected virtual IEnumerable<T> CreateAssemblyNodeDatas()
     {
         foreach (var item in this.GetType().Assembly.GetInstances<T>())
         {
@@ -34,6 +21,16 @@ public abstract class AssemblyVisionNodeDataGroup : GroupDisplayBindableBase<INo
         {
             yield return item;
         }
+    }
+
+    protected override IEnumerable<INodeData> CreateDatas()
+    {
+        return this.CreateAssemblyNodeDatas<T>().OrderBy(x =>
+        {
+            if (x is IOrderable orderable)
+                return orderable.Order;
+            return 0;
+        }).OfType<INodeData>();
     }
 }
 

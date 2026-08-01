@@ -6,6 +6,7 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
+using H.Controls.Diagram.Presenter.NodeDataGroups;
 using H.Extensions.Mvvm.ViewModels;
 
 namespace H.Components.Vision.NodeGroups.Mesure;
@@ -17,7 +18,7 @@ public interface IMesureGroupableNodeData : INodeData, IDisplayBindable
 
 [Icon(FontIcons.Design)]
 [Display(Name = "测量模块", Description = "测量图像对象", Order = 10700)]
-public class MesureDataGroup : AssemblyVisionNodeDataGroup, IImageDataGroup
+public class MesureDataGroup : AssemblyNodeDataGroupBase, IImageDataGroup
 {
     protected override IEnumerable<INodeData> CreateNodeDatas()
     {

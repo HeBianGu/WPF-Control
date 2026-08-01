@@ -6,7 +6,7 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
-using H.Controls.Diagram.Presenter.DiagramDatas;
+using H.Controls.Diagram.Presenter.NodeDataGroups;
 using H.Extensions.Mvvm.ViewModels;
 
 namespace H.Components.Vision.NodeGroups.TemplateMatchings;
@@ -17,7 +17,7 @@ public interface ITemplateMatchingDataGroup : INodeDataGroup
 }
 [Icon(FontIcons.GotoToday)]
 [Display(Name = "模板匹配模块", Description = "图像处理的基础检测", Order = 10700)]
-public class TemplateMatchingDataGroup : AssemblyVisionNodeDataGroup, IImageDataGroup, ITemplateMatchingDataGroup
+public class TemplateMatchingDataGroup : AssemblyNodeDataGroupBase, IImageDataGroup, ITemplateMatchingDataGroup
 {
     protected override IEnumerable<INodeData> CreateNodeDatas()
     {

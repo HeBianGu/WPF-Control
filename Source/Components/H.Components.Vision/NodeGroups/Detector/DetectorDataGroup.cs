@@ -6,6 +6,7 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
+using H.Controls.Diagram.Presenter.NodeDataGroups;
 using H.Extensions.Mvvm.ViewModels;
 
 namespace H.Components.Vision.NodeGroups.Detector;
@@ -17,7 +18,7 @@ public interface IDetectorGroupableNodeData : INodeData, IDisplayBindable
 
 [Icon(FontIcons.Search)]
 [Display(Name = "对象识别模块", Description = "识别图像中的对象", Order = 10600)]
-public class DetectorDataGroup : AssemblyVisionNodeDataGroup, IImageDataGroup
+public class DetectorDataGroup : AssemblyNodeDataGroupBase, IImageDataGroup
 {
     protected override IEnumerable<INodeData> CreateNodeDatas()
     {

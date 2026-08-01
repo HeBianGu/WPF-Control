@@ -9,7 +9,7 @@
 namespace H.Components.VisionDiagrams.OpenCV.Base;
 
 [Icon(FontIcons.SwitchUser)]
-[Display(Name = "待完成节点", GroupName = "待完成", Order = 1, Description = "不包含实际逻辑，占位显示用于待完成的节点显示")]
+[Display(Name = "待完成节点", GroupName = "待完成", Order = 999, Description = "不包含实际逻辑，占位显示用于待完成的节点显示")]
 public class TodoNodeData : OpenCVNodeDataBase
 {
     protected override FlowableResult<IMatImage> Invoke(Mat fromImage)

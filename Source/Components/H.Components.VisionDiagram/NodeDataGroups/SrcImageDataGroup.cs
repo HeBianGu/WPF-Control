@@ -6,13 +6,14 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
+using H.Controls.Diagram.Presenter.NodeDataGroups;
 using H.Extensions.Mvvm.ViewModels;
 
 namespace H.Components.VisionDiagram.NodeDataGroups;
 
 [Icon(FontIcons.Camera)]
 [Display(Name = "图像数据源", Description = "设置输入图像", Order = 10000)]
-public class SrcImageDataGroup : AssemblyVisionNodeDataGroup, IImageDataGroup
+public class SrcImageDataGroup : AssemblyNodeDataGroupBase, IImageDataGroup
 {
     protected override IEnumerable<INodeData> CreateDatas()
     {

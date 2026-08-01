@@ -6,6 +6,8 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
+using H.Controls.Diagram.Presenter.NodeDataGroups;
+
 namespace H.Components.Vision.NodeGroups.Conditions;
 
 public interface IConditionGroupableNodeData : INodeData, IOrderable
@@ -15,7 +17,7 @@ public interface IConditionGroupableNodeData : INodeData, IOrderable
 
 [Icon(FontIcons.Dial6)]
 [Display(Name = "逻辑模块", Description = "对图像进行条件判断选择执行对应路径", Order = 10500)]
-public class ConditionDataGroup : AssemblyVisionNodeDataGroup, IImageDataGroup
+public class ConditionDataGroup : AssemblyNodeDataGroupBase, IImageDataGroup
 {
     protected override IEnumerable<INodeData> CreateNodeDatas()
     {

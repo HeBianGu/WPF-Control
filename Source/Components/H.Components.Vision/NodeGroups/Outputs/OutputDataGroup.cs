@@ -6,6 +6,7 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
+using H.Controls.Diagram.Presenter.NodeDataGroups;
 using H.Extensions.Mvvm.ViewModels;
 
 namespace H.Components.Vision.NodeGroups.Outputs;
@@ -17,7 +18,7 @@ public interface IOutputGroupableNodeData : INodeData, IDisplayBindable
 
 [Icon(FontIcons.Ethernet)]
 [Display(Name = "结果输出模块", Description = "输出流程处理结果", Order = 10900)]
-public class OutputDataGroup : AssemblyVisionNodeDataGroup, IImageDataGroup
+public class OutputDataGroup : AssemblyNodeDataGroupBase, IImageDataGroup
 {
     protected override IEnumerable<INodeData> CreateNodeDatas()
     {

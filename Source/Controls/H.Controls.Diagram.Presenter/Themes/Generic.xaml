@@ -3,7 +3,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
     xmlns:h="https://github.com/HeBianGu"
-    xmlns:ld="clr-namespace:H.Controls.Diagram.Presenter.DiagramDatas"
+    xmlns:ld="clr-namespace:H.Controls.Diagram.Presenter.NodeDataGroups"
     xmlns:ldb="clr-namespace:H.Controls.Diagram.Presenter.DiagramDatas.Base"
     xmlns:local="clr-namespace:H.Controls.Diagram.Presenter"
     xmlns:system="clr-namespace:System;assembly=System.Runtime">
@@ -25,9 +25,9 @@
         <ResourceDictionary Source="pack://application:,,,/H.Controls.Diagram.Presenter;component/DiagramDatas/DiagramData.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Controls.Diagram.Presenter;component/DiagramKeys.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Controls.Diagram.Presenter;component/DiagramTemplates/DiagramTemplates.xaml" />
-        <ResourceDictionary Source="pack://application:,,,/H.Controls.Diagram.Presenter;component/DiagramDatas/NodeDataGroupsContextMenuPresenter.xaml" />
-        <ResourceDictionary Source="pack://application:,,,/H.Controls.Diagram.Presenter;component/DiagramDatas/NodeDataGroupsItemsControlPresenter.xaml" />
-        <ResourceDictionary Source="pack://application:,,,/H.Controls.Diagram.Presenter;component/DiagramDatas/NodeDataGroupsTreeViewPresenter.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Controls.Diagram.Presenter;component/NodeDataGroups/NodeDataGroupsContextMenuPresenter.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Controls.Diagram.Presenter;component/NodeDataGroups/NodeDataGroupsItemsControlPresenter.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Controls.Diagram.Presenter;component/NodeDataGroups/NodeDataGroupsTreeViewPresenter.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Controls.Diagram.Presenter;component/Flowables/DiagramFlowableZoomMode.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Controls.Diagram.Presenter;component/Flowables/FlowableInvokeMode.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Controls.Diagram.Presenter;component/Flowables/DiagramFlowableMode.xaml" />

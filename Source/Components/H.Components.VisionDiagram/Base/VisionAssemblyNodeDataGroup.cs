@@ -8,9 +8,8 @@
 
 using H.Controls.Diagram.Presenter.NodeDataGroups;
 
-namespace H.Components.Vision;
+namespace H.Components.VisionDiagram.Base;
 
-public interface IImageDataGroup : INodeDataGroup
+public class VisionAssemblyNodeDataGroup : AssemblyNodeDataGroup<IVisionNodeData>
 {
-
 }

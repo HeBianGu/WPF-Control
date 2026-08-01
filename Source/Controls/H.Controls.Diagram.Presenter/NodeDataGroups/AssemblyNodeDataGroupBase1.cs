@@ -6,12 +6,12 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
-namespace H.Controls.Diagram.Presenter.DiagramDatas.Base;
+namespace H.Controls.Diagram.Presenter.NodeDataGroups;
 
-
-public class AssemblyNodeDataGroup<T> : AssemblyVisionNodeDataGroup where T : INodeData
+[Icon("\xE722")]
+public abstract class AssemblyNodeDataGroupBase : NodeDataGroupBase
 {
-    protected virtual IEnumerable<T> CreateAssemblyNodeDatas()
+    protected virtual IEnumerable<T> CreateAssemblyNodeDatas<T>()
     {
         foreach (var item in this.GetType().Assembly.GetInstances<T>())
         {
@@ -21,18 +21,6 @@ public class AssemblyNodeDataGroup<T> : AssemblyVisionNodeDataGroup where T : IN
         {
             yield return item;
         }
-    }
-
-    protected override IEnumerable<INodeData> CreateDatas()
-    {
-        return this.CreateAssemblyNodeDatas<T>().OrderBy(x =>
-        {
-            if (x is IOrderable orderable)
-            {
-                return orderable.Order;
-            }
-            return 0;
-        }).OfType<INodeData>();
     }
 }
 
