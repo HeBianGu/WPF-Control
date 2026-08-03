@@ -77,7 +77,7 @@ public class FeaturePointTemplateMatchManagerPresenter : TemplateManagerPresente
         }
 
         using var templateImage = new Mat(mat, roiRect);
-        using var grayTemplate = templateImage.ToGrayMat();
+        using var grayTemplate = templateImage.ToGray();
         using AKAZE akaze = AKAZE.Create();
         using Mat descriptors = new Mat();
         akaze.DetectAndCompute(grayTemplate, null, out KeyPoint[] keyPoints, descriptors);

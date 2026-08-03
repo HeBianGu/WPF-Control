@@ -223,7 +223,7 @@ public class HoughCircles : OpenCVDetectorNodeDataBase, IDetectorGroupableNodeDa
 
     protected override FlowableResult<IMatImage> Invoke(Mat fromImage)
     {
-        Mat gray = fromImage.ToGrayMat();
+        Mat gray = fromImage.ToGray();
         CircleSegment[] circles = Cv2.HoughCircles(gray, this.HoughModes, this.dp, this.minDist, this.param1, this.param2, this.minRadius, this.maxRadius);
         var resultImage = this.GetExpressionResultImage(fromImage.ToMatImage()).ToMatImage();
         var color = VisionSettings.Instance.OutputColor.ToScalar();

@@ -59,7 +59,7 @@ public class Threshold : OpenCVNodeDataBase, IPreprocessingGroupableNodeData, IT
     }
     protected override FlowableResult<IMatImage> Invoke(Mat fromImage)
     {
-        var gray = fromImage.ToGrayMat();
+        var gray = fromImage.ToGray();
         Mat mat = fromImage.Threshold(this.Thresh, this.Maxval, this.ThresholdType);
         return this.OK(mat);
     }

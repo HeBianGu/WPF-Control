@@ -74,7 +74,7 @@ public class ShapeTemplateManagerPresenter : TemplateManagerPresenterBase, IRect
             mat = openCVNodeData.ResultImage?.Mat.Clone();
         if (mat == null || mat.Empty())
             return;
-        using var gray = mat.ToGrayMat();
+        using var gray = mat.ToGray();
         var roiRect = this.Rect;
         var contours = gray.FindContours(this.Rect.ToCVRect());
         this.ResultTemplateContours = contours.ToPointss();

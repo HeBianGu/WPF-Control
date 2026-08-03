@@ -10,7 +10,7 @@ using H.Controls.ShapeBox.Drawings;
 
 namespace H.Components.VisionDiagrams.OpenCV.NodeDatas.Detector;
 [Icon(FontIcons.QRCode)]
-[Display(Name = "二维码识别", GroupName = "查找", Order = 3)]
+[Display(Name = "二维码识别", GroupName = "查找", Order = 3, Description = "使用OpenCV识别二维码，并输出文本和定位图形")]
 public class QRCode : OpenCVDetectorNodeDataBase, IDetectorGroupableNodeData
 {
     private string _qrCodeResult;

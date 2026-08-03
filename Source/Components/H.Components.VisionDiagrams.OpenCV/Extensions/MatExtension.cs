@@ -79,6 +79,15 @@ public static class MatExtension
         //return mat.ToBitmapSource();
     }
 
+    public static void Validate(this Mat image)
+    {
+        ArgumentNullException.ThrowIfNull(image);
+        if (image.IsDisposed || image.Empty())
+            throw new ArgumentException("输入图像未初始化或无效", nameof(image));
+        if (image.Channels() is not (1 or 3 or 4))
+            throw new NotSupportedException($"不支持{image.Channels()}通道图像");
+    }
+
     public static bool IsValid(this Mat mat)
     {
         return mat != null && !mat.IsDisposed && !mat.Empty();
@@ -94,14 +103,58 @@ public static class MatExtension
             return false;
         return true;
     }
-
-    public static Mat ToGrayMat(this Mat mat)
+    public static Mat ToRgb(this Mat image)
     {
-        if (mat.Channels() <= 1)
-            return mat;
-        var grayTemplate = new Mat();
-        Cv2.CvtColor(mat, grayTemplate, ColorConversionCodes.BGR2GRAY);
-        return grayTemplate;
+        return image.Channels() switch
+        {
+            1 => image.CvtColor(ColorConversionCodes.GRAY2RGB),
+            3 => image.CvtColor(ColorConversionCodes.BGR2RGB),
+            4 => image.CvtColor(ColorConversionCodes.BGRA2RGB),
+            _ => throw new NotSupportedException($"不支持{image.Channels()}通道图像")
+        };
+    }
+
+    public static Mat ToBgr(this Mat image)
+    {
+        return image.Channels() switch
+        {
+            1 => image.CvtColor(ColorConversionCodes.GRAY2BGR),
+            3 => image,
+            4 => image.CvtColor(ColorConversionCodes.BGRA2BGR),
+            _ => throw new NotSupportedException($"不支持{image.Channels()}通道图像")
+        };
+    }
+
+    public static Mat ToGray(this Mat image)
+    {
+        return image.Channels() switch
+        {
+            1 => image,
+            3 => image.CvtColor(ColorConversionCodes.BGR2GRAY),
+            4 => image.CvtColor(ColorConversionCodes.BGRA2GRAY),
+            _ => throw new NotSupportedException($"不支持{image.Channels()}通道图像")
+        };
+    }
+
+    //public static Mat ToGrayMat(this Mat mat)
+    //{
+    //    if (mat.Channels() <= 1)
+    //        return mat;
+    //    var grayTemplate = new Mat();
+    //    Cv2.CvtColor(mat, grayTemplate, ColorConversionCodes.BGR2GRAY);
+    //    return grayTemplate;
+    //}
+
+    public static Mat ToByteGray(this Mat gray)
+    {
+        if (gray.Type() == MatType.CV_8UC1)
+            return gray;
+
+        using Mat normalized = new Mat();
+        Cv2.Normalize(gray, normalized, 0, 255, NormTypes.MinMax);
+        Mat result = new Mat();
+        normalized.ConvertTo(result, MatType.CV_8UC1);
+        return result;
     }
 
     public static bool IsBinaryThresholdMat(this Mat image, byte foregroundValue = 255)
@@ -123,7 +176,7 @@ public static class MatExtension
 
     public static Mat ToBinaryThresholdMat(this Mat mat, double thresh = 120, double maxval = 255, ThresholdTypes thresholdType = ThresholdTypes.Binary)
     {
-        var gray = mat.ToGrayMat();
+        var gray = mat.ToGray();
         if (gray.IsBinaryThresholdMat())
             return gray;
         using Mat binary = new Mat();
