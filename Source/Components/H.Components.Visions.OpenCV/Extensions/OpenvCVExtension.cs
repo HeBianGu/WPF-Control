@@ -251,6 +251,11 @@ public static class OpenvCVExtension
         return new System.Windows.Point(size.X, size.Y);
     }
 
+    public static System.Windows.Point ToWPoint(this OpenCvSharp.Point2f size)
+    {
+        return new System.Windows.Point(size.X, size.Y);
+    }
+
     public static OpenCvSharp.Point2f ToPoint2F(this OpenCvSharp.Point size)
     {
         return new OpenCvSharp.Point2f(size.X, size.Y);

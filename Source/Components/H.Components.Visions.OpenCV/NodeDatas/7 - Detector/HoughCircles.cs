@@ -193,7 +193,7 @@ public class HoughCircles : OpenCVDetectorNodeDataBase, IDetectorGroupableNodeDa
 
         var shapes = circles.Select(x =>
         {
-            var r = new CircleShape(x.Center.ToPoint().ToPoint(), x.Radius) { Title = this.Name };
+            var r = new CircleShape(x.Center.ToWPoint(), x.Radius) { Title = this.Name };
             if (this.GetScalerNodeData() is IScalerNodeData scaler)
                 r.DimensionText = scaler.GetWorldDistance(x.Radius);
             return r;
