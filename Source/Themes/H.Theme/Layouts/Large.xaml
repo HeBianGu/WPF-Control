@@ -8,6 +8,10 @@
     <system:Double x:Key="{ComponentResourceKey ResourceId=S.Layout.IconHeight, TypeInTargetAssembly={x:Type ll:LayoutKeys}}">20</system:Double>
     <system:Double x:Key="{ComponentResourceKey ResourceId=S.Layout.RowHeight, TypeInTargetAssembly={x:Type ll:LayoutKeys}}">45</system:Double>
     <CornerRadius x:Key="{ComponentResourceKey ResourceId=S.Layout.CornerRadius, TypeInTargetAssembly={x:Type ll:LayoutKeys}}">4</CornerRadius>
+    <CornerRadius x:Key="{ComponentResourceKey ResourceId=S.Layout.CornerRadius.Left, TypeInTargetAssembly={x:Type local:LayoutKeys}}">4 0 0 4</CornerRadius>
+    <CornerRadius x:Key="{ComponentResourceKey ResourceId=S.Layout.CornerRadius.Top, TypeInTargetAssembly={x:Type local:LayoutKeys}}">4 4 0 0</CornerRadius>
+    <CornerRadius x:Key="{ComponentResourceKey ResourceId=S.Layout.CornerRadius.Right, TypeInTargetAssembly={x:Type local:LayoutKeys}}">0 4 4 0</CornerRadius>
+    <CornerRadius x:Key="{ComponentResourceKey ResourceId=S.Layout.CornerRadius.Bottom, TypeInTargetAssembly={x:Type local:LayoutKeys}}">0 0 4 4</CornerRadius>
     <Thickness x:Key="{ComponentResourceKey ResourceId=S.Layout.Padding, TypeInTargetAssembly={x:Type ll:LayoutKeys}}">10 0</Thickness>
     <Thickness x:Key="{ComponentResourceKey ResourceId=S.Layout.Margin, TypeInTargetAssembly={x:Type ll:LayoutKeys}}">10 6</Thickness>
 </ResourceDictionary>

@@ -17,6 +17,8 @@
     </Style>
 
     <Style x:Key="S.Border.TemplatedParent" TargetType="{x:Type Border}">
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="UseLayoutRounding" Value="True" />
         <!--<Setter Property="Padding" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=Margin}" />-->
         <Setter Property="Background" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=Background}" />
         <Setter Property="BorderBrush" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=BorderBrush}" />

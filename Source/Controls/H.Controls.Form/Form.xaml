@@ -55,11 +55,13 @@
                 </ItemsPanelTemplate>
             </Setter.Value>
         </Setter>
+        <Setter Property="Cattach.CornerRadius" Value="{DynamicResource {x:Static LayoutKeys.CornerRadius}}"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type local:Form}">
                     <Border Background="{TemplateBinding Background}"
                             BorderBrush="{TemplateBinding BorderBrush}"
+                            CornerRadius="{Binding  RelativeSource={RelativeSource AncestorType=local:Form},Path=(Cattach.CornerRadius)}"
                             BorderThickness="{TemplateBinding BorderThickness}">
                         <ScrollViewer Margin="0"
                                       Padding="0">

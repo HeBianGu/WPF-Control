@@ -28,8 +28,8 @@
             </Setter.Value>
         </Setter>
         <Setter Property="Cattach.CaptionHeight" Value="{DynamicResource {x:Static LayoutKeys.ItemHeight}}" />
-        <Setter Property="Cattach.CaptionCornerRadius" Value="2,2,0,0" />
-        <Setter Property="Cattach.CornerRadius" Value="0,0,2,2" />
+        <Setter Property="Cattach.CaptionCornerRadius" Value="{DynamicResource {x:Static LayoutKeys.CornerRadiusTop}}" />
+        <Setter Property="Cattach.CornerRadius" Value="{DynamicResource {x:Static LayoutKeys.CornerRadiusBottom}}" />
         <Setter Property="Cattach.CaptionHorizontalAlignment" Value="Stretch" />
         <Setter Property="Cattach.CaptionVerticalAlignment" Value="Center" />
         <Setter Property="Cattach.CaptionBorderBrush" Value="{x:Null}" />

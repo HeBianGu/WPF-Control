@@ -15,6 +15,11 @@ public static class LayoutKeys
     public static ComponentResourceKey WindowCaptionHeight => new ComponentResourceKey(typeof(LayoutKeys), "S.Layout.WindowCaptionHeight");
     public static ComponentResourceKey CornerRadius => new ComponentResourceKey(typeof(LayoutKeys), "S.Layout.CornerRadius");
 
+    public static ComponentResourceKey CornerRadiusTop => new ComponentResourceKey(typeof(LayoutKeys), "S.Layout.CornerRadius.Top");
+    public static ComponentResourceKey CornerRadiusRight => new ComponentResourceKey(typeof(LayoutKeys), "S.Layout.CornerRadius.Right");
+    public static ComponentResourceKey CornerRadiusBottom => new ComponentResourceKey(typeof(LayoutKeys), "S.Layout.CornerRadius.Bottom");
+    public static ComponentResourceKey CornerRadiusLeft => new ComponentResourceKey(typeof(LayoutKeys), "S.Layout.CornerRadius.Left");
+
     public static ComponentResourceKey Padding => new ComponentResourceKey(typeof(LayoutKeys), "S.Layout.Padding");
 
     public static ComponentResourceKey Margin => new ComponentResourceKey(typeof(LayoutKeys), "S.Layout.Margin");

@@ -111,32 +111,20 @@
         </Setter>
         <Style.Triggers>
             <Trigger Property="IsChecked" Value="True">
-                <Setter Property="Background">
-                    <Setter.Value>
-                        <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Selected}}" />
-                    </Setter.Value>
-                </Setter>
+                <Setter Property="Background" Value="{DynamicResource {x:Static BrushKeys.Selected}}" />
                 <Setter Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.BorderBrushTitle}}" />
                 <Setter Property="Foreground" Value="{DynamicResource {x:Static BrushKeys.ForegroundSelect}}" />
             </Trigger>
             <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Background">
-                    <Setter.Value>
-                        <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.MouseOver}}" />
-                    </Setter.Value>
-                </Setter>
-                <Setter Property="Foreground" Value="{DynamicResource {x:Static BrushKeys.ForegroundTitle}}" />
+                <Setter Property="Background" Value="{DynamicResource {x:Static BrushKeys.MouseOver}}" />
+                <!--<Setter Property="Foreground" Value="{DynamicResource {x:Static BrushKeys.ForegroundTitle}}" />-->
             </Trigger>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
                     <Condition Property="IsChecked" Value="True" />
                     <Condition Property="IsMouseOver" Value="True" />
                 </MultiTrigger.Conditions>
-                <Setter Property="Background">
-                    <Setter.Value>
-                        <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.BorderBrush}}" />
-                    </Setter.Value>
-                </Setter>
+                <Setter Property="Background" Value="{DynamicResource {x:Static BrushKeys.BorderBrush}}"/>
                 <Setter Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.BorderBrushTitle}}" />
             </MultiTrigger>
             <Trigger Property="IsPressed" Value="True">
@@ -162,7 +150,7 @@
         <Setter Property="BorderBrush" Value="Transparent" />
         <!--  Guide  -->
         <Setter Property="Cattach.GuideTitle" Value="{Binding RelativeSource={RelativeSource Mode=Self}, Path=ToolTip}" />
-        <Setter Property="Cattach.IconSize" Value="{DynamicResource {x:Static LayoutKeys.IconHeight}}"/>
+        <Setter Property="Cattach.IconSize" Value="{DynamicResource {x:Static LayoutKeys.IconHeight}}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ToggleButton}">
@@ -192,9 +180,9 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ToggleButton}">
                     <Border Background="Transparent">
-                        <Path Margin="{TemplateBinding Padding}"
-                              Width="{Binding RelativeSource={RelativeSource Mode=TemplatedParent},Path=(Cattach.IconSize)}"
-                              Height="{Binding RelativeSource={RelativeSource Mode=TemplatedParent},Path=(Cattach.IconSize)}"
+                        <Path Width="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(Cattach.IconSize)}"
+                              Height="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(Cattach.IconSize)}"
+                              Margin="{TemplateBinding Padding}"
                               Data="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=Content}"
                               Fill="{TemplateBinding Background}"
                               Stretch="Uniform"
