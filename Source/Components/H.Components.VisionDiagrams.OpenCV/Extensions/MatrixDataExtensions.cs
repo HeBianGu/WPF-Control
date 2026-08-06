@@ -72,7 +72,60 @@ public static class MatrixDataExtensions
         }
         return result;
     }
+
+
+    public static bool IsAffineTransformMat(this Mat mat)
+    {
+        if (!mat.IsValid())
+            return false;
+        // 仿射变换矩阵必须是 2行 x 3列，且为浮点类型
+        if (mat.Rows == 2 && mat.Cols == 3)
+        {
+            MatType type = mat.Type();
+            if (type == MatType.CV_32FC1 || type == MatType.CV_64FC1)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+    public static bool IsHomographyMat(this Mat mat)
+    {
+        if (!mat.IsValid())
+            return false;
+        // 单应矩阵必须是 3行 x 3列，且为浮点类型
+        if (mat.Rows == 3 && mat.Cols == 3)
+        {
+            MatType type = mat.Type();
+            if (type == MatType.CV_32FC1 || type == MatType.CV_64FC1)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
 }
+
+public class Homography : IDisposable
+{
+    public Homography()
+    {
+        
+    }
+
+    public Homography(Mat mat)
+    {
+        this.Mat=mat;
+    }
+    public Mat Mat { get; set; }
+
+    public void Dispose()
+    {
+        this.Mat?.Dispose();
+    }
+}
+
 public sealed class MatrixData
 {
     public int Rows { get; init; }

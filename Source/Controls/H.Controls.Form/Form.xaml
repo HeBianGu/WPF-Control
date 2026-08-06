@@ -136,7 +136,7 @@
                                         Opacity="0.8" />
                             </Button>
                             <ContentPresenter Grid.Column="2"
-                                              Margin="0,2"
+                                              Margin="0,1"
                                               Content="{Binding}" />
                             <TextBlock Grid.Column="3"
                                        Style="{StaticResource S.TextBlock.Error}" />
