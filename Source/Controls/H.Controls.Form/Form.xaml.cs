@@ -918,6 +918,51 @@ public partial class Form
             item.Dispose();
         }
     }
+
+    private List<PropertyInfo> GetFormProperties(Type type)
+    {
+        const BindingFlags flags = BindingFlags.DeclaredOnly | BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic;
+        if (this.UseDeclaredOnly)
+            return type.GetProperties(flags).ToList();
+
+        List<Type> inheritanceChain = new List<Type>();
+        for (Type current = type; current != null && current != typeof(object); current = current.BaseType)
+            inheritanceChain.Add(current);
+        inheritanceChain.Reverse();
+
+        Dictionary<MethodInfo, int> overrideIndexes = new Dictionary<MethodInfo, int>();
+        Dictionary<string, int> nameIndexes = new Dictionary<string, int>(StringComparer.Ordinal);
+        List<PropertyInfo> result = new List<PropertyInfo>();
+        foreach (Type current in inheritanceChain)
+        {
+            foreach (PropertyInfo property in current.GetProperties(flags))
+            {
+                MethodInfo accessor = property.GetMethod ?? property.SetMethod;
+                MethodInfo baseDefinition = accessor?.GetBaseDefinition();
+                if (baseDefinition != null && overrideIndexes.TryGetValue(baseDefinition, out int overrideIndex))
+                {
+                    result[overrideIndex] = property;
+                    nameIndexes[property.Name] = overrideIndex;
+                    continue;
+                }
+
+                if (nameIndexes.TryGetValue(property.Name, out int hiddenIndex))
+                {
+                    result[hiddenIndex] = property;
+                    if (baseDefinition != null)
+                        overrideIndexes[baseDefinition] = hiddenIndex;
+                    continue;
+                }
+
+                int index = result.Count;
+                result.Add(property);
+                nameIndexes[property.Name] = index;
+                if (baseDefinition != null)
+                    overrideIndexes[baseDefinition] = index;
+            }
+        }
+        return result;
+    }
     protected void RefreshObjectinternal()
     {
         this.Clear();
@@ -940,16 +985,11 @@ public partial class Form
         {
             if (l == null)
                 return;
-
-            if (l.BaseType != typeof(object))
-            {
-                action(l.BaseType);
-            }
-
             PropertyInfo[] ps = l.GetProperties(BindingFlags.DeclaredOnly | BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
             if (ps != null)
                 propertys.AddRange(ps);
-
+            if (l.BaseType != typeof(object))
+                action(l.BaseType);
         };
 
         if (this.UseDeclaredOnly)
@@ -968,6 +1008,10 @@ public partial class Form
         IEnumerable<PropertyInfo> ss = propertys.DistinctBy(x => x.Name);
         foreach (PropertyInfo item in ss)
         {
+            if (typeof(ICommand).IsAssignableFrom(item.PropertyType))
+            {
+
+            }
             if (this.UseCommandOnly && !typeof(ICommand).IsAssignableFrom(item.PropertyType))
                 continue;
 
