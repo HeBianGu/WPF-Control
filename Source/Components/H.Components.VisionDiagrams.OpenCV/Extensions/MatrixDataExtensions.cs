@@ -111,18 +111,37 @@ public class Homography : IDisposable
 {
     public Homography()
     {
-        
+
     }
 
     public Homography(Mat mat)
     {
-        this.Mat=mat;
+        this.Mat = mat;
     }
     public Mat Mat { get; set; }
 
     public void Dispose()
     {
         this.Mat?.Dispose();
+    }
+
+    public WpfPoint PixelToWorld(WpfPoint pixelPoint)
+    {
+        if (this.Mat == null || this.Mat.Empty())
+            throw new ArgumentException("标定矩阵为空");
+        Point2d[] srcPoints = new Point2d[] { new Point2d(pixelPoint.X, pixelPoint.Y) };
+        Point2d[] dstPoints = Cv2.PerspectiveTransform(srcPoints, this.Mat);
+        return new WpfPoint(dstPoints[0].X, dstPoints[0].Y);
+    }
+
+    public WpfPoint WorldToPixel(WpfPoint worldPoint)
+    {
+        if (this.Mat == null || this.Mat.Empty())
+            throw new ArgumentException("标定矩阵为空");
+        Mat invHomography = this.Mat.Inv();
+        Point2d[] srcPoints = new Point2d[] { new Point2d(worldPoint.X, worldPoint.Y) };
+        Point2d[] dstPoints = Cv2.PerspectiveTransform(srcPoints, invHomography);
+        return new WpfPoint(dstPoints[0].X, dstPoints[0].Y);
     }
 }
 

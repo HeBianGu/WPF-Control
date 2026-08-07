@@ -25,11 +25,6 @@
         <Setter Property="MinHeight" Value="{DynamicResource {x:Static LayoutKeys.ItemHeight}}" />
         <Setter Property="CaretBrush" Value="{DynamicResource {x:Static BrushKeys.ForegroundSelect}}" />
         <Setter Property="SelectionBrush" Value="{DynamicResource {x:Static BrushKeys.ForegroundSelect}}" />
-        <!--<Setter Property="Background">
-            <Setter.Value>
-                <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Background}}" />
-            </Setter.Value>
-        </Setter>-->
         <Setter Property="Background" Value="{DynamicResource {x:Static BrushKeys.Background}}" />
         <Setter Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.BorderBrush}}" />
         <!--  Guide  -->

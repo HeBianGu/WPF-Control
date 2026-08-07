@@ -15,4 +15,5 @@ global using System.ComponentModel;
 global using System.ComponentModel.DataAnnotations;
 global using System.Linq;
 global using System.Windows.Controls;
+global using WpfPoint = System.Windows.Point;
 
