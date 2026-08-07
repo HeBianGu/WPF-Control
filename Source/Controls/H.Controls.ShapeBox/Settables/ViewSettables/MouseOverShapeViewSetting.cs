@@ -7,7 +7,6 @@
 // Licensed under the MIT License (the "License")
 
 using H.Extensions.Common;
-using H.Extensions.Setting;
 using H.Services.Setting;
 
 namespace H.Controls.ShapeBox.Settables.ViewSettables;

@@ -7,7 +7,7 @@
 // Licensed under the MIT License (the "License")
 
 using H.Controls.Form.PropertyItems.Base;
-using H.Controls.ShapeBox.Drawings;
+using H.Controls.ShapeBox.Extension;
 using H.Controls.ShapeBox.Shapes.Base;
 
 namespace H.Components.VisionDiagram.Presenters;

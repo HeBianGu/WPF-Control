@@ -6,10 +6,7 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
-global using System.Collections.Generic;
-global using System.Linq;
-
-namespace H.Controls.ShapeBox.Drawings;
+namespace H.Controls.ShapeBox.Extension;
 public static class GeometryExtension
 {
     public static Geometry ToGeometry(this IEnumerable<Point> points, bool isFilled = true, bool isClosed = true)
@@ -153,10 +150,8 @@ public static class GeometryExtension
         double len = Math.Sqrt(dx * dx + dy * dy);
 
         if (len <= double.Epsilon)
-        {
             // P 与圆心重合，取一个稳定方向
             return new Point(center.X + radius, center.Y);
-        }
 
         double scale = radius / len;
         return new Point(center.X + dx * scale, center.Y + dy * scale);
@@ -193,8 +188,8 @@ public static class GeometryExtension
             return Math.Min(dx, dy);
         }
 
-        double hx = point.X < left ? left - point.X : (point.X > right ? point.X - right : 0);
-        double hy = point.Y < top ? top - point.Y : (point.Y > bottom ? point.Y - bottom : 0);
+        double hx = point.X < left ? left - point.X : point.X > right ? point.X - right : 0;
+        double hy = point.Y < top ? top - point.Y : point.Y > bottom ? point.Y - bottom : 0;
         return Math.Sqrt(hx * hx + hy * hy);
     }
 
@@ -206,7 +201,7 @@ public static class GeometryExtension
     {
         // 退化：无符号距离即为返回值
         if (rect.Width <= 0 || rect.Height <= 0)
-            return DistanceToRect(point, rect);
+            return point.DistanceToRect(rect);
 
         double left = rect.Left, right = rect.Right, top = rect.Top, bottom = rect.Bottom;
 
@@ -220,8 +215,8 @@ public static class GeometryExtension
             return -Math.Min(dx, dy);
         }
 
-        double hx = point.X < left ? left - point.X : (point.X > right ? point.X - right : 0);
-        double hy = point.Y < top ? top - point.Y : (point.Y > bottom ? point.Y - bottom : 0);
+        double hx = point.X < left ? left - point.X : point.X > right ? point.X - right : 0;
+        double hy = point.Y < top ? top - point.Y : point.Y > bottom ? point.Y - bottom : 0;
         return Math.Sqrt(hx * hx + hy * hy);
     }
 
@@ -404,7 +399,7 @@ public static class GeometryExtension
     /// </summary>
     public static Point ClosestPointIn(this Point point, IEnumerable<Point> points, out int index, out double distance)
     {
-        if (TryClosestPointIn(point, points, out var closest, out index, out distance))
+        if (point.TryClosestPointIn(points, out var closest, out index, out distance))
             return closest;
 
         throw new InvalidOperationException("Points collection is null or empty.");

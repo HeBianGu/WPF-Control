@@ -6,11 +6,7 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
-using H.Controls.Form.Attributes;
-using H.Controls.Form.PropertyItem.Attribute;
-using H.Controls.Form.PropertyItem.ComboBoxPropertyItems;
 using H.Extensions.Common;
-using H.Extensions.Setting;
 using H.Services.Setting;
 
 namespace H.Controls.ShapeBox.Settables.ViewSettables;

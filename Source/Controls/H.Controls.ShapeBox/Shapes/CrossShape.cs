@@ -7,10 +7,9 @@
 // Licensed under the MIT License (the "License")
 
 using H.Common.Interfaces;
+using H.Controls.ShapeBox.Extension;
 using H.Extensions.Common;
 using System.Text;
-using System.Windows.Ink;
-using System.Windows.Media;
 
 namespace H.Controls.ShapeBox.Shapes;
 public class CrossShape : CommonShapeBase, IPreviewShape, IMessageable

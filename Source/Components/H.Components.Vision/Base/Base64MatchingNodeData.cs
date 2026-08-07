@@ -19,6 +19,7 @@ global using H.Extensions.FontIcon;
 global using H.Extensions.TypeConverter;
 global using System.Text.Json.Serialization;
 global using System.Windows.Media.Imaging;
+using H.Controls.ShapeBox.Extension;
 
 namespace H.Components.Vision.Base;
 

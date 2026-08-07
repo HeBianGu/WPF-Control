@@ -6,6 +6,7 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
+using H.Controls.ShapeBox.Extension;
 using H.Controls.ShapeBox.Shapes.Handles;
 
 namespace H.Controls.ShapeBox.Shapes.Base;
@@ -42,7 +43,7 @@ public abstract class HandleShapeBase : SelectableShapeBase, IHandleShape
             return false;
         if (this is IBoundingBoxShape boundingBox)
         {
-            if (boundingBox.BoundingBox.Width.ToView(view) < this.GetHandleViewSize() 
+            if (boundingBox.BoundingBox.Width.ToView(view) < this.GetHandleViewSize()
                 && boundingBox.BoundingBox.Height.ToView(view) < this.GetHandleViewSize())
                 return false;
         }

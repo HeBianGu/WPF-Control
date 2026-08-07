@@ -6,10 +6,8 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
-using H.Controls.ShapeBox.Shapes;
 using H.Services.Message;
 using System.Windows.Input;
-using System.Windows.Shapes;
 
 namespace H.Controls.ShapeBox.State.Base;
 public interface IAddableShapes

@@ -7,7 +7,7 @@
 // Licensed under the MIT License (the "License")
 
 global using H.Components.Visions.OpenCV;
-using H.Controls.ShapeBox.Drawings;
+using H.Controls.ShapeBox.Extension;
 
 namespace H.VisionMaster.OpenCV.NodeDatas.Detector;
 

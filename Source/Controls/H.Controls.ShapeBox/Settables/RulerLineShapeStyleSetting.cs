@@ -8,7 +8,6 @@
 
 using H.Controls.ShapeBox.Base;
 using H.Services.Setting;
-using System.ComponentModel;
 
 namespace H.Controls.ShapeBox.Settables;
 [Display(Name = "标尺样式", GroupName = SettingGroupNames.GroupStyle, Description = "设置标尺样式信息")]

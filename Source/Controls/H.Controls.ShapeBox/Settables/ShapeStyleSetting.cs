@@ -11,7 +11,6 @@ using H.Controls.Form.PropertyItem.Attribute;
 using H.Controls.Form.PropertyItem.ComboBoxPropertyItems;
 using H.Controls.ShapeBox.Base;
 using H.Extensions.Setting;
-using System.ComponentModel;
 
 namespace H.Controls.ShapeBox.Settables;
 public interface IShapeStyleSetting

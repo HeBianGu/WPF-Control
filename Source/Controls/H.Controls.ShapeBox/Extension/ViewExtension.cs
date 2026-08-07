@@ -6,11 +6,7 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
-global using System.Collections.Generic;
-global using System.Linq;
-using H.Extensions.Common;
-
-namespace H.Controls.ShapeBox.Drawings;
+namespace H.Controls.ShapeBox.Extension;
 public static class ViewExtension
 {
     public static double ToView(this double value, IView view)

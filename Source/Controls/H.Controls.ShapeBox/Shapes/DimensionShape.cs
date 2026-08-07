@@ -8,6 +8,7 @@
 
 using H.Common.Interfaces;
 using H.Controls.ShapeBox.Base;
+using H.Controls.ShapeBox.Extension;
 
 namespace H.Controls.ShapeBox.Shapes;
 

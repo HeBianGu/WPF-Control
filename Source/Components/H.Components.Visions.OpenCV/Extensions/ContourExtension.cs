@@ -9,7 +9,7 @@
 using H.Common.Interfaces;
 using H.Components.Vision.Extensions;
 using H.Components.Visions.OpenCV.NodeDatas.Detector;
-using H.Controls.ShapeBox.Drawings;
+using H.Controls.ShapeBox.Extension;
 using OpenCvSharp;
 using System.Reflection.Metadata;
 

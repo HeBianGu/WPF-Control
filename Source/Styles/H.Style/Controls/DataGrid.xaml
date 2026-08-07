@@ -186,6 +186,7 @@
                     <Condition Property="IsSelected" Value="True" />
                 </MultiTrigger.Conditions>
                 <Setter Property="Background" Value="{DynamicResource {x:Static BrushKeys.Selected}}" />
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static BrushKeys.ForegroundSelect}}" />
             </MultiTrigger>
             <MultiTrigger>
                 <MultiTrigger.Conditions>

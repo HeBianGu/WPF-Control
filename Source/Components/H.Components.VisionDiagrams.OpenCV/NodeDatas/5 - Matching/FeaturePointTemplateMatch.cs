@@ -9,7 +9,7 @@
 using H.Components.VisionDiagram.Presenters;
 using H.Components.VisionDiagrams.OpenCV;
 using H.Components.VisionDiagrams.OpenCV.Presenters;
-using H.Controls.ShapeBox.Drawings;
+using H.Controls.ShapeBox.Extension;
 using H.Controls.ShapeBox.State;
 using H.Extensions.Mvvm.Commands;
 using Point = OpenCvSharp.Point;

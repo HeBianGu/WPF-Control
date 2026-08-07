@@ -8,7 +8,6 @@
 
 using H.Controls.ShapeBox.Base;
 using H.Mvvm.ViewModels.Base;
-using System.ComponentModel;
 using System.Text.Json.Serialization;
 
 namespace H.Controls.ShapeBox.Shapes.Base;

@@ -7,11 +7,8 @@
 // Licensed under the MIT License (the "License")
 
 using H.Controls.ShapeBox.Base;
-using H.Extensions.Common;
+using H.Controls.ShapeBox.Extension;
 using System.Globalization;
-using System.Runtime.CompilerServices;
-using System.Windows.Media;
-using System.Windows.Shapes;
 
 namespace H.Controls.ShapeBox.Shapes.Base;
 

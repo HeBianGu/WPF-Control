@@ -6,7 +6,6 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
-global using H.Controls.ShapeBox.Drawings;
 global using H.Controls.ShapeBox.Shapes.Base;
 global using H.Controls.ShapeBox.State.Base;
 global using System;
@@ -16,6 +15,7 @@ global using System.Windows.Media;
 global using System.Windows.Media.Imaging;
 global using System.Windows.Threading;
 using H.Attach;
+using H.Controls.ShapeBox.Base;
 using H.Extensions.Mvvm.Commands;
 using H.Extensions.Mvvm.ViewModels.Base;
 using System.Windows.Input;

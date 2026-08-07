@@ -7,7 +7,6 @@
 // Licensed under the MIT License (the "License")
 
 using H.Extensions.Mvvm.Commands;
-using System.Runtime.CompilerServices;
 
 namespace H.Controls.ShapeBox.State;
 

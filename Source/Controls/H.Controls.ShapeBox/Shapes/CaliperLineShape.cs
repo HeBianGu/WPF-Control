@@ -10,6 +10,7 @@ using H.Controls.Form.Attributes;
 using H.Controls.Form.PropertyItem.Attribute;
 using H.Controls.Form.PropertyItem.ComboBoxPropertyItems;
 using H.Controls.ShapeBox.Base;
+using H.Controls.ShapeBox.Extension;
 using H.Controls.ShapeBox.Shapes.Handles;
 
 namespace H.Controls.ShapeBox.Shapes;

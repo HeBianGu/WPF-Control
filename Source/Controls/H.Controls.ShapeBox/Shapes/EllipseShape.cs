@@ -11,5 +11,5 @@ namespace H.Controls.ShapeBox.Shapes;
 //  ToDo：增加椭圆
 public interface IEllipseShape : IBoundingBoxShape, ITitleShape
 {
-   
+
 }

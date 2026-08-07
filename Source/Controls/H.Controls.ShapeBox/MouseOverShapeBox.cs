@@ -9,7 +9,6 @@
 using H.Controls.ShapeBox.Presenters;
 using H.Extensions.Common;
 using System.Collections.Specialized;
-using System.Linq;
 using System.Windows.Input;
 
 namespace H.Controls.ShapeBox;

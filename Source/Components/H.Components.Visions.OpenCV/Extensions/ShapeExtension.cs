@@ -6,7 +6,7 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
-using H.Controls.ShapeBox.Drawings;
+using H.Controls.ShapeBox.Extension;
 
 namespace H.Components.Visions.OpenCV.Extensions;
 public static class ShapeExtension

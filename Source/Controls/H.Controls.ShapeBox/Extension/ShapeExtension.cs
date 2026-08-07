@@ -6,11 +6,9 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
-global using System.Collections.Generic;
-global using System.Linq;
 using H.Extensions.Common;
 
-namespace H.Controls.ShapeBox.Drawings;
+namespace H.Controls.ShapeBox.Extension;
 public static class ShapeExtension
 {
     public static IEnumerable<DimensionShape> ToDimensionShapes(this IEnumerable<Point> points, Action<DimensionShape> action = null)

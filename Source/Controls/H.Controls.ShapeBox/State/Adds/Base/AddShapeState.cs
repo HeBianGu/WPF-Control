@@ -7,7 +7,6 @@
 // Licensed under the MIT License (the "License")
 
 using H.Controls.ShapeBox.Shapes.Handles;
-using H.Extensions.Mvvm.Commands;
 
 namespace H.Controls.ShapeBox.State.Adds.Base;
 

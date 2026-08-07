@@ -7,6 +7,7 @@
 // Licensed under the MIT License (the "License")
 
 using H.Controls.ShapeBox.Base;
+using H.Controls.ShapeBox.Extension;
 using H.Controls.ShapeBox.Shapes.Handles;
 
 namespace H.Controls.ShapeBox.Shapes.Base;

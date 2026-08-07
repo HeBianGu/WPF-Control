@@ -25,7 +25,7 @@ public class AddPointsShapeState<T> : PointsClickAddShapeState<T> where T : IPoi
     {
         if (_clickPoints.Count == 0)
             return;
-        var points= _clickPoints.ToList();
+        var points = _clickPoints.ToList();
         points.Add(p);
         this.Shape.Points = new Points(points);
         this.RefreshStateShapes();

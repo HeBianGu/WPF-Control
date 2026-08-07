@@ -7,6 +7,7 @@
 // Licensed under the MIT License (the "License")
 
 using H.Controls.Form.PropertyItems.Base;
+using H.Controls.ShapeBox.Extension;
 
 namespace H.Components.Vision.Presenters;
 public class ShapeViewPropertyItem : ObjectPropertyItem<object>

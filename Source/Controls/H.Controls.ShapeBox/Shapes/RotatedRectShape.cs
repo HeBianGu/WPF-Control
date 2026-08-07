@@ -7,12 +7,10 @@
 // Licensed under the MIT License (the "License")
 
 using H.Controls.ShapeBox.Base;
+using H.Controls.ShapeBox.Extension;
 using H.Controls.ShapeBox.Shapes.Handles;
 using H.Extensions.Common;
-using H.Extensions.TypeConverter;
-using System.ComponentModel;
 using System.Windows.Input;
-using System.Windows.Media;
 
 namespace H.Controls.ShapeBox.Shapes;
 public interface IRotatedRectShape : IShape, ITitleShape, IBoundingBoxShape

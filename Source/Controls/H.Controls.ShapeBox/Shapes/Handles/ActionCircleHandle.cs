@@ -6,6 +6,8 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
+using H.Controls.ShapeBox.Extension;
+
 namespace H.Controls.ShapeBox.Shapes.Handles;
 
 public class ActionCircleHandle : ActionHandle
