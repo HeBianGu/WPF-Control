@@ -67,6 +67,10 @@ public class PixelWorldPointKeyValuePair : BindableBase
         }
     }
 
+
+    public WpfPoint PixelPoint => new System.Windows.Point(this.PixelPointX, this.PixelPointY);
+    public WpfPoint WorldPoint => new System.Windows.Point(this.WorldPointX, this.WorldPointY);
+
     public bool IsVaild()
     {
         return this.PixelPointX != 0 || this.PixelPointY != 0 || this.WorldPointX != 0 || this.WorldPointY != 0;

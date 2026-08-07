@@ -41,38 +41,29 @@ public static class DrawingContextExtension
     {
         dc.DrawPointStyleStype(PointStyleStype.Arrow, point, stroke, strokeThickness, wlen, hlen, angle);
     }
-    public static void DrawArrowPolygon(this DrawingContext dc, Point from, Point to, Brush stroke, Brush fill, double strokeThickness = 1, double len = 6, double arrowAngle = 30)
+    public static void DrawArrowPolygon(this DrawingContext dc, Point from, Point to, Pen pen, double len = 6, double arrowAngle = 30)
     {
-        var pen = new Pen(stroke, strokeThickness)
-        {
-            LineJoin = PenLineJoin.Round,
-            StartLineCap = PenLineCap.Round,
-            EndLineCap = PenLineCap.Round,
-        };
-        if (pen.CanFreeze)
-            pen.Freeze();
+        //var pen = new Pen(stroke, strokeThickness)
+        //{
+        //    LineJoin = PenLineJoin.Round,
+        //    StartLineCap = PenLineCap.Round,
+        //    EndLineCap = PenLineCap.Round,
+        //};
+        //if (pen.CanFreeze)
+        //    pen.Freeze();
 
         dc.DrawLine(pen, from, to);
-
         Vector vector = from - to;
         if (vector.Length <= double.Epsilon)
             return;
-
         vector.Normalize();
         Vector v1 = vector * len;
         Vector v2 = vector * len;
-
-        RotateTransform rt1 = new RotateTransform(20);
-        RotateTransform rt2 = new RotateTransform(-20);
-
+        RotateTransform rt1 = new RotateTransform(arrowAngle / 2);
+        RotateTransform rt2 = new RotateTransform(-arrowAngle / 2);
         v1 = rt1.Value.Transform(v1);
         v2 = rt2.Value.Transform(v2);
-
-        dc.DrawPloygon(pen, fill,
-            to,
-            to + v1,
-            to + v2);
-
+        dc.DrawPloygon(pen, pen.Brush, to, to + v1, to + v2);
     }
 
 
@@ -127,10 +118,7 @@ public static class DrawingContextExtension
             var vv = new Vector(-hlen * 0.7, hlen);
             //dc.DrawLine(new Pen(stroke, strokeThickness), point - vv, point);
             //dc.DrawLine(new Pen(stroke, strokeThickness), point, point + hv);
-            dc.DrawPloygon(pen, stroke,
-                point + hv,
-                point,
-                point - vv);
+            dc.DrawPloygon(pen, stroke, point + hv, point, point - vv);
         }
         dc.Pop();
     }

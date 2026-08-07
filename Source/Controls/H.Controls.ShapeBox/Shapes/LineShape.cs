@@ -35,9 +35,17 @@ public class LineShape : FromToShapeBase, IFromToShape, ITitleShape
     public override void MatrixDrawing(IView view, DrawingContext drawingContext, Point normalToPoint, Pen pen, Brush fill = null)
     {
         Matrix matrix = this.GetInvertMatrix();
-        drawingContext.DrawLine(pen, this.From, normalToPoint);
-        this.DrawPointStyleStype(view, this.PointStyleStype, drawingContext, this.From, pen, 45);
-        this.DrawPointStyleStype(view, this.PointStyleStype, drawingContext, normalToPoint, pen, 45);
+        if (this.PointStyleStype == PointStyleStype.Arrow)
+        {
+            drawingContext.DrawArrowPolygon(this.From, normalToPoint, pen, 6.ToGeo(view));
+        }
+        else
+        {
+            drawingContext.DrawLine(pen, this.From, normalToPoint);
+            this.DrawPointStyleStype(view, this.PointStyleStype, drawingContext, this.From, pen, 45);
+            this.DrawPointStyleStype(view, this.PointStyleStype, drawingContext, normalToPoint, pen, 45);
+        }
+
         var normalToCenter = matrix.Transform(this.Center);
         if (this.UseText)
         {
