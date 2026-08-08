@@ -8,8 +8,10 @@
 
 using H.ApplicationBases.Modules;
 using H.Modules.About;
+using H.Modules.Dependency;
 using H.Modules.Feedback;
 using H.Modules.Guide;
+using H.Modules.Help.CommercialLicense;
 using H.Modules.Help.Contact;
 using H.Modules.Help.ReleaseVersions;
 using H.Modules.Help.Support;
@@ -41,6 +43,9 @@ namespace System
             services.AddSponsor();
             services.AddContact(opt.GetConfigOptions<IContactOptions>());
             services.AddFeedBack(opt.GetConfigOptions<IFeedbackOptions>());
+            services.AddDependency(opt.GetConfigOptions<IDependencyOptions>());
+            services.AddCommercialLicense();
+
         }
 
         public static void UseDefaultModuleOptions(this IApplicationBuilder app, Action<IDefaultModuleOptions> options = null)
@@ -57,6 +62,7 @@ namespace System
             app.UseWebsite(opt.GetConfigOptions<IWebsiteOptions>());
             app.UseContact(opt.GetConfigOptions<IContactOptions>());
             app.UseFeedBackOptions(opt.GetConfigOptions<IFeedbackOptions>());
+            app.UseDependencyOptions(opt.GetConfigOptions<IDependencyOptions>());
         }
     }
 }

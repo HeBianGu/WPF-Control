@@ -6,20 +6,14 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
-using System.Diagnostics;
+using H.Services.Setting;
 
-namespace H.Modules.Help.Base;
+namespace H.Modules.Dependency;
 
-public static class ProcessExtension
+/// <summary>
+/// 提供关于选项的接口。
+/// </summary>
+public interface IDependencyOptions : ISettable
 {
-
-    public static void ShowProcess(this string uri)
-    {
-        Process.Start(new ProcessStartInfo(uri) { UseShellExecute = true });
-    }
-
-    public static void StartProcess(this string uri)
-    {
-        uri.ShowProcess();
-    }
+    ObservableCollection<IDependencyItem> DependencyItems { get; set; }
 }

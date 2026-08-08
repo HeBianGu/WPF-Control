@@ -7,6 +7,7 @@
 // Licensed under the MIT License (the "License")
 
 using H.Modules.About;
+using H.Modules.Dependency;
 using H.Modules.Guide;
 using H.Modules.Help.Contact;
 using H.Modules.Help.ReleaseVersions;
@@ -28,5 +29,6 @@ namespace H.ApplicationBases.Modules
         void UseSupportOptions(Action<ISupportOptions> action);
         void UseWebsiteOptions(Action<IWebsiteOptions> action);
         void UseSettingSecurityViewOptions(Action<ISettingSecurityViewOption> action);
+        void UseDependencyOptionss(Action<IDependencyOptions> action);
     }
 }

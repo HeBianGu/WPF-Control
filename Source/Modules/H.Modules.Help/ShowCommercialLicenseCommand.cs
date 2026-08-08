@@ -11,24 +11,22 @@
 using H.Common.Attributes;
 using H.Common.Commands;
 using H.Extensions.FontIcon;
-using H.Modules.Help.ReleaseVersions;
-using System.ComponentModel.DataAnnotations;
-using System.Net;
+using H.Modules.Help.CommercialLicense;
 
 namespace H.Modules.Help;
 
-[Icon(FontIcons.History)]
-[Display(Name = "发行说明", Description = "查看软件发行说明")]
-public class ShowReleaseVersionsCommand : ResxDisplayMarkupCommandBase
+[Icon(FontIcons.View)]
+[Display(Name = "商业授权许可协议", Description = "查看软件发行说明")]
+public class ShowCommercialLicenseCommand : ResxDisplayMarkupCommandBase
 {
     public override Task ExecuteAsync(object parameter)
     {
-        Ioc.GetService<IReleaseVersionsService>()?.Show();
+        Ioc.GetService<ICommercialLicenseService>()?.Show();
         return base.ExecuteAsync(parameter);
     }
 
     public override bool CanExecute(object parameter)
     {
-        return base.CanExecute(parameter) && Ioc.Exist<IReleaseVersionsService>();
+        return base.CanExecute(parameter) && Ioc.Exist<ICommercialLicenseService>();
     }
 }

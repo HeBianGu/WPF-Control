@@ -8,6 +8,7 @@
 
 using H.Extensions.ApplicationBase;
 using H.Modules.About;
+using H.Modules.Dependency;
 using H.Modules.Feedback;
 using H.Modules.Guide;
 using H.Modules.Help.Contact;
@@ -72,5 +73,9 @@ namespace H.ApplicationBases.Modules
             this.ConfigOptions(action);
         }
 
+        public void UseDependencyOptionss(Action<IDependencyOptions> action)
+        {
+            this.ConfigOptions(action);
+        }
     }
 }
