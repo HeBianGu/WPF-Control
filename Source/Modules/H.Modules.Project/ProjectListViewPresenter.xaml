@@ -8,7 +8,8 @@
     <DataTemplate DataType="{x:Type local:ProjectListViewPresenter}">
         <DockPanel Margin="2">
             <DockPanel DockPanel.Dock="Top">
-                <Button HorizontalAlignment="Right"
+                <Button Margin="1,1,0,1"
+                        HorizontalAlignment="Right"
                         Command="{c:ShowNewProjectCommand AutoClose=True}"
                         CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self}}"
                         Content="{x:Static p:Resources.Type_ShowNewProjectCommand}"
