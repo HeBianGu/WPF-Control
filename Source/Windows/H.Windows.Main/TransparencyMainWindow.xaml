@@ -66,7 +66,7 @@
                                                     </h:GridSplitterBox.MenuContent>
                                                     <Grid>
                                                         <Grid.RowDefinitions>
-                                                            <RowDefinition Height="{Binding RelativeSource={RelativeSource AncestorType=local:MainWindow}, Path=CaptionHeight}" />
+                                                            <RowDefinition Height="{Binding RelativeSource={RelativeSource AncestorType=local:MainWindowBase}, Path=CaptionHeight}" />
                                                             <RowDefinition />
                                                         </Grid.RowDefinitions>
                                                         <Border

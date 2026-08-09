@@ -13,7 +13,7 @@ using System.Windows.Input;
 
 namespace H.Windows.Main;
 
-public class TransparencyMainWindow : MainWindow
+public class TransparencyMainWindow : MainWindowBase
 {
     static TransparencyMainWindow()
     {

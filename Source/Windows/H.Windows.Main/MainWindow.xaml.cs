@@ -11,11 +11,11 @@ using System.Windows.Controls;
 namespace H.Windows.Main;
 
 [TemplatePart(Name = "PART_AdornerBorder")]
-public class MainWindow : Window, IMainWindow, IAdornerDialogElement
+public class MainWindowBase : Window, IMainWindow, IAdornerDialogElement
 {
-    static MainWindow()
+    static MainWindowBase()
     {
-        DefaultStyleKeyProperty.OverrideMetadata(typeof(MainWindow), new FrameworkPropertyMetadata(typeof(MainWindow)));
+        DefaultStyleKeyProperty.OverrideMetadata(typeof(MainWindowBase), new FrameworkPropertyMetadata(typeof(MainWindowBase)));
     }
 
     private UIElement _adornerBorder;
@@ -32,9 +32,9 @@ public class MainWindow : Window, IMainWindow, IAdornerDialogElement
     }
 
     public static readonly DependencyProperty CaptionHeightProperty =
-        DependencyProperty.Register("CaptionHeight", typeof(double), typeof(MainWindow), new FrameworkPropertyMetadata(45.0, (d, e) =>
+        DependencyProperty.Register("CaptionHeight", typeof(double), typeof(MainWindowBase), new FrameworkPropertyMetadata(45.0, (d, e) =>
         {
-            MainWindow control = d as MainWindow;
+            MainWindowBase control = d as MainWindowBase;
 
             if (control == null) return;
 
@@ -57,9 +57,9 @@ public class MainWindow : Window, IMainWindow, IAdornerDialogElement
     }
 
     public static readonly DependencyProperty CaptionTempateProperty =
-        DependencyProperty.Register("CaptionTempate", typeof(ControlTemplate), typeof(MainWindow), new FrameworkPropertyMetadata(default(ControlTemplate), (d, e) =>
+        DependencyProperty.Register("CaptionTempate", typeof(ControlTemplate), typeof(MainWindowBase), new FrameworkPropertyMetadata(default(ControlTemplate), (d, e) =>
         {
-            MainWindow control = d as MainWindow;
+            MainWindowBase control = d as MainWindowBase;
 
             if (control == null) return;
 
@@ -82,9 +82,9 @@ public class MainWindow : Window, IMainWindow, IAdornerDialogElement
     }
 
     public static readonly DependencyProperty SideTemplateProperty =
-        DependencyProperty.Register("SideTemplate", typeof(ControlTemplate), typeof(MainWindow), new FrameworkPropertyMetadata(default(ControlTemplate), (d, e) =>
+        DependencyProperty.Register("SideTemplate", typeof(ControlTemplate), typeof(MainWindowBase), new FrameworkPropertyMetadata(default(ControlTemplate), (d, e) =>
         {
-            MainWindow control = d as MainWindow;
+            MainWindowBase control = d as MainWindowBase;
 
             if (control == null) return;
 

@@ -1,23 +1,28 @@
-﻿<ResourceDictionary
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:h="https://github.com/HeBianGu"
-    xmlns:local="clr-namespace:H.Modules.Dependency">
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:h="https://github.com/HeBianGu"
+                    xmlns:local="clr-namespace:H.Modules.Dependency">
     <DataTemplate DataType="{x:Type local:DependencyViewPresenter}">
         <Grid>
-            <ItemsControl ItemsSource="{Binding Source={x:Static local:DependencyOptions.Instance},Path=DependencyItems}">
+            <ItemsControl MinWidth="400" ItemsSource="{Binding Source={x:Static local:DependencyOptions.Instance}, Path=DependencyItems}">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <StaticForm SelectObject="{Binding}" UsePropertyView="True"/>
+                        <Border Margin="1" Style="{DynamicResource {x:Static  BorderKeys.Default}}">
+                            <StaticForm SelectObject="{Binding}"
+                                        TitleWidth="60"
+                                        UsePropertyView="True" />
+                        </Border>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
         </Grid>
         <DataTemplate.Triggers>
-            <DataTrigger Binding="{Binding IsVisible}" Value="False">
+            <DataTrigger Binding="{Binding IsVisible}"
+                         Value="False">
                 <Setter Property="Visibility" Value="Collapsed" />
             </DataTrigger>
-            <DataTrigger Binding="{Binding IsAuthority}" Value="False">
+            <DataTrigger Binding="{Binding IsAuthority}"
+                         Value="False">
                 <Setter Property="Visibility" Value="Collapsed" />
             </DataTrigger>
         </DataTemplate.Triggers>
