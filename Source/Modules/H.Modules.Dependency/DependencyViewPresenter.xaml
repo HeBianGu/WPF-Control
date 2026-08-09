@@ -3,19 +3,46 @@
                     xmlns:h="https://github.com/HeBianGu"
                     xmlns:local="clr-namespace:H.Modules.Dependency">
     <DataTemplate DataType="{x:Type local:DependencyViewPresenter}">
-        <Grid>
-            <ItemsControl MinWidth="400" ItemsSource="{Binding Source={x:Static local:DependencyOptions.Instance}, Path=DependencyItems}">
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <ScrollViewer.Resources>
+                <CollectionViewSource x:Key="GroupedDatas"
+                                      Source="{Binding Source={x:Static local:DependencyOptions.Instance}, Path=DependencyItems}">
+                    <CollectionViewSource.GroupDescriptions>
+                        <PropertyGroupDescription PropertyName="GroupName" />
+                    </CollectionViewSource.GroupDescriptions>
+                </CollectionViewSource>
+            </ScrollViewer.Resources>
+            <ItemsControl MinWidth="400"
+                          ItemsSource="{Binding Source={StaticResource GroupedDatas}}">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <Border Margin="1" Style="{DynamicResource {x:Static  BorderKeys.Default}}">
+                        <Border Margin="1"
+                                Style="{DynamicResource {x:Static BorderKeys.Default}}">
                             <StaticForm SelectObject="{Binding}"
                                         TitleWidth="60"
                                         UsePropertyView="True" />
                         </Border>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
+                <ItemsControl.GroupStyle>
+                    <GroupStyle>
+                        <GroupStyle.ContainerStyle>
+                            <Style TargetType="{x:Type GroupItem}">
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="{x:Type GroupItem}">
+                                            <GroupBox Header="{Binding Path=Name}">
+                                                <ItemsPresenter />
+                                            </GroupBox>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </GroupStyle.ContainerStyle>
+                    </GroupStyle>
+                </ItemsControl.GroupStyle>
             </ItemsControl>
-        </Grid>
+        </ScrollViewer>
         <DataTemplate.Triggers>
             <DataTrigger Binding="{Binding IsVisible}"
                          Value="False">
