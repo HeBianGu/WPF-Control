@@ -25,11 +25,12 @@
                 Width="{Binding ElementName=tb, Path=ActualWidth, Mode=OneWay}"
                 IsOpen="{Binding ElementName=tb, Path=IsKeyboardFocused, Mode=OneWay}"
                 PopupAnimation="Slide"
+                AllowsTransparency="True"
                 StaysOpen="True">
                 <Border
                     Margin="0,0,0.5,0"
-                    Background="{DynamicResource {x:Static BrushKeys.Selected}}"
-                    BorderBrush="{DynamicResource {x:Static BrushKeys.ForegroundAssist}}"
+                    Background="{DynamicResource {x:Static BrushKeys.Background}}"
+                    BorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrush}}"
                     BorderThickness="1"
                     CornerRadius="{DynamicResource {x:Static LayoutKeys.CornerRadius}}">
                     <DockPanel>

@@ -94,16 +94,16 @@
 
             <DataTrigger Binding="{Binding State}" Value="Success">
                 <Setter Property="BorderBrush" Value="{DynamicResource {x:Static h:BrushKeys.Green}}" />
-                <Setter Property="TextBlock.Foreground" Value="{DynamicResource {x:Static h:BrushKeys.Green}}" />
+                <!--<Setter Property="TextBlock.Foreground" Value="{DynamicResource {x:Static h:BrushKeys.Green}}" />-->
             </DataTrigger>
 
             <DataTrigger Binding="{Binding State}" Value="Error">
                 <Setter Property="BorderBrush" Value="{DynamicResource {x:Static h:BrushKeys.Red}}" />
-                <Setter Property="TextBlock.Foreground" Value="{DynamicResource {x:Static h:BrushKeys.Red}}" />
+                <!--<Setter Property="TextBlock.Foreground" Value="{DynamicResource {x:Static h:BrushKeys.Red}}" />-->
             </DataTrigger>
             <DataTrigger Binding="{Binding State}" Value="Continue">
                 <Setter Property="BorderBrush" Value="{DynamicResource {x:Static h:BrushKeys.Gray}}" />
-                <Setter Property="TextBlock.Foreground" Value="{DynamicResource {x:Static h:BrushKeys.Gray}}" />
+                <!--<Setter Property="TextBlock.Foreground" Value="{DynamicResource {x:Static h:BrushKeys.Gray}}" />-->
             </DataTrigger>
 
             <DataTrigger Binding="{Binding State}" Value="Wait">

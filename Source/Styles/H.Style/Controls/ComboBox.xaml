@@ -41,11 +41,8 @@
                   Grid.Column="1"
                   HorizontalAlignment="Center"
                   VerticalAlignment="Center"
-                  Data="M 0 0 L 4 4 L 8 0 Z">
-                <Path.Fill>
-                    <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Foreground}}" />
-                </Path.Fill>
-            </Path>
+                  Data="M 0 0 L 4 4 L 8 0 Z"
+                  Fill="{DynamicResource {x:Static BrushKeys.Foreground}}" />
         </Grid>
         <ControlTemplate.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
@@ -80,11 +77,10 @@
                           MaxHeight="{TemplateBinding MaxDropDownHeight}"
                           SnapsToDevicePixels="True">
                         <Border x:Name="DropDownBorder"
-                                BorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrush}}"
-                                CornerRadius="{DynamicResource {x:Static LayoutKeys.CornerRadius}}"
                                 Background="{DynamicResource {x:Static BrushKeys.Background}}"
-                                BorderThickness="1">
-                        </Border>
+                                BorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrush}}"
+                                BorderThickness="1"
+                                CornerRadius="{DynamicResource {x:Static LayoutKeys.CornerRadius}}" />
                         <ScrollViewer Margin="2,4"
                                       SnapsToDevicePixels="True">
                             <ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
@@ -122,12 +118,10 @@
             </Trigger>-->
             <Trigger Property="IsMouseOver" Value="True">
                 <Setter Property="Background" Value="{DynamicResource {x:Static BrushKeys.MouseOver}}" />
-                <Setter Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.BorderBrushTitle}}" />
             </Trigger>
             <Trigger Property="IsDropDownOpen" Value="True">
                 <Setter Property="Foreground" Value="{DynamicResource {x:Static BrushKeys.ForegroundSelect}}" />
                 <Setter Property="Background" Value="{DynamicResource {x:Static BrushKeys.Selected}}" />
-                <Setter Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.ForegroundAssist}}" />
             </Trigger>
             <Trigger Property="IsEnabled" Value="False">
                 <Setter Property="Opacity" Value="0.6" />
@@ -158,11 +152,10 @@
                           MaxHeight="{TemplateBinding MaxDropDownHeight}"
                           SnapsToDevicePixels="True">
                         <Border x:Name="DropDownBorder"
+                                Background="{DynamicResource {x:Static BrushKeys.Background}}"
                                 BorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrush}}"
                                 BorderThickness="1"
-                                Background="{DynamicResource {x:Static BrushKeys.Background}}"
-                                CornerRadius="{DynamicResource {x:Static LayoutKeys.CornerRadius}}">
-                        </Border>
+                                CornerRadius="{DynamicResource {x:Static LayoutKeys.CornerRadius}}" />
                         <ScrollViewer Margin="2,4"
                                       SnapsToDevicePixels="True">
                             <ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
@@ -203,12 +196,10 @@
             </Trigger>-->
             <Trigger Property="IsMouseOver" Value="True">
                 <Setter Property="Background" Value="{DynamicResource {x:Static BrushKeys.MouseOver}}" />
-                <Setter Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.BorderBrushTitle}}" />
             </Trigger>
             <Trigger Property="IsDropDownOpen" Value="True">
                 <Setter Property="Foreground" Value="{DynamicResource {x:Static BrushKeys.ForegroundSelect}}" />
                 <Setter Property="Background" Value="{DynamicResource {x:Static BrushKeys.Selected}}" />
-                <Setter Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.ForegroundAssist}}" />
             </Trigger>
             <Trigger Property="IsEnabled" Value="False">
                 <Setter Property="Opacity" Value="0.6" />
@@ -300,11 +291,7 @@
                     <Condition Property="IsMouseOver" Value="True" />
                     <Condition Property="IsKeyboardFocused" Value="False" />
                 </MultiTrigger.Conditions>
-                <Setter Property="Background">
-                    <Setter.Value>
-                        <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.MouseOver}}" />
-                    </Setter.Value>
-                </Setter>
+                <Setter Property="Background" Value="{DynamicResource {x:Static BrushKeys.MouseOver}}"/>
                 <Setter Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.BorderBrush}}" />
             </MultiTrigger>
             <MultiTrigger>
@@ -313,11 +300,7 @@
                     <Condition Property="IsMouseOver" Value="False" />
                     <Condition Property="IsKeyboardFocused" Value="True" />
                 </MultiTrigger.Conditions>
-                <Setter Property="Background">
-                    <Setter.Value>
-                        <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Selected}}" />
-                    </Setter.Value>
-                </Setter>
+                <Setter Property="Background" Value="{DynamicResource {x:Static BrushKeys.Selected}}"/>
                 <Setter Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.BorderBrush}}" />
             </MultiTrigger>
             <MultiTrigger>
@@ -325,11 +308,7 @@
                     <Condition Property="IsSelected" Value="True" />
                     <Condition Property="IsMouseOver" Value="True" />
                 </MultiTrigger.Conditions>
-                <Setter Property="Background">
-                    <Setter.Value>
-                        <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Selected}}" />
-                    </Setter.Value>
-                </Setter>
+                <Setter Property="Background" Value="{DynamicResource {x:Static BrushKeys.Selected}}"/>
                 <Setter Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.BorderBrushTitle}}" />
             </MultiTrigger>
             <MultiTrigger>
@@ -338,11 +317,7 @@
                     <Condition Property="IsMouseOver" Value="False" />
                     <Condition Property="IsKeyboardFocused" Value="False" />
                 </MultiTrigger.Conditions>
-                <Setter Property="Background">
-                    <Setter.Value>
-                        <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Selected}}" />
-                    </Setter.Value>
-                </Setter>
+                <Setter Property="Background" Value="{DynamicResource {x:Static BrushKeys.Selected}}"/>
                 <Setter Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.BorderBrush}}" />
             </MultiTrigger>
             <MultiTrigger>
@@ -359,11 +334,7 @@
                     <Condition Property="IsMouseOver" Value="True" />
                     <Condition Property="IsKeyboardFocused" Value="True" />
                 </MultiTrigger.Conditions>
-                <Setter Property="Background">
-                    <Setter.Value>
-                        <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.MouseOver}}" />
-                    </Setter.Value>
-                </Setter>
+                <Setter Property="Background" Value="{DynamicResource {x:Static BrushKeys.MouseOver}}"/>
                 <Setter Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.BorderBrushTitle}}" />
             </MultiTrigger>
             <Trigger Property="IsEnabled" Value="False">

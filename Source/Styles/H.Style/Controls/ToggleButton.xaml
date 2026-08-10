@@ -25,19 +25,6 @@
                         </Storyboard>
                     </VisualState>
                     <VisualState x:Name="Pressed" />
-                    <!--<VisualState x:Name="Disabled">
-                        <Storyboard>
-                            <ColorAnimationUsingKeyFrames Storyboard.TargetName="Border" Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)">
-                                <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource {x:Static ColorKeys.ForegroundDisabled}}" />
-                            </ColorAnimationUsingKeyFrames>
-                            <ColorAnimationUsingKeyFrames Storyboard.TargetName="Arrow" Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)">
-                                <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource {x:Static ColorKeys.ForegroundDisabled}}" />
-                            </ColorAnimationUsingKeyFrames>
-                            <ColorAnimationUsingKeyFrames Storyboard.TargetName="Border" Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)">
-                                <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource {x:Static ColorKeys.ForegroundDisabled}}" />
-                            </ColorAnimationUsingKeyFrames>
-                        </Storyboard>
-                    </VisualState>-->
                 </VisualStateGroup>
                 <VisualStateGroup x:Name="CheckStates">
                     <VisualState x:Name="Checked">
@@ -95,10 +82,12 @@
         <Setter Property="Cattach.GuideTitle" Value="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Content}" />
         <Setter Property="Cattach.GuideData" Value="{Binding RelativeSource={RelativeSource Mode=Self}, Path=ToolTip}" />
 
-        <Setter Property="Cattach.CheckedForeground" Value="{DynamicResource {x:Static BrushKeys.Foreground}}" />
+        <Setter Property="Cattach.CheckedForeground" Value="{DynamicResource {x:Static BrushKeys.ForegroundSelect}}" />
         <Setter Property="Cattach.UncheckForeground" Value="{DynamicResource {x:Static BrushKeys.Foreground}}" />
-        <Setter Property="Cattach.CheckedBackground" Value="{DynamicResource {x:Static BrushKeys.Foreground}}" />
-        <Setter Property="Cattach.UncheckedBackground" Value="{DynamicResource {x:Static BrushKeys.Foreground}}" />
+        <Setter Property="Cattach.CheckedBackground" Value="{DynamicResource {x:Static BrushKeys.Selected}}" />
+        <Setter Property="Cattach.UncheckedBackground" Value="{DynamicResource {x:Static BrushKeys.Background}}" />
+        <Setter Property="Cattach.CheckedBorderBrush" Value="{DynamicResource {x:Static BrushKeys.BorderBrushTitle}}" />
+        <Setter Property="Cattach.UnCheckedBorderBrush" Value="{DynamicResource {x:Static BrushKeys.BorderBrush}}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ToggleButton}">
@@ -111,22 +100,27 @@
         </Setter>
         <Style.Triggers>
             <Trigger Property="IsChecked" Value="True">
-                <Setter Property="Background" Value="{DynamicResource {x:Static BrushKeys.Selected}}" />
-                <Setter Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.BorderBrushTitle}}" />
-                <Setter Property="Foreground" Value="{DynamicResource {x:Static BrushKeys.ForegroundSelect}}" />
+                <Setter Property="BorderBrush" Value="{Binding RelativeSource={RelativeSource Mode=Self}, Path=(Cattach.CheckedBorderBrush)}" />
+                <Setter Property="Foreground" Value="{Binding RelativeSource={RelativeSource Mode=Self}, Path=(Cattach.CheckedForeground)}" />
+                <Setter Property="Background" Value="{Binding RelativeSource={RelativeSource Mode=Self}, Path=(Cattach.CheckedBackground)}" />
+            </Trigger>
+            <Trigger Property="IsChecked" Value="False">
+                <Setter Property="BorderBrush" Value="{Binding RelativeSource={RelativeSource Mode=Self}, Path=(Cattach.UnCheckedBorderBrush)}" />
+                <Setter Property="Foreground" Value="{Binding RelativeSource={RelativeSource Mode=Self}, Path=(Cattach.UncheckForeground)}" />
+                <Setter Property="Background" Value="{Binding RelativeSource={RelativeSource Mode=Self}, Path=(Cattach.UncheckedBackground)}" />
             </Trigger>
             <Trigger Property="IsMouseOver" Value="True">
                 <Setter Property="Background" Value="{DynamicResource {x:Static BrushKeys.MouseOver}}" />
                 <!--<Setter Property="Foreground" Value="{DynamicResource {x:Static BrushKeys.ForegroundTitle}}" />-->
             </Trigger>
-            <MultiTrigger>
+            <!--<MultiTrigger>
                 <MultiTrigger.Conditions>
                     <Condition Property="IsChecked" Value="True" />
                     <Condition Property="IsMouseOver" Value="True" />
                 </MultiTrigger.Conditions>
                 <Setter Property="Background" Value="{DynamicResource {x:Static BrushKeys.BorderBrush}}"/>
                 <Setter Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.BorderBrushTitle}}" />
-            </MultiTrigger>
+            </MultiTrigger>-->
             <Trigger Property="IsPressed" Value="True">
                 <Setter Property="Opacity" Value="0.6" />
             </Trigger>
