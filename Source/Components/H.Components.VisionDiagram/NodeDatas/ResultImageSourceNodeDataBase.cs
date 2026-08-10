@@ -13,7 +13,6 @@ namespace H.Components.VisionDiagram.NodeDatas;
 public interface IResultImageSourceNodeData : IDiagramableNodeData
 {
     ImageSource ResultImageSource { get; set; }
-
     ObservableCollection<IShape> ResultShapes { get; set; }
 }
 
@@ -56,7 +55,6 @@ public abstract class ResultImageSourceNodeDataBase : SelectableFromNodeDataBase
             RaisePropertyChanged();
         }
     }
-
 
     public override void Clear()
     {

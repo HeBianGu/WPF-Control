@@ -15,14 +15,10 @@ public class FlowableResult : IFlowableResult
         this.Message = message;
     }
     public string Message { get; }
-
     public FlowableResultState State { get; set; }
-
-
     public static FlowableResult Continue { get; } = new FlowableResult("阻止流程") { State = FlowableResultState.Continue };
     public static FlowableResult OK { get; } = new FlowableResult("运行成功") { State = FlowableResultState.OK };
     public static FlowableResult Error { get; } = new FlowableResult("运行错误") { State = FlowableResultState.Error };
-
 }
 
 public class FlowableResult<T> : FlowableResult

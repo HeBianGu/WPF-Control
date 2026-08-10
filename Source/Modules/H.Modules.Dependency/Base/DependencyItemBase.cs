@@ -15,6 +15,8 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
+using H.Controls.Form.Attributes;
+using H.Controls.Form.PropertyItem.TextPropertyItems;
 using H.Extensions.Mvvm.ViewModels.Base;
 
 namespace H.Modules.Dependency.Base;
@@ -53,6 +55,7 @@ public class DependencyItemBase : DisplayBindableBase, IDependencyItem
         }
     }
     private string _Uri;
+    [PropertyItem(typeof(HyperlinkPropertyItem))]
     [Display(Name = "地址")]
     public string Uri
     {

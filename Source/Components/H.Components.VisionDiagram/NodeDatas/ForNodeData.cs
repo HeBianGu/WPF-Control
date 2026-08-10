@@ -8,7 +8,9 @@
 
 namespace H.Components.VisionDiagram.NodeDatas;
 
-public abstract class ForNodeDataBase<T> : WaitFromVisionNodeData<T> where T : class, IVisionImage
+[Icon(FontIcons.Dial6)]
+[Display(Name = "循环次数", GroupName = "逻辑模块", Description = "设置像素阈值，根据阈值执行不同路径逻辑", Order = 20)]
+public class ForNodeData : InhertImageVisionNodeDataBase
 {
     private int _from = 0;
     [Tab(VisionTabNames.RunParameters)]
@@ -51,14 +53,14 @@ public abstract class ForNodeDataBase<T> : WaitFromVisionNodeData<T> where T : c
     }
 
 
-    protected override FlowableResult<T> Invoke(T fromImage)
+    protected override IFlowableResult InvokeInhert()
     {
         for (int i = this.From; i < this.To; i++)
         {
             this.CurrentIndex = i + this.From;
-            this.InvokeFrameMatAsync(fromImage, false).Wait();
+            //this.InvokeFrameMatAsync(false).Wait();
         }
-        return this.OK(fromImage);
+        return this.OK();
     }
 }
 

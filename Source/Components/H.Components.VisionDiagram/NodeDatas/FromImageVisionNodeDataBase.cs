@@ -11,6 +11,7 @@ using H.Controls.Form.PropertyItem.Attribute;
 using H.Iocable;
 
 namespace H.Components.VisionDiagram.NodeDatas;
+
 public abstract class FromImageVisionNodeDataBase<T> : ResultDisplayVisionNodeDataBase<T> where T : class, IVisionImage
 {
     private IExpressionKey _fromImageExpression;

@@ -16,9 +16,11 @@ public interface IConditionNodeData : IDiagramableNodeData, IDisplayBindable
     IEnumerable<INodeData> AllFromAndThisNodeDatas { get; }
 }
 
-public abstract class ConditionNodeData<T> : WaitFromVisionNodeData<T>, IOnDiagramDeserialized, IConditionNodeData where T : class, IVisionImage
+[Icon(FontIcons.Dial6)]
+[Display(Name = "条件分支", GroupName = "逻辑模块", Description = "设置像素阈值，根据阈值执行不同路径逻辑", Order = 20)]
+public class ConditionNodeData : InhertImageVisionNodeDataBase, IOnDiagramDeserialized, IConditionNodeData
 {
-    protected ConditionNodeData()
+    public ConditionNodeData()
     {
         this.UseInvokedPart = false;
     }
@@ -81,6 +83,11 @@ public abstract class ConditionNodeData<T> : WaitFromVisionNodeData<T>, IOnDiagr
                 yield return new Tuple<IFlowablePortData, Predicate<IFlowableLinkData>>(item, predicate);
             }
         }
+    }
+
+    protected override IFlowableResult InvokeInhert()
+    {
+        return this.OK();
     }
 }
 

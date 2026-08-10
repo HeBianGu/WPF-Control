@@ -11,7 +11,7 @@ using H.Controls.Form.PropertyItem.Attribute;
 using H.Controls.Form.PropertyItem.ComboBoxPropertyItems;
 
 namespace H.Components.VisionDiagram.NodeDatas;
-public abstract class ScalerSelectableVisionNodeData<T> : NinePointSelectableVisionNodeData<T>, IVisionNodeData<T> where T : class, IVisionImage
+public abstract class ScalerSelectableVisionNodeData<T> : FromImageVisionNodeDataBase<T>, IVisionNodeData<T> where T : class, IVisionImage
 {
     private IScalerNodeData _ScalerNodeData;
     [GetMethodNameSource(nameof(GetScalerNodeDatas))]

@@ -102,9 +102,14 @@ public abstract class VisionNodeData<T> : DemoNodeDataBase, IVisionNodeData<T> w
 
     public override void Clear()
     {
+        this.DisopseResultImage();
+        base.Clear();
+    }
+
+    protected virtual void DisopseResultImage()
+    {
         this.ResultImage?.Dispose();
         this.ResultImage = default;
-        base.Clear();
     }
 
     protected virtual FlowableResult<T> InvokeAction(Func<FlowableResult<T>> invoke)
@@ -115,7 +120,7 @@ public abstract class VisionNodeData<T> : DemoNodeDataBase, IVisionNodeData<T> w
         this.ResultImage = result.Value;
         if (this.UseResultImageSource)
         {
-            this.ResultImageSource = result.Value?.ToImageSource();
+            this.UpdateResultImageSource();
             Thread.Sleep(this.PreviewMillisecondsDelay);
         }
         if (this.ResultPresenter == null)
@@ -123,12 +128,17 @@ public abstract class VisionNodeData<T> : DemoNodeDataBase, IVisionNodeData<T> w
         return result;
     }
 
+    protected virtual void UpdateResultImageSource()
+    {
+        this.ResultImageSource = this.ResultImage?.ToImageSource();
+    }
+
     protected abstract FlowableResult<T> Invoke(IStartVisionNodeData srcImageNodeData, IVisionNodeData from, IFlowableDiagramData diagram);
 
     public override void Dispose()
     {
+        this.Clear();
         base.Dispose();
-        this.ResultImage?.Dispose();
     }
 
     protected virtual FlowableResult<T> OK(T mat, string message = "运行成功")
