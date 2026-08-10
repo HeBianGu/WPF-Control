@@ -112,7 +112,7 @@ public class SeamlessCloneBackground : OpenCVNodeDataBase, ITakeoffGroupableNode
             return;
         //  Do ：记录输出日志(非必选，只是在输出日志可以看到运行过程)
         this.ResultImage = mat;
-        this.ResultImageSource = mat.ToImageSource();
+        //this.ResultImageSource = mat.ToImageSource();
         this.Message = message;
         if (this.DiagramData is IFlowableDiagramData diagram)
             diagram?.OnInvokedPart(this);

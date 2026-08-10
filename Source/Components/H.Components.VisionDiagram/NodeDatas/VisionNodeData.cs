@@ -11,18 +11,29 @@ using H.Controls.Diagram.Presenter.Extensions;
 using H.Iocable;
 
 namespace H.Components.VisionDiagram.NodeDatas;
-public abstract class VisionNodeData<T> : DemoNodeDataBase, IVisionNodeData<T> where T : class, IVisionImage
+public abstract class VisionNodeData<T> : VisionNodeDataBase, IVisionNodeData<T> where T : class, IVisionImage
 {
     ~VisionNodeData()
     {
         this.Dispose();
     }
 
+    private T _ResultImage;
     [JsonIgnore]
     [Expressionable]
     [Tab(VisionTabNames.ResultParameters)]
     [Display(Name = "图像结果", GroupName = VisionTabNames.ResultParameters, Description = "当前流程运行完返回的图像结果")]
-    public virtual T ResultImage { get; set; }
+    public virtual T ResultImage
+    {
+        get { return _ResultImage; }
+        set
+        {
+            _ResultImage = value;
+            RaisePropertyChanged();
+            this.InvalidateResultImageSource();
+        }
+    }
+
 
     private int _InvokeTotal;
     [ReadOnly(true)]
@@ -40,6 +51,11 @@ public abstract class VisionNodeData<T> : DemoNodeDataBase, IVisionNodeData<T> w
     }
 
     IVisionImage IVisionNodeData.VisionImage => this.ResultImage;
+
+    protected override ImageSource CreateImageSource()
+    {
+        return this.ResultImage?.ToImageSource();
+    }
 
     public override IFlowableResult Invoke(IFlowableLinkData previors, IFlowableDiagramData diagram)
     {
@@ -102,11 +118,11 @@ public abstract class VisionNodeData<T> : DemoNodeDataBase, IVisionNodeData<T> w
 
     public override void Clear()
     {
-        this.DisopseResultImage();
+        this.ResultImageDisopse();
         base.Clear();
     }
 
-    protected virtual void DisopseResultImage()
+    protected virtual void ResultImageDisopse()
     {
         this.ResultImage?.Dispose();
         this.ResultImage = default;
@@ -118,19 +134,14 @@ public abstract class VisionNodeData<T> : DemoNodeDataBase, IVisionNodeData<T> w
         if (result == null)
             return result;
         this.ResultImage = result.Value;
-        if (this.UseResultImageSource)
-        {
-            this.UpdateResultImageSource();
-            Thread.Sleep(this.PreviewMillisecondsDelay);
-        }
+        //if (this.UseResultImageSource)
+        //{
+        //    this.InvalidateResultImageSource();
+        //    Thread.Sleep(this.PreviewMillisecondsDelay);
+        //}
         if (this.ResultPresenter == null)
             this.ResultPresenter = this.CreateResultPresenter();
         return result;
-    }
-
-    protected virtual void UpdateResultImageSource()
-    {
-        this.ResultImageSource = this.ResultImage?.ToImageSource();
     }
 
     protected abstract FlowableResult<T> Invoke(IStartVisionNodeData srcImageNodeData, IVisionNodeData from, IFlowableDiagramData diagram);
@@ -195,7 +206,7 @@ public abstract class VisionNodeData<T> : DemoNodeDataBase, IVisionNodeData<T> w
             disposable.Dispose();
         this.ResultImage = (T)frameMat.Clone();
         //this.SrcMat = this.Mat;
-        this.ResultImageSource = frameMat.ToImageSource();
+        //this.ResultImageSource = frameMat.ToImageSource();
         if (invokeThis)
             invoked?.Invoke(this);
         var allToNodes = this.GetAllToNodeDatas(this.DiagramData).OfType<IFlowableNodeData>();

@@ -12,7 +12,7 @@ using H.Controls.Diagram.Presenter.LinkDatas;
 using H.Controls.Diagram.Presenter.PortDatas;
 
 namespace H.Components.VisionDiagram.Presenters;
-public abstract class StyleNodeDataBase : ResultImageSourceNodeDataBase
+public abstract class StyleNodeDataBase : SelectableFromNodeDataBase
 {
     [JsonIgnore]
     [Tab(VisionTabNames.DisplayParameters)]

@@ -42,7 +42,7 @@ public interface IROINodeData : IDiagramableNodeData
     Rect ROI { get; set; }
 }
 
-public abstract class ROINodeData<T> : WaitFromVisionNodeData<T>, IROINodeData where T : class, IVisionImage
+public abstract class ROINodeData<T> : ScalerSelectableVisionNodeData<T>, IROINodeData where T : class, IVisionImage
 {
     protected override IEnumerable<IViewState> CreateViewStates()
     {

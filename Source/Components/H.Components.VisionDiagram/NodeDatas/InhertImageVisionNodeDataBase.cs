@@ -17,9 +17,6 @@ public abstract class InhertImageVisionNodeDataBase : ResultDisplayVisionNodeDat
     protected override FlowableResult<IVisionImage> Invoke(IStartVisionNodeData srcImageNodeData, IVisionNodeData from, IFlowableDiagramData diagram)
     {
         var result = this.InvokeInhert();
-        // 直接从上一个节点继承图像源
-        if (from is IResultImageSourceNodeData resultImageSourceNodeData)
-            this.ResultImageSource = resultImageSourceNodeData.ResultImageSource;
         return new FlowableResult<IVisionImage>(from.VisionImage, result.Message)
         {
             State = result.State
@@ -28,16 +25,10 @@ public abstract class InhertImageVisionNodeDataBase : ResultDisplayVisionNodeDat
 
     protected abstract IFlowableResult InvokeInhert();
 
-    protected override void DisopseResultImage()
+    protected override void ResultImageDisopse()
     {
         // 从继承图像的节点不需要释放图像资源，因为它们不拥有图像资源的所有权
         //base.DisopseResultImage();
-    }
-
-    protected override void UpdateResultImageSource()
-    {
-        // 从继承图像的节点不需要更新图像源，直接从上一个节点继承图像源即可
-        //base.UpdateResultImageSource();
     }
 }
 

@@ -32,21 +32,11 @@ public interface IVisionMessage
     string Message { get; set; }
 
     /// <summary>
-    /// 获取或设置源文件路径。
-    /// </summary>
-    string SrcFilePath { get; set; }
-
-    /// <summary>
     /// 获取或设置消息类型。
     /// </summary>
     string Type { get; set; }
 
     FlowableState State { get; set; }
 
-    /// <summary>
-    /// 获取或设置结果图像源。
-    /// </summary>
-    ImageSource ResultImageSource { get; set; }
-
-    IResultPresenterNodeData ResultNodeData { get; set; }
+    IVisionNodeData ResultNodeData { get; set; }
 }

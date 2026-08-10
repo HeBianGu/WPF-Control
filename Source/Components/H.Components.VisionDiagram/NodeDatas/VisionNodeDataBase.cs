@@ -8,7 +8,7 @@
 
 namespace H.Components.VisionDiagram.NodeDatas;
 
-public abstract class VisionNodeDataBase : StateNodeDataBase
+public abstract class VisionNodeDataBase : ResultImageSourceNodeDataBase
 {
     ~VisionNodeDataBase()
     {

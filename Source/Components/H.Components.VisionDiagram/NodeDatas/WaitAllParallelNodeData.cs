@@ -13,7 +13,7 @@ namespace H.Components.VisionDiagram.NodeDatas;
 /// 等待所有并行节点执行完再执行后续逻辑
 /// </summary>
 /// <typeparam name="T"></typeparam>
-public abstract class WaitAllParallelNodeData<T> : WaitFromVisionNodeData<T> where T : class, IVisionImage
+public abstract class WaitAllParallelNodeData<T> : ScalerSelectableVisionNodeData<T> where T : class, IVisionImage
 {
     private int _resultCount = 0;
     protected virtual void OnParallelFromNodeDataInvoke(IStartVisionNodeData srcImageNodeData, IVisionNodeData from, IFlowableDiagramData diagram)

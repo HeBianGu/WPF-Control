@@ -9,7 +9,7 @@
 using H.Components.VisionDiagram.Base;
 
 namespace H.Components.VisionDiagram.NodeDatas;
-public abstract class ShowPropertyNodeDataBase : VisionNodeDataBase
+public abstract class ShowPropertyNodeDataBase : StateNodeDataBase
 {
     public override object GetPropertyPresenter()
     {

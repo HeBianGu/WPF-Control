@@ -10,9 +10,8 @@ using H.Components.VisionDiagram.Base;
 
 namespace H.Components.VisionDiagram.NodeDatas;
 
-public abstract class WaitFromVisionNodeData<T> : ScalerSelectableVisionNodeData<T>, IVisionNodeData<T> where T : class, IVisionImage
+public abstract class WaitFromVisionNodeData : DemoNodeDataBase
 {
-
     private bool _useWaitFrom = false;
     [DefaultValue(false)]
     [Tab(VisionTabNames.FlowParameters)]
@@ -27,22 +26,21 @@ public abstract class WaitFromVisionNodeData<T> : ScalerSelectableVisionNodeData
         }
     }
 
-    private List<IVisionNodeData> _waitFromCache = new List<IVisionNodeData>();
-    protected override FlowableResult<T> Invoke(IStartVisionNodeData srcImageNodeData, IVisionNodeData from, IFlowableDiagramData diagram)
+    private List<IFlowableLinkData> _waitFromCache = new List<IFlowableLinkData>();
+    public override IFlowableResult Invoke(IFlowableLinkData previors, IFlowableDiagramData diagram)
     {
         if (this.UseWaitFrom)
         {
             int count = this.FromNodeDatas.Count();
-            this._waitFromCache.Add(from);
-            var vimage = this.GetVisionImage(from);
+            this._waitFromCache.Add(previors);
             if (count > 1 && this._waitFromCache.Count < count)
-                return this.Continue(vimage, "启用等待输入,等待所有输入节点执行完毕");
+                return this.Continue("启用等待输入,等待所有输入节点执行完毕");
             else
             {
                 this._waitFromCache.Clear();
             }
         }
-        return base.Invoke(srcImageNodeData, from, diagram);
+        return base.Invoke(previors, diagram);
     }
 }
 

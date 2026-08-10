@@ -9,7 +9,7 @@
 using H.Controls.Form.PropertyItem.Attribute;
 
 namespace H.Components.VisionDiagram.NodeDatas;
-public abstract class ForeachNodeDataBase<T, V> : WaitFromVisionNodeData<T> where T : class, IVisionImage
+public abstract class ForeachNodeDataBase<T, V> : ScalerSelectableVisionNodeData<T> where T : class, IVisionImage
 {
     private IExpressionKey _ItemSourceExpression;
     [GetMethodNameSource(nameof(GetItemSourceExpressions))]
