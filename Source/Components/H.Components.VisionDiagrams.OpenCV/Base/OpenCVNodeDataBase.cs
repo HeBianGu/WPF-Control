@@ -14,6 +14,8 @@ public abstract class OpenCVNodeDataBase : ROINodeData<IMatImage>, IOpenCVNodeDa
 {
     protected override FlowableResult<IMatImage> Invoke(IMatImage fromImage)
     {
+        if (fromImage?.IsValid()!=true)
+            return this.Error(fromImage.ToMatImage(), "输入图像不合法");
         return this.Invoke(fromImage.Mat);
     }
 

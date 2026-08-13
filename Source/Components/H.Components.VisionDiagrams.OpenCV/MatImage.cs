@@ -50,6 +50,8 @@ public class MatImage : IVisionImage, IMatImage
 
     public bool IsValid()
     {
+        if (this.Mat == null)
+            return false;
         return this.Mat.IsValid();
     }
 
