@@ -222,4 +222,15 @@ public abstract class VisionNodeData<T> : VisionNodeDataBase, IVisionNodeData<T>
         await Task.Delay(this.InvokeMillisecondsDelay);
         return true;
     }
+
+    public virtual IEnumerable<IExpression> GetExpressions(Predicate<object> predicate = null)
+    {
+        var propertyExpressions = this.GetPropertyInfoExpressions(this.Text, predicate);
+        foreach (var propertyExpression in propertyExpressions)
+        {
+            yield return propertyExpression;
+            foreach (var item in propertyExpression.GetVisionDefineChildrenExpressions())
+                yield return item;
+        }
+    }
 }

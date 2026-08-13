@@ -18,7 +18,6 @@ public interface IRotatedRectShape : IShape, ITitleShape, IBoundingBoxShape
     double Angle { get; set; }
     Size Size { get; set; }
     Point Center { get; set; }
-
     Point[] GetPoints();
 
 }

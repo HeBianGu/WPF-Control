@@ -6,10 +6,24 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
+using System.Windows.Resources;
+
 namespace H.Controls.Diagram.Presenter.Expressions;
 
 public class Expression : BindableBase, IExpression
 {
+    public Expression()
+    {
+        
+    }
+
+    public Expression(string name,string groupName,object value )
+    {
+        this.Name = name;
+        this.GroupName = groupName;
+        this.Value = value;
+        this.DataType = value.GetType().FullName;
+    }
     private string _GroupName;
     [ReadOnly(true)]
     [Display(Name = "分组")]

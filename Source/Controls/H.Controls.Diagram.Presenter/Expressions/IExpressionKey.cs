@@ -19,5 +19,8 @@ public interface IExpressionKey
     /// 分组名称
     /// </summary>
     string GroupName { get; set; }
+
+
+    string DisplayName { get; }
 }
 

@@ -11,7 +11,6 @@ using H.Controls.ShapeBox.Shapes;
 using H.Controls.ShapeBox.Shapes.Base;
 
 namespace H.Components.VisionDiagram.Extensions;
-
 public static partial class ResultDetectBoxExtension
 {
     public static IEnumerable<ResultDetectBox> GetDetectBoxLabels(this IEnumerable<DefectBox> defectBoxes, List<string> classNames)
