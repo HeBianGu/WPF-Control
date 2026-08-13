@@ -22,7 +22,7 @@ public sealed class PluginAttribute : Attribute
     {
         Name = name;
         GroupName = groupName;
-        Decription = decription;
+        Description = decription;
     }
 
     public string Name { get; set; }

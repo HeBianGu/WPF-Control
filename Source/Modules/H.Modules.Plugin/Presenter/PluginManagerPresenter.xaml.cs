@@ -24,7 +24,7 @@ public class PluginManagerPresenter : DisplayBindableBase, IPluginManagerPresent
     public PluginManagerPresenter(IOptions<PluginOptions> options)
     {
         _options = options;
-        this.PluginDatas = this.GetPluginDatas().ToObservable();
+        this.Load();
     }
 
     private ObservableCollection<PluginData> _PluginDatas = new ObservableCollection<PluginData>();
@@ -36,6 +36,11 @@ public class PluginManagerPresenter : DisplayBindableBase, IPluginManagerPresent
             _PluginDatas = value;
             RaisePropertyChanged();
         }
+    }
+
+    public void Load()
+    {
+        this.PluginDatas = this.GetPluginDatas().ToObservable();
     }
 
     private IEnumerable<PluginData> GetPluginDatas()

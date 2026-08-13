@@ -8,7 +8,9 @@
 
 using H.Common.Attributes;
 using H.Extensions.FontIcon;
+using H.Iocable;
 using H.Modules.Plugin.Base;
+using H.Services.Message;
 using H.Services.Message.Dialog.Commands;
 using H.Services.Setting;
 

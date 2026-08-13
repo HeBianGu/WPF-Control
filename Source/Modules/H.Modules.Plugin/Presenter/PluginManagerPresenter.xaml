@@ -32,9 +32,9 @@
                                 <Setter Property="Template">
                                     <Setter.Value>
                                         <ControlTemplate TargetType="{x:Type GroupItem}">
-                                            <GroupBox Header="{Binding Path=Name}">
+                                            <Expander Margin="1" IsExpanded="False" Header="{Binding Path=Name}">
                                                 <ItemsPresenter />
-                                            </GroupBox>
+                                            </Expander>
                                         </ControlTemplate>
                                     </Setter.Value>
                                 </Setter>

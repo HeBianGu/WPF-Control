@@ -26,6 +26,7 @@ public class PluginData
     public string Name { get; set; }
     [Display(Name = "说明")]
     public string Description { get; set; }
+    [Browsable(false)]
     [Display(Name = "分组")]
     public string GroupName { get; set; }
     [Display(Name = "路径")]

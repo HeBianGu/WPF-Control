@@ -93,7 +93,7 @@ public class ObjectPropertyItem<T> : BindingVisiblablePropertyItemBase, IDataErr
                 this.RemoveValueChanged();
                 this.SetValue(value);
                 this.AddValueChanged();
-                System.Diagnostics.Debug.WriteLine(this.PropertyInfo.Name);
+                //System.Diagnostics.Debug.WriteLine(this.PropertyInfo.Name);
                 if (this.Obj is IPropertyItemValueChanged valueChanged)
                     valueChanged?.OnPropertyVlaueChanged(this.PropertyInfo.Name, o, value);
             }
