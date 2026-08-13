@@ -113,7 +113,7 @@ public interface IScalerNodeData
     string GetWorldDistance(double px);
 }
 
-public abstract class SrcFilesVisionNodeData<T> : StartVisionNodeData<T>, ISrcFilesVisionNodeData<T> where T : class, IVisionImage
+public abstract class SrcFilesVisionNodeData<T> : StartVisionNodeData<T>, ISrcFilesVisionNodeData<T>, ISrcFilesNodeData where T : class, IVisionImage
 {
     private SrcFileLoopMode _SrcFileLoopMode;
     /// <summary>
@@ -169,6 +169,13 @@ public abstract class SrcFilesVisionNodeData<T> : StartVisionNodeData<T>, ISrcFi
             this.SrcFilePath = value?.FirstOrDefault();
             RaisePropertyChanged();
         }
+    }
+
+    public override INodeData Create()
+    {
+        var r = base.Create() as SrcFilesVisionNodeData<T>;
+        r.SrcFilePaths = this.SrcFilePaths.Select(x => new SrcFilePathData() { SrcFilePath = x.SrcFilePath }).ToObservable();
+        return r;
     }
 
     /// <summary>
@@ -260,12 +267,12 @@ public abstract class SrcFilesVisionNodeData<T> : StartVisionNodeData<T>, ISrcFi
     {
         if (File.Exists(this.SrcFilePath?.SrcFilePath) == false)
         {
-            bool? r = await IocMessage.Form?.ShowEdit(this, x => x.Title = $"{this.Name}:请先选择文件", null, x =>
-            {
-                x.UsePropertyNames = nameof(SrcFilePath);
-            });
-            if (r != true)
-                return this.Error("未设置源文件地址");
+            //bool? r = await IocMessage.Form?.ShowEdit(this, x => x.Title = $"{this.Name}:请先选择文件", null, x =>
+            //{
+            //    x.UsePropertyNames = nameof(SrcFilePath);
+            //});
+            //if (r != true)
+            return this.Error("未设置源文件地址");
         }
         return await base.BeforeInvokeAsync(previors, diagram);
     }
@@ -290,6 +297,11 @@ public abstract class SrcFilesVisionNodeData<T> : StartVisionNodeData<T>, ISrcFi
         this.SrcFilePath = this.SrcFilePath;
         message = null;
         return this.SrcFilePath != null;
+    }
+
+    public override object Clone()
+    {
+        return base.Clone();
     }
 }
 

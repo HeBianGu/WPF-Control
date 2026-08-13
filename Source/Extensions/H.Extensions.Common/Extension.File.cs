@@ -57,7 +57,7 @@ public static partial class FileExtension
         bmp.CacheOption = BitmapCacheOption.OnLoad;
         bmp.CreateOptions = BitmapCreateOptions.PreservePixelFormat;
         bmp.EndInit();
-        if (bmp.CanFreeze) 
+        if (bmp.CanFreeze)
             bmp.Freeze();
         return bmp;
     }
@@ -157,6 +157,14 @@ public static partial class FileExtension
             return new string[0];
         return Directory.GetFiles(folderPath, searchPattern, searchOption);
     }
+
+    public static string[] GetDirectorys(this string folderPath)
+    {
+        if (!Directory.Exists(folderPath))
+            return new string[0];
+        return Directory.GetDirectories(folderPath);
+    }
+
 
     public static string[] GetFiles(this string folderPath)
     {
@@ -466,6 +474,13 @@ public class FileEx
         else
             result = KSize.ToString() + "Byte";
         return isMinus ? "-" + result : result;
+    }
+
+    public DateTime? GetLastAccessTime()
+    {
+        if (!File.Exists(this.FullPath))
+            return null;
+        return File.GetLastAccessTime(this.FullPath);
     }
 }
 

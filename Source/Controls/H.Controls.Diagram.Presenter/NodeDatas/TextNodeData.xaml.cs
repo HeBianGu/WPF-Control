@@ -162,4 +162,11 @@ public class TextNodeData : PortableNodeData, ITextNodeData
             textNodeData.FontWeight = this.FontWeight;
         }
     }
+
+    public override INodeData Create()
+    {
+        var r = base.Create() as TextNodeData;
+        r.Text = this.Text;
+        return r;
+    }
 }

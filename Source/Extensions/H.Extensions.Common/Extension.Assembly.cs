@@ -31,13 +31,15 @@ public static class AssemblyExtension
     {
         var puginPath = dllFolderPath;
         var dlls = puginPath.GetFiles("*.dll", searchOption);
+        List<Assembly> result = new List<Assembly>();
         foreach (var dll in dlls)
         {
             var assembly = Assembly.LoadFrom(dll);
             if (assembly == null)
                 continue;
-            yield return assembly;
+            result.Add(assembly);
         }
+        return result;
     }
 
     public static IEnumerable<T> GetInstances<T>(this string dllFolderPath, Predicate<Assembly> predicate = null)

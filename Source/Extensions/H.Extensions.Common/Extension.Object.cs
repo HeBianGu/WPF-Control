@@ -389,7 +389,7 @@ public static class ObjectExtension
         foreach (PropertyInfo p in ps)
         {
             if (!typeof(IList).IsAssignableFrom(p.PropertyType))
-                return;
+                continue;
             if (p.GetValue(to) is IList list && p.GetValue(from) is IList old)
             {
                 list.Clear();
