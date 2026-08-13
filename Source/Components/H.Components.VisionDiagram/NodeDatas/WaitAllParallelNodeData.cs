@@ -6,8 +6,6 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
-using H.Components.VisionDiagram.Base;
-
 namespace H.Components.VisionDiagram.NodeDatas;
 /// <summary>
 /// 等待所有并行节点执行完再执行后续逻辑

@@ -6,14 +6,12 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
-namespace H.Components.VisionDiagram.Base;
+using Microsoft.Extensions.DependencyInjection;
 
-public interface IStartVisionNodeData : IVisionNodeData
+namespace H.Modules.Plugin.Base;
+
+public interface IPluginService
 {
+    IServiceCollection AddPluginService(IServiceCollection services);
+    IApplicationBuilder UsePluginOptions(IApplicationBuilder builder);
 }
-
-public interface IStartVisionNodeData<T> : IVisionNodeData<T>, IScalerNodeData, INinePointCalibrationNodeData, IStartVisionNodeData
-{
-
-}
-

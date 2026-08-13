@@ -44,6 +44,24 @@ public static class ResultExtension
         return lineSegmentPoints.ToLineDataGridResultPresenter(x => new VisionLine() { Start = x.P1.ToPoint(), End = x.P2.ToPoint() }, x => name);
     }
 
+    public static IEnumerable<IVisionResultImage<IMatImage>> ToResultImages(this IEnumerable<System.Windows.Rect> rects, Mat fromImage)
+    {
+        return rects.Select(x => x.ToCVRect()).ToResultImages(fromImage);
+    }
+
+    public static IVisionResultImage<IMatImage> ToResultImage(this OpenCvSharp.Rect rect, Mat fromImage, Action<IVisionResultImage<IMatImage>> action = null)
+    {
+        Mat mat = new Mat(fromImage, rect);
+        var result = new VisionResultImage<IMatImage>() { Image = new MatImage(mat), Name = "Hello World" };
+        action?.Invoke(result);
+        return result;
+    }
+
+    public static IVisionResultImage<IMatImage> ToResultImage(this Mat fromImage, OpenCvSharp.Rect rect, Action<IVisionResultImage<IMatImage>> action = null)
+    {
+        return rect.ToResultImage(fromImage, action);
+    }
+
     public static IEnumerable<IVisionResultImage<IMatImage>> ToResultImages(this IEnumerable<OpenCvSharp.Rect> rects, Mat fromImage)
     {
         foreach (var item in rects)
@@ -52,8 +70,8 @@ public static class ResultExtension
                 continue;
             if (!fromImage.IsRoiInRange(item))
                 continue;
-            Mat mat = new Mat(fromImage, item);
-            yield return new VisionResultImage<IMatImage>() { Image = new MatImage(mat), Name = "Hello World" };
+
+            yield return item.ToResultImage(fromImage);
         }
     }
 

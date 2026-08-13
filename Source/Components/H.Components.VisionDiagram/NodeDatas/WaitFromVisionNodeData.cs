@@ -6,8 +6,6 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
-using H.Components.VisionDiagram.Base;
-
 namespace H.Components.VisionDiagram.NodeDatas;
 
 public abstract class WaitFromVisionNodeData : DemoNodeDataBase

@@ -17,7 +17,6 @@ global using H.Extensions.FontIcon;
 global using H.Extensions.TypeConverter;
 global using System.Text.Json.Serialization;
 global using System.Windows.Media.Imaging;
-using H.Components.VisionDiagram.Base;
 using H.Controls.Form.PropertyItem.Attribute;
 using H.Controls.ShapeBox.Extension;
 using H.Controls.ShapeBox.Shapes;

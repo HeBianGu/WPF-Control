@@ -29,7 +29,6 @@
                         Margin="5,0"
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center"
-                        Foreground="{DynamicResource {x:Static h:BrushKeys.ForegroundTitle}}"
                         Text="{Binding Series.DisplayName}" />
                 </StackPanel>
                 <b:Interaction.Triggers>

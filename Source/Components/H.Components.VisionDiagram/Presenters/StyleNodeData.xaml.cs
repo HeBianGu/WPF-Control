@@ -6,8 +6,6 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
-using H.Components.VisionDiagram.Base;
-using H.Components.VisionDiagram.NodeDatas;
 using H.Controls.Diagram.Presenter.LinkDatas;
 using H.Controls.Diagram.Presenter.PortDatas;
 

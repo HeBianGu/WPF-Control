@@ -51,7 +51,7 @@ public class SrcFilePathData : BindableBase
 {
     public SrcFilePathData()
     {
-        
+
 
     }
 

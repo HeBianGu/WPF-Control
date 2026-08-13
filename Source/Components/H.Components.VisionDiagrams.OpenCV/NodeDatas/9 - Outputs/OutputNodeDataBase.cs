@@ -11,7 +11,7 @@ public abstract class OutputNodeDataBase : OpenCVNodeDataBase, IOutputGroupableN
 {
     public OutputNodeDataBase()
     {
-        this.UseInvokedPart = false;
+        this.UseInvokedPart = true;
     }
 }
 

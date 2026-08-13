@@ -13,7 +13,7 @@ public class NGOutputNodeData : OutputNodeDataBase, IOutputGroupableNodeData
 {
     public NGOutputNodeData()
     {
-        this.UseInvokedPart = false;
+        this.UseInvokedPart = true;
     }
     protected override FlowableResult<IMatImage> Invoke(Mat fromImage)
     {

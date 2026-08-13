@@ -7,7 +7,6 @@
 // Licensed under the MIT License (the "License")
 
 
-using H.Components.VisionDiagram.Base;
 using H.Controls.ShapeBox.State.Base;
 
 namespace H.Components.VisionDiagram.NodeDatas;

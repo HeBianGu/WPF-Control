@@ -6,6 +6,8 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
+using H.Components.VisionDiagram.Presenters;
+
 namespace H.Components.VisionDiagrams.OpenCV.Extensions;
 
 public static class MatExtension
@@ -254,6 +256,26 @@ public static class MatExtension
         byte[] buffer = Convert.FromBase64String(base64String);
         // 解码为Mat
         return Cv2.ImDecode(buffer, ImreadModes.Unchanged);
+    }
+
+    public static IEnumerable<IVisionResultImage<IMatImage>> ToResultImages(this IEnumerable<ResultDetectBox> tuples, Mat image)
+    {
+        foreach (var item in tuples)
+        {
+            if (item.Box.Box.ToCVRect2f().IsValid() == false)
+                continue;
+            // Clamp ROI to image bounds (intersection with [0,0,image.Width,image.Height])
+            var roi = item.Box.Box.ToCVRect();
+            var imageRect = new OpenCvSharp.Rect(0, 0, image.Width, image.Height);
+            roi = imageRect.Intersect(roi);
+
+            if (roi.Width <= 0 || roi.Height <= 0)
+                continue;
+
+            Mat mat = new Mat(image, roi);
+            item.Base64Image = mat.ToBase64String();
+            yield return new VisionResultImage<IMatImage>() { Image = new MatImage(mat), Name = item.ToTitle() };
+        }
     }
 }
 
