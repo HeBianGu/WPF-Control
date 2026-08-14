@@ -60,6 +60,7 @@ public class DependencyOptions : IocOptionInstance<DependencyOptions>, IDependen
         set
         {
             _DependencyItems = value;
+            this.RaisePropertyChanged();
         }
     }
 
