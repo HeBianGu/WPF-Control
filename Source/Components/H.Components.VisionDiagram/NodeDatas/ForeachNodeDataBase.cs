@@ -31,7 +31,7 @@ public abstract class ForeachNodeDataBase<T, V> : ScalerSelectableVisionNodeData
     [JsonIgnore]
     [Expressionable]
     [Tab(VisionTabNames.ResultParameters)]
-    [Display(Name = "当前值", GroupName = VisionTabNames.ResultParameters, Order = 1000)]
+    [Display(Name = "当前值", GroupName = VisionTabNames.ResultParameters, Description = "输出当前循环迭代正在处理的数据项", Order = 1000)]
     public V CurrentValue
     {
         get { return _currentValue; }

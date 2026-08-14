@@ -102,25 +102,25 @@ public abstract class LineToLineMeasureNodeDataBase<T> : FromToMeasureNodeDataBa
 [TypeConverter(typeof(DisplayEnumConverter))]
 public enum SegmentSegmentRelation
 {
-    [Display(Name = "无")]
+    [Display(Name = "无", GroupName = "线线关系", Description = "未计算或无法确定两条线段之间的空间关系")]
     None,
-    [Display(Name = "两线段相交")]
+    [Display(Name = "两线段相交", GroupName = "线线关系", Description = "两条有限线段存在公共交点")]
     Intersecting,    // 两线段相交
-    [Display(Name = "两线段共线")]
+    [Display(Name = "两线段共线", GroupName = "线线关系", Description = "两条线段位于同一条无限直线上")]
     Collinear,      // 两线段共线
-    [Display(Name = "两线段平行但不相交")]
+    [Display(Name = "两线段平行但不相交", GroupName = "线线关系", Description = "两条线段方向平行且没有公共点")]
     Parallel,       // 两线段平行但不相交
-    [Display(Name = "两线段不平行也不相交")]
+    [Display(Name = "两线段不平行也不相交", GroupName = "线线关系", Description = "两条线段方向不同，但交点位于线段延长线上")]
     Skew            // 两线段不平行也不相交
 }
 [TypeConverter(typeof(DisplayEnumConverter))]
 public enum SegmentDistanceType
 {
-    [Display(Name = "精确距离")]
+    [Display(Name = "精确距离", GroupName = "测量模式", Description = "计算两条线段之间的实际最短距离")]
     Exact,          // 精确距离
-    [Display(Name = "平方距离（性能优化）")]
+    [Display(Name = "平方距离（性能优化）", GroupName = "测量模式", Description = "返回未开平方的距离值以减少计算开销")]
     Squared,        // 平方距离（性能优化）
-    [Display(Name = "只返回最近点对")]
+    [Display(Name = "只返回最近点对", GroupName = "测量模式", Description = "仅计算并返回两条线段上的最近点对")]
     ClosestPoints   // 只返回最近点对
 }
 

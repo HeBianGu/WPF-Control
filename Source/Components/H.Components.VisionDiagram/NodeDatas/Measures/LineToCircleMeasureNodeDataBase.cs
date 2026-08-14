@@ -115,29 +115,29 @@ public abstract class LineToCircleMeasureNodeDataBase<T> : FromToMeasureNodeData
 [TypeConverter(typeof(DisplayEnumConverter))]
 public enum SegmentCircleRelation
 {
-    [Display(Name = "无")]
+    [Display(Name = "无", GroupName = "线圆关系", Description = "未计算或无法确定线段与圆之间的空间关系")]
     None,
-    [Display(Name = "无交点")]
+    [Display(Name = "无交点", GroupName = "线圆关系", Description = "线段位于圆外且与圆周没有交点")]
     NoIntersection,   // 无交点
-    [Display(Name = "相切（一个交点）")]
+    [Display(Name = "相切（一个交点）", GroupName = "线圆关系", Description = "线段与圆周相切并且仅有一个交点")]
     Tangent,          // 相切（一个交点）
-    [Display(Name = "相交（两个交点）")]
+    [Display(Name = "相交（两个交点）", GroupName = "线圆关系", Description = "线段穿过圆并与圆周存在两个交点")]
     Secant,           // 相交（两个交点）
-    [Display(Name = "线段完全在圆内")]
+    [Display(Name = "线段完全在圆内", GroupName = "线圆关系", Description = "线段的全部位置均位于圆内部")]
     SegmentInside,    // 线段完全在圆内
-    [Display(Name = "线段端点与圆相交（特殊相切情况）")]
+    [Display(Name = "线段端点与圆相交（特殊相切情况）", GroupName = "线圆关系", Description = "线段端点位于圆周上并形成特殊相切关系")]
     PointIntersection // 线段端点与圆相交（特殊相切情况）
 }
 [TypeConverter(typeof(DisplayEnumConverter))]
 public enum SegmentCircleDistanceType
 {
-    [Display(Name = "最小距离")]
+    [Display(Name = "最小距离", GroupName = "测量模式", Description = "计算线段与圆周之间的最短距离")]
     Minimum,          // 最小距离
-    [Display(Name = "最大距离")]
+    [Display(Name = "最大距离", GroupName = "测量模式", Description = "计算线段与圆周之间的最大距离")]
     Maximum,          // 最大距离
-    [Display(Name = "最近点")]
+    [Display(Name = "最近点", GroupName = "测量模式", Description = "返回圆周上距离线段最近的点")]
     ClosestPoint,     // 最近点
-    [Display(Name = "最远点")]
+    [Display(Name = "最远点", GroupName = "测量模式", Description = "返回圆周上距离线段最远的点")]
     FarthestPoint     // 最远点
 }
 

@@ -18,7 +18,7 @@ using System.Runtime.Serialization;
 
 namespace H.Components.VisionDiagram.NodeDatas;
 [Icon(FontIcons.Design)]
-[Display(Name = "绘制比例尺")]
+[Display(Name = "绘制比例尺", GroupName = "交互工具", Description = "在图像上绘制已知长度的线段以计算像素比例")]
 public class DrawScalerLineShapeState : AddRulerLineShapeState
 {
     private readonly IScalerNodeData _scalerNodeData;
@@ -30,7 +30,7 @@ public class DrawScalerLineShapeState : AddRulerLineShapeState
     private double _WorldDistance;
     [Unit("mm")]
     [PropertyItem(typeof(UnitTextPropertyItem))]
-    [Display(Name = "实际长度")]
+    [Display(Name = "实际长度", GroupName = "比例尺", Description = "设置标定线段对应的实际物理长度")]
     [Range(0, double.MaxValue)]
     public double WorldDistance
     {
@@ -47,7 +47,7 @@ public class DrawScalerLineShapeState : AddRulerLineShapeState
     private double _PixelDistance;
     [Unit("px")]
     [PropertyItem(typeof(UnitTextPropertyItem))]
-    [Display(Name = "像素长度")]
+    [Display(Name = "像素长度", GroupName = "比例尺", Description = "显示标定线段在图像中的像素长度")]
     [ReadOnly(true)]
     public double PixelDistance
     {
@@ -71,7 +71,7 @@ public class DrawScalerLineShapeState : AddRulerLineShapeState
     }
 
     private double _Scaler;
-    [Display(Name = "实际长度/像素长度")]
+    [Display(Name = "实际长度/像素长度", GroupName = "比例尺", Description = "显示每个像素对应的实际物理长度")]
     [ReadOnly(true)]
     public double Scaler
     {
@@ -146,7 +146,7 @@ public abstract class SrcFilesVisionNodeData<T> : StartVisionNodeData<T>, ISrcFi
     [Expressionable]
     [Browsable(false)]
     [Tab(VisionTabNames.RunParameters)]
-    [Display(Name = "当前图片文件", GroupName = VisionTabNames.RunParameters)]
+    [Display(Name = "当前图片文件", GroupName = VisionTabNames.RunParameters, Description = "设置或显示当前作为流程输入的图像文件")]
     [PropertyItem(typeof(OpenFileDialogPropertyItem))]
     public SrcFilePathData SrcFilePath
     {

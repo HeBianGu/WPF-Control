@@ -13,7 +13,7 @@ using H.Controls.ShapeBox.State.Base;
 
 namespace H.Components.VisionDiagram.NodeDatas;
 [Icon(FontIcons.Crop)]
-[Display(Name = "绘制ROI")]
+[Display(Name = "绘制ROI", GroupName = "交互工具", Description = "在图像上绘制并调整矩形感兴趣区域")]
 public class DrawROIVisionState : ROIRectState
 {
     private readonly IROINodeData _rOINodeData;
@@ -59,7 +59,7 @@ public abstract class ROINodeData<T> : ScalerSelectableVisionNodeData<T>, IROINo
     [PropertyItem(typeof(DeleteTextPropertyItem))]
     [TypeConverter(typeof(Round2RectConverter))]
     [Tab(VisionTabNames.BaseParameters)]
-    [Display(Name = "ROI范围", GroupName = VisionTabNames.BaseParameters, Order = 1000)]
+    [Display(Name = "ROI范围", GroupName = VisionTabNames.BaseParameters, Description = "设置节点参与处理的矩形感兴趣区域", Order = 1000)]
     public Rect ROI
     {
         get { return _ROI; }

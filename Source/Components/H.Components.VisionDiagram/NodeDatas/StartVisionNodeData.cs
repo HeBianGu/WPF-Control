@@ -39,7 +39,7 @@ public abstract class StartVisionNodeData<T> : NinePointCalibrationNodeData<T>, 
 
     private double _Scaler;
     [Tab(VisionTabNames.RunParameters)]
-    [Display(Name = "实际长度/像素长度", GroupName = VisionTabNames.RunParameters)]
+    [Display(Name = "实际长度/像素长度", GroupName = VisionTabNames.RunParameters, Description = "设置图像中每个像素对应的实际物理长度")]
     public double Scaler
     {
         get { return _Scaler; }
@@ -54,7 +54,7 @@ public abstract class StartVisionNodeData<T> : NinePointCalibrationNodeData<T>, 
     [ReadOnly(true)]
     [Expressionable]
     [Tab(VisionTabNames.ResultParameters)]
-    [Display(Name = "图像宽度", GroupName = VisionTabNames.ResultParameters)]
+    [Display(Name = "图像宽度", GroupName = VisionTabNames.ResultParameters, Description = "输出当前输入图像的像素宽度")]
     public int PixelWidth
     {
         get { return _pixelWidth; }
@@ -69,7 +69,7 @@ public abstract class StartVisionNodeData<T> : NinePointCalibrationNodeData<T>, 
     [ReadOnly(true)]
     [Expressionable]
     [Tab(VisionTabNames.ResultParameters)]
-    [Display(Name = "图像高度", GroupName = VisionTabNames.ResultParameters)]
+    [Display(Name = "图像高度", GroupName = VisionTabNames.ResultParameters, Description = "输出当前输入图像的像素高度")]
     public int PixelHeight
     {
         get { return _pixelHeight; }
@@ -84,7 +84,7 @@ public abstract class StartVisionNodeData<T> : NinePointCalibrationNodeData<T>, 
     [ReadOnly(true)]
     [Expressionable]
     [Tab(VisionTabNames.ResultParameters)]
-    [Display(Name = "颜色类型", GroupName = VisionTabNames.ResultParameters)]
+    [Display(Name = "颜色类型", GroupName = VisionTabNames.ResultParameters, Description = "输出当前输入图像的颜色或通道类型标识")]
     public int ImageColorType
     {
         get { return _imageColorType; }

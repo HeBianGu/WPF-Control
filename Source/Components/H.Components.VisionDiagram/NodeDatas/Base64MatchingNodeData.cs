@@ -24,7 +24,7 @@ using H.Controls.ShapeBox.State.Adds;
 
 namespace H.Components.VisionDiagram.NodeDatas;
 [Icon(FontIcons.Annotation)]
-[Display(Name = "截取图片")]
+[Display(Name = "截取图片", GroupName = "交互工具", Description = "在结果图像上绘制矩形并截取匹配模板")]
 public class CropImageState : AddRectShapeState
 {
     private readonly IBase64MatchingNodeData _nodeData;
@@ -111,7 +111,7 @@ public abstract class MatchingNodeData<T> : ROINodeData<T> where T : class, IVis
     [ReadOnly(true)]
     [Expressionable]
     [Tab(VisionTabNames.ResultParameters)]
-    [Display(Name = "置信度", GroupName = VisionTabNames.ResultParameters)]
+    [Display(Name = "置信度", GroupName = VisionTabNames.ResultParameters, Description = "输出最佳模板匹配结果的置信度")]
     public double Confidence
     {
         get { return _confidence; }
@@ -126,7 +126,7 @@ public abstract class MatchingNodeData<T> : ROINodeData<T> where T : class, IVis
     [ReadOnly(true)]
     [TypeConverter(typeof(IntRectConverter))]
     [Tab(VisionTabNames.RunParameters)]
-    [Display(Name = "截图区域", GroupName = VisionTabNames.RunParameters)]
+    [Display(Name = "截图区域", GroupName = VisionTabNames.RunParameters, Description = "设置模板图像在原图中的矩形截取范围")]
     public Rect Rect
     {
         get { return _Rect; }
@@ -140,7 +140,7 @@ public abstract class MatchingNodeData<T> : ROINodeData<T> where T : class, IVis
     private DetectDisplayMode _DetectDisplayMode = DetectDisplayMode.Default;
     [DefaultValue(DetectDisplayMode.Default)]
     [Tab(VisionTabNames.DisplayParameters)]
-    [Display(Name = "绘制结果方式", GroupName = VisionTabNames.DisplayParameters)]
+    [Display(Name = "绘制结果方式", GroupName = VisionTabNames.DisplayParameters, Description = "选择模板匹配结果在图像上的绘制方式")]
     public DetectDisplayMode DetectDisplayMode
     {
         get { return _DetectDisplayMode; }

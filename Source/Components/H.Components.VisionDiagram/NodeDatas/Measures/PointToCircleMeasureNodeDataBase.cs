@@ -101,26 +101,26 @@ public abstract class PointToCircleMeasureNodeDataBase<T> : FromToMeasureNodeDat
 [TypeConverter(typeof(DisplayEnumConverter))]
 public enum PointCircleRelation
 {
-    [Display(Name = "无")]
+    [Display(Name = "无", GroupName = "点圆关系", Description = "未计算或无法确定点与圆之间的空间关系")]
     None,
-    [Display(Name = "点在圆内（不包括圆周）")]
+    [Display(Name = "点在圆内（不包括圆周）", GroupName = "点圆关系", Description = "目标点位于圆内部且不在圆周上")]
     Inside,
-    [Display(Name = "点在圆周上")]
+    [Display(Name = "点在圆周上", GroupName = "点圆关系", Description = "目标点到圆心的距离等于圆半径")]
     OnCircumference,
-    [Display(Name = "点在圆外")]
+    [Display(Name = "点在圆外", GroupName = "点圆关系", Description = "目标点到圆心的距离大于圆半径")]
     Outside
 }
 
 [TypeConverter(typeof(DisplayEnumConverter))]
 public enum PointCircleDistanceType
 {
-    [Display(Name = "圆心到点的距离")]
+    [Display(Name = "圆心到点的距离", GroupName = "测量模式", Description = "计算圆心与目标点之间的直线距离")]
     CenterToPoint,    // 圆心到点的距离
-    [Display(Name = "点到圆周的最短距离（带符号）")]
+    [Display(Name = "点到圆周的最短距离（带符号）", GroupName = "测量模式", Description = "计算点到圆周的带符号距离，圆内结果为负值")]
     BoundaryToPoint,   // 点到圆周的最短距离（带符号）
-    [Display(Name = "点到圆周的绝对距离")]
+    [Display(Name = "点到圆周的绝对距离", GroupName = "测量模式", Description = "计算点到圆周的无符号最短距离")]
     AbsoluteBoundary,  // 点到圆周的绝对距离
-    [Display(Name = "返回圆周上最近点")]
+    [Display(Name = "返回圆周上最近点", GroupName = "测量模式", Description = "返回圆周上距离目标点最近的坐标")]
     ClosestPoint       // 返回圆周上最近点
 }
 

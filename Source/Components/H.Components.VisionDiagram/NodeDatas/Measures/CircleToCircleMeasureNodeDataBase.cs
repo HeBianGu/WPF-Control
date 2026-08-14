@@ -105,19 +105,19 @@ public abstract class CircleToCircleMeasureNodeDataBase<T> : FromToMeasureNodeDa
 [TypeConverter(typeof(DisplayEnumConverter))]
 public enum CircleRelationship
 {
-    [Display(Name = "无")]
+    [Display(Name = "无", GroupName = "圆圆关系", Description = "未计算或无法确定两个圆之间的空间关系")]
     None,
-    [Display(Name = "相离")]
+    [Display(Name = "相离", GroupName = "圆圆关系", Description = "两个圆彼此分离且圆周没有交点")]
     Separate,           // 相离
-    [Display(Name = "外切")]
+    [Display(Name = "外切", GroupName = "圆圆关系", Description = "两个圆在外部仅有一个切点")]
     ExternallyTangent,  // 外切
-    [Display(Name = "相交")]
+    [Display(Name = "相交", GroupName = "圆圆关系", Description = "两个圆的圆周存在两个交点")]
     Intersecting,       // 相交
-    [Display(Name = "内切")]
+    [Display(Name = "内切", GroupName = "圆圆关系", Description = "一个圆位于另一个圆内且圆周仅有一个切点")]
     InternallyTangent,  // 内切
-    [Display(Name = "内含（圆1包含圆2）")]
+    [Display(Name = "内含（圆1包含圆2）", GroupName = "圆圆关系", Description = "圆2完全位于圆1内部且圆周不相交")]
     Containing,         // 内含（圆1包含圆2）
-    [Display(Name = "内含（圆1被圆2包含）")]
+    [Display(Name = "内含（圆1被圆2包含）", GroupName = "圆圆关系", Description = "圆1完全位于圆2内部且圆周不相交")]
     Contained           // 内含（圆1被圆2包含）
 }
 
@@ -125,15 +125,15 @@ public enum CircleRelationship
 [TypeConverter(typeof(DisplayEnumConverter))]
 public enum CircleDistanceType
 {
-    [Display(Name = "圆心到圆心")]
+    [Display(Name = "圆心到圆心", GroupName = "测量模式", Description = "计算两个圆心之间的直线距离")]
     CenterToCenter,    // 圆心到圆心
-    [Display(Name = "两圆圆周最小距离")]
+    [Display(Name = "两圆圆周最小距离", GroupName = "测量模式", Description = "计算两个圆周之间的最短距离")]
     Minimum,           // 两圆圆周最小距离
-    [Display(Name = "两圆圆周最大距离")]
+    [Display(Name = "两圆圆周最大距离", GroupName = "测量模式", Description = "计算两个圆周之间的最大距离")]
     Maximum,           // 两圆圆周最大距离
-    [Display(Name = "圆1到圆2的最近点")]
+    [Display(Name = "圆1到圆2的最近点", GroupName = "测量模式", Description = "返回圆2圆周上距离圆1最近的点")]
     ClosestPoint,      // 圆1到圆2的最近点
-    [Display(Name = "圆1到圆2的最远点")]
+    [Display(Name = "圆1到圆2的最远点", GroupName = "测量模式", Description = "返回圆2圆周上距离圆1最远的点")]
     FarthestPoint      // 圆1到圆2的最远点
 }
 

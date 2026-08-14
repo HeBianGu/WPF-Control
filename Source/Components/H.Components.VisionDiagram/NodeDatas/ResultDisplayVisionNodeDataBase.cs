@@ -35,7 +35,7 @@ public class TextVisionResultDisplay : VisionResultDisplay
     private Color _OKColor = Colors.Chartreuse;
     [GetHightlightColorsSource]
     [PropertyItem(typeof(ColorComboBoxPropertyItem))]
-    [Display(Name = "OK颜色", GroupName = VisionTabNames.ResultParameters, Description = "")]
+    [Display(Name = "OK颜色", GroupName = VisionTabNames.ResultParameters, Description = "设置检测结果为 OK 时的文本显示颜色")]
     public Color OKColor
     {
         get { return _OKColor; }
@@ -49,7 +49,7 @@ public class TextVisionResultDisplay : VisionResultDisplay
     private Color _NGColor = Colors.Red;
     [GetHightlightColorsSource]
     [PropertyItem(typeof(ColorComboBoxPropertyItem))]
-    [Display(Name = "NG颜色", GroupName = VisionTabNames.ResultParameters, Description = "")]
+    [Display(Name = "NG颜色", GroupName = VisionTabNames.ResultParameters, Description = "设置检测结果为 NG 时的文本显示颜色")]
     public Color NGColor
     {
         get { return _NGColor; }
@@ -64,7 +64,7 @@ public class TextVisionResultDisplay : VisionResultDisplay
     [PropertyItem(typeof(DoubleSliderTextPropertyItem))]
     [Range(6.0d, 72.0d)]
     [DefaultValue(10.0d)]
-    [Display(Name = "字号", GroupName = VisionTabNames.ResultParameters, Description = "")]
+    [Display(Name = "字号", GroupName = VisionTabNames.ResultParameters, Description = "设置结果文本在图像上的显示字号")]
     public double FontSize
     {
         get { return _FontSize; }
@@ -79,7 +79,7 @@ public class TextVisionResultDisplay : VisionResultDisplay
     [PropertyItem(typeof(DoubleSliderTextPropertyItem))]
     [Range(0.0d, 1.0d)]
     [DefaultValue(1.0d)]
-    [Display(Name = "透明度", GroupName = VisionTabNames.ResultParameters, Description = "")]
+    [Display(Name = "透明度", GroupName = VisionTabNames.ResultParameters, Description = "设置结果文本在图像上的显示透明度")]
     public double Opacity
     {
         get { return _Opacity; }
@@ -91,7 +91,7 @@ public class TextVisionResultDisplay : VisionResultDisplay
     }
 
     private double _X;
-    [Display(Name = "位置X", GroupName = VisionTabNames.ResultParameters, Description = "")]
+    [Display(Name = "位置X", GroupName = VisionTabNames.ResultParameters, Description = "设置结果文本左上角的水平坐标")]
     public double X
     {
         get { return _X; }
@@ -103,7 +103,7 @@ public class TextVisionResultDisplay : VisionResultDisplay
     }
 
     private double _Y;
-    [Display(Name = "位置Y", GroupName = VisionTabNames.ResultParameters, Description = "")]
+    [Display(Name = "位置Y", GroupName = VisionTabNames.ResultParameters, Description = "设置结果文本左上角的垂直坐标")]
     public double Y
     {
         get { return _Y; }
@@ -138,7 +138,7 @@ public abstract class ResultDisplayVisionNodeDataBase<T> : VisionNodeData<T> whe
     [PropertyStyle(UseTitle = false)]
     [PropertyItem(typeof(FormPropertyItem))]
     [Tab(VisionTabNames.ResultDisplayParameters)]
-    [Display(Name = "文本显示", GroupName = VisionGroupNames.TextDisplay, Order = 16)]
+    [Display(Name = "文本显示", GroupName = VisionGroupNames.TextDisplay, Description = "配置检测结果文本在图像上的显示样式", Order = 16)]
     public TextVisionResultDisplay TestVisionResultDisplay
     {
         get { return _TestVisionResultDisplay; }
@@ -152,7 +152,7 @@ public abstract class ResultDisplayVisionNodeDataBase<T> : VisionNodeData<T> whe
 
     private string _TextDisplayResult;
     [Tab(VisionTabNames.ResultParameters)]
-    [Display(Name = "内容结果", GroupName = VisionGroupNames.TextDisplay, Order = 16)]
+    [Display(Name = "内容结果", GroupName = VisionGroupNames.TextDisplay, Description = "设置需要叠加到结果图像上的文本内容", Order = 16)]
     public string TextDisplayResult
     {
         get { return _TextDisplayResult; }

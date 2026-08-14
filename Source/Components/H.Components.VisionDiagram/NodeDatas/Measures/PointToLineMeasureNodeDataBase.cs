@@ -99,26 +99,26 @@ public abstract class PointToLineMeasureNodeDataBase<T> : FromToMeasureNodeDataB
 [TypeConverter(typeof(DisplayEnumConverter))]
 public enum PointSegmentRelation
 {
-    [Display(Name = "无")]
+    [Display(Name = "无", GroupName = "点线关系", Description = "未计算或无法确定点与线段之间的空间关系")]
     None,
-    [Display(Name = "点在线段上")]
+    [Display(Name = "点在线段上", GroupName = "点线关系", Description = "目标点位于线段起点与终点之间")]
     OnSegment,      // 点在线段上
-    [Display(Name = "点在直线的延长线上但不在线段内")]
+    [Display(Name = "点在直线的延长线上但不在线段内", GroupName = "点线关系", Description = "目标点与线段共线，但位于线段范围之外")]
     OnExtendedLine, // 点在直线的延长线上但不在线段内
-    [Display(Name = "点在直线左侧（从起点看向终点）")]
+    [Display(Name = "点在直线左侧（从起点看向终点）", GroupName = "点线关系", Description = "从线段起点朝终点观察时，目标点位于左侧")]
     LeftSide,       // 点在直线左侧（从起点看向终点）
-    [Display(Name = "点在直线右侧（从起点看向终点）")]
+    [Display(Name = "点在直线右侧（从起点看向终点）", GroupName = "点线关系", Description = "从线段起点朝终点观察时，目标点位于右侧")]
     RightSide       // 点在直线右侧（从起点看向终点）
 }
 
 [TypeConverter(typeof(DisplayEnumConverter))]
 public enum PointSegmentDistanceType
 {
-    [Display(Name = "精确距离（默认）")]
+    [Display(Name = "精确距离（默认）", GroupName = "测量模式", Description = "计算目标点到有限线段的实际最短距离")]
     Exact,          // 精确距离（默认）
-    [Display(Name = "平方距离（避免开方运算）")]
+    [Display(Name = "平方距离（避免开方运算）", GroupName = "测量模式", Description = "返回未开平方的距离值以减少计算开销")]
     Squared,        // 平方距离（避免开方运算）
-    [Display(Name = "只返回最近点坐标")]
+    [Display(Name = "只返回最近点坐标", GroupName = "测量模式", Description = "仅返回线段上距离目标点最近的坐标")]
     ClosestPoint    // 只返回最近点坐标
 }
 
