@@ -12,7 +12,7 @@ using H.Extensions.Mvvm.ViewModels;
 namespace H.Components.VisionDiagram.NodeDataGroups;
 
 [Icon(FontIcons.AttachCamera)]
-[Display(Name = "相机数据源", Description = "设置输入图像", Order = 10000)]
+[Display(Name = "相机数据源", GroupName = "节点分组", Description = "提供从相机设备采集输入图像的节点", Order = 10000)]
 public class SrcCameraDataGroup : AssemblyNodeDataGroup<ISrcCameraGroupableNodeData>, ICameraDataGroup
 {
 

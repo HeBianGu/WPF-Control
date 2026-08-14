@@ -17,7 +17,7 @@ public interface ITakeoffGroupableNodeData : INodeData, IDisplayBindable
 }
 
 [Icon(FontIcons.Annotation)]
-[Display(Name = "图像分割提取", Description = "对图像进行预处理操作", Order = 10300)]
+[Display(Name = "图像分割提取", GroupName = "节点分组", Description = "提供颜色、区域和前景的分割提取节点", Order = 10300)]
 public class TakeoffDataGroup : AssemblyNodeDataGroupBase, IImageDataGroup
 {
     protected override IEnumerable<INodeData> CreateDatas()

@@ -17,7 +17,7 @@ public interface IOtherGroupableNodeData : INodeData, IDisplayBindable
 }
 
 [Icon(FontIcons.More)]
-[Display(Name = "其他", Description = "图像处理的其他算法", Order = 10900)]
+[Display(Name = "其他工具", GroupName = "节点分组", Description = "提供未归入其他分类的辅助图像处理节点", Order = 10900)]
 public class OtherDataGroup : AssemblyNodeDataGroupBase, IImageDataGroup
 {
     protected override IEnumerable<INodeData> CreateDatas()

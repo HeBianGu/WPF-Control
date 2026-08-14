@@ -12,7 +12,7 @@ using H.Extensions.Mvvm.ViewModels;
 namespace H.Components.VisionDiagram.NodeDataGroups;
 
 [Icon(FontIcons.Camera)]
-[Display(Name = "图像数据源", Description = "设置输入图像", Order = 10000)]
+[Display(Name = "图像数据源", GroupName = "节点分组", Description = "提供从本地文件和其他来源读取输入图像的节点", Order = 10000)]
 public class SrcImageDataGroup : AssemblyNodeDataGroupBase, IImageDataGroup
 {
     protected override IEnumerable<INodeData> CreateDatas()

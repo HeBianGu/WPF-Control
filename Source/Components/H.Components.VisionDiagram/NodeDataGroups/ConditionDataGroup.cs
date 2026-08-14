@@ -17,7 +17,7 @@ public interface IConditionGroupableNodeData : INodeData, IOrderable
 }
 
 [Icon(FontIcons.Dial6)]
-[Display(Name = "逻辑", Description = "对图像进行条件判断选择执行对应路径", Order = 10500)]
+[Display(Name = "逻辑控制", GroupName = "节点分组", Description = "提供条件判断、循环和流程分支控制节点", Order = 10500)]
 public class ConditionDataGroup : AssemblyNodeDataGroupBase, IImageDataGroup
 {
     protected override IEnumerable<INodeData> CreateDatas()

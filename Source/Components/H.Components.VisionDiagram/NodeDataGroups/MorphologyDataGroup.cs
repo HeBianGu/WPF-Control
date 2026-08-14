@@ -17,7 +17,7 @@ public interface IMorphologyGroupableNodeData : INodeData, IDisplayBindable
 }
 
 [Icon(FontIcons.HomeGroup)]
-[Display(Name = "形态学", Description = "对图像进行腐蚀、膨胀、开运算和闭运算", Order = 10400)]
+[Display(Name = "形态学", GroupName = "节点分组", Description = "提供腐蚀、膨胀、开闭运算和形态学梯度节点", Order = 10400)]
 public class MorphologyDataGroup : AssemblyNodeDataGroupBase, IImageDataGroup
 {
     protected override IEnumerable<INodeData> CreateDatas()

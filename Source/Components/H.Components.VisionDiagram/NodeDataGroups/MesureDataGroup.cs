@@ -17,7 +17,7 @@ public interface IMesureGroupableNodeData : INodeData, IDisplayBindable
 }
 
 [Icon(FontIcons.Design)]
-[Display(Name = "测量", Description = "测量图像对象", Order = 10700)]
+[Display(Name = "几何测量", GroupName = "节点分组", Description = "提供点、线、圆之间距离和角度的测量节点", Order = 10700)]
 public class MesureDataGroup : AssemblyNodeDataGroupBase, IImageDataGroup
 {
     protected override IEnumerable<INodeData> CreateDatas()
