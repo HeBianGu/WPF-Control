@@ -229,7 +229,7 @@ public abstract class VisionNodeData<T> : VisionNodeDataBase, IVisionNodeData<T>
         foreach (var propertyExpression in propertyExpressions)
         {
             yield return propertyExpression;
-            foreach (var item in propertyExpression.GetVisionDefineChildrenExpressions())
+            foreach (var item in propertyExpression.GetVisionAllDefineChildrenExpressions())
                 yield return item;
         }
     }

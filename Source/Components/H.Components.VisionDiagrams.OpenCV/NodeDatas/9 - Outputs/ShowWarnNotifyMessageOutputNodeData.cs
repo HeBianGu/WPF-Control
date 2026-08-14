@@ -8,7 +8,7 @@
 
 namespace H.Components.VisionDiagrams.OpenCV.NodeDatas.Other;
 [Icon(FontIcons.OverwriteWordsFillKorean)]
-[Display(Name = "提示警告消息", Description = "输出提示消息", Order = 10410)]
+[Display(Name = "提示警告消息", GroupName = "输出", Description = "使用警告级别通知显示流程消息", Order = 10410)]
 public class ShowWarnNotifyMessageOutputNodeData : OutputNodeDataBase, IOutputGroupableNodeData
 {
     private string _value = "运行警告";

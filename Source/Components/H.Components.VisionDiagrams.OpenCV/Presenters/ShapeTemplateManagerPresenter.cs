@@ -16,7 +16,7 @@ namespace H.Components.VisionDiagrams.OpenCV.Presenters;
 [Display(Name = "ÂÖÀªÆ¥ÅäÄ£°åÉèÖÃ")]
 public class ShapeTemplateManagerPresenter : TemplateManagerPresenterBase, IRectCropable
 {
-    public ShapeTemplateManagerPresenter(ShapeTemplateMatch nodeData) : base(nodeData)
+    public ShapeTemplateManagerPresenter(ShapeTemplateMatchNodeData nodeData) : base(nodeData)
     {
         this.ResultTemplateContours = nodeData.TemplateContours;
         this.Rect = nodeData.Rect;

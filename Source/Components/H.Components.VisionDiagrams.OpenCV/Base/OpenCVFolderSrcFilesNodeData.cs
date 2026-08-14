@@ -9,7 +9,7 @@
 namespace H.Components.VisionDiagrams.OpenCV.Base;
 
 [Icon(FontIcons.Photo)]
-[Display(Name = "本地数据源", GroupName = "本地数据源", Order = 5)]
+[Display(Name = "本地数据源", GroupName = "图像采集", Description = "从本地文件夹按顺序读取图像数据", Order = 5)]
 public class OpenCVFolderSrcFilesNodeData : OpenCVSrcFilesNodeDataBase
 {
     public string FolderPath { get; set; }

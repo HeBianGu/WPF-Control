@@ -8,7 +8,7 @@
 
 namespace H.Components.VisionDiagrams.OpenCV.NodeDatas.Other;
 [Icon(FontIcons.Info)]
-[Display(Name = "提示运行消息", Description = "输出提示运行消息", Order = 10410)]
+[Display(Name = "提示运行消息", GroupName = "输出", Description = "使用信息级别通知显示流程运行消息", Order = 10410)]
 public class ShowInfoNotifyMessageOutputNodeData : OutputNodeDataBase, IOutputGroupableNodeData
 {
     private string _value = "运行信息";

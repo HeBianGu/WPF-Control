@@ -9,7 +9,7 @@
 namespace H.Components.VisionDiagrams.OpenCV.NodeDatas.Src;
 
 [Icon(FontIcons.Photo2)]
-[Display(Name = "本地图像源", GroupName = "图像采集", Order = 1)]
+[Display(Name = "本地图像源", GroupName = "图像采集", Description = "从选定的本地图像文件生成流程图像源", Order = 1)]
 public class SrcImageFilesNodeData : OpenCVSrcFilesNodeDataBase, ISrcImageGroupableNodeData
 {
 

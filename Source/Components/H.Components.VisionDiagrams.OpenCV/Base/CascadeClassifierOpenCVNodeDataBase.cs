@@ -53,7 +53,7 @@ public abstract class CascadeClassifierOpenCVNodeDataBase : OpenCVNodeDataBase, 
     private HaarDetectionTypes _flags = HaarDetectionTypes.ScaleImage;
     [DefaultValue(HaarDetectionTypes.ScaleImage)]
     [Tab(VisionTabNames.RunParameters)]
-    [Display(Name = "Flags", GroupName = VisionTabNames.RunParameters)]
+    [Display(Name = "检测标志", GroupName = VisionTabNames.RunParameters, Description = "设置级联分类器检测目标时使用的行为标志")]
     public HaarDetectionTypes Flags
     {
         get { return _flags; }
@@ -65,7 +65,7 @@ public abstract class CascadeClassifierOpenCVNodeDataBase : OpenCVNodeDataBase, 
     }
 
     private System.Windows.Size _minSize = new System.Windows.Size(30, 30);
-    [Display(Name = "最小尺寸", GroupName = "目标的最小尺寸")]
+    [Display(Name = "最小尺寸", GroupName = "目标的最小尺寸", Description = "设置允许检测目标的最小宽度和高度")]
     public System.Windows.Size MinSize
     {
         get { return _minSize; }
@@ -78,7 +78,7 @@ public abstract class CascadeClassifierOpenCVNodeDataBase : OpenCVNodeDataBase, 
 
     private System.Windows.Size _maxSize = new System.Windows.Size(500, 500);
     [DefaultValue(null)]
-    [Display(Name = "最大尺寸", GroupName = "目标的最大尺寸")]
+    [Display(Name = "最大尺寸", GroupName = "目标的最大尺寸", Description = "设置允许检测目标的最大宽度和高度")]
     public System.Windows.Size MaxSize
     {
         get { return _maxSize; }

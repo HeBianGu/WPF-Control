@@ -8,7 +8,7 @@
 
 namespace H.Components.VisionDiagrams.OpenCV.NodeDatas.Other;
 [Icon(FontIcons.ErrorBadge)]
-[Display(Name = "提示错误消息", Description = "输出提示消息", Order = 10410)]
+[Display(Name = "提示错误消息", GroupName = "输出", Description = "使用错误级别通知显示流程消息", Order = 10410)]
 public class ShowErrorNotifyMessageOutputNodeData : OutputNodeDataBase, IOutputGroupableNodeData
 {
     private string _value = "运行错误";

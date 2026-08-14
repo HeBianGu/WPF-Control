@@ -8,7 +8,7 @@
 
 namespace H.Components.VisionDiagrams.OpenCV.NodeDatas.Other;
 [Icon(FontIcons.EthernetError)]
-[Display(Name = "NG", Description = "输出流程处理NG结果", Order = 10400)]
+[Display(Name = "NG", GroupName = "输出", Description = "将当前流程结果标记为不合格并输出", Order = 10400)]
 public class NGOutputNodeData : OutputNodeDataBase, IOutputGroupableNodeData
 {
     public NGOutputNodeData()

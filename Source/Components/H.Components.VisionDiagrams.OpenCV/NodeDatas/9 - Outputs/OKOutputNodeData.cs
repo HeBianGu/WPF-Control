@@ -8,7 +8,7 @@
 
 namespace H.Components.VisionDiagrams.OpenCV.NodeDatas.Other;
 [Icon(FontIcons.Ethernet)]
-[Display(Name = "OK", Description = "输出流程处理OK结果", Order = 10400)]
+[Display(Name = "OK", GroupName = "输出", Description = "将当前流程结果标记为合格并输出", Order = 10400)]
 public class OKOutputNodeData : OutputNodeDataBase, IOutputGroupableNodeData
 {
     public OKOutputNodeData()

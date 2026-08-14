@@ -16,7 +16,7 @@ public abstract class SelectableSrcImageNodeDataBase : ResultPresenterNodeDataBa
     private ISrcFilesNodeData _selectedSrcNodeData;
     [GetMethodNameSource(nameof(GetSelectableSrcNodeDatas))]
     [PropertyItem(typeof(ComboBoxPropertyItem))]
-    [Display(Name = "选择图像源", GroupName = "流程控制")]
+    [Display(Name = "选择图像源", GroupName = "流程控制", Description = "选择流程中作为当前节点输入的图像源节点")]
     public ISrcFilesNodeData SelectedFromNodeData
     {
         get { return _selectedSrcNodeData; }

@@ -19,7 +19,7 @@ public class Base64TemplateMatchNodeData : MatchingNodeData<IMatImage>, ITemplat
 {
     private TemplateMatchModes _templateMatchModes = TemplateMatchModes.CCoeffNormed;
     [Tab(VisionTabNames.RunParameters)]
-    [Display(Name = "匹配类型", GroupName = VisionTabNames.RunParameters)]
+    [Display(Name = "匹配类型", GroupName = VisionTabNames.RunParameters, Description = "选择模板匹配使用的 OpenCV 相关性计算方式")]
     public TemplateMatchModes TemplateMatchModes
     {
         get { return _templateMatchModes; }
@@ -33,7 +33,7 @@ public class Base64TemplateMatchNodeData : MatchingNodeData<IMatImage>, ITemplat
     private string _base64String;
     [PropertyItem(typeof(Base64ShapeViewPropertyItem))]
     [Tab(VisionTabNames.RunParameters)]
-    [Display(Name = "模板图片", GroupName = VisionTabNames.RunParameters)]
+    [Display(Name = "模板图片", GroupName = VisionTabNames.RunParameters, Description = "设置以 Base64 数据保存的匹配模板图像")]
     public string Base64String
     {
         get { return _base64String; }
@@ -130,7 +130,7 @@ public class Base64ShapeViewPropertyItem : ShapeViewPropertyItem
     }
 
     [Icon(FontIcons.Setting)]
-    [Display(Name = "模板设置")]
+    [Display(Name = "模板设置", GroupName = CommandGroupNames.QuickAccessToolbar, Description = "打开模板图像配置界面")]
     public DisplayCommand ShowTemplateManagerCommand => new DisplayCommand(async x =>
     {
         if (this.Obj is Base64TemplateMatchNodeData nodeData)
@@ -152,7 +152,7 @@ public class Base64ShapeViewPropertyItem : ShapeViewPropertyItem
     });
 
     [Icon(FontIcons.Delete)]
-    [Display(Name = "删除模板")]
+    [Display(Name = "删除模板", GroupName = CommandGroupNames.QuickAccessToolbar, Description = "删除当前保存的匹配模板")]
     public DisplayCommand DeleteTemplateCommand => new DisplayCommand(x =>
     {
         if (this.Obj is Base64TemplateMatchNodeData nodeData)

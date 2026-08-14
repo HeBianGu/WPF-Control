@@ -16,8 +16,8 @@ namespace H.Components.VisionDiagrams.OpenCV.Presenters;
 [Display(Name = "ÌØÕ÷Æ¥ÅäÄ£°åÉèÖÃ")]
 public class FeaturePointTemplateMatchManagerPresenter : TemplateManagerPresenterBase, IRectCropable
 {
-    private readonly FeaturePointTemplateMatch _NodeData;
-    public FeaturePointTemplateMatchManagerPresenter(FeaturePointTemplateMatch nodeData) : base(nodeData)
+    private readonly FeaturePointTemplateMatchNodeData _NodeData;
+    public FeaturePointTemplateMatchManagerPresenter(FeaturePointTemplateMatchNodeData nodeData) : base(nodeData)
     {
         _NodeData = nodeData;
         this.ResultKeyPoints = nodeData.KeyPoints;

@@ -153,10 +153,10 @@ public abstract class OpenCVDetectorNodeDataBase : OpenCVNodeDataBase
 
 public enum PreviewType
 {
-    [Display(Name = "原图")]
+    [Display(Name = "原图", GroupName = "预览选项", Description = "使用流程输入的原始图像进行结果预览")]
     Src = 0,
-    [Display(Name = "前图")]
+    [Display(Name = "前图", GroupName = "预览选项", Description = "使用前一节点输出的图像进行结果预览")]
     Previous = 1,
-    [Display(Name = "识别结果")]
+    [Display(Name = "识别结果", GroupName = "预览选项", Description = "使用当前检测节点生成的识别结果图像进行预览")]
     Result = 2
 }

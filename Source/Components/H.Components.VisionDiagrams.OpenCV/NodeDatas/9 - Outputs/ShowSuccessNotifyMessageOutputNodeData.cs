@@ -8,7 +8,7 @@
 
 namespace H.Components.VisionDiagrams.OpenCV.NodeDatas.Other;
 [Icon(FontIcons.Completed)]
-[Display(Name = "提示成功消息", Description = "输出提示消息", Order = 10410)]
+[Display(Name = "提示成功消息", GroupName = "输出", Description = "使用成功级别通知显示流程消息", Order = 10410)]
 public class ShowSuccessNotifyMessageOutputNodeData : OutputNodeDataBase, IOutputGroupableNodeData
 {
     private string _value = "运行成功";

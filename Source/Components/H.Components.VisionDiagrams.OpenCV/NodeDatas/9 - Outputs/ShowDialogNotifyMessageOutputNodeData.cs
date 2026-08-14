@@ -8,7 +8,7 @@
 
 namespace H.Components.VisionDiagrams.OpenCV.NodeDatas.Other;
 [Icon(FontIcons.Unknown)]
-[Display(Name = "提示对话框消息", Description = "输出提示消息", Order = 10410)]
+[Display(Name = "提示对话框消息", GroupName = "输出", Description = "使用对话框显示流程提示消息", Order = 10410)]
 public class ShowDialogNotifyMessageOutputNodeData : OutputNodeDataBase, IOutputGroupableNodeData
 {
     private string _value = "是否继续运行流程";

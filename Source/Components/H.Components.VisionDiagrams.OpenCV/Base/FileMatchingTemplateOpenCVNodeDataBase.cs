@@ -17,7 +17,7 @@ public abstract class OpenCVFileTemplateMatchingNodeDataBase : OpenCVDetectorNod
     private string _templateFilePath;
     [Required]
     [Tab(VisionTabNames.RunParameters)]
-    [Display(Name = "模板图片", GroupName = VisionTabNames.RunParameters)]
+    [Display(Name = "模板图片", GroupName = VisionTabNames.RunParameters, Description = "设置用于图像匹配的模板文件")]
     [PropertyItem(typeof(OpenFileDialogPropertyItem))]
     public string TemplateFilePath
     {

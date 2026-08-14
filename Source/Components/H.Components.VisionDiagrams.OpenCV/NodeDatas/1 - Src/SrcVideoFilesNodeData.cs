@@ -29,7 +29,7 @@ public class SrcVideoFilesNodeData : VideoCaptureNodeDataBase, ISrcImageGroupabl
     private int _startFrame = 0;
     [DefaultValue(0)]
     [Tab(VisionTabNames.RunParameters)]
-    [Display(Name = "开始位置(帧)", GroupName = VisionTabNames.RunParameters)]
+    [Display(Name = "开始位置(帧)", GroupName = VisionTabNames.RunParameters, Description = "设置视频读取的起始帧位置")]
     public int StartFrame
     {
         get { return _startFrame; }
@@ -43,7 +43,7 @@ public class SrcVideoFilesNodeData : VideoCaptureNodeDataBase, ISrcImageGroupabl
     private int _endFrame = int.MaxValue;
     [DefaultValue(int.MaxValue)]
     [Tab(VisionTabNames.RunParameters)]
-    [Display(Name = "结束位置(帧)", GroupName = VisionTabNames.RunParameters)]
+    [Display(Name = "结束位置(帧)", GroupName = VisionTabNames.RunParameters, Description = "设置视频读取的结束帧位置")]
     public int EndFrame
     {
         get { return _endFrame; }
@@ -58,7 +58,7 @@ public class SrcVideoFilesNodeData : VideoCaptureNodeDataBase, ISrcImageGroupabl
     [Range(1, int.MaxValue)]
     [DefaultValue(1)]
     [Tab(VisionTabNames.RunParameters)]
-    [Display(Name = "采样间隔(帧)", GroupName = VisionTabNames.RunParameters)]
+    [Display(Name = "采样间隔(帧)", GroupName = VisionTabNames.RunParameters, Description = "设置连续输出视频帧之间跳过的帧数")]
     public int SpanFrame
     {
         get { return _spanFrame; }

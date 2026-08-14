@@ -8,7 +8,7 @@
 
 namespace H.Components.VisionDiagrams.OpenCV.NodeDatas.Other;
 [Icon(FontIcons.DefenderApp)]
-[Display(Name = "提示严重错误消息", Description = "输出提示消息", Order = 10410)]
+[Display(Name = "提示严重错误消息", GroupName = "输出", Description = "使用严重错误级别通知显示流程消息", Order = 10410)]
 public class ShowFatalNotifyMessageOutputNodeData : OutputNodeDataBase, IOutputGroupableNodeData
 {
     private string _value = "运行严重错误";

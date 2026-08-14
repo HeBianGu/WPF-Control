@@ -23,7 +23,7 @@ public class CameraCaptureNodeData : VideoCaptureNodeDataBase, ISrcImageGroupabl
     }
     private VideoCaptureAPIs _videoCaptureAPIs = VideoCaptureAPIs.ANY;
     [Tab(VisionTabNames.RunParameters)]
-    [Display(Name = "摄像头API", GroupName = VisionTabNames.RunParameters)]
+    [Display(Name = "摄像头API", GroupName = VisionTabNames.RunParameters, Description = "选择 OpenCV 打开摄像头时使用的视频采集后端")]
     public VideoCaptureAPIs VideoCaptureAPIs
     {
         get { return _videoCaptureAPIs; }
@@ -36,7 +36,7 @@ public class CameraCaptureNodeData : VideoCaptureNodeDataBase, ISrcImageGroupabl
 
     private int _VideoCaptureIndex;
     [Tab(VisionTabNames.RunParameters)]
-    [Display(Name = "摄像头序号", GroupName = VisionTabNames.RunParameters)]
+    [Display(Name = "摄像头序号", GroupName = VisionTabNames.RunParameters, Description = "设置需要打开的摄像头设备索引")]
     public int VideoCaptureIndex
     {
         get { return _VideoCaptureIndex; }
