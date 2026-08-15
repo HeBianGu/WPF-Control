@@ -25,6 +25,7 @@ public class MvCameraControlDependencyItem : DependencyItemBase
     public MvCameraControlDependencyItem()
     {
         Name = "MvCameraControl.Net";
+        Author = "HIKROBOT";
         Uri = "https://www.hikrobotics.com/cn/machinevision/service/download";
         Version = "由海康机器视觉 SDK 提供";
         Licence = "海康机器视觉 SDK 许可";

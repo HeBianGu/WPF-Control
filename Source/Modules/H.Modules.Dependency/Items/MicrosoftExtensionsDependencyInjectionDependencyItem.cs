@@ -25,6 +25,7 @@ public class MicrosoftExtensionsDependencyInjectionDependencyItem : DependencyIt
     public MicrosoftExtensionsDependencyInjectionDependencyItem()
     {
         Name = "Microsoft.Extensions.DependencyInjection";
+        Author = "Microsoft";
         Uri = "https://learn.microsoft.com/dotnet/core/extensions/dependency-injection";
         Version = "8.0.1";
         Licence = "MIT License";

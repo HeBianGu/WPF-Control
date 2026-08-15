@@ -25,6 +25,7 @@ public class Log4NetDependencyItem : DependencyItemBase
     public Log4NetDependencyItem()
     {
         Name = "log4net";
+        Author = "Apache Software Foundation";
         Uri = "https://logging.apache.org/log4net/";
         Version = "2.0.15";
         Licence = "Apache License 2.0";

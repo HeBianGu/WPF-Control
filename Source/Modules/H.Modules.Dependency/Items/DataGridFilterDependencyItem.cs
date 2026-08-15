@@ -25,6 +25,7 @@ public class DataGridFilterDependencyItem : DependencyItemBase
     public DataGridFilterDependencyItem()
     {
         Name = "DataGridFilter";
+        Author = "macgile";
         Uri = "https://github.com/macgile/DataGridFilter";
         Version = "README 未注明";
         Licence = "请参阅组件仓库";

@@ -25,6 +25,7 @@ public class MicrosoftXamlBehaviorsWpfDependencyItem : DependencyItemBase
     public MicrosoftXamlBehaviorsWpfDependencyItem()
     {
         Name = "Microsoft.Xaml.Behaviors.Wpf";
+        Author = "Microsoft";
         Uri = "https://github.com/microsoft/XamlBehaviorsWpf";
         Version = "1.1.77";
         Licence = "MIT License";

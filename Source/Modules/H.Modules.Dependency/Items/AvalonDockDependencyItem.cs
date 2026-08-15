@@ -25,6 +25,7 @@ public class AvalonDockDependencyItem : DependencyItemBase
     public AvalonDockDependencyItem()
     {
         Name = "AvalonDock";
+        Author = "Dirkster99";
         Uri = "https://github.com/Dirkster99/AvalonDock";
         Version = "README 未注明";
         Licence = "MIT License";

@@ -25,6 +25,7 @@ public class EntityFrameworkCoreDependencyItem : DependencyItemBase
     public EntityFrameworkCoreDependencyItem()
     {
         Name = "Entity Framework Core";
+        Author = "Microsoft";
         Uri = "https://github.com/dotnet/efcore";
         Version = "8.0.16";
         Licence = "MIT License";

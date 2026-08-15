@@ -25,6 +25,7 @@ public class QuartzDependencyItem : DependencyItemBase
     public QuartzDependencyItem()
     {
         Name = "Quartz";
+        Author = "Quartz.NET Contributors";
         Uri = "https://github.com/quartznet/quartznet";
         Version = "3.14.0";
         Licence = "Apache License 2.0";

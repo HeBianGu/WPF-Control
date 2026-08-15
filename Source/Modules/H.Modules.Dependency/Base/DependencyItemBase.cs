@@ -39,6 +39,20 @@ public class DependencyItemBase : DisplayBindableBase, IDependencyItem
         }
     }
 
+    private string _Author;
+    [Display(Name = "作者")]
+    [Browsable(true)]
+    public string Author
+    {
+        get { return _Author; }
+        set
+        {
+            _Author = value;
+            RaisePropertyChanged();
+        }
+    }
+
+
     private string _description;
     /// <summary>
     /// 获取或设置对象的描述。

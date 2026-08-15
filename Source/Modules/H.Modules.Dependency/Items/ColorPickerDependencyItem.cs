@@ -25,6 +25,7 @@ public class ColorPickerDependencyItem : DependencyItemBase
     public ColorPickerDependencyItem()
     {
         Name = "ColorPicker";
+        Author = "PixiEditor";
         Uri = "https://github.com/PixiEditor/ColorPicker";
         Version = "README 未注明";
         Licence = "MIT License";

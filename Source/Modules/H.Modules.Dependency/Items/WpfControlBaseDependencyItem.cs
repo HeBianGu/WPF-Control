@@ -25,6 +25,7 @@ public class WpfControlBaseDependencyItem : DependencyItemBase
     public WpfControlBaseDependencyItem()
     {
         Name = "WPF-ControlBase";
+        Author = "HeBianGu";
         Uri = "https://github.com/HeBianGu/WPF-ControlBase";
         Version = "README 未注明";
         Licence = "MIT License";

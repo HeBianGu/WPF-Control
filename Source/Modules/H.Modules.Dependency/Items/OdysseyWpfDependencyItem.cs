@@ -25,6 +25,7 @@ public class OdysseyWpfDependencyItem : DependencyItemBase
     public OdysseyWpfDependencyItem()
     {
         Name = "OdysseyWPF";
+        Author = "jogibear9988";
         Uri = "https://github.com/jogibear9988/OdysseyWPF";
         Version = "README 未注明";
         Licence = "请参阅组件仓库";

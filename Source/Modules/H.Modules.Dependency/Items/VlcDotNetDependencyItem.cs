@@ -25,6 +25,7 @@ public class VlcDotNetDependencyItem : DependencyItemBase
     public VlcDotNetDependencyItem()
     {
         Name = "Vlc.DotNet";
+        Author = "ZeBobo5";
         Uri = "https://github.com/ZeBobo5/Vlc.DotNet";
         Version = "3.1.0";
         Licence = "LGPL License";

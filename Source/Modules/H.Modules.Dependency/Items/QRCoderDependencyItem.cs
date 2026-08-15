@@ -25,6 +25,7 @@ public class QRCoderDependencyItem : DependencyItemBase
     public QRCoderDependencyItem()
     {
         Name = "QRCoder";
+        Author = "Ralf G. Kaiser";
         Uri = "https://github.com/codebude/QRCoder/";
         Version = "1.4.3";
         Licence = "MIT License";

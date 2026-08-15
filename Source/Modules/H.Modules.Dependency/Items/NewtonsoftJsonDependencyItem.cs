@@ -25,6 +25,7 @@ public class NewtonsoftJsonDependencyItem : DependencyItemBase
     public NewtonsoftJsonDependencyItem()
     {
         Name = "Newtonsoft.Json";
+        Author = "James Newton-King";
         Uri = "https://www.newtonsoft.com/json";
         Version = "13.0.3";
         Licence = "MIT License";

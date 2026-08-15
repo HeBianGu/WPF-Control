@@ -25,6 +25,7 @@ public class OpenCvSharp4DependencyItem : DependencyItemBase
     public OpenCvSharp4DependencyItem()
     {
         Name = "OpenCvSharp4";
+        Author = "shimat";
         Uri = "https://github.com/shimat/opencvsharp";
         Version = "4.13.0.20260222";
         Licence = "Apache License 2.0";

@@ -25,6 +25,7 @@ public class CommunityToolkitMvvmDependencyItem : DependencyItemBase
     public CommunityToolkitMvvmDependencyItem()
     {
         Name = "CommunityToolkit.Mvvm";
+        Author = "Microsoft";
         Uri = "https://github.com/CommunityToolkit/dotnet";
         Version = "README 未注明";
         Licence = "MIT License";

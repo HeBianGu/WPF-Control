@@ -25,6 +25,7 @@ public class CSCoreDependencyItem : DependencyItemBase
     public CSCoreDependencyItem()
     {
         Name = "CSCore";
+        Author = "filoe";
         Uri = "https://github.com/filoe/cscore";
         Version = "README 未注明";
         Licence = "MS-PL";

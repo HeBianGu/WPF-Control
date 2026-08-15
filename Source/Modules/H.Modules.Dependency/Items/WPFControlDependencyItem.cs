@@ -25,6 +25,7 @@ public class WPFControlDependencyItem : DependencyItemBase
     public WPFControlDependencyItem()
     {
         Name = "WPF-Control";
+        Author = "HeBianGu";
         Uri = "https://github.com/HeBianGu/WPF-Control";
         Version = "1.3.0";
         Licence = "MIT License";

@@ -25,6 +25,7 @@ public class WpfToolkitDependencyItem : DependencyItemBase
     public WpfToolkitDependencyItem()
     {
         Name = "Extended WPF Toolkit";
+        Author = "Xceed Software";
         Uri = "http://xceed.com/wpf_toolkit";
         Version = "old version";
         Licence = "License (Ms-PL)";

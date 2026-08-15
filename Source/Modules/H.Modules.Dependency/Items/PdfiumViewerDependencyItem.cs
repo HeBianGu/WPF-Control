@@ -25,6 +25,7 @@ public class PdfiumViewerDependencyItem : DependencyItemBase
     public PdfiumViewerDependencyItem()
     {
         Name = "PdfiumViewer";
+        Author = "bezzad";
         Uri = "https://github.com/bezzad/PdfiumViewer";
         Version = "1.0.6";
         Licence = "Apache License 2.0";

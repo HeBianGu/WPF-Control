@@ -25,6 +25,7 @@ public class AutoUpdaterNetDependencyItem : DependencyItemBase
     public AutoUpdaterNetDependencyItem()
     {
         Name = "AutoUpdater.NET";
+        Author = "ravibpatel";
         Uri = "https://github.com/ravibpatel/AutoUpdater.NET";
         Version = "README 未注明";
         Licence = "Apache License 2.0";
