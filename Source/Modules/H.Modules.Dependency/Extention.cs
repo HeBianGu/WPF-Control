@@ -22,7 +22,7 @@ namespace System
         public static void AddDependency(this IServiceCollection services, Action<IDependencyOptions> setupAction = null)
         {
             services.AddOptions();
-            services.Add(ServiceDescriptor.Singleton<IDependencyViewPresenter, DependencyViewPresenter>());
+            services.TryAdd(ServiceDescriptor.Singleton<IDependencyViewPresenter, DependencyViewPresenter>());
             if (setupAction != null)
             {
                 //setupAction.Invoke(DependencyOptions.Instance);

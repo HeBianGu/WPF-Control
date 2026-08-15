@@ -43,7 +43,7 @@ namespace System
             services.AddSponsor();
             services.AddContact(opt.GetConfigOptions<IContactOptions>());
             services.AddFeedBack(opt.GetConfigOptions<IFeedbackOptions>());
-            services.AddDependency(opt.GetConfigOptions<IDependencyOptions>());
+            //services.AddDependency(opt.GetConfigOptions<IDependencyOptions>());
             services.AddCommercialLicense();
 
         }
@@ -62,7 +62,7 @@ namespace System
             app.UseWebsite(opt.GetConfigOptions<IWebsiteOptions>());
             app.UseContact(opt.GetConfigOptions<IContactOptions>());
             app.UseFeedBackOptions(opt.GetConfigOptions<IFeedbackOptions>());
-            app.UseDependencyOptions(opt.GetConfigOptions<IDependencyOptions>());
+            //app.UseDependencyOptions(opt.GetConfigOptions<IDependencyOptions>());
         }
     }
 }
