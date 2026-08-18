@@ -68,8 +68,9 @@
                                 </MultiBinding>
                             </DataTrigger.Binding>
                             <!--<Setter Property="Background" Value="{DynamicResource {x:Static h:BrushKeys.BorderBrush}}" />-->
-                            <Setter Property="Foreground" Value="{DynamicResource {x:Static h:BrushKeys.ForegroundSelect}}" />
+                            <!--<Setter Property="Foreground" Value="{DynamicResource {x:Static h:BrushKeys.ForegroundSelect}}" />-->
                             <Setter Property="TextElement.FontWeight" Value="Bold" />
+                            <Setter Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.BorderBrushTitle}}"/>
                         </DataTrigger>
                     </Style.Triggers>
                 </Style>
