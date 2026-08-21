@@ -46,6 +46,30 @@ public class OpenFileDialogPropertyItem : CommandsTextPropertyItemBase
     { Name = "浏览" };
 }
 
+public class OpenFileDialogAppDomainRelativePropertyItem : CommandsTextPropertyItemBase
+{
+    public OpenFileDialogAppDomainRelativePropertyItem(PropertyInfo property, object obj) : base(property, obj)
+    {
+
+    }
+
+    [Display(Name = "浏览", Order = 2)]
+    public DisplayCommand OpenCommand => new DisplayCommand(l =>
+    {
+        var filter = this.PropertyInfo.GetCustomAttribute<OpenFileDialogFilterAttribute>();
+        var r = IocMessage.IOFileDialog.ShowOpenFile(x =>
+        {
+            if (File.Exists(this.Value))
+                x.InitialDirectory = Path.GetDirectoryName(this.Value).GetFullPath();
+            if (filter != null)
+                x.Filter = filter.Filter;
+        });
+        if (!File.Exists(r))
+            return;
+        this.Value = r.GetAppDomainRelativePath();
+    })
+    { Name = "浏览" };
+}
 
 public class OpenFolderDialogPropertyItem : CommandsTextPropertyItemBase
 {
