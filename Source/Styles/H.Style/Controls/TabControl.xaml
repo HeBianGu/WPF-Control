@@ -70,18 +70,11 @@
                                     KeyboardNavigation.DirectionalNavigation="Contained"
                                     KeyboardNavigation.TabIndex="2"
                                     KeyboardNavigation.TabNavigation="Local">
-                                <!--  Foreground继承,不从TabItem继承，TabItem选中为高亮  -->
-                                <ContentControl x:Name="PART_SelectedContentHost"
-                                                Margin="{TemplateBinding Padding}"
-                                                Content="{TemplateBinding SelectedContent}"
-                                                ContentTemplate="{TemplateBinding SelectedContentTemplate}"
-                                                Foreground="{TemplateBinding Foreground}"
-                                                SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
-                                <!--<ContentPresenter
-x:Name="PART_SelectedContentHost"
-Margin="{TemplateBinding Padding}"
-ContentSource="SelectedContent"
-SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>-->
+                                <ContentPresenter x:Name="PART_SelectedContentHost"
+                                                  Margin="{TemplateBinding Padding}"
+                                                  Content="{TemplateBinding SelectedContent}"
+                                                  ContentTemplate="{TemplateBinding SelectedContentTemplate}"
+                                                  SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
                             </Border>
                         </Grid>
                     </Border>
@@ -157,19 +150,15 @@ SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>-->
                                               Style="{StaticResource S.ContentPresenter.TemplatedParent}" />
                         </Border>
                     </Grid>
-                    <!--<ControlTemplate.Triggers>
-                        <MultiTrigger>
-                            <MultiTrigger.Conditions>
-                                <Condition Property="Selector.IsSelectionActive" Value="True" />
-                                <Condition Property="IsSelected" Value="True" />
-                            </MultiTrigger.Conditions>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsSelected" Value="True">
                             <Setter TargetName="ContentSite" Property="TextElement.Foreground">
                                 <Setter.Value>
                                     <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.ForegroundSelect}}" />
                                 </Setter.Value>
                             </Setter>
-                        </MultiTrigger>
-                    </ControlTemplate.Triggers>-->
+                        </Trigger>
+                    </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
@@ -222,11 +211,6 @@ SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>-->
                 <Setter Property="Background">
                     <Setter.Value>
                         <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Selected}}" />
-                    </Setter.Value>
-                </Setter>
-                <Setter Property="Foreground">
-                    <Setter.Value>
-                        <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.ForegroundSelect}}" />
                     </Setter.Value>
                 </Setter>
             </Trigger>
