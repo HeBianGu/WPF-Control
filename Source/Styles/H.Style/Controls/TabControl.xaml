@@ -72,6 +72,10 @@
                                     KeyboardNavigation.TabNavigation="Local">
                                 <ContentPresenter x:Name="PART_SelectedContentHost"
                                                   Margin="{TemplateBinding Padding}"
+                                                  HorizontalAlignment="Stretch"
+                                                  VerticalAlignment="Stretch"
+                                                  TextElement.Foreground="{DynamicResource {x:Static BrushKeys.Foreground}}"
+                                                  TextBlock.Foreground="{DynamicResource {x:Static BrushKeys.Foreground}}"
                                                   Content="{TemplateBinding SelectedContent}"
                                                   ContentTemplate="{TemplateBinding SelectedContentTemplate}"
                                                   SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
@@ -150,15 +154,6 @@
                                               Style="{StaticResource S.ContentPresenter.TemplatedParent}" />
                         </Border>
                     </Grid>
-                    <ControlTemplate.Triggers>
-                        <Trigger Property="IsSelected" Value="True">
-                            <Setter TargetName="ContentSite" Property="TextElement.Foreground">
-                                <Setter.Value>
-                                    <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.ForegroundSelect}}" />
-                                </Setter.Value>
-                            </Setter>
-                        </Trigger>
-                    </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
@@ -167,52 +162,13 @@
                 <MultiTrigger.Conditions>
                     <Condition Property="IsMouseOver" Value="True" />
                 </MultiTrigger.Conditions>
-                <Setter Property="Background">
-                    <Setter.Value>
-                        <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.MouseOver}}" />
-                    </Setter.Value>
-                </Setter>
+                <Setter Property="Background" Value="{DynamicResource {x:Static BrushKeys.MouseOver}}"/>
                 <Setter Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.BorderBrushTitle}}" />
             </MultiTrigger>
-            <!--<MultiTrigger>
-                <MultiTrigger.Conditions>
-                    <Condition Property="Selector.IsSelectionActive" Value="False" />
-                    <Condition Property="IsSelected" Value="True" />
-                </MultiTrigger.Conditions>
-                <Setter Property="Background">
-                    <Setter.Value>
-                        <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Selected}}" />
-                    </Setter.Value>
-                </Setter>
-                <Setter Property="TextElement.Foreground">
-                    <Setter.Value>
-                        <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.ForegroundSelect}}" />
-                    </Setter.Value>
-                </Setter>
-            </MultiTrigger>
-            <MultiTrigger>
-                <MultiTrigger.Conditions>
-                    <Condition Property="Selector.IsSelectionActive" Value="True" />
-                    <Condition Property="IsSelected" Value="True" />
-                </MultiTrigger.Conditions>
-                <Setter Property="Background">
-                    <Setter.Value>
-                        <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Selected}}" />
-                    </Setter.Value>
-                </Setter>
-                <Setter Property="TextElement.Foreground">
-                    <Setter.Value>
-                        <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.ForegroundSelect}}" />
-                    </Setter.Value>
-                </Setter>
-            </MultiTrigger>-->
             <Trigger Property="IsSelected" Value="True">
                 <Setter Property="Panel.ZIndex" Value="100" />
-                <Setter Property="Background">
-                    <Setter.Value>
-                        <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Selected}}" />
-                    </Setter.Value>
-                </Setter>
+                <Setter Property="Background" Value="{DynamicResource {x:Static BrushKeys.Selected}}"/>
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static BrushKeys.ForegroundSelect}}"/>
             </Trigger>
             <Trigger Property="IsEnabled" Value="False">
                 <Setter Property="Opacity" Value="0.6" />
@@ -247,7 +203,9 @@
                 <Setter Property="Cattach.CornerRadius" Value="0,2,2,0" />
             </DataTrigger>
             <Trigger Property="IsSelected" Value="True">
-                <Setter Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.ForegroundSelect}}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.Accent}}" />
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static BrushKeys.Foreground}}"/>
+                <Setter Property="Background" Value="{DynamicResource {x:Static BrushKeys.MouseOver}}"/>
             </Trigger>
         </Style.Triggers>
     </Style>
