@@ -13,15 +13,15 @@ using System.Windows.Input;
 
 namespace H.Windows.Main;
 
-public class TransparencyMainWindow : MainWindowBase
+public abstract class TransparencyMainWindowBase : MainWindowBase
 {
-    static TransparencyMainWindow()
+    static TransparencyMainWindowBase()
     {
-        DefaultStyleKeyProperty.OverrideMetadata(typeof(TransparencyMainWindow), new FrameworkPropertyMetadata(typeof(TransparencyMainWindow)));
+        DefaultStyleKeyProperty.OverrideMetadata(typeof(TransparencyMainWindowBase), new FrameworkPropertyMetadata(typeof(TransparencyMainWindowBase)));
     }
 
 
-    public TransparencyMainWindow()
+    public TransparencyMainWindowBase()
     {
         this.AllowsTransparency = true;
         this.WindowStyle = WindowStyle.None;

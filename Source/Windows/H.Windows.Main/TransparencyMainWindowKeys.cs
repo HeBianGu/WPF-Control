@@ -10,5 +10,5 @@ namespace H.Windows.Main;
 
 public class TransparencyMainWindowKeys
 {
-    public static ComponentResourceKey Default => new ComponentResourceKey(typeof(TransparencyMainWindowKeys), "S.TransparencyMainWindow.Default");
+    public static ComponentResourceKey Default => new ComponentResourceKey(typeof(TransparencyMainWindowKeys), "S.TransparencyMainWindowBase.Default");
 }

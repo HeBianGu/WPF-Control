@@ -1,4 +1,4 @@
-﻿<h:MainWindow x:Class="H.Test.Window.Main.MainWindow"
+﻿<MainWindowBase x:Class="H.Test.Window.Main.MainWindow"
               xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
               xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
               xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -11,7 +11,7 @@
               CaptionHeight="50"
               WindowStartupLocation="CenterScreen"
               mc:Ignorable="d">
-    <h:MainWindow.CaptionTempate>
+    <MainWindowBase.CaptionTempate>
         <ControlTemplate>
             <DockPanel LastChildFill="False">
                 <Button Padding="10"
@@ -37,14 +37,14 @@
                 </Button>
             </DockPanel>
         </ControlTemplate>
-    </h:MainWindow.CaptionTempate>
-    <h:MainWindow.SideTemplate>
+    </MainWindowBase.CaptionTempate>
+    <MainWindowBase.SideTemplate>
         <ControlTemplate>
             <Grid Background="Orange" />
         </ControlTemplate>
-    </h:MainWindow.SideTemplate>
+    </MainWindowBase.SideTemplate>
     <Grid Background="Red">
         <ListBox Cattach.ItemHeight="Auto"
                  ItemsSource="{h:GetStudents Count=100}" />
     </Grid>
-</h:MainWindow>
+</MainWindowBase>

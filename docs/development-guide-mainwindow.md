@@ -1,18 +1,18 @@
 # MainWindow 主窗口开发文档
 
 **适用项目：** `H.Windows.Main`  
-**核心类型：** `MainWindow`、`TransparencyMainWindow`、`MainWindowOption`、`WindowSetting`、`IMainWindowSavableService`  
+**核心类型：** `MainWindowBase`、`TransparencyMainWindowBase`、`MainWindowOption`、`WindowSetting`、`IMainWindowSavableService`  
 **相关能力：** 自定义标题栏、窗口状态切换、关闭保存、窗口尺寸持久化、侧栏模板、透明窗口
 
-本文介绍框架中 `H.Windows.Main.MainWindow` 主窗口控件的注册、模板、标题栏按钮、关闭流程、设置持久化和二次开发方式。
+本文介绍框架中 `H.Windows.Main.MainWindowBase` 主窗口基类的注册、模板、标题栏按钮、关闭流程、设置持久化和二次开发方式。
 
-> 用户所称的 `H.Window.MainWindow` 对应当前仓库程序集和命名空间 `H.Windows.Main`，核心窗口类型为 `H.Windows.Main.MainWindow`。
+> 用户所称的 `H.Window.MainWindow` 对应当前仓库程序集和命名空间 `H.Windows.Main`，核心窗口类型为 `H.Windows.Main.MainWindowBase`。
 
 ---
 
 ## 1. 控件定位
 
-`MainWindow` 是一个带自定义标题栏的 WPF `Window`。它继承框架窗口基类，提供：
+`MainWindowBase` 是一个带自定义标题栏的 WPF `Window` 基类，提供：
 
 - 默认标题栏区域。
 - 最小化、最大化、还原和关闭命令。
@@ -21,12 +21,12 @@
 - 主题资源和窗口样式键。
 - 主窗口关闭时保存设置和业务状态。
 - 上次窗口尺寸、状态和启动位置恢复。
-- 透明窗口派生类型 `TransparencyMainWindow`。
+- 透明窗口抽象基类 `TransparencyMainWindowBase`。
 
 典型布局：
 
 ```text
-MainWindow
+MainWindowBase
 ├── SideTemplate      可选侧栏/导航区
 ├── 标题栏
 │   ├── Icon
@@ -54,7 +54,7 @@ XAML 命名空间：
 xmlns:h="https://github.com/HeBianGu"
 ```
 
-`MainWindow` 默认样式由 `H.Windows.Main/Themes/Generic.xaml` 提供。应用还应按需合并框架主题和样式资源：
+`MainWindowBase` 默认样式由框架主题资源提供。应用还应按需合并框架主题和样式资源：
 
 ```xaml
 <Application.Resources>
@@ -76,8 +76,8 @@ xmlns:h="https://github.com/HeBianGu"
 ## 3. 基础使用
 
 ```xaml
-<h:MainWindow
-    x:Class="MyApp.MainWindow"
+<h:MainWindowBa<h:MainWindowBase
+="MyApp.MainWindow"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:h="https://github.com/HeBianGu"
@@ -92,7 +92,7 @@ xmlns:h="https://github.com/HeBianGu"
             VerticalAlignment="Center"
             Text="主窗口内容" />
     </Grid>
-</h:MainWindow>
+</h:MainWindowBase>
 ```
 
 代码后置：
@@ -140,7 +140,7 @@ S.MainWindow.Default
 <Style
     x:Key="MyMainWindowStyle"
     BasedOn="{StaticResource {x:Static h:MainWindowKeys.Default}}"
-    TargetType="{x:Type h:MainWindow}">
+    TargetType="{x:Type h:MainWindowBase}">
     <Setter Property="Background" Value="{DynamicResource {x:Static h:BrushKeys.CaptionBackground}}" />
 </Style>
 ```
@@ -148,14 +148,14 @@ S.MainWindow.Default
 使用：
 
 ```xaml
-<h:MainWindow Style="{StaticResource MyMainWindowStyle}" />
+<h:MainWindowBase Style="{StaticResource MyMainWindowStyle}" />
 ```
 
-如果修改完整 `ControlTemplate`，应从当前仓库 `H.Windows.Main/MainWindow.xaml` 的默认模板开始，避免遗漏标题栏按钮、窗口拖动、边缘调整或主题绑定。
+如果修改完整 `ControlTemplate`，应从当前仓库中 `MainWindowBase` 的默认模板开始，避免遗漏标题栏按钮、窗口拖动、边缘调整或主题绑定。
 
 ---
 
-## 5. `MainWindow` 公开属性
+## 5. `MainWindowBase` 公开属性
 
 | 属性 | 类型 | 默认值 | 说明 |
 |---|---|---:|---|
@@ -163,7 +163,7 @@ S.MainWindow.Default
 | `CaptionTempate` | `ControlTemplate` | `null` | 标题栏中央或扩展区域的自定义模板。名称保留当前 API 拼写 `Tempate`。 |
 | `SideTemplate` | `ControlTemplate` | `null` | 可选侧栏模板。为 `null` 时默认模板隐藏侧栏区域。 |
 
-`MainWindow` 还继承普通 WPF `Window` 属性：
+`MainWindowBase` 还继承普通 WPF `Window` 属性：
 
 ```text
 Title
@@ -181,7 +181,7 @@ Content
 `CaptionHeight` 示例：
 
 ```xaml
-<h:MainWindow CaptionHeight="52" />
+<h:MainWindowBase CaptionHeight="52" />
 ```
 
 框架默认模板中的标题栏行高度绑定 `CaptionHeight`。修改时应同时检查自定义标题内容和窗口按钮是否仍能完整显示。
@@ -195,14 +195,14 @@ Content
 > API 名称拼写为 `CaptionTempate`，不是 `CaptionTemplate`；XAML 和 C# 都必须使用实际名称。
 
 ```xaml
-<h:MainWindow
+<h:MainWindowBase
     x:Class="MyApp.MainWindow"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:h="https://github.com/HeBianGu"
     Title="MyApp">
-    <h:MainWindow.CaptionTempate>
-        <ControlTemplate>
+      <h:MainWindowBase.CaptionTempate>
+      <ControlTemplate>
             <Grid Margin="12,0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
@@ -221,11 +221,10 @@ Content
                     Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}" />
             </Grid>
         </ControlTemplate>
-    </h:MainWindow.CaptionTempate>
-
+      </h:MainWindowBase.CaptionTempate>
     <Grid />
-</h:MainWindow>
-```
+</</h:MainWindowBase>
+`
 
 默认模板会继续显示窗口图标、标题和右侧系统按钮。`CaptionTempate` 只负责模板插入区域，不需要重复添加最小化、最大化、还原和关闭按钮。
 
@@ -248,13 +247,13 @@ Content
 `SideTemplate` 可用于放置导航栏、品牌区、状态区或全局操作入口。
 
 ```xaml
-<h:MainWindow
-    x:Class="MyApp.MainWindow"
+<h<h:MainWindowBase
+  x:Class="MyApp.MainWindow"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:h="https://github.com/HeBianGu">
-    <h:MainWindow.SideTemplate>
-        <ControlTemplate>
+      <h:MainWindowBase.SideTemplate>
+      <ControlTemplate>
             <Border
                 Width="220"
                 Background="{DynamicResource {x:Static h:BrushKeys.MenuBackground}}">
@@ -270,13 +269,12 @@ Content
                 </StackPanel>
             </Border>
         </ControlTemplate>
-    </h:MainWindow.SideTemplate>
-
+      </h:MainWindowBase.SideTemplate>
     <Grid>
         <TextBlock Text="主内容" />
     </Grid>
-</h:MainWindow>
-```
+</</h:MainWindowBase>
+`
 
 默认模板在 `SideTemplate` 为 `null` 时折叠该区域。侧栏模板应限制明确宽度，避免挤压主内容或影响最小窗口尺寸。
 
@@ -295,8 +293,7 @@ Content
 | `CloseAfterSaveWindowCommand` | 主窗口关闭前执行设置和注册保存服务。 |
 | `TranslationCloseWindowCommand` | 与窗口关闭相关的本地化命令。 |
 
-默认 `MainWindow` 模板使用 `CloseAfterSaveWindowCommand`，而不是直接关闭命令。这样主窗口关闭时可以保存设置和业务状态。
-
+默认默认 `MainWindowBase` 模板使用 `CloseAfterSaveWindowCommand`，而不是直接关闭命令。这样主窗口关闭时可以保存设置和业务状态。
 ### 8.1 在自定义标题栏中使用命令
 
 ```xaml
@@ -505,14 +502,8 @@ public class MonitorAwareMainWindowSavableService : IMainWindowSavableService
 ```csharp
 services.Replace(
     ServiceDescriptor.Singleton<IMainWindowSavableService,
-        MonitorAwareMainWindowSavableService>());
-```
-
----
-
-## 12. 透明主窗口
-
-`TransparencyMainWindow` 继承 `MainWindow`。
+`TransparencyMainWindowBase` 是继承 `MainWindowBase` 的抽象基类。应用应通过 XAML 和代码后置声明具体的透明主窗口类型。
+encyMainWindowBase` 继承 `MainWindowBase`。
 
 构造时设置：
 
@@ -530,7 +521,7 @@ DragMove();
 基础用法：
 
 ```xaml
-<h:TransparencyMainWindow
+<h:TransparencyMainWindowBase
     x:Class="MyApp.TransparentWindow"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -543,7 +534,7 @@ DragMove();
         CornerRadius="12">
         <TextBlock Text="透明主窗口内容" />
     </Border>
-</h:TransparencyMainWindow>
+</h:TransparencyMainWindowBase>
 ```
 
 ### 12.1 透明窗口注意事项
@@ -551,13 +542,8 @@ DragMove();
 - WPF `AllowsTransparency=True` 可能降低复杂动画、大图片和大列表的渲染性能。
 - 透明区域仍会参与命中测试；需要穿透时应使用专门的命中测试或 Win32 方案。
 - 默认左键拖动会与窗口内按钮、文本框和画布交互冲突。复杂窗口建议调整拖动逻辑，只在标题栏区域调用 `DragMove()`。
-- 透明窗口同样应使用主题资源，避免硬编码背景和前景颜色。
-
----
-
-## 13. 内容和装饰层
-
-`MainWindow.GetElement()` 返回当前用于承载内容或装饰层的元素：
+- 透明窗口同样应使用主题资源，避免硬编码背景`MainWindowBase.GetElement()` 返回当前用于承载内容或装饰层的元素：
+GetElement()` 返回当前用于承载内容或装饰层的元素：
 
 ```csharp
 UIElement element = mainWindow.GetElement();
@@ -618,7 +604,8 @@ public partial class App : ApplicationBase
 }
 ```
 
-### `MainWindow.xaml`
+<h:MainWindowBase
+.xaml`
 
 ```xaml
 <h:MainWindow
@@ -627,31 +614,24 @@ public partial class App : ApplicationBase
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:h="https://github.com/HeBianGu"
     MinHeight="600"
-    MinWidth="900"
-    Title="MyApp">
-    <h:MainWindow.CaptionTempate>
+    Mi    <h:MainWindowBase.CaptionTempate>
+   <h:MainWindowBase.CaptionTempate>
         <ControlTemplate>
             <TextBlock
                 VerticalAlignment="Center"
                 FontSize="{DynamicResource {x:Static h:FontSizeKeys.Header}}"
-                Text="工作台" />
-        </ControlTemplate>
-    </h:MainWindow.CaptionTempate>
+                Text="工作台    </h:MainWindowBase.CaptionTempate>
+  </h:MainWindowBase.CaptionTempate>
 
     <Grid>
         <TextBlock
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
-            Text="主窗口内容" />
+        </h:MainWindowBase>
+/>
     </Grid>
-</h:MainWindow>
-```
-
----
-
-## 15. 二次开发建议
-
-- 普通应用优先使用 `MainWindow`，只在确有透明窗口需求时使用 `TransparencyMainWindow`。
+- 普通应用的主窗口优先继承 `MainWindowBase`，只在确有透明窗口需求时继承 `TransparencyMainWindowBase`。
+口需求时使用 `TransparencyMainWindow`。
 - 修改标题栏内容使用 `CaptionTempate`，不要复制整个窗口模板。
 - 使用 `SideTemplate` 添加导航区，避免把导航逻辑硬编码进窗口模板。
 - 自定义标题栏按钮时继续使用框架窗口命令，确保关闭前保存流程不被绕过。
@@ -698,27 +678,23 @@ WindowSetting.Instance.UseNoticeOnMainWindowClose
 
 检查：
 
-1. 是否使用了实际属性名 `CaptionTempate`。
-2. `ControlTemplate` 是否放在 `MainWindow.CaptionTempate` 属性元素中。
+2. `ControlTemplate` 是否放在 `MainWindowBase.CaptionTempate` 属性元素中。
+ainWindow.CaptionTempate` 属性元素中。
 3. 是否修改了完整窗口模板并遗漏了对应 `TemplateBinding`。
-
-### 自定义侧栏不显示
-
-确认：
-
-```xaml
-<h:MainWindow.SideTemplate>
+<h:MainWindowBase.SideTemplate>
+aml
+<h:MainWindowBase.SideTemplate>
     <ControlTemplate>
-        <!-- 可视内容 -->
-    </ControlTemplate>
-</h:MainWindow.SideTemplate>
+        <!-- </h:MainWindowBase.SideTemplate>
+e>
+</h:MainWindowBase.SideTemplate>
 ```
 
 默认模板在 `SideTemplate` 为 `null` 时隐藏侧栏。
 
 ### 透明窗口中的按钮点击后窗口被拖动
 
-`TransparencyMainWindow` 当前会在任意左键按下时调用 `DragMove()`。对复杂交互窗口应派生并限制为标题栏区域拖动。
+`TransparencyMainWindowBase` 当前会在任意左键按下时调用 `DragMove()`。对复杂交互窗口应派生并限制为标题栏区域拖动。
 
 ### 最大化后内容被任务栏或屏幕边缘遮挡
 

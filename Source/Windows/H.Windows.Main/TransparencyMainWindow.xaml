@@ -17,13 +17,13 @@
         Color="#000000" />
 
     <Style
-        x:Key="{ComponentResourceKey ResourceId=S.TransparencyMainWindow.Default,
+        x:Key="{ComponentResourceKey ResourceId=S.TransparencyMainWindowBase.Default,
                                      TypeInTargetAssembly={x:Type local:TransparencyMainWindowKeys}}"
         BasedOn="{StaticResource {x:Static local:MainWindowKeys.Default}}"
-        TargetType="{x:Type local:TransparencyMainWindow}">
+        TargetType="{x:Type local:TransparencyMainWindowBase}">
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="{x:Type local:TransparencyMainWindow}">
+                <ControlTemplate TargetType="{x:Type local:TransparencyMainWindowBase}">
                     <Grid x:Name="grid">
                         <Border x:Name="PART_Border">
                             <Border.Style>
@@ -185,5 +185,5 @@
         </Setter>
     </Style>
 
-    <Style BasedOn="{StaticResource {x:Static local:TransparencyMainWindowKeys.Default}}" TargetType="{x:Type local:TransparencyMainWindow}" />
+    <Style BasedOn="{StaticResource {x:Static local:TransparencyMainWindowKeys.Default}}" TargetType="{x:Type local:TransparencyMainWindowBase}" />
 </ResourceDictionary>

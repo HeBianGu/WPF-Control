@@ -11,7 +11,7 @@ using System.Windows.Controls;
 namespace H.Windows.Main;
 
 [TemplatePart(Name = "PART_AdornerBorder")]
-public class MainWindowBase : Window, IMainWindow, IAdornerDialogElement
+public abstract class MainWindowBase : Window, IMainWindow, IAdornerDialogElement
 {
     static MainWindowBase()
     {
