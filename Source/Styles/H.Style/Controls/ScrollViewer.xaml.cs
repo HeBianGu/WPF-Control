@@ -14,4 +14,5 @@ namespace H.Styles.Controls;
 public class ScrollViewerKeys
 {
     public static ComponentResourceKey Default => new ComponentResourceKey(typeof(ScrollViewerKeys), "S.ScrollViewer.Default");
+    public static ComponentResourceKey HiddenScrollBar => new ComponentResourceKey(typeof(ScrollViewerKeys), "S.ScrollViewer.HiddenScrollBar");
 }

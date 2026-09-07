@@ -13,7 +13,7 @@ global using System.Windows.Controls;
 
 namespace H.Extensions.Behvaiors.ScrollViewers;
 
-public class ScrollViewerBebavior : Behavior<ScrollViewer>
+public class ScrollViewerMouseWheelBebavior : Behavior<ScrollViewer>
 {
     protected override void OnAttached()
     {
@@ -92,9 +92,9 @@ public class ScrollViewerBebavior : Behavior<ScrollViewer>
 
     // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
     public static readonly DependencyProperty UseHorizontalMouseWheelProperty =
-        DependencyProperty.Register("UseHorizontalMouseWheel", typeof(bool), typeof(ScrollViewerBebavior), new FrameworkPropertyMetadata(default(bool), (d, e) =>
+        DependencyProperty.Register("UseHorizontalMouseWheel", typeof(bool), typeof(ScrollViewerMouseWheelBebavior), new FrameworkPropertyMetadata(default(bool), (d, e) =>
         {
-            ScrollViewerBebavior control = d as ScrollViewerBebavior;
+            ScrollViewerMouseWheelBebavior control = d as ScrollViewerMouseWheelBebavior;
 
             if (control == null) return;
 
@@ -116,11 +116,10 @@ public class ScrollViewerBebavior : Behavior<ScrollViewer>
         set { SetValue(UseMouseWheelHijackProperty, value); }
     }
 
-    // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
     public static readonly DependencyProperty UseMouseWheelHijackProperty =
-        DependencyProperty.Register("UseMouseWheelHijack", typeof(bool), typeof(ScrollViewerBebavior), new FrameworkPropertyMetadata(default(bool), (d, e) =>
+        DependencyProperty.Register("UseMouseWheelHijack", typeof(bool), typeof(ScrollViewerMouseWheelBebavior), new FrameworkPropertyMetadata(default(bool), (d, e) =>
         {
-            ScrollViewerBebavior control = d as ScrollViewerBebavior;
+            ScrollViewerMouseWheelBebavior control = d as ScrollViewerMouseWheelBebavior;
 
             if (control == null) return;
 
