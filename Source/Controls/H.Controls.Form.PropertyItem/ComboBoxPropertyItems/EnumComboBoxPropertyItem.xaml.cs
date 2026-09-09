@@ -29,3 +29,10 @@ public class EnumComboBoxPropertyItem : SelectSourcePropertyItem<Enum>
         }
     }
 }
+
+public class RadioButtonEnumPropertyItem : EnumComboBoxPropertyItem
+{
+    public RadioButtonEnumPropertyItem(PropertyInfo property, object obj) : base(property, obj)
+    {
+    }
+}
