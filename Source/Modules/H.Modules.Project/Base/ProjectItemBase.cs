@@ -15,9 +15,14 @@ using System.Threading.Tasks;
 
 namespace H.Modules.Project.Base;
 
+public interface IFileProjectItem : IProjectItem
+{
+    string GetFilePath();
+}
+
 [Icon(FontIcons.DateTime)]
 [Display(Name = "新建项目")]
-public abstract class ProjectItemBase : DisplayBindableBase, IProjectItem
+public abstract class ProjectItemBase : DisplayBindableBase, IFileProjectItem
 {
     protected ProjectItemBase()
     {

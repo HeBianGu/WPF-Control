@@ -39,7 +39,13 @@ public abstract class ProjectServiceBase<T> : CommandsBindableBase, IProjectServ
     public string Name => Resources.Nav_Projects;
     protected virtual void OnProjectAdded(IProjectItem projectItem)
     {
-
+        if (projectItem is IFileProjectItem fileProjectItem)
+        {
+            //创建项目时还没有保存文件，所以删除时需要判断文件是否存在
+            var filePath = fileProjectItem.GetFilePath();
+            if (File.Exists(filePath))
+                File.Delete(filePath);
+        }
     }
 
     private IEnumerable<T> _collection = new ObservableCollection<T>();
