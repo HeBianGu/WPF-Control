@@ -39,6 +39,7 @@ public class ProcessCommand : DisplayMarkupCommandBase
             return;
         //System.Diagnostics.Process.Start(parameter?.ToString());
         Process.Start(new ProcessStartInfo(uri?.ToString()) { UseShellExecute = true });
+        base.Execute(parameter);
 
     }
 }

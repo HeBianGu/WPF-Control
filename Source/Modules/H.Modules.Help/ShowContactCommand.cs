@@ -37,6 +37,23 @@ public class ShowContactCommand : ResxDisplayMarkupCommandBase
 }
 
 [Icon(FontIcons.Home)]
+[Display(Name = "访问B站小店查看所有商品", Description = "访问B站小店查看所有商品")]
+public class ShowBilibiliMailCommand : ShowContactCommand
+{
+    public override async Task ExecuteAsync(object parameter)
+    {
+        string bmail = "pack://application:,,,/H.Modules.Help;component/Assets/B站小店地址.png";
+        await IocMessage.Dialog.ShowImageSource(bmail, x =>
+        {
+            x.Title = "扫一扫，进入B站小店查看所有商品";
+            x.Width = 300;
+            x.Height = 300;
+            x.Padding = new Thickness(20);
+        });
+    }
+}
+
+[Icon(FontIcons.Home)]
 [Display(Name = "访问Github", Description = "通过此方式联系到开发者")]
 public class ShowGithubContactCommand : ShowContactCommand
 {

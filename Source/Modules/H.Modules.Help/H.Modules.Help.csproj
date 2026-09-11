@@ -1,5 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
   <ItemGroup>
+    <None Remove="Assets\B站小店地址.png" />
     <None Remove="Assets\QQ.jpg" />
   </ItemGroup>
   <ItemGroup>
@@ -20,5 +21,10 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <Generator>PublicResXFileCodeGenerator</Generator>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Update="Assets\B站小店地址.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 </Project>
