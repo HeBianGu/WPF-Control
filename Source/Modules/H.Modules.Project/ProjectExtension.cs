@@ -26,7 +26,7 @@ public static partial class ProjectExtension
         option?.Invoke(project);
         bool? r = await IocMessage.ShowDialog(project, x =>
         {
-            x.Title = "选择工程";
+            x.Title = "打开项目";
             x.MinWidth = 600;
             x.MinHeight = 400;
             x.HorizontalContentAlignment = System.Windows.HorizontalAlignment.Stretch;
