@@ -41,34 +41,27 @@ public class OpenFileDialogPropertyItem : CommandsTextPropertyItemBase
         });
         if (!File.Exists(r))
             return;
-        this.Value = r;
+        this.OnFilePathChanged(r);
     })
     { Name = "浏览" };
+
+    protected virtual void OnFilePathChanged(string filePath)
+    {
+        this.Value = filePath;
+    }
 }
 
-public class OpenFileDialogAppDomainRelativePropertyItem : CommandsTextPropertyItemBase
+public class OpenFileDialogAppDomainRelativePropertyItem : OpenFileDialogPropertyItem
 {
     public OpenFileDialogAppDomainRelativePropertyItem(PropertyInfo property, object obj) : base(property, obj)
     {
 
     }
 
-    [Display(Name = "浏览", Order = 2)]
-    public DisplayCommand OpenCommand => new DisplayCommand(l =>
+    protected override void OnFilePathChanged(string filePath)
     {
-        var filter = this.PropertyInfo.GetCustomAttribute<OpenFileDialogFilterAttribute>();
-        var r = IocMessage.IOFileDialog.ShowOpenFile(x =>
-        {
-            if (File.Exists(this.Value))
-                x.InitialDirectory = Path.GetDirectoryName(this.Value).GetFullPath();
-            if (filter != null)
-                x.Filter = filter.Filter;
-        });
-        if (!File.Exists(r))
-            return;
-        this.Value = r.GetAppDomainRelativePath();
-    })
-    { Name = "浏览" };
+        this.Value = filePath.GetAppDomainRelativePath();
+    }
 }
 
 public class OpenFolderDialogPropertyItem : CommandsTextPropertyItemBase
@@ -84,14 +77,33 @@ public class OpenFolderDialogPropertyItem : CommandsTextPropertyItemBase
         var r = IocMessage.IOFolderDialog.ShowOpenFolder();
         if (!Directory.Exists(r))
             return;
-        this.Value = r;
+        this.OnFilePathChanged(r);
     })
     { Name = "浏览" };
+
+    protected virtual void OnFilePathChanged(string filePath)
+    {
+        this.Value = filePath;
+    }
 }
 
-public class OpenFolderDialogAppDomainRelativePropertyItem : CommandsTextPropertyItemBase
+public class OpenFolderDialogAppDomainRelativePropertyItem : OpenFolderDialogPropertyItem
 {
     public OpenFolderDialogAppDomainRelativePropertyItem(PropertyInfo property, object obj) : base(property, obj)
+    {
+
+    }
+
+    protected override void OnFilePathChanged(string filePath)
+    {
+        this.Value = filePath.GetAppDomainRelativePath();
+    }
+}
+
+
+public class SaveFileDialogPropertyItem : CommandsTextPropertyItemBase
+{
+    public SaveFileDialogPropertyItem(PropertyInfo property, object obj) : base(property, obj)
     {
 
     }
@@ -99,10 +111,35 @@ public class OpenFolderDialogAppDomainRelativePropertyItem : CommandsTextPropert
     [Display(Name = "浏览", Order = 2)]
     public DisplayCommand OpenCommand => new DisplayCommand(l =>
     {
-        var r = IocMessage.IOFolderDialog.ShowOpenFolder();
-        if (!Directory.Exists(r))
+        var filter = this.PropertyInfo.GetCustomAttribute<OpenFileDialogFilterAttribute>();
+        var r = IocMessage.IOFileDialog.ShowSaveFile(x =>
+        {
+            if (File.Exists(this.Value))
+                x.InitialDirectory = Path.GetDirectoryName(this.Value).GetFullPath();
+            if (filter != null)
+                x.Filter = filter.Filter;
+        });
+        if (!File.Exists(r))
             return;
-        this.Value = r.GetAppDomainRelativePath();
+        this.OnFilePathChanged(r);
     })
     { Name = "浏览" };
+
+    protected virtual void OnFilePathChanged(string filePath)
+    {
+        this.Value = filePath;
+    }
+
+    public class SaveFileDialogAppDomainRelativePropertyItem : SaveFileDialogPropertyItem
+    {
+        public SaveFileDialogAppDomainRelativePropertyItem(PropertyInfo property, object obj) : base(property, obj)
+        {
+
+        }
+
+        protected override void OnFilePathChanged(string filePath)
+        {
+            this.Value = filePath.GetAppDomainRelativePath();
+        }
+    }
 }
