@@ -336,7 +336,12 @@ public static class ObjectExtension
 
     public static object CloneBy(this object from, Predicate<PropertyInfo> predicate = null)
     {
-        var n = Activator.CreateInstance(from.GetType());
+        var t = from.GetType();
+        if (t.IsPrimitive)
+            return from;
+        if (t == typeof(string))
+            return from;
+        var n = Activator.CreateInstance(t);
         //  Do ：基础数据
         n.CopyByBasicType(from, predicate);
         //  Do ：IList数据CloneBy递归复制
