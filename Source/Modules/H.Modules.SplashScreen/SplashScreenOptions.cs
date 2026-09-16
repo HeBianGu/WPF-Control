@@ -32,7 +32,7 @@ public class SplashScreenOptions : IocOptionInstance<SplashScreenOptions>, ISpla
     }
 
     private string _product;
-    [JsonIgnore]
+    [ReadOnly(true)]
     [Display(Name = "登录标题")]
     public string Product
     {
@@ -45,7 +45,7 @@ public class SplashScreenOptions : IocOptionInstance<SplashScreenOptions>, ISpla
     }
 
     private string _sub;
-    [JsonIgnore]
+    [ReadOnly(true)]
     [Display(Name = "副标题")]
     public string Sub
     {
@@ -71,7 +71,7 @@ public class SplashScreenOptions : IocOptionInstance<SplashScreenOptions>, ISpla
     //}
 
     private double _subFontSize = 20;
-    [JsonIgnore]
+    [ReadOnly(true)]
     [Display(Name = "副标题字体大小")]
     public double SubFontSize
     {
@@ -84,8 +84,8 @@ public class SplashScreenOptions : IocOptionInstance<SplashScreenOptions>, ISpla
     }
 
     private string _Background;
+    [ReadOnly(true)]
     [DefaultValue("pack://application:,,,/H.Modules.SplashScreen;component/Assets/background.jpg")]
-    [JsonIgnore]
     [Browsable(false)]
     public string Background
     {
@@ -96,7 +96,7 @@ public class SplashScreenOptions : IocOptionInstance<SplashScreenOptions>, ISpla
             RaisePropertyChanged();
         }
     }
-
+    [ReadOnly(true)]
     public int SleepMicroseconds { get; set; } = 100;
 
 }
