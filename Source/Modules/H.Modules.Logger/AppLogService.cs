@@ -10,6 +10,7 @@ using H.Extensions.Common;
 using H.Iocable;
 using H.Services.Common.Theme;
 using H.Services.Logger;
+using System.Windows;
 
 namespace H.Modules.Logger;
 public class AppLogService : IAppLogService
@@ -19,15 +20,26 @@ public class AppLogService : IAppLogService
         var presenter = Ioc.GetService<IAppLogPresenter>();
         if (presenter == null)
             return;
-        presenter.Messages.Insert(0, new AppLogMessage(message, level));
-        if (presenter.Messages.Count > LoggerOptions.Instance.Capacity)
-        {
-            if (presenter.Messages.Count == LoggerOptions.Instance.Capacity + 1)
-                presenter.Messages.RemoveAt(LoggerOptions.Instance.Capacity);
-            else
-                presenter.Messages = presenter.Messages.Take(LoggerOptions.Instance.Capacity).ToObservable();
 
+        void AddLog()
+        {
+            if (presenter.Messages.Count > LoggerOptions.Instance.Capacity)
+            {
+                if (presenter.Messages.Count == LoggerOptions.Instance.Capacity + 1)
+                    presenter.Messages.RemoveAt(LoggerOptions.Instance.Capacity);
+                else
+                    presenter.Messages = presenter.Messages.Take(LoggerOptions.Instance.Capacity).ToObservable();
+            }
+            presenter.Messages.Insert(0, new AppLogMessage(message, level));
         }
 
+        var dispatcher = Application.Current?.Dispatcher;
+        if (dispatcher == null || dispatcher.CheckAccess())
+        {
+            AddLog();
+            return;
+        }
+
+        dispatcher.Invoke(AddLog);
     }
 }
