@@ -1,0 +1,9 @@
+﻿<h:ApplicationBase x:Class="H.Test.Plugin.App"
+                   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                   xmlns:h="https://github.com/HeBianGu"
+                   xmlns:local="clr-namespace:H.Test.Plugin">
+    <Application.Resources>
+        <ConciseStyle/>
+    </Application.Resources>
+</h:ApplicationBase>
