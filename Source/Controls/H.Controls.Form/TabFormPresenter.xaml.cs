@@ -49,6 +49,15 @@ public class TabFormPresenter : FormPresenter, ITabFormOption
         }
     }
 
+    public override void RaisePropertyChanged([CallerMemberName] string propertyName = "")
+    {
+        base.RaisePropertyChanged(propertyName);
+        if (propertyName == nameof(SelectObject))
+        {
+            this.UpdateTabNames();
+        }
+    }
+
     private IEnumerable<string> GetGroups()
     {
         return this.GetNames(p => p.Attributes.OfType<DisplayAttribute>()?.FirstOrDefault()?.GroupName);

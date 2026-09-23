@@ -12,10 +12,12 @@ global using H.Services.Message.Form;
 global using System.Collections.Generic;
 global using System.Collections.ObjectModel;
 global using System.Windows;
+using System.Runtime.CompilerServices;
 
 namespace H.Controls.Form;
 
 [Icon("\xE12A")]
+[ContentProperty(nameof(SelectObject))]
 public class FormPresenter : DisplayBindableBase, IFormOption
 {
     public FormPresenter()

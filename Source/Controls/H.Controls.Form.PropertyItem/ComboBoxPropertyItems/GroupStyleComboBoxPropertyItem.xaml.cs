@@ -32,6 +32,6 @@ public class RefreshGroupStyleComboBoxPropertyItem : GroupStyleComboBoxPropertyI
     public DisplayCommand RefreshSourceCommand => new DisplayCommand(x =>
     {
         this.Collection = this.CreateSource()?.ToObservable();
-        IocMessage.Snack.ShowSuccess($"刷新数据完成：共计{this.Collection.Count}条数据");
+        IocMessage.Snack?.ShowSuccess($"刷新数据完成：共计{this.Collection.Count}条数据");
     });
 }

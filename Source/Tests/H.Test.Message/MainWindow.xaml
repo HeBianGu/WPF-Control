@@ -99,6 +99,8 @@
                         Content="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Command.Value}" />
             </UniformGrid>
         </TabItem>
+        <TabItem Header="AppLog">
+            <ContentPresenter Content="{Ioc Type={x:Type IAppLogPresenter}}"/>
+        </TabItem>
     </TabControl>
-
 </Window>

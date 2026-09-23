@@ -17,7 +17,7 @@ public class SourcePropertyItemDemoModel
 {
     public SourcePropertyItemDemoModel()
     {
-        this.ModelItemSource = Enumerable.Range(0, 10).Select(x => new DemoModelItem() { Name = "Item" + x }).ToArray();
+        this.ModelItemSource = Enumerable.Range(0, 10).Select(x => new DemoModelItem() { Name = "Item" + x, GroupName = "分组" + (x % 3) }).ToArray();
 
         this.SelectSource = Enumerable.Range(0, 10).Select(x => "Item" + x).ToArray();
     }
@@ -68,6 +68,16 @@ public class ComboBoxPropertyItemDemoModel : SourcePropertyItemDemoModel
     [GetFilesSource("Assets")]
     [PropertyItem(typeof(ComboBoxPropertyItem))]
     public string SelectedFilePath { get; set; }
+
+    [Display(Name = "GroupStyleComboBoxPropertyItem", Description = "演示应用PropertyItemAttribute自定义显示样式")]
+    [GetPropertyNameSource(nameof(ModelItemSource))]
+    [PropertyItem(typeof(GroupStyleComboBoxPropertyItem))]
+    public DemoModelItem SelectItem1 { get; set; }
+
+    [Display(Name = "RefreshGroupStyleComboBoxPropertyItem", Description = "演示应用PropertyItemAttribute自定义显示样式")]
+    [GetPropertyNameSource(nameof(ModelItemSource))]
+    [PropertyItem(typeof(RefreshGroupStyleComboBoxPropertyItem))]
+    public DemoModelItem SelectItem2 { get; set; }
 }
 
 public class ListBoxPropertyItemDemoModel : SourcePropertyItemDemoModel
@@ -123,4 +133,8 @@ public class DemoModelItem
 
     [Display(Name = "值")]
     public string Value { get; set; }
+
+
+    [Display(Name = "分组")]
+    public string GroupName { get; set; }
 }

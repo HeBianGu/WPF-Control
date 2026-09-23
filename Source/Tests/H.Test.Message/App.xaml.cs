@@ -29,6 +29,7 @@ namespace H.Test.Message
             services.AddNoticeMessage();
             services.AddSnackMessage();
             services.AddAbout();
+            services.AddAppLog();
         }
 
         protected override Window CreateMainWindow(StartupEventArgs e)

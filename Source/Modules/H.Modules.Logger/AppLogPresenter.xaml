@@ -33,7 +33,7 @@
                                     MinWidth="60"
                                     Binding="{Binding Level}"
                                     Header="类型" />
-                <DataGridTemplateColumn Header="日志">
+                <DataGridTemplateColumn Width="*" Header="日志">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <DockPanel>

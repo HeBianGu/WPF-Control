@@ -3,6 +3,7 @@ global using System.Diagnostics;
 global using System.Text.Json.Serialization;
 global using System.Windows;
 global using System.Xml.Serialization;
+using H.Services.Serializable.TextJson;
 
 namespace H.App.FileManager
 {

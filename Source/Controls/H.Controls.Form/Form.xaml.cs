@@ -14,6 +14,7 @@ using H.Controls.Form.PropertyItems.Base;
 
 namespace H.Controls.Form;
 
+[ContentProperty(nameof(SelectObject))]
 public partial class Form : ItemsControl, IFormOption
 {
     public Form()

@@ -17,6 +17,18 @@ public class TextPropertyItemDemoModel
     [PropertyItem(typeof(OpenFileDialogPropertyItem))]
     public string Path { get; set; }
 
+    [Display(Name = "OpenFileDialogAppDomainRelativePropertyItem", Description = "演示应用PropertyItemAttribute自定义显示样式")]
+    [PropertyItem(typeof(OpenFileDialogAppDomainRelativePropertyItem))]
+    public string Path4 { get; set; }
+
+    [Display(Name = "OpenFolderDialogPropertyItem", Description = "演示应用PropertyItemAttribute自定义显示样式")]
+    [PropertyItem(typeof(OpenFolderDialogPropertyItem))]
+    public string Path5 { get; set; }
+
+    [Display(Name = "OpenFolderDialogAppDomainRelativePropertyItem", Description = "演示应用PropertyItemAttribute自定义显示样式")]
+    [PropertyItem(typeof(OpenFolderDialogAppDomainRelativePropertyItem))]
+    public string Path6 { get; set; }
+
     [Display(Name = "OpenDeleteSystemPathTextPropertyItem", Description = "演示应用PropertyItemAttribute自定义显示样式")]
     [PropertyItem(typeof(OpenDeleteSystemPathTextPropertyItem))]
     public string Path1 { get; set; }
@@ -32,4 +44,5 @@ public class TextPropertyItemDemoModel
     [Display(Name = "PasswordTextPropertyItem", Description = "演示应用PropertyItemAttribute自定义显示样式")]
     [PropertyItem(typeof(PasswordTextPropertyItem))]
     public string Password { get; set; } = "Password";
+
 }

@@ -1,4 +1,4 @@
-﻿<h:MainWindow x:Class="H.Test.Identify.MainWindow"
+﻿<MainWindowBase x:Class="H.Test.Identify.MainWindow"
               xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
               xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
               xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
@@ -20,7 +20,7 @@
     <Window.DataContext>
         <local:MainViewModel />
     </Window.DataContext>
-    <h:MainWindow.CaptionTempate>
+    <MainWindowBase.CaptionTempate>
         <ControlTemplate>
             <DockPanel HorizontalAlignment="Right"
                        LastChildFill="False"
@@ -42,7 +42,7 @@
                 <ContentPresenter Content="{Ioc Type={x:Type h:ISwitchThemeViewPresenter}}" />
             </DockPanel>
         </ControlTemplate>
-    </h:MainWindow.CaptionTempate>
+    </MainWindowBase.CaptionTempate>
     <Grid>
         <TabControl BorderBrush="{DynamicResource {x:Static h:BrushKeys.BorderBrush}}"
                     BorderThickness="1">
@@ -82,4 +82,4 @@
             </TabItem>
         </TabControl>
     </Grid>
-</h:MainWindow>
+</MainWindowBase>

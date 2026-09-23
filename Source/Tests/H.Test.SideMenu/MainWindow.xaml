@@ -1,4 +1,4 @@
-﻿<h:MainWindow x:Class="H.Test.SideMenu.MainWindow"
+﻿<MainWindowBase x:Class="H.Test.SideMenu.MainWindow"
               xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
               xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
               xmlns:Behaviors="http://schemas.microsoft.com/xaml/behaviors"
@@ -104,7 +104,7 @@
     <Window.DataContext>
         <local:MainViewModel />
     </Window.DataContext>
-    <h:MainWindow.CaptionTempate>
+    <MainWindowBase.CaptionTempate>
         <ControlTemplate>
             <DockPanel HorizontalAlignment="Right" 
                        WindowChrome.IsHitTestVisibleInChrome="True"
@@ -113,8 +113,8 @@
                                 Style="{DynamicResource {x:Static FontIconButtonKeys.Command}}" />
             </DockPanel>
         </ControlTemplate>
-    </h:MainWindow.CaptionTempate>
-    <h:MainWindow.SideTemplate>
+    </MainWindowBase.CaptionTempate>
+    <MainWindowBase.SideTemplate>
         <ControlTemplate>
             <Border BorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrush}}"
                     BorderThickness="0,0,1,0">
@@ -245,7 +245,7 @@
                 </DockPanel>
             </Border>
         </ControlTemplate>
-    </h:MainWindow.SideTemplate>
+    </MainWindowBase.SideTemplate>
     <Grid>
         <Border BorderBrush="{DynamicResource {x:Static h:BrushKeys.BorderBrush}}"
                 BorderThickness="0,1,0,1">
@@ -274,4 +274,4 @@
             </TabControl>
         </Border>
     </Grid>
-</h:MainWindow>
+</MainWindowBase>

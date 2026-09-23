@@ -11,6 +11,42 @@
         Style="{StaticResource {x:Static WindowKeys.Default}}"
         mc:Ignorable="d">
     <TabControl TabStripPlacement="Left">
+        <TabItem Header="TextPropertyItem">
+            <h:Form TitleWidth="200">
+                <h:Form.SelectObject>
+                    <h:TextPropertyItemDemoModel />
+                </h:Form.SelectObject>
+            </h:Form>
+        </TabItem>
+        <TabItem Header="FormPresenter">
+            <FormPresenter SelectObject="{GetStudent}" />
+        </TabItem>
+        <TabItem Header="PropertyItemDemoModel">
+            <FormPresenter UseGroup="True">
+                <PropertyItemDemoModel />
+            </FormPresenter>
+        </TabItem>
+        <TabItem Header="TabFormPresenter">
+            <UniformGrid Rows="2">
+                <ContentControl>
+                    <TabFormPresenter>
+                        <TabPropertyItemDemoModel/>
+                    </TabFormPresenter>
+                </ContentControl>
+                <ContentControl>
+                    <TabFormPresenter UseTabAttribute="True">
+                        <TabPropertyItemDemoModel/>
+                    </TabFormPresenter>
+                </ContentControl>
+            </UniformGrid>
+        </TabItem>
+        <TabItem Header="Student">
+            <h:Form>
+                <h:Form.SelectObject>
+                    <h:Student />
+                </h:Form.SelectObject>
+            </h:Form>
+        </TabItem>
         <TabItem Header="BrushPropertyItem">
             <h:Form TitleWidth="200">
                 <h:Form.SelectObject>
@@ -91,20 +127,8 @@
                 </h:Form.SelectObject>
             </h:Form>
         </TabItem>
-        <TabItem Header="TextPropertyItem">
-            <h:Form TitleWidth="200">
-                <h:Form.SelectObject>
-                    <h:TextPropertyItemDemoModel />
-                </h:Form.SelectObject>
-            </h:Form>
-        </TabItem>
-        <TabItem Header="Student">
-            <h:Form>
-                <h:Form.SelectObject>
-                    <h:Student />
-                </h:Form.SelectObject>
-            </h:Form>
-        </TabItem>
+
+
         <TabItem Header="UseGroup">
             <h:Form UseGroup="True">
                 <h:Form.SelectObject>
@@ -161,7 +185,7 @@
                     <DataTemplate>
                         <TextBlock Width="Auto"
                                    VerticalAlignment="Center"
-                                   Text="{Binding}" />
+                                   Text="{Binding Name}" />
                     </DataTemplate>
                 </h:Form.ItemHeaderTemplate>
             </h:Form>
@@ -175,7 +199,7 @@
                     <DataTemplate>
                         <TextBlock Width="Auto"
                                    VerticalAlignment="Center"
-                                   Text="{Binding}" />
+                                   Text="{Binding Name}" />
                     </DataTemplate>
                 </h:Form.ItemHeaderTemplate>
             </h:Form>

@@ -62,8 +62,8 @@
                                 <ScrollViewer Padding="{TemplateBinding Padding}"
                                               Focusable="false">
                                     <b:Interaction.Behaviors>
-                                        <h:ScrollViewerBebavior UseHorizontalMouseWheel="True"
-                                                                UseMouseWheelHijack="True" />
+                                        <ScrollViewerMouseWheelBebavior UseHorizontalMouseWheel="True"
+                                                                  UseMouseWheelHijack="True" />
                                     </b:Interaction.Behaviors>
                                     <ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
                                 </ScrollViewer>
