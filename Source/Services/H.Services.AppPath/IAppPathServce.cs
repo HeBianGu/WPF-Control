@@ -13,11 +13,11 @@ public interface IAppPathServce
     string AppName { get; }
     string AppPath { get; }
     string Cache { get; }
-    string Company { get; set; }
+    string Company { get; }
     string Config { get; }
     string Data { get; }
     string Default { get; }
-    string Document { get; set; }
+    string Document { get; }
     string License { get; }
     string Log { get; }
     string Project { get; }

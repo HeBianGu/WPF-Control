@@ -30,6 +30,18 @@ public class AppPathServce : Lazy<AppPathServce>, IAppPathServce
     /// </summary>
     public AppPathServce()
     {
+        this.CheckFolder();
+    }
+
+    public AppPathServce(string version, string company)
+    {
+        this.Version = version;
+        this.Company = company;
+        this.CheckFolder();
+    }
+
+    private void CheckFolder()
+    {
         this.CheckFolder(this.AppPath);
         this.CheckFolder(this.Default);
         this.CheckFolder(this.Config);
@@ -119,7 +131,7 @@ public class AppPathServce : Lazy<AppPathServce>, IAppPathServce
     /// </summary>
     public virtual string Cache => Path.Combine(this.Default, nameof(this.Cache));
 
-    public virtual string Version { get; set; }
+    public virtual string Version { get; }
     #endregion
 
     #region - 登录用户目录 -

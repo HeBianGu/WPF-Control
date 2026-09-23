@@ -58,7 +58,7 @@
                                  Text="{Binding UserName}">
                             <Cattach.Title>
                                 <FontIconTextBlock FontSize="14"
-                                                   Foreground="{Binding RelativeSource={RelativeSource AncestorType=PasswordBox}, Path=Foreground}"
+                                                   Foreground="{Binding RelativeSource={RelativeSource AncestorType=TextBox}, Path=Foreground}"
                                                    Text="{x:Static FontIcons.StatusCircleErrorX}" />
                             </Cattach.Title>
                         </TextBox>

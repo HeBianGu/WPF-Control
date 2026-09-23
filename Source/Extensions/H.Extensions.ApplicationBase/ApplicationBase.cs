@@ -55,11 +55,12 @@ public abstract partial class ApplicationBase : Application, IConfigureableAppli
 
     protected virtual IAppPathServce CreateAppPathServce()
     {
-        return new AppPathServce()
-        {
-            Version = ApplicationProvider.Version,
-            Company = ApplicationProvider.Company ?? "HeBianGu",
-        };
+        string company = ApplicationProvider.Company ?? "HeBianGu";
+        if (company == ApplicationProvider.Title)
+            company = "HeBianGu";
+        if (company == ApplicationProvider.Product)
+            company = "HeBianGu";
+        return new AppPathServce(ApplicationProvider.Version, company);
     }
 
     protected override void OnStartup(StartupEventArgs e)

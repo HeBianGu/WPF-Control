@@ -49,16 +49,25 @@
                                   Header="退出" />
                     </MenuItem>
                     <MenuItem Header="帮助"
-                              ToolTip="新手向导、技术支持、关于、反馈、官网、联系方式和开发文档等">
+              ToolTip="新手向导、技术支持、关于、反馈、官网、联系方式和开发文档等">
                         <MenuItem Command="{ShowGuideCommand}" />
                         <MenuItem Command="{ShowNewGuideCommand}" />
                         <MenuItem Command="{ShowGuideTreeCommand}" />
                         <MenuItem Command="{ShowNewGuideTreeCommand}" />
                         <Separator />
+                        <MenuItem Command="{ShowBilibiliMailCommand}" />
+                        <MenuItem Command="{ShowReleaseVersionsCommand}" />
+                        <MenuItem Command="{ShowDependenciesCommand}" />
+                        <MenuItem Command="{ShowSettingCommand}" />
+                        <MenuItem Command="{ShowSettingCommand SwitchToType={x:Type IThemeOptions}}"
+                  Header="主题设置" />
+                        <MenuItem Command="{ShowLog4netPathCommand}" />
+                        <MenuItem Command="{ShowAppLogerCommmand}" />
+                        <Separator />
                         <MenuItem Command="{ShowNotImplementedCommand}"
-                                  Header="检查更新" />
+                  Header="检查更新" />
                         <MenuItem Command="{ShowNotImplementedCommand}"
-                                  Header="注册" />
+                  Header="注册" />
 
                         <MenuItem Command="{ShowReleaseVersionsCommand}" />
                         <MenuItem Command="{ShowSupportCommand}" />

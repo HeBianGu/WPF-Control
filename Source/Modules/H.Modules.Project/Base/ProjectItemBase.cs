@@ -136,6 +136,8 @@ public abstract class ProjectItemBase : DisplayBindableBase, IFileProjectItem
 
     protected void SaveToFile(object data)
     {
+        if (data == null)
+            return;
         string path = this.GetFilePath();
         this.GetSerializer()?.Save(path, data);
     }

@@ -24,6 +24,10 @@ namespace H.App.FileManager
 {
     public class FileProjectItem : ProjectItemBase
     {
+        public FileProjectItem()
+        {
+            this.GroupName = "项目设置";
+        }
         private string _baseFolder;
         [Required]
         [PropertyItem(typeof(OpenFolderDialogPropertyItem))]
@@ -63,10 +67,6 @@ namespace H.App.FileManager
                 RaisePropertyChanged();
             }
         }
-
-        public int Order { get; }
-
-        public string GroupName { get; } = "工程设置";
 
         public override bool Load(out string message)
         {
