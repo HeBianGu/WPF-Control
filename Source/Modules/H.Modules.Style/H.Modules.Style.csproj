@@ -2,6 +2,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Controls\H.Controls.Form.PropertyItem\H.Controls.Form.PropertyItem.csproj" />
     <ProjectReference Include="..\..\Extensions\H.Extensions.Setting\H.Extensions.Setting.csproj" />
+    <ProjectReference Include="..\..\Styles\H.Styles.Bootstrap\H.Styles.Bootstrap.csproj" />
   </ItemGroup>
   <ItemGroup>
     <Compile Update="Properties\Resources.Designer.cs">
