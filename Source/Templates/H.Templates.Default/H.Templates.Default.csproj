@@ -21,6 +21,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\ApplicationBases\H.ApplicationBases.Default\H.ApplicationBases.Default.csproj" />
     <ProjectReference Include="..\..\Datas\H.Data.Test\H.Data.Test.csproj" />
+    <ProjectReference Include="..\..\Extensions\H.Extensions.Command\H.Extensions.Command.csproj" />
     <ProjectReference Include="..\..\Windows\H.Windows.Main\H.Windows.Main.csproj" />
   </ItemGroup>
 </Project>

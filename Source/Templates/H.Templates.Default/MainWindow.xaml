@@ -1,16 +1,16 @@
 ﻿<MainWindowBase x:Class="H.Templates.Default.MainWindow"
-              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-              xmlns:h="https://github.com/HeBianGu"
-              xmlns:local="clr-namespace:H.Templates.Default"
-              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-              Title="MainWindow"
-              Width="1200"
-              Height="750"
-              d:DesignInstance="{d:Type local:MainViewModel}"
-              WindowStartupLocation="CenterScreen"
-              mc:Ignorable="d">
+                xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                xmlns:h="https://github.com/HeBianGu"
+                xmlns:local="clr-namespace:H.Templates.Default"
+                xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                Title="MainWindow"
+                Width="1200"
+                Height="750"
+                d:DesignInstance="{d:Type local:MainViewModel}"
+                WindowStartupLocation="CenterScreen"
+                mc:Ignorable="d">
     <Window.DataContext>
         <local:MainViewModel />
     </Window.DataContext>
@@ -30,6 +30,16 @@
                         <MenuItem Command="{ShowNewGuideCommand}" />
                         <MenuItem Command="{ShowGuideTreeCommand}" />
                         <MenuItem Command="{ShowNewGuideTreeCommand}" />
+                        <Separator />
+                        <MenuItem Header="首页" Command="{ProcessCommand Uri=https://hebiangu.github.io/WPF-VisionMaster-Doc/Home/}" />
+                        <MenuItem Command="{ShowBilibiliMailCommand}" />
+                        <MenuItem Command="{ShowReleaseVersionsCommand}" />
+                        <MenuItem Command="{ShowDependenciesCommand}" />
+                        <MenuItem Command="{ShowSettingCommand}" />
+                        <MenuItem Command="{ShowSettingCommand SwitchToType={x:Type IThemeOptions}}"
+                                  Header="主题设置" />
+                        <MenuItem Command="{ShowLog4netPathCommand}" />
+                        <MenuItem Command="{ShowAppLogerCommmand}" />
                         <Separator />
                         <MenuItem Command="{ShowNotImplementedCommand}"
                                   Header="检查更新" />
