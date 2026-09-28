@@ -49,7 +49,6 @@ public class NewtonsoftJsonOptions : IocOptionInstance<NewtonsoftJsonOptions>, I
                 new JsonableJsonConverter() },//这部分序列化是会逻辑有问题用FilterBox测试
             Error = (sender, args) =>
             {
-                Trace.Assert(false);
                 // 记录错误
                 IocLog.Error($"Json兼容错误: {args.ErrorContext.Path}");
                 IocLog.Error(args.ErrorContext.Error.Message);
