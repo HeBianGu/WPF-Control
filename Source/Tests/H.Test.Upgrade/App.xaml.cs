@@ -1,5 +1,6 @@
 ﻿
 using H.Extensions.ApplicationBase;
+using H.Modules.Upgrade;
 using H.Services.Setting;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -26,11 +27,13 @@ namespace H.Test.Upgrade
             services.AddWindowDialogMessage();
             services.AddSplashScreen();
             //  Do ：注册软件更新页面
-            services.AddAutoUpgrade(x =>
+            services.AddUpgrade(x =>
             {
                 //x.Uri = "https://gitee.com/hebiangu/wpf-auto-update/raw/master/Install/Diagram/AutoUpdate.xml";
-                x.Uri = "https://gitee.com/hebiangu/wpf-auto-update/raw/master/Install/Movie/Movie.xml";
-                x.UseIEDownload = false;
+                //x.UpgradeInfoUri = "https://gitee.com/hebiangu/wpf-auto-update/raw/master/Install/Movie/Movie.xml";
+                x.UpgradeInfoUri = "https://hebiangu.github.io/WPF-VisionMaster-Doc/Home/UpdateJsonInfo.json";
+                x.UseIEOpenUri = true;
+                x.CheckUpgradeOnStart = true;
             });
         }
 

@@ -116,7 +116,7 @@ internal abstract class UpgradeServiceBase : IUpgradeService
     {
         var versionData = await IocMessage.Dialog.ShowWait(x =>
         {
-            x.Title = "正在检查软件更新...";
+            //x.Title = "正在检查软件更新...";
             return this.GetVersionAsync().Result;
         });
 
