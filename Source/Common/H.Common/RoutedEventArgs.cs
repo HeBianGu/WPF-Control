@@ -25,3 +25,19 @@ public class RoutedEventArgs<T> : RoutedEventArgs
 
     public T Entity { get; set; }
 }
+
+public struct MessageResult<T>
+{
+    public MessageResult()
+    {
+
+    }
+
+    public MessageResult(T result, string message)
+    {
+        this.Message = message;
+        this.Result = result;
+    }
+    public string Message { get; set; }
+    public T Result { get; set; }
+}

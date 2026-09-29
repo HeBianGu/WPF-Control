@@ -449,7 +449,7 @@ public partial class ApplicationBase
                     return IocMessage.Window.ShowAction(presenter, x =>
                     {
                         x.DialogButton = DialogButton.None;
-                        x.Title = Ioc<ILoginService>.Instance?.User?.Account;
+                        x.Title = Ioc<ILoginService>.Instance?.User?.Account ?? string.Empty;
                         x.MinHeight = 0.0;
                         x.Height = double.NaN;
                     }, func).Result;

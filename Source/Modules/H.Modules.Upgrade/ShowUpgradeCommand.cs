@@ -6,11 +6,8 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
-using H.Common.Attributes;
 using H.Common.Commands;
 using H.Services.Common.Upgrade;
-using H.Services.Message;
-using System.ComponentModel.DataAnnotations;
 
 namespace H.Modules.Upgrade;
 
@@ -25,7 +22,8 @@ public class ShowUpgradeCommand : DisplayMarkupCommandBase
     }
     public override async Task ExecuteAsync(object parameter)
     {
-        if (this.Service.Upgrade(out string message) == false)
-            await IocMessage.ShowDialogMessage(message);
+        var r = await this.Service.ShowUpgradeAsync();
+        if (r.message != null)
+            await IocMessage.ShowDialogMessage(r.message);
     }
 }

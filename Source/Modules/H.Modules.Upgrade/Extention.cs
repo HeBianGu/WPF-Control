@@ -6,14 +6,12 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
-using H.Modules.Upgrade;
 using H.Services.Common.Upgrade;
 using H.Services.Serializable.Web;
-using H.Services.Setting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 
-namespace System;
+namespace H.Modules.Upgrade;
 
 public static class Extention
 {
@@ -21,15 +19,13 @@ public static class Extention
     /// 注册
     /// </summary>
     /// <param name="service"></param>
-    public static void AddAutoUpgrade(this IServiceCollection services, Action<IUpgradeOptions> setupAction = null)
+    public static void AddUpgrade(this IServiceCollection services, Action<IUpgradeOptions> setupAction = null)
     {
         services.AddOptions();
-        services.TryAdd(ServiceDescriptor.Singleton<IUpgradeService, UpdateService>());
-        //services.TryAdd(ServiceDescriptor.Singleton<ISplashLoad, UpdateService>());
-        services.TryAdd(ServiceDescriptor.Singleton<IWebXmlSerializerService, XmlWebSerializerService>());
+        services.TryAdd(ServiceDescriptor.Singleton<IUpgradeService, JsonUpdateService>());
+        services.TryAdd(ServiceDescriptor.Singleton<IWebJsonSerializerService, JsonWebSerializerService>());
         if (setupAction != null)
             services.Configure(new Action<UpgradeOptions>(setupAction));
-
     }
 
     /// <summary>

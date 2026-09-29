@@ -6,11 +6,13 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
-using System.Reflection;
+namespace H.Modules.Upgrade.Base;
 
-namespace H.Services.Common.Upgrade;
-
-public class IocUpgrade : Ioc<IUpgradeService>
+public class UpgradeVersionData
 {
-    public static string CurrentVersion { get; set; } = Assembly.GetEntryAssembly().GetName().Version.ToString();
+    public string Version { get; set; }
+    public string Uri { get; set; }
+    public DateTime DateTime { get; set; } = DateTime.Now;
+    public List<string> Messages { get; set; } = new List<string>();
+    public bool Force { get; set; } = false;
 }

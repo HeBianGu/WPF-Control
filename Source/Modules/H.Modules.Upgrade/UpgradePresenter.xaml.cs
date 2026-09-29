@@ -17,6 +17,8 @@ global using System.Diagnostics;
 global using System.IO;
 global using System.Net;
 using H.Common;
+using H.Modules.Upgrade.Base;
+using H.Services.Common.Upgrade;
 
 namespace H.Modules.Upgrade;
 
@@ -24,13 +26,26 @@ namespace H.Modules.Upgrade;
 [Display(Name = "软件更新", GroupName = SettingGroupNames.GroupSystem, Description = "应用此功能检查软件更新")]
 internal class UpgradePresenter : BindableBase
 {
-    private readonly VersionData _args;
-    public UpgradePresenter(VersionData args)
+    private readonly UpgradeVersionData _args;
+    public UpgradePresenter(UpgradeVersionData args)
     {
         _args = args;
         this.Title = $"检测到新版本：V{args.Version}";
         this.Messages = args.Messages;
     }
+
+    private bool _UseCheckUpgradeOnStart = true;
+
+    public bool UseCheckUpgradeOnStart
+    {
+        get { return _UseCheckUpgradeOnStart; }
+        set
+        {
+            _UseCheckUpgradeOnStart = value;
+            RaisePropertyChanged();
+        }
+    }
+
 
     public string Title { get; set; }
     public List<string> Messages { get; set; }
@@ -71,9 +86,11 @@ internal class UpgradePresenter : BindableBase
 
     public RelayCommand DownLoadCommand => new RelayCommand(async x =>
     {
-        if (UpgradeOptions.Instance.UseIEDownload)
+        if (UpgradeOptions.Instance.UseIEOpenUri)
         {
             Process.Start(new ProcessStartInfo(_args.Uri) { UseShellExecute = true });
+            if (x is FrameworkElement element)
+                element.GetDialog()?.Sumit();
             return;
         }
         this.IsDownLoading = true;
@@ -119,7 +136,7 @@ internal class UpgradePresenter : BindableBase
         }
         catch (Exception ex)
         {
-            IocMessage.ShowDialogMessage(ex.Message);
+            await IocMessage.ShowDialogMessage(ex.Message);
         }
         finally
         {

@@ -10,11 +10,12 @@ namespace H.Modules.Upgrade;
 
 public interface IUpgradeOptions
 {
+    int ReadInfoTimeOutMilliseconds { get; set; }
     bool AutomaticUpgrade { get; set; }
-    bool CheckUpdateOnStart { get; set; }
+    bool CheckUpgradeOnStart { get; set; }
     string LoadFormat { get; set; }
     bool NotifyUpgrade { get; set; }
     string SavePath { get; set; }
-    string Uri { get; set; }
-    bool UseIEDownload { get; set; }
+    string UpgradeInfoUri { get; set; }
+    bool UseIEOpenUri { get; set; }
 }

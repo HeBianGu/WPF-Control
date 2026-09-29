@@ -15,24 +15,25 @@ namespace H.Services.Serializable.Web;
 
 public class XmlWebSerializerService : IWebXmlSerializerService
 {
-    public T Load<T>(string url, out string message)
+    public async Task<(T value, string message)> LoadAsync<T>(string url, Action<HttpClient> option)
     {
-        message = null;
+        if (string.IsNullOrWhiteSpace(url))
+            return (default, "地址不能未空");
         Uri uri = new Uri(url);
         using (HttpClient client = new HttpClient())
         {
+            option?.Invoke(client);
             try
             {
-                string xml = client.GetStringAsync(uri).Result;
+                string xml = await client.GetStringAsync(uri);
                 XmlSerializer xmlSerializer = new XmlSerializer(typeof(T));
                 System.Xml.XmlTextReader xmlTextReader = new System.Xml.XmlTextReader(new StringReader(xml)) { XmlResolver = null };
-                return (T)xmlSerializer.Deserialize(xmlTextReader);
+                return ((T)xmlSerializer.Deserialize(xmlTextReader), null);
             }
             catch (Exception ex)
             {
-                message = ex.Message;
                 IocLog.Error(ex);
-                return default;
+                return (default, ex.Message);
             }
         }
     }

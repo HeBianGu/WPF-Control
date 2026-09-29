@@ -6,13 +6,12 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
-namespace H.Modules.Upgrade;
+namespace H.Modules.Upgrade.Base;
 
-internal class VersionData
+public interface IUpgradeInfo
 {
-    public string Version { get; set; }
-    public string Uri { get; set; }
-    public DateTime DateTime { get; set; } = DateTime.Now;
-    public List<string> Messages { get; set; } = new List<string>();
-    public bool Force { get; set; } = false;
+    string[] Changelog { get; set; }
+    bool Force { get; set; }
+    string Url { get; set; }
+    string Version { get; set; }
 }

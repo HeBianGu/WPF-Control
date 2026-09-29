@@ -31,21 +31,23 @@
                     </ItemsControl>
                 </ScrollViewer>
             </StackPanel>
-
             <!--<Border Grid.Row="1"
                     Margin="0"
                     Background="{DynamicResource {x:Static h:BrushKeys.Background}}"
                     CornerRadius="0,0,4,4" />-->
-
             <Grid Grid.Row="1"
                   Visibility="{Binding IsDownLoading, Converter={x:Static h:Converter.GetTrueToCollapsed}}">
                 <Button Width="180"
                         Height="40"
                         HorizontalAlignment="Center"
                         Command="{Binding DownLoadCommand}"
+                        CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self}}"
                         Content="立即升级"
                         FontSize="15" />
-
+                <CheckBox HorizontalAlignment="Left"
+                          Content="不再提示"
+                          Visibility="{Binding UseCheckUpgradeOnStart,Converter={GetTrueToVisibleConverter}}"
+                          IsChecked="{Binding Source={x:Static local:UpgradeOptions.Instance}, Path=CheckUpgradeOnStart, Mode=TwoWay}" />
             </Grid>
             <StackPanel Grid.Row="1"
                         VerticalAlignment="Bottom"

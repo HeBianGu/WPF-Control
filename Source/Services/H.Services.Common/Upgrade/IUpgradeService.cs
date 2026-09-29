@@ -8,9 +8,8 @@
 
 namespace H.Services.Common.Upgrade;
 
-public interface IUpgradeService
+public interface IUpgradeService : ISplashLoadable
 {
-    bool CanUpgrade(out string message);
-    bool Upgrade(out string message);
-    string UpgradeVersion { get; }
+    Task<(bool success, string message)> ShowUpgradeAsync();
+    Task<(bool success, string message)> UpgradeAsync();
 }

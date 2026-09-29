@@ -12,24 +12,25 @@ using System.Text.Json;
 
 namespace H.Services.Serializable.Web;
 
-internal class JsonWebSerializerService : IWebJsonSerializerService
+public class JsonWebSerializerService : IWebJsonSerializerService
 {
-    public T Load<T>(string url, out string message)
+    public async Task<(T value, string message)> LoadAsync<T>(string url, Action<HttpClient> option)
     {
-        message = null;
+        if (string.IsNullOrWhiteSpace(url))
+            return (default, "地址不能未空");
         Uri uri = new Uri(url);
         using (HttpClient client = new HttpClient())
         {
             try
             {
-                string json = client.GetStringAsync(uri).Result;
-                return (T)JsonSerializer.Deserialize(json, typeof(T));
+                option?.Invoke(client);
+                string json = await client.GetStringAsync(uri);
+                return ((T)JsonSerializer.Deserialize(json, typeof(T)), null);
             }
             catch (Exception ex)
             {
-                message = ex.Message;
                 IocLog.Error(ex);
-                return default;
+                return (default, ex.Message);
             }
         }
     }

@@ -6,9 +6,10 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
+using System.Net.Http;
+
 namespace H.Services.Serializable.Web;
 
-public interface IWebXmlSerializerService
+public interface IWebXmlSerializerService: IWebSerializerService
 {
-    T Load<T>(string uri, out string message);
 }
