@@ -1,0 +1,9 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<RootNamespace>H.Extensions.Expressions</RootNamespace>
+	</PropertyGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\..\Base\H.Mvvm\H.Mvvm.csproj" />
+		<ProjectReference Include="..\H.Extensions.Common\H.Extensions.Common.csproj" />
+	</ItemGroup>
+</Project>
