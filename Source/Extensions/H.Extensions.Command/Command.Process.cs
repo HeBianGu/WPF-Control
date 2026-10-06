@@ -21,7 +21,10 @@ public class ProcessCommand : DisplayMarkupCommandBase
         if (uri == null)
             return false;
         bool result = File.Exists(uri?.ToString()) || Directory.Exists(uri?.ToString());
-        if (uri.ToString().ToLower().StartsWith("http") == true) return true;
+        if (uri.ToString().ToLower().StartsWith("http") == true) 
+            return true;
+        if (uri.ToString().ToLower().StartsWith("file:") == true)
+            return true;
         return result;
     }
 
@@ -37,7 +40,6 @@ public class ProcessCommand : DisplayMarkupCommandBase
         var uri = this.GetUri(parameter);
         if (uri == null)
             return;
-        //System.Diagnostics.Process.Start(parameter?.ToString());
         Process.Start(new ProcessStartInfo(uri?.ToString()) { UseShellExecute = true });
         base.Execute(parameter);
 
