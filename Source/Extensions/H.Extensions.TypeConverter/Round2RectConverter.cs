@@ -12,6 +12,7 @@ using System.Windows;
 
 namespace H.Extensions.TypeConverter
 {
+
     public class Round2RectConverter : System.ComponentModel.TypeConverter
     {
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
