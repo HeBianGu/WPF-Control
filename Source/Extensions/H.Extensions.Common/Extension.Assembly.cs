@@ -13,17 +13,17 @@ using System.Runtime.CompilerServices;
 namespace H.Extensions.Common;
 public static class AssemblyExtension
 {
-    public static IEnumerable<T> GetInstances<T>(this Assembly assembly, params object[] args)
+    public static IEnumerable<T> GetInstances<T>(this Assembly assembly, Func<Type, bool> func = null, params object[] args)
     {
         var types = assembly.GetTypes();
         var where = types.Where(t => t.IsClass && !t.IsAbstract);
-        where = where.Where(t => typeof(T).IsAssignableFrom(t));
+        where = where.Where(t => typeof(T).IsAssignableFrom(t)).Where(x => func?.Invoke(x) != false);
         return where.Select(t => Activator.CreateInstance(t, args)).OfType<T>().ToList();
     }
 
-    public static IEnumerable<T> GetInstances<T>(this Type type, params object[] args)
+    public static IEnumerable<T> GetInstances<T>(this Type type, Func<Type, bool> func = null, params object[] args)
     {
-        return type.Assembly.GetInstances<T>(args);
+        return type.Assembly.GetInstances<T>(func, args);
     }
 
 

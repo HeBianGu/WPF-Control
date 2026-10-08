@@ -40,7 +40,7 @@
                         <Setter Property="ItemsPanel">
                             <Setter.Value>
                                 <ItemsPanelTemplate>
-                                    <WrapPanel Orientation="Horizontal" />
+                                    <WrapPanel Orientation="Horizontal"  HorizontalAlignment="Center"/>
                                 </ItemsPanelTemplate>
                             </Setter.Value>
                         </Setter>
