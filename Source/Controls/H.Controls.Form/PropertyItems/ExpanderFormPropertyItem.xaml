@@ -6,7 +6,8 @@
     <DataTemplate DataType="{x:Type p:ExpanderFormPropertyItem}">
         <Expander
             Padding="0"
-            Background="Transparent"
+            Background="Transparent" 
+            IsExpanded="False"
             Header="{Binding Value, Converter={x:Static Converter.GetDiaplayName}}">
             <local:Form
                 Margin="0,0,0,1"

@@ -11,48 +11,46 @@ using System.Globalization;
 using System.Text.Json;
 using static System.Net.Mime.MediaTypeNames;
 
-namespace H.Extensions.TypeConverter
+namespace H.Extensions.TypeConverter;
+public class TextJsonTypeConverter<T> : System.ComponentModel.TypeConverter
 {
-    public class TextJsonTypeConverter<T> : System.ComponentModel.TypeConverter
+    private static readonly JsonSerializerOptions Options = new()
     {
-        private static readonly JsonSerializerOptions Options = new()
+        PropertyNameCaseInsensitive = true,
+    };
+
+    public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
+        => sourceType == typeof(string) || base.CanConvertFrom(context, sourceType);
+
+    public override bool CanConvertTo(ITypeDescriptorContext context, Type destinationType)
+        => destinationType == typeof(string) || base.CanConvertTo(context, destinationType);
+
+    public override object ConvertFrom(ITypeDescriptorContext context, CultureInfo culture, object value)
+    {
+        if (value is string strValue)
         {
-            PropertyNameCaseInsensitive = true,
-        };
-
-        public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
-            => sourceType == typeof(string) || base.CanConvertFrom(context, sourceType);
-
-        public override bool CanConvertTo(ITypeDescriptorContext context, Type destinationType)
-            => destinationType == typeof(string) || base.CanConvertTo(context, destinationType);
-
-        public override object ConvertFrom(ITypeDescriptorContext context, CultureInfo culture, object value)
-        {
-            if (value is string strValue)
+            if (string.IsNullOrEmpty(strValue))
+                return default(T);
+            try
             {
-                if (string.IsNullOrEmpty(strValue))
-                    return default(T);
-                try
-                {
-                    return JsonSerializer.Deserialize<T>(strValue, Options);
-                }
-                catch (JsonException ex)
-                {
-                    throw new NotSupportedException($"无法将字符串转换为 {typeof(T)}", ex);
-                }
+                return JsonSerializer.Deserialize<T>(strValue, Options);
             }
-            return base.ConvertFrom(context, culture, value);
-        }
-
-        public override object ConvertTo(ITypeDescriptorContext context, CultureInfo culture,
-            object value, Type destinationType)
-        {
-            if (destinationType == typeof(string))
+            catch (JsonException ex)
             {
-                if (value is null) return string.Empty;
-                return JsonSerializer.Serialize(value, typeof(T), Options);
+                throw new NotSupportedException($"无法将字符串转换为 {typeof(T)}", ex);
             }
-            return base.ConvertTo(context, culture, value, destinationType);
         }
+        return base.ConvertFrom(context, culture, value);
+    }
+
+    public override object ConvertTo(ITypeDescriptorContext context, CultureInfo culture,
+        object value, Type destinationType)
+    {
+        if (destinationType == typeof(string))
+        {
+            if (value is null) return string.Empty;
+            return JsonSerializer.Serialize(value, typeof(T), Options);
+        }
+        return base.ConvertTo(context, culture, value, destinationType);
     }
 }
