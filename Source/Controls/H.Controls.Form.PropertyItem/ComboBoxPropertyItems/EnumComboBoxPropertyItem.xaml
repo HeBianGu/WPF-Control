@@ -37,7 +37,7 @@
             </ListBox.Template>
             <ListBox.ItemsPanel>
                 <ItemsPanelTemplate>
-                    <WrapPanel />
+                    <UniformGrid />
                 </ItemsPanelTemplate>
             </ListBox.ItemsPanel>
         </ListBox>
