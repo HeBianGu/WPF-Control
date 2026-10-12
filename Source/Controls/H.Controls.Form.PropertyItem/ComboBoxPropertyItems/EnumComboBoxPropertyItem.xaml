@@ -42,4 +42,33 @@
             </ListBox.ItemsPanel>
         </ListBox>
     </DataTemplate>
+
+    <DataTemplate DataType="{x:Type local:ListBoxEnumPropertyItem}">
+        <ListBox Cattach.UseGuide="False"
+                 IsHitTestVisible="{Binding IsHitTestVisible}"
+                 SelectedItem="{Binding Value}"
+                 ItemsSource="{Binding Collection}">
+            <!--<ListBox.ItemContainerStyle>
+                <Style TargetType="ListBoxItem">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="ListBoxItem">
+                                <ContentPresenter />
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </ListBox.ItemContainerStyle>-->
+            <ListBox.Template>
+                <ControlTemplate>
+                    <ItemsPresenter />
+                </ControlTemplate>
+            </ListBox.Template>
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel />
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+        </ListBox>
+    </DataTemplate>
 </ResourceDictionary>
