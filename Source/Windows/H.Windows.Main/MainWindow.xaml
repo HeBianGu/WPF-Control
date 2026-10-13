@@ -203,9 +203,9 @@
                             <Setter TargetName="Btn_Maximize" Property="Visibility" Value="Collapsed" />
                             <Setter TargetName="Btn_Restore" Property="Visibility" Value="Collapsed" />
                         </Trigger>-->
-                        <Trigger Property="IsActive" Value="False">
+                        <!--<Trigger Property="IsActive" Value="False">
                             <Setter TargetName="grid" Property="Opacity" Value="0.5" />
-                        </Trigger>
+                        </Trigger>-->
                         <Trigger Property="SideTemplate" Value="{x:Null}">
                             <Setter TargetName="gsb" Property="MenuWidth" Value="0" />
                             <Setter TargetName="gsb" Property="MenuMinWidth" Value="0" />
