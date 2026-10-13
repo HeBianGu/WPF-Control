@@ -35,7 +35,7 @@ public static class IconFontFamilys
     //}
 
     public static FontFamily ResourceSegoeMDL2Asset =>
-        new FontFamily(new Uri("pack://application:,,,/H.Extensions.FontIcon;component/Assets/SegMDL2.ttf", UriKind.Absolute),
+        new FontFamily(new Uri("pack://application:,,,/H.Extensions.FontIcon;component/Assets/Segoe MDL2 Assets.ttf", UriKind.Absolute),
             "./#Segoe MDL2 Assets");
 
     public static FontFamily ResourceSegoeFluentIcons =>

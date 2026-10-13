@@ -1,10 +1,14 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <ItemGroup>
+    <None Remove="Assets\Segoe MDL2 Assets.ttf" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\..\Base\H.Mvvm\H.Mvvm.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <Resource Include="Assets\SegMDL2.ttf" />
     <Resource Include="Assets\Segoe Fluent Icons.ttf" />
+    <Resource Include="Assets\Segoe MDL2 Assets.ttf" />
   </ItemGroup>
 </Project>

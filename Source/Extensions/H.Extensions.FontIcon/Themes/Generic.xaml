@@ -8,7 +8,7 @@
         <GroupBox Header="{Binding Key}">
             <Grid>
                 <TextBlock Margin="10"
-                           FontFamily="Segoe MDL2 Assets"
+                           FontFamily="{x:Static IconFontFamilys.ResourceSegoeFluentIcons}"
                            FontSize="120"
                            Text="{Binding Value}" />
                 <Button HorizontalAlignment="Right"

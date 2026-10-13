@@ -38,6 +38,7 @@
                                         <Grid>
                                             <FontIconTextBlock Margin="20"
                                                                FontSize="100"
+                                                               FontFamily="{x:Static IconFontFamilys.ResourceSegoeFluentIcons}"
                                                                Text="{Binding Item2}" />
                                             <DockPanel HorizontalAlignment="Right"
                                                        LastChildFill="False"
@@ -83,6 +84,7 @@
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
                                             <FontIconTextBlock FontSize="100"
+                                                               FontFamily="{x:Static IconFontFamilys.ResourceSegoeFluentIcons}"
                                                                Text="{Binding Item2}" />
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
