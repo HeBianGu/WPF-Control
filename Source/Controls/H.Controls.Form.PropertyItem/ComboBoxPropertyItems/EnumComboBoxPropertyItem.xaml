@@ -15,7 +15,7 @@
                  ItemsSource="{Binding Collection}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <RadioButton Content="{Binding}" Margin="0 0 10 0"
+                    <RadioButton Content="{Binding}" Margin="0 0 20 0"
                                  IsChecked="{Binding RelativeSource={RelativeSource AncestorType={x:Type ListBoxItem}}, Path=IsSelected}" />
                 </DataTemplate>
             </ListBox.ItemTemplate>

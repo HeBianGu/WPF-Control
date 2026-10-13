@@ -20,7 +20,7 @@ public class EnumComboBoxPropertyItem : SelectSourcePropertyItem<Enum>
     protected override IEnumerable<Enum> CreateSource()
     {
         var source = base.CreateSource();
-        if (source.Count() > 0)
+        if (source != null && source.Count() > 0)
         {
             foreach (var item in source)
                 yield return item;
