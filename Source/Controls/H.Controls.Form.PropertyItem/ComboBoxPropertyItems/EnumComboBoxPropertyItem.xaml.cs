@@ -19,6 +19,13 @@ public class EnumComboBoxPropertyItem : SelectSourcePropertyItem<Enum>
 
     protected override IEnumerable<Enum> CreateSource()
     {
+        var source = base.CreateSource();
+        if (source.Count() > 0)
+        {
+            foreach (var item in source)
+                yield return item;
+            yield break;
+        }
         if (!this.PropertyInfo.PropertyType.IsEnum)
             yield break;
         Array result = this.PropertyInfo.PropertyType.GetEnumValues();
