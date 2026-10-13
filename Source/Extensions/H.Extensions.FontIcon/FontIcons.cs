@@ -7,6 +7,7 @@
 // Licensed under the MIT License (the "License")
 
 namespace H.Extensions.FontIcon;
+//https://learn.microsoft.com/zh-cn/windows/apps/design/iconography/segoe-fluent-icons-font?WT.mc_id=MVP_380318
 //https://learn.microsoft.com/zh-cn/windows/apps/design/style/segoe-ui-symbol-font?WT.mc_id=MVP_38031
 public static class FontIcons
 {
