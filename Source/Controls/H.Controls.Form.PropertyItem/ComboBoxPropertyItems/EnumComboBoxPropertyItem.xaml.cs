@@ -44,6 +44,7 @@ public class ListBoxEnumPropertyItem : EnumComboBoxPropertyItem
     }
 }
 
+
 public class RadioButtonEnumPropertyItem : EnumComboBoxPropertyItem
 {
     public RadioButtonEnumPropertyItem(PropertyInfo property, object obj) : base(property, obj)
