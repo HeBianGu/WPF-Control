@@ -150,6 +150,18 @@ public static partial class ImageExtention
         var enc = new JpegBitmapEncoder { QualityLevel = Math.Clamp(quality, 1, 100) };
         return bitmap.ToBase64(enc);
     }
+
+    public static string ToBase64Jpeg(this ImageSource imageSource, int quality = 90)
+    {
+        if (imageSource is BitmapSource bitmapSource)
+        {
+            //bitmapSource.Clone();
+            if (bitmapSource.CanFreeze)
+                bitmapSource.Freeze();
+            return bitmapSource.ToBase64Jpeg(quality);
+        }
+        return null;
+    }
 }
 
 public static partial class ImageExtention

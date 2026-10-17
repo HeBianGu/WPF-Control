@@ -80,9 +80,10 @@
                                      TypeInTargetAssembly={x:Type local:BorderKeys}}"
         BasedOn="{StaticResource {x:Static local:BorderKeys.Default}}"
         TargetType="{x:Type Border}">
+        <Setter Property="Background" Value="{DynamicResource {x:Static BrushKeys.Background}}"/>
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="BorderBrush" Value="{DynamicResource {x:Static h:BrushKeys.MouseOver}}" />
+                <Setter Property="Background" Value="{DynamicResource {x:Static h:BrushKeys.MouseOver}}" />
             </Trigger>
         </Style.Triggers>
     </Style>
