@@ -60,7 +60,14 @@ public abstract partial class ApplicationBase : Application, IConfigureableAppli
             company = "HeBianGu";
         if (company == ApplicationProvider.Product)
             company = "HeBianGu";
-        return new AppPathServce(ApplicationProvider.Version, company);
+        return new AppPathServce(this.GetAppPathVersion(), company);
+    }
+
+    protected virtual string GetAppPathVersion()
+    {
+        //  文件路径按照Minor版本号进行区分，避免不同版本之间的配置文件冲突，
+        var version = Assembly.GetEntryAssembly().GetName().Version;
+        return $"{version.Major}.{version.Minor}";
     }
 
     protected override void OnStartup(StartupEventArgs e)
