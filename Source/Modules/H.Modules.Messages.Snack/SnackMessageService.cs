@@ -53,11 +53,11 @@ namespace H.Modules.Messages.Snack
             if (this.CheckValid() == false)
                 return;
             var find = this._snackBox.Collection.OfType<InfoMessagePresenter>().LastOrDefault(x => x.Message == message);
-            if (find != null)
-                this._snackBox.Collection.Remove(find);
             InfoMessagePresenter presenter = new InfoMessagePresenter() { Message = message };
             Application.Current.Dispatcher.Invoke(() =>
             {
+                if (find != null)
+                    this._snackBox.Collection.Remove(find);
                 this._snackBox.Collection.Add(presenter);
             });
             await Task.Delay(3000);

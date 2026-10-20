@@ -8,6 +8,7 @@
 
 using H.DataBases.Share;
 using Microsoft.EntityFrameworkCore;
+using System.IO;
 namespace H.DataBases.Sqlite
 {
     public class SqliteDbConnectService<TDbContext> : DbConnectServiceBase<TDbContext> where TDbContext : DbContext
@@ -16,6 +17,13 @@ namespace H.DataBases.Sqlite
         protected override IDbSettable GetSetting()
         {
             return SqliteSettable.Instance;
+        }
+
+        public override bool Load(out string message)
+        {
+            var settings = SqliteSettable.Instance;
+            Directory.CreateDirectory(settings.FilePath);
+            return base.Load(out message);
         }
     }
 

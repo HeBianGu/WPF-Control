@@ -358,9 +358,15 @@ public static class ObjectExtension
 
     public static void CopyByBasicType<T>(this T to, T from, Predicate<PropertyInfo> predicate = null, Func<PropertyInfo, PropertyInfo, bool> firstOrDefault = null)
     {
+        if (from == null)
+            return;
         var ps = to.GetType().GetProperties().Where(x => x.CanWrite && x.CanWrite && predicate?.Invoke(x) != false);
         foreach (PropertyInfo p in ps)
         {
+            if (!p.CanRead)
+                continue;
+            if (!p.CanWrite)
+                continue;
             if (p.PropertyType.IsBasicType())
                 p.SetValue(to, p.GetValue(from));
         }

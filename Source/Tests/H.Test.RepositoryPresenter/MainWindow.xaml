@@ -46,7 +46,7 @@
                 </Behaviors:Interaction.Behaviors>
             </RepositoryGrid>
         </TabItem>
-        <TabItem Header="RepositoryBox">
+        <!--<TabItem Header="RepositoryBox">
             <RepositoryBox h:Cattach.ItemHeight="Auto"
                            Type="{x:Type local:mbc_dv_image}"
                            UseCheckAll="True"
@@ -70,6 +70,6 @@
                     </ItemsPanelTemplate>
                 </ItemsControl.ItemsPanel>
             </RepositoryBox>
-        </TabItem>
+        </TabItem>-->
     </TabControl>
 </Window>
