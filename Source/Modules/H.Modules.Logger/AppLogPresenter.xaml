@@ -30,10 +30,11 @@
                                     Binding="{Binding Time, StringFormat={}{0:yyyy-MM-dd HH:mm:ss}}"
                                     Header="时间" />
                 <DataGridTextColumn Width="Auto"
-                                    MinWidth="60"
+                                    MinWidth="80"
                                     Binding="{Binding Level}"
                                     Header="类型" />
-                <DataGridTemplateColumn Width="*" Header="日志">
+                <DataGridTemplateColumn Width="*"
+                                        Header="日志">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <DockPanel>
