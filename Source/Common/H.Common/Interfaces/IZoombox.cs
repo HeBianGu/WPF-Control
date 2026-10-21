@@ -19,5 +19,4 @@ public interface IZoombox
     void ZoomTo(Point position);
     void ZoomTo(Rect region);
     Size RenderSize { get; }
-    Vector ContentOffset { get; }
 }

@@ -126,6 +126,32 @@ public static class ExpressionExtension
         {
             yield return item;
         }
+        var topLeftexpression = new Expression($"{parentName}.左上点", groupName, rect.TopLeft);
+        yield return topLeftexpression;
+        foreach (var item in center.GetExpressions(topLeftexpression.GroupName, topLeftexpression.Name))
+        {
+            yield return item;
+        }
+        var topRightexpression = new Expression($"{parentName}.右上点", groupName, rect.TopRight);
+        yield return topRightexpression;
+        foreach (var item in center.GetExpressions(topRightexpression.GroupName, topRightexpression.Name))
+        {
+            yield return item;
+        }
+        var bottomLeftexpression = new Expression($"{parentName}.左下点", groupName, rect.BottomLeft);
+        yield return bottomLeftexpression;
+        foreach (var item in center.GetExpressions(bottomLeftexpression.GroupName, bottomLeftexpression.Name))
+        {
+            yield return item;
+        }
+        var bottomRightexpression = new Expression($"{parentName}.右下点", groupName, rect.BottomRight);
+        yield return bottomRightexpression;
+        foreach (var item in center.GetExpressions(bottomRightexpression.GroupName, bottomRightexpression.Name))
+        {
+            yield return item;
+        }
+
+        yield return new Expression($"{parentName}.面积", groupName, rect.Width * rect.Height);
         yield return new Expression($"{parentName}.宽", groupName, rect.Width);
         yield return new Expression($"{parentName}.高", groupName, rect.Height);
     }
@@ -134,6 +160,8 @@ public static class ExpressionExtension
     {
         yield return new Expression($"{parentName}.宽", groupName, size.Width);
         yield return new Expression($"{parentName}.高", groupName, size.Height);
+        yield return new Expression($"{parentName}.面积", groupName, size.Width * size.Height);
+
     }
 
     public static IEnumerable<IExpression> OfType<T>(this IEnumerable<IExpression> expressions)
