@@ -6,7 +6,7 @@
     <DataTemplate DataType="{x:Type local:AppLogPresenter}">
         <DataGrid AutoGenerateColumns="False"
                   IsReadOnly="True"
-                  ItemsSource="{Binding Messages}"
+                  ItemsSource="{Binding Messages,IsAsync=True}"
                   RowHeaderWidth="0"
                   ScrollViewer.CanContentScroll="True"
                   SelectedItem="{Binding SelectedMessage}">

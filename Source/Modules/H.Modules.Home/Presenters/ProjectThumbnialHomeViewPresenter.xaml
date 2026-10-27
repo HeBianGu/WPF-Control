@@ -34,7 +34,7 @@
             <TabControl Padding="5,8" Cattach.ItemBorderThickness="1">
                 <TabControl.Resources>
                     <Style BasedOn="{StaticResource {x:Static ListBoxKeys.Default}}" TargetType="ListBox">
-                        <Setter Property="ItemsSource" Value="{Binding Source={x:Static IocProject.Instance}, Path=Collection}" />
+                        <Setter Property="ItemsSource" Value="{Binding Source={x:Static IocProject.Instance}, Path=Collection,IsAsync=True}" />
                         <Setter Property="Cattach.ItemHeight" Value="Auto" />
                         <Setter Property="Margin" Value="2,0" />
                         <Setter Property="ItemsPanel">
