@@ -6,24 +6,19 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
-using H.Extensions.Expressions.Base;
-using System.ComponentModel;
-
 namespace H.Extensions.Expressions.Keys;
 
-[TypeConverter(typeof(ExpressionKeyTypeConverter))]
-public interface IExpressionKey
+public interface IInheritanceInputExpressionKey : IInputExpressionKey
 {
-    /// <summary>
-    /// 唯一名称
-    /// </summary>
-    string Name { get; set; }
-    /// <summary>
-    /// 分组名称
-    /// </summary>
-    string GroupName { get; set; }
 
-
-    string DisplayName { get; }
 }
 
+public class InheritanceInputExpressionKey : InputExpressionKey, IInheritanceInputExpressionKey
+{
+    public const string NAME = "继承";
+    public InheritanceInputExpressionKey()
+    {
+        this.GroupName = "默认";
+        this.Name = "继承";
+    }
+}

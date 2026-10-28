@@ -8,8 +8,7 @@
 
 namespace H.Extensions.Expressions.Base;
 
-public class ExpressionableAttribute : Attribute
+public interface IGetFromInputExpressionKeysable
 {
-
+    IEnumerable<IInputExpression> GetFromInputExpressions();
 }
-

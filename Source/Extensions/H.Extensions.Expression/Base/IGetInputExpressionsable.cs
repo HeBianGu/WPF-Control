@@ -8,10 +8,10 @@
 
 namespace H.Extensions.Expressions.Base;
 
-public interface IGetExpressionsable
+public interface IGetInputExpressionsable
 {
     /// <summary>
     /// 获取表达式
     /// </summary>
-    IEnumerable<IInputExpression> GetExpressions(Predicate<object> predicate = null);
+    IEnumerable<IInputExpression> GetInputExpressions(Predicate<object> predicate = null);
 }

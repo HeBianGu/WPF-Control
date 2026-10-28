@@ -36,6 +36,6 @@ public interface IInputExpression
 
     object Value { get; set; }
 
-    IExpressionKey ToKey();
+    IInputExpressionKey ToKey();
 }
 

@@ -12,16 +12,16 @@ using System.ComponentModel.DataAnnotations;
 namespace H.Extensions.Expressions.Expressions;
 
 //步骤1：新建自定义类型
-public class DemoExpressionClass
+public class DemoInputExpressionClass
 {
     //步骤2：定义一个属性，设置ResultParameters
-    [Expressionable]
+    [InputExpressionable]
     [Display(Name = "示例：自定义整型", Description = "用来演示如何增加节点表达式参数")]
     public int IntValue { get; set; } = 100;
-    [Expressionable]
+    [InputExpressionable]
     [Display(Name = "示例：自定义字符串", Description = "用来演示如何增加节点表达式参数")]
     public string StringValue { get; set; } = "Hello World";
-    [Expressionable]
+    [InputExpressionable]
     [Display(Name = "示例：自定义双精度", Description = "用来演示如何增加节点表达式参数")]
     public double DoubleValue { get; set; } = 3.14;
 }

@@ -13,7 +13,7 @@ using System.Text.Json.Serialization;
 
 namespace H.Extensions.Expressions.Keys;
 
-public class ExpressionKey : BindableBase, IExpressionKey
+public class InputExpressionKey : BindableBase, IInputExpressionKey
 {
     private string _GroupName;
     [ReadOnly(true)]
@@ -61,7 +61,7 @@ public class ExpressionKey : BindableBase, IExpressionKey
 
     public override bool Equals(object obj)
     {
-        if (obj is IExpressionKey expression)
+        if (obj is IInputExpressionKey expression)
             return this.Name == expression.Name && this.GroupName == expression.GroupName;
         return false;
     }

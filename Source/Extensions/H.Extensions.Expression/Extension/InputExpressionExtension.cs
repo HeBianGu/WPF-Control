@@ -11,17 +11,17 @@ using H.Extensions.Expressions.Base;
 using System.ComponentModel.DataAnnotations;
 using System.Reflection;
 using System.Windows;
-using Expression = H.Extensions.Expressions.Expressions.Expression;
+using Expression = H.Extensions.Expressions.Expressions.InputExpression;
 
 namespace H.Extensions.Expressions.Extension;
 
-public static class ExpressionExtension
+public static class InputExpressionExtension
 {
-    public static IEnumerable<IInputExpression> GetPropertyInfoExpressions(this IGetExpressionsable expressionable, string groupName, Predicate<object> predicate = null)
+    public static IEnumerable<IInputExpression> GetPropertyInfoInputExpressions(this IGetInputExpressionsable expressionable, string groupName, Predicate<object> predicate = null)
     {
-        return GetObjExpressions(expressionable, groupName, predicate);
+        return GetObjInputExpressions(expressionable, groupName, predicate);
     }
-    private static IEnumerable<IInputExpression> GetObjExpressions(object obj, string groupName, Predicate<object> predicate = null)
+    private static IEnumerable<IInputExpression> GetObjInputExpressions(object obj, string groupName, Predicate<object> predicate = null)
     {
         var properties = obj.GetType().GetProperties().Where(x => x.CanRead);
         foreach (var property in properties)
@@ -29,7 +29,7 @@ public static class ExpressionExtension
             var display = property.GetCustomAttribute<DisplayAttribute>();
             if (display == null)
                 continue;
-            var expressionableAttribute = property.GetCustomAttribute<ExpressionableAttribute>();
+            var expressionableAttribute = property.GetCustomAttribute<InputExpressionableAttribute>();
             if (expressionableAttribute == null)
                 continue;
             //string np = string.IsNullOrEmpty(path) ? $"[{display.Name}]" : $"[{path.TrimStart('[').TrimEnd(']')}].[{display.Name}]";
@@ -43,7 +43,7 @@ public static class ExpressionExtension
             yield return ne;
             if (property.PropertyType.IsPrimitive)
                 continue;
-            var exression = property.GetCustomAttribute<ExpressionableAttribute>();
+            var exression = property.GetCustomAttribute<InputExpressionableAttribute>();
             if (exression == null)
                 continue;
             var value = property.GetValue(obj);
@@ -51,26 +51,26 @@ public static class ExpressionExtension
                 continue;
             if (predicate?.Invoke(value) == false)
                 continue;
-            var nes = GetObjExpressions(value, groupName, predicate);
+            var nes = GetObjInputExpressions(value, groupName, predicate);
             foreach (var item in nes)
             {
                 yield return item;
             }
         }
     }
-    public static IEnumerable<IInputExpression> GetDefineChildrenExpressions(this IInputExpression expression)
+    public static IEnumerable<IInputExpression> GetDefineChildrenInputExpressions(this IInputExpression expression)
     {
         var obj = expression.Value;
         if (obj is Point point)
-            return point.GetExpressions(expression.GroupName, expression.Name);
+            return point.GetInputExpressions(expression.GroupName, expression.Name);
         if (obj is Rect rect)
-            return rect.GetExpressions(expression.GroupName, expression.Name);
+            return rect.GetInputExpressions(expression.GroupName, expression.Name);
         if (obj is Size size)
-            return size.GetExpressions(expression.GroupName, expression.Name);
+            return size.GetInputExpressions(expression.GroupName, expression.Name);
         return Enumerable.Empty<IInputExpression>();
     }
 
-    public static IEnumerable<IInputExpression> GetDefineEnumerableChildrenExpressions(this IInputExpression expression)
+    public static IEnumerable<IInputExpression> GetDefineEnumerableChildrenInputExpressions(this IInputExpression expression)
     {
         var obj = expression.Value;
         if (obj is IEnumerable<Point> points)
@@ -79,7 +79,7 @@ public static class ExpressionExtension
             {
                 var item = points.ElementAt(i);
                 var name = $"{expression.Name}[{i}]";
-                foreach (var item2 in item.GetExpressions(expression.GroupName, name))
+                foreach (var item2 in item.GetInputExpressions(expression.GroupName, name))
                 {
                     yield return item2;
                 }
@@ -91,7 +91,7 @@ public static class ExpressionExtension
             {
                 var item = sizes.ElementAt(i);
                 var name = $"{expression.Name}[{i}]";
-                foreach (var item2 in item.GetExpressions(expression.GroupName, name))
+                foreach (var item2 in item.GetInputExpressions(expression.GroupName, name))
                 {
                     yield return item2;
                 }
@@ -104,49 +104,49 @@ public static class ExpressionExtension
             {
                 var item = rects.ElementAt(i);
                 var name = $"{expression.Name}[{i}]";
-                foreach (var item2 in item.GetExpressions(expression.GroupName, name))
+                foreach (var item2 in item.GetInputExpressions(expression.GroupName, name))
                 {
                     yield return item2;
                 }
             }
         }
     }
-    public static IEnumerable<IInputExpression> GetExpressions(this Point point, string groupName, string parentName)
+    public static IEnumerable<IInputExpression> GetInputExpressions(this Point point, string groupName, string parentName)
     {
         yield return new Expression($"{parentName}.X", groupName, point.X);
         yield return new Expression($"{parentName}.Y", groupName, point.Y);
     }
 
-    public static IEnumerable<IInputExpression> GetExpressions(this Rect rect, string groupName, string parentName)
+    public static IEnumerable<IInputExpression> GetInputExpressions(this Rect rect, string groupName, string parentName)
     {
         var center = rect.GetCenter();
         var centerexpression = new Expression($"{parentName}.中点", groupName, center);
         yield return centerexpression;
-        foreach (var item in center.GetExpressions(centerexpression.GroupName, centerexpression.Name))
+        foreach (var item in center.GetInputExpressions(centerexpression.GroupName, centerexpression.Name))
         {
             yield return item;
         }
         var topLeftexpression = new Expression($"{parentName}.左上点", groupName, rect.TopLeft);
         yield return topLeftexpression;
-        foreach (var item in center.GetExpressions(topLeftexpression.GroupName, topLeftexpression.Name))
+        foreach (var item in center.GetInputExpressions(topLeftexpression.GroupName, topLeftexpression.Name))
         {
             yield return item;
         }
         var topRightexpression = new Expression($"{parentName}.右上点", groupName, rect.TopRight);
         yield return topRightexpression;
-        foreach (var item in center.GetExpressions(topRightexpression.GroupName, topRightexpression.Name))
+        foreach (var item in center.GetInputExpressions(topRightexpression.GroupName, topRightexpression.Name))
         {
             yield return item;
         }
         var bottomLeftexpression = new Expression($"{parentName}.左下点", groupName, rect.BottomLeft);
         yield return bottomLeftexpression;
-        foreach (var item in center.GetExpressions(bottomLeftexpression.GroupName, bottomLeftexpression.Name))
+        foreach (var item in center.GetInputExpressions(bottomLeftexpression.GroupName, bottomLeftexpression.Name))
         {
             yield return item;
         }
         var bottomRightexpression = new Expression($"{parentName}.右下点", groupName, rect.BottomRight);
         yield return bottomRightexpression;
-        foreach (var item in center.GetExpressions(bottomRightexpression.GroupName, bottomRightexpression.Name))
+        foreach (var item in center.GetInputExpressions(bottomRightexpression.GroupName, bottomRightexpression.Name))
         {
             yield return item;
         }
@@ -156,7 +156,7 @@ public static class ExpressionExtension
         yield return new Expression($"{parentName}.高", groupName, rect.Height);
     }
 
-    public static IEnumerable<IInputExpression> GetExpressions(this Size size, string groupName, string parentName)
+    public static IEnumerable<IInputExpression> GetInputExpressions(this Size size, string groupName, string parentName)
     {
         yield return new Expression($"{parentName}.宽", groupName, size.Width);
         yield return new Expression($"{parentName}.高", groupName, size.Height);

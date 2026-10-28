@@ -15,19 +15,19 @@ using System.Text.Json.Serialization;
 
 namespace H.Extensions.Expressions.Expressions;
 
-public class Expression : BindableBase, IInputExpression
+public class InputExpression : BindableBase, IInputExpression
 {
-    public Expression()
+    public InputExpression()
     {
 
     }
 
-    public Expression(string name, string groupName, object value) : this(name, groupName, value, value)
+    public InputExpression(string name, string groupName, object value) : this(name, groupName, value, value)
     {
 
     }
 
-    public Expression(string name, string groupName, object value, object displayValue)
+    public InputExpression(string name, string groupName, object value, object displayValue)
     {
         this.Name = name;
         this.GroupName = groupName;
@@ -65,9 +65,9 @@ public class Expression : BindableBase, IInputExpression
     [JsonIgnore]
     public virtual object DisplayValue { get; set; }
 
-    public virtual IExpressionKey ToKey()
+    public virtual IInputExpressionKey ToKey()
     {
-        return new ExpressionKey()
+        return new InputExpressionKey()
         {
             GroupName = this.GroupName,
             Name = this.Name,

@@ -10,7 +10,7 @@ using H.Extensions.Common;
 
 namespace H.Extensions.Expressions.Keys;
 
-public class InputStringExpressionKey : ExpressionKey, IInputStringExpressionKey
+public class InputStringExpressionKey : InputExpressionKey, IInputStringExpressionKey
 {
     public object Value { get; set; }
     public override bool Equals(object obj)

@@ -12,7 +12,7 @@ using System.Globalization;
 
 namespace H.Extensions.Expressions.Base;
 
-public class ExpressionKeyTypeConverter : TypeConverter
+public class InputExpressionKeyTypeConverter : TypeConverter
 {
     public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
     {
@@ -25,14 +25,14 @@ public class ExpressionKeyTypeConverter : TypeConverter
     {
         if (value is string str)
         {
-            if (str == InheritanceExpressionKey.NAME)
-                return new InheritanceExpressionKey();
+            if (str == InheritanceInputExpressionKey.NAME)
+                return new InheritanceInputExpressionKey();
             if (double.TryParse(str, out double dvalue))
                 return new InputStringExpressionKey() { Value = str };
             int separatorIndex = str.IndexOf('.');
             if (separatorIndex >= 0)
             {
-                return new ExpressionKey()
+                return new InputExpressionKey()
                 {
                     GroupName = str[..separatorIndex],
                     Name = str[(separatorIndex + 1)..]
@@ -51,9 +51,9 @@ public class ExpressionKeyTypeConverter : TypeConverter
         {
             if (value is InputStringExpressionKey primitiveExpressionKey)
                 return $"{primitiveExpressionKey.Value}";
-            if (value is InheritanceExpressionKey inheritanceExpressionKey)
-                return $"{InheritanceExpressionKey.NAME}";
-            if (value is ExpressionKey key)
+            if (value is InheritanceInputExpressionKey inheritanceExpressionKey)
+                return $"{InheritanceInputExpressionKey.NAME}";
+            if (value is InputExpressionKey key)
                 return $"{key.GroupName}.{key.Name}";
         }
         return base.ConvertTo(context, culture, value, destinationType);

@@ -8,7 +8,7 @@
 
 namespace H.Extensions.Expressions.Keys;
 
-public interface IInputStringExpressionKey : IExpressionKey
+public interface IInputStringExpressionKey : IInputExpressionKey
 {
     object Value { get; set; }
     (bool success, T value) TryParse<T>();

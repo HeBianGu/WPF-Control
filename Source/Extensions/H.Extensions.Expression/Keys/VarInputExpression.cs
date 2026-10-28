@@ -12,18 +12,18 @@ using System.ComponentModel.DataAnnotations;
 
 namespace H.Extensions.Expressions.Keys;
 
-public interface IVarExpression : IInputExpression
+public interface IVarInputExpression : IInputExpression
 {
 
 }
 
-public class VarExpression<T> : Expression, IVarExpression
+public class VarInputExpression<T> : InputExpression, IVarInputExpression
 {
-    public VarExpression()
+    public VarInputExpression()
     {
 
     }
-    public VarExpression(T value, string groupName)
+    public VarInputExpression(T value, string groupName)
     {
         this.CurrentValue = value;
         this.GroupName = groupName;
