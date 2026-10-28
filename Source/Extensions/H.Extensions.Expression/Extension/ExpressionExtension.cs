@@ -17,11 +17,11 @@ namespace H.Extensions.Expressions.Extension;
 
 public static class ExpressionExtension
 {
-    public static IEnumerable<IExpression> GetPropertyInfoExpressions(this IGetExpressionsable expressionable, string groupName, Predicate<object> predicate = null)
+    public static IEnumerable<IInputExpression> GetPropertyInfoExpressions(this IGetExpressionsable expressionable, string groupName, Predicate<object> predicate = null)
     {
         return GetObjExpressions(expressionable, groupName, predicate);
     }
-    private static IEnumerable<IExpression> GetObjExpressions(object obj, string groupName, Predicate<object> predicate = null)
+    private static IEnumerable<IInputExpression> GetObjExpressions(object obj, string groupName, Predicate<object> predicate = null)
     {
         var properties = obj.GetType().GetProperties().Where(x => x.CanRead);
         foreach (var property in properties)
@@ -58,7 +58,7 @@ public static class ExpressionExtension
             }
         }
     }
-    public static IEnumerable<IExpression> GetDefineChildrenExpressions(this IExpression expression)
+    public static IEnumerable<IInputExpression> GetDefineChildrenExpressions(this IInputExpression expression)
     {
         var obj = expression.Value;
         if (obj is Point point)
@@ -67,10 +67,10 @@ public static class ExpressionExtension
             return rect.GetExpressions(expression.GroupName, expression.Name);
         if (obj is Size size)
             return size.GetExpressions(expression.GroupName, expression.Name);
-        return Enumerable.Empty<IExpression>();
+        return Enumerable.Empty<IInputExpression>();
     }
 
-    public static IEnumerable<IExpression> GetDefineEnumerableChildrenExpressions(this IExpression expression)
+    public static IEnumerable<IInputExpression> GetDefineEnumerableChildrenExpressions(this IInputExpression expression)
     {
         var obj = expression.Value;
         if (obj is IEnumerable<Point> points)
@@ -111,13 +111,13 @@ public static class ExpressionExtension
             }
         }
     }
-    public static IEnumerable<IExpression> GetExpressions(this Point point, string groupName, string parentName)
+    public static IEnumerable<IInputExpression> GetExpressions(this Point point, string groupName, string parentName)
     {
         yield return new Expression($"{parentName}.X", groupName, point.X);
         yield return new Expression($"{parentName}.Y", groupName, point.Y);
     }
 
-    public static IEnumerable<IExpression> GetExpressions(this Rect rect, string groupName, string parentName)
+    public static IEnumerable<IInputExpression> GetExpressions(this Rect rect, string groupName, string parentName)
     {
         var center = rect.GetCenter();
         var centerexpression = new Expression($"{parentName}.中点", groupName, center);
@@ -156,7 +156,7 @@ public static class ExpressionExtension
         yield return new Expression($"{parentName}.高", groupName, rect.Height);
     }
 
-    public static IEnumerable<IExpression> GetExpressions(this Size size, string groupName, string parentName)
+    public static IEnumerable<IInputExpression> GetExpressions(this Size size, string groupName, string parentName)
     {
         yield return new Expression($"{parentName}.宽", groupName, size.Width);
         yield return new Expression($"{parentName}.高", groupName, size.Height);
@@ -164,7 +164,7 @@ public static class ExpressionExtension
 
     }
 
-    public static IEnumerable<IExpression> OfType<T>(this IEnumerable<IExpression> expressions)
+    public static IEnumerable<IInputExpression> OfType<T>(this IEnumerable<IInputExpression> expressions)
     {
         return expressions.Where(x => x.DataType == typeof(T).FullName);
     }

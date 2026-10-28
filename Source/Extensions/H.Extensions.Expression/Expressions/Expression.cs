@@ -15,7 +15,7 @@ using System.Text.Json.Serialization;
 
 namespace H.Extensions.Expressions.Expressions;
 
-public class Expression : BindableBase, IExpression
+public class Expression : BindableBase, IInputExpression
 {
     public Expression()
     {

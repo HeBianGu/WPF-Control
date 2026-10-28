@@ -19,7 +19,7 @@ using H.Extensions.Expressions.Keys;
 
 namespace H.Extensions.Expressions.Base;
 
-public interface IExpression
+public interface IInputExpression
 {
     /// <summary>
     /// 唯一名称

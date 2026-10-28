@@ -38,5 +38,5 @@ namespace H.Extensions.Expressions.Base;
 [Obsolete]
 public interface IDefaultValueExpressionable
 {
-    IEnumerable<IExpression> GetDefaultValueExpressions(Predicate<object> predicate = null);
+    IEnumerable<IInputExpression> GetDefaultValueExpressions(Predicate<object> predicate = null);
 }

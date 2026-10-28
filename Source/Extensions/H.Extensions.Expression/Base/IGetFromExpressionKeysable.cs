@@ -37,5 +37,5 @@ namespace H.Extensions.Expressions.Base;
 
 public interface IGetFromExpressionKeysable
 {
-    IEnumerable<IExpression> GetFromExpressions();
+    IEnumerable<IInputExpression> GetFromExpressions();
 }

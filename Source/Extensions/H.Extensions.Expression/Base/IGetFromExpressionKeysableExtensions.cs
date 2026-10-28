@@ -40,7 +40,7 @@ namespace H.Extensions.Expressions.Base;
 
 public static class IGetFromExpressionKeysableExtensions
 {
-    public static (bool success, T value) GetExpressionValue<T>(this IExpressionKey expressionKey, IEnumerable<IExpression> expressions)
+    public static (bool success, T value) GetExpressionValue<T>(this IExpressionKey expressionKey, IEnumerable<IInputExpression> expressions)
     {
         if (expressionKey is IInputStringExpressionKey primitiveExpression)
         {
@@ -58,7 +58,7 @@ public static class IGetFromExpressionKeysableExtensions
     }
 
 
-    public static (bool success, object value) GetExpressionValue(this IExpressionKey expressionKey, IEnumerable<IExpression> expressions)
+    public static (bool success, object value) GetExpressionValue(this IExpressionKey expressionKey, IEnumerable<IInputExpression> expressions)
     {
         if (expressionKey is IInputStringExpressionKey primitiveExpression)
             return (true, primitiveExpression.Value);
@@ -70,12 +70,12 @@ public static class IGetFromExpressionKeysableExtensions
         return (true, r.Value);
     }
 
-    public static (bool success, object value) GetValue(this IExpressionKey expressionKey, IEnumerable<IExpression> expressions)
+    public static (bool success, object value) GetValue(this IExpressionKey expressionKey, IEnumerable<IInputExpression> expressions)
     {
         return expressionKey.GetExpressionValue(expressions);
     }
 
-    public static (bool success, T value) GetValue<T>(this IExpressionKey expressionKey, IEnumerable<IExpression> expressions)
+    public static (bool success, T value) GetValue<T>(this IExpressionKey expressionKey, IEnumerable<IInputExpression> expressions)
     {
         return expressionKey.GetExpressionValue<T>(expressions);
     }
@@ -97,23 +97,23 @@ public static class IGetFromExpressionKeysableExtensions
         return expressionKey.GetExpressionValue<T>(getExpressionsable.GetExpressions());
     }
 
-    public static IEnumerable<IExpression> GetFromExpressions(this IGetFromExpressionKeysable getableExpression, IExpressionKey expressionKey)
+    public static IEnumerable<IInputExpression> GetFromExpressions(this IGetFromExpressionKeysable getableExpression, IExpressionKey expressionKey)
     {
         var expressions = getableExpression.GetFromExpressions();
         return expressionKey.GetExpressions(expressions);
     }
 
-    public static IEnumerable<IExpression> GetExpressions(this IExpressionKey expressionKey, IEnumerable<IExpression> expressions)
+    public static IEnumerable<IInputExpression> GetExpressions(this IExpressionKey expressionKey, IEnumerable<IInputExpression> expressions)
     {
         return expressions.Where(x => x.ToKey().Equals(expressionKey));
     }
 
-    public static IExpression GetFromExpression(this IGetFromExpressionKeysable getableExpression, IExpressionKey expressionKey)
+    public static IInputExpression GetFromExpression(this IGetFromExpressionKeysable getableExpression, IExpressionKey expressionKey)
     {
         return getableExpression.GetFromExpressions(expressionKey).FirstOrDefault();
     }
 
-    public static IEnumerable<IExpressionKey> GetFromExpressionKeys(this IGetFromExpressionKeysable getableExpression, Predicate<IExpression> predicate = null)
+    public static IEnumerable<IExpressionKey> GetFromExpressionKeys(this IGetFromExpressionKeysable getableExpression, Predicate<IInputExpression> predicate = null)
     {
         return getableExpression.GetFromExpressions().Where(x => predicate == null || predicate(x)).Select(x => x.ToKey());
     }

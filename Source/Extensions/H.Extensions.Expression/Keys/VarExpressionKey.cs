@@ -12,7 +12,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace H.Extensions.Expressions.Keys;
 
-public interface IVarExpression : IExpression
+public interface IVarExpression : IInputExpression
 {
 
 }
