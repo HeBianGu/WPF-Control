@@ -152,7 +152,6 @@ static partial class ProjectExtension
         if (project == null)
             return false;
         string message = null;
-        projectService.Current = project;
         var r = await IocMessage.Dialog.ShowWait(x =>
         {
             x.Title = "正在打开工程...";
@@ -160,6 +159,7 @@ static partial class ProjectExtension
             Thread.Sleep(500);
             return projectService.Save(out string message);
         });
+        projectService.Current = project;
         if (r == false && !string.IsNullOrEmpty(message))
             await IocMessage.ShowDialogMessage(message);
         return r;
