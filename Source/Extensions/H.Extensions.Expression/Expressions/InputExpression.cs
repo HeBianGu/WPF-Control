@@ -16,7 +16,7 @@ using System.Text.Json.Serialization;
 
 namespace H.Extensions.Expressions.Expressions;
 
-[DebuggerDisplay("InputExpression:{GroupName}.{Name}.{DataType}")]
+//[DebuggerDisplay("InputExpression:{GroupName}.{Name}.{DataType}")]
 public class InputExpression : BindableBase, IInputExpression
 {
     public InputExpression()

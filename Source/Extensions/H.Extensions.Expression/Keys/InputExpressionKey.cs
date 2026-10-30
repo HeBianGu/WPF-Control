@@ -14,7 +14,7 @@ using System.Text.Json.Serialization;
 
 namespace H.Extensions.Expressions.Keys;
 
-[DebuggerDisplay("InputExpressionKey:{DisplayName}")]
+//[DebuggerDisplay("InputExpressionKey:{DisplayName}")]
 public class InputExpressionKey : BindableBase, IInputExpressionKey
 {
     private string _GroupName;

@@ -114,6 +114,8 @@ public static class ObjectExtension
 
         if (obj is IConvertible convertible)
             return Convert.ChangeType(obj, typeof(string))?.ToString();
+        if (type.IsValueType)
+            return obj.ToString();
         error = "未识别转换方法";
         return null;
     }
