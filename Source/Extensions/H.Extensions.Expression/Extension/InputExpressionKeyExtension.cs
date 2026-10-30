@@ -103,17 +103,9 @@ public static class InputExpressionKeyExtension
     public static IEnumerable<IInputExpressionKey> GetFromKeys<T>(this IGetFromInputExpressionKeysable fexp, bool cthis = false)
     {
         var fkeys = fexp.GetFromKeys(x => x.DataType == typeof(T).FullName);
-        foreach (var item in fkeys)
-        {
-            yield return item;
-        }
         if (cthis && fexp is IGetInputExpressionsable gexp)
-        {
-            foreach (var item in gexp.GetKeys(x => x.DataType == typeof(T).FullName))
-            {
-                yield return item;
-            }
-        }
+            fkeys = fkeys.Concat(gexp.GetKeys(x => x.DataType == typeof(T).FullName));
+        return fkeys;
     }
 
     public static IEnumerable<IInputExpressionKey> GetIntFromKeys(this IGetFromInputExpressionKeysable gexp) => gexp.GetFromKeys<int>();
