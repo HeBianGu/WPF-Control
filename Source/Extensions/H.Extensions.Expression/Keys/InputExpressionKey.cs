@@ -9,10 +9,12 @@
 using H.Mvvm.ViewModels.Base;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.Diagnostics;
 using System.Text.Json.Serialization;
 
 namespace H.Extensions.Expressions.Keys;
 
+[DebuggerDisplay("InputExpressionKey:{DisplayName}")]
 public class InputExpressionKey : BindableBase, IInputExpressionKey
 {
     private string _GroupName;

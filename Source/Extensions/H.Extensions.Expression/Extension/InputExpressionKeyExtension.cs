@@ -13,16 +13,16 @@ namespace H.Extensions.Expressions.Base;
 
 public static class InputExpressionKeyExtension
 {
-    public static (bool success, T value) GetInputExpressionValue<T>(this IInputExpressionKey expressionKey, IEnumerable<IInputExpression> expressions)
+    public static (bool success, T value) GetInputExpressionValue<T>(this IInputExpressionKey key, IEnumerable<IInputExpression> exps)
     {
-        if (expressionKey is IInputStringExpressionKey primitiveExpression)
+        if (key is IInputStringExpressionKey primitiveExpression)
         {
             var (success, value) = primitiveExpression.TryParse<T>();
             if (success)
                 return (true, value);
         }
 
-        var r = expressionKey.GetInputExpressionValue(expressions);
+        var r = key.GetInputExpressionValue(exps);
         if (!r.success)
             return (false, default);
         if (r.value is T tValue)
@@ -31,79 +31,102 @@ public static class InputExpressionKeyExtension
     }
 
 
-    public static (bool success, object value) GetInputExpressionValue(this IInputExpressionKey expressionKey, IEnumerable<IInputExpression> expressions)
+    public static (bool success, object value) GetInputExpressionValue(this IInputExpressionKey key, IEnumerable<IInputExpression> exps)
     {
-        if (expressionKey is IInputStringExpressionKey primitiveExpression)
+        if (key is IInputStringExpressionKey primitiveExpression)
             return (true, primitiveExpression.Value);
-        if (expressionKey == null)
+        if (key == null)
             return (false, default);
-        var r = expressionKey.GetInputExpressions(expressions).FirstOrDefault();
+        var r = key.GetInputExpressions(exps).FirstOrDefault();
         if (r == null)
             return (false, default);
         return (true, r.Value);
     }
 
-    public static (bool success, object value) GetInputValue(this IInputExpressionKey expressionKey, IEnumerable<IInputExpression> expressions)
+    public static (bool success, object value) GetInputValue(this IInputExpressionKey key, IEnumerable<IInputExpression> exps)
     {
-        return expressionKey.GetInputExpressionValue(expressions);
+        return key.GetInputExpressionValue(exps);
     }
 
-    public static (bool success, T value) GetInputValue<T>(this IInputExpressionKey expressionKey, IEnumerable<IInputExpression> expressions)
+    public static (bool success, T value) GetInputValue<T>(this IInputExpressionKey key, IEnumerable<IInputExpression> exps)
     {
-        return expressionKey.GetInputExpressionValue<T>(expressions);
+        return key.GetInputExpressionValue<T>(exps);
     }
 
-    public static (bool success, T value) GetInputValue<T>(this IInputExpressionKey expressionKey, IGetFromInputExpressionKeysable getFromExpressionKeysable)
+    public static (bool success, T value) GetInputValue<T>(this IInputExpressionKey key, IGetFromInputExpressionKeysable fkeys)
     {
-        return expressionKey.GetInputExpressionValue<T>(getFromExpressionKeysable.GetFromInputExpressions());
+        var froms = fkeys.GetFromInputExpressions();
+        if (fkeys is IGetInputExpressionsable keys)
+            froms = froms.Concat(keys.GetInputExpressions());
+        return key.GetInputExpressionValue<T>(froms);
     }
 
-    public static (bool success, T value) GetExpressionValue<T>(this IGetFromInputExpressionKeysable getFromExpressionKeysable, IInputExpressionKey expressionKey)
+    public static (bool success, T value) GetExpressionValue<T>(this IGetFromInputExpressionKeysable fexp, IInputExpressionKey key)
     {
-        return expressionKey.GetInputValue<T>(getFromExpressionKeysable);
+        return key.GetInputValue<T>(fexp);
     }
 
-    public static (bool success, T value) GetInputValue<T>(this IGetInputExpressionsable getExpressionsable, IInputExpressionKey expressionKey)
+    public static (bool success, T value) GetInputValue<T>(this IGetInputExpressionsable gexp, IInputExpressionKey key)
     {
-        if (getExpressionsable == null)
+        if (gexp == null)
             return (false, default);
-        return expressionKey.GetInputExpressionValue<T>(getExpressionsable.GetInputExpressions());
+        return key.GetInputExpressionValue<T>(gexp.GetInputExpressions());
     }
 
-    public static IEnumerable<IInputExpression> GetFromInputExpressions(this IGetFromInputExpressionKeysable getableExpression, IInputExpressionKey expressionKey)
+    public static IEnumerable<IInputExpression> GetExpressions(this IGetFromInputExpressionKeysable gexp, IInputExpressionKey key)
     {
-        var expressions = getableExpression.GetFromInputExpressions();
-        return expressionKey.GetInputExpressions(expressions);
+        var exps = gexp.GetFromInputExpressions();
+        return key.GetInputExpressions(exps);
     }
 
-    public static IEnumerable<IInputExpression> GetInputExpressions(this IInputExpressionKey expressionKey, IEnumerable<IInputExpression> expressions)
+    public static IEnumerable<IInputExpression> GetInputExpressions(this IInputExpressionKey key, IEnumerable<IInputExpression> exps)
     {
-        return expressions.Where(x => x.ToKey().Equals(expressionKey));
+        return exps.Where(x => x.ToKey().Equals(key));
     }
 
-    public static IInputExpression GetFromInputExpression(this IGetFromInputExpressionKeysable getableExpression, IInputExpressionKey expressionKey)
+    public static IInputExpression GetExpression(this IGetFromInputExpressionKeysable gexp, IInputExpressionKey key)
     {
-        return getableExpression.GetFromInputExpressions(expressionKey).FirstOrDefault();
+        return gexp.GetExpressions(key).FirstOrDefault();
     }
 
-    public static IEnumerable<IInputExpressionKey> GetFromInputExpressionKeys(this IGetFromInputExpressionKeysable getableExpression, Predicate<IInputExpression> predicate = null)
+    public static IEnumerable<IInputExpressionKey> GetFromKeys(this IGetFromInputExpressionKeysable gexp, Predicate<IInputExpression> predicate = null)
     {
-        return getableExpression.GetFromInputExpressions().Where(x => predicate == null || predicate(x)).Select(x => x.ToKey());
+        return gexp.GetFromInputExpressions().Where(x => predicate == null || predicate(x)).Select(x => x.ToKey());
     }
 
-    public static IEnumerable<IInputExpressionKey> GetFromInputExpressionExtensionKeys<T>(this IGetFromInputExpressionKeysable getableExpression) => getableExpression.GetFromInputExpressionKeys(x => x.DataType == typeof(T).FullName);
+    public static IEnumerable<IInputExpressionKey> GetKeys(this IGetInputExpressionsable gexp, Predicate<IInputExpression> predicate = null)
+    {
+        return gexp.GetInputExpressions().Where(x => predicate == null || predicate(x)).Select(x => x.ToKey());
+    }
 
-    public static IEnumerable<IInputExpressionKey> GetIntFromInputExpressionKeys(this IGetFromInputExpressionKeysable getableExpression) => getableExpression.GetFromInputExpressionExtensionKeys<int>();
-    public static IEnumerable<IInputExpressionKey> GetDoubleFromInputExpressionKeys(this IGetFromInputExpressionKeysable getableExpression) => getableExpression.GetFromInputExpressionExtensionKeys<double>();
-    public static IEnumerable<IInputExpressionKey> GetFloatFromInputExpressionKeys(this IGetFromInputExpressionKeysable getableExpression) => getableExpression.GetFromInputExpressionExtensionKeys<float>();
-    public static IEnumerable<IInputExpressionKey> GetStringFromInputExpressionKeys(this IGetFromInputExpressionKeysable getableExpression) => getableExpression.GetFromInputExpressionExtensionKeys<string>();
 
-    public static IEnumerable<IInputExpressionKey> GetPrimitiveFromInputExpressionKeys(this IGetFromInputExpressionKeysable getableExpression) => getableExpression.GetFromInputExpressionExtensionKeys<string>().Concat(getableExpression.GetFromInputExpressionExtensionKeys<float>()).Concat(getableExpression.GetFromInputExpressionExtensionKeys<double>()).Concat(getableExpression.GetFromInputExpressionExtensionKeys<int>());
-    public static IEnumerable<IInputExpressionKey> GetBoolFromInputExpressionKeys(this IGetFromInputExpressionKeysable getableExpression) => getableExpression.GetFromInputExpressionExtensionKeys<bool>();
-    public static IEnumerable<IInputExpressionKey> GetUIntFromInputExpressionKeys(this IGetFromInputExpressionKeysable getableExpression) => getableExpression.GetFromInputExpressionExtensionKeys<uint>();
-    public static IEnumerable<IInputExpressionKey> GetRectFromInputExpressionKeys(this IGetFromInputExpressionKeysable getableExpression) => getableExpression.GetFromInputExpressionExtensionKeys<Rect>();
-    public static IEnumerable<IInputExpressionKey> GetPointFromInputExpressionKeys(this IGetFromInputExpressionKeysable getableExpression) => getableExpression.GetFromInputExpressionExtensionKeys<Point>();
+    public static IEnumerable<IInputExpressionKey> GetFromKeys<T>(this IGetFromInputExpressionKeysable fexp, bool cthis = false)
+    {
+        var fkeys = fexp.GetFromKeys(x => x.DataType == typeof(T).FullName);
+        foreach (var item in fkeys)
+        {
+            yield return item;
+        }
+        if (cthis && fexp is IGetInputExpressionsable gexp)
+        {
+            foreach (var item in gexp.GetKeys(x => x.DataType == typeof(T).FullName))
+            {
+                yield return item;
+            }
+        }
+    }
 
-    public static IEnumerable<IInputExpressionKey> GetPointssFromInputExpressionKeys(this IGetFromInputExpressionKeysable getableExpression) => getableExpression.GetFromInputExpressionExtensionKeys<Point[][]>();
-    public static IEnumerable<IInputExpressionKey> GetSizeFromInputExpressioKeys(this IGetFromInputExpressionKeysable getableExpression) => getableExpression.GetFromInputExpressionExtensionKeys<Size>();
+    public static IEnumerable<IInputExpressionKey> GetIntFromKeys(this IGetFromInputExpressionKeysable gexp) => gexp.GetFromKeys<int>();
+    public static IEnumerable<IInputExpressionKey> GetDoubleFromKeys(this IGetFromInputExpressionKeysable gexp) => gexp.GetFromKeys<double>();
+    public static IEnumerable<IInputExpressionKey> GetFloatFromKeys(this IGetFromInputExpressionKeysable gexp) => gexp.GetFromKeys<float>();
+    public static IEnumerable<IInputExpressionKey> GetStringFromKeys(this IGetFromInputExpressionKeysable gexp) => gexp.GetFromKeys<string>();
+
+    public static IEnumerable<IInputExpressionKey> GetPrimitiveFromKeys(this IGetFromInputExpressionKeysable gexp) => gexp.GetFromKeys<string>().Concat(gexp.GetFromKeys<float>()).Concat(gexp.GetFromKeys<double>()).Concat(gexp.GetFromKeys<int>());
+    public static IEnumerable<IInputExpressionKey> GetBoolFromKeys(this IGetFromInputExpressionKeysable gexp) => gexp.GetFromKeys<bool>();
+    public static IEnumerable<IInputExpressionKey> GetUIntFromKeys(this IGetFromInputExpressionKeysable gexp) => gexp.GetFromKeys<uint>();
+    public static IEnumerable<IInputExpressionKey> GetRectFromKeys(this IGetFromInputExpressionKeysable gexp) => gexp.GetFromKeys<Rect>();
+    public static IEnumerable<IInputExpressionKey> GetPointFromKeys(this IGetFromInputExpressionKeysable gexp) => gexp.GetFromKeys<Point>();
+
+    public static IEnumerable<IInputExpressionKey> GetPointssFromKeys(this IGetFromInputExpressionKeysable gexp) => gexp.GetFromKeys<Point[][]>();
+    public static IEnumerable<IInputExpressionKey> GetSizeFromKeys(this IGetFromInputExpressionKeysable gexp) => gexp.GetFromKeys<Size>();
 }
