@@ -61,6 +61,16 @@ public static class InputExpressionKeyExtension
         return key.GetInputExpressionValue<T>(froms);
     }
 
+    public static bool TryGet<T>(this IInputExpressionKey key, IGetFromInputExpressionKeysable owner, out T value)
+    {
+        value = default;
+        if (key == null) return false;
+        var result = key.GetInputValue<T>(owner);
+        if (!result.success || result.value is null) return false;
+        value = result.value;
+        return true;
+    }
+
     public static (bool success, T value) GetExpressionValue<T>(this IGetFromInputExpressionKeysable fexp, IInputExpressionKey key)
     {
         return key.GetInputValue<T>(fexp);

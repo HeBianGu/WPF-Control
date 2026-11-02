@@ -108,4 +108,26 @@ public static class RectExtenstion
         double angle = Math.Atan(vector.Y / vector.X);
         return angle * 180 / Math.PI;
     }
+
+    public static void ValidatePoint(this Point point, string name)
+    {
+        if (!double.IsFinite(point.X) || !double.IsFinite(point.Y))
+            throw new ArgumentException($"{name}坐标须为有限数值");
+    }
+
+    public static Point Rotate(this Point point, Point center, double angle)
+    {
+        double radians = angle * Math.PI / 180;
+        double x = point.X - center.X;
+        double y = point.Y - center.Y;
+        return new Point(center.X + x * Math.Cos(radians) - y * Math.Sin(radians), center.Y + x * Math.Sin(radians) + y * Math.Cos(radians));
+    }
+
+    public  static Point ValidateRotate(Point point, Point center, double angle)
+    {
+        ValidatePoint(point, "输入点");
+        Point result = point.Rotate(center, angle);
+        ValidatePoint(result, "输出点");
+        return result;
+    }
 }
