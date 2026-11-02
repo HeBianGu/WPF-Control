@@ -10,7 +10,7 @@ namespace H.Modules.Plugin.Base;
 
 public abstract class LoadPluginSplashServiceBase : ILoadPluginSplashService
 {
-    public string Name => "加载插件数据";
+    public string Name => "插件数据";
 
     public abstract bool Load(out string message);
 }
