@@ -109,7 +109,7 @@ public static class RectExtenstion
         return angle * 180 / Math.PI;
     }
 
-    public static void ValidatePoint(this Point point, string name)
+    public static void Validate(this Point point, string name)
     {
         if (!double.IsFinite(point.X) || !double.IsFinite(point.Y))
             throw new ArgumentException($"{name}坐标须为有限数值");
@@ -125,9 +125,9 @@ public static class RectExtenstion
 
     public  static Point ValidateRotate(Point point, Point center, double angle)
     {
-        ValidatePoint(point, "输入点");
+        Validate(point, "输入点");
         Point result = point.Rotate(center, angle);
-        ValidatePoint(result, "输出点");
+        Validate(result, "输出点");
         return result;
     }
 }
