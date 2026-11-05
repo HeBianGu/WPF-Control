@@ -104,6 +104,16 @@ public partial class FormDataGrid : DataGrid
         return this.UsePropertyView ? propertyInfo.CreateView(obj) : propertyInfo.Create(obj);
     }
 
+    protected virtual IPropertyItem CreatePropertyItem(PropertyInfo propertyInfo, object obj, string propertyPath)
+    {
+        PropertyInfo resolved = this.Type.ResolvePropertyPath(obj, propertyPath, out object propertyOwner);
+        if (resolved == null || propertyOwner == null)
+            return null;
+        if (propertyInfo?.Name == resolved.Name && propertyInfo.DeclaringType.IsInstanceOfType(propertyOwner))
+            resolved = propertyInfo;
+        return this.CreatePropertyItem(resolved, propertyOwner);
+    }
+
     internal FrameworkElement CreatePropertyItemElement(PropertyInfo propertyInfo, string propertyPath, DataGridCell cell, bool isEditing)
     {
         return new PropertyItemCell(this, propertyInfo, propertyPath, cell, isEditing);
@@ -246,14 +256,16 @@ public partial class FormDataGrid : DataGrid
     {
         private readonly FormDataGrid _owner;
         private readonly PropertyInfo _propertyInfo;
-        private readonly string _propertyName;
+        private readonly string _propertyPath;
+        private readonly DataGridCell _cell;
 
         public PropertyItemCell(FormDataGrid owner, PropertyInfo propertyInfo, string propertyPath, DataGridCell cell, bool isEditing)
         {
             _owner = owner;
             _propertyInfo = propertyInfo;
+            _propertyPath = propertyPath;
+            _cell = cell;
             int separator = propertyPath.LastIndexOf('.');
-            _propertyName = separator < 0 ? propertyPath : propertyPath.Substring(separator + 1);
             string ownerPath = separator < 0 ? nameof(DataGridCell.DataContext)
                 : $"DataContext.{propertyPath.Substring(0, separator)}";
             this.HorizontalContentAlignment = HorizontalAlignment.Stretch;
@@ -279,11 +291,9 @@ public partial class FormDataGrid : DataGrid
             if (obj == null || ReferenceEquals(obj, CollectionView.NewItemPlaceholder))
                 return;
 
-            var propertyInfo = _propertyName == _propertyInfo.Name && _propertyInfo.DeclaringType.IsInstanceOfType(obj)
-                ? _propertyInfo : obj.GetType().GetProperty(_propertyName, BindingFlags.Instance | BindingFlags.Public);
-            if (propertyInfo?.GetMethod?.IsPublic != true || propertyInfo.GetIndexParameters().Length > 0)
+            var propertyItem = _owner.CreatePropertyItem(_propertyInfo, _cell.DataContext, _propertyPath);
+            if (propertyItem == null)
                 return;
-            var propertyItem = _owner.CreatePropertyItem(propertyInfo, obj);
             if (propertyItem is ObjectPropertyItemBase objectPropertyItem)
             {
                 objectPropertyItem.UseTitle = false;

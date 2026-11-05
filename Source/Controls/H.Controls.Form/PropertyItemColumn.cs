@@ -2,7 +2,6 @@ using H.Extensions.Behvaiors.DataGrids;
 using System;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
 using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
@@ -10,7 +9,7 @@ using System.Windows.Data;
 
 namespace H.Controls.Form;
 
-/// <summary>在FormDataGrid.Columns中按属性名声明表单属性编辑列。</summary>
+/// <summary>在FormDataGrid.Columns中按属性名或点分属性路径声明表单属性编辑列。</summary>
 public class PropertyItemColumn : DataGridColumn
 {
     private readonly FormDataGrid _owner;
@@ -28,10 +27,10 @@ public class PropertyItemColumn : DataGridColumn
         _owner = owner;
         _propertyInfo = propertyInfo;
         _attribute = attribute;
-        this.PropertyName = propertyInfo.Name;
+        this.PropertyPath = propertyInfo.Name;
     }
 
-    public string PropertyName { get; set; }
+    public string PropertyPath { get; set; }
     public string StringFormat { get; set; }
     public IValueConverter Converter { get; set; }
 
@@ -48,13 +47,13 @@ public class PropertyItemColumn : DataGridColumn
     private FrameworkElement CreateElement(DataGridCell cell, object dataItem, bool isEditing)
     {
         FormDataGrid owner = this.DataGridOwner as FormDataGrid ?? _owner;
-        if (owner == null || string.IsNullOrWhiteSpace(this.PropertyName))
+        if (owner == null || string.IsNullOrWhiteSpace(this.PropertyPath))
             return new TextBlock();
         PropertyInfo property = this.ResolveProperty(owner, dataItem);
         if (property == null)
-            return new TextBlock();
+            return owner.CreatePropertyItemElement(null, this.PropertyPath, cell, isEditing);
         var attribute = _attribute ?? property.GetCustomAttribute<DataGridColumnAttribute>();
-        string path = string.Format(attribute?.PropertyPath ?? "{0}", property.Name);
+        string path = string.Format(attribute?.PropertyPath ?? "{0}", this.PropertyPath);
         if (this.Header == null)
             this.Header = property.GetCustomAttribute<DisplayAttribute>()?.GetName() ?? property.Name;
         if (string.IsNullOrEmpty(this.SortMemberPath))
@@ -88,15 +87,7 @@ public class PropertyItemColumn : DataGridColumn
 
     private PropertyInfo ResolveProperty(FormDataGrid owner, object dataItem)
     {
-        if (_propertyInfo != null)
-            return _propertyInfo;
-        Type type = owner.Type ?? dataItem?.GetType();
-        if (type == null)
-            return null;
-        PropertyInfo property = type.GetProperty(this.PropertyName, BindingFlags.Instance | BindingFlags.Public);
-        if (property == null && type.IsInterface)
-            property = type.GetInterfaces().Select(x => x.GetProperty(this.PropertyName, BindingFlags.Instance | BindingFlags.Public))
-                .FirstOrDefault(x => x != null);
-        return property?.GetMethod?.IsPublic == true && property.GetIndexParameters().Length == 0 ? property : null;
+        return owner.Type.ResolvePropertyPath(dataItem, this.PropertyPath, out _)
+            ?? (_propertyInfo?.Name == this.PropertyPath ? _propertyInfo : null);
     }
 }

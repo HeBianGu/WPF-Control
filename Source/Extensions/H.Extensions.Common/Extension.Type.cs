@@ -124,4 +124,60 @@ public static class TypeExtension
     {
         return Nullable.GetUnderlyingType(type) ?? type;
     }
+
+    /// <summary>
+    /// 根据属性路径解析属性信息，返回最后一个属性的 PropertyInfo，并输出最后一个属性的拥有者对象
+    /// </summary>
+    /// <param name="obj"></param>
+    /// <param name="propertyPath"></param>
+    /// <param name="propertyOwner"></param>
+    /// <returns></returns>
+    public static PropertyInfo ResolvePropertyPath(this object obj, string propertyPath, out object propertyOwner)
+    {
+        return obj.GetType().ResolvePropertyPath(obj, propertyPath, out propertyOwner);
+    }
+
+    public static PropertyInfo ResolvePropertyPath(this Type rootType, object obj, string propertyPath, out object propertyOwner)
+    {
+        propertyOwner = obj;
+        if (string.IsNullOrWhiteSpace(propertyPath))
+            return null;
+        Type type = rootType ?? obj?.GetType();
+        string[] names = propertyPath.Split('.');
+        PropertyInfo property = null;
+        for (int i = 0; i < names.Length; i++)
+        {
+            if (string.IsNullOrWhiteSpace(names[i]))
+                return null;
+            property = FindPathProperty(type, names[i]);
+            if (property == null || propertyOwner != null && !property.DeclaringType.IsInstanceOfType(propertyOwner))
+                property = FindPathProperty(propertyOwner?.GetType(), names[i]);
+            if (property?.GetMethod?.IsPublic != true || property.GetIndexParameters().Length > 0)
+                return null;
+            if (i < names.Length - 1)
+            {
+                propertyOwner = propertyOwner == null ? null : property.GetValue(propertyOwner);
+                type = property.PropertyType;
+            }
+        }
+        return property;
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="type"></param>
+    /// <param name="name">Condition.Minimum</param>
+    /// <returns></returns>
+    private static PropertyInfo FindPathProperty(Type type, string name)
+    {
+        if (type == null)
+            return null;
+        PropertyInfo property = type.GetProperty(name, BindingFlags.Instance | BindingFlags.Public);
+        if (property == null && type.IsInterface)
+            property = type.GetInterfaces().Select(x => x.GetProperty(name, BindingFlags.Instance | BindingFlags.Public))
+                .FirstOrDefault(x => x != null);
+        return property;
+    }
+
 }
