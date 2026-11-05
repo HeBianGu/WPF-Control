@@ -7,5 +7,6 @@
         <Setter Property="Text" Value="&#xE700;" />
         <Setter Property="VerticalAlignment" Value="Center" />
         <Setter Property="FontSize" Value="{DynamicResource {x:Static FontSizeKeys.Icon}}" />
+        <Setter Property="TextAlignment" Value="Center"/>
     </Style>
 </ResourceDictionary>

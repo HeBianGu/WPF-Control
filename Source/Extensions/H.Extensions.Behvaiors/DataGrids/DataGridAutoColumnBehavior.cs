@@ -31,6 +31,27 @@ public class DataGridAutoColumnBehavior : Behavior<DataGrid>
         set { SetValue(TypeProperty, value); }
     }
 
+    public static readonly DependencyProperty TypeProperty =
+        DependencyProperty.Register("Type", typeof(Type), typeof(DataGridAutoColumnBehavior), new FrameworkPropertyMetadata(default(Type), (d, e) =>
+        {
+            DataGridAutoColumnBehavior control = d as DataGridAutoColumnBehavior;
+
+            if (control == null) return;
+
+            if (e.OldValue is Type o)
+            {
+
+            }
+
+            if (e.NewValue is Type n)
+            {
+
+            }
+            control.GenerateColumns();
+        }));
+
+
+
     public string UsePropertyNames
     {
         get { return (string)GetValue(UsePropertyNamesProperty); }
@@ -51,25 +72,6 @@ public class DataGridAutoColumnBehavior : Behavior<DataGrid>
             }
 
             if (e.NewValue is string n)
-            {
-
-            }
-            control.GenerateColumns();
-        }));
-
-    public static readonly DependencyProperty TypeProperty =
-        DependencyProperty.Register("Type", typeof(Type), typeof(DataGridAutoColumnBehavior), new FrameworkPropertyMetadata(default(Type), (d, e) =>
-        {
-            DataGridAutoColumnBehavior control = d as DataGridAutoColumnBehavior;
-
-            if (control == null) return;
-
-            if (e.OldValue is Type o)
-            {
-
-            }
-
-            if (e.NewValue is Type n)
             {
 
             }
@@ -160,6 +162,7 @@ public class DataGridAutoColumnBehavior : Behavior<DataGrid>
         }
         if (this.Type == null)
             return;
+        var generatedColumns = new List<Tuple<DataGridColumn, DataGridColumnAttribute>>();
         PropertyInfo[] ps = this.Type.GetProperties().OrderBy(x => x.GetCustomAttribute<DisplayAttribute>()?.GetOrder() ?? int.MaxValue).ToArray();
         foreach (PropertyInfo p in ps)
         {
@@ -180,13 +183,25 @@ public class DataGridAutoColumnBehavior : Behavior<DataGrid>
                 : columnAttribute.GetDataGridColumn(p);
             string name = display?.Name ?? p.Name;
             column.Header = this.Type.GetPropertyNameResx(p.Name, name) ?? name;
-            if (column is DataGridBoundColumn bound)
+            columnAttribute?.ApplyTo(column, dataGrid);
+            column.IsReadOnly = column.IsReadOnly || readOnly?.IsReadOnly == true || p.SetMethod?.IsPublic != true;
+            if (column is DataGridBoundColumn || column is DataGridComboBoxColumn)
             {
                 Binding binding = new Binding();
                 string path = string.Format(this.BindingPath, string.Format(columnAttribute?.PropertyPath ?? "{0}", p.Name));
                 binding.Path = new PropertyPath(path);
-                binding.Mode = readOnly?.IsReadOnly == true || !p.CanWrite ? BindingMode.OneWay : BindingMode.TwoWay;
-                bound.Binding = binding;
+                binding.Mode = column.IsReadOnly ? BindingMode.OneWay : BindingMode.TwoWay;
+                if (columnAttribute?.SortMemberPath == null)
+                    column.SortMemberPath = path;
+                if (column is DataGridBoundColumn bound)
+                    bound.Binding = binding;
+                else if (column is DataGridComboBoxColumn comboBox)
+                {
+                    comboBox.SelectedItemBinding = binding;
+                    Type enumType = Nullable.GetUnderlyingType(p.PropertyType) ?? p.PropertyType;
+                    if (enumType.IsEnum && comboBox.ItemsSource == null)
+                        comboBox.ItemsSource = Enum.GetValues(enumType);
+                }
                 if (columnAttribute?.ValueConvertType != null)
                     binding.Converter = Activator.CreateInstance(columnAttribute.ValueConvertType) as IValueConverter;
                 if (columnAttribute?.StringFormat != null)
@@ -200,12 +215,15 @@ public class DataGridAutoColumnBehavior : Behavior<DataGrid>
 
             }
             dataGrid.Columns.Add(column);
+            if (columnAttribute != null)
+                generatedColumns.Add(Tuple.Create(column, columnAttribute));
         }
         foreach (DataGridColumn item in this.EndColumns)
         {
             dataGrid.Columns.Add(item);
         }
-
+        foreach (var item in generatedColumns)
+            item.Item2.ApplyDisplayIndex(dataGrid, item.Item1);
     }
 
     public DataGridColumn GetDataGridColumn(PropertyInfo propertyInfo)

@@ -5,12 +5,16 @@
         xmlns:h="https://github.com/HeBianGu"
         xmlns:local="clr-namespace:H.Test.Form"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
         Title="MainWindow"
         Width="800"
         Height="450"
         Style="{StaticResource {x:Static WindowKeys.Default}}"
         mc:Ignorable="d">
     <TabControl TabStripPlacement="Left">
+        <TabItem Header="FormDataGrid">
+            <FormDataGrid ItemsSource="{GetStudents}" UseGroupNames="默认分组"/>
+        </TabItem>
         <TabItem Header="TextPropertyItem">
             <h:Form TitleWidth="200">
                 <h:Form.SelectObject>

@@ -54,14 +54,8 @@
                                 Background="{TemplateBinding Background}"
                                 BorderBrush="{TemplateBinding BorderBrush}"
                                 BorderThickness="{TemplateBinding BorderThickness}"
-                                SnapsToDevicePixels="True">
-                            <!--<Rectangle.Stroke>
-                                <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.BorderBrush}}" />
-                            </Rectangle.Stroke>-->
-                            <!--<Rectangle.Fill>
-                                <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Background}}" />
-                            </Rectangle.Fill>-->
-                        </Border>
+                                CornerRadius="0"
+                                SnapsToDevicePixels="True" />
                     </Grid>
                 </ControlTemplate>
             </Setter.Value>
@@ -205,24 +199,20 @@
     <Style x:Key="{ComponentResourceKey ResourceId=S.DataGridRowHeader.Default,
                                         TypeInTargetAssembly={x:Type local:DataGridRowHeaderKeys}}"
            TargetType="{x:Type DataGridRowHeader}">
-        <Setter Property="Background" Value="{x:Null}" />
         <Setter Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.BorderBrushAssist}}" />
-        <Setter Property="BorderThickness" Value="1,0,1,1" />
+        <Setter Property="BorderThickness" Value="0,0,1,1" />
         <Setter Property="Margin" Value="0" />
+        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type DataGridRowHeader}">
                     <Grid>
-                        <Border Width="10"
-                                CornerRadius="1"
+                        <Border CornerRadius="0"
                                 Style="{StaticResource S.Border.TemplatedParent}">
-                            <StackPanel Orientation="Horizontal">
-                                <ContentPresenter VerticalAlignment="Center"
-                                                  SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
-                                <Control SnapsToDevicePixels="false"
-                                         Template="{Binding ValidationErrorTemplate, RelativeSource={RelativeSource AncestorType={x:Type DataGridRow}}}"
-                                         Visibility="{Binding (Validation.HasError), Converter={StaticResource bool2VisibilityConverter}, RelativeSource={RelativeSource AncestorType={x:Type DataGridRow}}}" />
-                            </StackPanel>
+                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                              SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
                         </Border>
 
                         <Thumb x:Name="PART_TopHeaderGripper"
@@ -257,6 +247,7 @@
                 <ControlTemplate TargetType="{x:Type DataGridColumnHeader}">
                     <Grid>
                         <Border x:Name="columnHeaderBorder"
+                                CornerRadius="0"
                                 Style="{StaticResource S.Border.TemplatedParent}">
                             <ContentPresenter Margin="5,0"
                                               Style="{StaticResource S.ContentPresenter.TemplatedParent}" />
@@ -335,30 +326,19 @@
     <Style x:Key="{ComponentResourceKey ResourceId=S.DataGrid.Default,
                                         TypeInTargetAssembly={x:Type local:DataGridKeys}}"
            TargetType="{x:Type DataGrid}">
+        <Setter Property="RowHeaderWidth" Value="10" />
         <Setter Property="MinRowHeight" Value="{DynamicResource {x:Static LayoutKeys.ItemHeight}}" />
         <Setter Property="ColumnHeaderHeight" Value="{DynamicResource {x:Static LayoutKeys.ItemHeight}}" />
         <Setter Property="Foreground" Value="{DynamicResource {x:Static BrushKeys.Foreground}}" />
         <Setter Property="CanUserAddRows" Value="False" />
-        <Setter Property="Background">
-            <Setter.Value>
-                <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.Background}}" />
-            </Setter.Value>
-        </Setter>
-        <Setter Property="AlternatingRowBackground">
-            <Setter.Value>
-                <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.AlternatingRowBackground}}" />
-            </Setter.Value>
-        </Setter>
+        <Setter Property="Background" Value="{DynamicResource {x:Static BrushKeys.Background}}" />
+        <Setter Property="AlternatingRowBackground" Value="{DynamicResource {x:Static BrushKeys.AlternatingRowBackground}}" />
         <Setter Property="Cattach.CornerRadius" Value="{DynamicResource {x:Static LayoutKeys.CornerRadius}}" />
         <Setter Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.BorderBrushAssist}}" />
         <Setter Property="HorizontalGridLinesBrush" Value="{DynamicResource {x:Static BrushKeys.BorderBrushAssist}}" />
         <Setter Property="VerticalGridLinesBrush" Value="{DynamicResource {x:Static BrushKeys.BorderBrushAssist}}" />
         <Setter Property="Cattach.CaptionBackground" Value="{DynamicResource {x:Static BrushKeys.CaptionBackground}}" />
-        <Setter Property="Cattach.CaptionForeground">
-            <Setter.Value>
-                <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.CaptionForeground}}" />
-            </Setter.Value>
-        </Setter>
+        <Setter Property="Cattach.CaptionForeground" Value="{DynamicResource {x:Static BrushKeys.CaptionForeground}}" />
         <Setter Property="Cattach.CaptionBorderBrush" Value="{DynamicResource {x:Static BrushKeys.BorderBrushAssist}}" />
         <Setter Property="Cattach.ItemVerticalContentAlignment" Value="Center" />
         <Setter Property="Cattach.ItemHorizontalContentAlignment" Value="Stretch" />
@@ -369,6 +349,15 @@
         <Setter Property="ScrollViewer.PanningMode" Value="Both" />
         <Setter Property="Stylus.IsFlicksEnabled" Value="False" />
         <Setter Property="Cattach.Watermark" Value="{x:Static Resources.Common_NoData}" />
+        <Setter Property="RowHeaderTemplate">
+            <Setter.Value>
+                <DataTemplate>
+                    <Control SnapsToDevicePixels="false"
+                             Template="{Binding ValidationErrorTemplate, RelativeSource={RelativeSource AncestorType={x:Type DataGridRow}}}"
+                             Visibility="{Binding (Validation.HasError), Converter={StaticResource bool2VisibilityConverter}, RelativeSource={RelativeSource AncestorType={x:Type DataGridRow}}}" />
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type DataGrid}">

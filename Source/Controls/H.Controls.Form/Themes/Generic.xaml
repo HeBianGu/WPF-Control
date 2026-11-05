@@ -21,5 +21,6 @@
         <ResourceDictionary Source="pack://application:,,,/H.Controls.Form;component/ItemsFormPresenter.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Controls.Form;component/StaticFormPresenter.xaml" />
         <ResourceDictionary Source="pack://application:,,,/H.Controls.Form;component/TabFormPresenter.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/H.Controls.Form;component/FormDataGrid.xaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>
