@@ -57,7 +57,6 @@ public class InputExpressionKey : BindableBase, IInputExpressionKey
         }
     }
 
-
     public virtual string DisplayName => $"{this.GroupName}.{this.Name}";
 
 

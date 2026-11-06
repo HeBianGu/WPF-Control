@@ -73,7 +73,7 @@ public class InputExpression : BindableBase, IInputExpression
         {
             GroupName = this.GroupName,
             Name = this.Name,
-            DisplayValue = this.DisplayValue ?? this.Value
+            DisplayValue = this.DisplayValue ?? this.Value,
         };
     }
 }

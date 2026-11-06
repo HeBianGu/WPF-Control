@@ -109,6 +109,10 @@ public static class InputExpressionKeyExtension
         return gexp.GetInputExpressions().Where(x => predicate == null || predicate(x)).Select(x => x.ToKey());
     }
 
+    public static IEnumerable<IInputExpressionKey> GetKeys<T>(this IGetInputExpressionsable gexp, Predicate<IInputExpression> predicate = null)
+    {
+        return gexp.GetKeys(x => x.DataType == typeof(T).FullName && predicate?.Invoke(x) != false);
+    }
 
     public static IEnumerable<IInputExpressionKey> GetFromKeys<T>(this IGetFromInputExpressionKeysable fexp, bool cthis = false)
     {
