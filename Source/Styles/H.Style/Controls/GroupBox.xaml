@@ -9,24 +9,12 @@
                                         TypeInTargetAssembly={x:Type local:GroupBoxKeys}}"
            TargetType="GroupBox">
         <Setter Property="BorderThickness" Value="1" />
-        <Setter Property="Background">
-            <Setter.Value>
-                <SolidColorBrush Color="Transparent" />
-            </Setter.Value>
-        </Setter>
+        <Setter Property="Background" Value="Transparent"/>
         <Setter Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.CaptionBackground}}" />
         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
         <Setter Property="VerticalContentAlignment" Value="Stretch" />
-        <Setter Property="Cattach.CaptionBackground">
-            <Setter.Value>
-                <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.CaptionBackground}}" />
-            </Setter.Value>
-        </Setter>
-        <Setter Property="Cattach.CaptionForeground">
-            <Setter.Value>
-                <SolidColorBrush Color="{DynamicResource {x:Static ColorKeys.CaptionForeground}}" />
-            </Setter.Value>
-        </Setter>
+        <Setter Property="Cattach.CaptionBackground" Value="{DynamicResource {x:Static BrushKeys.CaptionBackground}}"/>
+        <Setter Property="Cattach.CaptionForeground" Value="{DynamicResource {x:Static BrushKeys.CaptionForeground}}"/>
         <Setter Property="Cattach.CaptionHeight" Value="{DynamicResource {x:Static LayoutKeys.ItemHeight}}" />
         <Setter Property="Cattach.CaptionCornerRadius" Value="{DynamicResource {x:Static LayoutKeys.CornerRadiusTop}}" />
         <Setter Property="Cattach.CornerRadius" Value="{DynamicResource {x:Static LayoutKeys.CornerRadiusBottom}}" />
