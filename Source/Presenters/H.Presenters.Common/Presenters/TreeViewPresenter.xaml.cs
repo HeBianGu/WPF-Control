@@ -16,7 +16,7 @@ public interface ITreeViewPresenter : IItemsSourcePresenter
 }
 [Icon("\xE890")]
 [Display(Name = "查看数据")]
-public class TreeViewPresenter : ItemsSourcePresenterBase, ITreeViewPresenter
+public class TreeViewPresenter : ItemsControlPresenter, ITreeViewPresenter
 {
     public TreeViewPresenter()
     {
@@ -50,7 +50,7 @@ public class TreeViewPresenter : ItemsSourcePresenterBase, ITreeViewPresenter
 
 public static partial class DialogServiceExtension
 {
-    public static async Task<bool?> ShowTreeView(this IDialogMessageService service, Action<ITreeViewPresenter> option, Action<ITreeViewPresenter> sumitAction = null, Action<IDialog> builder = null, Func<ITreeViewPresenter, Task<bool>> canSumit = null)
+    public static async Task<bool?> ShowTreeView(this IDialogMessageService service, Action<TreeViewPresenter> option, Action<ITreeViewPresenter> sumitAction = null, Action<IDialog> builder = null, Func<ITreeViewPresenter, Task<bool>> canSumit = null)
     {
         return await service.ShowDialog<TreeViewPresenter>(option, sumitAction, x =>
         {

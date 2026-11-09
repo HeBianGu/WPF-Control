@@ -12,8 +12,6 @@ namespace H.Presenters.Common.Presenters;
 public interface IItemsSourcePresenter
 {
     IEnumerable ItemsSource { get; set; }
-
-    DataTemplate ItemContentTemplate { get; set; }
 }
 
 [Icon("\xE890")]

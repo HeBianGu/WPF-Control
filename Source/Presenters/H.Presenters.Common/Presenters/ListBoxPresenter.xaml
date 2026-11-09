@@ -1,28 +1,57 @@
-﻿<ResourceDictionary
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
-    xmlns:h="https://github.com/HeBianGu"
-    xmlns:local="clr-namespace:H.Presenters.Common.Presenters">
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
+                    xmlns:h="https://github.com/HeBianGu"
+                    xmlns:local="clr-namespace:H.Presenters.Common.Presenters">
     <DataTemplate DataType="{x:Type local:ListBoxPresenter}">
         <DockPanel>
-            <Button
-                Margin="0,2"
-                HorizontalAlignment="Left"
-                Command="{Binding DeleteSelectedCommand}"
-                Content="删除选中"
-                DockPanel.Dock="Top"
-                Visibility="{Binding UseDelete, Converter={x:Static Converter.GetTrueToVisible}}" />
-            <ListBox
-                x:Name="lb"
-                HorizontalAlignment="Stretch"
-                BorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrush}}"
-                BorderThickness="1"
-                Cattach.ItemHeight="Auto"
-                DisplayMemberPath="{Binding DisplayMemberPath}"
-                ItemTemplate="{Binding ItemContentTemplate}"
-                ItemsSource="{Binding ItemsSource}"
-                SelectedItem="{Binding SelectedItem}" />
+            <DockPanel.Resources>
+                <CollectionViewSource x:Key="GroupedNodeDatas"
+                            Source="{Binding ItemsSource}">
+                    <CollectionViewSource.GroupDescriptions>
+                        <PropertyGroupDescription PropertyName="GroupName" />
+                    </CollectionViewSource.GroupDescriptions>
+                </CollectionViewSource>
+            </DockPanel.Resources>
+            <Button Margin="0,2"
+                    HorizontalAlignment="Left"
+                    Command="{Binding DeleteSelectedCommand}"
+                    Content="删除选中"
+                    DockPanel.Dock="Top"
+                    Visibility="{Binding UseDelete, Converter={x:Static Converter.GetTrueToVisible}}" />
+            <ListBox x:Name="lb"
+                     HorizontalAlignment="Stretch"
+                     BorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrush}}"
+                     BorderThickness="1"
+                     Cattach.ItemHeight="Auto"
+                     DisplayMemberPath="{Binding DisplayMemberPath}"
+                     ItemTemplate="{Binding ItemContentTemplate}"
+                     ItemsSource="{Binding Source={StaticResource GroupedNodeDatas}}"
+                     SelectedItem="{Binding SelectedItem}">
+                <ItemsControl.GroupStyle>
+                    <GroupStyle>
+                        <GroupStyle.ContainerStyle>
+                            <Style TargetType="{x:Type GroupItem}">
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="{x:Type GroupItem}">
+                                            <GroupBox Margin="0,0,0,2"
+                                                          Header="{Binding Path=Name}">
+                                                <ItemsPresenter Margin="2,0" />
+                                            </GroupBox>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </GroupStyle.ContainerStyle>
+                    </GroupStyle>
+                </ItemsControl.GroupStyle>
+            </ListBox>
         </DockPanel>
+        <DataTemplate.Triggers>
+            <DataTrigger Binding="{Binding UseGroupName}" Value="False">
+                <Setter Property="ItemsSource" Value="{Binding ItemsSource}" TargetName="lb"/>
+            </DataTrigger>
+        </DataTemplate.Triggers>
     </DataTemplate>
 </ResourceDictionary>

@@ -16,12 +16,12 @@ public interface IListBoxPresenter : IItemsSourcePresenter
 {
     string DisplayMemberPath { get; set; }
     object SelectedItem { get; set; }
-
     bool UseDelete { get; set; }
+    bool UseGroupName { get; set; }
 }
 [Icon(FontIcons.List)]
 [Display(Name = "数据列表")]
-public class ListBoxPresenter : ItemsSourcePresenterBase, IListBoxPresenter
+public class ListBoxPresenter : ItemsControlPresenter, IListBoxPresenter
 {
     public ListBoxPresenter()
     {
@@ -76,18 +76,19 @@ public class ListBoxPresenter : ItemsSourcePresenterBase, IListBoxPresenter
 public static partial class DialogServiceExtension
 {
     //[Obsolete("ShowListBox<T>")]
-    public static async Task<bool?> ShowListBox(this IDialogMessageService service, Action<IListBoxPresenter> option, Action<IListBoxPresenter> sumitAction = null, Action<IDialog> builder = null, Func<IListBoxPresenter, Task<bool>> canSumit = null)
+    public static async Task<bool?> ShowListBox(this IDialogMessageService service, Action<ListBoxPresenter> option, Action<IListBoxPresenter> sumitAction = null, Action<IDialog> builder = null, Func<IListBoxPresenter, Task<bool>> canSumit = null)
     {
         return await service.ShowListBox<bool?>(option, sumitAction, builder, canSumit);
     }
 
-    public static async Task<T> ShowListBox<T>(this IDialogMessageService service, Action<IListBoxPresenter> option, Action<IListBoxPresenter> sumitAction = null, Action<IDialog> builder = null, Func<IListBoxPresenter, Task<bool>> canSumit = null)
+    public static async Task<T> ShowListBox<T>(this IDialogMessageService service, Action<ListBoxPresenter> option, Action<IListBoxPresenter> sumitAction = null, Action<IDialog> builder = null, Func<IListBoxPresenter, Task<bool>> canSumit = null)
     {
         T result = default(T);
         var r = await service.ShowDialog<ListBoxPresenter>(option, x =>
         {
             sumitAction?.Invoke(x);
-            result = (T)x.SelectedItem;
+            if (x.SelectedItem is T t)
+                result = t;
         }, x =>
         {
             x.HorizontalContentAlignment = System.Windows.HorizontalAlignment.Stretch;

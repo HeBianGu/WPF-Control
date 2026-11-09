@@ -20,6 +20,21 @@ public abstract class ItemsSourcePresenterBase : DisplayBindableBase, IItemsSour
             RaisePropertyChanged();
         }
     }
+}
+[Icon("\xE890")]
+[Display(Name = "查看数据")]
+public class ItemsControlPresenter : ItemsSourcePresenterBase, IItemsSourcePresenter
+{
+    private bool _UseGroupName;
+    public bool UseGroupName
+    {
+        get { return _UseGroupName; }
+        set
+        {
+            _UseGroupName = value;
+            RaisePropertyChanged();
+        }
+    }
 
     private DataTemplate _itemContentTemplate;
     public DataTemplate ItemContentTemplate
@@ -51,18 +66,11 @@ public abstract class ItemsSourcePresenterBase : DisplayBindableBase, IItemsSour
         DataTemplate n = (DataTemplate)e.NewValue;
         DataTemplate o = (DataTemplate)e.OldValue;
     }
-
-}
-[Icon("\xE890")]
-[Display(Name = "查看数据")]
-public class ItemsControlPresenter : ItemsSourcePresenterBase, IItemsSourcePresenter
-{
-
 }
 
 public static partial class DialogServiceExtension
 {
-    public static async Task<bool?> ShowItemsControl(this IDialogMessageService service, Action<IItemsSourcePresenter> option, Action<IItemsSourcePresenter> sumitAction = null, Action<IDialog> builder = null, Func<IItemsSourcePresenter, Task<bool>> canSumit = null)
+    public static async Task<bool?> ShowItemsControl(this IDialogMessageService service, Action<ItemsControlPresenter> option, Action<IItemsSourcePresenter> sumitAction = null, Action<IDialog> builder = null, Func<IItemsSourcePresenter, Task<bool>> canSumit = null)
     {
         return await service.ShowDialog<ItemsControlPresenter>(option, sumitAction, x =>
         {
