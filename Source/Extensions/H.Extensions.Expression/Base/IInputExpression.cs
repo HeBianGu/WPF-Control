@@ -30,9 +30,14 @@ public interface IInputExpression
     /// </summary>
     string GroupName { get; set; }
     /// <summary>
-    /// 数据类型
+    /// 目标数据类型
     /// </summary>
-    string DataType { get; set; }
+    Type TargetDataType { get; set; }
+
+    /// <summary>
+    /// 源数据类型
+    /// </summary>
+    Type SourceDataType { get; set; }
 
     object Value { get; set; }
 

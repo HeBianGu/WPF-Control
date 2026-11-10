@@ -180,4 +180,10 @@ public static class TypeExtension
         return property;
     }
 
+
+    public static string ToShortName(this Type type)
+    {
+        string shortName = $"{type.FullName}, {type.Assembly.GetName().Name}";
+        return shortName;
+    }
 }

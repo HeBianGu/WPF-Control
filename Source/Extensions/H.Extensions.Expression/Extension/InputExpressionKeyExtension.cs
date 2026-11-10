@@ -6,15 +6,19 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
+using H.Extensions.Common;
 using H.Extensions.Expressions.Keys;
+using System.Collections;
 using System.Windows;
 
 namespace H.Extensions.Expressions.Base;
 
 public static class InputExpressionKeyExtension
 {
-    public static (bool success, T value) GetInputExpressionValue<T>(this IInputExpressionKey key, IEnumerable<IInputExpression> exps)
+    public static (bool success, T value) GetInputValue<T>(this IInputExpressionKey key, IEnumerable<IInputExpression> exps)
     {
+        if (key == null)
+            return (false, default);
         if (key is IInputStringExpressionKey primitiveExpression)
         {
             var (success, value) = primitiveExpression.TryParse<T>();
@@ -22,7 +26,7 @@ public static class InputExpressionKeyExtension
                 return (true, value);
         }
 
-        var r = key.GetInputExpressionValue(exps);
+        var r = key.GetInputValue(exps);
         if (!r.success)
             return (false, default);
         if (r.value is T tValue)
@@ -30,35 +34,22 @@ public static class InputExpressionKeyExtension
         return (false, default);
     }
 
+    //public static (bool success, object value) GetInputValue(this IInputExpressionKey key, IEnumerable<IInputExpression> exps)
+    //{
+    //    return key.GetInputValue(exps);
+    //}
 
-    public static (bool success, object value) GetInputExpressionValue(this IInputExpressionKey key, IEnumerable<IInputExpression> exps)
-    {
-        if (key is IInputStringExpressionKey primitiveExpression)
-            return (true, primitiveExpression.Value);
-        if (key == null)
-            return (false, default);
-        var r = key.GetInputExpressions(exps).FirstOrDefault();
-        if (r == null)
-            return (false, default);
-        return (true, r.Value);
-    }
-
-    public static (bool success, object value) GetInputValue(this IInputExpressionKey key, IEnumerable<IInputExpression> exps)
-    {
-        return key.GetInputExpressionValue(exps);
-    }
-
-    public static (bool success, T value) GetInputValue<T>(this IInputExpressionKey key, IEnumerable<IInputExpression> exps)
-    {
-        return key.GetInputExpressionValue<T>(exps);
-    }
+    //public static (bool success, T value) GetInputValue<T>(this IInputExpressionKey key, IEnumerable<IInputExpression> exps)
+    //{
+    //    return key.GetInputValue<T>(exps);
+    //}
 
     public static (bool success, T value) GetInputValue<T>(this IInputExpressionKey key, IGetFromInputExpressionKeysable fkeys)
     {
         var froms = fkeys.GetFromInputExpressions();
         if (fkeys is IGetInputExpressionsable keys)
             froms = froms.Concat(keys.GetInputExpressions());
-        return key.GetInputExpressionValue<T>(froms);
+        return key.GetInputValue<T>(froms);
     }
 
     public static bool TryGet<T>(this IInputExpressionKey key, IGetFromInputExpressionKeysable owner, out T value)
@@ -80,7 +71,7 @@ public static class InputExpressionKeyExtension
     {
         if (gexp == null)
             return (false, default);
-        return key.GetInputExpressionValue<T>(gexp.GetInputExpressions());
+        return key.GetInputValue<T>(gexp.GetInputExpressions());
     }
 
     public static IEnumerable<IInputExpression> GetExpressions(this IGetFromInputExpressionKeysable gexp, IInputExpressionKey key)
@@ -89,10 +80,10 @@ public static class InputExpressionKeyExtension
         return key.GetInputExpressions(exps);
     }
 
-    public static IEnumerable<IInputExpression> GetInputExpressions(this IInputExpressionKey key, IEnumerable<IInputExpression> exps)
-    {
-        return exps.Where(x => x.ToKey().Equals(key));
-    }
+    //public static IEnumerable<IInputExpression> GetInputExpressions(this IInputExpressionKey key, IEnumerable<IInputExpression> exps)
+    //{
+    //    return exps.Where(x => x.ToKey().Equals(key));
+    //}
 
     public static IInputExpression GetExpression(this IGetFromInputExpressionKeysable gexp, IInputExpressionKey key)
     {
@@ -111,15 +102,20 @@ public static class InputExpressionKeyExtension
 
     public static IEnumerable<IInputExpressionKey> GetKeys<T>(this IGetInputExpressionsable gexp, Predicate<IInputExpression> predicate = null)
     {
-        return gexp.GetKeys(x => x.DataType == typeof(T).FullName && predicate?.Invoke(x) != false);
+        return gexp.GetKeys(x => x.TargetDataType.IsTargetDataType<T>() && predicate?.Invoke(x) != false);
     }
 
     public static IEnumerable<IInputExpressionKey> GetFromKeys<T>(this IGetFromInputExpressionKeysable fexp, bool cthis = false)
     {
-        var fkeys = fexp.GetFromKeys(x => x.DataType == typeof(T).FullName);
+        var fkeys = fexp.GetFromKeys(x => x.TargetDataType.IsTargetDataType<T>());
         if (cthis && fexp is IGetInputExpressionsable gexp)
-            fkeys = fkeys.Concat(gexp.GetKeys(x => x.DataType == typeof(T).FullName));
+            fkeys = fkeys.Concat(gexp.GetKeys(x => x.TargetDataType.IsTargetDataType<T>()));
         return fkeys;
+    }
+
+    public static bool IsTargetDataType<T>(this Type type)
+    {
+        return typeof(T).IsAssignableFrom(type) || typeof(IEnumerable<T>).IsAssignableFrom(type);
     }
 
     public static IEnumerable<IInputExpressionKey> GetIntFromKeys(this IGetFromInputExpressionKeysable gexp) => gexp.GetFromKeys<int>();

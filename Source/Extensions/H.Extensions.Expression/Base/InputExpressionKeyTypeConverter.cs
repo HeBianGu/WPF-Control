@@ -32,6 +32,24 @@ public class InputExpressionKeyTypeConverter : TypeConverter
             int separatorIndex = str.IndexOf('.');
             if (separatorIndex >= 0)
             {
+                int separatorCollectionIndex = str.IndexOf('[');
+                if (separatorCollectionIndex > separatorIndex && str.EndsWith("]", StringComparison.Ordinal))
+                {
+                    string indexText = str[(separatorCollectionIndex + 1)..^1];
+                    IInputExpressionKey indexKey;
+                    if (indexText.Length == 0)
+                        indexKey = null;
+                    else if (int.TryParse(indexText, NumberStyles.Integer, culture, out int index))
+                        indexKey = new InputStringExpressionKey() { Value = index };
+                    else
+                        indexKey = (IInputExpressionKey)this.ConvertFrom(context, culture, indexText);
+                    return new CollectionInputExpressionKey()
+                    {
+                        GroupName = str[..separatorIndex],
+                        Name = str[(separatorIndex + 1)..separatorCollectionIndex],
+                        IndexKey = indexKey
+                    };
+                }
                 return new InputExpressionKey()
                 {
                     GroupName = str[..separatorIndex],
@@ -53,8 +71,10 @@ public class InputExpressionKeyTypeConverter : TypeConverter
                 return $"{primitiveExpressionKey.Value}";
             if (value is InheritanceInputExpressionKey inheritanceExpressionKey)
                 return $"{InheritanceInputExpressionKey.NAME}";
+            if (value is CollectionInputExpressionKey collectionExpressionKey)
+                return collectionExpressionKey.DisplayName;
             if (value is InputExpressionKey key)
-                return $"{key.GroupName}.{key.Name}";
+                return key.DisplayName;
         }
         return base.ConvertTo(context, culture, value, destinationType);
     }

@@ -16,7 +16,7 @@ using System.Text.Json.Serialization;
 
 namespace H.Extensions.Expressions.Expressions;
 
-[DebuggerDisplay("InputExpression:{GroupName}.{Name}.{DataType}")]
+[DebuggerDisplay("InputExpression:{GroupName}.{Name}.{TargetDataType}")]
 public class InputExpression : BindableBase, IInputExpression
 {
     public InputExpression()
@@ -35,7 +35,7 @@ public class InputExpression : BindableBase, IInputExpression
         this.GroupName = groupName;
         this.Value = value;
         this.DisplayValue = displayValue;
-        this.DataType = value.GetType().FullName;
+        this.TargetDataType = value.GetType();
     }
     private string _GroupName;
     [ReadOnly(true)]
@@ -60,16 +60,27 @@ public class InputExpression : BindableBase, IInputExpression
             RaisePropertyChanged();
         }
     }
-    public string DataType { get; set; }
-    [JsonIgnore]
+    public Type TargetDataType { get; set; }
+    public Type SourceDataType { get; set; }
     public virtual object Value { get; set; }
-
-    [JsonIgnore]
     public virtual object DisplayValue { get; set; }
 
     public virtual IInputExpressionKey ToKey()
     {
         return new InputExpressionKey()
+        {
+            GroupName = this.GroupName,
+            Name = this.Name,
+            DisplayValue = this.DisplayValue ?? this.Value,
+        };
+    }
+}
+
+public class CollectionInputExpression : InputExpression, IInputExpression
+{
+    public override IInputExpressionKey ToKey()
+    {
+        return new CollectionInputExpressionKey()
         {
             GroupName = this.GroupName,
             Name = this.Name,

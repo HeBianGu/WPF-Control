@@ -23,7 +23,11 @@ public interface IInputExpressionKey
     /// </summary>
     string GroupName { get; set; }
 
-
     string DisplayName { get; }
+
+    (bool success, object value) GetInputValue(IEnumerable<IInputExpression> exps);
+
+    IEnumerable<IInputExpression> GetInputExpressions(IEnumerable<IInputExpression> exps);
+
 }
 

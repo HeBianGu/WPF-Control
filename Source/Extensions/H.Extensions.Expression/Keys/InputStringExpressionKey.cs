@@ -7,6 +7,7 @@
 // Licensed under the MIT License (the "License")
 
 using H.Extensions.Common;
+using H.Extensions.Expressions.Base;
 
 namespace H.Extensions.Expressions.Keys;
 
@@ -27,8 +28,13 @@ public class InputStringExpressionKey : InputExpressionKey, IInputStringExpressi
 
     public (bool success, T value) TryParse<T>()
     {
-        var r = this.Value.TryChangeType<T>(out T result);
+        var r = this.Value.TryChangeType(out T result);
         return (r, result);
+    }
+
+    public override (bool success, object value) GetInputValue(IEnumerable<IInputExpression> exps)
+    {
+        return (true, this.Value);
     }
 }
 

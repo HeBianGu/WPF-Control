@@ -8,10 +8,11 @@
 
 using H.Extensions.Common;
 using H.Extensions.Expressions.Base;
+using H.Extensions.Expressions.Expressions;
+using System.Collections;
 using System.ComponentModel.DataAnnotations;
 using System.Reflection;
 using System.Windows;
-using Expression = H.Extensions.Expressions.Expressions.InputExpression;
 
 namespace H.Extensions.Expressions.Extension;
 
@@ -23,24 +24,13 @@ public static class InputExpressionExtension
     }
     private static IEnumerable<IInputExpression> GetObjInputExpressions(object obj, string groupName, Predicate<object> predicate = null)
     {
-        var properties = obj.GetType().GetProperties().Where(x => x.CanRead);
+        var properties = obj.GetType().GetProperties().Where(x => x.CanRead).Where(x => x.Name.EndsWith("Result"));
         foreach (var property in properties)
         {
-            var display = property.GetCustomAttribute<DisplayAttribute>();
-            if (display == null)
+            var expression = CreateInputExpression(property, obj, groupName);
+            if (expression == null)
                 continue;
-            var expressionableAttribute = property.GetCustomAttribute<InputExpressionableAttribute>();
-            if (expressionableAttribute == null)
-                continue;
-            //string np = string.IsNullOrEmpty(path) ? $"[{display.Name}]" : $"[{path.TrimStart('[').TrimEnd(']')}].[{display.Name}]";
-            var ne = new Expression()
-            {
-                GroupName = groupName,
-                DataType = property.PropertyType.FullName,
-                Name = display.Name,
-                Value = property.GetValue(obj)
-            };
-            yield return ne;
+            yield return expression;
             if (property.PropertyType.IsPrimitive)
                 continue;
             var exression = property.GetCustomAttribute<InputExpressionableAttribute>();
@@ -58,6 +48,42 @@ public static class InputExpressionExtension
             }
         }
     }
+
+    private static IInputExpression CreateInputExpression(PropertyInfo property, object obj, string groupName)
+    {
+        var display = property.GetCustomAttribute<DisplayAttribute>();
+        if (display == null)
+            return null;
+        var expressionableAttribute = property.GetCustomAttribute<InputExpressionableAttribute>();
+        if (expressionableAttribute == null)
+            return null;
+        var value = property.GetValue(obj);
+        string name = display.Name;
+        Type type = property.PropertyType;
+        if (typeof(IEnumerable).IsAssignableFrom(type) && type != typeof(string))
+        {
+            return new CollectionInputExpression()
+            {
+                GroupName = groupName,
+                TargetDataType = property.PropertyType,
+                SourceDataType = property.PropertyType,
+                Name = name,
+                Value = value
+            };
+        }
+        else
+        {
+            return new InputExpression()
+            {
+                GroupName = groupName,
+                TargetDataType = type,
+                SourceDataType = property.PropertyType,
+                Name = name,
+                Value = value
+            };
+        }
+    }
+
     public static IEnumerable<IInputExpression> GetDefineChildrenInputExpressions(this IInputExpression expression)
     {
         var obj = expression.Value;
@@ -113,59 +139,59 @@ public static class InputExpressionExtension
     }
     public static IEnumerable<IInputExpression> GetInputExpressions(this Point point, string groupName, string parentName)
     {
-        yield return new Expression($"{parentName}.X", groupName, point.X);
-        yield return new Expression($"{parentName}.Y", groupName, point.Y);
+        yield return new InputExpression($"{parentName}.X", groupName, point.X);
+        yield return new InputExpression($"{parentName}.Y", groupName, point.Y);
     }
 
     public static IEnumerable<IInputExpression> GetInputExpressions(this Rect rect, string groupName, string parentName)
     {
         var center = rect.GetCenter();
-        var centerexpression = new Expression($"{parentName}.中点", groupName, center);
+        var centerexpression = new InputExpression($"{parentName}.中点", groupName, center);
         yield return centerexpression;
         foreach (var item in center.GetInputExpressions(centerexpression.GroupName, centerexpression.Name))
         {
             yield return item;
         }
-        var topLeftexpression = new Expression($"{parentName}.左上点", groupName, rect.TopLeft);
+        var topLeftexpression = new InputExpression($"{parentName}.左上点", groupName, rect.TopLeft);
         yield return topLeftexpression;
         foreach (var item in center.GetInputExpressions(topLeftexpression.GroupName, topLeftexpression.Name))
         {
             yield return item;
         }
-        var topRightexpression = new Expression($"{parentName}.右上点", groupName, rect.TopRight);
+        var topRightexpression = new InputExpression($"{parentName}.右上点", groupName, rect.TopRight);
         yield return topRightexpression;
         foreach (var item in center.GetInputExpressions(topRightexpression.GroupName, topRightexpression.Name))
         {
             yield return item;
         }
-        var bottomLeftexpression = new Expression($"{parentName}.左下点", groupName, rect.BottomLeft);
+        var bottomLeftexpression = new InputExpression($"{parentName}.左下点", groupName, rect.BottomLeft);
         yield return bottomLeftexpression;
         foreach (var item in center.GetInputExpressions(bottomLeftexpression.GroupName, bottomLeftexpression.Name))
         {
             yield return item;
         }
-        var bottomRightexpression = new Expression($"{parentName}.右下点", groupName, rect.BottomRight);
+        var bottomRightexpression = new InputExpression($"{parentName}.右下点", groupName, rect.BottomRight);
         yield return bottomRightexpression;
         foreach (var item in center.GetInputExpressions(bottomRightexpression.GroupName, bottomRightexpression.Name))
         {
             yield return item;
         }
 
-        yield return new Expression($"{parentName}.面积", groupName, rect.Width * rect.Height);
-        yield return new Expression($"{parentName}.宽", groupName, rect.Width);
-        yield return new Expression($"{parentName}.高", groupName, rect.Height);
+        yield return new InputExpression($"{parentName}.面积", groupName, rect.Width * rect.Height);
+        yield return new InputExpression($"{parentName}.宽", groupName, rect.Width);
+        yield return new InputExpression($"{parentName}.高", groupName, rect.Height);
     }
 
     public static IEnumerable<IInputExpression> GetInputExpressions(this Size size, string groupName, string parentName)
     {
-        yield return new Expression($"{parentName}.宽", groupName, size.Width);
-        yield return new Expression($"{parentName}.高", groupName, size.Height);
-        yield return new Expression($"{parentName}.面积", groupName, size.Width * size.Height);
+        yield return new InputExpression($"{parentName}.宽", groupName, size.Width);
+        yield return new InputExpression($"{parentName}.高", groupName, size.Height);
+        yield return new InputExpression($"{parentName}.面积", groupName, size.Width * size.Height);
 
     }
 
-    public static IEnumerable<IInputExpression> OfType<T>(this IEnumerable<IInputExpression> expressions)
-    {
-        return expressions.Where(x => x.DataType == typeof(T).FullName);
-    }
+    //public static IEnumerable<IInputExpression> OfType<T>(this IEnumerable<IInputExpression> expressions)
+    //{
+    //    return expressions.Where(x => x.TargetDataType.IsTargetDataType<T>());
+    //}
 }

@@ -6,6 +6,7 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
+using H.Extensions.Common;
 using H.Extensions.Expressions.Base;
 using H.Extensions.Expressions.Expressions;
 using System.ComponentModel.DataAnnotations;
@@ -27,7 +28,7 @@ public class VarInputExpression<T> : InputExpression, IVarInputExpression
     {
         this.CurrentValue = value;
         this.GroupName = groupName;
-        this.DataType = typeof(T).FullName;
+        this.TargetDataType = typeof(T);
     }
 
     [Display(Name = "注释")]
