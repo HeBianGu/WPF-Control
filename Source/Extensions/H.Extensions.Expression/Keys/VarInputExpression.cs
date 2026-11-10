@@ -10,6 +10,7 @@ using H.Extensions.Common;
 using H.Extensions.Expressions.Base;
 using H.Extensions.Expressions.Expressions;
 using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace H.Extensions.Expressions.Keys;
 
@@ -37,6 +38,7 @@ public class VarInputExpression<T> : InputExpression, IVarInputExpression
     [Display(Name = "当前值")]
     public T CurrentValue { get; set; }
 
+    [JsonIgnore]
     public override object Value { get => this.CurrentValue; set => this.CurrentValue = (T)value; }
 }
 

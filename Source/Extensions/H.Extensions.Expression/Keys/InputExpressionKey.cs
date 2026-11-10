@@ -8,10 +8,12 @@
 
 using H.Extensions.Expressions.Base;
 using H.Mvvm.ViewModels.Base;
+using System.Collections;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Diagnostics;
 using System.Text.Json.Serialization;
+using System.Windows.Media;
 
 namespace H.Extensions.Expressions.Keys;
 
@@ -102,12 +104,23 @@ public class CollectionInputExpressionKey : InputExpressionKey, IInputExpression
         (bool success, int value) indexresult = this.IndexKey == null ? (true, 0) : this.IndexKey.GetInputValue<int>(exps);
         if (!indexresult.success)
             return (false, default);
-        r.Value = r.Value switch
+        int idx = indexresult.value;
+        if (idx < 0)
+            return (false, default);
+        if (r.Value is IList list)
         {
-            IEnumerable<object> datas => datas.ElementAt(indexresult.value),
-            _ => throw new InvalidOperationException($"无法获取集合类型的值：{r.Name}，类型：{r.Value?.GetType().FullName}")
-        };
-        return (true, r.Value);
+            if (idx >= list.Count)
+                return (false, default);
+            return (true, list[idx]);
+        }
+        if (r.Value is IEnumerable objects)
+        {
+            var ds = objects.Cast<object>();
+            if (idx >= ds.Count())
+                return (false, default);
+            return (true, ds.ElementAt(idx));
+        }
+        return (false, default);
     }
 }
 
