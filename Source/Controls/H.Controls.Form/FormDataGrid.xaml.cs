@@ -7,22 +7,7 @@
 // Licensed under the MIT License (the "License")
 
 using H.Common;
-using H.Controls.Form.Attributes;
-using H.Controls.Form.PropertyItems;
-using H.Controls.Form.PropertyItems.Base;
-using H.Controls.Form.Provider;
 using H.Extensions.Behvaiors.DataGrids;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Reflection;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Input;
 
 namespace H.Controls.Form;
 
@@ -32,6 +17,14 @@ public partial class FormDataGrid : DataGrid
     private readonly Dictionary<DataGridColumn, DataGridColumnAttribute> _generatedColumnAttributes = new();
     private readonly HashSet<DataGridColumn> _typeGeneratedColumns = new();
     private bool _refreshingColumns;
+
+    static FormDataGrid()
+    {
+        // 编辑由 PropertyItem 处理，网格只负责布局，不创建行编辑事务。
+        IsReadOnlyProperty.OverrideMetadata(typeof(FormDataGrid), new FrameworkPropertyMetadata(true, null, (d, value) => true));
+        CanUserAddRowsProperty.OverrideMetadata(typeof(FormDataGrid), new FrameworkPropertyMetadata(false, null, (d, value) => false));
+        CanUserDeleteRowsProperty.OverrideMetadata(typeof(FormDataGrid), new FrameworkPropertyMetadata(false, null, (d, value) => false));
+    }
 
     public FormDataGrid()
     {
@@ -114,9 +107,9 @@ public partial class FormDataGrid : DataGrid
         return this.CreatePropertyItem(resolved, propertyOwner);
     }
 
-    internal FrameworkElement CreatePropertyItemElement(PropertyInfo propertyInfo, string propertyPath, DataGridCell cell, bool isEditing)
+    internal FrameworkElement CreatePropertyItemElement(PropertyInfo propertyInfo, string propertyPath, DataGridCell cell)
     {
-        return new PropertyItemCell(this, propertyInfo, propertyPath, cell, isEditing);
+        return new PropertyItemCell(this, propertyInfo, propertyPath, cell);
     }
 
     public Type Type
@@ -259,7 +252,7 @@ public partial class FormDataGrid : DataGrid
         private readonly string _propertyPath;
         private readonly DataGridCell _cell;
 
-        public PropertyItemCell(FormDataGrid owner, PropertyInfo propertyInfo, string propertyPath, DataGridCell cell, bool isEditing)
+        public PropertyItemCell(FormDataGrid owner, PropertyInfo propertyInfo, string propertyPath, DataGridCell cell)
         {
             _owner = owner;
             _propertyInfo = propertyInfo;
@@ -270,9 +263,8 @@ public partial class FormDataGrid : DataGrid
                 : $"DataContext.{propertyPath.Substring(0, separator)}";
             this.HorizontalContentAlignment = HorizontalAlignment.Stretch;
             this.VerticalContentAlignment = VerticalAlignment.Center;
-            this.IsHitTestVisible = isEditing;
             this.Focusable = false;
-            KeyboardNavigation.SetTabNavigation(this, isEditing ? KeyboardNavigationMode.Continue : KeyboardNavigationMode.None);
+            KeyboardNavigation.SetTabNavigation(this, KeyboardNavigationMode.Continue);
             this.SetBinding(DataContextProperty, new Binding(ownerPath) { Source = cell });
             this.Loaded += (s, e) => this.RefreshPropertyItem();
             this.Unloaded += (s, e) => this.ClearPropertyItem();
@@ -311,3 +303,4 @@ public partial class FormDataGrid : DataGrid
         }
     }
 }
+

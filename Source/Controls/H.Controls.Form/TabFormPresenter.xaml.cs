@@ -7,7 +7,6 @@
 // Licensed under the MIT License (the "License")
 
 using H.Common;
-using System.Resources;
 using System.Runtime.CompilerServices;
 
 namespace H.Controls.Form;

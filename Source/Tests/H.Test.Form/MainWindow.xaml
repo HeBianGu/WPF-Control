@@ -13,7 +13,21 @@
         mc:Ignorable="d">
     <TabControl TabStripPlacement="Left">
         <TabItem Header="FormDataGrid">
-            <FormDataGrid ItemsSource="{GetStudents}" UseGroupNames="默认分组"/>
+            <TabControl>
+                <TabItem Header="AutoFormDataGrid">
+                    <FormDataGrid ItemsSource="{GetStudents}" UseGroupNames="默认分组"/>
+                </TabItem>
+                <TabItem Header="FormDataGrid">
+                    <FormDataGrid ItemsSource="{GetStudents}" AutoGenerateColumns="False">
+                        <DataGrid.Columns>
+                            <PropertyItemColumn PropertyPath="Name"/>
+                            <PropertyItemColumn PropertyPath="Class"/>
+                            <PropertyItemColumn PropertyPath="IsEnbled"/>
+                            <PropertyItemColumn PropertyPath="Time"/>
+                        </DataGrid.Columns>
+                    </FormDataGrid>
+                </TabItem>
+            </TabControl>
         </TabItem>
         <TabItem Header="TextPropertyItem">
             <h:Form TitleWidth="200">

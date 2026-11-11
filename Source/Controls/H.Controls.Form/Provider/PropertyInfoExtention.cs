@@ -6,8 +6,6 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
-using System.DirectoryServices.ActiveDirectory;
-
 namespace H.Controls.Form.Provider;
 
 public static class PropertyInfoExtention

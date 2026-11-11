@@ -7,10 +7,6 @@
 // Licensed under the MIT License (the "License")
 
 using H.Common;
-using H.Mvvm.Commands;
-using System.Reflection;
-using System.Resources;
-using System.Xml.Linq;
 
 namespace H.Controls.Form.PropertyItems.Base;
 

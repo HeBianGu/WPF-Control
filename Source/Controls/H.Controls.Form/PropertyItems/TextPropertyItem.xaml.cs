@@ -6,8 +6,6 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
-using System.Windows.Data;
-
 namespace H.Controls.Form.PropertyItems;
 
 public class TextPropertyItem : ObjectPropertyItem<string>

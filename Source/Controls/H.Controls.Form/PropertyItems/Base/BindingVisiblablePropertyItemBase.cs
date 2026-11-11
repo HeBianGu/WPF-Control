@@ -63,7 +63,7 @@ public abstract class BindingVisiblablePropertyItemBase : ObjectPropertyItemBase
         return true;
     }
 
- 
+
 
     #region - IRefreshFilterOnValueChanged -
 

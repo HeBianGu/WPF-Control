@@ -10,7 +10,6 @@ global using H.Controls.Form.Provider;
 global using System.Collections;
 global using System.Windows.Threading;
 using H.Common;
-using H.Controls.Form.PropertyItems.Base;
 
 namespace H.Controls.Form;
 

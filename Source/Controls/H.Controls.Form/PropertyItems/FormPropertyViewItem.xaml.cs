@@ -6,8 +6,6 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
-global using System.Reflection;
-
 namespace H.Controls.Form.PropertyItems;
 
 public class FormPropertyViewItem : ObjectPropertyItem<object>

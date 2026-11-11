@@ -7,8 +7,6 @@
 // Licensed under the MIT License (the "License")
 
 using System.Globalization;
-using System.Runtime.Intrinsics.X86;
-using System.Text.RegularExpressions;
 
 namespace H.Controls.Form.PropertyItems;
 

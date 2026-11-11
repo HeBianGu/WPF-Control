@@ -1,11 +1,12 @@
+// Copyright (c) HeBianGu Authors. All Rights Reserved. 
+// Author: HeBianGu 
+// Github: https://github.com/HeBianGu/WPF-Control 
+// Document: https://hebiangu.github.io/WPF-Control-Docs  
+// QQ:908293466 Group:971261058 
+// bilibili: https://space.bilibili.com/370266611 
+// Licensed under the MIT License (the "License")
+
 using H.Extensions.Behvaiors.DataGrids;
-using System;
-using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
-using System.Reflection;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
 
 namespace H.Controls.Form;
 
@@ -36,22 +37,22 @@ public class PropertyItemColumn : DataGridColumn
 
     protected override FrameworkElement GenerateElement(DataGridCell cell, object dataItem)
     {
-        return this.CreateElement(cell, dataItem, false);
+        return this.CreateElement(cell, dataItem);
     }
 
     protected override FrameworkElement GenerateEditingElement(DataGridCell cell, object dataItem)
     {
-        return this.CreateElement(cell, dataItem, true);
+        return this.CreateElement(cell, dataItem);
     }
 
-    private FrameworkElement CreateElement(DataGridCell cell, object dataItem, bool isEditing)
+    private FrameworkElement CreateElement(DataGridCell cell, object dataItem)
     {
         FormDataGrid owner = this.DataGridOwner as FormDataGrid ?? _owner;
         if (owner == null || string.IsNullOrWhiteSpace(this.PropertyPath))
             return new TextBlock();
         PropertyInfo property = this.ResolveProperty(owner, dataItem);
         if (property == null)
-            return owner.CreatePropertyItemElement(null, this.PropertyPath, cell, isEditing);
+            return owner.CreatePropertyItemElement(null, this.PropertyPath, cell);
         var attribute = _attribute ?? property.GetCustomAttribute<DataGridColumnAttribute>();
         string path = string.Format(attribute?.PropertyPath ?? "{0}", this.PropertyPath);
         if (this.Header == null)
@@ -70,7 +71,7 @@ public class PropertyItemColumn : DataGridColumn
         }
         IValueConverter converter = this.Converter ?? _attributeConverter;
         string format = this.StringFormat ?? attribute?.StringFormat ?? property.GetCustomAttribute<DisplayFormatAttribute>()?.DataFormatString;
-        if (!isEditing && !owner.UsePropertyView && (converter != null || format != null))
+        if (!owner.UsePropertyView && (converter != null || format != null))
         {
             var text = new TextBlock { VerticalAlignment = VerticalAlignment.Center };
             text.SetBinding(TextBlock.TextProperty, new Binding($"DataContext.{path}")
@@ -82,7 +83,7 @@ public class PropertyItemColumn : DataGridColumn
             });
             return text;
         }
-        return owner.CreatePropertyItemElement(property, path, cell, isEditing);
+        return owner.CreatePropertyItemElement(property, path, cell);
     }
 
     private PropertyInfo ResolveProperty(FormDataGrid owner, object dataItem)
