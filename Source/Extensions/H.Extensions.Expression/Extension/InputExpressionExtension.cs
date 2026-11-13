@@ -154,25 +154,25 @@ public static class InputExpressionExtension
         }
         var topLeftexpression = new InputExpression($"{parentName}.左上点", groupName, rect.TopLeft);
         yield return topLeftexpression;
-        foreach (var item in center.GetInputExpressions(topLeftexpression.GroupName, topLeftexpression.Name))
+        foreach (var item in rect.TopLeft.GetInputExpressions(topLeftexpression.GroupName, topLeftexpression.Name))
         {
             yield return item;
         }
         var topRightexpression = new InputExpression($"{parentName}.右上点", groupName, rect.TopRight);
         yield return topRightexpression;
-        foreach (var item in center.GetInputExpressions(topRightexpression.GroupName, topRightexpression.Name))
+        foreach (var item in rect.TopRight.GetInputExpressions(topRightexpression.GroupName, topRightexpression.Name))
         {
             yield return item;
         }
         var bottomLeftexpression = new InputExpression($"{parentName}.左下点", groupName, rect.BottomLeft);
         yield return bottomLeftexpression;
-        foreach (var item in center.GetInputExpressions(bottomLeftexpression.GroupName, bottomLeftexpression.Name))
+        foreach (var item in rect.BottomLeft.GetInputExpressions(bottomLeftexpression.GroupName, bottomLeftexpression.Name))
         {
             yield return item;
         }
         var bottomRightexpression = new InputExpression($"{parentName}.右下点", groupName, rect.BottomRight);
         yield return bottomRightexpression;
-        foreach (var item in center.GetInputExpressions(bottomRightexpression.GroupName, bottomRightexpression.Name))
+        foreach (var item in rect.BottomRight.GetInputExpressions(bottomRightexpression.GroupName, bottomRightexpression.Name))
         {
             yield return item;
         }
