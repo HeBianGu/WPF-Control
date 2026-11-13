@@ -167,29 +167,14 @@
                 </MultiTrigger.Conditions>
                 <Setter Property="Background" Value="{Binding RelativeSource={RelativeSource AncestorType=DataGrid}, Path=AlternatingRowBackground}" />
             </MultiTrigger>
-            <MultiTrigger>
-                <MultiTrigger.Conditions>
-                    <Condition Property="IsMouseOver" Value="True" />
-                </MultiTrigger.Conditions>
+            <Trigger Property="IsMouseOver" Value="True">
                 <Setter Property="Background" Value="{DynamicResource {x:Static BrushKeys.MouseOver}}" />
                 <Setter Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.BorderBrushTitle}}" />
-            </MultiTrigger>
-            <MultiTrigger>
-                <MultiTrigger.Conditions>
-                    <Condition Property="Selector.IsSelectionActive" Value="False" />
-                    <Condition Property="IsSelected" Value="True" />
-                </MultiTrigger.Conditions>
+            </Trigger>
+            <Trigger Property="IsSelected" Value="True">
                 <Setter Property="Background" Value="{DynamicResource {x:Static BrushKeys.Selected}}" />
                 <Setter Property="Foreground" Value="{DynamicResource {x:Static BrushKeys.ForegroundSelect}}" />
-            </MultiTrigger>
-            <MultiTrigger>
-                <MultiTrigger.Conditions>
-                    <Condition Property="Selector.IsSelectionActive" Value="True" />
-                    <Condition Property="IsSelected" Value="True" />
-                </MultiTrigger.Conditions>
-                <Setter Property="Background" Value="{DynamicResource {x:Static BrushKeys.Selected}}" />
-                <Setter Property="Foreground" Value="{DynamicResource {x:Static BrushKeys.ForegroundSelect}}" />
-            </MultiTrigger>
+            </Trigger>
             <Trigger Property="IsEnabled" Value="False">
                 <Setter Property="Opacity" Value="0.6" />
             </Trigger>
@@ -227,7 +212,7 @@
         </Setter>
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Background" Value="{DynamicResource {x:Static ColorKeys.MouseOver}}" />
+                <Setter Property="Background" Value="{DynamicResource {x:Static BrushKeys.MouseOver}}" />
             </Trigger>
         </Style.Triggers>
     </Style>
