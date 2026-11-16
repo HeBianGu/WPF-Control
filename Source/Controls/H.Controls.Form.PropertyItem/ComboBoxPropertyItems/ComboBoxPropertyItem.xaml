@@ -3,7 +3,8 @@
                     xmlns:local="clr-namespace:H.Controls.Form.PropertyItem.ComboBoxPropertyItems">
     <DataTemplate DataType="{x:Type local:ComboBoxPropertyItem}">
         <DockPanel>
-            <ItemsControl ItemsSource="{Binding Commands}" DockPanel.Dock="Right">
+            <ItemsControl DockPanel.Dock="Right"
+                          ItemsSource="{Binding Commands}">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
                         <FontIconButton Command="{Binding}"
