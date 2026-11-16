@@ -86,9 +86,10 @@ static partial class ProjectExtension
         if (r != true)
             return r;
         projectService.Add(project);
+        // 新建项目Load前要清理因重命名没有清理数据的数据
+        projectService.ProjectAdded?.Invoke(project);
         projectService.Current = project;
         project.Save(out string message);
-        projectService.ProjectAdded?.Invoke(project);
         return true;
     }
     public static async Task<bool?> ShowEidtProject(this IProjectService projectService, IProjectItem project, Action<IDialog> action = null)
