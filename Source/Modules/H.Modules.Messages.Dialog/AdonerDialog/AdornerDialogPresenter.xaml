@@ -43,11 +43,18 @@
                                            Text="{Binding Icon}" />
                         <TextBlock VerticalAlignment="Center"
                                    Text="{Binding Title}" />
-                        <ItemsControl ItemsSource="{Binding Presenter.Commands, Converter={GetGroupCommandsValueConverter GroupName={x:Static CommandGroupNames.Caption}}}">
+                        <FontIconButton Grid.Column="1"
+                                        HorizontalAlignment="Right"
+                                        Cattach.CornerRadius="{DynamicResource {x:Static LayoutKeys.CornerRadius}}"
+                                        Command="{local:CloseAdornerDialogCommand}"
+                                        CommandParameter="{Binding}"
+                                        Content="{x:Static FontIcons.Cancel}"
+                                        DockPanel.Dock="Right" />
+                        <ItemsControl HorizontalAlignment="Right"
+                                      ItemsSource="{Binding Presenter.Commands, Converter={GetGroupCommandsValueConverter GroupName={x:Static CommandGroupNames.Caption}}}">
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate>
-                                    <FontIconButton Background="Transparent"
-                                                    Command="{Binding}"
+                                    <FontIconButton Command="{Binding}"
                                                     Style="{DynamicResource {x:Static FontIconButtonKeys.Command}}" />
                                 </DataTemplate>
                             </ItemsControl.ItemTemplate>
@@ -57,13 +64,6 @@
                                 </ItemsPanelTemplate>
                             </ItemsControl.ItemsPanel>
                         </ItemsControl>
-                        <FontIconButton Grid.Column="1"
-                                        HorizontalAlignment="Right"
-                                        Cattach.CornerRadius="{DynamicResource {x:Static LayoutKeys.CornerRadius}}"
-                                        Command="{local:CloseAdornerDialogCommand}"
-                                        CommandParameter="{Binding}"
-                                        Content="{x:Static FontIcons.Cancel}"
-                                        DockPanel.Dock="Right" />
                     </DockPanel>
                 </Border>
                 <Grid Grid.Row="1"
