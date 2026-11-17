@@ -6,7 +6,7 @@
     <DataTemplate DataType="{x:Type local:CommandsPresenterBase}">
         <DockPanel>
             <DockPanel HorizontalAlignment="Right" DockPanel.Dock="Bottom">
-                <ItemsControl ItemsSource="{Binding Commands}">
+                <ItemsControl ItemsSource="{Binding Commands,Converter={GetGroupCommandsValueConverter GroupName={x:Static CommandGroupNames.ToolBar}}}">
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
                             <Button

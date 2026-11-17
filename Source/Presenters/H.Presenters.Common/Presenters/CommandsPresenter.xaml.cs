@@ -67,7 +67,7 @@ public class DialogCommandsPresenter<T> : CommandsPresenter<T>
 
     }
 
-    [Display(Name = "确定", GroupName = "操作")]
+    [Display(Name = "确定", GroupName = CommandGroupNames.ToolBar)]
     public DisplayCommand SumitCommand => new DisplayCommand(x =>
     {
         var dialog = this.GetDialog(x);
