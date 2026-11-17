@@ -43,6 +43,20 @@
                                            Text="{Binding Icon}" />
                         <TextBlock VerticalAlignment="Center"
                                    Text="{Binding Title}" />
+                        <ItemsControl ItemsSource="{Binding Presenter.Commands, Converter={GetGroupCommandsValueConverter GroupName={x:Static CommandGroupNames.Caption}}}">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <FontIconButton Background="Transparent"
+                                                    Command="{Binding}"
+                                                    Style="{DynamicResource {x:Static FontIconButtonKeys.Command}}" />
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <DockPanel />
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                        </ItemsControl>
                         <FontIconButton Grid.Column="1"
                                         HorizontalAlignment="Right"
                                         Cattach.CornerRadius="{DynamicResource {x:Static LayoutKeys.CornerRadius}}"

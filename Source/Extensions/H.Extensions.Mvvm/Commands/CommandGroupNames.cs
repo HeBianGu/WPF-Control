@@ -14,6 +14,7 @@ public class CommandGroupNames
     public const string ToolBar = "工具栏";
     public const string ContextMenu = "右键菜单";
     public const string StatusBar = "状态栏";
+    public const string Caption = "标题栏";
     public const string QuickAccessToolbar = "快速访问工具栏";
     public const string Menu = $"{MenuBar},{ContextMenu}";
     public const string Tools = $"{MenuBar},{ContextMenu},{ToolBar}";
