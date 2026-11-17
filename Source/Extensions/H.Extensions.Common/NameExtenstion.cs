@@ -11,9 +11,9 @@ namespace H.Extensions.Common;
 
 public static class NameExtenstion
 {
-    public static string GetIndexSafeName(this string formatName, IEnumerable<string> names)
+    public static string GetIndexSafeName(this string formatName, IEnumerable<string> names, int startIndex = 1)
     {
-        for (int i = 1; ; i++)
+        for (int i = startIndex; ; i++)
         {
             string candidate = formatName + i.ToString();
             if (!names.Contains(candidate))
@@ -21,9 +21,9 @@ public static class NameExtenstion
         }
     }
 
-    public static string GetIndexSafeName(this IEnumerable<string> names, string formatName)
+    public static string GetIndexSafeName(this IEnumerable<string> names, string formatName, int startIndex = 1)
     {
-        for (int i = 1; ; i++)
+        for (int i = startIndex; ; i++)
         {
             string candidate = formatName + i.ToString();
             if (!names.Contains(candidate))
@@ -31,9 +31,9 @@ public static class NameExtenstion
         }
     }
 
-    public static int GetSafeIndex(this IEnumerable<int> indexs)
+    public static int GetSafeIndex(this IEnumerable<int> indexs, int startIndex = 1)
     {
-        for (int i = 1; ; i++)
+        for (int i = startIndex; ; i++)
         {
             if (!indexs.Contains(i))
                 return i;

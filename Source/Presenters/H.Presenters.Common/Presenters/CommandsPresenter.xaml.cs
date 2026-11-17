@@ -6,6 +6,9 @@
 // bilibili: https://space.bilibili.com/370266611 
 // Licensed under the MIT License (the "License")
 
+
+using System.Linq;
+
 namespace H.Presenters.Common.Presenters;
 
 
@@ -44,9 +47,17 @@ public class CommandsPresenter<T> : CommandsPresenterBase
     public CommandsPresenter(T presenter)
     {
         this.Presenter = presenter;
+        this.UpdateCommands();
     }
 
     public new T Presenter { get; set; }
+
+    protected override IEnumerable<IDisplayCommand> CreateCommands()
+    {
+        if (this.Presenter is ICommandsBindable commands)
+            return base.CreateCommands().Concat(commands.Commands.OfType<IDisplayCommand>());
+        return base.CreateCommands();
+    }
 }
 
 public class DialogCommandsPresenter<T> : CommandsPresenter<T>
