@@ -8,8 +8,16 @@
 
 namespace H.Extensions.Expressions.Base;
 
-public class InputExpressionableAttribute : Attribute
+public class BrowsableInInputExpressionAttribute : Attribute
 {
-
+    readonly bool _browsable;
+    public BrowsableInInputExpressionAttribute(bool browsable = true)
+    {
+        this._browsable = browsable;
+    }
+    public bool Browsable
+    {
+        get { return _browsable; }
+    }
 }
 

@@ -33,7 +33,7 @@ public static class InputExpressionExtension
             yield return expression;
             if (property.PropertyType.IsPrimitive)
                 continue;
-            var exression = property.GetCustomAttribute<InputExpressionableAttribute>();
+            var exression = property.GetCustomAttribute<BrowsableInInputExpressionAttribute>();
             if (exression == null)
                 continue;
             var value = property.GetValue(obj);
@@ -54,7 +54,7 @@ public static class InputExpressionExtension
         var display = property.GetCustomAttribute<DisplayAttribute>();
         if (display == null)
             return null;
-        var expressionableAttribute = property.GetCustomAttribute<InputExpressionableAttribute>();
+        var expressionableAttribute = property.GetCustomAttribute<BrowsableInInputExpressionAttribute>();
         if (expressionableAttribute == null)
             return null;
         var value = property.GetValue(obj);

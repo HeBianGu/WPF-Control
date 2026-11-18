@@ -15,13 +15,13 @@ namespace H.Extensions.Expressions.Expressions;
 public class DemoInputExpressionClass
 {
     //步骤2：定义一个属性，设置ResultParameters
-    [InputExpressionable]
+    [BrowsableInInputExpression]
     [Display(Name = "示例：自定义整型", Description = "用来演示如何增加节点表达式参数")]
     public int IntValue { get; set; } = 100;
-    [InputExpressionable]
+    [BrowsableInInputExpression]
     [Display(Name = "示例：自定义字符串", Description = "用来演示如何增加节点表达式参数")]
     public string StringValue { get; set; } = "Hello World";
-    [InputExpressionable]
+    [BrowsableInInputExpression]
     [Display(Name = "示例：自定义双精度", Description = "用来演示如何增加节点表达式参数")]
     public double DoubleValue { get; set; } = 3.14;
 }
