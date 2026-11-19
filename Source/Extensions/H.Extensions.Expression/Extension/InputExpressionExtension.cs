@@ -31,21 +31,21 @@ public static class InputExpressionExtension
             if (expression == null)
                 continue;
             yield return expression;
-            if (property.PropertyType.IsPrimitive)
-                continue;
-            var exression = property.GetCustomAttribute<BrowsableInInputExpressionAttribute>();
-            if (exression == null)
-                continue;
-            var value = property.GetValue(obj);
-            if (value == null)
-                continue;
-            if (predicate?.Invoke(value) == false)
-                continue;
-            var nes = GetObjInputExpressions(value, groupName, predicate);
-            foreach (var item in nes)
-            {
-                yield return item;
-            }
+            //if (property.PropertyType.IsPrimitive)
+            //    continue;
+            //var exression = property.GetCustomAttribute<BrowsableInInputExpressionAttribute>();
+            //if (exression == null)
+            //    continue;
+            //var value = property.GetValue(obj);
+            //if (value == null)
+            //    continue;
+            //if (predicate?.Invoke(value) == false)
+            //    continue;
+            //var nes = GetObjInputExpressions(value, groupName, predicate);
+            //foreach (var item in nes)
+            //{
+            //    yield return item;
+            //}
         }
     }
 

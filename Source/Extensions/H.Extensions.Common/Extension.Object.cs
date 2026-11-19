@@ -295,15 +295,25 @@ public static class ObjectExtension
         TypeConverterAttribute tConvert = rType.GetCustomAttribute<TypeConverterAttribute>();
         if (type == typeof(string) && tConvert != null)
         {
-            Type t = Type.GetType(tConvert.ConverterTypeName);
-            TypeConverter typeConverter = Activator.CreateInstance(t) as TypeConverter;
-            if (typeof(Freezable).IsAssignableFrom(rType))
-                result = Application.Current.Dispatcher.Invoke(() =>
+            try
+            {
+                Type t = Type.GetType(tConvert.ConverterTypeName);
+                TypeConverter typeConverter = Activator.CreateInstance(t) as TypeConverter;
+                if (typeof(Freezable).IsAssignableFrom(rType))
+                    result = Application.Current.Dispatcher.Invoke(() =>
+                    {
+                        return typeConverter.ConvertFromString(obj.ToString());
+                    });
+                else
                 {
-                    return typeConverter.ConvertFromString(obj.ToString());
-                });
-            else
-                result = typeConverter.ConvertFromString(obj.ToString());
+                    result = typeConverter.ConvertFromString(obj.ToString());
+                }
+            }
+            catch (FormatException ex)
+            {
+                return false;
+            }
+
             return true;
         }
         return false;
