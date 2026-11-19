@@ -178,9 +178,20 @@
                                   ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}"
                                   IsHitTestVisible="false"
                                   SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+
+                <TextBlock x:Name="t_message"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"
+                           Opacity="0.5"
+                           Text="{Binding RelativeSource={RelativeSource AncestorType=ComboBox}, Path=(Cattach.Watermark)}"
+                           Visibility="Collapsed" />
             </Grid>
         </Border>
         <ControlTemplate.Triggers>
+            <DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=Items.Count}"
+                         Value="{x:Null}">
+                <Setter TargetName="t_message" Property="Visibility" Value="Visible" />
+            </DataTrigger>
             <!--<Trigger Property="HasItems" Value="false">
                 <Setter TargetName="dropDownBorder" Property="Height" Value="95" />
             </Trigger>-->
@@ -243,7 +254,7 @@
         <Setter Property="Cattach.ItemMargin" Value="0" />
         <Setter Property="Cattach.ItemBorderThickness" Value="0" />
         <Setter Property="Cattach.ItemBorderBrush" Value="Transparent" />
-
+        <Setter Property="Cattach.Watermark" Value="{x:Static Resources.Common_NoData}" />
         <Setter Property="Template" Value="{StaticResource ComboBoxTemplate}" />
         <Style.Triggers>
             <Trigger Property="IsEditable" Value="true">
@@ -291,7 +302,7 @@
                     <Condition Property="IsMouseOver" Value="True" />
                     <Condition Property="IsKeyboardFocused" Value="False" />
                 </MultiTrigger.Conditions>
-                <Setter Property="Background" Value="{DynamicResource {x:Static BrushKeys.MouseOver}}"/>
+                <Setter Property="Background" Value="{DynamicResource {x:Static BrushKeys.MouseOver}}" />
                 <Setter Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.BorderBrush}}" />
             </MultiTrigger>
             <MultiTrigger>
@@ -300,7 +311,7 @@
                     <Condition Property="IsMouseOver" Value="False" />
                     <Condition Property="IsKeyboardFocused" Value="True" />
                 </MultiTrigger.Conditions>
-                <Setter Property="Background" Value="{DynamicResource {x:Static BrushKeys.Selected}}"/>
+                <Setter Property="Background" Value="{DynamicResource {x:Static BrushKeys.Selected}}" />
                 <Setter Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.BorderBrush}}" />
             </MultiTrigger>
             <MultiTrigger>
@@ -308,7 +319,7 @@
                     <Condition Property="IsSelected" Value="True" />
                     <Condition Property="IsMouseOver" Value="True" />
                 </MultiTrigger.Conditions>
-                <Setter Property="Background" Value="{DynamicResource {x:Static BrushKeys.Selected}}"/>
+                <Setter Property="Background" Value="{DynamicResource {x:Static BrushKeys.Selected}}" />
                 <Setter Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.BorderBrushTitle}}" />
             </MultiTrigger>
             <MultiTrigger>
@@ -317,7 +328,7 @@
                     <Condition Property="IsMouseOver" Value="False" />
                     <Condition Property="IsKeyboardFocused" Value="False" />
                 </MultiTrigger.Conditions>
-                <Setter Property="Background" Value="{DynamicResource {x:Static BrushKeys.Selected}}"/>
+                <Setter Property="Background" Value="{DynamicResource {x:Static BrushKeys.Selected}}" />
                 <Setter Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.BorderBrush}}" />
             </MultiTrigger>
             <MultiTrigger>
@@ -334,7 +345,7 @@
                     <Condition Property="IsMouseOver" Value="True" />
                     <Condition Property="IsKeyboardFocused" Value="True" />
                 </MultiTrigger.Conditions>
-                <Setter Property="Background" Value="{DynamicResource {x:Static BrushKeys.MouseOver}}"/>
+                <Setter Property="Background" Value="{DynamicResource {x:Static BrushKeys.MouseOver}}" />
                 <Setter Property="BorderBrush" Value="{DynamicResource {x:Static BrushKeys.BorderBrushTitle}}" />
             </MultiTrigger>
             <Trigger Property="IsEnabled" Value="False">

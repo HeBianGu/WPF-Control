@@ -3,7 +3,9 @@
                     xmlns:h="https://github.com/HeBianGu"
                     xmlns:local="clr-namespace:H.Controls.Form">
     <DataTemplate DataType="{x:Type local:TabFormPresenter}">
-        <TabControl ItemsSource="{Binding TabNames}" MinWidth="350"
+        <TabControl MinWidth="350"
+                    ItemContainerStyle="{DynamicResource {x:Static TabItemKeys.Line}}"
+                    ItemsSource="{Binding TabNames}"
                     TabStripPlacement="{Binding TabStripPlacement}">
             <TabControl.ItemTemplate>
                 <DataTemplate>
@@ -16,9 +18,9 @@
             <TabControl.ContentTemplate>
                 <DataTemplate>
                     <Border Padding="2"
-                            CornerRadius="{DynamicResource {x:Static LayoutKeys.CornerRadius}}"
                             BorderBrush="{DynamicResource {x:Static BrushKeys.BorderBrush}}"
-                            BorderThickness="1">
+                            BorderThickness="1"
+                            CornerRadius="{DynamicResource {x:Static LayoutKeys.CornerRadius}}">
                         <!--  UseCommand="{Binding RelativeSource={RelativeSource AncestorType=TabControl}, Path=DataContext.UseCommand}"  -->
                         <local:Form x:Name="form"
                                     IsHitTestVisible="{Binding RelativeSource={RelativeSource AncestorType=TabControl}, Path=DataContext.IsHitTestVisible}"
